@@ -297,7 +297,7 @@ export default function MultimodalScenario() {
   const lanes: { key: LaneKey; label: string; latency: number; cost: number; quality: number }[] = [
     { key: "claude", label: "Pure Claude (Opus)", latency: latencies.claude, cost: costs.pureClaude, quality: 5 },
     { key: "gemini", label: "Pure Gemini (Flash)", latency: latencies.gemini, cost: costs.pureGemini, quality: 4 },
-    { key: "hybrid", label: "Hybrid (Flash → Opus)", latency: latencies.hybrid, cost: costs.hybrid, quality: 5 },
+    { key: "hybrid", label: "Gemini Hybrid (Flash → Gemini Pro)", latency: latencies.hybrid, cost: costs.hybrid, quality: 5 },
   ];
 
   /* ─── Winner determination ─── */
@@ -633,7 +633,7 @@ export default function MultimodalScenario() {
 
             <div className="mt-6 pt-5 border-t border-zinc-100 flex flex-wrap items-center gap-6 text-xs text-zinc-500">
               <span>
-                <strong className="text-zinc-700">Flash sees.</strong> Opus thinks. Best of both worlds.
+                <strong className="text-zinc-700">Flash sees.</strong> Gemini Pro thinks. Best of both worlds — on Google Cloud.
               </span>
               <span className="font-mono tabular-nums">
                 Combined: {fmtUSD(costs.hybrid)} / interaction

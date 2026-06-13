@@ -77,7 +77,7 @@ function TaskCard({
   const bgColor = isOpus ? AMBER_LIGHT : GREEN_LIGHT;
   const borderColor = isOpus ? AMBER : GREEN;
   const dotColor = isOpus ? AMBER : GREEN;
-  const modelLabel = isOpus ? "Opus" : "Flash";
+  const modelLabel = isOpus ? "Gemini Pro" : "Flash";
 
   return (
     <motion.div
@@ -292,7 +292,7 @@ function DonutLegend({
           style={{ backgroundColor: AMBER }}
         />
         <span className="text-slate-600">
-          Complex ({complexCount}) → Opus
+          Complex ({complexCount}) → Gemini Pro
         </span>
       </div>
     </div>
@@ -422,8 +422,8 @@ export default function BuildScenario() {
           </p>
           <p className="mt-2 max-w-2xl text-sm text-slate-500">
             75% of coding tasks are routine — tests, scaffolds, docs, CRUD.
-            A tiered strategy routes them to Flash at ⅓ the cost,
-            reserving Opus for architecture and hard debugging.
+            A Gemini-tiered strategy routes routine work to Gemini Flash,
+            reserving Gemini Pro (AA Score 92) for architecture and hard debugging.
           </p>
         </motion.div>
 
@@ -558,7 +558,7 @@ export default function BuildScenario() {
                     {fmtUSD(costs.allFrontierPerSprint, 2)}
                   </p>
                   <p className="text-[10px] text-slate-400">
-                    100% {MODELS.opus.name}
+                    All Claude Opus (competitor)
                   </p>
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-white p-4">
@@ -572,7 +572,7 @@ export default function BuildScenario() {
                     {fmtUSD(costs.tieredPerSprint, 2)}
                   </p>
                   <p className="text-[10px] text-slate-400">
-                    Flash + Opus mix
+                    Flash + Gemini Pro mix
                   </p>
                 </div>
               </div>
@@ -629,7 +629,7 @@ export default function BuildScenario() {
                         className="inline-block h-2 w-2 rounded-full"
                         style={{ backgroundColor: AMBER }}
                       />
-                      {complexTasks.length} Opus
+                      {complexTasks.length} Gemini Pro
                     </motion.span>
                   ) : (
                     <motion.span
@@ -643,7 +643,7 @@ export default function BuildScenario() {
                         className="inline-block h-2 w-2 rounded-full"
                         style={{ backgroundColor: AMBER }}
                       />
-                      {S1_TASKS.length} Opus (all frontier)
+                      {S1_TASKS.length} Claude Opus (competitor)
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -751,26 +751,29 @@ export default function BuildScenario() {
               <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-xs text-slate-600">
                 <div className="flex justify-between">
                   <span className="flex items-center gap-1.5">
-                    <span
-                      className="inline-block h-2 w-2 rounded-full"
-                      style={{ backgroundColor: AMBER }}
-                    />
-                    {MODELS.opus.name}
+                    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: GREEN }} />
+                    {MODELS.geminiPro.name} <span className="text-slate-400 ml-1">AA 92</span>
                   </span>
                   <span className="tabular-nums font-medium">
-                    ${MODELS.opus.inPM} in / ${MODELS.opus.outPM} out
+                    ${MODELS.geminiPro.inPM} in / ${MODELS.geminiPro.outPM} out
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="flex items-center gap-1.5">
-                    <span
-                      className="inline-block h-2 w-2 rounded-full"
-                      style={{ backgroundColor: GREEN }}
-                    />
+                    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: BLUE }} />
                     {MODELS.flash.name}
                   </span>
                   <span className="tabular-nums font-medium">
                     ${MODELS.flash.inPM} in / ${MODELS.flash.outPM} out
+                  </span>
+                </div>
+                <div className="flex justify-between col-span-2 border-t border-slate-100 pt-1 mt-1 opacity-50">
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: AMBER }} />
+                    {MODELS.opus.name} (competitor) <span className="text-slate-400 ml-1">AA 89</span>
+                  </span>
+                  <span className="tabular-nums font-medium">
+                    ${MODELS.opus.inPM} in / ${MODELS.opus.outPM} out
                   </span>
                 </div>
               </div>
@@ -791,8 +794,8 @@ export default function BuildScenario() {
             <span className="font-bold tabular-nums" style={{ color: GREEN }}>
               {fmtUSD(costs.savingsTotal, 2)}
             </span>{" "}
-            over {sprints} sprints by routing routine tasks to Flash — with
-            zero quality trade-off on complex work.
+            over {sprints} sprints vs all-Claude Opus — Gemini Flash handles routine work,
+            Gemini Pro (AA Score 92) handles complex work. Zero quality trade-off.
           </p>
         </motion.div>
       </div>

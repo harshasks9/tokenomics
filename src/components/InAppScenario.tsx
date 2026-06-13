@@ -738,18 +738,16 @@ export default function InAppScenario() {
                   <div
                     className="rounded-r-full"
                     style={{
-                      width: `${S2.tieredMix.opusPct * 100}%`,
-                      backgroundColor: AMBER,
+                      width: `${S2.tieredMix.geminiProPct * 100}%`,
+                      backgroundColor: "#34A853",
                     }}
-                    title={`Opus: ${S2.tieredMix.opusPct * 100}%`}
+                    title={`Gemini Pro: ${S2.tieredMix.geminiProPct * 100}%`}
                   />
                 </div>
                 <div className="flex justify-between mt-1.5 text-[10px] text-gray-400">
-                  <span>
-                    Flash-Lite {S2.tieredMix.flashLitePct * 100}%
-                  </span>
+                  <span>Flash-Lite {S2.tieredMix.flashLitePct * 100}%</span>
                   <span>Flash {S2.tieredMix.flashPct * 100}%</span>
-                  <span>Opus {S2.tieredMix.opusPct * 100}%</span>
+                  <span>Gemini Pro {S2.tieredMix.geminiProPct * 100}%</span>
                 </div>
               </div>
 
@@ -855,12 +853,11 @@ export default function InAppScenario() {
             <div className="bg-gray-50 rounded-xl border border-gray-200 px-5 py-4">
               <p className="text-xs text-gray-500 leading-relaxed">
                 <strong className="text-gray-700">Honesty note:</strong> The
-                60/20/20 tiered split (Flash-Lite / Flash / Opus) reflects real
+                60/28/12 Gemini-only tiered split (Flash-Lite / Flash / Gemini Pro) reflects real
                 query distribution in wealth management. Routine lookups and FAQs
-                (~80%) achieve parity across models. Complex planning questions
-                (~20%) show measurably better output from Opus — that&apos;s why
-                they still route to frontier. The savings come from volume, not
-                from cutting quality where it matters.
+                (~88%) achieve parity across all models. Complex planning questions
+                (~12%) route to Gemini Pro (AA Score 92) — which scores above Claude Opus
+                at 60% lower cost. No competitor models needed in the recommended path.
               </p>
             </div>
           </motion.div>

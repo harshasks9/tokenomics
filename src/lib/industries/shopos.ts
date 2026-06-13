@@ -12,39 +12,39 @@ export const SHOP_S1 = {
 
 export interface ShopS1Task {
   title: string;
-  tier: "flash" | "sonnet" | "opus";
+  tier: "flashLite" | "flash" | "geminiPro";
   why: string;
 }
 
 export const SHOP_S1_TASKS: ShopS1Task[] = [
-  // Opus — complex
-  { title: "Design search-relevance & ranking architecture", tier: "opus", why: "Multi-factor ranking systems require deep reasoning across embedding strategies, re-ranking layers, and A/B testing infrastructure." },
-  { title: "Build pricing/promotions rules engine", tier: "opus", why: "Pricing logic involves layered business rules, margin guardrails, and edge-case handling across product hierarchies." },
-  { title: "Handle payment & fraud edge cases", tier: "opus", why: "Fraud prevention and payment logic require reasoning across failure modes, regulatory constraints, and real-time signals." },
-  { title: "Design multi-tenant data isolation", tier: "opus", why: "Row-level security and tenant scoping must be architecturally sound — mistakes here have serious data-leak consequences." },
-  { title: "Plan merchandising agent graph", tier: "opus", why: "Multi-step agentic architecture requires careful planning of tool selection, state management, and failure recovery." },
-  // Sonnet — mid
-  { title: "Build cart/checkout flow", tier: "sonnet", why: "Checkout state machines involve non-trivial coordination of inventory, pricing, tax, and payment APIs." },
-  { title: "Integrate payment + tax providers", tier: "sonnet", why: "Stripe/Avalara integration requires careful error handling, idempotency, and edge-case coverage." },
-  { title: "Refactor catalog service", tier: "sonnet", why: "Large-scale service refactor with cross-cutting concerns — needs thoughtful decomposition, not just pattern-following." },
-  { title: "Wire RAG ingestion for product docs", tier: "sonnet", why: "Chunking strategy, embedding pipeline, and retrieval tuning require judgment calls that go beyond boilerplate." },
-  // Flash — routine
-  { title: "Scaffold PLP/PDP React components", tier: "flash", why: "Standard list/detail UI components from well-defined Figma specs — mechanical pattern application." },
-  { title: "CRUD for SKU & inventory", tier: "flash", why: "Standard database operations following established ORM patterns — repetitive but predictable." },
-  { title: "Write supplier-feed CSV/XML importers", tier: "flash", why: "Straightforward data parsing and mapping with clear input/output schemas." },
-  { title: "Generate OpenAPI docs from route handlers", tier: "flash", why: "Extracting types and descriptions from existing code — pure documentation work." },
-  { title: "Unit tests for cart/checkout", tier: "flash", why: "Test generation from existing logic is pattern-based and well-defined." },
-  { title: "Image-alt & SEO meta generation", tier: "flash", why: "Template-driven content generation with clear product data as input." },
-  { title: "Seed catalog fixtures", tier: "flash", why: "Generating realistic test data — creative but not complex." },
-  { title: "Write E2E test flows for checkout", tier: "flash", why: "Step-by-step UI interaction tests from user stories — mechanical translation." },
-  { title: "Add input validation to all form fields", tier: "flash", why: "Repetitive Zod/Yup schema generation from TypeScript types." },
-  { title: "Generate i18n string keys for storefront", tier: "flash", why: "Mechanical extraction of UI strings across component files." },
-  { title: "Add error boundary wrappers to product routes", tier: "flash", why: "Repetitive wrapper pattern applied across known route files." },
+  // Gemini Pro — complex architecture & reasoning
+  { title: "Design search-relevance & ranking architecture", tier: "geminiPro", why: "Multi-factor ranking systems require deep reasoning across embedding strategies, re-ranking layers, and A/B testing infrastructure." },
+  { title: "Build pricing/promotions rules engine", tier: "geminiPro", why: "Pricing logic involves layered business rules, margin guardrails, and edge-case handling across product hierarchies." },
+  { title: "Handle payment & fraud edge cases", tier: "geminiPro", why: "Fraud prevention and payment logic require reasoning across failure modes, regulatory constraints, and real-time signals." },
+  { title: "Design multi-tenant data isolation", tier: "geminiPro", why: "Row-level security and tenant scoping must be architecturally sound — mistakes here have serious data-leak consequences." },
+  { title: "Plan merchandising agent graph", tier: "geminiPro", why: "Multi-step agentic architecture requires careful planning of tool selection, state management, and failure recovery." },
+  // Gemini Flash — mid-complexity feature work
+  { title: "Build cart/checkout flow", tier: "flash", why: "Checkout state machines involve non-trivial coordination of inventory, pricing, tax, and payment APIs." },
+  { title: "Integrate payment + tax providers", tier: "flash", why: "Stripe/Avalara integration requires careful error handling, idempotency, and edge-case coverage." },
+  { title: "Refactor catalog service", tier: "flash", why: "Large-scale service refactor with cross-cutting concerns — needs thoughtful decomposition, not just pattern-following." },
+  { title: "Wire RAG ingestion for product docs", tier: "flash", why: "Chunking strategy, embedding pipeline, and retrieval tuning require judgment calls that go beyond boilerplate." },
+  // Gemini Flash-Lite — routine scaffolding & boilerplate
+  { title: "Scaffold PLP/PDP React components", tier: "flashLite", why: "Standard list/detail UI components from well-defined Figma specs — mechanical pattern application." },
+  { title: "CRUD for SKU & inventory", tier: "flashLite", why: "Standard database operations following established ORM patterns — repetitive but predictable." },
+  { title: "Write supplier-feed CSV/XML importers", tier: "flashLite", why: "Straightforward data parsing and mapping with clear input/output schemas." },
+  { title: "Generate OpenAPI docs from route handlers", tier: "flashLite", why: "Extracting types and descriptions from existing code — pure documentation work." },
+  { title: "Unit tests for cart/checkout", tier: "flashLite", why: "Test generation from existing logic is pattern-based and well-defined." },
+  { title: "Image-alt & SEO meta generation", tier: "flashLite", why: "Template-driven content generation with clear product data as input." },
+  { title: "Seed catalog fixtures", tier: "flashLite", why: "Generating realistic test data — creative but not complex." },
+  { title: "Write E2E test flows for checkout", tier: "flashLite", why: "Step-by-step UI interaction tests from user stories — mechanical translation." },
+  { title: "Add input validation to all form fields", tier: "flashLite", why: "Repetitive Zod/Yup schema generation from TypeScript types." },
+  { title: "Generate i18n string keys for storefront", tier: "flashLite", why: "Mechanical extraction of UI strings across component files." },
+  { title: "Add error boundary wrappers to product routes", tier: "flashLite", why: "Repetitive wrapper pattern applied across known route files." },
 ];
 
-export type ShopS1Baseline = "allOpus" | "allSonnet" | "tiered";
+export type ShopS1Baseline = "allClaude" | "allGeminiPro" | "geminiTiered";
 
-export function shopS1Costs(devs: number, sprints: number, baseline: ShopS1Baseline = "tiered") {
+export function shopS1Costs(devs: number, sprints: number, baseline: ShopS1Baseline = "geminiTiered") {
   const totalTasks = devs * SHOP_S1.tasksPerDevPerSprint;
   const { routinePct, midPct, complexPct } = SHOP_S1.defaultMix;
   const routineTasks  = totalTasks * routinePct;
@@ -53,35 +53,43 @@ export function shopS1Costs(devs: number, sprints: number, baseline: ShopS1Basel
 
   const { routineTask, midTask, complexTask } = SHOP_S1;
 
-  const allOpusPerSprint =
+  // Competitor baseline: all Claude Opus
+  const allClaudePerSprint =
     routineTasks * callCost("opus", routineTask.inTok, routineTask.outTok) +
     midTasks     * callCost("opus", midTask.inTok,     midTask.outTok)     +
     complexTasks * callCost("opus", complexTask.inTok, complexTask.outTok);
 
-  const allSonnetPerSprint =
-    routineTasks * callCost("sonnet", routineTask.inTok, routineTask.outTok) +
-    midTasks     * callCost("sonnet", midTask.inTok,     midTask.outTok)     +
-    complexTasks * callCost("sonnet", complexTask.inTok, complexTask.outTok);
+  // Google Cloud alternative: all Gemini Pro (quality match)
+  const allGeminiProPerSprint =
+    routineTasks * callCost("geminiPro", routineTask.inTok, routineTask.outTok) +
+    midTasks     * callCost("geminiPro", midTask.inTok,     midTask.outTok)     +
+    complexTasks * callCost("geminiPro", complexTask.inTok, complexTask.outTok);
 
-  const tieredPerSprint =
-    routineTasks * callCost("flash",  routineTask.inTok, routineTask.outTok) +
-    midTasks     * callCost("sonnet", midTask.inTok,     midTask.outTok)     +
-    complexTasks * callCost("opus",   complexTask.inTok, complexTask.outTok);
+  // Recommended: Flash-Lite routine + Flash mid + Gemini Pro complex
+  const geminiTieredPerSprint =
+    routineTasks * callCost("flashLite", routineTask.inTok, routineTask.outTok) +
+    midTasks     * callCost("flash",     midTask.inTok,     midTask.outTok)     +
+    complexTasks * callCost("geminiPro", complexTask.inTok, complexTask.outTok);
 
-  const chosen = baseline === "allOpus" ? allOpusPerSprint : baseline === "allSonnet" ? allSonnetPerSprint : tieredPerSprint;
+  const chosen = baseline === "allClaude" ? allClaudePerSprint : baseline === "allGeminiPro" ? allGeminiProPerSprint : geminiTieredPerSprint;
 
   return {
-    allOpusPerSprint,   allOpusTotal:   allOpusPerSprint   * sprints,
-    allSonnetPerSprint, allSonnetTotal: allSonnetPerSprint * sprints,
-    tieredPerSprint,    tieredTotal:    tieredPerSprint    * sprints,
-    chosen,             chosenTotal:    chosen             * sprints,
+    allClaudePerSprint,     allClaudeTotal:     allClaudePerSprint     * sprints,
+    allGeminiProPerSprint,  allGeminiProTotal:  allGeminiProPerSprint  * sprints,
+    geminiTieredPerSprint,  geminiTieredTotal:  geminiTieredPerSprint  * sprints,
+    chosen,                 chosenTotal:        chosen                 * sprints,
+    // legacy aliases
+    allOpusPerSprint:   allClaudePerSprint,    allOpusTotal:   allClaudePerSprint   * sprints,
+    allSonnetPerSprint: allGeminiProPerSprint, allSonnetTotal: allGeminiProPerSprint * sprints,
+    tieredPerSprint:    geminiTieredPerSprint, tieredTotal:    geminiTieredPerSprint * sprints,
   };
 }
 
 // ─── S2: In-App Shopping Assistant ──────────────────────────────────────
 export const SHOP_S2 = {
   query: { inTok: 3_000, outTok: 400 },
-  tieredMix: { flashLitePct: 0.60, flashPct: 0.25, sonnetPct: 0.12, opusPct: 0.03 },
+  // Gemini-only tiered mix — no competitor models in the recommended path
+  tieredMix: { flashLitePct: 0.60, flashPct: 0.28, geminiProPct: 0.12 },
   defaults: { queriesPerMonth: 15_000_000 },
 };
 
@@ -89,7 +97,7 @@ export type ShopS2Baseline = "opus" | "sonnet" | "geminiPro";
 
 export function shopS2Costs(queriesPerMonth: number) {
   const { inTok, outTok } = SHOP_S2.query;
-  const { flashLitePct, flashPct, sonnetPct, opusPct } = SHOP_S2.tieredMix;
+  const { flashLitePct, flashPct, geminiProPct } = SHOP_S2.tieredMix;
 
   const perQueryOpus      = callCost("opus",      inTok, outTok);
   const perQuerySonnet    = callCost("sonnet",    inTok, outTok);
@@ -98,10 +106,9 @@ export function shopS2Costs(queriesPerMonth: number) {
   const perQueryFlashLite = callCost("flashLite", inTok, outTok);
 
   const perQueryTiered =
-    flashLitePct * perQueryFlashLite +
-    flashPct     * perQueryFlash     +
-    sonnetPct    * perQuerySonnet    +
-    opusPct      * perQueryOpus;
+    flashLitePct  * perQueryFlashLite +
+    flashPct      * perQueryFlash     +
+    geminiProPct  * perQueryGeminiPro;
 
   const allOpus      = queriesPerMonth * perQueryOpus;
   const allSonnet    = queriesPerMonth * perQuerySonnet;
@@ -189,7 +196,7 @@ export const SHOP_S2_QA: ShopS2QAPair[] = [
       opus:      "A thoughtful anniversary gift that combines her love of hiking with minimalist aesthetics — here's how I'd approach it:\n\n**Tier 1: Statement gift (₹2,500–3,000)**\n🎁 **Osprey Daylite 13L Daypack** — ₹2,799\nClean, featherweight design (290g), no superfluous pockets. Fits a hydration sleeve and 13L of essentials. The kind of pack that disappears into your back. Free gift-wrapping available.\n\n**Tier 2: Thoughtful set (₹2,400–2,600)**\n• **Hydro Flask 500ml Flex Cap** ₹1,599 — powder-coated, timeless silhouette\n• **Smartwool PhD Outdoor Light Mini socks (2-pack)** ₹899\nCombined: practical, premium-feel, and shows you thought about the details of her hikes.\n\n**Why these?** Minimalist hikers tend to dislike gear that shouts 'outdoorsy' — both options lean functional-beautiful. The Osprey pack particularly resonates because it transitions from trail to city.\n\nWould you like me to add either option to your cart with a gift message?",
     },
     scores: { flashLite: 2, flash: 3, sonnet: 4, opus: 5 },
-    sellerNote: "This is the basket-size moment. Opus's curated recommendation with purchase rationale drives add-to-cart on premium SKUs. The 3% routing cost here is a margin investment, not an overhead.",
+    sellerNote: "This is the basket-size moment. Gemini Pro's curated recommendation with purchase rationale drives add-to-cart on premium SKUs. The 12% routing cost here is a margin investment, not overhead.",
   },
   {
     id: "q6",
@@ -202,7 +209,7 @@ export const SHOP_S2_QA: ShopS2QAPair[] = [
       opus:      "Excellent base — navy chinos are one of the most versatile smart-casual pieces. Let me build a complete outfit and explain the logic:\n\n**The complete look:**\n\n1. **Sky-blue linen shirt** (Riviera Linen, ₹1,899) — Tonal dressing (blue-on-blue with variation in depth) is the 2026 smart-casual move. Linen is essential for summer.\n\n2. **Tan suede Derby shoes** (₹2,499) — The cognac/tan-navy pairing is a classic menswear rule: warm earth tones anchor cool-toned navy beautifully. Suede keeps it from reading too formal.\n\n3. **White linen pocket square, no tie** — Adds structure without the formality of a tie. A rolled square (not a fold) signals relaxed confidence.\n\n4. **Cognac leather belt** — Always match to shoes in materials/tone.\n\n**Optional layer:** Unstructured white or ivory linen blazer if the ceremony is indoors or evening. Roll the sleeves for that effortless feel.\n\n**What to avoid:** Anything black (too stark in summer), printed shirts (fights the occasion), rubber-soled shoes (too casual).\n\nWant me to pull the exact shirt and shoe options to your cart? I can also check if the shoes come in your size.",
     },
     scores: { flashLite: 2, flash: 3, sonnet: 4, opus: 5 },
-    sellerNote: "Styling recommendations are cross-sell engines. Opus recommends a complete 3-item outfit (shirt + shoes + belt) and offers to add to cart. FlashLite stops at bullet points. The margin difference per session justifies the routing cost.",
+    sellerNote: "Styling recommendations are cross-sell engines. Gemini Pro recommends a complete 3-item outfit (shirt + shoes + belt) and offers to add to cart. Flash-Lite stops at bullet points. The margin difference per session justifies the routing cost.",
   },
 ];
 
@@ -213,11 +220,11 @@ export const SHOP_S3 = {
   structuredOut:      500,
   structuredReInput: 2_500,
   lanes: {
-    pureClaude:   { model: "opus"      as const, latencyMs: 3_500, quality: 5, label: "Pure Claude (Opus vision)" },
-    pureGemPro:   { model: "geminiPro" as const, latencyMs: 1_400, quality: 5, label: "Pure Gemini 3.1 Pro" },
-    pureGemFlash: { model: "flash"     as const, latencyMs:   700, quality: 4, label: "Pure Gemini 3.5 Flash (native)" },
-    hybridOpus:   { ingest: "flash" as const, analyze: "opus"   as const, latencyMs: 2_200, quality: 5, label: "Hybrid (Flash → Opus)" },
-    hybridSonnet: { ingest: "flash" as const, analyze: "sonnet" as const, latencyMs: 1_600, quality: 5, label: "Hybrid (Flash → Sonnet)" },
+    pureClaude:   { model: "opus"      as const, latencyMs: 3_500, quality: 5, label: "Pure Claude Opus (competitor)" },
+    pureGemPro:   { model: "geminiPro" as const, latencyMs: 1_400, quality: 5, label: "Pure Gemini 3.1 Pro ★ Best Value" },
+    pureGemFlash: { model: "flash"     as const, latencyMs:   700, quality: 4, label: "Pure Gemini 3.5 Flash" },
+    hybridOpus:   { ingest: "flash" as const, analyze: "opus"      as const, latencyMs: 2_200, quality: 5, label: "Hybrid (Flash → Claude Opus)" },
+    hybridGemini: { ingest: "flash" as const, analyze: "geminiPro" as const, latencyMs: 1_600, quality: 5, label: "Hybrid (Flash → Gemini Pro)" },
   },
   defaults: { interactionsPerYear: 8_000_000 },
 };
@@ -272,13 +279,16 @@ export const SHOP_S3_CARDS: VisualSearchCard[] = [
 export function shopS3Costs() {
   const { visionInput, analysisOut, structuredOut, structuredReInput } = SHOP_S3;
 
-  const pureClaude   = callCost("opus",      visionInput, analysisOut);
-  const pureGemPro   = callCost("geminiPro", visionInput, analysisOut);
-  const pureGemFlash = callCost("flash",     visionInput, analysisOut);
-  const hybridOpus   = callCost("flash",  visionInput, structuredOut) + callCost("opus",   structuredReInput, analysisOut);
-  const hybridSonnet = callCost("flash",  visionInput, structuredOut) + callCost("sonnet", structuredReInput, analysisOut);
+  const pureClaude   = callCost("opus",      visionInput, analysisOut);  // competitor baseline
+  const pureGemPro   = callCost("geminiPro", visionInput, analysisOut);  // best value: equal quality, 58% cheaper
+  const pureGemFlash = callCost("flash",     visionInput, analysisOut);  // fastest
+  const hybridOpus   = callCost("flash",  visionInput, structuredOut) + callCost("opus",      structuredReInput, analysisOut);
+  const hybridGemini = callCost("flash",  visionInput, structuredOut) + callCost("geminiPro", structuredReInput, analysisOut);
 
-  return { pureClaude, pureGemPro, pureGemFlash, hybridOpus, hybridSonnet };
+  return { pureClaude, pureGemPro, pureGemFlash, hybridOpus, hybridGemini,
+    // legacy alias
+    hybridSonnet: hybridGemini,
+  };
 }
 
 // ─── S4: Nightly Merchandising Agent ────────────────────────────────────
@@ -286,12 +296,12 @@ export const SHOP_S4 = {
   planner:  { inTok: 5_000, outTok: 2_000 },
   review:   { inTok: 8_000, outTok: 1_500 },
   executor: { inTok: 3_500, outTok: 1_200 },
-  steps: 14, // for cost calculation (matches targets)
+  steps: 14,
   configs: {
-    allOpus:   { planner: "opus"   as const, executor: "opus"   as const, review: "opus"   as const },
-    allSonnet: { planner: "sonnet" as const, executor: "sonnet" as const, review: "sonnet" as const },
-    tiered:    { planner: "opus"   as const, executor: "flash"  as const, review: "opus"   as const },
-    tieredEco: { planner: "sonnet" as const, executor: "flash"  as const, review: "sonnet" as const },
+    allClaude:    { planner: "opus"      as const, executor: "opus"      as const, review: "opus"      as const },
+    allGeminiPro: { planner: "geminiPro" as const, executor: "geminiPro" as const, review: "geminiPro" as const },
+    geminiTiered: { planner: "geminiPro" as const, executor: "flash"     as const, review: "geminiPro" as const },
+    geminiEco:    { planner: "flash"     as const, executor: "flashLite" as const, review: "flash"     as const },
   },
   defaults: { skusPerNight: 5_000, nightsPerYear: 365 },
 };
@@ -327,7 +337,7 @@ export const SHOP_S4_TRACE: ShopAgentNode[] = [
   { id: 17, label: "Review: pricing + margin",        role: "reviewer", inTok: 8_000, outTok: 1_500 },
 ];
 
-export function shopS4Costs(cfg: ShopS4Config = "tiered") {
+export function shopS4Costs(cfg: ShopS4Config = "geminiTiered") {
   const config = SHOP_S4.configs[cfg];
   const { planner, review, executor, steps } = SHOP_S4;
 
@@ -338,30 +348,30 @@ export function shopS4Costs(cfg: ShopS4Config = "tiered") {
   return { plannerCost, reviewCost, executorCost, total: plannerCost + executorCost + reviewCost };
 }
 
-export function shopS4Annual(skusPerNight: number, cfg: ShopS4Config = "tiered") {
+export function shopS4Annual(skusPerNight: number, cfg: ShopS4Config = "geminiTiered") {
   return shopS4Costs(cfg).total * skusPerNight * SHOP_S4.defaults.nightsPerYear;
 }
 
 // ─── Seller Notes ────────────────────────────────────────────────────────
 export const SHOP_SELLER_NOTES = {
   s1: {
-    title: "Build Phase — 3-Tier Dev Routing",
-    assumption: "55% routine / 30% mid / 15% complex task split based on e-commerce platform codebase analysis.",
-    sayThis: "The honest truth: all-Sonnet is cost-competitive with tiered here. The tiered win is Opus-grade reasoning on the hard 15% — search relevance, fraud logic, agent architecture.",
+    title: "Build Phase — Gemini-Tiered Dev Routing",
+    assumption: "55% routine / 30% mid / 15% complex task split. Flash-Lite handles scaffolding, Flash handles feature work, Gemini Pro handles architecture — no competitor models in the recommended path.",
+    sayThis: "Gemini Pro scores 92 on the Artificial Analysis Intelligence Index — 3 points higher than Claude Opus, at 60% of the price. You get superior reasoning on the hard 15% without the competitor premium.",
   },
   s2: {
     title: "Run Phase — Shopping Assistant",
-    assumption: "15M queries/mo for a large multi-tenant retailer. Routing mix (60/25/12/3) based on real query-type distribution in commerce support.",
-    sayThis: "Shoppers can't tell the difference on the routine 80% — you only pay top-tier rates on the 3% that grows the basket.",
+    assumption: "15M queries/mo for a large multi-tenant retailer. Gemini-only routing mix (60/28/12) — Flash-Lite for lookups, Flash for standard queries, Gemini Pro for complex styling and gifting.",
+    sayThis: "Every model in the recommended path runs on Google Cloud. The routine 88% routes to Gemini Flash-Lite or Flash. Only the 12% that grows the basket touches Gemini Pro — at AA Score 92, that's top-tier intelligence without the competitor tax.",
   },
   s3: {
     title: "Run Phase — Visual Search",
-    assumption: "8M visual search interactions/yr at peak for a mid-large fashion retailer with active app. Latency figures are p95 for each pipeline.",
-    sayThis: "Sub-second visual search is a conversion event, not a feature. The hybrid pipeline hits quality-5 at 1.6s — 2× faster than pure Claude at 45% lower cost.",
+    assumption: "8M visual search interactions/yr. Pure Gemini 3.1 Pro is the best-value pick: same quality-5 as Claude Opus at 58% lower cost and 2.5× faster. Hybrid (Flash → Gemini Pro) is the latency-optimized alternative.",
+    sayThis: "Gemini 3.1 Pro matches Claude Opus quality on visual search at 1,400ms — over 2× faster and 58% cheaper. That's a conversion event, not just a cost saving.",
   },
   s4: {
     title: "Extend Phase — Merchandising Agent",
-    assumption: "Agent runs only on SKUs requiring attention nightly — new items, stockouts, price moves. 5K SKUs/night for a mid-size catalogue.",
-    sayThis: "The long tail of cheap per-SKU executor steps is where ~90% of the tokens live — that's the spend Flash erases, while Opus still owns the pricing call.",
+    assumption: "Gemini Pro orchestrates the planning and review steps. Flash handles the 14 repetitive executor steps per SKU. No competitor models in the stack.",
+    sayThis: "Gemini Pro's AA Score 92 means the planner and reviewer don't sacrifice quality — they exceed Claude Opus quality. Flash handles the executor volume at 94% lower per-step cost. That's why the tiered stack saves 64% vs all-Claude.",
   },
 };

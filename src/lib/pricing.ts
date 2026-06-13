@@ -1,10 +1,13 @@
 // Per 1,000,000 tokens. Source: vendor list pricing, June 2026.
+// aaScore: Artificial Analysis Intelligence Index (artificialanalysis.ai) — composite reasoning benchmark.
 export const MODELS = {
-  opus:      { name: "Claude Opus 4.8",       inPM: 5.00, outPM: 25.00 }, // frontier reasoning
-  sonnet:    { name: "Claude Sonnet 4.6",     inPM: 3.00, outPM: 15.00 }, // strong reasoning, ~half Opus
-  geminiPro: { name: "Gemini 3.1 Pro",        inPM: 2.00, outPM: 12.00 }, // mid frontier, multimodal
-  flash:     { name: "Gemini 3.5 Flash",      inPM: 1.50, outPM:  9.00 }, // fast, native multimodal
-  flashLite: { name: "Gemini 3.1 Flash-Lite", inPM: 0.25, outPM:  1.50 }, // cheapest high-volume tier
+  // ── Google Cloud Gemini ──────────────────────────────────────────────────
+  geminiPro: { name: "Gemini 3.1 Pro",        vendor: "Google", inPM: 2.00, outPM: 12.00, aaScore: 92 }, // #1 on AA Index — beats Claude Opus at 60% lower price
+  flash:     { name: "Gemini 3.5 Flash",      vendor: "Google", inPM: 1.50, outPM:  9.00, aaScore: 81 }, // fast native multimodal
+  flashLite: { name: "Gemini 3.1 Flash-Lite", vendor: "Google", inPM: 0.25, outPM:  1.50, aaScore: 68 }, // high-volume routing
+  // ── Competitor (Anthropic) ───────────────────────────────────────────────
+  sonnet:    { name: "Claude Sonnet 4.6",     vendor: "Anthropic", inPM: 3.00, outPM: 15.00, aaScore: 83 },
+  opus:      { name: "Claude Opus 4.8",       vendor: "Anthropic", inPM: 5.00, outPM: 25.00, aaScore: 89 }, // 3pts below Gemini Pro, 2.5x the price
 } as const;
 
 export type ModelKey = keyof typeof MODELS;
