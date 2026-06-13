@@ -113,7 +113,7 @@ export default function PsHero() {
               <Icon size={14} style={{ color }} />
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider" style={{ color }}>{label}</span>
-                <span className="ml-1.5 text-xs text-white/40">{sub}</span>
+                <span className="ml-1.5 text-xs text-white/60">{sub}</span>
               </div>
             </motion.div>
           ))}

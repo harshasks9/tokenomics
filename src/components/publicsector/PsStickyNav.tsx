@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Building2, Users, FileText, Bot, BarChart2, Shield } from "lucide-react";
 
 const INDIGO = "#4F46E5";
@@ -39,6 +40,9 @@ export default function PsStickyNav() {
         className="rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-sm py-4 px-2 pointer-events-auto"
         style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.04)" }}
       >
+        <Link href="/" className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium text-white/30 hover:text-white/60 transition-colors mb-1">
+          ← Home
+        </Link>
         <p className="text-[9px] font-bold uppercase tracking-widest text-white/20 px-3 mb-3">Public Sector</p>
         <ul className="space-y-0.5">
           {navItems.map(({ id, label, Icon }) => {

@@ -16,7 +16,7 @@ export default function HealthcarePage() {
     <TallyProvider>
       <Link
         href="/"
-        className="fixed top-4 left-4 z-[100] flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-white transition-colors"
+        className="fixed top-4 left-4 lg:left-60 z-[100] flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-white transition-colors"
       >
         <ChevronLeft size={14} />
         Home
