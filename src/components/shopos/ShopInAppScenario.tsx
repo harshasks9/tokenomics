@@ -1,19 +1,17 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, CartesianGrid } from "recharts";
 import { ShoppingBag, Star, ChevronRight } from "lucide-react";
-import { callCost, fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
-import { SHOP_S2, SHOP_S2_QA, shopS2Costs, type ShopS2Baseline, type ShopS2QAPair } from "@/lib/industries/shopos";
+import { fmtUSD, pctSavings } from "@/lib/pricing";
+import { SHOP_S2, SHOP_S2_QA, shopS2Costs, type ShopS2QAPair } from "@/lib/industries/shopos";
 import { useTally } from "@/lib/tally-context";
 
 const GREEN  = "#188038";
 const AMBER  = "#E37400";
 const BLUE   = "#1A73E8";
-const PURPLE = "#9B59D1";
 const TEAL   = "#00ACC1";
-const GEM_GREEN = "#34A853";
 
 const CATEGORY_LABELS: Record<ShopS2QAPair["category"], string> = {
   routine: "Routine Lookup",
@@ -26,17 +24,15 @@ const CATEGORY_COLORS: Record<ShopS2QAPair["category"], string> = {
   complex: "bg-amber-100 text-amber-800",
 };
 
-type ModelKey4 = "flashLite" | "flash" | "sonnet" | "opus";
-const MODEL_COLORS: Record<ModelKey4, string> = {
+type RetailModelKey = "flashLite" | "flash" | "opus";
+const MODEL_COLORS: Record<RetailModelKey, string> = {
   flashLite: TEAL,
   flash: BLUE,
-  sonnet: PURPLE,
   opus: AMBER,
 };
-const MODEL_LABELS: Record<ModelKey4, string> = {
+const MODEL_LABELS: Record<RetailModelKey, string> = {
   flashLite: "Flash-Lite",
   flash: "Flash",
-  sonnet: "Sonnet",
   opus: "Opus",
 };
 
@@ -96,13 +92,12 @@ export default function ShopInAppScenario() {
   const { updateResult } = useTally();
   const [selectedQ, setSelectedQ] = useState<string | null>(null);
   const [volume, setVolume] = useState(SHOP_S2.defaults.queriesPerMonth);
-  const [baseline, setBaseline] = useState<ShopS2Baseline>("opus");
 
   const currentQ = useMemo(() => SHOP_S2_QA.find((q) => q.id === selectedQ) ?? null, [selectedQ]);
 
   const costs = useMemo(() => shopS2Costs(volume), [volume]);
 
-  const baselineCost = baseline === "opus" ? costs.allOpus : baseline === "sonnet" ? costs.allSonnet : costs.allGeminiPro;
+  const baselineCost = costs.allOpus;
   const savingsPct   = pctSavings(baselineCost, costs.tiered);
   const savingsAnnual = (baselineCost - costs.tiered) * 12;
 
@@ -119,17 +114,9 @@ export default function ShopInAppScenario() {
   const fmtVolume = (v: number) => v >= 1_000_000 ? `${(v / 1_000_000).toFixed(1)}M` : `${(v / 1_000).toFixed(0)}K`;
 
   const chartData = [
-    { name: "Flash-Lite", cost: costs.allFlashLite, color: TEAL     },
-    { name: "Flash",      cost: costs.allFlash,     color: BLUE     },
-    { name: "Gemini Pro", cost: costs.allGeminiPro, color: GEM_GREEN},
-    { name: "Sonnet",     cost: costs.allSonnet,    color: PURPLE   },
-    { name: "Opus",       cost: costs.allOpus,      color: AMBER    },
-    { name: "Tiered",     cost: costs.tiered,       color: GREEN    },
-  ].map((d) => ({
-    ...d,
-    highlighted: d.name === "Tiered",
-    isBaseline: (baseline === "opus" && d.name === "Opus") || (baseline === "sonnet" && d.name === "Sonnet") || (baseline === "geminiPro" && d.name === "Gemini Pro"),
-  }));
+    { name: "All-Frontier", cost: costs.allOpus, color: AMBER },
+    { name: "Tiered Routing", cost: costs.tiered, color: GREEN },
+  ];
 
   return (
     <section id="shop-inapp" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
@@ -141,14 +128,13 @@ export default function ShopInAppScenario() {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-4">In-App Shopping Assistant</h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            The full model ladder — Flash-Lite to Opus — on real retail queries. Routine and FAQ categories reach parity
-            from Flash-Lite up; complex queries (gifting, styling) are the basket-size moments.
+            Routine availability, delivery, and policy questions do not need frontier reasoning. Route those to Gemini and reserve Opus for gifting and styling moments that can grow the basket.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10">
           {/* LEFT: Q&A panel */}
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="min-w-0">
             {/* Question list */}
             <div className="bg-gray-900 rounded-t-2xl px-6 py-3 flex items-center gap-2">
               <ShoppingBag size={16} className="text-emerald-400" />
@@ -185,9 +171,9 @@ export default function ShopInAppScenario() {
                       </div>
                     </div>
 
-                    {/* 2×2 model grid */}
-                    <div className="grid grid-cols-2 gap-2.5">
-                      {(["flashLite", "flash", "sonnet", "opus"] as ModelKey4[]).map((mk) => (
+                    {/* Model comparison */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                      {(["flashLite", "flash", "opus"] as RetailModelKey[]).map((mk) => (
                         <ModelCard key={mk} label={MODEL_LABELS[mk]} color={MODEL_COLORS[mk]}
                           answer={currentQ.answers[mk]} score={currentQ.scores[mk]}
                           selected={false} onClick={() => {}} />
@@ -198,9 +184,9 @@ export default function ShopInAppScenario() {
                     {currentQ.category === "complex" && (
                       <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} transition={{ delay: 0.1 }}
                         className="mt-3 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3">
-                        <p className="text-xs font-semibold text-amber-800 mb-1">Sonnet/Opus earn their cost here</p>
+                        <p className="text-xs font-semibold text-amber-800 mb-1">Opus earns its cost here</p>
                         <p className="text-xs text-amber-700">
-                          {currentQ.sellerNote ?? "Complex queries grow basket size. Routing the complex 3% to top-tier models is a margin investment, not an overhead."}
+                          {currentQ.sellerNote ?? "Complex recommendations grow basket size. Routing the hardest 10% to Opus is a margin investment, not an overhead."}
                         </p>
                       </motion.div>
                     )}
@@ -209,7 +195,7 @@ export default function ShopInAppScenario() {
                         className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-4 py-3">
                         <p className="text-xs font-semibold text-emerald-800 mb-1">Near-parity from Flash-Lite upward</p>
                         <p className="text-xs text-emerald-700">
-                          Routine and FAQ queries show equivalent quality across all tiers. These make up ~85% of traffic — route them to the cheapest model that answers correctly.
+                          Routine and FAQ queries show equivalent quality across the three tiers. These make up 90% of traffic — route them to the cheapest model that answers correctly.
                         </p>
                       </motion.div>
                     )}
@@ -226,13 +212,13 @@ export default function ShopInAppScenario() {
 
           {/* RIGHT: Cost analysis */}
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6">
+            className="min-w-0 space-y-6">
             {/* Volume slider */}
             <div className="bg-white rounded-2xl border border-gray-200 p-5">
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Monthly Query Volume</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">Adjust for your retailer's traffic</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Adjust for your retailer&apos;s traffic</p>
                 </div>
                 <span className="text-2xl font-bold text-gray-900 tabular-nums">{fmtVolume(volume)}<span className="text-sm text-gray-400 ml-1 font-normal">queries/mo</span></span>
               </div>
@@ -243,32 +229,12 @@ export default function ShopInAppScenario() {
               <div className="flex justify-between mt-1 text-[10px] text-gray-400"><span>1M</span><span>50M</span></div>
             </div>
 
-            {/* Baseline selector */}
+            {/* Cost comparison */}
             <div className="bg-white rounded-2xl border border-gray-200 p-5">
-              <p className="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">Compare tiered routing vs.</p>
-              <div className="flex gap-2 flex-wrap">
-                {([
-                  { key: "opus"      as const, label: "All-Opus",        color: AMBER    },
-                  { key: "sonnet"    as const, label: "All-Sonnet",      color: PURPLE   },
-                  { key: "geminiPro" as const, label: "All-Gemini 3.1 Pro", color: GEM_GREEN },
-                ] as const).map((b) => (
-                  <button key={b.key} onClick={() => setBaseline(b.key)}
-                    className="rounded-lg px-3 py-1.5 text-xs font-semibold border transition-all"
-                    style={{
-                      backgroundColor: baseline === b.key ? b.color + "15" : "transparent",
-                      borderColor: baseline === b.key ? b.color : "#e2e8f0",
-                      color: baseline === b.key ? b.color : "#64748b",
-                    }}>{b.label}</button>
-                ))}
-              </div>
-            </div>
-
-            {/* Full-ladder chart */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-5">
-              <p className="text-xs font-medium text-gray-700 mb-1 font-semibold">Monthly Cost — Full Ladder</p>
-              <p className="text-[10px] text-gray-400 mb-4">Tiered (green) vs each single-model option · selected baseline in amber</p>
-              <div className="h-56">
-                <ResponsiveContainer width="100%" height="100%">
+              <p className="text-xs font-medium text-gray-700 mb-1 font-semibold">Monthly Cost Comparison</p>
+              <p className="text-[10px] text-gray-400 mb-4">All-Frontier versus tiered routing at the selected query volume</p>
+              <div className="h-56 min-w-0 overflow-hidden">
+                <ResponsiveContainer width="100%" height="100%" minWidth={0} initialDimension={{ width: 600, height: 224 }}>
                   <BarChart data={chartData} margin={{ top: 0, right: 8, bottom: 0, left: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f3f4f6" />
                     <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
@@ -277,29 +243,28 @@ export default function ShopInAppScenario() {
                     <Bar dataKey="cost" radius={[4, 4, 0, 0]} maxBarSize={48}>
                       {chartData.map((d, i) => (
                         <Cell key={i}
-                          fill={d.highlighted ? GREEN : d.isBaseline ? AMBER : d.color}
-                          opacity={d.highlighted || d.isBaseline ? 1 : 0.55} />
+                          fill={d.color} />
                       ))}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
               </div>
               <div className="flex items-center gap-4 mt-2 text-[10px] text-gray-400">
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: GREEN }} /> Tiered (selected)</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: AMBER }} /> Baseline</span>
+                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: GREEN }} /> Tiered</span>
+                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: AMBER }} /> All-Frontier</span>
               </div>
             </div>
 
             {/* Savings callout */}
             <div className="rounded-2xl p-6" style={{ background: `linear-gradient(135deg, ${GREEN} 0%, #14662d 100%)` }}>
-              <p className="text-xs font-medium text-emerald-200 uppercase tracking-wider mb-2">Annual Savings vs {baseline === "opus" ? "All-Opus" : baseline === "sonnet" ? "All-Sonnet" : "Gemini 3.1 Pro"}</p>
+              <p className="text-xs font-medium text-emerald-200 uppercase tracking-wider mb-2">Annual Savings vs All-Frontier</p>
               <p className="text-4xl font-bold text-white tabular-nums mb-1">{fmtUSD(savingsAnnual)}<span className="text-xl text-emerald-200">/yr</span></p>
               <div className="flex items-center gap-3 mt-3">
                 <span className="inline-flex px-3 py-1 rounded-full bg-white/15 text-white text-sm font-semibold tabular-nums">{savingsPct.toFixed(0)}% reduction</span>
                 <span className="text-sm text-emerald-200/80">{fmtVolume(volume)} queries/mo</span>
               </div>
               <div className="mt-4 pt-4 border-t border-white/15 text-xs text-emerald-100/80">
-                Tiered: <strong className="text-white">{fmtUSD(costs.tiered)}/mo</strong> · {baseline === "opus" ? "All-Opus" : baseline === "sonnet" ? "All-Sonnet" : "Gemini Pro"}: <strong className="text-white">{fmtUSD(baselineCost)}/mo</strong>
+                Tiered: <strong className="text-white">{fmtUSD(costs.tiered)}/mo</strong> · All-Frontier: <strong className="text-white">{fmtUSD(baselineCost)}/mo</strong>
               </div>
             </div>
 
@@ -309,17 +274,15 @@ export default function ShopInAppScenario() {
               <div className="flex gap-1 h-2.5 rounded-full overflow-hidden mb-2">
                 <div style={{ width: `${SHOP_S2.tieredMix.flashLitePct * 100}%`, backgroundColor: TEAL }} title="Flash-Lite" />
                 <div style={{ width: `${SHOP_S2.tieredMix.flashPct * 100}%`, backgroundColor: BLUE }} title="Flash" />
-                <div style={{ width: `${SHOP_S2.tieredMix.sonnetPct * 100}%`, backgroundColor: PURPLE }} title="Sonnet" />
                 <div style={{ width: `${SHOP_S2.tieredMix.opusPct * 100}%`, backgroundColor: AMBER }} title="Opus" />
               </div>
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-gray-400">
                 <span>Flash-Lite {SHOP_S2.tieredMix.flashLitePct * 100}% — FAQ/order-status</span>
                 <span>Flash {SHOP_S2.tieredMix.flashPct * 100}% — catalog lookups</span>
-                <span>Sonnet {SHOP_S2.tieredMix.sonnetPct * 100}% — recommendations</span>
                 <span>Opus {SHOP_S2.tieredMix.opusPct * 100}% — gifting/styling</span>
               </div>
               <p className="mt-3 text-[11px] italic text-gray-500">
-                "Shoppers can't tell the difference on the routine 80% — you only pay top-tier rates on the 3% that grows the basket."
+                &ldquo;Shoppers cannot tell the difference on the routine 90% — pay frontier rates only when deeper reasoning can change the purchase.&rdquo;
               </p>
             </div>
           </motion.div>

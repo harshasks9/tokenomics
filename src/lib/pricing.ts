@@ -1,8 +1,6 @@
 // Per 1,000,000 tokens. Source: vendor list pricing, June 2026.
 export const MODELS = {
   opus:      { name: "Claude Opus 4.8",       inPM: 5.00, outPM: 25.00 }, // frontier reasoning
-  sonnet:    { name: "Claude Sonnet 4.6",     inPM: 3.00, outPM: 15.00 }, // strong reasoning, ~half Opus
-  geminiPro: { name: "Gemini 3.1 Pro",        inPM: 2.00, outPM: 12.00 }, // mid frontier, multimodal
   flash:     { name: "Gemini 3.5 Flash",      inPM: 1.50, outPM:  9.00 }, // fast, native multimodal
   flashLite: { name: "Gemini 3.1 Flash-Lite", inPM: 0.25, outPM:  1.50 }, // cheapest high-volume tier
 } as const;

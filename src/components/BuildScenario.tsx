@@ -37,8 +37,8 @@ function useCountUp(target: number, duration = 800) {
     const start = value;
     const diff = target - start;
     if (Math.abs(diff) < 0.01) {
-      setValue(target);
-      return;
+      frameRef.current = requestAnimationFrame(() => setValue(target));
+      return () => cancelAnimationFrame(frameRef.current);
     }
     const startTime = performance.now();
     const animate = (now: number) => {
@@ -657,7 +657,7 @@ export default function BuildScenario() {
                 <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">
                   Task Mix
                 </p>
-                <ResponsiveContainer width="100%" height={180}>
+                <ResponsiveContainer width="100%" height={180} minWidth={0} initialDimension={{ width: 500, height: 180 }}>
                   <PieChart>
                     <Pie
                       data={donutData}
@@ -689,7 +689,7 @@ export default function BuildScenario() {
                 <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">
                   Cost Comparison
                 </p>
-                <ResponsiveContainer width="100%" height={180}>
+                <ResponsiveContainer width="100%" height={180} minWidth={0} initialDimension={{ width: 500, height: 180 }}>
                   <BarChart
                     data={barData}
                     margin={{ top: 0, right: 0, bottom: 0, left: 0 }}

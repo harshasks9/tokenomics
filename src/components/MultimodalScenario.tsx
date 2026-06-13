@@ -63,16 +63,17 @@ function RaceLane({
 }) {
   const color = COLORS[laneKey];
   const progress = useMotionValue(0);
-  const msValue = useTransform(progress, (v) => Math.round(v * durationMs));
   const [displayMs, setDisplayMs] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
     if (!running) {
       progress.set(0);
-      setDisplayMs(0);
-      setDone(false);
-      return;
+      const frame = requestAnimationFrame(() => {
+        setDisplayMs(0);
+        setDone(false);
+      });
+      return () => cancelAnimationFrame(frame);
     }
 
     const controls = animate(progress, 1, {

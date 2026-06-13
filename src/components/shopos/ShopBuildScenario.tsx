@@ -2,20 +2,18 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { Users, Calendar, Info } from "lucide-react";
-import { fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
+import { fmtUSD, pctSavings } from "@/lib/pricing";
 import { SHOP_S1, SHOP_S1_TASKS, shopS1Costs, type ShopS1Task, type ShopS1Baseline } from "@/lib/industries/shopos";
 import { useTally } from "@/lib/tally-context";
 
 const GREEN  = "#188038";
 const BLUE   = "#1A73E8";
 const AMBER  = "#E37400";
-const PURPLE = "#9B59D1";
 
 const TIER_META = {
   flash:  { label: "Flash",  color: BLUE,   bg: "#EFF6FF", border: BLUE   },
-  sonnet: { label: "Sonnet", color: PURPLE, bg: "#F5F0FC", border: PURPLE },
   opus:   { label: "Opus",   color: AMBER,  bg: "#FEF3E0", border: AMBER  },
 };
 
@@ -44,7 +42,7 @@ function SliderRow({ icon: Icon, label, value, min, max, step, onChange, suffix 
 
 function TaskCard({ task, baseline, index }: { task: ShopS1Task; baseline: ShopS1Baseline; index: number }) {
   const [hovered, setHovered] = useState(false);
-  const effectiveTier = baseline === "allOpus" ? "opus" : baseline === "allSonnet" ? (task.tier === "flash" ? "sonnet" : task.tier) : task.tier;
+  const effectiveTier = baseline === "allOpus" ? "opus" : task.tier;
   const meta = TIER_META[effectiveTier];
 
   return (
@@ -113,18 +111,16 @@ export default function ShopBuildScenario() {
   }, [costs, updateResult]);
 
   const barData = [
-    { name: "All-Opus",   cost: costs.allOpusTotal,   color: AMBER  },
-    { name: "All-Sonnet", cost: costs.allSonnetTotal, color: PURPLE },
-    { name: "Tiered",     cost: costs.tieredTotal,    color: GREEN  },
+    { name: "All-Frontier", cost: costs.allOpusTotal, color: AMBER },
+    { name: "Tiered", cost: costs.tieredTotal, color: GREEN },
   ];
 
   const routineTasks = SHOP_S1_TASKS.filter((t) => t.tier === "flash");
-  const midTasks     = SHOP_S1_TASKS.filter((t) => t.tier === "sonnet");
   const complexTasks = SHOP_S1_TASKS.filter((t) => t.tier === "opus");
 
   const displayedCost = costs.chosenTotal;
-  const baselineColor = baseline === "allOpus" ? AMBER : baseline === "allSonnet" ? PURPLE : GREEN;
-  const baselineLabel = baseline === "allOpus" ? "All-Opus Cost" : baseline === "allSonnet" ? "All-Sonnet Cost" : "Tiered Cost";
+  const baselineColor = baseline === "allOpus" ? AMBER : GREEN;
+  const baselineLabel = baseline === "allOpus" ? "All-Frontier Cost" : "Tiered Cost";
 
   return (
     <section id="shop-build" ref={sectionRef} className="relative w-full bg-white py-24">
@@ -137,11 +133,10 @@ export default function ShopBuildScenario() {
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">AI-Assisted Development</h2>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-            Three-tier routing across a real e-commerce codebase.
+            Your commerce engineers do not need frontier intelligence for every task.
           </p>
           <p className="mt-2 max-w-2xl text-sm text-slate-500">
-            55% of tasks are routine (Flash) · 30% are mid-complexity (Sonnet) · 15% are hard (Opus).
-            The honest story: all-Sonnet is cost-competitive with tiered. The tiered win is <em>Opus-grade reasoning on the complex 15%</em>.
+            70% of retail development work is routine scaffolding, CRUD, imports, tests, and metadata. Route that volume to Flash and reserve Opus for the difficult 30%: checkout, pricing, fraud, search, and architecture.
           </p>
         </motion.div>
 
@@ -153,9 +148,8 @@ export default function ShopBuildScenario() {
             <div>
               <p className="mb-2 text-xs font-medium uppercase tracking-wider text-slate-400">Comparison Baseline</p>
               <div className="flex gap-2 flex-wrap">
-                <BaselineButton active={baseline === "tiered"}    onClick={() => setBaseline("tiered")}    label="Tiered (Recommended)" color={GREEN}  />
-                <BaselineButton active={baseline === "allSonnet"} onClick={() => setBaseline("allSonnet")} label="All-Sonnet"            color={PURPLE} />
-                <BaselineButton active={baseline === "allOpus"}   onClick={() => setBaseline("allOpus")}   label="All-Opus"              color={AMBER}  />
+                <BaselineButton active={baseline === "tiered"} onClick={() => setBaseline("tiered")} label="Tiered" color={GREEN} />
+                <BaselineButton active={baseline === "allOpus"} onClick={() => setBaseline("allOpus")} label="All-Frontier" color={AMBER} />
               </div>
             </div>
 
@@ -178,10 +172,9 @@ export default function ShopBuildScenario() {
             </div>
 
             {/* Per-sprint grid */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               {[
-                { label: "All-Opus / Sprint", val: costs.allOpusPerSprint, color: AMBER },
-                { label: "All-Sonnet / Sprint", val: costs.allSonnetPerSprint, color: PURPLE },
+                { label: "All-Frontier / Sprint", val: costs.allOpusPerSprint, color: AMBER },
                 { label: "Tiered / Sprint", val: costs.tieredPerSprint, color: GREEN },
               ].map((r) => (
                 <div key={r.label} className="rounded-lg border border-slate-200 bg-white p-3">
@@ -191,12 +184,6 @@ export default function ShopBuildScenario() {
               ))}
             </div>
 
-            {/* Honest note */}
-            <div className="rounded-xl border border-amber-200 bg-amber-50/60 p-4 text-xs text-amber-800 leading-relaxed">
-              <strong>Honest note:</strong> All-Sonnet ({fmtUSD(costs.allSonnetTotal, 2)}) is nearly cost-equal to tiered ({fmtUSD(costs.tieredTotal, 2)}) here.
-              The tiered win is quality — Opus on the hard 15% (search relevance, fraud logic, agent architecture) produces measurably better output.
-              If the customer is cost-focused and accepts slightly lower quality on complex tasks, all-Sonnet is a credible single-model choice.
-            </div>
           </motion.div>
 
           {/* RIGHT */}
@@ -216,7 +203,6 @@ export default function ShopBuildScenario() {
               <div className="mt-2 flex gap-4 text-[10px] text-slate-500">
                 {[
                   { label: `${complexTasks.length} Opus`, color: AMBER },
-                  { label: `${midTasks.length} Sonnet`, color: PURPLE },
                   { label: `${routineTasks.length} Flash`, color: BLUE },
                 ].map((r) => (
                   <span key={r.label} className="flex items-center gap-1">
@@ -230,7 +216,7 @@ export default function ShopBuildScenario() {
             {/* Cost bar chart */}
             <div className="rounded-xl border border-slate-200 bg-white p-5">
               <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">Total Cost Comparison ({sprints} sprints)</p>
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer width="100%" height={200} minWidth={0} initialDimension={{ width: 600, height: 200 }}>
                 <BarChart data={barData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                   <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#64748b" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={false} tickLine={false} tickFormatter={(v) => fmtUSD(v)} width={52} />
@@ -244,10 +230,10 @@ export default function ShopBuildScenario() {
 
             {/* Savings vs all-Opus */}
             <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">Tiered vs All-Opus — {sprints} sprints</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">Tiered vs All-Frontier — {sprints} sprints</p>
               <p className="text-3xl font-bold tabular-nums text-emerald-700">{fmtUSD(costs.allOpusTotal - costs.tieredTotal, 2)}</p>
               <p className="text-sm text-emerald-600 mt-1">
-                {pctSavings(costs.allOpusTotal, costs.tieredTotal).toFixed(0)}% reduction · Sonnet-equivalent cost, Opus quality on hard tasks
+                {pctSavings(costs.allOpusTotal, costs.tieredTotal).toFixed(0)}% reduction · Opus retained for every complex task
               </p>
             </div>
           </motion.div>

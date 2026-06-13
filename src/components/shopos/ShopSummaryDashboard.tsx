@@ -1,11 +1,11 @@
 "use client";
 
 import { useTally } from "@/lib/tally-context";
-import { fmtUSD, pctSavings } from "@/lib/pricing";
+import { pctSavings } from "@/lib/pricing";
 import { SHOP_SELLER_NOTES } from "@/lib/industries/shopos";
 import { useState, useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { RotateCcw, Copy, ChevronDown, ChevronUp, BookOpen, CheckCircle2 } from "lucide-react";
 
 function AnimNumber({ value }: { value: number }) {
@@ -60,10 +60,10 @@ export default function ShopSummaryDashboard() {
       "ShopOS Tokenomics Summary",
       "=========================",
       "",
-      `S1 Build: All-Opus ${fmtT(buildAllFrontier)} vs Tiered ${fmtT(buildTiered)} → ${fmtT(buildAllFrontier - buildTiered)} saved (one-time)`,
-      `S2 Assistant: All-Opus ${fmtT(s2?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s2?.tiered ?? 0)}/yr → ${fmtT(s2?.savings ?? 0)}/yr`,
-      `S3 Visual Search: All-Opus ${fmtT(s3?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s3?.tiered ?? 0)}/yr → ${fmtT(s3?.savings ?? 0)}/yr`,
-      `S4 Agent: All-Opus ${fmtT(s4?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s4?.tiered ?? 0)}/yr → ${fmtT(s4?.savings ?? 0)}/yr`,
+      `S1 Build: All-Frontier ${fmtT(buildAllFrontier)} vs Tiered ${fmtT(buildTiered)} → ${fmtT(buildAllFrontier - buildTiered)} saved (one-time)`,
+      `S2 Assistant: All-Frontier ${fmtT(s2?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s2?.tiered ?? 0)}/yr → ${fmtT(s2?.savings ?? 0)}/yr`,
+      `S3 Visual Search: All-Frontier ${fmtT(s3?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s3?.tiered ?? 0)}/yr → ${fmtT(s3?.savings ?? 0)}/yr`,
+      `S4 Agent: All-Frontier ${fmtT(s4?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s4?.tiered ?? 0)}/yr → ${fmtT(s4?.savings ?? 0)}/yr`,
       "",
       `Total Annual Savings: ${fmtT(totalAnnualSavings)}`,
     ];
@@ -130,7 +130,7 @@ export default function ShopSummaryDashboard() {
           </div>
           {totalAnnualAll > 0 && (
             <p className="text-sm text-[#5F6368] mt-2">
-              {pctSavings(totalAnnualAll, totalAnnualTiered).toFixed(0)}% reduction vs all-Opus approach
+              {pctSavings(totalAnnualAll, totalAnnualTiered).toFixed(0)}% reduction vs all-frontier approach
             </p>
           )}
         </div>
@@ -139,7 +139,7 @@ export default function ShopSummaryDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           <div className="card bg-white">
             <h3 className="text-sm font-bold text-[#202124] mb-6 uppercase tracking-wider">Cost by Lifecycle Phase</h3>
-            <ResponsiveContainer width="100%" height={280}>
+            <ResponsiveContainer width="100%" height={280} minWidth={0} initialDimension={{ width: 800, height: 280 }}>
               <BarChart data={chartData} barGap={4}>
                 <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#5F6368" }} axisLine={{ stroke: "#E8EAED" }} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: "#5F6368" }} axisLine={false} tickLine={false} tickFormatter={fmtT} />
@@ -168,7 +168,7 @@ export default function ShopSummaryDashboard() {
                       <>
                         <div className="text-xl font-bold text-[#188038] tabular-nums mb-0.5">{fmtT(r.savings)}</div>
                         <div className="text-[10px] text-[#5F6368]">saved ({period})</div>
-                        <div className="text-[10px] text-[#188038] font-semibold">{pctSavings(r.allFrontier, r.tiered).toFixed(0)}% vs all-Opus</div>
+                        <div className="text-[10px] text-[#188038] font-semibold">{pctSavings(r.allFrontier, r.tiered).toFixed(0)}% vs all-frontier</div>
                       </>
                     ) : (
                       <div className="text-sm text-[#9AA0A6]">Scroll to activate</div>
@@ -187,7 +187,7 @@ export default function ShopSummaryDashboard() {
             <li>Monthly query volume (assistant): 15M/mo is a large retailer — adjust the S2 slider.</li>
             <li>SKUs processed nightly: 5K is mid-market. Catalogue size and change velocity drive this.</li>
             <li>Visual search interactions: 8M/yr assumes active mobile app with camera-search feature.</li>
-            <li>Task mix (S1): 55/30/15 routine/mid/complex — adjust for platform maturity and greenfield vs. brownfield work.</li>
+            <li>Task mix (S1): 70/30 routine/complex — adjust for platform maturity and greenfield vs. brownfield work.</li>
           </ul>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShoppingBag, Layers, ArrowRight, Tag } from "lucide-react";
+import { ShoppingBag, ArrowRight, Tag } from "lucide-react";
 
 const phases = [
   { label: "Build", sub: "SDLC Coding", color: "#1A73E8" },
@@ -48,8 +48,8 @@ export default function ShopHero() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }}
             className="text-lg lg:text-xl text-gray-400 max-w-2xl mb-12 leading-relaxed">
-            A five-tier model ladder — Flash-Lite to Opus — routes each task to the cheapest model that clears its quality bar.
-            At 15M queries/month and 5K SKUs nightly, the compounding is transformative.
+            A tiered architecture with Claude Opus for reasoning and Gemini Flash for volume delivers
+            enterprise-grade retail experiences at a fraction of the cost — from storefront code to nightly merchandising workflows.
           </motion.p>
         </div>
 
@@ -75,21 +75,22 @@ export default function ShopHero() {
           ))}
         </motion.div>
 
-        {/* 5-tier model ladder */}
+        {/* Model cards */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.85 }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-5xl">
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
           {[
-            { name: "Gemini 3.1 Flash-Lite", role: "High-volume lookups", price: "$0.25 / $1.50", color: "#00ACC1" },
-            { name: "Gemini 3.5 Flash",      role: "Fast multimodal",      price: "$1.50 / $9",    color: "#1A73E8" },
-            { name: "Gemini 3.1 Pro",        role: "Mid-frontier",         price: "$2 / $12",      color: "#34A853" },
-            { name: "Claude Sonnet 4.6",     role: "Strong reasoning",     price: "$3 / $15",      color: "#9B59D1" },
-            { name: "Claude Opus 4.8",       role: "Frontier reasoning",   price: "$5 / $25",      color: "#7B61FF" },
+            { name: "Claude Opus 4.8", role: "Frontier reasoning", price: "$5 / $25 per 1M tokens", color: "#7B61FF", badge: "Complex tasks" },
+            { name: "Gemini 3.5 Flash", role: "Fast, native multimodal", price: "$1.50 / $9 per 1M tokens", color: "#1A73E8", badge: "Standard tasks" },
+            { name: "Gemini 3.1 Flash-Lite", role: "High-volume routing", price: "$0.25 / $1.50 per 1M tokens", color: "#00ACC1", badge: "Simple lookups" },
           ].map((m, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
-              <div className="w-2 h-2 rounded-full mb-2" style={{ backgroundColor: m.color }} />
-              <h3 className="text-xs font-bold text-white mb-1 leading-tight">{m.name}</h3>
-              <p className="text-[10px] text-gray-400 mb-2 leading-snug">{m.role}</p>
-              <p className="text-[10px] text-gray-500 font-mono">{m.price} /1M</p>
+            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/8 transition-colors">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: m.color }} />
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: m.color }}>{m.badge}</span>
+              </div>
+              <h3 className="text-base font-bold text-white mb-1">{m.name}</h3>
+              <p className="text-sm text-gray-400 mb-3">{m.role}</p>
+              <p className="text-xs text-gray-500 font-mono">{m.price}</p>
             </div>
           ))}
         </motion.div>

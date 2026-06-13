@@ -755,7 +755,7 @@ export default function InAppScenario() {
 
               {/* Bar Chart */}
               <div className="h-52">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="100%" minWidth={0} initialDimension={{ width: 800, height: 208 }}>
                   <BarChart
                     data={chartData}
                     layout="vertical"

@@ -223,7 +223,7 @@ export default function SummaryDashboard() {
             <h3 className="text-sm font-bold text-[#202124] mb-6 uppercase tracking-wider">
               Cost by Lifecycle Phase
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={300} minWidth={0} initialDimension={{ width: 800, height: 300 }}>
               <BarChart data={chartData} barGap={4}>
                 <XAxis
                   dataKey="name"
@@ -269,7 +269,7 @@ export default function SummaryDashboard() {
             <h3 className="text-sm font-bold text-[#202124] mb-6 uppercase tracking-wider">
               Total Annual Comparison
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={300} minWidth={0} initialDimension={{ width: 800, height: 300 }}>
               <BarChart data={totalChartData} barSize={80} barGap={16}>
                 <XAxis
                   dataKey="name"

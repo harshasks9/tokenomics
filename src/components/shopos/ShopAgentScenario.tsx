@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid, Cell, Legend,
+  BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid, Cell,
 } from "recharts";
 import { Bot, Cpu, ShieldCheck, ChevronRight, X } from "lucide-react";
 import { fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
@@ -11,23 +11,21 @@ import { SHOP_S4, SHOP_S4_TRACE, shopS4Costs, shopS4Annual, type ShopS4Config, t
 import { useTally } from "@/lib/tally-context";
 
 const OPUS_COLOR   = "#7B61FF";
-const SONNET_COLOR = "#9B59D1";
 const FLASH_COLOR  = "#1A73E8";
 const GREEN        = "#188038";
 const AMBER        = "#E37400";
+const ALL_CONFIGS: ShopS4Config[] = ["allOpus", "tiered"];
 
 const CONFIG_META: Record<ShopS4Config, { label: string; color: string; desc: string }> = {
-  allOpus:   { label: "All-Opus",    color: AMBER,        desc: "Max quality, max cost" },
-  allSonnet: { label: "All-Sonnet",  color: SONNET_COLOR, desc: "Realistic single-model baseline" },
-  tiered:    { label: "Tiered",      color: GREEN,        desc: "Opus plan+review, Flash executors" },
-  tieredEco: { label: "Tiered-Eco",  color: "#34A853",    desc: "Sonnet plan+review, Flash executors" },
+  allOpus: { label: "All-Frontier", color: AMBER, desc: "Opus handles every step" },
+  tiered: { label: "Tiered", color: GREEN, desc: "Opus plan+review, Flash executors" },
 };
 
 function nodeColor(node: ShopAgentNode, cfg: ShopS4Config): string {
   const c = SHOP_S4.configs[cfg];
-  if (node.role === "planner")  return c.planner  === "opus" ? OPUS_COLOR : SONNET_COLOR;
-  if (node.role === "reviewer") return c.review    === "opus" ? OPUS_COLOR : SONNET_COLOR;
-  return c.executor === "opus" ? OPUS_COLOR : c.executor === "sonnet" ? SONNET_COLOR : FLASH_COLOR;
+  if (node.role === "planner") return OPUS_COLOR;
+  if (node.role === "reviewer") return OPUS_COLOR;
+  return c.executor === "opus" ? OPUS_COLOR : FLASH_COLOR;
 }
 function nodeBg(node: ShopAgentNode, cfg: ShopS4Config): string {
   const col = nodeColor(node, cfg);
@@ -109,12 +107,10 @@ export default function ShopAgentScenario() {
   const traceRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(traceRef, { once: true, margin: "-80px" });
 
-  const allConfigs: ShopS4Config[] = ["allOpus", "allSonnet", "tiered", "tieredEco"];
-  const costsMap = useMemo(() => Object.fromEntries(allConfigs.map((c) => [c, shopS4Costs(c)])) as Record<ShopS4Config, ReturnType<typeof shopS4Costs>>, []);
-  const annualMap = useMemo(() => Object.fromEntries(allConfigs.map((c) => [c, shopS4Annual(skus, c)])) as Record<ShopS4Config, number>, [skus]);
+  const costsMap = useMemo(() => Object.fromEntries(ALL_CONFIGS.map((c) => [c, shopS4Costs(c)])) as Record<ShopS4Config, ReturnType<typeof shopS4Costs>>, []);
+  const annualMap = useMemo(() => Object.fromEntries(ALL_CONFIGS.map((c) => [c, shopS4Annual(skus, c)])) as Record<ShopS4Config, number>, [skus]);
 
   const perRun = costsMap[cfg].total;
-  const annualCost = annualMap[cfg];
   const tieredAnnual = annualMap["tiered"];
 
   const planner  = SHOP_S4_TRACE.filter((n) => n.role === "planner");
@@ -131,17 +127,10 @@ export default function ShopAgentScenario() {
     });
   }, [annualMap, tieredAnnual, updateResult]);
 
-  // Bar chart: all 4 configs side by side
-  const barData = allConfigs.map((c) => ({
+  // Bar chart: tiered versus all-frontier.
+  const barData = ALL_CONFIGS.map((c) => ({
     name: CONFIG_META[c].label,
     cost: costsMap[c].total,
-    color: CONFIG_META[c].color,
-    active: c === cfg,
-  }));
-
-  const annualBar = allConfigs.map((c) => ({
-    name: CONFIG_META[c].label,
-    cost: annualMap[c],
     color: CONFIG_META[c].color,
     active: c === cfg,
   }));
@@ -154,15 +143,15 @@ export default function ShopAgentScenario() {
           <p className="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-2">Extend · Scenario 4</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Nightly Merchandising Agent</h2>
           <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
-            Runs only on SKUs needing attention — new items, stockouts, price moves.
-            Four configs from all-Opus to tiered-eco. <strong className="text-gray-700">14 executor steps</strong> per SKU dominate total cost — that's where Flash erases spend while Opus owns the pricing call.
+            Runs only on SKUs needing attention — new items, stockouts, and price moves.
+            <strong className="text-gray-700">16 executor steps</strong> per SKU dominate total cost. Flash handles those bounded operations while Opus owns the plan and final pricing review.
           </p>
         </motion.div>
 
         {/* Config selector */}
         <div className="flex flex-wrap items-center gap-2 mb-10">
           <span className="text-sm font-medium text-gray-500">Strategy:</span>
-          {allConfigs.map((c) => (
+          {ALL_CONFIGS.map((c) => (
             <button key={c} onClick={() => setCfg(c)}
               className="rounded-lg px-4 py-1.5 text-sm font-semibold border transition-all"
               style={{
@@ -228,9 +217,8 @@ export default function ShopAgentScenario() {
           {/* Legend */}
           <div className="flex items-center gap-5 mt-5 pt-4 border-t border-gray-100 flex-wrap">
             {[
-              { label: MODELS.opus.name,   color: OPUS_COLOR   },
-              { label: MODELS.sonnet.name, color: SONNET_COLOR },
-              { label: MODELS.flash.name,  color: FLASH_COLOR  },
+              { label: MODELS.opus.name, color: OPUS_COLOR },
+              { label: MODELS.flash.name, color: FLASH_COLOR },
             ].map((l) => (
               <div key={l.label} className="flex items-center gap-1.5 text-xs text-gray-500">
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: l.color }} />{l.label}
@@ -246,8 +234,8 @@ export default function ShopAgentScenario() {
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
             className="rounded-xl border border-gray-200 bg-white p-6">
             <h3 className="text-sm font-semibold text-gray-900 mb-1">Per-Run Cost (per SKU)</h3>
-            <p className="text-xs text-gray-400 mb-4">All 4 strategies compared · selected in green</p>
-            <ResponsiveContainer width="100%" height={200}>
+            <p className="text-xs text-gray-400 mb-4">Tiered routing versus all-frontier execution</p>
+            <ResponsiveContainer width="100%" height={200} minWidth={0} initialDimension={{ width: 600, height: 200 }}>
               <BarChart data={barData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#f0f0f0" />
                 <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
@@ -278,7 +266,7 @@ export default function ShopAgentScenario() {
 
             {/* Annual cost grid */}
             <div className="grid grid-cols-2 gap-3 mb-4">
-              {allConfigs.map((c) => (
+              {ALL_CONFIGS.map((c) => (
                 <div key={c} onClick={() => setCfg(c)} className="rounded-lg p-3 cursor-pointer transition-all"
                   style={{ backgroundColor: cfg === c ? CONFIG_META[c].color + "12" : "#f8fafc",
                     border: `1px solid ${cfg === c ? CONFIG_META[c].color + "40" : "#e2e8f0"}` }}>
@@ -291,7 +279,7 @@ export default function ShopAgentScenario() {
 
             {/* Savings vs all-Opus */}
             <div className="rounded-lg p-3 text-center" style={{ backgroundColor: "rgba(24,128,56,0.08)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">Tiered vs All-Opus (annual)</p>
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">Tiered vs All-Frontier (annual)</p>
               <p className="text-2xl font-bold tabular-nums" style={{ color: GREEN }}>{fmtUSD(annualMap["allOpus"] - tieredAnnual)}</p>
               <p className="text-xs font-semibold mt-1" style={{ color: GREEN }}>
                 {pctSavings(annualMap["allOpus"], tieredAnnual).toFixed(0)}% reduction · {skus.toLocaleString()} SKUs × 365 nights
@@ -313,7 +301,7 @@ export default function ShopAgentScenario() {
               Routing them to Flash cuts per-SKU cost from{" "}
               <span className="font-mono font-semibold tabular-nums" style={{ color: AMBER }}>{fmtUSD(costsMap["allOpus"].total)}</span> to{" "}
               <span className="font-mono font-semibold tabular-nums" style={{ color: GREEN }}>{fmtUSD(costsMap["tiered"].total)}</span>.
-              At {skus.toLocaleString()} SKUs/night that's{" "}
+              At {skus.toLocaleString()} SKUs/night that&apos;s{" "}
               <span className="font-semibold" style={{ color: GREEN }}>{fmtUSD(annualMap["allOpus"] - tieredAnnual)}/yr saved</span>.
             </p>
           </div>

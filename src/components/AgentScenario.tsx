@@ -230,7 +230,7 @@ function CostBreakdownChart({ mode }: { mode: "hybrid" | "allOpus" }) {
   });
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ResponsiveContainer width="100%" height={220} minWidth={0} initialDimension={{ width: 800, height: 220 }}>
       <BarChart data={data} layout="vertical" margin={{ left: 20, right: 30, top: 10, bottom: 10 }}>
         <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f0f0f0" />
         <XAxis

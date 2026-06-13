@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Zap, Eye, Bot, ArrowRight, Layers } from "lucide-react";
+import Link from "next/link";
+import { Brain, Zap, Eye, Bot, ArrowRight, Layers, ShoppingBag } from "lucide-react";
 
 const phases = [
   { icon: Brain, label: "Build", sub: "AI-Assisted Dev", color: "#1A73E8" },
@@ -13,6 +14,13 @@ const phases = [
 export default function Hero() {
   return (
     <section id="overview" className="relative overflow-hidden bg-[#202124] text-white min-h-[90vh] flex items-center">
+      <Link
+        href="/shopos"
+        className="fixed right-4 top-4 z-[100] flex items-center gap-2 rounded-full border border-white/15 bg-[#202124]/90 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-[#303134]"
+      >
+        <ShoppingBag size={15} className="text-emerald-400" />
+        View ShopOS
+      </Link>
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-5" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)`,

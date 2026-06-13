@@ -12,9 +12,6 @@ const sections = [
   { id: "shop-summary",label: "Summary",          icon: BarChart3 },
 ];
 
-const GREEN = "#188038";
-const SLATE = "#5F6368";
-
 export default function ShopStickyNav() {
   const active = useActiveSection(sections.map((s) => s.id));
 
