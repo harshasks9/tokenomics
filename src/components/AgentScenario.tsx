@@ -23,6 +23,7 @@ import { useTally } from "@/lib/tally-context";
 /* ─── Color Tokens ─── */
 const OPUS_COLOR = "#7B61FF";
 const FLASH_COLOR = "#1A73E8";
+const GEMINI_PRO_COLOR = "#34A853";
 const GREEN = "#188038";
 const AMBER = "#E37400";
 const OPUS_BG = "rgba(123,97,255,0.10)";
@@ -32,13 +33,15 @@ const FLASH_BORDER = "rgba(26,115,232,0.35)";
 
 /* ─── Helpers ─── */
 function nodeCost(node: AgentNode, mode: "hybrid" | "allOpus"): number {
-  const model = mode === "allOpus" ? "opus" : node.tier;
-  return callCost(model as "opus" | "flash", node.inTok, node.outTok);
+  if (mode === "allOpus") return callCost("opus", node.inTok, node.outTok);
+  // geminiTiered: planner/reviewer → Gemini Pro, executors → Flash
+  const model = node.role === "executor" ? "flash" : "geminiPro";
+  return callCost(model, node.inTok, node.outTok);
 }
 
 function modelLabel(node: AgentNode, mode: "hybrid" | "allOpus"): string {
   if (mode === "allOpus") return MODELS.opus.name;
-  return node.tier === "opus" ? MODELS.opus.name : MODELS.flash.name;
+  return node.role === "executor" ? MODELS.flash.name : MODELS.geminiPro.name;
 }
 
 function roleIcon(role: AgentNode["role"]) {
@@ -70,7 +73,7 @@ function NodePopover({
 }) {
   const cost = nodeCost(node, mode);
   const model = modelLabel(node, mode);
-  const tierColor = mode === "allOpus" ? OPUS_COLOR : node.tier === "opus" ? OPUS_COLOR : FLASH_COLOR;
+  const tierColor = mode === "allOpus" ? OPUS_COLOR : node.role === "executor" ? FLASH_COLOR : GEMINI_PRO_COLOR;
 
   return (
     <motion.div
@@ -130,8 +133,9 @@ function TraceNode({
   selectedId: number | null;
   onSelect: (id: number | null) => void;
 }) {
-  const isOpus = mode === "allOpus" ? true : node.tier === "opus";
-  const color = isOpus ? OPUS_COLOR : FLASH_COLOR;
+  const isOpus = mode === "allOpus";
+  const isGeminiPro = !isOpus && node.role !== "executor";
+  const color = isOpus ? OPUS_COLOR : isGeminiPro ? GEMINI_PRO_COLOR : FLASH_COLOR;
   const bg = isOpus ? OPUS_BG : FLASH_BG;
   const border = isOpus ? OPUS_BORDER : FLASH_BORDER;
   const isSelected = selectedId === node.id;
@@ -207,13 +211,13 @@ function FlowArrow({ isVisible, delay }: { isVisible: boolean; delay: number }) 
 /* ─── Stacked Bar Chart ─── */
 function CostBreakdownChart({ mode }: { mode: "hybrid" | "allOpus" }) {
   const costs = s4Costs();
-  const plannerCost = costs.plannerCost;
-  const reviewCost = costs.reviewCost;
+  const plannerCost = mode === "allOpus" ? costs.plannerOpusCost : costs.plannerGeminiCost;
+  const reviewCost  = mode === "allOpus" ? costs.reviewOpusCost  : costs.reviewGeminiCost;
   const executorCost = mode === "allOpus" ? costs.executorOpusCost : costs.executorFlashCost;
 
   const data = [
     {
-      name: mode === "allOpus" ? "All-Opus" : "Hybrid (Tiered)",
+      name: mode === "allOpus" ? "All Claude (competitor)" : "Gemini Tiered",
       Planner: plannerCost,
       Executors: executorCost,
       Reviewer: reviewCost,
@@ -221,12 +225,14 @@ function CostBreakdownChart({ mode }: { mode: "hybrid" | "allOpus" }) {
   ];
 
   // Also show the other mode for comparison
+  const otherPlanner  = mode === "allOpus" ? costs.plannerGeminiCost : costs.plannerOpusCost;
+  const otherReview   = mode === "allOpus" ? costs.reviewGeminiCost  : costs.reviewOpusCost;
   const otherExecutor = mode === "allOpus" ? costs.executorFlashCost : costs.executorOpusCost;
   data.push({
-    name: mode === "allOpus" ? "Hybrid (Tiered)" : "All-Opus",
-    Planner: plannerCost,
+    name: mode === "allOpus" ? "Gemini Tiered" : "All Claude (competitor)",
+    Planner: otherPlanner,
     Executors: otherExecutor,
-    Reviewer: reviewCost,
+    Reviewer: otherReview,
   });
 
   return (
@@ -362,12 +368,16 @@ export default function AgentScenario() {
               planner
             </span>{" "}
             and{" "}
-            <span className="font-semibold" style={{ color: OPUS_COLOR }}>
+            <span className="font-semibold" style={{ color: GEMINI_PRO_COLOR }}>
               reviewer
             </span>{" "}
-            need frontier reasoning. The 16 executor steps run on{" "}
+            run on{" "}
+            <span className="font-semibold" style={{ color: GEMINI_PRO_COLOR }}>
+              Gemini Pro
+            </span>{" "}
+            (AA Score 92). The 16 executor steps run on{" "}
             <span className="font-semibold" style={{ color: FLASH_COLOR }}>
-              Flash
+              Gemini Flash
             </span>
             .
           </p>
@@ -389,7 +399,7 @@ export default function AgentScenario() {
                 className="inline-block w-2 h-2 rounded-full mr-2"
                 style={{ backgroundColor: GREEN }}
               />
-              Hybrid (Tiered)
+              Gemini Tiered
             </button>
             <button
               onClick={() => setMode("allOpus")}
@@ -403,7 +413,7 @@ export default function AgentScenario() {
                 className="inline-block w-2 h-2 rounded-full mr-2"
                 style={{ backgroundColor: AMBER }}
               />
-              All-Opus
+              All Claude (competitor)
             </button>
           </div>
           <span className="text-xs text-gray-400 ml-2">
@@ -445,7 +455,7 @@ export default function AgentScenario() {
                 />
               ))}
               <div className="mt-1 text-[10px] font-mono tabular-nums text-gray-400">
-                {fmtUSD(costs.plannerCost, 4)}
+                {fmtUSD(mode === "allOpus" ? costs.plannerOpusCost : costs.plannerGeminiCost, 4)}
               </div>
             </div>
 
@@ -499,7 +509,7 @@ export default function AgentScenario() {
                 />
               ))}
               <div className="mt-1 text-[10px] font-mono tabular-nums text-gray-400">
-                {fmtUSD(costs.reviewCost, 4)}
+                {fmtUSD(mode === "allOpus" ? costs.reviewOpusCost : costs.reviewGeminiCost, 4)}
               </div>
             </div>
           </div>
@@ -512,7 +522,7 @@ export default function AgentScenario() {
                 style={{ backgroundColor: OPUS_COLOR }}
               />
               <span className="text-xs text-gray-500">
-                {MODELS.opus.name} (Frontier)
+                {mode === "allOpus" ? `${MODELS.opus.name} (competitor)` : `${MODELS.geminiPro.name} AA 92`}
               </span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -527,8 +537,8 @@ export default function AgentScenario() {
             <div className="ml-auto flex items-center gap-1.5 text-xs text-gray-400">
               <Info className="h-3 w-3" />
               {mode === "allOpus"
-                ? "All 18 steps on Opus — maximum cost"
-                : "2 steps on Opus, 16 on Flash — tiered savings"}
+                ? "All 18 steps on Claude Opus — competitor baseline"
+                : "Gemini Pro orchestrates (plan+review), Flash executes — Gemini Tiered"}
             </div>
           </div>
         </div>
@@ -685,15 +695,16 @@ export default function AgentScenario() {
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-900 mb-1">
-              The planner thinks with Opus. The executors run with Flash.
+              Gemini Pro (AA #1) orchestrates. Gemini Flash executes. No competitor models.
             </p>
             <p className="text-sm text-gray-500 leading-relaxed">
-              Only 2 of 18 agent steps require frontier reasoning — the planner that
+              Only 2 of 18 agent steps require top-tier reasoning — the planner that
               decomposes the rebalancing task and the compliance reviewer that signs off.
-              The 16 executor steps (data retrieval, calculations, formatting) are
-              pattern-following work. Routing them to Flash cuts per-run cost from{" "}
+              Gemini 3.1 Pro (AA Score 92) handles both — outscoring Claude Opus at 60% lower price.
+              The 16 executor steps (data retrieval, calculations, formatting) route to Gemini Flash.
+              Total per-run cost drops from{" "}
               <span className="font-mono tabular-nums font-semibold" style={{ color: AMBER }}>
-                {fmtUSD(costs.allOpus)}
+                {fmtUSD(costs.allOpus)} (all-Claude competitor)
               </span>{" "}
               to{" "}
               <span className="font-mono tabular-nums font-semibold" style={{ color: GREEN }}>

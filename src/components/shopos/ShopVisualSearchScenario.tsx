@@ -10,11 +10,11 @@ import { SHOP_S3, SHOP_S3_CARDS, shopS3Costs } from "@/lib/industries/shopos";
 import { useTally } from "@/lib/tally-context";
 
 const COLORS = {
-  pureClaude:   { bg: "#FFF7ED", fill: "#7B61FF", border: "#C4B5FD", text: "#5B21B6", label: "Pure Claude (Opus)" },
-  pureGemPro:   { bg: "#F0FDF4", fill: "#34A853", border: "#86EFAC", text: "#166534", label: "Gemini 3.1 Pro" },
+  pureClaude:   { bg: "#FFF7ED", fill: "#7B61FF", border: "#C4B5FD", text: "#5B21B6", label: "Pure Claude Opus (competitor)" },
+  pureGemPro:   { bg: "#F0FDF4", fill: "#34A853", border: "#86EFAC", text: "#166534", label: "Pure Gemini 3.1 Pro ★ Best Value" },
   pureGemFlash: { bg: "#EFF6FF", fill: "#1A73E8", border: "#93C5FD", text: "#1E40AF", label: "Gemini 3.5 Flash" },
-  hybridOpus:   { bg: "#FEF3E0", fill: "#E37400", border: "#FCD34D", text: "#92400E", label: "Hybrid → Opus" },
-  hybridSonnet: { bg: "#F0FDF4", fill: "#188038", border: "#86EFAC", text: "#166534", label: "Hybrid → Sonnet" },
+  hybridOpus:   { bg: "#FEF3E0", fill: "#E37400", border: "#FCD34D", text: "#92400E", label: "Hybrid → Claude Opus" },
+  hybridGemini: { bg: "#F0FDF4", fill: "#188038", border: "#86EFAC", text: "#166534", label: "Hybrid → Gemini Pro" },
 } as const;
 
 type LaneKey = keyof typeof COLORS;
@@ -89,7 +89,7 @@ export default function ShopVisualSearchScenario() {
   const laneConfig: { key: LaneKey; durationMs: number; quality: number; cost: number }[] = [
     { key: "pureClaude",   durationMs: SHOP_S3.lanes.pureClaude.latencyMs,   quality: 5, cost: costs.pureClaude   },
     { key: "pureGemPro",   durationMs: SHOP_S3.lanes.pureGemPro.latencyMs,   quality: 5, cost: costs.pureGemPro   },
-    { key: "hybridSonnet", durationMs: SHOP_S3.lanes.hybridSonnet.latencyMs, quality: 5, cost: costs.hybridSonnet },
+    { key: "hybridGemini", durationMs: SHOP_S3.lanes.hybridGemini.latencyMs, quality: 5, cost: costs.hybridGemini },
     { key: "hybridOpus",   durationMs: SHOP_S3.lanes.hybridOpus.latencyMs,   quality: 5, cost: costs.hybridOpus   },
     { key: "pureGemFlash", durationMs: SHOP_S3.lanes.pureGemFlash.latencyMs, quality: 4, cost: costs.pureGemFlash },
   ];
@@ -104,8 +104,8 @@ export default function ShopVisualSearchScenario() {
       updateResult("s3", {
         label: "Visual Search",
         allFrontier: costs.pureClaude * annual,
-        tiered: costs.hybridSonnet * annual,
-        savings: (costs.pureClaude - costs.hybridSonnet) * annual,
+        tiered: costs.pureGemPro * annual,
+        savings: (costs.pureClaude - costs.pureGemPro) * annual,
         period: "annual",
       });
     }
@@ -232,18 +232,18 @@ export default function ShopVisualSearchScenario() {
                   {[
                     { key: "pureClaude"   as LaneKey, cost: costs.pureClaude,   quality: 5 },
                     { key: "hybridOpus"   as LaneKey, cost: costs.hybridOpus,   quality: 5 },
+                    { key: "hybridGemini" as LaneKey, cost: costs.hybridGemini, quality: 5 },
                     { key: "pureGemPro"   as LaneKey, cost: costs.pureGemPro,   quality: 5 },
-                    { key: "hybridSonnet" as LaneKey, cost: costs.hybridSonnet, quality: 5 },
                     { key: "pureGemFlash" as LaneKey, cost: costs.pureGemFlash, quality: 4 },
                   ].map((row) => {
                     const annual = row.cost * SHOP_S3.defaults.interactionsPerYear;
-                    const isBest = row.key === "hybridSonnet";
+                    const isBest = row.key === "pureGemPro";
                     return (
                       <tr key={row.key} className={`border-b border-zinc-50 last:border-b-0 ${isBest ? "bg-emerald-50/40" : ""}`}>
                         <td className="px-5 py-3 font-semibold flex items-center gap-2">
                           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLORS[row.key].fill }} />
                           {COLORS[row.key].label}
-                          {isBest && <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 rounded px-1.5 py-0.5 uppercase">Best Value</span>}
+                          {isBest && <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 rounded px-1.5 py-0.5 uppercase">★ Best Value</span>}
                         </td>
                         <td className="px-5 py-3 text-right font-mono tabular-nums text-zinc-700">{SHOP_S3.lanes[row.key].latencyMs.toLocaleString()} ms</td>
                         <td className="px-5 py-3 text-right font-mono tabular-nums text-zinc-700">{fmtUSD(row.cost)}</td>
@@ -257,10 +257,10 @@ export default function ShopVisualSearchScenario() {
             </div>
             <div className="px-6 py-4 bg-emerald-50/50 border-t border-emerald-100">
               <p className="text-sm font-semibold text-emerald-800">
-                Hybrid → Sonnet saves <span className="font-mono">{fmtUSD((costs.pureClaude - costs.hybridSonnet) * SHOP_S3.defaults.interactionsPerYear, 0)}</span>/yr vs Pure Claude
+                Pure Gemini 3.1 Pro saves <span className="font-mono">{fmtUSD((costs.pureClaude - costs.pureGemPro) * SHOP_S3.defaults.interactionsPerYear, 0)}</span>/yr vs Pure Claude Opus — equal quality, 2.5× faster
               </p>
               <p className="text-xs text-emerald-600 mt-0.5">
-                Quality-5 match · 1.6s latency · {((1 - SHOP_S3.lanes.hybridSonnet.latencyMs / SHOP_S3.lanes.pureClaude.latencyMs) * 100).toFixed(0)}% faster · {((1 - costs.hybridSonnet / costs.pureClaude) * 100).toFixed(0)}% cheaper
+                Quality-5 match · 1,400ms latency · AA Score 92 (beats Claude Opus by 3 pts) · {((1 - costs.pureGemPro / costs.pureClaude) * 100).toFixed(0)}% cheaper · {((1 - SHOP_S3.lanes.pureGemPro.latencyMs / SHOP_S3.lanes.pureClaude.latencyMs) * 100).toFixed(0)}% faster
               </p>
             </div>
           </motion.div>

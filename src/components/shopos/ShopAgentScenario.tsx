@@ -10,24 +10,31 @@ import { fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
 import { SHOP_S4, SHOP_S4_TRACE, shopS4Costs, shopS4Annual, type ShopS4Config, type ShopAgentNode } from "@/lib/industries/shopos";
 import { useTally } from "@/lib/tally-context";
 
-const OPUS_COLOR   = "#7B61FF";
-const SONNET_COLOR = "#9B59D1";
-const FLASH_COLOR  = "#1A73E8";
-const GREEN        = "#188038";
-const AMBER        = "#E37400";
+const GEMINI_PRO_COLOR = "#34A853";
+const FLASH_COLOR      = "#1A73E8";
+const FLASH_LITE_COLOR = "#00ACC1";
+const OPUS_COLOR       = "#7B61FF";   // competitor (Claude Opus)
+const GREEN            = "#188038";
+const AMBER            = "#E37400";
 
 const CONFIG_META: Record<ShopS4Config, { label: string; color: string; desc: string }> = {
-  allOpus:   { label: "All-Opus",    color: AMBER,        desc: "Max quality, max cost" },
-  allSonnet: { label: "All-Sonnet",  color: SONNET_COLOR, desc: "Realistic single-model baseline" },
-  tiered:    { label: "Tiered",      color: GREEN,        desc: "Opus plan+review, Flash executors" },
-  tieredEco: { label: "Tiered-Eco",  color: "#34A853",    desc: "Sonnet plan+review, Flash executors" },
+  allClaude:    { label: "All Claude",     color: AMBER,          desc: "Competitor baseline — max cost" },
+  allGeminiPro: { label: "All Gemini Pro", color: GEMINI_PRO_COLOR, desc: "Single-model Gemini Pro (AA #1) — 55% savings vs Claude" },
+  geminiTiered: { label: "Gemini Tiered",  color: GREEN,          desc: "Gemini Pro plan+review, Flash executors — recommended" },
+  geminiEco:    { label: "Gemini Eco",     color: FLASH_COLOR,    desc: "Flash plan+review, Flash-Lite executors — maximum savings" },
 };
 
+function modelColor(model: string): string {
+  if (model === "geminiPro") return GEMINI_PRO_COLOR;
+  if (model === "flash")     return FLASH_COLOR;
+  if (model === "flashLite") return FLASH_LITE_COLOR;
+  return OPUS_COLOR; // opus / any Claude model
+}
 function nodeColor(node: ShopAgentNode, cfg: ShopS4Config): string {
   const c = SHOP_S4.configs[cfg];
-  if (node.role === "planner")  return c.planner  === "opus" ? OPUS_COLOR : SONNET_COLOR;
-  if (node.role === "reviewer") return c.review    === "opus" ? OPUS_COLOR : SONNET_COLOR;
-  return c.executor === "opus" ? OPUS_COLOR : c.executor === "sonnet" ? SONNET_COLOR : FLASH_COLOR;
+  if (node.role === "planner")  return modelColor(c.planner);
+  if (node.role === "reviewer") return modelColor(c.review);
+  return modelColor(c.executor);
 }
 function nodeBg(node: ShopAgentNode, cfg: ShopS4Config): string {
   const col = nodeColor(node, cfg);
@@ -102,20 +109,20 @@ function TraceNode({ node, index, cfg, isVisible, selectedId, onSelect }: {
 
 export default function ShopAgentScenario() {
   const { updateResult } = useTally();
-  const [cfg, setCfg] = useState<ShopS4Config>("tiered");
+  const [cfg, setCfg] = useState<ShopS4Config>("geminiTiered");
   const [skus, setSkus] = useState(SHOP_S4.defaults.skusPerNight);
   const [selectedNodeId, setSelectedNodeId] = useState<number | null>(null);
 
   const traceRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(traceRef, { once: true, margin: "-80px" });
 
-  const allConfigs: ShopS4Config[] = ["allOpus", "allSonnet", "tiered", "tieredEco"];
+  const allConfigs: ShopS4Config[] = ["allClaude", "allGeminiPro", "geminiTiered", "geminiEco"];
   const costsMap = useMemo(() => Object.fromEntries(allConfigs.map((c) => [c, shopS4Costs(c)])) as Record<ShopS4Config, ReturnType<typeof shopS4Costs>>, []);
   const annualMap = useMemo(() => Object.fromEntries(allConfigs.map((c) => [c, shopS4Annual(skus, c)])) as Record<ShopS4Config, number>, [skus]);
 
   const perRun = costsMap[cfg].total;
   const annualCost = annualMap[cfg];
-  const tieredAnnual = annualMap["tiered"];
+  const tieredAnnual = annualMap["geminiTiered"];
 
   const planner  = SHOP_S4_TRACE.filter((n) => n.role === "planner");
   const executors = SHOP_S4_TRACE.filter((n) => n.role === "executor");
@@ -124,9 +131,9 @@ export default function ShopAgentScenario() {
   useEffect(() => {
     updateResult("s4", {
       label: "Merchandising Agent (Annual)",
-      allFrontier: annualMap["allOpus"],
+      allFrontier: annualMap["allClaude"],
       tiered: tieredAnnual,
-      savings: annualMap["allOpus"] - tieredAnnual,
+      savings: annualMap["allClaude"] - tieredAnnual,
       period: "annual",
     });
   }, [annualMap, tieredAnnual, updateResult]);
@@ -155,7 +162,7 @@ export default function ShopAgentScenario() {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Nightly Merchandising Agent</h2>
           <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
             Runs only on SKUs needing attention — new items, stockouts, price moves.
-            Four configs from all-Opus to tiered-eco. <strong className="text-gray-700">14 executor steps</strong> per SKU dominate total cost — that's where Flash erases spend while Opus owns the pricing call.
+            Four configs from all-Claude to Gemini Eco. <strong className="text-gray-700">14 executor steps</strong> per SKU dominate total cost — that's where Flash erases spend while Gemini Pro (AA #1) owns the pricing call.
           </p>
         </motion.div>
 
@@ -228,9 +235,10 @@ export default function ShopAgentScenario() {
           {/* Legend */}
           <div className="flex items-center gap-5 mt-5 pt-4 border-t border-gray-100 flex-wrap">
             {[
-              { label: MODELS.opus.name,   color: OPUS_COLOR   },
-              { label: MODELS.sonnet.name, color: SONNET_COLOR },
-              { label: MODELS.flash.name,  color: FLASH_COLOR  },
+              { label: MODELS.geminiPro.name + " (AA #1)", color: GEMINI_PRO_COLOR },
+              { label: MODELS.flash.name,                  color: FLASH_COLOR      },
+              { label: MODELS.flashLite.name,              color: FLASH_LITE_COLOR },
+              { label: MODELS.opus.name + " (competitor)", color: OPUS_COLOR       },
             ].map((l) => (
               <div key={l.label} className="flex items-center gap-1.5 text-xs text-gray-500">
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: l.color }} />{l.label}
@@ -291,10 +299,10 @@ export default function ShopAgentScenario() {
 
             {/* Savings vs all-Opus */}
             <div className="rounded-lg p-3 text-center" style={{ backgroundColor: "rgba(24,128,56,0.08)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">Tiered vs All-Opus (annual)</p>
-              <p className="text-2xl font-bold tabular-nums" style={{ color: GREEN }}>{fmtUSD(annualMap["allOpus"] - tieredAnnual)}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">Gemini Tiered vs All Claude (annual)</p>
+              <p className="text-2xl font-bold tabular-nums" style={{ color: GREEN }}>{fmtUSD(annualMap["allClaude"] - tieredAnnual)}</p>
               <p className="text-xs font-semibold mt-1" style={{ color: GREEN }}>
-                {pctSavings(annualMap["allOpus"], tieredAnnual).toFixed(0)}% reduction · {skus.toLocaleString()} SKUs × 365 nights
+                {pctSavings(annualMap["allClaude"], tieredAnnual).toFixed(0)}% reduction · {skus.toLocaleString()} SKUs × 365 nights
               </p>
             </div>
           </motion.div>
@@ -307,14 +315,14 @@ export default function ShopAgentScenario() {
             <Bot className="h-4 w-4" style={{ color: GREEN }} />
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900 mb-1">The planner thinks with Opus. The executors run with Flash.</p>
+            <p className="text-sm font-semibold text-gray-900 mb-1">Gemini Pro (AA #1) orchestrates. Gemini Flash executes. No competitor models.</p>
             <p className="text-sm text-gray-500 leading-relaxed">
               {executors.length} executor steps per SKU — inventory pulls, demand reads, copy generation, feed validation — are pattern-following work.
               Routing them to Flash cuts per-SKU cost from{" "}
-              <span className="font-mono font-semibold tabular-nums" style={{ color: AMBER }}>{fmtUSD(costsMap["allOpus"].total)}</span> to{" "}
-              <span className="font-mono font-semibold tabular-nums" style={{ color: GREEN }}>{fmtUSD(costsMap["tiered"].total)}</span>.
+              <span className="font-mono font-semibold tabular-nums" style={{ color: AMBER }}>{fmtUSD(costsMap["allClaude"].total)}</span> (all-Claude) to{" "}
+              <span className="font-mono font-semibold tabular-nums" style={{ color: GREEN }}>{fmtUSD(costsMap["geminiTiered"].total)}</span> (Gemini Tiered).
               At {skus.toLocaleString()} SKUs/night that's{" "}
-              <span className="font-semibold" style={{ color: GREEN }}>{fmtUSD(annualMap["allOpus"] - tieredAnnual)}/yr saved</span>.
+              <span className="font-semibold" style={{ color: GREEN }}>{fmtUSD(annualMap["allClaude"] - tieredAnnual)}/yr saved</span>.
             </p>
           </div>
         </motion.div>

@@ -197,10 +197,10 @@ export default function ShopInAppScenario() {
                     {/* Complex insight */}
                     {currentQ.category === "complex" && (
                       <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} transition={{ delay: 0.1 }}
-                        className="mt-3 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3">
-                        <p className="text-xs font-semibold text-amber-800 mb-1">Sonnet/Opus earn their cost here</p>
-                        <p className="text-xs text-amber-700">
-                          {currentQ.sellerNote ?? "Complex queries grow basket size. Routing the complex 3% to top-tier models is a margin investment, not an overhead."}
+                        className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-4 py-3">
+                        <p className="text-xs font-semibold text-emerald-800 mb-1">Gemini Pro earns its cost here (AA Score 92)</p>
+                        <p className="text-xs text-emerald-700">
+                          {currentQ.sellerNote ?? "Complex queries grow basket size. Routing the complex 12% to Gemini Pro (AA #1) is a margin investment at 60% lower cost than Claude Opus."}
                         </p>
                       </motion.div>
                     )}
@@ -305,21 +305,19 @@ export default function ShopInAppScenario() {
 
             {/* Routing breakdown */}
             <div className="bg-white rounded-xl border border-gray-200 p-4 text-xs text-gray-600">
-              <p className="font-semibold text-gray-700 mb-2">Tiered routing mix</p>
+              <p className="font-semibold text-gray-700 mb-2">Gemini-only tiered routing mix</p>
               <div className="flex gap-1 h-2.5 rounded-full overflow-hidden mb-2">
                 <div style={{ width: `${SHOP_S2.tieredMix.flashLitePct * 100}%`, backgroundColor: TEAL }} title="Flash-Lite" />
                 <div style={{ width: `${SHOP_S2.tieredMix.flashPct * 100}%`, backgroundColor: BLUE }} title="Flash" />
-                <div style={{ width: `${SHOP_S2.tieredMix.sonnetPct * 100}%`, backgroundColor: PURPLE }} title="Sonnet" />
-                <div style={{ width: `${SHOP_S2.tieredMix.opusPct * 100}%`, backgroundColor: AMBER }} title="Opus" />
+                <div style={{ width: `${SHOP_S2.tieredMix.geminiProPct * 100}%`, backgroundColor: GEM_GREEN }} title="Gemini Pro" />
               </div>
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-gray-400">
                 <span>Flash-Lite {SHOP_S2.tieredMix.flashLitePct * 100}% — FAQ/order-status</span>
                 <span>Flash {SHOP_S2.tieredMix.flashPct * 100}% — catalog lookups</span>
-                <span>Sonnet {SHOP_S2.tieredMix.sonnetPct * 100}% — recommendations</span>
-                <span>Opus {SHOP_S2.tieredMix.opusPct * 100}% — gifting/styling</span>
+                <span>Gemini Pro {SHOP_S2.tieredMix.geminiProPct * 100}% — gifting/styling (AA Score 92)</span>
               </div>
               <p className="mt-3 text-[11px] italic text-gray-500">
-                "Shoppers can't tell the difference on the routine 80% — you only pay top-tier rates on the 3% that grows the basket."
+                "60/28/12 Gemini-only tiered split — no competitor models. Gemini Pro (AA Score 92) handles the 12% that grows the basket."
               </p>
             </div>
           </motion.div>
