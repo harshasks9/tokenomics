@@ -21,9 +21,9 @@ import { useTally } from "@/lib/tally-context";
 
 /* ─── Color Tokens ─── */
 const COLORS = {
-  claude: { bg: "#FFF7ED", fill: "#E37400", border: "#FDBA74", text: "#9A3412", label: "Pure Claude" },
-  gemini: { bg: "#EFF6FF", fill: "#1A73E8", border: "#93C5FD", text: "#1E40AF", label: "Pure Gemini" },
-  hybrid: { bg: "#F0FDF4", fill: "#188038", border: "#86EFAC", text: "#166534", label: "Hybrid" },
+  claude: { bg: "#F5F3FF", fill: "#7B61FF", border: "#C4B5FD", text: "#5B21B6", label: "All Opus" },
+  gemini: { bg: "#FFF7ED", fill: "#E37400", border: "#FDBA74", text: "#9A3412", label: "Opus + Sonnet" },
+  hybrid: { bg: "#F0FDF4", fill: "#188038", border: "#86EFAC", text: "#166534", label: "Opus + Flash" },
 } as const;
 
 type LaneKey = "claude" | "gemini" | "hybrid";
@@ -70,9 +70,11 @@ function RaceLane({
   useEffect(() => {
     if (!running) {
       progress.set(0);
-      setDisplayMs(0);
-      setDone(false);
-      return;
+      const resetFrame = requestAnimationFrame(() => {
+        setDisplayMs(0);
+        setDone(false);
+      });
+      return () => cancelAnimationFrame(resetFrame);
     }
 
     const controls = animate(progress, 1, {
@@ -213,11 +215,11 @@ export default function MultimodalScenario() {
 
   /* ─── Latency data (text vs voice) ─── */
   const latencies = voiceMode
-    ? { claude: S3.voice.claudeMs, gemini: S3.voice.geminiMs, hybrid: S3.voice.hybridMs }
+    ? { claude: S3.voice.allOpusMs, gemini: S3.voice.opusSonnetMs, hybrid: S3.voice.opusFlashMs }
     : {
-        claude: S3.lanes.pureClaude.latencyMs,
-        gemini: S3.lanes.pureGemini.latencyMs,
-        hybrid: S3.lanes.hybrid.latencyMs,
+        claude: S3.lanes.allOpus.latencyMs,
+        gemini: S3.lanes.opusSonnet.latencyMs,
+        hybrid: S3.lanes.opusFlash.latencyMs,
       };
 
   /* ─── Pipeline segments for each lane ─── */
@@ -228,9 +230,9 @@ export default function MultimodalScenario() {
       { name: "Opus Structured", pct: 25 },
     ],
     gemini: [
-      { name: "Flash Vision", pct: 45 },
-      { name: "Flash Analysis", pct: 30 },
-      { name: "Flash Structured", pct: 25 },
+      { name: "Sonnet Vision", pct: 45 },
+      { name: "Opus Analysis", pct: 35 },
+      { name: "Opus Structured", pct: 20 },
     ],
     hybrid: [
       { name: "Flash Vision", pct: 35 },
@@ -247,15 +249,15 @@ export default function MultimodalScenario() {
       { name: "TTS", pct: 25 },
     ],
     gemini: [
-      { name: "Native Audio", pct: 30 },
-      { name: "Flash Vision", pct: 35 },
-      { name: "Native Reply", pct: 35 },
+      { name: "Sonnet Audio", pct: 30 },
+      { name: "Sonnet Vision", pct: 30 },
+      { name: "Opus Analysis", pct: 40 },
     ],
     hybrid: [
-      { name: "Gemini Audio", pct: 20 },
+      { name: "Flash Audio", pct: 20 },
       { name: "Flash Vision", pct: 25 },
       { name: "Opus Analysis", pct: 35 },
-      { name: "Gemini Reply", pct: 20 },
+      { name: "Flash Reply", pct: 20 },
     ],
   };
 
@@ -274,8 +276,8 @@ export default function MultimodalScenario() {
 
       // Report S3 savings to tally
       const annualInteractions = S3.defaults.interactionsPerYear;
-      const allFrontier = costs.pureClaude * annualInteractions;
-      const tiered = costs.hybrid * annualInteractions;
+      const allFrontier = costs.opusSonnet * annualInteractions;
+      const tiered = costs.opusFlash * annualInteractions;
       updateResult("s3", {
         label: "Multimodal Document Intelligence",
         allFrontier,
@@ -295,9 +297,9 @@ export default function MultimodalScenario() {
 
   /* ─── Comparison table data ─── */
   const lanes: { key: LaneKey; label: string; latency: number; cost: number; quality: number }[] = [
-    { key: "claude", label: "Pure Claude (Opus)", latency: latencies.claude, cost: costs.pureClaude, quality: 5 },
-    { key: "gemini", label: "Pure Gemini (Flash)", latency: latencies.gemini, cost: costs.pureGemini, quality: 4 },
-    { key: "hybrid", label: "Gemini Hybrid (Flash → Gemini Pro)", latency: latencies.hybrid, cost: costs.hybrid, quality: 5 },
+    { key: "claude", label: "All Opus", latency: latencies.claude, cost: costs.allOpus, quality: 5 },
+    { key: "gemini", label: "Opus + Sonnet", latency: latencies.gemini, cost: costs.opusSonnet, quality: 5 },
+    { key: "hybrid", label: "Opus + Flash", latency: latencies.hybrid, cost: costs.opusFlash, quality: 5 },
   ];
 
   /* ─── Winner determination ─── */
@@ -326,7 +328,7 @@ export default function MultimodalScenario() {
           <p className="mt-3 text-lg text-zinc-600 max-w-2xl">
             Client photographs a statement and asks{" "}
             <span className="font-semibold text-zinc-800">&ldquo;what changed?&rdquo;</span>{" "}
-            — comparing pure-Claude, pure-Gemini, and hybrid pipelines on speed, cost, and quality.
+            — keeping Opus for financial reasoning while comparing Sonnet and Flash on extraction.
           </p>
         </motion.div>
 
@@ -403,7 +405,7 @@ export default function MultimodalScenario() {
               animate={{ opacity: 1, x: 0 }}
               className="text-xs text-blue-600 bg-blue-50 rounded-full px-3 py-1"
             >
-              Gemini native audio — no separate STT/TTS needed
+              Flash handles native audio and extraction before Opus reasons over the result
             </motion.span>
           )}
         </div>
@@ -439,14 +441,14 @@ export default function MultimodalScenario() {
                 key={`${key}-${voiceMode}`}
                 laneKey={key}
                 durationMs={latencies[key]}
-                quality={key === "gemini" ? 4 : 5}
+                  quality={5}
                 running={raceState === "running" || raceState === "done"}
                 label={
                   key === "claude"
-                    ? S3.lanes.pureClaude.label
+                    ? S3.lanes.allOpus.label
                     : key === "gemini"
-                    ? S3.lanes.pureGemini.label
-                    : S3.lanes.hybrid.label
+                    ? S3.lanes.opusSonnet.label
+                    : S3.lanes.opusFlash.label
                 }
                 segments={segments[key]}
                 onFinish={handleLaneFinish}
@@ -532,23 +534,23 @@ export default function MultimodalScenario() {
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-emerald-800">
-                    Hybrid saves{" "}
+                    Opus + Flash saves{" "}
                     <span className="font-mono tabular-nums">
                       {fmtUSD(
-                        (costs.pureClaude - costs.hybrid) * S3.defaults.interactionsPerYear,
+                        (costs.opusSonnet - costs.opusFlash) * S3.defaults.interactionsPerYear,
                         0
                       )}
                     </span>
-                    /year vs Pure Claude
+                    /year vs Opus + Sonnet
                   </p>
                   <p className="text-xs text-emerald-600 mt-0.5">
-                    At {(S3.defaults.interactionsPerYear / 1_000_000).toFixed(0)}M interactions/year — same 5-star quality, {((1 - latencies.hybrid / latencies.claude) * 100).toFixed(0)}% faster
+                    At {(S3.defaults.interactionsPerYear / 1_000_000).toFixed(0)}M interactions/year — the same Opus reasoning endpoint, with a faster extraction tier
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-zinc-500">Hybrid cost/interaction</p>
                   <p className="text-lg font-bold font-mono tabular-nums text-emerald-700">
-                    {fmtUSD(costs.hybrid)}
+                    {fmtUSD(costs.opusFlash)}
                   </p>
                 </div>
               </div>
@@ -573,12 +575,9 @@ export default function MultimodalScenario() {
                   Honest quality note
                 </p>
                 <p className="text-sm text-amber-700 mt-1">
-                  Pure Gemini scores <strong>4/5</strong> vs <strong>5/5</strong> for
-                  Claude and Hybrid on deep financial reasoning. Gemini&rsquo;s native
-                  multimodal vision is blazing fast, but Opus&rsquo;s reasoning
-                  catches nuances in tax-lot implications and cross-statement
-                  reconciliation that Flash currently misses. The hybrid approach
-                  captures both strengths.
+                  Flash is not replacing Opus on deep financial reasoning. It handles
+                  multimodal extraction and normalization, then passes structured context
+                  to Opus for tax-lot analysis, reconciliation, and the client-facing answer.
                 </p>
               </div>
             </div>
@@ -633,10 +632,10 @@ export default function MultimodalScenario() {
 
             <div className="mt-6 pt-5 border-t border-zinc-100 flex flex-wrap items-center gap-6 text-xs text-zinc-500">
               <span>
-                <strong className="text-zinc-700">Flash sees.</strong> Gemini Pro thinks. Best of both worlds — on Google Cloud.
+                <strong className="text-zinc-700">Flash sees. Opus thinks.</strong> Use each model for the work it does best.
               </span>
               <span className="font-mono tabular-nums">
-                Combined: {fmtUSD(costs.hybrid)} / interaction
+                Combined: {fmtUSD(costs.opusFlash)} / interaction
               </span>
             </div>
           </motion.div>

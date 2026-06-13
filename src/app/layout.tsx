@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "WealthAI Tokenomics Showcase — Tiered Model Economics",
-  description: "CEO-facing demo: proving the economics of a tiered model architecture (Claude Opus + Gemini Flash) across Build → Run → Extend.",
+  title: "AI Tokenomics — Opus + Gemini Routing Economics",
+  description: "Interactive scenarios comparing Opus + Gemini routing, Opus + Sonnet, and single-model deployments across Build, Run, and Extend.",
 };
 
 export default function RootLayout({

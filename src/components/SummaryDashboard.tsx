@@ -83,26 +83,26 @@ export default function SummaryDashboard() {
   const chartData = [
     {
       name: "Build (one-time)",
-      "All-Frontier": buildAllFrontier,
-      Tiered: buildTiered,
+      "Opus + Sonnet": buildAllFrontier,
+      "Opus + Gemini": buildTiered,
     },
     {
       name: "Run (annual)",
-      "All-Frontier": runAllFrontier,
-      Tiered: runTiered,
+      "Opus + Sonnet": runAllFrontier,
+      "Opus + Gemini": runTiered,
     },
     {
       name: "Extend (annual)",
-      "All-Frontier": extendAllFrontier,
-      Tiered: extendTiered,
+      "Opus + Sonnet": extendAllFrontier,
+      "Opus + Gemini": extendTiered,
     },
   ];
 
   const totalChartData = [
     {
       name: "Total Annual",
-      "All-Frontier": totalAnnualAllFrontier,
-      Tiered: totalAnnualTiered,
+      "Opus + Sonnet": totalAnnualAllFrontier,
+      "Opus + Gemini": totalAnnualTiered,
     },
   ];
 
@@ -111,10 +111,10 @@ export default function SummaryDashboard() {
       "WealthAI Tokenomics Summary",
       "===========================",
       "",
-      `Build (SDLC): All-Frontier ${fmtUSD(buildAllFrontier)} vs Tiered ${fmtUSD(buildTiered)} → Savings ${fmtUSD(buildSavings)} (one-time)`,
-      `Run - In-App: All-Frontier ${fmtUSD(s2Result?.allFrontier ?? 0)}/yr vs Tiered ${fmtUSD(s2Result?.tiered ?? 0)}/yr → Savings ${fmtUSD(s2Result?.savings ?? 0)}/yr`,
-      `Run - Multimodal: All-Frontier ${fmtUSD(s3Result?.allFrontier ?? 0)}/yr vs Tiered ${fmtUSD(s3Result?.tiered ?? 0)}/yr → Savings ${fmtUSD(s3Result?.savings ?? 0)}/yr`,
-      `Extend - Agent: All-Frontier ${fmtUSD(s4Result?.allFrontier ?? 0)}/yr vs Tiered ${fmtUSD(s4Result?.tiered ?? 0)}/yr → Savings ${fmtUSD(s4Result?.savings ?? 0)}/yr`,
+      `Build (SDLC): Opus + Sonnet ${fmtUSD(buildAllFrontier)} vs Opus + Gemini ${fmtUSD(buildTiered)} → Savings ${fmtUSD(buildSavings)} (one-time)`,
+      `Run - In-App: Opus + Sonnet ${fmtUSD(s2Result?.allFrontier ?? 0)}/yr vs Opus + Gemini ${fmtUSD(s2Result?.tiered ?? 0)}/yr → Savings ${fmtUSD(s2Result?.savings ?? 0)}/yr`,
+      `Run - Multimodal: Opus + Sonnet ${fmtUSD(s3Result?.allFrontier ?? 0)}/yr vs Opus + Gemini ${fmtUSD(s3Result?.tiered ?? 0)}/yr → Savings ${fmtUSD(s3Result?.savings ?? 0)}/yr`,
+      `Extend - Agent: Opus + Sonnet ${fmtUSD(s4Result?.allFrontier ?? 0)}/yr vs Opus + Gemini ${fmtUSD(s4Result?.tiered ?? 0)}/yr → Savings ${fmtUSD(s4Result?.savings ?? 0)}/yr`,
       "",
       `Total Annual Savings: ${fmtUSD(totalAnnualSavings)}`,
     ];
@@ -211,7 +211,7 @@ export default function SummaryDashboard() {
           {totalAnnualAllFrontier > 0 && (
             <p className="text-sm text-[#5F6368] mt-2">
               {pctSavings(totalAnnualAllFrontier, totalAnnualTiered).toFixed(0)}%
-              reduction vs all-frontier approach
+              reduction vs Opus + Sonnet
             </p>
           )}
         </div>
@@ -223,7 +223,12 @@ export default function SummaryDashboard() {
             <h3 className="text-sm font-bold text-[#202124] mb-6 uppercase tracking-wider">
               Cost by Lifecycle Phase
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer
+              width="100%"
+              height={300}
+              minWidth={0}
+              initialDimension={{ width: 800, height: 300 }}
+            >
               <BarChart data={chartData} barGap={4}>
                 <XAxis
                   dataKey="name"
@@ -250,12 +255,12 @@ export default function SummaryDashboard() {
                   iconType="circle"
                   iconSize={8}
                 />
-                <Bar dataKey="All-Frontier" radius={[4, 4, 0, 0]}>
+                <Bar dataKey="Opus + Sonnet" radius={[4, 4, 0, 0]}>
                   {chartData.map((_, i) => (
                     <Cell key={i} fill="#E37400" />
                   ))}
                 </Bar>
-                <Bar dataKey="Tiered" radius={[4, 4, 0, 0]}>
+                <Bar dataKey="Opus + Gemini" radius={[4, 4, 0, 0]}>
                   {chartData.map((_, i) => (
                     <Cell key={i} fill="#188038" />
                   ))}
@@ -269,7 +274,12 @@ export default function SummaryDashboard() {
             <h3 className="text-sm font-bold text-[#202124] mb-6 uppercase tracking-wider">
               Total Annual Comparison
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer
+              width="100%"
+              height={300}
+              minWidth={0}
+              initialDimension={{ width: 800, height: 300 }}
+            >
               <BarChart data={totalChartData} barSize={80} barGap={16}>
                 <XAxis
                   dataKey="name"
@@ -291,8 +301,8 @@ export default function SummaryDashboard() {
                     fontSize: 12,
                   }}
                 />
-                <Bar dataKey="All-Frontier" radius={[4, 4, 0, 0]} fill="#E37400" />
-                <Bar dataKey="Tiered" radius={[4, 4, 0, 0]} fill="#188038" />
+                <Bar dataKey="Opus + Sonnet" radius={[4, 4, 0, 0]} fill="#E37400" />
+                <Bar dataKey="Opus + Gemini" radius={[4, 4, 0, 0]} fill="#188038" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -323,13 +333,13 @@ export default function SummaryDashboard() {
                     </div>
                     <div className="flex justify-between text-xs text-[#5F6368]">
                       <span>
-                        Frontier:{" "}
+                        Opus + Sonnet:{" "}
                         <span className="text-[#E37400] font-semibold">
                           {fmtUSD(r.allFrontier)}
                         </span>
                       </span>
                       <span>
-                        Tiered:{" "}
+                        Opus + Gemini:{" "}
                         <span className="text-[#188038] font-semibold">
                           {fmtUSD(r.tiered)}
                         </span>

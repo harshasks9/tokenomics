@@ -23,7 +23,7 @@ export default function WealthAIPage() {
         Home
       </Link>
       <StickyNav />
-      <main className="lg:ml-56">
+      <main className="overflow-x-hidden lg:ml-56">
         <Hero />
         <BuildScenario />
         <InAppScenario />

@@ -48,9 +48,9 @@ export default function ShopSummaryDashboard() {
   const totalAnnualSavings = totalAnnualAll - totalAnnualTiered;
 
   const chartData = [
-    { name: "Build (one-time)", "All-Frontier": buildAllFrontier, Tiered: buildTiered },
-    { name: "Run (annual)",     "All-Frontier": runAllFrontier,   Tiered: runTiered   },
-    { name: "Extend (annual)",  "All-Frontier": extendAllFrontier,Tiered: extendTiered},
+    { name: "Build (one-time)", "Opus + Sonnet": buildAllFrontier, "Opus + Gemini": buildTiered },
+    { name: "Run (annual)", "Opus + Sonnet": runAllFrontier, "Opus + Gemini": runTiered },
+    { name: "Extend (annual)", "Opus + Sonnet": extendAllFrontier, "Opus + Gemini": extendTiered },
   ];
 
   const fmtT = (v: number) => v >= 1_000_000 ? `$${(v / 1_000_000).toFixed(1)}M` : v >= 1_000 ? `$${(v / 1_000).toFixed(0)}K` : `$${v.toFixed(0)}`;
@@ -60,10 +60,10 @@ export default function ShopSummaryDashboard() {
       "ShopOS Tokenomics Summary",
       "=========================",
       "",
-      `S1 Build: All-Opus ${fmtT(buildAllFrontier)} vs Tiered ${fmtT(buildTiered)} → ${fmtT(buildAllFrontier - buildTiered)} saved (one-time)`,
-      `S2 Assistant: All-Opus ${fmtT(s2?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s2?.tiered ?? 0)}/yr → ${fmtT(s2?.savings ?? 0)}/yr`,
-      `S3 Visual Search: All-Opus ${fmtT(s3?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s3?.tiered ?? 0)}/yr → ${fmtT(s3?.savings ?? 0)}/yr`,
-      `S4 Agent: All-Opus ${fmtT(s4?.allFrontier ?? 0)}/yr vs Tiered ${fmtT(s4?.tiered ?? 0)}/yr → ${fmtT(s4?.savings ?? 0)}/yr`,
+      `S1 Build: Opus + Sonnet ${fmtT(buildAllFrontier)} vs Opus + Gemini ${fmtT(buildTiered)} → ${fmtT(buildAllFrontier - buildTiered)} saved (one-time)`,
+      `S2 Assistant: Opus + Sonnet ${fmtT(s2?.allFrontier ?? 0)}/yr vs Opus + Gemini ${fmtT(s2?.tiered ?? 0)}/yr → ${fmtT(s2?.savings ?? 0)}/yr`,
+      `S3 Visual Search: Opus + Sonnet ${fmtT(s3?.allFrontier ?? 0)}/yr vs Opus + Gemini ${fmtT(s3?.tiered ?? 0)}/yr → ${fmtT(s3?.savings ?? 0)}/yr`,
+      `S4 Agent: Opus + Sonnet ${fmtT(s4?.allFrontier ?? 0)}/yr vs Opus + Gemini ${fmtT(s4?.tiered ?? 0)}/yr → ${fmtT(s4?.savings ?? 0)}/yr`,
       "",
       `Total Annual Savings: ${fmtT(totalAnnualSavings)}`,
     ];
@@ -130,7 +130,7 @@ export default function ShopSummaryDashboard() {
           </div>
           {totalAnnualAll > 0 && (
             <p className="text-sm text-[#5F6368] mt-2">
-              {pctSavings(totalAnnualAll, totalAnnualTiered).toFixed(0)}% reduction vs all-Opus approach
+              {pctSavings(totalAnnualAll, totalAnnualTiered).toFixed(0)}% reduction vs Opus + Sonnet
             </p>
           )}
         </div>
@@ -139,14 +139,19 @@ export default function ShopSummaryDashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           <div className="card bg-white">
             <h3 className="text-sm font-bold text-[#202124] mb-6 uppercase tracking-wider">Cost by Lifecycle Phase</h3>
-            <ResponsiveContainer width="100%" height={280}>
+            <ResponsiveContainer
+              width="100%"
+              height={280}
+              minWidth={0}
+              initialDimension={{ width: 800, height: 280 }}
+            >
               <BarChart data={chartData} barGap={4}>
                 <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#5F6368" }} axisLine={{ stroke: "#E8EAED" }} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: "#5F6368" }} axisLine={false} tickLine={false} tickFormatter={fmtT} />
                 <Tooltip formatter={(v: unknown) => fmtT(Number(v))} contentStyle={{ borderRadius: 8, border: "1px solid #E8EAED", fontSize: 12 }} />
                 <Legend wrapperStyle={{ fontSize: 12 }} iconType="circle" iconSize={8} />
-                <Bar dataKey="All-Frontier" radius={[4, 4, 0, 0]} fill="#E37400" />
-                <Bar dataKey="Tiered" radius={[4, 4, 0, 0]} fill="#188038" />
+                <Bar dataKey="Opus + Sonnet" radius={[4, 4, 0, 0]} fill="#E37400" />
+                <Bar dataKey="Opus + Gemini" radius={[4, 4, 0, 0]} fill="#188038" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -168,7 +173,7 @@ export default function ShopSummaryDashboard() {
                       <>
                         <div className="text-xl font-bold text-[#188038] tabular-nums mb-0.5">{fmtT(r.savings)}</div>
                         <div className="text-[10px] text-[#5F6368]">saved ({period})</div>
-                        <div className="text-[10px] text-[#188038] font-semibold">{pctSavings(r.allFrontier, r.tiered).toFixed(0)}% vs all-Opus</div>
+                        <div className="text-[10px] text-[#188038] font-semibold">{pctSavings(r.allFrontier, r.tiered).toFixed(0)}% vs Opus + Sonnet</div>
                       </>
                     ) : (
                       <div className="text-sm text-[#9AA0A6]">Scroll to activate</div>

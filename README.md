@@ -1,6 +1,8 @@
 # AI Tokenomics — Multi-Industry Demo
 
-iOS springboard launcher for industry-specific tokenomics demos. Proves the economics of a **tiered model architecture** across a 5-model ladder (Gemini 3.1 Flash-Lite → Gemini 3.5 Flash → Gemini 3.1 Pro → Claude Sonnet 4.6 → Claude Opus 4.8) versus single-model baselines, across an app's lifecycle: **Build → Run → Extend**.
+Interactive scenarios built around one thesis: **Opus is superior for the hardest work, but you do not need Opus for everything.** Keep Opus on architecture, nuanced judgment, planning, and review. Route bounded execution to Gemini 3.5 Flash or Gemini 3.1 Flash-Lite.
+
+Each scenario compares the recommended **Opus + Gemini** route with an **Opus + Sonnet** baseline and relevant single-model deployments such as All Opus, All Sonnet, or All Flash.
 
 ## Routes
 
@@ -71,21 +73,21 @@ All dollar figures across all industries are computed via `callCost(model, inTok
 
 ## ShopOS Headline Savings (at default slider values)
 
-| Scenario | All-Opus | Tiered | Savings |
+| Scenario | Opus + Sonnet | Opus + Gemini | Savings |
 |----------|----------|--------|---------|
-| S1 Build (6mo, 12 devs) | ~$11.2K | ~$6.9K | ~38% |
-| S2 Assistant (annual, 15M/mo) | ~$4.5M | ~$970K | ~78% |
-| S3 Visual Search (annual, 8M/yr) | ~$560K | ~$312K | ~44% |
-| S4 Merch Agent (annual, 5K SKUs/night) | ~$1.49M | ~$688K | ~54% |
+| S1 Build (6mo, 12 devs) | ~$8.0K | ~$4.7K | ~41% |
+| S2 Assistant (annual, 15M/mo) | ~$2.92M | ~$1.09M | ~62% |
+| S3 Visual Search (annual, 8M/yr) | ~$560K | ~$416K | ~26% |
+| S4 Merch Agent (annual, 5K SKUs/night) | ~$1.11M | ~$747K | ~33% |
 
 ## WealthAI Headline Savings
 
-| Scenario | All-Frontier | Tiered | Savings |
+| Scenario | Opus + Sonnet | Opus + Gemini | Savings |
 |----------|-------------|--------|---------|
-| S1 Build (6mo) | $4,388 | $2,633 | ~40% |
-| S2 In-App (annual) | $1.2M | $359K | ~70% |
-| S3 Multimodal (per interaction) | $0.085 | $0.063 | ~26% |
-| S4 Agent (annual @50K/night) | $15.9M | $7.2M | ~55% |
+| S1 Build (6mo) | ~$3.3K | ~$2.6K | ~21% |
+| S2 In-App (annual) | ~$778K | ~$294K | ~62% |
+| S3 Multimodal (annual, 2M/yr) | ~$170K | ~$127K | ~25% |
+| S4 Agent (annual @50K/night) | ~$10.7M | ~$7.2M | ~33% |
 
 ## Tech Stack
 

@@ -96,22 +96,22 @@ export default function ShopInAppScenario() {
   const { updateResult } = useTally();
   const [selectedQ, setSelectedQ] = useState<string | null>(null);
   const [volume, setVolume] = useState(SHOP_S2.defaults.queriesPerMonth);
-  const [baseline, setBaseline] = useState<ShopS2Baseline>("opus");
+  const [baseline, setBaseline] = useState<ShopS2Baseline>("opusSonnet");
 
   const currentQ = useMemo(() => SHOP_S2_QA.find((q) => q.id === selectedQ) ?? null, [selectedQ]);
 
   const costs = useMemo(() => shopS2Costs(volume), [volume]);
 
-  const baselineCost = baseline === "opus" ? costs.allOpus : baseline === "sonnet" ? costs.allSonnet : costs.allGeminiPro;
+  const baselineCost = baseline === "opus" ? costs.allOpus : baseline === "sonnet" ? costs.allSonnet : costs.opusSonnet;
   const savingsPct   = pctSavings(baselineCost, costs.tiered);
   const savingsAnnual = (baselineCost - costs.tiered) * 12;
 
   useEffect(() => {
     updateResult("s2", {
       label: "In-App Shopping Assistant",
-      allFrontier: costs.allOpus * 12,
+      allFrontier: costs.opusSonnet * 12,
       tiered: costs.tiered * 12,
-      savings: (costs.allOpus - costs.tiered) * 12,
+      savings: (costs.opusSonnet - costs.tiered) * 12,
       period: "annual",
     });
   }, [costs, updateResult]);
@@ -121,14 +121,14 @@ export default function ShopInAppScenario() {
   const chartData = [
     { name: "Flash-Lite", cost: costs.allFlashLite, color: TEAL     },
     { name: "Flash",      cost: costs.allFlash,     color: BLUE     },
-    { name: "Gemini Pro", cost: costs.allGeminiPro, color: GEM_GREEN},
     { name: "Sonnet",     cost: costs.allSonnet,    color: PURPLE   },
     { name: "Opus",       cost: costs.allOpus,      color: AMBER    },
-    { name: "Tiered",     cost: costs.tiered,       color: GREEN    },
+    { name: "Opus + Sonnet", cost: costs.opusSonnet, color: PURPLE },
+    { name: "Opus + Gemini", cost: costs.tiered, color: GREEN },
   ].map((d) => ({
     ...d,
-    highlighted: d.name === "Tiered",
-    isBaseline: (baseline === "opus" && d.name === "Opus") || (baseline === "sonnet" && d.name === "Sonnet") || (baseline === "geminiPro" && d.name === "Gemini Pro"),
+    highlighted: d.name === "Opus + Gemini",
+    isBaseline: (baseline === "opus" && d.name === "Opus") || (baseline === "sonnet" && d.name === "Sonnet") || (baseline === "opusSonnet" && d.name === "Opus + Sonnet"),
   }));
 
   return (
@@ -141,14 +141,14 @@ export default function ShopInAppScenario() {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-4">In-App Shopping Assistant</h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            The full model ladder — Flash-Lite to Opus — on real retail queries. Routine and FAQ categories reach parity
-            from Flash-Lite up; complex queries (gifting, styling) are the basket-size moments.
+            Compare single-model deployments with two tiered stacks. Routine and FAQ categories reach parity
+            from Flash-Lite up; complex gifting and styling questions still route to Opus.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid min-w-0 lg:grid-cols-2 gap-10">
           {/* LEFT: Q&A panel */}
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="min-w-0">
             {/* Question list */}
             <div className="bg-gray-900 rounded-t-2xl px-6 py-3 flex items-center gap-2">
               <ShoppingBag size={16} className="text-emerald-400" />
@@ -186,7 +186,7 @@ export default function ShopInAppScenario() {
                     </div>
 
                     {/* 2×2 model grid */}
-                    <div className="grid grid-cols-2 gap-2.5">
+                    <div className="grid min-w-0 grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {(["flashLite", "flash", "sonnet", "opus"] as ModelKey4[]).map((mk) => (
                         <ModelCard key={mk} label={MODEL_LABELS[mk]} color={MODEL_COLORS[mk]}
                           answer={currentQ.answers[mk]} score={currentQ.scores[mk]}
@@ -198,9 +198,9 @@ export default function ShopInAppScenario() {
                     {currentQ.category === "complex" && (
                       <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} transition={{ delay: 0.1 }}
                         className="mt-3 rounded-xl border border-emerald-200 bg-emerald-50/70 px-4 py-3">
-                        <p className="text-xs font-semibold text-emerald-800 mb-1">Gemini Pro earns its cost here (AA Score 92)</p>
+                        <p className="text-xs font-semibold text-emerald-800 mb-1">Opus earns its cost here</p>
                         <p className="text-xs text-emerald-700">
-                          {currentQ.sellerNote ?? "Complex queries grow basket size. Routing the complex 12% to Gemini Pro (AA #1) is a margin investment at 60% lower cost than Claude Opus."}
+                          {currentQ.sellerNote ?? "Complex queries grow basket size. Route the nuanced 12% to Opus and optimize the routine majority."}
                         </p>
                       </motion.div>
                     )}
@@ -226,13 +226,13 @@ export default function ShopInAppScenario() {
 
           {/* RIGHT: Cost analysis */}
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6">
+            className="min-w-0 space-y-6">
             {/* Volume slider */}
             <div className="bg-white rounded-2xl border border-gray-200 p-5">
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Monthly Query Volume</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">Adjust for your retailer's traffic</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Adjust for your retailer&apos;s traffic</p>
                 </div>
                 <span className="text-2xl font-bold text-gray-900 tabular-nums">{fmtVolume(volume)}<span className="text-sm text-gray-400 ml-1 font-normal">queries/mo</span></span>
               </div>
@@ -248,9 +248,9 @@ export default function ShopInAppScenario() {
               <p className="text-xs font-medium text-gray-500 mb-3 uppercase tracking-wider">Compare tiered routing vs.</p>
               <div className="flex gap-2 flex-wrap">
                 {([
-                  { key: "opus"      as const, label: "All-Opus",        color: AMBER    },
-                  { key: "sonnet"    as const, label: "All-Sonnet",      color: PURPLE   },
-                  { key: "geminiPro" as const, label: "All-Gemini 3.1 Pro", color: GEM_GREEN },
+                  { key: "opusSonnet" as const, label: "Opus + Sonnet", color: PURPLE },
+                  { key: "opus" as const, label: "All Opus", color: AMBER },
+                  { key: "sonnet" as const, label: "All Sonnet", color: PURPLE },
                 ] as const).map((b) => (
                   <button key={b.key} onClick={() => setBaseline(b.key)}
                     className="rounded-lg px-3 py-1.5 text-xs font-semibold border transition-all"
@@ -267,8 +267,13 @@ export default function ShopInAppScenario() {
             <div className="bg-white rounded-2xl border border-gray-200 p-5">
               <p className="text-xs font-medium text-gray-700 mb-1 font-semibold">Monthly Cost — Full Ladder</p>
               <p className="text-[10px] text-gray-400 mb-4">Tiered (green) vs each single-model option · selected baseline in amber</p>
-              <div className="h-56">
-                <ResponsiveContainer width="100%" height="100%">
+              <div className="h-56 min-w-0 overflow-hidden">
+                <ResponsiveContainer
+                  width="100%"
+                  height="100%"
+                  minWidth={0}
+                  initialDimension={{ width: 600, height: 224 }}
+                >
                   <BarChart data={chartData} margin={{ top: 0, right: 8, bottom: 0, left: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f3f4f6" />
                     <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
@@ -285,39 +290,39 @@ export default function ShopInAppScenario() {
                 </ResponsiveContainer>
               </div>
               <div className="flex items-center gap-4 mt-2 text-[10px] text-gray-400">
-                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: GREEN }} /> Tiered (selected)</span>
+                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: GREEN }} /> Opus + Gemini</span>
                 <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm inline-block" style={{ backgroundColor: AMBER }} /> Baseline</span>
               </div>
             </div>
 
             {/* Savings callout */}
             <div className="rounded-2xl p-6" style={{ background: `linear-gradient(135deg, ${GREEN} 0%, #14662d 100%)` }}>
-              <p className="text-xs font-medium text-emerald-200 uppercase tracking-wider mb-2">Annual Savings vs {baseline === "opus" ? "All-Opus" : baseline === "sonnet" ? "All-Sonnet" : "Gemini 3.1 Pro"}</p>
+              <p className="text-xs font-medium text-emerald-200 uppercase tracking-wider mb-2">Annual Savings vs {baseline === "opus" ? "All Opus" : baseline === "sonnet" ? "All Sonnet" : "Opus + Sonnet"}</p>
               <p className="text-4xl font-bold text-white tabular-nums mb-1">{fmtUSD(savingsAnnual)}<span className="text-xl text-emerald-200">/yr</span></p>
               <div className="flex items-center gap-3 mt-3">
                 <span className="inline-flex px-3 py-1 rounded-full bg-white/15 text-white text-sm font-semibold tabular-nums">{savingsPct.toFixed(0)}% reduction</span>
                 <span className="text-sm text-emerald-200/80">{fmtVolume(volume)} queries/mo</span>
               </div>
               <div className="mt-4 pt-4 border-t border-white/15 text-xs text-emerald-100/80">
-                Tiered: <strong className="text-white">{fmtUSD(costs.tiered)}/mo</strong> · {baseline === "opus" ? "All-Opus" : baseline === "sonnet" ? "All-Sonnet" : "Gemini Pro"}: <strong className="text-white">{fmtUSD(baselineCost)}/mo</strong>
+                Opus + Gemini: <strong className="text-white">{fmtUSD(costs.tiered)}/mo</strong> · {baseline === "opus" ? "All Opus" : baseline === "sonnet" ? "All Sonnet" : "Opus + Sonnet"}: <strong className="text-white">{fmtUSD(baselineCost)}/mo</strong>
               </div>
             </div>
 
             {/* Routing breakdown */}
             <div className="bg-white rounded-xl border border-gray-200 p-4 text-xs text-gray-600">
-              <p className="font-semibold text-gray-700 mb-2">Gemini-only tiered routing mix</p>
+              <p className="font-semibold text-gray-700 mb-2">Opus + Gemini routing mix</p>
               <div className="flex gap-1 h-2.5 rounded-full overflow-hidden mb-2">
                 <div style={{ width: `${SHOP_S2.tieredMix.flashLitePct * 100}%`, backgroundColor: TEAL }} title="Flash-Lite" />
                 <div style={{ width: `${SHOP_S2.tieredMix.flashPct * 100}%`, backgroundColor: BLUE }} title="Flash" />
-                <div style={{ width: `${SHOP_S2.tieredMix.geminiProPct * 100}%`, backgroundColor: GEM_GREEN }} title="Gemini Pro" />
+                <div style={{ width: `${SHOP_S2.tieredMix.opusPct * 100}%`, backgroundColor: AMBER }} title="Opus" />
               </div>
               <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-gray-400">
                 <span>Flash-Lite {SHOP_S2.tieredMix.flashLitePct * 100}% — FAQ/order-status</span>
-                <span>Flash {SHOP_S2.tieredMix.flashPct * 100}% — catalog lookups</span>
-                <span>Gemini Pro {SHOP_S2.tieredMix.geminiProPct * 100}% — gifting/styling (AA Score 92)</span>
+                <span>Flash {(SHOP_S2.tieredMix.flashPct * 100).toFixed(0)}% — catalog lookups</span>
+                <span>Opus {SHOP_S2.tieredMix.opusPct * 100}% — gifting/styling</span>
               </div>
               <p className="mt-3 text-[11px] italic text-gray-500">
-                "60/28/12 Gemini-only tiered split — no competitor models. Gemini Pro (AA Score 92) handles the 12% that grows the basket."
+                The complex 12% stays on Opus. Flash and Flash-Lite replace Sonnet on the routine 88%.
               </p>
             </div>
           </motion.div>

@@ -16,7 +16,7 @@ const PURPLE = "#9B59D1";
 const TIER_META = {
   flashLite: { label: "Flash-Lite", color: "#00ACC1", bg: "#E0F7FA", border: "#00ACC1" },
   flash:     { label: "Flash",      color: BLUE,      bg: "#EFF6FF", border: BLUE      },
-  geminiPro: { label: "Gemini Pro", color: GREEN,     bg: "#F0FDF4", border: GREEN     },
+  sonnet:    { label: "Claude Sonnet", color: PURPLE, bg: "#FAF5FF", border: PURPLE   },
   opus:      { label: "Claude Opus",color: AMBER,     bg: "#FEF3E0", border: AMBER     },
 };
 
@@ -45,7 +45,11 @@ function SliderRow({ icon: Icon, label, value, min, max, step, onChange, suffix 
 
 function TaskCard({ task, baseline, index }: { task: ShopS1Task; baseline: ShopS1Baseline; index: number }) {
   const [hovered, setHovered] = useState(false);
-  const effectiveTier = baseline === "allClaude" ? "opus" : baseline === "allGeminiPro" ? "geminiPro" : task.tier;
+  const effectiveTier = baseline === "allOpus"
+    ? "opus"
+    : baseline === "opusSonnet" && task.tier !== "opus"
+      ? "sonnet"
+      : task.tier;
   const meta = TIER_META[effectiveTier];
 
   return (
@@ -99,33 +103,33 @@ export default function ShopBuildScenario() {
 
   const [devs, setDevs] = useState(SHOP_S1.defaults.devs);
   const [sprints, setSprints] = useState(SHOP_S1.defaults.sprints);
-  const [baseline, setBaseline] = useState<ShopS1Baseline>("geminiTiered");
+  const [baseline, setBaseline] = useState<ShopS1Baseline>("opusGemini");
 
   const costs = useMemo(() => shopS1Costs(devs, sprints, baseline), [devs, sprints, baseline]);
 
   useEffect(() => {
     updateResult("s1", {
       label: "Build Phase (SDLC)",
-      allFrontier: costs.allClaudeTotal,
-      tiered: costs.geminiTieredTotal,
-      savings: costs.allClaudeTotal - costs.geminiTieredTotal,
+      allFrontier: costs.opusSonnetTotal,
+      tiered: costs.opusGeminiTotal,
+      savings: costs.opusSonnetTotal - costs.opusGeminiTotal,
       period: "one-time",
     });
   }, [costs, updateResult]);
 
   const barData = [
-    { name: "All Claude",     cost: costs.allClaudeTotal,    color: AMBER },
-    { name: "All Gemini Pro", cost: costs.allGeminiProTotal, color: BLUE  },
-    { name: "Gemini Tiered",  cost: costs.geminiTieredTotal, color: GREEN },
+    { name: "All Opus",       cost: costs.allOpusTotal,      color: PURPLE },
+    { name: "Opus + Sonnet",  cost: costs.opusSonnetTotal,   color: AMBER  },
+    { name: "Opus + Gemini",  cost: costs.opusGeminiTotal,   color: GREEN  },
   ];
 
   const routineTasks = SHOP_S1_TASKS.filter((t) => t.tier === "flashLite");
   const midTasks     = SHOP_S1_TASKS.filter((t) => t.tier === "flash");
-  const complexTasks = SHOP_S1_TASKS.filter((t) => t.tier === "geminiPro");
+  const complexTasks = SHOP_S1_TASKS.filter((t) => t.tier === "opus");
 
   const displayedCost = costs.chosenTotal;
-  const baselineColor = baseline === "allClaude" ? AMBER : baseline === "allGeminiPro" ? BLUE : GREEN;
-  const baselineLabel = baseline === "allClaude" ? "All Claude (competitor)" : baseline === "allGeminiPro" ? "All Gemini Pro" : "Gemini Tiered";
+  const baselineColor = baseline === "allOpus" ? PURPLE : baseline === "opusSonnet" ? AMBER : GREEN;
+  const baselineLabel = baseline === "allOpus" ? "All Opus" : baseline === "opusSonnet" ? "Opus + Sonnet" : "Opus + Gemini";
 
   return (
     <section id="shop-build" ref={sectionRef} className="relative w-full bg-white py-24">
@@ -141,8 +145,8 @@ export default function ShopBuildScenario() {
             Three-tier routing across a real e-commerce codebase.
           </p>
           <p className="mt-2 max-w-2xl text-sm text-slate-500">
-            55% of tasks are routine (Flash-Lite) · 30% are mid-complexity (Flash) · 15% are hard (Gemini Pro, AA Score 92).
-            The tiered win: Gemini Pro reasoning on the complex 15%, at 60% lower cost than Claude Opus.
+            55% of tasks are routine, 30% are mid-complexity, and 15% are hard.
+            Opus stays on the hard 15%; Flash models replace Sonnet on the bounded 85%.
           </p>
         </motion.div>
 
@@ -154,9 +158,9 @@ export default function ShopBuildScenario() {
             <div>
               <p className="mb-2 text-xs font-medium uppercase tracking-wider text-slate-400">Comparison Baseline</p>
               <div className="flex gap-2 flex-wrap">
-                <BaselineButton active={baseline === "geminiTiered"}  onClick={() => setBaseline("geminiTiered")}  label="Gemini Tiered (Recommended)" color={GREEN} />
-                <BaselineButton active={baseline === "allGeminiPro"} onClick={() => setBaseline("allGeminiPro")} label="All Gemini Pro"               color={BLUE}  />
-                <BaselineButton active={baseline === "allClaude"}    onClick={() => setBaseline("allClaude")}    label="All Claude (competitor)"      color={AMBER} />
+                <BaselineButton active={baseline === "opusGemini"} onClick={() => setBaseline("opusGemini")} label="Opus + Gemini (Recommended)" color={GREEN} />
+                <BaselineButton active={baseline === "opusSonnet"} onClick={() => setBaseline("opusSonnet")} label="Opus + Sonnet" color={AMBER} />
+                <BaselineButton active={baseline === "allOpus"} onClick={() => setBaseline("allOpus")} label="All Opus" color={PURPLE} />
               </div>
             </div>
 
@@ -181,9 +185,9 @@ export default function ShopBuildScenario() {
             {/* Per-sprint grid */}
             <div className="grid grid-cols-3 gap-3">
               {[
-                { label: "All Claude / Sprint",     val: costs.allClaudePerSprint,    color: AMBER },
-                { label: "All Gemini Pro / Sprint", val: costs.allGeminiProPerSprint, color: BLUE  },
-                { label: "Gemini Tiered / Sprint",  val: costs.geminiTieredPerSprint, color: GREEN },
+                { label: "All Opus / Sprint",      val: costs.allOpusPerSprint,      color: PURPLE },
+                { label: "Opus + Sonnet / Sprint", val: costs.opusSonnetPerSprint,   color: AMBER  },
+                { label: "Opus + Gemini / Sprint", val: costs.opusGeminiPerSprint,   color: GREEN  },
               ].map((r) => (
                 <div key={r.label} className="rounded-lg border border-slate-200 bg-white p-3">
                   <p className="text-[9px] font-medium uppercase tracking-wider text-slate-400 mb-1">{r.label}</p>
@@ -194,9 +198,9 @@ export default function ShopBuildScenario() {
 
             {/* Honest note */}
             <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-4 text-xs text-emerald-800 leading-relaxed">
-              <strong>Gemini advantage:</strong> Gemini Tiered ({fmtUSD(costs.geminiTieredTotal, 2)}) routes 55% of tasks to Flash-Lite, 30% to Flash,
-              and reserves Gemini Pro (AA Score 92) for the hard 15% — search relevance, fraud logic, agent architecture.
-              All-Claude competitor baseline costs {fmtUSD(costs.allClaudeTotal, 2)}, a {pctSavings(costs.allClaudeTotal, costs.geminiTieredTotal).toFixed(0)}% premium for lower quality on complex tasks.
+              <strong>Controlled comparison:</strong> both mixed routes reserve Opus for search relevance,
+              fraud logic, and agent architecture. Opus + Gemini costs {fmtUSD(costs.opusGeminiTotal, 2)}
+              {" "}versus {fmtUSD(costs.opusSonnetTotal, 2)} for Opus + Sonnet.
             </div>
           </motion.div>
 
@@ -216,7 +220,7 @@ export default function ShopBuildScenario() {
               </div>
               <div className="mt-2 flex gap-4 text-[10px] text-slate-500">
                 {[
-                  { label: `${complexTasks.length} Gemini Pro`, color: GREEN },
+                  { label: `${complexTasks.length} Opus`, color: AMBER },
                   { label: `${midTasks.length} Flash`,          color: BLUE  },
                   { label: `${routineTasks.length} Flash-Lite`, color: "#00ACC1" },
                 ].map((r) => (
@@ -231,7 +235,12 @@ export default function ShopBuildScenario() {
             {/* Cost bar chart */}
             <div className="rounded-xl border border-slate-200 bg-white p-5">
               <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">Total Cost Comparison ({sprints} sprints)</p>
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer
+                width="100%"
+                height={200}
+                minWidth={0}
+                initialDimension={{ width: 600, height: 200 }}
+              >
                 <BarChart data={barData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                   <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#64748b" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 10, fill: "#64748b" }} axisLine={false} tickLine={false} tickFormatter={(v) => fmtUSD(v)} width={52} />
@@ -245,10 +254,10 @@ export default function ShopBuildScenario() {
 
             {/* Savings vs all-Claude */}
             <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-5">
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">Gemini Tiered vs All Claude — {sprints} sprints</p>
-              <p className="text-3xl font-bold tabular-nums text-emerald-700">{fmtUSD(costs.allClaudeTotal - costs.geminiTieredTotal, 2)}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-1">Opus + Gemini vs Opus + Sonnet — {sprints} sprints</p>
+              <p className="text-3xl font-bold tabular-nums text-emerald-700">{fmtUSD(costs.opusSonnetTotal - costs.opusGeminiTotal, 2)}</p>
               <p className="text-sm text-emerald-600 mt-1">
-                {pctSavings(costs.allClaudeTotal, costs.geminiTieredTotal).toFixed(0)}% reduction · Gemini Pro (AA #1) on complex tasks, Flash-Lite on routine
+                {pctSavings(costs.opusSonnetTotal, costs.opusGeminiTotal).toFixed(0)}% reduction · same Opus allocation, cheaper execution tier
               </p>
             </div>
           </motion.div>

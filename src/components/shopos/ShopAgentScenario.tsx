@@ -10,25 +10,25 @@ import { fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
 import { SHOP_S4, SHOP_S4_TRACE, shopS4Costs, shopS4Annual, type ShopS4Config, type ShopAgentNode } from "@/lib/industries/shopos";
 import { useTally } from "@/lib/tally-context";
 
-const GEMINI_PRO_COLOR = "#34A853";
 const FLASH_COLOR      = "#1A73E8";
 const FLASH_LITE_COLOR = "#00ACC1";
 const OPUS_COLOR       = "#7B61FF";   // competitor (Claude Opus)
+const SONNET_COLOR     = "#9B59D1";
 const GREEN            = "#188038";
 const AMBER            = "#E37400";
 
 const CONFIG_META: Record<ShopS4Config, { label: string; color: string; desc: string }> = {
-  allClaude:    { label: "All Claude",     color: AMBER,          desc: "Competitor baseline — max cost" },
-  allGeminiPro: { label: "All Gemini Pro", color: GEMINI_PRO_COLOR, desc: "Single-model Gemini Pro (AA #1) — 55% savings vs Claude" },
-  geminiTiered: { label: "Gemini Tiered",  color: GREEN,          desc: "Gemini Pro plan+review, Flash executors — recommended" },
-  geminiEco:    { label: "Gemini Eco",     color: FLASH_COLOR,    desc: "Flash plan+review, Flash-Lite executors — maximum savings" },
+  allOpus:        { label: "All Opus", color: OPUS_COLOR, desc: "Single-model quality ceiling" },
+  opusSonnet:     { label: "Opus + Sonnet", color: SONNET_COLOR, desc: "Conventional two-tier baseline" },
+  opusGemini:     { label: "Opus + Flash", color: GREEN, desc: "Opus plan+review, Flash executors — recommended" },
+  opusGeminiLite: { label: "Opus + Flash-Lite", color: FLASH_LITE_COLOR, desc: "Maximum savings for tightly bounded executors" },
 };
 
 function modelColor(model: string): string {
-  if (model === "geminiPro") return GEMINI_PRO_COLOR;
   if (model === "flash")     return FLASH_COLOR;
   if (model === "flashLite") return FLASH_LITE_COLOR;
-  return OPUS_COLOR; // opus / any Claude model
+  if (model === "sonnet")    return SONNET_COLOR;
+  return OPUS_COLOR;
 }
 function nodeColor(node: ShopAgentNode, cfg: ShopS4Config): string {
   const c = SHOP_S4.configs[cfg];
@@ -109,20 +109,20 @@ function TraceNode({ node, index, cfg, isVisible, selectedId, onSelect }: {
 
 export default function ShopAgentScenario() {
   const { updateResult } = useTally();
-  const [cfg, setCfg] = useState<ShopS4Config>("geminiTiered");
+  const [cfg, setCfg] = useState<ShopS4Config>("opusGemini");
   const [skus, setSkus] = useState(SHOP_S4.defaults.skusPerNight);
   const [selectedNodeId, setSelectedNodeId] = useState<number | null>(null);
 
   const traceRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(traceRef, { once: true, margin: "-80px" });
 
-  const allConfigs: ShopS4Config[] = ["allClaude", "allGeminiPro", "geminiTiered", "geminiEco"];
+  const allConfigs: ShopS4Config[] = ["allOpus", "opusSonnet", "opusGemini", "opusGeminiLite"];
   const costsMap = useMemo(() => Object.fromEntries(allConfigs.map((c) => [c, shopS4Costs(c)])) as Record<ShopS4Config, ReturnType<typeof shopS4Costs>>, []);
   const annualMap = useMemo(() => Object.fromEntries(allConfigs.map((c) => [c, shopS4Annual(skus, c)])) as Record<ShopS4Config, number>, [skus]);
 
   const perRun = costsMap[cfg].total;
   const annualCost = annualMap[cfg];
-  const tieredAnnual = annualMap["geminiTiered"];
+  const tieredAnnual = annualMap["opusGemini"];
 
   const planner  = SHOP_S4_TRACE.filter((n) => n.role === "planner");
   const executors = SHOP_S4_TRACE.filter((n) => n.role === "executor");
@@ -131,9 +131,9 @@ export default function ShopAgentScenario() {
   useEffect(() => {
     updateResult("s4", {
       label: "Merchandising Agent (Annual)",
-      allFrontier: annualMap["allClaude"],
+      allFrontier: annualMap["opusSonnet"],
       tiered: tieredAnnual,
-      savings: annualMap["allClaude"] - tieredAnnual,
+      savings: annualMap["opusSonnet"] - tieredAnnual,
       period: "annual",
     });
   }, [annualMap, tieredAnnual, updateResult]);
@@ -162,7 +162,7 @@ export default function ShopAgentScenario() {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Nightly Merchandising Agent</h2>
           <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
             Runs only on SKUs needing attention — new items, stockouts, price moves.
-            Four configs from all-Claude to Gemini Eco. <strong className="text-gray-700">14 executor steps</strong> per SKU dominate total cost — that's where Flash erases spend while Gemini Pro (AA #1) owns the pricing call.
+            Compare one single-model deployment with three tiered routes. <strong className="text-gray-700">16 executor steps</strong> per SKU dominate total cost — Opus keeps the pricing call while the executor tier changes.
           </p>
         </motion.div>
 
@@ -235,10 +235,10 @@ export default function ShopAgentScenario() {
           {/* Legend */}
           <div className="flex items-center gap-5 mt-5 pt-4 border-t border-gray-100 flex-wrap">
             {[
-              { label: MODELS.geminiPro.name + " (AA #1)", color: GEMINI_PRO_COLOR },
+              { label: MODELS.opus.name, color: OPUS_COLOR },
+              { label: MODELS.sonnet.name, color: SONNET_COLOR },
               { label: MODELS.flash.name,                  color: FLASH_COLOR      },
               { label: MODELS.flashLite.name,              color: FLASH_LITE_COLOR },
-              { label: MODELS.opus.name + " (competitor)", color: OPUS_COLOR       },
             ].map((l) => (
               <div key={l.label} className="flex items-center gap-1.5 text-xs text-gray-500">
                 <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: l.color }} />{l.label}
@@ -255,7 +255,12 @@ export default function ShopAgentScenario() {
             className="rounded-xl border border-gray-200 bg-white p-6">
             <h3 className="text-sm font-semibold text-gray-900 mb-1">Per-Run Cost (per SKU)</h3>
             <p className="text-xs text-gray-400 mb-4">All 4 strategies compared · selected in green</p>
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer
+              width="100%"
+              height={200}
+              minWidth={0}
+              initialDimension={{ width: 600, height: 200 }}
+            >
               <BarChart data={barData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#f0f0f0" />
                 <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
@@ -299,10 +304,10 @@ export default function ShopAgentScenario() {
 
             {/* Savings vs all-Opus */}
             <div className="rounded-lg p-3 text-center" style={{ backgroundColor: "rgba(24,128,56,0.08)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">Gemini Tiered vs All Claude (annual)</p>
-              <p className="text-2xl font-bold tabular-nums" style={{ color: GREEN }}>{fmtUSD(annualMap["allClaude"] - tieredAnnual)}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">Opus + Flash vs Opus + Sonnet (annual)</p>
+              <p className="text-2xl font-bold tabular-nums" style={{ color: GREEN }}>{fmtUSD(annualMap["opusSonnet"] - tieredAnnual)}</p>
               <p className="text-xs font-semibold mt-1" style={{ color: GREEN }}>
-                {pctSavings(annualMap["allClaude"], tieredAnnual).toFixed(0)}% reduction · {skus.toLocaleString()} SKUs × 365 nights
+                {pctSavings(annualMap["opusSonnet"], tieredAnnual).toFixed(0)}% reduction · {skus.toLocaleString()} SKUs × 365 nights
               </p>
             </div>
           </motion.div>
@@ -315,14 +320,14 @@ export default function ShopAgentScenario() {
             <Bot className="h-4 w-4" style={{ color: GREEN }} />
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900 mb-1">Gemini Pro (AA #1) orchestrates. Gemini Flash executes. No competitor models.</p>
+            <p className="text-sm font-semibold text-gray-900 mb-1">Opus orchestrates. Gemini Flash executes.</p>
             <p className="text-sm text-gray-500 leading-relaxed">
               {executors.length} executor steps per SKU — inventory pulls, demand reads, copy generation, feed validation — are pattern-following work.
               Routing them to Flash cuts per-SKU cost from{" "}
-              <span className="font-mono font-semibold tabular-nums" style={{ color: AMBER }}>{fmtUSD(costsMap["allClaude"].total)}</span> (all-Claude) to{" "}
-              <span className="font-mono font-semibold tabular-nums" style={{ color: GREEN }}>{fmtUSD(costsMap["geminiTiered"].total)}</span> (Gemini Tiered).
-              At {skus.toLocaleString()} SKUs/night that's{" "}
-              <span className="font-semibold" style={{ color: GREEN }}>{fmtUSD(annualMap["allClaude"] - tieredAnnual)}/yr saved</span>.
+              <span className="font-mono font-semibold tabular-nums" style={{ color: SONNET_COLOR }}>{fmtUSD(costsMap["opusSonnet"].total)}</span> (Opus + Sonnet) to{" "}
+              <span className="font-mono font-semibold tabular-nums" style={{ color: GREEN }}>{fmtUSD(costsMap["opusGemini"].total)}</span> (Opus + Flash).
+              At {skus.toLocaleString()} SKUs/night that&apos;s{" "}
+              <span className="font-semibold" style={{ color: GREEN }}>{fmtUSD(annualMap["opusSonnet"] - tieredAnnual)}/yr saved</span>.
             </p>
           </div>
         </motion.div>

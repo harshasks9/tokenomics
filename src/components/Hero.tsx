@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Zap, Eye, Bot, ArrowRight, Layers, ExternalLink } from "lucide-react";
+import { Brain, Zap, Eye, Bot, ArrowRight, Layers } from "lucide-react";
 
 const phases = [
   { icon: Brain, label: "Build", sub: "AI-Assisted Dev", color: "#1A73E8" },
@@ -11,10 +11,10 @@ const phases = [
 ];
 
 const MODELS = [
-  { name: "Gemini 3.1 Pro",        role: "Top-ranked — Artificial Analysis Intelligence Index",  price: "$2 / $12 per 1M", color: "#34A853", aaScore: 92, badge: "Complex tasks", vendor: "google", highlight: true },
-  { name: "Gemini 3.5 Flash",      role: "Fast native multimodal",   price: "$1.50 / $9 per 1M",  color: "#1A73E8", aaScore: 81, badge: "Standard tasks",  vendor: "google" },
-  { name: "Gemini 3.1 Flash-Lite", role: "High-volume routing",      price: "$0.25 / $1.50 per 1M", color: "#00ACC1", aaScore: 68, badge: "Simple lookups", vendor: "google" },
-  { name: "Claude Opus 4.8",       role: "Competitor frontier",      price: "$5 / $25 per 1M",   color: "#94A3B8", aaScore: 89, badge: "Competitor baseline", vendor: "competitor" },
+  { name: "Claude Opus 4.8",       role: "Architecture, judgment, final review", price: "$5 / $25 per 1M", color: "#A78BFA", badge: "Keep for the hard work", highlight: true },
+  { name: "Gemini 3.5 Flash",      role: "Fast execution and multimodal work", price: "$1.50 / $9 per 1M", color: "#1A73E8", badge: "Replace Sonnet here" },
+  { name: "Gemini 3.1 Flash-Lite", role: "High-volume lookups and transforms", price: "$0.25 / $1.50 per 1M", color: "#00ACC1", badge: "Cheapest bounded work" },
+  { name: "Claude Sonnet 4.6",     role: "The conventional mid-tier pairing", price: "$3 / $15 per 1M", color: "#94A3B8", badge: "Comparison baseline", baseline: true },
 ];
 
 export default function Hero() {
@@ -36,7 +36,7 @@ export default function Hero() {
           >
             <Layers className="w-5 h-5 text-[#4285F4]" />
             <span className="text-sm font-semibold tracking-widest uppercase text-[#8AB4F8]">
-              WealthAI — Google Cloud Tokenomics
+              WealthAI — Practical Model Routing
             </span>
           </motion.div>
 
@@ -47,9 +47,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6"
           >
-            Gemini-first.{" "}
+            Keep Opus.{" "}
             <span className="bg-gradient-to-r from-[#34A853] via-[#1A73E8] to-[#00ACC1] bg-clip-text text-transparent">
-              Cost-optimal.
+              Route the rest.
             </span>
             <br />
             Across the whole lifecycle.
@@ -62,26 +62,11 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="text-lg lg:text-xl text-gray-400 max-w-2xl mb-4 leading-relaxed"
           >
-            Gemini 3.1 Pro ranks{" "}
-            <span className="text-[#34A853] font-semibold">#1 on the Artificial Analysis Intelligence Index</span>{" "}
-            — 3 points above Claude Opus, at 60% of the price. A Gemini-tiered architecture
-            delivers enterprise-grade quality from code generation to nightly agentic workflows,
-            without competitor pricing.
+            Opus is the strongest choice for the work that genuinely needs deep judgment.
+            The mistake is paying for that level on every task. Pair Opus with Gemini Flash
+            and Flash-Lite for routine execution, and the stack is cheaper and faster than
+            pairing Opus with Sonnet.
           </motion.p>
-
-          {/* AA source line */}
-          <motion.a
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            href="https://artificialanalysis.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-300 transition-colors mb-12"
-          >
-            <ExternalLink size={11} />
-            Source: Artificial Analysis Intelligence Index (artificialanalysis.ai)
-          </motion.a>
         </div>
 
         {/* Architecture flow */}
@@ -112,7 +97,7 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Model cards with AA scores */}
+        {/* Model role cards */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -123,19 +108,19 @@ export default function Hero() {
             <div
               key={i}
               className={`relative rounded-xl p-5 transition-colors ${
-                m.vendor === "google"
+                !m.baseline
                   ? "bg-white/5 border border-white/10 hover:bg-white/8"
                   : "bg-white/[0.02] border border-white/5 opacity-60"
               }`}
             >
               {m.highlight && (
                 <div className="absolute -top-2 left-4 rounded-full bg-[#34A853] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
-                  AA #1
+                  Recommended anchor
                 </div>
               )}
-              {m.vendor === "competitor" && (
+              {m.baseline && (
                 <div className="absolute -top-2 left-4 rounded-full bg-slate-600 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
-                  Competitor
+                  Baseline
                 </div>
               )}
               <div className="flex items-center gap-2 mb-3">
@@ -146,15 +131,7 @@ export default function Hero() {
               </div>
               <h3 className="text-sm font-bold text-white mb-1 leading-tight">{m.name}</h3>
               <p className="text-xs text-gray-400 mb-3 leading-snug">{m.role}</p>
-              <div className="flex items-center justify-between">
-                <p className="text-[10px] text-gray-500 font-mono">{m.price}</p>
-                <div className="flex items-center gap-1">
-                  <span className="text-[9px] text-gray-500 uppercase tracking-wide">AA</span>
-                  <span className="text-xs font-bold tabular-nums" style={{ color: m.vendor === "google" ? m.color : "#94A3B8" }}>
-                    {m.aaScore}
-                  </span>
-                </div>
-              </div>
+              <p className="text-[10px] text-gray-500 font-mono">{m.price}</p>
             </div>
           ))}
         </motion.div>

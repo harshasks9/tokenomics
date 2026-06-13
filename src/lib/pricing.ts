@@ -2,12 +2,12 @@
 // aaScore: Artificial Analysis Intelligence Index (artificialanalysis.ai) — composite reasoning benchmark.
 export const MODELS = {
   // ── Google Cloud Gemini ──────────────────────────────────────────────────
-  geminiPro: { name: "Gemini 3.1 Pro",        vendor: "Google", inPM: 2.00, outPM: 12.00, aaScore: 92 }, // #1 on AA Index — beats Claude Opus at 60% lower price
+  geminiPro: { name: "Gemini 3.1 Pro",        vendor: "Google", inPM: 2.00, outPM: 12.00, aaScore: 92 },
   flash:     { name: "Gemini 3.5 Flash",      vendor: "Google", inPM: 1.50, outPM:  9.00, aaScore: 81 }, // fast native multimodal
   flashLite: { name: "Gemini 3.1 Flash-Lite", vendor: "Google", inPM: 0.25, outPM:  1.50, aaScore: 68 }, // high-volume routing
   // ── Competitor (Anthropic) ───────────────────────────────────────────────
   sonnet:    { name: "Claude Sonnet 4.6",     vendor: "Anthropic", inPM: 3.00, outPM: 15.00, aaScore: 83 },
-  opus:      { name: "Claude Opus 4.8",       vendor: "Anthropic", inPM: 5.00, outPM: 25.00, aaScore: 89 }, // 3pts below Gemini Pro, 2.5x the price
+  opus:      { name: "Claude Opus 4.8",       vendor: "Anthropic", inPM: 5.00, outPM: 25.00, aaScore: 89 },
 } as const;
 
 export type ModelKey = keyof typeof MODELS;

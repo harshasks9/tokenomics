@@ -22,7 +22,7 @@ export default function ShopOSPage() {
         Home
       </Link>
       <ShopStickyNav />
-      <main className="lg:ml-56">
+      <main className="overflow-x-hidden lg:ml-56">
         <ShopHero />
         <ShopBuildScenario />
         <ShopInAppScenario />

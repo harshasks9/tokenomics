@@ -13,10 +13,10 @@ import {
   ToggleRight,
 } from "lucide-react";
 
-// ─── Pre-computed ROI teasers (run-phase savings vs all-Opus at defaults) ─
+// Pre-computed annual savings vs Opus + Sonnet at default scenario volumes.
 const ROI_TEASERS: Record<string, string> = {
-  wealthai: "$8.8M/yr potential",
-  shopos:   "$4.5M/yr potential",
+  wealthai: "$4.0M/yr potential",
+  shopos:   "$2.3M/yr potential",
 };
 
 // ─── App tile definitions ──────────────────────────────────────────────────
@@ -220,7 +220,7 @@ export default function SpringboardPage() {
           AI Tokenomics
         </p>
         <h1 className="text-3xl font-bold text-white mb-2">Industry Demos</h1>
-        <p className="text-sm text-white/40">Right model, right task — across the lifecycle.</p>
+        <p className="text-sm text-white/40">Keep Opus for judgment. Route the rest.</p>
       </motion.div>
 
       {/* App grid */}

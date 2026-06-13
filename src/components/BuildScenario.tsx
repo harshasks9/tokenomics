@@ -36,10 +36,6 @@ function useCountUp(target: number, duration = 800) {
   useEffect(() => {
     const start = value;
     const diff = target - start;
-    if (Math.abs(diff) < 0.01) {
-      setValue(target);
-      return;
-    }
     const startTime = performance.now();
     const animate = (now: number) => {
       const elapsed = now - startTime;
@@ -68,16 +64,17 @@ function TaskCard({
   index,
 }: {
   task: S1Task;
-  forceTier?: "opus";
+  forceTier?: "sonnet";
   index: number;
 }) {
   const [hovered, setHovered] = useState(false);
   const tier = forceTier ?? task.tier;
   const isOpus = tier === "opus";
-  const bgColor = isOpus ? AMBER_LIGHT : GREEN_LIGHT;
-  const borderColor = isOpus ? AMBER : GREEN;
-  const dotColor = isOpus ? AMBER : GREEN;
-  const modelLabel = isOpus ? "Gemini Pro" : "Flash";
+  const isSonnet = tier === "sonnet";
+  const bgColor = isOpus || isSonnet ? AMBER_LIGHT : GREEN_LIGHT;
+  const borderColor = isOpus || isSonnet ? AMBER : GREEN;
+  const dotColor = isOpus || isSonnet ? AMBER : GREEN;
+  const modelLabel = isOpus ? "Opus" : isSonnet ? "Sonnet" : "Flash";
 
   return (
     <motion.div
@@ -214,7 +211,7 @@ function ModeToggle({
       >
         <span className="flex items-center gap-1.5">
           <Zap size={14} />
-          Tiered
+          Opus + Gemini
         </span>
       </button>
       <button
@@ -229,7 +226,7 @@ function ModeToggle({
       >
         <span className="flex items-center gap-1.5">
           <Brain size={14} />
-          All-Frontier
+          Opus + Sonnet
         </span>
       </button>
     </div>
@@ -292,7 +289,7 @@ function DonutLegend({
           style={{ backgroundColor: AMBER }}
         />
         <span className="text-slate-600">
-          Complex ({complexCount}) → Gemini Pro
+          Complex ({complexCount}) → Opus
         </span>
       </div>
     </div>
@@ -318,9 +315,11 @@ export default function BuildScenario() {
     return {
       allFrontierPerSprint: perSprint.allFrontier,
       tieredPerSprint: perSprint.tiered,
+      allOpusPerSprint: perSprint.allOpus,
       savingsPerSprint: perSprint.savings,
       allFrontierTotal: perSprint.allFrontier * sprints,
       tieredTotal: perSprint.tiered * sprints,
+      allOpusTotal: perSprint.allOpus * sprints,
       savingsTotal: perSprint.savings * sprints,
       pct: pctSavings(perSprint.allFrontier, perSprint.tiered),
     };
@@ -370,13 +369,15 @@ export default function BuildScenario() {
   const barData = [
     {
       name: "Per Sprint",
-      "All-Frontier": costs.allFrontierPerSprint,
-      Tiered: costs.tieredPerSprint,
+      "Opus + Sonnet": costs.allFrontierPerSprint,
+      "Opus + Gemini": costs.tieredPerSprint,
+      "All Opus": costs.allOpusPerSprint,
     },
     {
       name: `${sprints} Sprints`,
-      "All-Frontier": costs.allFrontierTotal,
-      Tiered: costs.tieredTotal,
+      "Opus + Sonnet": costs.allFrontierTotal,
+      "Opus + Gemini": costs.tieredTotal,
+      "All Opus": costs.allOpusTotal,
     },
   ];
 
@@ -390,7 +391,7 @@ export default function BuildScenario() {
   const displayedTotal =
     mode === "all-frontier" ? animatedAllFrontier : animatedTiered;
   const displayedLabel =
-    mode === "all-frontier" ? "All-Frontier Cost" : "Tiered Cost";
+    mode === "all-frontier" ? "Opus + Sonnet Cost" : "Opus + Gemini Cost";
 
   return (
     <section
@@ -422,8 +423,8 @@ export default function BuildScenario() {
           </p>
           <p className="mt-2 max-w-2xl text-sm text-slate-500">
             75% of coding tasks are routine — tests, scaffolds, docs, CRUD.
-            A Gemini-tiered strategy routes routine work to Gemini Flash,
-            reserving Gemini Pro (AA Score 92) for architecture and hard debugging.
+            Keep Opus on architecture and hard debugging. Route the routine 75%
+            to Flash instead of Sonnet.
           </p>
         </motion.div>
 
@@ -549,7 +550,7 @@ export default function BuildScenario() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-lg border border-slate-200 bg-white p-4">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400">
-                    All-Frontier / Sprint
+                    Opus + Sonnet / Sprint
                   </p>
                   <p
                     className="mt-1 text-lg font-bold tabular-nums"
@@ -558,12 +559,12 @@ export default function BuildScenario() {
                     {fmtUSD(costs.allFrontierPerSprint, 2)}
                   </p>
                   <p className="text-[10px] text-slate-400">
-                    All Claude Opus (competitor)
+                    Sonnet routine + Opus complex
                   </p>
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-white p-4">
                   <p className="text-[10px] font-medium uppercase tracking-wider text-slate-400">
-                    Tiered / Sprint
+                    Opus + Gemini / Sprint
                   </p>
                   <p
                     className="mt-1 text-lg font-bold tabular-nums"
@@ -572,7 +573,7 @@ export default function BuildScenario() {
                     {fmtUSD(costs.tieredPerSprint, 2)}
                   </p>
                   <p className="text-[10px] text-slate-400">
-                    Flash + Gemini Pro mix
+                    Flash routine + Opus complex
                   </p>
                 </div>
               </div>
@@ -602,7 +603,7 @@ export default function BuildScenario() {
                   <TaskCard
                     key={task.title}
                     task={task}
-                    forceTier={mode === "all-frontier" ? "opus" : undefined}
+                    forceTier={mode === "all-frontier" && task.tier === "flash" ? "sonnet" : undefined}
                     index={i}
                   />
                 ))}
@@ -629,7 +630,7 @@ export default function BuildScenario() {
                         className="inline-block h-2 w-2 rounded-full"
                         style={{ backgroundColor: AMBER }}
                       />
-                      {complexTasks.length} Gemini Pro
+                      {complexTasks.length} Opus
                     </motion.span>
                   ) : (
                     <motion.span
@@ -643,7 +644,7 @@ export default function BuildScenario() {
                         className="inline-block h-2 w-2 rounded-full"
                         style={{ backgroundColor: AMBER }}
                       />
-                      {S1_TASKS.length} Claude Opus (competitor)
+                      {routineTasks.length} Sonnet + {complexTasks.length} Opus
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -657,7 +658,12 @@ export default function BuildScenario() {
                 <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">
                   Task Mix
                 </p>
-                <ResponsiveContainer width="100%" height={180}>
+                <ResponsiveContainer
+                  width="100%"
+                  height={180}
+                  minWidth={0}
+                  initialDimension={{ width: 500, height: 180 }}
+                >
                   <PieChart>
                     <Pie
                       data={donutData}
@@ -689,7 +695,12 @@ export default function BuildScenario() {
                 <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">
                   Cost Comparison
                 </p>
-                <ResponsiveContainer width="100%" height={180}>
+                <ResponsiveContainer
+                  width="100%"
+                  height={180}
+                  minWidth={0}
+                  initialDimension={{ width: 500, height: 180 }}
+                >
                   <BarChart
                     data={barData}
                     margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -711,14 +722,20 @@ export default function BuildScenario() {
                       content={<BarTooltipContent />}
                     />
                     <Bar
-                      dataKey="All-Frontier"
+                      dataKey="Opus + Sonnet"
                       fill={AMBER}
                       radius={[4, 4, 0, 0]}
                       maxBarSize={32}
                     />
                     <Bar
-                      dataKey="Tiered"
+                      dataKey="Opus + Gemini"
                       fill={GREEN}
+                      radius={[4, 4, 0, 0]}
+                      maxBarSize={32}
+                    />
+                    <Bar
+                      dataKey="All Opus"
+                      fill="#7B61FF"
                       radius={[4, 4, 0, 0]}
                       maxBarSize={32}
                     />
@@ -730,14 +747,18 @@ export default function BuildScenario() {
                       className="inline-block h-2.5 w-2.5 rounded-sm"
                       style={{ backgroundColor: AMBER }}
                     />
-                    All-Frontier
+                    Opus + Sonnet
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span
                       className="inline-block h-2.5 w-2.5 rounded-sm"
                       style={{ backgroundColor: GREEN }}
                     />
-                    Tiered
+                    Opus + Gemini
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="inline-block h-2.5 w-2.5 rounded-sm bg-[#7B61FF]" />
+                    All Opus
                   </span>
                 </div>
               </div>
@@ -751,11 +772,11 @@ export default function BuildScenario() {
               <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-xs text-slate-600">
                 <div className="flex justify-between">
                   <span className="flex items-center gap-1.5">
-                    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: GREEN }} />
-                    {MODELS.geminiPro.name} <span className="text-slate-400 ml-1">AA 92</span>
+                    <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: "#7B61FF" }} />
+                    {MODELS.opus.name}
                   </span>
                   <span className="tabular-nums font-medium">
-                    ${MODELS.geminiPro.inPM} in / ${MODELS.geminiPro.outPM} out
+                    ${MODELS.opus.inPM} in / ${MODELS.opus.outPM} out
                   </span>
                 </div>
                 <div className="flex justify-between">
@@ -770,10 +791,10 @@ export default function BuildScenario() {
                 <div className="flex justify-between col-span-2 border-t border-slate-100 pt-1 mt-1 opacity-50">
                   <span className="flex items-center gap-1.5">
                     <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: AMBER }} />
-                    {MODELS.opus.name} (competitor) <span className="text-slate-400 ml-1">AA 89</span>
+                    {MODELS.sonnet.name}
                   </span>
                   <span className="tabular-nums font-medium">
-                    ${MODELS.opus.inPM} in / ${MODELS.opus.outPM} out
+                    ${MODELS.sonnet.inPM} in / ${MODELS.sonnet.outPM} out
                   </span>
                 </div>
               </div>
@@ -794,8 +815,8 @@ export default function BuildScenario() {
             <span className="font-bold tabular-nums" style={{ color: GREEN }}>
               {fmtUSD(costs.savingsTotal, 2)}
             </span>{" "}
-            over {sprints} sprints vs all-Claude Opus — Gemini Flash handles routine work,
-            Gemini Pro (AA Score 92) handles complex work. Zero quality trade-off.
+            over {sprints} sprints vs Opus + Sonnet. Opus handles the same complex work
+            in both routes; Flash replaces Sonnet only on routine tasks.
           </p>
         </motion.div>
       </div>

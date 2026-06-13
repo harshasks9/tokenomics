@@ -10,11 +10,10 @@ import { SHOP_S3, SHOP_S3_CARDS, shopS3Costs } from "@/lib/industries/shopos";
 import { useTally } from "@/lib/tally-context";
 
 const COLORS = {
-  pureClaude:   { bg: "#FFF7ED", fill: "#7B61FF", border: "#C4B5FD", text: "#5B21B6", label: "Pure Claude Opus (competitor)" },
-  pureGemPro:   { bg: "#F0FDF4", fill: "#34A853", border: "#86EFAC", text: "#166534", label: "Pure Gemini 3.1 Pro ★ Best Value" },
-  pureGemFlash: { bg: "#EFF6FF", fill: "#1A73E8", border: "#93C5FD", text: "#1E40AF", label: "Gemini 3.5 Flash" },
-  hybridOpus:   { bg: "#FEF3E0", fill: "#E37400", border: "#FCD34D", text: "#92400E", label: "Hybrid → Claude Opus" },
-  hybridGemini: { bg: "#F0FDF4", fill: "#188038", border: "#86EFAC", text: "#166534", label: "Hybrid → Gemini Pro" },
+  allOpus:    { bg: "#F5F3FF", fill: "#7B61FF", border: "#C4B5FD", text: "#5B21B6", label: "All Opus" },
+  opusSonnet: { bg: "#FFF7ED", fill: "#E37400", border: "#FCD34D", text: "#92400E", label: "Opus + Sonnet" },
+  opusFlash:  { bg: "#F0FDF4", fill: "#188038", border: "#86EFAC", text: "#166534", label: "Opus + Flash ★ Recommended" },
+  pureFlash:  { bg: "#EFF6FF", fill: "#1A73E8", border: "#93C5FD", text: "#1E40AF", label: "All Flash" },
 } as const;
 
 type LaneKey = keyof typeof COLORS;
@@ -38,7 +37,14 @@ function RaceLane({ laneKey, durationMs, quality, running, label, onFinish }: {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!running) { progress.set(0); setDisplayMs(0); setDone(false); return; }
+    if (!running) {
+      progress.set(0);
+      const resetFrame = requestAnimationFrame(() => {
+        setDisplayMs(0);
+        setDone(false);
+      });
+      return () => cancelAnimationFrame(resetFrame);
+    }
     const controls = animate(progress, 1, {
       duration: durationMs / 1000,
       ease: "easeOut",
@@ -87,11 +93,10 @@ export default function ShopVisualSearchScenario() {
   const card = SHOP_S3_CARDS[selectedCard];
 
   const laneConfig: { key: LaneKey; durationMs: number; quality: number; cost: number }[] = [
-    { key: "pureClaude",   durationMs: SHOP_S3.lanes.pureClaude.latencyMs,   quality: 5, cost: costs.pureClaude   },
-    { key: "pureGemPro",   durationMs: SHOP_S3.lanes.pureGemPro.latencyMs,   quality: 5, cost: costs.pureGemPro   },
-    { key: "hybridGemini", durationMs: SHOP_S3.lanes.hybridGemini.latencyMs, quality: 5, cost: costs.hybridGemini },
-    { key: "hybridOpus",   durationMs: SHOP_S3.lanes.hybridOpus.latencyMs,   quality: 5, cost: costs.hybridOpus   },
-    { key: "pureGemFlash", durationMs: SHOP_S3.lanes.pureGemFlash.latencyMs, quality: 4, cost: costs.pureGemFlash },
+    { key: "allOpus",    durationMs: SHOP_S3.lanes.allOpus.latencyMs,    quality: 5, cost: costs.allOpus },
+    { key: "opusSonnet", durationMs: SHOP_S3.lanes.opusSonnet.latencyMs, quality: 5, cost: costs.opusSonnet },
+    { key: "opusFlash",  durationMs: SHOP_S3.lanes.opusFlash.latencyMs,  quality: 5, cost: costs.opusFlash },
+    { key: "pureFlash",  durationMs: SHOP_S3.lanes.pureFlash.latencyMs,  quality: 4, cost: costs.pureFlash },
   ];
 
   const startRace = useCallback(() => { finishCount.current = 0; setRaceState("running"); }, []);
@@ -103,9 +108,9 @@ export default function ShopVisualSearchScenario() {
       const annual = SHOP_S3.defaults.interactionsPerYear;
       updateResult("s3", {
         label: "Visual Search",
-        allFrontier: costs.pureClaude * annual,
-        tiered: costs.pureGemPro * annual,
-        savings: (costs.pureClaude - costs.pureGemPro) * annual,
+        allFrontier: costs.opusSonnet * annual,
+        tiered: costs.opusFlash * annual,
+        savings: (costs.opusSonnet - costs.opusFlash) * annual,
         period: "annual",
       });
     }
@@ -125,7 +130,7 @@ export default function ShopVisualSearchScenario() {
           </div>
           <h2 className="text-3xl font-bold text-zinc-900 tracking-tight">Visual Search</h2>
           <p className="mt-3 text-lg text-zinc-600 max-w-2xl">
-            Shopper photographs an outfit, room, or product — the app returns matching items. Five pipelines, ranked by speed and cost.
+            Shopper photographs an outfit, room, or product — the app returns matching items. Four pipelines compare tiered and single-model choices.
           </p>
           <div className="mt-3 flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200 px-4 py-1.5 w-fit">
             <AlertCircle size={13} className="text-amber-600" />
@@ -192,7 +197,7 @@ export default function ShopVisualSearchScenario() {
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm mb-10">
           <div className="flex items-center gap-2 mb-5">
             <Zap size={16} className="text-amber-500" />
-            <h3 className="text-sm font-bold text-zinc-900">Pipeline Race — 5 Lanes</h3>
+            <h3 className="text-sm font-bold text-zinc-900">Pipeline Race — Tiered + Single Model</h3>
             {raceState === "done" && (
               <span className="ml-auto inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 rounded-full px-3 py-1 ring-1 ring-emerald-200">✓ Race Complete</span>
             )}
@@ -230,14 +235,13 @@ export default function ShopVisualSearchScenario() {
                 </thead>
                 <tbody>
                   {[
-                    { key: "pureClaude"   as LaneKey, cost: costs.pureClaude,   quality: 5 },
-                    { key: "hybridOpus"   as LaneKey, cost: costs.hybridOpus,   quality: 5 },
-                    { key: "hybridGemini" as LaneKey, cost: costs.hybridGemini, quality: 5 },
-                    { key: "pureGemPro"   as LaneKey, cost: costs.pureGemPro,   quality: 5 },
-                    { key: "pureGemFlash" as LaneKey, cost: costs.pureGemFlash, quality: 4 },
+                    { key: "allOpus" as LaneKey, cost: costs.allOpus, quality: 5 },
+                    { key: "opusSonnet" as LaneKey, cost: costs.opusSonnet, quality: 5 },
+                    { key: "opusFlash" as LaneKey, cost: costs.opusFlash, quality: 5 },
+                    { key: "pureFlash" as LaneKey, cost: costs.pureFlash, quality: 4 },
                   ].map((row) => {
                     const annual = row.cost * SHOP_S3.defaults.interactionsPerYear;
-                    const isBest = row.key === "pureGemPro";
+                    const isBest = row.key === "opusFlash";
                     return (
                       <tr key={row.key} className={`border-b border-zinc-50 last:border-b-0 ${isBest ? "bg-emerald-50/40" : ""}`}>
                         <td className="px-5 py-3 font-semibold flex items-center gap-2">
@@ -257,10 +261,10 @@ export default function ShopVisualSearchScenario() {
             </div>
             <div className="px-6 py-4 bg-emerald-50/50 border-t border-emerald-100">
               <p className="text-sm font-semibold text-emerald-800">
-                Pure Gemini 3.1 Pro saves <span className="font-mono">{fmtUSD((costs.pureClaude - costs.pureGemPro) * SHOP_S3.defaults.interactionsPerYear, 0)}</span>/yr vs Pure Claude Opus — equal quality, 2.5× faster
+                Opus + Flash saves <span className="font-mono">{fmtUSD((costs.opusSonnet - costs.opusFlash) * SHOP_S3.defaults.interactionsPerYear, 0)}</span>/yr vs Opus + Sonnet
               </p>
               <p className="text-xs text-emerald-600 mt-0.5">
-                Quality-5 match · 1,400ms latency · AA Score 92 (beats Claude Opus by 3 pts) · {((1 - costs.pureGemPro / costs.pureClaude) * 100).toFixed(0)}% cheaper · {((1 - SHOP_S3.lanes.pureGemPro.latencyMs / SHOP_S3.lanes.pureClaude.latencyMs) * 100).toFixed(0)}% faster
+                Same Opus reasoning stage · {((1 - costs.opusFlash / costs.opusSonnet) * 100).toFixed(0)}% cheaper · {((1 - SHOP_S3.lanes.opusFlash.latencyMs / SHOP_S3.lanes.opusSonnet.latencyMs) * 100).toFixed(0)}% faster than Opus + Sonnet
               </p>
             </div>
           </motion.div>

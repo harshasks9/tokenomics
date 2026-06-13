@@ -212,8 +212,12 @@ export default function InAppScenario() {
   // Chart data
   const chartData = useMemo(
     () => [
-      { name: "All-Frontier (Opus)", cost: costs.allFrontier, color: AMBER },
-      { name: "Tiered Routing", cost: costs.tiered, color: GREEN },
+      { name: "Opus + Sonnet", cost: costs.allFrontier, color: AMBER },
+      { name: "Opus + Gemini", cost: costs.tiered, color: GREEN },
+      { name: "All Opus", cost: costs.allOpus, color: "#7B61FF" },
+      { name: "All Sonnet", cost: costs.allSonnet, color: "#9B59D1" },
+      { name: "All Flash", cost: costs.allFlash, color: BLUE },
+      { name: "All Flash-Lite", cost: costs.allFlashLite, color: "#00ACC1" },
     ],
     [costs]
   );
@@ -316,7 +320,7 @@ export default function InAppScenario() {
         </motion.div>
 
         {/* ── Two-Column Layout ────────────────────────────────────────── */}
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+        <div className="grid min-w-0 lg:grid-cols-2 gap-10 items-start">
           {/* ════════════════════════════════════════════════════════════
              LEFT COLUMN — Chat Demo + Question Selector
           ══════════════════════════════════════════════════════════════ */}
@@ -325,6 +329,7 @@ export default function InAppScenario() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="min-w-0"
           >
             {/* Chat Widget Header */}
             <div className="bg-gray-900 rounded-t-2xl px-6 py-4 flex items-center gap-3">
@@ -398,7 +403,7 @@ export default function InAppScenario() {
                     </div>
 
                     {/* Side-by-side answers */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Answer A (left) */}
                       <div className="space-y-2">
                         <div className="flex items-center gap-2 mb-2">
@@ -582,7 +587,7 @@ export default function InAppScenario() {
                                 deep reasoning, multi-step analysis, and nuanced
                                 advice. Flash provides a serviceable answer but
                                 misses critical details. This is why{" "}
-                                <strong>20% of queries still route to Opus</strong>{" "}
+                                <strong>12% of queries still route to Opus</strong>{" "}
                                 in the tiered approach.
                               </p>
                             </div>
@@ -631,7 +636,7 @@ export default function InAppScenario() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-8"
+            className="min-w-0 space-y-8"
           >
             {/* Volume Slider */}
             <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
@@ -692,7 +697,7 @@ export default function InAppScenario() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-4">
                   <p className="text-xs font-medium text-amber-600 mb-1">
-                    All-Frontier (100% Opus)
+                    Opus + Sonnet
                   </p>
                   <p className="text-2xl font-bold tabular-nums" style={{ color: AMBER }}>
                     <CountUp target={costs.allFrontier} />
@@ -703,7 +708,7 @@ export default function InAppScenario() {
                 </div>
                 <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4">
                   <p className="text-xs font-medium text-emerald-600 mb-1">
-                    Tiered Routing
+                    Opus + Gemini
                   </p>
                   <p className="text-2xl font-bold tabular-nums" style={{ color: GREEN }}>
                     <CountUp target={costs.tiered} />
@@ -733,27 +738,32 @@ export default function InAppScenario() {
                       width: `${S2.tieredMix.flashPct * 100}%`,
                       backgroundColor: BLUE,
                     }}
-                    title={`Flash: ${S2.tieredMix.flashPct * 100}%`}
+                    title={`Flash: ${(S2.tieredMix.flashPct * 100).toFixed(0)}%`}
                   />
                   <div
                     className="rounded-r-full"
                     style={{
-                      width: `${S2.tieredMix.geminiProPct * 100}%`,
+                      width: `${S2.tieredMix.opusPct * 100}%`,
                       backgroundColor: "#34A853",
                     }}
-                    title={`Gemini Pro: ${S2.tieredMix.geminiProPct * 100}%`}
+                    title={`Opus: ${S2.tieredMix.opusPct * 100}%`}
                   />
                 </div>
                 <div className="flex justify-between mt-1.5 text-[10px] text-gray-400">
                   <span>Flash-Lite {S2.tieredMix.flashLitePct * 100}%</span>
-                  <span>Flash {S2.tieredMix.flashPct * 100}%</span>
-                  <span>Gemini Pro {S2.tieredMix.geminiProPct * 100}%</span>
+                  <span>Flash {(S2.tieredMix.flashPct * 100).toFixed(0)}%</span>
+                  <span>Opus {S2.tieredMix.opusPct * 100}%</span>
                 </div>
               </div>
 
               {/* Bar Chart */}
-              <div className="h-52">
-                <ResponsiveContainer width="100%" height="100%">
+              <div className="h-52 min-w-0 overflow-hidden">
+                <ResponsiveContainer
+                  width="100%"
+                  height="100%"
+                  minWidth={0}
+                  initialDimension={{ width: 800, height: 208 }}
+                >
                   <BarChart
                     data={chartData}
                     layout="vertical"
@@ -824,7 +834,7 @@ export default function InAppScenario() {
                     {savingsPct.toFixed(1)}% reduction
                   </span>
                   <span className="text-sm text-emerald-200/80">
-                    vs. all-frontier at{" "}
+                    vs. Opus + Sonnet at{" "}
                     <span className="tabular-nums">{fmtVolume(volume)}</span>{" "}
                     queries/mo
                   </span>
@@ -835,11 +845,11 @@ export default function InAppScenario() {
                     <strong className="text-white tabular-nums">
                       {fmtUSD(costs.savings)}
                     </strong>{" "}
-                    saved &nbsp;·&nbsp; Tiered:{" "}
+                    saved &nbsp;·&nbsp; Opus + Gemini:{" "}
                     <strong className="text-white tabular-nums">
                       {fmtUSD(costs.tiered)}
                     </strong>
-                    /mo vs All-Frontier:{" "}
+                    /mo vs Opus + Sonnet:{" "}
                     <strong className="text-white tabular-nums">
                       {fmtUSD(costs.allFrontier)}
                     </strong>
@@ -852,12 +862,10 @@ export default function InAppScenario() {
             {/* Honesty Note */}
             <div className="bg-gray-50 rounded-xl border border-gray-200 px-5 py-4">
               <p className="text-xs text-gray-500 leading-relaxed">
-                <strong className="text-gray-700">Honesty note:</strong> The
-                60/28/12 Gemini-only tiered split (Flash-Lite / Flash / Gemini Pro) reflects real
-                query distribution in wealth management. Routine lookups and FAQs
-                (~88%) achieve parity across all models. Complex planning questions
-                (~12%) route to Gemini Pro (AA Score 92) — which scores above Claude Opus
-                at 60% lower cost. No competitor models needed in the recommended path.
+                <strong className="text-gray-700">Honesty note:</strong>{" "}
+                The same 12% of complex planning questions route to Opus in both architectures.
+                The difference is the routine 88%: Sonnet in the baseline, Flash-Lite and Flash
+                in the recommended route.
               </p>
             </div>
           </motion.div>

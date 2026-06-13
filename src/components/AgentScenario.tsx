@@ -23,7 +23,7 @@ import { useTally } from "@/lib/tally-context";
 /* ─── Color Tokens ─── */
 const OPUS_COLOR = "#7B61FF";
 const FLASH_COLOR = "#1A73E8";
-const GEMINI_PRO_COLOR = "#34A853";
+const SONNET_COLOR = "#E37400";
 const GREEN = "#188038";
 const AMBER = "#E37400";
 const OPUS_BG = "rgba(123,97,255,0.10)";
@@ -33,15 +33,15 @@ const FLASH_BORDER = "rgba(26,115,232,0.35)";
 
 /* ─── Helpers ─── */
 function nodeCost(node: AgentNode, mode: "hybrid" | "allOpus"): number {
-  if (mode === "allOpus") return callCost("opus", node.inTok, node.outTok);
-  // geminiTiered: planner/reviewer → Gemini Pro, executors → Flash
-  const model = node.role === "executor" ? "flash" : "geminiPro";
+  const model = node.role === "executor"
+    ? mode === "allOpus" ? "sonnet" : "flash"
+    : "opus";
   return callCost(model, node.inTok, node.outTok);
 }
 
 function modelLabel(node: AgentNode, mode: "hybrid" | "allOpus"): string {
-  if (mode === "allOpus") return MODELS.opus.name;
-  return node.role === "executor" ? MODELS.flash.name : MODELS.geminiPro.name;
+  if (node.role !== "executor") return MODELS.opus.name;
+  return mode === "allOpus" ? MODELS.sonnet.name : MODELS.flash.name;
 }
 
 function roleIcon(role: AgentNode["role"]) {
@@ -73,7 +73,7 @@ function NodePopover({
 }) {
   const cost = nodeCost(node, mode);
   const model = modelLabel(node, mode);
-  const tierColor = mode === "allOpus" ? OPUS_COLOR : node.role === "executor" ? FLASH_COLOR : GEMINI_PRO_COLOR;
+  const tierColor = node.role !== "executor" ? OPUS_COLOR : mode === "allOpus" ? SONNET_COLOR : FLASH_COLOR;
 
   return (
     <motion.div
@@ -133,9 +133,8 @@ function TraceNode({
   selectedId: number | null;
   onSelect: (id: number | null) => void;
 }) {
-  const isOpus = mode === "allOpus";
-  const isGeminiPro = !isOpus && node.role !== "executor";
-  const color = isOpus ? OPUS_COLOR : isGeminiPro ? GEMINI_PRO_COLOR : FLASH_COLOR;
+  const isOpus = node.role !== "executor";
+  const color = isOpus ? OPUS_COLOR : mode === "allOpus" ? SONNET_COLOR : FLASH_COLOR;
   const bg = isOpus ? OPUS_BG : FLASH_BG;
   const border = isOpus ? OPUS_BORDER : FLASH_BORDER;
   const isSelected = selectedId === node.id;
@@ -211,13 +210,13 @@ function FlowArrow({ isVisible, delay }: { isVisible: boolean; delay: number }) 
 /* ─── Stacked Bar Chart ─── */
 function CostBreakdownChart({ mode }: { mode: "hybrid" | "allOpus" }) {
   const costs = s4Costs();
-  const plannerCost = mode === "allOpus" ? costs.plannerOpusCost : costs.plannerGeminiCost;
-  const reviewCost  = mode === "allOpus" ? costs.reviewOpusCost  : costs.reviewGeminiCost;
-  const executorCost = mode === "allOpus" ? costs.executorOpusCost : costs.executorFlashCost;
+  const plannerCost = costs.plannerOpusCost;
+  const reviewCost = costs.reviewOpusCost;
+  const executorCost = mode === "allOpus" ? costs.executorSonnetCost : costs.executorFlashCost;
 
   const data = [
     {
-      name: mode === "allOpus" ? "All Claude (competitor)" : "Gemini Tiered",
+      name: mode === "allOpus" ? "Opus + Sonnet" : "Opus + Flash",
       Planner: plannerCost,
       Executors: executorCost,
       Reviewer: reviewCost,
@@ -225,18 +224,23 @@ function CostBreakdownChart({ mode }: { mode: "hybrid" | "allOpus" }) {
   ];
 
   // Also show the other mode for comparison
-  const otherPlanner  = mode === "allOpus" ? costs.plannerGeminiCost : costs.plannerOpusCost;
-  const otherReview   = mode === "allOpus" ? costs.reviewGeminiCost  : costs.reviewOpusCost;
-  const otherExecutor = mode === "allOpus" ? costs.executorFlashCost : costs.executorOpusCost;
+  const otherPlanner = costs.plannerOpusCost;
+  const otherReview = costs.reviewOpusCost;
+  const otherExecutor = mode === "allOpus" ? costs.executorFlashCost : costs.executorSonnetCost;
   data.push({
-    name: mode === "allOpus" ? "Gemini Tiered" : "All Claude (competitor)",
+    name: mode === "allOpus" ? "Opus + Flash" : "Opus + Sonnet",
     Planner: otherPlanner,
     Executors: otherExecutor,
     Reviewer: otherReview,
   });
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ResponsiveContainer
+      width="100%"
+      height={220}
+      minWidth={0}
+      initialDimension={{ width: 800, height: 220 }}
+    >
       <BarChart data={data} layout="vertical" margin={{ left: 20, right: 30, top: 10, bottom: 10 }}>
         <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f0f0f0" />
         <XAxis
@@ -313,12 +317,12 @@ export default function AgentScenario() {
 
   /* Derived costs */
   const costs = useMemo(() => s4Costs(), []);
-  const perRun = mode === "allOpus" ? costs.allOpus : costs.hybrid;
+  const perRun = mode === "allOpus" ? costs.opusSonnet : costs.opusFlash;
   const annual = useMemo(() => s4Annual(portfolios), [portfolios]);
-  const annualCostCurrent = mode === "allOpus" ? annual.allOpusAnnual : annual.hybridAnnual;
-  const annualCostOther = mode === "allOpus" ? annual.hybridAnnual : annual.allOpusAnnual;
+  const annualCostCurrent = mode === "allOpus" ? annual.opusSonnetAnnual : annual.opusFlashAnnual;
+  const annualCostOther = mode === "allOpus" ? annual.opusFlashAnnual : annual.opusSonnetAnnual;
   const savings = annual.savings;
-  const savingsPct = pctSavings(annual.allOpusAnnual, annual.hybridAnnual);
+  const savingsPct = pctSavings(annual.opusSonnetAnnual, annual.opusFlashAnnual);
 
   /* Trace nodes split by role */
   const planner = S4_TRACE.filter((n) => n.role === "planner");
@@ -329,8 +333,8 @@ export default function AgentScenario() {
   useEffect(() => {
     updateResult("s4", {
       label: "Agentic Orchestration (Annual)",
-      allFrontier: annual.allOpusAnnual,
-      tiered: annual.hybridAnnual,
+      allFrontier: annual.opusSonnetAnnual,
+      tiered: annual.opusFlashAnnual,
       savings: annual.savings,
       period: "annual",
     });
@@ -368,14 +372,13 @@ export default function AgentScenario() {
               planner
             </span>{" "}
             and{" "}
-            <span className="font-semibold" style={{ color: GEMINI_PRO_COLOR }}>
+            <span className="font-semibold" style={{ color: OPUS_COLOR }}>
               reviewer
             </span>{" "}
             run on{" "}
-            <span className="font-semibold" style={{ color: GEMINI_PRO_COLOR }}>
-              Gemini Pro
-            </span>{" "}
-            (AA Score 92). The 16 executor steps run on{" "}
+            <span className="font-semibold" style={{ color: OPUS_COLOR }}>
+              Opus
+            </span>. The 16 executor steps run on{" "}
             <span className="font-semibold" style={{ color: FLASH_COLOR }}>
               Gemini Flash
             </span>
@@ -399,7 +402,7 @@ export default function AgentScenario() {
                 className="inline-block w-2 h-2 rounded-full mr-2"
                 style={{ backgroundColor: GREEN }}
               />
-              Gemini Tiered
+              Opus + Flash
             </button>
             <button
               onClick={() => setMode("allOpus")}
@@ -413,7 +416,7 @@ export default function AgentScenario() {
                 className="inline-block w-2 h-2 rounded-full mr-2"
                 style={{ backgroundColor: AMBER }}
               />
-              All Claude (competitor)
+              Opus + Sonnet
             </button>
           </div>
           <span className="text-xs text-gray-400 ml-2">
@@ -455,7 +458,7 @@ export default function AgentScenario() {
                 />
               ))}
               <div className="mt-1 text-[10px] font-mono tabular-nums text-gray-400">
-                {fmtUSD(mode === "allOpus" ? costs.plannerOpusCost : costs.plannerGeminiCost, 4)}
+                {fmtUSD(costs.plannerOpusCost, 4)}
               </div>
             </div>
 
@@ -482,7 +485,7 @@ export default function AgentScenario() {
               </div>
               <div className="mt-2 text-[10px] font-mono tabular-nums text-gray-400 text-center">
                 {fmtUSD(
-                  mode === "allOpus" ? costs.executorOpusCost : costs.executorFlashCost,
+                  mode === "allOpus" ? costs.executorSonnetCost : costs.executorFlashCost,
                   4
                 )}{" "}
                 total
@@ -509,7 +512,7 @@ export default function AgentScenario() {
                 />
               ))}
               <div className="mt-1 text-[10px] font-mono tabular-nums text-gray-400">
-                {fmtUSD(mode === "allOpus" ? costs.reviewOpusCost : costs.reviewGeminiCost, 4)}
+                {fmtUSD(costs.reviewOpusCost, 4)}
               </div>
             </div>
           </div>
@@ -522,7 +525,7 @@ export default function AgentScenario() {
                 style={{ backgroundColor: OPUS_COLOR }}
               />
               <span className="text-xs text-gray-500">
-                {mode === "allOpus" ? `${MODELS.opus.name} (competitor)` : `${MODELS.geminiPro.name} AA 92`}
+                {MODELS.opus.name}
               </span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -537,8 +540,8 @@ export default function AgentScenario() {
             <div className="ml-auto flex items-center gap-1.5 text-xs text-gray-400">
               <Info className="h-3 w-3" />
               {mode === "allOpus"
-                ? "All 18 steps on Claude Opus — competitor baseline"
-                : "Gemini Pro orchestrates (plan+review), Flash executes — Gemini Tiered"}
+                ? "Opus plans and reviews; Sonnet executes"
+                : "Opus plans and reviews; Flash executes"}
             </div>
           </div>
         </div>
@@ -610,18 +613,18 @@ export default function AgentScenario() {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="rounded-lg p-3" style={{ backgroundColor: "rgba(227,116,0,0.06)" }}>
                 <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">
-                  Nightly (All-Opus)
+                  Nightly (Opus + Sonnet)
                 </p>
                 <p className="text-lg font-bold tabular-nums" style={{ color: AMBER }}>
-                  {fmtUSD(costs.allOpus * portfolios)}
+                  {fmtUSD(costs.opusSonnet * portfolios)}
                 </p>
               </div>
               <div className="rounded-lg p-3" style={{ backgroundColor: "rgba(24,128,56,0.06)" }}>
                 <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-1">
-                  Nightly (Hybrid)
+                  Nightly (Opus + Flash)
                 </p>
                 <p className="text-lg font-bold tabular-nums" style={{ color: GREEN }}>
-                  {fmtUSD(costs.hybrid * portfolios)}
+                  {fmtUSD(costs.opusFlash * portfolios)}
                 </p>
               </div>
             </div>
@@ -638,21 +641,21 @@ export default function AgentScenario() {
               </div>
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div>
-                  <p className="text-[10px] text-gray-400 mb-0.5">All-Opus</p>
+                  <p className="text-[10px] text-gray-400 mb-0.5">Opus + Sonnet</p>
                   <p
                     className="text-xl font-bold tabular-nums"
                     style={{ color: AMBER }}
                   >
-                    {fmtUSD(annual.allOpusAnnual)}
+                    {fmtUSD(annual.opusSonnetAnnual)}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-gray-400 mb-0.5">Hybrid</p>
+                  <p className="text-[10px] text-gray-400 mb-0.5">Opus + Flash</p>
                   <p
                     className="text-xl font-bold tabular-nums"
                     style={{ color: GREEN }}
                   >
-                    {fmtUSD(annual.hybridAnnual)}
+                    {fmtUSD(annual.opusFlashAnnual)}
                   </p>
                 </div>
               </div>
@@ -695,20 +698,20 @@ export default function AgentScenario() {
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-900 mb-1">
-              Gemini Pro (AA #1) orchestrates. Gemini Flash executes. No competitor models.
+              Opus orchestrates. Gemini Flash executes.
             </p>
             <p className="text-sm text-gray-500 leading-relaxed">
               Only 2 of 18 agent steps require top-tier reasoning — the planner that
               decomposes the rebalancing task and the compliance reviewer that signs off.
-              Gemini 3.1 Pro (AA Score 92) handles both — outscoring Claude Opus at 60% lower price.
-              The 16 executor steps (data retrieval, calculations, formatting) route to Gemini Flash.
+              Opus handles both in either architecture. The 16 executor steps (data retrieval,
+              calculations, formatting) route to Gemini Flash instead of Sonnet.
               Total per-run cost drops from{" "}
               <span className="font-mono tabular-nums font-semibold" style={{ color: AMBER }}>
-                {fmtUSD(costs.allOpus)} (all-Claude competitor)
+                {fmtUSD(costs.opusSonnet)} (Opus + Sonnet)
               </span>{" "}
               to{" "}
               <span className="font-mono tabular-nums font-semibold" style={{ color: GREEN }}>
-                {fmtUSD(costs.hybrid)}
+                {fmtUSD(costs.opusFlash)}
               </span>
               . At {fmtSlider(portfolios)} portfolios nightly, that&apos;s{" "}
               <span className="font-semibold" style={{ color: GREEN }}>
