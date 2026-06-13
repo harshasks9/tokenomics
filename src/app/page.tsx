@@ -22,7 +22,7 @@ const industries = [
     accent: "#1A73E8",
     accentLight: "#4285F4",
     gradient: "linear-gradient(135deg, #1A73E8 0%, #4285F4 100%)",
-    roiTeaser: "~$9.6M/yr potential",
+    roiTeaser: "61% query savings vs Sonnet",
     enabled: true,
   },
   {
@@ -33,7 +33,7 @@ const industries = [
     accent: "#188038",
     accentLight: "#34A853",
     gradient: "linear-gradient(135deg, #188038 0%, #34A853 100%)",
-    roiTeaser: "~$10M+/yr potential",
+    roiTeaser: "57% savings vs all-Claude",
     enabled: true,
   },
   {
@@ -44,7 +44,7 @@ const industries = [
     accent: "#E11D48",
     accentLight: "#FB7185",
     gradient: "linear-gradient(135deg, #E11D48 0%, #FB7185 100%)",
-    roiTeaser: "~$6M+/yr potential",
+    roiTeaser: "36% build savings · Opus where it counts",
     enabled: true,
   },
   {
@@ -55,7 +55,7 @@ const industries = [
     accent: "#4F46E5",
     accentLight: "#818CF8",
     gradient: "linear-gradient(135deg, #312E81 0%, #4F46E5 100%)",
-    roiTeaser: "56% dev savings",
+    roiTeaser: "56% build savings · 78% query savings",
     enabled: true,
   },
 ];

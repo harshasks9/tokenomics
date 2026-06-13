@@ -315,7 +315,7 @@ export const HC_SELLER_NOTES = {
   s1: {
     title: "Build Phase — Clinical AI Platform",
     assumption: "70% routine / 30% complex split. Complex tasks include clinical NLP, HIPAA compliance, and HL7/FHIR integration — areas where reasoning quality is non-negotiable.",
-    sayThis: "FHIR wrappers and test harnesses don't need frontier reasoning. Reserve Opus for the clinical safety and compliance logic where mistakes cost lives and licenses.",
+    sayThis: "Healthcare skews complex — 30% of tasks need Opus, versus 20% in government. That's why you see ~36% build savings here versus 56% in the public sector vertical, and that's the right tradeoff: clinical NLP and drug-interaction logic belong on the frontier model.",
   },
   s2: {
     title: "Run Phase — Clinical Assistant",
@@ -330,6 +330,6 @@ export const HC_SELLER_NOTES = {
   s4: {
     title: "Extend Phase — Care Coordination Agent",
     assumption: "Agent reviews 25K patient charts nightly — checking care gaps, medication adherence, overdue screenings, and lab trends. Only the triage plan and clinical sign-off need frontier reasoning.",
-    sayThis: "Fourteen data-pull steps per patient run on Flash. The clinical review that signs off on care gap alerts — that's the 2 of 16 steps that justify Opus. The math is overwhelming.",
+    sayThis: "Fourteen data-pull steps per patient run on Flash. The clinical sign-off that decides which care gaps escalate to a clinician — that's the 2 of 16 steps that justify Opus.",
   },
 };
