@@ -1,119 +1,96 @@
-# Enterprise Agent Economics — Research Basis
+# Agent Estate and Platform Economics - Research Basis
 
-Labels: [VERIFIED] = confirmed from official docs/pricing pages | [ASSUMPTION] = reasonable industry estimate | [UNCONFIRMED] = cannot verify from public sources
+Accessed: June 14, 2026.
 
----
+Status legend:
 
-## 1. Pricing Model — Commercial AI Platforms
+- `VERIFIED`: established by an official product or documentation page.
+- `ASSUMPTION`: adjustable decision-model input, not presented as vendor fact.
+- `UNCONFIRMED`: plausible but not established by the cited public evidence.
+- `QUOTE REQUIRED`: enterprise scope or pricing is not publicly precise enough for a verified total.
 
-[VERIFIED] Google Workspace / Gemini seats: Business Starter $6, Business Standard $12, Business Plus $18, Enterprise (contact). Gemini-specific editions stacked on top.
-Source: workspace.google.com/pricing (Jun 2026)
+## Comparison boundary
 
-[VERIFIED] Gemini for Google Workspace: Business Add-on $20/user/mo (annual); Enterprise per-seat varies by agreement.
-Source: workspace.google.com/intl/en/products/gemini (Jun 2026)
+The application compares equivalent production outcomes after the user defines the agent estate. It does not compare a complete platform with a bare model call.
 
-[VERIFIED] Gemini Enterprise editions referenced in brief: Standard ~$30/user/mo, Plus ~$50/user/mo, Business ~$21/user/mo. These are the commercial seat layer; model-API costs are separate and metered via Vertex AI.
+`VERIFIED` Gemini Enterprise Agent Platform is described by Google Cloud as a unified platform to build, scale, govern, and optimize enterprise agents. The documented surface includes model access, agent development, runtime, sessions, memory, evaluation, observability, identity, gateway, and governance functions.
 
-[VERIFIED] Vertex AI / Gemini models billed per-token via Model Garden, not per seat. The seat layer and the API layer are independently billed.
-Source: cloud.google.com/vertex-ai/pricing (Jun 2026)
+Source: https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview
 
-[VERIFIED] Agent Runtime (Google Agentspace / GEAP) billed by vCPU-hour + GiB-hour; idle unbilled; monthly free tier exists. Sessions billed per stored event. Memory Bank and Code Execution billing since Feb 2026; Skill Registry billing since Jul 2026.
-Source: cloud.google.com/products/agent-space pricing documentation (Jun 2026)
+Source: https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale
 
-[VERIFIED] Grounding pricing: $2.50/1K for own-data grounding (CMEK corpora); $45/1K for enterprise web grounding.
-Source: cloud.google.com/vertex-ai/generative-ai/docs/grounding/ground-with-google-search#pricing (Jun 2026)
+Source: https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern
 
-[UNCONFIRMED] "$295/active agent/month" figure from prior drafts. Not found in any official Google pricing document. Do not use.
+What this establishes: integrated product availability and a shared platform operating model.
 
----
+What it does not establish: that every service is included at zero incremental cost or that every customer receives identical contract pricing.
 
-## 2. Competitor Platforms
+`VERIFIED` Google documents Agent Runtime as managed production infrastructure for deploying, managing, and scaling agents. Sessions, Memory Bank, code execution, identity, logging, tracing, and monitoring are documented platform services.
 
-[VERIFIED] AWS Bedrock Agents and AgentCore are equivalent integrated agent platforms with comparable capability surface (identity, runtime, memory, evaluation via Bedrock Knowledge Bases / Guardrails / Flows). Per-token + per-invocation billing.
-Source: aws.amazon.com/bedrock/agents (Jun 2026)
+Source: https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime
 
-[VERIFIED] Azure AI Foundry (formerly Azure AI Studio) provides agent orchestration, prompt flow, evaluation, content safety, and model choice via Azure OpenAI + third-party models. Per-token + compute billing.
-Source: azure.microsoft.com/en-us/products/ai-foundry (Jun 2026)
+What this establishes: GEAP provides managed runtime and related production capabilities.
 
-[ASSUMPTION] The TCO model applies to all three hyperscaler integrated platforms. Specific billing differences exist but structural economics (pre-integrated vs assembled, seat + metered vs ad-hoc) are comparable.
+What it does not establish: a single universal per-agent TCO. Runtime and related services can be usage-metered.
 
-[VERIFIED] Lock-in is real on all three platforms: billing meters, security hooks, catalog integrations, and IAM models create switching costs. The INPUTS model notes this per approach (see note field).
+## OpenAI boundary
 
----
+`VERIFIED` OpenAI's Agents SDK is a code-first toolkit in which the customer's application owns orchestration, tool execution, approvals, and state when using the SDK deployment path.
 
-## 3. Assembly Stack Costs
+Source: https://developers.openai.com/api/docs/guides/agents
 
-[VERIFIED] Pinecone Enterprise vector database: $2,500+/mo for dedicated clusters; typical enterprise workloads $5K–$15K+/mo.
-Source: pinecone.io/pricing (Jun 2026)
+What this establishes: an API-centered OpenAI build includes strong first-party agent building blocks while leaving meaningful application and runtime ownership with the customer.
 
-[VERIFIED] Langfuse Enterprise: $2,499/mo (listed on pricing page Jun 2026). Datadog LLM Observability: premium tier, typically $500–$3K+/mo per account depending on hosts and tokens traced.
-Source: langfuse.com/pricing, datadoghq.com/pricing (Jun 2026)
+`VERIFIED` OpenAI Frontier is described as an enterprise platform for deploying and managing production agents with business context, agent execution, evaluation/optimization, security, permissions, controls, and auditing.
 
-[ASSUMPTION] A complete best-of-breed LLM platform stack (vector DB, observability, eval, gateway, guardrails) costs $7K–$25K/mo in licenses for a mid-size enterprise. The $290K licenseYr in INPUTS represents a mid-range estimate for this stack at moderate scale.
+Source: https://openai.com/business/frontier/
 
-[UNCONFIRMED] Portkey / Lakera exact enterprise pricing is not publicly available. Included in bestOfBreed licenseYr as a bundle estimate.
+What this establishes: OpenAI has a more integrated enterprise alternative than an API-centered assembled stack.
 
-[ASSUMPTION] No single OSS or commercial tool today spans traces + infra + eval + governance in a consistently integrated way without custom integration. The "integration tax" (additional eng-months to wire these together and maintain) is the rationale for bestOfBreed's integPerAgent premium over integrated.
+What it does not establish: public list pricing or a capability-by-capability contractual entitlement. The application therefore labels Frontier economics `QUOTE REQUIRED` and does not silently substitute API pricing.
 
----
+## Anthropic boundary
 
-## 4. Engineering Rates
+`VERIFIED` Anthropic's Agent SDK provides an agent loop, tools, context management, permissions, hooks, and programmable TypeScript/Python interfaces.
 
-[ASSUMPTION] Loaded engineering rate: $18K/engineer-month (~$216K/year fully loaded including salary, benefits, overhead, management allocation). This is a commonly cited figure for senior engineers in US tech hubs.
-Range: $12K/mo (offshore / lower cost) to $30K/mo (HCOL US + FAANG comp).
-The slider expresses this range. All labor-priced INPUTS (buildFixed, integPerAgent) scale proportionally.
+Source: https://docs.anthropic.com/en/docs/claude-code/sdk
 
----
+Source: https://console.anthropic.com/docs/en/agent-sdk/permissions
 
-## 5. INPUTS Derivation (all $K, Year-1)
+What this establishes: Anthropic supplies first-party agent development and execution components.
 
-All marked [ASSUMPTION] — structural claims are what matter; individual figures are starting estimates.
+What it does not establish: that the SDK alone supplies the complete enterprise runtime, identity, governance, audit, evaluation, release, and FinOps operating stack.
 
-### Direct Model APIs (directApi)
-- buildFixed $80K: ~4–5 eng-months to scaffold 1st agent, set up auth, observability hook. Low — no shared infra built.
-- licenseYr $30K: model API costs not tied to agents (token spend is in runPerAgentYr); this is tooling subscriptions (IDE, monitoring basics).
-- integPerAgent $36K: 2 eng-months per agent (no reuse: each integration bootstraps from scratch). Repeats every agent.
-- runPerAgentYr $16K: infra + model tokens + minimal ops per agent/year (model cost held equal to other approaches).
-- weeksToFirstProd 10: first agent builds fast; subsequent agents have no reuse benefit.
+`VERIFIED` Anthropic describes Managed Agents as a hosted service for long-horizon agents.
 
-### Reusable Internal Platform (internalPlatform)
-- buildFixed $1,080K: 60 eng-months to build identity, registry, gateway, eval, observability from scratch — genuinely expensive.
-- licenseYr $1,320K: ongoing platform team (6+ FTE at ~$18K/mo = ~$1.3M/yr to run, upgrade, incident-respond).
-- integPerAgent $9K: 0.5 eng-months per agent (low — platform absorbs most integration work).
-- runPerAgentYr $6K: low infra cost per agent once platform is up (shared compute amortized).
-- weeksToFirstProd 40: 8–10 months before first production agent ships.
-- Note: At N>150, total TCO can undercut integrated platform. Full reuse credit given.
+Source: https://www.anthropic.com/engineering/managed-agents
 
-### Best-of-Breed Assembly (bestOfBreed)
-- buildFixed $200K: ~11 eng-months to evaluate, procure, and wire together the stack (vector DB, gateway, eval, observability).
-- licenseYr $290K: ~$24K/mo in commercial licenses at mid-scale (see §3). [ASSUMPTION]
-- integPerAgent $27K: 1.5 eng-months per agent; lower than direct (some reuse) but higher than integrated (multi-vendor wiring).
-- runPerAgentYr $8K: infra + licenses amortized + model tokens per agent.
-- weeksToFirstProd 20: stack assembly takes time before first agent.
+What this establishes: supported workloads may require less customer-owned runtime assembly than a pure SDK deployment.
 
-### Integrated Platform / GEAP (integratedPlatform)
-- buildFixed $80K: ~4 eng-months to provision, configure IAM, onboard teams. Low — no infrastructure to build.
-- licenseYr $60K: seat licenses for a pilot cohort (~100 users × $50/mo × 12). Scales with headcount.
-- integPerAgent $7K: ~0.4 eng-months (pre-integrated runtime, identity, eval reduce per-agent work).
-- runPerAgentYr $18K: metered platform consumption (runtime, grounding, memory, sessions) + model tokens. Higher per-unit than internal platform — the premium for pre-integration and managed ops.
-- weeksToFirstProd 6: time-to-value advantage is the primary structural differentiator.
-- Note: lock-in is real; metered consumption grows with usage; equivalent AWS/Azure platforms exist.
+What it does not establish: complete public capability coverage or enterprise pricing across the full stack. These remain `QUOTE REQUIRED` or `UNCONFIRMED` where applicable.
 
----
+## Model assumptions
 
-## 6. What Would Change the Answer?
+All values in `src/lib/agent-economics/economics.ts` are transparent starting assumptions expressed in thousands of US dollars.
 
-The recommendation is most sensitive to:
-1. **Engineering rate**: If your teams are offshore at $8K/mo, the internal platform and best-of-breed integration costs collapse significantly, making those approaches more competitive earlier.
-2. **Agent count**: The crossover between integrated and internal platform occurs around N=150–200. If you're building >150 agents, a well-resourced internal platform deserves serious analysis.
-3. **runPerAgentYr for integrated**: The $18K metered consumption figure is an estimate at moderate agent activity. Heavy agents (high grounding queries, long memory, frequent re-evaluation) could push this to $30K+, which changes the crossover with internal platform earlier.
+`ASSUMPTION` Weighted agent units combine class, autonomy, and count so a Personal + Assist agent is not treated as economically equivalent to a Customer-facing + Orchestrate agent.
 
----
+`ASSUMPTION` Loaded engineering rate defaults to $18K per engineer-month and is adjustable from $8K to $35K.
 
-## 7. Structural Claims (what must hold, not just the numbers)
+`ASSUMPTION` Model usage rates are deliberately close across approaches. The experience is intended to expose platform and operating-stack economics, not manufacture a result from model price differences.
 
-[ASSUMPTION] Model/token cost is a single-digit-to-~20% slice of full-lifecycle TCO for governed enterprise agents. The rest is build, integrate, govern, operate, expand. This is the core thesis. It is supported by the INPUTS decomposition: at N=10, model cost (~$2–5K/agent/yr) represents ~3–8% of the integrated platform total ($390K).
+`ASSUMPTION` GEAP has lower initial integration and ongoing operating effort because more required capabilities are supplied through one platform.
 
-[ASSUMPTION] The functions listed in CAPABILITIES (identity, policy, audit, eval, observability, runtime) are essential for production-grade governed agents regardless of which platform provides them. The question is implementation approach, not whether they're needed.
+`ASSUMPTION` API-centered Claude and OpenAI deployments incur hyperscaler, external-tool, integration, and operating costs only for capabilities required by the selected estate.
 
-[ASSUMPTION] Shared/reusable components scale better than per-agent repeated assembly. This is a structural economics claim (economies of scale in platform amortization) that holds independent of specific pricing.
+`ASSUMPTION` Existing-tool credit reduces assembled-stack external product and some infrastructure cost. It does not reduce model inference or all customer engineering work.
+
+`QUOTE REQUIRED` Enterprise discounts, OpenAI Frontier contracts, Anthropic Managed Agents contracts, external guardrail/evaluation products, and negotiated hyperscaler commitments vary by customer.
+
+## Interpretation guardrails
+
+- Platform-provided does not mean free.
+- API or SDK availability does not by itself establish a managed enterprise operating platform.
+- Model quality is separate from platform completeness.
+- Existing cloud commitments and already-owned tools can change the result materially.
+- Customer architecture, security scope, volumes, regions, and contracted rates must replace the defaults before a purchasing decision.

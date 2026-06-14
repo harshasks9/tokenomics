@@ -27,24 +27,22 @@ function ProgressBar({ latencyMs, maxMs, color, isRunning, done }: {
   const ctrl = useRef<ReturnType<typeof animate> | null>(null);
 
   useEffect(() => {
-    if (isRunning) {
-      ctrl.current = animate(0, 100, {
-        duration: latencyMs / 1000,
-        ease: "linear",
-        onUpdate: (v) => setPct(v),
-      });
-    } else {
-      ctrl.current?.stop();
-      setPct(done ? 100 : 0);
-    }
+    if (!isRunning) return;
+    ctrl.current = animate(0, 100, {
+      duration: latencyMs / 1000,
+      ease: "linear",
+      onUpdate: (v) => setPct(v),
+    });
     return () => ctrl.current?.stop();
-  }, [isRunning, done, latencyMs]);
+  }, [isRunning, latencyMs]);
+
+  const displayPct = isRunning ? pct : done ? 100 : 0;
 
   return (
     <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
       <motion.div
         className="absolute inset-y-0 left-0 rounded-full"
-        style={{ width: `${pct}%`, backgroundColor: color }}
+        style={{ width: `${displayPct}%`, backgroundColor: color }}
         transition={{ duration: 0.05 }}
       />
     </div>

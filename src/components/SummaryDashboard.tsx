@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import AgentEconomicsCta from "@/components/enterprise-lens/AgentEconomicsCta";
 import { useTally } from "@/lib/tally-context";
 import { fmtUSD, pctSavings } from "@/lib/pricing";
 import { SELLER_NOTES } from "@/lib/content";
@@ -23,8 +25,8 @@ import {
   BookOpen,
   CheckCircle2,
   TrendingUp,
+  ArrowRight,
 } from "lucide-react";
-import AgentEconomicsLens from "@/components/enterprise-lens/AgentEconomicsLens";
 
 function AnimatedNumber({ value, prefix = "$", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
   const [display, setDisplay] = useState(0);
@@ -57,7 +59,6 @@ export default function SummaryDashboard() {
   const { results, resetAll } = useTally();
   const [showNotes, setShowNotes] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [showLens, setShowLens] = useState(false);
 
   // Compute lifecycle buckets
   const buildResult = results["s1"];
@@ -149,14 +150,11 @@ export default function SummaryDashboard() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowLens(!showLens)}
-              className={`btn-secondary text-xs ${showLens ? "bg-blue-50 border-blue-200 text-blue-700" : ""}`}
-            >
+            <Link href="/agent-economics" className="btn-secondary text-xs bg-blue-50 border-blue-200 text-blue-700">
               <TrendingUp className="w-3.5 h-3.5" />
-              Total Cost to Outcome
-              {showLens ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-            </button>
+              Enterprise Agent Economics
+              <ArrowRight className="w-3 h-3" />
+            </Link>
             <button
               onClick={() => setShowNotes(!showNotes)}
               className="btn-secondary text-xs"
@@ -207,6 +205,8 @@ export default function SummaryDashboard() {
             ))}
           </motion.div>
         )}
+
+        <AgentEconomicsCta />
 
         {/* Hero stat */}
         <div className="text-center mb-16">
@@ -365,8 +365,6 @@ export default function SummaryDashboard() {
           })}
         </div>
 
-        {/* Enterprise economics lens — OFF by default */}
-        {showLens && <AgentEconomicsLens />}
       </div>
     </section>
   );

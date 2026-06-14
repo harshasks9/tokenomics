@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { RotateCcw, Copy, ChevronDown, ChevronUp, BookOpen, CheckCircle2 } from "lucide-react";
+import AgentEconomicsCta from "@/components/enterprise-lens/AgentEconomicsCta";
 
 const AMBER  = "#E37400";
 const INDIGO = "#4F46E5";
@@ -118,6 +119,8 @@ export default function FactSummaryDashboard() {
             ))}
           </motion.div>
         )}
+
+        <AgentEconomicsCta />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
           {[

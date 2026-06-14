@@ -40,7 +40,10 @@ function RaceLane({ laneKey, durationMs, quality, running, label, onFinish }: {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!running) { progress.set(0); setDisplayMs(0); setDone(false); return; }
+    if (!running) {
+      const frame = requestAnimationFrame(() => { progress.set(0); setDisplayMs(0); setDone(false); });
+      return () => cancelAnimationFrame(frame);
+    }
     const controls = animate(progress, 1, {
       duration: durationMs / 1000,
       ease: "easeOut",

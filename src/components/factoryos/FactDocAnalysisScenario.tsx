@@ -27,21 +27,19 @@ function ProgressBar({ latencyMs, color, isRunning, done }: {
   const ctrl = useRef<ReturnType<typeof animate> | null>(null);
 
   useEffect(() => {
-    if (isRunning) {
-      ctrl.current = animate(0, 100, {
-        duration: latencyMs / 1000, ease: "linear", onUpdate: (v) => setPct(v),
-      });
-    } else {
-      ctrl.current?.stop();
-      setPct(done ? 100 : 0);
-    }
+    if (!isRunning) return;
+    ctrl.current = animate(0, 100, {
+      duration: latencyMs / 1000, ease: "linear", onUpdate: (v) => setPct(v),
+    });
     return () => ctrl.current?.stop();
-  }, [isRunning, done, latencyMs]);
+  }, [isRunning, latencyMs]);
+
+  const displayPct = isRunning ? pct : done ? 100 : 0;
 
   return (
     <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
       <motion.div className="absolute inset-y-0 left-0 rounded-full"
-        style={{ width: `${pct}%`, backgroundColor: color }} transition={{ duration: 0.05 }} />
+        style={{ width: `${displayPct}%`, backgroundColor: color }} transition={{ duration: 0.05 }} />
     </div>
   );
 }
@@ -97,7 +95,7 @@ export default function FactDocAnalysisScenario() {
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-4">Visual Quality Inspection</h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
             Flash scans 5 million parts per year in under a second each.
-            Opus makes the pass/rework/scrap call. Pure Flash accuracy isn't good enough
+            Opus makes the pass/rework/scrap call. Pure Flash accuracy isn&apos;t good enough
             when a wrong disposition scraps a $400 casting.
           </p>
         </motion.div>

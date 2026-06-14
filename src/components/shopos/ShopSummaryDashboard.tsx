@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
 import { RotateCcw, Copy, ChevronDown, ChevronUp, BookOpen, CheckCircle2 } from "lucide-react";
+import AgentEconomicsCta from "@/components/enterprise-lens/AgentEconomicsCta";
 
 function AnimNumber({ value }: { value: number }) {
   const [display, setDisplay] = useState(0);
@@ -120,6 +121,8 @@ export default function ShopSummaryDashboard() {
         )}
 
         {/* Hero stat */}
+        <AgentEconomicsCta />
+
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#E6F4EA] rounded-full mb-4">
             <div className="w-2 h-2 rounded-full bg-[#188038]" />

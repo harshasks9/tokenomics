@@ -133,7 +133,7 @@ export default function PsCitizenScenario() {
 
             {currentQ && (
               <div className="border border-t-0 border-gray-200 rounded-b-2xl bg-white p-4">
-                <p className="text-xs font-semibold text-gray-700 mb-3">"{currentQ.question}"</p>
+                <p className="text-xs font-semibold text-gray-700 mb-3">&ldquo;{currentQ.question}&rdquo;</p>
                 <div className="grid grid-cols-3 gap-2">
                   {(["flashLite", "flash", "opus"] as ModelKey[]).map((mk) => (
                     <div key={mk} className="rounded-xl border-2 p-2.5"

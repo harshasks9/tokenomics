@@ -12,6 +12,8 @@ import {
   Home,
   Plus,
   Eye,
+  Network,
+  ArrowRight,
 } from "lucide-react";
 
 const industries = [
@@ -166,7 +168,7 @@ export default function SpringboardHome() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center relative overflow-x-hidden py-12 pb-28"
       style={{
         background:
           "linear-gradient(160deg, #0f172a 0%, #1e293b 40%, #0f172a 70%, #1a2332 100%)",
@@ -191,7 +193,7 @@ export default function SpringboardHome() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16 z-10"
+        className="text-center mb-9 z-10"
       >
         <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">
           AI Tokenomics — Industry Demos
@@ -202,7 +204,29 @@ export default function SpringboardHome() {
       </motion.div>
 
       {/* App Grid — 3 top row + 2 bottom row */}
-      <div className="z-10 px-8 mb-24 flex flex-col items-center gap-12 md:gap-14">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, delay: 0.15 }}
+        className="z-10 w-full max-w-3xl px-6 mb-11"
+      >
+        <Link
+          href="/agent-economics"
+          className="group flex flex-col gap-5 rounded-3xl border border-blue-300/20 bg-gradient-to-br from-blue-500/20 via-white/10 to-emerald-400/10 p-6 shadow-2xl backdrop-blur-xl transition hover:border-blue-300/40 hover:bg-white/[0.13] sm:flex-row sm:items-center"
+        >
+          <div className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-blue-500 text-white shadow-lg shadow-blue-950/30">
+            <Network size={27} />
+          </div>
+          <div className="flex-1">
+            <div className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-300">CXO decision experience</div>
+            <h2 className="text-xl font-extrabold text-white">Enterprise Agent Economics</h2>
+            <p className="mt-1 text-sm leading-relaxed text-white/55">Define your agent estate, reveal the production stack, and compare integrated versus assembled total economics.</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold text-white/75 transition group-hover:text-white">Open analysis<ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></div>
+        </Link>
+      </motion.div>
+
+      <div className="z-10 px-8 mb-24 flex flex-col items-center gap-10 md:gap-12">
         <div className="flex flex-wrap justify-center gap-12 md:gap-16">
           {industries.slice(0, 3).map((ind, i) => (
             <SquircleIcon key={ind.id} industry={ind} index={i} sellerMode={sellerMode} />

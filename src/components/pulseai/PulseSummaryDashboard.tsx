@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { RotateCcw, Copy, ChevronDown, ChevronUp, BookOpen, CheckCircle2 } from "lucide-react";
+import AgentEconomicsCta from "@/components/enterprise-lens/AgentEconomicsCta";
 
 function AnimNumber({ value }: { value: number }) {
   const [display, setDisplay] = useState(0);
@@ -118,6 +119,8 @@ export default function HcSummaryDashboard() {
             ))}
           </motion.div>
         )}
+
+        <AgentEconomicsCta />
 
         {/* Summary grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
