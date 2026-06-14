@@ -12,11 +12,6 @@ import {
   Wifi,
   Home,
   Eye,
-  ShoppingCart,
-  Zap,
-  Building2,
-  Banknote,
-  Globe,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -73,54 +68,6 @@ const industries = [
     icon: Wifi,
     gradient: "linear-gradient(135deg, #075985 0%, #0284C7 100%)",
     roiTeaser: "52% build savings · network automation",
-    enabled: true,
-  },
-];
-
-const profiles = [
-  {
-    id: "ausretail",
-    name: "AusRetail",
-    href: "/ausretail",
-    icon: ShoppingCart,
-    gradient: "linear-gradient(135deg, #064E3B 0%, #059669 100%)",
-    roiTeaser: "58% build · 78% run savings",
-    enabled: true,
-  },
-  {
-    id: "blinkmart",
-    name: "BlinkMart",
-    href: "/blinkmart",
-    icon: Zap,
-    gradient: "linear-gradient(135deg, #7C2D12 0%, #EA580C 100%)",
-    roiTeaser: "64% build · 80% run savings",
-    enabled: true,
-  },
-  {
-    id: "samgico",
-    name: "SamgiCo",
-    href: "/samgico",
-    icon: Building2,
-    gradient: "linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%)",
-    roiTeaser: "48% build · 62% patent savings",
-    enabled: true,
-  },
-  {
-    id: "mizubank",
-    name: "MizuBank",
-    href: "/mizubank",
-    icon: Banknote,
-    gradient: "linear-gradient(135deg, #881337 0%, #E11D48 100%)",
-    roiTeaser: "52% build · 76% advisory savings",
-    enabled: true,
-  },
-  {
-    id: "citizensai",
-    name: "CitizensAI",
-    href: "/citizensai",
-    icon: Globe,
-    gradient: "linear-gradient(135deg, #134E4A 0%, #0D9488 100%)",
-    roiTeaser: "54% build · 79% support savings",
     enabled: true,
   },
 ];
@@ -257,19 +204,6 @@ export default function SpringboardHome() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="flex items-center gap-4 w-full max-w-md">
-          <div className="flex-1 h-px bg-white/10" />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-white/20">Customer Profiles</span>
-          <div className="flex-1 h-px bg-white/10" />
-        </div>
-
-        {/* Customer Profiles */}
-        <div className="flex flex-wrap justify-center gap-10 md:gap-12">
-          {profiles.map((p, i) => (
-            <SquircleIcon key={p.id} item={p} index={i + industries.length} sellerMode={sellerMode} />
-          ))}
-        </div>
       </div>
 
       {/* Subtle secondary link */}
