@@ -32,26 +32,45 @@ const SLATE = "#475569";
 function useCountUp(target: number, duration = 800) {
   const [value, setValue] = useState(0);
   const frameRef = useRef<number>(0);
+  const valueRef = useRef(0);
+  const animationRef = useRef(0);
 
   useEffect(() => {
-    const start = value;
+    const animationId = ++animationRef.current;
+    const start = valueRef.current;
     const diff = target - start;
     const startTime = performance.now();
+
+    if (!Number.isFinite(target) || duration <= 0 || diff === 0) {
+      valueRef.current = target;
+      setValue(target);
+      return;
+    }
+
     const animate = (now: number) => {
+      if (animationRef.current !== animationId) return;
+
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(start + diff * eased);
+      const interpolated = start + diff * eased;
+      const nextValue = diff > 0
+        ? Math.min(target, Math.max(start, interpolated))
+        : Math.max(target, Math.min(start, interpolated));
+
+      valueRef.current = progress === 1 ? target : nextValue;
+      setValue(valueRef.current);
+
       if (progress < 1) {
         frameRef.current = requestAnimationFrame(animate);
       }
     };
     frameRef.current = requestAnimationFrame(animate);
     return () => {
+      animationRef.current += 1;
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target, duration]);
 
   return value;
@@ -529,6 +548,7 @@ export default function BuildScenario() {
                           You save
                         </p>
                         <p
+                          data-testid="build-savings-value"
                           className="text-2xl font-bold tabular-nums"
                           style={{ color: GREEN }}
                         >
@@ -813,7 +833,7 @@ export default function BuildScenario() {
             <span className="font-semibold text-slate-700">Bottom line:</span>{" "}
             A {devs}-person team saves{" "}
             <span className="font-bold tabular-nums" style={{ color: GREEN }}>
-              {fmtUSD(costs.savingsTotal, 2)}
+              <span data-testid="build-savings-exact">{fmtUSD(costs.savingsTotal, 2)}</span>
             </span>{" "}
             over {sprints} sprints vs Opus + Sonnet. Opus handles the same complex work
             in both routes; Flash replaces Sonnet only on routine tasks.

@@ -22,7 +22,7 @@ export default function HcStickyNav() {
         ← Home
       </Link>
       <div className="mb-10 px-3">
-        <div className="text-xs font-bold tracking-widest uppercase text-[#5F6368] mb-1">Healthcare</div>
+        <div className="text-xs font-bold tracking-widest uppercase text-[#5F6368] mb-1">PulseAI</div>
         <div className="text-[10px] font-semibold tracking-wider uppercase text-[#BDC1C6]">Tokenomics Showcase</div>
       </div>
 
