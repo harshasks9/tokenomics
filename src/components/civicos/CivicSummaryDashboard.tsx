@@ -2,7 +2,7 @@
 
 import { useTally } from "@/lib/tally-context";
 import { pctSavings } from "@/lib/pricing";
-import { PS_SELLER_NOTES } from "@/lib/industries/publicsector";
+import { PS_SELLER_NOTES } from "@/lib/industries/civicos";
 import { useState, useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";

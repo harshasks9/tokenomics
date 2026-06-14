@@ -5,7 +5,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid, Cell } from "recharts";
 import { Bot, Cpu, ShieldCheck, ChevronRight, X } from "lucide-react";
 import { fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
-import { HC_S4, HC_S4_TRACE, hcS4Costs, hcS4Annual, type HcS4Config, type HcAgentNode } from "@/lib/industries/healthcare";
+import { HC_S4, HC_S4_TRACE, hcS4Costs, hcS4Annual, type HcS4Config, type HcAgentNode } from "@/lib/industries/pulseai";
 import { useTally } from "@/lib/tally-context";
 
 const OPUS_COLOR  = "#7B61FF";

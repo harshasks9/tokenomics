@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActiveSection } from "@/lib/hooks";
 import { Brain, Zap, Eye, Bot, BarChart3, Layers } from "lucide-react";
 
@@ -17,6 +18,9 @@ export default function StickyNav() {
 
   return (
     <nav className="fixed left-0 top-0 bottom-0 w-56 bg-white border-r border-[#E8EAED] z-50 hidden lg:flex flex-col py-8 px-4">
+      <Link href="/" className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium text-[#5F6368]/50 hover:text-[#5F6368] transition-colors mb-1">
+        ← Home
+      </Link>
       <div className="mb-10 px-3">
         <div className="text-xs font-bold tracking-widest uppercase text-[#5F6368] mb-1">
           WealthAI

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, animate } from "framer-motion";
 import { FileText, Zap, CheckCircle2 } from "lucide-react";
 import { fmtUSD, pctSavings } from "@/lib/pricing";
-import { PS_S3, PS_S3_CARDS, psS3Costs, type GovDocCard } from "@/lib/industries/publicsector";
+import { PS_S3, PS_S3_CARDS, psS3Costs, type GovDocCard } from "@/lib/industries/civicos";
 import { useTally } from "@/lib/tally-context";
 
 const INDIGO = "#4F46E5";

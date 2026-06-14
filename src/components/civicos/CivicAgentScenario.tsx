@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Bot, Cpu, ShieldCheck, ChevronRight, X } from "lucide-react";
 import { fmtUSD, pctSavings } from "@/lib/pricing";
-import { PS_S4, PS_S4_TRACE, psS4Costs, psS4Annual, type PsS4Config, type PsAgentNode } from "@/lib/industries/publicsector";
+import { PS_S4, PS_S4_TRACE, psS4Costs, psS4Annual, type PsS4Config, type PsAgentNode } from "@/lib/industries/civicos";
 import { useTally } from "@/lib/tally-context";
 
 const INDIGO = "#4F46E5";

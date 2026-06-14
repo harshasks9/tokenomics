@@ -237,9 +237,9 @@ export default function ShopBuildScenario() {
               <p className="mb-3 text-xs font-medium uppercase tracking-wider text-slate-400">Total Cost Comparison ({sprints} sprints)</p>
               <ResponsiveContainer
                 width="100%"
-                height={200}
+                height={240}
                 minWidth={0}
-                initialDimension={{ width: 600, height: 200 }}
+                initialDimension={{ width: 600, height: 240 }}
               >
                 <BarChart data={barData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                   <XAxis dataKey="name" tick={{ fontSize: 11, fill: "#64748b" }} axisLine={false} tickLine={false} />

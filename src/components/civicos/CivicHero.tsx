@@ -89,7 +89,7 @@ export default function PsHero() {
             <span style={{ color: INDIGO_LIGHT }}>No capability compromise.</span>
           </h1>
           <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-            Government codebases skew routine — 80% of tasks are CRUD, legacy wrappers, and boilerplate.
+            Government codebases skew routine — 80% of coding tasks are CRUD, legacy wrappers, and boilerplate.
             Reserve Opus for FedRAMP compliance and fraud logic. Run everything else on Gemini Flash.
           </p>
         </motion.div>
@@ -113,7 +113,7 @@ export default function PsHero() {
               <Icon size={14} style={{ color }} />
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider" style={{ color }}>{label}</span>
-                <span className="ml-1.5 text-xs text-white/40">{sub}</span>
+                <span className="ml-1.5 text-xs text-white/60">{sub}</span>
               </div>
             </motion.div>
           ))}

@@ -115,6 +115,13 @@ export default function ShopHero() {
             </div>
           ))}
         </motion.div>
+
+        {/* AA citation footnote */}
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 1.1 }}
+          className="mt-6 text-[10px] text-gray-600 max-w-5xl">
+          Gemini 3.1 Pro scores 92 on the Artificial Analysis (AA) Intelligence Index vs Claude Opus 4.8 at 89.
+          AA Intelligence Index scores as of Q2 2026. See <span className="underline underline-offset-2">artificialanalysis.ai</span> for current rankings.
+        </motion.p>
       </div>
     </section>
   );

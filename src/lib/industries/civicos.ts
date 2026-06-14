@@ -339,12 +339,12 @@ export const PS_SELLER_NOTES = {
   s2: {
     title: "Run Phase — Citizen Services Portal",
     assumption: "5M queries/month across DMV, benefits, permits, FOIA. 65% are simple status lookups (Flash-Lite), 25% policy FAQ (Flash), 10% complex appeals and contract disputes (Opus).",
-    sayThis: "'Where's my refund?' runs on Flash-Lite at $0.0011/query. 'My SNAP appeal rights' runs on Opus because the 10-day aid-paid-pending window could keep a family fed during the process. This is model routing at the moment of highest public impact.",
+    sayThis: "'Where's my refund?' runs on Flash-Lite at $0.0011/query. 'My SNAP appeal rights' runs on Opus — the 10-day aid-paid-pending window keeps a family fed while the appeal is pending.",
   },
   s3: {
     title: "Run Phase — Document Processing",
     assumption: "1M government documents/year — RFP analysis, FOIA redaction review, compliance audits. Flash extracts structure in 700ms; Opus reasons about compliance implications, legal privilege, and contract risk.",
-    sayThis: "Gemini Flash reads 1,842 FOIA pages in 0.7 seconds and flags redaction candidates automatically. Opus interprets attorney-client privilege and deliberative process exemptions. You can't afford Opus for bulk extraction — and you can't afford to get the privilege review wrong.",
+    sayThis: "Flash reads 1,842 FOIA pages in 0.7 seconds and auto-flags redaction candidates. Opus handles privilege review and compliance interpretation — because getting that wrong has consequences.",
   },
   s4: {
     title: "Extend Phase — Procurement Compliance Agent",

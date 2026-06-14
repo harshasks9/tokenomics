@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { Users, Star } from "lucide-react";
 import { callCost, fmtUSD, pctSavings, MODELS } from "@/lib/pricing";
-import { PS_S2, PS_S2_QA, psS2Costs, type PsS2QAPair } from "@/lib/industries/publicsector";
+import { PS_S2, PS_S2_QA, psS2Costs, type PsS2QAPair } from "@/lib/industries/civicos";
 import { useTally } from "@/lib/tally-context";
 
 const INDIGO = "#4F46E5";
