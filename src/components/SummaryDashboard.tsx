@@ -22,7 +22,9 @@ import {
   ChevronUp,
   BookOpen,
   CheckCircle2,
+  TrendingUp,
 } from "lucide-react";
+import AgentEconomicsLens from "@/components/enterprise-lens/AgentEconomicsLens";
 
 function AnimatedNumber({ value, prefix = "$", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
   const [display, setDisplay] = useState(0);
@@ -55,6 +57,7 @@ export default function SummaryDashboard() {
   const { results, resetAll } = useTally();
   const [showNotes, setShowNotes] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showLens, setShowLens] = useState(false);
 
   // Compute lifecycle buckets
   const buildResult = results["s1"];
@@ -146,6 +149,14 @@ export default function SummaryDashboard() {
             </p>
           </div>
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => setShowLens(!showLens)}
+              className={`btn-secondary text-xs ${showLens ? "bg-blue-50 border-blue-200 text-blue-700" : ""}`}
+            >
+              <TrendingUp className="w-3.5 h-3.5" />
+              Total Cost to Outcome
+              {showLens ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
             <button
               onClick={() => setShowNotes(!showNotes)}
               className="btn-secondary text-xs"
@@ -353,6 +364,9 @@ export default function SummaryDashboard() {
             );
           })}
         </div>
+
+        {/* Enterprise economics lens — OFF by default */}
+        {showLens && <AgentEconomicsLens />}
       </div>
     </section>
   );
