@@ -45,6 +45,10 @@ const CLAUDE_FIRST = new Set(["models", "orchestration", "tools", "sandbox"]);
 const OPENAI_FIRST = new Set(["models", "routing", "orchestration", "tools", "sessions", "evals"]);
 const HYPERSCALER = new Set(["runtime", "scaling", "sessions", "memory", "release", "identity", "audit", "observability"]);
 const THIRD_PARTY = new Set(["connectors", "grounding", "policy", "evals", "observability", "registry", "finops"]);
+const ACCURACY_CONTROL_IDS = new Set([
+  "routing", "grounding", "sessions", "memory", "release", "identity", "authorization",
+  "policy", "audit", "evals", "observability",
+]);
 
 export function ownershipFor(approach: Approach, capabilityId: string): OwnershipState {
   if (approach === "geap") {
@@ -70,4 +74,20 @@ export function stackSummary(approach: Approach, capabilities: CapabilityAssessm
     : 1 + Number(ownership.includes("Hyperscaler service")) + Number(ownership.includes("Third-party product"));
   const operatingTeams = approach === "geap" ? 2 : Math.min(5, 2 + vendors + Number(integrationBoundaries > 5));
   return { platformProvided, integrationBoundaries, vendors, operatingTeams, total: inScope.length };
+}
+
+export function accuracyControlSummary(approach: Approach, capabilities: CapabilityAssessment[]) {
+  const controls = capabilities.filter(
+    (capability) => capability.status !== "optional" && ACCURACY_CONTROL_IDS.has(capability.id),
+  );
+  const integrated = controls.filter((capability) => {
+    const ownership = ownershipFor(approach, capability.id);
+    return ownership === "Platform-provided" || ownership === "First-party component";
+  }).length;
+
+  return {
+    total: controls.length,
+    integrated,
+    assemble: controls.length - integrated,
+  };
 }

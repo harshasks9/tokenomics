@@ -44,7 +44,7 @@ export default function AgentEconomicsExperience() {
       <div className="mx-auto max-w-7xl space-y-24 px-6 py-16 lg:px-10 lg:py-24">
         <AgentEstateProfiler profile={profile} onChange={setProfile} />
         <CapabilityBlueprint capabilities={capabilities} />
-        <DeliveryStackComparison capabilities={capabilities} />
+        <DeliveryStackComparison capabilities={capabilities} economics={economics} />
         <div><EconomicsComparison profile={profile} capabilities={capabilities} assumptions={assumptions} onAssumptionsChange={setAssumptions} /><DecisionBrief brief={brief} /></div>
       </div>
 

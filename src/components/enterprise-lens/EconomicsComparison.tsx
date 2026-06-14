@@ -37,6 +37,14 @@ export default function EconomicsComparison({ profile, capabilities, assumptions
     approach: item.approach,
     ...costByBucket(item, horizon),
   }));
+  const geap = economics.find((item) => item.approach === "geap")!;
+  const bestAssembled = economics
+    .filter((item) => item.approach !== "geap")
+    .sort((a, b) => (horizon === "year1" ? a.yearOneK - b.yearOneK : a.threeYearK - b.threeYearK))[0];
+  const geapTotal = horizon === "year1" ? geap.yearOneK : geap.threeYearK;
+  const assembledTotal = horizon === "year1" ? bestAssembled.yearOneK : bestAssembled.threeYearK;
+  const gap = assembledTotal - geapTotal;
+  const gapPercent = Math.round((Math.abs(gap) / Math.max(1, assembledTotal)) * 100);
 
   return (
     <section id="economics" className="scroll-mt-28">
@@ -52,6 +60,22 @@ export default function EconomicsComparison({ profile, capabilities, assumptions
         </div>
       </div>
 
+      <div className="mb-6 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+        <div className="flex flex-col gap-2 border-b border-slate-200 bg-slate-950 px-5 py-4 text-white sm:flex-row sm:items-center sm:justify-between">
+          <div><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-300">Live cost impact</p><p className="mt-1 text-sm font-bold">Every control below updates this comparison immediately.</p></div>
+          <span className="w-fit rounded-full bg-white/10 px-3 py-1 text-[10px] font-semibold text-slate-300">Same required capability and accuracy target</span>
+        </div>
+        <div className="grid md:grid-cols-[1fr_1fr_1.15fr]">
+          <LiveCost label="GEAP full stack" value={fmtK(geapTotal)} color={APPROACH_META.geap.color} testId="geap-live-cost" />
+          <LiveCost label={`Best assembled: ${APPROACH_META[bestAssembled.approach].shortName}`} value={fmtK(assembledTotal)} color={APPROACH_META[bestAssembled.approach].color} testId="assembled-live-cost" />
+          <div className={`border-t p-5 md:border-l md:border-t-0 ${gap >= 0 ? "bg-emerald-50" : "bg-amber-50"}`}>
+            <p className={`text-[10px] font-bold uppercase tracking-wide ${gap >= 0 ? "text-emerald-700" : "text-amber-700"}`}>{gap >= 0 ? "GEAP estimated advantage" : "GEAP estimated premium"}</p>
+            <p className={`mt-1 text-3xl font-black tabular-nums ${gap >= 0 ? "text-emerald-900" : "text-amber-900"}`} data-testid="live-cost-gap">{fmtK(Math.abs(gap))} <span className="text-base">({gapPercent}%)</span></p>
+            <p className={`mt-1 text-[10px] ${gap >= 0 ? "text-emerald-700" : "text-amber-700"}`}>{horizon === "year1" ? "Year-1" : "Three-year"} full-stack TCO difference</p>
+          </div>
+        </div>
+      </div>
+
       <div className="mb-6 grid gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 lg:grid-cols-3">
         <Slider label="Loaded engineering cost" value={assumptions.engineeringRateK} min={8} max={35} suffix="K/mo"
           onChange={(value) => onAssumptionsChange({ ...assumptions, engineeringRateK: value })} />
@@ -63,7 +87,8 @@ export default function EconomicsComparison({ profile, capabilities, assumptions
             {APPROACHES.map((approach) => <label key={approach} className="rounded-xl border border-slate-200 bg-white p-2 text-center">
               <span className="block truncate text-[9px] font-bold" style={{ color: APPROACH_META[approach].color }}>{APPROACH_META[approach].shortName}</span>
               <input aria-label={`${APPROACH_META[approach].shortName} discount`} type="number" min={0} max={50} value={Math.round(assumptions.discounts[approach] * 100)}
-                onChange={(event) => onAssumptionsChange({ ...assumptions, discounts: { ...assumptions.discounts, [approach]: Number(event.target.value) / 100 } })}
+                onInput={(event) => onAssumptionsChange({ ...assumptions, discounts: { ...assumptions.discounts, [approach]: Number(event.currentTarget.value) / 100 } })}
+                onChange={(event) => onAssumptionsChange({ ...assumptions, discounts: { ...assumptions.discounts, [approach]: Number(event.currentTarget.value) / 100 } })}
                 className="mt-1 w-full bg-transparent text-center text-sm font-bold text-slate-800 outline-none" />
               <span className="text-[9px] text-slate-400">%</span>
             </label>)}
@@ -112,7 +137,12 @@ export default function EconomicsComparison({ profile, capabilities, assumptions
 }
 
 function Slider({ label, value, min, max, suffix, onChange }: { label: string; value: number; min: number; max: number; suffix: string; onChange: (value: number) => void }) {
-  return <div><div className="mb-2 flex items-center justify-between"><p className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p><span className="text-sm font-extrabold text-slate-900">{value}{suffix}</span></div><input type="range" min={min} max={max} value={value} onChange={(event) => onChange(Number(event.target.value))} className="h-2 w-full cursor-pointer accent-slate-800" /><div className="mt-1 flex justify-between text-[9px] text-slate-400"><span>{min}{suffix}</span><span>{max}{suffix}</span></div></div>;
+  const percent = ((value - min) / Math.max(1, max - min)) * 100;
+  return <div><div className="mb-2 flex items-center justify-between"><p className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p><output className="rounded-lg bg-slate-900 px-2 py-1 text-sm font-extrabold tabular-nums text-white" aria-live="polite">{value}{suffix}</output></div><input aria-label={label} aria-valuetext={`${value}${suffix}`} type="range" min={min} max={max} value={value} onInput={(event) => onChange(Number(event.currentTarget.value))} onChange={(event) => onChange(Number(event.currentTarget.value))} className="slider-track" style={{ background: `linear-gradient(90deg, #0F172A 0%, #0F172A ${percent}%, #CBD5E1 ${percent}%, #CBD5E1 100%)` }} /><div className="mt-1 flex justify-between text-[9px] text-slate-400"><span>{min}{suffix}</span><span>{max}{suffix}</span></div></div>;
+}
+
+function LiveCost({ label, value, color, testId }: { label: string; value: string; color: string; testId: string }) {
+  return <div className="border-t border-slate-100 p-5 first:border-t-0 md:border-t-0 md:border-l md:first:border-l-0"><p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">{label}</p><p className="mt-1 text-3xl font-black tabular-nums text-slate-950" data-testid={testId}>{value}</p><div className="mt-3 h-1.5 w-16 rounded-full" style={{ backgroundColor: color }} /></div>;
 }
 
 function TinyMetric({ icon: Icon, value, label }: { icon: typeof Clock3; value: string; label: string }) {

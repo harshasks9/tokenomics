@@ -2,7 +2,8 @@
 
 import { Bot, BriefcaseBusiness, Users, Sparkles } from "lucide-react";
 import type { AgentClass, Complexity, EstateProfile } from "@/lib/agent-economics/types";
-import { estateSummary } from "@/lib/agent-economics/capabilities";
+import { capabilityCounts, deriveCapabilities, estateSummary } from "@/lib/agent-economics/capabilities";
+import { weightedAgentUnits } from "@/lib/agent-economics/economics";
 
 export const ESTATE_PRESETS: Record<string, EstateProfile> = {
   personal: {
@@ -42,6 +43,8 @@ interface Props {
 
 export default function AgentEstateProfiler({ profile, onChange }: Props) {
   const summary = estateSummary(profile);
+  const capabilitySummary = capabilityCounts(deriveCapabilities(profile));
+  const workloadUnits = weightedAgentUnits(profile);
   const updateClass = (agentClass: AgentClass, patch: Partial<EstateProfile[AgentClass]>) => {
     onChange({ ...profile, [agentClass]: { ...profile[agentClass], ...patch } });
   };
@@ -57,6 +60,19 @@ export default function AgentEstateProfiler({ profile, onChange }: Props) {
         <div className="rounded-2xl border border-blue-200 bg-blue-50 px-5 py-4 lg:max-w-sm">
           <div className="flex items-center gap-2 text-sm font-bold text-blue-900"><Sparkles size={16} /> {summary.total} production agents</div>
           <p className="mt-1 text-xs leading-relaxed text-blue-700">Dominant requirement: {summary.dominant}.</p>
+        </div>
+      </div>
+
+      <div className="mb-6 overflow-hidden rounded-2xl border border-blue-200 bg-white shadow-sm">
+        <div className="flex flex-col gap-2 bg-blue-600 px-5 py-3 text-white sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs font-bold uppercase tracking-[0.16em]">Live estate impact</p>
+          <p className="text-[11px] text-blue-100">Move any slider and these production requirements recalculate instantly.</p>
+        </div>
+        <div className="grid grid-cols-2 divide-x divide-y divide-slate-100 sm:grid-cols-4 sm:divide-y-0">
+          <ImpactMetric value={String(summary.total)} label="Production agents" testId="estate-agent-total" />
+          <ImpactMetric value={workloadUnits.toFixed(1)} label="Weighted workload" testId="estate-workload" />
+          <ImpactMetric value={String(capabilitySummary.required)} label="Required controls" testId="estate-control-total" />
+          <ImpactMetric value={String(profile.customer.count)} label="Customer-facing" testId="estate-customer-total" />
         </div>
       </div>
 
@@ -87,9 +103,13 @@ export default function AgentEstateProfiler({ profile, onChange }: Props) {
                 <div>
                   <div className="mb-2 flex items-center justify-between"><span className="text-xs font-semibold text-slate-600">Production agents</span><span className="text-xl font-extrabold tabular-nums" style={{ color: meta.color }}>{value.count}</span></div>
                   <input aria-label={`${meta.label} count`} type="range" min={0} max={50} value={value.count}
-                    onChange={(event) => updateClass(agentClass, { count: Number(event.target.value) })}
-                    className="h-2 w-full cursor-pointer accent-slate-700" />
+                    aria-valuetext={`${value.count} ${meta.label.toLowerCase()}`}
+                    onInput={(event) => updateClass(agentClass, { count: Number(event.currentTarget.value) })}
+                    onChange={(event) => updateClass(agentClass, { count: Number(event.currentTarget.value) })}
+                    className="slider-track"
+                    style={{ background: `linear-gradient(90deg, ${meta.color} 0%, ${meta.color} ${value.count * 2}%, #E2E8F0 ${value.count * 2}%, #E2E8F0 100%)` }} />
                   <div className="mt-1 flex justify-between text-[10px] text-slate-400"><span>0</span><span>50</span></div>
+                  <p className="mt-2 text-[10px] font-semibold text-slate-500" aria-live="polite">{value.count === 0 ? "Not in this estate" : `${Math.round((value.count / Math.max(1, summary.total)) * 100)}% of selected agents`}</p>
                 </div>
                 <div>
                   <p className="mb-2 text-xs font-semibold text-slate-600">Highest autonomy</p>
@@ -119,6 +139,10 @@ export default function AgentEstateProfiler({ profile, onChange }: Props) {
       </div>
     </section>
   );
+}
+
+function ImpactMetric({ value, label, testId }: { value: string; label: string; testId: string }) {
+  return <div className="p-4 text-center"><p className="text-2xl font-black tabular-nums text-slate-950" aria-live="polite" data-testid={testId}>{value}</p><p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-slate-400">{label}</p></div>;
 }
 
 function SegmentedControl({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (value: string) => void }) {
