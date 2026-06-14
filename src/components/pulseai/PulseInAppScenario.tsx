@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, CartesianGrid } from "recharts";
 import { HeartPulse, Star, ChevronRight } from "lucide-react";
 import { fmtUSD, pctSavings } from "@/lib/pricing";
-import { HC_S2, HC_S2_QA, hcS2Costs, type HcS2QAPair } from "@/lib/industries/healthcare";
+import { HC_S2, HC_S2_QA, hcS2Costs, type HcS2QAPair } from "@/lib/industries/pulseai";
 import { useTally } from "@/lib/tally-context";
 
 const GREEN  = "#188038";

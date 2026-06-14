@@ -8,6 +8,7 @@ import {
   ShoppingBag,
   Heart,
   Landmark,
+  Factory,
   Home,
   Plus,
   Eye,
@@ -37,9 +38,9 @@ const industries = [
     enabled: true,
   },
   {
-    id: "healthcare",
-    name: "Healthcare",
-    href: "/healthcare",
+    id: "pulseai",
+    name: "PulseAI",
+    href: "/pulseai",
     icon: Heart,
     accent: "#E11D48",
     accentLight: "#FB7185",
@@ -48,14 +49,25 @@ const industries = [
     enabled: true,
   },
   {
-    id: "publicsector",
-    name: "Gov & Public",
-    href: "/publicsector",
+    id: "civicos",
+    name: "CivicOS",
+    href: "/civicos",
     icon: Landmark,
     accent: "#4F46E5",
     accentLight: "#818CF8",
     gradient: "linear-gradient(135deg, #312E81 0%, #4F46E5 100%)",
     roiTeaser: "56% build savings · 78% query savings",
+    enabled: true,
+  },
+  {
+    id: "factoryos",
+    name: "FactoryOS",
+    href: "/factoryos",
+    icon: Factory,
+    accent: "#E37400",
+    accentLight: "#F97316",
+    gradient: "linear-gradient(135deg, #92400e 0%, #E37400 100%)",
+    roiTeaser: "64% build savings · floor-safe routing",
     enabled: true,
   },
 ];
@@ -189,16 +201,18 @@ export default function SpringboardHome() {
         </p>
       </motion.div>
 
-      {/* App Grid */}
-      <div className="flex flex-wrap justify-center gap-12 md:gap-16 z-10 px-8 mb-24">
-        {industries.map((ind, i) => (
-          <SquircleIcon
-            key={ind.id}
-            industry={ind}
-            index={i}
-            sellerMode={sellerMode}
-          />
-        ))}
+      {/* App Grid — 3 top row + 2 bottom row */}
+      <div className="z-10 px-8 mb-24 flex flex-col items-center gap-12 md:gap-14">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-16">
+          {industries.slice(0, 3).map((ind, i) => (
+            <SquircleIcon key={ind.id} industry={ind} index={i} sellerMode={sellerMode} />
+          ))}
+        </div>
+        <div className="flex flex-wrap justify-center gap-12 md:gap-16">
+          {industries.slice(3).map((ind, i) => (
+            <SquircleIcon key={ind.id} industry={ind} index={i + 3} sellerMode={sellerMode} />
+          ))}
+        </div>
       </div>
 
       {/* Dock */}

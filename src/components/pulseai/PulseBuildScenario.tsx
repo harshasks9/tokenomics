@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { Users, Calendar, Info } from "lucide-react";
 import { fmtUSD, pctSavings } from "@/lib/pricing";
-import { HC_S1, HC_S1_TASKS, hcS1Costs, type HcS1Task, type HcS1Baseline } from "@/lib/industries/healthcare";
+import { HC_S1, HC_S1_TASKS, hcS1Costs, type HcS1Task, type HcS1Baseline } from "@/lib/industries/pulseai";
 import { useTally } from "@/lib/tally-context";
 
 const GREEN  = "#188038";

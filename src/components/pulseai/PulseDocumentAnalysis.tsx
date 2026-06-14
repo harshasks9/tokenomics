@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { FileText, Play, Star, CheckCircle2, Zap, AlertCircle } from "lucide-react";
 import { fmtUSD } from "@/lib/pricing";
-import { HC_S3, HC_S3_CARDS, hcS3Costs } from "@/lib/industries/healthcare";
+import { HC_S3, HC_S3_CARDS, hcS3Costs } from "@/lib/industries/pulseai";
 import { useTally } from "@/lib/tally-context";
 
 const COLORS = {
