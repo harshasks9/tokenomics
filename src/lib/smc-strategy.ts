@@ -13,7 +13,7 @@ export interface EvidenceCase {
   approach: string;
   outcome: string;
   relevance: string;
-  classification: "Proven implementation" | "Adjacent-industry evidence";
+  classification: "Proven implementation" | "Credible partner implementation" | "Adjacent-industry evidence";
   source: SourceLink;
 }
 
@@ -54,7 +54,7 @@ export const BUSINESSES: BusinessOpportunity[] = [
       { title: "Asset reliability", value: "Move from scheduled maintenance toward condition-aware intervention and faster diagnosis.", measure: "Availability, mean time to repair, maintenance cost" },
       { title: "Worker and passenger safety", value: "Combine operational data and governed alerts to identify emerging hazards sooner.", measure: "Incidents, response time, leading safety indicators" },
     ],
-    evidenceCustomers: ["SWISS", "Lufthansa Technik"],
+    evidenceCustomers: ["VINCI Airports", "Airports of Thailand"],
   },
   {
     id: "food",
@@ -104,22 +104,22 @@ export const EVIDENCE_CASES: EvidenceCase[] = [
     source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/hsbc-risk-advisory-tool", date: "Publication date not displayed" },
   },
   {
-    customer: "SWISS", business: "infrastructure",
-    challenge: "Crew, passenger, rotation, and technical data were fragmented during operational decision-making.",
-    approach: "BigQuery and AI brought operational signals together for network decision support.",
-    outcome: "CHF 1 million saved in 14 weeks, with approximately 50% of network flights optimized.",
-    relevance: "A close analogue for airport operations, disruption management, and cross-functional control towers.",
-    classification: "Adjacent-industry evidence",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/swiss", date: "Publication date not displayed" },
+    customer: "VINCI Airports", business: "infrastructure",
+    challenge: "Unify fragmented, non-standardized operational data across more than 70 airports in 14 countries to anticipate passenger traffic and congestion.",
+    approach: "A global Data Factory on Google Cloud federates local airport data, applies automated quality controls, and powers predictive traffic models with BigQuery and Vertex AI.",
+    outcome: "Boarding-pass and flow data can predict arrivals at security checkpoints, allowing teams to adjust staffing in real time and work toward waits below 10 minutes.",
+    relevance: "A direct operating analogue for terminal flow, security checkpoints, reception, baggage handling, and resource orchestration across SMC airport assets.",
+    classification: "Credible partner implementation",
+    source: { label: "Artefact case study with Google Cloud", url: "https://www.artefact.com/cases/how-vinci-airports-uses-ai-to-optimize-its-operational-commercial-and-financial-performance-with-google-cloud-and-artefact/", date: "Publication date not displayed" },
   },
   {
-    customer: "Lufthansa Technik", business: "infrastructure",
-    challenge: "Aircraft technical-operations analytics were costly and difficult to scale.",
-    approach: "An event-driven, managed Google Cloud architecture supported the AVIATAR platform.",
-    outcome: "Approximately 50% lower infrastructure cost and actionable technical insights in minutes.",
-    relevance: "Strong asset-reliability evidence, while the assets are aircraft rather than airport infrastructure.",
-    classification: "Adjacent-industry evidence",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/lufthansa", date: "Publication date not displayed" },
+    customer: "Airports of Thailand", business: "infrastructure",
+    challenge: "Absorb sharp passenger-volume spikes across six international airports while eliminating data silos and maintaining reliable traveler services.",
+    approach: "AOT migrated its IT footprint to Google Cloud and used an open, scalable data platform for ground aviation services and the SAWASDEE by AOT passenger app.",
+    outcome: "Core systems can accommodate up to 10 times their usual workloads and deliver real-time airport and flight information from check-in through baggage collection.",
+    relevance: "Direct evidence for airport-wide digital operations, passenger communications, baggage visibility, loyalty, and resilient peak-demand service at SMC airports.",
+    classification: "Proven implementation",
+    source: { label: "Google Cloud customer publication", url: "https://cloud.google.com/blog/products/gcp/airports-of-thailand-and-evme-rely-on-cloud-to-improve-travel", date: "May 24, 2023" },
   },
   {
     customer: "PIC", business: "food",
@@ -172,7 +172,7 @@ export const QUALIFICATIONS = [
   "Survey findings are self-reported and should be treated as directional evidence, not audited market facts.",
   "Canadian Tire reports up to 15% higher omnichannel sales; the result should not be generalized without an SMC baseline.",
   "ENGIE's 48% monthly-sales result comes from a Kenyan pilot and is context-specific.",
-  "HSBC provides credit-risk evidence, not a direct fraud implementation; Lufthansa Technik covers aircraft rather than airport assets.",
+  "HSBC provides credit-risk evidence, not a direct fraud implementation; VINCI's under-10-minute checkpoint wait is an operating target enabled by the system, not a published realized average.",
   "No public evidence establishes the benefits achievable at SMC. Each lighthouse requires its own baseline and value case.",
 ];
 

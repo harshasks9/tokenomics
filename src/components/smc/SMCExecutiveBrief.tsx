@@ -170,7 +170,7 @@ export default function SMCExecutiveBrief() {
 
       <section id="evidence" className="scroll-mt-24 bg-white">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <motion.div {...reveal} className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div className="max-w-3xl"><SectionLabel>03 / Evidence, not theater</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-6xl">Proof points with their limits attached.</h2></div><button onClick={() => setShowEvidence((value) => !value)} className="w-fit rounded-full border border-slate-300 px-5 py-2.5 text-sm font-bold hover:bg-slate-50">{showEvidence ? "Show executive view" : "Expand evidence details"}</button></motion.div>
+          <motion.div {...reveal} className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div className="max-w-3xl"><SectionLabel>03 / Global enterprise case studies</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-6xl">Operating evidence matched to each SMC business.</h2><p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">Direct operating analogues are used wherever public evidence exists. Adjacent examples are explicitly labeled and their limits remain visible.</p></div><button onClick={() => setShowEvidence((value) => !value)} className="w-fit rounded-full border border-slate-300 px-5 py-2.5 text-sm font-bold hover:bg-slate-50">{showEvidence ? "Show executive view" : "Expand evidence details"}</button></motion.div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {EVIDENCE_CASES.map((item, index) => {
               const Icon = businessIcons[item.business];
