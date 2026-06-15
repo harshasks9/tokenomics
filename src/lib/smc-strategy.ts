@@ -3,13 +3,13 @@ export type BusinessId = "bank" | "infrastructure" | "food" | "petron";
 export interface SourceLink {
   label: string;
   url: string;
-  date: string;
 }
 
 export interface EvidenceCase {
   customer: string;
   business: BusinessId;
   challenge: string;
+  aiRole: string;
   approach: string;
   outcome: string;
   relevance: string;
@@ -41,7 +41,7 @@ export const BUSINESSES: BusinessOpportunity[] = [
       { title: "Credit and vendor intelligence", value: "Synthesize internal and external signals for faster, more consistent decisions.", measure: "Decision cycle time, risk-adjusted yield" },
       { title: "RM productivity", value: "Prepare briefs, surface opportunities, and automate follow-through without removing accountability.", measure: "Client time, portfolio coverage, revenue per RM" },
     ],
-    evidenceCustomers: ["Federal Bank", "HSBC"],
+    evidenceCustomers: ["Federal Bank", "Commerzbank"],
   },
   {
     id: "infrastructure",
@@ -67,7 +67,7 @@ export const BUSINESSES: BusinessOpportunity[] = [
       { title: "Smart manufacturing", value: "Detect process drift and support operators with contextual recommendations.", measure: "Yield, downtime, throughput, energy intensity" },
       { title: "Quality and food safety", value: "Accelerate inspection preparation and make controls more frequent and consistent.", measure: "Inspection time, non-conformance, traceability" },
     ],
-    evidenceCustomers: ["PIC", "JB Cocoa"],
+    evidenceCustomers: ["PIC", "DiMuto"],
   },
   {
     id: "petron",
@@ -80,7 +80,7 @@ export const BUSINESSES: BusinessOpportunity[] = [
       { title: "Network optimization", value: "Identify network gaps and improve assortment, staffing, and service by location.", measure: "Site productivity, coverage, operating cost" },
       { title: "Site selection", value: "Combine mobility, demand, competition, and affordability data for investment decisions.", measure: "Ramp time, return on invested capital, forecast accuracy" },
     ],
-    evidenceCustomers: ["Canadian Tire", "ENGIE"],
+    evidenceCustomers: ["Coca-Cola Bottlers Japan", "ENGIE"],
   },
 ];
 
@@ -88,74 +88,82 @@ export const EVIDENCE_CASES: EvidenceCase[] = [
   {
     customer: "Federal Bank", business: "bank",
     challenge: "Deliver accurate, natural banking assistance at customer-service scale.",
+    aiRole: "Dialogflow's conversational AI interprets customer intent, maintains context, and continuously improves responses without manually training every phrasing.",
     approach: "A virtual assistant built with Dialogflow and connected to banking knowledge and service workflows.",
     outcome: "98% answer accuracy, 25% higher customer satisfaction, 1.4 million annual queries, and five developer hours saved daily.",
     relevance: "Evidence for governed service automation and a reusable interaction layer at Bank of Commerce.",
     classification: "Proven implementation",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/federal-bank", date: "Publication date not displayed" },
+    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/federal-bank" },
   },
   {
-    customer: "HSBC", business: "bank",
-    challenge: "Credit-risk simulations took approximately four hours and constrained analyst iteration.",
-    approach: "Cloud Storage, Dataflow, and BigQuery created a faster risk-advisory data pipeline.",
-    outcome: "Risk simulations ran 16 times faster, reducing processing time to roughly 15 minutes.",
-    relevance: "Direct evidence for faster credit-risk analytics; adjacent rather than direct fraud evidence.",
+    customer: "Commerzbank", business: "bank",
+    challenge: "Corporate-client advisors spent more than an hour reviewing recorded calls and manually documenting regulated investment advice.",
+    aiRole: "Gemini 1.5 Pro transcribes multi-hour audio, identifies speakers, extracts client facts and risk preferences, drafts compliant summaries, and uses Vertex AI evaluation to select the strongest output.",
+    approach: "A multi-stage generative AI workflow on Vertex AI automates advisory-call documentation while retaining human review and explainable quality evaluation.",
+    outcome: "Work that took more than 60 minutes can be completed in a few minutes with human oversight, returning advisor time to client relationships and personalized advice.",
+    relevance: "A direct analogue for relationship-manager productivity, regulated documentation, client briefing, and human-governed AI at Bank of Commerce.",
     classification: "Proven implementation",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/hsbc-risk-advisory-tool", date: "Publication date not displayed" },
+    source: { label: "Google Cloud implementation story", url: "https://cloud.google.com/blog/products/ai-machine-learning/how-commerzbank-is-transforming-financial-advisory-workflows-with-gen-ai" },
   },
   {
     customer: "VINCI Airports", business: "infrastructure",
     challenge: "Unify fragmented, non-standardized operational data across more than 70 airports in 14 countries to anticipate passenger traffic and congestion.",
+    aiRole: "Vertex AI predictive models combine traffic history, operational capacity, exogenous variables, and boarding-pass signals to forecast peaks and congestion at multiple time horizons.",
     approach: "A global Data Factory on Google Cloud federates local airport data, applies automated quality controls, and powers predictive traffic models with BigQuery and Vertex AI.",
     outcome: "Boarding-pass and flow data can predict arrivals at security checkpoints, allowing teams to adjust staffing in real time and work toward waits below 10 minutes.",
     relevance: "A direct operating analogue for terminal flow, security checkpoints, reception, baggage handling, and resource orchestration across SMC airport assets.",
     classification: "Credible partner implementation",
-    source: { label: "Artefact case study with Google Cloud", url: "https://www.artefact.com/cases/how-vinci-airports-uses-ai-to-optimize-its-operational-commercial-and-financial-performance-with-google-cloud-and-artefact/", date: "Publication date not displayed" },
+    source: { label: "Artefact case study with Google Cloud", url: "https://www.artefact.com/cases/how-vinci-airports-uses-ai-to-optimize-its-operational-commercial-and-financial-performance-with-google-cloud-and-artefact/" },
   },
   {
     customer: "Airports of Thailand", business: "infrastructure",
     challenge: "Absorb sharp passenger-volume spikes across six international airports while eliminating data silos and maintaining reliable traveler services.",
+    aiRole: "The transformation establishes the governed, real-time airport and passenger data foundation required for future predictive operations and AI-assisted passenger services; the documented result itself is cloud-scale modernization.",
     approach: "AOT migrated its IT footprint to Google Cloud and used an open, scalable data platform for ground aviation services and the SAWASDEE by AOT passenger app.",
     outcome: "Core systems can accommodate up to 10 times their usual workloads and deliver real-time airport and flight information from check-in through baggage collection.",
     relevance: "Direct evidence for airport-wide digital operations, passenger communications, baggage visibility, loyalty, and resilient peak-demand service at SMC airports.",
     classification: "Proven implementation",
-    source: { label: "Google Cloud customer publication", url: "https://cloud.google.com/blog/products/gcp/airports-of-thailand-and-evme-rely-on-cloud-to-improve-travel", date: "May 24, 2023" },
+    source: { label: "Google Cloud customer publication", url: "https://cloud.google.com/blog/products/gcp/airports-of-thailand-and-evme-rely-on-cloud-to-improve-travel" },
   },
   {
     customer: "PIC", business: "food",
     challenge: "Preparing for food-safety inspections was complex and limited how often inspections could run.",
+    aiRole: "Gemini summarizes daily food-safety intelligence and prepares inspection inputs, while Vertex AI also supports visual shelf analysis, recommendations, and product recognition.",
     approach: "Gemini automated key elements of inspection preparation and knowledge synthesis.",
     outcome: "Preparation became 66% faster, enabling inspections to move from quarterly to monthly.",
     relevance: "Directly relevant to more frequent, consistent quality and food-safety controls.",
     classification: "Proven implementation",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/pic", date: "Publication date not displayed" },
+    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/pic" },
   },
   {
-    customer: "JB Cocoa", business: "food",
-    challenge: "Procurement, production, costing, and traceability data were fragmented.",
-    approach: "SAP S/4HANA on Google Cloud created a more connected operational foundation.",
-    outcome: "Product costing time fell from three days to four hours.",
-    relevance: "Evidence for connected manufacturing and supply-chain decisions; predictive maintenance was stated as future intent.",
+    customer: "DiMuto", business: "food",
+    challenge: "Food quality and trade data disappeared into a supply-chain blind spot between packhouses and retailers, while defect-detection models were slow to train.",
+    aiRole: "Vertex AI visually inspects produce to detect defects and grade quality in real time; Gemini and Vertex AI Agent Builder power a trade-contract agent over logistics documents.",
+    approach: "DiMuto unified AI training, real-time quality inspection, traceability, and agentic document retrieval on Google Cloud.",
+    outcome: "AI model training accelerated by roughly 35%, compute costs fell roughly 25%, and produce quality can be graded as cartons enter the packhouse.",
+    relevance: "Directly relevant to ingredient quality, food-safety inspection, supplier traceability, claims resolution, and intelligent supply-chain operations at San Miguel Foods and Beverage.",
     classification: "Proven implementation",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/jb-cocoa", date: "Publication date not displayed" },
+    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/dimuto-ai" },
   },
   {
-    customer: "Canadian Tire", business: "petron",
-    challenge: "Unify online and offline behavior across a large retail and loyalty ecosystem.",
-    approach: "BigQuery and Quantum Metric connected behavioral insight to omnichannel decisions.",
-    outcome: "Up to 15% higher omnichannel sales across a loyalty base of 11 million active members.",
-    relevance: "A strong retail analogue for joining forecourt, store, loyalty, and digital behavior at Petron.",
+    customer: "Coca-Cola Bottlers Japan", business: "petron",
+    challenge: "Optimize the location, assortment, pricing, and replenishment decisions for a distributed network of approximately 700,000 physical vending locations.",
+    aiRole: "Vertex AI, AutoML, and BigQuery ML predict where to place machines, which products to stock, at what price, and expected sales, with recommendations delivered to field teams on maps and tablets.",
+    approach: "A production MLOps platform turns billions of location and transaction records into near-real-time network and merchandising recommendations.",
+    outcome: "The platform rolled out to sales managers across 35 prefectures with 100% utilization, replacing intuition-led placement with high-accuracy ML recommendations.",
+    relevance: "A close analogue for Petron station location, convenience assortment, local pricing, demand prediction, and field-sales productivity across a large physical network.",
     classification: "Adjacent-industry evidence",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/canadian-tire", date: "Publication date not displayed" },
+    source: { label: "Google Cloud AI implementation story", url: "https://cloud.google.com/blog/topics/developers-practitioners/coca-cola-bottlers-japan-collects-insights-700000-vending-machines-vertex-ai" },
   },
   {
     customer: "ENGIE", business: "petron",
     challenge: "Identify markets with sufficient demand, affordability, and repayment capacity.",
+    aiRole: "Atlas AI combines machine learning, satellite imagery, geospatial features, and socioeconomic signals to predict market demand and prioritize expansion locations.",
     approach: "Atlas AI geospatial and predictive intelligence informed market prioritization.",
     outcome: "A Kenyan pilot reported a 48% increase in monthly sales.",
     relevance: "Adjacent evidence for geospatial site and network decisions; the result is limited to the cited pilot context.",
     classification: "Adjacent-industry evidence",
-    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/engie", date: "Publication date not displayed" },
+    source: { label: "Google Cloud customer story", url: "https://cloud.google.com/customers/engie" },
   },
 ];
 
@@ -170,16 +178,16 @@ export const PLATFORM_FOUNDATIONS = [
 
 export const QUALIFICATIONS = [
   "Survey findings are self-reported and should be treated as directional evidence, not audited market facts.",
-  "Canadian Tire reports up to 15% higher omnichannel sales; the result should not be generalized without an SMC baseline.",
+  "Airports of Thailand demonstrates a real-time, scalable data foundation for AI; its published 10x capacity result is infrastructure modernization, not a measured AI outcome.",
   "ENGIE's 48% monthly-sales result comes from a Kenyan pilot and is context-specific.",
-  "HSBC provides credit-risk evidence, not a direct fraud implementation; VINCI's under-10-minute checkpoint wait is an operating target enabled by the system, not a published realized average.",
+  "VINCI's under-10-minute checkpoint wait is an operating target enabled by predictive staffing, not a published realized network-wide average.",
   "No public evidence establishes the benefits achievable at SMC. Each lighthouse requires its own baseline and value case.",
 ];
 
 export const ENTERPRISE_SOURCES: SourceLink[] = [
-  { label: "Google Cloud AI announcements: 52% deploying agents", url: "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month-2025", date: "January 1, 2026" },
-  { label: "Introducing Gemini Enterprise", url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise", date: "October 10, 2025" },
-  { label: "Five lessons from Google's AI transformation", url: "https://cloud.google.com/transform/beyond-the-pilot-five-hard-won-lessons-from-google-clouds-ai-transformation-strategy", date: "March 2026 search index; page date not stated" },
-  { label: "Manufacturing AI value and sponsorship", url: "https://cloud.google.com/transform/manufacturing-gen-ai-roi-report-dozen-reasons-ai-value", date: "September 11, 2024" },
-  { label: "ROI of generative AI", url: "https://cloud.google.com/resources/roi-of-generative-ai", date: "Publication date not displayed" },
+  { label: "Google Cloud AI announcements: 52% deploying agents", url: "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month-2025" },
+  { label: "Introducing Gemini Enterprise", url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise" },
+  { label: "Five lessons from Google's AI transformation", url: "https://cloud.google.com/transform/beyond-the-pilot-five-hard-won-lessons-from-google-clouds-ai-transformation-strategy" },
+  { label: "Manufacturing AI value and sponsorship", url: "https://cloud.google.com/transform/manufacturing-gen-ai-roi-report-dozen-reasons-ai-value" },
+  { label: "ROI of generative AI", url: "https://cloud.google.com/resources/roi-of-generative-ai" },
 ];

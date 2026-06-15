@@ -16,6 +16,7 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
+  UsersRound,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import {
@@ -46,6 +47,13 @@ const outcomes = [
   { label: "Infrastructure", measure: "Availability and flow" },
   { label: "Food", measure: "Yield, service, and safety" },
   { label: "Petron", measure: "Site and customer productivity" },
+];
+
+const roundtableQuestions = [
+  "What are the biggest operational challenges today in your business and organization?",
+  "Where do you see the largest opportunity for AI in your business?",
+  "What barriers are preventing adoption in a way that can transform your business?",
+  "Which AI initiatives could create measurable impact within 12 months to help grow revenues, reduce costs for the company?",
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -87,6 +95,7 @@ export default function SMCExecutiveBrief() {
             <a href="#shift" className="hover:text-white">The shift</a>
             <a href="#opportunities" className="hover:text-white">Value map</a>
             <a href="#evidence" className="hover:text-white">Evidence</a>
+            <a href="#roundtable" className="hover:text-white">Roundtable</a>
             <a href="#agenda" className="hover:text-white">90-day agenda</a>
           </nav>
           <a href="#agenda" className="rounded-full bg-white px-4 py-2 text-xs font-bold text-slate-950 transition hover:bg-red-50">Decision agenda</a>
@@ -140,7 +149,7 @@ export default function SMCExecutiveBrief() {
           </motion.div>
           <motion.div {...reveal} className="mt-12 grid gap-5 rounded-3xl bg-[#0b1320] p-7 text-white md:grid-cols-[.35fr_1.65fr] md:p-10">
             <p className="text-6xl font-black text-[#34a853]">52%</p>
-            <div><p className="text-xl font-bold">of surveyed executives reported that their organizations were deploying AI agents in production.</p><p className="mt-3 text-sm leading-6 text-white/55">Directional, self-reported evidence. The strategic implication is a shift from isolated model access toward governed execution inside business workflows.</p><p className="mt-4 text-xs"><SourceLink href={ENTERPRISE_SOURCES[0].url} dark>Google Cloud, January 1, 2026</SourceLink></p></div>
+            <div><p className="text-xl font-bold">of surveyed executives reported that their organizations were deploying AI agents in production.</p><p className="mt-3 text-sm leading-6 text-white/55">Directional, self-reported evidence. The strategic implication is a shift from isolated model access toward governed execution inside business workflows.</p><p className="mt-4 text-xs"><SourceLink href={ENTERPRISE_SOURCES[0].url} dark>Google Cloud research</SourceLink></p></div>
           </motion.div>
         </div>
       </section>
@@ -158,7 +167,7 @@ export default function SMCExecutiveBrief() {
             <div className="grid lg:grid-cols-[.9fr_1.1fr]">
               <div className="bg-[#111b2a] p-7 text-white md:p-10">
                 <div className="grid h-12 w-12 place-items-center rounded-2xl bg-red-600"><ActiveIcon size={24} /></div><p className="mt-8 text-xs font-bold uppercase tracking-[.18em] text-white/40">{active.name}</p><h3 className="mt-3 text-3xl font-black tracking-tight">{active.thesis}</h3>
-                <div className="mt-9 space-y-3"><p className="text-xs font-bold uppercase tracking-[.18em] text-white/40">Evidence anchors</p>{evidence.map((item) => <div key={item.customer} className="rounded-2xl border border-white/10 bg-white/5 p-4"><div className="flex items-center justify-between gap-3"><p className="font-bold">{item.customer}</p><SourceLink href={item.source.url} dark>Source</SourceLink></div><p className="mt-2 text-sm leading-6 text-white/55">{item.outcome}</p></div>)}</div>
+                <div className="mt-9 space-y-3"><p className="text-xs font-bold uppercase tracking-[.18em] text-white/40">Evidence anchors</p>{evidence.map((item) => <div key={item.customer} className="rounded-2xl border border-white/10 bg-white/5 p-4"><div className="flex items-center justify-between gap-3"><p className="font-bold">{item.customer}</p><SourceLink href={item.source.url} dark>Source</SourceLink></div><p className="mt-2 text-sm leading-6 text-white/55">{item.outcome}</p><div className="mt-3 border-t border-white/10 pt-3"><p className="text-[9px] font-bold uppercase tracking-[.16em] text-[#8ab4f8]">AI transformation</p><p className="mt-1 text-xs leading-5 text-white/50">{item.aiRole}</p></div></div>)}</div>
               </div>
               <div className="grid gap-px bg-slate-200 sm:grid-cols-2">
                 {active.useCases.map((useCase, i) => <div key={useCase.title} className="bg-white p-7 md:p-8"><div className="flex items-center justify-between"><span className="text-xs font-black text-red-700">0{i + 1}</span><ChevronRight size={16} className="text-slate-300" /></div><h4 className="mt-5 text-xl font-black">{useCase.title}</h4><p className="mt-3 text-sm leading-6 text-slate-600">{useCase.value}</p><div className="mt-6 border-t border-slate-100 pt-4"><p className="text-[10px] font-bold uppercase tracking-[.16em] text-slate-400">Measure</p><p className="mt-1 text-xs font-semibold text-slate-700">{useCase.measure}</p></div></div>)}
@@ -174,29 +183,42 @@ export default function SMCExecutiveBrief() {
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {EVIDENCE_CASES.map((item, index) => {
               const Icon = businessIcons[item.business];
-              return <motion.article key={item.customer} {...reveal} transition={{ duration: .4, delay: reduceMotion ? 0 : (index % 4) * .05 }} className="flex min-h-[330px] flex-col rounded-3xl border border-slate-200 bg-[#f8f7f4] p-6"><div className="flex items-center justify-between"><div className="grid h-10 w-10 place-items-center rounded-xl bg-white text-red-700 shadow-sm"><Icon size={19} /></div><span className="rounded-full bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-slate-500">{item.classification}</span></div><h3 className="mt-7 text-2xl font-black">{item.customer}</h3><p className="mt-4 text-sm font-semibold leading-6 text-slate-900">{item.outcome}</p>{showEvidence && <div className="mt-4 space-y-3 border-t border-slate-200 pt-4 text-xs leading-5 text-slate-600"><p><strong>Challenge:</strong> {item.challenge}</p><p><strong>Approach:</strong> {item.approach}</p><p><strong>SMC relevance:</strong> {item.relevance}</p></div>}<div className="mt-auto pt-6 text-xs"><SourceLink href={item.source.url}>{item.source.label}</SourceLink><p className="mt-2 text-[10px] text-slate-400">{item.source.date}</p></div></motion.article>;
+              return <motion.article key={item.customer} {...reveal} transition={{ duration: .4, delay: reduceMotion ? 0 : (index % 4) * .05 }} className="flex min-h-[410px] flex-col rounded-3xl border border-slate-200 bg-[#f8f7f4] p-6"><div className="flex items-center justify-between"><div className="grid h-10 w-10 place-items-center rounded-xl bg-white text-red-700 shadow-sm"><Icon size={19} /></div><span className="rounded-full bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-slate-500">{item.classification}</span></div><h3 className="mt-7 text-2xl font-black">{item.customer}</h3><p className="mt-4 text-sm font-semibold leading-6 text-slate-900">{item.outcome}</p><div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50 p-4"><p className="text-[9px] font-black uppercase tracking-[.17em] text-blue-700">AI transformation</p><p className="mt-2 text-xs leading-5 text-slate-700">{item.aiRole}</p></div>{showEvidence && <div className="mt-4 space-y-3 border-t border-slate-200 pt-4 text-xs leading-5 text-slate-600"><p><strong>Challenge:</strong> {item.challenge}</p><p><strong>Approach:</strong> {item.approach}</p><p><strong>SMC relevance:</strong> {item.relevance}</p></div>}<div className="mt-auto pt-6 text-xs"><SourceLink href={item.source.url}>{item.source.label}</SourceLink></div></motion.article>;
             })}
           </div>
         </div>
       </section>
 
+      <section id="roundtable" className="scroll-mt-24 border-y border-slate-200 bg-[#ece9e2]">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+          <motion.div {...reveal} className="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
+            <div className="max-w-3xl"><SectionLabel>04 / Executive roundtable discussion</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-6xl">Break out by business. Return with one transformation worth backing.</h2><p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">Bank of Commerce, Infrastructure &amp; Airports, Foods &amp; Beverage, and Petron each work as a team. Start with the operating problem, then identify where AI can change the workflow and its economics.</p></div>
+            <div className="rounded-3xl bg-[#0b1320] p-6 text-white"><div className="flex items-center gap-3"><div className="grid h-11 w-11 place-items-center rounded-xl bg-red-600"><UsersRound size={22} /></div><div><p className="text-xs font-bold uppercase tracking-[.16em] text-white/40">Team readout</p><p className="mt-1 font-bold">Bring back one priority workflow</p></div></div><div className="mt-5 grid grid-cols-2 gap-2 text-xs text-white/65"><p className="rounded-xl border border-white/10 p-3">Current operational baseline</p><p className="rounded-xl border border-white/10 p-3">AI-enabled future state</p><p className="rounded-xl border border-white/10 p-3">12-month value measure</p><p className="rounded-xl border border-white/10 p-3">Barrier and executive owner</p></div></div>
+          </motion.div>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {roundtableQuestions.map((question, index) => <motion.article key={question} {...reveal} className="group rounded-3xl border border-slate-200 bg-white p-6 transition hover:border-red-200 hover:shadow-lg hover:shadow-slate-900/5 md:p-8"><div className="flex items-start gap-5"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-red-50 text-sm font-black text-red-700">{index + 1}</span><p className="text-lg font-bold leading-7 tracking-tight text-slate-900 md:text-xl">{question}</p></div></motion.article>)}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-2">{BUSINESSES.map((business) => { const Icon = businessIcons[business.id]; return <div key={business.id} className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/60 px-4 py-2 text-xs font-bold text-slate-700"><Icon size={15} className="text-red-700" />{business.shortName}</div>; })}</div>
+        </div>
+      </section>
+
       <section className="bg-[#0b1320] text-white">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <motion.div {...reveal} className="grid gap-12 lg:grid-cols-[.75fr_1.25fr]"><div><SectionLabel>04 / Scale conditions</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-5xl">Successful organizations scale capabilities, not demos.</h2><p className="mt-5 text-base leading-7 text-white/55">Data, governance, platform, and adoption are not technical follow-ons. They are part of the business case from day one.</p></div><div className="grid gap-3 sm:grid-cols-2">{PLATFORM_FOUNDATIONS.map((item, i) => <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[.05] p-5"><div className="flex items-center gap-3"><span className={`h-2.5 w-2.5 rounded-full ${["bg-[#4285f4]", "bg-[#ea4335]", "bg-[#fbbc04]", "bg-[#34a853]"][i % 4]}`} /><p className="font-bold">{item.title}</p></div><p className="mt-3 text-sm leading-6 text-white/50">{item.detail}</p></div>)}</div></motion.div>
+          <motion.div {...reveal} className="grid gap-12 lg:grid-cols-[.75fr_1.25fr]"><div><SectionLabel>05 / Scale conditions</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-5xl">Successful organizations scale capabilities, not demos.</h2><p className="mt-5 text-base leading-7 text-white/55">Data, governance, platform, and adoption are not technical follow-ons. They are part of the business case from day one.</p></div><div className="grid gap-3 sm:grid-cols-2">{PLATFORM_FOUNDATIONS.map((item, i) => <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[.05] p-5"><div className="flex items-center gap-3"><span className={`h-2.5 w-2.5 rounded-full ${["bg-[#4285f4]", "bg-[#ea4335]", "bg-[#fbbc04]", "bg-[#34a853]"][i % 4]}`} /><p className="font-bold">{item.title}</p></div><p className="mt-3 text-sm leading-6 text-white/50">{item.detail}</p></div>)}</div></motion.div>
           <div className="mt-14 grid gap-4 md:grid-cols-4">{outcomes.map((item) => <div key={item.label} className="border-l border-white/15 pl-5"><p className="text-xs font-bold uppercase tracking-[.16em] text-white/35">{item.label}</p><p className="mt-2 font-bold">{item.measure}</p></div>)}</div>
         </div>
       </section>
 
       <section id="agenda" className="scroll-mt-24">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <motion.div {...reveal} className="max-w-3xl"><SectionLabel>05 / Recommended next step</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-6xl">A 90-day path to evidence, not another open-ended pilot.</h2></motion.div>
+          <motion.div {...reveal} className="max-w-3xl"><SectionLabel>06 / Recommended next step</SectionLabel><h2 className="text-4xl font-black tracking-[-.04em] lg:text-6xl">A 90-day path to evidence, not another open-ended pilot.</h2></motion.div>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">{agenda.map((item, i) => <motion.div key={item.range} {...reveal} className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7"><span className="absolute right-4 top-1 text-8xl font-black text-slate-50">{i + 1}</span><p className="relative text-xs font-black uppercase tracking-[.18em] text-red-700">{item.range}</p><h3 className="relative mt-8 text-2xl font-black">{item.title}</h3><p className="relative mt-4 text-sm leading-7 text-slate-600">{item.detail}</p></motion.div>)}</div>
           <motion.div {...reveal} className="mt-8 rounded-[2rem] bg-red-700 p-7 text-white md:p-10"><div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr]"><div><p className="text-xs font-bold uppercase tracking-[.18em] text-red-100">Executive decision</p><h3 className="mt-4 text-3xl font-black tracking-tight">Select four lighthouse workflows. Give each one an owner, a baseline, and a production decision date.</h3></div><div className="space-y-3 text-sm">{["One group executive sponsor", "One accountable business owner per workflow", "Shared standards for data, identity, approval, evaluation, monitoring, and cost", "Funding tied to quantified operational evidence"].map((item) => <p key={item} className="flex items-start gap-2"><CheckCircle2 size={17} className="mt-0.5 shrink-0 text-red-200" />{item}</p>)}</div></div></motion.div>
         </div>
       </section>
 
       <section className="border-t border-slate-200 bg-[#ece9e2]">
-        <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8"><div className="grid gap-10 lg:grid-cols-2"><div><div className="flex items-center gap-3"><ShieldCheck className="text-red-700" /><h2 className="text-2xl font-black">Claims that must stay qualified</h2></div><div className="mt-6 space-y-3">{QUALIFICATIONS.map((item) => <p key={item} className="flex gap-3 text-sm leading-6 text-slate-600"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red-700" />{item}</p>)}</div></div><div><div className="flex items-center gap-3"><BarChart3 className="text-red-700" /><h2 className="text-2xl font-black">Primary research sources</h2></div><div className="mt-6 space-y-3">{ENTERPRISE_SOURCES.map((source) => <div key={source.url} className="flex flex-col items-start gap-2 border-b border-slate-300 pb-3 text-xs sm:flex-row sm:justify-between sm:gap-4"><SourceLink href={source.url}>{source.label}</SourceLink><span className="break-words text-slate-400 sm:max-w-[45%] sm:text-right">{source.date}</span></div>)}</div></div></div></div>
+        <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8"><div className="grid gap-10 lg:grid-cols-2"><div><div className="flex items-center gap-3"><ShieldCheck className="text-red-700" /><h2 className="text-2xl font-black">Claims that must stay qualified</h2></div><div className="mt-6 space-y-3">{QUALIFICATIONS.map((item) => <p key={item} className="flex gap-3 text-sm leading-6 text-slate-600"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-red-700" />{item}</p>)}</div></div><div><div className="flex items-center gap-3"><BarChart3 className="text-red-700" /><h2 className="text-2xl font-black">Primary research sources</h2></div><div className="mt-6 space-y-3">{ENTERPRISE_SOURCES.map((source) => <div key={source.url} className="border-b border-slate-300 pb-3 text-xs"><SourceLink href={source.url}>{source.label}</SourceLink></div>)}</div></div></div></div>
       </section>
 
       <footer className="bg-[#0b1320] text-white"><div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8"><div className="flex items-center gap-3"><Building2 size={18} className="text-red-500" /><p className="text-sm font-bold">San Miguel Corporation / Enterprise AI Executive Brief</p></div><p className="text-xs text-white/35">Evidence curated from public Google Cloud and customer sources. SMC outcomes require validation.</p></div></footer>
