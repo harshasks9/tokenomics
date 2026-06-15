@@ -10,6 +10,7 @@ import ShopInAppScenario from "@/components/shopos/ShopInAppScenario";
 import ShopVisualSearchScenario from "@/components/shopos/ShopVisualSearchScenario";
 import ShopAgentScenario from "@/components/shopos/ShopAgentScenario";
 import ShopSummaryDashboard from "@/components/shopos/ShopSummaryDashboard";
+import FrontierChart from "@/components/frontier/FrontierChart";
 
 export default function ShopOSPage() {
   return (
@@ -28,6 +29,7 @@ export default function ShopOSPage() {
         <ShopInAppScenario />
         <ShopVisualSearchScenario />
         <ShopAgentScenario />
+        <FrontierChart workflow="shopos" />
         <ShopSummaryDashboard />
       </main>
     </TallyProvider>

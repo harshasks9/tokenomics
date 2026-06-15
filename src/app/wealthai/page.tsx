@@ -10,6 +10,7 @@ import InAppScenario from "@/components/InAppScenario";
 import MultimodalScenario from "@/components/MultimodalScenario";
 import AgentScenario from "@/components/AgentScenario";
 import SummaryDashboard from "@/components/SummaryDashboard";
+import FrontierChart from "@/components/frontier/FrontierChart";
 
 export default function WealthAIPage() {
   return (
@@ -29,6 +30,7 @@ export default function WealthAIPage() {
         <InAppScenario />
         <MultimodalScenario />
         <AgentScenario />
+        <FrontierChart workflow="wealthai" />
         <SummaryDashboard />
       </main>
     </TallyProvider>

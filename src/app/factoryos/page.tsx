@@ -10,6 +10,7 @@ import FactInAppScenario from "@/components/factoryos/FactInAppScenario";
 import FactDocAnalysisScenario from "@/components/factoryos/FactDocAnalysisScenario";
 import FactAgentScenario from "@/components/factoryos/FactAgentScenario";
 import FactSummaryDashboard from "@/components/factoryos/FactSummaryDashboard";
+import FrontierChart from "@/components/frontier/FrontierChart";
 
 export default function FactoryOSPage() {
   return (
@@ -28,6 +29,7 @@ export default function FactoryOSPage() {
         <FactInAppScenario />
         <FactDocAnalysisScenario />
         <FactAgentScenario />
+        <FrontierChart workflow="factoryos" />
         <FactSummaryDashboard />
       </main>
     </TallyProvider>

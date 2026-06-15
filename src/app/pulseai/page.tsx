@@ -10,6 +10,7 @@ import PulseInAppScenario from "@/components/pulseai/PulseInAppScenario";
 import PulseDocumentAnalysis from "@/components/pulseai/PulseDocumentAnalysis";
 import PulseAgentScenario from "@/components/pulseai/PulseAgentScenario";
 import PulseSummaryDashboard from "@/components/pulseai/PulseSummaryDashboard";
+import FrontierChart from "@/components/frontier/FrontierChart";
 
 export default function PulseAIPage() {
   return (
@@ -28,6 +29,7 @@ export default function PulseAIPage() {
         <PulseInAppScenario />
         <PulseDocumentAnalysis />
         <PulseAgentScenario />
+        <FrontierChart workflow="pulseai" />
         <PulseSummaryDashboard />
       </main>
     </TallyProvider>

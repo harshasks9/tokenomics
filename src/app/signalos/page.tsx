@@ -10,6 +10,7 @@ import SignalRunScenario from "@/components/signalos/SignalRunScenario";
 import SignalDocScenario from "@/components/signalos/SignalDocScenario";
 import SignalAgentScenario from "@/components/signalos/SignalAgentScenario";
 import SignalSummary from "@/components/signalos/SignalSummary";
+import FrontierChart from "@/components/frontier/FrontierChart";
 
 export default function SignalOSPage() {
   return (
@@ -28,6 +29,7 @@ export default function SignalOSPage() {
         <SignalRunScenario />
         <SignalDocScenario />
         <SignalAgentScenario />
+        <FrontierChart workflow="signalos" />
         <SignalSummary />
       </main>
     </TallyProvider>
