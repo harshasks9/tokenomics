@@ -206,19 +206,27 @@ export default function SpringboardHome() {
 
       </div>
 
-      {/* Subtle secondary link */}
+      {/* Subtle secondary links */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.0, duration: 0.5 }}
         className="z-10 mb-24"
       >
+        <div className="flex flex-wrap items-center justify-center gap-5">
+        <Link
+          href="/smc"
+          className="text-[11px] text-white/30 hover:text-white/65 transition-colors tracking-wide"
+        >
+          SMC Executive AI Brief &rarr;
+        </Link>
         <Link
           href="/agent-economics"
           className="text-[11px] text-white/20 hover:text-white/50 transition-colors tracking-wide"
         >
           Enterprise Agent Decision Framework ↗
         </Link>
+        </div>
       </motion.div>
 
       {/* Dock */}
