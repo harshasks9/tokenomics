@@ -5,6 +5,19 @@ import { JAPANESE_HOST, isJapaneseSite } from "@/lib/i18n";
 export function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host");
   const host = forwardedHost ?? request.headers.get("host") ?? request.nextUrl.hostname;
+  const hostname = host.split(":")[0].toLowerCase();
+
+  if (hostname === "deck.aitokenomics.app") {
+    const deckUrl = request.nextUrl.clone();
+    deckUrl.pathname = "/deck/index.html";
+    return NextResponse.rewrite(deckUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const path = request.nextUrl.pathname;

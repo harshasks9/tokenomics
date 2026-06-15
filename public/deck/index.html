@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+  <meta name="description" content="Building San Miguel Corporation's intelligence operating system: a strategic framework for sustained market leadership with enterprise AI." />
+  <title>Building the Intelligence Operating System | San Miguel Corporation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: { ink: '#020617', electric: '#6d7cff', cyan: '#22d3ee' },
+          boxShadow: { glow: '0 0 80px rgba(99,102,241,.20)' },
+          backgroundImage: {
+            'grid-dark': 'linear-gradient(rgba(148,163,184,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.06) 1px, transparent 1px)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .text-balance { text-wrap: balance; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { scrollbar-width: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden bg-slate-950 text-white antialiased selection:bg-indigo-400/30">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 sm:h-20 sm:px-8 lg:px-12">
+      <a href="#top" class="group flex items-center gap-3" aria-label="Intelligence OS home">
+        <span class="relative grid h-9 w-9 place-items-center overflow-hidden rounded-xl border border-indigo-400/30 bg-indigo-500/10">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 text-indigo-300" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M12 3v18M3 12h18M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7" />
+            <circle cx="12" cy="12" r="3.3" fill="currentColor" stroke="none" />
+          </svg>
+          <span class="absolute inset-0 bg-gradient-to-br from-cyan-300/20 to-violet-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+        </span>
+        <span>
+          <span class="block text-sm font-bold tracking-tight">Intelligence OS</span>
+          <span class="hidden text-[10px] font-semibold uppercase tracking-[.18em] text-slate-500 sm:block">San Miguel Corporation</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-xs font-semibold text-slate-400 lg:flex" aria-label="Primary navigation">
+        <a class="transition-colors duration-300 hover:text-white" href="#challenge">The challenge</a>
+        <a class="transition-colors duration-300 hover:text-white" href="#moats">Five moats</a>
+        <a class="transition-colors duration-300 hover:text-white" href="#opportunities">SMC opportunities</a>
+        <a class="transition-colors duration-300 hover:text-white" href="#impact">Evidence</a>
+      </nav>
+
+      <a href="#briefing" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-xs font-bold text-slate-950 shadow-lg shadow-white/5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-100 sm:px-5">
+        <span class="hidden sm:inline">Request Executive Briefing</span><span class="sm:hidden">Briefing</span>
+        <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="relative isolate min-h-screen overflow-hidden pt-28 sm:pt-36">
+      <div class="absolute inset-0 -z-20 bg-grid-dark bg-[size:64px_64px]"></div>
+      <div class="absolute left-[8%] top-32 -z-10 h-72 w-72 rounded-full bg-indigo-600/20 blur-[110px]"></div>
+      <div class="absolute right-[2%] top-[20%] -z-10 h-96 w-96 rounded-full bg-cyan-500/10 blur-[130px]"></div>
+      <div class="mx-auto grid max-w-[1440px] items-center gap-16 px-5 pb-24 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:px-12 lg:pb-32">
+        <div>
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.04] px-3 py-1.5 text-[11px] font-semibold text-slate-300 backdrop-blur-md">
+            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300"></span>
+            A strategic framework for sustained market leadership
+          </div>
+          <h1 class="text-balance text-5xl font-black leading-[.95] tracking-[-.055em] text-white sm:text-7xl lg:text-[5.7rem] xl:text-[6.4rem]">
+            Build the intelligence <span class="bg-gradient-to-r from-indigo-300 via-violet-300 to-cyan-300 bg-clip-text text-transparent">operating system.</span>
+          </h1>
+          <p class="mt-8 max-w-2xl text-balance text-lg leading-8 text-slate-400 sm:text-xl">
+            The advantage is not access to AI. It is the ability to turn proprietary data into better decisions, execute unique workflows with agents, create experiences that learn, and compound adoption across every SMC business.
+          </p>
+          <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a href="#moats" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 px-6 py-3.5 text-sm font-bold shadow-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-indigo-500/30">
+              Explore the five moats
+              <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg>
+            </a>
+            <a href="#challenge" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[.04] px-6 py-3.5 text-sm font-bold text-slate-200 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/[.08]">See the executive challenge</a>
+          </div>
+          <div class="mt-12 grid max-w-2xl grid-cols-2 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4">
+            <div><p class="text-2xl font-black text-white">5</p><p class="mt-1 text-xs text-slate-500">compounding moats</p></div>
+            <div><p class="text-2xl font-black text-white">4</p><p class="mt-1 text-xs text-slate-500">SMC business lenses</p></div>
+            <div><p class="text-2xl font-black text-white">12 mo.</p><p class="mt-1 text-xs text-slate-500">measurable impact horizon</p></div>
+            <div><p class="text-2xl font-black text-white">1</p><p class="mt-1 text-xs text-slate-500">enterprise flywheel</p></div>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-2xl lg:max-w-none">
+          <div class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-indigo-500/20 via-transparent to-cyan-400/10 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/70 p-3 shadow-2xl shadow-black/50 backdrop-blur-xl sm:p-5">
+            <div class="mb-4 flex items-center justify-between px-2">
+              <div class="flex gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-rose-400/70"></span><span class="h-2.5 w-2.5 rounded-full bg-amber-300/70"></span><span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span></div>
+              <span class="text-[9px] font-bold uppercase tracking-[.22em] text-slate-600">Enterprise intelligence layer</span>
+            </div>
+            <div class="rounded-[1.4rem] border border-white/10 bg-slate-950/90 p-5 sm:p-7">
+              <div class="flex items-center justify-between gap-4">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-indigo-300">Live operating loop</p><p class="mt-1 text-lg font-bold">Context to action</p></div>
+                <div class="flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-[10px] font-bold text-emerald-300"><span class="h-1.5 w-1.5 rounded-full bg-emerald-300"></span>Governed</div>
+              </div>
+              <div class="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-5">
+                <div class="col-span-2 rounded-2xl border border-indigo-400/20 bg-indigo-400/10 p-4 sm:col-span-1"><p class="text-[9px] font-bold uppercase text-indigo-300">01</p><p class="mt-4 text-xs font-bold">Data</p><p class="mt-1 text-[10px] leading-4 text-slate-500">Unique context</p></div>
+                <div class="rounded-2xl border border-white/10 bg-white/[.04] p-4"><p class="text-[9px] font-bold uppercase text-slate-500">02</p><p class="mt-4 text-xs font-bold">Decide</p><p class="mt-1 text-[10px] leading-4 text-slate-500">AI intelligence</p></div>
+                <div class="rounded-2xl border border-violet-400/20 bg-violet-400/10 p-4"><p class="text-[9px] font-bold uppercase text-violet-300">03</p><p class="mt-4 text-xs font-bold">Act</p><p class="mt-1 text-[10px] leading-4 text-slate-500">Agent workflows</p></div>
+                <div class="rounded-2xl border border-white/10 bg-white/[.04] p-4"><p class="text-[9px] font-bold uppercase text-slate-500">04</p><p class="mt-4 text-xs font-bold">Learn</p><p class="mt-1 text-[10px] leading-4 text-slate-500">Customer signal</p></div>
+                <div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4"><p class="text-[9px] font-bold uppercase text-cyan-300">05</p><p class="mt-4 text-xs font-bold">Scale</p><p class="mt-1 text-[10px] leading-4 text-slate-500">AI metabolism</p></div>
+              </div>
+              <div class="mt-6 rounded-2xl border border-white/10 bg-white/[.025] p-4">
+                <div class="flex items-center justify-between text-[10px] font-semibold text-slate-500"><span>Compounding advantage</span><span>Every cycle improves the next</span></div>
+                <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-800"><div class="h-full w-[82%] rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-400"></div></div>
+              </div>
+              <svg viewBox="0 0 520 115" class="mt-6 w-full" role="img" aria-label="An upward curve representing compounding enterprise AI value">
+                <defs><linearGradient id="curve" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6366f1"/><stop offset=".55" stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+                <path d="M10 98 C110 97 150 88 215 72 C300 50 333 28 510 10" fill="none" stroke="url(#curve)" stroke-width="4" stroke-linecap="round"/>
+                <path d="M10 98 C110 97 150 88 215 72 C300 50 333 28 510 10 L510 115 L10 115 Z" fill="url(#curve)" opacity=".08"/>
+                <g fill="#020617" stroke="#818cf8" stroke-width="3"><circle cx="62" cy="96" r="5"/><circle cx="173" cy="83" r="5"/><circle cx="284" cy="55" r="5"/><circle cx="394" cy="24" r="5"/><circle cx="505" cy="10" r="5"/></g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-white/10 bg-white/[.025]">
+      <div class="mx-auto grid max-w-[1440px] gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="bg-slate-950 px-6 py-9 sm:px-8"><p class="text-4xl font-black tracking-tight text-indigo-300">$4.4T</p><p class="mt-2 text-sm font-semibold">projected annual economic value</p><p class="mt-2 text-[10px] text-slate-600">Deck source: McKinsey, January 2025</p></div>
+        <div class="bg-slate-950 px-6 py-9 sm:px-8"><p class="text-4xl font-black tracking-tight text-violet-300">40%</p><p class="mt-2 text-sm font-semibold">of enterprise apps expected to feature agents by end-2026</p><p class="mt-2 text-[10px] text-slate-600">Deck source: Gartner, August 2025</p></div>
+        <div class="bg-slate-950 px-6 py-9 sm:px-8"><p class="text-4xl font-black tracking-tight text-cyan-300">52%</p><p class="mt-2 text-sm font-semibold">of surveyed organizations had agents in production</p><p class="mt-2 text-[10px] text-slate-600">Deck source: Google Cloud, November 2025</p></div>
+        <div class="bg-slate-950 px-6 py-9 sm:px-8"><p class="text-4xl font-black tracking-tight text-emerald-300">70%</p><p class="mt-2 text-sm font-semibold">of existing Cloud customers use at least one AI product</p><p class="mt-2 text-[10px] text-slate-600">As stated in the workshop deck</p></div>
+      </div>
+    </section>
+
+    <section id="challenge" class="relative py-24 sm:py-32">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <div class="grid gap-12 lg:grid-cols-[.75fr_1.25fr] lg:items-end">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[.22em] text-indigo-300">The executive challenge</p>
+            <h2 class="mt-5 text-balance text-4xl font-black tracking-[-.04em] sm:text-6xl">AI ambition is accelerating. Durable value is not.</h2>
+          </div>
+          <p class="max-w-2xl text-lg leading-8 text-slate-400 lg:justify-self-end">Most companies are deploying AI. Very few are embedding it into core operating loops deeply enough to create a capability competitors cannot reproduce by buying the same tools.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 lg:grid-cols-3">
+          <article class="group rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-rose-400/30 hover:bg-rose-400/[.04]">
+            <div class="flex items-center justify-between"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-rose-400/10 text-rose-300"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v9m0 4v.1M4.2 19h15.6L12 4 4.2 19Z"/></svg></span><span class="text-5xl font-black text-white/5 transition-colors group-hover:text-rose-300/10">01</span></div>
+            <h3 class="mt-7 text-xl font-bold">The production gap</h3><p class="mt-3 leading-7 text-slate-400">The deck cites 87% of enterprise AI projects never reaching production scale. Impressive proofs of concept remain outside the operating rhythm.</p>
+          </article>
+          <article class="group rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/30 hover:bg-amber-400/[.04]">
+            <div class="flex items-center justify-between"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-amber-400/10 text-amber-300"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18V9m5 9V5m5 13v-7m5 7V3"/></svg></span><span class="text-5xl font-black text-white/5 transition-colors group-hover:text-amber-300/10">02</span></div>
+            <h3 class="mt-7 text-xl font-bold">The value gap</h3><p class="mt-3 leading-7 text-slate-400">AI is often framed as an efficiency tool. Cost reduction can improve a process, but it does not create the new decisions, products, and experiences that widen the strategic ceiling.</p>
+          </article>
+          <article class="group rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-cyan-400/[.04]">
+            <div class="flex items-center justify-between"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-400/10 text-cyan-300"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M8 12h8m-4-4v8"/></svg></span><span class="text-5xl font-black text-white/5 transition-colors group-hover:text-cyan-300/10">03</span></div>
+            <h3 class="mt-7 text-xl font-bold">The moat gap</h3><p class="mt-3 leading-7 text-slate-400">Vendor selection is not strategy. The moat lives in proprietary context, workflow integration, feedback loops, governance, and the institutional speed to deploy again and again.</p>
+          </article>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-r from-slate-900 to-slate-900/40">
+          <div class="grid lg:grid-cols-[.45fr_1.55fr]">
+            <div class="border-b border-white/10 p-7 lg:border-b-0 lg:border-r lg:p-9"><p class="text-6xl font-black tracking-[-.05em] text-white">&lt;5%</p><p class="mt-3 text-sm font-semibold text-slate-400">of companies have AI embedded in core operating loops, as cited in the deck</p></div>
+            <div class="grid gap-6 p-7 sm:grid-cols-2 lg:p-9"><div><p class="text-xs font-bold uppercase tracking-[.18em] text-slate-500">What fails</p><p class="mt-3 text-lg font-bold">Buying AI without redesigning the operating model.</p></div><div><p class="text-xs font-bold uppercase tracking-[.18em] text-indigo-300">What compounds</p><p class="mt-3 text-lg font-bold">Data, decisions, agents, experiences, and adoption reinforcing one another.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="moats" class="border-y border-white/10 bg-slate-900/40 py-24 sm:py-32">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <div class="max-w-4xl">
+          <p class="text-xs font-bold uppercase tracking-[.22em] text-violet-300">The AI moat stack</p>
+          <h2 class="mt-5 text-balance text-4xl font-black tracking-[-.04em] sm:text-6xl">Five layers of compounding advantage.</h2>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-400">Each moat strengthens the next. Together they create a flywheel that a competitor cannot replicate simply by licensing the same models.</p>
+        </div>
+
+        <div class="mt-12 overflow-x-auto no-scrollbar" role="tablist" aria-label="Five AI moats">
+          <div class="flex min-w-max gap-2 rounded-2xl border border-white/10 bg-slate-950/60 p-2">
+            <button data-moat="0" role="tab" aria-selected="true" class="moat-tab flex items-center gap-3 rounded-xl bg-indigo-500 px-4 py-3 text-left text-xs font-bold text-white transition-all duration-300 sm:px-5"><span class="opacity-60">01</span>Data Flywheel</button>
+            <button data-moat="1" role="tab" aria-selected="false" class="moat-tab flex items-center gap-3 rounded-xl px-4 py-3 text-left text-xs font-bold text-slate-400 transition-all duration-300 hover:bg-white/5 hover:text-white sm:px-5"><span class="opacity-60">02</span>Decision Intelligence</button>
+            <button data-moat="2" role="tab" aria-selected="false" class="moat-tab flex items-center gap-3 rounded-xl px-4 py-3 text-left text-xs font-bold text-slate-400 transition-all duration-300 hover:bg-white/5 hover:text-white sm:px-5"><span class="opacity-60">03</span>Agentic Automation</button>
+            <button data-moat="3" role="tab" aria-selected="false" class="moat-tab flex items-center gap-3 rounded-xl px-4 py-3 text-left text-xs font-bold text-slate-400 transition-all duration-300 hover:bg-white/5 hover:text-white sm:px-5"><span class="opacity-60">04</span>AI-Native CX</button>
+            <button data-moat="4" role="tab" aria-selected="false" class="moat-tab flex items-center gap-3 rounded-xl px-4 py-3 text-left text-xs font-bold text-slate-400 transition-all duration-300 hover:bg-white/5 hover:text-white sm:px-5"><span class="opacity-60">05</span>AI Metabolism</button>
+          </div>
+        </div>
+
+        <div class="mt-5 grid overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950 shadow-2xl shadow-black/30 lg:grid-cols-[1.1fr_.9fr]">
+          <div class="p-7 sm:p-10 lg:p-14">
+            <div class="flex items-center gap-3"><span id="moat-number" class="rounded-full bg-indigo-400/10 px-3 py-1 text-[10px] font-black uppercase tracking-[.18em] text-indigo-300">Moat 01</span><span id="moat-category" class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-600">Foundation</span></div>
+            <h3 id="moat-title" class="mt-6 text-3xl font-black tracking-tight sm:text-5xl">Proprietary Data Flywheel</h3>
+            <p id="moat-thesis" class="mt-5 max-w-2xl text-lg leading-8 text-slate-400">Turn proprietary data into AI-ready fuel that improves with every cycle. The moat is not the data lake; it is the closed loop where AI acts, generates better signals, and improves the next decision.</p>
+            <div class="mt-9 grid gap-4 sm:grid-cols-2" id="moat-points">
+              <div class="rounded-2xl border border-white/10 bg-white/[.035] p-5"><svg viewBox="0 0 24 24" class="h-5 w-5 text-indigo-300" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7c0-2 3.6-3.5 8-3.5S20 5 20 7s-3.6 3.5-8 3.5S4 9 4 7Z"/><path d="M4 7v5c0 2 3.6 3.5 8 3.5S20 14 20 12V7M4 12v5c0 2 3.6 3.5 8 3.5s8-1.5 8-3.5v-5"/></svg><p class="mt-4 text-sm font-bold">Unify high-value operational context</p></div>
+              <div class="rounded-2xl border border-white/10 bg-white/[.035] p-5"><svg viewBox="0 0 24 24" class="h-5 w-5 text-indigo-300" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12a7 7 0 0 1 12-4.9L19 9M19 12a7 7 0 0 1-12 4.9L5 15"/><path d="M19 5v4h-4M5 19v-4h4"/></svg><p class="mt-4 text-sm font-bold">Make every interaction improve the loop</p></div>
+            </div>
+          </div>
+          <aside class="border-t border-white/10 bg-gradient-to-br from-indigo-500/10 to-transparent p-7 sm:p-10 lg:border-l lg:border-t-0 lg:p-14">
+            <p class="text-[10px] font-black uppercase tracking-[.2em] text-indigo-300">Google Cloud in action</p>
+            <p id="case-company" class="mt-5 text-2xl font-black">Gordon Food Service</p>
+            <p id="case-story" class="mt-4 leading-7 text-slate-400">Unified more than 170 data sources in BigQuery, establishing an AI-ready foundation for comprehensive analytics and AI-powered ordering experiences.</p>
+            <div class="mt-10 border-t border-white/10 pt-8"><p id="case-metric" class="text-5xl font-black tracking-[-.05em] text-indigo-300">170+</p><p id="case-label" class="mt-2 max-w-xs text-sm font-semibold text-slate-300">data sources unified into one AI-ready foundation</p></div>
+            <p class="mt-8 text-[10px] leading-5 text-slate-600">Case evidence and wording derived from the uploaded workshop presentation.</p>
+          </aside>
+        </div>
+
+        <div class="mt-10 grid gap-3 sm:grid-cols-5" aria-label="Compounding moat sequence">
+          <div class="rounded-2xl border border-indigo-400/20 bg-indigo-400/10 p-4"><p class="text-[10px] font-bold text-indigo-300">01 / DATA</p><p class="mt-2 text-xs font-semibold">Generates AI-ready insight</p></div>
+          <div class="rounded-2xl border border-white/10 p-4"><p class="text-[10px] font-bold text-slate-500">02 / DECIDE</p><p class="mt-2 text-xs font-semibold">Powers unique decisions</p></div>
+          <div class="rounded-2xl border border-white/10 p-4"><p class="text-[10px] font-bold text-slate-500">03 / ACT</p><p class="mt-2 text-xs font-semibold">Executes at machine speed</p></div>
+          <div class="rounded-2xl border border-white/10 p-4"><p class="text-[10px] font-bold text-slate-500">04 / EXPERIENCE</p><p class="mt-2 text-xs font-semibold">Learns from every interaction</p></div>
+          <div class="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4"><p class="text-[10px] font-bold text-cyan-300">05 / SCALE</p><p class="mt-2 text-xs font-semibold">Compounds all four moats</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opportunities" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
+          <div class="lg:sticky lg:top-28 lg:self-start">
+            <p class="text-xs font-bold uppercase tracking-[.22em] text-cyan-300">Where SMC can compound</p>
+            <h2 class="mt-5 text-balance text-4xl font-black tracking-[-.04em] sm:text-6xl">Four businesses. One intelligence system.</h2>
+            <p class="mt-6 max-w-xl text-lg leading-8 text-slate-400">The platform should be shared. The workflow economics, data, accountability, and measurable outcomes must remain specific to each P&amp;L.</p>
+            <a href="#briefing" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition-colors duration-300 hover:text-cyan-200">Prioritize the first 12-month portfolio <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-400/30">
+              <div class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-400/10 text-indigo-300"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10 12 4l9 6M5 10v8m4-8v8m6-8v8m4-8v8M3 20h18"/></svg></div>
+              <p class="mt-7 text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Bank of Commerce</p><h3 class="mt-2 text-xl font-black">Risk intelligence and relationship growth</h3>
+              <ul class="mt-5 space-y-3 text-sm text-slate-400"><li class="flex gap-3"><span class="text-indigo-300">01</span>Fraud detection and financial crime</li><li class="flex gap-3"><span class="text-indigo-300">02</span>Personalized banking and next-best action</li><li class="flex gap-3"><span class="text-indigo-300">03</span>Integrated credit and vendor intelligence</li></ul>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/30">
+              <div class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-400/10 text-violet-300"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18h18M6 18V8l6-4 6 4v10M9 12h6M12 9v6"/></svg></div>
+              <p class="mt-7 text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Infrastructure &amp; Airports</p><h3 class="mt-2 text-xl font-black">Operational flow and passenger confidence</h3>
+              <ul class="mt-5 space-y-3 text-sm text-slate-400"><li class="flex gap-3"><span class="text-violet-300">01</span>Airport operations and disruption response</li><li class="flex gap-3"><span class="text-violet-300">02</span>Passenger journey and service experience</li><li class="flex gap-3"><span class="text-violet-300">03</span>Asset reliability and safety intelligence</li></ul>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30">
+              <div class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-400/10 text-cyan-300"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10l5 3V8l5 3V4h6v16H4Z"/><path d="M8 17h2m3 0h2m3 0h2"/></svg></div>
+              <p class="mt-7 text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Foods &amp; Beverage</p><h3 class="mt-2 text-xl font-black">Responsive supply and intelligent production</h3>
+              <ul class="mt-5 space-y-3 text-sm text-slate-400"><li class="flex gap-3"><span class="text-cyan-300">01</span>Demand forecasting and sensing</li><li class="flex gap-3"><span class="text-cyan-300">02</span>Supply-chain optimization</li><li class="flex gap-3"><span class="text-cyan-300">03</span>Smart manufacturing and quality</li></ul>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/[.035] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30">
+              <div class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-400/10 text-emerald-300"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 20V7a3 3 0 0 1 3-3h5v16M7 9H4v11h16M10 8h2m-2 4h2"/><path d="M15 7h3l2 3v4"/></svg></div>
+              <p class="mt-7 text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Petron</p><h3 class="mt-2 text-xl font-black">A smarter retail and network engine</h3>
+              <ul class="mt-5 space-y-3 text-sm text-slate-400"><li class="flex gap-3"><span class="text-emerald-300">01</span>Retail and customer analytics</li><li class="flex gap-3"><span class="text-emerald-300">02</span>Loyalty and personalized engagement</li><li class="flex gap-3"><span class="text-emerald-300">03</span>Network optimization and site selection</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="relative overflow-hidden border-y border-white/10 bg-white text-slate-950 py-24 sm:py-32">
+      <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-indigo-200/60 blur-[140px]"></div>
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <div class="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div class="max-w-4xl"><p class="text-xs font-bold uppercase tracking-[.22em] text-indigo-600">Impact &amp; tangible value</p><h2 class="mt-5 text-balance text-4xl font-black tracking-[-.045em] sm:text-6xl">Evidence that operating loops, not demos, create the value.</h2></div>
+          <p class="max-w-md text-sm leading-6 text-slate-500">The examples below are the case-study outcomes presented in the uploaded workshop deck. They demonstrate patterns, not guaranteed SMC results.</p>
+        </div>
+
+        <div class="relative mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6"><p class="text-4xl font-black tracking-tight text-indigo-600">170+</p><p class="mt-3 text-sm font-bold">data sources unified</p><p class="mt-2 text-xs leading-5 text-slate-500">Gordon Food Service created one AI-ready foundation in BigQuery.</p></article>
+          <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6"><p class="text-4xl font-black tracking-tight text-violet-600">66%</p><p class="mt-3 text-sm font-bold">less advisory administration</p><p class="mt-2 text-xs leading-5 text-slate-500">Commerzbank reinvested time into higher-value client decisions.</p></article>
+          <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6"><p class="text-4xl font-black tracking-tight text-cyan-600">42h→1m</p><p class="mt-3 text-sm font-bold">customer response time</p><p class="mt-2 text-xs leading-5 text-slate-500">Danfoss used agents for complex email-based order processing.</p></article>
+          <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6"><p class="text-4xl font-black tracking-tight text-blue-600">150M</p><p class="mt-3 text-sm font-bold">product listings searched</p><p class="mt-2 text-xs leading-5 text-slate-500">Mercado Libre reimagined discovery for more than 100M customers.</p></article>
+          <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6"><p class="text-4xl font-black tracking-tight text-emerald-600">40 min</p><p class="mt-3 text-sm font-bold">saved per AI interaction</p><p class="mt-2 text-xs leading-5 text-slate-500">TELUS built AI muscle memory across 57,000 employees.</p></article>
+        </div>
+
+        <div class="relative mt-8 grid overflow-hidden rounded-[2rem] bg-slate-950 text-white lg:grid-cols-[.8fr_1.2fr]">
+          <div class="p-8 sm:p-10 lg:p-12"><p class="text-xs font-bold uppercase tracking-[.2em] text-rose-300">Avoid the five anti-patterns</p><h3 class="mt-5 text-3xl font-black tracking-tight">Potential is destroyed by operating choices, not model limitations.</h3></div>
+          <div class="grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+            <div class="bg-slate-950 p-5"><p class="text-[10px] font-black text-rose-300">01</p><p class="mt-3 text-xs font-bold">The Demo Trap</p></div>
+            <div class="bg-slate-950 p-5"><p class="text-[10px] font-black text-rose-300">02</p><p class="mt-3 text-xs font-bold">Vendor Delegation</p></div>
+            <div class="bg-slate-950 p-5"><p class="text-[10px] font-black text-rose-300">03</p><p class="mt-3 text-xs font-bold">Cost Reduction Ceiling</p></div>
+            <div class="bg-slate-950 p-5"><p class="text-[10px] font-black text-rose-300">04</p><p class="mt-3 text-xs font-bold">Data Lake Illusion</p></div>
+            <div class="bg-slate-950 p-5"><p class="text-[10px] font-black text-rose-300">05</p><p class="mt-3 text-xs font-bold">Centralized Bottleneck</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 sm:py-32">
+      <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+        <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+          <div><p class="text-xs font-bold uppercase tracking-[.22em] text-amber-300">The CEO's AI moat scorecard</p><h2 class="mt-5 text-balance text-4xl font-black tracking-[-.04em] sm:text-6xl">Five questions reveal whether the investment can compound.</h2></div>
+          <div class="space-y-3">
+            <div class="flex gap-5 rounded-2xl border border-white/10 bg-white/[.035] p-5"><span class="text-xs font-black text-indigo-300">01</span><div><p class="font-bold">Is AI creating capabilities or only efficiencies?</p><p class="mt-1 text-xs text-slate-500">Moat signal: revenue and strategic capability, not only cost savings.</p></div></div>
+            <div class="flex gap-5 rounded-2xl border border-white/10 bg-white/[.035] p-5"><span class="text-xs font-black text-indigo-300">02</span><div><p class="font-bold">Could a competitor replicate the advantage by buying the same tools?</p><p class="mt-1 text-xs text-slate-500">Moat signal: the differentiation lives in integration and context.</p></div></div>
+            <div class="flex gap-5 rounded-2xl border border-white/10 bg-white/[.035] p-5"><span class="text-xs font-black text-indigo-300">03</span><div><p class="font-bold">Does the system get smarter from SMC's unique data?</p><p class="mt-1 text-xs text-slate-500">Moat signal: outputs become inputs to a governed feedback loop.</p></div></div>
+            <div class="flex gap-5 rounded-2xl border border-white/10 bg-white/[.035] p-5"><span class="text-xs font-black text-indigo-300">04</span><div><p class="font-bold">How quickly can the organization test and deploy?</p><p class="mt-1 text-xs text-slate-500">Moat signal: high experiment velocity paired with production discipline.</p></div></div>
+            <div class="flex gap-5 rounded-2xl border border-white/10 bg-white/[.035] p-5"><span class="text-xs font-black text-indigo-300">05</span><div><p class="font-bold">Is AI in every P&amp;L owner's operating rhythm?</p><p class="mt-1 text-xs text-slate-500">Moat signal: business ownership, rather than a central AI bottleneck.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="briefing" class="px-5 pb-8 sm:px-8 lg:px-12">
+      <div class="relative mx-auto max-w-[1440px] overflow-hidden rounded-[2.25rem] border border-indigo-300/20 bg-gradient-to-br from-indigo-600 via-violet-600 to-slate-900 px-6 py-16 shadow-2xl shadow-indigo-950/40 sm:px-10 sm:py-20 lg:px-16">
+        <div class="absolute -right-24 -top-24 h-80 w-80 rounded-full border border-white/10"></div><div class="absolute -right-10 -top-10 h-52 w-52 rounded-full border border-white/10"></div>
+        <div class="relative grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+          <div><p class="text-xs font-bold uppercase tracking-[.22em] text-indigo-100">The leadership challenge</p><h2 class="mt-5 max-w-4xl text-balance text-4xl font-black tracking-[-.045em] sm:text-6xl">Move from “What can AI do?” to “What advantage will SMC compound?”</h2><p class="mt-6 max-w-2xl text-lg leading-8 text-indigo-100/75">Bring the four business leaders, technology, data, risk, and people leadership into one working session. Select the opportunities that can create measurable impact within 12 months and establish the shared intelligence platform beneath them.</p></div>
+          <div class="rounded-[1.75rem] border border-white/15 bg-slate-950/30 p-6 backdrop-blur-md sm:p-8"><p class="text-sm font-bold">An executive briefing should decide:</p><ul class="mt-5 space-y-4 text-sm text-indigo-100/80"><li class="flex gap-3"><span class="font-black text-white">01</span>The highest-value operating challenges</li><li class="flex gap-3"><span class="font-black text-white">02</span>The first cross-SMC data and context foundation</li><li class="flex gap-3"><span class="font-black text-white">03</span>Human accountability and governance by workflow</li><li class="flex gap-3"><span class="font-black text-white">04</span>Measures that prove value inside 12 months</li></ul><a href="mailto:?subject=Request%20for%20San%20Miguel%20Executive%20AI%20Briefing&body=I%20would%20like%20to%20schedule%20an%20executive%20briefing%20on%20building%20San%20Miguel's%20Intelligence%20Operating%20System." class="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-50">Request Executive Briefing <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="px-5 py-12 sm:px-8 lg:px-12">
+    <div class="mx-auto flex max-w-[1440px] flex-col gap-7 border-t border-white/10 pt-8 sm:flex-row sm:items-end sm:justify-between">
+      <div><div class="flex items-center gap-3"><span class="grid h-8 w-8 place-items-center rounded-lg border border-indigo-400/30 bg-indigo-500/10 text-indigo-300"><svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M3 12h18M6.3 6.3l11.4 11.4M17.7 6.3 6.3 17.7" /></svg></span><span class="text-sm font-bold">Intelligence OS</span></div><p class="mt-4 max-w-xl text-xs leading-5 text-slate-600">Strategic narrative and examples derived from the San Miguel Workshop Deck &amp; Presentation. Case outcomes are contextual evidence, not forecasts or guarantees for SMC.</p></div>
+      <div class="text-left sm:text-right"><p class="text-xs font-semibold text-slate-500">Your competitors can buy the same models.</p><p class="mt-1 text-sm font-bold text-white">They cannot buy your flywheel.</p><p class="mt-4 text-[10px] text-slate-700">© 2026 Executive workshop microsite</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const moats = [
+      {
+        number: 'Moat 01', category: 'Foundation', title: 'Proprietary Data Flywheel',
+        thesis: 'Turn proprietary data into AI-ready fuel that improves with every cycle. The moat is not the data lake; it is the closed loop where AI acts, generates better signals, and improves the next decision.',
+        points: ['Unify high-value operational context', 'Make every interaction improve the loop'],
+        company: 'Gordon Food Service', story: 'Unified more than 170 data sources in BigQuery, establishing an AI-ready foundation for comprehensive analytics and AI-powered ordering experiences.', metric: '170+', label: 'data sources unified into one AI-ready foundation'
+      },
+      {
+        number: 'Moat 02', category: 'Intelligence', title: 'AI-Native Decision Intelligence',
+        thesis: 'Embed AI into decisions too complex, contextual, or fast for humans alone. Proprietary operating history turns a generic model into a continuously improving decision system.',
+        points: ['Put complete context inside the decision', 'Reinvest saved time into better judgment'],
+        company: 'Commerzbank', story: 'Embedded Google Cloud AI in advisory workflows to generate structured summaries of corporate investment calls, giving advisors faster access to complete context.', metric: '66%', label: 'reduction in advisory administration time'
+      },
+      {
+        number: 'Moat 03', category: 'Execution', title: 'Agentic Process Automation',
+        thesis: 'Move from chatbots to agents that understand context, coordinate tools, and execute unique multi-step workflows. The advantage grows as agents learn SMC-specific patterns.',
+        points: ['Automate the workflow, not a single task', 'Keep people at accountable decision points'],
+        company: 'Danfoss', story: 'Deployed agents for complex email-based order processing that requires pricing, inventory, customer history, and transactional decisions.', metric: '42h→1m', label: 'average customer response time'
+      },
+      {
+        number: 'Moat 04', category: 'Growth', title: 'AI-Native Customer Experience',
+        thesis: 'Create experiences that adapt, predict, and learn rather than making old interactions marginally faster. Every query, click, and transaction should improve what happens next.',
+        points: ['Design experiences impossible without AI', 'Turn customer interaction into a learning asset'],
+        company: 'Mercado Libre', story: 'Deployed Vertex AI Search across 150 million product listings, reimagining discovery for more than 100 million customers in Latin America.', metric: '150M', label: 'product listings inside AI-native discovery'
+      },
+      {
+        number: 'Moat 05', category: 'Organization', title: 'Organizational AI Metabolism',
+        thesis: 'Make the speed of responsible adoption an institutional capability. Two firms may buy the same tools; the one that can deploy 30 valuable use cases while the other deploys three compounds the gap.',
+        points: ['Build AI fluency across the workforce', 'Distribute ownership into every business unit'],
+        company: 'TELUS', story: 'Embedded AI into the daily work of more than 57,000 employees, building broad organizational muscle memory instead of isolating adoption in a central team.', metric: '40 min', label: 'saved per AI interaction across 57,000 employees'
+      }
+    ];
+
+    const tabs = Array.from(document.querySelectorAll('.moat-tab'));
+    const fields = {
+      number: document.getElementById('moat-number'), category: document.getElementById('moat-category'), title: document.getElementById('moat-title'), thesis: document.getElementById('moat-thesis'),
+      company: document.getElementById('case-company'), story: document.getElementById('case-story'), metric: document.getElementById('case-metric'), label: document.getElementById('case-label'), points: document.getElementById('moat-points')
+    };
+
+    const pointIcon = '<svg viewBox="0 0 24 24" class="h-5 w-5 text-indigo-300" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';
+    function renderMoat(index) {
+      const moat = moats[index];
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
+        tab.setAttribute('aria-selected', String(active));
+        tab.className = active
+          ? 'moat-tab flex items-center gap-3 rounded-xl bg-indigo-500 px-4 py-3 text-left text-xs font-bold text-white transition-all duration-300 sm:px-5'
+          : 'moat-tab flex items-center gap-3 rounded-xl px-4 py-3 text-left text-xs font-bold text-slate-400 transition-all duration-300 hover:bg-white/5 hover:text-white sm:px-5';
+      });
+      fields.number.textContent = moat.number; fields.category.textContent = moat.category; fields.title.textContent = moat.title; fields.thesis.textContent = moat.thesis;
+      fields.company.textContent = moat.company; fields.story.textContent = moat.story; fields.metric.textContent = moat.metric; fields.label.textContent = moat.label;
+      fields.points.innerHTML = moat.points.map(point => `<div class="rounded-2xl border border-white/10 bg-white/[.035] p-5">${pointIcon}<p class="mt-4 text-sm font-bold">${point}</p></div>`).join('');
+    }
+    tabs.forEach((tab, index) => tab.addEventListener('click', () => renderMoat(index)));
+  </script>
+</body>
+</html>
