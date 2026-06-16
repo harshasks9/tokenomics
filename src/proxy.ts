@@ -18,6 +18,19 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "data.aitokenomics.app") {
+    const dataUrl = request.nextUrl.clone();
+    if (dataUrl.pathname === "/") {
+      dataUrl.pathname = "/data";
+    }
+    return NextResponse.rewrite(dataUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const path = request.nextUrl.pathname;
