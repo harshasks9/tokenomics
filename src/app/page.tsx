@@ -10,6 +10,7 @@ import {
   Landmark,
   Factory,
   Wifi,
+  FlaskConical,
   Home,
   Eye,
 } from "lucide-react";
@@ -68,6 +69,15 @@ const industries = [
     icon: Wifi,
     gradient: "linear-gradient(135deg, #075985 0%, #0284C7 100%)",
     roiTeaser: "52% build savings · network automation",
+    enabled: true,
+  },
+  {
+    id: "research-economics",
+    name: "Research Economics",
+    href: "/research-economics",
+    icon: FlaskConical,
+    gradient: "linear-gradient(135deg, #0891b2 0%, #7c3aed 100%)",
+    roiTeaser: "Lean Frontier routing · Opus where it reasons",
     enabled: true,
   },
 ];
