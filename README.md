@@ -38,6 +38,46 @@ npm run build
 npm start
 ```
 
+## Options Wheel Screener
+
+The options app is a read-only cash-secured-put "wheel" screener at `/options` and `https://options.aitokenomics.app`.
+It ranks candidates only. It never places, sizes, routes, or simulates trades, and it never integrates with a broker.
+
+### Environment variables
+
+Server-side only; do not prefix these with `NEXT_PUBLIC_`.
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `APP_PASSWORD` | Production | Cookie-based access gate for `/options` and `options.aitokenomics.app`. |
+| `FMP_API_KEY` | Live mode | Financial Modeling Prep universe, quotes, fundamentals, and historical closes. |
+| `POLYGON_API_KEY` | Live mode | Polygon/Massive delayed option-chain snapshots. Options Starter 15-minute delayed data is sufficient. |
+| `ANTHROPIC_API_KEY` | Optional | Enables AI judgment scoring on manual refresh. Defaults to neutral judgment if absent or on error. |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Recommended | Vercel KV / Upstash Redis REST cache for daily screened results and manual refresh rate limiting. |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | Alternative | Same as above when using raw Upstash Redis env names. |
+| `CRON_SECRET` | Recommended | Protects `/api/options/cron`; Vercel Cron sends `Authorization: Bearer $CRON_SECRET` when configured. |
+
+If `FMP_API_KEY` or `POLYGON_API_KEY` is absent, the app runs in mock mode using the built-in fixtures from `src/lib/options/fixtures.ts`.
+This keeps the UI demoable without paid keys and reproduces the acceptance buckets in tests.
+
+### Data stack and cost notes
+
+- FMP endpoints: stock screener, quote, key metrics TTM, ratios TTM, annual income statements, enterprise values, and historical daily closes.
+- Polygon endpoint: `/v3/snapshot/options/{ticker}` for delayed put-chain snapshots.
+- Expected monthly data cost: roughly `$29` for Polygon Options Starter plus about `$20-50` for an FMP tier, depending on plan and usage.
+- API cost control: cheap stock gates run before option-chain calls; a Vercel Cron job refreshes once daily at `21:30 UTC`; manual refresh is server-rate-limited to once per 15 minutes.
+
+### Caveats
+
+- `iv_rank*` is a realized-volatility proxy computed from one year of daily closes, not true IV rank. Upgrade by replacing it with a real one-year ATM-IV series from Polygon historical chains or a provider such as tastytrade.
+- 40% of the score is judgment. Judgment defaults to neutral scores until reviewed manually or refreshed with optional AI judgment. This is not investment advice.
+
+### Swapping data providers
+
+Provider-specific code is isolated in `src/lib/options/live-data.ts`.
+Keep the normalized `StockProfile`, `Fundamentals`, `OptionContract`, and daily close shapes stable, then replace the FMP/Polygon fetchers with another provider.
+The scorer, UI, cache, tests, and route handlers should not need provider-specific changes.
+
 ## Project Structure
 
 ```
