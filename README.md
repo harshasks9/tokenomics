@@ -2,6 +2,17 @@
 
 Interactive scenarios built around one thesis: **Opus is superior for the hardest work, but you do not need Opus for everything.** Keep Opus on architecture, nuanced judgment, planning, and review. Route bounded execution to Gemini 3.5 Flash or Gemini 3.1 Flash-Lite.
 
+## Japanese mirror
+
+The Japanese site uses the same deployment and route tree as the English site:
+
+- English: `https://aitokenomics.app`
+- Japanese: `https://jp.aitokenomics.app`
+
+The Japanese host translates rendered and dynamically added interface content, caches translations in the browser, preserves product and model names, and keeps relative navigation on the same host. `src/proxy.ts` publishes the appropriate `Content-Language` and per-path alternate-language headers.
+
+For local testing, use `http://jp.localhost:3000` or append `?lang=ja` to a local URL. The Japanese host can be changed with `NEXT_PUBLIC_JAPANESE_HOST`.
+
 Each scenario compares the recommended **Opus + Gemini** route with an **Opus + Sonnet** baseline and relevant single-model deployments such as All Opus, All Sonnet, or All Flash.
 
 ## Routes

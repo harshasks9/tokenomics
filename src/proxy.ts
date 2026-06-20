@@ -47,7 +47,6 @@ export function proxy(request: NextRequest) {
       },
     });
   }
-
   if (hostname === "data.aitokenomics.app") {
     const dataUrl = request.nextUrl.clone();
     if (dataUrl.pathname === "/") {

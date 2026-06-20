@@ -10,6 +10,7 @@ import CivicCitizenScenario from "@/components/civicos/CivicCitizenScenario";
 import CivicDocumentScenario from "@/components/civicos/CivicDocumentScenario";
 import CivicAgentScenario from "@/components/civicos/CivicAgentScenario";
 import CivicSummaryDashboard from "@/components/civicos/CivicSummaryDashboard";
+import FrontierChart from "@/components/frontier/FrontierChart";
 
 export default function CivicOSPage() {
   return (
@@ -28,6 +29,7 @@ export default function CivicOSPage() {
         <CivicCitizenScenario />
         <CivicDocumentScenario />
         <CivicAgentScenario />
+        <FrontierChart workflow="civicos" />
         <CivicSummaryDashboard />
       </main>
     </TallyProvider>
