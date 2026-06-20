@@ -12,6 +12,7 @@ import {
   Wifi,
   Home,
   Eye,
+  Layers,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -68,6 +69,15 @@ const industries = [
     icon: Wifi,
     gradient: "linear-gradient(135deg, #075985 0%, #0284C7 100%)",
     roiTeaser: "52% build savings · network automation",
+    enabled: true,
+  },
+  {
+    id: "geminiplus",
+    name: "Gemini Plus",
+    href: "/gemini-plus",
+    icon: Layers,
+    gradient: "linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)",
+    roiTeaser: "100% credit offset · Value Map",
     enabled: true,
   },
 ];

@@ -18,6 +18,36 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "gemini25.aitokenomics.app") {
+    const geminiUrl = request.nextUrl.clone();
+    if (geminiUrl.pathname === "/") {
+      geminiUrl.pathname = "/gemini25";
+    }
+    return NextResponse.rewrite(geminiUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
+  if (
+    hostname === "plus.aitokenomics.app" ||
+    hostname === "value.aitokenomics.app" ||
+    hostname === "enterprise.aitokenomics.app"
+  ) {
+    const plusUrl = request.nextUrl.clone();
+    if (plusUrl.pathname === "/") {
+      plusUrl.pathname = "/gemini-plus";
+    }
+    return NextResponse.rewrite(plusUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   if (hostname === "data.aitokenomics.app") {
     const dataUrl = request.nextUrl.clone();
     if (dataUrl.pathname === "/") {
