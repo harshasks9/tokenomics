@@ -12,6 +12,7 @@ import {
   Home,
   Plus,
   Eye,
+  Layers,
 } from "lucide-react";
 
 const industries = [
@@ -68,6 +69,15 @@ const industries = [
     accentLight: "#F97316",
     gradient: "linear-gradient(135deg, #92400e 0%, #E37400 100%)",
     roiTeaser: "64% build savings · floor-safe routing",
+    enabled: true,
+  },
+  {
+    id: "geminiplus",
+    name: "Gemini Plus",
+    href: "/gemini-plus",
+    icon: Layers,
+    gradient: "linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)",
+    roiTeaser: "100% credit offset · Value Map",
     enabled: true,
   },
 ];
