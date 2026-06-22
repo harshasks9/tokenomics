@@ -83,6 +83,9 @@ async function runLiveScreen(aiJudgment: boolean): Promise<ScreenResult> {
 }
 
 export async function runFullScreen(options: { aiJudgment?: boolean } = {}) {
+  if (hasLiveDataKeys() && cacheMode() === "memory") {
+    throw new Error("Persistent KV/Upstash cache is required before live FMP/Polygon screening can run.");
+  }
   const aiJudgment = Boolean(options.aiJudgment);
   const result = hasLiveDataKeys() ? await runLiveScreen(aiJudgment) : await runMockScreen(aiJudgment);
   await writeCachedScreen(result);
@@ -92,5 +95,24 @@ export async function runFullScreen(options: { aiJudgment?: boolean } = {}) {
 export async function getCachedOrRunScreen() {
   const cached = await readCachedScreen();
   if (cached) return cached;
+  if (hasLiveDataKeys() && cacheMode() === "memory") {
+    const result: ScreenResult = {
+      generatedAt: new Date().toISOString(),
+      asOfDate: new Date().toISOString(),
+      mode: "live",
+      cacheMode: "memory",
+      aiJudgment: false,
+      rows: [],
+      universeCount: 0,
+      optionChainFetches: 0,
+      notices: [
+        "Not investment advice.",
+        "iv_rank* is a realized-vol proxy, not true IV rank.",
+        "40% of the score is judgment; neutral by default — enable AI judgment or review manually.",
+      ],
+      errors: ["Persistent KV/Upstash cache is required before live FMP/Polygon screening can run."],
+    };
+    return result;
+  }
   return runFullScreen({ aiJudgment: false });
 }

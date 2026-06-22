@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { isOptionsGateConfigured } from "@/lib/options/auth";
+import { isOptionsAuthRequired, isOptionsGateConfigured } from "@/lib/options/auth";
 
 export const metadata: Metadata = {
   title: "Options Screener Login",
@@ -24,7 +24,9 @@ export default async function OptionsLoginPage({
         </p>
         {!isOptionsGateConfigured() && (
           <p className="mt-4 rounded-2xl border border-amber-300/30 bg-amber-300/10 p-4 text-sm text-amber-100">
-            APP_PASSWORD is not configured, so local access is open. Configure APP_PASSWORD in production.
+            {isOptionsAuthRequired()
+              ? "APP_PASSWORD is required in production but is not configured. Access is locked until the variable is set."
+              : "APP_PASSWORD is not configured, so local access is open. Configure APP_PASSWORD in production."}
           </p>
         )}
         {params.error && (

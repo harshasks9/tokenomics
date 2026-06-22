@@ -5,6 +5,7 @@ type RedisResult<T> = { result: T | null };
 
 let memoryCache: ScreenResult | null = null;
 let memoryManualRefreshAt = 0;
+const memoryLoginAttempts = new Map<string, { count: number; resetAt: number }>();
 
 function redisConfig() {
   const url = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
@@ -62,4 +63,48 @@ export async function setLastManualRefreshAt(value: number) {
     return;
   }
   await redisCommand(["SET", SCREEN_CONFIG.manualRefreshKey, String(value)]);
+}
+
+async function hashIdentifier(identifier: string) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`options-login:${identifier}`));
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+export async function checkLoginRateLimit(identifier: string) {
+  const now = Date.now();
+  const key = `options:login:${await hashIdentifier(identifier)}`;
+  const limit = SCREEN_CONFIG.auth.maxLoginAttempts;
+  const windowMs = SCREEN_CONFIG.auth.loginWindowMs;
+
+  if (cacheMode() === "memory") {
+    const current = memoryLoginAttempts.get(key);
+    if (!current || current.resetAt <= now) {
+      memoryLoginAttempts.set(key, { count: 1, resetAt: now + windowMs });
+      return { allowed: true, retryAfterSeconds: 0 };
+    }
+    current.count += 1;
+    memoryLoginAttempts.set(key, current);
+    return {
+      allowed: current.count <= limit,
+      retryAfterSeconds: Math.max(1, Math.ceil((current.resetAt - now) / 1000)),
+    };
+  }
+
+  const count = Number((await redisCommand<number>(["INCR", key]))?.result ?? 1);
+  if (count === 1) {
+    await redisCommand(["PEXPIRE", key, windowMs]);
+  }
+  return {
+    allowed: count <= limit,
+    retryAfterSeconds: count <= limit ? 0 : Math.ceil(windowMs / 1000),
+  };
+}
+
+export async function clearLoginRateLimit(identifier: string) {
+  const key = `options:login:${await hashIdentifier(identifier)}`;
+  if (cacheMode() === "memory") {
+    memoryLoginAttempts.delete(key);
+    return;
+  }
+  await redisCommand(["DEL", key]);
 }

@@ -13,6 +13,10 @@ export const SCREEN_CONFIG = {
     maxSpreadPct: 0.05,
   },
   manualRefreshWindowMs: 15 * 60 * 1000,
+  auth: {
+    maxLoginAttempts: 8,
+    loginWindowMs: 15 * 60 * 1000,
+  },
   cacheKey: "options:screener:latest",
   manualRefreshKey: "options:screener:last-manual-refresh",
   weights: {
