@@ -14,6 +14,7 @@ import {
   Home,
   Eye,
   Layers,
+  Scale,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -92,6 +93,19 @@ const industries = [
   },
 ];
 
+const modelComparisons = [
+  {
+    id: "glm-vs-gemini",
+    name: "GLM vs Gemini",
+    href: "/glm-vs-gemini",
+    icon: Scale,
+    gradient: "linear-gradient(135deg, #4285F4 0%, #B45309 100%)",
+    roiTeaser: "Price per token vs cost per task",
+    enabled: true,
+    external: true,
+  },
+];
+
 type TileItem = {
   id: string;
   name: string;
@@ -100,6 +114,7 @@ type TileItem = {
   gradient: string;
   roiTeaser: string;
   enabled: boolean;
+  external?: boolean;
 };
 
 function SquircleIcon({
@@ -152,9 +167,15 @@ function SquircleIcon({
   );
 
   return item.enabled ? (
-    <Link href={item.href} className="rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-white/50">
-      {tile}
-    </Link>
+    item.external ? (
+      <a href={item.href} className="rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-white/50">
+        {tile}
+      </a>
+    ) : (
+      <Link href={item.href} className="rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-white/50">
+        {tile}
+      </Link>
+    )
   ) : (
     <div aria-disabled="true" title={`${item.name} is coming soon`}>
       {tile}
@@ -220,6 +241,23 @@ export default function SpringboardHome() {
           <div className="flex flex-wrap justify-center gap-10 md:gap-12">
             {industries.slice(3).map((ind, i) => (
               <SquircleIcon key={ind.id} item={ind} index={i + 3} sellerMode={sellerMode} />
+            ))}
+          </div>
+        </div>
+
+        {/* Model Comparisons */}
+        <div className="flex flex-col items-center gap-3">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1"
+          >
+            Model Comparisons
+          </motion.p>
+          <div className="flex flex-wrap justify-center gap-10 md:gap-12">
+            {modelComparisons.map((item, i) => (
+              <SquircleIcon key={item.id} item={item} index={industries.length + i} sellerMode={sellerMode} />
             ))}
           </div>
         </div>
