@@ -246,14 +246,15 @@
 <section class="sec" id="today" data-nav="◆ Today's Log" data-title="Daily Intelligence Log">
   <div class="kicker"><span class="num">◆ /</span> Daily Intelligence Log</div>
   <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between">
-    <h2 class="title" style="margin-bottom:2px">Friday, 4 July 2026 — edition</h2>
-    <span class="mono" style="color:var(--faint);font-size:12px">Coverage: 24h ending 00:00 SGT · 6 items · sources linked</span>
+    <h2 class="title" style="margin-bottom:2px" id="ed-date">Friday, 4 July 2026 — edition</h2>
+    <span class="mono" style="color:var(--faint);font-size:12px" id="ed-coverage">Coverage: 24h ending 00:00 SGT · sample edition</span>
   </div>
-  <div class="note" style="margin-top:14px"><b>Live, compiled edition.</b> Real items gathered from public sources and formatted per the MERIDIAN spec below — <span style="color:var(--cyan)">fact</span> (sourced &amp; dated) is separated from <span style="color:var(--yellow)">inference</span> (labeled, with confidence). This edition is human-triggered; the automated 09:00-SGT daily pipeline is the system design in the sections below.</div>
+  <div class="note" style="margin-top:14px" id="ed-note"><b>Sample edition.</b> Illustrative items formatted per the MERIDIAN spec below — <span style="color:var(--cyan)">fact</span> (sourced &amp; dated) separated from <span style="color:var(--yellow)">inference</span> (labeled, with confidence). If the automated pipeline has published a live edition, it replaces this on load.</div>
 
   <h3 class="sub" style="margin-top:22px">Top line</h3>
-  <p class="lede" style="max-width:82ch">Two through-lines dominate: a <b>frontier-model cadence</b> (Anthropic ships Claude Sonnet 5; OpenAI pushes GPT-5.6 under government access limits) and a <b>custom-silicon / inference-economics inflection</b> (NVIDIA Rubin + a hyperscaler ASIC surge reset cost-per-token; Meta opens an AI cloud). Each pressures a different Google Cloud front — Model Garden price/perf, TPU narrative, and the full-stack agent pitch.</p>
+  <p class="lede" style="max-width:82ch" id="ed-topline">Two through-lines dominate: a <b>frontier-model cadence</b> (Anthropic ships Claude Sonnet 5; OpenAI pushes GPT-5.6 under government access limits) and a <b>custom-silicon / inference-economics inflection</b> (NVIDIA Rubin + a hyperscaler ASIC surge reset cost-per-token; Meta opens an AI cloud). Each pressures a different Google Cloud front — Model Garden price/perf, TPU narrative, and the full-stack agent pitch.</p>
 
+  <div id="ed-items">
   <!-- ITEM 1 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:16px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
@@ -349,6 +350,8 @@
     </div>
   </div>
 
+  </div><!-- /#ed-items -->
+
   <!-- HOME-TEAM CONTEXT -->
   <h3 class="sub">Home-team position it acts on <span class="chip b">Google Cloud context</span></h3>
   <div class="grid g3">
@@ -358,6 +361,46 @@
   </div>
   <p style="font-size:12px;color:var(--faint);margin-top:12px" class="mono">Google context sourced from Google Cloud Next '26 coverage (Apr 2026). <a href="https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up" target="_blank" rel="noopener">cloud.google.com ↗</a> · Items reflect public reporting at compile time; confidence tags and status ladders apply.</p>
 </section>
+
+<script>
+/* Progressive enhancement: upgrade the baked sample edition to the live one
+   produced by /api/news/cron (stored in KV, served by /api/news/latest). */
+(function(){
+  var VMAP={opportunity:['v-opp','Opportunity'],risk:['v-risk','Risk'],urgent:['v-urg','Urgent'],no_action:['v-none','Watch']};
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function chips(arr){return (arr||[]).slice(0,6).map(function(x){return '<span class="chip g">'+esc(x)+'</span>';}).join('');}
+  function conf(c){c=c||'medium';return c.charAt(0).toUpperCase()+c.slice(1);}
+  function renderItem(it){
+    var v=VMAP[it.verdict]||VMAP.no_action;
+    var sources=(it.sources||[]).map(function(s){return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.name||'source')+(s.date?' ('+esc(s.date)+')':'')+' ↗</a>';}).join(' · ');
+    var actions=(it.recommended_actions||[]).map(function(a){return '<li><span class="mono" style="color:var(--cyan)">'+esc(a.role)+':</span> '+esc(a.action)+(a.timebox?' <b>('+esc(a.timebox)+')</b>':'')+'</li>';}).join('');
+    return '<div class="card" style="padding:0;overflow:hidden;margin-top:14px">'
+      +'<div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">'
+      +'<span class="chip r">'+esc(it.actor)+'</span><span class="chip">'+esc(it.event_type)+'</span>'+chips(it.affected_offerings)
+      +(it.relevance?'<span class="chip" style="border-color:var(--blue)">rel '+esc(it.relevance)+'</span>':'')
+      +'<span style="margin-left:auto" class="verdict '+v[0]+'">'+v[1]+'</span></div>'
+      +'<div style="padding:16px 18px">'
+      +'<h4 style="font-size:16px;margin-bottom:8px">'+esc(it.headline)+'</h4>'
+      +'<div class="fact"><span class="lbl">Fact</span>'+esc(it.what_happened)+(sources?'<cite>Sources: '+sources+'</cite>':'')+'</div>'
+      +(it.why_it_matters?'<div class="infer"><span class="lbl">Inference · '+conf(it.why_confidence)+'</span>'+esc(it.why_it_matters)+'</div>':'')
+      +(it.impact_on_gcp?'<div class="infer"><span class="lbl">Impact on Google Cloud · '+conf(it.impact_confidence)+'</span>'+esc(it.impact_on_gcp)+'</div>':'')
+      +(it.competitive_implications?'<p style="font-size:13.5px;color:var(--muted);margin:8px 0 0"><b>Competitive —</b> '+esc(it.competitive_implications)+'</p>':'')
+      +(actions?'<p style="font-size:13px;color:var(--muted);margin:8px 0 4px"><b>Actions</b></p><ul style="font-size:13px;color:var(--muted);margin:0">'+actions+'</ul>':'')
+      +'</div></div>';
+  }
+  function fmtTime(iso){try{return new Date(iso).toLocaleString('en-SG',{timeZone:'Asia/Singapore',dateStyle:'medium',timeStyle:'short'})+' SGT';}catch(e){return iso;}}
+  fetch('/api/news/latest',{headers:{accept:'application/json'}}).then(function(r){return r&&r.ok?r.json():null;}).then(function(d){
+    if(!d||!d.edition||!Array.isArray(d.edition.items)||!d.edition.items.length)return;
+    var ed=d.edition,host=document.getElementById('ed-items');
+    if(!host)return;
+    host.innerHTML=ed.items.map(renderItem).join('');
+    var dt=document.getElementById('ed-date'); if(dt)dt.textContent=ed.label+' — edition';
+    var tl=document.getElementById('ed-topline'); if(tl&&ed.topLine)tl.textContent=ed.topLine;
+    var cov=document.getElementById('ed-coverage'); if(cov)cov.textContent='Auto-published '+fmtTime(ed.generatedAt)+' · '+ed.items.length+' items'+(ed.sourceCount?' · '+ed.sourceCount+' feeds':'');
+    var note=document.getElementById('ed-note'); if(note)note.innerHTML='<b>Live edition.</b> Auto-compiled by the MERIDIAN pipeline from public feeds and analysed with the prompts in §11 — <span style="color:var(--cyan)">fact</span> separated from <span style="color:var(--yellow)">inference</span>; every item links to its sources.';
+  }).catch(function(){});
+})();
+</script>
 
 <!-- ============ EXEC SUMMARY ============ -->
 <section class="sec" id="exec" data-nav="Exec Summary" data-title="Executive Summary">
