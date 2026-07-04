@@ -60,6 +60,20 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "news.aitokenomics.app") {
+    const newsUrl = request.nextUrl.clone();
+    newsUrl.pathname =
+      newsUrl.pathname === "/"
+        ? "/news/index.html"
+        : `/news${newsUrl.pathname}`;
+    return NextResponse.rewrite(newsUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const path = request.nextUrl.pathname;

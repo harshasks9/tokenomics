@@ -1,0 +1,1472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MERIDIAN — AI News Intelligence for Google Cloud AI Leadership</title>
+  <meta name="description" content="Product & system architecture for a daily AI News Intelligence Agent that turns AI news into decision-grade intelligence for Google Cloud AI leadership. Published 09:00 SGT.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%234285F4'/%3E%3Cpath d='M16 6v20M6 16h20' stroke='%23fff' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0A1526;
+      --bg2:#0E1E36;
+      --panel:#0F2038;
+      --panel2:#132844;
+      --card:#12233F;
+      --ink:#EAF1FA;
+      --muted:#9DB3CF;
+      --faint:#6E86A6;
+      --line:rgba(157,179,207,.16);
+      --line2:rgba(157,179,207,.28);
+      --blue:#4285F4;
+      --red:#EA4335;
+      --yellow:#FBBC04;
+      --green:#34A853;
+      --violet:#A78BFA;
+      --cyan:#4CD7E8;
+      --fact:#4CD7E8;
+      --infer:#FBBC04;
+      --radius:14px;
+      --maxw:1180px;
+      color-scheme:dark;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:
+        radial-gradient(1200px 600px at 78% -8%, rgba(66,133,244,.16), transparent 60%),
+        radial-gradient(900px 520px at 8% 4%, rgba(167,139,250,.10), transparent 55%),
+        linear-gradient(180deg,var(--bg),#08111f);
+      color:var(--ink);
+      font-family:"IBM Plex Sans",system-ui,sans-serif;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.55;
+    }
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    h1,h2,h3,h4{font-family:"Archivo",system-ui,sans-serif;line-height:1.12;letter-spacing:-.01em;margin:0}
+    .mono{font-family:"IBM Plex Mono",monospace}
+    ::selection{background:rgba(66,133,244,.36)}
+
+    /* ---------- Top bar ---------- */
+    header.top{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:linear-gradient(180deg,rgba(10,21,38,.92),rgba(10,21,38,.72));
+      border-bottom:1px solid var(--line);
+    }
+    .top-inner{max-width:var(--maxw);margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:11px;font-family:"Archivo";font-weight:800;letter-spacing:.02em}
+    .brand .logo{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 210deg,var(--blue),var(--violet),var(--cyan),var(--blue));display:grid;place-items:center;box-shadow:0 6px 22px rgba(66,133,244,.4)}
+    .brand .logo svg{width:17px;height:17px}
+    .brand small{display:block;font-family:"IBM Plex Mono";font-weight:500;font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+    .brand b{font-size:16px}
+    .pill{margin-left:auto;display:flex;align-items:center;gap:8px;font-family:"IBM Plex Mono";font-size:11px;color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(52,168,83,.6);animation:pulse 2.4s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,168,83,.55)}70%{box-shadow:0 0 0 9px rgba(52,168,83,0)}100%{box-shadow:0 0 0 0 rgba(52,168,83,0)}}
+    .top-nav{display:flex;gap:2px;overflow-x:auto;max-width:var(--maxw);margin:0 auto;padding:0 14px 8px;scrollbar-width:none}
+    .top-nav::-webkit-scrollbar{display:none}
+    .top-nav a{font-family:"IBM Plex Mono";font-size:11px;color:var(--faint);padding:6px 10px;border-radius:8px;white-space:nowrap;transition:.15s}
+    .top-nav a:hover{color:var(--ink);background:rgba(157,179,207,.08);text-decoration:none}
+    .top-nav a.active{color:var(--ink);background:rgba(66,133,244,.16);box-shadow:inset 0 0 0 1px rgba(66,133,244,.4)}
+
+    /* ---------- Layout ---------- */
+    main{max-width:var(--maxw);margin:0 auto;padding:0 22px 120px}
+    section.sec{padding:46px 0;border-top:1px solid var(--line);scroll-margin-top:104px}
+    section.sec:first-of-type{border-top:0}
+    .kicker{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px;margin-bottom:12px}
+    .kicker .num{color:var(--faint)}
+    h2.title{font-size:clamp(24px,3.2vw,34px);font-weight:800;margin-bottom:10px}
+    .lede{font-size:17px;color:var(--muted);max-width:74ch}
+    h3.sub{font-size:19px;font-weight:700;margin:30px 0 12px;color:var(--ink)}
+    h4.sub4{font-size:14px;font-weight:700;margin:20px 0 8px;color:var(--ink);font-family:"IBM Plex Mono";letter-spacing:.02em}
+    p{margin:12px 0}
+    ul,ol{margin:12px 0;padding-left:22px}
+    li{margin:6px 0}
+    strong{color:#fff}
+    code{font-family:"IBM Plex Mono";font-size:.88em;background:rgba(157,179,207,.12);padding:2px 6px;border-radius:5px;color:var(--cyan)}
+
+    /* ---------- Cards / grid ---------- */
+    .grid{display:grid;gap:16px}
+    .g2{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:repeat(3,1fr)}
+    .g4{grid-template-columns:repeat(4,1fr)}
+    @media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg,var(--card),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+    .card h4{font-size:15px;font-weight:700;margin-bottom:6px}
+    .card p{margin:6px 0;font-size:14px;color:var(--muted)}
+    .accent-b{box-shadow:inset 3px 0 0 var(--blue)}
+    .accent-g{box-shadow:inset 3px 0 0 var(--green)}
+    .accent-y{box-shadow:inset 3px 0 0 var(--yellow)}
+    .accent-r{box-shadow:inset 3px 0 0 var(--red)}
+    .accent-v{box-shadow:inset 3px 0 0 var(--violet)}
+
+    /* ---------- Tables ---------- */
+    .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:16px 0}
+    table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+    th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+    thead th{background:rgba(66,133,244,.10);font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);position:sticky;top:0}
+    tbody tr:hover{background:rgba(157,179,207,.05)}
+    tbody tr:last-child td{border-bottom:0}
+    td.mono,th.mono{font-family:"IBM Plex Mono"}
+    .num-cell{font-family:"IBM Plex Mono";text-align:center;font-weight:600}
+
+    /* ---------- Chips / tags ---------- */
+    .chip{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono";font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+    .chip.b{color:#bcd4ff;border-color:rgba(66,133,244,.5);background:rgba(66,133,244,.12)}
+    .chip.g{color:#b6f0c8;border-color:rgba(52,168,83,.5);background:rgba(52,168,83,.12)}
+    .chip.y{color:#ffe7a3;border-color:rgba(251,188,4,.5);background:rgba(251,188,4,.12)}
+    .chip.r{color:#ffc2bb;border-color:rgba(234,67,53,.5);background:rgba(234,67,53,.12)}
+    .chip.v{color:#dcccff;border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.12)}
+    .chip.c{color:#bff3fa;border-color:rgba(76,215,232,.5);background:rgba(76,215,232,.12)}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+
+    /* fact / inference blocks */
+    .fact,.infer{border-radius:10px;padding:11px 14px;margin:10px 0;font-size:14px;border:1px solid var(--line)}
+    .fact{background:rgba(76,215,232,.07);box-shadow:inset 3px 0 0 var(--fact)}
+    .infer{background:rgba(251,188,4,.07);box-shadow:inset 3px 0 0 var(--infer)}
+    .lbl{font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;display:inline-block;margin-right:8px}
+    .fact .lbl{color:var(--fact)}
+    .infer .lbl{color:var(--infer)}
+    cite{display:block;font-style:normal;font-family:"IBM Plex Mono";font-size:11px;color:var(--faint);margin-top:6px}
+
+    /* callout */
+    .note{border:1px dashed var(--line2);border-radius:12px;padding:14px 16px;margin:16px 0;font-size:14px;color:var(--muted);background:rgba(157,179,207,.04)}
+    .note b{color:var(--ink)}
+    .tradeoff{border-left:3px solid var(--violet);padding:4px 0 4px 14px;margin:14px 0;color:var(--muted);font-size:14px}
+    .tradeoff b{color:var(--violet)}
+
+    /* ---------- Buttons ---------- */
+    .btn{font-family:"IBM Plex Mono";font-size:12px;font-weight:600;border:1px solid var(--line2);background:rgba(157,179,207,.07);color:var(--ink);border-radius:9px;padding:8px 13px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+    .btn:hover{border-color:var(--blue);background:rgba(66,133,244,.14)}
+    .btn.active{border-color:var(--blue);background:rgba(66,133,244,.2);color:#fff}
+
+    /* verdict pills */
+    .verdict{font-family:"Archivo";font-weight:800;font-size:12px;letter-spacing:.04em;padding:5px 12px;border-radius:8px;text-transform:uppercase}
+    .v-opp{background:rgba(52,168,83,.18);color:#7ff0a0;box-shadow:inset 0 0 0 1px rgba(52,168,83,.5)}
+    .v-risk{background:rgba(234,67,53,.18);color:#ff9d92;box-shadow:inset 0 0 0 1px rgba(234,67,53,.5)}
+    .v-urg{background:rgba(251,188,4,.2);color:#ffd45e;box-shadow:inset 0 0 0 1px rgba(251,188,4,.55)}
+    .v-none{background:rgba(157,179,207,.14);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line2)}
+
+    /* ---------- Hero ---------- */
+    .hero{padding:56px 0 34px}
+    .hero h1{font-size:clamp(32px,5.4vw,60px);font-weight:900;letter-spacing:-.025em;line-height:1.02}
+    .hero h1 .grad{background:linear-gradient(100deg,var(--blue),var(--violet) 55%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero .sub{font-size:19px;color:var(--muted);max-width:70ch;margin-top:18px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+    @media(max-width:760px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+    .stat{border:1px solid var(--line);border-radius:12px;padding:16px 16px;background:rgba(15,32,56,.5)}
+    .stat .big{font-family:"Archivo";font-weight:800;font-size:26px;color:#fff}
+    .stat .lab{font-family:"IBM Plex Mono";font-size:11px;color:var(--faint);letter-spacing:.05em;margin-top:3px;text-transform:uppercase}
+
+    /* ---------- Drilldown ---------- */
+    .drill{max-height:0;overflow:hidden;transition:max-height .4s ease;border-radius:0 0 12px 12px}
+    .drill.open{max-height:2600px}
+    .drill-inner{border-top:1px dashed var(--line2);padding:16px 0 4px;margin-top:4px}
+
+    /* tabs */
+    .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 4px}
+    .tabpanel{display:none;animation:fade .3s ease}
+    .tabpanel.show{display:block}
+    @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    /* pipeline */
+    .pipe{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:18px 0}
+    .pstep{flex:1;min-width:130px;border:1px solid var(--line);border-radius:12px;padding:12px;background:linear-gradient(180deg,var(--card),var(--panel));position:relative}
+    .pstep .n{font-family:"IBM Plex Mono";font-size:10px;color:var(--faint)}
+    .pstep b{display:block;font-family:"Archivo";font-size:14px;margin:3px 0}
+    .pstep small{font-size:11.5px;color:var(--muted);font-family:"IBM Plex Mono"}
+    .pstep .svc{margin-top:8px;font-size:10.5px;color:var(--cyan);font-family:"IBM Plex Mono"}
+
+    /* code block */
+    pre{background:#081120;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;font-family:"IBM Plex Mono";font-size:12.5px;line-height:1.55;color:#cfe0f5;margin:14px 0}
+    pre .k{color:#7fb0ff}
+    pre .s{color:#8be0a0}
+    pre .c{color:var(--faint)}
+    pre .p{color:var(--violet)}
+
+    /* svg viz */
+    .viz{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel),#0a1830);padding:16px;margin:16px 0;position:relative}
+    .viz svg{width:100%;height:auto;display:block}
+    .viz .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-family:"IBM Plex Mono";font-size:11px;color:var(--muted)}
+    .viz .legend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:-1px}
+    .tip{position:fixed;pointer-events:none;z-index:99;background:#04101f;border:1px solid var(--blue);border-radius:8px;padding:8px 11px;font-family:"IBM Plex Mono";font-size:11.5px;color:var(--ink);max-width:260px;opacity:0;transition:opacity .12s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+    .tip.show{opacity:1}
+
+    /* footer */
+    footer{border-top:1px solid var(--line);margin-top:40px;padding:34px 22px 60px;max-width:var(--maxw);margin-left:auto;margin-right:auto;color:var(--faint);font-size:13px}
+    footer .fgrid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+    footer b{color:var(--muted)}
+
+    .anchor-h{display:inline-flex;align-items:baseline;gap:10px}
+    .toc-mini{position:fixed;right:14px;bottom:14px;z-index:40;display:none}
+    hr.soft{border:0;border-top:1px solid var(--line);margin:26px 0}
+    .two-col{columns:2;column-gap:34px}
+    @media(max-width:760px){.two-col{columns:1}}
+    .kpi{font-family:"Archivo";font-weight:800;color:#fff}
+  </style>
+</head>
+<body>
+<div class="tip" id="tip"></div>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="logo"><svg viewBox="0 0 32 32"><path d="M16 5v22M5 16h22" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="16" cy="16" r="3.6" fill="#fff"/></svg></span>
+      <span><small>AI News Intelligence Agent</small><b>MERIDIAN</b></span>
+    </div>
+    <div class="pill"><span class="dot"></span> Daily publish · <b class="mono" style="color:var(--ink)">09:00 SGT</b></div>
+  </div>
+  <nav class="top-nav" id="topnav"></nav>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-nav="Overview" data-title="Overview">
+  <div class="chips">
+    <span class="chip b">Google Cloud AI · GTM · Product · Regional MDs</span>
+    <span class="chip c">Decision-grade, not headlines</span>
+    <span class="chip v">JAPAC-anchored · 09:00 SGT</span>
+  </div>
+  <h1>Turn the daily AI news cycle into <span class="grad">decision-grade intelligence</span> for Google Cloud AI leadership.</h1>
+  <p class="sub">MERIDIAN ingests the global AI news cycle each night, scores it against the Google Cloud AI portfolio and named-competitor watchlist, and publishes a leadership-ready log every morning at 09:00 Singapore time. It separates <b style="color:var(--cyan)">fact</b> from <b style="color:var(--yellow)">inference</b>, maps every item to affected offerings and GTM motions, issues an Opportunity / Risk / Urgent verdict, and remembers its own theses — grading itself over weeks, months, and years.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="big">09:00 <span style="font-size:15px;color:var(--muted)">SGT</span></div><div class="lab">Daily publish, every day</div></div>
+    <div class="stat"><div class="big">8</div><div class="lab">Impact vectors scored</div></div>
+    <div class="stat"><div class="big">17+</div><div class="lab">Named competitors watched</div></div>
+    <div class="stat"><div class="big">D→W→M→Q→Y</div><div class="lab">Temporal synthesis</div></div>
+  </div>
+</section>
+
+<!-- ============ EXEC SUMMARY ============ -->
+<section class="sec" id="exec" data-nav="Exec Summary" data-title="Executive Summary">
+  <div class="kicker"><span class="num">00 /</span> Executive Summary</div>
+  <h2 class="title">One page for the people who read one page</h2>
+  <p class="lede">MERIDIAN is a Google Cloud–native agentic system that converts AI news into intelligence a leader can act on before their first meeting. It is built around one promise and one anti-pattern.</p>
+
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card accent-g">
+      <h4>The promise</h4>
+      <p>Every published item passes the leadership test: <b>would a GTM leader, PM, or MD change a decision, a talk track, a deal strategy, or a watchlist because of this?</b> If not, it is filtered out. The system reasons against a living portfolio taxonomy (Gemini, Vertex AI, Gemini Enterprise, Agentspace, AI infrastructure, security, data, GTM motions) and a named-competitor set (Microsoft, OpenAI, AWS, Anthropic, Meta, NVIDIA, Databricks, Snowflake + adjacents).</p>
+    </div>
+    <div class="card accent-r">
+      <h4>The anti-pattern it refuses</h4>
+      <p>Generic AI-news summarization. MERIDIAN never blends fact and inference in one sentence; every factual claim carries a <b>source and date</b>, every inference carries a <b>confidence (high/medium/low)</b>. Recommendations are concrete and role-addressed — "Field enablement: refresh the Copilot TCO battlecard in 5 business days" — never "monitor the situation."</p>
+    </div>
+  </div>
+
+  <h3 class="sub">What it produces</h3>
+  <div class="grid g4">
+    <div class="card"><h4 style="color:var(--blue)">Daily log</h4><p>8-field items, fact/inference separated, mapped to portfolio + competitors, with recommended actions. Published 09:00 SGT.</p></div>
+    <div class="card"><h4 style="color:var(--violet)">Drilldown</h4><p>Double-click any item → fact pattern, offering linkage, and a verdict: Opportunity / Risk / Urgent / No-action, with confidence.</p></div>
+    <div class="card"><h4 style="color:var(--cyan)">Synthesis</h4><p>Weekly→yearly roll-ups that surface themes, path dependency, and market direction — not chronological recaps.</p></div>
+    <div class="card"><h4 style="color:var(--yellow)">Memory</h4><p>An assumption ledger that grades its own predictions, and a theme registry with promotion rules from weak signal → trend.</p></div>
+  </div>
+
+  <div class="note"><b>Decisive stance on the central trade-off.</b> Recall vs. precision: MERIDIAN optimizes for <b>precision</b> at the daily layer (a leader's attention is the scarcest resource) and pushes recall into a searchable corpus + borderline queue. A missed minor item resurfaces in weekly synthesis; a false-positive daily item erodes trust permanently. We protect trust.</p></div>
+
+  <h3 class="sub">Build posture</h3>
+  <p>Google Cloud–native: <b>Cloud Run jobs + Workflows</b> for orchestration, <b>Cloud Scheduler</b> for the 09:00 SGT anchor, <b>Vertex AI (Gemini)</b> for extraction/analysis/synthesis, <b>BigQuery</b> as the event + memory warehouse, <b>Pub/Sub</b> for stage hand-off, <b>Vertex Vector Search</b> for dedupe/RAG. An MVP (daily log + weekly synthesis + one visualization + basic drilldown) is achievable by a small team in <b>4–6 weeks</b>.</p>
+</section>
+
+<!-- ============ ARCHITECTURE ============ -->
+<section class="sec" id="arch" data-nav="Architecture" data-title="System Architecture">
+  <div class="kicker"><span class="num">◇ /</span> System Architecture</div>
+  <h2 class="title">The pipeline, at a glance</h2>
+  <p class="lede">Seven agent stages run nightly on the SGT clock. Every factual artifact is immutable and versioned; analysis is re-runnable when facts change. Below: the flow from source to leadership, then the same as a Mermaid definition for the build team.</p>
+
+  <div class="viz">
+    <svg viewBox="0 0 1120 430" role="img" aria-label="MERIDIAN architecture diagram">
+      <defs>
+        <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#6E86A6"/></marker>
+        <linearGradient id="gstage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14294a"/><stop offset="1" stop-color="#0e1f38"/></linearGradient>
+      </defs>
+      <!-- lanes labels -->
+      <text x="16" y="30" fill="#6E86A6" font-family="IBM Plex Mono" font-size="11">SOURCES</text>
+      <text x="16" y="150" fill="#6E86A6" font-family="IBM Plex Mono" font-size="11">PIPELINE · Cloud Run Jobs / Workflows</text>
+      <text x="16" y="300" fill="#6E86A6" font-family="IBM Plex Mono" font-size="11">MEMORY · BigQuery + Vector Search</text>
+      <text x="16" y="392" fill="#6E86A6" font-family="IBM Plex Mono" font-size="11">DELIVERY</text>
+
+      <!-- source blobs -->
+      <g font-family="IBM Plex Mono" font-size="11" fill="#EAF1FA">
+        <rect x="120" y="12" width="150" height="26" rx="7" fill="#12233F" stroke="#264a76"/><text x="130" y="29">Official / filings / regs</text>
+        <rect x="290" y="12" width="140" height="26" rx="7" fill="#12233F" stroke="#264a76"/><text x="300" y="29">Top-tier press / RSS</text>
+        <rect x="450" y="12" width="150" height="26" rx="7" fill="#12233F" stroke="#264a76"/><text x="460" y="29">Analysts / research</text>
+        <rect x="620" y="12" width="180" height="26" rx="7" fill="#12233F" stroke="#264a76"/><text x="630" y="29">Dev signals (GitHub/HN/LB)</text>
+        <rect x="820" y="12" width="170" height="26" rx="7" fill="#12233F" stroke="#264a76"/><text x="830" y="29">Earnings / conferences</text>
+      </g>
+      <line x1="555" y1="38" x2="555" y2="70" stroke="#6E86A6" marker-end="url(#arr)"/>
+
+      <!-- pipeline stages -->
+      <g font-family="Archivo" font-size="13" fill="#EAF1FA" font-weight="700">
+        <g class="stg"><rect x="60" y="76" width="132" height="58" rx="10" fill="url(#gstage)" stroke="#4285F4"/><text x="72" y="100">1 · Ingest</text><text x="72" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Run job + Pub/Sub</text></g>
+        <g class="stg"><rect x="212" y="76" width="132" height="58" rx="10" fill="url(#gstage)" stroke="#4285F4"/><text x="224" y="100">2 · Dedupe</text><text x="224" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Vector Search</text></g>
+        <g class="stg"><rect x="364" y="76" width="132" height="58" rx="10" fill="url(#gstage)" stroke="#4285F4"/><text x="376" y="100">3 · Score</text><text x="376" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Gemini Flash</text></g>
+        <g class="stg"><rect x="516" y="76" width="132" height="58" rx="10" fill="url(#gstage)" stroke="#4285F4"/><text x="528" y="100">4 · Classify</text><text x="528" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Gemini Flash</text></g>
+        <g class="stg"><rect x="668" y="76" width="132" height="58" rx="10" fill="url(#gstage)" stroke="#A78BFA"/><text x="680" y="100">5 · Analyze</text><text x="680" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Gemini Pro + RAG</text></g>
+        <g class="stg"><rect x="820" y="76" width="132" height="58" rx="10" fill="url(#gstage)" stroke="#A78BFA"/><text x="832" y="100">6 · Compose</text><text x="832" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Gemini Pro</text></g>
+        <g class="stg"><rect x="972" y="76" width="120" height="58" rx="10" fill="url(#gstage)" stroke="#34A853"/><text x="984" y="100">7 · Publish</text><text x="984" y="120" font-family="IBM Plex Mono" font-size="9.5" fill="#9DB3CF" font-weight="400">Run + CDN</text></g>
+      </g>
+      <g stroke="#6E86A6" marker-end="url(#arr)">
+        <line x1="192" y1="105" x2="208" y2="105"/><line x1="344" y1="105" x2="360" y2="105"/>
+        <line x1="496" y1="105" x2="512" y2="105"/><line x1="648" y1="105" x2="664" y2="105"/>
+        <line x1="800" y1="105" x2="816" y2="105"/><line x1="952" y1="105" x2="968" y2="105"/>
+      </g>
+
+      <!-- memory stores -->
+      <g font-family="IBM Plex Mono" font-size="10.5" fill="#EAF1FA">
+        <rect x="60" y="250" width="150" height="40" rx="8" fill="#0f2338" stroke="#2b4d78"/><text x="70" y="266">raw_article</text><text x="70" y="281" fill="#6E86A6" font-size="9">immutable</text>
+        <rect x="228" y="250" width="150" height="40" rx="8" fill="#0f2338" stroke="#2b4d78"/><text x="238" y="266">canonical_event</text><text x="238" y="281" fill="#6E86A6" font-size="9">versioned</text>
+        <rect x="396" y="250" width="150" height="40" rx="8" fill="#0f2338" stroke="#2b4d78"/><text x="406" y="266">entity_graph</text><text x="406" y="281" fill="#6E86A6" font-size="9">actors · offerings</text>
+        <rect x="564" y="250" width="150" height="40" rx="8" fill="#0f2338" stroke="#2b4d78"/><text x="574" y="266">theme_registry</text><text x="574" y="281" fill="#6E86A6" font-size="9">promotion rules</text>
+        <rect x="732" y="250" width="160" height="40" rx="8" fill="#0f2338" stroke="#FBBC04"/><text x="742" y="266">assumption_ledger</text><text x="742" y="281" fill="#6E86A6" font-size="9">graded predictions</text>
+        <rect x="910" y="250" width="182" height="40" rx="8" fill="#0f2338" stroke="#2b4d78"/><text x="920" y="266">embeddings / snapshots</text><text x="920" y="281" fill="#6E86A6" font-size="9">Vector + agg</text>
+      </g>
+      <line x1="576" y1="140" x2="576" y2="244" stroke="#6E86A6" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+      <text x="584" y="200" fill="#6E86A6" font-family="IBM Plex Mono" font-size="9">read / write</text>
+
+      <!-- delivery -->
+      <g font-family="IBM Plex Mono" font-size="11" fill="#EAF1FA">
+        <rect x="120" y="366" width="180" height="30" rx="8" fill="#12233F" stroke="#34A853"/><text x="132" y="385">Web app + zoom viz</text>
+        <rect x="320" y="366" width="150" height="30" rx="8" fill="#12233F" stroke="#34A853"/><text x="332" y="385">Email / Chat brief</text>
+        <rect x="490" y="366" width="170" height="30" rx="8" fill="#12233F" stroke="#34A853"/><text x="502" y="385">Urgent intraday alert</text>
+        <rect x="680" y="366" width="180" height="30" rx="8" fill="#12233F" stroke="#34A853"/><text x="692" y="385">Q&amp;A over corpus (H2)</text>
+      </g>
+      <line x1="1030" y1="140" x2="1030" y2="350" stroke="#34A853" marker-end="url(#arr)"/>
+      <line x1="300" y1="350" x2="300" y2="365" stroke="#6E86A6" marker-end="url(#arr)"/>
+    </svg>
+    <div class="legend">
+      <span><i style="background:#4285F4"></i>Deterministic / Flash stages</span>
+      <span><i style="background:#A78BFA"></i>Reasoning / Pro stages</span>
+      <span><i style="background:#34A853"></i>Delivery</span>
+      <span><i style="background:#FBBC04"></i>Accountability memory</span>
+    </div>
+  </div>
+
+  <details style="margin-top:6px">
+    <summary class="btn" style="display:inline-flex">View Mermaid definition</summary>
+<pre><span class="c">%% MERIDIAN daily pipeline — Cloud Scheduler fires at 01:00 UTC (09:00 SGT publish)</span>
+<span class="k">flowchart LR</span>
+  SCH[Cloud Scheduler<br/>cron 0 16 * * * UTC] --> ING
+  subgraph Pipeline [Cloud Workflows orchestration]
+    ING[1 Ingest<br/>Cloud Run job] --> DED[2 Dedupe<br/>Vector Search]
+    DED --> SCO[3 Score<br/>Gemini Flash] --> CLA[4 Classify<br/>Gemini Flash]
+    CLA --> ANA[5 Analyze<br/>Gemini Pro + RAG] --> COM[6 Compose<br/>Gemini Pro]
+    COM --> PUB[7 Publish 09:00 SGT]
+  end
+  ING & DED & SCO & CLA & ANA & COM -.-> BQ[(BigQuery<br/>events · themes · ledger)]
+  ANA -.retrieve.-> VDB[(Vertex Vector Search)]
+  PUB --> WEB[Web app + viz]
+  PUB --> BRIEF[Email / Chat]
+  SCO -.Urgent.-> ALERT[Intraday alert]</pre>
+  </details>
+</section>
+
+<!-- ============ 1. PERSONAS ============ -->
+<section class="sec" id="s1" data-nav="1 · Personas" data-title="Personas & Use Cases">
+  <div class="kicker"><span class="num">01 /</span> User Personas &amp; Primary Use Cases</div>
+  <h2 class="title">Five readers, five different Mondays</h2>
+  <p class="lede">MERIDIAN is designed backward from the "moment of truth" — the exact instant a leader needs one paragraph they can trust. Personas differ in cadence and altitude: the MD wants the arc, the PM wants the launch teardown, the CoS wants the brief written for them.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Persona</th><th>Job-to-be-done</th><th>Cadence</th><th>Moment of truth</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>GTM Leader</b><br><span class="chip b">VP AI GTM / Field CTO</span></td>
+          <td>Keep the field's talk tracks and competitive positioning current; decide where to invest co-sell energy this quarter.</td>
+          <td>Daily skim (5 min) + weekly synthesis (deep).</td>
+          <td>A competitor announces enterprise-agent pricing at 07:40; by 09:00 SGT they need the "so-what for our Agentspace deals" and a battlecard action owner.</td>
+        </tr>
+        <tr>
+          <td><b>Product Leader</b><br><span class="chip v">PM, Vertex AI / Gemini Enterprise</span></td>
+          <td>Triage competitor launches against roadmap; decide fast-follow vs. ignore; feed CI into planning.</td>
+          <td>Daily, drilldown-heavy; monthly narrative for planning.</td>
+          <td>Triaging a rival model release — needs the fact pattern (benchmarks, pricing, availability), the roadmap collision, and a Risk/No-action verdict before standup.</td>
+        </tr>
+        <tr>
+          <td><b>Regional MD</b><br><span class="chip c">JAPAC / EMEA MD</span></td>
+          <td>Read the market arc for the region; anticipate regulatory and sovereign-AI shifts; brief the region.</td>
+          <td>Weekly + monthly/quarterly arcs; regional filter on daily.</td>
+          <td>Prepping a QBR: needs "what strengthened / weakened this quarter in JAPAC," which prior assumptions were wrong, and 3 watchpoints.</td>
+        </tr>
+        <tr>
+          <td><b>CE/SE Leadership</b><br><span class="chip g">Customer Engineering leader</span></td>
+          <td>Equip SEs with current objection handling and reference-worthy proof points; spot capacity/infra narratives.</td>
+          <td>Daily items filtered to product/infra + enablement actions.</td>
+          <td>An "inference economics / TPU capacity" story breaks — needs the confirmed facts and a talk track the SE org can use in live deals same day.</td>
+        </tr>
+        <tr>
+          <td><b>Chief of Staff</b><br><span class="chip y">CoS to AI leadership</span></td>
+          <td>Assemble the Monday leadership brief; ensure nothing material was missed; track open watchpoints.</td>
+          <td>Weekly (Mon 06:00 SGT synthesis) is the spine of their week.</td>
+          <td>Building the Monday brief — pulls the weekly synthesis, the assumption-ledger grades, and the top-5 items verbatim into a 1-pager in under 20 minutes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid g3" style="margin-top:8px">
+    <div class="card accent-b"><h4>Consumption principle</h4><p>Same corpus, different lenses. Persona = a saved filter over portfolio areas, regions, and impact vectors + a default cadence — not a separate data pipeline.</p></div>
+    <div class="card accent-v"><h4>Altitude principle</h4><p>Daily items are tactical; synthesis is strategic. The MD and CoS live in synthesis; the PM and SE lead live in daily + drilldown.</p></div>
+    <div class="card accent-g"><h4>Trust principle</h4><p>Every persona sees the same fact/inference separation and citations. Trust is portable across altitudes; a leader can always click down to the primary source.</p></div>
+  </div>
+</section>
+
+<!-- ============ 2. DATA SOURCES ============ -->
+<section class="sec" id="s2" data-nav="2 · Sources" data-title="Data Sources & Ingestion">
+  <div class="kicker"><span class="num">02 /</span> Data Sources &amp; Ingestion Strategy</div>
+  <h2 class="title">Tiered sources, tiered trust, tiered cadence</h2>
+  <p class="lede">Ingestion is organized in five source tiers. Tier drives both polling cadence and default credibility. Authority is highest where the actor speaks for themselves (filings, official blogs); speed is highest in developer/community signal, which we treat as early-warning, not confirmation.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Tier</th><th>Example sources</th><th>Ingestion method</th><th>Poll cadence</th><th>Default credibility</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">T1 · Primary</td><td>Google/MSFT/AWS/OpenAI/Anthropic/NVIDIA blogs; SEC 8-K/10-Q &amp; EU filings; regulatory registers (EU AI Act, FTC, UK CMA); patent feeds.</td><td>RSS + official APIs + EDGAR/register crawlers</td><td class="num-cell">10–15 min</td><td><span class="chip g">Confirmed on sight</span></td></tr>
+        <tr><td class="mono">T2 · Top press</td><td>Bloomberg, Reuters, WSJ, FT, The Information, Nikkei, SCMP (JAPAC), Stratechery.</td><td>APIs where licensed + RSS + headless fetch</td><td class="num-cell">15–30 min</td><td><span class="chip b">High</span></td></tr>
+        <tr><td class="mono">T3 · Analyst / research</td><td>Gartner/Forrester/IDC notes, SemiAnalysis, Epoch AI, arXiv (cs.CL/cs.AI), lab technical reports.</td><td>RSS + APIs + arXiv API</td><td class="num-cell">1–3 h</td><td><span class="chip b">High (analysis)</span></td></tr>
+        <tr><td class="mono">T4 · Dev / community</td><td>GitHub trending &amp; releases, Hacker News, LMArena / OpenLLM / SWE-bench leaderboards, HuggingFace, r/LocalLLaMA, X/lists.</td><td>GitHub API, HN API, leaderboard scrapes, curated lists</td><td class="num-cell">5–10 min</td><td><span class="chip y">Signal only</span></td></tr>
+        <tr><td class="mono">T5 · Events / calls</td><td>Earnings calls &amp; transcripts, Google I/O / Next / re:Invent / Ignite / GTC, standards bodies, gov AI programs.</td><td>Scheduled transcript pulls + live-event watch windows</td><td class="num-cell">event-driven</td><td><span class="chip b">High (verbatim)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid g3">
+    <div class="card accent-y"><h4>Paywalled sources</h4><p>Prefer licensed API access (Bloomberg/Reuters/The Information). Where only headlines are legally available, MERIDIAN ingests <b>metadata + abstract</b> for scoring and links out — it never republishes licensed full text. Access + license tier is stored per source for governance.</p></div>
+    <div class="card accent-c"><h4>JAPAC / regional</h4><p>Dedicated regional lane: Nikkei, SCMP, Yonhap, ET/Mint, KrAsia, plus SG/JP/IN/KR/AU regulators and sovereign-AI programs. Non-English sources pass through Gemini translation with the <b>original preserved</b> for citation. The 09:00 SGT anchor makes JAPAC a first-class, not trailing, market.</p></div>
+    <div class="card accent-b"><h4>Ingestion mechanics</h4><p>A Cloud Run <b>ingest job</b> per tier writes raw payloads to <code>raw_article</code> (GCS + BigQuery) with fetch timestamp, source id, and license tier. Robots/ToS honored; crawl-delay respected; a source-health monitor flags feeds that go stale &gt; 2 cycles.</p></div>
+  </div>
+  <div class="note"><b>Coverage over any single source.</b> No item reaches "confirmed" on one source alone (see §4). The source list is a living config in BigQuery, versioned — adding a source is a data change, not a code deploy.</div>
+</section>
+
+<!-- ============ 3. SCORING ============ -->
+<section class="sec" id="s3" data-nav="3 · Scoring" data-title="Relevance Scoring">
+  <div class="kicker"><span class="num">03 /</span> News Relevance Scoring Methodology</div>
+  <h2 class="title">A numeric gate that kills generic AI headlines</h2>
+  <p class="lede">Every candidate story gets a 0–100 relevance score from seven weighted dimensions, computed by a constrained Gemini Flash call that returns JSON with per-dimension evidence. The design intent: a "cool new AI demo" with no portfolio proximity and no competitor materiality cannot clear the bar, no matter how viral.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>Weight</th><th>0</th><th>Scoring anchor (10)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Impact-vector strength</b></td><td class="num-cell">22%</td><td>No plausible impact vector.</td><td>Clearly moves ≥2 of the 8 vectors (strategic/commercial/product/competitive/regulatory/ecosystem/buying/capital).</td></tr>
+        <tr><td><b>Portfolio proximity</b></td><td class="num-cell">20%</td><td>Unrelated to Google Cloud AI.</td><td>Directly names/affects a core offering (Gemini, Vertex, Agentspace, TPU…).</td></tr>
+        <tr><td><b>Competitor materiality</b></td><td class="num-cell">18%</td><td>No named competitor involved.</td><td>Priority competitor (MSFT/OpenAI/AWS/Anthropic) makes a strategic move.</td></tr>
+        <tr><td><b>Magnitude / blast radius</b></td><td class="num-cell">14%</td><td>Niche, one customer.</td><td>Reshapes a market, pricing tier, or standard.</td></tr>
+        <tr><td><b>Novelty</b></td><td class="num-cell">10%</td><td>Rehash of known info.</td><td>Genuinely new fact / first disclosure.</td></tr>
+        <tr><td><b>Source authority</b></td><td class="num-cell">9%</td><td>Anonymous / T4 only.</td><td>T1 primary or multiple T2 corroboration.</td></tr>
+        <tr><td><b>Time sensitivity</b></td><td class="num-cell">7%</td><td>Evergreen.</td><td>Decision window closing in days (event, deadline, live deal).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid g3">
+    <div class="card accent-g"><h4>Threshold: <span class="kpi">≥ 62</span></h4><p>Publishes to the daily log. A hard <b>portfolio-or-competitor gate</b> also applies: any item scoring &lt;3/10 on <b>both</b> portfolio proximity and competitor materiality is auto-excluded regardless of total — this is what kills generic AI headlines.</p></div>
+    <div class="card accent-y"><h4>Borderline queue: <span class="kpi">50–61</span></h4><p>Held for lightweight human triage (CoS/analyst) with a one-click include/exclude. Feeds the golden set (§12). Anything an editor promotes is logged as a training signal.</p></div>
+    <div class="card accent-r"><h4>Below <span class="kpi">50</span></h4><p>Dropped from the daily log but retained in the corpus + embeddings, so it can still surface in weekly pattern detection or Q&amp;A retrieval.</p></div>
+  </div>
+
+  <h3 class="sub">Worked scoring example <span class="chip y">illustrative</span></h3>
+  <div class="card">
+    <p style="margin-top:0"><b>Candidate:</b> "AWS announces Bedrock price cut of 40% on its flagship agent tier and bundles it free with new EC2 AI instances." (T1 AWS blog + T2 Reuters)</p>
+    <div class="tbl-wrap" style="margin-top:6px">
+      <table style="min-width:480px">
+        <thead><tr><th>Dimension</th><th>Raw /10</th><th>× Weight</th><th>Contribution</th></tr></thead>
+        <tbody>
+          <tr><td>Impact-vector strength (commercial+competitive+buying)</td><td class="num-cell">9</td><td class="num-cell">.22</td><td class="num-cell">19.8</td></tr>
+          <tr><td>Portfolio proximity (Vertex / Agentspace pricing)</td><td class="num-cell">8</td><td class="num-cell">.20</td><td class="num-cell">16.0</td></tr>
+          <tr><td>Competitor materiality (AWS priority)</td><td class="num-cell">9</td><td class="num-cell">.18</td><td class="num-cell">16.2</td></tr>
+          <tr><td>Magnitude / blast radius</td><td class="num-cell">8</td><td class="num-cell">.14</td><td class="num-cell">11.2</td></tr>
+          <tr><td>Novelty</td><td class="num-cell">7</td><td class="num-cell">.10</td><td class="num-cell">7.0</td></tr>
+          <tr><td>Source authority (T1+T2)</td><td class="num-cell">9</td><td class="num-cell">.09</td><td class="num-cell">8.1</td></tr>
+          <tr><td>Time sensitivity</td><td class="num-cell">6</td><td class="num-cell">.07</td><td class="num-cell">4.2</td></tr>
+          <tr><td colspan="3"><b>Total relevance score</b></td><td class="num-cell" style="color:var(--green);font-size:15px"><b>82.5</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-bottom:0"><b>Verdict of the gate:</b> 82.5 ≥ 62 and clears both gates → <span class="chip g">Publish to daily log</span>. Contrast: "Startup launches AI wrapper for recipe generation" scores ~2/2 on portfolio &amp; competitor → auto-excluded even if novel.</p>
+  </div>
+</section>
+
+<!-- ============ 4. DEDUP + CREDIBILITY ============ -->
+<section class="sec" id="s4" data-nav="4 · Dedup" data-title="Dedup & Credibility">
+  <div class="kicker"><span class="num">04 /</span> Deduplication &amp; Source Credibility</div>
+  <h2 class="title">One story, many mouths — collapse it, then corroborate it</h2>
+  <p class="lede">The same event arrives from dozens of outlets within minutes. MERIDIAN clusters near-duplicates by embedding similarity into a single <b>canonical event</b>, then applies corroboration rules before that event may claim "confirmed" status.</p>
+
+  <div class="grid g2">
+    <div class="card accent-b">
+      <h4>Same-story clustering</h4>
+      <p>Each article is embedded (Vertex text-embedding). New articles are matched against the last 72 h of canonical events via Vector Search. <b>Cosine ≥ 0.86</b> + shared primary entity + within a 36 h window → attach to the existing cluster; otherwise open a new canonical event. Clustering is re-checked after entity extraction to catch paraphrase-heavy rewrites.</p>
+    </div>
+    <div class="card accent-v">
+      <h4>Canonical-story selection</h4>
+      <p>Within a cluster, the <b>canonical source</b> is chosen by: (1) primary/T1 &gt; T2 &gt; others; (2) earliest timestamp among equal tiers; (3) most complete fact pattern. All member articles are retained as corroboration and for citation diversity.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Credibility tiers &amp; status ladder</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Status</th><th>Requirement</th><th>How it's shown</th></tr></thead>
+      <tbody>
+        <tr><td><span class="chip g">Confirmed</span></td><td>T1 primary source, OR ≥2 independent T2+ sources agreeing on the core fact.</td><td>Fact block, no hedge; source list shown.</td></tr>
+        <tr><td><span class="chip b">Reported</span></td><td>Single credible T2 source, not yet corroborated.</td><td>Fact block tagged "reported by <i>X</i>, awaiting corroboration."</td></tr>
+        <tr><td><span class="chip y">Rumor / unverified</span></td><td>T4 signal, anonymous sourcing, or leak.</td><td>Held out of the fact block; appears only in inference with <b>low</b> confidence and a "rumor" flag.</td></tr>
+        <tr><td><span class="chip r">Disputed</span></td><td>Credible sources conflict on the core fact.</td><td>Both accounts shown; verdict withheld pending resolution; flagged for editor.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>Corroboration is a promotion, not a filter.</b> A single-source T2 story still publishes as "Reported" (leaders want early signal) — but the status ladder and the visual treatment make the confidence unmistakable, and the item auto-upgrades to "Confirmed" the moment a second independent source lands, with the change logged.</div>
+</section>
+
+<!-- ============ 5. TAXONOMY ============ -->
+<section class="sec" id="s5" data-nav="5 · Taxonomy" data-title="Classification Taxonomy">
+  <div class="kicker"><span class="num">05 /</span> Classification Taxonomy</div>
+  <h2 class="title">Six axes, enumerated — every item is fully coordinatized</h2>
+  <p class="lede">Classification runs as a constrained Gemini call that must return values from these controlled vocabularies (free-text is rejected). Multi-label is allowed on impact vector, portfolio area, and geography; single-label on event type and canonical actor. The enumerations are the join keys that make synthesis and visualization possible.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4 style="color:var(--blue)">Axis 1 · Event type</h4>
+      <div class="chips">
+        <span class="chip">model_release</span><span class="chip">pricing_change</span><span class="chip">product_launch</span><span class="chip">partnership</span><span class="chip">acquisition_MA</span><span class="chip">funding_round</span><span class="chip">earnings_result</span><span class="chip">exec_move</span><span class="chip">regulatory_action</span><span class="chip">benchmark_result</span><span class="chip">outage_incident</span><span class="chip">customer_win_loss</span><span class="chip">capacity_infra</span><span class="chip">open_source_release</span><span class="chip">research_paper</span><span class="chip">legal_IP</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--red)">Axis 2 · Actor (canonical)</h4>
+      <div class="chips">
+        <span class="chip b">Google/Alphabet</span><span class="chip r">Microsoft</span><span class="chip r">OpenAI</span><span class="chip r">AWS/Amazon</span><span class="chip r">Anthropic</span><span class="chip r">Meta</span><span class="chip r">NVIDIA</span><span class="chip r">Databricks</span><span class="chip r">Snowflake</span><span class="chip">Mistral</span><span class="chip">Cohere</span><span class="chip">xAI</span><span class="chip">Salesforce</span><span class="chip">ServiceNow</span><span class="chip">Palantir</span><span class="chip">chip_challenger</span><span class="chip">sovereign_AI</span><span class="chip">regulator</span><span class="chip">enterprise_customer</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--violet)">Axis 3 · Impact vector <span style="font-weight:400;color:var(--faint)">(multi)</span></h4>
+      <div class="chips">
+        <span class="chip v">strategic</span><span class="chip v">commercial</span><span class="chip v">product</span><span class="chip v">competitive</span><span class="chip v">regulatory</span><span class="chip v">ecosystem</span><span class="chip v">customer_buying</span><span class="chip v">market_capital</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--green)">Axis 4 · Portfolio area <span style="font-weight:400;color:var(--faint)">(multi)</span></h4>
+      <div class="chips">
+        <span class="chip g">gemini_models</span><span class="chip g">gemma_open</span><span class="chip g">vertex_ai</span><span class="chip g">model_garden</span><span class="chip g">agent_builder</span><span class="chip g">gemini_enterprise</span><span class="chip g">agentspace</span><span class="chip g">workspace_ai</span><span class="chip g">ces_ccai</span><span class="chip g">tpu_gpu_infra</span><span class="chip g">gke_hypercomputer</span><span class="chip g">inference_econ</span><span class="chip g">security_ai</span><span class="chip g">mandiant_secops</span><span class="chip g">bigquery_data</span><span class="chip g">gtm_partner</span><span class="chip g">marketplace</span><span class="chip g">pricing_licensing</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--cyan)">Axis 5 · Geography <span style="font-weight:400;color:var(--faint)">(multi)</span></h4>
+      <div class="chips">
+        <span class="chip c">global</span><span class="chip c">north_america</span><span class="chip c">emea</span><span class="chip c">japac</span><span class="chip c">japan</span><span class="chip c">india</span><span class="chip c">greater_china</span><span class="chip c">korea</span><span class="chip c">anz</span><span class="chip c">southeast_asia</span><span class="chip c">latam</span><span class="chip c">middle_east</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--yellow)">Axis 6 · Customer segment</h4>
+      <div class="chips">
+        <span class="chip y">enterprise</span><span class="chip y">digital_native</span><span class="chip y">public_sector</span><span class="chip y">regulated_fsi</span><span class="chip y">healthcare_ls</span><span class="chip y">retail_cpg</span><span class="chip y">manufacturing</span><span class="chip y">telco_media</span><span class="chip y">isv_partner</span><span class="chip y">developer</span><span class="chip y">SMB</span><span class="chip y">horizontal</span>
+      </div>
+    </div>
+  </div>
+  <div class="note"><b>Why six axes and not free tags.</b> The competitive-move board (§8) is literally <code>actor × portfolio_area</code> over time; the theme river is <code>impact_vector</code> intensity; regional filters are Axis 5. Controlled vocabularies are the price of every downstream visualization and every reliable roll-up. New values are added through a governed schema change with backfill.</div>
+</section>
+
+<!-- ============ 6. OUTPUT FORMATS ============ -->
+<section class="sec" id="s6" data-nav="6 · Outputs" data-title="Output Formats">
+  <div class="kicker"><span class="num">06 /</span> Output Formats for Every Cadence</div>
+  <h2 class="title">Templates with word budgets — and a real worked item</h2>
+  <p class="lede">Five cadences, five templates. Each has a fixed section order and a word budget (attention is the constraint). The assumption ledger threads through all of them: it is <i>born</i> weekly and <i>graded</i> in every longer cadence.</p>
+
+  <div data-tabgroup>
+    <div class="tabs">
+      <button class="btn active" data-tab="daily">Daily log</button>
+      <button class="btn" data-tab="weekly">Weekly synthesis</button>
+      <button class="btn" data-tab="monthly">Monthly narrative</button>
+      <button class="btn" data-tab="quarterly">Quarterly review</button>
+      <button class="btn" data-tab="yearly">Yearly arc</button>
+    </div>
+
+    <div class="tabpanel show" data-panel="daily">
+      <div class="card">
+        <p style="margin-top:0"><b>Daily log</b> — <span class="chip">budget ≤ 1,400 words · 6–12 items</span> · publish 09:00 SGT</p>
+        <ol>
+          <li><b>Top line</b> (60 words): the single most important thing overnight + overall market temperature.</li>
+          <li><b>Urgent flags</b> (if any): items that tripped intraday alerts, restated.</li>
+          <li><b>Items</b> (each ~90–130 words) — the 8 mandatory fields, fact/inference separated.</li>
+          <li><b>Late adds</b>: yesterday's missed-cutoff items, flagged.</li>
+          <li><b>Watchlist ticker</b>: open watchpoints carried forward, with age.</li>
+        </ol>
+        <p style="margin-bottom:0"><b>Assumption ledger here:</b> not restated daily; new predictions made in an item are tagged <code>#thesis</code> and swept into the weekly ledger automatically.</p>
+      </div>
+    </div>
+    <div class="tabpanel" data-panel="weekly">
+      <div class="card">
+        <p style="margin-top:0"><b>Weekly synthesis</b> — <span class="chip">budget ≤ 2,200 words</span> · publish Monday 06:00 SGT</p>
+        <ol>
+          <li><b>The week in one paragraph</b> — direction, not recap.</li>
+          <li><b>What strengthened / what weakened</b> — themes gaining or losing intensity.</li>
+          <li><b>Emerging themes &amp; promotions</b> — signals promoted this week (§ theme registry).</li>
+          <li><b>Path dependency</b> — which earlier events made this week's likely.</li>
+          <li><b>Competitive moves</b> — by actor, mapped to portfolio.</li>
+          <li><b>Assumption ledger</b> — new theses recorded + <b>prior theses graded</b> (right/wrong/why).</li>
+          <li><b>Watch next</b> — 3–5 concrete watchpoints with owners.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="tabpanel" data-panel="monthly">
+      <div class="card">
+        <p style="margin-top:0"><b>Monthly narrative</b> — <span class="chip">budget ≤ 3,000 words</span> · 1st business day, prior-month close</p>
+        <ol>
+          <li><b>Narrative arc</b> — the month as a story with a thesis sentence.</li>
+          <li><b>Theme trajectories</b> — river deltas; which themes crossed promotion thresholds.</li>
+          <li><b>Competitive landscape shift</b> — net position change per competitor.</li>
+          <li><b>Portfolio implications</b> — per major offering (Gemini, Vertex, Agentspace, infra, security, data).</li>
+          <li><b>Regulatory &amp; buying-behavior signals.</b></li>
+          <li><b>Ledger scorecard</b> — month's calibration + Brier trend.</li>
+          <li><b>Strategic implications &amp; watch-next.</b></li>
+        </ol>
+      </div>
+    </div>
+    <div class="tabpanel" data-panel="quarterly">
+      <div class="card">
+        <p style="margin-top:0"><b>Quarterly strategy review</b> — <span class="chip">budget ≤ 4,500 words</span> · QBR-aligned, SGT quarter close</p>
+        <ol>
+          <li><b>Strategic arc of the quarter</b> + 3 defining moves.</li>
+          <li><b>Durable trends</b> — themes that graduated from emerging → durable, with evidence chain.</li>
+          <li><b>Competitor deep-dives</b> — each priority competitor's quarter, net threat/opportunity delta.</li>
+          <li><b>Portfolio scorecard</b> — where Google Cloud gained/lost narrative ground.</li>
+          <li><b>Assumption ledger review</b> — full quarter calibration, notable misses dissected.</li>
+          <li><b>Scenario watchpoints</b> for next quarter (leadership-owned).</li>
+        </ol>
+      </div>
+    </div>
+    <div class="tabpanel" data-panel="yearly">
+      <div class="card">
+        <p style="margin-top:0"><b>Yearly arc</b> — <span class="chip">budget ≤ 7,000 words</span> · fiscal &amp; calendar variants</p>
+        <ol>
+          <li><b>The year's thesis</b> — one sentence, defended.</li>
+          <li><b>Strategic arcs</b> — 4–6 multi-quarter storylines with their path-dependency DAGs.</li>
+          <li><b>Structural shifts</b> — what changed permanently in the market.</li>
+          <li><b>Competitive repositioning</b> — start-of-year vs end-of-year map.</li>
+          <li><b>Ledger annual report</b> — hit rate, calibration, biggest right/wrong calls.</li>
+          <li><b>Forward theses</b> — predictions to grade next year.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub">Fully worked daily item <span class="chip y">illustrative · fictional event</span></h3>
+  <p style="color:var(--muted);margin-top:0">This is exactly how a single item renders in the daily log — the 8 mandatory fields, fact and inference visually separated, then a <b>double-click drilldown</b>.</p>
+
+  <div class="card" style="padding:0;overflow:hidden">
+    <div style="padding:16px 20px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      <span class="chip r">Microsoft</span>
+      <span class="chip">event: product_launch + pricing_change</span>
+      <span class="chip g">gemini_enterprise</span><span class="chip g">agentspace</span>
+      <span style="margin-left:auto" class="verdict v-urg">Urgent</span>
+      <span class="chip" style="border-color:var(--blue)">relevance 88</span>
+    </div>
+    <div style="padding:18px 20px">
+      <h4 style="font-size:17px;margin-bottom:4px">Microsoft ships "Copilot Agent Fabric" GA with per-outcome pricing and free Fabric-data grounding</h4>
+
+      <h4 class="sub4" style="margin-top:14px">① What happened <span style="color:var(--faint);font-weight:400">· factual summary</span></h4>
+      <div class="fact"><span class="lbl">Fact</span>Microsoft announced general availability of "Copilot Agent Fabric," an enterprise multi-agent orchestration layer priced on a per-resolved-outcome basis, with grounding on Microsoft Fabric data included at no incremental cost for E5 customers.<cite>Source: Microsoft official blog · 2026-07-03 09:12 PT · corroborated by Reuters, The Information · status: Confirmed</cite></div>
+
+      <h4 class="sub4">② Why it matters</h4>
+      <div class="infer"><span class="lbl">Inference · High</span>Per-outcome pricing reframes the enterprise-agent buying conversation from "tokens/seats" to "business results," which is a narrative Microsoft can push into CIO budget cycles. Bundling grounding-on-Fabric attacks the data-gravity moat directly.</div>
+
+      <div class="grid g2" style="margin-top:6px">
+        <div><h4 class="sub4">③ Who is involved</h4><p style="font-size:13.5px;color:var(--muted);margin:4px 0">Microsoft (Copilot, Fabric), targeting E5 enterprise base. Indirect: OpenAI (model supply), Salesforce/ServiceNow (agent competitors).</p></div>
+        <div><h4 class="sub4">④ Source &amp; date</h4><p style="font-size:13.5px;color:var(--muted);margin:4px 0">MSFT blog 2026-07-03; Reuters 2026-07-03; The Information 2026-07-03. <span class="chip g">Confirmed</span></p></div>
+      </div>
+
+      <h4 class="sub4">⑤ Likely impact on Google Cloud AI</h4>
+      <div class="infer"><span class="lbl">Inference · Medium</span>Pressure on Agentspace / Gemini Enterprise deals where the customer is Fabric-anchored; raises the salience of BigQuery-grounding and outcome-based commercial models. Net: a competitive-narrative risk, not yet a product-capability gap.</div>
+
+      <div class="grid g2">
+        <div><h4 class="sub4">⑥ Affected offerings / motions</h4><div class="chips" style="margin-top:4px"><span class="chip g">agentspace</span><span class="chip g">gemini_enterprise</span><span class="chip g">bigquery_data</span><span class="chip g">pricing_licensing</span><span class="chip g">gtm_partner</span></div></div>
+        <div><h4 class="sub4">⑦ Competitive implications</h4><p style="font-size:13.5px;color:var(--muted);margin:4px 0">vs <b>Microsoft</b>: direct. Sets a pricing-narrative precedent AWS/Salesforce may follow. Watch for OpenAI enterprise-agent echo.</p></div>
+      </div>
+
+      <h4 class="sub4">⑧ Recommended actions <span style="color:var(--faint);font-weight:400">· role-addressed</span></h4>
+      <ul style="font-size:14px;margin-top:4px">
+        <li><b>Competitive/PMM:</b> refresh the Copilot agent battlecard with an outcome-pricing rebuttal + BigQuery-grounding proof — <b>within 5 business days.</b></li>
+        <li><b>Agentspace PM:</b> assess feasibility of an outcome-based commercial pilot; brief pricing council next cycle.</li>
+        <li><b>JAPAC field:</b> proactively reach top 10 Fabric-anchored accounts with a grounding-parity talk track.</li>
+      </ul>
+
+      <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+        <button class="btn" data-drill="drill-1"><span class="dl-label">Double-click to expand ▸</span></button>
+        <span style="font-size:12px;color:var(--faint)" class="mono">drilldown fires extra retrieval + verdict logic</span>
+      </div>
+      <div class="drill" id="drill-1">
+        <div class="drill-inner">
+          <div class="grid g2">
+            <div>
+              <h4 class="sub4" style="color:var(--cyan)">Detailed fact pattern &amp; timeline</h4>
+              <ul style="font-size:13.5px;color:var(--muted)">
+                <li><b>2026-05</b> — MSFT Build teases "agent fabric" preview (prior event, linked).</li>
+                <li><b>2026-07-03 09:12 PT</b> — GA + pricing blog.</li>
+                <li><b>2026-07-03 10:40 PT</b> — Reuters confirms per-outcome model with analyst quotes.</li>
+                <li><b>Primary sources:</b> MSFT blog, pricing page, Fabric docs (all linked).</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="sub4" style="color:var(--green)">Connection to current Google Cloud offerings</h4>
+              <ul style="font-size:13.5px;color:var(--muted)">
+                <li><b>Agentspace</b> — competes head-on; parity on grounding, gap on outcome pricing narrative.</li>
+                <li><b>BigQuery</b> — data-gravity counter; the grounding story to lead with.</li>
+                <li><b>Vertex Agent Builder</b> — dev-facing analogue; not the enterprise buyer conversation.</li>
+              </ul>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding:14px 16px;border-radius:12px;background:rgba(251,188,4,.08);border:1px solid rgba(251,188,4,.4)">
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span class="verdict v-urg">Urgent</span><b style="font-family:Archivo">Verdict · confidence: Medium-High</b></div>
+            <p style="margin:8px 0 0;font-size:14px;color:var(--muted)">Urgent not because of a capability loss but because of a <b>narrative-timing risk</b>: the outcome-pricing framing will appear in live Q3 enterprise deals within days, and JAPAC accounts anchored on Fabric are exposed. The 5-day battlecard action is the decisive control. Reassess to "Risk" (from Urgent) once the battlecard ships and no pricing-parity gap is confirmed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. DRILLDOWN ============ -->
+<section class="sec" id="s7" data-nav="7 · Drilldown" data-title="Drilldown Experience">
+  <div class="kicker"><span class="num">07 /</span> Double-Click Drilldown Experience</div>
+  <h2 class="title">The item is the summary; the drilldown is the analyst</h2>
+  <p class="lede">The daily item is precomputed and static (instant). Drilldown is where deeper, on-demand retrieval and reasoning fire — so we pay for depth only when a leader actually asks for it.</p>
+
+  <div class="grid g2">
+    <div class="card accent-b">
+      <h4>Interaction model</h4>
+      <ul style="font-size:14px;color:var(--muted)">
+        <li>Click/expand reveals three panels: <b>fact pattern &amp; timeline</b>, <b>offering linkage</b>, and the <b>verdict</b>.</li>
+        <li>Two tiers: a <b>cached deep-dive</b> (composed at publish for every item, shown instantly) and an <b>ask-more</b> action that triggers live retrieval + a fresh Gemini Pro reasoning pass.</li>
+        <li>Every primary source is one click away; the entity graph lets you pivot to "all items involving this actor / offering."</li>
+      </ul>
+    </div>
+    <div class="card accent-v">
+      <h4>What fires on "ask more"</h4>
+      <ol style="font-size:14px;color:var(--muted)">
+        <li>Vector Search over the corpus for the 10 most related prior events + the theme(s) this belongs to.</li>
+        <li>Entity-graph expansion (actor's recent moves, affected offerings' recent mentions).</li>
+        <li>Assumption-ledger lookup: does this confirm/refute an open thesis?</li>
+        <li>Gemini Pro deep-dive prompt (§11) composes an updated fact pattern + verdict with confidence.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3 class="sub">Verdict logic — Opportunity / Risk / Urgent / No-action</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Verdict</th><th>Decision rule</th><th>Rationale &amp; confidence</th></tr></thead>
+      <tbody>
+        <tr><td><span class="verdict v-urg">Urgent</span></td><td>Time sensitivity ≥8/10 <b>AND</b> (competitor-priority move <b>OR</b> live-deal exposure). A closing decision window is the defining trait.</td><td>Triggers intraday alert; 1-paragraph rationale + confidence; names the control action &amp; owner.</td></tr>
+        <tr><td><span class="verdict v-risk">Risk</span></td><td>Negative delta to a Google Cloud offering/narrative, blast radius ≥6, but window &gt; days.</td><td>Routed to owning PM/PMM; watchpoint opened with review date.</td></tr>
+        <tr><td><span class="verdict v-opp">Opportunity</span></td><td>Positive delta OR a competitor stumble that Google Cloud can exploit; ecosystem/customer opening.</td><td>Action addressed to GTM/field with a concrete play.</td></tr>
+        <tr><td><span class="verdict v-none">No immediate action</span></td><td>Material for awareness/trend-building but no decision changes now.</td><td>Feeds synthesis &amp; theme registry; no owner assigned.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>Latency expectations.</b> Cached deep-dive: <b>&lt;150 ms</b> (static). "Ask more" live pass: <b>target &lt; 6 s p50, &lt; 12 s p95</b> (retrieval + single Gemini Pro call, streamed). Verdicts can <b>change over time</b> — the item stores a verdict history, so "Urgent → Risk → No-action" as a story cools is visible and auditable.</div>
+</section>
+
+<!-- ============ 8. VISUALIZATIONS ============ -->
+<section class="sec" id="s8" data-nav="8 · Visuals" data-title="Visualization Concepts">
+  <div class="kicker"><span class="num">08 /</span> Visualization Concepts</div>
+  <h2 class="title">Make themes and path dependency visible — and zoomable</h2>
+  <p class="lede">Four live concepts (rendered here with illustrative data). Each is an <i>interaction</i>, not a chart: hover to interrogate, click to follow a chain, zoom to change altitude. All read from the same event + theme + entity stores.</p>
+
+  <style>
+    .stream path{opacity:.85;transition:opacity .15s,stroke-width .15s;cursor:pointer}
+    .stream path:hover{opacity:1;stroke:#fff;stroke-width:1.2}
+    .dag .node rect,.dag .node circle{transition:.15s}
+    .dag .edge{fill:none;stroke:var(--line2);stroke-width:1.6;transition:.15s;opacity:.55}
+    .dag.hot .edge{opacity:.14}
+    .dag.hot .edge.on{opacity:1;stroke:var(--blue);stroke-width:2.6}
+    .dag.hot .node{opacity:.35}
+    .dag.hot .node.on{opacity:1}
+    .dag .node text{font-family:"IBM Plex Sans";font-size:11px;fill:var(--ink)}
+    .dag .node{cursor:pointer}
+    .board{display:grid;gap:4px;font-family:"IBM Plex Mono";font-size:11px;margin-top:6px}
+    .board .cell{aspect-ratio:2.6/1;border-radius:6px;display:grid;place-items:center;cursor:default;color:#0a1526;font-weight:600;transition:transform .12s}
+    .board .cell:hover{transform:scale(1.06);outline:2px solid #fff}
+    .board .hd{color:var(--muted);font-size:10px;display:grid;place-items:center;text-align:center;padding:2px}
+    .board .rl{color:var(--ink);display:grid;align-items:center;font-weight:600}
+    .tl-strip{position:relative;height:120px;border-left:1px solid var(--line2);border-bottom:1px solid var(--line2);margin:10px 0 4px}
+    .tl-ev{position:absolute;transform:translateX(-50%);text-align:center;font-family:"IBM Plex Mono";font-size:10.5px;color:var(--muted);width:110px}
+    .tl-ev .dotm{width:12px;height:12px;border-radius:50%;margin:0 auto 6px;box-shadow:0 0 0 4px rgba(66,133,244,.14)}
+    .tl-ev b{color:var(--ink);display:block;font-size:11px;line-height:1.25}
+  </style>
+
+  <!-- (a) THEME RIVER -->
+  <h3 class="sub">a · Theme river — intensity over time</h3>
+  <p style="color:var(--muted);margin-top:0">Each band is a theme; band thickness is weekly intensity (item count × avg relevance). Hover a band to read it. You can watch <b>agentic-enterprise</b> swell and <b>regulation</b> thicken late in the window.</p>
+  <div class="viz">
+    <div id="stream" class="stream"></div>
+    <div class="legend" id="streamLegend"></div>
+  </div>
+
+  <!-- (b) PATH-DEPENDENCY DAG -->
+  <h3 class="sub">b · Path-dependency DAG — events → themes → strategic arcs</h3>
+  <p style="color:var(--muted);margin-top:0">Hover any node to isolate its causal chain: which raw events fed a theme, and which themes compound into a multi-quarter strategic arc. This is how "why did this happen" gets answered.</p>
+  <div class="viz">
+    <svg viewBox="0 0 1080 420" class="dag" id="dag">
+      <g font-family="IBM Plex Mono" font-size="11" fill="#6E86A6">
+        <text x="60" y="24">EVENTS (daily)</text>
+        <text x="440" y="24">THEMES (weekly→monthly)</text>
+        <text x="820" y="24">STRATEGIC ARCS (quarterly→yearly)</text>
+      </g>
+      <g id="dagEdges"></g>
+      <g id="dagNodes"></g>
+    </svg>
+  </div>
+
+  <!-- (c) COMPETITIVE MOVE BOARD -->
+  <h3 class="sub">c · Competitive move board — actor × portfolio, this quarter</h3>
+  <p style="color:var(--muted);margin-top:0">Heat = move intensity (count × materiality) by competitor and Google Cloud portfolio area. Hover a cell for the defining move. Bright rows are the competitors forcing the agenda; bright columns are where the fight is hottest.</p>
+  <div class="viz">
+    <div class="board" id="board"></div>
+    <div class="legend"><span>Intensity</span>
+      <span><i style="background:#12233F;outline:1px solid var(--line2)"></i>none</span>
+      <span><i style="background:#2b4d78"></i>low</span>
+      <span><i style="background:#4285F4"></i>medium</span>
+      <span><i style="background:#EA4335"></i>high</span>
+    </div>
+  </div>
+
+  <!-- (d) ZOOMABLE TIMELINE -->
+  <h3 class="sub">d · Zoomable timeline — one event, five altitudes</h3>
+  <p style="color:var(--muted);margin-top:0">The same corpus, pivoted between day → week → month → quarter → year. Zooming out doesn't just group — it re-narrates: individual items become themes become arcs.</p>
+  <div class="viz" data-zoomgroup>
+    <div class="tabs">
+      <button class="btn" data-zoom="day">Day</button>
+      <button class="btn active" data-zoom="week">Week</button>
+      <button class="btn" data-zoom="month">Month</button>
+      <button class="btn" data-zoom="quarter">Quarter</button>
+      <button class="btn" data-zoom="year">Year</button>
+    </div>
+    <div data-zoomlayer="day" style="display:none"><div class="tl-strip" id="tl-day"></div></div>
+    <div data-zoomlayer="week"><div class="tl-strip" id="tl-week"></div></div>
+    <div data-zoomlayer="month" style="display:none"><div class="tl-strip" id="tl-month"></div></div>
+    <div data-zoomlayer="quarter" style="display:none"><div class="tl-strip" id="tl-quarter"></div></div>
+    <div data-zoomlayer="year" style="display:none"><div class="tl-strip" id="tl-year"></div></div>
+  </div>
+
+  <script>
+  (function(){
+    // ---------- (a) THEME RIVER ----------
+    var themes=[
+      {name:'Agentic enterprise',color:'#4285F4',v:[2,3,3,4,5,6,6,7,8,8,9,10]},
+      {name:'Inference economics',color:'#34A853',v:[5,5,6,6,6,7,7,7,8,8,9,9]},
+      {name:'Open-weight pressure',color:'#A78BFA',v:[3,4,6,4,5,7,5,6,8,6,7,8]},
+      {name:'AI regulation',color:'#FBBC04',v:[1,1,2,2,3,3,4,5,5,7,7,8]},
+      {name:'Sovereign AI',color:'#4CD7E8',v:[1,2,2,3,3,3,4,4,5,5,6,7]}
+    ];
+    var W=1000,H=300,padX=40,padY=26,n=themes[0].v.length;
+    function xAt(i){return padX+i*(W-2*padX)/(n-1);}
+    var totals=[];for(var i=0;i<n;i++){var t=0;themes.forEach(function(th){t+=th.v[i];});totals.push(t);}
+    var maxTotal=Math.max.apply(null,totals);
+    var scale=(H-2*padY)/maxTotal;
+    // baseline (centered stream)
+    var base=[];for(i=0;i<n;i++){base.push(H/2 - totals[i]*scale/2);}
+    function seg(p){var d='';for(var i=0;i<p.length-1;i++){var p0=p[i-1]||p[i],p1=p[i],p2=p[i+1],p3=p[i+2]||p2;var c1x=p1[0]+(p2[0]-p0[0])/6,c1y=p1[1]+(p2[1]-p0[1])/6,c2x=p2[0]-(p3[0]-p1[0])/6,c2y=p2[1]-(p3[1]-p1[1])/6;d+=' C'+c1x.toFixed(1)+','+c1y.toFixed(1)+' '+c2x.toFixed(1)+','+c2y.toFixed(1)+' '+p2[0].toFixed(1)+','+p2[1].toFixed(1);}return d;}
+    function smooth(p){return 'M'+p[0][0].toFixed(1)+','+p[0][1].toFixed(1)+seg(p);}
+    var cum=base.slice();
+    var svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Theme river">';
+    // week gridlines
+    for(i=0;i<n;i++){svg+='<line x1="'+xAt(i)+'" y1="'+padY+'" x2="'+xAt(i)+'" y2="'+(H-padY+2)+'" stroke="rgba(157,179,207,.08)"/>';}
+    themes.forEach(function(th){
+      var top=[],bot=[];
+      for(i=0;i<n;i++){var y0=cum[i],y1=cum[i]+th.v[i]*scale;top.push([xAt(i),y0]);bot.push([xAt(i),y1]);cum[i]=y1;}
+      var botRev=bot.slice().reverse();
+      var d=smooth(top)+' L'+botRev[0][0].toFixed(1)+','+botRev[0][1].toFixed(1)+seg(botRev)+' Z';
+      var peak=Math.max.apply(null,th.v);
+      svg+='<path d="'+d+'" fill="'+th.color+'" stroke="'+th.color+'" data-tip="'+th.name+' · peak intensity '+peak+'/10 · trend '+(th.v[n-1]>=th.v[0]?'▲ rising':'▼ cooling')+'"/>';
+    });
+    // x labels
+    for(i=0;i<n;i+=2){svg+='<text x="'+xAt(i)+'" y="'+(H-6)+'" fill="#6E86A6" font-family="IBM Plex Mono" font-size="10" text-anchor="middle">W'+(i+1)+'</text>';}
+    svg+='</svg>';
+    document.getElementById('stream').innerHTML=svg;
+    document.getElementById('streamLegend').innerHTML=themes.map(function(t){return '<span><i style="background:'+t.color+'"></i>'+t.name+'</span>';}).join('');
+
+    // ---------- (b) PATH-DEPENDENCY DAG ----------
+    var nodes=[
+      {id:'e1',c:0,y:70,t:'Rival per-outcome agent pricing',r:'ev'},
+      {id:'e2',c:0,y:140,t:'Open-weight model tops leaderboard',r:'ev'},
+      {id:'e3',c:0,y:210,t:'AI Act enforcement guidance',r:'ev'},
+      {id:'e4',c:0,y:280,t:'Hyperscaler capacity mega-deal',r:'ev'},
+      {id:'e5',c:0,y:350,t:'JAPAC sovereign-cloud tender',r:'ev'},
+      {id:'t1',c:1,y:105,t:'Agentic enterprise economics',r:'th'},
+      {id:'t2',c:1,y:210,t:'Open-weight commoditization',r:'th'},
+      {id:'t3',c:1,y:315,t:'Regulation & sovereignty',r:'th'},
+      {id:'a1',c:2,y:150,t:'Value shifts model → workflow',r:'arc'},
+      {id:'a2',c:2,y:300,t:'Compute & sovereignty as moat',r:'arc'}
+    ];
+    var edges=[['e1','t1'],['e2','t2'],['e2','t1'],['e3','t3'],['e4','t3'],['e5','t3'],['t1','a1'],['t2','a1'],['t3','a2'],['t2','a2'],['e4','a2']];
+    var colX=[150,500,880];
+    var pos={};nodes.forEach(function(nd){pos[nd.id]={x:colX[nd.c],y:nd.y};});
+    var eg='',ng='';
+    edges.forEach(function(ed){
+      var a=pos[ed[0]],b=pos[ed[1]];var mx=(a.x+b.x)/2;
+      eg+='<path class="edge" data-from="'+ed[0]+'" data-to="'+ed[1]+'" d="M'+a.x+','+a.y+' C'+mx+','+a.y+' '+mx+','+b.y+' '+b.x+','+b.y+'"/>';
+    });
+    nodes.forEach(function(nd){
+      var p=pos[nd.id];var col=nd.r==='ev'?'#4285F4':nd.r==='th'?'#A78BFA':'#34A853';
+      var w=nd.r==='arc'?170:nd.r==='th'?150:150,h=nd.r==='arc'?40:30;
+      ng+='<g class="node" data-id="'+nd.id+'"><rect x="'+(p.x-w/2)+'" y="'+(p.y-h/2)+'" width="'+w+'" height="'+h+'" rx="8" fill="#12233F" stroke="'+col+'" stroke-width="'+(nd.r==='arc'?2:1.4)+'"/><text x="'+p.x+'" y="'+(p.y+4)+'" text-anchor="middle">'+nd.t+'</text></g>';
+    });
+    document.getElementById('dagEdges').innerHTML=eg;
+    document.getElementById('dagNodes').innerHTML=ng;
+    var dag=document.getElementById('dag');
+    function chain(id){var set={};set[id]=1;var changed=true;
+      // downstream
+      while(changed){changed=false;edges.forEach(function(ed){if(set[ed[0]]&&!set[ed[1]]){set[ed[1]]=1;changed=true;}});}
+      // upstream
+      changed=true;while(changed){changed=false;edges.forEach(function(ed){if(set[ed[1]]&&!set[ed[0]]){set[ed[0]]=1;changed=true;}});}
+      return set;}
+    dag.querySelectorAll('.node').forEach(function(g){
+      g.addEventListener('mouseenter',function(){
+        var set=chain(g.getAttribute('data-id'));dag.classList.add('hot');
+        dag.querySelectorAll('.node').forEach(function(x){x.classList.toggle('on',!!set[x.getAttribute('data-id')]);});
+        dag.querySelectorAll('.edge').forEach(function(x){x.classList.toggle('on',set[x.getAttribute('data-from')]&&set[x.getAttribute('data-to')]);});
+      });
+      g.addEventListener('mouseleave',function(){dag.classList.remove('hot');});
+    });
+
+    // ---------- (c) COMPETITIVE MOVE BOARD ----------
+    var actors=['Microsoft','OpenAI','AWS','Anthropic','NVIDIA','Meta'];
+    var cols=['Models','Agents/Platform','Infra','Data','Security','GTM/Pricing'];
+    // intensity 0-3 + tooltip
+    var data={
+      Microsoft:[[2,'Copilot model refresh'],[3,'Agent Fabric GA, per-outcome pricing'],[1,'Azure AI region expansion'],[2,'Fabric grounding bundle'],[2,'Security Copilot agents'],[3,'E5 bundling pressure']],
+      OpenAI:[[3,'New frontier model + long context'],[3,'Enterprise agents platform'],[1,'Compute partner deal'],[1,'Connectors GA'],[0,''],[2,'Enterprise pricing tiers']],
+      AWS:[[1,'Nova model update'],[2,'Bedrock agents update'],[3,'Trainium capacity + price cut'],[2,'Q in QuickSight'],[1,'Guardrails update'],[2,'Marketplace co-sell push']],
+      Anthropic:[[3,'Claude model release'],[2,'Agent SDK + MCP'],[0,''],[1,'Retrieval features'],[1,'Constitutional safety'],[1,'Enterprise deals']],
+      NVIDIA:[[1,'NIM microservices'],[1,'Agent blueprints'],[3,'Next-gen GPU + supply'],[0,''],[1,'Confidential compute'],[1,'Ecosystem programs']],
+      Meta:[[3,'Llama open-weight drop'],[1,'Agent tooling'],[1,'Custom silicon'],[0,''],[0,''],[1,'Open-model licensing']]
+    };
+    function heat(v){return v===0?'#12233F':v===1?'#2b4d78':v===2?'#4285F4':'#EA4335';}
+    var b='<div class="hd"></div>'+cols.map(function(c){return '<div class="hd">'+c+'</div>';}).join('');
+    actors.forEach(function(a){
+      b+='<div class="rl">'+a+'</div>';
+      data[a].forEach(function(cell){
+        var v=cell[0],tip=cell[1]||'no material move';
+        b+='<div class="cell" style="background:'+heat(v)+';color:'+(v>=2?'#0a1526':'#9DB3CF')+'" data-tip="'+a+' · '+tip+'">'+(v>0?v:'')+'</div>';
+      });
+    });
+    var board=document.getElementById('board');
+    board.style.gridTemplateColumns='120px repeat('+cols.length+',1fr)';
+    board.innerHTML=b;
+
+    // ---------- (d) ZOOMABLE TIMELINE ----------
+    var layers={
+      day:[['09:00','Copilot Agent Fabric GA','#EA4335'],['11:20','Open-weight LB shakeup','#A78BFA'],['15:40','AI Act guidance','#FBBC04'],['22:10','TPU capacity deal','#4285F4']],
+      week:[['Mon','Agentic pricing war opens','#4285F4'],['Wed','Open-weight surge','#A78BFA'],['Thu','Reg guidance drops','#FBBC04'],['Fri','Capacity narrative','#34A853']],
+      month:[['Wk1','Outcome-pricing theme forms','#4285F4'],['Wk2','Open-weight commoditization','#A78BFA'],['Wk3','Sovereignty tenders rise','#4CD7E8'],['Wk4','Compute-moat thesis','#34A853']],
+      quarter:[['M1','Value → workflow shift','#4285F4'],['M2','Reg & sovereignty durable','#FBBC04'],['M3','Compute as moat confirmed','#34A853']],
+      year:[['Q1','Agentic economics','#4285F4'],['Q2','Open-weight pressure','#A78BFA'],['Q3','Sovereignty & compute','#4CD7E8'],['Q4','Consolidation arc','#34A853']]
+    };
+    Object.keys(layers).forEach(function(k){
+      var strip=document.getElementById('tl-'+k);var evs=layers[k];
+      strip.innerHTML=evs.map(function(e,i){
+        var left=8+i*(84/(Math.max(evs.length-1,1)))+'%';
+        return '<div class="tl-ev" style="left:'+left+';top:14px"><div class="dotm" style="background:'+e[2]+'"></div><b>'+e[1]+'</b><span>'+e[0]+'</span></div>';
+      }).join('');
+    });
+  })();
+  </script>
+</section>
+
+<!-- ============ 9. STORAGE / MEMORY ============ -->
+<section class="sec" id="s9" data-nav="9 · Memory" data-title="Storage & Memory Model">
+  <div class="kicker"><span class="num">09 /</span> Storage &amp; Memory Model</div>
+  <h2 class="title">Immutable facts, revisable analysis, accountable memory</h2>
+  <p class="lede">The core design rule: <b>facts are immutable and versioned; analysis is re-runnable.</b> When new facts emerge about a past event, we never rewrite history — we append a new fact version and re-derive the analysis, keeping the full lineage. Everything below lives in BigQuery except embeddings (Vertex Vector Search) and raw payloads (GCS).</p>
+
+  <div class="grid g2">
+    <div class="card accent-b">
+      <h4>raw_article <span class="chip" style="border-color:var(--cyan)">immutable</span></h4>
+      <p><code>article_id, source_id, source_tier, license_tier, url, fetched_at, published_at, raw_html_gcs_uri, title, body_hash, lang, ingest_run_id</code></p>
+      <p style="color:var(--faint)">Append-only. The evidentiary record.</p>
+    </div>
+    <div class="card accent-b">
+      <h4>canonical_event <span class="chip" style="border-color:var(--blue)">versioned</span></h4>
+      <p><code>event_id, version, first_seen_at, headline, fact_summary, status(confirmed|reported|rumor|disputed), member_article_ids[], primary_source_id, relevance_score, superseded_by</code></p>
+      <p style="color:var(--faint)">New facts → new version; old versions retained.</p>
+    </div>
+    <div class="card accent-v">
+      <h4>event_analysis <span class="chip" style="border-color:var(--violet)">re-runnable</span></h4>
+      <p><code>analysis_id, event_id, event_version, why_it_matters, impact_gcp, affected_offerings[], competitive_implications, verdict, confidence, recommended_actions[], model_version, generated_at</code></p>
+      <p style="color:var(--faint)">Multiple analyses per event over time = verdict history.</p>
+    </div>
+    <div class="card accent-g">
+      <h4>entity_graph</h4>
+      <p><code>entity_id, type(actor|offering|person|product|regulator), name, aliases[]</code> · edges: <code>(src_entity, rel, dst_entity, event_id, weight, ts)</code></p>
+      <p style="color:var(--faint)">Powers "all moves by actor X on offering Y."</p>
+    </div>
+    <div class="card accent-y">
+      <h4>theme_registry</h4>
+      <p><code>theme_id, label, state(signal|emerging|durable|fading), created_at, promoted_at[], intensity_series[], evidence_event_ids[], impact_vectors[], portfolio_areas[]</code></p>
+      <p style="color:var(--faint)">Promotion transitions are logged with evidence (§ theme rules).</p>
+    </div>
+    <div class="card accent-y">
+      <h4>assumption_ledger</h4>
+      <p><code>thesis_id, period_made, statement, prob(0-1), horizon, linked_theme, linked_events[], resolution(pending|right|wrong|partial), resolved_period, brier, rationale_at_grade</code></p>
+      <p style="color:var(--faint)">The accountability spine (§ eval calibration).</p>
+    </div>
+    <div class="card accent-c">
+      <h4>embeddings_index</h4>
+      <p>Vertex Vector Search: <code>article &amp; event vectors</code> for dedupe + RAG. Keyed to <code>event_id/article_id</code>; ANN with metadata filters (date, portfolio_area).</p>
+    </div>
+    <div class="card">
+      <h4>aggregation_snapshot <span class="chip">immutable</span></h4>
+      <p><code>snapshot_id, cadence(daily|weekly|monthly|quarterly|yearly), period_key, body_md, item_ids[], theme_ids[], ledger_ids[], generated_at, model_version</code></p>
+      <p style="color:var(--faint)">Every published output is frozen for audit &amp; diffing.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Re-analysis when facts change</h3>
+  <ol>
+    <li>New corroborating/contradicting article attaches to an existing <code>canonical_event</code> → status may change (e.g., Reported → Confirmed, or → Disputed).</li>
+    <li>A new <code>canonical_event.version</code> is written; the old version is preserved with <code>superseded_by</code>.</li>
+    <li>The analyzer re-runs, producing a new <code>event_analysis</code> row — the item's verdict can move (Urgent → Risk) and the <b>change is surfaced</b>, not hidden.</li>
+    <li>If the event backed an open thesis, the <code>assumption_ledger</code> resolution is revisited at the next grading period.</li>
+  </ol>
+  <div class="tradeoff"><b>Trade-off:</b> full versioning costs storage and query complexity vs. simple overwrite. We pay it — an intelligence product that silently rewrites its own past is untrustworthy. Immutability <i>is</i> the feature.</div>
+</section>
+
+<!-- ============ 10. ORCHESTRATION ============ -->
+<section class="sec" id="s10" data-nav="10 · Orchestration" data-title="Workflow & Scheduling">
+  <div class="kicker"><span class="num">10 /</span> Agent Workflow, Orchestration &amp; Scheduling</div>
+  <h2 class="title">Seven stages, backward-planned from 09:00 SGT</h2>
+  <p class="lede">The publish deadline is sacred: <b>09:00 Asia/Singapore = 01:00 UTC</b>. Cloud Scheduler fires the ingestion cutoff at <b>00:00 SGT (16:00 UTC prior day)</b>, giving a 9-hour processing window with generous slack. The 24 h coverage window ending at the cutoff captures the <b>full US business day + evening announcements</b> and the <b>complete European day</b> of the prior date — exactly the JAPAC advantage of the SGT anchor.</p>
+
+  <div class="pipe">
+    <div class="pstep"><span class="n">STAGE 1 · 00:00 SGT</span><b>Ingest</b><small>pull all tiers to cutoff</small><div class="svc">Cloud Run job · Pub/Sub · GCS/BQ</div></div>
+    <div class="pstep"><span class="n">STAGE 2 · 00:35</span><b>Dedupe</b><small>cluster → canonical events</small><div class="svc">Vector Search · Run job</div></div>
+    <div class="pstep"><span class="n">STAGE 3 · 01:10</span><b>Score</b><small>relevance rubric, gate</small><div class="svc">Gemini Flash (batch)</div></div>
+    <div class="pstep"><span class="n">STAGE 4 · 02:30</span><b>Classify</b><small>6-axis taxonomy</small><div class="svc">Gemini Flash (batch)</div></div>
+    <div class="pstep"><span class="n">STAGE 5 · 03:30</span><b>Analyze</b><small>8 fields + verdict + RAG</small><div class="svc">Gemini Pro · Vector Search</div></div>
+    <div class="pstep"><span class="n">STAGE 6 · 06:00</span><b>Compose</b><small>daily log + drilldowns</small><div class="svc">Gemini Pro · BQ write</div></div>
+    <div class="pstep"><span class="n">STAGE 7 · 08:30</span><b>Publish</b><small>freeze snapshot → CDN</small><div class="svc">Run · CDN · alerts</div></div>
+  </div>
+  <p style="color:var(--faint);font-size:13px;margin-top:-4px">Each stage completes ≥30 min before the next starts; the whole chain has ~90 min of slack against 09:00. Human-in-the-loop checkpoint at <b>06:30–08:00 SGT</b> (optional editor review of borderline/Urgent items) — non-blocking.</p>
+
+  <h3 class="sub">Cloud Scheduler cron (all times UTC; SGT = UTC+8)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Job</th><th>Cron (UTC)</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">daily_pipeline</td><td class="mono">0 16 * * *</td><td>16:00 UTC = 00:00 SGT ingest cutoff → publish 09:00 SGT.</td></tr>
+        <tr><td class="mono">weekly_synthesis</td><td class="mono">0 22 * * 0</td><td>22:00 UTC Sun = 06:00 SGT Mon publish.</td></tr>
+        <tr><td class="mono">monthly_narrative</td><td class="mono">0 22 1 * *</td><td>1st of month, 06:00 SGT (prior-month close).</td></tr>
+        <tr><td class="mono">quarterly_review</td><td class="mono">0 22 1 1,4,7,10 *</td><td>Quarter starts, SGT-anchored.</td></tr>
+        <tr><td class="mono">yearly_arc</td><td class="mono">0 22 1 1 *</td><td>Jan 1, 06:00 SGT (calendar; fiscal variant offset).</td></tr>
+        <tr><td class="mono">urgent_sweep</td><td class="mono">*/20 * * * *</td><td>Intraday: score fresh items; Urgent → immediate alert.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid g2">
+    <div class="card accent-r">
+      <h4>Degraded mode (never publish late)</h4>
+      <p>If any stage misses its window, the pipeline <b>publishes on time at 09:00 SGT with a completeness banner</b> ("Analysis for 3 items pending — updating by 09:30") rather than slipping the deadline. Partial &gt; late. Missing analyses backfill and the snapshot re-freezes with a visible "updated" stamp.</p>
+    </div>
+    <div class="card accent-y">
+      <h4>Late news &amp; off-cutoff</h4>
+      <p>Items arriving after 00:00 SGT cutoff appear <b>next day flagged "late add"</b>. Exception: anything scoring <b>Urgent</b> triggers the <code>urgent_sweep</code> intraday alert immediately instead of waiting. This keeps the daily deadline clean without missing genuinely time-critical news.</p>
+    </div>
+    <div class="card accent-b">
+      <h4>Weekend &amp; holidays</h4>
+      <p>Daily runs <b>every day</b> including weekends (news doesn't stop). On light days the log auto-shortens with a "quiet cycle" note. On SG/US public holidays the <b>ingest weighting</b> shifts (fewer T1 corporate feeds, more T4) and a holiday flag sets reader expectations. Aggregations remain anchored to the SGT calendar regardless.</p>
+    </div>
+    <div class="card accent-g">
+      <h4>Retry &amp; failure handling</h4>
+      <p>Cloud Workflows orchestrates with per-stage ret/exponential backoff (max 3), a dead-letter Pub/Sub topic, and idempotent runs keyed by <code>ingest_run_id</code>. A stage that exhausts retries triggers degraded-mode publish + a PagerDuty/Chat alert to the on-call. All runs emit structured logs to Cloud Logging + a run-status row in BQ.</p>
+    </div>
+  </div>
+  <div class="tradeoff"><b>Trade-off:</b> Cloud Run Jobs + Workflows (chosen) vs. a single long-running service or Composer/Airflow. Jobs+Workflows give us cheap, serverless, per-stage isolation and native retries without a cluster to babysit; Airflow would add operational weight the cadence doesn't justify at this scale.</div>
+</section>
+
+<!-- ============ 11. PROMPTING ============ -->
+<section class="sec" id="s11" data-nav="11 · Prompts" data-title="Prompting Strategy">
+  <div class="kicker"><span class="num">11 /</span> Prompting Strategy</div>
+  <h2 class="title">Seven prompt specs, structured JSON, fact/inference enforced in the schema</h2>
+  <p class="lede">Each stage is a separate prompt with an explicit contract: role, inputs, output JSON schema, and guardrails. Every prompt <b>mandates structured JSON</b> (Vertex controlled generation / responseSchema) so downstream stages never parse prose. The fact/inference split is enforced by the schema itself — facts and inferences are different fields, and inferences must carry confidence + evidence.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Prompt</th><th>Model</th><th>Job</th><th>Key guardrail</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">extraction</td><td>Flash</td><td>Article → structured facts + entities</td><td>Only extract stated facts; no inference; null if absent.</td></tr>
+        <tr><td class="mono">relevance_scoring</td><td>Flash</td><td>7-dimension score + gate</td><td>Must cite evidence span per dimension; deterministic temp 0.</td></tr>
+        <tr><td class="mono">per_item_analysis</td><td>Pro</td><td>8 fields + verdict + confidence</td><td>Facts field = sourced only; inference field = labeled + confidence.</td></tr>
+        <tr><td class="mono">drilldown_deepdive</td><td>Pro</td><td>Expanded fact pattern + offering linkage</td><td>Cite every claim; flag any unsourced statement.</td></tr>
+        <tr><td class="mono">weekly_synthesis</td><td>Pro</td><td>Themes, path dependency, direction</td><td>No chronological recap; must answer strengthened/weakened/wrong/next.</td></tr>
+        <tr><td class="mono">theme_promotion</td><td>Flash</td><td>Signal→emerging→durable decision</td><td>Apply numeric rules; return rule trace, not vibes.</td></tr>
+        <tr><td class="mono">assumption_grading</td><td>Pro</td><td>Grade prior theses right/wrong + Brier</td><td>Grade only on evidence in corpus; cite resolving events.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div data-tabgroup>
+    <div class="tabs">
+      <button class="btn active" data-tab="p1">Example 1 · per_item_analysis</button>
+      <button class="btn" data-tab="p2">Example 2 · assumption_grading</button>
+    </div>
+    <div class="tabpanel show" data-panel="p1">
+<pre><span class="c"># SYSTEM</span>
+You are MERIDIAN's per-item analyst for Google Cloud AI leadership.
+You convert ONE canonical news event into decision-grade intelligence.
+Rules:
+- Separate FACT from INFERENCE. Facts must be supported by the provided
+  sources ONLY. Never state an inference as a fact.
+- Every inference carries confidence in {high, medium, low} and names the
+  reasoning basis.
+- Map to the provided portfolio taxonomy and named competitor set. Use
+  ONLY enumerated values.
+- Recommended actions must be concrete and role-addressed with a timebox.
+  Never output "monitor the situation" alone.
+- If evidence is insufficient for a field, return null. Do not invent.
+- Output MUST match the JSON schema. No prose outside JSON.
+
+<span class="c"># INPUT (injected)</span>
+{
+  <span class="p">"event"</span>: { <span class="p">"headline"</span>:"...", <span class="p">"fact_summary"</span>:"...",
+             <span class="p">"status"</span>:"confirmed", <span class="p">"sources"</span>:[{...url,date,tier}] },
+  <span class="p">"classification"</span>: { <span class="p">"event_type"</span>:"...", <span class="p">"actors"</span>:[...],
+                      <span class="p">"impact_vectors"</span>:[...], <span class="p">"portfolio_areas"</span>:[...] },
+  <span class="p">"related_events"</span>: [ <span class="c">// top-K from Vector Search</span> ],
+  <span class="p">"open_theses"</span>: [ <span class="c">// assumption_ledger rows this may touch</span> ]
+}
+
+<span class="c"># OUTPUT SCHEMA (responseSchema)</span>
+{
+  <span class="p">"what_happened"</span>: <span class="s">"string (fact, sourced)"</span>,
+  <span class="p">"why_it_matters"</span>: { <span class="p">"text"</span>:<span class="s">"string"</span>, <span class="p">"confidence"</span>:<span class="s">"high|medium|low"</span> },
+  <span class="p">"who"</span>: <span class="s">"string"</span>,
+  <span class="p">"sources"</span>: [{ <span class="p">"name"</span>:<span class="s">"string"</span>, <span class="p">"url"</span>:<span class="s">"string"</span>, <span class="p">"date"</span>:<span class="s">"YYYY-MM-DD"</span> }],
+  <span class="p">"impact_on_gcp"</span>: { <span class="p">"text"</span>:<span class="s">"string"</span>, <span class="p">"confidence"</span>:<span class="s">"high|medium|low"</span> },
+  <span class="p">"affected_offerings"</span>: [<span class="s">"enum: portfolio_area"</span>],
+  <span class="p">"competitive_implications"</span>: { <span class="p">"vs"</span>:[<span class="s">"enum: actor"</span>], <span class="p">"text"</span>:<span class="s">"string"</span> },
+  <span class="p">"recommended_actions"</span>: [{ <span class="p">"role"</span>:<span class="s">"string"</span>, <span class="p">"action"</span>:<span class="s">"string"</span>, <span class="p">"timebox"</span>:<span class="s">"string"</span> }],
+  <span class="p">"verdict"</span>: <span class="s">"opportunity|risk|urgent|no_action"</span>,
+  <span class="p">"verdict_rationale"</span>: <span class="s">"string (<= 90 words)"</span>,
+  <span class="p">"verdict_confidence"</span>: <span class="s">"high|medium|low"</span>
+}</pre>
+    </div>
+    <div class="tabpanel" data-panel="p2">
+<pre><span class="c"># SYSTEM</span>
+You are MERIDIAN's calibration analyst. Grade prior theses from the
+assumption ledger against what actually happened this period.
+Rules:
+- Grade ONLY on evidence present in the provided corpus for the period.
+- For each thesis assign resolution in {right, wrong, partial, pending}
+  and cite the resolving event_ids. If unresolved, keep pending — do NOT
+  force a grade.
+- Compute a Brier component: (outcome - stated_probability)^2, where
+  outcome = 1 if right, 0 if wrong, 0.5 if partial.
+- Explain WHY the thesis held or failed in one sentence, honestly.
+  Reward well-reasoned wrong calls; penalize lucky right calls in notes.
+- Output MUST match the JSON schema. No prose outside JSON.
+
+<span class="c"># INPUT (injected)</span>
+{
+  <span class="p">"period"</span>: <span class="s">"2026-W27"</span>,
+  <span class="p">"theses"</span>: [{ <span class="p">"thesis_id"</span>:"...", <span class="p">"statement"</span>:"...",
+              <span class="p">"prob"</span>:0.65, <span class="p">"horizon"</span>:"4w", <span class="p">"linked_events"</span>:[...] }],
+  <span class="p">"period_events"</span>: [ <span class="c">// canonical events + analyses this period</span> ]
+}
+
+<span class="c"># OUTPUT SCHEMA (responseSchema)</span>
+{
+  <span class="p">"grades"</span>: [{
+    <span class="p">"thesis_id"</span>: <span class="s">"string"</span>,
+    <span class="p">"resolution"</span>: <span class="s">"right|wrong|partial|pending"</span>,
+    <span class="p">"resolving_event_ids"</span>: [<span class="s">"string"</span>],
+    <span class="p">"brier"</span>: <span class="s">"number"</span>,
+    <span class="p">"why"</span>: <span class="s">"string (one sentence)"</span>,
+    <span class="p">"calibration_note"</span>: <span class="s">"string"</span>
+  }],
+  <span class="p">"period_brier_mean"</span>: <span class="s">"number"</span>,
+  <span class="p">"hit_rate"</span>: <span class="s">"number"</span>
+}</pre>
+    </div>
+  </div>
+  <div class="note"><b>Why JSON-first everywhere.</b> Structured outputs make the pipeline testable (schema validation = a free guardrail), composable (stage N reads stage N-1's fields, never prose), and auditable. Prose is generated only at the final compose stage, from validated structured inputs.</div>
+</section>
+
+<!-- ============ 12. EVALUATION ============ -->
+<section class="sec" id="s12" data-nav="12 · Evaluation" data-title="Evaluation Criteria">
+  <div class="kicker"><span class="num">12 /</span> Evaluation Criteria</div>
+  <h2 class="title">If we can't measure "so-what," we're just a feed</h2>
+  <p class="lede">MERIDIAN is evaluated on four axes: <b>did it pick the right news</b> (relevance), <b>did it tell the truth</b> (citation integrity), <b>did it help</b> (so-what quality), and <b>was it right over time</b> (calibration). A weekly eval dashboard makes all four visible.</p>
+
+  <div class="grid g2">
+    <div class="card accent-b">
+      <h4>Relevance precision / recall</h4>
+      <p>Against a rolling <b>human-labeled golden set</b> (editors label ~40 candidates/day include/exclude). Targets: <b>precision ≥ 0.90</b> (protect attention), <b>recall ≥ 0.75</b> at the daily layer (misses caught in weekly). The borderline queue feeds new labels continuously.</p>
+    </div>
+    <div class="card accent-r">
+      <h4>Citation integrity &amp; hallucination</h4>
+      <p>Automated check: every sentence in a fact block must resolve to a source span (entailment check by a judge model + URL liveness). <b>Zero-tolerance</b> gate: an item with an unsupported factual claim is blocked from publish and routed to the editor. Target hallucination rate on facts: <b>&lt; 0.5%</b>, audited weekly on a sample.</p>
+    </div>
+    <div class="card accent-g">
+      <h4>"So-what" quality rubric</h4>
+      <p>Leadership raters score a weekly sample 1–5 on: actionability, portfolio-mapping accuracy, competitive insight, and non-obviousness. Target mean <b>≥ 4.2</b>. Low scorers are error-analyzed; the rubric is the north star, not model perplexity.</p>
+    </div>
+    <div class="card accent-y">
+      <h4>Assumption-ledger calibration</h4>
+      <p><b>Brier score</b> on all resolved theses (lower = better; target &lt; 0.18) + a reliability curve (are "70%" calls right ~70% of the time?). This is the honesty metric — it catches over-confidence the "so-what" score can't.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Freshness SLAs &amp; weekly eval dashboard</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Target</th><th>Alert if</th></tr></thead>
+      <tbody>
+        <tr><td>Daily publish time</td><td class="mono">≤ 09:00 SGT</td><td>&gt; 09:00 (or degraded-mode banner shown)</td></tr>
+        <tr><td>Urgent-alert latency (from ingest)</td><td class="mono">&lt; 25 min</td><td>&gt; 40 min</td></tr>
+        <tr><td>Relevance precision (7-day)</td><td class="mono">≥ 0.90</td><td>&lt; 0.85</td></tr>
+        <tr><td>Fact hallucination rate</td><td class="mono">&lt; 0.5%</td><td>any confirmed hallucination</td></tr>
+        <tr><td>So-what mean (weekly raters)</td><td class="mono">≥ 4.2 / 5</td><td>&lt; 3.8</td></tr>
+        <tr><td>Ledger Brier (trailing quarter)</td><td class="mono">&lt; 0.18</td><td>&gt; 0.25 or rising 3 wks</td></tr>
+        <tr><td>Dedup purity (no split/merge errors)</td><td class="mono">≥ 0.95</td><td>&lt; 0.90</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--muted)">The dashboard (Looker Studio over BigQuery eval tables) shows each metric with 7/30/90-day trend, plus a "recent misses" panel — the false positives/negatives that most hurt trust, for weekly review.</p>
+</section>
+
+<!-- ============ 13. SECURITY / GOVERNANCE ============ -->
+<section class="sec" id="s13" data-nav="13 · Governance" data-title="Security & Governance">
+  <div class="kicker"><span class="num">13 /</span> Security, Access Control &amp; Governance</div>
+  <h2 class="title">Public-source intelligence, internal-grade controls</h2>
+  <p class="lede">MERIDIAN reasons over <b>public and licensed external</b> content only — it is deliberately walled off from confidential internal data (deal data, roadmaps, customer PII). That separation is the single most important governance decision: it keeps the system shareable, auditable, and low-risk.</p>
+
+  <div class="grid g2">
+    <div class="card accent-b">
+      <h4>IAM &amp; audiences</h4>
+      <ul style="font-size:14px;color:var(--muted)">
+        <li>Least-privilege service accounts <b>per pipeline stage</b>; no shared god-account.</li>
+        <li>Reader access via Google Groups mapped to personas/regions; IAP in front of the web app.</li>
+        <li>Editor/override role is a distinct group with audit-logged actions.</li>
+        <li>LLM calls use a dedicated Vertex SA scoped to the project's models only.</li>
+      </ul>
+    </div>
+    <div class="card accent-v">
+      <h4>Data handling for licensed content</h4>
+      <ul style="font-size:14px;color:var(--muted)">
+        <li>License tier stored per source; full text of licensed content is <b>never republished</b> — store abstract/metadata + link.</li>
+        <li>Retention policy per source class; right-to-be-forgotten honored via <code>article_id</code> purge (analysis lineage preserved without the raw text).</li>
+        <li>No customer content flows in; prompts are templated and logged for review.</li>
+      </ul>
+    </div>
+    <div class="card accent-g">
+      <h4>VPC-SC / CMEK posture</h4>
+      <ul style="font-size:14px;color:var(--muted)">
+        <li><b>VPC Service Controls</b> perimeter around BigQuery, GCS, Vertex — egress limited to the approved ingestion path.</li>
+        <li><b>CMEK</b> on GCS + BigQuery + Vector Search for key control.</li>
+        <li>Vertex calls stay in-region (data residency); JAPAC-region option for regional deployments.</li>
+      </ul>
+    </div>
+    <div class="card accent-y">
+      <h4>Audit logging &amp; editorial governance</h4>
+      <ul style="font-size:14px;color:var(--muted)">
+        <li>Cloud Audit Logs on all data + admin access; every published snapshot is immutable + diffable.</li>
+        <li><b>Editorial override</b>: named editors can annotate, downgrade a verdict, or pull an item — every action is attributed, timestamped, and shown as an "editor note," never a silent edit.</li>
+        <li>A model-change log ties every output to its <code>model_version</code> + prompt version for reproducibility.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note"><b>Separation of concerns is the governance keystone.</b> Because MERIDIAN never touches confidential internal systems, it can be broadly shared across GTM/product/regional leadership without a data-loss review each time — and any future internal-GTM integration (H3) crosses a deliberate, reviewed boundary rather than being baked in.</div>
+</section>
+
+<!-- ============ 14. MVP ============ -->
+<section class="sec" id="s14" data-nav="14 · MVP" data-title="MVP Scope">
+  <div class="kicker"><span class="num">14 /</span> MVP Scope · 4–6 Weeks</div>
+  <h2 class="title">The smallest thing that earns a leader's trust</h2>
+  <p class="lede">A small team (1 eng lead + 1 data/ML eng + 1 analyst/editor, with design support) ships a genuinely useful product in 4–6 weeks by ruthlessly cutting scope: <b>daily log + weekly synthesis + basic drilldown + one visualization</b>, on a curated source set.</p>
+
+  <div class="grid g3">
+    <div class="card accent-g">
+      <h4>In scope</h4>
+      <ul style="font-size:13.5px;color:var(--muted)">
+        <li><b>~25 curated sources</b> (T1 official blogs, 6 T2 press, 3 T3 analysts, GitHub/HN/leaderboards).</li>
+        <li>Ingest → dedupe → score → classify → analyze → compose → publish (Gemini Flash + Pro).</li>
+        <li>Daily log (8 fields, fact/inference split) at 09:00 SGT.</li>
+        <li>Weekly synthesis + a first assumption-ledger (record + manual grade).</li>
+        <li>Basic drilldown (cached deep-dive, verdict).</li>
+        <li><b>One visualization:</b> the competitive move board.</li>
+        <li>Simple IAP-gated web app + email brief.</li>
+      </ul>
+    </div>
+    <div class="card accent-r">
+      <h4>Explicitly deferred</h4>
+      <ul style="font-size:13.5px;color:var(--muted)">
+        <li>Theme river, path-dependency DAG, zoomable timeline (H1).</li>
+        <li>Conversational Q&amp;A over corpus (H2).</li>
+        <li>Automated theme-promotion + Brier calibration dashboard (H1).</li>
+        <li>Personalization by persona/region (H2).</li>
+        <li>Live "ask-more" drilldown pass (start cached-only).</li>
+        <li>Predictive signals / scenario modeling (H3).</li>
+      </ul>
+    </div>
+    <div class="card accent-b">
+      <h4>Success bar for MVP</h4>
+      <ul style="font-size:13.5px;color:var(--muted)">
+        <li>Publishes by 09:00 SGT ≥ 6 of 7 days.</li>
+        <li>Relevance precision ≥ 0.85 on golden set.</li>
+        <li>So-what mean ≥ 4.0 from 3 pilot leaders.</li>
+        <li>Zero unsourced factual claims in published items.</li>
+        <li>One QBR-quoted insight = product-market signal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub">Week-by-week build plan</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Week</th><th>Focus</th><th>Ships</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1</td><td>Foundations</td><td>GCP project, VPC-SC/CMEK, BigQuery schema (raw_article, canonical_event, event_analysis), 25-source config, ingest Cloud Run job for T1/T2.</td></tr>
+        <tr><td class="mono">2</td><td>Dedupe + score</td><td>Vertex embeddings + Vector Search clustering; relevance-scoring prompt + gate; borderline queue; golden-set labeling tool for the analyst.</td></tr>
+        <tr><td class="mono">3</td><td>Classify + analyze</td><td>6-axis classifier; per-item analysis prompt (8 fields, fact/inference, verdict); citation-integrity check; cached drilldown.</td></tr>
+        <tr><td class="mono">4</td><td>Compose + publish</td><td>Daily-log composer; web app (IAP) + email brief; Cloud Scheduler @ 01:00 UTC; degraded-mode banner; move-board viz.</td></tr>
+        <tr><td class="mono">5</td><td>Weekly + memory</td><td>Weekly synthesis job (Mon 06:00 SGT); assumption-ledger v1 (record + manual grade); eval dashboard v1; pilot with 3 leaders.</td></tr>
+        <tr><td class="mono">6</td><td>Harden + tune</td><td>Precision tuning from pilot feedback, urgent-sweep alerting, on-call runbook, editorial override. <b>Go / no-go.</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tradeoff"><b>Trade-off:</b> curated 25 sources vs. broad crawl. We start narrow — precision and trust beat coverage for a v1 leadership audience, and a clean source set makes eval tractable. Breadth is an H1 scaling problem, not an MVP one.</div>
+</section>
+
+<!-- ============ 15. ROADMAP ============ -->
+<section class="sec" id="s15" data-nav="15 · Roadmap" data-title="Future Roadmap">
+  <div class="kicker"><span class="num">15 /</span> Future Roadmap</div>
+  <h2 class="title">Three horizons, each earning the right to the next</h2>
+  <p class="lede">Horizons are gated by prerequisites, not calendar. H1 completes the intelligence product; H2 makes it conversational and personal; H3 makes it predictive and connected.</p>
+
+  <div class="grid g3">
+    <div class="card accent-b">
+      <h4><span class="chip b">H1</span> Full cadence &amp; visibility</h4>
+      <p style="font-size:13.5px"><b>Ships:</b> monthly/quarterly/yearly synthesis; full visualization suite (theme river, path-dependency DAG, zoomable timeline); automated theme-promotion rules; assumption-ledger with Brier calibration dashboard; live "ask-more" drilldown; source expansion to ~120.</p>
+      <p style="font-size:13px;color:var(--faint)"><b>Prereqs:</b> ≥ 3 months of corpus for meaningful themes; stable taxonomy; MVP precision bar met.</p>
+    </div>
+    <div class="card accent-v">
+      <h4><span class="chip v">H2</span> Conversational &amp; personal</h4>
+      <p style="font-size:13.5px"><b>Ships:</b> Q&amp;A over the corpus (RAG chat: "what changed for Agentspace this quarter?"); alerting rules per user; personalization by persona/region (saved lenses, digest cadence); Chat/Slack + Workspace surfaces; multi-language regional editions.</p>
+      <p style="font-size:13px;color:var(--faint)"><b>Prereqs:</b> clean entity graph + embeddings at scale; eval harness for answer faithfulness; access-control maturity.</p>
+    </div>
+    <div class="card accent-g">
+      <h4><span class="chip g">H3</span> Predictive &amp; connected</h4>
+      <p style="font-size:13.5px"><b>Ships:</b> predictive signals (lead indicators from theme velocity + ledger calibration); scenario modeling ("if AWS cuts agent pricing 40%, likely knock-ons"); governed integration with internal GTM systems (CRM/deal signals) behind the data boundary.</p>
+      <p style="font-size:13px;color:var(--faint)"><b>Prereqs:</b> ≥ 12 months calibrated ledger (trust the forecasts); security review for the internal-data boundary crossing; exec sponsorship.</p>
+    </div>
+  </div>
+  <div class="note"><b>The through-line:</b> every horizon compounds the memory. H1 builds the corpus and calibration; H2 makes that memory queryable and personal; H3 turns a well-calibrated memory into foresight. You cannot skip to H3 — predictive value is <i>earned</i> by a track record the assumption ledger has already proven.</div>
+
+  <div style="margin-top:34px;text-align:center;padding:28px;border:1px solid var(--line);border-radius:16px;background:radial-gradient(600px 200px at 50% 0,rgba(66,133,244,.14),transparent)">
+    <div class="mono" style="color:var(--faint);font-size:11px;letter-spacing:.16em;text-transform:uppercase">MERIDIAN · AI News Intelligence Agent</div>
+    <div style="font-family:Archivo;font-weight:800;font-size:22px;margin:8px 0">Facts. Implications. Market movement. Strategic action — every morning at 09:00 SGT.</div>
+    <a class="btn active" href="#top" style="margin-top:6px">↑ Back to top</a>
+  </div>
+</section>
+
+<!--SECTIONS-->
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div style="font-family:Archivo;font-weight:800;color:var(--ink);font-size:15px;margin-bottom:4px">MERIDIAN</div>
+      <div>AI News Intelligence Agent · design &amp; system architecture</div>
+      <div style="margin-top:6px">Built for <b>Google Cloud AI leadership</b> · publishes 09:00 Asia/Singapore daily.</div>
+    </div>
+    <div style="text-align:right">
+      <div class="mono">news.aitokenomics.app</div>
+      <div style="margin-top:6px">Illustrative reference design. Sample news items are clearly labeled and fictional unless cited.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- Build top nav from sections ----
+  var secs = Array.prototype.slice.call(document.querySelectorAll('section.sec'));
+  var nav = document.getElementById('topnav');
+  secs.forEach(function(s){
+    var a=document.createElement('a');
+    a.href='#'+s.id;
+    a.textContent=s.getAttribute('data-nav')||s.getAttribute('data-title')||s.id;
+    a.dataset.for=s.id;
+    nav.appendChild(a);
+  });
+  // scrollspy
+  var links={};
+  Array.prototype.forEach.call(nav.children,function(a){links[a.dataset.for]=a;});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        Object.values(links).forEach(function(l){l.classList.remove('active');});
+        if(links[e.target.id]){links[e.target.id].classList.add('active');
+          var la=links[e.target.id];
+          la.scrollIntoView({block:'nearest',inline:'center'});
+        }
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){io.observe(s);});
+
+  // ---- Drilldown toggles ----
+  document.addEventListener('click',function(e){
+    var d=e.target.closest('[data-drill]');
+    if(d){
+      var t=document.getElementById(d.getAttribute('data-drill'));
+      if(t){var open=t.classList.toggle('open');
+        var lab=d.querySelector('.dl-label');
+        if(lab)lab.textContent=open?'Collapse drilldown':'Double-click to expand ▸';
+        d.classList.toggle('active',open);
+      }
+    }
+    // tabs
+    var tb=e.target.closest('[data-tab]');
+    if(tb){
+      var group=tb.closest('[data-tabgroup]');
+      var name=tb.getAttribute('data-tab');
+      group.querySelectorAll('[data-tab]').forEach(function(b){b.classList.toggle('active',b===tb);});
+      group.querySelectorAll('[data-panel]').forEach(function(p){p.classList.toggle('show',p.getAttribute('data-panel')===name);});
+    }
+    // timeline zoom
+    var z=e.target.closest('[data-zoom]');
+    if(z){
+      var wrap=z.closest('[data-zoomgroup]');
+      var lvl=z.getAttribute('data-zoom');
+      wrap.querySelectorAll('[data-zoom]').forEach(function(b){b.classList.toggle('active',b===z);});
+      wrap.querySelectorAll('[data-zoomlayer]').forEach(function(l){l.style.display=l.getAttribute('data-zoomlayer')===lvl?'block':'none';});
+    }
+  });
+
+  // ---- Tooltips ----
+  var tip=document.getElementById('tip');
+  document.addEventListener('mouseover',function(e){
+    var t=e.target.closest('[data-tip]');
+    if(t){tip.textContent=t.getAttribute('data-tip');tip.classList.add('show');}
+  });
+  document.addEventListener('mousemove',function(e){
+    if(tip.classList.contains('show')){
+      var x=e.clientX+14,y=e.clientY+14;
+      if(x>window.innerWidth-270)x=e.clientX-tip.offsetWidth-14;
+      tip.style.left=x+'px';tip.style.top=y+'px';
+    }
+  });
+  document.addEventListener('mouseout',function(e){
+    if(e.target.closest('[data-tip]'))tip.classList.remove('show');
+  });
+})();
+</script>
+</body>
+</html>
