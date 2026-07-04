@@ -60,6 +60,20 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "casestudies.aitokenomics.app") {
+    const caseUrl = request.nextUrl.clone();
+    caseUrl.pathname =
+      caseUrl.pathname === "/"
+        ? "/casestudies/index.html"
+        : `/casestudies${caseUrl.pathname}`;
+    return NextResponse.rewrite(caseUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   if (hostname === "news.aitokenomics.app") {
     const newsUrl = request.nextUrl.clone();
     newsUrl.pathname =

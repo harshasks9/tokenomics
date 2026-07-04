@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Casebook — Enterprise Agentic AI Use Case Catalog</title>
+<meta name="description" content="A field-usable, evidence-graded catalog of real enterprise agentic AI use cases across Retail, Financial Services, Manufacturing, Healthcare, and Telecom — with Google Cloud mapping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0e14; --bg2:#10141d; --panel:#151b26; --panel2:#1a2130; --line:#232c3d;
+  --text:#e6ebf4; --muted:#93a0b4; --dim:#5c6b82;
+  --blue:#4285F4; --green:#34A853; --yellow:#FBBC04; --red:#EA4335; --purple:#A142F4; --cyan:#24C1E0;
+  --mono:'JetBrains Mono',monospace; --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;font-size:15px}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* topbar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(11,14,20,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:20px;height:58px}
+.brand{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.12em;color:var(--text);white-space:nowrap}
+.brand .dot{color:var(--blue)}
+.brand small{display:block;font-size:9px;letter-spacing:.22em;color:var(--dim);font-weight:500}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{color:var(--muted);font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px}
+.nav a:hover{color:var(--text);background:var(--panel);text-decoration:none}
+.runchip{font-family:var(--mono);font-size:11px;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:4px 12px;white-space:nowrap}
+.runchip b{color:var(--green)}
+/* hero */
+.hero{padding:64px 0 36px;background:radial-gradient(1200px 500px at 20% -10%,rgba(66,133,244,.13),transparent),radial-gradient(900px 400px at 85% 0%,rgba(161,66,244,.09),transparent)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.25em;color:var(--blue);text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(30px,4.6vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.08;max-width:850px}
+h1 .g{background:linear-gradient(90deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:760px;margin-top:16px;font-size:16px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px;min-width:118px}
+.stat b{display:block;font-family:var(--mono);font-size:24px;font-weight:700}
+.stat span{font-size:11px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.stat.s-dep b{color:var(--green)} .stat.s-pil b{color:var(--yellow)} .stat.s-emg b{color:var(--blue)} .stat.s-ind b{color:var(--purple)} .stat.s-tot b{color:var(--text)}
+/* sections */
+section{padding:52px 0;border-top:1px solid var(--line)}
+h2{font-size:24px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+h2 .idx{font-family:var(--mono);color:var(--blue);font-size:14px;vertical-align:middle;margin-right:10px}
+.sectionsub{color:var(--muted);margin-bottom:26px;max-width:820px;font-size:14px}
+/* exec grid */
+.exec{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:880px){.exec{grid-template-columns:1fr}}
+.execcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.execcard h3{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.execcard h3.b{color:var(--blue)}.execcard h3.g{color:var(--green)}.execcard h3.y{color:var(--yellow)}.execcard h3.r{color:var(--red)}
+.execcard ul{list-style:none}
+.execcard li{padding:7px 0;border-top:1px dashed var(--line);color:var(--muted);font-size:13.5px}
+.execcard li:first-child{border-top:none}
+.execcard li b{color:var(--text)}
+/* filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.pill{border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:12.5px;font-weight:600;border-radius:99px;padding:7px 15px;cursor:pointer;transition:.15s;font-family:var(--sans)}
+.pill:hover{color:var(--text);border-color:var(--dim)}
+.pill.on{color:#0b0e14;background:var(--blue);border-color:var(--blue)}
+.pill.st.on{background:var(--green);border-color:var(--green)}
+#q{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:99px;padding:8px 16px;font-size:13px;width:230px;font-family:var(--sans);outline:none}
+#q:focus{border-color:var(--blue)}
+.count{font-family:var(--mono);font-size:11px;color:var(--dim);margin-left:auto}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ic)}
+.chead{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.cid{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.04em}
+.badge{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.1em;border-radius:5px;padding:2.5px 8px}
+.b-DEPLOYED{background:rgba(52,168,83,.15);color:var(--green);border:1px solid rgba(52,168,83,.4)}
+.b-PILOT{background:rgba(251,188,4,.12);color:var(--yellow);border:1px solid rgba(251,188,4,.4)}
+.b-EMERGING{background:rgba(66,133,244,.13);color:var(--blue);border:1px solid rgba(66,133,244,.4)}
+.trend{font-size:13px;margin-left:auto}
+.trend.up{color:var(--green)} .trend.flat{color:var(--dim)}
+.card h3{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.cmeta{font-size:12px;color:var(--dim);margin-bottom:10px;font-weight:500}
+.cprob{font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cfoot{display:flex;align-items:center;gap:10px;margin-top:14px}
+.conf{display:flex;gap:3px}
+.conf i{width:8px;height:8px;border-radius:2px;background:var(--line)}
+.conf i.f{background:var(--ic)}
+.creg{font-family:var(--mono);font-size:10px;color:var(--dim);margin-left:auto}
+.jp{color:var(--yellow)}
+.ccos{font-size:11.5px;color:var(--dim);margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ccos b{color:var(--muted);font-weight:600}
+/* modal */
+.ovl{position:fixed;inset:0;background:rgba(5,8,13,.8);backdrop-filter:blur(6px);z-index:100;display:none;overflow-y:auto;padding:40px 16px}
+.ovl.open{display:block}
+.modal{max-width:860px;margin:0 auto;background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:34px 38px;position:relative}
+@media(max-width:640px){.modal{padding:24px 20px}}
+.mclose{position:sticky;top:0;float:right;background:var(--panel);border:1px solid var(--line);color:var(--muted);width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:15px;z-index:5}
+.mclose:hover{color:var(--text);border-color:var(--dim)}
+.modal h3{font-size:24px;font-weight:800;margin:8px 0 4px;letter-spacing:-.01em;line-height:1.2}
+.mmeta{color:var(--dim);font-size:13px;margin-bottom:22px}
+.msec{margin-top:20px}
+.msec h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.msec p,.msec li{color:var(--muted);font-size:14px}
+.msec ul{padding-left:20px}
+.msec li{margin:5px 0}
+.msec .ev li{list-style:none;position:relative;padding-left:16px}
+.msec .ev li::before{content:"›";position:absolute;left:0;color:var(--green)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+@media(max-width:640px){.kv{grid-template-columns:1fr}}
+.kv .msec{margin-top:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.gcp{background:linear-gradient(135deg,rgba(66,133,244,.1),rgba(36,193,224,.05));border:1px solid rgba(66,133,244,.35);border-radius:12px;padding:16px 18px;margin-top:22px}
+.gcp h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+.gcp p{color:var(--muted);font-size:14px}
+/* rank table */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:middle}
+tr:hover td{background:rgba(66,133,244,.04)}
+td.rid{font-family:var(--mono);font-size:11.5px;color:var(--dim);white-space:nowrap}
+td.rname{color:var(--text);font-weight:600}
+.bar{height:7px;border-radius:4px;background:var(--line);min-width:110px;position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.score{font-family:var(--mono);font-weight:700;color:var(--text)}
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+/* readiness */
+.ready{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:880px){.ready{grid-template-columns:1fr}}
+.rcol{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.rcol h3{font-size:15px;margin-bottom:14px;font-family:var(--mono);letter-spacing:.1em}
+.rcol.now h3{color:var(--green)} .rcol.next h3{color:var(--yellow)}
+.rcol ol{padding-left:22px}
+.rcol li{color:var(--muted);font-size:13.5px;margin:9px 0}
+.rcol li b{color:var(--text)}
+/* heatmap */
+.hm td,.hm th{text-align:center;font-size:12px;padding:9px 8px}
+.hm td:first-child{text-align:left;color:var(--text);font-weight:600;white-space:nowrap}
+.cell{border-radius:6px;padding:5px 4px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em}
+.hot{background:rgba(234,67,53,.17);color:#ff8a80;border:1px solid rgba(234,67,53,.4)}
+.warm{background:rgba(251,188,4,.12);color:var(--yellow);border:1px solid rgba(251,188,4,.3)}
+.quiet{background:rgba(147,160,180,.06);color:var(--dim);border:1px solid var(--line)}
+/* field kit */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);font-weight:700;font-size:13px;border-radius:10px;padding:9px 18px;cursor:pointer;font-family:var(--sans)}
+.tab.on{color:#0b0e14;background:var(--tc);border-color:var(--tc)}
+.kit{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 28px}
+.kitgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:880px){.kitgrid{grid-template-columns:1fr}}
+.kit h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 9px}
+.kit ul{list-style:none}
+.kit li{color:var(--muted);font-size:13.5px;padding:6px 0 6px 16px;position:relative}
+.kit li::before{content:"—";position:absolute;left:0;color:var(--dim)}
+.kit .obj b{color:var(--yellow);font-weight:600}
+.narr{margin-top:22px;background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:10px;padding:16px 20px;color:var(--muted);font-size:14px;font-style:italic}
+.narr b{color:var(--text);font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;display:block;margin-bottom:6px}
+/* legend + footer */
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.leg{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.leg b{font-family:var(--mono);font-size:12px}
+.leg p{font-size:12.5px;color:var(--muted);margin-top:6px}
+footer{border-top:1px solid var(--line);padding:36px 0 60px;color:var(--dim);font-size:12.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-brand{font-family:var(--mono);letter-spacing:.12em;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">AGENTIC<span class="dot">·</span>CASEBOOK<small>ENTERPRISE AGENTIC AI USE CASE CATALOG</small></div>
+  <nav class="nav">
+    <a href="#catalog">Catalog</a><a href="#rankings">Rankings</a><a href="#readiness">Readiness</a><a href="#heatmap">Heatmap</a><a href="#fieldkit">Field Kit</a><a href="#method">Method</a>
+  </nav>
+  <div class="runchip">RUN <b>#1</b> · 2026-07-04</div>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Google Cloud AI GTM Intelligence · Daily Research Run</div>
+  <h1>Where enterprise agentic AI is <span class="g">actually real</span> — evidence-graded, field-ready.</h1>
+  <p class="sub">A living catalog of agentic AI use cases across five industries, built from primary-source evidence — company announcements, earnings calls, and production metrics. Every entry carries a status, a confidence score, named adopters, and a Google Cloud play. Vendor marketing is a lead, not evidence.</p>
+  <div class="stats">
+    <div class="stat s-tot"><b>14</b><span>Use cases</span></div>
+    <div class="stat s-dep"><b>10</b><span>Deployed</span></div>
+    <div class="stat s-pil"><b>2</b><span>Pilot</span></div>
+    <div class="stat s-emg"><b>2</b><span>Emerging</span></div>
+    <div class="stat s-ind"><b>5</b><span>Industries</span></div>
+  </div>
+</div></div>
+
+<section id="exec"><div class="wrap">
+  <h2><span class="idx">A</span>Executive Summary</h2>
+  <p class="sectionsub">Inaugural run, 2026-07-04. The evidence is no longer demos — it is operating metrics from named enterprises.</p>
+  <div class="exec">
+    <div class="execcard"><h3 class="g">Signals of the run</h3><ul>
+      <li><b>40,000 prior-auth decisions/day</b> at a major US insurer — agents auto-approve the routine majority; clinicians see only judgment calls.</li>
+      <li><b>Deutsche Telekom × Google Cloud:</b> RAN Guardian has taken 100+ autonomous network remediations; major events now handled in ~1 minute, not hours.</li>
+      <li><b>Hiscox:</b> specialty quote turnaround compressed from 3 days to ~3 minutes (−99.4%).</li>
+      <li><b>Citi "Arc":</b> 1.5M automated code reviews ≈ 100K engineer-hours returned; banks now buy agent <i>platforms</i>, not point agents.</li>
+      <li><b>Morgan Stanley</b> is opening ShareWorks/Equity Edge to its clients' external AI agents — the first "agent front door" in FSI.</li>
+    </ul></div>
+    <div class="execcard"><h3 class="b">Google Cloud plays</h3><ul>
+      <li><b>Gemini Enterprise for CX</b> — 7 named retail adopters in 6 months (Macy's live in 4 weeks; Home Depot, Ulta, Kroger, Lowe's, Papa Johns, Woolworths 🌏).</li>
+      <li><b>DT MINDR reference architecture</b> — take it to every Tier-1/Tier-2 operator; Verizon-class RFPs are forming now.</li>
+      <li><b>Universal Commerce Protocol</b> (NRF 2026, with Target/Shopify/Etsy/Wayfair; Walmart aligning) — Google as the rails of agentic commerce.</li>
+      <li><b>Healthcare wedge</b> — prior-auth &amp; denials agents on Vertex AI + Document AI + Healthcare API (FHIR), with a CMS regulatory forcing function.</li>
+      <li><b>Above-the-ERP layer</b> in manufacturing — SAP Joule owns in-ERP steps; the cross-system orchestration layer is open field.</li>
+    </ul></div>
+    <div class="execcard"><h3 class="y">Patterns that matter commercially</h3><ul>
+      <li>Document-heavy <b>decisioning agents</b> (prior auth, underwriting, appeals) show 10–1000× cycle-time collapses — the fastest, best-quantified ROI anywhere.</li>
+      <li><b>Closed-loop operations agents</b> went production in &lt;12 months; telecom leads all industries (48% agentic adoption vs 26% cross-industry).</li>
+      <li><b>Platform-not-project buying</b>: Citi Arc, Epic Agent Factory, ServiceNow Autonomous Workforce, Morgan Stanley super agents.</li>
+      <li><b>Voice is the production wedge</b> in QSR and telco care — clearest labor math, highest containment.</li>
+      <li>The <b>agent-to-agent economy</b> is forming: enterprises treating other people's agents as a customer channel.</li>
+    </ul></div>
+    <div class="execcard"><h3 class="r">Competitor watch</h3><ul>
+      <li><b>OpenAI</b> — Workspace Agents for enterprises; Burger King voice pilot; ServiceNow frontier-model deal. Now a platform rival, not just a model vendor.</li>
+      <li><b>Microsoft</b> — Agent 365 ↔ ServiceNow AI Control Tower; won Uniper's SAP-procurement agents with Celonis. Owns the "governed agent estate" narrative in IT.</li>
+      <li><b>AWS</b> — selling Rufus-derived shopping AI to retailers; Bio Discovery (Apr 2026) attacks pharma R&amp;D budgets.</li>
+      <li><b>SAP / Epic / ServiceNow / Oracle</b> — vertical software owners embedding agents where workflows live; hyperscalers must win the cross-system layer.</li>
+      <li>🌏 <b>JAPAC:</b> Woolworths on Gemini CX; Hitachi &amp; NEC agent launches; SoftBank sovereign-AI push shapes Japan deals.</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="catalog"><div class="wrap">
+  <h2><span class="idx">B</span>Use Case Catalog</h2>
+  <p class="sectionsub">Click any card for the full field brief — autonomous actions, human checkpoints, evidence with sources, metrics, Google Cloud mapping, and verbatim discovery questions.</p>
+  <div class="filters">
+    <button class="pill ind on" data-ind="all">All industries</button>
+    <button class="pill ind" data-ind="retail">Retail</button>
+    <button class="pill ind" data-ind="fsi">Financial Services</button>
+    <button class="pill ind" data-ind="mfg">Manufacturing</button>
+    <button class="pill ind" data-ind="hls">Healthcare &amp; LS</button>
+    <button class="pill ind" data-ind="tel">Telecom</button>
+    <button class="pill st" data-st="DEPLOYED">Deployed only</button>
+    <input id="q" type="search" placeholder="Search use cases, companies…">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="rankings"><div class="wrap">
+  <h2><span class="idx">C</span>Commercial Potential</h2>
+  <p class="sectionsub">Weighted score: enterprise spend 35% · urgency 25% · repeatability 25% · Google Cloud fit 15%.</p>
+  <div class="tscroll"><table id="ranktable">
+    <thead><tr><th>#</th><th>ID</th><th>Use case</th><th>Spend</th><th>Urgency</th><th>Repeat</th><th>GC fit</th><th>Score</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+</div></section>
+
+<section id="readiness"><div class="wrap">
+  <h2><span class="idx">D</span>Readiness</h2>
+  <p class="sectionsub">Scored on technology maturity, evidence status, typical data availability, integration complexity (inverted), and governance clarity.</p>
+  <div class="ready">
+    <div class="rcol now"><h3>▲ SELL TODAY</h3><ol>
+      <li><b>Voice ordering (RET-QSR-001)</b> — mature stack, bounded domain, Wendy's is the Google reference.</li>
+      <li><b>Prior auth (HLS-PROV-PA-009)</b> — deployed at scale, FHIR standards exist, CMS tailwind.</li>
+      <li><b>Agentic CX (RET-CX-002)</b> — productized; Macy's live in 4 weeks.</li>
+      <li><b>Denials &amp; appeals (HLS-RCM-010)</b> — document-centric; approval loop simplifies governance.</li>
+      <li><b>UW triage (FSI-INS-UW-006)</b> — human-in-loop keeps model risk tractable.</li>
+      <li><b>Subscriber care (TEL-CS-013)</b> — established pattern, clear metrics.</li>
+      <li><b>MRO requisitions (MFG-PROC-007)</b> — bounded ERP actions with approval gates.</li>
+    </ol></div>
+    <div class="rcol next"><h3>◆ POSITION FOR NEXT 2–4 QUARTERS</h3><ol>
+      <li><b>Autonomous network (TEL-NET-RAN-012 / TEL-NET-014)</b> — buildable now; operator procurement and actuation APIs gate scale.</li>
+      <li><b>Agentic commerce (RET-AGC-003)</b> — protocols settling; sell catalog-readiness now, checkout later.</li>
+      <li><b>Bank agent platforms (FSI-BANK-PLAT-004)</b> — seed architecture for FY27 budgets.</li>
+      <li><b>Above-ERP planning agents (MFG-PLAN-008)</b> — let SAP Joule GA land; sell the cross-system layer.</li>
+      <li><b>Agent front doors (FSI-WM-005)</b> — MCP/A2A maturing; run architecture workshops now.</li>
+      <li><b>Discovery agents (HLS-PHR-011)</b> — high value, long specialist validation.</li>
+    </ol></div>
+  </div>
+</div></section>
+
+<section id="heatmap"><div class="wrap">
+  <h2><span class="idx">E</span>Monthly Industry Heatmap — July 2026</h2>
+  <p class="sectionsub">Agentic activity by industry × business function, rated on evidence volume and confidence trend. Baseline month — movement tracking starts August.</p>
+  <div class="tscroll"><table class="hm">
+    <thead><tr><th>Industry</th><th>Customer service / CX</th><th>Sales &amp; commerce</th><th>Ops / network / SC</th><th>Finance / claims / rev cycle</th><th>R&amp;D / engineering</th><th>Risk &amp; compliance</th></tr></thead>
+    <tbody>
+      <tr><td>Retail &amp; Consumer</td><td><span class="cell hot">HOT</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell warm">WARMING</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell warm">WARMING</span></td><td><span class="cell quiet">QUIET</span></td></tr>
+      <tr><td>Financial Services</td><td><span class="cell warm">WARMING</span></td><td><span class="cell warm">WARMING</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell warm">WARMING</span></td></tr>
+      <tr><td>Manufacturing &amp; SC</td><td><span class="cell quiet">QUIET</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell warm">WARMING</span></td><td><span class="cell quiet">QUIET</span></td></tr>
+      <tr><td>Healthcare &amp; LS</td><td><span class="cell warm">WARMING</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell warm">WARMING</span></td></tr>
+      <tr><td>Telecommunications</td><td><span class="cell hot">HOT</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell hot">HOT</span></td><td><span class="cell quiet">QUIET</span></td><td><span class="cell warm">WARMING</span></td><td><span class="cell quiet">QUIET</span></td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="fieldkit"><div class="wrap">
+  <h2><span class="idx">F</span>Field Action Kit</h2>
+  <p class="sectionsub">Conversation starters, objection handling, and a first-meeting talk track per industry — grounded in this run's evidence, liftable verbatim.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="kit" id="kit"></div>
+</div></section>
+
+<section id="method"><div class="wrap">
+  <h2><span class="idx">G</span>Evidence Method</h2>
+  <p class="sectionsub">Every card carries exactly one status. The categories are never blurred; vendor marketing alone never supports DEPLOYED.</p>
+  <div class="legend">
+    <div class="leg"><b style="color:var(--green)">DEPLOYED</b><p>Running in production at a named company at meaningful scale — adopter-side or credible secondary source, dated.</p></div>
+    <div class="leg"><b style="color:var(--yellow)">PILOT</b><p>Named pilot, POC, or limited rollout with explicit pilot framing.</p></div>
+    <div class="leg"><b style="color:var(--blue)">EMERGING</b><p>Repeatable pattern across ≥2 independent signals; no named production deployment yet.</p></div>
+    <div class="leg"><b style="color:var(--dim)">SPECULATIVE</b><p>Plausible but unproven. Excluded from "ready now" rankings.</p></div>
+    <div class="leg"><b style="color:var(--cyan)">CONFIDENCE 1–5</b><p>5 = multiple named production deployments with quantified outcomes · 3 = named pilots or GA product with early customers · 1 = single promotional source.</p></div>
+    <div class="leg"><b style="color:var(--purple)">AGENTIC BAR</b><p>The system must plan, use tools, or take multi-step autonomous action. Pure content generation or single-turn Q&amp;A is excluded (e.g., Epic "Art" documentation is held at watchlist).</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <div class="foot-brand">AGENTIC·CASEBOOK — casestudies.aitokenomics.app</div>
+    <div style="margin-top:6px">Run #1 · 2026-07-04 · 14 cards added (10 deployed, 2 pilot, 2 emerging) · next weekly synthesis Mon 2026-07-06.</div>
+  </div>
+  <div style="max-width:420px">Compiled from public sources for field enablement. Statuses and confidence reflect evidence available on the run date; sources are linked inside each card. Not an official Google Cloud publication.</div>
+</div></footer>
+
+<div class="ovl" id="ovl"><div class="modal" id="modal"></div></div>
+
+<script>
+const IC={retail:"#4285F4",fsi:"#34A853",mfg:"#FBBC04",hls:"#EA4335",tel:"#A142F4"};
+const IN={retail:"Retail & Consumer",fsi:"Financial Services",mfg:"Manufacturing & Supply Chain",hls:"Healthcare & Life Sciences",tel:"Telecommunications"};
+
+const CARDS=[
+{id:"RET-QSR-001",ind:"retail",name:"Autonomous drive-thru & phone voice ordering agent",sub:"Quick-service restaurants",func:"Customer service & order capture",status:"DEPLOYED",conf:4,trend:"up",region:"Americas",
+problem:"Labor shortage at order stations, order errors, missed phone orders, and slow drive-thru throughput at peak.",
+agent:"Greets, takes multi-item natural-language orders with interruptions and modifications, validates against the live menu and 86'd items, applies upsell logic, prices the cart, and commits the order to the POS. Phone variants handle reservations and FAQs end to end.",
+hitl:"Crew confirms cart at the window; agent escalates on low confidence, complex complaints, or payment disputes; manager alerts on unavailable items.",
+evidence:[["QSR Pro — McDonald's, Wendy's & Taco Bell deploy voice ordering at scale (2026)","https://www.qsr.pro/articles/ai-drive-thru-speakers-order-accuracy-2026"],["Loman — Burger King 'Patty' (OpenAI) piloted across 500 restaurants, Feb 2026; Bojangles 'Bo-Linda' (2026-05)","https://loman.ai/blog/artificial-intelligence-drive-thru-voice-ai-qsr"]],
+cos:"McDonald's · Wendy's (Google Cloud FreshAI) · Taco Bell/KFC · Burger King (OpenAI pilot) · Bojangles · White Castle · Domino's",
+value:"1–2 labor-hours per store per day redeployed plus order-accuracy gains; est. $15–40K/store/yr (estimate).",
+metrics:"Order accuracy % · containment rate · avg service time · upsell attach · cars/hour at peak",
+gcp:"Gemini Live audio for dialog; Vertex AI Agent Builder for agent + POS tools; CCAI for telephony; Cloud Run connectors; BigQuery order analytics. Wendy's FreshAI is the existing Google reference — Burger King going OpenAI makes this a live two-horse race.",
+why:"Named references and hard labor math make this the fastest retail close; the ops buyer already has budget.",
+q:["What % of drive-thru/phone orders are abandoned or wrong today?","What's your 86-item sync latency to digital channels?","Which POS, and how locked is it?","Have you piloted voice AI before — what failed?","What's the peak-hour labor gap per store?"],
+demo:"Demo: Gemini Live agent taking a messy multi-modification order against a real menu JSON with POS write-back stub. Workshop: half-day voice-ops readiness — menu data audit + containment modeling."},
+
+{id:"RET-CX-002",ind:"retail",name:"Agentic shopping assistant with autonomous service resolution",sub:"Grocery · home improvement · beauty · QSR",func:"Customer service + digital commerce",status:"DEPLOYED",conf:4,trend:"up",region:"Americas + JAPAC 🌏",
+problem:"Shopping and service are siloed: a dissatisfied customer needs three contacts (support, returns, re-order) to fix one problem; conversion on complex products is low.",
+agent:"Understands intent and executes multi-step tasks with consent — e.g., runs a shade-match assessment on a beauty return, triggers a replacement from local inventory, and applies a goodwill credit in one interaction. Product Q&A grounded in catalog and how-to content (Home Depot Magic Apron).",
+hitl:"Refund/credit thresholds, fraud flags, escalation to a live agent.",
+evidence:[["Google Cloud press release — Gemini Enterprise for Customer Experience launch (Kroger, Lowe's, Papa Johns, Woolworths)","https://www.googlecloudpresscorner.com/2026-01-11-Google-Cloud-Brings-Shopping-and-Customer-Service-Together-with-Gemini-Enterprise-for-Customer-Experience"],["Google Cloud Next '26 — Macy's 'Ask Macy's' built in 4 weeks; Home Depot Magic Apron + voice agents; Ulta AI","https://cloud.google.com/transform/next-26-building-the-agentic-enterprise-industry-highlights"]],
+cos:"Macy's · The Home Depot · Ulta · Kroger · Lowe's · Papa Johns · Woolworths 🌏",
+value:"Industry benchmarks suggest 20–40% contact deflection and single-digit conversion lift (estimate).",
+metrics:"Containment · CSAT · assisted-session conversion · AOV · repeat-contact rate",
+gcp:"This IS the Google play — Gemini Enterprise for CX productized; Apigee to OMS/commerce tools; BigQuery + Looker for CX analytics. Neutral-vs-Amazon positioning wins retail CIOs.",
+why:"Live named references across grocery, beauty, home improvement, and QSR; 'Macy's in four weeks' is the speed proof.",
+q:["How many contacts does a damaged-order journey take today?","Can your OMS execute a replacement order via API?","Where does shopping assistance stop and service begin in your org?","Current containment rate and cost per contact?","Who owns the agent roadmap — digital or care?"],
+demo:"Demo: return-to-replacement flow in one conversation on the retailer's public catalog. Workshop: full-day CX-agent design sprint mapping the top five service journeys to autonomous actions and guardrails."},
+
+{id:"RET-AGC-003",ind:"retail",name:"Agent-ready commerce endpoint (UCP / ACP readiness)",sub:"E-commerce & marketplaces",func:"Sales & digital commerce",status:"EMERGING",conf:3,trend:"up",region:"Americas",
+problem:"Consumer AI assistants (ChatGPT, Gemini, Rufus) are becoming a demand channel; retailers whose catalogs and checkout aren't agent-readable lose the sale invisibly.",
+agent:"Consumer-side agents discover products, compare, assemble carts, and complete checkout via protocol (Google's Universal Commerce Protocol; OpenAI/Stripe Agentic Commerce Protocol); retailer-side systems expose inventory, pricing, and checkout to authenticated agents.",
+hitl:"Shopper approves the purchase; retailer sets agent-channel pricing and promo rules.",
+evidence:[["24/7 Wall St — Walmart's Google AI bet; UCP launched at NRF 2026 with Shopify, Etsy, Wayfair, Target (2026-07-02)","https://247wallst.com/investing/2026/07/02/agentic-shopping-is-coming-these-stocks-will-ride-walmarts-google-ai-bet/"],["GeekWire — Amazon offers Rufus-derived shopping AI to outside retailers (Rufus: ~$12B incremental sales claim)","https://www.geekwire.com/2026/amazon-offers-its-ai-shopping-tech-to-outside-retailers-in-new-phase-of-agentic-commerce-race/"],["CNBC — OpenAI's agentic shopping retry (2026-03-20)","https://www.cnbc.com/2026/03/20/open-ai-agentic-shopping-etsy-shopify-walmart-amazon.html"]],
+cos:"Walmart (Sparky) · Target · Shopify · Etsy · Wayfair · Amazon · PacSun (Agentforce + OpenAI)",
+value:"Accenture: >30% of online commerce (~$3.1T) could run through agents by 2030 — directional.",
+metrics:"Agent-originated revenue · catalog agent-readability coverage · agent checkout completion · channel share",
+gcp:"UCP adoption; Gemini Enterprise for CX as the retailer-side agent; Apigee for agent auth and rate policy; BigQuery for agent-channel attribution.",
+why:"A land-grab conversation with the Chief Digital Officer now — protocol camps harden in 2026, and Google has the credible neutral-rails story vs Amazon.",
+q:["What % of traffic already comes from AI assistants?","Is your catalog exposed via API with real-time inventory?","Which protocol camps are you evaluating — UCP, ACP, both?","How will you attribute agent-originated revenue?","What's your bot policy when the bot has the customer's credit card?"],
+demo:"Demo: Gemini-based agent completing a purchase against a UCP-compliant sandbox storefront. Workshop: half-day agentic-commerce readiness — catalog audit + protocol strategy."},
+
+{id:"FSI-BANK-PLAT-004",ind:"fsi",name:"Enterprise agent platform with production code & research agents (Citi 'Arc')",sub:"Retail, corporate & investment banking",func:"IT/engineering + cross-functional ops",status:"DEPLOYED",conf:4,trend:"up",region:"Americas",
+problem:"Thousands of manual research, client-prep, and engineering-review tasks; agent sprawl risk without a governed platform.",
+agent:"Platform-hosted agents run research, client-meeting preparation, and automated code review at scale (1.5M+ reviews). Agents are built once, governed centrally, and reused across businesses.",
+hitl:"Engineers accept/reject review findings; bankers approve client-facing outputs; platform-level approval workflows.",
+evidence:[["CIO Dive — Citi launches Arc to scale AI agents across the business (2026-04)","https://www.ciodive.com/news/citi-launches-arc-scale-ai-agents/819113/"],["Globe & Mail — 10,000+ engineers on agentic tools; 1.5M automated code reviews ≈ 100K hours","https://www.theglobeandmail.com/investing/markets/stocks/JPM/pressreleases/3035114/citigroup-bets-big-on-ai-to-drive-efficiency-long-term-growth/"],["Banking Dive — JPMorgan ($19.8B tech budget) keeping agentic tooling in-house; big-bank security posture","https://www.bankingdive.com/news/banks-ai-push-accelerates-jpmorgan-stanley-citi-bny-goldman-security-worries/817923/"]],
+cos:"Citi (Arc) · corroborating: JPMorgan · Goldman Sachs · BNY · Morgan Stanley",
+value:"~100K developer-hours from code review alone (sourced); research/client-prep value unquantified.",
+metrics:"Hours returned per engineer/analyst · agent reuse across LOBs · review acceptance rate · time-to-production for new agents",
+gcp:"Gemini Enterprise as the governed platform; Gemini for code; Vertex AI for custom agents; SecOps + IAM/DLP/SCC for the governance evidence banks' model-risk teams demand. JPMorgan's 'no third-party' stance means the winning pitch is infrastructure + models under their control.",
+why:"Every top-50 bank is deciding build-vs-buy for its 'Arc' in 2026 — the deal is platform-sized, not use-case-sized.",
+q:["Do you have a central agent registry/governance function today?","How many GenAI POCs exist across LOBs, and how many share infrastructure?","What does model risk management require before an agent can act?","What's your code-review cycle time?","Where will agent audit logs live for regulators?"],
+demo:"Demo: governed code-review agent on a sample repo with a full audit trail in SecOps. Workshop: full-day agent-platform operating model with CTO/CISO/MRM."},
+
+{id:"FSI-WM-005",ind:"fsi",name:"Agentic access to wealth platforms + advisor 'super agents' (Morgan Stanley)",sub:"Wealth & asset management",func:"Advisory · plan administration · client service",status:"PILOT",conf:3,trend:"up",region:"Americas",
+problem:"3,400 corporate stock-plan clients interact through human-built UIs; service headcount scales linearly; advisors drown in prep and admin.",
+agent:"External client agents pull data and insights directly from ShareWorks and Equity Edge via MCP-style interfaces. Internally, 'super agents' composed of hundreds of task agents answer client questions, open accounts, move money, and (roadmap) assemble portfolios.",
+hitl:"Advisor approval on recommendations; money movement above thresholds; suitability and compliance review.",
+evidence:[["CNBC — Morgan Stanley opens its trillion-dollar wealth funnel to AI agents (2026-06-03)","https://www.cnbc.com/2026/06/03/ai-agents-morgan-stanley-wealth-management-funnel.html"],["Financial Planning — the AI 'super agents' coming to Morgan Stanley","https://www.financial-planning.com/news/behind-the-marvel-movie-inspired-ai-super-agents-coming-to-morgan-stanley"],["CDO Magazine — 98% advisor adoption of the AI assistant base layer","https://www.cdomagazine.tech/aiml/98-of-morgan-stanley-wealth-management-advisors-use-its-ai-chatbot-with-improved-productivity-cao-explains-how"]],
+cos:"Morgan Stanley (OpenAI partnership)",
+value:"Scaling plan administration across 3,400 corporate clients without headcount (order-of-magnitude estimate: thousands of service FTE-hours/yr).",
+metrics:"% clients on agentic access · agent-served requests vs human tickets · account-opening cycle time · advisor hours returned",
+gcp:"Counter-architecture for the rest of the industry racing to respond: Vertex AI + Agent Builder with A2A/MCP, AlloyDB for agent state, Apigee as the governed 'agent front door', IAM/DLP entitlements per agent.",
+why:"First named case of a bank exposing production systems to customers' agents — every custodian and record-keeper now needs an agent-front-door strategy.",
+q:["When a client's agent calls your API tomorrow, what happens?","Which platforms would you expose to external agents first?","How do you authenticate an agent vs a user?","What compliance sign-off would agent-initiated transactions need?","What's your MCP/A2A position?"],
+demo:"Demo: external agent querying a mock plan-admin API through Apigee with per-agent entitlements. Workshop: half-day agent-front-door architecture session with platform + compliance leads."},
+
+{id:"FSI-INS-UW-006",ind:"fsi",name:"Commercial & specialty underwriting submission triage agent",sub:"Insurance — P&C, specialty/E&S, London Market",func:"Underwriting",status:"DEPLOYED",conf:4,trend:"up",region:"Americas + EMEA",
+problem:"Underwriters spend most of their time ingesting broker submissions (unstructured emails, PDFs, schedules) and triaging rather than selecting risk; slow quotes lose brokers.",
+agent:"Ingests every submission, extracts and enriches risk data, scores against appetite, prioritizes the queue, drafts quotes for in-appetite risks, and routes routine decisions straight through. Hiscox: 3 days → ~3 minutes on London Market specialty lines. AIG: submission ingestion and prioritization for E&S.",
+hitl:"Underwriter owns final pricing and bind; referrals outside appetite or authority.",
+evidence:[["Vantage Point — Insurtech Trends 2026: AIG's underwriting agent (Anthropic + Palantir) called the most-cited production deployment of 2026; Hiscox −99.4% quote cycle","https://vantagepoint.io/blog/sf/insights/insurtech-trends-2026-ai-claims-underwriting"],["Microsoft — how agentic AI is reshaping insurance (2026-02-18, pattern corroboration)","https://www.microsoft.com/en-us/microsoft-cloud/blog/financial-services/2026/02/18/from-bottlenecks-to-breakthroughs-how-agentic-ai-is-reshaping-insurance/"],["SG Analytics — STP rates jumping from 10–15% to 70–90% on eligible lines (directional)","https://www.sganalytics.com/blog/ai-insurance-underwriting-claims-fraud/"]],
+cos:"AIG (Anthropic + Palantir) · Hiscox",
+value:"Quote cycle −99% (Hiscox, sourced); submission-to-quote capacity up multiples; better risk selection.",
+metrics:"Submission-to-quote time · quote ratio on in-appetite risks · STP % · hit ratio · loss-ratio drift (guardrail)",
+gcp:"Document AI for submission ingestion; Gemini long-context for risk narratives; Vertex AI Agent Builder for triage; BigQuery for appetite/portfolio analytics; DLP for PII. Incumbent evidence is Anthropic/Palantir and Azure — lead with document + long-context strength and Lloyd's-friendly residency.",
+why:"Every specialty/E&S carrier has the same broker-submission pain; Hiscox's three-days-to-three-minutes number is the best FSI conversation-opener available.",
+q:["What's your median submission-to-quote time?","What % of submissions never get quoted for lack of capacity?","Where does appetite live — documents or rules?","Which lines have API-callable rating engines?","What would MRM need to approve straight-through quoting?"],
+demo:"Demo: broker email → extracted risk profile → appetite score → draft quote on synthetic submissions. Workshop: half-day submission-triage value mapping with UW leadership."},
+
+{id:"MFG-PROC-007",ind:"mfg",name:"Autonomous MRO material & service requisition agent (Uniper)",sub:"Energy / process — generalizes to all asset-heavy manufacturing",func:"Procurement + maintenance planning",status:"DEPLOYED",conf:4,trend:"up",region:"EMEA",
+problem:"Manual component planning for maintenance causes material shortfalls, expedite fees, and deferred maintenance windows.",
+agent:"Detects upcoming material and service needs from process data, creates SAP requisitions and orders, orchestrates approvals in Teams, and replaces reactive component planning with proactive replenishment (Celonis process intelligence + Copilot/Power Automate orchestration).",
+hitl:"Approvals in Teams above spend thresholds; planner oversight of proposals; segregation of duties preserved.",
+evidence:[["Microsoft Cloud Blog — Supply Chain 2.0: Uniper automated material/service needs with Celonis + Microsoft (2026-03-24); global pharma agentic returns process with multi-million-euro claims","https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2026/03/24/supply-chain-2-0-how-microsoft-is-powering-simulations-ai-agents-and-physical-ai/"]],
+cos:"Uniper · Celonis · Microsoft (vendor-side source; adopter named, workflow specific)",
+value:"Reduced expedites and stockouts on MRO parts; multi-million-euro productivity in the pharma logistics parallel (sourced, vendor-side).",
+metrics:"Stockout-driven maintenance delays · expedite spend · requisition cycle time · planner hours/week · auto-PO acceptance rate",
+gcp:"Counter-architecture: Cortex Framework lands SAP data in BigQuery; Vertex AI agent calls SAP BTP APIs via Apigee; Gemini reasons over maintenance plans; Looker for procurement analytics. Today this motion is being won by Microsoft + Celonis — urgency is competitive.",
+why:"SAP-heavy manufacturers are the largest Google Cloud whitespace, and this proves the agent-on-SAP motion is real.",
+q:["How many hours/week do planners spend converting maintenance plans to requisitions?","What's your expedite-fee run rate?","Is SAP data already replicated to a cloud warehouse?","Which approvals could be threshold-automated tomorrow?","Who owns process mining today?"],
+demo:"Demo: agent reading a synthetic maintenance plan + stock table in BigQuery and drafting SAP requisitions via API stub. Workshop: half-day process-mining-to-agent opportunity scan on one plant."},
+
+{id:"MFG-PLAN-008",ind:"mfg",name:"In-ERP supply chain planning & fulfillment agents (SAP Joule family)",sub:"Cross-vertical — automotive, CPG, industrial",func:"Supply chain planning · order management · warehousing",status:"EMERGING",conf:3,trend:"up",region:"EMEA (announcement) · global relevance",
+problem:"Planning decisions — order release, material substitution, fulfillment prioritization — require swivel-chair checks across availability, capacity, and scheduling.",
+agent:"SAP's Hannover Messe 2026 agents: the Production Planning & Operations agent validates material availability, capacity, and scheduling and proposes alternatives (substitute components, rescheduling); Material Reservation and Outbound Task Orchestration agents automate reservation logic and resolve picking/packing exceptions in real time.",
+hitl:"Planner reviews and approves Joule recommendations before release.",
+evidence:[["SAP News — six supply chain AI agents at Hannover Messe 2026; GA staggered Q2–Q3 2026 (2026-04)","https://news.sap.com/2026/04/sap-at-hannover-messe-2026-agentic-ai-resilient-manufacturing/"],["ERP Today — new AI agents push ERP execution closer to the edge of operations (2026-04)","https://erp.today/sap-at-hannover-messe-2026-new-ai-agents-push-erp-execution-closer-to-the-edge-of-operations/"]],
+cos:"None named — SAP vendor GA; EMERGING despite GA status",
+value:"Planner productivity + service-level protection; unquantified by sources (est. single-digit % OTIF improvement potential).",
+metrics:"Order-release cycle time · OTIF · exception resolution time · planner touches per order",
+gcp:"SAP owns the in-ERP step; the Google play is the cross-system layer SAP can't see — Cortex + BigQuery unifying SAP with carrier, supplier-risk, and demand data; Vertex AI agents for multi-tier disruption response; Looker control-tower views.",
+why:"Every S/4 customer will hear 'Joule agents' from SAP this year — sellers need the above-ERP counter-story ready or lose the agent conversation by default.",
+q:["Which Joule agents are on your SAP roadmap?","Which decisions need data SAP doesn't hold?","Where does your control tower live?","How do you handle multi-tier supplier disruption today?","What's your S/4 migration timing?"],
+demo:"Demo: disruption-response agent joining SAP order data (Cortex/BigQuery) with external carrier + weather signals. Workshop: half-day 'agents above the ERP' architecture session."},
+
+{id:"HLS-PROV-PA-009",ind:"hls",name:"Prior-authorization decisioning & submission agent",sub:"Payers + providers (two-sided workflow)",func:"Utilization management / revenue cycle",status:"DEPLOYED",conf:5,trend:"up",region:"Americas",
+problem:"PA is healthcare's most-hated workflow: days of delay, physician abrasion, denials — and CMS-mandated electronic PA timelines (CMS-0057) are tightening.",
+agent:"Payer side: ingests requests, retrieves policy criteria, checks clinical documentation against criteria, and auto-approves qualifying cases — a major insurer handles 40,000 PA decisions/day with the majority autonomous. Provider side: Epic's 'Penny' assembles and submits PA packages programmatically via FHIR Da Vinci PAS (Summit Health: −42% submission time; 92% of outputs accepted without edits).",
+hitl:"Regulatory posture: agents may auto-approve, never auto-deny — every adverse determination routes to clinician review.",
+evidence:[["Prosper — automated PA landscape: insurer at 40K decisions/day; Cohere Health up to 8x ROI, 94% provider satisfaction","https://www.getprosper.ai/blog/automated-prior-authorization-software"],["Epic — Summit Health Penny results; >20% drop in coding-related denials at active users","https://www.epic.com/epic/post/real-results-right-now-how-epic-ai-is-reducing-costs-improving-care-and-helping-patients/"],["MobiHealthNews — blueprint for agentic AI in claims and prior authorization","https://www.mobihealthnews.com/news/creating-blueprint-agentic-ai-claims-and-prior-authorization"]],
+cos:"Cohere Health · Summit Health (Epic Penny) · Epic · unnamed major insurer (40K/day)",
+value:"Up to 8x ROI (Cohere claim); PA admin ~$14/manual transaction industry-wide, 60–80% automatable (estimate on CAQH baselines).",
+metrics:"Auto-determination rate · turnaround time · denial overturn rate · physician abrasion · cost per PA",
+gcp:"Vertex AI + Gemini for criteria matching; Document AI for clinical docs; Healthcare API (FHIR) for Da Vinci PAS; BigQuery for UM analytics. Strong fit where payers want payer-side, non-Epic infrastructure.",
+why:"CMS-0057 deadlines (2026–2027) make this a compliance-driven budget line, not discretionary — the rare agentic use case with a regulatory forcing function. Both payer COOs and provider CFOs buy.",
+q:["What's your CMS-0057 electronic PA compliance plan?","Current auto-determination rate?","Cost per PA transaction?","Which service lines generate the most PA volume and denials?","Epic Penny, or build/buy on the payer side?"],
+demo:"Demo: PA request + synthetic clinical note → criteria check → FHIR PAS submission with audit trail. Workshop: half-day PA-automation ROI model with UM + revenue-cycle leaders."},
+
+{id:"HLS-RCM-010",ind:"hls",name:"Claims denial & appeals resolution agent",sub:"Providers & hospital systems",func:"Revenue cycle — denials management",status:"DEPLOYED",conf:4,trend:"up",region:"Americas",
+problem:"Denials cost health systems 2–5% of net revenue; appeals require nurses to read denial letters and assemble documentation — 15+ day cycles mean written-off revenue.",
+agent:"Reads denial letters, determines denial reason and appealability, retrieves and assembles corrected clinical documentation, drafts the appeal package, and routes for nurse approval. One health system cut the appeals cycle from 15–16 days to 1–2. Billing-inquiry agents (Epic 'Emmie') resolve patient billing questions autonomously — Rush saw −58% billing-related service messages.",
+hitl:"Nurse approves every appeal before submission; escalation on clinical-judgment denials.",
+evidence:[["Keragon — health system appeals cycle 15–16 days → 1–2 days with agentic assembly + nurse approval","https://www.keragon.com/blog/ai-agent-examples"],["Epic — Rush University Medical Center 'Emmie': −58% billing-related customer service messages","https://www.epic.com/epic/post/real-results-right-now-how-epic-ai-is-reducing-costs-improving-care-and-helping-patients/"],["Fierce Healthcare — HIMSS26: Epic previews Agent Factory (2026-03)","https://www.fiercehealthcare.com/ai-and-machine-learning/himss26-epic-expands-ai-roadmap-previews-factory-build-and-orchestrate-ai"]],
+cos:"Rush University Medical Center (Epic Emmie) · Epic · unnamed system (16d→2d; to pin down)",
+value:"85–90% appeal-cycle reduction (sourced); recovered revenue on otherwise-timed-out appeals (est. 0.5–1% of net revenue).",
+metrics:"Appeal turnaround · overturn rate · appeals per FTE · aged-AR days · deadline write-offs",
+gcp:"Document AI for denial letters; Gemini + Vertex for appeal assembly with chart citations; Healthcare API for retrieval; BigQuery + Looker denials analytics. In Epic shops, position alongside Emmie/Penny for payer-facing and analytics layers.",
+why:"Provider CFOs are the most motivated buyers in healthcare right now — denials are a board-level number and this has named, quantified wins.",
+q:["Denial rate and overturn rate today?","How many appeals time out unfiled?","Appeals per nurse FTE per day?","Which payers drive 80% of denials?","Epic agent roadmap vs best-of-breed?"],
+demo:"Demo: synthetic denial letter → parsed reason → assembled appeal draft with chart citations. Workshop: half-day denials heat-map + agent ROI session with the revenue-cycle VP."},
+
+{id:"HLS-PHR-011",ind:"hls",name:"Multi-agent drug discovery & synthesis planning",sub:"Pharma & biotech R&D",func:"R&D — discovery chemistry, competitive intelligence",status:"DEPLOYED",conf:4,trend:"up",region:"EMEA + Americas",
+problem:"Design–synthesize–test cycles are slow and expert-gated; competitive-trial intelligence is manual and lagging.",
+agent:"AstraZeneca's ChatInvent multi-agent system handles molecular design and synthesis planning inside the discovery pipeline; J&J agents determine optimal timing of critical synthesis steps; AZ–Owkin agents monitor competitive intelligence across trials and disease areas; Isomorphic Labs advances computationally designed assets to the clinic.",
+hitl:"Chemists approve designs and routes; all lab execution supervised; CI outputs reviewed by strategy teams.",
+evidence:[["Life Science Daily — AZ ChatInvent in the discovery pipeline; J&J autonomous synthesis-timing workflows","https://lifesciencedaily.news/agentic-ai-in-drug-discovery-why-big-pharma-is-all-in/"],["AIM Media House — AZ–Owkin 3-year deal incl. agentic CI; Isomorphic clinical progression","https://aimmediahouse.com/ai-lifesciences/2026-is-the-year-ai-drug-discovery-meets-clinical-reality"],["IntuitionLabs — pharma × hyperscaler deals tracker; AWS Bio Discovery launch (Apr 2026)","https://intuitionlabs.ai/articles/big-pharma-hyperscaler-ai-deals-tracker-2026"]],
+cos:"AstraZeneca · Johnson & Johnson · Moderna · Owkin · Isomorphic Labs (Alphabet) · Exscientia",
+value:"Design-cycle compression (weeks → days, estimate); CI coverage breadth; strategic value far exceeds cost savings.",
+metrics:"Design-make-test cycle time · synthesis-route success rate · candidates per program-year · CI alert lead time",
+gcp:"Isomorphic Labs is the Alphabet halo story; Vertex AI for custom scientific agents; Gemini long-context for literature; GKE for simulation compute; BigQuery for assay data. AWS Bio Discovery is the direct competitive threat in this budget.",
+why:"Pharma R&D budgets dwarf IT budgets — agentic discovery is how Google Cloud reaches the science budget.",
+q:["How many design-make-test cycles per quarter per program?","Where do synthesis plans queue on human experts?","What's your multi-agent orchestration framework?","How is CI on competitor trials done today?","Where's the GxP boundary for agent outputs?"],
+demo:"Demo: literature + registry research agent producing a competitive-trial landscape with citations. Workshop: full-day discovery-workflow agent mapping with comp-chem leads."},
+
+{id:"TEL-NET-RAN-012",ind:"tel",name:"Self-healing RAN guardian agent (Deutsche Telekom MINDR — built with Google Cloud)",sub:"Mobile operators · network infrastructure & operations",func:"Network operations — RAN assurance",status:"DEPLOYED",conf:4,trend:"up",region:"EMEA",
+problem:"Major events and anomalies degrade RAN performance; manual event management takes hours of specialist time, and customers feel it before humans react.",
+agent:"MINDR — a multi-agent system built with Google Cloud — continuously monitors the network, predictively evaluates developments, and responds autonomously. The RAN Guardian Agent has triggered 100+ autonomous remediation actions (including Christmas-event load), cutting major-event management from hours to ~1 minute.",
+hitl:"NOC oversight; action policies bound what the agent may reconfigure; escalation beyond policy.",
+evidence:[["Deutsche Telekom — MINDR: AI agents in the network, with Google Cloud (launched Nov 2025)","https://www.telekom.com/en/media/media-information/archive/mindr-ai-agents-in-the-network-1102724"],["Deutsche Telekom — MWC 2026 session: scaling agentic AI for self-healing autonomous networks (2026-03)","https://mwc.telekom.com/session/scaling-agentic-ai-for-self-healing-autonomous-networks"],["NVIDIA telco survey — network automation now the #1 telco AI investment area (2026)","https://blogs.nvidia.com/blog/ai-in-telco-survey-2026/"]],
+cos:"Deutsche Telekom + Google Cloud",
+value:"Event-management time −99%+ (sourced); avoided customer-impacting minutes at national scale.",
+metrics:"MTTR · autonomous-action count & success rate · customer-impacting minutes avoided · NOC escalations per event",
+gcp:"THE reference: Gemini + Vertex AI for agent reasoning; multi-agent orchestration (A2A); BigQuery for petabyte telemetry; GKE near-net runtime. The single most differentiating Google Cloud agentic proof point across all five industries.",
+why:"A Tier-1 operator publicly credits Google Cloud for production autonomous network operations. Every CTO knows DT.",
+q:["What TM Forum autonomy level (L1–L5) is your network today?","How long does a major-event response take?","Which RAN actions would you allow an agent to take unattended?","Where does RAN telemetry land today, and at what latency?","What's your vendor mix for actuation APIs?"],
+demo:"Demo: anomaly-to-remediation loop on synthetic RAN telemetry in BigQuery with policy-bounded actions. Workshop: full-day autonomous-network maturity assessment against the DT/MINDR reference."},
+
+{id:"TEL-CS-013",ind:"tel",name:"Autonomous subscriber care agent at scale (Vodafone TOBi)",sub:"Mobile operators",func:"Customer service",status:"DEPLOYED",conf:4,trend:"flat",region:"EMEA + Americas",
+problem:"Tens of millions of routine service contacts — billing, plan changes, troubleshooting — at high cost and inconsistent quality across markets.",
+agent:"TOBi handles 10M+ interactions/month across 15 markets, resolving ~70% without human escalation — diagnosing issues, executing account actions, troubleshooting connectivity. T-Mobile's IntentCX proactively detects network-affected customers and reaches out with fixes before they call.",
+hitl:"Escalation to human agents on the ~30%; sensitive actions (cancellations, credits above threshold) gated.",
+evidence:[["AI Magicx — telecom leading agentic adoption: TOBi 15 markets, 10M+/mo, 70% resolution; IntentCX proactive care (secondary; primary corroboration queued)","https://www.aimagicx.com/blog/ai-telecom-enterprise-agentic-adoption-2026"],["Telecoms Tech News — what operators are learning from deploying AI agents at scale","https://www.telecomstechnews.com/news/what-telecom-operators-are-learning-from-deploying-ai-agents-at-scale/"]],
+cos:"Vodafone (TOBi) · T-Mobile (IntentCX)",
+value:"7M+ contained interactions/month; at €2–4 saved per contained contact ≈ €170–340M/yr order-of-magnitude (estimate).",
+metrics:"Containment % · CSAT/NPS delta · cost per contact · proactive-resolution rate · repeat-contact rate",
+gcp:"CCAI / Gemini Enterprise for CX as the modernization path; Gemini tool-use into BSS via Apigee; BigQuery joining network telemetry to care — the IntentCX pattern is a BigQuery + Vertex story.",
+why:"Proactive 'network event → customer outreach' is the upsell beyond classic bots — it requires exactly the data unification Google Cloud sells.",
+q:["Current containment rate, and where did it plateau?","Can care systems see per-subscriber network status?","Which account actions can your bot execute vs just explain?","Proactive-care ambitions?","Cost per contact by channel?"],
+demo:"Demo: care agent that detects (synthetic) outage impact and drafts proactive outreach with resolution. Workshop: half-day containment-ceiling diagnostic."},
+
+{id:"TEL-NET-014",ind:"tel",name:"Hierarchical autonomous-network agent fleet (Verizon)",sub:"Fixed & mobile · network infrastructure & operations",func:"Network operations",status:"PILOT",conf:3,trend:"up",region:"Americas + JAPAC signal 🌏",
+problem:"Rule-based automation can't handle network complexity; Verizon is moving to a live hierarchy of independent, permanent AI agents running 24/7 directly on infrastructure.",
+agent:"Per Verizon, agents act as the 'operational control system of the network,' self-organizing beyond centralized rules — capacity actions, fault response, optimization (pilot scope). Telstra 🌏 is architecting the ontology-driven 'knowledge plane' agents will need at autonomy levels 4–5.",
+hitl:"Pilot governance; engineers supervise the agent hierarchy.",
+evidence:[["Verizon — architecting autonomy: network infrastructure for the agentic era (primary source)","https://www.verizon.com/about/news/verizon-architecting-network-autonomy"],["Light Reading — Verizon joins AT&T by 'Running on ODA' (standards alignment)","https://www.lightreading.com/ai-machine-learning/verizon-joins-at-t-by-running-on-oda-"]],
+cos:"Verizon · AT&T (ODA) · Telstra 🌏 (architecture direction)",
+value:"Not evidenced (pilot); DT's MINDR numbers are the proxy.",
+metrics:"Autonomy-level progression · autonomous-action share · MTTR · opex per network element",
+gcp:"Same play as the DT reference — lead with MINDR architecture + BigQuery telemetry backbone; TM Forum ODA alignment matters in the RFP.",
+why:"Confirms DT isn't a one-off: US Tier-1s are building the same thing, and the RFPs will be written in the next 2–4 quarters.",
+q:["Is your autonomous-network program centralized or per-domain?","ODA alignment?","Build partner selected?","Where do agents run — on-net edge or cloud?","What blocked your last closed-loop automation attempt?"],
+demo:"Demo: hierarchical two-agent (cell + region) coordination on synthetic load data. Workshop: autonomous-network reference-architecture day vs the DT/MINDR blueprint."}
+];
+
+const KITS={
+retail:{name:"Retail & Consumer",color:IC.retail,
+starters:["“Macy's stood up a production shopping agent in four weeks on Gemini Enterprise — what's your equivalent timeline?”","“Walmart just aligned with Google's Universal Commerce Protocol — when ChatGPT and Gemini shop for your customers, will they find you?”","“Wendy's runs AI voice ordering on Google Cloud in hundreds of stores; Burger King answered with OpenAI — QSR voice is a two-horse race now.”","“Amazon is selling Rufus tech to other retailers — how comfortable are you feeding shopper data to your biggest competitor?”","“Google's NRF demo did a return, shade-match, replacement, and goodwill credit in one conversation — how many contacts does that journey take you?”"],
+objections:[["“Bots hurt CSAT”","Macy's and Ulta launched agentic assistants as brand features; TOBi-class agents hit 70% containment with stable NPS."],["“We'll wait for protocol standards”","Walmart, Target, Shopify, Etsy, and Wayfair already picked UCP camps at NRF 2026 — waiting means being invisible to agent demand."],["“Amazon/Salesforce already offer this”","Amazon is your competitor, and Salesforce Agentforce Commerce distributes through Google surfaces — the rails matter more than the bot."]],
+personas:"Chief Digital Officer (agent-channel revenue) · COO Stores (labor math) · VP Care (containment) · CIO (platform consolidation)",
+narr:"Agentic AI in retail became real this year in two places: customer-facing agents that actually do things — returns, replacements, credits — and the new agent-mediated demand channel. Macy's launched a production shopping agent on Gemini Enterprise in four weeks; Home Depot and Ulta are live. On the demand side, Google's Universal Commerce Protocol launched at NRF with Target, Shopify, Etsy, and Wayfair, and Walmart is betting on Google rails. The risk isn't a bad chatbot — it's that agents shopping for your customers can't transact with you. We can assess your catalog's agent-readiness and stand up a first service-resolution agent inside a quarter."},
+fsi:{name:"Financial Services",color:IC.fsi,
+starters:["“Hiscox cut specialty quote turnaround from three days to three minutes — what would that do to your hit ratio?”","“Citi built Arc to govern agents across the whole bank; 1.5 million automated code reviews later, that's 100,000 engineer-hours back.”","“Morgan Stanley is opening ShareWorks to its clients' AI agents — what happens when your clients' agents call your APIs?”","“AIG's underwriting agent triages every E&S submission before an underwriter touches it.”","“EU AI Act high-risk obligations hit August 2 — are your agent deployments inventoried?”"],
+objections:[["“MRM won't approve autonomous decisions”","The deployed pattern keeps humans on price/bind and adverse actions — Hiscox and AIG passed exactly that bar."],["“We're building in-house like JPMorgan”","JPM spends $19.8B/yr on tech; Arc-style platforms still run on cloud substrate — we sell the infrastructure, models, and governance tooling."],["“OpenAI/Anthropic are already embedded”","Multi-model is the pattern (Citi and MS use several); Gemini's long-context + Document AI wins the document-heavy workflows."]],
+personas:"CIO/CTO (platform) · Chief Underwriting Officer (triage) · Head of Wealth Platforms (agent access) · CISO/MRM (governance)",
+narr:"Banks moved from copilots to governed agent platforms this year — Citi's Arc is the template, and Morgan Stanley just opened its stock-plan platforms to clients' agents, which makes the 'agent front door' an industry requirement, not an experiment. In insurance, AIG and Hiscox proved submission triage is deployable with underwriters still owning the pen — three days to three minutes at Hiscox. The regulatory clock matters too: EU AI Act high-risk rules land in August. We'd start with one document-heavy decisioning workflow, wrap it in the governance your MRM needs, and design the platform so the second and tenth agents are cheap."},
+mfg:{name:"Manufacturing & Supply Chain",color:IC.mfg,
+starters:["“Uniper's agents now raise SAP requisitions from maintenance plans automatically — Microsoft and Celonis got there first; what's your counter?”","“SAP announced six Joule supply-chain agents at Hannover Messe — what about the decisions that need data SAP doesn't hold?”","“80% of manufacturing executives plan agentic AI investment this year — where's your first hard-dollar workflow?”","“A Fortune 500 manufacturer reports three weeks' early warning on supplier disruption with agents.”","“Microsoft says it will run 100+ internal agents by year-end — supply chain is their proving ground.”"],
+objections:[["“SAP will give us this”","Joule agents act inside SAP, GA'ing Q2–Q3; disruption response needs carrier, supplier-risk, and demand data outside it."],["“Our data isn't ready”","Cortex lands SAP data in BigQuery in weeks, and the Uniper pattern started with one bounded workflow."],["“Agents touching the ERP is risky”","The deployed pattern is draft-plus-approval with spend limits and segregation of duties preserved."]],
+personas:"VP Supply Chain (OTIF/disruption) · CFO (expedites, working capital) · CIO (SAP + cloud architecture) · Plant/Maintenance Directors",
+narr:"Agentic AI in manufacturing got concrete this spring: Uniper runs agents that turn maintenance plans into SAP requisitions with approvals in Teams, and SAP itself announced six supply-chain agents at Hannover Messe. That tells you two things — the pattern works, and SAP will own the in-ERP steps. The open question is who orchestrates decisions across ERP, carriers, suppliers, and demand signals. That's the layer we build: your SAP data in BigQuery via Cortex, agents on Vertex that see the whole chain, and approval gates your auditors will accept. We'd start with one workflow with hard-dollar leakage — expedites or stockouts — and prove it in a quarter."},
+hls:{name:"Healthcare & Life Sciences",color:IC.hls,
+starters:["“A major insurer makes 40,000 prior-auth decisions a day with agents approving the routine ones — nurses only see what needs judgment.”","“One health system cut appeal cycles from 16 days to 2 — how much revenue times out unfiled in your shop?”","“Summit Health's PA agent gets 92% of its outputs accepted without edits.”","“Epic previewed Agent Factory at HIMSS — what's your strategy for agents Epic doesn't cover?”","“AstraZeneca put a multi-agent system inside its discovery pipeline — R&D agents are past the whitepaper stage.”"],
+objections:[["“AI making clinical decisions is unacceptable”","The deployed posture is auto-approve-only; every adverse determination goes to a clinician — that's why regulators and 94% of surveyed providers accept it."],["“We'll wait for Epic”","Rush and Summit results ARE Epic agents; the gap is payer-facing, analytics, and non-Epic workflows — start there."],["“HIPAA risk”","HIPAA-eligible stack with VPC-SC, DLP, and BAAs is standard — and the audit trail agents produce beats today's fax trail."]],
+personas:"CFO / VP Revenue Cycle (denials, PA) · CMIO (clinical safety) · Payer COO / UM VP (auto-determination) · Pharma Head of Discovery Informatics",
+narr:"The administrative side of healthcare is where agents are already earning their keep: 40,000 prior-auth decisions a day at one insurer, appeal cycles collapsing from sixteen days to two, PA submissions cut 42% at Summit Health. CMS's electronic prior-auth mandates turn this from optional to funded. Epic will cover part of it — Agent Factory makes that clear — but the payer side, the analytics, and everything outside Epic is open field. We'd model your denial and PA economics, pick the workflow with the fastest payback, and deploy with clinicians approving every adverse action."},
+tel:{name:"Telecommunications",color:IC.tel,
+starters:["“Deutsche Telekom's RAN Guardian — built with Google Cloud — has taken 100+ autonomous remediation actions and cut major-event management from hours to about a minute.”","“Telecom leads every industry: 48% agentic adoption versus 26% cross-industry.”","“Network automation just overtook customer experience as telco's #1 AI investment — is your roadmap keeping up?”","“Verizon is piloting a 24/7 hierarchy of autonomous network agents — the US Tier-1 RFPs are coming.”","“TOBi resolves 70% of Vodafone's contacts across 15 markets — where has your containment plateaued?”"],
+objections:[["“We won't let AI touch the live network”","DT bounds agents with action allow-lists and rollback; 100+ real remediations later, event handling went from hours to a minute."],["“We're an Ericsson/Nokia shop”","MINDR sits above vendor domains via OSS APIs; ODA alignment (AT&T, Verizon) keeps it multi-vendor."],["“NVIDIA owns telco AI”","NVIDIA sells silicon and reference stacks; DT chose Google Cloud for the production agent system — complementary layers."]],
+personas:"CTO / Head of Network Ops (autonomy) · VP Customer Ops (containment) · Chief Data Officer (telemetry platform)",
+narr:"The most convincing autonomous-operations deployment in any industry right now is Deutsche Telekom's MINDR, built with Google Cloud: multi-agent, watching the RAN continuously, and it has already taken over a hundred autonomous remediation actions — major events that took hours now take a minute. Verizon is building the same class of system, so this is where the industry is going, not a one-off. The prerequisite is telemetry at scale with low latency, which is a BigQuery conversation, and policy-bounded agents, which is a Vertex conversation. We can run your autonomy-maturity assessment against the DT reference architecture and identify the first closed loop you'd trust."}};
+
+const RANK=[
+["HLS-PROV-PA-009","Prior-auth agent",5,5,5,4,4.85],
+["HLS-RCM-010","Denials & appeals agent",4,5,5,4,4.50],
+["RET-CX-002","Agentic shopping + service",4,4,5,5,4.40],
+["RET-AGC-003","Agent-ready commerce endpoint",3,5,5,5,4.30],
+["FSI-INS-UW-006","Underwriting triage agent",5,4,4,3,4.20],
+["TEL-CS-013","Subscriber care agent",4,4,4,5,4.15],
+["TEL-NET-RAN-012","RAN guardian agent",4,4,3,5,3.90],
+["RET-QSR-001","Voice ordering agent",3,4,5,4,3.90],
+["FSI-BANK-PLAT-004","Bank agent platform",5,3,3,3,3.70],
+["HLS-PHR-011","Drug discovery agents",5,3,2,4,3.60],
+["MFG-PROC-007","MRO requisition agent",4,3,4,3,3.60],
+["MFG-PLAN-008","In-ERP SC planning agents",4,3,4,3,3.60],
+["TEL-NET-014","Autonomous-network fleet",4,3,3,4,3.50],
+["FSI-WM-005","Agentic wealth-platform access",4,3,2,3,3.10]];
+
+/* render cards */
+const grid=document.getElementById("grid"),count=document.getElementById("count");
+let fInd="all",fDep=false,fQ="";
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function render(){
+  const list=CARDS.filter(c=>(fInd==="all"||c.ind===fInd)&&(!fDep||c.status==="DEPLOYED")&&(fQ===""||(c.id+c.name+c.cos+c.sub+c.problem).toLowerCase().includes(fQ)));
+  grid.innerHTML=list.map(c=>{
+    const conf=[1,2,3,4,5].map(i=>`<i class="${i<=c.conf?"f":""}"></i>`).join("");
+    return `<div class="card" style="--ic:${IC[c.ind]}" onclick="openCard('${c.id}')">
+      <div class="chead"><span class="cid">${c.id}</span><span class="badge b-${c.status}">${c.status}</span><span class="trend ${c.trend}">${c.trend==="up"?"▲":"▶"}</span></div>
+      <h3>${esc(c.name)}</h3>
+      <div class="cmeta">${IN[c.ind]} · ${esc(c.func)}</div>
+      <div class="cprob">${esc(c.problem)}</div>
+      <div class="ccos"><b>Named:</b> ${esc(c.cos)}</div>
+      <div class="cfoot"><span class="conf">${conf}</span><span style="font-family:var(--mono);font-size:10px;color:var(--dim)">CONF ${c.conf}/5</span><span class="creg">${c.region.includes("JAPAC")?'<span class="jp">'+esc(c.region)+"</span>":esc(c.region)}</span></div>
+    </div>`;
+  }).join("");
+  count.textContent=list.length+" / "+CARDS.length+" cards";
+}
+document.querySelectorAll(".pill.ind").forEach(p=>p.addEventListener("click",()=>{document.querySelectorAll(".pill.ind").forEach(x=>x.classList.remove("on"));p.classList.add("on");fInd=p.dataset.ind;render();}));
+document.querySelector(".pill.st").addEventListener("click",e=>{fDep=!fDep;e.currentTarget.classList.toggle("on",fDep);render();});
+document.getElementById("q").addEventListener("input",e=>{fQ=e.target.value.toLowerCase();render();});
+
+/* modal */
+const ovl=document.getElementById("ovl"),modal=document.getElementById("modal");
+window.openCard=function(id){
+  const c=CARDS.find(x=>x.id===id);if(!c)return;
+  modal.innerHTML=`<button class="mclose" onclick="closeCard()">✕</button>
+    <div class="chead" style="margin-bottom:0"><span class="cid">${c.id}</span><span class="badge b-${c.status}">${c.status}</span><span style="font-family:var(--mono);font-size:10px;color:var(--dim)">CONF ${c.conf}/5 · TREND ${c.trend==="up"?"↑":"→"}</span></div>
+    <h3>${esc(c.name)}</h3>
+    <div class="mmeta">${IN[c.ind]} · ${esc(c.sub)} · ${esc(c.func)} · ${esc(c.region)} · first seen 2026-07-04</div>
+    <div class="msec"><h4>Business problem</h4><p>${esc(c.problem)}</p></div>
+    <div class="msec"><h4>What the agent does autonomously</h4><p>${esc(c.agent)}</p></div>
+    <div class="kv">
+      <div class="msec"><h4>Human-in-the-loop</h4><p>${esc(c.hitl)}</p></div>
+      <div class="msec"><h4>Estimated business value</h4><p>${esc(c.value)}</p></div>
+      <div class="msec"><h4>Named companies</h4><p>${esc(c.cos)}</p></div>
+      <div class="msec"><h4>Metrics to track</h4><p>${esc(c.metrics)}</p></div>
+    </div>
+    <div class="msec"><h4>Evidence</h4><ul class="ev">${c.evidence.map(e=>`<li><a href="${e[1]}" target="_blank" rel="noopener">${esc(e[0])}</a></li>`).join("")}</ul></div>
+    <div class="gcp"><h4>⬢ Google Cloud mapping</h4><p>${esc(c.gcp)}</p></div>
+    <div class="msec"><h4>Why this matters for field sellers</h4><p>${esc(c.why)}</p></div>
+    <div class="msec"><h4>Customer discovery questions</h4><ul>${c.q.map(q=>`<li>${esc(q)}</li>`).join("")}</ul></div>
+    <div class="msec"><h4>Demo / workshop angle</h4><p>${esc(c.demo)}</p></div>`;
+  ovl.classList.add("open");document.body.style.overflow="hidden";
+};
+window.closeCard=function(){ovl.classList.remove("open");document.body.style.overflow="";};
+ovl.addEventListener("click",e=>{if(e.target===ovl)closeCard();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCard();});
+
+/* rank table */
+document.querySelector("#ranktable tbody").innerHTML=RANK.map((r,i)=>
+  `<tr><td class="score">${i+1}</td><td class="rid">${r[0]}</td><td class="rname">${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td class="score">${r[6].toFixed(2)}</td><td><div class="bar"><i style="width:${(r[6]/5*100).toFixed(0)}%"></i></div></td></tr>`).join("");
+
+/* field kit */
+const tabs=document.getElementById("tabs"),kit=document.getElementById("kit");
+tabs.innerHTML=Object.entries(KITS).map(([k,v],i)=>`<button class="tab ${i===0?"on":""}" style="--tc:${v.color}" data-k="${k}">${v.name}</button>`).join("");
+function renderKit(k){
+  const v=KITS[k];
+  kit.innerHTML=`<div class="kitgrid">
+    <div><h4>Conversation starters</h4><ul>${v.starters.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></div>
+    <div><h4>Objections → grounded responses</h4><ul class="obj">${v.objections.map(o=>`<li><b>${esc(o[0])}</b> — ${esc(o[1])}</li>`).join("")}</ul>
+    <h4 style="margin-top:18px">Buyer personas</h4><ul><li>${esc(v.personas)}</li></ul></div>
+  </div>
+  <div class="narr"><b>FIRST-MEETING TALK TRACK</b>${esc(v.narr)}</div>`;
+}
+tabs.addEventListener("click",e=>{const t=e.target.closest(".tab");if(!t)return;tabs.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));t.classList.add("on");renderKit(t.dataset.k);});
+renderKit("retail");
+render();
+</script>
+</body>
+</html>
