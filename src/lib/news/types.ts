@@ -41,7 +41,17 @@ export interface NewsEdition {
   items: NewsItem[];
   itemCount: number;
   generatedAt: string; // ISO timestamp
-  mode: "live" | "fallback";
+  mode: "live" | "research" | "fallback";
   model?: string;
   sourceCount?: number;
+}
+
+// Lightweight index entry for the history/archive list.
+export interface HistoryEntry {
+  date: string;
+  label: string;
+  itemCount: number;
+  topLine: string;
+  generatedAt: string;
+  mode: NewsEdition["mode"];
 }

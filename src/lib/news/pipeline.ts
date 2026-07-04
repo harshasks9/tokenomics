@@ -1,8 +1,9 @@
-// Orchestrator: ingest -> analyze -> store. Returns the edition (or null when
-// no LLM key / no material items, in which case the static baked edition on the
-// page remains the fallback).
+// Orchestrator: ingest (seed) -> deep research (web search) -> fallback RSS
+// analysis -> store. Returns the edition (or null when no LLM key / no material,
+// in which case the static baked edition on the page remains the fallback).
 
 import { ingestArticles } from "./ingest";
+import { researchToEdition } from "./research";
 import { analyzeToEdition } from "./analyze";
 import { writeEdition } from "./store";
 import type { NewsEdition } from "./types";
@@ -27,22 +28,37 @@ export interface PipelineResult {
   feedsOk: number;
   feedsTotal: number;
   candidates: number;
+  path?: "research" | "fallback";
   reason?: string;
 }
 
 export async function runNewsPipeline(): Promise<PipelineResult> {
+  // Ingest is best-effort: it seeds the research and backs the fallback path.
   const { articles, feedsOk, feedsTotal } = await ingestArticles();
   const { date, label } = todaySGT();
 
-  if (articles.length === 0) {
-    return { ok: false, edition: null, feedsOk, feedsTotal, candidates: 0, reason: "no_articles" };
-  }
+  // 1) Deep research (Claude actively web-searches + cites). Seeded by feeds.
+  let edition = await researchToEdition(articles, { date, label });
+  let path: PipelineResult["path"] = "research";
 
-  const edition = await analyzeToEdition(articles, { date, label, sourceCount: feedsOk });
+  // 2) Fallback: summarise the ingested candidates directly.
   if (!edition) {
-    return { ok: false, edition: null, feedsOk, feedsTotal, candidates: articles.length, reason: "no_edition (missing ANTHROPIC_API_KEY or no material items)" };
+    path = "fallback";
+    edition = await analyzeToEdition(articles, { date, label, sourceCount: feedsOk });
   }
 
+  if (!edition) {
+    return {
+      ok: false,
+      edition: null,
+      feedsOk,
+      feedsTotal,
+      candidates: articles.length,
+      reason: "no_edition (missing ANTHROPIC_API_KEY, no web access, or no material items)",
+    };
+  }
+
+  if (edition.sourceCount == null) edition.sourceCount = feedsOk;
   await writeEdition(edition);
-  return { ok: true, edition, feedsOk, feedsTotal, candidates: articles.length };
+  return { ok: true, edition, feedsOk, feedsTotal, candidates: articles.length, path };
 }

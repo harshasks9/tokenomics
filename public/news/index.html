@@ -250,6 +250,7 @@
     <span class="mono" style="color:var(--faint);font-size:12px" id="ed-coverage">Coverage: 24h ending 00:00 SGT · sample edition</span>
   </div>
   <div class="note" style="margin-top:14px" id="ed-note"><b>Sample edition.</b> Illustrative items formatted per the MERIDIAN spec below — <span style="color:var(--cyan)">fact</span> (sourced &amp; dated) separated from <span style="color:var(--yellow)">inference</span> (labeled, with confidence). If the automated pipeline has published a live edition, it replaces this on load.</div>
+  <div id="ed-archive" style="display:none;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px"></div>
 
   <h3 class="sub" style="margin-top:22px">Top line</h3>
   <p class="lede" style="max-width:82ch" id="ed-topline">Two through-lines dominate: a <b>frontier-model cadence</b> (Anthropic ships Claude Sonnet 5; OpenAI pushes GPT-5.6 under government access limits) and a <b>custom-silicon / inference-economics inflection</b> (NVIDIA Rubin + a hyperscaler ASIC surge reset cost-per-token; Meta opens an AI cloud). Each pressures a different Google Cloud front — Model Garden price/perf, TPU narrative, and the full-stack agent pitch.</p>
@@ -389,16 +390,47 @@
       +'</div></div>';
   }
   function fmtTime(iso){try{return new Date(iso).toLocaleString('en-SG',{timeZone:'Asia/Singapore',dateStyle:'medium',timeStyle:'short'})+' SGT';}catch(e){return iso;}}
-  fetch('/api/news/latest',{headers:{accept:'application/json'}}).then(function(r){return r&&r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.edition||!Array.isArray(d.edition.items)||!d.edition.items.length)return;
-    var ed=d.edition,host=document.getElementById('ed-items');
-    if(!host)return;
+  function modeLabel(m){return m==='research'?'deep research':m==='fallback'?'feed summary':m==='live'?'live':(m||'live');}
+  var host=document.getElementById('ed-items');
+  var elDate=document.getElementById('ed-date'),elTop=document.getElementById('ed-topline'),
+      elCov=document.getElementById('ed-coverage'),elNote=document.getElementById('ed-note'),
+      elArch=document.getElementById('ed-archive');
+  var latestDate=null;
+  function markPill(activeDate){
+    if(!elArch)return;
+    Array.prototype.forEach.call(elArch.querySelectorAll('[data-d]'),function(p){
+      p.classList.toggle('active',p.getAttribute('data-d')===activeDate);
+    });
+  }
+  function renderEdition(ed,archived){
+    if(!host||!ed||!Array.isArray(ed.items)||!ed.items.length)return;
     host.innerHTML=ed.items.map(renderItem).join('');
-    var dt=document.getElementById('ed-date'); if(dt)dt.textContent=ed.label+' — edition';
-    var tl=document.getElementById('ed-topline'); if(tl&&ed.topLine)tl.textContent=ed.topLine;
-    var cov=document.getElementById('ed-coverage'); if(cov)cov.textContent='Auto-published '+fmtTime(ed.generatedAt)+' · '+ed.items.length+' items'+(ed.sourceCount?' · '+ed.sourceCount+' feeds':'');
-    var note=document.getElementById('ed-note'); if(note)note.innerHTML='<b>Live edition.</b> Auto-compiled by the MERIDIAN pipeline from public feeds and analysed with the prompts in §11 — <span style="color:var(--cyan)">fact</span> separated from <span style="color:var(--yellow)">inference</span>; every item links to its sources.';
-  }).catch(function(){});
+    if(elDate)elDate.textContent=ed.label+' — edition';
+    if(elTop&&ed.topLine)elTop.textContent=ed.topLine;
+    if(elCov)elCov.textContent=(archived?'Archived · ':'Auto-published ')+fmtTime(ed.generatedAt)+' · '+ed.items.length+' items'+(ed.model?' · '+ed.model:'');
+    if(elNote)elNote.innerHTML=archived
+      ? '<b>Archived edition — '+esc(ed.label)+'.</b> Viewing a past day from the MERIDIAN history. Select “● Latest” to return to today.'
+      : '<b>Live edition — '+esc(modeLabel(ed.mode))+'.</b> Auto-compiled daily by the MERIDIAN pipeline (Claude web-searches and cites primary sources) — <span style="color:var(--cyan)">fact</span> separated from <span style="color:var(--yellow)">inference</span>; every item links to its sources.';
+    markPill(archived?ed.date:'__latest');
+  }
+  function loadLatest(){fetch('/api/news/latest',{headers:{accept:'application/json'}}).then(function(r){return r&&r.ok?r.json():null;}).then(function(d){if(d&&d.edition){latestDate=d.edition.date;renderEdition(d.edition,false);}}).catch(function(){});}
+  function loadDate(date){fetch('/api/news/edition/'+encodeURIComponent(date),{headers:{accept:'application/json'}}).then(function(r){return r&&r.ok?r.json():null;}).then(function(d){if(d&&d.edition)renderEdition(d.edition,date!==latestDate);}).catch(function(){});}
+  function buildArchive(hist){
+    if(!elArch||!hist||!hist.length)return;
+    var html='<span class="mono" style="font-size:11px;color:var(--faint)">Archive</span>'
+      +'<button class="btn active" data-d="__latest" style="padding:5px 10px">● Latest</button>';
+    hist.slice(0,20).forEach(function(h){
+      html+='<button class="btn" data-d="'+esc(h.date)+'" style="padding:5px 10px" title="'+esc(h.topLine||'')+'">'+esc(h.date)+' · '+h.itemCount+'</button>';
+    });
+    elArch.innerHTML=html;elArch.style.display='flex';
+    elArch.addEventListener('click',function(e){
+      var b=e.target.closest('[data-d]');if(!b)return;
+      var d=b.getAttribute('data-d');
+      if(d==='__latest')loadLatest();else loadDate(d);
+    });
+  }
+  loadLatest();
+  fetch('/api/news/history',{headers:{accept:'application/json'}}).then(function(r){return r&&r.ok?r.json():null;}).then(function(d){if(d&&Array.isArray(d.history))buildArchive(d.history);}).catch(function(){});
 })();
 </script>
 

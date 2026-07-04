@@ -1,9 +1,10 @@
 import { NextRequest } from "next/server";
 import { runNewsPipeline } from "@/lib/news/pipeline";
 
-// RSS ingest + one Anthropic call can run tens of seconds; give it headroom.
+// Deep research (Claude web-searching across many sources) can run minutes;
+// give the daily job generous headroom.
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 // Daily pipeline endpoint. Invoked by Vercel Cron at 01:00 UTC (09:00 SGT).
 // Protected with CRON_SECRET (same convention as the options cron).
@@ -25,7 +26,9 @@ export async function GET(request: NextRequest) {
       items: result.edition?.itemCount ?? 0,
       feeds: `${result.feedsOk}/${result.feedsTotal}`,
       candidates: result.candidates,
+      path: result.path,
       mode: result.edition?.mode ?? "none",
+      model: result.edition?.model,
       reason: result.reason,
     });
   } catch (err) {
