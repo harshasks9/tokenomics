@@ -69,6 +69,14 @@ export async function proxy(request: NextRequest) {
     return rewriteWithLanguage(plusUrl);
   }
 
+  if (hostname === "brief.aitokenomics.app") {
+    const briefUrl = request.nextUrl.clone();
+    if (briefUrl.pathname === "/") {
+      briefUrl.pathname = "/brief";
+    }
+    return rewriteWithLanguage(briefUrl);
+  }
+
   if (hostname === "data.aitokenomics.app") {
     const dataUrl = request.nextUrl.clone();
     if (dataUrl.pathname === "/") {

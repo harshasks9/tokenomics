@@ -23,6 +23,7 @@ Each scenario compares the recommended **Opus + Gemini** route with an **Opus + 
 | `/wealthai` | WealthAI — Wealth Management | Live |
 | `/shopos` | ShopOS — Retail Commerce | Live |
 | `/healthcare` | Healthcare — Clinical AI | Coming Soon |
+| `/brief` | AI Daily Brief — Top 10 AI news with Google Cloud lens ([docs](src/app/brief/README.md)) | Live |
 
 ## Quick Start
 
