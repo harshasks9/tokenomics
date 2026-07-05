@@ -246,108 +246,109 @@
 <section class="sec" id="today" data-nav="◆ Today's Log" data-title="Daily Intelligence Log">
   <div class="kicker"><span class="num">◆ /</span> Daily Intelligence Log</div>
   <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between">
-    <h2 class="title" style="margin-bottom:2px" id="ed-date">Friday, 4 July 2026 — edition</h2>
-    <span class="mono" style="color:var(--faint);font-size:12px" id="ed-coverage">Coverage: 24h ending 00:00 SGT · sample edition</span>
+    <h2 class="title" style="margin-bottom:2px" id="ed-date">Saturday, 5 July 2026 — edition</h2>
+    <span class="mono" style="color:var(--faint);font-size:12px" id="ed-coverage">Coverage: 24h ending 00:00 SGT · 6 items · published</span>
   </div>
-  <div class="note" style="margin-top:14px" id="ed-note"><b>Sample edition.</b> Illustrative items formatted per the MERIDIAN spec below — <span style="color:var(--cyan)">fact</span> (sourced &amp; dated) separated from <span style="color:var(--yellow)">inference</span> (labeled, with confidence). If the automated pipeline has published a live edition, it replaces this on load.</div>
+  <div class="note" style="margin-top:14px" id="ed-note"><b>Published edition.</b> Compiled from public sources with the MERIDIAN spec below — <span style="color:var(--cyan)">fact</span> (sourced &amp; dated) separated from <span style="color:var(--yellow)">inference</span> (labeled, with confidence). The automated 09:00-SGT pipeline refreshes this daily and fills the archive.</div>
   <div id="ed-archive" style="display:none;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px"></div>
 
   <h3 class="sub" style="margin-top:22px">Top line</h3>
-  <p class="lede" style="max-width:82ch" id="ed-topline">Two through-lines dominate: a <b>frontier-model cadence</b> (Anthropic ships Claude Sonnet 5; OpenAI pushes GPT-5.6 under government access limits) and a <b>custom-silicon / inference-economics inflection</b> (NVIDIA Rubin + a hyperscaler ASIC surge reset cost-per-token; Meta opens an AI cloud). Each pressures a different Google Cloud front — Model Garden price/perf, TPU narrative, and the full-stack agent pitch.</p>
+  <p class="lede" style="max-width:82ch" id="ed-topline">Two through-lines this week. <b>Hyperscalers are moving down the stack into AI deployment &amp; consulting</b> — Microsoft's $2.5B services company, AWS's ~$1B venture, OpenAI/Anthropic JVs — compressing the SI/partner co-sell layer Google Cloud relies on. Meanwhile the <b>model layer keeps commoditizing</b> (Google puts Claude Opus 4.8 on its own platform; Microsoft ships an in-house reasoning model; buyers pivot from "tokenmaxxing" to efficiency) while <b>compute reprices</b> (NVIDIA Rubin lands on Google Cloud; Meta Compute readies a discounted-GPU launch).</p>
 
   <div id="ed-items">
   <!-- ITEM 1 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:16px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-      <span class="chip r">Anthropic</span><span class="chip">model_release</span>
-      <span class="chip g">vertex_ai</span><span class="chip g">model_garden</span><span class="chip g">agentspace</span>
+      <span class="chip r">Microsoft</span><span class="chip">strategic + gtm</span>
+      <span class="chip g">gtm_partner</span><span class="chip g">marketplace</span><span class="chip g">pricing_licensing</span>
       <span style="margin-left:auto" class="verdict v-risk">Risk</span>
     </div>
     <div style="padding:16px 18px">
-      <h4 style="font-size:16px;margin-bottom:8px">Anthropic ships Claude Sonnet 5 — "most agentic" model, near-Opus quality at lower cost</h4>
-      <div class="fact"><span class="lbl">Fact</span>Anthropic released <b>Claude Sonnet 5</b>, described as its most agentic model yet — able to autonomously drive tools (browsers, terminals) — at near-Opus-4.8 performance and materially lower cost.<cite>Sources: llm-stats update (2026-06-30) · Anthropic newsroom · status: Reported→Confirmed</cite></div>
-      <div class="infer"><span class="lbl">Inference · High</span>Sharpens price/perf pressure inside <b>Vertex Model Garden</b> (which offers Claude) and in enterprise agent build-vs-buy vs Gemini 3.x Flash/Pro. "Cheap + agentic" targets exactly the agent budget Gemini Enterprise / Agentspace is chasing.</div>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">PMM:</span> refresh Gemini-vs-Claude agentic price/perf battlecard (5 bd). <span class="mono" style="color:var(--cyan)">Vertex PM:</span> confirm Sonnet 5 Model Garden availability + positioning.
-      <a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com/news ↗</a></p>
+      <h4 style="font-size:16px;margin-bottom:8px">Hyperscalers move into AI deployment: Microsoft commits $2.5B to a services company, AWS ~$1B</h4>
+      <div class="fact"><span class="lbl">Fact</span>On 2 Jul 2026 Microsoft launched a dedicated AI-deployment company with a <b>$2.5B commitment</b>, naming early partners including the London Stock Exchange Group, Unilever, Land O'Lakes and Accenture. AWS committed ~$1B to a similar venture days earlier, and OpenAI and Anthropic have stood up comparable joint ventures.<cite>Source: TechCrunch (2026-07-02) · status: Confirmed (Microsoft); Reported (AWS/OpenAI/Anthropic)</cite></div>
+      <div class="infer"><span class="lbl">Inference · High</span>The model and platform vendors are absorbing the <b>deployment-and-consulting layer</b> that Google Cloud's SI / partner co-sell depends on — a structural squeeze on partner-ecosystem economics, not a one-off. It also pressures the "who integrates the AI" conversation in large enterprise deals.</div>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Partner GTM:</span> assess co-sell exposure in top accounts touching the MSFT/AWS deployment arms (10 bd). <span class="mono" style="color:var(--cyan)">Alliances:</span> sharpen Google's differentiated SI-partner value vs vendor-owned services.
+      <a href="https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/" target="_blank" rel="noopener">techcrunch.com ↗</a></p>
     </div>
   </div>
 
   <!-- ITEM 2 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:14px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-      <span class="chip r">OpenAI</span><span class="chip">model_release + regulatory</span>
-      <span class="chip g">gemini_models</span><span class="chip g">security_ai</span><span class="chip c">global · sovereign</span>
-      <span style="margin-left:auto" class="verdict v-none">Watch</span>
+      <span class="chip b">Google/Alphabet</span><span class="chip">partnership + product</span>
+      <span class="chip g">gemini_enterprise</span><span class="chip g">model_garden</span><span class="chip g">vertex_ai</span>
+      <span style="margin-left:auto" class="verdict v-opp">Opportunity</span>
     </div>
     <div style="padding:16px 18px">
-      <h4 style="font-size:16px;margin-bottom:8px">OpenAI releases GPT-5.6 — and limits access at the U.S. government's request</h4>
-      <div class="fact"><span class="lbl">Fact</span>OpenAI released <b>GPT-5.6</b> (reported variants Sol / Terra / Luna) and restricted access "at the behest of the U.S. government."<cite>Source: Axios (2026-06-26) · status: Reported, single-source on variant naming</cite></div>
-      <div class="infer"><span class="lbl">Inference · Medium</span>The <b>access-restriction precedent</b> is the strategic signal, not the model — it foreshadows frontier-model export/security controls that will shape sovereign-AI and regulated-industry deals across JAPAC and EMEA.</div>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Gov-affairs:</span> open watchpoint on frontier-access regulation. <span class="mono" style="color:var(--cyan)">JAPAC field:</span> review sovereign-AI talk track.
-      <a href="https://www.axios.com/2026/06/26/openai-gpt-sol-terra-luna-trump" target="_blank" rel="noopener">axios.com ↗</a></p>
+      <h4 style="font-size:16px;margin-bottom:8px">Google adds Anthropic's Claude Opus 4.8 to the Gemini Enterprise Agent Platform</h4>
+      <div class="fact"><span class="lbl">Fact</span>Google Cloud made <b>Claude Opus 4.8</b> available on the Gemini Enterprise Agent Platform (the Vertex AI evolution), giving customers a frontier third-party model for complex, multi-stage agentic workflows and agentic coding.<cite>Source: Google Cloud blog — "what Google Cloud announced in AI this month" (Jul 2026) · status: Confirmed</cite></div>
+      <div class="infer"><span class="lbl">Inference · High</span>Reinforces Google's <b>multi-model, open-platform</b> pitch directly against Microsoft's single-stack Copilot — "bring the best model, including a competitor's, onto our platform." The flip side: hosting a rival's frontier concedes Anthropic still leads on some agentic-coding work.</div>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Gemini Enterprise PMM:</span> build the "multi-model choice vs Copilot lock-in" talk track (5 bd). <span class="mono" style="color:var(--cyan)">Field:</span> surface it in accounts evaluating Copilot on model flexibility.
+      <a href="https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month" target="_blank" rel="noopener">cloud.google.com ↗</a></p>
     </div>
   </div>
 
   <!-- ITEM 3 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:14px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-      <span class="chip r">NVIDIA</span><span class="chip">chip_challenger</span><span class="chip">capacity_infra</span>
-      <span class="chip g">tpu_gpu_infra</span><span class="chip g">gke_hypercomputer</span><span class="chip g">inference_econ</span>
+      <span class="chip b">Google/Alphabet</span><span class="chip">product_launch</span>
+      <span class="chip g">gemini_models</span><span class="chip g">vertex_ai</span><span class="chip g">bigquery_data</span>
       <span style="margin-left:auto" class="verdict v-opp">Opportunity</span>
     </div>
     <div style="padding:16px 18px">
-      <h4 style="font-size:16px;margin-bottom:8px">Inference economics reset: NVIDIA Rubin + a custom-ASIC surge shift buying to cost-per-token</h4>
-      <div class="fact"><span class="lbl">Fact</span>NVIDIA's <b>Rubin</b> platform claims up to <b>10× lower inference token cost</b> vs Blackwell; TrendForce projects custom-ASIC shipment growth (~44.6%) outpacing merchant GPUs (~16.1%) in 2026 — an "inference-led regime" where cost-per-token, power and TCO dominate buying.<cite>Sources: NVIDIA investor release (GTC 2026) · TechTimes/TrendForce (2026-05-26) · Constellation Research · status: Confirmed</cite></div>
-      <div class="infer"><span class="lbl">Inference · High</span>A tailwind for Google's <b>TPU v8 / AI Hypercomputer</b> narrative — the market is now buying the exact cost-per-token/efficiency story TPUs are positioned on. Caveat: it equally validates rivals' custom silicon (Meta MTIA, MSFT Maia, AWS Trainium).</div>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Infra PMM:</span> lead with cost-per-token TPU v8 proof points. <span class="mono" style="color:var(--cyan)">CE enablement:</span> ship an inference-TCO talk track.
-      <a href="https://www.constellationr.com/insights/news/nvidia-gtc-2026-nvidias-hardware-strategy-goes-beyond-gpu-ai-inference-pivot" target="_blank" rel="noopener">constellationr.com ↗</a></p>
+      <h4 style="font-size:16px;margin-bottom:8px">Google ships Gemini 3.1 Pro (preview), Veo 3.1 Lite, and a natively multimodal Gemini Embedding 2</h4>
+      <div class="fact"><span class="lbl">Fact</span>On Vertex AI, Google added <b>Gemini 3.1 Pro</b> (preview) for tougher reasoning; <b>Veo 3.1 Lite</b>, a video model at &lt;50% the cost of Veo 3.1 Fast at the same speed; and <b>Gemini Embedding 2</b> (public preview) — its first natively multimodal embedding model mapping text, images, video, audio and documents into one space.<cite>Source: Google Cloud blog · Vertex AI release notes (Jul 2026) · status: Confirmed</cite></div>
+      <div class="infer"><span class="lbl">Inference · Medium</span>Steady home-team cadence across the stack — frontier reasoning, low-cost media, multimodal retrieval — strengthens the "full-portfolio depth" story vs point-solution rivals; the cost-optimized Veo/embedding moves target high-volume production economics where price decides.</div>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Product marketing:</span> package the Vertex July drop into one "portfolio breadth" narrative (5 bd). <span class="mono" style="color:var(--cyan)">CE:</span> enable SEs on Gemini Embedding 2 for multimodal-RAG deals.
+      <a href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/release-notes" target="_blank" rel="noopener">vertex release notes ↗</a></p>
     </div>
   </div>
 
   <!-- ITEM 4 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:14px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-      <span class="chip r">Meta</span><span class="chip">product_launch</span>
-      <span class="chip g">gemma_open</span><span class="chip g">model_garden</span><span class="chip g">gtm_partner</span>
+      <span class="chip r">Microsoft</span><span class="chip">model_release</span>
+      <span class="chip g">gemini_models</span><span class="chip g">gemini_enterprise</span><span class="chip g">pricing_licensing</span>
       <span style="margin-left:auto" class="verdict v-risk">Risk</span>
     </div>
     <div style="padding:16px 18px">
-      <h4 style="font-size:16px;margin-bottom:8px">Meta launches "Meta Compute," an AI cloud aimed at Azure, AWS — and Google Cloud</h4>
-      <div class="fact"><span class="lbl">Fact</span>Meta is launching <b>Meta Compute</b>, an AI cloud offering turnkey access to Llama models, positioned directly against Azure AI Studio, Amazon Bedrock and Google Cloud, underwritten by Meta's MTIA custom silicon.<cite>Source: WindowsNews.ai (July 2026) · status: Reported, secondary source</cite></div>
-      <div class="infer"><span class="lbl">Inference · Medium</span>A credible open-weight + cloud bundle could pressure the low end of <b>Model Garden</b> and the developer / digital-native segment; MTIA silicon underwrites aggressive pricing. Confidence limited pending primary confirmation and pricing detail.</div>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Competitive intel:</span> deep-dive Meta Compute pricing/SLA. <span class="mono" style="color:var(--cyan)">Open-model PMM:</span> refresh Gemma positioning.
-      <a href="https://windowsnews.ai/article/meta-compute-metas-ai-cloud-service-targets-azure-aws-with-july-2026-launch.433833" target="_blank" rel="noopener">windowsnews.ai ↗</a></p>
+      <h4 style="font-size:16px;margin-bottom:8px">Microsoft ships MAI-Thinking-1, its first in-house reasoning model, to cut OpenAI reliance</h4>
+      <div class="fact"><span class="lbl">Fact</span>Microsoft unveiled <b>MAI-Thinking-1</b> — a from-scratch reasoning model (35B active parameters, 256K-token context) trained on licensed data without distillation — aimed at complex multi-step reasoning and code generation, part of a low-cost model suite meant to reduce dependence on OpenAI.<cite>Sources: CNBC (2026-06-02) · Euronews (2026-06-03) · status: Confirmed</cite></div>
+      <div class="infer"><span class="lbl">Inference · High</span>Microsoft owning its model layer plus a lower price point strengthens Copilot's cost story and removes a shared dependency — contesting Gemini on both capability and TCO in the enterprise, and blunting the "OpenAI-risk" talk track.</div>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Competitive/PMM:</span> refresh the Gemini-vs-Copilot reasoning &amp; TCO battlecard with MAI-Thinking-1 (5 bd).
+      <a href="https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html" target="_blank" rel="noopener">cnbc.com ↗</a></p>
     </div>
   </div>
 
   <!-- ITEM 5 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:14px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-      <span class="chip r">Microsoft</span><span class="chip">strategic + product_launch</span>
-      <span class="chip g">gemini_enterprise</span><span class="chip g">agentspace</span><span class="chip g">workspace_ai</span>
+      <span class="chip r">Meta</span><span class="chip">product_launch</span>
+      <span class="chip g">tpu_gpu_infra</span><span class="chip g">model_garden</span><span class="chip g">inference_econ</span>
       <span style="margin-left:auto" class="verdict v-risk">Risk</span>
     </div>
     <div style="padding:16px 18px">
-      <h4 style="font-size:16px;margin-bottom:8px">Microsoft's agent-first turn: in-house "Prometheus" model + a unified Copilot/Azure control plane</h4>
-      <div class="fact"><span class="lbl">Fact</span>At <b>Build 2026</b> Microsoft outlined an agent-first strategy: an in-house enterprise model <b>Prometheus</b> (early benchmarks claimed to beat GPT-4.5 on API orchestration, extraction, multi-step planning), Copilot Studio agents, custom Azure silicon, and a unified Copilot-front-end / Azure-back-end control plane. Azure grew ~39%.<cite>Sources: WindowsNews.ai (Build 2026) · tech-insider.org · status: Reported</cite></div>
-      <div class="infer"><span class="lbl">Inference · High</span>Reducing model dependence (in-house Prometheus) + unifying identity/data/policy is a durable moat play that directly contests <b>Gemini Enterprise</b>'s full-stack pitch. The 39% Azure growth is the commercial pressure behind the narrative.</div>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Field enablement:</span> refresh Copilot control-plane rebuttal. <span class="mono" style="color:var(--cyan)">Gemini Enterprise PMM:</span> counter-narrative on openness / multi-model choice.
-      <a href="https://windowsnews.ai/article/build-2026-reveals-microsofts-agent-first-ai-play-azure-copilot-and-the-value-chain-converge.428607" target="_blank" rel="noopener">windowsnews.ai ↗</a></p>
+      <h4 style="font-size:16px;margin-bottom:8px">Meta Compute readies a July launch: rentable GPUs + hosted Llama, reportedly 20–30% under cloud rates</h4>
+      <div class="fact"><span class="lbl">Fact</span>Meta is reported to be launching <b>Meta Compute</b> in July 2026 — its first public-cloud entry — bundling GPU capacity (NVIDIA plus its own MTIA silicon) with managed Llama 3/4 model hosting, with sources citing pricing <b>20–30% below</b> current cloud GPU rates.<cite>Source: WindowsNews.ai (Jul 2026) · status: Reported, secondary source</cite></div>
+      <div class="infer"><span class="lbl">Inference · Medium</span>A credible open-weight + discounted-compute bundle pressures the low end of <b>Model Garden</b> and price-sensitive GPU/infra deals, especially for digital-natives. Confidence limited pending the official launch and verified pricing.</div>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Competitive intel:</span> watch for the official launch + verified pricing (7 bd). <span class="mono" style="color:var(--cyan)">Infra PMM:</span> ready a TPU cost-per-token counter to GPU-rate comparisons.
+      <a href="https://windowsnews.ai/article/meta-plans-july-2026-launch-for-cloud-gpu-service-taking-on-aws-and-azure-in-ai-compute.433443" target="_blank" rel="noopener">windowsnews.ai ↗</a></p>
     </div>
   </div>
 
   <!-- ITEM 6 -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:14px">
     <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-      <span class="chip r">OpenAI</span><span class="chip">capacity_infra + GTM</span>
-      <span class="chip g">inference_econ</span><span class="chip g">gtm_partner</span><span class="chip g">marketplace</span>
-      <span style="margin-left:auto" class="verdict v-none">Watch</span>
+      <span class="chip r">NVIDIA</span><span class="chip">capacity_infra</span>
+      <span class="chip g">tpu_gpu_infra</span><span class="chip g">gke_hypercomputer</span><span class="chip g">inference_econ</span>
+      <span style="margin-left:auto" class="verdict v-opp">Opportunity</span>
     </div>
     <div style="padding:16px 18px">
-      <h4 style="font-size:16px;margin-bottom:8px">OpenAI moves down the stack: custom inference chip + an enterprise-deployment consulting arm</h4>
-      <div class="fact"><span class="lbl">Fact</span>OpenAI is reported to have announced a custom inference chip ("Jalapeño") and launched <b>DeployCo</b>, a majority-owned enterprise-deployment consulting subsidiary (reported ~$4B), and acquired applied-AI consultancy Tomoro.<cite>Source: search aggregation (2026-07-01) · status: Reported, single-source — awaiting corroboration</cite></div>
-      <div class="infer"><span class="lbl">Inference · Medium</span>OpenAI verticalizing (silicon + SI/consulting) mirrors the hyperscaler playbook and could compress the <b>partner / SI co-sell</b> layer Google relies on. Lower confidence pending primary confirmation; verify before any battlecard change.</div>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Partner ecosystem:</span> open watchpoint on OpenAI SI motion. <span class="mono" style="color:var(--cyan)">CI:</span> corroborate via primary sources.</p>
+      <h4 style="font-size:16px;margin-bottom:8px">NVIDIA Vera Rubin lands on Google Cloud among first movers, as buyers pivot from "tokenmaxxing" to efficiency</h4>
+      <div class="fact"><span class="lbl">Fact</span>NVIDIA named AWS, <b>Google Cloud</b>, Microsoft and OCI among the first to deploy Vera Rubin–based instances in 2026 (alongside an expanded AWS–NVIDIA collaboration announced at GTC 2026). Separately, reporting notes enterprise buyers shifting from raw token consumption to cost-efficiency.<cite>Sources: NVIDIA newsroom (GTC 2026) · CNBC (2026-06-26) · status: Confirmed</cite></div>
+      <div class="infer"><span class="lbl">Inference · Medium</span>Google Cloud as a Rubin launch partner shores up the top-end GPU capacity story for demanding customers, while the efficiency pivot plays to the <b>TPU / AI Hypercomputer</b> cost-per-token narrative. Caveat: Rubin availability across all hyperscalers blunts GPU as a differentiator — lean on TPU economics.</div>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0"><b>Actions —</b> <span class="mono" style="color:var(--cyan)">Infra PMM:</span> pair the Rubin-availability message with TPU cost-per-token proof points (5 bd). <span class="mono" style="color:var(--cyan)">CE:</span> update the inference-TCO talk track for the efficiency-buying shift.
+      <a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener">nvidianews.nvidia.com ↗</a></p>
     </div>
   </div>
 
@@ -356,11 +357,11 @@
   <!-- HOME-TEAM CONTEXT -->
   <h3 class="sub">Home-team position it acts on <span class="chip b">Google Cloud context</span></h3>
   <div class="grid g3">
-    <div class="card accent-b"><h4>Gemini 3.1 Pro</h4><p>Most advanced reasoning Gemini (1M-token context), in preview across Vertex AI + Gemini Enterprise. The frontier answer to Sonnet 5 / GPT-5.6.</p></div>
-    <div class="card accent-v"><h4>Gemini Enterprise Agent Platform</h4><p>Vertex AI evolved into a full agent stack (build, orchestrate, govern, secure) — the direct counter to Microsoft's agent-first control plane.</p></div>
-    <div class="card accent-g"><h4>TPU v8 (8th gen)</h4><p>~3× compute vs prior gen; the cost-per-token / AI Hypercomputer story that the inference-economics shift now rewards.</p></div>
+    <div class="card accent-b"><h4>Gemini 3.1 Pro + Embedding 2</h4><p>Frontier reasoning (1M context) plus a natively multimodal embedding model, both in preview on Vertex — depth across the stack, not a single model.</p></div>
+    <div class="card accent-v"><h4>Gemini Enterprise Agent Platform</h4><p>The Vertex evolution: a full agent stack (build, orchestrate, govern, secure) that now also hosts Claude Opus 4.8 — the multi-model counter to Copilot's single stack.</p></div>
+    <div class="card accent-g"><h4>TPU v8 + Rubin option</h4><p>~3× compute vs prior gen and a Vera Rubin launch-partner slot — the cost-per-token / AI Hypercomputer story the efficiency shift now rewards.</p></div>
   </div>
-  <p style="font-size:12px;color:var(--faint);margin-top:12px" class="mono">Google context sourced from Google Cloud Next '26 coverage (Apr 2026). <a href="https://cloud.google.com/blog/topics/google-cloud-next/google-cloud-next-2026-wrap-up" target="_blank" rel="noopener">cloud.google.com ↗</a> · Items reflect public reporting at compile time; confidence tags and status ladders apply.</p>
+  <p style="font-size:12px;color:var(--faint);margin-top:12px" class="mono">Google context from Google Cloud's July 2026 AI announcements. <a href="https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month" target="_blank" rel="noopener">cloud.google.com ↗</a> · Items reflect public reporting at compile time; confidence tags and status ladders apply.</p>
 </section>
 
 <script>
