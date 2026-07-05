@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         source: "/glm-vs-gemini",
         destination: "/glm-vs-gemini/index.html",
       },
+      {
+        source: "/strategy",
+        destination: "/strategy/index.html",
+      },
     ];
   },
 };

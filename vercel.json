@@ -3,6 +3,22 @@
     {
       "path": "/api/brief/cron",
       "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/options/cron",
+      "schedule": "30 21 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "strategy.aitokenomics.app"
+        }
+      ],
+      "destination": "/strategy/:path*"
     }
   ]
 }
