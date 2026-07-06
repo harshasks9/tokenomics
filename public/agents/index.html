@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Agentic Transformation Success Tree - aitokenomics.app</title>
+<meta name="description" content="An executive microsite for transforming a general GenAI strategy into an agentic transformation operating model: workflows, tools, autonomy, trust, runtime, economics, and compounding scale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@115,650;115,750;115,850&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#07111f;color:#f7fafc;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5}
+body::selection{background:#8ab4f8;color:#06101f}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+:root{
+  --bg:#07111f;
+  --ink:#f7fafc;
+  --muted:rgba(247,250,252,.62);
+  --line:rgba(247,250,252,.14);
+  --panel:rgba(255,255,255,.055);
+  --blue:#4285f4;
+  --red:#ea4335;
+  --yellow:#fbbc04;
+  --green:#34a853;
+  --violet:#8b5cf6;
+  --cyan:#22d3ee;
+  --paper:#f7fafc;
+  --paper-ink:#111827;
+}
+.shell{min-height:100vh;overflow:hidden}
+.topbar{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(7,17,31,.88);backdrop-filter:blur(18px)}
+.nav{max-width:1220px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px}
+.mark{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--green));font-family:"IBM Plex Mono",monospace;font-weight:700;color:white;box-shadow:0 12px 30px rgba(66,133,244,.24)}
+.brand{font-family:Archivo,system-ui,sans-serif;font-weight:850;font-stretch:115%;letter-spacing:-.02em;white-space:nowrap}
+.links{margin-left:auto;display:flex;gap:16px;font-size:12px;font-weight:700;color:var(--muted)}
+.links a:hover{color:white}
+.cta{border:1px solid rgba(255,255,255,.2);background:white;color:#07111f;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:800}
+.hero{position:relative;min-height:72vh;display:grid;align-items:center;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 78% 22%,rgba(66,133,244,.26),transparent 30%),
+  radial-gradient(circle at 70% 74%,rgba(52,168,83,.16),transparent 30%),
+  radial-gradient(circle at 22% 18%,rgba(234,67,53,.18),transparent 27%),
+  linear-gradient(135deg,rgba(255,255,255,.035) 0 1px,transparent 1px);
+  background-size:auto,auto,auto,48px 48px;opacity:.95}
+.hero-grid{position:relative;max-width:1220px;margin:0 auto;padding:50px 20px 34px;display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:rgba(255,255,255,.06);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;color:rgba(255,255,255,.74)}
+.dot{width:8px;height:8px;border-radius:999px;background:var(--yellow);box-shadow:0 0 26px var(--yellow)}
+h1{font-family:Archivo,system-ui,sans-serif;font-weight:850;font-stretch:115%;font-size:clamp(44px,6.4vw,84px);line-height:.94;letter-spacing:-.04em;margin:22px 0 0}
+.dek{max-width:720px;margin:20px 0 0;font-size:clamp(18px,1.7vw,22px);line-height:1.3;font-weight:700;color:rgba(255,255,255,.84)}
+.subdek{max-width:720px;margin:16px 0 0;color:var(--muted);font-size:15px;line-height:1.65}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.primary{display:inline-flex;align-items:center;gap:9px;border:0;background:var(--blue);color:white;border-radius:999px;padding:13px 18px;font-weight:850}
+.secondary{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;border-radius:999px;padding:12px 18px;font-weight:800}
+.mesh-card{border:1px solid var(--line);background:rgba(255,255,255,.055);border-radius:8px;padding:22px;box-shadow:0 30px 100px rgba(0,0,0,.28)}
+.mesh-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.mesh-head p{margin:0;color:var(--muted);font-size:12px;font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+.live{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(52,168,83,.35);color:#a7f3d0;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800}
+.mesh{width:100%;height:auto;display:block}
+.node{fill:rgba(255,255,255,.08);stroke:rgba(255,255,255,.22);stroke-width:1.2}
+.node.core{fill:rgba(66,133,244,.22);stroke:#8ab4f8}
+.node.red{fill:rgba(234,67,53,.18);stroke:#fca5a5}
+.node.green{fill:rgba(52,168,83,.18);stroke:#86efac}
+.node.yellow{fill:rgba(251,188,4,.18);stroke:#fde68a}
+.edge{stroke:rgba(255,255,255,.24);stroke-width:1.2}
+.edge.hot{stroke:#8ab4f8;stroke-width:2}
+.mesh text{fill:white;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;text-anchor:middle}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{background:#091525;padding:24px 20px}
+.stat strong{display:block;font-family:Archivo,system-ui,sans-serif;font-size:34px;line-height:1;color:white}
+.stat span{display:block;margin-top:9px;color:var(--muted);font-size:13px;font-weight:700}
+.section{max-width:1220px;margin:0 auto;padding:88px 20px}
+.label{margin:0 0 14px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#8ab4f8}
+h2{font-family:Archivo,system-ui,sans-serif;font-stretch:115%;font-size:clamp(36px,5vw,70px);line-height:1;letter-spacing:-.035em;margin:0}
+.lead{max-width:780px;margin:20px 0 0;color:var(--muted);font-size:17px;line-height:1.7}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.card{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:22px}
+.card h3{font-family:Archivo,system-ui,sans-serif;font-size:24px;line-height:1.08;letter-spacing:-.02em;margin:0}
+.card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.65}
+.pill{display:inline-flex;border-radius:999px;padding:5px 9px;margin-bottom:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+.pill.blue{background:rgba(66,133,244,.16);color:#bfdbfe}
+.pill.red{background:rgba(234,67,53,.16);color:#fecaca}
+.pill.green{background:rgba(52,168,83,.16);color:#bbf7d0}
+.pill.yellow{background:rgba(251,188,4,.16);color:#fde68a}
+.compare{margin-top:42px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:grid;grid-template-columns:220px 1fr 1fr;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.cell{padding:17px;border-left:1px solid var(--line);font-size:14px;color:var(--muted)}
+.cell:first-child{border-left:0;color:white;font-weight:850}
+.row.head .cell{font-family:"IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:white;background:rgba(255,255,255,.065)}
+.tree{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:44px}
+.tree button{border:1px solid var(--line);background:rgba(255,255,255,.055);color:white;border-radius:8px;padding:16px;text-align:left;cursor:pointer;min-height:154px;transition:.18s ease}
+.tree button:hover,.tree button.active{transform:translateY(-2px);border-color:#8ab4f8;background:rgba(66,133,244,.14)}
+.tree b{display:block;font-family:Archivo,system-ui,sans-serif;font-size:22px;line-height:1.08}
+.tree span{display:block;margin-top:11px;color:var(--muted);font-size:12px;line-height:1.5}
+.detail{margin-top:14px;border:1px solid rgba(138,180,248,.35);background:rgba(66,133,244,.09);border-radius:8px;padding:24px;display:grid;grid-template-columns:.72fr 1.28fr;gap:24px}
+.detail h3{margin:0;font-family:Archivo,system-ui,sans-serif;font-size:34px;line-height:1}
+.detail p{margin:12px 0 0;color:rgba(255,255,255,.7);line-height:1.7}
+.checks{display:grid;gap:10px}
+.check{display:flex;gap:10px;align-items:flex-start;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);border-radius:8px;padding:12px;color:rgba(255,255,255,.76);font-size:14px}
+.check::before{content:"";width:9px;height:9px;border-radius:3px;background:var(--green);margin-top:6px;flex:0 0 auto}
+.flow{margin-top:42px;display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.step{position:relative;border:1px solid var(--line);background:rgba(255,255,255,.055);border-radius:8px;padding:18px 14px;min-height:118px}
+.step:not(:last-child)::after{content:"";position:absolute;right:-8px;top:50%;width:8px;height:2px;background:rgba(255,255,255,.28)}
+.step small{font-family:"IBM Plex Mono",monospace;color:#8ab4f8;font-weight:800}
+.step b{display:block;margin-top:10px;font-family:Archivo,system-ui,sans-serif;font-size:19px;line-height:1.1}
+.step span{display:block;margin-top:8px;color:var(--muted);font-size:12px;line-height:1.45}
+.band{background:#f8fafc;color:#101827}
+.band .label{color:#1a73e8}
+.band .lead{color:#526173}
+.band .card{background:white;border-color:#e5e7eb;color:#101827;box-shadow:0 20px 60px rgba(15,23,42,.06)}
+.band .card p{color:#526173}
+.roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:42px}
+.phase{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:20px;min-height:310px}
+.phase small{font-family:"IBM Plex Mono",monospace;color:#c2410c;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+.phase h3{font-family:Archivo,system-ui,sans-serif;font-size:24px;line-height:1.05;margin:14px 0}
+.phase p{color:#526173;font-size:13px;line-height:1.6}
+.takeaway{border-left:4px solid var(--blue);background:rgba(66,133,244,.08);padding:20px;margin-top:38px}
+.takeaway b{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#8ab4f8}
+.takeaway p{margin:8px 0 0;color:rgba(255,255,255,.74);font-weight:700}
+.band .takeaway{background:#eaf2ff}
+.band .takeaway p{color:#203040}
+.footer{border-top:1px solid var(--line);padding:34px 20px;color:var(--muted)}
+.footer-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;gap:20px;font-size:12px}
+@media(max-width:960px){
+  .links{display:none}
+  .hero-grid,.grid-2,.detail{grid-template-columns:1fr}
+  .grid-3,.roadmap{grid-template-columns:1fr 1fr}
+  .tree{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .nav{padding:12px 16px}
+  .brand{display:none}
+  .hero{min-height:76vh}
+  .hero-grid{padding:54px 20px 36px}
+  .grid-3,.roadmap,.tree,.flow,.stats{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .cell{border-left:0;border-top:1px solid var(--line)}
+  .row.head .cell:not(:first-child){display:none}
+  .mesh-card{display:none}
+  .footer-inner{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <nav class="nav" aria-label="Page sections">
+      <a class="mark" href="#top" aria-label="Agentic Transformation home">
+        <span class="logo">A</span>
+        <span class="brand">Agentic Transformation</span>
+      </a>
+      <div class="links">
+        <a href="#shift">Shift</a>
+        <a href="#tree">Success tree</a>
+        <a href="#runtime">Runtime</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#metrics">Metrics</a>
+      </div>
+      <a class="cta" href="#roadmap">90-day agenda</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> From GenAI pilots to agentic operations</div>
+          <h1>The Agentic Transformation Success Tree</h1>
+          <p class="dek">General GenAI helps people produce content. Agentic transformation redesigns work so governed software actors can complete outcomes across tools, systems, and teams.</p>
+          <p class="subdek">This is the transformed strategy: workflow-first, tool-connected, evaluated, observable, permissioned, and measured by completed work rather than generated words.</p>
+          <div class="hero-actions">
+            <a class="primary" href="#shift">See the shift -></a>
+            <a class="secondary" href="#tree">Open the tree</a>
+          </div>
+        </div>
+        <div class="mesh-card" aria-label="Agent mesh visualization">
+          <div class="mesh-head">
+            <p>Agent operating mesh</p>
+            <span class="live"><span class="dot" style="width:7px;height:7px;background:var(--green)"></span> governed</span>
+          </div>
+          <svg class="mesh" viewBox="0 0 640 430" role="img" aria-label="Agent mesh connecting planner, memory, tools, policy, evaluation, and human review">
+            <line class="edge hot" x1="320" y1="210" x2="110" y2="90"/>
+            <line class="edge hot" x1="320" y1="210" x2="530" y2="90"/>
+            <line class="edge" x1="320" y1="210" x2="90" y2="330"/>
+            <line class="edge" x1="320" y1="210" x2="550" y2="330"/>
+            <line class="edge hot" x1="320" y1="210" x2="320" y2="62"/>
+            <line class="edge" x1="320" y1="210" x2="320" y2="358"/>
+            <line class="edge" x1="110" y1="90" x2="320" y2="62"/>
+            <line class="edge" x1="530" y1="90" x2="320" y2="62"/>
+            <line class="edge" x1="90" y1="330" x2="320" y2="358"/>
+            <line class="edge" x1="550" y1="330" x2="320" y2="358"/>
+            <circle class="node core" cx="320" cy="210" r="74"/>
+            <circle class="node red" cx="110" cy="90" r="54"/>
+            <circle class="node yellow" cx="530" cy="90" r="54"/>
+            <circle class="node green" cx="90" cy="330" r="54"/>
+            <circle class="node" cx="550" cy="330" r="54"/>
+            <circle class="node core" cx="320" cy="62" r="45"/>
+            <circle class="node" cx="320" cy="358" r="45"/>
+            <text x="320" y="204">ORCHESTRATOR</text>
+            <text x="320" y="224">goal + plan</text>
+            <text x="110" y="86">TOOLS</text>
+            <text x="110" y="106">actions</text>
+            <text x="530" y="86">POLICY</text>
+            <text x="530" y="106">limits</text>
+            <text x="90" y="326">MEMORY</text>
+            <text x="90" y="346">context</text>
+            <text x="550" y="326">HUMAN</text>
+            <text x="550" y="346">judgment</text>
+            <text x="320" y="58">EVALS</text>
+            <text x="320" y="78">tests</text>
+            <text x="320" y="354">OBSERVE</text>
+            <text x="320" y="374">trace</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Strategic pivots">
+      <div class="stat"><strong>Work</strong><span>Measure completed outcomes, not generated artifacts.</span></div>
+      <div class="stat"><strong>Tools</strong><span>Agents need governed access to systems of action.</span></div>
+      <div class="stat"><strong>Trust</strong><span>Autonomy expands only inside tested boundaries.</span></div>
+      <div class="stat"><strong>Scale</strong><span>Reuse patterns, registries, evals, and controls.</span></div>
+    </section>
+
+    <section id="shift" class="section">
+      <p class="label">01 / The strategic shift</p>
+      <h2>Agentic transformation is not a better chatbot program.</h2>
+      <p class="lead">A general GenAI strategy optimizes assistance. An agentic strategy redesigns how work moves through the enterprise: goals are decomposed, tools are invoked, evidence is checked, approvals are requested, outcomes are logged, and learning loops compound.</p>
+      <div class="compare">
+        <div class="row head"><div class="cell">Dimension</div><div class="cell">General GenAI</div><div class="cell">Agentic Transformation</div></div>
+        <div class="row"><div class="cell">Unit of value</div><div class="cell">Prompt, answer, draft, summary, content artifact.</div><div class="cell">Completed workflow step, resolved case, booked transaction, prevented incident.</div></div>
+        <div class="row"><div class="cell">Operating model</div><div class="cell">Humans operate; AI assists in the moment.</div><div class="cell">Agents operate within guardrails; humans supervise, approve, and handle judgment.</div></div>
+        <div class="row"><div class="cell">Architecture</div><div class="cell">Model access, RAG, prompt libraries, copilots.</div><div class="cell">Agent registry, identity, tools, memory, policy, evals, observability, orchestration.</div></div>
+        <div class="row"><div class="cell">Risk control</div><div class="cell">Usage policy, content filters, manual review.</div><div class="cell">Permission scopes, autonomy levels, approval gates, simulation, rollback, audit traces.</div></div>
+        <div class="row"><div class="cell">Economics</div><div class="cell">Productivity uplift per employee.</div><div class="cell">Cost per resolved interaction, exception rate, cycle time, reliability, and P&L throughput.</div></div>
+      </div>
+      <div class="takeaway"><b>Executive takeaway</b><p>If GenAI is a capability, agentic transformation is an operating-model redesign.</p></div>
+    </section>
+
+    <section id="tree" class="section">
+      <p class="label">02 / Success tree</p>
+      <h2>Six conditions determine whether agents create durable value.</h2>
+      <p class="lead">The transformed tree keeps the rigor of the original enterprise AI strategy, but replaces broad GenAI readiness with the specific conditions required for autonomous and semi-autonomous work.</p>
+      <div class="tree" role="tablist" aria-label="Agentic transformation success conditions">
+        <button class="active" data-node="aim"><b>Aim</b><span>Pick workflows where autonomy changes economics.</span></button>
+        <button data-node="work"><b>Work</b><span>Decompose the job into goals, tasks, handoffs, and exceptions.</span></button>
+        <button data-node="context"><b>Context</b><span>Connect data, memory, APIs, tools, and knowledge safely.</span></button>
+        <button data-node="runtime"><b>Runtime</b><span>Run agents with identity, registry, orchestration, and observability.</span></button>
+        <button data-node="trust"><b>Trust</b><span>Bound autonomy with evals, simulation, approvals, and audit.</span></button>
+        <button data-node="compound"><b>Compound</b><span>Turn production traces into reusable patterns and better agents.</span></button>
+      </div>
+      <div class="detail" id="node-detail">
+        <div>
+          <p class="label">Selected condition</p>
+          <h3 id="detail-title">Aim at agent-worthy work</h3>
+          <p id="detail-copy">The first mistake is using agents where a copilot is enough. Agent-worthy work is repetitive, high-volume, tool-connected, exception-heavy, measurable, and valuable enough to justify orchestration and governance.</p>
+        </div>
+        <div class="checks" id="detail-checks">
+          <div class="check">Map each candidate workflow to P&L, risk, cycle-time, or customer outcome.</div>
+          <div class="check">Separate assistive copilot use cases from delegated agent workflows.</div>
+          <div class="check">Define the autonomy target before choosing models or tools.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="runtime" class="section">
+      <p class="label">03 / Runtime architecture</p>
+      <h2>The agent stack is a control system, not a prompt stack.</h2>
+      <p class="lead">Agentic systems need more than model quality. They need a runtime that can decide who the agent is, what it may access, how it plans, where it logs evidence, when it escalates, and how it is evaluated before and after release.</p>
+      <div class="flow" aria-label="Agentic workflow loop">
+        <div class="step"><small>01</small><b>Sense</b><span>Read events, cases, documents, requests, and state.</span></div>
+        <div class="step"><small>02</small><b>Reason</b><span>Interpret intent, policy, history, constraints, and risk.</span></div>
+        <div class="step"><small>03</small><b>Plan</b><span>Break the goal into actions with fallback paths.</span></div>
+        <div class="step"><small>04</small><b>Act</b><span>Use tools, APIs, documents, and workflows with scoped permissions.</span></div>
+        <div class="step"><small>05</small><b>Verify</b><span>Check facts, outputs, policy fit, and completion criteria.</span></div>
+        <div class="step"><small>06</small><b>Escalate</b><span>Route judgment, empathy, or risk to humans.</span></div>
+        <div class="step"><small>07</small><b>Learn</b><span>Feed traces, corrections, and outcomes back into evals.</span></div>
+      </div>
+      <div class="grid-3">
+        <article class="card"><span class="pill blue">Registry</span><h3>Every agent needs an owner.</h3><p>Name, purpose, allowed tools, data access, autonomy level, approval gates, model route, cost envelope, and retirement policy.</p></article>
+        <article class="card"><span class="pill green">Identity</span><h3>Agents act as accountable principals.</h3><p>They need scoped credentials, least privilege, revocation, session history, and audit trails distinct from human users.</p></article>
+        <article class="card"><span class="pill yellow">Evaluation</span><h3>Tests become deployment gates.</h3><p>Scenario suites, red-team cases, regression evals, policy checks, latency, cost, and reliability thresholds decide release readiness.</p></article>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section band">
+      <p class="label">04 / Transformation roadmap</p>
+      <h2>Move from experiments to an agentic operating model.</h2>
+      <p class="lead">The route to agentic transformation is not more pilots. It is a sequence of production-grade operating decisions that build reusable capability while proving business value.</p>
+      <div class="roadmap">
+        <div class="phase"><small>0-30 days</small><h3>Choose the work</h3><p>Inventory workflows, rank by value and agent-readiness, define autonomy levels, and select three lighthouse workflows with named business owners.</p></div>
+        <div class="phase"><small>31-60 days</small><h3>Wire the substrate</h3><p>Connect tools, identity, data, retrieval, memory, policy, logging, and human approval paths. Build the first agent registry and eval suite.</p></div>
+        <div class="phase"><small>61-90 days</small><h3>Prove production</h3><p>Ship narrow agents into real workflows with human gates. Measure cycle time, escalation, reliability, cost per resolution, and business impact.</p></div>
+        <div class="phase"><small>6 months</small><h3>Scale patterns</h3><p>Turn successful workflows into reusable components: tool adapters, policy templates, eval harnesses, observability dashboards, and cost controls.</p></div>
+        <div class="phase"><small>12 months</small><h3>Operate the mesh</h3><p>Run a portfolio of agents with governance, simulation, monitoring, incident response, value tracking, and continuous improvement loops.</p></div>
+      </div>
+      <div class="takeaway"><b>Executive takeaway</b><p>Agentic transformation earns scale only when workflow value, safety gates, and reusable platform capability arrive together.</p></div>
+    </section>
+
+    <section id="metrics" class="section">
+      <p class="label">05 / Board metrics</p>
+      <h2>Measure agents by work completed and risk controlled.</h2>
+      <div class="grid-3">
+        <article class="card"><span class="pill blue">Business</span><h3>Throughput and value</h3><p>Resolved cases, cycle-time reduction, conversion, loss avoidance, cost-to-serve, revenue lift, working-capital impact, and quality.</p></article>
+        <article class="card"><span class="pill red">Trust</span><h3>Reliability and boundaries</h3><p>Escalation rate, policy violations, hallucination rate, tool errors, rollback events, human overrides, and audit completeness.</p></article>
+        <article class="card"><span class="pill green">Economics</span><h3>Cost per outcome</h3><p>Cost per resolved interaction, token spend by step, model routing mix, latency, cache hit rate, rework, and exception handling cost.</p></article>
+      </div>
+      <div class="grid-2">
+        <article class="card"><span class="pill yellow">What changes from GenAI</span><h3>The dashboard moves from usage to execution.</h3><p>Prompt counts, active users, and generated content are weak measures for agents. The board should ask whether work is being completed faster, more safely, more cheaply, and with compounding reuse.</p></article>
+        <article class="card"><span class="pill blue">What stays human</span><h3>Judgment remains explicit.</h3><p>Humans own values, accountability, empathy, dispute resolution, policy exceptions, model-risk acceptance, and the decision to expand or constrain autonomy.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <strong>The Agentic Transformation Success Tree / AI Tokenomics</strong>
+      <span>Designed for agents.aitokenomics.app. Transform workflow first; choose models second.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const data = {
+  aim: {
+    title: "Aim at agent-worthy work",
+    copy: "The first mistake is using agents where a copilot is enough. Agent-worthy work is repetitive, high-volume, tool-connected, exception-heavy, measurable, and valuable enough to justify orchestration and governance.",
+    checks: [
+      "Map each candidate workflow to P&L, risk, cycle-time, or customer outcome.",
+      "Separate assistive copilot use cases from delegated agent workflows.",
+      "Define the autonomy target before choosing models or tools."
+    ]
+  },
+  work: {
+    title: "Decompose the work before building the agent",
+    copy: "Agents need a precise model of the job: goals, subtasks, decisions, handoffs, tools, evidence, exceptions, and completion criteria. Vague workflows create vague autonomy.",
+    checks: [
+      "Document the current path, future path, and exception path.",
+      "Define which steps are assist, recommend, act-with-approval, or autonomous.",
+      "Instrument the baseline before introducing the agent."
+    ]
+  },
+  context: {
+    title: "Make context and tools production-grade",
+    copy: "Agent performance depends on trusted context and safe action. Retrieval alone is not enough; agents need API contracts, tool permissions, memory rules, and source-grounded evidence.",
+    checks: [
+      "Connect systems of record and systems of action through governed interfaces.",
+      "Scope memory by customer, workflow, retention, consent, and security policy.",
+      "Prefer structured APIs over brittle screen or text automation when possible."
+    ]
+  },
+  runtime: {
+    title: "Operate agents through a real runtime",
+    copy: "The runtime is where strategy becomes operations: registry, identity, orchestration, model routing, observability, cost controls, incident response, and lifecycle management.",
+    checks: [
+      "Register every agent with owner, purpose, tools, autonomy, and cost envelope.",
+      "Route tasks across models based on risk, latency, context, and cost.",
+      "Log plans, tool calls, evidence, decisions, approvals, and final outcomes."
+    ]
+  },
+  trust: {
+    title: "Govern autonomy as a release discipline",
+    copy: "Agentic risk is not only wrong text; it is wrong action. Controls must be built into the workflow through policy checks, evals, simulation, approval gates, and rollback paths.",
+    checks: [
+      "Create scenario evals for normal, edge, adversarial, and policy-sensitive cases.",
+      "Require human approval for high-impact, irreversible, or low-confidence actions.",
+      "Continuously monitor drift, incidents, exceptions, and user overrides."
+    ]
+  },
+  compound: {
+    title: "Make the mesh improve with use",
+    copy: "The enterprise advantage appears when each deployment leaves reusable assets: patterns, prompts, tools, traces, evals, policies, dashboards, and trained operators.",
+    checks: [
+      "Convert production traces into regression tests and improvement queues.",
+      "Maintain a pattern library of reusable tool adapters, agent templates, and evals.",
+      "Use finance-validated benefits to decide what scales and what stops."
+    ]
+  }
+};
+
+const buttons = document.querySelectorAll("[data-node]");
+const title = document.getElementById("detail-title");
+const copy = document.getElementById("detail-copy");
+const checks = document.getElementById("detail-checks");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    buttons.forEach((b) => b.classList.remove("active"));
+    button.classList.add("active");
+    const selected = data[button.dataset.node];
+    title.textContent = selected.title;
+    copy.textContent = selected.copy;
+    checks.innerHTML = selected.checks.map((item) => `<div class="check">${item}</div>`).join("");
+  });
+});
+</script>
+</body>
+</html>
