@@ -33,6 +33,21 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "agents.aitokenomics.app" || hostname === "agent.aitokenomics.app") {
+    const agentsUrl = request.nextUrl.clone();
+    if (agentsUrl.pathname === "/") {
+      agentsUrl.pathname = "/agents/index.html";
+    } else if (!agentsUrl.pathname.startsWith("/agents")) {
+      agentsUrl.pathname = `/agents${agentsUrl.pathname}`;
+    }
+    return NextResponse.rewrite(agentsUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   if (hostname === "gemini25.aitokenomics.app") {
     const geminiUrl = request.nextUrl.clone();
     if (geminiUrl.pathname === "/") {
