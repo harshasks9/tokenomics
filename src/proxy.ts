@@ -18,6 +18,21 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "strategy.aitokenomics.app") {
+    const strategyUrl = request.nextUrl.clone();
+    if (strategyUrl.pathname === "/") {
+      strategyUrl.pathname = "/strategy/index.html";
+    } else if (!strategyUrl.pathname.startsWith("/strategy")) {
+      strategyUrl.pathname = `/strategy${strategyUrl.pathname}`;
+    }
+    return NextResponse.rewrite(strategyUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   if (hostname === "gemini25.aitokenomics.app") {
     const geminiUrl = request.nextUrl.clone();
     if (geminiUrl.pathname === "/") {

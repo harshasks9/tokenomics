@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<title>The Enterprise AI Success Tree — aitokenomics.app</title>
+<meta name="description" content="An interactive mind-map decomposition of the six conditions that determine whether an enterprise succeeds with AI. A first-principles causal framework for CIOs, CDOs, CTOs and their teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@115,650;115,700;115,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0F2E4C;--bg-grid:rgba(232,241,248,.08);--text:#E8F1F8;--text-secondary:#9FBBD4;
+  --aim:#C99A2E;--fuel:#2E8C9E;--build:#4169C9;--adopt:#D4603F;--guard:#7D5BC7;--compound:#3E9960;
+  --panel-bg:#F2F5F7;--panel-ink:#10202F;--panel-border:#D6DDE3;
+  --lens-color:#4285F4;--lens-violet:#805AD5;
+  --font-display:'Archivo',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --header-h:56px;
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.5}
+
+/* ── HEADER ── */
+#header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:rgba(15,46,76,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,241,248,.1);display:flex;align-items:center;padding:0 16px;z-index:100;gap:14px}
+.site-title{font-family:var(--font-display);font-weight:800;font-stretch:115%;font-size:15px;letter-spacing:-.02em;white-space:nowrap;color:var(--text);flex-shrink:0}
+.chain{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;min-width:0}
+.chain-node{cursor:pointer;transition:color .2s;padding:2px 1px;border-radius:3px}
+.chain-node:hover,.chain-node:focus-visible{color:var(--text)}
+.chain-node:focus-visible{outline:2px solid var(--lens-color);outline-offset:1px}
+.header-spacer{flex:1}
+.header-controls{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.hdr-btn{background:rgba(232,241,248,.07);border:1px solid rgba(232,241,248,.12);color:var(--text-secondary);font-family:var(--font-mono);font-size:11px;padding:5px 10px;border-radius:6px;cursor:pointer;transition:all .2s;white-space:nowrap;min-height:30px}
+.hdr-btn:hover{background:rgba(232,241,248,.14);color:var(--text)}
+.hdr-btn:focus-visible{outline:2px solid var(--lens-color);outline-offset:2px}
+
+/* ── LENS TOGGLE ── */
+.lens-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;padding:5px 10px;border-radius:6px;border:1px solid rgba(232,241,248,.12);background:rgba(232,241,248,.05);transition:all .25s;user-select:none;min-height:30px}
+.lens-toggle:hover{background:rgba(232,241,248,.1)}
+.lens-toggle.on{background:rgba(66,133,244,.18);border-color:var(--lens-color)}
+.lens-toggle:focus-visible{outline:2px solid var(--lens-color);outline-offset:2px}
+.lens-toggle .spark{font-size:13px;line-height:1}
+.lens-toggle .lens-label{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--text-secondary);white-space:nowrap}
+.lens-toggle.on .lens-label{color:#8AB4F8}
+.lens-sw{width:30px;height:16px;border-radius:8px;background:rgba(232,241,248,.18);position:relative;transition:background .25s;flex-shrink:0}
+.lens-sw::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--text-secondary);transition:all .25s}
+.lens-toggle.on .lens-sw{background:var(--lens-color)}
+.lens-toggle.on .lens-sw::after{transform:translateX(14px);background:#fff}
+
+/* ── LEGEND ── */
+#legend{position:fixed;bottom:16px;left:16px;background:rgba(15,46,76,.94);backdrop-filter:blur(14px);border:1px solid rgba(232,241,248,.1);border-radius:10px;padding:10px 14px;z-index:90;font-size:11px;font-family:var(--font-mono);max-width:260px}
+.legend-title{font-weight:600;color:var(--text);margin-bottom:6px;font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.legend-row{display:flex;align-items:center;gap:6px;margin-bottom:3px;color:var(--text-secondary)}
+.legend-chip{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.legend-sep{border-top:1px solid rgba(232,241,248,.1);margin:6px 0}
+.legend-lens{display:none;align-items:center;gap:6px;margin-bottom:3px;color:var(--text-secondary)}
+.lens-on .legend-lens{display:flex}
+.lens-on .legend-sep-lens{display:block}
+
+/* ── CANVAS ── */
+#canvas{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;overflow:hidden;background:var(--bg);background-image:linear-gradient(var(--bg-grid) 1px,transparent 1px),linear-gradient(90deg,var(--bg-grid) 1px,transparent 1px);background-size:44px 44px}
+#canvas svg{width:100%;height:100%;display:block}
+
+/* ── SVG NODES ── */
+.nd{cursor:pointer;outline:none}
+.nd:focus-visible .pill{stroke:#8AB4F8;stroke-width:2.5}
+.pill{transition:opacity .3s,stroke .3s}
+.lbl{font-family:var(--font-display);font-weight:700;font-stretch:115%;pointer-events:none;text-anchor:middle;dominant-baseline:central}
+.nd-id{font-family:var(--font-mono);font-weight:600;pointer-events:none;text-anchor:middle;fill:var(--text-secondary);opacity:.7}
+.badge-g text{font-family:var(--font-mono);font-size:9px;font-weight:600;fill:#fff;pointer-events:none;text-anchor:middle;dominant-baseline:central}
+.badge-g rect{fill:rgba(16,32,47,.6);rx:8;ry:8}
+
+/* ── SVG LINKS ── */
+.lk{fill:none;stroke-width:2;opacity:.45;transition:opacity .3s,stroke .3s,stroke-width .3s}
+.lk.hl{opacity:1;stroke-width:3.5;filter:url(#glow)}
+
+/* ── LENS DECORATIONS ── */
+.lens-ring{fill:none;stroke-width:2.5;opacity:0;transition:opacity .3s;pointer-events:none}
+.lens-ring.vis{opacity:1}
+.spark-icon{pointer-events:none;opacity:0;transition:opacity .3s;font-size:11px}
+.spark-icon.vis{opacity:1}
+.dimmed .pill{opacity:.35!important}
+.dimmed .lbl{opacity:.35!important}
+.dimmed .nd-id{opacity:.2!important}
+.lk.dim{opacity:.1!important}
+
+/* ── DETAIL PANEL ── */
+#panel{position:fixed;top:var(--header-h);right:0;width:390px;bottom:0;background:var(--panel-bg);color:var(--panel-ink);transform:translateX(100%);transition:transform .3s ease;z-index:80;display:flex;flex-direction:column;border-left:1px solid var(--panel-border);overflow:hidden}
+#panel.open{transform:translateX(0)}
+.p-drag{display:none;width:36px;height:4px;background:rgba(16,32,47,.2);border-radius:2px;margin:8px auto 4px}
+.p-hdr{display:flex;align-items:flex-start;padding:16px 20px 12px;border-bottom:1px solid var(--panel-border);gap:10px;flex-shrink:0}
+.p-chip{width:14px;height:14px;border-radius:4px;flex-shrink:0;margin-top:4px}
+.p-hdr-text{flex:1;min-width:0}
+.p-id{font-family:var(--font-mono);font-size:12px;font-weight:600;color:rgba(16,32,47,.45)}
+.p-name{font-family:var(--font-display);font-weight:800;font-stretch:115%;font-size:18px;line-height:1.25;word-break:break-word}
+.p-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--panel-border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:rgba(16,32,47,.45);transition:all .2s;flex-shrink:0}
+.p-close:hover{background:rgba(16,32,47,.06);color:var(--panel-ink)}
+.p-close:focus-visible{outline:2px solid var(--lens-color);outline-offset:2px}
+.p-body{flex:1;overflow-y:auto;padding:16px 20px 40px;-webkit-overflow-scrolling:touch}
+.p-formal{font-size:13px;color:rgba(16,32,47,.5);font-style:italic;margin-bottom:12px}
+.p-causal{font-style:italic;font-size:14px;color:rgba(16,32,47,.72);margin-bottom:16px;padding:10px 14px;border-left:3px solid;border-radius:0 6px 6px 0;background:rgba(16,32,47,.025)}
+.p-sec{font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(16,32,47,.38);margin:18px 0 8px}
+.p-gloss{font-size:14px;line-height:1.6;margin-bottom:8px}
+.p-kids{list-style:none;padding:0}
+.p-kids li{padding:7px 10px;margin-bottom:3px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;transition:background .15s}
+.p-kids li:hover{background:rgba(16,32,47,.06)}
+.p-kids li:focus-visible{outline:2px solid var(--lens-color);outline-offset:1px}
+.p-kids .kid-id{font-family:var(--font-mono);font-size:10px;color:rgba(16,32,47,.38);flex-shrink:0;width:34px}
+.p-kids .kid-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.p-practices{list-style:none;padding:0}
+.p-practices li{padding:8px 12px;margin-bottom:4px;border-radius:6px;font-size:13px;line-height:1.55;background:rgba(16,32,47,.028);border-left:3px solid}
+.p-mnemonic{margin:10px 0;padding:10px 14px;border-radius:8px;background:linear-gradient(135deg,rgba(16,32,47,.04),rgba(16,32,47,.015));border:1px solid rgba(16,32,47,.07)}
+.p-mnemonic-t{font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:rgba(16,32,47,.38);margin-bottom:4px}
+.p-mnemonic-v{font-size:13px;font-weight:500;color:var(--panel-ink)}
+.ex-block{margin-top:10px;padding:12px 14px;border-radius:8px;background:rgba(16,32,47,.035);border:1px solid rgba(16,32,47,.07)}
+.ex-badge{font-family:var(--font-mono);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:6px}
+.ex-badge.exemplar{background:rgba(62,153,96,.12);color:#267d47}
+.ex-badge.cautionary{background:rgba(212,96,63,.12);color:#b04528}
+.ex-text{font-size:13px;line-height:1.55;color:rgba(16,32,47,.78)}
+.gem-block{margin-top:12px;padding:12px 14px;border-radius:8px;background:linear-gradient(135deg,rgba(66,133,244,.07),rgba(128,90,213,.06));border:1px solid rgba(66,133,244,.18)}
+.gem-title{font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--lens-color);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.gem-tier{font-family:var(--font-mono);font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:6px}
+.gem-tier.core{background:rgba(66,133,244,.14);color:#1a56c9}
+.gem-tier.accelerator{background:rgba(128,90,213,.11);color:#5f35a0}
+.gem-text{font-size:13px;line-height:1.55;color:rgba(16,32,47,.78)}
+
+/* ── MOBILE ── */
+@media(max-width:720px){
+  #header{gap:8px;padding:0 10px}
+  .site-title{font-size:13px}
+  .chain{display:none}
+  .hdr-btn .btn-text{display:none}
+  #legend{bottom:8px;left:8px;padding:8px 10px;font-size:10px;max-width:200px}
+  #panel{position:fixed;top:auto;left:0;right:0;bottom:0;width:100%;height:60vh;transform:translateY(100%);border-left:none;border-top:1px solid var(--panel-border);border-radius:16px 16px 0 0}
+  #panel.open{transform:translateY(0)}
+  .p-drag{display:block}
+  .p-hdr{padding:6px 16px 8px}
+  .p-body{padding:12px 16px 28px}
+}
+
+/* ── TOOLTIP ── */
+#tip{position:fixed;pointer-events:none;background:rgba(15,46,76,.95);border:1px solid rgba(232,241,248,.15);border-radius:8px;padding:5px 10px;font-family:var(--font-body);font-size:12px;color:var(--text);z-index:200;max-width:240px;opacity:0;transition:opacity .15s;white-space:nowrap}
+#tip.vis{opacity:1}
+</style>
+</head>
+<body>
+
+<header id="header" role="banner">
+  <span class="site-title">The Enterprise AI Success Tree</span>
+  <span class="chain" aria-label="Causal chain">
+    <span class="chain-node" data-cid="1" tabindex="0" role="button" style="color:var(--aim)">AIM</span><span style="opacity:.4"> → </span><span class="chain-node" data-cid="2" tabindex="0" role="button" style="color:var(--fuel)">FUEL</span><span style="opacity:.4"> → </span><span class="chain-node" data-cid="3" tabindex="0" role="button" style="color:var(--build)">BUILD</span><span style="opacity:.4"> → </span><span class="chain-node" data-cid="4" tabindex="0" role="button" style="color:var(--adopt)">ADOPT</span><span style="opacity:.4"> → </span><span class="chain-node" data-cid="5" tabindex="0" role="button" style="color:var(--guard)">GUARD</span><span style="opacity:.4"> → </span><span class="chain-node" data-cid="6" tabindex="0" role="button" style="color:var(--compound)">COMPOUND</span>
+  </span>
+  <div class="header-spacer"></div>
+  <div class="header-controls">
+    <button class="hdr-btn" id="btn-fit" aria-label="Fit view" title="Fit view">⊞ <span class="btn-text">Fit</span></button>
+    <button class="hdr-btn" id="btn-expand" aria-label="Expand all" title="Expand all">↕ <span class="btn-text">Expand</span></button>
+    <button class="hdr-btn" id="btn-collapse" aria-label="Collapse" title="Collapse">⊟ <span class="btn-text">Collapse</span></button>
+    <div class="lens-toggle" id="lens-toggle" role="switch" aria-checked="false" aria-label="Toggle Gemini Enterprise lens" tabindex="0">
+      <span class="spark" aria-hidden="true">✦</span>
+      <span class="lens-label">Gemini lens</span>
+      <div class="lens-sw" aria-hidden="true"></div>
+    </div>
+  </div>
+</header>
+
+<div id="canvas" role="application" aria-label="Enterprise AI Success Tree mind map">
+  <svg id="svg">
+    <defs>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="lglow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
+</div>
+
+<div id="panel" role="complementary" aria-label="Node details">
+  <div class="p-drag" aria-hidden="true"></div>
+  <div class="p-hdr">
+    <div class="p-chip"></div>
+    <div class="p-hdr-text">
+      <div class="p-id"></div>
+      <div class="p-name"></div>
+    </div>
+    <button class="p-close" aria-label="Close panel">×</button>
+  </div>
+  <div class="p-body"></div>
+</div>
+
+<div id="legend" role="complementary" aria-label="Legend">
+  <div class="legend-title">Conditions</div>
+  <div class="legend-row"><div class="legend-chip" style="background:var(--aim)"></div>AIM</div>
+  <div class="legend-row"><div class="legend-chip" style="background:var(--fuel)"></div>FUEL</div>
+  <div class="legend-row"><div class="legend-chip" style="background:var(--build)"></div>BUILD</div>
+  <div class="legend-row"><div class="legend-chip" style="background:var(--adopt)"></div>ADOPT</div>
+  <div class="legend-row"><div class="legend-chip" style="background:var(--guard)"></div>GUARD</div>
+  <div class="legend-row"><div class="legend-chip" style="background:var(--compound)"></div>COMPOUND</div>
+  <div class="legend-sep legend-sep-lens" style="display:none"></div>
+  <div class="legend-lens"><span style="color:var(--lens-color)">✦</span> Core advantage</div>
+  <div class="legend-lens"><span style="color:var(--lens-violet);opacity:.6">✦</span> Accelerator</div>
+  <div class="legend-lens" style="opacity:.45">○ Not mapped</div>
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   TREE DATA — single source of truth
+   ═══════════════════════════════════════════════════════ */
+const T={
+id:"0",sn:"Enterprise AI Success",fn:"Enterprise AI Success",
+gl:"AI durably generates net economic value at acceptable risk, compounding over time. Every child node answers: \"What must be true for its parent to succeed?\"",
+ct:"Does AI durably generate net economic value for this enterprise at acceptable risk, compounding over time?",
+lv:0,cn:null,
+ch:[
+/* ─── AIM ─── */
+{id:"1",sn:"AIM",fn:"Strategic Direction & Leadership Commitment",cn:"aim",
+gl:"The enterprise aims AI at the right value and commits will and resources.",
+ct:"Is the enterprise aiming AI at the right value — and committing the will and resources to get there?",
+lv:1,side:"right",ch:[
+ {id:"1.1",sn:"True North",fn:"Defensible Value Thesis",cn:"aim",
+  gl:"A grounded view of where AI creates advantage for this business — not a slide deck of possibilities, but a thesis that survives scrutiny.",
+  ct:"Does the enterprise have a grounded, defensible view of where AI creates real advantage for this specific business?",
+  lv:2,ex:{tp:"cautionary",tx:"Zillow Offers built an AI-powered home-buying model without grounding its value thesis in market-absorption reality. When the model's pricing errors compounded at scale, Zillow wrote down $569M and shut the business. A thesis must survive stress-testing."},
+  ch:[
+   {id:"1.1.1",sn:"Value Pool Map",fn:"Business-model grounding",cn:"aim",lv:3,
+    ct:"Are AI opportunities quantitatively mapped to specific P&L lines and competitive positions?",
+    pr:["Quantified value-pool map linking AI opportunities to specific P&L lines","Competitive-position analysis separating advantage plays from parity plays"]},
+   {id:"1.1.2",sn:"Feasibility Screen",fn:"Feasibility grounding",cn:"aim",lv:3,
+    ct:"Has every AI opportunity been screened for both technical readiness and organizational absorption capacity?",
+    pr:["Technical-readiness screen per opportunity (data, model capability, integration reality)","Absorption-readiness screen per opportunity (process maturity and change capacity)"]},
+   {id:"1.1.3",sn:"Strategy Lock-In",fn:"Strategy coherence",cn:"aim",lv:3,
+    ct:"Is the AI thesis explicitly tied to corporate strategy with documented trade-offs and a clear will-not-do list?",
+    pr:["AI thesis explicitly tied to corporate strategy documents and financial targets","Explicit \"will-not-do\" list documenting the trade-offs accepted"]}
+  ]},
+ {id:"1.2",sn:"Skin in the Game",fn:"Executive Sponsorship & Resource Commitment",cn:"aim",
+  gl:"Sustained executive will, not episodic enthusiasm — AI succeeds when leaders put their reputations, scorecards, and budgets on the line.",
+  ct:"Do executives have personal accountability and sustained resource commitment — not just verbal support?",
+  lv:2,ex:{tp:"exemplar",tx:"Woolworths publicly described embedding AI into executive KPIs and committing multi-year funding for their Google Cloud data platform. Leadership accountability drove enterprise-wide rollout rather than isolated experiments."},
+  ch:[
+   {id:"1.2.1",sn:"Named Owner",fn:"Accountable ownership",cn:"aim",lv:3,
+    ct:"Is there a named C-level owner carrying P&L accountability for AI outcomes, reflected in scorecards and compensation?",
+    pr:["Named C-level owner carrying P&L accountability for AI outcomes","AI outcomes embedded in executive scorecards and compensation"]},
+   {id:"1.2.2",sn:"Protected Funding",fn:"Sustained resourcing",cn:"aim",lv:3,
+    ct:"Is AI funded with a multi-year envelope and dedicated top-tier talent, not fractional staffing?",
+    pr:["Multi-year funding envelope protected from quarterly cost cycles","Dedicated top-tier talent allocation, not fractional staffing"]},
+   {id:"1.2.3",sn:"Lead by Using",fn:"Visible conviction",cn:"aim",lv:3,
+    ct:"Do executives personally use AI in their own work and communicate one consistent AI narrative?",
+    pr:["Executives personally and demonstrably use AI in their own work","One consistent AI narrative across internal, board, and investor channels"]}
+  ]},
+ {id:"1.3",sn:"Few Big Bets",fn:"Portfolio Selection & Capital Discipline",cn:"aim",
+  gl:"The right few bets, funded like an investor — concentration and kill discipline beat a hundred shallow pilots.",
+  ct:"Is the enterprise making a few deep, evidence-gated bets rather than spreading thin across dozens of pilots?",
+  lv:2,ex:{tp:"exemplar",tx:"DBS Bank publicly described its industrialized AI operating model with rigorous stage-gating: over 100 AI models in production, each passing through defined evidence gates. Concentration on high-impact use cases, not pilot proliferation, drove measurable P&L impact."},
+  ch:[
+   {id:"1.3.1",sn:"Kill Criteria",fn:"Prioritization rigor",cn:"aim",lv:3,
+    ct:"Are candidates scored on value × feasibility with kill criteria defined before funding is released?",
+    pr:["Standardized value × feasibility scoring for every candidate","Kill criteria defined before funding is released"]},
+   {id:"1.3.2",sn:"Deep Over Broad",fn:"Portfolio construction",cn:"aim",lv:3,
+    ct:"Does the portfolio deliberately mix horizons while concentrating on a few deep bets over many shallow pilots?",
+    pr:["Deliberate mix across horizons — productivity, process transformation, new offerings","Concentration discipline — few deep bets over many shallow pilots"]},
+   {id:"1.3.3",sn:"Evidence Gates",fn:"Stage-gated allocation",cn:"aim",lv:3,
+    ct:"Is funding released incrementally against evidence gates with quarterly reallocation from underperformers?",
+    pr:["Funding released incrementally against evidence gates","Quarterly reallocation from underperformers to winners"]}
+  ]},
+ {id:"1.4",sn:"Build·Buy·Borrow",fn:"Sourcing & Ecosystem Strategy",cn:"aim",
+  gl:"A deliberate posture on what to build, buy, and borrow — because the wrong sourcing decision compounds into lock-in or capability gaps.",
+  ct:"Does the enterprise have explicit criteria for what to build vs. buy vs. borrow, with ecosystem partnerships that transfer knowledge?",
+  lv:2,ex:{tp:"exemplar",tx:"Palo Alto Networks publicly described building differentiated security AI in-house while partnering with Google (Gemini via Vertex AI) for foundational model capabilities. Clear build-vs-borrow criteria preserved their competitive moat."},
+  ch:[
+   {id:"1.4.1",sn:"Moat vs. Commodity",fn:"Build–buy–partner discipline",cn:"aim",lv:3,
+    ct:"Are there explicit criteria separating what is differentiating (build) from commodity (buy), with vendor lock-in managed?",
+    pr:["Explicit criteria separating differentiating (build) from commodity (buy)","Vendor concentration and exit-optionality management"]},
+   {id:"1.4.2",sn:"Ecosystem Access",fn:"Ecosystem activation",cn:"aim",lv:3,
+    ct:"Do partner engagements mandate knowledge transfer, and does the enterprise participate in model provider roadmaps?",
+    gm:"accelerator",gt:"Google Cloud partner programs and early-access model previews through Vertex AI give enterprises roadmap participation and direct access to Gemini model evolution, enabling informed build-vs-buy decisions.",
+    pr:["Partner/SI engagements with mandatory knowledge transfer","Early-access and roadmap participation with model and platform providers"]}
+  ]}
+]},
+/* ─── FUEL ─── */
+{id:"2",sn:"FUEL",fn:"Trustworthy Data & Platform Foundation",cn:"fuel",
+gl:"The raw materials and the factory exist and can be trusted. Without trustworthy data and a shared platform, every AI build starts from scratch.",
+ct:"Do the raw materials (trusted data) and the factory (shared platform) exist and can they be relied upon?",
+lv:1,side:"right",
+mn:{t:"The 3D test for AI-grade data",v:"Discoverable · Dependable · Defensible — mapping to Accessibility, Quality, and Rights."},
+ch:[
+ {id:"2.1",sn:"AI-Grade Data",fn:"Data Readiness",cn:"fuel",
+  gl:"Findable, reliable, contextualized, legally usable data — the 3D test: Discoverable, Dependable, Defensible.",
+  ct:"Is the enterprise's data findable, reliable, contextualized, and legally usable for AI workloads?",
+  lv:2,ex:{tp:"exemplar",tx:"Vodafone publicly described their multi-year data platform investment on Google Cloud, building a governed data catalog across markets. Making data discoverable and dependable at scale was the prerequisite before any AI model could be trusted."},
+  ch:[
+   {id:"2.1.1",sn:"Find Any Data",fn:"Accessibility",cn:"fuel",lv:3,
+    ct:"Can critical data be found through a governed catalog and accessed via unified APIs, not point-to-point extraction?",
+    gm:"accelerator",gt:"BigQuery with Dataplex provides governed data cataloging, automated metadata discovery, and unified access across data domains — making enterprise data discoverable for AI workloads at scale.",
+    pr:["Governed catalog covering critical data domains","Unified access layer (APIs / semantic services) replacing point-to-point extraction"]},
+   {id:"2.1.2",sn:"Golden Datasets",fn:"Quality & context",cn:"fuel",lv:3,
+    ct:"Do AI-critical datasets have quality SLAs and semantic context encoding business definitions for model grounding?",
+    gm:"accelerator",gt:"Dataplex data quality rules and BigQuery's semantic layer with business metadata enable quality SLAs and ontology-grounded context that AI models need for reliable output.",
+    pr:["Quality SLAs (freshness, completeness, accuracy) on AI-critical datasets","Semantic layer encoding business definitions, ontology, and metadata for grounding"]},
+   {id:"2.1.3",sn:"Rights & Lineage",fn:"Rights & lineage",cn:"fuel",lv:3,
+    ct:"Is end-to-end provenance tracked with documented usage rights for training and inference?",
+    pr:["End-to-end provenance and lineage tracking","Documented usage-rights basis (contractual, consent, residency) for training and inference"]}
+  ]},
+ {id:"2.2",sn:"Paved Roads",fn:"AI Platform & Infrastructure",cn:"fuel",
+  gl:"A shared factory floor that makes every AI build cheaper and faster than the last — paved roads, not trailblazing every time.",
+  ct:"Does a shared AI platform exist that makes every build cheaper and faster than the last?",
+  lv:2,ex:{tp:"exemplar",tx:"Snap publicly described using Vertex AI as their shared AI platform for deploying Gemini-powered features across their product suite. Shared platform services meant new AI features shipped in days, not quarters."},
+  ch:[
+   {id:"2.2.1",sn:"Elastic Compute",fn:"Compute & model access",cn:"fuel",lv:3,
+    ct:"Does elastic inference capacity exist with multi-model routing, failover, and production-grade SLOs?",
+    gm:"core",gt:"Vertex AI provides elastic inference with provisioned throughput, multi-model routing across Gemini variants and third-party models via Model Garden, automatic failover, and production SLOs backed by enterprise SLAs.",
+    pr:["Elastic inference capacity with multi-model routing and failover","Latency and availability engineered to production SLOs"]},
+   {id:"2.2.2",sn:"Reusable Services",fn:"Shared platform services",cn:"fuel",lv:3,
+    ct:"Do paved-road services — retrieval, evaluation, orchestration, guardrails — exist as reusable components with self-service provisioning?",
+    gm:"core",gt:"Vertex AI Agent Builder provides paved-road services: grounding with enterprise search, evaluation pipelines, agent orchestration, and Model Armor guardrails — all self-service, with dev-to-prod deployment in days.",
+    pr:["Paved-road services — retrieval, evaluation, orchestration, guardrail tooling — as reusable components","Self-service provisioning with dev-to-prod in days, not quarters"]},
+   {id:"2.2.3",sn:"System Connectors",fn:"Integration fabric",cn:"fuel",lv:3,
+    ct:"Do APIs and event interfaces give AI systems governed access to core systems of record and enterprise functions?",
+    gm:"core",gt:"Apigee API management provides governed API access to systems of record, while Vertex AI Extensions and tool-use interfaces expose enterprise functions to AI agents with policy controls.",
+    pr:["API and event access into core systems of record","Governed tool/action interfaces exposing enterprise functions to agents"]}
+  ]},
+ {id:"2.3",sn:"Trusted Rails",fn:"Security & Trust Architecture",cn:"fuel",
+  gl:"The walls that make ambitious deployment safe — without trust architecture, scale becomes a liability, not an asset.",
+  ct:"Does the security and trust architecture make ambitious AI deployment safe rather than reckless?",
+  lv:2,ex:{tp:"cautionary",tx:"Samsung's widely reported source-code leak through employee use of ChatGPT demonstrated what happens without AI-path data protection. Shadow AI without trust architecture turned a productivity tool into a data exfiltration channel."},
+  ch:[
+   {id:"2.3.1",sn:"Agent Identity",fn:"Identity & access for humans and agents",cn:"fuel",lv:3,
+    ct:"Do AI agents have non-human identities with least-privilege scopes, just-in-time credentials, and complete action audit trails?",
+    gm:"core",gt:"Vertex AI Agent Builder supports agent-level IAM identity with least-privilege scopes, integrated with Google Cloud's identity platform for just-in-time credentialing and complete audit logging of all agent actions.",
+    pr:["Non-human (agent) identity with least-privilege scopes","Just-in-time credentialing and complete audit of agent actions"]},
+   {id:"2.3.2",sn:"Data in Motion",fn:"Data protection on AI paths",cn:"fuel",lv:3,
+    ct:"Is data classified and protected across prompts, context, and outputs with isolation and encryption across the full inference path?",
+    gm:"core",gt:"VPC Service Controls, Customer-Managed Encryption Keys (CMEK), and DLP enforcement across the Vertex AI inference path ensure data classification and protection from prompt to output — with no data used for model training.",
+    pr:["Classification and DLP enforcement across prompts, context, outputs","Isolation and encryption across the full inference path"]},
+   {id:"2.3.3",sn:"Red Team Ready",fn:"AI threat defense",cn:"fuel",lv:3,
+    ct:"Are prompt-injection defenses validated by red teams, and is the model supply chain secured?",
+    gm:"core",gt:"Model Armor provides runtime guardrails against prompt injection and jailbreak attacks, validated by Google's red team practices. Vertex AI's managed model serving ensures supply-chain integrity for deployed models.",
+    pr:["Prompt-injection and jailbreak defenses validated by a standing red team","Model and dependency supply-chain security"]}
+  ]}
+]},
+/* ─── BUILD ─── */
+{id:"3",sn:"BUILD",fn:"Solution Delivery Capability",cn:"build",
+gl:"Selected opportunities become reliable production systems — the discipline to build the right thing, build it right, and prove it works.",
+ct:"Can the enterprise reliably turn selected AI opportunities into production systems that actually work?",
+lv:1,side:"right",
+mn:{t:"The BUILD triad",v:"Right Thing · Thing Right · Prove It Works — product management, engineering, and quality assurance."},
+ch:[
+ {id:"3.1",sn:"Right Thing",fn:"AI Product Management",cn:"build",
+  gl:"Building the right thing at the use-case level — not what's technically impressive, but what changes a workflow.",
+  ct:"Is the enterprise building the right AI thing — the one that actually changes a workflow, not just the one that's technically impressive?",
+  lv:2,ex:{tp:"exemplar",tx:"Wendy's FreshAI, built with Google Cloud, started with precise workflow decomposition of drive-thru ordering — defining exactly which steps AI handles vs. humans. Weekly in-store testing with real customers shaped the product before scaling."},
+  ch:[
+   {id:"3.1.1",sn:"Task Decomposition",fn:"Problem definition",cn:"build",lv:3,
+    ct:"Has the workflow been decomposed at the task level with quantified success thresholds agreed before build?",
+    pr:["Workflow-level task decomposition — which steps AI does vs humans","Quantified success thresholds (quality, time, cost) agreed before build"]},
+   {id:"3.1.2",sn:"Trust Calibration",fn:"Human–AI experience design",cn:"build",lv:3,
+    ct:"Are interfaces trust-calibrated with confidence signals, citations, and human escalation — with feedback capture engineered in?",
+    gm:"accelerator",gt:"Vertex AI grounding with Google Search and enterprise data provides built-in citation and source attribution, enabling trust-calibrated interfaces where users can verify AI outputs against authoritative sources.",
+    pr:["Trust-calibrated interfaces — confidence, citations, escalation to humans","Feedback capture engineered into the product surface"]},
+   {id:"3.1.3",sn:"Pivot or Kill",fn:"Iterative validation",cn:"build",lv:3,
+    ct:"Is the team running weekly in-workflow prototype tests with real users and making pivot/kill decisions from usage evidence?",
+    pr:["Weekly in-workflow prototype testing with real users","Pivot/kill decisions driven by usage evidence, not sunk cost"]}
+  ]},
+ {id:"3.2",sn:"Thing Right",fn:"Engineering & Model Lifecycle",cn:"build",
+  gl:"Building the thing right, repeatably — model strategy, LLMOps, and agentic engineering as disciplined craft.",
+  ct:"Can the engineering team build AI systems right — repeatably, with proper model lifecycle and agentic engineering discipline?",
+  lv:2,ex:{tp:"exemplar",tx:"Priceline publicly described building their generative trip-planning assistant on Vertex AI with model routing between Gemini variants based on task complexity and cost. Versioned prompts and automated evaluation gates prevented regressions at each deployment."},
+  ch:[
+   {id:"3.2.1",sn:"Model Routing",fn:"Model & context strategy",cn:"build",lv:3,
+    ct:"Is model selection driven by task-level quality and economics, with grounding architecture matched to each task?",
+    gm:"core",gt:"Vertex AI Model Garden with Gemini Flash-to-Pro routing enables task-level model selection by quality and economics. Grounding with Vertex AI Search, context caching, and tuning APIs match context strategy to each task.",
+    pr:["Model selection and routing driven by task-level quality and economics","Grounding architecture (retrieval, tuning, context engineering) matched to task"]},
+   {id:"3.2.2",sn:"Ship with CI/CD",fn:"LLMOps pipeline",cn:"build",lv:3,
+    ct:"Are prompts, models, and data versioned with CI/CD, rollback, and automated evaluation gates blocking regressions?",
+    gm:"core",gt:"Vertex AI Pipelines supports versioned prompt and model management with CI/CD integration. Vertex AI Evaluation services provide automated quality gates that block regressions before deployment reaches production.",
+    pr:["Versioned prompts, models, and data with CI/CD and rollback","Automated evaluation gates that block regressions at deployment"]},
+   {id:"3.2.3",sn:"Bounded Agents",fn:"Agentic engineering",cn:"build",lv:3,
+    ct:"Are AI agents deployed with bounded autonomy — scoped tools, spend limits, human checkpoints — and reliable orchestration?",
+    gm:"core",gt:"Vertex AI Agent Builder provides bounded autonomy through scoped tool permissions, spend limits, and human-in-the-loop checkpoints. The Agent Development Kit (ADK) handles orchestration and state management for reliable multi-step agent execution.",
+    pr:["Bounded autonomy — scoped tools, permissions, spend limits, human checkpoints","Orchestration and state management for reliable multi-step execution"]}
+  ]},
+ {id:"3.3",sn:"Prove It Works",fn:"Reliability & Quality Assurance",cn:"build",
+  gl:"Knowing, continuously, that the system works — evaluation discipline, production observability, and incident readiness.",
+  ct:"Does the enterprise continuously know — not hope — that its AI systems are working correctly in production?",
+  lv:2,ex:{tp:"exemplar",tx:"Morgan Stanley's widely reported AI assistant for financial advisors uses rigorous evaluation gates: golden datasets, expert human review loops, and staged rollout. No model update ships without passing task-level eval suites."},
+  ch:[
+   {id:"3.3.1",sn:"Eval Discipline",fn:"Evaluation discipline",cn:"build",lv:3,
+    ct:"Are maintained golden datasets and task-level eval suites in place, with expert human review for high-stakes outputs?",
+    gm:"core",gt:"Vertex AI Evaluation services provide automated task-level evaluation suites with customizable metrics. Managed golden datasets and human review workflows enable systematic quality assurance for high-stakes AI outputs.",
+    pr:["Maintained golden datasets and task-level eval suites per use case","Expert human review loops for high-stakes outputs"]},
+   {id:"3.3.2",sn:"Live Telemetry",fn:"Production observability",cn:"build",lv:3,
+    ct:"Is quality-drift and hallucination monitoring running on live traffic with per-feature cost, latency, and usage telemetry?",
+    gm:"core",gt:"Vertex AI Model Monitoring provides quality-drift detection and hallucination monitoring on live traffic. Cloud Operations integration delivers per-feature cost, latency, and usage telemetry for production AI systems.",
+    pr:["Quality-drift and hallucination monitoring on live traffic","Per-feature cost, latency, and usage telemetry"]},
+   {id:"3.3.3",sn:"Incident Playbooks",fn:"Incident readiness",cn:"build",lv:3,
+    ct:"Do AI-specific incident playbooks exist with rehearsed rollback, and are post-incident findings fed back into evals?",
+    pr:["AI-specific incident playbooks with rehearsed rollback","Post-incident findings fed back into evals and guardrails"]}
+  ]}
+]},
+/* ─── ADOPT ─── */
+{id:"4",sn:"ADOPT",fn:"Organizational Adoption & Work Redesign",cn:"adopt",
+gl:"People and processes absorb AI into how work is actually done — technology without adoption is just cost.",
+ct:"Are people and processes actually absorbing AI into how work is done — or is it shelf-ware?",
+lv:1,side:"left",ch:[
+ {id:"4.1",sn:"Hub & Spokes",fn:"Operating Model & Org Design",cn:"adopt",
+  gl:"Structures that let AI work happen at speed with accountability — the right balance of central platform and embedded domain pods.",
+  ct:"Do organizational structures let AI work happen at speed with clear accountability?",
+  lv:2,ex:{tp:"exemplar",tx:"DBS Bank publicly described their hub-and-spoke AI operating model: a central platform team providing shared services, with embedded data scientists in each business unit. Documented interface contracts between platform and product teams enabled speed without chaos."},
+  ch:[
+   {id:"4.1.1",sn:"Platform + Pods",fn:"Delivery structure",cn:"adopt",lv:3,
+    ct:"Is there a central platform team plus embedded domain pods with explicit interface contracts?",
+    pr:["Central platform team plus embedded domain pods","Explicit platform–product interface contracts (paved roads, SLAs)"]},
+   {id:"4.1.2",sn:"Product Funding",fn:"Decision rights & funding",cn:"adopt",lv:3,
+    ct:"Are AI decision rights documented (RACI) with persistent product funding replacing one-off project funding?",
+    pr:["Documented decision rights (RACI) for AI build/buy/deploy","Persistent product funding replacing one-off project funding"]}
+  ]},
+ {id:"4.2",sn:"Skills at Scale",fn:"Talent & Capability Building",cn:"adopt",
+  gl:"The human capital to build and to use AI — from scarce engineering talent to organization-wide fluency.",
+  ct:"Does the enterprise have the human capital to both build AI and use it effectively at scale?",
+  lv:2,ex:{tp:"exemplar",tx:"IKEA publicly described retraining 8,500 call-center workers for interior design advisory roles as AI handled routine inquiries. Role redesign and reskilling investment turned potential displacement into workforce upgrade."},
+  ch:[
+   {id:"4.2.1",sn:"Talent Magnet",fn:"Scarce-skill acquisition",cn:"adopt",lv:3,
+    ct:"Does the enterprise have a competitive EVP for AI talent with explicit hire/partner/upskill decisions per capability gap?",
+    pr:["Competitive EVP for AI engineering and product talent","Explicit hire/partner/upskill decision per capability gap"]},
+   {id:"4.2.2",sn:"Role-Specific Training",fn:"Workforce fluency",cn:"adopt",lv:3,
+    ct:"Is applied training role-specific and tied to real workflows, with a champions network that has protected time?",
+    pr:["Role-specific applied training with certification tied to real workflows","Champions network with protected time"]},
+   {id:"4.2.3",sn:"New Career Paths",fn:"Role & career redesign",cn:"adopt",lv:3,
+    ct:"Are role definitions, skill matrices, and career paths updated for AI-augmented jobs?",
+    pr:["Updated role definitions and skill matrices for AI-augmented jobs","Performance criteria and career paths rewarding AI-augmented output"]}
+  ]},
+ {id:"4.3",sn:"Hearts & Habits",fn:"Culture & Change Leadership",cn:"adopt",
+  gl:"The conditions under which people choose to change — incentives, safety, trust, and the managers who make it real.",
+  ct:"Are the cultural conditions in place for people to choose to change how they work?",
+  lv:2,ex:{tp:"exemplar",tx:"Best Buy publicly described rolling out their gen-AI customer assistant with explicit no-penalty experimentation norms for store associates. Manager playbooks for leading AI-augmented teams drove adoption from the middle, not just the top."},
+  ch:[
+   {id:"4.3.1",sn:"Safe to Fail",fn:"Incentives & safety",cn:"adopt",lv:3,
+    ct:"Are there recognition and no-penalty norms for AI experimentation, including surfacing failures?",
+    pr:["Recognition for AI-enabled ways of working, including surfacing failures","Sanctioned experimentation with no-penalty norms"]},
+   {id:"4.3.2",sn:"Honest Promises",fn:"Trust & narrative",cn:"adopt",lv:3,
+    ct:"Has the enterprise made honest workforce-impact commitments that are kept, with transparent boundaries on AI use?",
+    pr:["Honest workforce-impact commitments (redeployment, reskilling) that are kept","Transparent boundaries on how AI will and won't be used on employees"]},
+   {id:"4.3.3",sn:"Manager Playbooks",fn:"Manager enablement",cn:"adopt",lv:3,
+    ct:"Do managers have playbooks for leading AI-augmented teams and accountability for team adoption outcomes?",
+    pr:["Manager playbooks for leading AI-augmented teams","Middle-manager accountability for team adoption outcomes"]}
+  ]},
+ {id:"4.4",sn:"In the Flow",fn:"Workflow Adoption & Usage Depth",cn:"adopt",
+  gl:"From access to habit to changed work standards — AI only compounds value when it's in the flow of real work.",
+  ct:"Has AI moved from available to habitual to having changed work standards?",
+  lv:2,mn:{t:"The adoption ladder",v:"Access → Habit → Standard — AI inside existing tools, usage depth tracked by cohort, process baselines reset."},
+  ex:{tp:"exemplar",tx:"Mercedes-Benz publicly described embedding conversational AI (built with Google) directly into the vehicle cockpit — not a separate app, but inside the driver's existing workflow. Default-on placement at the moment of task drove natural adoption."},
+  ch:[
+   {id:"4.4.1",sn:"Default-On AI",fn:"In-workflow embedding",cn:"adopt",lv:3,
+    ct:"Is AI embedded inside existing systems at the moment of task, not in separate portals?",
+    gm:"core",gt:"Gemini for Google Workspace embeds AI directly into Gmail, Docs, Sheets, and Meet — default-on at the moment of task. Gemini for third-party apps extends this to CRM, service desk, and developer tools where work already happens.",
+    pr:["AI inside existing systems (CRM, IDE, ticketing), not separate portals","Default-on placement at the moment of task"]},
+   {id:"4.4.2",sn:"Adoption Analytics",fn:"Adoption instrumentation",cn:"adopt",lv:3,
+    ct:"Is cohort-level usage depth tracked with targeted interventions for lagging cohorts?",
+    pr:["Cohort-level usage-depth analytics — frequency, depth, retention","Targeted interventions for lagging cohorts"]},
+   {id:"4.4.3",sn:"Reset Baselines",fn:"Process re-baselining",cn:"adopt",lv:3,
+    ct:"Have cycle-time, quality, and staffing standards been re-set to AI-augmented levels with freed capacity hard-wired into budgets?",
+    pr:["Cycle-time, quality, and staffing standards re-set to AI-augmented levels","Freed capacity hard-wired into budgets and targets"]}
+  ]}
+]},
+/* ─── GUARD ─── */
+{id:"5",sn:"GUARD",fn:"Governance, Risk & Trust",cn:"guard",
+gl:"Value protected from destruction by incident, regulation, or lost trust — governance as an accelerator, not a blocker.",
+ct:"Is value protected from destruction by incident, regulation, or lost trust?",
+lv:1,side:"left",ch:[
+ {id:"5.1",sn:"Fast Lanes",fn:"Governance Structure & Policy",cn:"guard",
+  gl:"Deciding who may approve what, under which rules — fast lanes for low risk, deep review for high risk.",
+  ct:"Are there clear, tiered governance structures that accelerate low-risk work while deeply reviewing high-risk deployments?",
+  lv:2,ex:{tp:"exemplar",tx:"HSBC publicly described implementing risk-tiered AI approval pathways on their Google Cloud platform — fast-tracking low-risk analytics while requiring cross-functional council review for customer-facing AI. Speed and safety coexisted."},
+  ch:[
+   {id:"5.1.1",sn:"Tiered Approvals",fn:"Tiered decisions",cn:"guard",lv:3,
+    ct:"Do risk-tiered approval pathways exist with a cross-functional AI council that has real authority?",
+    pr:["Risk-tiered approval pathways — fast lane for low risk, deep review for high risk","Cross-functional AI council with real authority and cadence"]},
+   {id:"5.1.2",sn:"Living Policy",fn:"Policy & standards",cn:"guard",lv:3,
+    ct:"Is there a short, operational AI policy with regulatory mapping and named owners per obligation?",
+    pr:["Short, operational AI policy — what is allowed, by whom, with which data","Regulatory mapping (EU AI Act, sectoral rules) with named owner per obligation"]}
+  ]},
+ {id:"5.2",sn:"Defensible AI",fn:"Responsible AI in Practice",cn:"guard",
+  gl:"Ethics as delivery gates and accountabilities, not statements — bias assessment before deployment, human accountability after.",
+  ct:"Is responsible AI practiced as delivery gates and named accountabilities, not just policy statements?",
+  lv:2,ex:{tp:"cautionary",tx:"Air Canada's chatbot ruling — where the airline was held liable for its AI's incorrect refund promises — demonstrated that accountability for automated decisions cannot be deferred. Named human accountability and recourse channels are not optional."},
+  ch:[
+   {id:"5.2.1",sn:"Bias Gates",fn:"Pre-deployment assurance",cn:"guard",lv:3,
+    ct:"Are impact and bias assessments embedded as delivery gates, with model cards and intended-use documentation?",
+    gm:"accelerator",gt:"Vertex AI Model Cards and evaluation services support structured transparency artifacts — model performance documentation, intended-use boundaries, and bias assessment — as standardized delivery gate artifacts.",
+    pr:["Impact and bias assessment embedded as a delivery gate","Transparency artifacts — model cards, intended-use documentation"]},
+   {id:"5.2.2",sn:"Human on Hook",fn:"In-production accountability",cn:"guard",lv:3,
+    ct:"Is there named human accountability for consequential automated decisions with recourse channels for affected people?",
+    pr:["Named human accountability for consequential automated decisions","Recourse and appeal channels for affected customers and employees"]}
+  ]},
+ {id:"5.3",sn:"Always-On Controls",fn:"Risk & Compliance Operations",cn:"guard",
+  gl:"Controlling: enforcing the decisions continuously — policy as code, audit trails, risk sensing, and third-party diligence.",
+  ct:"Are governance decisions enforced continuously through automated controls, audit trails, and risk sensing?",
+  lv:2,ex:{tp:"exemplar",tx:"Deutsche Bank publicly described their Google Cloud partnership including policy-as-code guardrails for regulated AI workflows — complete audit trails of model inputs and outputs, enforced at runtime rather than reviewed after the fact."},
+  ch:[
+   {id:"5.3.1",sn:"Policy as Code",fn:"Control enforcement",cn:"guard",lv:3,
+    ct:"Are policy guardrails enforced as code at runtime with complete audit trails in regulated flows?",
+    gm:"core",gt:"Model Armor enforces content safety and policy guardrails as code at runtime across Vertex AI workloads. Cloud Audit Logs provide complete, tamper-resistant audit trails of all prompts, actions, and outputs in regulated flows.",
+    pr:["Policy-as-code guardrails enforced at runtime","Complete audit trails of prompts, actions, outputs in regulated flows"]},
+   {id:"5.3.2",sn:"Risk Inventory",fn:"Risk sensing & response",cn:"guard",lv:3,
+    ct:"Does an AI incident taxonomy exist with reporting SLAs, and is there a model risk inventory with scheduled revalidation?",
+    pr:["AI incident taxonomy with reporting and response SLAs","Model risk inventory with scheduled revalidation"]},
+   {id:"5.3.3",sn:"Vendor Diligence",fn:"Third-party risk",cn:"guard",lv:3,
+    ct:"Are vendor model and data diligence standards enforced with contractual protections for IP, data use, and exit rights?",
+    pr:["Vendor model and data diligence standards","Contractual protections — IP, data use, indemnity, exit rights"]}
+  ]}
+]},
+/* ─── COMPOUND ─── */
+{id:"6",sn:"COMPOUND",fn:"Economic Discipline & Compounding Value",cn:"compound",
+gl:"Value exceeds cost, is proven, and the system improves faster than it decays — the flywheel that separates AI experiments from AI businesses.",
+ct:"Does value exceed cost, can it be proven, and does the system improve faster than it decays?",
+lv:1,side:"left",
+mn:{t:"The compounding equation",v:"Prove unit economics → Bank the P&L impact → Spin the flywheel — token economics, value realization, continuous renewal."},
+ch:[
+ {id:"6.1",sn:"Token Economics",fn:"AI Economics & FinOps",cn:"compound",
+  gl:"Unit economics that survive scale — because a demo that's cheap at 100 calls can bankrupt you at 10 million.",
+  ct:"Do the unit economics of AI workloads survive scale, with cost-per-outcome modeled and optimization levers applied?",
+  lv:2,ex:{tp:"exemplar",tx:"Klarna publicly reported their AI assistant handling two-thirds of customer service chats, but the story's edge is their unit-economics discipline: cost-per-resolution modeled before scaling, with caching and routing optimization keeping economics viable at volume."},
+  ch:[
+   {id:"6.1.1",sn:"Cost per Outcome",fn:"Unit-economics engineering",cn:"compound",lv:3,
+    ct:"Is cost-per-task modeled before scaling with optimization levers (caching, routing, batching) routinely applied?",
+    gm:"core",gt:"Gemini Flash-to-Pro tiered token pricing, context caching (reducing repeated-context costs), and batching APIs enable precise cost-per-outcome engineering. Model routing by task complexity optimizes the quality-cost frontier.",
+    pr:["Cost-per-task/outcome modeled before scaling","Optimization levers routinely applied — caching, routing, batching, right-sizing"]},
+   {id:"6.1.2",sn:"Chargeback Model",fn:"Financial governance of AI spend",cn:"compound",lv:3,
+    ct:"Is AI spend allocated via showback/chargeback with inference-at-scale forecasting and variance management?",
+    gm:"core",gt:"Google Cloud billing with project-level and label-based cost attribution enables showback/chargeback for AI spend. Provisioned throughput pricing and committed-use discounts make inference-at-scale costs forecastable.",
+    pr:["Showback/chargeback to consuming business units","Inference-at-scale forecasting with variance management"]}
+  ]},
+ {id:"6.2",sn:"Prove the P&L",fn:"Value Measurement & Realization",cn:"compound",
+  gl:"Proving and banking the value — because value that isn't measured is imagined, and value that isn't banked is a story.",
+  ct:"Is AI value measured end-to-end from usage to P&L impact and actually booked into budgets?",
+  lv:2,ex:{tp:"exemplar",tx:"ANZ Bank publicly described their approach to AI value realization: baselines captured before deployment, metric chains from usage through operational KPIs to P&L lines, with benefits owned by business-line leaders and validated by finance."},
+  ch:[
+   {id:"6.2.1",sn:"Metric Chain",fn:"Instrumented value tracking",cn:"compound",lv:3,
+    ct:"Are baselines captured before every deployment with a metric chain linking usage to operational KPIs to P&L?",
+    pr:["Baseline captured before every deployment","Metric chain linking usage → operational KPI → P&L line"]},
+   {id:"6.2.2",sn:"Bank the Value",fn:"Realization enforcement",cn:"compound",lv:3,
+    ct:"Are benefits owned by business-line leaders and finance-validated into budgets and targets?",
+    pr:["Benefits owned by business-line leaders, not the AI team","Finance-validated benefits booked into budgets and targets"]}
+  ]},
+ {id:"6.3",sn:"The Flywheel",fn:"Continuous Improvement & Strategic Renewal",cn:"compound",
+  gl:"The feedback system that makes value compound — production signals feeding improvement, reusable components scaling knowledge, and strategic renewal keeping the portfolio current.",
+  ct:"Does the feedback system make AI value compound — or does every deployment slowly decay?",
+  lv:2,ex:{tp:"exemplar",tx:"Toyota publicly described their manufacturing AI platform on Google Cloud with continuous feedback loops: production signals feeding model retraining cycles, reusable patterns shared across plants, and periodic reassessment as new capabilities emerged."},
+  ch:[
+   {id:"6.3.1",sn:"Signal to Retrain",fn:"Feedback loops",cn:"compound",lv:3,
+    ct:"Do production signals feed eval and tuning cycles with scheduled refresh cadences for prompts, models, and workflows?",
+    gm:"accelerator",gt:"Vertex AI's evaluation and tuning pipelines enable systematic feedback loops: production signals (corrections, escalations) flow into eval datasets and fine-tuning cycles, with scheduled refresh cadences managed through Vertex AI Pipelines.",
+    pr:["Production signals (corrections, escalations, ratings) feeding eval and tuning cycles","Scheduled refresh cadence for prompts, models, workflows"]},
+   {id:"6.3.2",sn:"Pattern Library",fn:"Knowledge & reuse",cn:"compound",lv:3,
+    ct:"Does a reusable component library exist with tracked adoption and cross-team learning forums?",
+    pr:["Reusable component library (prompts, agents, evals, patterns) with tracked adoption","Cross-team learning forums and circulated case studies"]},
+   {id:"6.3.3",sn:"Frontier Scan",fn:"Strategic renewal",cn:"compound",lv:3,
+    ct:"Are periodic frontier-capability scans conducted with portfolio re-planning triggered by model capability step-changes?",
+    pr:["Periodic frontier-capability scans reassessing what is newly possible","Portfolio re-planning triggered by model capability step-changes"]}
+  ]}
+]}
+]};
+
+/* ═══ COLORS ═══ */
+const C={aim:'#C99A2E',fuel:'#2E8C9E',build:'#4169C9',adopt:'#D4603F',guard:'#7D5BC7',compound:'#3E9960'};
+
+/* ═══ GEMINI LENS MAP ═══ */
+const GM={
+  '2.2.1':'core','2.2.2':'core','2.2.3':'core',
+  '2.3.1':'core','2.3.2':'core','2.3.3':'core',
+  '3.2.1':'core','3.2.2':'core','3.2.3':'core',
+  '3.3.1':'core','3.3.2':'core',
+  '4.4.1':'core','5.3.1':'core',
+  '6.1.1':'core','6.1.2':'core',
+  '2.1.1':'accelerator','2.1.2':'accelerator',
+  '3.1.2':'accelerator','5.2.1':'accelerator',
+  '6.3.1':'accelerator','1.4.2':'accelerator'
+};
+/* Propagate to L2 parents */
+Object.keys(GM).forEach(k=>{
+  const p=k.split('.').slice(0,2).join('.');
+  if(!GM[p]){GM[p]=GM[k]}
+  else if(GM[k]==='core')GM[p]='core';
+});
+
+/* ═══ STATE ═══ */
+let lens=false, selId=null;
+const expanded=new Set();
+const svgEl=d3.select('#svg');
+const box=document.getElementById('canvas');
+let gMain,gLk,gNd,zoom;
+const flat=[];
+const pos={};
+const RM=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+const DUR=RM?0:300;
+
+/* ═══ FLATTEN ═══ */
+(function walk(n,pid,d){
+  const f={...n,dp:d,pid,_ch:n.ch||[]};
+  delete f.ch;
+  flat.push(f);
+  if(n.ch)n.ch.forEach(c=>walk(c,n.id,d+1));
+})(T,null,0);
+
+/* Assign colors & sides */
+flat.forEach(n=>{
+  if(n.id==='0'){n.col='#E8F1F8';return}
+  const r=n.id.split('.')[0];
+  const cond=flat.find(x=>x.id===r&&x.lv===1);
+  n.col=cond?C[cond.cn]:'#E8F1F8';
+  if(!n.cn)n.cn=cond?cond.cn:null;
+  if(!n.side){n.side=cond?cond.side:'right'}
+});
+
+/* Init expansion: root + L1 expanded (shows L1 conditions + L2 sub-conditions) */
+expanded.add('0');
+flat.filter(n=>n.lv===1).forEach(n=>expanded.add(n.id));
+
+/* ═══ VISIBLE ═══ */
+function vis(){
+  const v=[], seen=new Set(), q=[flat.find(n=>n.id==='0')];
+  while(q.length){
+    const n=q.shift();
+    if(!n||seen.has(n.id))continue;
+    seen.add(n.id); v.push(n);
+    if(expanded.has(n.id))
+      n._ch.forEach(c=>{const f=flat.find(x=>x.id===c.id);if(f)q.push(f)});
+  }
+  return v;
+}
+
+/* ═══ HIDDEN COUNT ═══ */
+function hCount(n){
+  if(expanded.has(n.id))return 0;
+  let c=0;
+  (function r(nd){
+    if(nd._ch)nd._ch.forEach(ch=>{c++;const f=flat.find(x=>x.id===ch.id);if(f)r(f)});
+  })(n);
+  return c;
+}
+
+/* ═══ MEASURE TEXT ═══ */
+const _mc=document.createElement('canvas').getContext('2d');
+function tw(text,size,weight){
+  _mc.font=`${weight||700} ${size}px Archivo, system-ui`;
+  return _mc.measureText(text).width;
+}
+
+/* ═══ NODE DIMS ═══ */
+function dims(n){
+  const pad=28;
+  if(n.lv===0){const w=Math.max(180,tw(n.sn,14,800)+pad);return{w,h:46,fs:14,rx:23}}
+  if(n.lv===1){const w=Math.max(100,tw(n.sn,16,700)+pad);return{w,h:42,fs:16,rx:21}}
+  if(n.lv===2){const w=Math.max(110,tw(n.sn,12,700)+pad);return{w,h:34,fs:12,rx:17}}
+  const w=Math.max(90,tw(n.sn,10.5,700)+pad);return{w,h:28,fs:10.5,rx:14};
+}
+
+/* ═══ LAYOUT ═══ */
+function layout(){
+  const v=vis();
+  Object.keys(pos).forEach(k=>delete pos[k]);
+  pos['0']={x:0,y:0};
+
+  const rConds=v.filter(n=>n.lv===1&&n.side==='right');
+  const lConds=v.filter(n=>n.lv===1&&n.side==='left');
+
+  function branch(conds,dir){
+    const s=dir==='right'?1:-1;
+    // Compute total height needed per condition
+    const condInfos=conds.map(cond=>{
+      const l2s=v.filter(n=>n.pid===cond.id);
+      let totalH=0;
+      const l2Infos=l2s.map(l2=>{
+        const l3s=v.filter(n=>n.pid===l2.id);
+        const l3h=Math.max(1,l3s.length)*52; // 52px per L3 node
+        const l2h=Math.max(l3h, 60);
+        totalH+=l2h;
+        return {l2,l3s,h:l2h};
+      });
+      if(l2s.length>1)totalH+=(l2s.length-1)*30; // gap between L2 groups
+      return {cond,l2Infos,totalH:Math.max(totalH,80)};
+    });
+
+    const gap1=40; // gap between conditions
+    const totalH=condInfos.reduce((a,c)=>a+c.totalH,0)+(conds.length-1)*gap1;
+    let cy=-totalH/2;
+
+    condInfos.forEach(ci=>{
+      const condY=cy+ci.totalH/2;
+      pos[ci.cond.id]={x:s*280, y:condY};
+      
+      let l2y=cy;
+      ci.l2Infos.forEach((l2i,idx)=>{
+        const l2CenterY=l2y+l2i.h/2;
+        pos[l2i.l2.id]={x:s*540, y:l2CenterY};
+
+        // L3 children
+        const l3s=l2i.l3s;
+        if(l3s.length){
+          const l3totalH=(l3s.length-1)*52;
+          let l3y=l2CenterY-l3totalH/2;
+          l3s.forEach(l3=>{
+            pos[l3.id]={x:s*780, y:l3y};
+            l3y+=52;
+          });
+        }
+
+        l2y+=l2i.h+30;
+      });
+
+      cy+=ci.totalH+gap1;
+    });
+  }
+
+  branch(rConds,'right');
+  branch(lConds,'left');
+  return v;
+}
+
+/* ═══ LINKS ═══ */
+function links(v){
+  const ids=new Set(v.map(n=>n.id));
+  return v.filter(n=>n.pid&&ids.has(n.pid)).map(n=>({s:n.pid,t:n.id,cn:n.cn}));
+}
+
+/* ═══ ANCESTOR PATH ═══ */
+function ancestors(id){
+  const p=[];let c=id;
+  while(c){p.push(c);const n=flat.find(x=>x.id===c);c=n?n.pid:null}
+  return p;
+}
+
+/* ═══ BEZIER ═══ */
+function bez(s,t){
+  const a=pos[s],b=pos[t];
+  if(!a||!b)return'';
+  const dx=b.x-a.x, cp=Math.abs(dx)*.45;
+  return`M${a.x},${a.y}C${a.x+(dx>0?cp:-cp)},${a.y} ${b.x+(dx>0?-cp:cp)},${b.y} ${b.x},${b.y}`;
+}
+
+/* ═══ INIT ═══ */
+function init(){
+  zoom=d3.zoom().scaleExtent([.1,3]).on('zoom',e=>gMain.attr('transform',e.transform));
+  svgEl.call(zoom).on('dblclick.zoom',null).on('dblclick',fit);
+  gMain=svgEl.append('g');
+  gLk=gMain.append('g');
+  gNd=gMain.append('g');
+}
+
+/* ═══ RENDER ═══ */
+function render(anim){
+  const v=layout();
+  const lks=links(v);
+  const dur=anim?DUR:0;
+
+  // Links
+  const lkSel=gLk.selectAll('.lk').data(lks,d=>d.s+'-'+d.t);
+  lkSel.exit().transition().duration(dur).attr('opacity',0).remove();
+  const lkE=lkSel.enter().append('path').attr('class','lk')
+    .attr('stroke',d=>{const n=flat.find(x=>x.id===d.t);return n?n.col:'#555'})
+    .attr('d',d=>bez(d.s,d.t)).attr('opacity',0);
+  lkE.merge(lkSel).transition().duration(dur)
+    .attr('d',d=>bez(d.s,d.t))
+    .attr('opacity',.45);
+
+  // Nodes
+  const ndSel=gNd.selectAll('.nd').data(v,d=>d.id);
+  ndSel.exit().transition().duration(dur).attr('opacity',0).remove();
+
+  const ndE=ndSel.enter().append('g').attr('class',d=>'nd nd-'+d.lv)
+    .attr('transform',d=>{const p=pos[d.id]||{x:0,y:0};return`translate(${p.x},${p.y})`})
+    .attr('opacity',0).attr('role','button').attr('tabindex','0')
+    .attr('aria-label',d=>`${d.sn}: ${d.fn}`);
+
+  // Pill
+  ndE.append('rect').attr('class','pill').attr('fill',d=>d.col)
+    .each(function(d){const dm=dims(d);d3.select(this).attr('x',-dm.w/2).attr('y',-dm.h/2).attr('width',dm.w).attr('height',dm.h).attr('rx',dm.rx)});
+
+  // Lens ring
+  ndE.append('rect').attr('class','lens-ring')
+    .each(function(d){const dm=dims(d);d3.select(this).attr('x',-dm.w/2-4).attr('y',-dm.h/2-4).attr('width',dm.w+8).attr('height',dm.h+8).attr('rx',dm.rx+4)})
+    .attr('stroke','#4285F4').attr('filter','url(#lglow)');
+
+  // Label
+  ndE.append('text').attr('class','lbl').attr('y',1)
+    .each(function(d){const dm=dims(d);d3.select(this).attr('font-size',dm.fs)})
+    .attr('fill',d=>d.lv===0?'#0F2E4C':'#0F2E4C')
+    .text(d=>d.sn);
+
+  // ID above pill (L2+)
+  ndE.filter(d=>d.lv>=2).append('text').attr('class','nd-id')
+    .attr('y',d=>-dims(d).h/2-6).attr('font-size',9)
+    .text(d=>d.id);
+
+  // Badge group
+  const bg=ndE.append('g').attr('class','badge-g');
+  bg.append('rect');bg.append('text');
+
+  // Spark icon
+  ndE.append('text').attr('class','spark-icon')
+    .attr('x',d=>dims(d).w/2+4).attr('y',d=>-dims(d).h/2+2)
+    .text('✦');
+
+  // Events
+  ndE.on('click',function(e,d){e.stopPropagation();
+    if(d._ch.length&&d.lv<3)toggle(d.id);
+    select(d.id)})
+  .on('keydown',function(e,d){if(e.key==='Enter'||e.key===' '){e.preventDefault();
+    if(d._ch.length&&d.lv<3)toggle(d.id);select(d.id)}})
+  .on('mouseenter',function(e,d){if(d.lv>=2)tipShow(e,d)})
+  .on('mousemove',function(e){tipMove(e)})
+  .on('mouseleave',tipHide);
+
+  // Update all
+  const all=ndE.merge(ndSel);
+  all.transition().duration(dur)
+    .attr('transform',d=>{const p=pos[d.id]||{x:0,y:0};return`translate(${p.x},${p.y})`})
+    .attr('opacity',1);
+
+  // Badges
+  all.each(function(d){
+    const g=d3.select(this).select('.badge-g');
+    const c=hCount(d);
+    if(c>0&&d._ch.length&&d.lv<3){
+      const lb='+'+c,dm=dims(d),bw=Math.max(22,lb.length*7+10);
+      g.select('rect').attr('x',dm.w/2-2).attr('y',-8).attr('width',bw).attr('height',16).attr('opacity',1);
+      g.select('text').attr('x',dm.w/2-2+bw/2).attr('y',0).text(lb).attr('opacity',1);
+    } else {g.select('rect').attr('opacity',0);g.select('text').attr('opacity',0)}
+  });
+
+  updateLens(all);
+  updateHL();
+}
+
+/* ═══ LENS ═══ */
+function updateLens(nds){
+  if(!nds)nds=gNd.selectAll('.nd');
+  nds.select('.lens-ring').classed('vis',d=>lens&&!!GM[d.id])
+    .attr('stroke',d=>GM[d.id]==='core'?'#4285F4':'#805AD5');
+  nds.select('.spark-icon').classed('vis',d=>lens&&!!GM[d.id])
+    .attr('fill',d=>GM[d.id]==='core'?'#4285F4':'#805AD5');
+  nds.classed('dimmed',d=>{
+    if(!lens||d.lv===0)return false;
+    if(GM[d.id])return false;
+    let has=false;
+    (function ck(id){if(GM[id]){has=true;return}
+      const nd=flat.find(n=>n.id===id);if(nd&&nd._ch)nd._ch.forEach(c=>ck(c.id))})(d.id);
+    return!has;
+  });
+  gLk.selectAll('.lk').classed('dim',function(d){
+    if(!lens)return false;
+    const t=d.t;
+    if(GM[t]||t==='0')return false;
+    const nd=flat.find(n=>n.id===t);
+    if(nd&&nd.lv<=1)return false;
+    let has=false;
+    (function ck(id){if(GM[id]){has=true;return}
+      const n=flat.find(x=>x.id===id);if(n&&n._ch)n._ch.forEach(c=>ck(c.id))})(t);
+    return!has;
+  });
+}
+
+/* ═══ HIGHLIGHT ═══ */
+function updateHL(){
+  gLk.selectAll('.lk').classed('hl',false);
+  if(!selId)return;
+  const p=new Set(ancestors(selId));
+  gLk.selectAll('.lk').each(function(d){
+    const on=p.has(d.s)&&p.has(d.t);
+    d3.select(this).classed('hl',on);
+    if(on){const n=flat.find(x=>x.id===d.t);d3.select(this).attr('stroke',n?n.col:'#E8F1F8')}
+  });
+}
+
+/* ═══ EXPAND/COLLAPSE ═══ */
+function toggle(id){
+  if(expanded.has(id)){
+    expanded.delete(id);
+    (function cl(i){const n=flat.find(x=>x.id===i);if(n&&n._ch)n._ch.forEach(c=>{expanded.delete(c.id);cl(c.id)})})(id);
+  } else expanded.add(id);
+  render(true);
+}
+function expandAll(){flat.forEach(n=>{if(n._ch.length&&n.lv<3)expanded.add(n.id)});render(true);setTimeout(fit,DUR+50)}
+function collapseAll(){expanded.clear();expanded.add('0');flat.filter(n=>n.lv===1).forEach(n=>expanded.add(n.id));render(true);setTimeout(fit,DUR+50)}
+
+/* ═══ SELECT ═══ */
+function select(id){selId=id;const n=flat.find(x=>x.id===id);if(!n)return;updateHL();panel(n)}
+
+/* ═══ DETAIL PANEL ═══ */
+function panel(n){
+  const p=document.getElementById('panel');
+  p.querySelector('.p-chip').style.background=n.col;
+  p.querySelector('.p-id').textContent=n.id==='0'?'ROOT':n.id;
+  p.querySelector('.p-name').textContent=n.sn;
+  let h='';
+  if(n.fn&&n.fn!==n.sn)h+=`<div class="p-formal">${n.fn}</div>`;
+  if(n.ct)h+=`<div class="p-causal" style="border-color:${n.col}">${n.ct}</div>`;
+  if(n.gl){h+=`<div class="p-sec">Overview</div><div class="p-gloss">${n.gl}</div>`}
+  if(n.mn)h+=`<div class="p-mnemonic"><div class="p-mnemonic-t">${n.mn.t}</div><div class="p-mnemonic-v">${n.mn.v}</div></div>`;
+  if(n.lv<=2&&n._ch.length){
+    h+=`<div class="p-sec">Components</div><ul class="p-kids">`;
+    n._ch.forEach(cd=>{
+      const ch=flat.find(x=>x.id===cd.id);
+      if(ch){
+        const li=lens&&GM[ch.id]?' ✦':'';
+        h+=`<li tabindex="0" data-nav="${ch.id}"><span class="kid-id">${ch.id}</span><span class="kid-dot" style="background:${ch.col}"></span>${ch.sn}${li}</li>`;
+      }
+    });
+    h+=`</ul>`;
+  }
+  if(n.lv===3&&n.pr&&n.pr.length){
+    h+=`<div class="p-sec">Observable evidence</div><ul class="p-practices">`;
+    n.pr.forEach(p=>h+=`<li style="border-color:${n.col}">${p}</li>`);
+    h+=`</ul>`;
+  }
+  if(n.ex){
+    h+=`<div class="p-sec">In the wild</div><div class="ex-block">`;
+    h+=`<span class="ex-badge ${n.ex.tp}">${n.ex.tp==='exemplar'?'✓ Exemplar':'⚠ Cautionary'}</span>`;
+    h+=`<div class="ex-text">${n.ex.tx}</div></div>`;
+  }
+  if(lens){
+    const tier=GM[n.id]||n.gm;
+    if(tier){
+      const txt=n.gt||gemText(n.id);
+      if(txt){
+        h+=`<div class="gem-block"><div class="gem-title">✦ Gemini Enterprise advantage</div>`;
+        h+=`<span class="gem-tier ${tier}">${tier==='core'?'Core advantage':'Accelerator'}</span>`;
+        h+=`<div class="gem-text">${txt}</div></div>`;
+      }
+    }
+  }
+  p.querySelector('.p-body').innerHTML=h;
+  p.querySelectorAll('[data-nav]').forEach(el=>{
+    el.addEventListener('click',()=>navTo(el.dataset.nav));
+    el.addEventListener('keydown',e=>{if(e.key==='Enter')navTo(el.dataset.nav)});
+  });
+  p.classList.add('open');
+}
+
+function gemText(id){
+  const n=flat.find(x=>x.id===id);
+  if(n&&n.gt)return n.gt;
+  if(n&&n.lv===2){
+    const ts=[];
+    n._ch.forEach(c=>{const ch=flat.find(x=>x.id===c.id);if(ch&&ch.gt&&GM[ch.id])ts.push(ch.gt)});
+    if(ts.length)return ts.join(' ');
+  }
+  return null;
+}
+
+function closePanel(){document.getElementById('panel').classList.remove('open');selId=null;updateHL()}
+
+function navTo(id){
+  ancestors(id).forEach(a=>{const n=flat.find(x=>x.id===a);if(n&&n._ch.length&&n.lv<3)expanded.add(a)});
+  render(true);select(id);
+  setTimeout(()=>{
+    const p=pos[id];if(!p)return;
+    const w=box.clientWidth,h=box.clientHeight,pw=innerWidth>720?390:0;
+    svgEl.transition().duration(DUR).call(zoom.transform,d3.zoomIdentity.translate((w-pw)/2-p.x,h/2-p.y));
+  },DUR+50);
+}
+
+/* ═══ TOOLTIP ═══ */
+const tip=document.getElementById('tip');
+function tipShow(e,d){tip.textContent=d.fn;tip.classList.add('vis');tipMove(e)}
+function tipMove(e){tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-12)+'px'}
+function tipHide(){tip.classList.remove('vis')}
+
+/* ═══ FIT VIEW ═══ */
+function fit(){
+  const v=vis();if(!v.length)return;
+  let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+  v.forEach(n=>{const p=pos[n.id];if(!p)return;const d=dims(n);
+    x0=Math.min(x0,p.x-d.w/2);x1=Math.max(x1,p.x+d.w/2);
+    y0=Math.min(y0,p.y-d.h/2);y1=Math.max(y1,p.y+d.h/2)});
+  const w=box.clientWidth,h=box.clientHeight;
+  const po=document.getElementById('panel').classList.contains('open');
+  const pw=po&&innerWidth>720?390:0;
+  const aw=w-pw,pad=50;
+  const bw=x1-x0+pad*2,bh=y1-y0+pad*2;
+  const sc=Math.min(aw/bw,h/bh,1.5);
+  const cx=(x0+x1)/2,cy=(y0+y1)/2;
+  svgEl.transition().duration(DUR*2).call(zoom.transform,d3.zoomIdentity.translate(aw/2-cx*sc,h/2-cy*sc).scale(sc));
+}
+
+/* ═══ CONTROLS ═══ */
+document.getElementById('btn-fit').addEventListener('click',fit);
+document.getElementById('btn-expand').addEventListener('click',expandAll);
+document.getElementById('btn-collapse').addEventListener('click',collapseAll);
+document.querySelector('.p-close').addEventListener('click',closePanel);
+
+// Mobile panel dismiss
+const dh=document.querySelector('.p-drag');let dty=0;
+dh.addEventListener('touchstart',e=>dty=e.touches[0].clientY);
+dh.addEventListener('touchmove',e=>{if(e.touches[0].clientY-dty>60)closePanel()});
+
+// Lens
+const lt=document.getElementById('lens-toggle');
+function toggleLens(){
+  lens=!lens;lt.classList.toggle('on',lens);lt.setAttribute('aria-checked',lens);
+  document.querySelectorAll('.legend-lens,.legend-sep-lens').forEach(el=>el.style.display=lens?'flex':'none');
+  updateLens();
+  if(selId){const n=flat.find(x=>x.id===selId);if(n)panel(n)}
+}
+lt.addEventListener('click',toggleLens);
+lt.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleLens()}});
+
+// Chain nav
+document.querySelectorAll('.chain-node').forEach(el=>{
+  el.addEventListener('click',()=>navTo(el.dataset.cid));
+  el.addEventListener('keydown',e=>{if(e.key==='Enter')navTo(el.dataset.cid)});
+});
+
+// Resize
+let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{render(false);fit()},150)});
+
+/* ═══ GO ═══ */
+init();render(false);requestAnimationFrame(fit);
+</script>
+</body>
+</html>
