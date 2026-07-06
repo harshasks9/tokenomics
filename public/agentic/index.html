@@ -95,7 +95,11 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 .section-head{margin-bottom:8px}
 .section-head h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:10px}
 .section-head p{max-width:66ch;color:var(--muted);font-size:15.5px}
-#mindmap{width:100%;display:block}
+.map-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#mindmap{display:block;margin:0 auto}
+#mindmap .node.branch{cursor:pointer}
+#mindmap .node.branch:hover .core,#mindmap .node.branch:focus .core{stroke:var(--prussian);stroke-width:2px}
+#mindmap .kid-badge{font-family:"Inter",sans-serif;font-weight:700;fill:#fff;pointer-events:none}
 #mindmap .link{fill:none;stroke:#c9c1ad;stroke-width:1.1px;stroke-opacity:.8}
 #mindmap .node circle{transition:filter .3s var(--ease), r .2s var(--ease)}
 #mindmap .node text{font-family:"Inter",sans-serif;fill:var(--ink)}
@@ -108,8 +112,10 @@ body.gc-on #mindmap .node.has-gc .gc-ring{opacity:1}
 body.gc-on #mindmap .node.has-gc circle.core{filter:drop-shadow(0 0 6px rgba(26,115,232,.75))}
 .map-hint{font-size:13px;color:var(--muted);text-align:center;margin:2px 0 8px}
 
-/* ---------- Accordion (list view / mobile) ---------- */
+/* ---------- Accordion (list view) ---------- */
 .accordion{padding:34px 0 10px;display:none}
+body.view-list .accordion{display:block}
+body.view-list .map-only{display:none}
 .pillar-block{margin-bottom:34px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .pillar-head{padding:22px 26px;border-left:6px solid;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .pillar-head h3{font-size:26px}
@@ -183,19 +189,42 @@ footer{padding:36px 0 46px;font-size:12.5px;color:var(--muted);border-top:1px so
 footer p{max-width:80ch}
 
 @media (max-width:960px){
-  .hero{padding:56px 0 40px}
-  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero{padding:52px 0 38px}
+  .hero-grid{grid-template-columns:1fr;gap:30px}
   .steps{grid-template-columns:1fr}
-  .map-section .viewnote{display:none}
 }
-@media (max-width:860px){
-  .map-only{display:none !important}
-  .accordion{display:block}
-  .viewswitch{display:none}
-}
-@media (min-width:861px){
-  body.view-list .map-only{display:none}
-  body.view-list .accordion{display:block}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .hero{padding:40px 0 30px}
+  .hero h1{font-size:clamp(34px,10vw,44px)}
+  .thesis{font-size:16px}
+  .stat-card{padding:24px 22px}
+  .stat-card .big{font-size:46px}
+  .scroll-hint{margin-top:24px}
+  .controls-inner{padding:10px 0;gap:10px}
+  .legend{gap:12px;font-size:12px}
+  .right-controls{gap:10px;width:100%;justify-content:space-between}
+  .gc-toggle{font-size:12.5px;gap:8px}
+  .section-head p{font-size:14.5px}
+  .map-hint{font-size:12px;padding:0 6px}
+  .pillar-head{padding:18px 18px}
+  .pillar-head h3{font-size:22px}
+  .domain-head{padding:15px 18px;font-size:15px}
+  .factor-list{padding:2px 8px 12px}
+  .factor-btn{padding:13px 12px}
+  /* Detail panel becomes a bottom sheet */
+  .panel{
+    top:auto;bottom:0;right:0;left:0;width:100%;height:auto;max-height:88dvh;
+    border-radius:20px 20px 0 0;transform:translateY(105%);
+  }
+  body.panel-open .panel{transform:translateY(0)}
+  .panel-top{padding:20px 22px 14px}
+  .panel-top h3{font-size:20px}
+  .panel-body{padding:4px 22px 34px}
+  .panel::before{
+    content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+    width:44px;height:4px;border-radius:999px;background:var(--line);
+  }
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;animation:none !important}
@@ -259,8 +288,10 @@ footer p{max-width:80ch}
       the executive view and the practitioner detail.</span></p>
     </div>
     <div class="map-only">
-      <svg id="mindmap" role="group" aria-label="Agentic enterprise mindmap: three pillars, nine domains, twenty-seven success factors. Use the List view for a fully keyboard-navigable version."></svg>
-      <p class="map-hint">Click an outer node to open its detail panel · toggle above to overlay Google Cloud capabilities</p>
+      <div class="map-scroll">
+        <svg id="mindmap" role="group" aria-label="Agentic enterprise mindmap: three pillars, nine domains, twenty-seven success factors. Pillar and domain nodes expand and collapse; outer nodes open a detail panel. The List view offers the same content as an accordion."></svg>
+      </div>
+      <p class="map-hint">Tap a pillar or domain to expand or collapse it · tap an outer node for full detail · toggle above to overlay Google Cloud capabilities</p>
     </div>
     <div class="accordion" id="accordion"></div>
   </section>
@@ -309,9 +340,11 @@ footer p{max-width:80ch}
 <footer>
   <div class="wrap">
     <p><strong>About this brief.</strong> An independent framework for enterprise leaders. Named customer examples
-    are drawn from publicly referenceable Google Cloud case studies and announcements; examples marked
+    are drawn from publicly referenceable Google Cloud case studies and announcements from 2024–2026; examples marked
     <em>illustrative</em> are hypothetical composites and name no real company. Toggle "Show how Google Cloud
-    helps" for capability mappings to Gemini Enterprise, Vertex AI, and the Google Cloud portfolio.</p>
+    helps" for capability mappings to Gemini Enterprise and the Gemini Enterprise Agent Platform (the evolution
+    of Vertex AI) — including the Agent Development Kit, Agent Runtime, Agent Gateway, and the Google Cloud
+    security and data portfolio.</p>
   </div>
 </footer>
 
@@ -329,7 +362,7 @@ footer p{max-width:80ch}
 <script>
 const DATA = [
 {
-  id:"people", name:"People", color:"var(--people)", hex:"#a65a2e",
+  id:"people", name:"People", hex:"#a65a2e",
   tagline:"Leadership conviction, new skills, and a culture that rewards delegation to agents.",
   domains:[
   {
@@ -338,22 +371,25 @@ const DATA = [
     {
       id:"p11", name:"Executive sponsorship with P&L accountability",
       elab:"Agentic transformation redistributes work, decision rights, and budget across functions — changes only a leader who owns the P&L outcome can force through. When sponsorship sits in an innovation lab or a steering committee, redesign stalls at the first turf conflict.",
+      depth:"Structurally this means the agent program is a line item in the sponsor's operating plan, with quarterly targets expressed in workflow metrics — resolution rate, cost per case, cycle time — not adoption counts. The sponsor chairs a monthly agent review with authority over platform, model, and process-owner escalations: the same governance rhythm used for major capital programs, applied to an agent portfolio.",
       good:"A named C-suite owner whose incentive plan carries agent-driven operating targets, reviewing progress in the executive committee — not a working group — every quarter.",
-      ev:{real:true, text:"Deutsche Bank's Google Cloud partnership was struck at CEO level in 2021 and governed as a bank-wide transformation program — which is why DB Lumina, its Gemini-powered research agent, moved from concept to regulated production use rather than dying as a lab demo."},
+      ev:{real:true, text:"Deutsche Bank's DB Lumina, a Gemini-powered research agent launched in 2024, cut financial-analyst report production from hours or days to minutes. It shipped inside a CEO-level, bank-wide Google Cloud transformation program — sponsorship sat with divisional leadership accountable for research productivity, not with a lab."},
       fail:"Delegating the agenda to an AI Center of Excellence that has enthusiasm and no budget authority.",
-      gc:{cap:"Google Cloud Consulting", text:"Google Cloud structures enterprise engagements as executive-sponsored transformation programs — with value engineering and jointly owned adoption milestones — rather than product licensing, keeping accountability anchored in the C-suite."}
+      gc:{cap:"Google Cloud Consulting & value engineering", text:"Google Cloud structures enterprise engagements as executive-sponsored transformation programs — value engineering, jointly owned adoption milestones, and quarterly business reviews against workflow-level KPIs — rather than product licensing, keeping accountability anchored in the C-suite."}
     },
     {
       id:"p12", name:"An explicit agentic operating ambition",
       elab:"“We have an AI strategy” is not a target state. An agentic ambition is expressed in operating terms — which workflows will be delegated, to what resolution rate, at what cost-to-serve, by when. That specificity is what forces sequencing, investment, and hard trade-offs.",
+      depth:"Write the ambition as a target operating state: workflows in scope, the autonomy level per workflow (assist → supervised execution → full delegation), a quality floor (accuracy, CSAT), and a unit-cost ceiling. Then derive platform, data, and talent investments backward from that state — the ambition document is the requirements document. Revisit autonomy levels quarterly against evaluation evidence.",
       good:"A board-approved three-year target written in workflow terms — e.g. “70% of tier-1 service interactions resolved end-to-end by agents” — that the operating plan is built against.",
-      ev:{real:true, text:"Wendy's set a concrete operating ambition — automate drive-thru ordering — and built FreshAI with Google Cloud against it, scaling from pilot stores to hundreds of locations because success was defined in order-accuracy and service-time terms, not “AI adoption.”"},
+      ev:{real:true, text:"Wendy's FreshAI, built on Google Cloud, expanded across franchise drive-thrus through 2024 against explicit operating targets — order accuracy and speed of service — so every scaling decision answered to a metric, not to “AI adoption.” Starling Bank took the same approach in 2025, launching one of the UK's first agentic in-app financial assistants with Gemini Enterprise, scoped to concrete customer workflows like savings goals and bill organization."},
       fail:"A portfolio of 100 scattered pilots, each 'exploring value,' none tied to an operating metric anyone owns.",
       gc:null
     },
     {
       id:"p13", name:"Board-level AI literacy",
-      elab:"Boards approve the capital reallocation and set the risk appetite that agentic transformation requires. A board that doesn't understand agent autonomy either blocks it (overweighting risk) or rubber-stamps it (missing the new risk classes entirely). Agent identity, autonomous action, and model drift are novel even to technology-literate directors.",
+      elab:"Boards approve the capital reallocation and set the risk appetite that agentic transformation requires. A board that doesn't understand agent autonomy either blocks it (overweighting risk) or rubber-stamps it (missing the new risk classes entirely).",
+      depth:"A working board curriculum covers three things: how agentic systems differ from chatbots (planning, tool use, delegated authority to act in systems of record); the genuinely new risk classes (prompt injection via retrieved content, tool abuse, data exfiltration through connected APIs, cascading multi-agent failures); and the control stack that answers them (agent identity, runtime guardrails, immutable audit trails). Risk appetite should be expressed per action class — what agents may read, draft, and execute autonomously.",
       good:"A recurring board education program, and a risk-committee-approved risk appetite statement that explicitly addresses autonomous agent actions — updated as autonomy expands.",
       ev:{real:false, text:"Illustrative: a European insurer runs a quarterly 90-minute board session pairing one live agent demonstration with one risk deep-dive, so directors approve each expansion of agent autonomy on evidence rather than analogy."},
       fail:"One 'GenAI 101' briefing in 2023, never refreshed as agents moved from drafting text to executing transactions.",
@@ -366,26 +402,29 @@ const DATA = [
     {
       id:"p21", name:"Agent builders and orchestrators",
       elab:"The scarce skill is not prompting — it is decomposing a business process into agent workflows, tools, and evaluation criteria. Enterprises need a small central guild that sets the paved road, plus federated builders inside business units who know the work being redesigned.",
+      depth:"The core builder skillset: decomposing processes into typed tool contracts (increasingly exposed as Model Context Protocol servers), writing evaluation rubrics before writing prompts, and choosing orchestration patterns — deterministic pipelines where compliance demands repeatability, LLM-driven planning where variance pays. A real paved road includes project scaffolding, CI with evaluation gates, and one-command deployment to a managed runtime.",
       good:"Certified builders in every major business unit shipping agents through a shared platform, with the central team measured on how many agents it enables — not how many it builds itself.",
-      ev:{real:true, text:"Mercado Libre embedded generative AI development into its product teams on Vertex AI — shipping AI-powered shopping and delivery experiences from within the business rather than routing everything through a central lab."},
+      ev:{real:true, text:"Geotab — whose platform analyzes billions of data points from 4.6 million connected vehicles — stood up an AI Agent Center of Excellence on Google Cloud, using the Agent Development Kit and shared orchestration frameworks to compress build-test-deploy cycles across teams: a federated-builder model on one platform (2026)."},
       fail:"Hiring 'prompt engineers' into a central bottleneck team while the people who understand the processes never touch the tools.",
-      gc:{cap:"Vertex AI Agent Builder & ADK", text:"Vertex AI Agent Builder and the open-source Agent Development Kit give builders a paved road — orchestration, tool integration, and deployment patterns — so business-unit teams compose production agents instead of hand-rolling infrastructure."}
+      gc:{cap:"Agent Development Kit (ADK) + Agent Studio", text:"ADK is the code-first framework — graph-based sub-agent networks, multimodal streaming, sandboxed command execution, even agents that build and evaluate other agents — while Agent Studio gives low-code builders a visual canvas that exports cleanly to code. The ADK CLI deploys to the managed Agent Runtime in one command, and Agent Garden supplies pre-built templates (invoice processing, financial analysis, code modernization) as starting points."}
     },
     {
       id:"p22", name:"AI fluency at scale across the workforce",
       elab:"Value compounds when thousands of employees know what to delegate, how to supervise, and when to override. Fluency is judgment about delegation, not tool training — and it has to be built into daily workflows, not parked in a learning portal.",
+      depth:"Fluency programs work when they are workflow-anchored: each role gets 'delegation plays' (what to hand off, what to verify, how to escalate), usage telemetry identifies cold spots by function, and champions are staffed per department. Measure weekly active delegation and verified-output quality, not course completions — and treat a role with high licenses and low delegation as a design problem, not a training problem.",
       good:"Role-based fluency paths tied to real workflows, with adoption measured by weekly active delegation per role — and telemetry showing which roles are and aren't delegating.",
-      ev:{real:true, text:"Woolworths Group rolled generative AI in Google Workspace out to more than 10,000 office employees, pairing deployment with role-based enablement so fluency was built inside the tools people already work in."},
+      ev:{real:true, text:"Virgin Voyages adopted Gemini Enterprise at its October 2025 launch with more than 50 agents deployed across the business — from marketing to operations — making delegation to agents part of everyday work across functions rather than a specialist activity. Gap Inc. and Gordon Food Service joined the same launch cohort."},
       fail:"Measuring fluency by course-completion rates while usage telemetry shows the same 5% of enthusiasts doing all the delegating.",
-      gc:{cap:"Gemini for Google Workspace", text:"Gemini embedded in Gmail, Docs, and Sheets makes everyday delegation the default surface for workforce fluency — employees build the delegate-verify-override habit inside existing workflows before graduating to specialized agents."}
+      gc:{cap:"Gemini Enterprise", text:"Gemini Enterprise (launched October 2025) is the workforce front door: a chat surface grounded in company data through pre-built connectors, a no-code workbench where any employee can compose and share agents, an agent gallery of Google, custom, and third-party agents, and central governance with audit trails — plus usage analytics that show leaders exactly where fluency is and isn't taking hold."}
     },
     {
       id:"p23", name:"New roles: AgentOps, evaluation engineers, AI product owners",
-      elab:"Production agents are living systems: their behavior drifts as models, data, and processes change. That demands roles traditional org charts lack — AgentOps to run them, evaluation engineers to build the regression suites that gate changes, and product owners accountable for each agent's outcomes.",
+      elab:"Production agents are living systems: their behavior drifts as models, data, and processes change. That demands roles traditional org charts lack — AgentOps to run the fleet, evaluation engineers to build the regression suites that gate changes, and product owners accountable for each agent's outcomes.",
+      depth:"AgentOps runs the fleet: traces, latency, token cost, drift alarms, on-call rotation. Evaluation engineers own golden datasets, autorater rubrics, and regression gates wired into CI/CD so no model, prompt, or tool change ships unevaluated. AI product owners hold the agent's KPI and roadmap. A staffing pattern that works: one evaluation engineer per five to eight production agents, embedded in the domain rather than pooled centrally.",
       good:"An AgentOps function with an on-call rotation, evaluation gates wired into the deployment pipeline, and every production agent carrying a named product owner in the registry.",
       ev:{real:false, text:"Illustrative: a global bank stands up two-person 'evaluation engineering' pods — one domain expert, one ML engineer — per agent domain, cutting regression incidents to near zero while doubling release cadence."},
       fail:"Treating an agent as a software project that ends at deployment — so nobody notices when its behavior drifts until a customer does.",
-      gc:{cap:"Vertex AI Gen AI evaluation service", text:"Vertex AI's evaluation service lets evaluation engineers codify golden datasets and quality rubrics as automated gates, turning “does the agent still behave?” from a judgment call into a pipeline step."}
+      gc:{cap:"Agent Evaluation + Agent Optimizer", text:"The Agent Platform productizes these roles' tooling: Agent Evaluation continuously scores live traffic with multi-turn autoraters, Agent Observability renders visual traces of complex reasoning chains in real-time dashboards, and Agent Optimizer automatically clusters failure modes and proposes refined system instructions — turning AgentOps from bespoke scripts into managed services."}
     }]
   },
   {
@@ -394,6 +433,7 @@ const DATA = [
     {
       id:"p31", name:"Human–agent teaming norms",
       elab:"Teams need explicit, shared norms: what agents may do autonomously, what requires human review, and how overrides work. Left to individual discretion, the same agent gets rubber-stamped by one team and quietly ignored by another — and both failure modes are invisible to leadership.",
+      depth:"Codify a delegation charter per workflow: agent-owned steps, human checkpoints, override rights, and accountability for outcomes. Norms should distinguish action classes — retrieve, draft, execute-reversible, execute-irreversible — and be revised quarterly against evaluation data as autonomy expands. The charter is also the input to checkpoint placement and to agent permission scopes, which keeps culture, process, and security aligned on one document.",
       good:"A delegation charter per workflow — what the agent owns, what the human owns, escalation rules — that any team member can recite, and that is revised as trust is earned.",
       ev:{real:false, text:"Illustrative: a global logistics firm writes an 'agent RACI' into every redesigned workflow, so a dispatcher can say precisely which rebooking decisions the agent makes alone and which arrive as recommendations."},
       fail:"Publishing an AI usage policy about what's forbidden while saying nothing about how humans and agents actually divide the work.",
@@ -402,14 +442,16 @@ const DATA = [
     {
       id:"p32", name:"Trust and adoption mechanics",
       elab:"Adoption is engineered, not hoped for. Trust grows when agents show their reasoning and sources, when feedback visibly changes behavior within days, and when early wins are published honestly — including the failures. Mandated adoption without calibrated reliability produces silent workarounds.",
+      depth:"Trust mechanics are product features: citation-backed answers, confidence signaling, one-click escalation to a human path, and feedback loops that visibly retrain behavior. Instrument override rates per workflow — a rising override rate is an early-warning signal of quality drift; a falling one without corroborating evaluation evidence signals rubber-stamping. Both need a response.",
       good:"Adoption tracked as retention — weekly active delegation per team, not logins — with a feedback loop that closes in days and visible “you said, we fixed” release notes.",
-      ev:{real:true, text:"Discover Financial Services deployed generative AI assistance to its contact-center representatives with Google Cloud, designed to surface sourced answers reps could verify — building trust first, before expanding scope."},
+      ev:{real:true, text:"Nordic corporate bank SEB gave its wealth-management teams an AI agent producing suggested responses and call summaries — verifiable outputs a banker checks before use — lifting division efficiency roughly 15% while keeping the human visibly in charge (2025). Commerzbank took the same verify-first approach with its Gemini-powered client-call documentation agent (2024)."},
       fail:"A big-bang mandate; the first publicized hallucination freezes adoption for a year.",
-      gc:{cap:"Grounding with citations (Vertex AI)", text:"Vertex AI grounding returns answers with citations to enterprise sources, giving employees the verification affordance that calibrated trust — and therefore durable adoption — is built on."}
+      gc:{cap:"Grounded answers with citations", text:"Gemini Enterprise and Vertex AI Search return citation-backed answers grounded in enterprise sources, and Agent Observability exposes the full reasoning trace behind an output — the two affordances that let employees verify rather than blindly trust, which is what makes adoption durable."}
     },
     {
       id:"p33", name:"Incentive and performance-metric redesign",
       elab:"If people are still measured on the activity agents now perform, they will rationally compete with the agents — or quietly stop using them. Scorecards must reward delegation quality, exception handling, and team outcomes, or middle management becomes the immune system that rejects the transplant.",
+      depth:"Rebase scorecards on outcomes per team rather than activity per person: agent-assisted throughput counts toward targets, exception-handling quality becomes a rated skill with a career path, and managers' spans of control account for agent capacity. Pair the metric change with an explicit redeployment commitment — harvested hours go to named backlogs, funded and published — so the workforce has a reason to feed the system rather than starve it.",
       good:"Updated scorecards where agent-assisted throughput counts toward targets, managers' spans reflect agent capacity, and exception-handling quality is a recognized skill with a career path.",
       ev:{real:false, text:"Illustrative: a business-process outsourcer re-bases team targets on agent-augmented throughput and promotes its best exception-handlers into agent-supervision roles — turning the people most threatened into the operating backbone."},
       fail:"Announcing headcount cuts as the headline benefit of the agent program, then wondering why the workforce won't feed it.",
@@ -418,7 +460,7 @@ const DATA = [
   }]
 },
 {
-  id:"process", name:"Process", color:"var(--process)", hex:"#5f7048",
+  id:"process", name:"Process", hex:"#5f7048",
   tagline:"Workflows redesigned around agents, governed like a regulated workforce, managed for provable value.",
   domains:[
   {
@@ -427,26 +469,29 @@ const DATA = [
     {
       id:"r11", name:"Redesign processes around agents — don't bolt agents onto tasks",
       elab:"This is the RPA lesson replayed at higher stakes: automating steps of a bad process yields a faster bad process. Agentic value comes from re-sequencing the end-to-end workflow — letting agents carry state and continuity across what used to be human handoffs — not from sprinkling copilots onto existing tasks.",
+      depth:"Method: map the value stream, find where state dies in handoffs, and re-sequence around an agent that carries context end to end, with humans repositioned at judgment points. Encode the redesigned flow as an explicit orchestration graph — deterministic steps where auditability demands repeatability, generative planning where variance is high — rather than one mega-prompt. Set cycle-time and cost targets against the redesigned flow, not percentage improvements on the old one.",
       good:"Value-stream maps redrawn with explicit agent lanes, and cycle-time targets set against the redesigned flow — not percentage improvements on the old one.",
-      ev:{real:false, text:"Illustrative: a P&C insurer rebuilds first-notice-of-loss end to end — an agent assembles the claim file, orders evidence, and drafts the settlement position — collapsing an eight-handoff process to two human decision points."},
+      ev:{real:true, text:"Specialty insurer Hiscox rebuilt lead underwriting around AI on BigQuery and Vertex AI — its first AI-enhanced lead underwriting model cut complex-risk quoting from three days to minutes (2024). That is a redesigned decision flow, not a copilot bolted onto the old one. Banco Covalto in Mexico did the equivalent for credit approvals, cutting response times by over 90%."},
       fail:"The 'copilot sprinkle': agents summarize each step of an unchanged process, and the gains evaporate in the handoffs between steps.",
-      gc:{cap:"Gemini Enterprise", text:"Gemini Enterprise lets teams compose agents that carry a workflow across systems — connecting documents, applications, and actions in one governed workbench — so the redesigned process, not the legacy task list, becomes the unit of automation."}
+      gc:{cap:"Agent Runtime orchestration", text:"The Agent Platform's runtime supports deterministic, generative, and hybrid agent-to-agent orchestration patterns with durable state — days of autonomous operation with checkpoint and resume — so what you deploy is the redesigned process itself, not a task list. Batch and event-driven agents trigger from BigQuery and Pub/Sub, letting background workflows run without a human initiating each one."}
     },
     {
       id:"r12", name:"Human-in-the-loop checkpoints placed deliberately",
       elab:"Blanket human review destroys the ROI; zero review destroys safety. Checkpoints belong where risk and irreversibility are concentrated — approve-before-execute for consequential actions, sample-and-audit for the rest — and they should tighten or loosen as evidence accumulates.",
+      depth:"Checkpoint design is a risk-tiering exercise: classify every tool call as read, draft, execute-reversible, or execute-irreversible; require blocking approval only for the last class; sample-audit the rest. Wire approvals into the orchestration layer as tool-confirmation steps so policy is code, not convention — and tune review rates quarterly against evaluation evidence. Watch reviewer attention: approval latency collapsing toward zero means rubber-stamping has set in.",
       good:"A written checkpoint policy by action class (read, draft, reversible execution, irreversible execution), with review rates that demonstrably adapt to measured agent performance.",
-      ev:{real:true, text:"HCA Healthcare piloted AI-drafted nurse handoff documentation with Google Cloud, deliberately keeping clinicians as the reviewing decision-makers — automating the drafting burden while holding the clinical checkpoint fixed."},
+      ev:{real:true, text:"Color Health's Virtual Cancer Clinic — built with the Agent Development Kit and scaled into production on Agent Engine (2025) — determines screening eligibility, connects patients with clinicians, and schedules care, while deliberately routing clinical judgment to physicians: automation everywhere except the checkpoint that matters."},
       fail:"Approval fatigue: humans rubber-stamp 99% of low-risk actions and are numb by the time the 1% that matters comes through.",
-      gc:{cap:"Agent Development Kit (human-in-the-loop tooling)", text:"Google's Agent Development Kit supports confirmation gates on tool calls, so architects encode which agent actions pause for human approval as policy in code — auditable and adjustable per action class."}
+      gc:{cap:"ADK human-in-the-loop tooling", text:"ADK supports blocking confirmation gates on tool calls and long-running human-approval steps inside an agent's execution graph; combined with Agent Sessions — custom session IDs that map to your CRM or case system — approvals happen in business context, with the full decision trail preserved for audit."}
     },
     {
       id:"r13", name:"Full agent lifecycle management",
       elab:"Agents are living products: they must be versioned, evaluated, monitored, and — critically — retired. Without lifecycle discipline, enterprises accumulate zombie agents running on stale knowledge with forgotten permissions, each one a quality and security liability.",
+      depth:"Lifecycle stages: register → evaluate → deploy → monitor → re-certify → retire. Every production agent carries an owner, pinned model/prompt/tool versions, current evaluation scores, data-source dependencies, and a review date. Retirement is a first-class operation — revoke identity and permissions, archive traces, redirect traffic — because an orphaned agent with live credentials is both a wrong-answer machine and an attack surface.",
       good:"A registry of every production agent with an owner, current evaluation scores, last review date, and a retirement path — and nothing unregistered running in production.",
-      ev:{real:false, text:"Illustrative: a global bank's agent registry blocks any agent from production without an owner and a passing evaluation suite, and auto-flags agents whose underlying process or data sources have changed since last review."},
+      ev:{real:true, text:"PwC operates a portfolio of more than 120 production-grade agents built with Google Cloud (2025) — explicitly framed as moving beyond experimentation to a modular, managed fleet with shared standards. That is what lifecycle discipline looks like at scale: a fleet, not a pile of pilots."},
       fail:"Pilot agents left running for months after the process they served changed — still answering, confidently and wrongly.",
-      gc:{cap:"Gemini Enterprise (central governance)", text:"Gemini Enterprise provides a central console to publish, permission, monitor, and retire agents across the company — making the lifecycle a managed estate rather than a sprawl of team-level deployments."}
+      gc:{cap:"Agent Registry + Agent Identity", text:"The Agent Platform's Agent Registry is a single source of truth indexing every internal agent, tool, and skill, and Agent Identity gives each agent a unique cryptographic ID with an auditable action trail — so certification, permissioning, and retirement operate on a governed inventory rather than tribal knowledge."}
     }]
   },
   {
@@ -455,26 +500,29 @@ const DATA = [
     {
       id:"r21", name:"Agent identity, permissions, and least-privilege access",
       elab:"Agents act — so they need identities managed like employees: distinct credentials, scoped narrowly to task, revocable instantly. The moment agents share an over-privileged service account, one compromised or confused agent has the blast radius of the entire estate.",
+      depth:"Treat agents as first-class workload identities: unique credentials per agent, short-lived tokens, and scopes derived from the tool contract — least privilege per tool call, not per application. Include agents in joiner-mover-leaver access reviews. Multi-agent systems add a transitive-authorization problem: define which agent may invoke which, with what privilege ceiling, so a low-trust agent can't launder actions through a high-trust one.",
       good:"Every agent holds a distinct identity with least-privilege scopes; quarterly access reviews cover agents alongside humans; security can answer 'what can this agent touch?' in minutes.",
       ev:{real:false, text:"Illustrative: a healthcare payer issues each claims agent its own service identity scoped to a single line of business, so revoking one misbehaving agent takes minutes and touches nothing else."},
       fail:"All agents ride one 'AI service account' with admin-grade access, because provisioning identities properly was slower.",
-      gc:{cap:"Google Cloud IAM & Workload Identity", text:"Google Cloud IAM with Workload Identity Federation gives each agent a first-class, auditable identity with fine-grained, least-privilege permissions — the same identity fabric that governs human and service access."}
+      gc:{cap:"Agent Identity + Agent Gateway", text:"Agent Identity assigns every agent a unique cryptographic ID with authorization policies and a complete audit trail of its actions. Agent Gateway acts as air-traffic control for the estate — a policy enforcement point governing which agents may reach which tools, data, and each other across environments — built on the same IAM fabric that governs human and service access."}
     },
     {
       id:"r22", name:"Continuous evaluation and observability",
       elab:"Agent behavior drifts as models, prompts, data, and the business itself change. Evaluation suites are the regression tests; traces are the debugger. Enterprises that lack both discover failures the worst way — from customers, auditors, or the press.",
+      depth:"The full stack: golden-set regression evaluations gating every model, prompt, or tool change; rubric-based autorater scoring of sampled live traffic (multi-turn, not single-response); distributed tracing of every reasoning chain with tool calls and retrieved context; and drift alarms on quality, cost, and latency. Before production, simulate — synthetic users and virtualized tools surface failure modes that unit tests structurally cannot.",
       good:"Golden-set evaluations gate every change to model, prompt, or tools; production interactions are sampled and scored continuously; drift triggers alarms before customers notice.",
-      ev:{real:false, text:"Illustrative: a telco scores a nightly 5% sample of production agent conversations against a quality rubric, catching a retrieval regression within 24 hours of a knowledge-base migration."},
+      ev:{real:false, text:"Illustrative: a telco scores a nightly 5% sample of production agent conversations against a quality rubric, catching a retrieval regression within 24 hours of a knowledge-base migration — before its contact center does."},
       fail:"Evaluation happens once — as a demo to stakeholders at launch — and quality decays silently from that day on.",
-      gc:{cap:"Vertex AI evaluation & agent observability", text:"Vertex AI pairs its Gen AI evaluation service with agent tracing and monitoring, so every agent ships with regression gates and production telemetry instead of hand-built scoring scripts."}
+      gc:{cap:"Agent Simulation, Evaluation & Observability", text:"The Agent Platform ships this stack as managed services: Agent Simulation tests agents against synthetic human-like interactions and virtualized tools pre-production; Agent Evaluation continuously scores live traffic with multi-turn autoraters; Agent Observability renders visual traces of reasoning in real-time dashboards; and Agent Anomaly Detection flags unusual reasoning using statistical models plus LLM-as-judge."}
     },
     {
       id:"r23", name:"Responsible-AI guardrails and auditability",
       elab:"Guardrails — safety filters, data boundaries, action limits — must be enforced at runtime, not published as policy PDFs. And every consequential agent action needs a reconstructable audit trail of what was done, on whose authority, from what inputs, because regulators will ask.",
+      depth:"Runtime enforcement belongs at the gateway layer: screen prompts and responses for injection, jailbreak attempts, and sensitive-data egress; cap tool privileges by policy; and log every consequential action immutably with inputs, retrieved context, model version, and approver. The audit standard to design for: any agent-assisted decision can be replayed end to end, months later, from logs alone — the bar EU AI Act high-risk classifications and financial-services regulators are converging on.",
       good:"Every consequential agent action is attributable and replayable end to end; guardrails are implemented as tested code in the serving path, with violations logged and reviewed.",
       ev:{real:false, text:"Illustrative: a European bank passes internal audit by replaying any agent-assisted credit decision — inputs, retrieved context, model version, and the human approval — from immutable logs."},
       fail:"A beautifully written responsible-AI policy that no runtime system actually enforces.",
-      gc:{cap:"Model Armor + Cloud Audit Logs", text:"Model Armor screens prompts and responses for injection, data leakage, and unsafe content in the serving path, while Cloud Audit Logs preserve the immutable trail that turns responsible-AI policy into demonstrable compliance."}
+      gc:{cap:"Model Armor at the Agent Gateway", text:"Model Armor — integrated directly into Agent Gateway — screens for prompt injection, tool poisoning, and sensitive-data leakage in the serving path, while Cloud Audit Logs preserve the immutable action trail tied to each Agent Identity. Guardrails become enforced infrastructure, not policy documents."}
     }]
   },
   {
@@ -483,6 +531,7 @@ const DATA = [
     {
       id:"r31", name:"A prioritized use-case portfolio",
       elab:"Agentic investment must be run like a capital portfolio: a single ranked backlog balancing value, feasibility, data readiness, and risk — with baselines set before build and explicit kill criteria. Portfolio discipline, not pilot enthusiasm, is what separates compounding programs from pilot graveyards.",
+      depth:"Score candidates on four axes — value at stake, technical feasibility, data readiness, and risk class — and sequence lighthouses for provable baselines rather than demo appeal. Enforce kill criteria mechanically: two consecutive missed quality or unit-cost gates triggers retirement or rescoping. Rebalance quarterly with finance in the room, and fund the portfolio rather than projects, so capacity flows to whatever currently ranks highest.",
       good:"One ranked, quarterly-rebalanced backlog; every item carries a pre-build baseline metric; and kill decisions demonstrably happen — with the capacity redeployed.",
       ev:{real:false, text:"Illustrative: a global retailer scores every proposed agent on value, data readiness, and risk; the bottom third is declined, and two live agents are retired each quarter to fund the top of the list."},
       fail:"Two hundred pilots approved by acclamation, zero baselines, and nothing ever killed.",
@@ -491,23 +540,25 @@ const DATA = [
     {
       id:"r32", name:"Unit economics of agents",
       elab:"Token costs, model routing, caching, and human-review overhead determine whether an agent workflow is margin-accretive or a subsidized demo. The discipline is cost-to-serve per resolved task, quality-adjusted, against the human baseline — recomputed as model prices and capabilities shift.",
+      depth:"Compute fully loaded cost per resolved task: input/output tokens, retrieval and tool-call overhead, human-review minutes, and platform costs — netted against the human baseline. The levers, in order of impact: route each task to the cheapest model that clears its evaluation bar; cache stable context (system prompts, reference documents) to cut repeat-token spend; batch background workloads; and re-price quarterly, because model economics move faster than annual budgeting.",
       good:"A per-workflow P&L: fully loaded cost per resolution versus the human baseline, reviewed monthly, with routing and caching decisions revisited as model economics move.",
-      ev:{real:true, text:"Snap runs its My AI assistant on Gemini's efficient model tiers on Vertex AI — an explicit cost-performance routing choice that made a conversational assistant economically viable at hundreds of millions of users."},
+      ev:{real:true, text:"Brazilian proptech Loft rebuilt customer flows on Gemini 2.0 Flash and BigQuery, cutting costs roughly 40% while serving 900 weekly mortgage simulations over WhatsApp and connecting 9,000 agencies (2025) — model-tier routing as an explicit margin decision, not an afterthought."},
       fail:"Pilots costed at demo volumes; the production token bill lands at 20× the projection and the CFO freezes the program.",
-      gc:{cap:"Gemini model family (Pro / Flash tiering)", text:"The Gemini family spans frontier reasoning to low-latency, low-cost tiers on Vertex AI, letting teams route each task to the cheapest model that clears the quality bar — the primary lever of agent unit economics."}
+      gc:{cap:"Gemini model tiers + context caching", text:"The Gemini family on the Agent Platform spans frontier reasoning (Gemini 3.1 Pro) to low-latency, low-cost tiers (Flash), with context caching to cut repeat-token spend and provisioned throughput for predictable capacity pricing — the platform levers that decide per-task economics."}
     },
     {
       id:"r33", name:"Benefits tracking that survives CFO scrutiny",
       elab:"'Hours saved' claims don't move a P&L unless the freed capacity is redeployed or the cost is actually removed. Benefits must be tracked as realized financial outcomes — jointly owned with finance — or the program's credibility collapses at the first budget review.",
+      depth:"Mechanics: pre-register the baseline and the benefit type per agent (cost-out, capacity, revenue, risk reduction); book a benefit only when a budget line or volume metric actually moves; net out run costs — tokens, platform, review labor; and reconcile quarterly with FP&A. Guard against double-counting: the same freed hour claimed by three initiatives is the fastest way to lose finance's trust in every AI number.",
       good:"A benefits register co-owned with finance: each agent's claimed benefit mapped to a specific budget line, reported in actuals, netted against run costs.",
-      ev:{real:false, text:"Illustrative: a manufacturer books agent benefits only when a cost line moves — converting 'time saved' into either verified redeployment to backlogged work or a closed requisition — and survives three budget cycles with credibility intact."},
+      ev:{real:true, text:"United Wholesale Mortgage more than doubled underwriter productivity within nine months using Gemini, Vertex AI, and BigQuery (2024) — a benefit expressed in a line-of-business metric (loans processed per underwriter, close times for 50,000 brokers) that finance can audit, not survey-based hours saved."},
       fail:"Survey-based savings, double-counted across three initiatives, presented as ROI until finance stops believing any AI number.",
       gc:null
     }]
   }]
 },
 {
-  id:"tech", name:"Technology", color:"var(--tech)", hex:"#2f6d8c",
+  id:"tech", name:"Technology", hex:"#2f6d8c",
   tagline:"An open agent platform, a data foundation that grounds agents in enterprise truth, and integration that lets them act securely.",
   domains:[
   {
@@ -516,26 +567,29 @@ const DATA = [
     {
       id:"t11", name:"Orchestration of multi-step, multi-agent workflows",
       elab:"Real enterprise work spans systems, sessions, and days. That requires durable state, retries, sub-agent delegation, and escalation paths — platform concerns that every team hand-rolling its own agent loop will get wrong differently. Orchestration is what separates an agent workforce from a fleet of chatbots.",
+      depth:"Production orchestration needs: durable sessions with custom IDs that map to your CRM or case system; long-running state with checkpoint and resume; explicit sub-agent delegation graphs rather than emergent behavior; idempotent tool calls with retry and compensation logic; and escalation paths to humans. Mixed patterns win — deterministic sequencing for regulated steps, generative planning within bounded scopes — and memory should be an architectural layer (session vs. long-term) rather than an ever-growing prompt.",
       good:"Long-running, stateful workflows with checkpoint-and-resume in production, and new agents composed from existing tools and sub-agents in days, not quarters.",
-      ev:{real:true, text:"Best Buy built a generative AI virtual assistant with Google Cloud that goes beyond answering questions — troubleshooting products, rescheduling deliveries, and managing subscriptions — multi-step work spanning several backend systems in one conversation."},
+      ev:{real:true, text:"Comcast's Xfinity support experience uses a multi-agent architecture built with the Agent Development Kit on Agent Runtime — specialized sub-agents for troubleshooting, billing, and scheduling coordinated to resolve issues end to end (2026). Payhawk's financial assistant takes the same pattern into finance operations, using Memory Bank to cut expense-submission time by more than half."},
       fail:"One mega-prompt 'do-everything' agent: impressive in demos, undebuggable in production, unpredictable at the edges.",
-      gc:{cap:"Vertex AI Agent Engine", text:"Vertex AI Agent Engine is a managed runtime for deploying and scaling stateful, multi-agent workflows — sessions, memory, and orchestration handled by the platform, so teams build the workflow rather than the plumbing."}
+      gc:{cap:"Agent Runtime + Sessions + Memory Bank", text:"Agent Runtime provisions agents in seconds with sub-second cold starts and supports days of autonomous operation with deterministic, generative, and hybrid orchestration. Agent Sessions add custom session IDs and bidirectional WebSocket streaming for real-time interaction; Agent Memory Bank dynamically curates long-term memories with low-latency Memory Profiles. Orchestration infrastructure arrives as a managed service, not a build project."}
     },
     {
-      id:"t12", name:"Open interoperability: A2A and MCP",
-      elab:"The agent estate will be heterogeneous — vendor agents in SaaS products, in-house agents, partner agents. Without open protocols they can't discover or transact with each other, and the enterprise rebuilds its integration silos one bespoke bridge at a time. Agent2Agent (A2A) standardizes agent-to-agent collaboration; Model Context Protocol (MCP) standardizes how agents reach tools and data.",
+      id:"t12", name:"Open interoperability: A2A, MCP, and AP2",
+      elab:"The agent estate will be heterogeneous — vendor agents in SaaS products, in-house agents, partner agents. Without open protocols they can't discover or transact with each other, and the enterprise rebuilds its integration silos one bespoke bridge at a time.",
+      depth:"Standardize on three protocol layers: Model Context Protocol (MCP) for agent-to-tool — each system of record exposed once as an MCP server with typed contracts, reused by every agent; Agent2Agent (A2A) for agent-to-agent discovery and task exchange across vendors; and, where agents transact, the Agent Payments Protocol (AP2) for authenticated agent-initiated commerce. Make protocol conformance a procurement requirement — every SaaS agent you buy should speak A2A and expose MCP tools, or it deepens the silo.",
       good:"A newly procured SaaS agent interoperates with in-house agents without custom glue, and tool integrations are written once as MCP servers and reused by every agent.",
-      ev:{real:true, text:"Google launched the Agent2Agent protocol with more than 50 partners — including Salesforce, SAP, ServiceNow, and Box — and donated it to the Linux Foundation in 2025, establishing vendor-neutral governance for cross-vendor agent collaboration."},
+      ev:{real:true, text:"L'Oréal's Beauty Tech Agentic Platform composes outcome-oriented agents over MCP with multi-LLM flexibility (2026). At ecosystem level, Google launched A2A in 2025 with 50+ partners — Salesforce, SAP, ServiceNow, Box — and donated the protocol to the Linux Foundation for vendor-neutral governance; PayPal is building agent commerce on AP2."},
       fail:"Betting the estate on one vendor's proprietary connector marketplace, then paying for every integration twice — once to build, once to escape.",
-      gc:{cap:"Agent2Agent protocol + MCP support", text:"Google Cloud co-authored A2A and supports MCP across the Agent Development Kit and Gemini Enterprise — so agents built on Google Cloud interoperate with the broader ecosystem instead of locking into it."}
+      gc:{cap:"A2A + MCP + AP2, natively supported", text:"Google co-authored A2A and supports MCP natively across the ADK, Agent Gateway, and Gemini Enterprise — agents built on the platform interoperate with the broader ecosystem instead of locking into it. The Agent Payments Protocol (AP2) extends the same openness to agent-initiated transactions, the foundation for secure agent-based commerce."}
     },
     {
       id:"t13", name:"Model choice and routing — right model, right task",
       elab:"No single model wins on quality, latency, and cost for every task. A routing layer that assigns each task the cheapest model clearing its quality bar — and lets you swap models as the frontier moves — protects both unit economics and negotiating leverage.",
+      depth:"Build routing on task-level evaluations: latency-sensitive classification and extraction to small fast tiers, complex multi-step reasoning to frontier tiers, with automatic fallback chains and A/B evaluation on every swap. Preserve exit architecturally and contractually: model choice should be a configuration change gated by regression evals, not a rewrite — which requires your prompts, evals, and tool contracts to live outside any one vendor's proprietary format.",
       good:"Task-level evaluations drive routing decisions; swapping a model behind a workflow is a configuration change with an eval gate, not a rewrite.",
-      ev:{real:true, text:"Mercedes-Benz expanded its Google Cloud partnership to bring conversational search and navigation into its vehicles using Gemini on Vertex AI — choosing task-fit automotive-grade models rather than a one-model-fits-all approach."},
+      ev:{real:true, text:"Snap runs My AI on Gemini's efficient Flash tier on Google Cloud — an explicit cost-performance routing decision at hundreds-of-millions-of-users scale — while L'Oréal designed its 2026 agentic platform for multi-LLM flexibility from day one, keeping model choice a portfolio decision rather than a commitment."},
       fail:"Standardizing on a single frontier model for everything: costs balloon on simple tasks, and by the time you want to switch, switching means rewriting.",
-      gc:{cap:"Vertex AI Model Garden", text:"Model Garden offers 200+ models — the Gemini family alongside partner and open models like Claude, Llama, and Mistral — behind one platform, so routing and switching are platform features rather than migration projects."}
+      gc:{cap:"Model Garden — 200+ models, one surface", text:"Model Garden exposes 200+ models behind one API surface and one security perimeter: Gemini 3.1 Pro and Flash, Google's open Gemma 4 models, and third-party models including Anthropic's Claude family — so routing, benchmarking, and swapping are platform features with unified governance and billing, not migration projects."}
     }]
   },
   {
@@ -544,26 +598,29 @@ const DATA = [
     {
       id:"t21", name:"Unified, governed enterprise data",
       elab:"Agents are amplifiers of data quality in both directions. A unified access layer with real governance — lineage, ownership, quality SLAs — determines what agents can be trusted to know and act on. Fragmented, ungoverned data doesn't just degrade agents; it makes their errors untraceable.",
+      depth:"The working pattern: certified data products with named owners, contracts, and quality SLAs on a lakehouse foundation; a semantic layer agents can query without knowing physical schemas; row- and column-level policy enforced at the platform, so an agent's data access inherits from its identity; and lineage that traces any agent answer back to source tables. House rule: production agents consume only certified products — no side-door extracts.",
       good:"Certified data products with named owners and quality SLAs, and a rule that production agents consume only governed products — no side-door extracts.",
-      ev:{real:true, text:"Vodafone consolidated its data estate onto Google Cloud — a unified platform serving hundreds of use cases across markets — creating the single governed foundation its AI and analytics workloads draw from."},
+      ev:{real:true, text:"Geotab's platform on BigQuery analyzes billions of data points daily from more than 4.6 million connected vehicles — one governed estate powering fleet optimization, driver-safety analytics, and now its agent program (2025). The agents inherit the data foundation's quality; that was the point of building it first."},
       fail:"Pointing agents at the data swamp and blaming the model when they confidently repeat its contradictions.",
-      gc:{cap:"BigQuery + Dataplex Universal Catalog", text:"BigQuery provides the unified analytical foundation and Dataplex Universal Catalog the governance layer — lineage, quality, and discovery — so agents inherit governed, certified data rather than whatever an integration script found."}
+      gc:{cap:"BigQuery + Dataplex Universal Catalog", text:"BigQuery is the governed analytical foundation, and the Agent Platform activates it directly — batch and event-driven agents trigger from BigQuery and Pub/Sub — while Dataplex Universal Catalog supplies the lineage, quality, and discovery metadata that make data products certifiable and agent answers traceable to source."}
     },
     {
       id:"t22", name:"Grounding in enterprise truth",
       elab:"Foundation models don't know your prices, policies, or yesterday's incident tickets. Retrieval quality, enterprise search, and knowledge freshness decide whether an agent speaks company truth or plausible fiction — grounding is the difference between an asset and a liability with good grammar.",
+      depth:"Grounding is a pipeline, not a feature: connector-fed indexes over systems of record; freshness SLAs with automatic aging-out of stale sources; retrieval evaluation (recall and precision on a golden question set, measured per corpus); and citation enforcement — the agent links to source or abstains. Track groundedness and hallucination rates per workflow as first-class production metrics, alongside latency and cost.",
       good:"Agent answers carry citations to source systems; stale sources age out automatically; groundedness is measured continuously, with a tracked hallucination rate per workflow.",
-      ev:{real:true, text:"Priceline built its Trip Intelligence suite with Google Cloud, grounding generative travel assistance in its own inventory and customer data on Vertex AI — so recommendations reflect bookable reality, not model memory."},
+      ev:{real:true, text:"Volkswagen of America's myVW assistant grounds Gemini's multimodal reasoning in the owner's manual: drivers point their phone camera at a dashboard indicator light and get an answer from their vehicle's actual documentation (2024) — enterprise truth, not model memory. Burns & McDonnell applies the same principle to decades of engineering project data, activated as real-time intelligence (2026)."},
       fail:"A one-off vector-database dump at launch: the agent's knowledge is frozen on day one and drifts from reality every day after.",
-      gc:{cap:"Vertex AI Search (grounding with citations)", text:"Vertex AI Search delivers out-of-the-box enterprise retrieval with citation-backed grounding, and Vertex AI's grounding APIs check generated answers against enterprise sources — turning 'trust me' into 'here's the source.'"}
+      gc:{cap:"Vertex AI Search grounding + connectors", text:"Vertex AI Search provides managed enterprise retrieval with citation-backed grounding and groundedness-checking APIs; in Gemini Enterprise the same grounding rides pre-built connectors into Workspace, SharePoint, Salesforce, ServiceNow, and more — with index freshness handled by the platform rather than hand-built sync jobs."}
     },
     {
       id:"t23", name:"Data readiness as the rate-limiter of agent quality",
       elab:"The ceiling on any agent's quality is set by the accessibility and structure of the data behind it. Sequencing use cases by data readiness — and funding the unglamorous pipeline work inside each agent business case — outperforms picking use cases by excitement every time.",
+      depth:"Gate use-case intake on a readiness score: source accessibility (API versus screen-scrape), structure, quality, policy clearance, and freshness. Fund identified gaps inside the agent's business case, not as a separate begging exercise. The readiness backlog is the real transformation roadmap — most 'model problems' escalated from production trace back to a source system nobody wired up properly.",
       good:"A data-readiness score gates use-case intake, and every approved agent business case carries a funded line for the data work it depends on.",
       ev:{real:false, text:"Illustrative: a consumer-goods company audits its top 40 agent candidates and finds 60% blocked on data access, not model capability — it re-sequences the roadmap around readiness and doubles its delivery rate within two quarters."},
       fail:"Funding agents but not pipelines, so every team rebuilds the same brittle extraction — and the roadmap silently becomes a data-engineering backlog.",
-      gc:{cap:"Google Cloud Cortex Framework", text:"Cortex Framework provides predefined data models and pipelines for SAP, Salesforce, and other systems of record on BigQuery — collapsing months of foundational data work that otherwise sits invisibly inside every agent's critical path."}
+      gc:{cap:"Cortex Framework", text:"Google Cloud Cortex Framework ships predefined BigQuery data models, pipelines, and semantic layers for SAP, Salesforce, and other systems of record — collapsing months of foundational data work that otherwise sits invisibly inside every agent's critical path."}
     }]
   },
   {
@@ -572,36 +629,44 @@ const DATA = [
     {
       id:"t31", name:"Deep connectivity into systems of record",
       elab:"An agent that can't act in the ERP, CRM, or ITSM is a well-read chatbot. Action connectivity — write-backs, transactions, idempotency, error handling — is where both the value and the engineering difficulty concentrate. Read-only integration is why most pilots plateau at 'insight.'",
+      depth:"Action-connectivity engineering: typed tool contracts per transaction, ideally exposed as MCP servers over the system of record's APIs; idempotency keys and compensation logic for failed multi-step writes; sandbox tenants so evaluations can execute transactions safely; and per-tool authorization ceilings enforced at the gateway. Treat read-only connectors as a starting point, not an architecture — the business case usually lives in the write path.",
       good:"Certified bidirectional connectors to core systems, with agents completing transactions end to end under full audit — not drafting instructions for a human to retype.",
-      ev:{real:false, text:"Illustrative: a utility's IT-service agent doesn't just diagnose — it opens, updates, and closes ServiceNow tickets and executes standard changes itself, cutting mean-time-to-resolution by half on routine incidents."},
+      ev:{real:true, text:"Amdocs' Telco Customer Experience Agent, built with Gemini Enterprise, doesn't stop at answers — it reasons, orchestrates, and executes end-to-end telco processes across digital and contact-center channels (2026). Starling Bank's assistant likewise executes real customer actions — organizing payments, setting savings goals — inside a regulated bank (2025)."},
       fail:"Read-only integrations everywhere: the agent produces insight, and humans still swivel-chair the actual work between screens.",
-      gc:{cap:"Gemini Enterprise connectors", text:"Gemini Enterprise ships pre-built, governed connectors into systems like Salesforce, SAP, ServiceNow, and Workspace — so agents act in systems of record through managed integration rather than per-team custom API work."}
+      gc:{cap:"Gemini Enterprise connectors + Agent Gateway", text:"Gemini Enterprise ships governed connectors into Salesforce, SAP, ServiceNow, Workspace, and more; for custom systems, the Agent Platform's native ecosystem integrations and MCP support turn internal APIs into reusable, typed agent tools — all routed through Agent Gateway's policy enforcement so every write-back is authorized and audited."}
     },
     {
       id:"t32", name:"Enterprise identity and security posture for agents",
       elab:"Agents create a genuinely new attack surface: prompt injection, tool abuse, data exfiltration through connected APIs. Zero-trust must extend to the agent layer — authenticating agents, authorizing every tool call, monitoring for adversarial manipulation — before the estate scales.",
+      depth:"The agent attack surface, concretely: prompt injection via retrieved content or incoming email; tool poisoning (malicious or compromised MCP servers); data exfiltration through legitimately connected APIs; and rogue autonomous behavior from corrupted context. Controls: gateway-level screening of prompts and responses, sandboxed execution for model-generated code, egress restrictions per agent identity, anomaly detection on reasoning patterns, and red-team exercises that target the agent-tool boundary — not just the model.",
       good:"All agent traffic flows through policy enforcement; red-team exercises explicitly include agent attack paths; injection attempts are detected, logged, and rehearsed against.",
       ev:{real:false, text:"Illustrative: a global bank's red team demonstrates a prompt-injection exfiltration path through a connected CRM tool in pre-production — the finding reshapes the firm's tool-authorization model before a single agent ships."},
       fail:"The security team reviews the model and ignores the tools — and the breach arrives through a connected API the agent was allowed to call.",
-      gc:{cap:"Security Command Center — AI Protection", text:"Security Command Center's AI Protection discovers the AI estate, detects threats like prompt injection and data exfiltration, and manages agent-layer security posture — extending Google's zero-trust portfolio to the agent workforce."}
+      gc:{cap:"Agent Security Dashboard (Security Command Center)", text:"The Agent Platform ships agent-native security controls: Agent Threat Detection catches malicious activity like reverse shells and bad-IP connections in real time; Agent Anomaly Detection flags unusual reasoning; Agent Sandbox hardens model-generated code and browser automation; and the Security Command Center-powered Agent Security Dashboard maps agent-model relationships, automates asset discovery, and scans package vulnerabilities."}
     },
     {
       id:"t33", name:"Scalability and cost control at production volumes",
       elab:"Production is a different physics: a thousand times pilot volume, latency budgets, quota limits, and a token bill that arrives monthly. Caching, batching, capacity reservation, and per-agent budget telemetry are architectural decisions — cost control designed in, not negotiated after.",
+      depth:"Engineer for production physics: load-test at projected peak with realistic token distributions, not synthetic short prompts; reserve capacity (provisioned throughput) for latency-critical paths and use on-demand for background work; cache stable context; batch asynchronous workloads; and wire per-agent budgets with alerts into the same dashboards as quality metrics, so cost regressions surface like any other incident.",
       good:"Every workflow load-tested at projected peak before launch; caching and batching materially reduce unit cost; per-agent budgets with alerts, reviewed like any other operating cost.",
-      ev:{real:true, text:"Verizon deployed Google Cloud generative AI to support its customer-care operation — assistants serving tens of thousands of representatives — engineering for production concurrency, latency, and cost from the outset rather than scaling a demo."},
+      ev:{real:true, text:"India's NoBroker runs its ConvoZen platform on Gemini, processing 10,000 hours of call recordings daily with agents projected to handle 25–40% of future call volume (2025) — an architecture engineered for production concurrency and cost from the outset, not a scaled-up demo."},
       fail:"The pilot architecture is pushed straight to production; latency spikes, the token bill lands at multiples of plan, and the program is paused at peak momentum.",
-      gc:{cap:"Vertex AI provisioned throughput & context caching", text:"Vertex AI's provisioned throughput guarantees capacity at predictable cost for production workloads, while context caching cuts repeat-token spend on long prompts — the two platform levers that keep agent economics stable at volume."}
+      gc:{cap:"Agent Runtime + provisioned throughput", text:"Agent Runtime provisions new agents in seconds with sub-second cold starts and scales long-running workloads; on the model side, provisioned throughput guarantees capacity at predictable cost for latency-critical paths, while context caching cuts repeat-token spend on long prompts — cost control as platform configuration rather than renegotiation."}
     }]
   }]
 }
 ];
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
+const isMobile = () => window.matchMedia("(max-width:860px)").matches;
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 const factorIndex = {};
-DATA.forEach(p => p.domains.forEach(d => d.factors.forEach(f => {
-  factorIndex[f.id] = { f, pillar: p, domain: d };
-})));
+DATA.forEach(p => p.domains.forEach((d, di) => {
+  d.id = p.id + "-d" + di;
+  d.count = d.factors.length;
+  d.factors.forEach(f => { factorIndex[f.id] = { f, pillar: p, domain: d }; });
+}));
 
 /* ---------- detail panel ---------- */
 let lastFocus = null;
@@ -618,6 +683,7 @@ function openPanel(id, trigger){
     : '<span class="badge illustrative">Illustrative</span>';
   let html =
     '<div class="pb-block"><p class="pb-label">Why it matters</p><p>' + f.elab + '</p></div>' +
+    '<div class="pb-block"><p class="pb-label">Practitioner detail</p><p>' + f.depth + '</p></div>' +
     '<div class="pb-block"><p class="pb-label">What good looks like</p><div class="pb-good"><p>' + f.good + '</p></div></div>' +
     '<div class="pb-block"><p class="pb-label">Customer evidence ' + evBadge + '</p><p>' + f.ev.text + '</p></div>' +
     '<div class="pb-block pb-fail"><p class="pb-label">Common failure mode</p><p>' + f.fail + '</p></div>';
@@ -626,6 +692,7 @@ function openPanel(id, trigger){
       '<span class="gc-cap">' + f.gc.cap + '</span><p>' + f.gc.text + '</p></div>';
   }
   $("#panel-body").innerHTML = html;
+  $("#panel-body").scrollTop = 0;
   $("#panel").classList.toggle("has-gc", !!f.gc);
   $("#panel").setAttribute("aria-hidden", "false");
   document.body.classList.add("panel-open");
@@ -656,11 +723,12 @@ function setView(list){
   document.body.classList.toggle("view-list", list);
   btnMap.setAttribute("aria-pressed", String(!list));
   btnList.setAttribute("aria-pressed", String(list));
+  if (!list) renderMap(false);
 }
 btnMap.addEventListener("click", () => setView(false));
 btnList.addEventListener("click", () => setView(true));
 
-/* ---------- accordion (list view + mobile) ---------- */
+/* ---------- accordion (list view) ---------- */
 (function buildAccordion(){
   const root = $("#accordion");
   DATA.forEach((p, pi) => {
@@ -677,7 +745,7 @@ btnList.addEventListener("click", () => setView(true));
       head.className = "domain-head";
       head.setAttribute("aria-expanded", String(pi === 0 && di === 0));
       head.setAttribute("aria-controls", listId);
-      head.innerHTML = '<span>' + d.name + '</span><span class="chev" aria-hidden="true">›</span>';
+      head.innerHTML = '<span>' + d.name + ' <span style="color:var(--muted);font-weight:500">(' + d.count + ')</span></span><span class="chev" aria-hidden="true">›</span>';
       head.addEventListener("click", () => {
         const open = dom.classList.toggle("open");
         head.setAttribute("aria-expanded", String(open));
@@ -702,7 +770,45 @@ btnList.addEventListener("click", () => setView(true));
   });
 })();
 
-/* ---------- radial mindmap ---------- */
+/* ---------- radial mindmap with expand/collapse ---------- */
+const expanded = new Set();
+function resetExpansion(){
+  expanded.clear();
+  DATA.forEach(p => {
+    expanded.add(p.id);
+    if (!isMobile()) p.domains.forEach(d => expanded.add(d.id));
+  });
+}
+resetExpansion();
+
+function toggleNode(id, kind){
+  if (expanded.has(id)){
+    expanded.delete(id);
+    if (kind === "pillar"){
+      const p = DATA.find(x => x.id === id);
+      p.domains.forEach(d => expanded.delete(d.id));
+    }
+  } else {
+    expanded.add(id);
+    if (kind === "domain" && isMobile()){
+      DATA.forEach(p => p.domains.forEach(d => { if (d.id !== id) expanded.delete(d.id); }));
+    }
+  }
+  renderMap(true);
+}
+
+function buildVisible(){
+  return { id:"root", name:"root", children: DATA.map(p => ({
+    id: p.id, name: p.name, pillar: p, kind: "pillar", hidden: p.domains.length + p.domains.reduce((n,d)=>n+d.count,0),
+    children: expanded.has(p.id) ? p.domains.map(d => ({
+      id: d.id, name: d.name, pillar: p, kind: "domain", hidden: d.count,
+      children: expanded.has(d.id) ? d.factors.map(f => ({
+        id: f.id, name: f.name, pillar: p, factor: f
+      })) : null
+    })) : null
+  }))};
+}
+
 function wrapLabel(name, max){
   const words = name.split(" ");
   const lines = [""];
@@ -714,143 +820,197 @@ function wrapLabel(name, max){
   return lines.slice(0, 3);
 }
 
-function renderMap(){
+let lastPos = new Map();
+let mapInit = false;
+
+function renderMap(animate){
   if (typeof d3 === "undefined") return;
-  const svg = d3.select("#mindmap");
-  svg.selectAll("*").remove();
-  const container = svg.node().parentNode;
-  if (!container || container.offsetWidth === 0) return;
+  const scroller = document.querySelector(".map-scroll");
+  if (!scroller || scroller.clientWidth === 0) return;
+  const mobile = isMobile();
+  const containerW = scroller.clientWidth;
+  const canvas = mobile ? Math.max(620, containerW) : Math.min(containerW, 1150);
+  const labelRoom = mobile ? 120 : (canvas < 900 ? 150 : 185);
+  const radius = canvas / 2 - labelRoom;
+  const dur = (animate && !prefersReduced) ? 480 : 0;
 
-  const size = Math.min(container.offsetWidth, 1150);
-  const labelRoom = size < 900 ? 150 : 185;
-  const radius = size / 2 - labelRoom;
-  svg.attr("viewBox", [-size / 2, -size / 2, size, size]).attr("height", size);
+  const svg = d3.select("#mindmap")
+    .attr("viewBox", [-canvas / 2, -canvas / 2, canvas, canvas])
+    .attr("width", canvas).attr("height", canvas);
 
-  const rootData = { name: "The Agentic Enterprise", children: DATA.map(p => ({
-    name: p.name, pillar: p, children: p.domains.map(d => ({
-      name: d.name, pillar: p, domain: d, children: d.factors.map(f => ({
-        name: f.name, pillar: p, domain: d, factor: f
-      }))
-    }))
-  }))};
+  if (!mapInit){
+    svg.append("g").attr("class", "g-links");
+    svg.append("g").attr("class", "g-nodes");
+    mapInit = true;
+  }
 
-  const root = d3.hierarchy(rootData);
+  const root = d3.hierarchy(buildVisible());
   d3.tree()
     .size([2 * Math.PI, radius])
-    .separation((a, b) => (a.parent === b.parent ? 1 : 1.6) / a.depth)(root);
+    .separation((a, b) => (a.parent === b.parent ? 1 : 1.6) / Math.max(a.depth, 1))(root);
+  root.y = 0;
 
-  svg.append("g").selectAll("path")
-    .data(root.links())
-    .join("path")
+  const pos = new Map();
+  root.descendants().forEach(d => pos.set(d.data.id, { x: d.x, y: d.y }));
+  const oldOf = d => {
+    let a = d;
+    while (a){ if (lastPos.has(a.data.id)) return lastPos.get(a.data.id); a = a.parent; }
+    return { x: d.x, y: d.y };
+  };
+  const newAncestor = d => {
+    let a = d.parent;
+    while (a){ if (pos.has(a.data.id)) return pos.get(a.data.id); a = a.parent; }
+    return { x: 0, y: 0 };
+  };
+  const trans = p => "rotate(" + (p.x * 180 / Math.PI - 90) + ") translate(" + p.y + ",0)";
+  const radial = d3.linkRadial().angle(p => p.x).radius(p => p.y);
+  const pathOf = (s, t) => radial({ source: s, target: t });
+
+  /* ----- links ----- */
+  const links = svg.select(".g-links").selectAll("path")
+    .data(root.links(), d => d.target.data.id);
+  links.exit().transition().duration(dur)
+    .attr("d", d => { const p = newAncestor(d.target) ; return pathOf(p, p); })
+    .style("opacity", 0).remove();
+  const linksEnter = links.enter().append("path")
     .attr("class", "link")
     .attr("stroke", d => d.target.data.pillar ? d.target.data.pillar.hex : "#c9c1ad")
     .attr("stroke-opacity", d => d.target.depth === 1 ? .9 : .45)
     .attr("stroke-width", d => d.target.depth === 1 ? 2 : 1.1)
-    .attr("d", d3.linkRadial().angle(d => d.x).radius(d => d.y));
+    .attr("d", d => { const o = oldOf(d.target.parent || d.source); return pathOf(o, o); })
+    .style("opacity", 0);
+  linksEnter.merge(links).transition().duration(dur)
+    .attr("d", d => pathOf(d.source, d.target))
+    .style("opacity", 1);
 
-  const node = svg.append("g").selectAll("g")
-    .data(root.descendants())
-    .join("g")
-    .attr("class", d => {
-      let c = "node depth-" + d.depth;
-      if (d.data.factor){ c += " leaf"; if (d.data.factor.gc) c += " has-gc"; }
-      return c;
-    })
-    .attr("transform", d => d.depth === 0 ? null :
-      "rotate(" + (d.x * 180 / Math.PI - 90) + ") translate(" + d.y + ",0)");
+  /* ----- nodes ----- */
+  const nodes = svg.select(".g-nodes").selectAll("g.node")
+    .data(root.descendants(), d => d.data.id);
+  nodes.exit().transition().duration(dur)
+    .attr("transform", d => trans(newAncestor(d)))
+    .style("opacity", 0).remove();
+  const nodesEnter = nodes.enter().append("g")
+    .attr("transform", d => trans(d.depth === 0 ? { x: 0, y: 0 } : oldOf(d.parent || d)))
+    .style("opacity", 0);
+  const all = nodesEnter.merge(nodes);
+  all.transition().duration(dur)
+    .attr("transform", d => d.depth === 0 ? "rotate(0) translate(0,0)" : trans(d))
+    .style("opacity", 1);
 
-  node.filter(d => d.data.factor && d.data.factor.gc)
-    .append("circle")
-    .attr("class", "gc-ring")
-    .attr("r", 9.5)
-    .attr("fill", "none")
-    .attr("stroke", "#1a73e8")
-    .attr("stroke-width", 1.4)
-    .attr("stroke-dasharray", "2.5 2.5");
+  /* rebuild node contents at final-state styling */
+  all.each(function(d){
+    const g = d3.select(this);
+    g.selectAll("*").remove();
+    const leaf = !!d.data.factor;
+    const branch = !!d.data.kind;
+    const isOpen = branch && expanded.has(d.data.id);
+    g.attr("class", "node depth-" + d.depth +
+      (leaf ? " leaf" + (d.data.factor.gc ? " has-gc" : "") : "") +
+      (branch ? " branch" : ""));
 
-  node.append("circle")
-    .attr("class", "core")
-    .attr("r", d => d.depth === 0 ? 0 : d.depth === 1 ? 8 : d.depth === 2 ? 5.5 : 4.5)
-    .attr("fill", d => d.data.pillar ? d.data.pillar.hex : "var(--prussian)")
-    .attr("fill-opacity", d => d.depth === 3 ? .9 : 1);
+    if (d.depth === 0){
+      const rr = mobile ? 40 : 52;
+      g.append("circle").attr("r", rr).attr("fill", "#003153");
+      const rt = g.append("text").attr("text-anchor", "middle")
+        .style("font-size", mobile ? "10.5px" : "13.5px")
+        .style("font-family", "Fraunces, serif").style("fill", "#f4e9d6");
+      rt.append("tspan").attr("x", 0).attr("dy", "-0.9em").text("The");
+      rt.append("tspan").attr("x", 0).attr("dy", "1.2em").text("Agentic");
+      rt.append("tspan").attr("x", 0).attr("dy", "1.2em").text("Enterprise");
+      return;
+    }
 
-  // Root label — horizontal, centered
-  const rootG = node.filter(d => d.depth === 0);
-  rootG.append("circle").attr("r", 52).attr("fill", "#003153");
-  const rt = rootG.append("text")
-    .attr("text-anchor", "middle")
-    .attr("fill", "#fff")
-    .style("font-size", "13.5px")
-    .style("font-family", "Fraunces, serif");
-  rt.append("tspan").attr("x", 0).attr("dy", "-0.9em").text("The");
-  rt.append("tspan").attr("x", 0).attr("dy", "1.2em").text("Agentic");
-  rt.append("tspan").attr("x", 0).attr("dy", "1.2em").text("Enterprise");
-  rt.style("fill", "#f4e9d6");
+    // invisible hit target for touch
+    g.append("circle").attr("r", branch ? 20 : 15).attr("fill", "transparent");
 
-  // Pillar & domain labels — centered on the node, offset tangentially
-  node.filter(d => d.depth === 1 || d.depth === 2).append("text")
-    .attr("text-anchor", "middle")
-    .attr("transform", d => d.x >= Math.PI ? "rotate(180)" : null)
-    .style("font-size", d => d.depth === 1 ? "15px" : "12px")
-    .style("font-weight", d => d.depth === 1 ? 700 : 600)
-    .style("letter-spacing", d => d.depth === 1 ? ".08em" : null)
-    .style("paint-order", "stroke")
-    .style("stroke", "#f7f4ee")
-    .style("stroke-width", "3.5px")
-    .each(function(d){
-      const t = d3.select(this);
+    if (leaf && d.data.factor.gc){
+      g.append("circle").attr("class", "gc-ring").attr("r", 9.5)
+        .attr("fill", "none").attr("stroke", "#1a73e8")
+        .attr("stroke-width", 1.4).attr("stroke-dasharray", "2.5 2.5");
+    }
+
+    const coreR = d.depth === 1 ? (isOpen ? 8 : 12) : branch ? (isOpen ? 5.5 : 10) : 4.5;
+    g.append("circle").attr("class", "core").attr("r", coreR)
+      .attr("fill", d.data.pillar.hex)
+      .attr("fill-opacity", leaf ? .9 : 1);
+
+    // collapsed badge: how many factors are hidden beneath
+    if (branch && !isOpen){
+      g.append("text").attr("class", "kid-badge")
+        .attr("text-anchor", "middle").attr("dy", "0.34em")
+        .attr("transform", d.x >= Math.PI ? "rotate(180)" : null)
+        .style("font-size", d.depth === 1 ? "10px" : "9px")
+        .text("+" + d.data.hidden);
+    }
+
+    // labels
+    if (branch){
+      const t = g.append("text").attr("text-anchor", "middle")
+        .style("font-size", d.depth === 1 ? (mobile ? "13px" : "15px") : (mobile ? "11px" : "12px"))
+        .style("font-weight", d.depth === 1 ? 700 : 600)
+        .style("letter-spacing", d.depth === 1 ? ".08em" : null)
+        .style("paint-order", "stroke").style("stroke", "#f7f4ee").style("stroke-width", "3.5px");
       if (d.depth === 1){
         t.attr("transform", "rotate(" + (90 - d.x * 180 / Math.PI) + ")")
-          .attr("y", -20).style("fill", d.data.pillar.hex)
+          .attr("y", isOpen ? -22 : -26).style("fill", d.data.pillar.hex)
           .append("tspan").attr("x", 0).text(d.data.name.toUpperCase());
-        return;
+      } else {
+        t.attr("transform", d.x >= Math.PI ? "rotate(180)" : null);
+        const lines = wrapLabel(d.data.name, mobile ? 14 : 16);
+        t.attr("y", -((isOpen ? 13 : 18) + (lines.length - 1) * 13));
+        lines.forEach((ln, i) => {
+          t.append("tspan").attr("x", 0).attr("dy", i === 0 ? 0 : 13).text(ln);
+        });
       }
-      const lines = wrapLabel(d.data.name, 16);
-      t.attr("y", -(13 + (lines.length - 1) * 13));
-      lines.forEach((ln, i) => {
-        t.append("tspan").attr("x", 0).attr("dy", i === 0 ? 0 : 13).text(ln);
-      });
-    });
-
-  // Leaf labels — along the radius, flipped on the left side
-  node.filter(d => d.depth === 3).append("text")
-    .attr("dy", "0.32em")
-    .attr("x", d => d.x < Math.PI ? 9 : -9)
-    .attr("text-anchor", d => d.x < Math.PI ? "start" : "end")
-    .attr("transform", d => d.x >= Math.PI ? "rotate(180)" : null)
-    .style("font-size", "10.5px")
-    .each(function(d){
-      const t = d3.select(this);
-      const lines = wrapLabel(d.data.name, 26);
+    } else {
+      const t = g.append("text").attr("dy", "0.32em")
+        .attr("x", d.x < Math.PI ? 9 : -9)
+        .attr("text-anchor", d.x < Math.PI ? "start" : "end")
+        .attr("transform", d.x >= Math.PI ? "rotate(180)" : null)
+        .style("font-size", mobile ? "10px" : "10.5px");
+      const lines = wrapLabel(d.data.name, mobile ? 20 : 26);
       const x = t.attr("x");
       lines.forEach((ln, i) => {
-        t.append("tspan")
-          .attr("x", x)
+        t.append("tspan").attr("x", x)
           .attr("dy", i === 0 ? (-(lines.length - 1) * 0.55) + "em" : "1.1em")
           .text(ln);
       });
-    });
+    }
 
-  // Interactivity + keyboard access on leaves
-  node.filter(d => !!d.data.factor)
-    .attr("tabindex", 0)
-    .attr("role", "button")
-    .attr("aria-label", d => d.data.factor.name + " — open details")
-    .on("click", (e, d) => openPanel(d.data.factor.id, e.currentTarget))
-    .on("keydown", (e, d) => {
-      if (e.key === "Enter" || e.key === " "){
-        e.preventDefault();
-        openPanel(d.data.factor.id, e.currentTarget);
-      }
-    });
+    // interactivity + keyboard
+    if (branch){
+      g.attr("tabindex", 0).attr("role", "button")
+        .attr("aria-expanded", String(isOpen))
+        .attr("aria-label", d.data.name + " — " + (isOpen ? "collapse" : "expand " + d.data.hidden + " items"))
+        .on("click", e => { e.stopPropagation(); toggleNode(d.data.id, d.data.kind); })
+        .on("keydown", e => {
+          if (e.key === "Enter" || e.key === " "){ e.preventDefault(); toggleNode(d.data.id, d.data.kind); }
+        });
+    } else if (leaf){
+      g.attr("tabindex", 0).attr("role", "button")
+        .attr("aria-label", d.data.factor.name + " — open details")
+        .on("click", e => openPanel(d.data.factor.id, e.currentTarget))
+        .on("keydown", e => {
+          if (e.key === "Enter" || e.key === " "){ e.preventDefault(); openPanel(d.data.factor.id, e.currentTarget); }
+        });
+    }
+  });
+
+  lastPos = pos;
+
+  if (canvas > containerW) scroller.scrollLeft = (canvas - containerW) / 2;
 }
 
+let wasMobile = isMobile();
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(renderMap, 200);
+  resizeTimer = setTimeout(() => {
+    if (isMobile() !== wasMobile){ wasMobile = isMobile(); resetExpansion(); }
+    renderMap(false);
+  }, 200);
 });
-renderMap();
+renderMap(false);
 </script>
 </body>
 </html>
