@@ -141,6 +141,19 @@ export async function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "prudential.aitokenomics.app") {
+    const prudentialUrl = request.nextUrl.clone();
+    if (prudentialUrl.pathname === "/") {
+      prudentialUrl.pathname = "/prudential";
+    }
+    return NextResponse.rewrite(prudentialUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
