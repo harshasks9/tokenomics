@@ -19,6 +19,16 @@
         }
       ],
       "destination": "/strategy/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "agentic.aitokenomics.app"
+        }
+      ],
+      "destination": "/agentic/:path*"
     }
   ]
 }

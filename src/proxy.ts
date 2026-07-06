@@ -49,6 +49,12 @@ export async function proxy(request: NextRequest) {
     return rewriteWithLanguage(deckUrl);
   }
 
+  if (hostname === "agentic.aitokenomics.app") {
+    const agenticUrl = request.nextUrl.clone();
+    agenticUrl.pathname = "/agentic/index.html";
+    return rewriteWithLanguage(agenticUrl);
+  }
+
   if (hostname === "gemini25.aitokenomics.app") {
     const geminiUrl = request.nextUrl.clone();
     if (geminiUrl.pathname === "/") {
