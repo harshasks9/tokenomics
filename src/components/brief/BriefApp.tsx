@@ -317,6 +317,11 @@ export default function BriefApp() {
     try {
       const res = await fetch("/api/brief/cron?force=1", { method: "POST" });
       const body = (await res.json().catch(() => null)) as { error?: string } | null;
+      if (res.status === 401) {
+        throw new Error(
+          "Manual generation is locked on the public site. The brief publishes automatically every morning at 09:00 SGT; the site owner can trigger an early run from the Vercel dashboard (Cron Jobs → /api/brief/cron → Run).",
+        );
+      }
       if (!res.ok) {
         throw new Error(body?.error ?? `Generation failed (${res.status})`);
       }
