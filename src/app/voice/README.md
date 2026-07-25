@@ -111,7 +111,35 @@ Success metrics: 2 pilots live, 2 certified partners, 10 qualified accounts ≥6
 4. India-first vs multi-region launch sequencing.
 5. Whether employee/student support packs price per-seat (Gemini Enterprise seats) or per-interaction — affects Education/GCC motion materially.
 
-## 8. Build notes
+## 8. v2 additions (July 2026): flow storytelling + Solution Builder
+
+**Information architecture changes**
+- Vertical microsites gained two sections: **"Watch the transformation"** (animated conventional→agentic flow player) and **"Operating-model comparison"** (13 dimensions × conventional / point-solution / agentic).
+- Internal experience gained `/voice/internal/builder` — the modular Solution Builder — linked from the internal nav and hero CTA.
+
+**Component inventory (new)**
+- `flows.ts` — data: `FLOWS` (5 vertical scenarios × conventional + agentic steps with actor/channel/wait/pain/approval and 3-perspective narratives), `OPERATING_MODELS` (13 comparison rows), `FLOW_SOURCES` (provenance list).
+- `flow.tsx` — `FlowStory` (play/pause, step controls, auto-transform from conventional to agentic at end of playback, customer/employee/systems perspective switcher, metrics toggle with per-metric provenance chips, side-by-side compare mode, sources disclosure), `FlowContext` (GEAP/GECX/partner/human-oversight roles + impact + value drivers + differentiators), `OperatingModelCompare` (desktop table / mobile accordion).
+- `internal/builder/builder-data.ts` — data + engine: 11 channels (integrations, complexity, effort, dependencies, consumption drivers, availability warnings), 27 capabilities in 8 modules (core vs optional, owner = google/gecx/partner/joint, benefit levers), 5 industry default profiles, editable rate card, and pure functions `computeEffort`, `computeTco`, `computeRoiModel`, `computeRecommendation`, `applyScenario`.
+- `internal/builder/page.tsx` — profile form, channel cards, capability chips, live generated architecture with ownership lanes + dependency warnings, 3-scenario TCO (one-time stack, variable breakdown, by-channel/by-capability), value-by-lever ROI with provenance labels (customer input / benchmark / assumption / system estimate), rule-based recommendation, exports.
+
+**Data model / provenance rule** — every quantified value in flows and builder carries a kind: `benchmark` (cited), `assumption` (editable default), `platform` (capability fact), or provenance: `customer | benchmark | assumption | estimate`. Rendering always shows the label.
+
+**Exports** — Customer proposal renders in a preview modal and prints to PDF via a print stylesheet (`#proposal-doc` visibility isolation); it carries the customer's name and auto-excludes internal content (pursuit routing, GECX logic, warnings, margins, confidence). Internal opportunity brief copies as markdown incl. all internal fields. Autosave to localStorage + up to 10 named snapshots (version history).
+
+**Build sequence (as implemented)** — flows data → flow components → vertical wiring → builder data/engine → builder page → internal links → README/QA → build → browser verification → deploy via git push to main.
+
+**QA checklist (v2)**
+- [x] `npm run build` passes; all `/voice` routes render
+- [x] Flow player: play/pause, stepping, perspective switch, compare mode, transform-at-end
+- [x] Metrics and sources disclose provenance on every number
+- [x] Builder: industry switch reloads defaults; core capabilities locked; warnings react to residency/timeline/RCS/video/CC selections
+- [x] TCO/ROI recompute live; scenario toggle affects both; rate card edits flow through
+- [x] Proposal preview strips internal content; print isolates the document; customer name propagates
+- [x] Autosave/restore + snapshots survive reload (same browser)
+- [x] No fixed pricing presented as fact; disclaimers on all money figures
+
+## 9. Build notes
 
 - Palette follows repo Google-style tokens; Inter; Tailwind v4; framer-motion; lucide-react.
 - ROI calculators show all formulas and mark defaults as modelling assumptions — no unsupported savings claims anywhere in copy.

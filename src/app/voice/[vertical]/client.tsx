@@ -11,6 +11,7 @@ import {
   Section, Kicker, H2, Lead, FadeIn, StatCard, Pill, Faq,
   ArchitectureExplorer, RoiCalculator, BeforeAfter, VoiceFooter, LifecycleStrip,
 } from "../components";
+import { FlowSection, OperatingModelCompare } from "../flow";
 
 const TAG_META: Record<string, { label: string; Icon: typeof Star }> = {
   lighthouse: { label: "Lighthouse", Icon: Star },
@@ -354,6 +355,36 @@ export default function VerticalClient({ slug }: { slug: string }) {
           <Kicker color={v.color}>Lighthouse journey</Kicker>
           <BeforeAfter title={v.journey.title} before={v.journey.before} after={v.journey.after} accent={v.color} />
         </FadeIn>
+      </Section>
+
+      {/* Animated flow story */}
+      <Section>
+        <FadeIn>
+          <Kicker color={v.color}>Watch the transformation</Kicker>
+          <H2>The same interaction, two operating models</H2>
+          <Lead>
+            Play the journey step by step, switch between the customer, employee, and systems view, and compare the flows side by side.
+            Red chips mark friction removed by the agentic layer; every metric shows its source and confidence.
+          </Lead>
+        </FadeIn>
+        <div className="mt-8">
+          <FlowSection slug={v.slug} accent={v.color} />
+        </div>
+      </Section>
+
+      {/* Operating model comparison */}
+      <Section alt>
+        <FadeIn>
+          <Kicker color={v.color}>Operating-model comparison</Kicker>
+          <H2>Conventional vs point solutions vs agentic</H2>
+          <Lead>
+            Thirteen dimensions where the operating models differ — from experience and speed to governance and measurement.
+            Point solutions improve one channel; the agentic layer changes how the whole enterprise communicates.
+          </Lead>
+        </FadeIn>
+        <div className="mt-8">
+          <OperatingModelCompare accent={v.color} />
+        </div>
       </Section>
 
       {/* Personas */}

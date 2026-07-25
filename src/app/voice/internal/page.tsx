@@ -138,6 +138,7 @@ function GecxTree() {
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 const NAV = [
+  { id: "builder", label: "Solution Builder" },
   { id: "thesis", label: "Thesis" },
   { id: "sizing", label: "Sizing" },
   { id: "qualifier", label: "Qualifier" },
@@ -163,7 +164,13 @@ export default function InternalGtm() {
             <span className="text-[10px] font-bold uppercase tracking-wider bg-[#FDD663] text-[#202124] rounded px-2 py-0.5 shrink-0">Internal</span>
           </div>
           <nav className="hidden lg:flex items-center gap-4 text-xs font-medium text-white/70">
-            {NAV.map((n) => <a key={n.id} href={`#${n.id}`} className="hover:text-white">{n.label}</a>)}
+            {NAV.map((n) =>
+              n.id === "builder" ? (
+                <Link key={n.id} href="/voice/internal/builder" className="text-[#FDD663] font-bold hover:text-white">{n.label}</Link>
+              ) : (
+                <a key={n.id} href={`#${n.id}`} className="hover:text-white">{n.label}</a>
+              ),
+            )}
           </nav>
         </div>
       </header>
@@ -179,6 +186,11 @@ export default function InternalGtm() {
               Not a contact-centre suite. Not a voice bot. The cross-enterprise intelligence and action layer for communications embedded in
               business workflows — collections, service, sales, employee and student support — delivered with partners, governed on Gemini Enterprise Agent Platform.
             </p>
+            <div className="mt-6">
+              <Link href="/voice/internal/builder" className="inline-flex items-center gap-2 rounded-full bg-[#FDD663] text-[#202124] px-5 py-2.5 text-sm font-bold hover:bg-[#FCE293] transition-colors">
+                Open the Solution Builder — configure, price, and propose <ArrowRight size={14} />
+              </Link>
+            </div>
             <div className="mt-8 grid sm:grid-cols-3 gap-3 max-w-3xl">
               {[
                 ["Lead when", "communications are embedded in enterprise workflows spanning functions and systems of record"],
