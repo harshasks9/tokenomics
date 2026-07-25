@@ -11,7 +11,8 @@ import {
   Section, Kicker, H2, Lead, FadeIn, StatCard, Pill, Faq,
   ArchitectureExplorer, RoiCalculator, BeforeAfter, VoiceFooter, LifecycleStrip,
 } from "../components";
-import { FlowSection, OperatingModelCompare } from "../flow";
+import { FlowContext, OperatingModelCompare } from "../flow";
+import { FlowCinema } from "../cinema";
 
 const TAG_META: Record<string, { label: string; Icon: typeof Star }> = {
   lighthouse: { label: "Lighthouse", Icon: Star },
@@ -357,19 +358,20 @@ export default function VerticalClient({ slug }: { slug: string }) {
         </FadeIn>
       </Section>
 
-      {/* Animated flow story */}
+      {/* Cinematic flow */}
       <Section>
         <FadeIn>
           <Kicker color={v.color}>Watch the transformation</Kicker>
-          <H2>The same interaction, two operating models</H2>
+          <H2>The same interaction, two worlds — racing live</H2>
           <Lead>
-            Play the journey step by step, switch between the customer, employee, and systems view, and compare the flows side by side.
-            Red chips mark friction removed by the agentic layer; every metric shows its source and confidence.
+            The loop runs itself: the conventional journey stalls, backtracks, and drags while the agentic one flows straight through —
+            grounding, acting, and resolving with a human approval exactly where policy demands one. Pause anytime and click any node to explore that step.
           </Lead>
         </FadeIn>
         <div className="mt-8">
-          <FlowSection slug={v.slug} accent={v.color} />
+          <FlowCinema slug={v.slug} accent={v.color} />
         </div>
+        <FlowContext slug={v.slug} accent={v.color} />
       </Section>
 
       {/* Operating model comparison */}

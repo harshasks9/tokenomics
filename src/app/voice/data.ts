@@ -272,7 +272,7 @@ export const VERTICALS: Vertical[] = [
     pilot: {
       scope: "One collections bucket (e.g., 1–30 DPD), one product, two languages, voice + WhatsApp",
       weeks: "8–12",
-      integrations: ["Collections CRM (read/write PTP)", "Payment gateway (link generation)", "Telephony/BSP via partner"],
+      integrations: ["Collections CRM (read/write PTP)", "Payment gateway (link generation)", "Telephony/BSP via Tilicho Labs"],
       success: ["Contact rate vs dialer baseline", "Kept-promise rate", "Roll-rate delta on pilot cohort", "Complaint rate ≤ human baseline", "Cost per completed contact"],
     },
     expansion: ["Pre-due reminders", "All buckets and products", "Inbound servicing", "Fraud verification callbacks", "Collections intelligence across the book"],
@@ -363,7 +363,7 @@ export const VERTICALS: Vertical[] = [
     pilot: {
       scope: "WISMO + delivery coordination on WhatsApp and web chat, two languages, one region",
       weeks: "6–10",
-      integrations: ["Order management system (read)", "Logistics partner API (read/write reschedule)", "WhatsApp BSP via partner"],
+      integrations: ["Order management system (read)", "Logistics partner API (read/write reschedule)", "WhatsApp BSP via Tilicho Labs"],
       success: ["Containment on WISMO intents", "CSAT vs human baseline", "RTO / failed-delivery delta", "Cost per contact", "Escalation quality score"],
     },
     expansion: ["Returns automation", "Cart recovery", "Guided selling", "Seller support", "Store associate assist"],
@@ -454,7 +454,7 @@ export const VERTICALS: Vertical[] = [
     pilot: {
       scope: "Balance/plan/recharge intents on voice + WhatsApp for one circle/region, three languages",
       weeks: "8–12",
-      integrations: ["BSS (read balance/plan)", "Recharge/payment gateway", "SMSC/WhatsApp BSP via partner"],
+      integrations: ["BSS (read balance/plan)", "Recharge/payment gateway", "SMSC/WhatsApp BSP via Tilicho Labs"],
       success: ["Containment on pilot intents", "Cost per interaction vs blended human cost", "CSAT / repeat-call rate", "Recharge conversion on reminders", "P95 latency at load"],
     },
     expansion: ["All service intents", "Churn & retention outreach", "Network triage + proactive outage comms", "Collections", "B2B servicing"],
@@ -545,7 +545,7 @@ export const VERTICALS: Vertical[] = [
     pilot: {
       scope: "Admissions inquiry + application follow-up for one intake cycle, WhatsApp + voice, two languages",
       weeks: "6–10",
-      integrations: ["Admissions CRM (read/write)", "Prospectus / knowledge base", "Calendar booking", "WhatsApp BSP via partner"],
+      integrations: ["Admissions CRM (read/write)", "Prospectus / knowledge base", "Calendar booking", "WhatsApp BSP via Tilicho Labs"],
       success: ["First-response time", "Inquiry-to-application conversion", "Counselor hours redirected", "Applicant satisfaction", "Cost per nurtured inquiry"],
     },
     expansion: ["Fee reminders", "Onboarding & registration", "Campus help desk", "Retention outreach", "Institution-wide notification layer", "Alumni engagement"],
@@ -770,9 +770,9 @@ export const OBJECTIONS = [
 ];
 
 export const PARTNER_MODEL = {
-  google: ["Gemini Enterprise Agent Platform & models", "Speech (STT/TTS) & real-time voice", "Enterprise search & grounding", "Security, identity, observability foundation", "Reference architectures & security blueprints", "Pilot funding framework & seller motion"],
-  partner: ["Telephony & channel integration (SIP, BSP, WhatsApp, RCS)", "Indic & regional-language tuning", "Industry agent packs & connectors (CRM, core banking, SIS, ITSM)", "Routing, escalation & session state implementation", "Compliance workflow configuration", "Production operations & managed service"],
-  customer: ["Business rules, offer matrices & policies", "Systems of record & their APIs", "Data, consent & brand voice", "Human escalation teams & ownership", "Success metrics & governance board"],
+  google: ["Gemini intelligence & reasoning", "Enterprise grounding & search", "Domain & workflow agents, multi-agent orchestration", "Enterprise-system actions & governance", "Security, identity, data & analytics", "Agent evaluation & observability"],
+  partner: ["Communications & voice-AI solution layer (existing platform + IP)", "Telephony & channel integrations", "API-based conversational execution", "Session, state & routing orchestration", "Implementation accelerators & customer-specific integration", "Deployment support & managed optimization (usage-based platform pricing)"],
+  customer: ["Enterprise data & systems of record", "Business rules & regulatory decisions", "Process ownership & change management", "Human approvals & escalation operations", "Success metrics & governance board"],
 };
 
 export const PILOT_PHASES = [
@@ -840,39 +840,39 @@ export const MARKET_STATS: { value: string; label: string; source: string; confi
 
 export const ARCH_LAYERS = [
   {
-    name: "Channels",
-    owner: "Partner-integrated",
+    name: "Communications Platform",
+    owner: "Tilicho Labs",
     color: "#00838F",
-    items: ["Voice / telephony (SIP)", "WhatsApp & messaging", "Email", "Web & in-app chat", "IVR replacement", "Notifications"],
-    detail: "Partners wire carrier trunks, BSPs, and channel SDKs into the platform. Existing phone numbers and channels are kept — the intelligence behind them changes.",
+    items: ["Voice-call handling & telephony", "WhatsApp, messaging & channel infrastructure", "Conversational execution (API-based)", "Call orchestration & routing", "Session & state management", "Operational telemetry", "Deployment accelerators"],
+    detail: "Tilicho Labs provides the communications and voice-AI solution layer through its managed platform — telephony, channels, conversational execution, session handling, and routing — so nothing is rebuilt from scratch. Exact capability coverage is validated during implementation.",
   },
   {
-    name: "Agentic Communications Layer",
+    name: "Enterprise Intelligence & Agents",
     owner: "Gemini Enterprise Agent Platform",
     color: "#1A73E8",
-    items: ["Intent & language understanding", "Multi-agent orchestration", "Session state & memory", "Policy enforcement", "Model routing & cost controls", "Human-handoff logic"],
-    detail: "The core: agents that understand, reason over policies and history, decide, and orchestrate. Runs in the customer's Google Cloud tenant.",
+    items: ["Gemini reasoning & intent", "Enterprise grounding with citations", "Domain & workflow agents", "Multi-agent orchestration", "Enterprise-system actions", "Policy enforcement & model routing"],
+    detail: "Google Cloud provides the intelligence: agents that reason over policies, history, and enterprise data, coordinate specialized agents, and execute governed actions — running in the customer's Google Cloud environment.",
   },
   {
     name: "Intelligence Foundation",
     owner: "Google Cloud",
     color: "#7C3AED",
-    items: ["Gemini models", "Speech-to-text / text-to-speech", "Real-time voice (live API)", "Enterprise search & grounding", "Evaluation services", "Translation"],
+    items: ["Gemini models", "Speech-to-text / text-to-speech", "Real-time voice", "Enterprise search & grounding", "Evaluation services", "Translation"],
     detail: "Google's models and speech stack, consumed as governed services with data-residency controls.",
   },
   {
     name: "Enterprise Systems & Actions",
-    owner: "Customer-owned, partner-connected",
+    owner: "Customer-owned, Tilicho-connected",
     color: "#188038",
     items: ["CRM / ticketing", "Core banking / billing / OMS / SIS / ITSM", "Payment gateways", "Knowledge sources", "Data warehouse", "Identity provider"],
-    detail: "Systems of record stay where they are. Agents act through permissioned, logged tool calls into existing APIs.",
+    detail: "Systems of record stay where they are. Agents act through permissioned, logged tool calls into existing APIs; Tilicho Labs builds and maintains the integrations.",
   },
   {
     name: "Trust & Operations",
     owner: "Google Cloud + customer governance",
     color: "#D97706",
-    items: ["Identity & access (IAM)", "Data residency (regions, VPC-SC)", "Audit logging — 100% of interactions", "Continuous evaluation", "Observability & alerting", "Human escalation paths"],
-    detail: "Every conversation is identity-bound, policy-checked, logged, and scoreable. Humans stay in the loop by design.",
+    items: ["Identity & access (IAM)", "Data residency (regions, VPC-SC)", "Audit logging — 100% of interactions", "Continuous evaluation", "Observability & alerting", "Human escalation & approvals"],
+    detail: "Every conversation is identity-bound, policy-checked, logged, and scoreable. The customer owns business rules, regulatory decisions, and escalation operations.",
   },
 ];
 

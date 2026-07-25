@@ -107,7 +107,7 @@ export const FLOWS: VerticalFlow[] = [
     roles: {
       geap: "Gemini Enterprise Agent Platform runs the collections agent: reasoning, policy enforcement, state, tool-calling into core banking, and evaluation.",
       gecx: "Where the bank runs a contact centre, escalations land in Customer Engagement Suite (or the incumbent CC stack) with full context; GECX leads any CC-modernization track.",
-      partner: "Partner wires telephony/BSP, tunes languages, builds core-banking and payment connectors, and operates the deployment.",
+      partner: "Tilicho Labs provides the communications platform — telephony, channels, conversational execution, session and routing — and builds the core-banking and payment integrations, with usage-based platform pricing.",
       human: "Hardship, disputes, and legal-stage accounts always route to trained specialists; compliance owns the offer matrix and vulnerability triggers.",
     },
   },
@@ -147,7 +147,7 @@ export const FLOWS: VerticalFlow[] = [
     roles: {
       geap: "Agent Platform orchestrates exception detection, conversation, policy reasoning, and write-actions into OMS/3PL systems.",
       gecx: "If the retailer runs a CC platform, human escalations arrive there context-complete; GECX leads if the engagement is CC modernization.",
-      partner: "Partner builds 3PL/OMS connectors, WhatsApp BSP integration, and category-specific policies; operates during peaks.",
+      partner: "Tilicho Labs runs the channel and voice layer and builds the 3PL/OMS integrations and category-specific configurations; its platform absorbs peak volumes on usage-based pricing.",
       human: "Ops leads approve above-tier goodwill; disputes and fraud flags always route to people.",
     },
   },
@@ -187,7 +187,7 @@ export const FLOWS: VerticalFlow[] = [
     roles: {
       geap: "Agent Platform correlates network + billing + subscriber context, runs conversations at spike scale, and executes grace/booking actions.",
       gecx: "The telco's CC stack (GECX or incumbent) receives non-outage escalations and retention conversations; GECX leads CC-modernization tracks.",
-      partner: "Partner integrates NOC feeds, BSS/OSS APIs, SMSC/BSP channels, and regional language tuning; operates 24/7.",
+      partner: "Tilicho Labs provides carrier-grade call handling and channel infrastructure and integrates NOC feeds, BSS/OSS APIs, and regional-language coverage; deployment and optimization are managed services.",
       human: "Retention offers above policy, regulatory complaints, and field dispatch exceptions stay human-approved.",
     },
   },
@@ -227,7 +227,7 @@ export const FLOWS: VerticalFlow[] = [
     roles: {
       geap: "Agent Platform runs inquiry, qualification, chase, and nurture agents grounded in institutional knowledge, writing to the admissions CRM and SIS.",
       gecx: "Institutions with contact-centre operations route human escalations through their CC stack; GECX leads if a CC platform decision is active.",
-      partner: "Partner integrates CRM/SIS, WhatsApp BSP, and calendar systems; tunes languages; packages the admissions agent for repeatability.",
+      partner: "Tilicho Labs provides the conversational and channel layer and integrates CRM/SIS and calendar systems; its admissions accelerators make the deployment repeatable across institutions.",
       human: "Counselors own every enrollment conversation; directors decide exceptions; wellbeing cues route to trained staff immediately.",
     },
   },
@@ -267,7 +267,7 @@ export const FLOWS: VerticalFlow[] = [
     roles: {
       geap: "Agent Platform runs the employee-support agents: identity-bound reasoning, cross-system root cause, governed actions into ITSM/HRMS/AD.",
       gecx: "Not typically in scope — employee support sits outside the contact-centre domain. If the GCC also runs customer CC operations, GECX leads that track.",
-      partner: "Partner integrates ITSM/HRMS/IdP, builds the entitlement-catalog connector, and co-builds the GCC's agent-operations CoE.",
+      partner: "Tilicho Labs provides the conversational execution layer, integrates ITSM/HRMS/IdP and the entitlement catalog, and co-builds the GCC's agent-operations CoE.",
       human: "Managers approve in-flow; sensitive HR matters route to HRBPs; the CoE governs every agent the centre ships.",
     },
   },

@@ -195,7 +195,7 @@ export default function InternalGtm() {
               {[
                 ["Lead when", "communications are embedded in enterprise workflows spanning functions and systems of record"],
                 ["Involve GECX when", "the centre of gravity is contact-centre modernization — queues, desktops, WFM, service ops"],
-                ["Partner always for", "telephony, channels, Indic languages, industry connectors, and production operations"],
+                ["Tilicho Labs always for", "the communications platform — telephony, channels, conversational execution, session/routing — and implementation"],
               ].map(([t, d]) => (
                 <div key={t} className="rounded-xl bg-white/10 p-4">
                   <div className="text-xs font-bold text-[#8AB4F8] uppercase tracking-wider">{t}</div>
@@ -385,18 +385,19 @@ export default function InternalGtm() {
       {/* Partners */}
       <Section id="partners">
         <FadeIn>
-          <Kicker><Handshake size={12} className="inline mr-1.5 -mt-0.5" />Partner model</Kicker>
+          <Kicker><Handshake size={12} className="inline mr-1.5 -mt-0.5" />Delivery model — Tilicho Labs</Kicker>
           <H2>Who owns what</H2>
           <Lead>
-            Partners are the delivery engine — voice AI specialists, GSIs, and regional firms certified on the platform. Candidate partners are
-            evaluated on channel expertise, industry IP, language coverage, production operations, and Google Cloud depth. No partner claim goes
-            in front of a customer without certification.
+            Tilicho Labs is the communications and implementation layer: we leverage its existing platform and IP (one-time integration fee +
+            usage-based consumption) instead of funding redevelopment of capabilities it already has. Gemini Enterprise Agent Platform provides
+            intelligence, agents, and governance. Validate exact Tilicho capability coverage during implementation — never present unconfirmed
+            capabilities as production-ready.
           </Lead>
         </FadeIn>
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           {[
             { title: "Google Cloud owns", items: PARTNER_MODEL.google, color: PALETTE.blue },
-            { title: "Partners own", items: PARTNER_MODEL.partner, color: PALETTE.teal },
+            { title: "Tilicho Labs owns", items: PARTNER_MODEL.partner, color: PALETTE.teal },
             { title: "Customer owns", items: PARTNER_MODEL.customer, color: PALETTE.muted },
           ].map((col) => (
             <FadeIn key={col.title}>
