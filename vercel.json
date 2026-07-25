@@ -29,6 +29,16 @@
         }
       ],
       "destination": "/agentic/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "voice.aitokenomics.app"
+        }
+      ],
+      "destination": "/voice/:path*"
     }
   ]
 }

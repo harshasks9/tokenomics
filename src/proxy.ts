@@ -75,6 +75,16 @@ export async function proxy(request: NextRequest) {
     return rewriteWithLanguage(plusUrl);
   }
 
+  if (hostname === "voice.aitokenomics.app") {
+    const voiceUrl = request.nextUrl.clone();
+    if (voiceUrl.pathname === "/") {
+      voiceUrl.pathname = "/voice";
+    } else if (!voiceUrl.pathname.startsWith("/voice")) {
+      voiceUrl.pathname = `/voice${voiceUrl.pathname}`;
+    }
+    return rewriteWithLanguage(voiceUrl);
+  }
+
   if (hostname === "brief.aitokenomics.app") {
     const briefUrl = request.nextUrl.clone();
     if (briefUrl.pathname === "/") {
