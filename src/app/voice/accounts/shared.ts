@@ -32,6 +32,30 @@ export type ProfileAccount = {
   validate: string;       // the single most important thing to validate
 };
 
+// Deep analysis attached to a qualified profile — promotes it from a screening
+// card to a working account view. Same evidence discipline as deep pitches:
+// no fabricated financials; strategic pressure is confidence-labeled.
+export type ProfileAnalysis = {
+  operatingContext: string;   // 3-4 sentences: real business model, scale, footprint, channel mix
+  strategicPressure: { text: string; kind: Confidence }[]; // 3-4 bullets driving urgency
+  buildVsBuyWhy: string;      // classification evidence
+  whyNotBuild: string;        // right to win
+  workflows: {
+    name: string; friction: string; outcome: string;
+    channels: string[]; systems: string[];
+    value: 1 | 2 | 3; complexity: 1 | 2 | 3;
+  }[];                        // 3
+  existing: { has: string[]; gaps: string[] };
+  risks: string[];            // 2-3 regulatory / operational
+  economics: { volumeMonthly: number; costPerInteraction: number; automationRate: number; basis: string };
+  pilotScope: string;
+  expansion: string[];        // 3
+  stakeholders: string[];     // 4-5
+  discovery: string[];        // 4 discovery questions
+  flowTemplate: FlowTemplateId;
+  scenario: string;           // one-line customer-specific animation scenario
+};
+
 export type BuildVsBuy = "buy-led" | "partner-led" | "co-build" | "build-led";
 
 export const BVB_META: Record<BuildVsBuy, { label: string; color: string; desc: string }> = {
@@ -440,6 +464,13 @@ export const FLOW_TEMPLATES: Record<FlowTemplateId, FlowTemplate> = {
   },
 };
 
+// Bind a template directly (used by analyzed profiles, which carry a template
+// id and their own scenario line rather than a full Account record).
+export function bindFlowTemplate(slug: string, templateId: FlowTemplateId, scenario: string) {
+  const t = FLOW_TEMPLATES[templateId];
+  return { slug, scenario, conventional: t.conventional, agentic: t.agentic, metrics: t.metrics };
+}
+
 // Bind a template to an account (substitute customer name, attach scenario).
 export function bindFlow(account: Account) {
   const t = FLOW_TEMPLATES[account.flowTemplate];
@@ -481,7 +512,7 @@ export const MARKET_META: Record<MarketId, { label: string; color: string }> = {
 };
 
 export const PROFILE_DISCLAIMER =
-  "Qualified profiles are real, named organizations that passed relevance and build-vs-buy screening but have NOT yet received deep account research. Promote a profile to a deep pitch (research pass + evidence sections) before any customer-facing use.";
+  "Analyzed profiles are real, named organizations carrying a full working analysis — operating context, ranked workflows, capability gaps, economics, and outreach — built from public information with confidence labels and clearly-marked seller assumptions. They have not had the primary-source earnings-material research pass that deep pitches carry, so validate with the account team before customer-facing use.";
 
 export const CONFIDENCE_META: Record<Confidence, { label: string; color: string }> = {
   verified: { label: "Public fact", color: "#188038" },

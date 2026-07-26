@@ -115,7 +115,7 @@ export default function AccountsDashboard() {
 
         {/* Topline */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8">
-          <StatTile label="Universe" value={`${accounts.length + profiles.length}`} sub={`${accounts.length} deep pitches · ${profiles.length} qualified profiles`} />
+          <StatTile label="Universe" value={`${accounts.length + profiles.length}`} sub={`${accounts.length} deep pitches · ${profiles.length} analyzed profiles — every one with offer emails`} />
           <StatTile label="Implementation pipeline" value={fmtMoney(stats.universeRevenue)} sub={`${fmtMoney(stats.implRevenue)} from deep pitches alone`} />
           <StatTile label="Package mix" value={`${stats.byPackage.launch}/${stats.byPackage.scale}/${stats.byPackage.transform}`} sub="Launch / Scale / Transform (universe)" />
           <StatTile label="Markets" value={`${Object.keys(stats.byMarket).length}`} sub="now incl. Japan, Korea, Taiwan, Hong Kong, AuNZ" />
@@ -195,7 +195,7 @@ export default function AccountsDashboard() {
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search account or vertical" className="bg-transparent text-xs text-white placeholder:text-[#5F6368] focus:outline-none w-44" />
           </div>
           <div className="flex items-center gap-1 border border-[#233047] rounded-full p-0.5">
-            {([["deep", `Deep pitches (${accounts.length})`], ["profile", `Profiles (${profiles.length})`], ["all", "All"]] as const).map(([d, l]) => (
+            {([["deep", `Deep pitches (${accounts.length})`], ["profile", `Analyzed (${profiles.length})`], ["all", "All"]] as const).map(([d, l]) => (
               <button key={d} onClick={() => setDepth(d)} className={`text-[11px] font-semibold px-3 py-1.5 rounded-full ${depth === d ? "bg-[#8AB4F8] text-[#0B1220]" : "text-[#9AA0A6] hover:text-white"}`}>{l}</button>
             ))}
           </div>
@@ -253,12 +253,12 @@ export default function AccountsDashboard() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {filteredProfiles.map((p) => (
-                <div key={p.slug} className="rounded-2xl border border-dashed border-[#233047] bg-[#0E1526]/60 p-4">
+                <Link key={p.slug} href={`/voice/accounts/profile/${p.slug}`} className="group rounded-2xl border border-dashed border-[#233047] bg-[#0E1526]/60 p-4 block hover:border-[#8AB4F8]/50 hover:bg-[#0E1526] transition-colors">
                   <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className="text-sm font-extrabold text-white truncate">{p.name}</span>
+                    <span className="text-sm font-extrabold text-white truncate group-hover:text-[#8AB4F8]">{p.name}</span>
                     <span className="flex items-center gap-1 shrink-0">
                       <span className="text-[8px] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5" style={{ backgroundColor: `${BVB_META[p.buildVsBuy].color}22`, color: BVB_META[p.buildVsBuy].color }}>{BVB_META[p.buildVsBuy].label}</span>
-                      <span className="text-[8px] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5 bg-[#8AB4F8]/15 text-[#8AB4F8]">Profile</span>
+                      <span className="text-[8px] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5 bg-[#8AB4F8]/15 text-[#8AB4F8]">Analyzed</span>
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-[10px] text-[#9AA0A6] mb-2">
@@ -271,7 +271,10 @@ export default function AccountsDashboard() {
                   <div className="mt-2.5 pt-2.5 border-t border-[#1B263B] text-[10px] text-[#5F6368]">
                     <span className="text-[#9AA0A6]">Entry: {p.entryWorkflow}</span> · Validate: {p.validate}
                   </div>
-                </div>
+                  <div className="mt-2 text-[10px] font-bold text-[#8AB4F8] opacity-0 group-hover:opacity-100 transition-opacity">
+                    Open analysis &amp; offer emails →
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

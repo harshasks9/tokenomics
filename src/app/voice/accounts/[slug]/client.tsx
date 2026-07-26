@@ -11,6 +11,8 @@ import {
 import { PALETTE, fmtMoney, fmtNum } from "../../data";
 import { FlowCinema } from "../../cinema";
 import { accountBySlug } from "../index";
+import { EmailStudio } from "../EmailStudio";
+import { contextFromAccount } from "../emails";
 import {
   bindFlow, BVB_META, CONFIDENCE_META, MARKET_META, PACKAGES, RECURRING_NOTE,
   UNIVERSE_DISCLAIMER, type Account,
@@ -72,6 +74,13 @@ export default function AccountClient({ slug }: { slug: string }) {
 
   const allChannels = useMemo(() => Array.from(new Set(a.workflows.flatMap((w) => w.channels))), [a]);
   const allSystems = useMemo(() => Array.from(new Set(a.workflows.flatMap((w) => w.systems))), [a]);
+
+  // Emails track the live business case — adjust the sliders above and the
+  // economics line in every draft follows.
+  const emailCtx = useMemo(
+    () => ({ ...contextFromAccount(a, bc.grossAnnual), volumeMonthly: volume, costPerInteraction: cost }),
+    [a, bc.grossAnnual, volume, cost],
+  );
 
   return (
     <div className="min-h-screen bg-white text-[#202124]" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
@@ -342,6 +351,15 @@ export default function AccountClient({ slug }: { slug: string }) {
             </div>
           ))}
         </div>
+      </Section>
+
+      {/* Offer emails */}
+      <Section kicker="Outreach" title={`Pre-built offer emails for ${a.name}`}>
+        <p className="text-sm text-[#5F6368] max-w-3xl mb-6 leading-relaxed">
+          Written from this account&apos;s own research — the strategic signal, the capability gap, the entry workflow, and the modelled
+          economics — not a mail-merge template. Pick the moment and the persona, edit anything, then copy or open in your mail client.
+        </p>
+        <EmailStudio ctx={emailCtx} />
       </Section>
 
       {/* Tier + next step */}

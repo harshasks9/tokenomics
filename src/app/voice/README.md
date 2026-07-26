@@ -201,7 +201,23 @@ Success metrics: 2 pilots live, 2 certified partners, 10 qualified accounts ≥6
 
 **Dashboard**: universe topline (deep + profile counts, combined pipeline), depth toggle (Deep pitches / Profiles / All), profile cards rendered distinctly (dashed borders, Profile badge, no detail page), matrix and selection table remain deep-only. Defensive slug dedup at merge (first occurrence wins).
 
-## 13. Restricted technical appendix (internal / legal / procurement only — not GTM content)
+## 13. v8 (July 2026): offer emails on every account + deep analysis for all 800 profiles
+
+**Pre-built offer emails (`emails.ts` + `EmailStudio.tsx`) — on all 1,000 accounts.**
+A deterministic composer writes drafts from each account's *researched specifics*, not a mail-merge template: the opening line quotes that account's strategic signal or its named capability gap; the middle names the entry workflow and the Tilicho Labs / Google Cloud split; the economics line uses the live business-case sliders on the page (move a slider, every draft updates).
+- 5 moments: first touch · executive sponsor · post-meeting follow-up · pilot proposal · re-engage.
+- 6 personas: CEO/BU · CIO/CTO · COO · functional owner · risk/compliance · CFO/procurement — each with its own hook and its own ask.
+- Register (direct/consultative/formal — formal is the default for Japan, Korea, Taiwan, Hong Kong) and length (short/standard/detailed).
+- Subject/body fully editable, copy-to-clipboard, open-in-mail-client, reset-draft; the seller's signature persists across accounts via localStorage.
+- **Customer-safe by construction**: the composer's input type contains only customer-facing fields. Tier, build-vs-buy classification, priority score, internal routing, and partner-commercial detail are not parameters, so they cannot leak into a draft. Hypothesis-grade signals are filtered out of the quotable hook — only verified/inference signals are ever echoed back to a customer. Money is always framed as modelled from the customer's own volumes.
+
+**Deep analysis for all 800 profiles (`ProfileAnalysis` + `/voice/accounts/profile/[slug]`).**
+Every qualified profile was promoted from a screening card to a working account page by 16 parallel research agents (~50 profiles each). Each carries: operating context, 3-4 confidence-labeled strategic-pressure bullets, build-vs-buy evidence and right-to-win, 3 ranked workflows (friction/outcome/channels/systems/value/complexity), exists-vs-gaps capability audit, market-specific risks, an editable economics model, pilot scope, expansion roadmap, stakeholders, discovery questions, and a bound cinematic flow (template + account-specific scenario) — plus the full email studio.
+Honest depth labelling retained: profile pages are badged "Analyzed profile" and state plainly that they have *not* had the primary-source earnings-material pass that deep pitches carry. `PROFILE_DISCLAIMER` was rewritten to describe the new state accurately rather than overclaim.
+
+**Universe shape now**: 200 deep pitches + 800 analyzed profiles = 1,000 working account pages, all with offer emails; dashboard depth toggle reads Deep pitches / Analyzed / All.
+
+## 14. Restricted technical appendix (internal / legal / procurement only — not GTM content)
 
 Underlying technology dependencies are consolidated under the Tilicho Labs partnership umbrella in all GTM material. Any constituent platform, API vendor, or subcontracted technology powering the Tilicho Labs communications layer must be documented here (and in contract schedules) only: current constituent-vendor list, API dependency inventory, per-capability confirmation status, and data-flow attestations are maintained by the partner team and are intentionally excluded from this repository's GTM pages. Earlier candidate-partner shortlists referenced in v1 planning are superseded by this structure.
 
