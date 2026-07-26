@@ -11,7 +11,7 @@ export type Confidence = "verified" | "inference" | "hypothesis";
 
 export type MarketId =
   | "India" | "Indonesia" | "Philippines" | "Vietnam" | "Thailand" | "Malaysia"
-  | "SEA-regional" | "Japan" | "Korea" | "Taiwan" | "Hong Kong" | "ANZ";
+  | "Singapore" | "SEA-regional" | "Japan" | "Korea" | "Taiwan" | "Hong Kong" | "ANZ";
 
 // Qualified profile — a real, named organization in the priority universe that
 // has passed screening (relevance + build-vs-buy hypothesis) but has NOT yet
@@ -503,6 +503,7 @@ export const MARKET_META: Record<MarketId, { label: string; color: string }> = {
   Vietnam: { label: "Vietnam", color: "#B3261E" },
   Thailand: { label: "Thailand", color: "#7C3AED" },
   Malaysia: { label: "Malaysia", color: "#00838F" },
+  Singapore: { label: "Singapore", color: "#C2185B" },
   "SEA-regional": { label: "SEA regional", color: "#5F6368" },
   Japan: { label: "Japan", color: "#9334E6" },
   Korea: { label: "Korea", color: "#E8710A" },

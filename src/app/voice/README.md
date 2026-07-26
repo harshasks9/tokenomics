@@ -217,7 +217,17 @@ Honest depth labelling retained: profile pages are badged "Analyzed profile" and
 
 **Universe shape now**: 200 deep pitches + 800 analyzed profiles = 1,000 working account pages, all with offer emails; dashboard depth toggle reads Deep pitches / Analyzed / All.
 
-## 14. Restricted technical appendix (internal / legal / procurement only — not GTM content)
+## 14. v9 (July 2026): Singapore as a first-class market
+
+Singapore was previously folded into "SEA-regional". It is now its own `MarketId` with 50 accounts:
+- **25 reclassified** — the Singapore-based organizations already in the universe (Singtel, StarHub, M1, UOB, OCBC, Great Eastern, Income, Prudential SG, AIA SG, Singlife, Certis, SATS, SIA Engineering, Scoot, foodpanda, ComfortDelGro, SMRT, Zalora, Carousell, NTUC FairPrice, Parkway, Raffles Medical, Thomson Medical, SP Group, CapitaLand) moved from `SEA-regional` to `Singapore`; their existing analysis carries over unchanged. `SEA-regional` now holds only genuinely pan-regional accounts.
+- **25 new**, each with profile + full analysis + offer emails: Singapore Airlines, Changi Airport Group, SingPost, CPF Board, HDB, LTA, PUB, City Energy, Sheng Siong, Singapore Pools, Marina Bay Sands, Resorts World Sentosa, PropNex, Trust Bank, Standard Chartered Singapore, Maybank Singapore, Tokio Marine Life SG, MSIG Singapore, FWD Singapore, SingHealth, NUHS, Fullerton Health, SIM, Kaplan Singapore, TDCX.
+
+**Market thesis for Singapore**: among APJ's highest service-labour costs plus a structurally tight labour market and foreign-worker quota limits — so automation is positioned as *capacity the organization cannot hire*, not headcount reduction. PDPA and the Do Not Call registry govern outbound; MAS FEAT principles apply to financial institutions; statutory boards procure by tender (flagged in `validate`). Language reality is English-dominant with Mandarin, Malay and Tamil, and dialect coverage (Hokkien, Cantonese, Teochew) treated as a genuine service-equity issue for the government, healthcare and utility accounts. Hard human boundaries are stated where they exist — gas-safety reports (City Energy), responsible-gambling intervention (Singapore Pools), and clinical triage (SingHealth, NUHS, Fullerton).
+
+Internal builders were excluded from this market as elsewhere: DBS, GXS Bank, MariBank, Grab, and Sea/Shopee.
+
+## 15. Restricted technical appendix (internal / legal / procurement only — not GTM content)
 
 Underlying technology dependencies are consolidated under the Tilicho Labs partnership umbrella in all GTM material. Any constituent platform, API vendor, or subcontracted technology powering the Tilicho Labs communications layer must be documented here (and in contract schedules) only: current constituent-vendor list, API dependency inventory, per-capability confirmation status, and data-flow attestations are maintained by the partner team and are intentionally excluded from this repository's GTM pages. Earlier candidate-partner shortlists referenced in v1 planning are superseded by this structure.
 

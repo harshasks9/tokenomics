@@ -15,6 +15,8 @@ import { ANALYSIS_HK_ANZ_A } from "./data/analysis/hk-anz-a";
 import { ANALYSIS_HK_ANZ_B } from "./data/analysis/hk-anz-b";
 import { ANALYSIS_GOV_EDU_BPM_A } from "./data/analysis/gov-edu-bpm-a";
 import { ANALYSIS_GOV_EDU_BPM_B } from "./data/analysis/gov-edu-bpm-b";
+import { ANALYSIS_SINGAPORE_A } from "./data/analysis/singapore-a";
+import { ANALYSIS_SINGAPORE_B } from "./data/analysis/singapore-b";
 import { ACCOUNTS_INDIA_BFSI, EXCLUDED_INDIA_BFSI } from "./data/india-bfsi";
 import { ACCOUNTS_INDIA_CONSUMER, EXCLUDED_INDIA_CONSUMER } from "./data/india-consumer";
 import { ACCOUNTS_ID_PH, EXCLUDED_ID_PH } from "./data/indonesia-philippines";
@@ -34,6 +36,8 @@ import { PROFILES_KR_TW } from "./data/profiles-kr-tw";
 import { PROFILES_HK_ANZ } from "./data/profiles-hk-anz";
 import { PROFILES_GOV_EDU_BPM } from "./data/profiles-gov-edu-bpm";
 import { PROFILES_SUPPLEMENT } from "./data/profiles-supplement";
+import { PROFILES_SINGAPORE_A } from "./data/profiles-singapore-a";
+import { PROFILES_SINGAPORE_B } from "./data/profiles-singapore-b";
 
 const rawAccounts: Account[] = [
   ...ACCOUNTS_INDIA_BFSI,
@@ -66,6 +70,8 @@ const rawProfiles: ProfileAccount[] = [
   ...PROFILES_HK_ANZ,
   ...PROFILES_GOV_EDU_BPM,
   ...PROFILES_SUPPLEMENT,
+  ...PROFILES_SINGAPORE_A,
+  ...PROFILES_SINGAPORE_B,
 ];
 
 // Profiles must not collide with deep accounts or each other.
@@ -92,6 +98,7 @@ export const PROFILE_ANALYSIS: Record<string, ProfileAnalysis> = {
   ...ANALYSIS_KR_TW_A, ...ANALYSIS_KR_TW_B,
   ...ANALYSIS_HK_ANZ_A, ...ANALYSIS_HK_ANZ_B,
   ...ANALYSIS_GOV_EDU_BPM_A, ...ANALYSIS_GOV_EDU_BPM_B,
+  ...ANALYSIS_SINGAPORE_A, ...ANALYSIS_SINGAPORE_B,
 };
 
 export function accountBySlug(slug: string) {

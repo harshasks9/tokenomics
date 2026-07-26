@@ -1,4 +1,4 @@
-// Qualified profiles — Thailand, Malaysia, and SEA-regional (Singapore-based) ops.
+// Qualified profiles — Thailand, Malaysia, and Singapore.
 // Real, named organizations that passed relevance + build-vs-buy screening but
 // have NOT yet received deep account research. See PROFILE_DISCLAIMER in shared.ts.
 
@@ -1071,7 +1071,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "singtel-regional",
     name: "Singtel",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Telecom",
     tier: 2,
     buildVsBuy: "co-build",
@@ -1085,7 +1085,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "starhub",
     name: "StarHub",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Telecom",
     tier: 2,
     buildVsBuy: "partner-led",
@@ -1099,7 +1099,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "m1-singapore",
     name: "M1",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Telecom",
     tier: 3,
     buildVsBuy: "buy-led",
@@ -1113,7 +1113,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "uob-regional",
     name: "UOB",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Banking",
     tier: 1,
     buildVsBuy: "partner-led",
@@ -1127,7 +1127,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "ocbc-regional",
     name: "OCBC",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Banking",
     tier: 2,
     buildVsBuy: "partner-led",
@@ -1141,7 +1141,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "great-eastern-sg",
     name: "Great Eastern (Singapore)",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Life insurance",
     tier: 2,
     buildVsBuy: "partner-led",
@@ -1155,7 +1155,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "income-insurance",
     name: "Income Insurance",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Insurance",
     tier: 2,
     buildVsBuy: "buy-led",
@@ -1169,7 +1169,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "prudential-sg",
     name: "Prudential Singapore",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Life insurance",
     tier: 3,
     buildVsBuy: "partner-led",
@@ -1183,7 +1183,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "aia-singapore",
     name: "AIA Singapore",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Life insurance",
     tier: 3,
     buildVsBuy: "partner-led",
@@ -1197,7 +1197,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "singlife",
     name: "Singlife",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Insurance",
     tier: 3,
     buildVsBuy: "buy-led",
@@ -1211,7 +1211,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "certis",
     name: "Certis Group",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Security & integrated services",
     tier: 3,
     buildVsBuy: "partner-led",
@@ -1225,7 +1225,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "sats",
     name: "SATS",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Aviation services / air cargo",
     tier: 1,
     buildVsBuy: "partner-led",
@@ -1239,7 +1239,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "sia-engineering",
     name: "SIA Engineering Company",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Aviation MRO",
     tier: 3,
     buildVsBuy: "partner-led",
@@ -1253,7 +1253,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "scoot",
     name: "Scoot",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Airline / LCC",
     tier: 2,
     buildVsBuy: "partner-led",
@@ -1267,7 +1267,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "foodpanda",
     name: "foodpanda (Delivery Hero APAC)",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Food delivery",
     tier: 2,
     buildVsBuy: "partner-led",
@@ -1281,7 +1281,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "comfortdelgro",
     name: "ComfortDelGro",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Land transport",
     tier: 1,
     buildVsBuy: "buy-led",
@@ -1295,7 +1295,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "smrt",
     name: "SMRT Corporation",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Urban transit",
     tier: 3,
     buildVsBuy: "buy-led",
@@ -1309,7 +1309,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "zalora",
     name: "Zalora",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "eCommerce / fashion",
     tier: 3,
     buildVsBuy: "partner-led",
@@ -1323,7 +1323,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "carousell",
     name: "Carousell Group",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Marketplace / recommerce",
     tier: 3,
     buildVsBuy: "co-build",
@@ -1337,7 +1337,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "ntuc-fairprice",
     name: "NTUC FairPrice Group",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Grocery retail",
     tier: 1,
     buildVsBuy: "buy-led",
@@ -1351,7 +1351,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "parkway-ihh-sg",
     name: "Parkway Hospitals Singapore (IHH)",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Healthcare",
     tier: 2,
     buildVsBuy: "partner-led",
@@ -1365,7 +1365,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "raffles-medical",
     name: "Raffles Medical Group",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Healthcare",
     tier: 3,
     buildVsBuy: "buy-led",
@@ -1379,7 +1379,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "thomson-medical",
     name: "Thomson Medical Group",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Healthcare / women's & children's",
     tier: 3,
     buildVsBuy: "buy-led",
@@ -1393,7 +1393,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "sp-group",
     name: "SP Group",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Utility / energy",
     tier: 3,
     buildVsBuy: "buy-led",
@@ -1407,7 +1407,7 @@ export const PROFILES_TH_MY_SG: ProfileAccount[] = [
   {
     slug: "capitaland",
     name: "CapitaLand Investment",
-    market: "SEA-regional",
+    market: "Singapore",
     vertical: "Real estate / malls & lodging",
     tier: 3,
     buildVsBuy: "partner-led",
