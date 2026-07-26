@@ -9,6 +9,29 @@ import type { FlowStep, FlowMetric } from "../flows";
 
 export type Confidence = "verified" | "inference" | "hypothesis";
 
+export type MarketId =
+  | "India" | "Indonesia" | "Philippines" | "Vietnam" | "Thailand" | "Malaysia"
+  | "SEA-regional" | "Japan" | "Korea" | "Taiwan" | "Hong Kong" | "ANZ";
+
+// Qualified profile — a real, named organization in the priority universe that
+// has passed screening (relevance + build-vs-buy hypothesis) but has NOT yet
+// received the deep research treatment. Never used in front of a customer
+// without promotion to a deep pitch first.
+export type ProfileAccount = {
+  slug: string;
+  name: string;
+  market: MarketId;
+  vertical: string;
+  tier: 1 | 2 | 3;
+  buildVsBuy: "buy-led" | "partner-led" | "co-build";
+  whyRelevant: string;    // 2-3 SPECIFIC sentences: real business model + why communications-heavy + why unlikely to build
+  entryWorkflow: string;
+  packageRec: "launch" | "scale" | "transform";
+  languages: string[];
+  priorityScore: number;  // 1-100 screening score
+  validate: string;       // the single most important thing to validate
+};
+
 export type BuildVsBuy = "buy-led" | "partner-led" | "co-build" | "build-led";
 
 export const BVB_META: Record<BuildVsBuy, { label: string; color: string; desc: string }> = {
@@ -51,7 +74,7 @@ export type AccountWorkflow = {
 export type Account = {
   slug: string;
   name: string;
-  market: "India" | "Indonesia" | "Philippines" | "Vietnam" | "Thailand" | "Malaysia" | "SEA-regional" | "Japan" | "Korea" | "ANZ";
+  market: MarketId;
   vertical: string;   // e.g. "Banking", "NBFC / lending", "Telecom", "eCommerce", "Airline", ...
   tier: 1 | 2 | 3;
   tierWhy: string;
@@ -442,7 +465,7 @@ export function accountBusinessCase(a: { volumeMonthly: number; costPerInteracti
   return { currentMonthly, automated, newMonthly, grossMonthly, grossAnnual: grossMonthly * 12 };
 }
 
-export const MARKET_META: Record<Account["market"], { label: string; color: string }> = {
+export const MARKET_META: Record<MarketId, { label: string; color: string }> = {
   India: { label: "India", color: "#1A73E8" },
   Indonesia: { label: "Indonesia", color: "#D97706" },
   Philippines: { label: "Philippines", color: "#188038" },
@@ -452,8 +475,13 @@ export const MARKET_META: Record<Account["market"], { label: string; color: stri
   "SEA-regional": { label: "SEA regional", color: "#5F6368" },
   Japan: { label: "Japan", color: "#9334E6" },
   Korea: { label: "Korea", color: "#E8710A" },
+  Taiwan: { label: "Taiwan", color: "#C5221F" },
+  "Hong Kong": { label: "Hong Kong", color: "#F29900" },
   ANZ: { label: "ANZ", color: "#0F9D8F" },
 };
+
+export const PROFILE_DISCLAIMER =
+  "Qualified profiles are real, named organizations that passed relevance and build-vs-buy screening but have NOT yet received deep account research. Promote a profile to a deep pitch (research pass + evidence sections) before any customer-facing use.";
 
 export const CONFIDENCE_META: Record<Confidence, { label: string; color: string }> = {
   verified: { label: "Public fact", color: "#188038" },

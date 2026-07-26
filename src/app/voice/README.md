@@ -191,7 +191,17 @@ Success metrics: 2 pilots live, 2 certified partners, 10 qualified accounts ≥6
 
 **UI.** Account pages gained a "Build vs buy — why we have a right to win" section (verdict card + management-signals timeline + exists-vs-gaps columns). Dashboard gained build-vs-buy mix stat, model filter chips, per-card model badges, and the collapsible selection-logic section (full include table + transparent exclusion log).
 
-## 12. Restricted technical appendix (internal / legal / procurement only — not GTM content)
+## 12. v7 (July 2026): 1,000-account universe with expanded North APJ coverage
+
+**Design decision — quality-preserving expansion.** The v6 quality bar (executive-recognition test, evidence-led sections, no fabrication) cannot honestly hold across 1,000 fully-deep pages. The universe therefore has two explicit depth levels:
+- **200 deep pitches** (full v6 pages): the original 100 plus 100 new — Japan 20 (JAL, Docomo, KDDI, Seven & i, megabanks, insurers, Yamato, JR East, Japan Post…), Korea 10 + Taiwan 10 (KB/Hana/Woori, cards, KT, Lotte, CJ Logistics; Cathay/Fubon/CTBC/E.SUN, telcos, EVA/China Airlines), Hong Kong 10 + ANZ 10 (Hang Seng, BOCHK, AIA, Cathay Pacific, MTR, CLP; Telstra, NAB, Westpac, Suncorp, IAG, Coles…), India 20 (PSU banks, insurers, NBFCs, hospitals, OEMs), SEA 20 (BNI, BTN, Pegadaian, Garuda, Metrobank, Bangkok Bank, Krungthai, BIDV, MWG, Public Bank…).
+- **800 qualified profiles** (`ProfileAccount`): real, named organizations that passed relevance + build-vs-buy screening — specific 2-3-sentence relevance rationale, classification, entry workflow, package rec, priority score, top validation item — explicitly labeled "promote to deep pitch before customer-facing use" (disclaimer rendered wherever profiles appear). Profile sourcing skipped any organization agents weren't confident is real, and screened out likely internal builders entirely.
+
+**New markets**: Taiwan and Hong Kong added; Japan, Korea, and AuNZ expanded from token coverage to full market slates. Market union and metadata extended accordingly.
+
+**Dashboard**: universe topline (deep + profile counts, combined pipeline), depth toggle (Deep pitches / Profiles / All), profile cards rendered distinctly (dashed borders, Profile badge, no detail page), matrix and selection table remain deep-only. Defensive slug dedup at merge (first occurrence wins).
+
+## 13. Restricted technical appendix (internal / legal / procurement only — not GTM content)
 
 Underlying technology dependencies are consolidated under the Tilicho Labs partnership umbrella in all GTM material. Any constituent platform, API vendor, or subcontracted technology powering the Tilicho Labs communications layer must be documented here (and in contract schedules) only: current constituent-vendor list, API dependency inventory, per-capability confirmation status, and data-flow attestations are maintained by the partner team and are intentionally excluded from this repository's GTM pages. Earlier candidate-partner shortlists referenced in v1 planning are superseded by this structure.
 

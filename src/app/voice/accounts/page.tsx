@@ -6,8 +6,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Search, TriangleAlert } from "lucide-react";
 import { PALETTE, fmtMoney, fmtNum } from "../data";
-import { ALL_ACCOUNTS, ALL_EXCLUDED, businessValueScore, readinessScore } from "./index";
-import { BVB_META, MARKET_META, PACKAGES, UNIVERSE_DISCLAIMER, type Account, type BuildVsBuy } from "./shared";
+import { ALL_ACCOUNTS, ALL_EXCLUDED, ALL_PROFILES, businessValueScore, readinessScore } from "./index";
+import { BVB_META, MARKET_META, PACKAGES, PROFILE_DISCLAIMER, UNIVERSE_DISCLAIMER, type Account, type BuildVsBuy } from "./shared";
 
 const TIER_COLORS: Record<number, string> = { 1: "#188038", 2: "#D97706", 3: "#5F6368" };
 
@@ -25,20 +25,36 @@ export default function AccountsDashboard() {
   const [market, setMarket] = useState<string>("all");
   const [tier, setTier] = useState<number>(0);
   const [bvb, setBvb] = useState<string>("all");
+  const [depth, setDepth] = useState<"all" | "deep" | "profile">("deep");
   const [q, setQ] = useState("");
   const [showEvidence, setShowEvidence] = useState(false);
 
   const accounts = ALL_ACCOUNTS;
+  const profiles = ALL_PROFILES;
   const filtered = useMemo(
     () =>
       accounts.filter(
         (a) =>
+          depth !== "profile" &&
           (market === "all" || a.market === market) &&
           (tier === 0 || a.tier === tier) &&
           (bvb === "all" || a.buildVsBuy === bvb) &&
           (q === "" || a.name.toLowerCase().includes(q.toLowerCase()) || a.vertical.toLowerCase().includes(q.toLowerCase())),
       ),
-    [accounts, market, tier, bvb, q],
+    [accounts, market, tier, bvb, depth, q],
+  );
+  const filteredProfiles = useMemo(
+    () =>
+      depth === "deep"
+        ? []
+        : profiles.filter(
+            (p) =>
+              (market === "all" || p.market === market) &&
+              (tier === 0 || p.tier === tier) &&
+              (bvb === "all" || p.buildVsBuy === bvb) &&
+              (q === "" || p.name.toLowerCase().includes(q.toLowerCase()) || p.vertical.toLowerCase().includes(q.toLowerCase())),
+          ),
+    [profiles, market, tier, bvb, depth, q],
   );
 
   const bvbMix = useMemo(() => {
@@ -65,10 +81,18 @@ export default function AccountsDashboard() {
       templates[a.flowTemplate] = (templates[a.flowTemplate] ?? 0) + 1;
       for (const l of a.languages) langs[l] = (langs[l] ?? 0) + 1;
     }
+    let universeRevenue = implRevenue;
+    for (const p of profiles) {
+      byMarket[p.market] = (byMarket[p.market] ?? 0) + 1;
+      byPackage[p.packageRec] += 1;
+      byTier[p.tier] += 1;
+      universeRevenue += PACKAGES[p.packageRec].price;
+      for (const l of p.languages) langs[l] = (langs[l] ?? 0) + 1;
+    }
     const topTemplates = Object.entries(templates).sort((x, y) => y[1] - x[1]).slice(0, 6);
     const topLangs = Object.entries(langs).sort((x, y) => y[1] - x[1]).slice(0, 8);
-    return { byMarket, byPackage, byTier, implRevenue, avgChannels: channels / Math.max(1, accounts.length), topTemplates, topLangs };
-  }, [accounts]);
+    return { byMarket, byPackage, byTier, implRevenue, universeRevenue, avgChannels: channels / Math.max(1, accounts.length), topTemplates, topLangs };
+  }, [accounts, profiles]);
 
   return (
     <div className="min-h-screen text-white" style={{ fontFamily: "Inter, system-ui, sans-serif", background: "radial-gradient(1400px 600px at 50% -20%, #14223D, #0B1220)" }}>
@@ -91,18 +115,18 @@ export default function AccountsDashboard() {
 
         {/* Topline */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8">
-          <StatTile label="Accounts" value={`${accounts.length}`} sub={`${stats.byTier[1]} T1 · ${stats.byTier[2]} T2 · ${stats.byTier[3]} T3`} />
-          <StatTile label="Implementation pipeline" value={fmtMoney(stats.implRevenue)} sub="if every account lands its package" />
-          <StatTile label="Package mix" value={`${stats.byPackage.launch}/${stats.byPackage.scale}/${stats.byPackage.transform}`} sub="Launch / Scale / Transform" />
-          <StatTile label="Avg channels / account" value={stats.avgChannels.toFixed(1)} sub="across recommended workflows" />
-          <StatTile label="Build-vs-buy mix" value={`${bvbMix["buy-led"] ?? 0}/${bvbMix["partner-led"] ?? 0}/${bvbMix["co-build"] ?? 0}`} sub="Buy-led / Partner-led / Co-build" />
+          <StatTile label="Universe" value={`${accounts.length + profiles.length}`} sub={`${accounts.length} deep pitches · ${profiles.length} qualified profiles`} />
+          <StatTile label="Implementation pipeline" value={fmtMoney(stats.universeRevenue)} sub={`${fmtMoney(stats.implRevenue)} from deep pitches alone`} />
+          <StatTile label="Package mix" value={`${stats.byPackage.launch}/${stats.byPackage.scale}/${stats.byPackage.transform}`} sub="Launch / Scale / Transform (universe)" />
+          <StatTile label="Markets" value={`${Object.keys(stats.byMarket).length}`} sub="now incl. Japan, Korea, Taiwan, Hong Kong, AuNZ" />
+          <StatTile label="Build-vs-buy mix (deep)" value={`${bvbMix["buy-led"] ?? 0}/${bvbMix["partner-led"] ?? 0}/${bvbMix["co-build"] ?? 0}`} sub="Buy-led / Partner-led / Co-build" />
           <StatTile label="Deprioritized builders" value={`${ALL_EXCLUDED.length}`} sub="excluded with evidence — see selection logic" />
         </div>
 
         {/* Matrix + package rationale */}
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-4 mb-8">
           <div className="rounded-2xl border border-[#233047] bg-[#0E1526] p-5">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-[#9AA0A6] mb-3">Prioritization matrix — business value × readiness</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#9AA0A6] mb-3">Prioritization matrix — business value × readiness (deep pitches only)</div>
             <div className="relative h-[320px] border-l border-b border-[#233047] ml-6 mb-6">
               <span className="absolute -left-6 top-1/2 -rotate-90 origin-center text-[9px] font-bold uppercase tracking-wider text-[#5F6368]">Value →</span>
               <span className="absolute left-1/2 -bottom-5 text-[9px] font-bold uppercase tracking-wider text-[#5F6368]">Readiness →</span>
@@ -170,6 +194,11 @@ export default function AccountsDashboard() {
             <Search size={13} className="text-[#5F6368]" />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search account or vertical" className="bg-transparent text-xs text-white placeholder:text-[#5F6368] focus:outline-none w-44" />
           </div>
+          <div className="flex items-center gap-1 border border-[#233047] rounded-full p-0.5">
+            {([["deep", `Deep pitches (${accounts.length})`], ["profile", `Profiles (${profiles.length})`], ["all", "All"]] as const).map(([d, l]) => (
+              <button key={d} onClick={() => setDepth(d)} className={`text-[11px] font-semibold px-3 py-1.5 rounded-full ${depth === d ? "bg-[#8AB4F8] text-[#0B1220]" : "text-[#9AA0A6] hover:text-white"}`}>{l}</button>
+            ))}
+          </div>
           <button onClick={() => setMarket("all")} className={`text-[11px] font-semibold rounded-full px-3 py-1.5 border ${market === "all" ? "bg-white text-[#0B1220] border-transparent" : "border-[#233047] text-[#9AA0A6] hover:text-white"}`}>All markets</button>
           {Object.keys(MARKET_META).map((m) => (
             <button key={m} onClick={() => setMarket(m)} className={`text-[11px] font-semibold rounded-full px-3 py-1.5 border ${market === m ? "bg-white text-[#0B1220] border-transparent" : "border-[#233047] text-[#9AA0A6] hover:text-white"}`}>
@@ -215,7 +244,39 @@ export default function AccountsDashboard() {
             </Link>
           ))}
         </div>
-        {filtered.length === 0 && <div className="text-center text-sm text-[#5F6368] py-16">No accounts match the filters.</div>}
+        {/* Qualified profiles */}
+        {filteredProfiles.length > 0 && (
+          <div className="mt-8">
+            <div className="rounded-xl border border-[#8AB4F8]/25 bg-[#8AB4F8]/5 px-4 py-3 mb-4 flex gap-2.5 items-start">
+              <TriangleAlert size={13} className="text-[#8AB4F8] shrink-0 mt-0.5" />
+              <p className="text-[11px] text-[#A8C7FA] leading-relaxed">{PROFILE_DISCLAIMER}</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {filteredProfiles.map((p) => (
+                <div key={p.slug} className="rounded-2xl border border-dashed border-[#233047] bg-[#0E1526]/60 p-4">
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span className="text-sm font-extrabold text-white truncate">{p.name}</span>
+                    <span className="flex items-center gap-1 shrink-0">
+                      <span className="text-[8px] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5" style={{ backgroundColor: `${BVB_META[p.buildVsBuy].color}22`, color: BVB_META[p.buildVsBuy].color }}>{BVB_META[p.buildVsBuy].label}</span>
+                      <span className="text-[8px] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5 bg-[#8AB4F8]/15 text-[#8AB4F8]">Profile</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[10px] text-[#9AA0A6] mb-2">
+                    <span style={{ color: MARKET_META[p.market].color }}>{MARKET_META[p.market].label}</span>
+                    <span>·</span><span>{p.vertical}</span>
+                    <span>·</span><span className="font-bold text-[#8AB4F8]">{PACKAGES[p.packageRec].name}</span>
+                    <span>·</span><span>score {p.priorityScore}</span>
+                  </div>
+                  <p className="text-[11px] text-[#BDC1C6] leading-snug">{p.whyRelevant}</p>
+                  <div className="mt-2.5 pt-2.5 border-t border-[#1B263B] text-[10px] text-[#5F6368]">
+                    <span className="text-[#9AA0A6]">Entry: {p.entryWorkflow}</span> · Validate: {p.validate}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        {filtered.length === 0 && filteredProfiles.length === 0 && <div className="text-center text-sm text-[#5F6368] py-16">No accounts match the filters.</div>}
 
         {/* Selection logic & exclusions */}
         <div className="mt-12">
@@ -229,7 +290,7 @@ export default function AccountsDashboard() {
           {showEvidence && (
             <div className="mt-3 space-y-4">
               <div className="rounded-2xl border border-[#233047] bg-[#0E1526] overflow-hidden">
-                <div className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-[#9AA0A6] border-b border-[#233047]">Included — {accounts.length} accounts</div>
+                <div className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-[#9AA0A6] border-b border-[#233047]">Included (deep pitches) — {accounts.length} accounts · plus {profiles.length} qualified profiles pending deep research</div>
                 <div className="max-h-[420px] overflow-y-auto">
                   <table className="w-full text-[10px] min-w-[860px]">
                     <thead className="sticky top-0 bg-[#0E1526]">
