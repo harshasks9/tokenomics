@@ -9,6 +9,33 @@ import type { FlowStep, FlowMetric } from "../flows";
 
 export type Confidence = "verified" | "inference" | "hypothesis";
 
+export type BuildVsBuy = "buy-led" | "partner-led" | "co-build" | "build-led";
+
+export const BVB_META: Record<BuildVsBuy, { label: string; color: string; desc: string }> = {
+  "buy-led": { label: "Buy-led", color: "#188038", desc: "Limited internal ability or appetite to build the core platform — strong candidate for the packaged solution" },
+  "partner-led": { label: "Partner-led", color: "#1A73E8", desc: "Technically capable but needs industry workflows, integration, acceleration, or managed operations" },
+  "co-build": { label: "Co-build", color: "#7C3AED", desc: "Strong internal engineering — sell infrastructure, models, governance, or selected capabilities" },
+  "build-led": { label: "Build-led", color: "#B3261E", desc: "Likely to build and operate internally — pursue only for a specific gap" },
+};
+
+export type EarningsSignal = {
+  signal: string;      // what management said / reported
+  source: string;      // e.g. "Q2 FY26 earnings call", "FY25 annual report" — no fabricated quotes or URLs
+  date: string;        // approximate, e.g. "Oct 2025"
+  implication: string; // exact GTM implication
+  kind: "fact" | "inference" | "hypothesis";
+};
+
+export type ExcludedAccount = {
+  name: string;
+  market: string;
+  vertical: string;
+  classification: BuildVsBuy;
+  rationale: string;   // evidence for deprioritization
+  evidence: string;    // public signals: internal platforms, AI teams, launched assistants, build-first statements
+  pursueOnlyIf?: string;
+};
+
 export type AccountWorkflow = {
   name: string;
   why: string;        // why it matters to THIS customer
@@ -46,6 +73,12 @@ export type Account = {
   nextStep: string;       // one specific CTA
   scores: { volume: number; costSensitivity: number; language: number; ccIntensity: number; gcpRelevance: number; urgency: number; feasibility: number; speed: number; expansion: number }; // each 1-5
   validate: string[];     // requires account-team validation
+  // Build-vs-buy assessment (v6)
+  buildVsBuy: BuildVsBuy;
+  buildVsBuyWhy: string;      // evidence-based classification rationale
+  whyNotBuild: string;        // why this customer is unlikely to build the full stack — the right to win
+  existing: { has: string[]; gaps: string[] }; // current customer-facing capabilities vs what customers still cannot complete
+  earningsSignals: EarningsSignal[]; // 1-3, from earnings/annual reports/investor material
 };
 
 // ─── Packages ───────────────────────────────────────────────────────────────

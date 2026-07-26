@@ -3,7 +3,7 @@
 // Confidence: "verified" = widely-reported public fact; "inference" = reasoned
 // from public information; "hypothesis" = seller hypothesis to validate.
 
-import type { Account } from "../shared";
+import type { Account, ExcludedAccount } from "../shared";
 
 export const ACCOUNTS_SEA: Account[] = [
   // ── VIETNAM ───────────────────────────────────────────────────────────────
@@ -54,6 +54,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Where dispute-case state lives and API readiness of the ledger and dispute systems",
       "Zalo Official Account usage and consent posture for proactive outreach",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "MoMo has genuine in-house AI engineering — it runs its own chatbot, eKYC, and recommendation models on Google Cloud GPUs — but that capability is pointed at product features and risk models, not contact-center orchestration. Its operational tooling has historically been bought, and wallet economics reward outcome-priced platforms over platform ownership.",
+    whyNotBuild: "Building an SBV-auditable omnichannel service stack (Vietnamese voice, Zalo, policy engines, 100% interaction logging) is a multi-year infrastructure program outside MoMo's product roadmap. A newly profitability-focused MoMo cannot justify diverting growth engineers to rebuild what a governed platform delivers in weeks.",
+    existing: {
+      has: ["In-app chatbot and FAQ automation", "Automated eKYC pipeline with in-house models", "Zalo Official Account presence", "In-house fraud and recommendation models on Google Cloud"],
+      gaps: ["Transactional depth: dispute status grounded in the live ledger with reversal actions", "Cross-channel context between app chat, hotline, and Zalo", "Production-grade Vietnamese voice for money-anxiety conversations", "Consent-governed proactive outreach for eKYC rescue and merchant reactivation"],
+    },
+    earningsSignals: [
+      { signal: "Widely reported to have reached profitability in 2024 after a decade of growth investment, with investor interest reportedly valuing the company around $3B.", source: "recent investor communications (validate)", date: "2025", implication: "A profitability-era MoMo buys against unit economics — lead with cost per resolved contact and eKYC completion lift, not innovation branding.", kind: "inference" },
+    ],
   },
   {
     slug: "vpbank",
@@ -101,6 +111,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Collections-platform APIs and offer-matrix ownership",
       "SMBC-aligned governance requirements for AI in customer contact",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "VPBank and FE Credit run large technology programs, but investment concentrates on core banking, digital channels, and credit models; collections and CX tooling has historically come from vendors and outsourcers. SMBC-era governance further favors proven, auditable platforms over internal experimentation in customer contact.",
+    whyNotBuild: "A Vietnamese-first agentic collections stack — speech, negotiation policy engines, omnichannel orchestration, SBV-grade audit — is not a differentiator worth building while FE Credit's recovery economics are under board-level scrutiny. Speed to measurable roll-rate impact beats platform ownership.",
+    existing: {
+      has: ["VPBank NEO retail digital banking app", "Large predictive-dialer collections operation at FE Credit", "Zalo and SMS campaign messaging", "Digital loan origination with eKYC"],
+      gaps: ["Day-1 attempted coverage across the early-delinquency book", "Two-way, policy-bounded negotiation instead of scripted dialer calls", "Automatic promise-to-pay follow-through and hardship detection", "Cross-channel context between dialer, Zalo, and branch contacts"],
+    },
+    earningsSignals: [
+      { signal: "FE Credit's pandemic-era losses and subsequent recovery have been repeatedly discussed in group results, with consumer-finance asset quality framed as a key group priority.", source: "FY2024 annual report and quarterly results commentary", date: "2024–2025", implication: "Collections effectiveness is investor-visible — a control-group roll-rate pilot maps directly onto the metric management reports to the market.", kind: "fact" },
+    ],
   },
   {
     slug: "techcombank",
@@ -145,6 +165,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Current digital onboarding completion rate and drop-off points",
       "Appetite for a non-incumbent-cloud pilot and procurement path",
       "Zalo channel readiness for regulated outreach",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Techcombank's technology organization is sophisticated but follows a buy-best-of-breed pattern — publicly reported cloud-first modernization on AWS plus vendor data and personalization platforms. It assembles and integrates rather than building conversational infrastructure from scratch.",
+    whyNotBuild: "The bank's differentiation axis is data-driven personalization and the zero-fee deposit franchise, not contact-center engineering. Building a Vietnamese voice-and-chat stack would distract a technology team already consumed by core and data-platform modernization.",
+    existing: {
+      has: ["Techcombank Mobile app with broad self-service", "Digital account opening with eKYC", "Significant data and personalization platform investment", "Hotline and branch service network"],
+      gaps: ["Real-time guided rescue of stalled onboarding applications", "In-conversation service actions (blocks, limits, disputes) outside the app", "Production-grade Vietnamese voice automation", "Proactive, consent-governed outreach instrumented end-to-end"],
+    },
+    earningsSignals: [
+      { signal: "Management commentary consistently emphasizes CASA leadership, fee-income growth, and continued technology investment.", source: "recent investor communications (validate)", date: "2025", implication: "Pitch onboarding-completion and activation lift as direct support for the low-cost-funding strategy the market already tracks.", kind: "inference" },
     ],
   },
   {
@@ -195,6 +225,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Contact-volume split across mobile, broadband, and Viettel Money",
       "Which international OpCo would pilot replication first",
     ],
+    buildVsBuy: "co-build",
+    buildVsBuyWhy: "Viettel operates its own AI arm (Viettel AI, including Vietnamese speech and chatbot products), Viettel Cloud, and a sovereign-technology mandate — it will insist on owning meaningful parts of any stack it deploys at national scale. The winnable ground is Gemini model quality, multilingual speech, and governance tooling embedded into Viettel-operated platforms, not a turnkey platform sale.",
+    whyNotBuild: "Even with real AI teams, production-grade agentic orchestration, evaluation, and action execution grounded in BSS at 70M-subscriber scale is faster co-built than built alone — and Viettel's ambition to export capability to ten OpCos benefits from a hardened partner layer it can operate under its own brand.",
+    existing: {
+      has: ["Viettel AI's own Vietnamese ASR/TTS and chatbot products", "Viettel Cloud sovereign infrastructure", "My Viettel self-care app", "Large in-house call-center operations"],
+      gaps: ["Agentic action execution grounded in BSS/OCS rather than scripted bots", "Evaluation and governance tooling for 100% interaction scoring", "Khmer, Lao, Burmese and other OpCo language coverage from one deployment", "Replication architecture across international OpCos"],
+    },
+    earningsSignals: [
+      { signal: "As a military-owned state champion, Viettel publicly frames AI, semiconductors, and sovereign cloud as national-mission investment areas rather than quarterly earnings levers.", source: "recent public statements (validate)", date: "2025", implication: "Sell a sovereign co-build Viettel can claim and export — Gemini and governance inside Viettel-branded infrastructure, not a vendor platform on top of it.", kind: "inference" },
+    ],
   },
   {
     slug: "vinfast",
@@ -240,6 +280,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "DMS/service-scheduling system landscape per market and API readiness",
       "Which launch market has the most acute support gap this year",
       "Existing owner-app roadmap overlap with conversational support",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "VinFast's engineering is concentrated on vehicles, manufacturing, and in-car software — not contact-center AI. Support is being stood up market-by-market under severe cost pressure, with no visible internal platform organization for conversational automation: the classic buy profile.",
+    whyNotBuild: "A company funding global expansion out of shareholder support cannot justify platform engineering for support infrastructure. It needs launch-ready multilingual service that appears with each market entry — bought, configured, and usage-billed as volumes ramp.",
+    existing: {
+      has: ["VinFast owner app", "Market-by-market hotlines, largely outsourced", "Dealer and service-partner portals", "Website FAQ and basic chat"],
+      gaps: ["Consistent multilingual coverage from day one of each market launch", "Service booking grounded in live DMS calendars", "Warranty-claim intake validated in-flow for dealers", "Proactive software-update and recall communication"],
+    },
+    earningsSignals: [
+      { signal: "Sustained multi-billion-dollar losses through global expansion, with publicly committed funding support from Vingroup and founder Pham Nhat Vuong while delivery targets scale.", source: "Nasdaq quarterly earnings releases", date: "2024–2025", implication: "Every proposal must be an opex-avoidance story — price against the cost of standing up per-market contact centers VinFast cannot afford to build.", kind: "fact" },
     ],
   },
   {
@@ -287,6 +337,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Actual disruption-day call-volume multipliers",
       "Refund-pipeline system ownership and status granularity",
     ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "Vietjet runs an ultra-lean LCC cost model with vendor-supplied core systems (PSS, ancillary engines) and no publicly visible internal AI platform ambitions. Its operating philosophy is to buy what it operates and keep overhead minimal — which extends naturally to conversational service.",
+    whyNotBuild: "Lean overhead is the business model: there is no platform-engineering headcount to build with, and disruption-spike capacity is precisely the problem usage-based buying solves. Building would add the fixed cost the airline exists to avoid.",
+    existing: {
+      has: ["Vietjet app and web booking", "Call center plus Zalo Official Account support", "Standard airline FAQ chatbot", "SMS notification capability"],
+      gaps: ["Proactive disruption rebooking before passengers call", "Transparent, live refund-pipeline status", "Hindi, Korean, and Mandarin support depth for international routes", "In-channel ancillary transactions during service conversations"],
+    },
+    earningsSignals: [
+      { signal: "Publicly reported return to profitability on international recovery, alongside repeatedly announced large aircraft orders signaling aggressive route expansion.", source: "FY2024 annual report and public fleet-order announcements", date: "2024–2025", implication: "International growth means multilingual support demand a Vietnamese-staffed center cannot cover — sell launch-ready language coverage as an expansion enabler.", kind: "fact" },
+    ],
   },
   {
     slug: "fpt-telecom",
@@ -332,6 +392,72 @@ export const ACCOUNTS_SEA: Account[] = [
       "OSS/network-status API availability for area-level outage detection",
       "Share of dispatches closed with no physical fault found",
       "Group-level build-vs-buy stance on conversational AI",
+    ],
+    buildVsBuy: "co-build",
+    buildVsBuyWhy: "Parent FPT's FPT.AI already sells conversational AI — chatbots and voicebots — commercially in Vietnam; the group will not buy a competing stack. The realistic entry is selling Gemini model quality, multilingual speech, and governance capabilities that slot inside FPT.AI-run deployments rather than displacing them.",
+    whyNotBuild: "FPT does build — but frontier-model reasoning, production evaluation frameworks, and elastic multilingual speech are capabilities FPT.AI cannot replicate economically. Co-building keeps FPT the platform owner while Google supplies the intelligence layer, which the group can also resell.",
+    existing: {
+      has: ["FPT.AI conversational platform (commercial chatbots and voicebots)", "Hi FPT self-care app", "In-house call-center operations", "Group-level AI investment programs"],
+      gaps: ["Frontier-model reasoning for multi-step fault diagnostics", "Production-grade evaluation and governance tooling for 100% scoring", "Agentic action execution in OSS/field-service systems beyond scripted flows", "Elastic speech quality under outage-storm load"],
+    },
+    earningsSignals: [
+      { signal: "FPT Corporation publicly reports double-digit technology-services growth and heavy AI investment, including an announced AI-factory partnership with NVIDIA.", source: "FPT public results announcements", date: "2024–2025", implication: "Position Gemini models and governance inside the group's own AI stack — a story FPT can resell to its clients, not a platform displacement it will resist.", kind: "fact" },
+    ],
+  },
+  {
+    slug: "vietnam-airlines",
+    name: "Vietnam Airlines",
+    market: "Vietnam",
+    vertical: "Airline (full-service carrier)",
+    tier: 2,
+    tierWhy: "State-linked flag carrier back to record profitability with a government-approved restructuring plan and a rebuilt international network — disruption communication and multilingual passenger service are structural needs a restructuring-era organization cannot solve by hiring.",
+    heroHeadline: "The flag carrier flies to five continents; its service desk should speak to all of them: agentic passenger care for Vietnam Airlines",
+    proposition: "Give Vietnam Airlines an elastic, multilingual disruption and passenger-service layer — proactive rebooking, refund transparency, and Lotusmiles service in the passenger's language — that lifts full-service experience without adding restructuring-era headcount.",
+    entryWorkflow: "Proactive disruption notification & rebooking",
+    outcome: "Absorb disruption call spikes with proactive multilingual rebooking and suppress the refund- and ticketing-status contact classes across international routes",
+    packageRec: "scale",
+    packageWhy: "Disruption handling, refund/ticketing service, and loyalty support across app, hotline, and messaging channels — in Vietnamese plus the international network's major languages — is a multi-workflow, multi-language deployment from the start.",
+    understand: [
+      { text: "Vietnam Airlines is the state-linked full-service flag carrier and a SkyTeam member, operating an extensive domestic network plus long-haul routes across Asia, Europe, and Australia, with the state holding a controlling majority.", kind: "verified" },
+      { text: "After four consecutive loss-making years, the carrier posted a record consolidated profit in 2024 on international recovery — yet still carried accumulated losses and negative consolidated equity, with a government-approved restructuring plan including a share issuance to rebuild equity.", kind: "verified" },
+      { text: "A full-service, internationally distributed passenger base (Japanese, Korean, European, Chinese travelers) expects service in their own language — coverage a Vietnamese-staffed contact center cannot economically roster around the clock.", kind: "inference" },
+      { text: "Disruption events at Tan Son Nhat and Noi Bai concentrate call spikes that lean, cost-controlled ground teams absorb worst exactly when brand perception matters most for a premium carrier.", kind: "inference" },
+      { text: "Lotusmiles loyalty servicing and premium-cabin pre-flight coordination are likely under-automated relationship surfaces where conversational service could lift ancillary and retention value.", kind: "hypothesis" },
+    ],
+    workflows: [
+      { name: "Disruption notification & rebooking", why: "A full-service carrier is judged hardest on its worst operational days; proactive multilingual rebooking protects premium positioning under a lean cost base.", friction: "Passengers learn of schedule changes late; hotline queues form in Vietnamese while international passengers wait in the wrong language.", outcome: "Affected passengers messaged proactively in their language with live rebooking options, one-tap confirmation, and interline complexity routed to specialists.", channels: ["App", "Zalo", "SMS", "Email", "Voice"], systems: ["PSS/reservation", "Ops/disruption feed", "Payments"], value: 3, complexity: 2, speed: 2 },
+      { name: "Refund & ticketing service", why: "Refund and reissue opacity is a trust-eroding, regulator-visible contact class the restructuring-era carrier cannot afford reputationally.", friction: "Ticketing-rule complexity forces agent handling; status answers require back-office checks measured in days.", outcome: "Fare-rule-accurate answers, reissue and refund status grounded in the ticketing pipeline, proactive stage-by-stage updates.", channels: ["App chat", "Zalo", "Email", "Voice"], systems: ["Ticketing/PSS", "Refund pipeline", "Case management"], value: 3, complexity: 2, speed: 3 },
+      { name: "Lotusmiles loyalty & premium service", why: "Loyalty economics fund the network strategy; point disputes and award-booking friction suppress engagement from the most valuable flyers.", friction: "Award availability and mileage-credit questions queue behind general service calls.", outcome: "Mileage-credit claims resolved against flight records, award options offered conversationally, premium passengers recognized and prioritized.", channels: ["App chat", "Voice", "Email"], systems: ["Loyalty platform", "PSS"], value: 2, complexity: 2, speed: 2 },
+    ],
+    languages: ["Vietnamese", "English", "Japanese", "Korean", "Mandarin", "French"],
+    flowTemplate: "travel-disruption",
+    scenario: "A typhoon forces a Hanoi–Tokyo cancellation; every affected passenger gets rebooking options in Japanese or Vietnamese before the airport queue forms, and a Lotusmiles Platinum member is proactively moved to the codeshare alternative.",
+    volumeMonthly: 800000,
+    costPerInteraction: 1.0,
+    personas: [
+      { role: "CEO", message: "The restructuring plan promises a leaner carrier without surrendering the flag-carrier standard. Multilingual, proactive passenger care is how service quality rises while headcount stays disciplined — visible to the government shareholder and the market at once." },
+      { role: "CIO / CTO", message: "One integration into the PSS, ops feed, and refund pipeline powers the three workflows that define disruption experience — deployable without disturbing the core modernization agenda." },
+      { role: "COO", message: "Disruption days stop melting the hotline: proactive rebooking absorbs the spike, and your ground staff handle interline and duty-of-care judgment calls instead of status queries." },
+      { role: "Head of Customer Service / Commercial", message: "Japanese, Korean, and European passengers get service in their language around the clock — a full-service differentiator against LCC competition that costs a fraction of staffed coverage." },
+      { role: "Chief Risk / Compliance Officer", message: "Refund and compensation policies applied identically on every contact with complete logs — evidence-ready for aviation-authority complaints and state-shareholder scrutiny alike." },
+      { role: "CFO / Procurement", message: "Under an equity-rebuild plan every fixed-cost line is scrutinized; usage-based conversational capacity converts disruption staffing from a standing cost to a variable one, with deflection you can audit." },
+    ],
+    nextStep: "Model the carrier's top-3 disruption events from last year with the ops team and scope a proactive multilingual rebooking pilot on the Japan and Korea routes.",
+    scores: { volume: 3, costSensitivity: 4, language: 5, ccIntensity: 4, gcpRelevance: 1, urgency: 4, feasibility: 3, speed: 3, expansion: 3 },
+    validate: [
+      "PSS and ticketing-system API accessibility for rebooking and refund grounding",
+      "State-owner procurement constraints on cloud AI in passenger data",
+      "Disruption-day call-volume multipliers and refund-status contact share",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "A state-linked carrier mid-restructuring has no internal AI-platform organization and no appetite to create one: IT runs on vendor airline systems, and capital allocation is governed by an equity-rebuild plan. Conversational service capability will be bought, with auditability and state-procurement compliance as the deciding criteria.",
+    whyNotBuild: "Restructuring discipline and negative-equity repair leave no room for platform engineering; the carrier needs disruption-proof multilingual service before the next peak season, on a variable cost base the restructuring plan can defend.",
+    existing: {
+      has: ["Vietnam Airlines app and web booking", "Call center and Zalo Official Account support", "Lotusmiles loyalty program", "SkyTeam interline and codeshare infrastructure"],
+      gaps: ["Proactive multilingual disruption rebooking", "Refund and reissue status transparency", "Japanese/Korean/Mandarin service coverage outside business hours", "Cross-channel context between hotline, app, and airport desks"],
+    },
+    earningsSignals: [
+      { signal: "Record consolidated profit reported for 2024 after four loss-making years, while accumulated losses and negative consolidated equity persist under a government-approved restructuring plan that includes a share issuance to rebuild equity.", source: "FY2024 audited results and restructuring disclosures", date: "2025", implication: "Every proposal must fit the restructuring frame: variable-cost service capacity that lifts international revenue quality without adding fixed headcount.", kind: "fact" },
     ],
   },
   // ── THAILAND ──────────────────────────────────────────────────────────────
@@ -382,6 +508,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "KBTG's internal conversational-AI roadmap and where Tilicho complements it",
       "LINE Official Account consent posture for outbound collections contact",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "KBTG is one of the region's most capable bank technology arms, but its pattern is building customer-facing apps on bought platforms — it is a published Google Cloud customer, and its Thai LLM work with Google Research (Project SEALD) is research collaboration, not a service-stack build. Platforms are procured; KBTG integrates.",
+    whyNotBuild: "KBank's differentiation lives in K PLUS and its credit franchise, not contact-center infrastructure. With BOT's governance bar and asset quality under active management, a hardened, auditable platform with KBTG owning integration beats a multi-year internal build.",
+    existing: {
+      has: ["K PLUS app with roughly 20M+ users", "KBTG engineering capacity and Google Cloud footprint", "LINE-based customer engagement at scale", "Established dialer-based collections operations"],
+      gaps: ["Policy-bounded collections negotiation with automatic PTP follow-through", "In-conversation actions executed in core and card systems", "Production-grade Thai voice automation", "100% interaction QA instead of sampled review"],
+    },
+    earningsSignals: [
+      { signal: "Management has publicly guided on elevated credit costs and balance-sheet clean-up, with asset-quality management a recurring theme in results briefings.", source: "FY2024 results briefing", date: "Jan 2025", implication: "Collections workflows attack the exact metric management is guiding the market on — lead with roll-rate economics on control cohorts.", kind: "fact" },
+    ],
   },
   {
     slug: "scbx",
@@ -427,6 +563,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Where SCBX draws the line between in-house AI (Typhoon) and platform partners",
       "CardX collections stack and current cure-rate baselines",
       "Group appetite for shared infrastructure across entities post-restructure",
+    ],
+    buildVsBuy: "co-build",
+    buildVsBuyWhy: "SCBX's AI-first ambition is backed by real model work — SCB 10X and the publicly released Typhoon Thai LLM family. An outright platform sale collides with that identity; the credible play is co-building, where Typhoon participates in Thai-language tasks and evaluation while Gemini supplies agentic orchestration, action execution, and governance.",
+    whyNotBuild: "Model building is not platform operating: even an AI-first group has little appetite to own telephony, omnichannel orchestration, and evaluation infrastructure across three regulated entities. Co-building lets its models matter while the operational layer is bought.",
+    existing: {
+      has: ["SCB EASY app at large scale", "Typhoon Thai LLM family, publicly released", "SCB 10X venture and AI research arm", "Existing service chatbots and IVR estate"],
+      gaps: ["Agentic action execution grounded in core, card, and loan systems", "Cross-entity governance with per-entity guardrails (SCB, CardX, AutoX)", "Production-grade Thai voice for collections and service", "Matrix-bounded collections negotiation tooling"],
+    },
+    earningsSignals: [
+      { signal: "Leadership continues to publicly frame SCBX as becoming an AI-first organization, alongside group cost-discipline and portfolio-quality themes.", source: "recent investor communications (validate)", date: "2025", implication: "Frontline agentic metrics — resolution rate, cost per contact, recovery lift — are the operational proof the AI-first narrative needs within two quarters.", kind: "inference" },
     ],
   },
   {
@@ -477,6 +623,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Priority order between mobile retention and 3BB fibre journeys",
       "Churn-model maturity and offer-matrix ownership within AIS marketing",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "The Gulf Edge–Google Cloud partnership already names Gemini Enterprise as AIS's platform direction — the build-vs-buy question is publicly settled in favor of partnering. AIS's history is buying network and IT platforms from vendors while its teams orchestrate; the need now is delivery muscle that turns the announcement into production workflows.",
+    whyNotBuild: "Building an internal stack would contradict the group's own announced strategy and delay the visible wins the partnership needs. AIS's advantage is distribution and data, not conversational-platform engineering.",
+    existing: {
+      has: ["MyAIS app and large LINE presence", "Gulf Edge AI center-of-excellence context", "Existing IVR and chatbot estate", "Churn modeling and campaign infrastructure"],
+      gaps: ["Two-way retention conversations instead of SMS blasts", "Thai, Burmese, and Khmer voice coverage from one deployment", "Action execution in BSS/OCS for billing and package changes", "Save-rate and deflection attribution at cohort level"],
+    },
+    earningsSignals: [
+      { signal: "Service-revenue growth and 3BB integration economics feature in recent guidance, alongside the publicly announced Gulf Edge–Google Cloud AI partnership naming AIS for Gemini Enterprise transformation.", source: "recent investor communications (validate)", date: "Jan 2026", implication: "Make retention and billing the partnership's first auditable production wins — the account is pre-sold at strategy level; the race is to measured workflows.", kind: "inference" },
+    ],
   },
   {
     slug: "true-corporation",
@@ -522,6 +678,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Billing-system consolidation timeline and API access to legacy stacks",
       "Current complaint volumes by driver post-migration",
       "Vendor landscape already engaged for CX transformation",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "True is operationally capable but its engineering capacity is consumed by post-merger network and billing consolidation, and its stack has historically been vendor-delivered. With synergy deadlines publicly committed, True buys measured outcomes rather than building platforms.",
+    whyNotBuild: "The integration program is the build; adding an internal conversational-AI platform build on top of BSS consolidation would compete for the same scarce engineers. Deflection that can be audited against synergy targets is worth more bought than built late.",
+    existing: {
+      has: ["True app across the merged base", "LINE presence and campaign messaging", "IVR and chatbot estate spanning legacy True and dtac", "TrueMoney/Ascend ecosystem adjacency"],
+      gaps: ["Answers grounded across both legacy billing systems in one conversation", "Plain-Thai plan-migration explanations at scale", "Proactive outage and integration-issue communication", "Retention coverage beyond high-ARPU accounts"],
+    },
+    earningsSignals: [
+      { signal: "Publicly stated multi-billion-baht True–dtac merger synergy targets, with delivery progress reported to investors each quarter.", source: "quarterly results presentations", date: "2024–2025", implication: "Frame automated service deflection as auditable synergy delivery — cost reduction that improves rather than degrades the service perception the merger strained.", kind: "fact" },
     ],
   },
   {
@@ -569,6 +735,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Actual exception rate per 1,000 O2O orders",
       "Whether store/franchisee support is centralized enough to automate",
     ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "CP All is a world-class retail operator, not a software company: group IT (Gosoft) runs systems competently but does not build AI platforms. Its pattern is buying proven tools and scaling them ruthlessly across 14,000+ stores — exactly the adoption profile a packaged agentic platform wants.",
+    whyNotBuild: "Convenience-retail margins cannot fund platform engineering, and the O2O race with delivery platforms rewards speed. CP All's edge is operational rollout discipline, which it should spend on deployment, not development.",
+    existing: {
+      has: ["7-Eleven app with All Member loyalty at tens of millions of members", "7-Delivery O2O infrastructure", "Central hotline and LINE Official Account", "Store-network ops systems via group IT"],
+      gaps: ["Proactive delivery-exception messaging with in-channel refunds", "Loyalty point disputes grounded in POS transaction history", "Cross-channel context between app, store, and hotline", "Automated franchisee/store helpdesk with entitlement awareness"],
+    },
+    earningsSignals: [
+      { signal: "Publicly committed store-expansion program on the order of 700 new 7-Eleven stores per year, alongside continued O2O growth targets.", source: "FY2024 annual report", date: "2025", implication: "Support volume scales with store count and O2O mix — position automation as the only service model whose unit cost falls as the network expands.", kind: "fact" },
+    ],
   },
   {
     slug: "central-retail",
@@ -614,6 +790,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Which banner's service journey has the worst repeat-contact rate",
       "OMS/installer-scheduling integration feasibility",
       "Group appetite to extend a Thai pilot into Vietnam operations",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "Central Retail's digital investment flows to e-commerce, loyalty, and store systems across fragmented banner IT estates — there is no central AI-platform engineering organization, and no public build ambition. A multi-banner retailer with siloed systems is structurally a buyer of layers that sit above the silos.",
+    whyNotBuild: "Building would require first unifying banner systems — the very problem an agentic layer bought today works around. Moderate contact-center intensity makes internal platform economics unjustifiable.",
+    existing: {
+      has: ["The1 loyalty platform and app with ~20M+ members", "Banner e-commerce sites and apps", "Central hotlines and per-banner LINE Official Accounts", "Omnichannel fulfillment infrastructure"],
+      gaps: ["Cross-banner customer context on one loyalty identity", "Delivery and installation orchestration for big-ticket purchases", "Thai voice automation beyond DTMF and FAQ bots", "Proactive status updates that pre-empt repeat contacts"],
+    },
+    earningsSignals: [
+      { signal: "Omnichannel growth and Vietnam expansion are recurring strategic themes in investor material.", source: "recent investor communications (validate)", date: "2025", implication: "A Power Buy delivery pilot that measurably lifts repeat purchase supports the omnichannel thesis management sells investors — and Vietnam replication extends it.", kind: "inference" },
     ],
   },
   {
@@ -661,6 +847,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Contact volume and cost by language pair",
       "Property-extranet API depth for agent-executed amendments",
     ],
+    buildVsBuy: "co-build",
+    buildVsBuyWhy: "Agoda's engineering-driven culture under Booking Holdings builds much of its own CS tooling and ML — it will never buy a turnkey stack. But frontier models, long-tail multilingual speech, and evaluation infrastructure are components it rationally procures and A/B tests against its own baselines; that is the co-build wedge.",
+    whyNotBuild: "What Agoda won't build: carrier-grade telephony, dozens of languages of production voice, and frontier-model R&D — Booking Holdings' capital allocation favors experimenting on top of vendor models, not competing with them.",
+    existing: {
+      has: ["In-house customer-service platform and chatbots", "Extensive experimentation (A/B) infrastructure", "ML-driven personalization and pricing systems", "24/7 multilingual support centers"],
+      gaps: ["Frontier-model reasoning over rate conditions and amendment policies", "Agentic property-side outreach that collapses the two-leg resolution loop", "Production voice quality across long-tail language-hour combinations", "Step-change in cost per contact on low-volume language pairs"],
+    },
+    earningsSignals: [
+      { signal: "Parent Booking Holdings has publicly emphasized generative-AI investment across its brands alongside continued margin discipline.", source: "Q3 2025 earnings call", date: "Nov 2025", implication: "Enter as an A/B-testable component — cost per resolved case on one language pair — inside a group already committed to AI-driven support economics.", kind: "fact" },
+    ],
   },
   {
     slug: "bdms",
@@ -706,6 +902,72 @@ export const ACCOUNTS_SEA: Account[] = [
       "HIS scheduling API accessibility across hospital brands",
       "International-inquiry volume and current response-time baseline",
       "Clinical-governance requirements for conversational AI in patient contact",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "BDMS is a hospital operator whose IT capacity is committed to clinical systems (HIS/EMR) and procured through healthcare vendors — there is no internal AI-platform organization, and none is plausible. Conversational infrastructure will be bought, with clinical governance as the selection criterion.",
+    whyNotBuild: "Sensitive health data under Thai PDPA and strict no-medical-advice guardrails demand a hardened, auditable platform; an internal build would put clinical-governance risk on hospital IT teams that have no mandate for it.",
+    existing: {
+      has: ["Hospital-brand apps and LINE Official Accounts", "International patient coordinators by language desk", "Per-hospital call centers and booking lines", "HIS scheduling systems across brands"],
+      gaps: ["24/7 multilingual inquiry intake outside coordinator shifts", "Booking grounded in live HIS schedules across brands", "Platform-grade no-medical-advice guardrails with routed escalation", "Proactive reminders, preparation, and post-visit follow-up"],
+    },
+    earningsSignals: [
+      { signal: "International-patient revenue growth and hospital-network expansion are recurring themes in investor communications.", source: "recent investor communications (validate)", date: "2025", implication: "One recovered international case pays for weeks of usage — position 24/7 multilingual intake as revenue capture, with no-show reduction as the domestic kicker.", kind: "inference" },
+    ],
+  },
+  {
+    slug: "minor-international",
+    name: "Minor International",
+    market: "Thailand",
+    vertical: "Hospitality / restaurants",
+    tier: 2,
+    tierWhy: "Thai-listed global hospitality and restaurant group — Anantara, Avani, Tivoli, and NH-branded hotels across 50+ countries plus Minor Food's The Pizza Company, Swensen's, and Sizzler chains — whose reservations, loyalty, and guest-service conversations span more geographies and languages than any staffed model can cover consistently.",
+    heroHeadline: "Five hundred hotels and two thousand restaurants answer the phone differently; Minor's guests should hear one standard",
+    proposition: "Deploy an agentic guest-services layer across Minor's hotel brands and restaurant chains — multilingual reservations, loyalty service, and delivery-order support grounded in property and ordering systems — turning a federated operation into one consistent guest conversation.",
+    entryWorkflow: "Hotel reservations & pre-arrival guest services",
+    outcome: "Capture after-hours and overflow reservation demand in the guest's language and cut pre-arrival coordination load on property teams, with booking conversion measured per channel",
+    packageRec: "scale",
+    packageWhy: "Hotel reservations, loyalty service, and restaurant-delivery support cross distinct systems and brands in multiple languages — a multi-workflow Scale deployment phased by brand cluster fits the federated estate.",
+    understand: [
+      { text: "Minor International is a Bangkok-listed global group spanning Minor Hotels (Anantara, Avani, Oaks, Tivoli, elewana, and the NH/NH Collection/nhow portfolio acquired in Europe), Minor Food (The Pizza Company, Swensen's, Sizzler, Dairy Queen, The Coffee Club, Burger King Thailand), and Minor Lifestyle.", kind: "verified" },
+      { text: "The group has publicly reported strong post-pandemic performance with record revenue and profit growth, and has publicly executed a deleveraging program including early redemption of European debt.", kind: "verified" },
+      { text: "Hotel reservations and pre-arrival requests arrive around the clock in the guest's language — Mandarin, Arabic, German, Russian — while property-level teams staff local hours; missed or slow responses leak direct-booking revenue to OTAs.", kind: "inference" },
+      { text: "Minor Food's delivery businesses (led by The Pizza Company's 1112 Delivery heritage) generate order-exception and complaint volume that store staff handle between counters — the classic case for automated resolution.", kind: "inference" },
+      { text: "A unified conversational layer across hotels and restaurants could make the group's loyalty proposition tangible in service, not just in points — a differentiator no single-brand competitor can copy.", kind: "hypothesis" },
+    ],
+    workflows: [
+      { name: "Reservations & pre-arrival guest services", why: "Direct-booking margin and premium positioning are decided in the first response; after-hours multilingual inquiries currently wait for property teams.", friction: "Property reservation desks staff local hours; emails queue; OTA channels answer faster than the brand does.", outcome: "24/7 multilingual reservation handling against live availability, pre-arrival requests (transfers, dietary, occasions) captured conversationally and written into the property systems.", channels: ["WhatsApp", "Web chat", "Voice", "Email"], systems: ["Central reservation system", "Property management systems", "Guest CRM"], value: 3, complexity: 2, speed: 2 },
+      { name: "Loyalty & guest-recognition service", why: "Loyalty engagement drives direct bookings across brands; point and tier friction suppresses exactly the guests worth keeping.", friction: "Missing-stay credits and benefit questions route to email queues answered in days.", outcome: "Stay-credit claims resolved against reservation records, benefits explained accurately per property, redemption guidance in the guest's language.", channels: ["WhatsApp", "Web chat", "Email"], systems: ["Loyalty platform", "Central reservation system"], value: 2, complexity: 1, speed: 3 },
+      { name: "Restaurant order & delivery support", why: "Delivery order exceptions burn margin and app ratings across thousands of Minor Food outlets.", friction: "Store staff answer order calls between counters; complaints escalate to social media when no one picks up.", outcome: "Order-status and exception resolution grounded in ordering systems, refunds and re-delivery within policy, complaint patterns clustered per store.", channels: ["App chat", "LINE", "Voice"], systems: ["Ordering/delivery platform", "POS", "CRM"], value: 2, complexity: 2, speed: 3 },
+    ],
+    languages: ["Thai", "English", "Mandarin", "Arabic", "German"],
+    flowTemplate: "inbound-service",
+    scenario: "A Shanghai guest messages an Anantara resort at 11pm about a villa upgrade and airport transfer for next week; the agent answers in Mandarin, confirms availability from the reservation system, and books both before the property desk opens.",
+    volumeMonthly: 700000,
+    costPerInteraction: 1.4,
+    personas: [
+      { role: "CEO", message: "Minor grew by acquisition into a federation of strong brands; guest experience is where federation shows its seams. One conversational standard across Anantara and NH — in the guest's language, around the clock — is integration the guest can feel." },
+      { role: "CIO / CTO", message: "One agentic layer over heterogeneous PMS and ordering estates delivers consistency without waiting for system consolidation across 50 countries — governed centrally, deployed per brand cluster." },
+      { role: "COO", message: "Property teams stop losing evenings to emails and transfer coordination; the agent handles the administrative layer and hands your staff the guest-facing moments that justify the rate." },
+      { role: "Chief Commercial Officer", message: "Every after-hours inquiry answered in-language is direct-booking revenue defended from OTAs — and pre-arrival upsell (upgrades, dining, spa) becomes a measured conversion funnel." },
+      { role: "Chief Risk / Compliance Officer", message: "Guest data crosses GDPR, Thai PDPA, and Gulf jurisdictions; consent and data-handling rules are enforced per property as configuration, with complete interaction logs." },
+      { role: "CFO / Procurement", message: "Compare one platform against multilingual staffing across hundreds of properties and time zones — then add the measured direct-booking and upsell conversion. The deleveraged balance sheet can fund proven unit economics." },
+    ],
+    nextStep: "Scope a reservations-and-pre-arrival pilot on one Anantara cluster (Thailand plus one Gulf property) with after-hours capture rate and direct-booking conversion as success metrics.",
+    scores: { volume: 3, costSensitivity: 3, language: 5, ccIntensity: 3, gcpRelevance: 1, urgency: 3, feasibility: 3, speed: 3, expansion: 4 },
+    validate: [
+      "CRS/PMS landscape and API readiness across hotel brands",
+      "After-hours inquiry volume and current response-time baselines",
+      "Which Minor Food brands centralize delivery support enough to automate",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "Minor is an operator and brand acquirer, not a technology builder: hotel and restaurant systems come from hospitality vendors, and group IT integrates rather than engineers platforms. There is no internal AI organization, and the federated estate makes a bought, centrally governed layer the only practical route to consistency.",
+    whyNotBuild: "Building conversational infrastructure across dozens of PMS and ordering systems in 50+ countries is precisely the kind of multi-year program a hospitality operator should never own; management attention is on brand performance and deleveraging, not platform engineering.",
+    existing: {
+      has: ["Brand websites and booking engines per chain", "Property reservation desks and guest-relations teams", "Loyalty program across hotel brands", "Minor Food ordering and delivery apps (1112 Delivery heritage)"],
+      gaps: ["24/7 multilingual response outside property hours", "One guest context across brands and properties", "Pre-arrival request capture written into property systems", "Automated delivery-exception resolution at store scale"],
+    },
+    earningsSignals: [
+      { signal: "Reported double-digit core profit growth for FY2025 with continued deleveraging, including early redemption of European notes funded by operating cash flow.", source: "FY2025 results MD&A", date: "Feb 2026", implication: "A deleveraged, cash-generative Minor can fund experience investment — pitch measured direct-booking capture and upsell conversion as growth spend, not cost.", kind: "fact" },
     ],
   },
   // ── MALAYSIA ──────────────────────────────────────────────────────────────
@@ -755,6 +1017,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Contact volume by language and driver across hotline and branch",
       "Fraud-desk process readiness for agentic structured intake",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Maybank's M25+ transformation carries a large technology budget, but delivery runs through vendors and partners — the group builds customer experiences like MAE on procured platforms. BNM's RMiT governance expectations further favor hardened, auditable stacks over internal conversational-AI builds.",
+    whyNotBuild: "A four-language conversational stack with fraud-grade intake is infrastructure, not differentiation; Maybank's differentiation is distribution, brand, and the regional franchise. M25+ deadlines reward configured outcomes over multi-year platform programs.",
+    existing: {
+      has: ["MAE app as the digital flagship with DuitNow payments", "Publicly visible fraud-response investments and scam hotlines", "Existing chatbot and IVR estate", "Regional operating entities sharing group technology"],
+      gaps: ["Voice-quality parity across Bahasa Malaysia, English, Mandarin, and Tamil", "In-conversation actions (blocks, disputes, limits) outside the app", "Minutes-fast structured scam intake around the clock", "Day-1 collections coverage on financing books"],
+    },
+    earningsSignals: [
+      { signal: "The M25+ strategy publicly commits multi-billion-ringgit technology and digital investment, with progress reported in annual disclosures.", source: "FY2024 annual report", date: "2025", implication: "Attach to funded M25+ workstreams — procurement moves faster inside an existing transformation envelope than as net-new spend.", kind: "fact" },
+    ],
   },
   {
     slug: "cimb",
@@ -801,6 +1073,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Group stance on shared platforms across Malaysia and Niaga",
       "Existing CX-vendor commitments in the consumer bank",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "CIMB delivers technology with vendors under a disciplined cost agenda; it has no public LLM or platform-build ambitions. Its dual-market retail scale rewards a configurable platform replicated Malaysia-to-Indonesia — a partnering economics story, not a build one.",
+    whyNotBuild: "Cost-to-income targets make platform engineering headcount the wrong spend; the value of a Malaysia-proven layer nearly doubles when replicated to CIMB Niaga as configuration, which only a bought platform delivers on that timeline.",
+    existing: {
+      has: ["CIMB OCTO digital banking app", "Dialer-based collections operations", "Touch 'n Go ecosystem ties within the group orbit", "Digital onboarding with eKYC"],
+      gaps: ["Multilingual voice automation across four languages", "100% day-1 attempted collections coverage", "Matrix-bounded arrangements with automatic follow-through", "Instrumented onboarding funnels with real-time rescue"],
+    },
+    earningsSignals: [
+      { signal: "Cost-to-income discipline and CASA growth targets under the group's forward strategy feature consistently in results commentary.", source: "recent investor communications (validate)", date: "2025", implication: "Frame collections and service automation as structural cost-to-income improvement with the Niaga replication amortizing the same implementation twice.", kind: "inference" },
+    ],
   },
   {
     slug: "touch-n-go-digital",
@@ -846,6 +1128,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "Ledger and toll-system API readiness for real-time grounding",
       "Actual contact volume by driver and current SLA baselines",
       "Ant-stack dependencies that constrain platform choices",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "TNG Digital's product engineering is real (strengthened by the Ant partnership), but it is pointed at payments features and compliance — service still runs on ticket queues with day-scale SLAs. The Ant stack supplies payments infrastructure, not Malay/Tamil conversational service automation; that layer gets bought.",
+    whyNotBuild: "Wallet-thin margins cannot fund a conversational platform build, and the engineering roadmap is contested by regulated feature work (GO+, lending). Buying outcome-priced resolution is the only service model that scales with transaction growth.",
+    existing: {
+      has: ["TNG eWallet app with in-app support ticketing", "Ant-derived platform capabilities", "RFID and toll-system integration", "eKYC pipeline for account upgrades"],
+      gaps: ["Real-time ledger-grounded dispute resolution instead of day-scale tickets", "Voice and chat quality across Bahasa Malaysia, English, Mandarin, and Tamil", "Proactive double-charge detection and outreach", "Cross-system context between wallet ledger and toll transactions"],
+    },
+    earningsSignals: [
+      { signal: "Reported progress toward wallet profitability within the CIMB group orbit, with monetization of GO+ and lending features.", source: "recent investor communications (validate)", date: "2025", implication: "A profitability-focused wallet buys against unit economics — price the pitch on cost per resolved dispute versus current ticket-handling cost.", kind: "inference" },
     ],
   },
   {
@@ -894,6 +1186,16 @@ export const ACCOUNTS_SEA: Account[] = [
       "BSS consolidation status and API access across legacy stacks",
       "Migrant-segment size and language mix in the prepaid base",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "CelcomDigi's announced AI moves — AWS generative-AI collaboration, SK Telecom partnership, an AI Experience Centre — are themselves partner-delivered, revealing an orchestrate-not-build posture. Telco platform buying is the norm, and the merger integration consumes the internal engineering capacity that a build would need.",
+    whyNotBuild: "BSS consolidation across two legacy stacks is the engineering priority; a conversational platform build would compete for the same people. The open wedge is a bounded, bought workflow that coexists with the incumbent AI tracks.",
+    existing: {
+      has: ["Celcom Life and MyDigi apps across both brand bases", "AI Experience Centre and announced AWS/SKT AI collaborations", "IVR and chatbot estate per legacy brand", "Enterprise arm distributing Google Workspace"],
+      gaps: ["Brand-aware billing answers grounded across both legacy BSS stacks", "Bengali, Burmese, and Nepali coverage for the migrant prepaid segment", "In-channel top-up and plan-change execution", "Deflection and cost-per-contact attribution against baselines"],
+    },
+    earningsSignals: [
+      { signal: "Merger integration savings and network-consolidation progress are standing items in results briefings.", source: "recent investor communications (validate)", date: "2025", implication: "Position a billing-deflection pilot as integration-synergy delivery with hard baselines — auditable savings, not another AI announcement.", kind: "inference" },
+    ],
   },
   {
     slug: "capital-a",
@@ -941,147 +1243,74 @@ export const ACCOUNTS_SEA: Account[] = [
       "PSS and refund-pipeline API access across AOCs",
       "Which market's disruption profile suits the pilot best",
     ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "Despite the group's digital identity, its engineering is consumer-product-focused (MOVE, BigPay) and capital-disciplined after restructuring. The in-house AVA chatbot era demonstrated the limits of scripted self-build in guest support, and the long Google Cloud relationship makes buying on the existing estate the path of least resistance.",
+    whyNotBuild: "Restructuring discipline caps platform-engineering spend, and guest-support economics need fixing now — before the next disruption season, not after a two-year build. Usage-based capacity also matches the spiky cost profile an LCC group cannot staff for.",
+    existing: {
+      has: ["AVA chatbot across support channels", "airasia MOVE super-app", "BigPay fintech stack", "WhatsApp and in-app support channels on a Google Cloud estate"],
+      gaps: ["Proactive disruption rebooking before guests join queues", "Live, stage-by-stage refund-pipeline transparency", "Voice quality across six-plus operating languages", "Consistent policy application on compensation across AOCs"],
+    },
+    earningsSignals: [
+      { signal: "Publicly completed restructuring, including PN17 status resolution and aviation consolidation under the AirAsia Group structure, with cost discipline and fleet reactivation central to the investor story.", source: "FY2024 results and restructuring announcements", date: "2024–2025", implication: "Position usage-based support capacity as restructuring-aligned: fixed service cost becomes variable, and refund transparency repairs a publicly known complaint class.", kind: "fact" },
+    ],
+  },
+  {
+    slug: "astro-malaysia",
+    name: "Astro Malaysia",
+    market: "Malaysia",
+    vertical: "Media / pay-TV & streaming",
+    tier: 3,
+    tierWhy: "Malaysia's dominant pay-TV and streaming operator in structural decline — years of falling revenue and a shrinking subscriber base make churn management, collections, and package-renewal conversations existential workflows that a cost-cutting organization cannot staff its way through.",
+    heroHeadline: "Every canceled decoder is a conversation that never happened: retention-first service for Astro's subscriber base",
+    proposition: "Deploy an agentic retention, collections, and renewal layer for Astro — two-way conversations in Bahasa Malaysia, English, Mandarin, and Tamil that intercept churn, recover overdue accounts, and convert expiring packages before the decoder goes dark.",
+    entryWorkflow: "Churn-risk retention & package-renewal conversations",
+    outcome: "Reach 100% of the at-risk and expiring base with policy-bounded save and renewal offers, measured against the current outbound team's contact coverage and save rates",
+    packageRec: "launch",
+    packageWhy: "A cost-pressured account should see proof before platform: a Launch pilot on churn-risk retention with hard save-rate baselines is the credible entry, expanding to collections and technical service on evidence.",
+    understand: [
+      { text: "Astro Malaysia is the country's leading pay-TV operator with a large residential base across Astro and NJOI, plus the sooka streaming platform and a significant radio and advertising business.", kind: "verified" },
+      { text: "The company has publicly reported multiple consecutive years of declining revenue with falling core profit, driven by pay-TV subscriber losses to streaming alternatives — while publicly pursuing cost transformation and growing sooka's paying base.", kind: "verified" },
+      { text: "Subscriber-retention economics dominate: every save is worth months of ARPU, yet outbound retention capacity covers only a fraction of at-risk accounts, and win-back outreach after cancellation is largely untargeted.", kind: "inference" },
+      { text: "Overdue-payment disconnections generate both revenue leakage and churn: a missed bill becomes a lost subscriber when the only contact is a disconnection notice rather than a conversation.", kind: "inference" },
+      { text: "Package-renewal and sports-season moments (Premier League windows, festive seasons) are predictable conversion spikes an agentic outreach layer could systematically monetize.", kind: "hypothesis" },
+    ],
+    workflows: [
+      { name: "Churn-risk retention & package renewal", why: "Subscriber losses are the company's defining problem; every conversation not had with an at-risk account is a decoder returned.", friction: "Outbound retention teams reach a fraction of the at-risk base; expiry-driven downgrades proceed silently.", outcome: "Two-way conversations in the subscriber's language with save and renewal offers from the approved matrix, reasons-for-leaving captured, saves attributed per offer.", channels: ["Voice", "WhatsApp", "Astro app"], systems: ["Subscriber management", "Churn model", "Offer matrix"], value: 3, complexity: 2, speed: 3 },
+      { name: "Billing & collections conversations", why: "Overdue accounts sit between revenue recovery and churn; a dignified payment conversation beats a disconnection notice on both counts.", friction: "Reminder SMS blasts convert poorly; disconnection-triggered inbound calls arrive angry.", outcome: "Policy-timed payment reminders with in-channel payment links, hardship-sensitive arrangements within policy, reconnection completed in the same conversation.", channels: ["WhatsApp", "Voice", "SMS"], systems: ["Billing", "Payments", "Subscriber management"], value: 3, complexity: 1, speed: 3 },
+      { name: "Technical support & installer appointments", why: "Decoder, dish, and streaming issues drive truck rolls and repeat calls that a shrinking cost base cannot absorb.", friction: "Guided troubleshooting depends on which agent answers; installer visits are booked blind.", outcome: "Step-by-step diagnostics in four languages, avoidable dispatches filtered, installer slots booked and confirmed with one-tap reschedule.", channels: ["WhatsApp", "Voice", "Astro app"], systems: ["Field service", "Ticketing", "Subscriber management"], value: 2, complexity: 2, speed: 2 },
+    ],
+    languages: ["Bahasa Malaysia", "English", "Mandarin", "Tamil"],
+    flowTemplate: "retention",
+    scenario: "A 12-year subscriber flagged churn-risk after downgrading gets a WhatsApp conversation in Mandarin that surfaces the real issue — price versus a streaming bundle — and closes a right-sized sports-plus-sooka package from the approved matrix instead of losing the account.",
+    volumeMonthly: 900000,
+    costPerInteraction: 0.8,
+    personas: [
+      { role: "CEO", message: "Astro's turnaround math is simple: slow the subscriber bleed while costs come down. Retention conversations that reach 100% of the at-risk base — at a cost the P&L can carry — is the only lever that does both at once." },
+      { role: "CIO / CTO", message: "A bounded agentic layer on the subscriber-management and billing systems, deployed in weeks — no dependency on the broader transformation program's timeline." },
+      { role: "COO", message: "Your outbound team physically cannot call the whole at-risk base; the agent can, and hands humans only the high-value saves and hardship cases with full context." },
+      { role: "Chief Commercial Officer", message: "Renewal windows, sports seasons, and win-back campaigns become measured conversion funnels with offers bounded by approved economics — not blast SMS with 1% response." },
+      { role: "Chief Risk / Compliance Officer", message: "PDPA consent, contact-window rules, and offer boundaries enforced as configuration with complete logs — retention pressure never becomes conduct risk." },
+      { role: "CFO / Procurement", message: "A Launch-scoped pilot priced against numbers you already track: save rate, collections cure rate, and cost per contact. At current ARPU, a small save-rate lift pays for the platform." },
+    ],
+    nextStep: "Baseline current at-risk contact coverage and save rates with the retention team, then scope a churn-risk pilot on one subscriber segment with control-group measurement.",
+    scores: { volume: 3, costSensitivity: 5, language: 4, ccIntensity: 4, gcpRelevance: 1, urgency: 5, feasibility: 4, speed: 4, expansion: 2 },
+    validate: [
+      "Churn-model maturity and at-risk segmentation quality",
+      "Subscriber-management and billing API readiness for offer execution",
+      "Retention offer-matrix ownership and approval process",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "Astro is a content and subscription operator in cost-transformation mode — technology investment is being rationalized, not expanded, and there is no internal AI-platform capability or ambition. Retention and collections automation will be bought, and judged purely on measured save and cure economics.",
+    whyNotBuild: "An organization cutting legacy cost structures cannot open a platform-engineering front; it needs retention coverage this fiscal year at a variable cost that shrinks and grows with the subscriber base itself.",
+    existing: {
+      has: ["Astro and Astro GO apps with self-service account management", "sooka streaming platform with a growing paying base", "Outbound retention and collections teams", "SMS reminder and campaign infrastructure"],
+      gaps: ["Two-way retention conversations covering the full at-risk base", "In-channel payment and reconnection during collections contact", "Four-language voice coverage across the subscriber demographic", "Churn-reason capture and save attribution at cohort level"],
+    },
+    earningsSignals: [
+      { signal: "Publicly reported multi-year revenue decline with sharply lower core profit in FY2025 and widening net video-customer losses, alongside cost-transformation efforts and sooka's paying base growing strongly.", source: "FY2025 annual results", date: "Mar 2025", implication: "Urgency is existential and budget is scarce: pitch a small, control-group retention pilot priced against save-rate economics, not a platform program.", kind: "fact" },
+    ],
   },
   // ── SEA-REGIONAL ──────────────────────────────────────────────────────────
-  {
-    slug: "grab",
-    name: "Grab",
-    market: "SEA-regional",
-    vertical: "Super-app / mobility, delivery, fintech",
-    tier: 1,
-    tierWhy: "Southeast Asia's defining super-app across 8 countries with three simultaneous support constituencies — consumers, driver/merchant-partners, and now digital-bank customers — making it the region's largest single agentic-conversation opportunity.",
-    heroHeadline: "Three support triangles, eight countries, one platform: agentic conversations for Grab's drivers, merchants, and consumers",
-    proposition: "Give Grab one governed agentic layer that serves the consumer-driver-merchant support triangle in every market's language — resolving trip, order, payout, and banking issues in-channel at super-app scale.",
-    entryWorkflow: "Driver- and merchant-partner support resolution",
-    outcome: "Cut partner-support resolution times on earnings, payouts, and account issues — the conversations that directly gate supply-side retention",
-    packageRec: "transform",
-    packageWhy: "Multiple constituencies, eight markets, and fintech-grade governance requirements make this an enterprise deployment with a governance framework and phased market rollout by design.",
-    understand: [
-      { text: "Grab is Southeast Asia's leading super-app, NASDAQ-listed, operating mobility, deliveries, and financial services across eight countries and hundreds of cities, with millions of driver- and merchant-partners.", kind: "verified" },
-      { text: "Grab operates digital banks (GXS in Singapore, GXBank in Malaysia, and the Superbank venture in Indonesia), adding regulated banking support to its service surface.", kind: "verified" },
-      { text: "Partner support (driver earnings, payout timing, account suspensions, merchant onboarding) is operationally distinct from consumer support and directly drives supply retention and marketplace health.", kind: "inference" },
-      { text: "Support must run natively in at least eight languages including Thai, Vietnamese, Bahasa Indonesia, Burmese, and Khmer — a staffing matrix that only automation collapses.", kind: "inference" },
-      { text: "Cross-border data architecture is a first-order design constraint: PDPA (Singapore/Malaysia/Thailand), Indonesia's PDP law, Vietnam's Decree 13, and the Philippines' DPA all apply simultaneously.", kind: "verified" },
-      { text: "Grab's in-house ML platform is sophisticated; the winnable ground is the agentic communications and orchestration layer, not the models themselves.", kind: "hypothesis" },
-    ],
-    workflows: [
-      { name: "Driver & merchant partner support", why: "Partner churn is supply churn; payout and suspension issues are the moments partners decide between platforms.", friction: "In-app ticket queues with slow async loops; partners lose earning hours waiting on account issues.", outcome: "Earnings and payout questions grounded in partner ledgers, suspension appeals triaged with policy context, urgent cases to humans with transcripts.", channels: ["In-app chat", "Voice", "WhatsApp"], systems: ["Partner ledger", "Payout systems", "Trust & safety case management"], value: 3, complexity: 2, speed: 3 },
-      { name: "Consumer trip & order resolution", why: "Refund and missing-item disputes at delivery scale define consumer trust in the marketplace.", friction: "Chatbot flows deflect; edge cases queue; refund decisions feel arbitrary.", outcome: "Order-grounded resolution with policy-bounded refunds executed in-channel and abuse patterns flagged.", channels: ["In-app chat"], systems: ["Order management", "Payments", "Fraud signals"], value: 3, complexity: 2, speed: 3 },
-      { name: "GXS / GXBank customer service", why: "Digital-bank growth needs bank-grade service without bank-scale service headcount.", friction: "Banking questions land on super-app support processes not built for regulated finance.", outcome: "Segregated, bank-governed agentic service with MAS/BNM-aligned controls and full auditability.", channels: ["In-app chat", "Voice"], systems: ["Core banking", "Card systems"], value: 2, complexity: 3, speed: 1 },
-      { name: "Proactive incident communication", why: "Weather surges, flood closures, and platform incidents generate synchronized contact spikes across markets.", friction: "Status banners under-inform; support absorbs the anxiety individually.", outcome: "Affected users and partners messaged proactively per incident with grounded, market-specific guidance.", channels: ["In-app chat", "Push", "SMS"], systems: ["Incident management", "Geo services"], value: 2, complexity: 1, speed: 3 },
-    ],
-    languages: ["English", "Bahasa Indonesia", "Thai", "Vietnamese", "Bahasa Malaysia", "Tagalog", "Khmer", "Burmese"],
-    flowTemplate: "inbound-service",
-    scenario: "A Jakarta driver's payout hasn't landed before school-fee day; the agent grounds the answer in the payout ledger, confirms the bank-side delay, and schedules a callback confirmation — in Bahasa Indonesia, without losing him a single driving hour.",
-    volumeMonthly: 12000000,
-    costPerInteraction: 0.9,
-    personas: [
-      { role: "CEO", message: "Marketplace advantage in this region is now decided on the supply side. Partner support that resolves payout and account issues in minutes, in eight languages, is a driver-retention weapon disguised as a cost program." },
-      { role: "CIO / CTO", message: "Your ML platform stays yours; Gemini Enterprise supplies the agentic orchestration and grounding layer, with per-market data-residency configuration your regulators can each inspect." },
-      { role: "COO", message: "One governed conversation platform across three constituencies and eight markets replaces a patchwork of per-market support operations — with incident spikes absorbed elastically." },
-      { role: "Head of Partner Experience", message: "Suspension appeals and payout disputes stop rotting in async queues. Partners get grounded answers in their language while they are still on the road earning." },
-      { role: "Chief Risk / Compliance Officer", message: "Per-jurisdiction data handling — PDPA, PDP, Decree 13 — enforced as configuration, bank workflows segregated under MAS/BNM-grade controls, and 100% of interactions logged and scored." },
-      { role: "CFO / Procurement", message: "Support cost currently scales with GMV; this decouples them. A Transform engagement amortized across three constituencies and eight markets is the region's best unit-economics story." },
-    ],
-    nextStep: "Executive workshop mapping the partner-support entry workflow in two pilot markets (Indonesia, Philippines) with payout-resolution time as the north-star metric.",
-    scores: { volume: 5, costSensitivity: 4, language: 5, ccIntensity: 5, gcpRelevance: 3, urgency: 4, feasibility: 3, speed: 3, expansion: 5 },
-    validate: [
-      "Where Grab's in-house support-automation stack ends and a partner platform is welcome",
-      "Partner-support volume and resolution-time baselines by market",
-      "Data-residency architecture requirements per regulator",
-    ],
-  },
-  {
-    slug: "shopee",
-    name: "Shopee (Sea Group)",
-    market: "SEA-regional",
-    vertical: "eCommerce / marketplace",
-    tier: 1,
-    tierWhy: "Southeast Asia's largest e-commerce marketplace with its own SPX logistics network and mega-sale events that multiply contact volume overnight — the region's single largest order-logistics conversation pool.",
-    heroHeadline: "When 9.9 breaks records, support queues shouldn't: agentic buyer, seller, and SPX conversations for Shopee",
-    proposition: "Give Shopee an agentic layer sized for mega-sale physics — buyer order resolution, seller support, and SPX delivery-exception handling in seven languages, with elastic capacity that makes campaign spikes a non-event.",
-    entryWorkflow: "Order & delivery exception resolution (buyer-side)",
-    outcome: "One proactive thread per delivery exception instead of repeated where-is-my-order contacts, with refund/return decisions executed in-channel at policy",
-    packageRec: "transform",
-    packageWhy: "Buyer, seller, and logistics constituencies across seven-plus markets with campaign-scale elasticity requirements demand an enterprise deployment with governance and phased rollout.",
-    understand: [
-      { text: "Shopee, Sea Group's e-commerce arm, is Southeast Asia's largest online marketplace by most public measures, operating across Singapore, Indonesia, Malaysia, Thailand, Vietnam, the Philippines, Taiwan and Brazil, with its own SPX Express logistics network.", kind: "verified" },
-      { text: "Mega-sale events (9.9, 11.11, 12.12) multiply order volume — and therefore contact volume — in bursts no fixed support organization can staff rationally.", kind: "verified" },
-      { text: "Where-is-my-order, refund/return, and COD-failure contacts dominate volume; each unresolved case ties up buyer trust and seller ratings simultaneously.", kind: "inference" },
-      { text: "Millions of sellers — most of them micro-merchants — generate a second support universe (listings, penalties, payouts) that gates marketplace supply quality.", kind: "inference" },
-      { text: "Sea's in-house engineering builds much of its own stack; the winnable ground is agentic orchestration, multilingual voice, and communications infrastructure rather than core ML.", kind: "hypothesis" },
-    ],
-    workflows: [
-      { name: "Buyer order & delivery exceptions", why: "The dominant contact class; campaign spikes multiply it overnight and queues become social-media incidents.", friction: "Bot flows re-serve stale tracking; escalations queue for days mid-campaign.", outcome: "Proactive exception detection with SPX feeds, reschedules and refunds executed at policy in-channel, spike absorbed elastically.", channels: ["In-app chat", "Push"], systems: ["OMS", "SPX logistics feeds", "Payments"], value: 3, complexity: 2, speed: 3 },
-      { name: "Seller support & payout resolution", why: "Seller experience decides assortment quality; payout and penalty confusion churns exactly the sellers Shopee wants to keep.", friction: "Sellers navigate help-center mazes; penalty appeals feel like black boxes.", outcome: "Seller-recognized support grounded in listing, order, and payout systems, appeals triaged with policy transparency.", channels: ["Seller app chat", "Web chat", "Voice"], systems: ["Seller platform", "Payout ledger", "Policy engine"], value: 3, complexity: 2, speed: 2 },
-      { name: "SPX failed-delivery & COD recovery", why: "Failed deliveries and COD rejections destroy margin per parcel; every avoided RTO is direct economics.", friction: "Driver notes are thin; buyers are unreachable at delivery time; RTO proceeds by default.", outcome: "Buyer contacted within minutes of a failed attempt, address or slot fixed conversationally, RTO-avoidance attributed.", channels: ["In-app chat", "SMS", "Voice"], systems: ["SPX last-mile systems", "OMS"], value: 3, complexity: 2, speed: 3 },
-    ],
-    languages: ["English", "Bahasa Indonesia", "Thai", "Vietnamese", "Bahasa Malaysia", "Tagalog", "Mandarin"],
-    flowTemplate: "order-logistics",
-    scenario: "During 11.11, an SPX rider fails a Hanoi delivery at a locked office; within four minutes the buyer picks a next-morning home slot in Vietnamese and the RTO never happens.",
-    volumeMonthly: 15000000,
-    costPerInteraction: 0.6,
-    personas: [
-      { role: "CEO", message: "Shopee wins campaigns on logistics and price; it keeps customers on what happens when something goes wrong. Making delivery exceptions self-healing at 11.11 scale is a competitive moat Lazada and TikTok Shop would struggle to copy." },
-      { role: "CIO / CTO", message: "Agentic orchestration grounded in OMS and SPX feeds, deployed per market with data-residency configuration — complementing, not replacing, the stack your teams build in-house." },
-      { role: "COO", message: "Campaign staffing models die: elastic conversational capacity absorbs the 9.9 spike, and exception patterns feed back to fix hub and rider allocation weekly." },
-      { role: "Head of Marketplace Operations", message: "Sellers get payout and penalty answers grounded in the actual ledger and policy engine — appeal backlogs shrink and your best sellers stop threatening to leave at campaign time." },
-      { role: "Chief Risk / Compliance Officer", message: "Refund decisions bounded by policy matrices with abuse-pattern flagging, per-country data handling enforced as configuration, and every interaction logged for audit." },
-      { role: "CFO / Procurement", message: "Support cost per order is one of the few marketplace unit costs still falling slower than logistics cost. Automated exception resolution plus RTO avoidance attacks both lines at once." },
-    ],
-    nextStep: "Scope a two-market pilot (Vietnam, Philippines) on SPX failed-delivery recovery with RTO-avoidance rate as the primary metric.",
-    scores: { volume: 5, costSensitivity: 5, language: 5, ccIntensity: 5, gcpRelevance: 2, urgency: 4, feasibility: 3, speed: 3, expansion: 5 },
-    validate: [
-      "SPX last-mile system APIs for real-time failed-attempt events",
-      "In-house chatbot roadmap and where external platforms are welcome",
-      "Campaign-period contact-volume multipliers by market",
-    ],
-  },
-  {
-    slug: "lazada",
-    name: "Lazada",
-    market: "SEA-regional",
-    vertical: "eCommerce / marketplace",
-    tier: 3,
-    tierWhy: "Alibaba-owned marketplace across six SEA markets with real order-logistics conversation volume — but deep Alibaba Cloud and in-house AI alignment makes the platform sale unlikely; pursue as a focused communications-layer wedge only.",
-    heroHeadline: "Six markets, one delivery promise: a failed-delivery recovery wedge for Lazada's logistics network",
-    proposition: "Enter narrow: an agentic failed-delivery and COD-recovery layer on Lazada Logistics' last mile — a measurable margin play that does not ask Lazada to change its cloud or AI allegiances.",
-    entryWorkflow: "Failed-delivery recovery & COD confirmation",
-    outcome: "Avoided RTOs and recovered COD deliveries attributed per intervention across pilot markets",
-    packageRec: "launch",
-    packageWhy: "Given Alibaba-stack gravity, only a contained, outcome-priced Launch pilot with its own P&L story is credible; expansion depends on measured RTO economics.",
-    understand: [
-      { text: "Lazada, owned by Alibaba, operates marketplaces across Indonesia, Malaysia, the Philippines, Singapore, Thailand and Vietnam, with its own Lazada Logistics network and LazMall brand-mall proposition.", kind: "verified" },
-      { text: "As an Alibaba company, Lazada's technology stack and AI roadmap are deeply aligned with Alibaba Cloud and in-house platforms — an external platform sale faces structural headwind.", kind: "verified" },
-      { text: "COD remains significant in Lazada's emerging markets; COD rejection and failed first-attempt deliveries are direct margin leaks that conversational recovery can measurably reduce.", kind: "inference" },
-      { text: "Where-is-my-order and return-status contacts likely dominate its support volume, concentrated around campaign events like its birthday sale and 12.12.", kind: "inference" },
-      { text: "A communications-layer wedge (voice/WhatsApp delivery recovery) could be procured by logistics operations independently of the central AI platform roadmap.", kind: "hypothesis" },
-    ],
-    workflows: [
-      { name: "Failed-delivery recovery & COD confirmation", why: "Every avoided RTO is direct margin; COD pre-confirmation cuts rejection at the door.", friction: "Riders can't reach buyers at delivery time; RTO proceeds by default; COD orders fail on doorstep surprise.", outcome: "Pre-delivery COD confirmation and instant post-failure recovery conversations in the buyer's language; RTO avoidance attributed.", channels: ["WhatsApp", "SMS", "Voice"], systems: ["Lazada Logistics last-mile", "OMS"], value: 3, complexity: 1, speed: 3 },
-      { name: "Return & refund status service", why: "Return limbo is the trust-eroding tail of every marketplace incident.", friction: "Buyers chase status across app tickets; sellers dispute in parallel.", outcome: "Proactive stage-by-stage return and refund updates; repeat contacts suppressed.", channels: ["In-app chat", "WhatsApp"], systems: ["Returns platform", "Payments"], value: 2, complexity: 2, speed: 2 },
-    ],
-    languages: ["English", "Bahasa Indonesia", "Thai", "Vietnamese", "Bahasa Malaysia", "Tagalog"],
-    flowTemplate: "order-logistics",
-    scenario: "A COD order in Manila gets a WhatsApp confirmation an hour before delivery; the buyer confirms cash on hand, the rider completes first-attempt, and the RTO statistic never moves.",
-    volumeMonthly: 6000000,
-    costPerInteraction: 0.7,
-    personas: [
-      { role: "CEO", message: "Against Shopee and TikTok Shop, delivery-success economics are one of the few levers left uncontested. Conversational RTO recovery is margin recovered without a single discount." },
-      { role: "CIO / CTO", message: "This is a bounded communications layer at the logistics edge — clean APIs against last-mile events, no dependency on your core AI platform decisions." },
-      { role: "COO", message: "First-attempt success and COD completion rates move within weeks in a pilot market, with every avoided RTO attributed to its intervention." },
-      { role: "Head of Lazada Logistics", message: "Your riders stop making blind second attempts. The conversation fixes the address, the slot, or the cash question before the van rolls." },
-      { role: "Chief Risk / Compliance Officer", message: "Consent-governed buyer outreach per market's data-protection law — PDPA variants, PDP, Decree 13 — with complete interaction logs." },
-      { role: "CFO / Procurement", message: "Priced as a Launch pilot against a hard number: cost per avoided RTO versus the fully loaded cost of a failed delivery. The math closes or it doesn't." },
-    ],
-    nextStep: "Propose a one-market failed-delivery recovery pilot (Philippines or Vietnam) priced against RTO-avoidance economics.",
-    scores: { volume: 5, costSensitivity: 5, language: 4, ccIntensity: 4, gcpRelevance: 1, urgency: 3, feasibility: 2, speed: 3, expansion: 3 },
-    validate: [
-      "Whether logistics ops can procure independently of Alibaba-stack mandates",
-      "RTO and COD-rejection baselines by market",
-      "Last-mile event API accessibility for real-time triggers",
-    ],
-  },
   {
     slug: "ninja-van",
     name: "Ninja Van",
@@ -1128,5 +1357,51 @@ export const ACCOUNTS_SEA: Account[] = [
       "RTO cost model and avoidable-failure share by market",
       "Shipper appetite for branded proactive-delivery communication as a paid product",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Ninja Van's engineering is strong but concentrated on routing, sortation, and network-ops systems on Google Cloud — not conversational AI. With a publicly reported push toward profitability, it buys outcome-priced layers that move first-attempt success rather than staffing a platform team.",
+    whyNotBuild: "Six languages of consignee voice and chat is a bought capability; every engineering hour spent building it is an hour not spent on the network-economics systems that are the company's actual moat. RTO recovery priced per avoided failure needs no build case at all.",
+    existing: {
+      has: ["Parcel tracking systems and event webhooks", "Driver and rider apps with delivery-attempt scans", "Shipper portal and claims processes", "Google Cloud engineering estate (GKE)"],
+      gaps: ["Minutes-fast post-failure conversations with consignees", "Multilingual voice across six markets from one deployment", "Structured delivery-preference capture feeding routing", "Automated claims intake validated in-flow for shippers"],
+    },
+    earningsSignals: [
+      { signal: "Reported cost restructuring and a profitability push across the network as e-commerce logistics pricing normalizes regionally.", source: "recent investor communications (validate)", date: "2025", implication: "Price against the fully loaded cost of a failed delivery times avoidable RTOs per month — a margin story that fits the profitability narrative exactly.", kind: "inference" },
+    ],
+  },
+];
+
+// ─── Excluded accounts (build-led regional platforms) ───────────────────────
+// Deprioritized after build-vs-buy reassessment: these platforms have the
+// internal AI engineering, platform culture, and publicly visible investments
+// to build and operate their own conversational stacks. Pursue only for the
+// specific gaps noted.
+
+export const EXCLUDED_SEA: ExcludedAccount[] = [
+  {
+    name: "Grab",
+    market: "SEA-regional",
+    vertical: "Super-app / mobility, delivery, fintech",
+    classification: "build-led",
+    rationale: "Grab operates one of Southeast Asia's largest internal AI/ML organizations and treats support automation as core platform engineering, not procurement. A regional super-app whose marketplace economics depend on support cost per transaction will keep that stack in-house.",
+    evidence: "Publicly discussed internal LLM platform and generative-AI work across the company, long-standing in-house ML infrastructure, and publicly described AI-driven support automation for consumers and partners; digital-bank ventures (GXS, GXBank) extend the same build-first engineering culture.",
+    pursueOnlyIf: "Co-build on models, speech, or governance for specific markets — e.g. Gemini model quality or Burmese/Khmer voice inside Grab-operated support systems, or bank-grade governance tooling for its digital-bank entities.",
+  },
+  {
+    name: "Shopee (Sea Group)",
+    market: "SEA-regional",
+    vertical: "eCommerce / marketplace",
+    classification: "build-led",
+    rationale: "Sea Group builds its own stack across ecommerce, gaming (Garena), and fintech (Monee/SeaMoney) with deep in-house AI engineering; support automation at Shopee's campaign-scale volume is a core cost line the group engineers directly rather than buys.",
+    evidence: "Publicly visible in-house chatbot and support automation across markets, Sea's own AI research and engineering investment spanning its three business lines, and a build-first platform culture that extends to logistics (SPX) systems.",
+    pursueOnlyIf: "Co-build on models or speech for specific markets — e.g. multilingual voice quality (Vietnamese, Thai, Tagalog) or evaluation/governance components inside Shopee's own support platform.",
+  },
+  {
+    name: "Lazada",
+    market: "SEA-regional",
+    vertical: "eCommerce / marketplace",
+    classification: "build-led",
+    rationale: "As an Alibaba company, Lazada runs on the Alibaba technology stack with AI capabilities inherited from the parent — including publicly launched AI shopping and seller assistants. Conversational automation arrives from Alibaba's platforms, not external procurement.",
+    evidence: "Publicly reported Alibaba Cloud alignment and in-house AI roadmap, plus publicly launched AI assistants for buyers and sellers built on Alibaba model infrastructure.",
+    pursueOnlyIf: "A narrow communications-layer wedge procured by logistics operations independently of the central stack — e.g. failed-delivery and COD-recovery voice/WhatsApp in one market, priced purely on RTO-avoidance economics.",
   },
 ];

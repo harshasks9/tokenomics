@@ -12,9 +12,15 @@ import { PALETTE, fmtMoney, fmtNum } from "../../data";
 import { FlowCinema } from "../../cinema";
 import { accountBySlug } from "../index";
 import {
-  bindFlow, CONFIDENCE_META, MARKET_META, PACKAGES, RECURRING_NOTE,
+  bindFlow, BVB_META, CONFIDENCE_META, MARKET_META, PACKAGES, RECURRING_NOTE,
   UNIVERSE_DISCLAIMER, type Account,
 } from "../shared";
+
+const SIGNAL_KIND: Record<string, { label: string; color: string }> = {
+  fact: { label: "Reported fact", color: "#188038" },
+  inference: { label: "Inference", color: "#D97706" },
+  hypothesis: { label: "Hypothesis", color: "#7C3AED" },
+};
 
 const TIER_COLORS: Record<number, string> = { 1: "#188038", 2: "#D97706", 3: "#5F6368" };
 
@@ -131,6 +137,49 @@ export default function AccountClient({ slug }: { slug: string }) {
           <p className="text-[10px] text-[#5F6368] leading-relaxed">
             <b>Validate with the account team before outreach:</b> {a.validate.join(" · ")}
           </p>
+        </div>
+      </Section>
+
+      {/* Build vs buy */}
+      <Section kicker="Build vs buy" title="Why we have a right to win here">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-4">
+          <div className="rounded-2xl border-2 p-5" style={{ borderColor: `${BVB_META[a.buildVsBuy].color}44`, backgroundColor: `${BVB_META[a.buildVsBuy].color}08` }}>
+            <span className="text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-1" style={{ backgroundColor: BVB_META[a.buildVsBuy].color, color: "#fff" }}>
+              {BVB_META[a.buildVsBuy].label} target
+            </span>
+            <p className="text-[11px] text-[#5F6368] mt-3 leading-relaxed italic">{BVB_META[a.buildVsBuy].desc}</p>
+            <p className="text-xs text-[#202124] mt-3 leading-relaxed"><b>Evidence:</b> {a.buildVsBuyWhy}</p>
+            <p className="text-xs text-[#202124] mt-2.5 leading-relaxed"><b>Why they won&apos;t build the full stack:</b> {a.whyNotBuild}</p>
+          </div>
+          <div className="rounded-2xl border border-[#E8EAED] bg-white p-5">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#5F6368] mb-3">What management is signalling</div>
+            <div className="space-y-3">
+              {a.earningsSignals.map((s) => (
+                <div key={s.signal.slice(0, 40)} className="border-l-2 pl-3" style={{ borderColor: SIGNAL_KIND[s.kind].color }}>
+                  <p className="text-[11px] text-[#202124] leading-relaxed">{s.signal}</p>
+                  <div className="flex flex-wrap items-center gap-1.5 mt-1">
+                    <span className="text-[9px] font-semibold rounded-full px-1.5 py-px" style={{ backgroundColor: `${SIGNAL_KIND[s.kind].color}14`, color: SIGNAL_KIND[s.kind].color }}>{SIGNAL_KIND[s.kind].label}</span>
+                    <span className="text-[9px] text-[#9AA0A6]">{s.source} · {s.date}</span>
+                  </div>
+                  <p className="text-[10px] mt-1" style={{ color: PALETTE.blue }}><b>GTM implication:</b> {s.implication}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid md:grid-cols-2 gap-4">
+          <div className="rounded-2xl border border-[#E8EAED] bg-white p-5">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#188038] mb-2">What already exists (don&apos;t pitch this)</div>
+            <ul className="space-y-1.5 text-[11px] text-[#5F6368]">
+              {a.existing.has.map((h) => <li key={h} className="flex gap-2"><Check size={11} className="text-[#188038] shrink-0 mt-0.5" />{h}</li>)}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-[#E8EAED] bg-white p-5">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#B26A00] mb-2">What customers still can&apos;t do end-to-end (pitch this)</div>
+            <ul className="space-y-1.5 text-[11px] text-[#202124]">
+              {a.existing.gaps.map((g) => <li key={g} className="flex gap-2"><span className="text-[#B26A00] shrink-0">→</span>{g}</li>)}
+            </ul>
+          </div>
         </div>
       </Section>
 

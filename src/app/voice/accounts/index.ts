@@ -1,9 +1,9 @@
-import type { Account } from "./shared";
-import { ACCOUNTS_INDIA_BFSI } from "./data/india-bfsi";
-import { ACCOUNTS_INDIA_CONSUMER } from "./data/india-consumer";
-import { ACCOUNTS_ID_PH } from "./data/indonesia-philippines";
-import { ACCOUNTS_SEA } from "./data/sea";
-import { ACCOUNTS_NORTH_APJ } from "./data/north-apj";
+import type { Account, ExcludedAccount } from "./shared";
+import { ACCOUNTS_INDIA_BFSI, EXCLUDED_INDIA_BFSI } from "./data/india-bfsi";
+import { ACCOUNTS_INDIA_CONSUMER, EXCLUDED_INDIA_CONSUMER } from "./data/india-consumer";
+import { ACCOUNTS_ID_PH, EXCLUDED_ID_PH } from "./data/indonesia-philippines";
+import { ACCOUNTS_SEA, EXCLUDED_SEA } from "./data/sea";
+import { ACCOUNTS_NORTH_APJ, EXCLUDED_NORTH_APJ } from "./data/north-apj";
 
 export const ALL_ACCOUNTS: Account[] = [
   ...ACCOUNTS_INDIA_BFSI,
@@ -11,6 +11,14 @@ export const ALL_ACCOUNTS: Account[] = [
   ...ACCOUNTS_ID_PH,
   ...ACCOUNTS_SEA,
   ...ACCOUNTS_NORTH_APJ,
+];
+
+export const ALL_EXCLUDED: ExcludedAccount[] = [
+  ...EXCLUDED_INDIA_BFSI,
+  ...EXCLUDED_INDIA_CONSUMER,
+  ...EXCLUDED_ID_PH,
+  ...EXCLUDED_SEA,
+  ...EXCLUDED_NORTH_APJ,
 ];
 
 export function accountBySlug(slug: string) {

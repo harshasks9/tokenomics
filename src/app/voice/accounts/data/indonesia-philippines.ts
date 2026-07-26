@@ -1,4 +1,4 @@
-import type { Account } from "../shared";
+import type { Account, ExcludedAccount } from "../shared";
 
 export const ACCOUNTS_ID_PH: Account[] = [
   // ── INDONESIA ─────────────────────────────────────────────────────────────
@@ -48,51 +48,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Whether driver support is BPO-outsourced and at what cost per contact",
       "Which GoTo Financial systems expose APIs for balance and promise-to-pay writeback",
     ],
-  },
-  {
-    slug: "tokopedia",
-    name: "Tokopedia",
-    market: "Indonesia",
-    vertical: "eCommerce marketplace",
-    tier: 3,
-    tierWhy: "Still one of Indonesia's largest marketplaces, but TikTok's 75.01% control means decision-making runs through ByteDance — longer, more complex sales motion despite strong workflow fit.",
-    heroHeadline: "Seller support and delivery-exception resolution for the marketplace now powering TikTok Shop Indonesia",
-    proposition: "Automate the order-status, delivery-exception, and seller-support load that spikes with every live-shopping campaign, in Bahasa Indonesia, without adding BPO seats.",
-    entryWorkflow: "Order and delivery-exception resolution",
-    outcome: "Fewer contacts per delivery incident and lower return-to-origin losses during campaign peaks",
-    packageRec: "launch",
-    packageWhy: "Governance complexity under TikTok control argues for a tightly scoped, fast-proof pilot on one workflow before proposing anything broader.",
-    understand: [
-      { text: "TikTok completed its acquisition of 75.01% of PT Tokopedia in 2024; TikTok Shop Indonesia's operations were combined under the Tokopedia entity, with GoTo retaining a minority stake.", kind: "verified" },
-      { text: "The combination followed Indonesia's trade regulations restricting social-commerce transactions inside social apps — regulatory sensitivity around the arrangement remains high.", kind: "verified" },
-      { text: "Live-shopping campaigns create extreme, spiky order volumes; delivery exceptions and refund questions spike with them.", kind: "inference" },
-      { text: "Millions of sellers, most of them MSMEs, need support in Bahasa Indonesia on listings, payouts, and logistics — a queue-based cost center today.", kind: "inference" },
-      { text: "Post-merger systems integration between TikTok Shop and legacy Tokopedia stacks may complicate deep API work in the near term.", kind: "hypothesis" },
-    ],
-    gcpNote: "Google was a publicly reported pre-merger investor in Tokopedia, and Tokopedia's use of Google Cloud infrastructure has been publicly reported; current cloud posture under TikTok ownership should be validated.",
-    workflows: [
-      { name: "Order & delivery-exception resolution", why: "Campaign-driven order spikes produce delivery exceptions that drive both support cost and RTO losses.", friction: "FAQ bots re-serve stale tracking; humans swivel between OMS and 3PL portals.", outcome: "Proactive exception outreach and in-thread reschedules that cut contacts per incident.", channels: ["WhatsApp", "In-app chat", "Voice"], systems: ["OMS", "3PL tracking feeds", "Payments"], value: 3, complexity: 2, speed: 3 },
-      { name: "Seller (MSME) support desk", why: "Seller experience determines listing depth and campaign participation.", friction: "Ticket queues for payout, listing, and penalty questions; slow answers push sellers to rival platforms.", outcome: "Instant grounded answers on payouts, penalties, and logistics for millions of MSME sellers.", channels: ["WhatsApp", "Seller app"], systems: ["Seller platform", "Payout system"], value: 2, complexity: 2, speed: 2 },
-    ],
-    languages: ["Bahasa Indonesia", "English"],
-    flowTemplate: "order-logistics",
-    scenario: "A buyer's live-shopping order stalls in transit; the agent messages first, offers a reroute from live 3PL data, and the RTO never happens.",
-    volumeMonthly: 6000000,
-    costPerInteraction: 0.6,
-    personas: [
-      { role: "CEO", message: "Every campaign peak stresses support economics. An elastic agentic layer means service cost stops scaling linearly with GMV spikes." },
-      { role: "CIO / CTO", message: "A scoped pilot on delivery exceptions needs only OMS and 3PL read/write APIs — provable value without touching the post-merger core-stack integration." },
-      { role: "COO", message: "Contacts per delivery incident is your controllable cost lever; proactive exception outreach collapses three contacts into one thread." },
-      { role: "Head of Marketplace Operations", message: "Seller NPS decides where MSMEs list next. Instant payout and penalty answers in Bahasa Indonesia are a seller-retention weapon, not just a cost play." },
-      { role: "Chief Risk / Compliance Officer", message: "All refund and goodwill actions stay inside approved matrices with human approval above threshold — auditable in a way today's BPO sampling is not." },
-      { role: "CFO / Procurement", message: "A Launch package is a fixed, small commitment with pilot success criteria you define — measure cost-per-resolved-contact before any scale decision." },
-    ],
-    nextStep: "Scoped pilot proposal to Tokopedia customer-experience leadership: delivery-exception resolution for one logistics lane during the next twin-date campaign.",
-    scores: { volume: 5, costSensitivity: 4, language: 3, ccIntensity: 4, gcpRelevance: 3, urgency: 3, feasibility: 2, speed: 3, expansion: 3 },
-    validate: [
-      "Decision rights between Jakarta leadership and ByteDance for CX tooling",
-      "Current cloud and CCaaS stack post TikTok Shop integration",
-      "BPO contract terms and cost per contact for buyer support",
+    buildVsBuy: "co-build",
+    buildVsBuyWhy: "Publicly announced multi-year Google Cloud partnership plus one of Indonesia's strongest internal engineering organizations — GoTo builds its own consumer platforms and will expect to own the agent experience layer, sourcing models, infrastructure, and governance rather than a full packaged stack.",
+    whyNotBuild: "Even a top-tier platform team under a profitability mandate is unlikely to build regulated voice infrastructure end-to-end: telephony, Bahasa/regional speech quality, OJK conduct tooling, and evaluation pipelines are undifferentiated heavy lifting that competes with product engineering for the same headcount.",
+    existing: {
+      has: ["Gojek and GoPay in-app help centers with chatbot deflection", "Established driver-partner (mitra) support channels", "Dialer-based collections operations for GoPay lending"],
+      gaps: ["Execution-grade voice automation over lending systems of record", "OJK-auditable outbound conduct evidence at 100% coverage", "Bahasa and regional-language voice quality at scale", "Proactive, policy-timed outreach across channels"],
+    },
+    earningsSignals: [
+      { signal: "Management has driven a sustained group profitability push, reporting consecutive quarters of positive adjusted EBITDA through 2025 with raised full-year guidance, and lending highlighted as a leading growth driver.", source: "Q3 2025 earnings release", date: "Nov 2025", implication: "Frame agentic collections and support as protecting the profitability narrative: lending can scale without collections and support opex scaling with it.", kind: "fact" },
+      { signal: "Fintech disclosures emphasize rapid loan-book growth, implying collections capacity and conduct exposure will compound as a cost and risk line.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Anchor the pilot on cost per cured account and conduct evidence before the book doubles again.", kind: "inference" },
     ],
   },
   {
@@ -139,6 +104,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Cloud and data-residency policy for customer-facing AI at a state-linked bank",
       "Incumbent CCaaS/IVR vendor and contract renewal timing for the 14000 center",
       "Collections outsourcing mix and OJK audit findings, if any",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Livin' proves genuine internal digital delivery, but Mandiri's build strength is app experiences on top of core banking — not speech infrastructure, agentic contact-center AI, or conduct-governed outbound at scale; it will buy industry workflows with deep integration support.",
+    whyNotBuild: "A state-linked bank's engineering agenda is consumed by core modernization and superapp roadmaps; building voice AI, OJK conduct tooling, and evaluation infrastructure in-house has no strategic payoff versus partnering, and procurement governance favors accountable vendors.",
+    existing: {
+      has: ["Livin' by Mandiri superapp with tens of millions of users", "Kopra wholesale digital platform", "14000 contact center and national branch network"],
+      gaps: ["In-conversation completion of servicing actions beyond app self-service", "Cross-channel context between app, call center, and branch", "Bahasa voice automation beyond IVR trees", "Proactive collections and wealth outreach at coverage scale"],
+    },
+    earningsSignals: [
+      { signal: "State-linked bank investor communications consistently emphasize digital-channel transaction growth and efficiency ratios, implying servicing cost per Livin' user is a watched metric as cohorts scale.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Position deflection-with-actions as bending the cost-to-income curve as Livin' adoption compounds.", kind: "inference" },
     ],
   },
   {
@@ -187,6 +162,17 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Regional-language priorities beyond Javanese and Sundanese",
       "Current mantri cost-per-visit benchmark to anchor the business case",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "BRI's scale and stated hybrid-bank strategy — digital reach combined with human touch through mantri and AgenBRILink — make it a capability buyer with strong integration muscle; it partners for platforms while owning distribution, as its existing digital stack shows.",
+    whyNotBuild: "BRI's differentiation is physical-plus-digital distribution into segments no one else serves profitably, not conversational AI infrastructure; building archipelago-language voice, conduct tooling, and evaluation stacks in-house would divert from the micro-franchise focus that drives its equity story.",
+    existing: {
+      has: ["BRImo mobile banking with tens of millions of users", "BRISPOT loan-officer tooling and the AgenBRILink agent network", "Sabrina virtual assistant for basic queries"],
+      gaps: ["Conversational collections coverage before field-collector visits", "Regional-language voice quality (Javanese, Sundanese, and beyond)", "Proactive repayment reminders and onboarding outreach at book scale", "Unified context across mantri, branch, and phone channels"],
+    },
+    earningsSignals: [
+      { signal: "Micro remains the dominant loan segment (roughly 44% of the book) while management has publicly flagged micro asset-quality pressure and elevated cost of credit, deliberately slowing micro growth to protect quality.", source: "Q3 2025 earnings materials", date: "Oct 2025", implication: "Lead with early-bucket cure economics: conversational reminders directly attack the micro NPL and cost-of-credit pressure management is guiding the market on.", kind: "fact" },
+      { signal: "Hybrid-bank commentary implies mantri productivity is a managed KPI as coverage expectations grow faster than field headcount.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Sell field-force leverage: software takes the first three touches, mantri concentrate on genuine non-response.", kind: "inference" },
+    ],
   },
   {
     slug: "bank-central-asia",
@@ -232,6 +218,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Current VIRA/chatbot stack, vendor, and containment ceiling",
       "BCA's cloud posture and appetite for customer-facing GenAI",
       "Which servicing intents Halo BCA leadership considers automatable without brand risk",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "BCA's culture is service quality and operational conservatism; it adopts proven technology through partners — as the VIRA assistant shows — rather than building platform infrastructure, and a quality-evidence-led partner motion matches how it makes decisions.",
+    whyNotBuild: "BCA's moat is trust and service consistency, not AI engineering; an in-house voice-AI build would put the brand on unproven internal tooling, whereas a governed partner platform lets it hold quality accountable contractually and roll back cleanly.",
+    existing: {
+      has: ["Halo BCA multichannel contact center", "VIRA virtual assistant", "myBCA and BCA mobile apps"],
+      gaps: ["In-conversation execution (card blocks, disputes, limits) beyond FAQ deflection", "24/7 voice-grade automation at the Halo BCA quality bar", "Cross-channel context continuity between app, chat, and voice", "100% interaction quality telemetry versus sampled QA"],
+    },
+    earningsSignals: [
+      { signal: "Investor materials consistently emphasize transaction-banking franchise growth and best-in-class cost discipline, implying servicing volume compounds with every digital cohort while the quality bar stays fixed.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Lead with quality evidence — 100% scoring against the human benchmark — and let the cost case follow; a cost-first pitch will stall in this culture.", kind: "inference" },
     ],
   },
   {
@@ -280,6 +276,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Veronika's current platform, vendor, and containment metrics",
       "IndiHome field-service system APIs for appointment writeback",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Telkom Group has engineering depth in network and app platforms, and Veronika shows conversational ambition — but execution-grade voice AI, agentic actions over charging systems, and multilingual speech are capabilities it has historically sourced from partners rather than built.",
+    whyNotBuild: "Prepaid economics punish slow internal builds: the cost problem compounds monthly, and Telkomsel's differentiation is network and distribution, not speech infrastructure — buying industry workflows on a governed platform is faster and easier to defend to the state parent.",
+    existing: {
+      has: ["MyTelkomsel app", "Veronika virtual assistant", "GraPARI physical service centers", "IndiHome service operations and field force"],
+      gaps: ["Voice-grade automation with in-channel payment completion", "Unified fixed-mobile context after the IndiHome merger", "Regional-language voice quality across the archipelago", "Proactive retention outreach and appointment management"],
+    },
+    earningsSignals: [
+      { signal: "Telkom Group reporting emphasizes fixed-mobile convergence synergies and data-revenue growth, implying serve-cost per subscriber is central to the merged Telkomsel–IndiHome investment story.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Quantify cost-per-contact versus prepaid ARPU and truck-roll avoidance — the two lines FMC synergy math is watched on.", kind: "inference" },
+    ],
   },
   {
     slug: "indosat-ooredoo-hutchison",
@@ -327,6 +333,17 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Churn-model maturity and campaign-engine APIs for real-time triggers",
       "Incumbent care chatbot vendor and contract status",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Indosat has the loudest AI ambitions in the market — a declared 'AI TechCo' strategy, sovereign-AI infrastructure initiatives with global partners, and a public Google Cloud partnership — but its build energy targets AI infrastructure and national platforms, not customer-workflow applications; partner-led with strong co-marketing potential.",
+    whyNotBuild: "The AI-first narrative needs visible customer-facing proof faster than an internal application build can deliver; Indosat's differentiation play is AI infrastructure and distribution, so a partner-delivered agentic frontline is complementary to its build agenda, not competitive with it.",
+    existing: {
+      has: ["myIM3 and bima+ apps", "Existing care chatbots across IM3 and Tri", "Publicly announced AI-infrastructure and sovereign-AI initiatives"],
+      gaps: ["Execution-grade customer-facing agentic workflows", "Reason-aware retention conversations beyond blast campaigns", "Voice automation over charging systems with in-channel payment", "Attributed save-rate measurement against holdouts"],
+    },
+    earningsSignals: [
+      { signal: "Leadership has publicly committed to an AI TechCo strategy — including sovereign-AI infrastructure initiatives with global AI partners and local-language AI ambitions — alongside double-digit profit growth in FY2025.", source: "FY2025 results commentary and public strategy announcements", date: "Feb 2026", implication: "Sell the customer-facing proof point: an agentic frontline makes the AI-first story visible to ~100M subscribers, built on the Google Cloud relationship already announced.", kind: "fact" },
+      { signal: "Modest revenue growth against stronger profit growth implies efficiency, not headcount, must fund the AI ambition.", source: "recent investor communications (validate)", date: "2026", implication: "Frame serve-cost reduction as self-funding the AI narrative — the pilot pays for the story.", kind: "inference" },
+    ],
   },
   {
     slug: "xlsmart",
@@ -372,6 +389,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Which legacy care stack (XL or Smartfren) survives, and its API readiness",
       "Migration calendar and the regions with the highest churn exposure",
       "Existing BPO contracts' terms and exit windows",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "A freshly merged operator mid-integration has no engineering bandwidth for a conversational-AI build — network and stack consolidation consume the roadmap; XLSmart will buy outcomes that defend the synergy case it reports to shareholders.",
+    whyNotBuild: "Building during integration would put an internal platform project on the critical path of merger synergies; a partner layer above three legacy care stacks delivers a unified frontline now and keeps stack consolidation a backend decision instead of a customer-facing risk.",
+    existing: {
+      has: ["myXL and Smartfren apps across legacy brands", "Separate legacy care stacks, IVRs, and BPO desks per brand"],
+      gaps: ["A unified conversation layer across XL, Axis, and Smartfren", "Two-way, subscriber-specific migration communications", "Port-out save intervention at signal speed", "Consistent conduct policy and logging across all three brands"],
+    },
+    earningsSignals: [
+      { signal: "Post-merger communications emphasize integration milestones and synergy delivery, implying opex-per-subscriber and churn-versus-plan are the metrics leadership is judged on quarter to quarter.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Sell into the synergy bridge: consumption-priced conversations replacing duplicated BPO contracts is a reportable synergy line item.", kind: "inference" },
     ],
   },
   {
@@ -419,6 +446,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Airline feed latency for disruption detection",
       "Cloud platform posture for customer-facing AI workloads",
     ],
+    buildVsBuy: "co-build",
+    buildVsBuyWhy: "A digital-native OTA with strong internal engineering that builds its own booking, payments, and app platforms — Traveloka will want to own the customer-journey and orchestration layer; the sale is models, voice infrastructure, and governance capabilities it will not build itself.",
+    whyNotBuild: "Multilingual voice quality, telephony, OJK-compliant collections tooling, and evaluation infrastructure sit outside its product focus; the co-build line is clear — Traveloka owns journeys and experience, the platform supplies speech, grounding, and conduct tooling underneath.",
+    existing: {
+      has: ["Traveloka app with in-app support and chatbot deflection", "Multi-market CX operations across SEA", "PayLater lending operations"],
+      gaps: ["Voice-grade disruption handling at spike scale", "Proactive refund-status communications across supplier pipelines", "OJK-conduct-evidenced PayLater outreach", "Consistent multilingual voice quality across SEA markets"],
+    },
+    earningsSignals: [
+      { signal: "OTA investor narratives across SEA emphasize path-to-profitability and take-rate discipline, implying spiky service costs are a scrutinized line for Traveloka's stakeholders.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Frame disruption automation as capping worst-month service cost — variable conversational capacity matched to variable demand.", kind: "inference" },
+    ],
   },
   {
     slug: "bukalapak",
@@ -462,6 +499,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
     validate: [
       "Post-pivot support volumes and current cost per Mitra contact",
       "Virtual-product partner APIs available for real-time status grounding",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Post-pivot Bukalapak retains competent engineering, but the profitability mandate rules out platform side-builds; it will buy a tightly scoped Mitra-support outcome at predictable cost from a partner it can hold to pilot metrics.",
+    whyNotBuild: "Every engineering sprint now serves the virtual-products P&L; voice-AI infrastructure is exactly the kind of non-core build the pivot was executed to eliminate.",
+    existing: {
+      has: ["Mitra Bukalapak app", "Hotline and chat support queues"],
+      gaps: ["Real-time transaction-status grounding across virtual-product partners", "Voice and WhatsApp support in regional languages", "Proactive settlement notifications", "Support-cost-per-active-Mitra instrumentation"],
+    },
+    earningsSignals: [
+      { signal: "The exit from physical-goods e-commerce was framed to investors as a profitability move, implying cost per active Mitra and contribution margin are under standing scrutiny.", source: "recent investor communications (validate)", date: "2025", implication: "A fixed-price Launch pilot with consumption usage matches the cost-discipline mandate exactly — no platform commitment required.", kind: "inference" },
     ],
   },
   {
@@ -510,6 +557,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Partner-hospital scheduling APIs available for booking writeback",
       "Current no-show baseline and support cost per consultation",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Strong product engineering on a publicly documented Google Cloud footprint, but clinical-governance caution and mid-size scale make building conversational-AI infrastructure unattractive — Halodoc will partner for guardrailed automation with contractual accountability.",
+    whyNotBuild: "Halodoc's engineering premium goes to clinical product and hospital/insurance integrations; speech infrastructure, guardrail evaluation, and conversation logging are faster and safer to buy, with vendor quality commitments it can reference in Kemenkes conversations.",
+    existing: {
+      has: ["Halodoc app spanning teleconsult, pharmacy delivery, and appointments", "In-app support and FAQ deflection"],
+      gaps: ["Non-clinical conversation automation with hard clinical routing", "Voice-based booking, reminders, and reschedules", "Proactive pharmacy order-status outreach", "In-flow insurance eligibility answers"],
+    },
+    earningsSignals: [
+      { signal: "Digital-health investors regionally have shifted focus to unit economics, suggesting support cost per consultation and no-show rates matter to Halodoc's path to profitability.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Anchor the pilot on no-show reduction against specialist slot value — a revenue metric, not just a cost metric.", kind: "hypothesis" },
+    ],
   },
   {
     slug: "ruangguru",
@@ -554,6 +611,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
     validate: [
       "Current speed-to-lead and conversion baselines by product line",
       "Tele-sales team size and cost structure for the business case",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Ruangguru has genuine internal AI capability in its learning products (AI-assisted tutoring features), but its growth engine is tele-sales — a commercial function it will augment with bought automation rather than divert product engineers to.",
+    whyNotBuild: "Product AI (tutoring) and revenue-ops AI (enrollment conversations over CRM and calendars) are different builds; the latter is undifferentiated for an edtech and competes with core product for the same scarce engineers.",
+    existing: {
+      has: ["Ruangguru app with AI-assisted learning features", "Large tele-sales and education-consultant operations", "WhatsApp-based lead follow-up"],
+      gaps: ["Minutes-fast off-hours lead response", "Rubric-based conversational qualification at surge scale", "In-thread renewal and failed-payment recovery", "Season-over-season funnel instrumentation"],
+    },
+    earningsSignals: [
+      { signal: "Post-pandemic edtech normalization has pressured cost per enrollment across the sector, and sales-led models feel it first.", source: "recent investor communications (validate)", date: "2025–2026", implication: "A/B the agentic funnel against tele-sales on cost per enrollment within one season — a bounded, self-proving pilot.", kind: "hypothesis" },
     ],
   },
   {
@@ -600,6 +667,75 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "PSS/reservation-system API access for rebooking writeback",
       "Which brand's operation is the most receptive first deployment",
       "Current call-center and airport-counter cost baselines on IROPS days",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "An ultra-cost-focused, operations-led airline group with no consumer-software engineering tradition — it buys its systems (PSS, ops tools) from vendors and will buy service automation the same way.",
+    whyNotBuild: "LCC margins fund aircraft, not software teams; there is no internal platform organization to build conversational AI, and the standards push behind IATA membership favors proven vendor solutions with clear accountability.",
+    existing: {
+      has: ["Brand websites and booking apps across four carriers", "Call centers and airport counters", "Basic one-way SMS notifications"],
+      gaps: ["Proactive in-channel disruption rebooking", "Customer-visible refund and reschedule status", "Digital baggage-claim intake and tracking", "Plain-Bahasa guidance for first-time flyers"],
+    },
+    earningsSignals: [
+      { signal: "IATA membership in 2025 and large seasonal operations such as Hajj charter programs signal an operational-standards push pursued under strict cost constraints.", source: "public operational announcements (validate)", date: "2025", implication: "Position disruption communications as a standards upgrade that reduces cost — aligned with the IATA-era posture rather than a discretionary CX spend.", kind: "inference" },
+    ],
+  },
+  {
+    slug: "astra-international",
+    name: "Astra International",
+    market: "Indonesia",
+    vertical: "Conglomerate / auto & consumer finance",
+    tier: 1,
+    tierWhy: "Indonesia's largest conglomerate: Toyota and Daihatsu distribution, national dealer networks, and consumer-finance arms FIFGROUP and Astra Credit Companies with millions of financing contracts — dealer support and financing collections at national scale, with a clearly buy-led technology posture.",
+    heroHeadline: "One governed voice layer for the Astra ecosystem — millions of financing contracts, thousands of dealer touchpoints, one conversation standard",
+    proposition: "Astra's financing arms collect on millions of small-ticket auto and motorcycle installments through expensive field channels, while its dealer networks field service-booking and parts conversations on branch phones; a packaged agentic layer covers both at costs the tickets can carry, with OJK-grade conduct evidence across every arm.",
+    entryWorkflow: "FIFGROUP / ACC early-bucket financing collections",
+    outcome: "Full early-bucket conversational coverage across two-wheeler and four-wheeler books, with fewer field-collector visits per cured account and complete conduct logs",
+    packageRec: "transform",
+    packageWhy: "Multiple financing entities (FIFGROUP, ACC), dealer networks (Auto2000 and peers), and lead-management workflows span several operating companies — a phased multi-BU transform engagement matches how Astra rolls out group initiatives.",
+    understand: [
+      { text: "Astra International is Indonesia's largest conglomerate (part of the Jardine group), spanning automotive distribution and manufacturing partnerships (Toyota, Daihatsu, and motorcycles through Astra Honda Motor), financial services, heavy equipment, agribusiness, and infrastructure.", kind: "verified" },
+      { text: "Its consumer-finance arms — FIFGROUP (motorcycle and multipurpose financing) and Astra Credit Companies (car financing) — are among Indonesia's largest financing companies, serving millions of contracts nationwide.", kind: "verified" },
+      { text: "FY2025 group net income was about Rp32.8 trillion, slightly below the prior year, with car market share easing to around 53% in a weak national market while financial services stayed resilient.", kind: "verified" },
+      { text: "Financing collections at national scale still lean on field collectors and dealer touchpoints — the most expensive channels for small-ticket motorcycle installments.", kind: "inference" },
+      { text: "Dealer networks generate constant service-booking, parts, trade-in, and delivery-status conversations that queue on branch phone lines during working hours.", kind: "inference" },
+      { text: "Group digital initiatives exist (Astra Financial's Moxa app and others), but conversational AI at the financing and dealer edge remains unclaimed partner territory.", kind: "hypothesis" },
+    ],
+    workflows: [
+      { name: "FIFGROUP / ACC collections & pre-delinquency", why: "Financing spreads are a resilient earnings pillar; early-bucket cure rates and collection cost per account move it directly.", friction: "Field-collector visits and manual phone outreach; coverage is capacity-limited and conduct evidence is sampled at best.", outcome: "Every due account touched conversationally within OJK windows before any field dispatch, with promises-to-pay written back and fully logged.", channels: ["Voice", "WhatsApp", "SMS"], systems: ["Loan management systems (FIFGROUP/ACC)", "Payment gateway", "CRM"], value: 3, complexity: 2, speed: 3 },
+      { name: "Dealer network service booking & support", why: "After-sales service absorbs dealer capacity and drives loyalty economics across Auto2000 and peer networks.", friction: "Branch phones handle booking, reschedules, parts, and status queries during working hours only.", outcome: "24/7 conversational service booking, proactive reminders, and parts/status answers grounded in dealer systems.", channels: ["WhatsApp", "Voice"], systems: ["Dealer management system", "Service scheduling", "Parts inventory"], value: 3, complexity: 2, speed: 2 },
+      { name: "Financing lead follow-up & trade-in conversations", why: "A soft car market makes every showroom lead and trade-in inquiry more valuable to convert.", friction: "Leads route to branch staff and decay overnight; trade-in valuations require callbacks.", outcome: "Minutes-fast qualification, financing pre-checks within policy, and booked showroom appointments.", channels: ["WhatsApp", "Voice", "Web"], systems: ["CRM", "Credit-scoring gateway", "Dealer calendars"], value: 2, complexity: 2, speed: 3 },
+    ],
+    languages: ["Bahasa Indonesia", "Javanese", "Sundanese", "English"],
+    flowTemplate: "collections",
+    scenario: "A FIFGROUP motorcycle borrower in East Java, two days past due, gets a policy-timed call in Javanese, agrees a promise-to-pay from the approved matrix, and the field collector's visit is cancelled before it is scheduled.",
+    volumeMonthly: 4000000,
+    costPerInteraction: 0.8,
+    personas: [
+      { role: "CEO", message: "Astra's franchise is distribution and financing at national scale. An agentic layer makes both cheaper to operate in a soft market — collections coverage and dealer service that scale without headcount." },
+      { role: "CIO / CTO", message: "One governed conversation platform can serve FIFGROUP, ACC, and the dealer networks with per-entity policy and logging — a group standard instead of a dozen point solutions." },
+      { role: "COO", message: "Field-collector visits and branch phone queues are your two costliest service channels; conversational first touches reserve both for the cases that genuinely need them." },
+      { role: "Head of Astra Financial", message: "Early-bucket cure rate is the cheapest lever on financing NPL. 100% day-1 conversational coverage in the borrower's own language moves it — at cents per touch, not the cost of a field visit." },
+      { role: "Chief Risk / Compliance Officer", message: "OJK conduct windows, approved offer matrices, and complete recordings are enforced in software across every financing entity — stronger, more uniform evidence than distributed field operations produce today." },
+      { role: "CFO / Procurement", message: "Model it as cost per cured account and cost per booked service slot; fixed implementation packages and consumption pricing let each operating company see its own P&L effect before group rollout." },
+    ],
+    nextStep: "Workshop with Astra Financial collections leadership: baseline field-visit cost per cured account at FIFGROUP and scope a two-region early-bucket pilot.",
+    scores: { volume: 5, costSensitivity: 4, language: 4, ccIntensity: 4, gcpRelevance: 2, urgency: 3, feasibility: 4, speed: 3, expansion: 5 },
+    validate: [
+      "Collections mix (in-house field, phone, third-party) and cost per cured account at FIFGROUP and ACC",
+      "Loan-system API readiness for promise-to-pay writeback across financing entities",
+      "Dealer management system landscape across Auto2000 and peer networks",
+      "Group data-governance posture for customer-facing AI",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "A distribution-and-finance conglomerate whose operating companies buy operational technology; there is no group-level consumer-AI platform organization, and each arm (FIFGROUP, ACC, Auto2000) procures vendor solutions — a packaged, governed platform matches how Astra buys.",
+    whyNotBuild: "Astra's economics come from distribution scale and financing spreads, not software; building voice AI across dozens of operating companies would require a central platform team it has never maintained, while a bought solution standardizes conduct and quality across arms immediately.",
+    existing: {
+      has: ["FIFGROUP and ACC customer apps and hotlines", "Moxa app (Astra Financial's digital financing platform)", "Auto2000 and dealer-network booking channels", "Field-collector operations across financing arms"],
+      gaps: ["Conversational collections coverage before field dispatch", "OJK conduct evidence at 100% coverage across financing entities", "Cross-arm customer context from purchase to financing to service", "Regional-language voice quality at national scale"],
+    },
+    earningsSignals: [
+      { signal: "FY2025 net income was about Rp32.8 trillion, roughly 3% lower year-on-year, with car market share easing to around 53% in a weak national market while financial services remained a resilient earnings contributor.", source: "FY2025 results announcement", date: "Feb 2026", implication: "With auto demand soft, financing quality and dealer-network economics carry the group — collections efficiency and dealer support are the aligned entry points.", kind: "fact" },
+      { signal: "Weak national car sales pressure dealer throughput and trade-in economics across the network.", source: "recent investor communications (validate)", date: "2026", implication: "Frame dealer-support automation as defending network profitability through the down-cycle rather than as discretionary CX spend.", kind: "inference" },
     ],
   },
   // ── PHILIPPINES ───────────────────────────────────────────────────────────
@@ -648,6 +784,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "BSP examination findings or commitments touching collections conduct",
       "Fuse lending-platform API readiness for offer and PTP writeback",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Mynt has strong product engineering for wallet and lending, but IPO scrutiny rewards proven, governed vendor solutions for conduct-sensitive workflows over multi-year internal builds; partner-led with deep systems integration is the realistic motion.",
+    whyNotBuild: "Pre-IPO, engineering focus is product velocity and platform stability; building voice AI, Taglish speech quality, and BSP conduct tooling in-house adds execution risk exactly when the listing story punishes it most.",
+    existing: {
+      has: ["GCash app with in-app help center", "GIGI chatbot for customer support", "Dialer and BPO collections operations for GLoan/GGives"],
+      gaps: ["Voice-grade Taglish automation with in-wallet payment completion", "100% conduct-evidenced collections coverage", "Minutes-fast scam and account-takeover triage", "Dedicated merchant support flows outside consumer queues"],
+    },
+    earningsSignals: [
+      { signal: "Parent Mynt's widely reported IPO preparations place unit economics, governance, and service quality under public-market scrutiny, with lending disclosed as the profit engine.", source: "widely reported IPO filings and investor coverage (validate current status)", date: "2025–2026", implication: "Sell audit-grade conduct evidence and variable-cost service as IPO-readiness infrastructure, not just opex savings.", kind: "inference" },
+    ],
   },
   {
     slug: "unionbank-philippines",
@@ -693,6 +839,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Post-migration servicing pain points and repeat-contact hotspots",
       "Cloud posture and existing conversational-AI vendors",
       "UnionDigital onboarding funnel metrics and drop-off points",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "The Philippines' most tech-forward bank has real engineering and unusual API maturity, but its pattern is early adoption of partner platforms it can showcase — partner-led with a co-innovation narrative fits both its capability and its brand.",
+    whyNotBuild: "Post-Citi-migration priorities are stability and service perception; an in-house conversational-AI infrastructure build would repeat the migration lesson, while a governed partner platform lets the innovation brand ship a visible first quickly and safely.",
+    existing: {
+      has: ["UnionBank Online app", "UnionDigital digital bank", "Existing chatbot deflection on digital channels"],
+      gaps: ["In-conversation card servicing actions (limits, installments, disputes)", "Live KYC document validation in onboarding", "BSP-conduct-evidenced collections coverage", "Post-migration repeat-contact suppression"],
+    },
+    earningsSignals: [
+      { signal: "Post-acquisition results commentary has centered on integrating the Citi consumer book and restoring service metrics after publicly visible migration friction.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Pitch card-servicing automation as migration repair the market can see — in complaint volumes, repeat-call rates, and CSAT — not as a novelty project.", kind: "inference" },
     ],
   },
   {
@@ -740,6 +896,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Remittance-platform API availability for status grounding",
       "Which servicing intents the bank will permit for bounded automation first",
     ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "A conservative, scale-led market leader whose technology posture is vendor-based core and channel systems; BDO has no appetite to build AI platforms and will buy proven, risk-contained solutions in deliberate stages.",
+    whyNotBuild: "BDO's strength is distribution and balance-sheet scale, not software engineering; a staged vendor deployment with contractual accountability matches its risk culture and its posture with the BSP far better than any internal build.",
+    existing: {
+      has: ["BDO Online and mobile apps", "1,600+ branch network and call centers", "Remittance services marketed across OFW corridors"],
+      gaps: ["24/7 servicing across OFW time zones", "In-conversation card and account actions", "Instant remittance-status answers without agent lookup", "Minutes-fast suspected-fraud triage"],
+    },
+    earningsSignals: [
+      { signal: "Philippine bank results commentary emphasizes consumer-lending growth and digital-channel adoption, implying servicing scale and fraud response are rising cost and trust lines for the market leader.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Lead with a read-only, risk-contained pilot (remittance status) that proves control before proposing any action automation — sequencing is the sale at BDO.", kind: "inference" },
+    ],
   },
   {
     slug: "globe-telecom",
@@ -785,6 +951,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Incumbent chatbot/CCaaS vendors and contract windows",
       "Charging-system API readiness for in-channel load completion",
       "Whether GCash payment rails can be used in-conversation for load",
+    ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "Globe has digital ambition and the Mynt ecosystem in the family, but its engineering investment flows to GCash and the network — customer-care automation is a workflow it has historically sourced from partners, as its chatbot history shows.",
+    whyNotBuild: "Group capital allocation favors the fintech ecosystem; building voice AI for telco care would compete with GCash for scarce engineering, while a partner platform can integrate with GlobeOne, charging systems, and GCash rails now.",
+    existing: {
+      has: ["GlobeOne app", "Existing care chatbots", "GFiber service operations and field force", "GCash payment rails within the group"],
+      gaps: ["Voice-grade load and promo completion in Taglish and Cebuano", "Proactive storm-time outage communications", "Field-appointment management with pre-visit triage", "Reason-aware retention beyond blast SMS"],
+    },
+    earningsSignals: [
+      { signal: "Globe's investor communications emphasize capex moderation and non-telco growth via the Mynt ecosystem, implying core-telco opex efficiency funds the portfolio story.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Frame care automation as structural opex release that the portfolio narrative depends on — serve-cost per prepaid subscriber is the headline number.", kind: "inference" },
     ],
   },
   {
@@ -832,6 +1008,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Current dispatch volumes and the share resolvable remotely",
       "Cloud posture and incumbent CX vendors across Home and Smart",
     ],
+    buildVsBuy: "partner-led",
+    buildVsBuyWhy: "The incumbent runs a large IT estate but sources platforms from vendors; with capex under publicly stated discipline, a consumption-priced partner solution fits the declared financial posture far better than any internal platform build.",
+    whyNotBuild: "Legacy-stack complexity would make an internal build slow and risky, and management's deleveraging and free-cash-flow commitments leave no room for speculative platform engineering — buying outcomes above existing systems is the aligned move.",
+    existing: {
+      has: ["myPLDT Home and Smart apps", "Existing hotlines and chatbot deflection", "Field-service operations for the fiber estate"],
+      gaps: ["Conversational fiber triage before technician dispatch", "Area-specific proactive outage and restoration updates", "In-channel load and promo completion for Smart prepaid", "Cross-brand context between Home and Smart"],
+    },
+    earningsSignals: [
+      { signal: "FY2025 capex fell to about PHP60 billion from PHP78 billion the prior year, with management guiding continued capex discipline, deleveraging, and positive free cash flow into 2026.", source: "FY2025 earnings call", date: "Feb 2026", implication: "Sell opex reduction with no capex profile: consumption-priced conversations and avoided truck rolls drop straight into the free-cash-flow story management has committed to.", kind: "fact" },
+    ],
   },
   {
     slug: "cebu-pacific",
@@ -877,6 +1063,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "PSS API access for in-channel rebooking confirmation",
       "Travel-fund system integration readiness",
       "Current disruption-day contact volumes and BPO surge costs",
+    ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "A ULCC with a disciplined cost culture and no consumer-AI engineering organization; it buys fleet, systems, and services from vendors — service automation will be bought as a measurable outcome, not built.",
+    whyNotBuild: "Every peso of engineering ambition goes to operations and fleet economics; conversational AI is a vendor category for an airline this lean, and speed to deployment matters ahead of each typhoon season.",
+    existing: {
+      has: ["Cebu Pacific app and website self-service", "Charlie chatbot for basic queries", "Travel-fund ledger and refund workflows", "Viber and social-media care channels"],
+      gaps: ["In-channel disruption rebooking at spike scale", "Live refund and travel-fund status without agent lookup", "Surge-elastic support during piso-sale events", "Taglish and Cebuano voice coverage"],
+    },
+    earningsSignals: [
+      { signal: "Record ~27M passengers in 2025 (up around 10%) with net income more than doubling, and a firm order for 70 A321neos committing to sustained capacity growth.", source: "FY2025 results and fleet announcements", date: "Jan–Feb 2026", implication: "Passenger growth is contractually committed via the order book while service capacity is not — sell elasticity so growth does not degrade disruption CX or ULCC unit costs.", kind: "fact" },
     ],
   },
   {
@@ -924,6 +1120,16 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Current delivery-complaint volumes and resolution SLAs by brand",
       "Franchisee support model and where the helpdesk should sit organizationally",
     ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "A food company, not a software company: JFC's technology is bought (POS, ordering apps, delivery integrations), and its global multi-brand footprint favors a vendor platform it can roll out market by market with per-brand policy.",
+    whyNotBuild: "JFC's capital and management attention go to store expansion and brand acquisitions; building conversational AI in-house has no strategic logic when the differentiator is food, brand, and franchise economics.",
+    existing: {
+      has: ["Jollibee app and brand ordering apps", "Aggregator delivery channels", "Hotlines and social-media care teams"],
+      gaps: ["In-channel delivery recovery with policy-bounded refunds", "24/7 franchisee operational helpdesk", "Rider and order-status transparency for customers", "Multi-brand, multi-market conversation governance"],
+    },
+    earningsSignals: [
+      { signal: "JFC's investor communications emphasize aggressive global store growth and margin management, implying support and hiring workflows must scale sub-linearly with store count.", source: "recent investor communications (validate)", date: "2025–2026", implication: "Pitch per-store economics: one platform absorbing delivery recovery, franchisee support, and crew hiring across brands beats per-market point solutions.", kind: "inference" },
+    ],
   },
   {
     slug: "meralco",
@@ -970,5 +1176,27 @@ export const ACCOUNTS_ID_PH: Account[] = [
       "Regulated-procurement path and pilot approval timeline",
       "Current storm-event contact volumes and hotline capacity",
     ],
+    buildVsBuy: "buy-led",
+    buildVsBuyWhy: "A regulated utility procures technology through formal vendor processes and has no internal AI platform organization; it will buy a proven, contained solution with regulatory-grade logging and contractual accountability.",
+    whyNotBuild: "Utility engineering centers on grid, metering, and outage systems; conversational AI is a procurement category, and ERC-facing accountability favors contractual vendor commitments over internal experiments.",
+    existing: {
+      has: ["Meralco Mobile app and online portal", "Hotlines and social-media care", "Outage-management systems"],
+      gaps: ["Proactive area-specific restoration updates at storm scale", "Account-grounded bill explanations", "Policy-bounded payment arrangements completed in-conversation", "Elastic capacity for storm-surge inbound"],
+    },
+    earningsSignals: [
+      { signal: "Rate-adjustment cycles reliably spike billing inquiries and complaint volumes across the franchise area.", source: "public rate filings and consumer coverage (validate)", date: "2025–2026", implication: "Time the pilot to land before the next rate adjustment or typhoon peak, when the before/after contact-volume contrast is starkest.", kind: "hypothesis" },
+    ],
+  },
+];
+
+export const EXCLUDED_ID_PH: ExcludedAccount[] = [
+  {
+    name: "Tokopedia",
+    market: "Indonesia",
+    vertical: "eCommerce marketplace",
+    classification: "build-led",
+    rationale: "Post-TikTok Shop integration, platform technology direction is increasingly ByteDance-led: CX tooling, seller systems, and automation converge on TikTok's global in-house stack, and Jakarta-side decision rights over third-party AI platforms are unclear at best — a long, low-probability sales motion despite strong workflow fit.",
+    evidence: "TikTok acquired 75.01% of PT Tokopedia in 2024 and combined TikTok Shop Indonesia's operations under the entity; ByteDance operates one of the world's largest in-house AI engineering organizations and builds its own commerce, recommendation, and support automation globally, making external agentic platforms structurally unlikely to be adopted.",
+    pursueOnlyIf: "A Jakarta-owned workflow emerges with clear local decision rights and a gap ByteDance tooling does not cover — for example Bahasa-language voice collections for a locally regulated financial product, or a regulator-driven requirement for in-country governed AI.",
   },
 ];

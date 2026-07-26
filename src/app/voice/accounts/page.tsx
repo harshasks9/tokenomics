@@ -6,8 +6,8 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Search, TriangleAlert } from "lucide-react";
 import { PALETTE, fmtMoney, fmtNum } from "../data";
-import { ALL_ACCOUNTS, businessValueScore, readinessScore } from "./index";
-import { MARKET_META, PACKAGES, UNIVERSE_DISCLAIMER, type Account } from "./shared";
+import { ALL_ACCOUNTS, ALL_EXCLUDED, businessValueScore, readinessScore } from "./index";
+import { BVB_META, MARKET_META, PACKAGES, UNIVERSE_DISCLAIMER, type Account, type BuildVsBuy } from "./shared";
 
 const TIER_COLORS: Record<number, string> = { 1: "#188038", 2: "#D97706", 3: "#5F6368" };
 
@@ -24,7 +24,9 @@ function StatTile({ label, value, sub }: { label: string; value: string; sub?: s
 export default function AccountsDashboard() {
   const [market, setMarket] = useState<string>("all");
   const [tier, setTier] = useState<number>(0);
+  const [bvb, setBvb] = useState<string>("all");
   const [q, setQ] = useState("");
+  const [showEvidence, setShowEvidence] = useState(false);
 
   const accounts = ALL_ACCOUNTS;
   const filtered = useMemo(
@@ -33,10 +35,17 @@ export default function AccountsDashboard() {
         (a) =>
           (market === "all" || a.market === market) &&
           (tier === 0 || a.tier === tier) &&
+          (bvb === "all" || a.buildVsBuy === bvb) &&
           (q === "" || a.name.toLowerCase().includes(q.toLowerCase()) || a.vertical.toLowerCase().includes(q.toLowerCase())),
       ),
-    [accounts, market, tier, q],
+    [accounts, market, tier, bvb, q],
   );
+
+  const bvbMix = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const a of accounts) m[a.buildVsBuy] = (m[a.buildVsBuy] ?? 0) + 1;
+    return m;
+  }, [accounts]);
 
   const stats = useMemo(() => {
     const byMarket: Record<string, number> = {};
@@ -86,8 +95,8 @@ export default function AccountsDashboard() {
           <StatTile label="Implementation pipeline" value={fmtMoney(stats.implRevenue)} sub="if every account lands its package" />
           <StatTile label="Package mix" value={`${stats.byPackage.launch}/${stats.byPackage.scale}/${stats.byPackage.transform}`} sub="Launch / Scale / Transform" />
           <StatTile label="Avg channels / account" value={stats.avgChannels.toFixed(1)} sub="across recommended workflows" />
-          <StatTile label="Markets" value={`${Object.keys(stats.byMarket).length}`} sub="India-led, SEA-heavy" />
-          <StatTile label="Avg time to pilot" value="8–12 wks" sub="Launch/Scale packages" />
+          <StatTile label="Build-vs-buy mix" value={`${bvbMix["buy-led"] ?? 0}/${bvbMix["partner-led"] ?? 0}/${bvbMix["co-build"] ?? 0}`} sub="Buy-led / Partner-led / Co-build" />
+          <StatTile label="Deprioritized builders" value={`${ALL_EXCLUDED.length}`} sub="excluded with evidence — see selection logic" />
         </div>
 
         {/* Matrix + package rationale */}
@@ -172,6 +181,14 @@ export default function AccountsDashboard() {
               {t === 0 ? "All tiers" : `Tier ${t}`}
             </button>
           ))}
+          <span className="w-px h-5 bg-[#233047]" />
+          <button onClick={() => setBvb("all")} className={`text-[11px] font-semibold rounded-full px-3 py-1.5 border ${bvb === "all" ? "bg-white text-[#0B1220] border-transparent" : "border-[#233047] text-[#9AA0A6] hover:text-white"}`}>All models</button>
+          {(Object.keys(BVB_META) as BuildVsBuy[]).filter((k) => k !== "build-led").map((k) => (
+            <button key={k} onClick={() => setBvb(k)} className={`text-[11px] font-semibold rounded-full px-3 py-1.5 border ${bvb === k ? "text-white border-transparent" : "border-[#233047] text-[#9AA0A6] hover:text-white"}`}
+              style={bvb === k ? { backgroundColor: BVB_META[k].color } : {}}>
+              {BVB_META[k].label}
+            </button>
+          ))}
         </div>
 
         {/* Account grid */}
@@ -180,7 +197,10 @@ export default function AccountsDashboard() {
             <Link key={a.slug} href={`/voice/accounts/${a.slug}`} className="group rounded-2xl border border-[#233047] bg-[#0E1526] p-4 hover:border-[#1A73E8] transition-colors block">
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-sm font-extrabold text-white truncate">{a.name}</span>
-                <span className="text-[9px] font-bold uppercase tracking-wider rounded-full px-2 py-0.5 shrink-0" style={{ backgroundColor: `${TIER_COLORS[a.tier]}22`, color: TIER_COLORS[a.tier] }}>T{a.tier}</span>
+                <span className="flex items-center gap-1 shrink-0">
+                  <span className="text-[8px] font-bold uppercase tracking-wider rounded-full px-1.5 py-0.5" style={{ backgroundColor: `${BVB_META[a.buildVsBuy].color}22`, color: BVB_META[a.buildVsBuy].color }}>{BVB_META[a.buildVsBuy].label}</span>
+                  <span className="text-[9px] font-bold uppercase tracking-wider rounded-full px-2 py-0.5" style={{ backgroundColor: `${TIER_COLORS[a.tier]}22`, color: TIER_COLORS[a.tier] }}>T{a.tier}</span>
+                </span>
               </div>
               <div className="flex items-center gap-2 text-[10px] text-[#9AA0A6] mb-2">
                 <span style={{ color: MARKET_META[a.market].color }}>{MARKET_META[a.market].label}</span>
@@ -197,9 +217,68 @@ export default function AccountsDashboard() {
         </div>
         {filtered.length === 0 && <div className="text-center text-sm text-[#5F6368] py-16">No accounts match the filters.</div>}
 
+        {/* Selection logic & exclusions */}
+        <div className="mt-12">
+          <button onClick={() => setShowEvidence(!showEvidence)} className="w-full rounded-2xl border border-[#233047] bg-[#0E1526] px-5 py-4 text-left flex items-center justify-between">
+            <div>
+              <div className="text-sm font-extrabold text-white">Selection logic — every include and exclude decision, with evidence</div>
+              <div className="text-[10px] text-[#9AA0A6] mt-0.5">Final test per account: a material business problem AND a credible reason not to build the full conversational-AI platform internally.</div>
+            </div>
+            <span className="text-[11px] text-[#8AB4F8] font-bold shrink-0">{showEvidence ? "Hide" : "Show"}</span>
+          </button>
+          {showEvidence && (
+            <div className="mt-3 space-y-4">
+              <div className="rounded-2xl border border-[#233047] bg-[#0E1526] overflow-hidden">
+                <div className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-[#9AA0A6] border-b border-[#233047]">Included — {accounts.length} accounts</div>
+                <div className="max-h-[420px] overflow-y-auto">
+                  <table className="w-full text-[10px] min-w-[860px]">
+                    <thead className="sticky top-0 bg-[#0E1526]">
+                      <tr className="text-left text-[#5F6368] uppercase tracking-wider">
+                        {["Company", "Market", "Vertical", "Model", "Tier", "Package", "Latest signal", "Entry use case"].map((h) => <th key={h} className="px-3 py-2 font-bold">{h}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#1B263B]">
+                      {accounts.map((a) => (
+                        <tr key={a.slug} className="text-[#BDC1C6] hover:bg-[#131F38]">
+                          <td className="px-3 py-2 font-bold text-white whitespace-nowrap"><Link href={`/voice/accounts/${a.slug}`} className="hover:text-[#8AB4F8]">{a.name}</Link></td>
+                          <td className="px-3 py-2 whitespace-nowrap">{a.market}</td>
+                          <td className="px-3 py-2">{a.vertical}</td>
+                          <td className="px-3 py-2 whitespace-nowrap"><span className="font-bold" style={{ color: BVB_META[a.buildVsBuy].color }}>{BVB_META[a.buildVsBuy].label}</span></td>
+                          <td className="px-3 py-2">T{a.tier}</td>
+                          <td className="px-3 py-2">{PACKAGES[a.packageRec].name}</td>
+                          <td className="px-3 py-2 max-w-[220px]">{a.earningsSignals[0]?.signal.slice(0, 80)}{(a.earningsSignals[0]?.signal.length ?? 0) > 80 ? "…" : ""}</td>
+                          <td className="px-3 py-2">{a.entryWorkflow}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="rounded-2xl border border-[#B3261E]/30 bg-[#0E1526] overflow-hidden">
+                <div className="px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-[#F28B82] border-b border-[#233047]">Deprioritized — {ALL_EXCLUDED.length} likely internal builders (transparent exclusion log)</div>
+                <div className="divide-y divide-[#1B263B]">
+                  {ALL_EXCLUDED.map((e) => (
+                    <div key={e.name} className="px-4 py-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-bold text-white">{e.name}</span>
+                        <span className="text-[9px] text-[#9AA0A6]">{e.market} · {e.vertical}</span>
+                        <span className="text-[9px] font-bold uppercase tracking-wider rounded-full px-2 py-0.5" style={{ backgroundColor: `${BVB_META[e.classification].color}22`, color: BVB_META[e.classification].color }}>{BVB_META[e.classification].label}</span>
+                      </div>
+                      <p className="text-[10px] text-[#BDC1C6] mt-1 leading-relaxed"><b className="text-white">Why:</b> {e.rationale}</p>
+                      <p className="text-[10px] text-[#9AA0A6] mt-0.5 leading-relaxed"><b>Evidence:</b> {e.evidence}</p>
+                      {e.pursueOnlyIf && <p className="text-[10px] text-[#8AB4F8] mt-0.5"><b>Pursue only if:</b> {e.pursueOnlyIf}</p>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
         <div className="mt-10 text-[10px] text-[#5F6368] leading-relaxed max-w-3xl">
-          Estimated recurring consumption, Google Cloud consumption potential, and partner delivery capacity are modelled per-account on each
-          account page from editable assumptions — aggregate figures here are the sum of implementation packages only. Internal GTM concept material.
+          Universe reassessed on build-vs-buy first principles: accounts are included only where there is a material communications problem AND a
+          credible reason not to build the full stack internally. Estimated recurring consumption and partner delivery capacity are modelled
+          per-account from editable assumptions — aggregate figures here are the sum of implementation packages only. Internal GTM concept material.
         </div>
       </div>
     </div>
