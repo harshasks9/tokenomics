@@ -108,7 +108,7 @@ function TopNav() {
       <div className="max-w-6xl mx-auto px-5 md:px-8 h-14 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#8AB4F8]" style={{ boxShadow: "0 0 8px 2px #8AB4F866" }} />
-          <span className="text-sm font-bold text-white">Gemini Enterprise Communications</span>
+          <span className="text-sm font-bold text-white">Gemini Enterprise Frontline</span>
         </div>
         <nav className="hidden md:flex items-center gap-6 text-[13px] font-medium text-[#9AA0A6]">
           <a href="#problem" className="hover:text-white">Why</a>

@@ -308,7 +308,7 @@ export function VoiceFooter() {
     <footer className="border-t border-[#E8EAED] bg-white">
       <div className="max-w-6xl mx-auto px-5 md:px-8 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="text-sm font-bold text-[#202124]">Gemini Enterprise Communications</div>
+          <div className="text-sm font-bold text-[#202124]">Gemini Enterprise Frontline</div>
           <div className="text-xs text-[#9AA0A6] mt-1">
             A GTM concept exploration. Not an official Google Cloud product page. Figures are modelling defaults or cited third-party research — validate before customer use.
           </div>

@@ -217,7 +217,7 @@ export default function VerticalClient({ slug }: { slug: string }) {
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-[#E8EAED]">
         <div className="max-w-6xl mx-auto px-5 md:px-8 h-14 flex items-center justify-between gap-3">
           <Link href="/voice" className="flex items-center gap-2 text-[13px] font-medium text-[#5F6368] hover:text-[#202124]">
-            <ArrowLeft size={14} /> <span className="hidden sm:inline">Gemini Enterprise Communications</span>
+            <ArrowLeft size={14} /> <span className="hidden sm:inline">Gemini Enterprise Frontline</span>
           </Link>
           <div className="flex items-center gap-2">
             <button
@@ -480,7 +480,7 @@ export default function VerticalClient({ slug }: { slug: string }) {
               </ul>
               <div className="mt-6">
                 <a
-                  href={`mailto:harshasks@gmail.com?subject=${encodeURIComponent(`${v.name} pilot — Gemini Enterprise Communications${customer ? ` (${customer})` : ""}`)}`}
+                  href={`mailto:harshasks@gmail.com?subject=${encodeURIComponent(`${v.name} pilot — Gemini Enterprise Frontline${customer ? ` (${customer})` : ""}`)}`}
                   className="inline-flex items-center gap-2 rounded-full text-white px-6 py-3 text-sm font-bold hover:opacity-90"
                   style={{ backgroundColor: v.color }}
                 >

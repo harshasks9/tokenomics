@@ -8,7 +8,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Play, Pause, ShieldCheck, Check, X, RotateCcw } from "lucide-react";
-import { FLOWS, FLOW_SOURCES, type FlowStep } from "./flows";
+import { FLOWS, FLOW_SOURCES, type FlowStep, type FlowMetric } from "./flows";
+
+export type CinemaFlow = {
+  slug: string;
+  scenario: string;
+  conventional: FlowStep[];
+  agentic: FlowStep[];
+  metrics: FlowMetric[];
+};
 
 const LOOP_MS = 14000;
 const KIND_STYLE: Record<string, { label: string; color: string }> = {
@@ -172,8 +180,8 @@ function Lane({
   );
 }
 
-export function FlowCinema({ slug, accent }: { slug: string; accent: string }) {
-  const flow = useMemo(() => FLOWS.find((f) => f.slug === slug), [slug]);
+export function FlowCinema({ slug, accent, flowOverride }: { slug: string; accent: string; flowOverride?: CinemaFlow }) {
+  const flow = useMemo(() => flowOverride ?? FLOWS.find((f) => f.slug === slug), [slug, flowOverride]);
   const convTl = useMemo(() => (flow ? buildTimeline(flow.conventional, "conventional") : []), [flow]);
   const agTl = useMemo(() => (flow ? buildTimeline(flow.agentic, "agentic") : []), [flow]);
   const [t, setT] = useState(0);

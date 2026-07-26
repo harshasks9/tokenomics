@@ -1,4 +1,4 @@
-// Gemini Enterprise Communications — shared content model
+// Gemini Enterprise Frontline — shared content model
 // Category recommendation: "Agentic Communications Layer" — the intelligence and
 // orchestration layer underpinning inbound + outbound enterprise communications.
 
@@ -727,7 +727,7 @@ export const GECX_TREE: TreeNode[] = [
   },
   { id: "r-gecx", result: { verdict: "Lead with GECX", color: "#D97706", detail: "Customer Engagement Suite is the natural fit. Introduce Gemini Enterprise later for cross-enterprise agent expansion. Route the opportunity to the GECX specialist." } },
   { id: "r-joint", result: { verdict: "Lead jointly", color: "#7C3AED", detail: "Run a joint motion: GECX owns contact-centre modernization; Gemini Enterprise owns the cross-enterprise agent layer. One account plan, explicit capability swimlanes, shared architecture workshop." } },
-  { id: "r-ge", result: { verdict: "Lead with Gemini Enterprise Communications", color: "#1A73E8", detail: "This is the core motion: agentic communications embedded in enterprise workflows. Engage an implementation partner for channels/telephony. GECX not required." } },
+  { id: "r-ge", result: { verdict: "Lead with Gemini Enterprise Frontline", color: "#1A73E8", detail: "This is the core motion: agentic communications embedded in enterprise workflows. Engage an implementation partner for channels/telephony. GECX not required." } },
   { id: "r-ge-integrate", result: { verdict: "Lead with Gemini Enterprise, integrate the CC stack", color: "#1A73E8", detail: "Gemini Enterprise leads; human handoff integrates into the customer's existing contact-centre platform (whoever the vendor). Do not open a CC-replacement conversation." } },
   { id: "r-ge-lead-joint", result: { verdict: "Lead with Gemini Enterprise, bring GECX in", color: "#1A73E8", detail: "Anchor on the enterprise agent platform decision. Bring the GECX team into the account plan for the CC-modernization track when it activates." } },
 ];

@@ -1,4 +1,4 @@
-# Gemini Enterprise Communications — GTM Strategy & Microsite
+# Gemini Enterprise Frontline — GTM Strategy & Microsite
 
 Live at **voice.aitokenomics.app** (route `/voice` in this repo, subdomain via `src/proxy.ts` + `vercel.json`).
 
@@ -105,7 +105,7 @@ Success metrics: 2 pilots live, 2 certified partners, 10 qualified accounts ≥6
 
 ## 7. Open questions
 
-1. Official product naming/trademark for the proposition (this site uses "Gemini Enterprise Communications" as a working name).
+1. Official product naming/trademark for the proposition (this site uses "Gemini Enterprise Frontline" as a working name).
 2. GECX co-sell attribution mechanics (revenue/consumption split) — needs GTM finance ruling.
 3. Which partner(s) get Level-2 implementation-layer IP rights vs per-pack certification only.
 4. India-first vs multi-region launch sequencing.
@@ -169,7 +169,17 @@ Success metrics: 2 pilots live, 2 certified partners, 10 qualified accounts ≥6
 - [x] Provenance labels present on every quantified line in economics, TCO, and value levers
 - [x] Mobile: hero stream hidden below lg (text-first), comparison table degrades to accordion, cinema canvas scales, builder chips wrap
 
-## 10. Restricted technical appendix (internal / legal / procurement only — not GTM content)
+## 10. v4 (July 2026): rename + APJ Top-100 account-based experience
+
+**Rename.** The proposition is now **Gemini Enterprise Frontline** ("Every conversation, one intelligent frontline") — sits on top of Gemini Enterprise Agent Platform; more enterprise-appealing than "Communications," which read as a product category rather than a value promise.
+
+**APJ account experience** (`/voice/accounts`):
+- **Universe**: 100 organizations across India (40), Indonesia (13), Philippines (8), Vietnam (7), Thailand (8), Malaysia (5), SEA-regional (4), Japan (6), Korea (5), ANZ (4) — a **clearly-labeled research-based priority universe from public information, NOT an authoritative top-GCP-customer list** (disclaimer rendered on the dashboard and every account page). Data authored by five parallel research agents against a strict schema (`accounts/shared.ts`), each entry confidence-tagged: Public fact / Reasoned inference / Seller hypothesis — validate.
+- **Dashboard**: topline stats (tier mix, implementation pipeline, package mix, avg channels), interactive value×readiness prioritization matrix (hover-to-identify, click-through), package-allocation rationale, repeatable-pattern analysis (top workflow templates + language coverage), market/tier/search filters.
+- **Account pages** (`/voice/accounts/[slug]`): personalized hero (operating-model-specific headline, proposition, entry use case, outcome, package chip) · research section with per-bullet confidence chips + publicly-reported GCP relevance only where known + validation checklist · ranked opportunity map (value/complexity/speed dots, channels, friction) · account-bound cinematic flow (13 parameterized templates: collections, inbound-service, order-logistics, lead-sales, billing-recharge, claims, admissions, appointments, employee-desk, retention, onboarding, dealer-support, travel-disruption) · recommended solution (Tilicho channels / Google intelligence / customer systems / trust+languages) · editable business case (volume, cost, automation sliders with provenance flags) · package recommendation with account-specific rationale, includes/excludes, recurring-cost note ("no unlimited usage") · six persona messages · tier rationale with 30/60/90 plan for Tier 1 · one specific next-step CTA.
+- **Packages**: Launch $50K (≤3 channels, 1 workflow, 8–10 wks) / Scale $100K (4–6 channels, 2–3 workflows, 10–14 wks) / Transform $200K (7–10 channels, multi-BU, 14–20 wks) — implementation/integration only; Tilicho usage, Google Cloud consumption, telephony, managed ops always billed separately.
+
+## 11. Restricted technical appendix (internal / legal / procurement only — not GTM content)
 
 Underlying technology dependencies are consolidated under the Tilicho Labs partnership umbrella in all GTM material. Any constituent platform, API vendor, or subcontracted technology powering the Tilicho Labs communications layer must be documented here (and in contract schedules) only: current constituent-vendor list, API dependency inventory, per-capability confirmation status, and data-flow attestations are maintained by the partner team and are intentionally excluded from this repository's GTM pages. Earlier candidate-partner shortlists referenced in v1 planning are superseded by this structure.
 

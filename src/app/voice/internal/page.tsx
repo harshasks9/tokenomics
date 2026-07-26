@@ -139,6 +139,7 @@ function GecxTree() {
 
 const NAV = [
   { id: "builder", label: "Solution Builder" },
+  { id: "accounts", label: "APJ Accounts" },
   { id: "thesis", label: "Thesis" },
   { id: "sizing", label: "Sizing" },
   { id: "qualifier", label: "Qualifier" },
@@ -167,6 +168,8 @@ export default function InternalGtm() {
             {NAV.map((n) =>
               n.id === "builder" ? (
                 <Link key={n.id} href="/voice/internal/builder" className="text-[#FDD663] font-bold hover:text-white">{n.label}</Link>
+              ) : n.id === "accounts" ? (
+                <Link key={n.id} href="/voice/accounts" className="text-[#8AB4F8] font-bold hover:text-white">{n.label}</Link>
               ) : (
                 <a key={n.id} href={`#${n.id}`} className="hover:text-white">{n.label}</a>
               ),
@@ -178,7 +181,7 @@ export default function InternalGtm() {
       <div className="bg-[#202124] text-white">
         <div className="max-w-6xl mx-auto px-5 md:px-8 pt-10 pb-14">
           <FadeIn>
-            <div className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#8AB4F8] mb-3">Gemini Enterprise Communications · seller home</div>
+            <div className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#8AB4F8] mb-3">Gemini Enterprise Frontline · seller home</div>
             <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight max-w-3xl leading-tight">
               The agentic communications layer for the enterprise — one platform behind every inbound and outbound interaction
             </h1>
@@ -186,9 +189,12 @@ export default function InternalGtm() {
               Not a contact-centre suite. Not a voice bot. The cross-enterprise intelligence and action layer for communications embedded in
               business workflows — collections, service, sales, employee and student support — delivered with partners, governed on Gemini Enterprise Agent Platform.
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/voice/internal/builder" className="inline-flex items-center gap-2 rounded-full bg-[#FDD663] text-[#202124] px-5 py-2.5 text-sm font-bold hover:bg-[#FCE293] transition-colors">
                 Open the Solution Builder — configure, price, and propose <ArrowRight size={14} />
+              </Link>
+              <Link href="/voice/accounts" className="inline-flex items-center gap-2 rounded-full border border-[#8AB4F8]/50 text-[#8AB4F8] px-5 py-2.5 text-sm font-bold hover:bg-white/5 transition-colors">
+                APJ Top-100 account pitches <ArrowRight size={14} />
               </Link>
             </div>
             <div className="mt-8 grid sm:grid-cols-3 gap-3 max-w-3xl">
