@@ -200,6 +200,19 @@ export async function proxy(request: NextRequest) {
     });
   }
 
+  if (hostname === "korea.aitokenomics.app") {
+    const koreaUrl = request.nextUrl.clone();
+    if (koreaUrl.pathname === "/") {
+      koreaUrl.pathname = "/korea";
+    }
+    return NextResponse.rewrite(koreaUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
