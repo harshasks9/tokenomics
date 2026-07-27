@@ -134,7 +134,7 @@ export default function RoiModel() {
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <Calculator size={16} className="text-[#0047A0]" />
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Your assumptions</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Change any assumption</p>
           </div>
           <button
             type="button"
@@ -168,7 +168,7 @@ export default function RoiModel() {
           />
           <Slider
             label="Adoption — share of seats in weekly active use"
-            hint="The metric we propose to be judged on. Drag it to 30% and the case should still clear."
+            hint="The measure we propose to be judged on. Set it to 30% — the case should still stand."
             value={inputs.adoptionRate}
             min={0.2}
             max={0.95}
@@ -213,8 +213,8 @@ export default function RoiModel() {
           {krw(roiDefaults.loadedCostPerFteKrw)} per year; {WORKING_WEEKS} working weeks; {roiDefaults.auditTripsPerYear}{" "}
           audit trips a year at {roiDefaults.auditorsPerTrip} auditors and {usd(roiDefaults.costPerTripUsd)} per trip;
           programme cost modelled at 1.6× licence to cover delivery, enablement and governance in year one; USD/KRW{" "}
-          {roiDefaults.usdKrw.toLocaleString()}. These are Google&apos;s placeholders, not Sae-A figures — replacing them
-          with your own is the first agenda item on 14 August.
+          {roiDefaults.usdKrw.toLocaleString()}. Every one of these is a Google placeholder, not a Sae-A figure. Replacing
+          them with your own numbers is the first agenda item on 14 August.
         </p>
       </div>
 
@@ -297,11 +297,12 @@ export default function RoiModel() {
         </div>
 
         <div className="rounded-2xl border-l-4 border-[#CD2E3A] bg-[#fff5f6] p-5">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#CD2E3A]">The number that dwarfs all of this</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#CD2E3A]">For scale</p>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-800">
-            At roughly 2.5 million garments a day, a one-cent improvement in fully-landed cost per unit is worth about{" "}
-            <span className="font-black text-[#CD2E3A]">{usd(centValue)}</span> a year. Every figure above is a rounding
-            error against the allocation opportunity. This is why the case belongs against COGS, not against an IT budget.
+            At roughly 2.5 million garments a day, a one-cent improvement in fully-landed cost per unit is worth around{" "}
+            <span className="font-black text-[#CD2E3A]">{usd(centValue)}</span> a year. Everything modelled above is small
+            beside that. It is why we think the allocation work, not the productivity work, is the real prize — and why we
+            would rather be measured against cost of goods than against an IT budget.
           </p>
         </div>
       </div>

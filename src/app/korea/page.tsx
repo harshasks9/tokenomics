@@ -4,7 +4,7 @@ import SaeAMicrosite from "@/components/korea/SaeAMicrosite";
 export const metadata: Metadata = {
   title: "The Allocation Advantage | Global Sae-A and Google Cloud",
   description:
-    "An executive strategy microsite for Global Sae-A (글로벌세아): customer intelligence, executive personas, an AI opportunity map, an open ROI model and the AX programme sequence for the 14 August 2026 workshop.",
+    "Prepared for the executive leadership of Global Sae-A (글로벌세아): what the July 2026 trade reset means for a dual-hemisphere manufacturing footprint, what changes function by function, an open value model, and the plan we propose for the 14 August AX Workshop.",
 };
 
 export default function KoreaSaeAPage() {

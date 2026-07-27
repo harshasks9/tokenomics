@@ -40,7 +40,7 @@ export default function OpportunityExplorer() {
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
           <div className="flex items-center justify-between gap-3">
             <p className="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">
-              Modelled value vs implementation effort
+              Business value vs implementation effort
             </p>
             <span className="text-[11px] font-semibold text-slate-400">{visible.length} shown</span>
           </div>
@@ -107,7 +107,7 @@ export default function OpportunityExplorer() {
 
           <div className="mt-5 space-y-4 text-sm leading-6 text-slate-700">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400">The problem today</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.14em] text-slate-400">Where the time goes today</p>
               <p className="mt-1.5">{active.problem}</p>
             </div>
             <div>
@@ -130,7 +130,7 @@ export default function OpportunityExplorer() {
           <dl className="mt-5 grid gap-3 border-t border-slate-100 pt-5 sm:grid-cols-2">
             <div>
               <dt className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-slate-400">
-                <Target size={12} /> Metric that decides it
+                <Target size={12} /> How you would measure it
               </dt>
               <dd className="mt-1 text-[13px] font-semibold text-slate-800">{active.metric}</dd>
             </div>
@@ -140,12 +140,12 @@ export default function OpportunityExplorer() {
             </div>
           </dl>
 
-          {active.honesty ? (
+          {active.dependency ? (
             <div className="mt-5 flex gap-3 rounded-xl bg-[#fef7e0] p-4">
               <AlertTriangle size={16} className="mt-0.5 shrink-0 text-[#E37400]" />
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#B06000]">Where we are being honest</p>
-                <p className="mt-1 text-[13px] leading-5 text-slate-700">{active.honesty}</p>
+                <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#B06000]">What this depends on</p>
+                <p className="mt-1 text-[13px] leading-5 text-slate-700">{active.dependency}</p>
               </div>
             </div>
           ) : null}
