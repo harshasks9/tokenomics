@@ -49,6 +49,49 @@ export function share(fraction: number): string {
   return `${Math.round(fraction * 100)}%`;
 }
 
+/**
+ * Token counts. One unit is chosen for a whole axis or readout and every value
+ * uses it, so a chart never mixes "116.4M" with "60K" on the same scale.
+ */
+export interface Unit {
+  divisor: number;
+  suffix: string;
+  decimals: number;
+}
+
+export function pickUnit(max: number): Unit {
+  const abs = Math.abs(max);
+  if (abs >= 1_000_000_000) {
+    return { divisor: 1_000_000_000, suffix: "B", decimals: abs / 1e9 < 10 ? 1 : 0 };
+  }
+  if (abs >= 1_000_000) {
+    return { divisor: 1_000_000, suffix: "M", decimals: abs / 1e6 < 10 ? 1 : 0 };
+  }
+  if (abs >= 1_000) {
+    return { divisor: 1_000, suffix: "K", decimals: abs / 1e3 < 10 ? 1 : 0 };
+  }
+  return { divisor: 1, suffix: "", decimals: 0 };
+}
+
+/** Format a value in a unit already chosen for its scale. */
+export function inUnit(value: number, unit: Unit): string {
+  return `${(value / unit.divisor).toFixed(unit.decimals)}${unit.suffix}`;
+}
+
+/** Standalone token figure, unit picked from the value itself. */
+export function tokens(value: number): string {
+  return inUnit(value, pickUnit(value));
+}
+
+/** A readable gridline interval near `rough`. */
+export function niceStep(rough: number): number {
+  if (rough <= 0) return 1;
+  const magnitude = 10 ** Math.floor(Math.log10(rough));
+  const normalized = rough / magnitude;
+  const ladder = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 7.5, 10];
+  return (ladder.find((rung) => normalized <= rung) ?? 10) * magnitude;
+}
+
 export function todayStamp(): string {
   const now = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");

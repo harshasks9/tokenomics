@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Accent, ModelResult, Step } from "@/lib/offers/model";
-import { moneyK, multiplier, percent } from "@/lib/offers/format";
+import { moneyK, multiplier, niceStep, percent } from "@/lib/offers/format";
 
 const ACCENT_VAR: Record<Accent, string> = {
   gold: "var(--gold)",
@@ -22,23 +22,6 @@ const SHORT_LABEL: Record<string, string> = {
   gsu: "GSU",
   q3: "Q3",
 };
-
-/**
- * A readable gridline interval near `rough`. The scale itself is *not* rounded
- * up to the next nice number — that wasted up to half the plot height — so the
- * tallest bar always fills the frame and gridlines land on round values below
- * it.
- */
-function niceStep(rough: number): number {
-  if (rough <= 0) return 1;
-  const magnitude = 10 ** Math.floor(Math.log10(rough));
-  const normalized = rough / magnitude;
-  // A fine-grained ladder: a coarse one (1/2/5/10) rounds 6.5 up to 10 and
-  // leaves the plot with only two gridlines.
-  const ladder = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 7.5, 10];
-  const step = ladder.find((rung) => normalized <= rung) ?? 10;
-  return step * magnitude;
-}
 
 /** Nudge a centred text baseline so it reads as vertically centred. */
 function valueLabelFontOffset(fontSize: number): number {
