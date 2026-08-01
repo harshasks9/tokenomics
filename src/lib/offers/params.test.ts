@@ -24,65 +24,96 @@ describe("Shareable URLs", () => {
     }
   });
 
-  it("round-trips the GSU levers", () => {
+  it("round-trips the commitment and assumption levers", () => {
     const levers: Levers = {
       ...DEFAULT_LEVERS,
       term: "1y",
-      gcp: 0.25,
-      inc: 0.1,
-      cr: 0.05,
+      gcpCommit: 0.25,
+      q3Discount: 0.1,
+      tpmPerGsu: 90_000,
+      modelId: "gemini-3-5-flash-lite",
     };
     expect(roundTrip(levers).levers).toEqual(levers);
   });
 
+  it("round-trips every combination of elected offers", () => {
+    const keys = ["bogo", "offPeak", "deferred", "batch", "fsp", "q3"] as const;
+    for (let mask = 0; mask < 1 << keys.length; mask += 1) {
+      const offers = {} as Levers["offers"];
+      keys.forEach((key, i) => {
+        offers[key] = Boolean(mask & (1 << i));
+      });
+      expect(roundTrip({ ...DEFAULT_LEVERS, offers }).levers.offers).toEqual(
+        offers,
+      );
+    }
+  });
+
   it("produces the documented query shape", () => {
     const query = paramsFromLevers(DEFAULT_LEVERS).toString();
-    expect(query).toContain("n=1000");
-    expect(query).toContain("u0=55");
-    expect(query).toContain("u1=85");
-    expect(query).toContain("mix=55-7-18-14-6");
+    expect(query).toContain("pt=600");
+    expect(query).toContain("pg=600");
+    expect(query).toContain("u=85");
+    expect(query).toContain("mix=15-30-20-10");
     expect(query).toContain("h=15");
-    expect(query).toContain("d=20");
+    expect(query).toContain("fsp=20");
     expect(query).toContain("t=1m");
+    expect(query).toContain("tpm=60000");
   });
 
   it("lets explicit params override the named preset", () => {
     const japac = PRESETS.find((p) => p.id === "japac")!;
     const params = paramsFromLevers(japac.levers, "japac");
-    params.set("d", "0");
+    params.set("fsp", "10");
     const { levers, presetId } = leversFromParams(params);
     expect(presetId).toBe("japac");
-    expect(levers.d).toBe(0);
-    expect(levers.mix).toEqual(japac.levers.mix);
+    expect(levers.fspRate).toBe(0.1);
+    expect(levers.paygoMix).toEqual(japac.levers.paygoMix);
   });
 
   it("falls back to defaults on junk instead of throwing", () => {
     const junk = new URLSearchParams(
-      "n=notanumber&u0=999&u1=-5&mix=broken&h=abc&d=37&t=99y&g=&inc=&cr=&preset=nope",
+      "pt=notanumber&pg=x&u=-5&mix=broken&h=abc&fsp=37&t=99y&gcp=&q3d=&m=nope&tpm=&preset=nope",
     );
     const { levers, presetId } = leversFromParams(junk);
     expect(presetId).toBeNull();
-    expect(levers.mix).toEqual(DEFAULT_LEVERS.mix);
+    expect(levers.paygoMix).toEqual(DEFAULT_LEVERS.paygoMix);
+    expect(levers.modelId).toBe(DEFAULT_LEVERS.modelId);
     expect(levers.term).toBe(DEFAULT_LEVERS.term);
-    expect(levers.d).toBe(DEFAULT_LEVERS.d); // 37 is not a valid FSP tier
-    expect(levers.h).toBe(DEFAULT_LEVERS.h);
+    expect(levers.fspRate).toBe(DEFAULT_LEVERS.fspRate); // 37 is not a valid tier
+    expect(levers.harness).toBe(DEFAULT_LEVERS.harness);
+    expect(levers.offers).toEqual(DEFAULT_LEVERS.offers);
     expect(Number.isFinite(computeModel(levers).final)).toBe(true);
+  });
+
+  it("an empty offer list means nothing elected, not the default", () => {
+    const { levers } = leversFromParams(new URLSearchParams("o="));
+    expect(Object.values(levers.offers).every((v) => v === false)).toBe(true);
   });
 
   it("clamps out-of-range values into the lever ranges", () => {
     const { levers } = leversFromParams(
-      new URLSearchParams("n=99999&u0=5&u1=200&g=90&inc=90&cr=90"),
+      new URLSearchParams("pt=99999&pg=-40&u=200&gcp=90&q3d=90&tpm=9999999"),
     );
-    expect(levers.n0).toBeLessThanOrEqual(5000);
-    expect(levers.n0).toBeGreaterThanOrEqual(100);
-    expect(levers.u0).toBeGreaterThanOrEqual(0.35);
-    expect(levers.u1).toBeLessThanOrEqual(0.98);
-    expect(levers.gcp).toBeLessThanOrEqual(0.3);
-    expect(levers.inc).toBeLessThanOrEqual(0.3);
-    expect(levers.cr).toBeLessThanOrEqual(0.2);
+    expect(levers.ptGsus).toBeLessThanOrEqual(5000);
+    expect(levers.paygoGsus).toBeGreaterThanOrEqual(0);
+    expect(levers.ptUtilization).toBeLessThanOrEqual(1);
+    expect(levers.gcpCommit).toBeLessThanOrEqual(0.3);
+    expect(levers.q3Discount).toBeLessThanOrEqual(0.3);
+    expect(levers.tpmPerGsu).toBeLessThanOrEqual(200_000);
   });
 
-  it("snaps N0 to its 50-GSU step", () => {
-    expect(leversFromParams(new URLSearchParams("n=1237")).levers.n0).toBe(1250);
+  it("snaps GSU counts to their 50-GSU step", () => {
+    expect(leversFromParams(new URLSearchParams("pt=1237")).levers.ptGsus).toBe(1250);
+    expect(leversFromParams(new URLSearchParams("pg=1237")).levers.paygoGsus).toBe(1250);
+  });
+
+  it("only accepts a selectable model id", () => {
+    expect(
+      leversFromParams(new URLSearchParams("m=claude-sonnet")).levers.modelId,
+    ).toBe(DEFAULT_LEVERS.modelId);
+    expect(
+      leversFromParams(new URLSearchParams("m=gemini-2-5-pro")).levers.modelId,
+    ).toBe("gemini-2-5-pro");
   });
 });

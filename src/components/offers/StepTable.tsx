@@ -32,10 +32,14 @@ export default function StepTable({ result }: { result: ModelResult }) {
               <p className="text-[13px]" style={{ color: "var(--ink)" }}>
                 <span
                   className="o-marker mr-1.5"
-                  style={{ color: ACCENT_VAR[step.accent] }}
+                  style={{
+                    color: step.elected
+                      ? ACCENT_VAR[step.accent]
+                      : "var(--ink-faint)",
+                  }}
                   aria-hidden="true"
                 >
-                  ●
+                  {step.elected ? "\u25CF" : "\u25CB"}
                 </span>
                 {step.label}
               </p>
@@ -82,7 +86,7 @@ export default function StepTable({ result }: { result: ModelResult }) {
       <table className="o-table" style={{ minWidth: 640 }}>
         <caption className="o-sr-only">
           Step-by-step monthly cost, the change each lever contributes, and the
-          cumulative saving against the legacy estate.
+          cumulative saving against the incremental spend baseline.
         </caption>
         <thead>
           <tr>
@@ -111,12 +115,21 @@ export default function StepTable({ result }: { result: ModelResult }) {
               <td style={{ color: "var(--ink)" }}>
                 <span
                   className="o-marker mr-1.5"
-                  style={{ color: ACCENT_VAR[step.accent] }}
+                  style={{
+                    color: step.elected
+                      ? ACCENT_VAR[step.accent]
+                      : "var(--ink-faint)",
+                  }}
                   aria-hidden="true"
                 >
-                  ●
+                  {step.elected ? "\u25CF" : "\u25CB"}
                 </span>
                 {step.label}
+                {index > 0 && !step.elected && step.id !== "gsu" ? (
+                  <span className="o-mono o-faint ml-2 whitespace-nowrap text-[10px]">
+                    not elected
+                  </span>
+                ) : null}
               </td>
               <td className="text-[12.5px] leading-[1.5]">{step.mechanic}</td>
               <td className="o-num" style={{ color: "var(--ink)" }}>

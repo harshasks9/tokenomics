@@ -195,6 +195,10 @@ export const CAVEATS: Caveat[] = [
     body: "Flex, Off-peak, Deferred and the FSP MVP are preview constructs. Availability dates, terms and scope can move before GA. Model with them, but do not write preview terms into a signed contract.",
   },
   {
+    title: "Nothing here is programmatic",
+    body: "Buy One PT Get One PayGo, Off-peak, Deferred, Batch, FSP and the GSU Q3 offer are all elections, not defaults. A customer who does not opt in pays the standard rate for that share — which is why the simulator makes each one a checkbox rather than an assumption. BOGO in particular is offered from 200 committed GSUs up.",
+  },
+  {
     title: "PT utilization is the whole case",
     body: "PT only reaches 1.0x economics at 100% utilization. The percentile framework — p30 / p50 / p70 coverage — exists to force that conversation before a commitment is signed, not after. Below roughly 70% utilization the PT value case inverts.",
   },
@@ -205,4 +209,4 @@ export const CAVEATS: Caveat[] = [
 ];
 
 export const PLAYBOOK_INTRO =
-  "You pay for urgency and certainty. Everything else is a discount for flexibility — in time, in priority, or in commitment. These constructs unbundle those three flexibilities so every workload clears at its own price.";
+  "You pay for urgency and certainty. Everything else is a discount for flexibility — in time, in priority, or in commitment. These constructs unbundle those three flexibilities so every workload clears at its own price. None of them are automatic: each is elected, and the simulator models only new capacity on an incremental commit.";
