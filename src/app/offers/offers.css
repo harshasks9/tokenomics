@@ -1,0 +1,623 @@
+/*
+ * Offers — design system.
+ *
+ * Everything is scoped under .offers-root so this microsite can carry a dark,
+ * editorial identity without touching the rest of the property. Flat panels,
+ * 1px hairlines, 2px radius, borders over shadows.
+ */
+
+/*
+ * Reach up past the shared root layout (which paints a light canvas for the
+ * rest of the property) without editing it.
+ */
+html:has(.offers-root) {
+  background: #071e30;
+  color-scheme: dark;
+}
+
+body:has(.offers-root) {
+  background: #071e30;
+}
+
+.offers-root {
+  /* Canvas & panels */
+  --canvas: #071e30;
+  --panel: #0b2d48;
+  --panel-2: #0e3a5c;
+  --line: #1b4a6e;
+
+  /* Ink */
+  --ink: #e9f1f7;
+  --ink-dim: #9db8cc;
+  /* Spec swatch for faint ink is #5E7E96, but at the 10–11px sizes this is
+     actually used it lands at 3.3:1 on --panel — below WCAG AA's 4.5:1. Lifted
+     to the nearest tone that clears AA on all three surfaces (4.6:1 on
+     --panel-2, 5.5:1 on --panel, 6.6:1 on --canvas). Revert this one line to
+     restore the exact swatch. */
+  --ink-faint: #8aa5ba;
+
+  /* Semantic accents — each colour means exactly one thing */
+  --gold: #e8b44c; /* legacy cost / premium-priced / caution */
+  --blue: #5ba8e0; /* standard 1.0x tier / utilization repair */
+  --green: #4cc38a; /* 0.5x flexibility tiers / savings */
+  --fsp: #c989e8; /* commitment layer (FSP) */
+  --teal: #47b8c6; /* GSU commitment: term price, commit discount, Q3 offer */
+  --red: #e8705b; /* errors, over-limit only */
+
+  --radius: 2px;
+  --dur: 200ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.offers-root *,
+.offers-root *::before,
+.offers-root *::after {
+  box-sizing: border-box;
+}
+
+.offers-root ::selection {
+  background: var(--gold);
+  color: var(--canvas);
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────── */
+
+.o-mono {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "zero" 1;
+}
+
+.o-eyebrow {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.o-h1 {
+  font-size: clamp(1.75rem, 1.1rem + 2.6vw, 2.9rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.o-h2 {
+  font-size: clamp(1.15rem, 0.95rem + 0.8vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.o-h3 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.o-dim {
+  color: var(--ink-dim);
+}
+.o-faint {
+  color: var(--ink-faint);
+}
+
+/* ── Panels ─────────────────────────────────────────────────────────────── */
+
+.o-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.o-panel-2 {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.o-hairline {
+  border-top: 1px solid var(--line);
+}
+
+/* ── Master equation ────────────────────────────────────────────────────── */
+
+.o-equation {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: clamp(10.5px, 9px + 0.35vw, 13px);
+  letter-spacing: -0.01em;
+  line-height: 1.9;
+  color: var(--ink-dim);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  padding-bottom: 2px;
+}
+
+.o-eq-green {
+  color: var(--green);
+}
+.o-eq-gold {
+  color: var(--gold);
+}
+.o-eq-fsp {
+  color: var(--fsp);
+}
+.o-eq-blue {
+  color: var(--blue);
+}
+.o-eq-teal {
+  color: var(--teal);
+}
+
+/* ── Anchored / modelled markers ────────────────────────────────────────── */
+
+.o-marker {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: 1px;
+}
+
+.o-marker-anchored {
+  color: var(--gold);
+}
+.o-marker-modelled {
+  color: var(--ink-faint);
+}
+
+/* ── Sliders ────────────────────────────────────────────────────────────── */
+
+.o-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 40px; /* ≥40px touch target for iOS Safari */
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+}
+
+/* --fill (0–100) is set inline by the component; it paints the filled portion. */
+.o-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 0;
+  background: linear-gradient(
+    to right,
+    var(--thumb, var(--blue)) 0 calc(var(--fill, 0) * 1%),
+    var(--line) calc(var(--fill, 0) * 1%) 100%
+  );
+}
+
+.o-slider::-moz-range-track {
+  height: 2px;
+  border-radius: 0;
+  background: linear-gradient(
+    to right,
+    var(--thumb, var(--blue)) 0 calc(var(--fill, 0) * 1%),
+    var(--line) calc(var(--fill, 0) * 1%) 100%
+  );
+}
+
+.o-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--thumb, var(--blue));
+  border: 2px solid var(--canvas);
+  margin-top: -6px;
+  transition: transform var(--dur) var(--ease);
+}
+
+.o-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--thumb, var(--blue));
+  border: 2px solid var(--canvas);
+  transition: transform var(--dur) var(--ease);
+}
+
+.o-slider:hover::-webkit-slider-thumb,
+.o-slider:active::-webkit-slider-thumb {
+  transform: scale(1.25);
+}
+.o-slider:hover::-moz-range-thumb,
+.o-slider:active::-moz-range-thumb {
+  transform: scale(1.25);
+}
+
+.o-slider:focus-visible {
+  outline: none;
+}
+.o-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px var(--canvas), 0 0 0 5px var(--thumb, var(--blue));
+}
+.o-slider:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px var(--canvas), 0 0 0 5px var(--thumb, var(--blue));
+}
+
+/* ── Controls ───────────────────────────────────────────────────────────── */
+
+.o-btn {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 7px 12px;
+  min-height: 34px;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+  white-space: nowrap;
+}
+
+.o-btn:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.o-btn[aria-pressed="true"],
+.o-btn.is-active {
+  color: var(--canvas);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.o-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.o-seg {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.o-seg button {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--line);
+  padding: 9px 4px;
+  min-height: 40px;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.o-seg button:last-child {
+  border-right: none;
+}
+
+.o-seg button:hover {
+  color: var(--ink);
+}
+
+.o-seg button[aria-pressed="true"] {
+  color: var(--canvas);
+  background: var(--seg-active, var(--fsp));
+  font-weight: 500;
+}
+
+.o-chip {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  min-height: 32px;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+  white-space: nowrap;
+}
+
+.o-chip:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.o-chip[aria-pressed="true"] {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+.o-input {
+  width: 100%;
+  background: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  padding: 14px 16px;
+  min-height: 48px;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.o-input::placeholder {
+  color: var(--ink-faint);
+  letter-spacing: 0.08em;
+}
+
+.o-input:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+/* Visible focus rings everywhere, 2px accent outline. */
+.offers-root :is(a, button, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────── */
+
+.o-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.o-table th {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 400;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.o-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  color: var(--ink-dim);
+}
+
+.o-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.o-table tr.is-final td {
+  background: var(--panel-2);
+  color: var(--ink);
+}
+
+.o-num {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── Motion ─────────────────────────────────────────────────────────────── */
+
+.o-animate-value {
+  transition: color var(--dur) var(--ease);
+}
+
+.o-bar {
+  transition: y var(--dur) var(--ease), height var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+}
+
+.o-fade-in {
+  animation: o-fade-in 250ms var(--ease) both;
+}
+
+@keyframes o-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offers-root *,
+  .offers-root *::before,
+  .offers-root *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ── Gate ───────────────────────────────────────────────────────────────── */
+
+.o-gate {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+/* The one permitted gradient on the whole site. */
+.o-gate::before {
+  content: "";
+  position: absolute;
+  inset: -30% 0 auto 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 160vw);
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(38, 105, 158, 0.5) 0%,
+    rgba(14, 58, 92, 0.28) 32%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+/* ── Presenter mode ─────────────────────────────────────────────────────── */
+
+.o-present {
+  font-size: 16.5px;
+}
+
+.o-present .o-h1 {
+  font-size: clamp(2rem, 1.2rem + 3.2vw, 3.4rem);
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────────── */
+
+.offers-root ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.offers-root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.offers-root ::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: var(--radius);
+}
+.offers-root ::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-faint);
+}
+
+/* ── Mobile lever sheet ─────────────────────────────────────────────────── */
+
+.o-sheet {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 60;
+  max-height: 82vh;
+  max-height: 82dvh;
+  overflow-y: auto;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  padding: 0 16px calc(24px + env(safe-area-inset-bottom));
+  animation: o-slide-up 220ms var(--ease) both;
+  overscroll-behavior: contain;
+}
+
+@keyframes o-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.o-sheet-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(7, 30, 48, 0.75);
+  border: 0;
+  padding: 0;
+}
+
+.o-sheet-handle {
+  position: sticky;
+  top: 0;
+  background: var(--panel);
+  padding: 14px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+  z-index: 1;
+}
+
+.o-fab {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 50;
+  background: var(--ink);
+  color: var(--canvas);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  min-height: 44px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(7, 30, 48, 0.6);
+}
+
+/* ── Utility ────────────────────────────────────────────────────────────── */
+
+.o-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.o-skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--canvas);
+  padding: 10px 16px;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: top var(--dur) var(--ease);
+}
+
+.o-skip-link:focus {
+  top: 8px;
+}

@@ -152,3 +152,9 @@ All dollar figures across all industries are computed via `callCost(model, inTok
 ## Deployment
 
 Deployed to Vercel. Pushes to `main` auto-deploy.
+
+## Offers — internal pricing simulator
+
+Passcode-gated GenAI commercial scenario model at `offers.aitokenomics.app`
+(also `/offers`). Math spec, lever table, test vectors, passcode-rotation and
+deployment steps: [`docs/offers.md`](docs/offers.md).

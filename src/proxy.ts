@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { JAPANESE_HOST, isJapaneseSite } from "@/lib/i18n";
 import { isOptionsRequestAuthenticated } from "@/lib/options/auth";
+import { OFFERS_SESSION_COOKIE, isSessionValid } from "@/lib/offers/auth";
+import {
+  isGatePath,
+  isOffersHost,
+  isOffersPath,
+  toAppPath,
+} from "@/lib/offers/routes";
 
 function rewriteWithLanguage(url: URL) {
   return NextResponse.rewrite(url, {
@@ -33,11 +40,54 @@ async function handleOptionsRequest(request: NextRequest, optionsHost: boolean) 
   return rewriteWithLanguage(targetUrl);
 }
 
+/**
+ * Offers (offers.aitokenomics.app) — passcode gate.
+ *
+ * Everything except /gate needs a valid signed session cookie. The gate never
+ * fails open: an unconfigured SITE_PASSCODE/SESSION_SECRET means no cookie can
+ * validate, so every request lands on /gate. noindex is asserted here as well
+ * as in the route metadata.
+ */
+async function handleOffersRequest(request: NextRequest, hostname: string) {
+  const path = request.nextUrl.pathname;
+  const targetUrl = request.nextUrl.clone();
+  targetUrl.pathname = toAppPath(hostname, path);
+
+  const noindex = (response: NextResponse) => {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    response.headers.set("Content-Language", "en");
+    response.headers.set("Vary", "Host");
+    return response;
+  };
+
+  if (isGatePath(hostname, path)) {
+    return noindex(NextResponse.rewrite(targetUrl));
+  }
+
+  const authenticated = await isSessionValid(
+    request.cookies.get(OFFERS_SESSION_COOKIE)?.value,
+  );
+
+  if (!authenticated) {
+    const gateUrl = request.nextUrl.clone();
+    gateUrl.pathname = isOffersHost(hostname) ? "/gate" : "/offers/gate";
+    gateUrl.search = "";
+    gateUrl.searchParams.set("next", `${path}${request.nextUrl.search}`);
+    return noindex(NextResponse.redirect(gateUrl));
+  }
+
+  return noindex(NextResponse.rewrite(targetUrl));
+}
+
 export async function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host");
   const host = forwardedHost ?? request.headers.get("host") ?? request.nextUrl.hostname;
   const hostname = host.split(":")[0].toLowerCase();
   const path = request.nextUrl.pathname;
+
+  if (isOffersPath(hostname, path)) {
+    return handleOffersRequest(request, hostname);
+  }
 
   if (hostname === "options.aitokenomics.app" || path.startsWith("/options")) {
     return handleOptionsRequest(request, hostname === "options.aitokenomics.app");
