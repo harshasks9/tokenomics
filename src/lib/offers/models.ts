@@ -60,7 +60,7 @@ export const MODEL_PRICES: ModelPrice[] = [
     provenance: "Q3 2026 commercial deck — price-matched to 2.5 Flash",
     tokenFactor: 2,
     tokenNote:
-      "1.3–2.7x higher verbosity on agentic and coding work. Price-matched is not bill-matched there; 2.0x is the midpoint.",
+      "1.3–2.7x higher verbosity on agentic and coding work — but the deck measures that against 2.5 Flash / 3.1 Flash-Lite, not against 3.6 Flash, so using 2.0x (the midpoint) on this axis is an approximation across two different baselines. Price-matched is not bill-matched on agentic work; on chat and vision the deck puts it on par with 2.5 Flash.",
     selectable: true,
   },
   {
@@ -85,7 +85,7 @@ export const MODEL_PRICES: ModelPrice[] = [
       "Derived: the deck states Sonnet is priced about 2x higher on list than Gemini 3.6 Flash. Not a published rate card — verify before quoting.",
     tokenFactor: 8.5,
     tokenNote:
-      "An EAP customer reported 5–12x fewer tokens on Gemini 3.6 Flash than Sonnet 5 for their workload; 8.5x is the midpoint of that range and is directional only.",
+      "An EAP customer reported 5–12x fewer tokens on Gemini 3.6 Flash than Sonnet 5 for one workload; 8.5x is the midpoint. A single customer's result, directional only — the range spans more than 2x, so treat the bar as an order of magnitude, not a measurement.",
     selectable: false,
   },
   {
