@@ -8,6 +8,7 @@ import TrafficProfile from "./TrafficProfile";
 import ExportButton from "./ExportButton";
 import Footnotes from "./Footnotes";
 import KpiStrip from "./KpiStrip";
+import MathTrace from "./MathTrace";
 import Levers from "./Levers";
 import ScenarioBar from "./ScenarioBar";
 import ShareButton from "./ShareButton";
@@ -49,6 +50,7 @@ export default function Simulator({
   const [present, setPresent] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [compete, setCompete] = useState(false);
+  const [chartTab, setChartTab] = useState<"chart" | "math">("chart");
 
   const result = useMemo(() => computeModel(levers), [levers]);
   const compareResult = useMemo(
@@ -264,17 +266,74 @@ export default function Simulator({
               </p>
             </div>
 
-            <div className="mt-3">
-              <Waterfall
-                result={result}
-                compare={compareResult}
-                present={present}
-              />
+            {/* Chart, or the arithmetic behind it. */}
+            <div
+              className="mt-3 flex gap-0 border-b"
+              style={{ borderColor: "var(--line)" }}
+              role="tablist"
+              aria-label="Waterfall view"
+            >
+              {(
+                [
+                  ["chart", "Chart"],
+                  ["math", "Show me the math"],
+                ] as const
+              ).map(([id, label]) => (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  id={`waterfall-tab-${id}`}
+                  aria-selected={chartTab === id}
+                  aria-controls={`waterfall-panel-${id}`}
+                  onClick={() => setChartTab(id)}
+                  className="o-mono text-[11px] tracking-[0.08em] uppercase"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    borderBottom: `2px solid ${chartTab === id ? "var(--gold)" : "transparent"}`,
+                    color: chartTab === id ? "var(--ink)" : "var(--ink-faint)",
+                    padding: "9px 14px 8px",
+                    marginBottom: -1,
+                    cursor: "pointer",
+                    minHeight: 40,
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
             </div>
+
+            {chartTab === "chart" ? (
+              <div
+                className="mt-3"
+                id="waterfall-panel-chart"
+                role="tabpanel"
+                aria-labelledby="waterfall-tab-chart"
+              >
+                <Waterfall
+                  result={result}
+                  compare={compareResult}
+                  present={present}
+                />
+              </div>
+            ) : (
+              <div
+                className="o-fade-in mt-4"
+                id="waterfall-panel-math"
+                role="tabpanel"
+                aria-labelledby="waterfall-tab-math"
+              >
+                <MathTrace result={result} />
+              </div>
+            )}
 
             <div
               className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t pt-3.5"
-              style={{ borderColor: "var(--line)" }}
+              style={{
+                borderColor: "var(--line)",
+                display: chartTab === "chart" ? undefined : "none",
+              }}
             >
               {LEGEND.map((item) => (
                 <span

@@ -240,11 +240,24 @@ export type StepId =
 
 export type Accent = "gold" | "blue" | "green" | "fsp" | "teal";
 
+/** One line of shown work: what it is, the arithmetic, and what it came to. */
+export interface WorkingLine {
+  label: string;
+  /** The arithmetic with the live values substituted — no abstract symbols. */
+  expression: string;
+  /** $K. Negative for a reduction. */
+  value: number;
+  /** True for a subtotal / running-total line. */
+  total?: boolean;
+}
+
 export interface Step {
   id: StepId;
   index: number;
   label: string;
   mechanic: string;
+  /** The arithmetic behind this step, for "show me the math". */
+  working: WorkingLine[];
   value: number;
   delta: number;
   cumulativeSavingPct: number;
@@ -339,6 +352,9 @@ export interface ModelResult {
 const pct = (x: number) => `${(x * 100).toFixed(0)}%`;
 const money = (x: number) => `$${Math.round(x).toLocaleString("en-US")}K`;
 const gsuCount = (x: number) => x.toLocaleString("en-US", { maximumFractionDigits: 0 });
+/** $2,400 rather than 2.4 — the shown work speaks in real dollars. */
+const perGsu = (p: number) => `$${(p * 1000).toLocaleString("en-US")}`;
+const k = (x: number) => `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}K`;
 
 export function computeModel(levers: Levers): ModelResult {
   const {
@@ -462,6 +478,7 @@ export function computeModel(levers: Levers): ModelResult {
     value: number;
     accent: Accent;
     elected: boolean;
+    working: WorkingLine[];
   }> = [
     {
       id: "reference",
@@ -470,6 +487,29 @@ export function computeModel(levers: Levers): ModelResult {
       value: reference,
       accent: "gold",
       elected: true,
+      working: [
+        {
+          label: "PT capacity",
+          expression: `${gsuCount(ptGsus)} GSUs × ${perGsu(P_LIST)}/GSU/mo`,
+          value: ptReference,
+        },
+        {
+          label: "PayGo — spike, Priority 1.8x",
+          expression: `${gsuCount(paygoGsus)} × ${perGsu(P_LIST)} × ${pct(mix.spike)} × 1.8`,
+          value: paygoUnit * mix.spike * TIER_MULTIPLIER.priorityPayGo,
+        },
+        {
+          label: "PayGo — everything else, 1.0x",
+          expression: `${gsuCount(paygoGsus)} × ${perGsu(P_LIST)} × ${pct(1 - mix.spike)} × 1.0`,
+          value: paygoUnit * (1 - mix.spike),
+        },
+        {
+          label: "Incremental spend",
+          expression: `${k(ptReference)} + ${k(paygoReference)}`,
+          value: reference,
+          total: true,
+        },
+      ],
     },
     {
       id: "bogo",
@@ -482,6 +522,23 @@ export function computeModel(levers: Levers): ModelResult {
       value: s1,
       accent: "blue",
       elected: bogoOn,
+      working: bogoOn
+        ? [
+            {
+              label: "Spike moves 1.8x → 1.0x",
+              expression: `${gsuCount(paygoGsus)} × ${perGsu(P_LIST)} × ${pct(mix.spike)} × (1.8 − 1.0)`,
+              value: -bogoSaving,
+            },
+            { label: "Running total", expression: `${k(reference)} − ${k(bogoSaving)}`, value: s1, total: true },
+          ]
+        : [
+            {
+              label: bogoEligible ? "Not elected — no change" : `Below the ${BOGO_MIN_GSUS} GSU threshold — no change`,
+              expression: `spike stays at 1.8x`,
+              value: 0,
+            },
+            { label: "Running total", expression: "unchanged", value: s1, total: true },
+          ],
     },
     {
       id: "offpeak",
@@ -492,6 +549,19 @@ export function computeModel(levers: Levers): ModelResult {
       value: s2,
       accent: "green",
       elected: offers.offPeak,
+      working: offers.offPeak
+        ? [
+            {
+              label: "Off-peak share halves",
+              expression: `${gsuCount(paygoGsus)} × ${perGsu(P_LIST)} × ${pct(mix.offPeak)} × 0.5`,
+              value: -offPeakSaving,
+            },
+            { label: "Running total", expression: `${k(s1)} − ${k(offPeakSaving)}`, value: s2, total: true },
+          ]
+        : [
+            { label: "Not elected — no change", expression: "off-peak share stays at 1.0x", value: 0 },
+            { label: "Running total", expression: "unchanged", value: s2, total: true },
+          ],
     },
     {
       id: "deferred",
@@ -503,6 +573,28 @@ export function computeModel(levers: Levers): ModelResult {
       value: s3,
       accent: "green",
       elected: offers.deferred || offers.batch,
+      working: [
+        offers.deferred
+          ? {
+              label: `Deferred at ${defMult.toFixed(3)}x — 0.5 + 0.5 × ${pct(harness)} harness`,
+              expression: `${gsuCount(paygoGsus)} × ${perGsu(P_LIST)} × ${pct(mix.deferred)} × (1 − ${defMult.toFixed(3)})`,
+              value: -deferredSaving,
+            }
+          : { label: "Deferred not elected", expression: "stays at 1.0x", value: 0 },
+        offers.batch
+          ? {
+              label: "Batch halves",
+              expression: `${gsuCount(paygoGsus)} × ${perGsu(P_LIST)} × ${pct(mix.batch)} × 0.5`,
+              value: -batchSaving,
+            }
+          : { label: "Batch not elected", expression: "stays at 1.0x", value: 0 },
+        {
+          label: "Running total",
+          expression: `${k(s2)} − ${k(deferredSaving + batchSaving)}`,
+          value: s3,
+          total: true,
+        },
+      ],
     },
     {
       id: "fsp",
@@ -513,6 +605,19 @@ export function computeModel(levers: Levers): ModelResult {
       value: s4,
       accent: "fsp",
       elected: offers.fsp,
+      working: offers.fsp
+        ? [
+            {
+              label: `FSP −${pct(fspRate)} on everything in scope`,
+              expression: `${k(s3)} × ${pct(fspRate)}`,
+              value: -(s3 - s4),
+            },
+            { label: "Running total", expression: `${k(s3)} × (1 − ${pct(fspRate)})`, value: s4, total: true },
+          ]
+        : [
+            { label: "Not elected — no change", expression: "spend stays at on-demand rates", value: 0 },
+            { label: "Running total", expression: "unchanged", value: s4, total: true },
+          ],
     },
     {
       id: "gsu",
@@ -524,6 +629,19 @@ export function computeModel(levers: Levers): ModelResult {
       value: s5,
       accent: "teal",
       elected: termFactor < 1 || gcpCommit > 0,
+      working: [
+        {
+          label: "PT line already charged inside FSP",
+          expression: `${k(ptReference)} × (1 − ${pct(fspRate)})`,
+          value: -gsuAfterFsp,
+        },
+        {
+          label: `PT line repriced — ${GSU_TERM_LABEL[term]} term, ${appliedDiscount === "gcp" ? `GCP commit ${pct(gcpCommit)}` : appliedDiscount === "fsp" ? `FSP ${pct(fspRate)}` : "no discount"} (non-stacking: the larger applies)`,
+          expression: `${gsuCount(ptGsus)} × ${perGsu(GSU_TERM_PRICE[term])} × (1 − ${pct(appliedDiscountRate)})`,
+          value: gsuAfterCommit,
+        },
+        { label: "Running total", expression: `${k(s4)} − ${k(gsuAfterFsp)} + ${k(gsuAfterCommit)}`, value: s5, total: true },
+      ],
     },
     {
       id: "q3",
@@ -536,6 +654,28 @@ export function computeModel(levers: Levers): ModelResult {
       value: s6,
       accent: "teal",
       elected: q3On,
+      working: q3On
+        ? [
+            {
+              label: `Q3 discount — ${q3Tier.label}`,
+              expression: `${k(gsuAfterCommit)} × ${pct(q3AppliedDiscount)}`,
+              value: -(gsuAfterCommit - gsuAfterQ3Discount),
+            },
+            {
+              label: `Credits — ${pct(q3AppliedCredits)} of the discounted PT spend`,
+              expression: `${k(gsuAfterQ3Discount)} × ${pct(q3AppliedCredits)}`,
+              value: -credits,
+            },
+            { label: "Final", expression: `${k(s5)} − ${k(gsuAfterCommit - gsuAfterQ3Discount + credits)}`, value: s6, total: true },
+          ]
+        : [
+            {
+              label: offers.q3 ? `Below the ${Q3_TIERS[Q3_TIERS.length - 1].minGsus} GSU floor — no tier applies` : "Not elected — no change",
+              expression: "no discount, no credits",
+              value: 0,
+            },
+            { label: "Final", expression: "unchanged", value: s6, total: true },
+          ],
     },
   ];
 

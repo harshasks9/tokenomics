@@ -443,6 +443,15 @@ Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
 
+### 0.4.0 — 2026-08-01
+
+- **"Show me the math" tab** on the savings chart. The model now emits its own
+  working — one line per operation, with the live values substituted rather than
+  abstract symbols — and the chart card tabs between the waterfall and the full
+  arithmetic: every step's inputs, its running total, cumulative saving, and a
+  closing reconciliation. Formulas stayed off the default view; the audit trail
+  is one click away.
+
 ### 0.3.1 — 2026-08-01
 
 - **The page opens with the question.** A "Step one — how much is the
