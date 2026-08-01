@@ -29,7 +29,12 @@ body:has(.offers-root) {
   /* Ink */
   --ink: #e9f1f7;
   --ink-dim: #9db8cc;
-  --ink-faint: #5e7e96;
+  /* Spec swatch for faint ink is #5E7E96, but at the 10–11px sizes this is
+     actually used it lands at 3.3:1 on --panel — below WCAG AA's 4.5:1. Lifted
+     to the nearest tone that clears AA on all three surfaces (4.6:1 on
+     --panel-2, 5.5:1 on --panel, 6.6:1 on --canvas). Revert this one line to
+     restore the exact swatch. */
+  --ink-faint: #8aa5ba;
 
   /* Semantic accents — each colour means exactly one thing */
   --gold: #e8b44c; /* legacy cost / premium-priced / caution */

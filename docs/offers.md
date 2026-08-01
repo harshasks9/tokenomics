@@ -366,6 +366,44 @@ round-trips → PNG and CSV download → `/playbook` renders → Lock signs out.
 
 ---
 
+## Measured quality
+
+Lighthouse, desktop preset, against a local production build of `/offers`:
+
+| Category | Score |
+|---|---|
+| Accessibility | **100** (no failing audits) |
+| Best practices | **100** |
+| Performance | **74** |
+| SEO | 60 — expected; the page asserts `noindex` by design |
+
+Two things worth knowing about those numbers:
+
+- **Performance 74 is Lighthouse's simulated slow-4G model, not the page.**
+  Measured unthrottled on the same build: TTFB 29 ms, FCP 192 ms, **LCP 192 ms**,
+  load 195 ms, 171 KiB transferred, CLS 0, TBT 20 ms. The route is
+  `force-dynamic` because the gate and the server-side URL hydration both need
+  request context, so it cannot be prerendered — under Lighthouse's 1.6 Mbps /
+  150 ms-RTT simulation that costs the score. This is below the ≥95 target and
+  is recorded here rather than papered over.
+- Running Lighthouse locally also has to exclude
+  `fonts.googleapis.com` — the shared root `globals.css` imports Inter for the
+  rest of the property, and a sandbox with no route to Google leaves that
+  request hanging ~12 s, which drags Speed Index to ~19 s. It resolves normally
+  in production, and this microsite does not use Inter (IBM Plex is self-hosted
+  by `next/font`).
+
+Reaching 100 on accessibility required two deviations from the literal §3
+palette, both noted at their definitions:
+
+- `--ink-faint` lifted from `#5E7E96` to `#8AA5BA`. At the 10–11 px sizes it is
+  actually used, the spec swatch measured 3.3:1 on `--panel` — under AA's 4.5:1.
+- The workload mix bar varies tier by **tint** rather than opacity. Fading a
+  segment toward the dark panel also faded the label sitting on it (4.27:1);
+  solid lighter tints put every label above 7:1.
+
+Either is a one-line revert if the exact swatches matter more.
+
 ## Changelog
 
 ### 0.1.0 — 2026-08-01

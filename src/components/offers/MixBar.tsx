@@ -3,18 +3,22 @@
 import type { WorkloadMix } from "@/lib/offers/model";
 import { share } from "@/lib/offers/format";
 
+/**
+ * Tiers vary by tint, not opacity. Fading a segment toward the dark panel also
+ * fades the label sitting on it — the 0.68 green landed at 4.27:1, under AA.
+ * Solid lighter tints keep every label above 7:1 and read more clearly besides.
+ */
 export const MIX_SEGMENTS = [
-  { key: "wb", label: "Baseload → PT", short: "PT", colour: "var(--blue)", opacity: 1, tier: "1.0x" },
-  { key: "ws", label: "Spike → protected PayGo", short: "Spike", colour: "var(--blue)", opacity: 0.5, tier: "1.0x" },
-  { key: "wo", label: "Off-peak", short: "Off-pk", colour: "var(--green)", opacity: 1, tier: "0.5x" },
-  { key: "wd", label: "Deferred agents", short: "Def", colour: "var(--green)", opacity: 0.68, tier: "0.5x*" },
-  { key: "wbt", label: "Batch", short: "Batch", colour: "var(--green)", opacity: 0.4, tier: "0.5x" },
+  { key: "wb", label: "Baseload → PT", short: "PT", colour: "var(--blue)", tier: "1.0x" },
+  { key: "ws", label: "Spike → protected PayGo", short: "Spike", colour: "#8CC4EA", tier: "1.0x" },
+  { key: "wo", label: "Off-peak", short: "Off-pk", colour: "var(--green)", tier: "0.5x" },
+  { key: "wd", label: "Deferred agents", short: "Def", colour: "#6FD1A3", tier: "0.5x*" },
+  { key: "wbt", label: "Batch", short: "Batch", colour: "#93DEBC", tier: "0.5x" },
 ] as const satisfies ReadonlyArray<{
   key: keyof WorkloadMix;
   label: string;
   short: string;
   colour: string;
-  opacity: number;
   tier: string;
 }>;
 
@@ -39,7 +43,6 @@ export default function MixBar({ mix }: { mix: WorkloadMix }) {
               style={{
                 width: `${value * 100}%`,
                 background: segment.colour,
-                opacity: segment.opacity,
                 transition: "width var(--dur) var(--ease)",
               }}
               title={`${segment.label} — ${share(value)} at ${segment.tier}`}
@@ -69,7 +72,6 @@ export default function MixBar({ mix }: { mix: WorkloadMix }) {
                 width: 7,
                 height: 7,
                 background: segment.colour,
-                opacity: segment.opacity,
                 display: "inline-block",
               }}
             />
