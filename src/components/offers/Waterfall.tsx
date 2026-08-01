@@ -14,8 +14,8 @@ const ACCENT_VAR: Record<Accent, string> = {
 
 /** Seven columns inside 330px leaves ~47px per tick — these have to be terse. */
 const SHORT_LABEL: Record<string, string> = {
-  list: "At list",
-  rightsize: "PT",
+  reference: "Spend",
+  bogo: "BOGO",
   offpeak: "Off-pk",
   deferred: "Def",
   fsp: "FSP",
@@ -109,7 +109,7 @@ export default function Waterfall({ result, compare, present }: WaterfallProps) 
   const labelFont = compact ? 8.5 : 10;
   const valueFont = compact ? 9 : present ? 12 : 11;
 
-  const description = `Cost waterfall in thousands of dollars per month. At list ${moneyK(result.atList)}, falling across ${steps.length - 1} placement and commitment steps to a final cost of ${moneyK(result.final)} — a ${percent(result.savingPct)} saving at a blended ${multiplier(result.blendedMultiplier)} of Standard PayGo.`;
+  const description = `Savings waterfall in thousands of dollars per month. Incremental spend ${moneyK(result.reference)}, falling across ${steps.length - 1} placement and commitment steps to a final cost of ${moneyK(result.final)} — a ${percent(result.savingPct)} saving at a blended ${multiplier(result.blendedMultiplier)} of Standard PayGo.`;
 
   return (
     <div ref={ref} className="w-full">

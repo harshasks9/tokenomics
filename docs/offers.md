@@ -7,10 +7,10 @@ economics — into a live what-if simulator that GTM teammates can drive in a
 customer conversation: change a lever, watch the waterfall move, share the URL,
 export the chart.
 
-**Scope: new GSU / PT capacity being ordered, on an incremental commit.**
-Existing orders are not repriced and are not represented. The "at list" figure
-is the reference cost of the *new* order if bought peak-sized — not anyone's
-current bill.
+**Scope: incremental new workload only** — the PT capacity and PayGo demand
+being added, on an incremental commit. Nothing here reprices or describes what
+the customer already runs. The baseline figure is what that *new* workload costs
+at standard rates with nothing elected.
 
 **Nothing is programmatic.** Buy One PT Get One PayGo, Off-peak, Deferred,
 Batch, FSP and the GSU Q3 offer are each an election, so each is a checkbox.
@@ -27,15 +27,15 @@ distribution.**
 - [Where the code lives](#where-the-code-lives)
 - [The math spec](#the-math-spec)
 - [Lever table](#lever-table)
-- [Test vectors](#test-vectors)
+- [Assumptions](#assumptions)
+- [Model pricing comparison](#model-pricing-comparison)
 - [Authentication](#authentication)
 - [Passcode rotation](#passcode-rotation)
 - [Security honesty note](#security-honesty-note)
 - [Local development](#local-development)
 - [Deployment](#deployment)
+- [Measured quality](#measured-quality)
 - [Changelog](#changelog)
-
----
 
 ## Where the code lives
 
@@ -78,6 +78,22 @@ Appended to (never rewritten): `src/proxy.ts` (host routing + the gate),
 
 All money is **$K per month** unless a name says otherwise.
 
+### What is being modelled
+
+Two inputs describe the incremental workload, both normalised to GSUs so they
+sit on one scale:
+
+- `ptGsus` — Provisioned Throughput capacity being ordered. **PT bills on
+  capacity, not usage**, so this number is what gets paid for.
+- `paygoGsus` — expected PayGo demand, in GSU-equivalents.
+
+`ptUtilization` says how full the reserved capacity actually runs. Anything
+below 100% is capacity bought and not used — surfaced explicitly, because it is
+the single most common way a PT order goes wrong.
+
+TPM figures come from `tpmPerGsu`, an editable assumption. See the note in
+[Assumptions](#assumptions).
+
 ### Constants
 
 - `P_LIST = 2.4` — $K per GSU per month (list $2,400)
@@ -89,193 +105,157 @@ All money is **$K per month** unless a name says otherwise.
   | 3 months | 2,400 |
   | 1 year | 2,100 |
 
-  > **Assumption.** The brief names three terms but only two prices ($2,400 and
-  > $2,100). List is fixed at $2,400 and a commitment earns a discount, so the
-  > sub-year terms sit at list and the 1-year term takes $2,100 (−12.5%). If
-  > that reading is wrong, `GSU_TERM_PRICE` in `model.ts` is the single place to
-  > change it — nothing else in the model hardcodes a term price.
+### The baseline
 
-### Core chain
+The reference everything is measured against is **incremental spend with
+nothing elected** — not a peak-sized hypothetical, and not the customer's
+current bill:
 
 ```
-V      = gsus × uPeak                  // consumed GSU-equivalents
-atList = gsus × P_LIST                 // the new order peak-sized at list, $K/mo
-peakMultiplier = 1 / uPeak
-
-committedGsus = V × w_pt / u_pt        // drives BOGO eligibility and the Q3 tier
-
-m_spike = BOGO elected && committedGsus >= 200 ? 1.0 : 1.8
-
-S1 = P·V × ( w_pt/u_pt + w_spike×m_spike + w_off + w_def + w_batch )
-S2 = S1 − (offPeak elected  ? P·V × w_off × 0.5 : 0)
-defMult = 0.5 + 0.5·harness
-S3 = S2 − P·V × ( (deferred elected ? w_def×(1−defMult) : 0)
-                + (batch elected    ? w_batch×0.5       : 0) )
-S4 = S3 × (1 − (fsp elected ? fspRate : 0))
+ptReference    = ptGsus × P_LIST
+paygoUnit      = paygoGsus × P_LIST
+paygoReference = paygoUnit × ( spike×1.8 + standard + offPeak + deferred + batch )
+reference      = ptReference + paygoReference
 ```
 
-Closed form, which is what the header renders as the master equation:
+Spike traffic sits at Priority PayGo 1.8x in the baseline because Buy One PT
+Get One PayGo has not been elected yet. Standard PayGo is the remainder of the
+four placement shares, so nothing auto-normalises behind the user's back; if
+the four are pushed past 100% they are scaled back proportionally and the UI
+says so.
 
-```
-Placed = P·V · [ w_pt/u_pt + w_spike·m_spike + 0.5·w_off
-                 + (0.5 + 0.5·harness)·w_def + 0.5·w_batch ] · (1 − d)
-```
+### The steps
 
-### GSU commitment layer
+Each step is gated on the customer electing that construct. Nothing is
+programmatic.
 
-These steps touch **only the GSU/PT line**, `G = P·V·(wb/u1)` — not the PayGo
-portion of the bill. That is deliberate: the GSU term price, the GCP commit
-discount and the Q3 offer are all GSU constructs, so a customer with little
-baseload sees them do very little, which is the honest answer.
+| # | Step | Effect when elected | When not |
+|---|---|---|---|
+| 1 | Buy One PT Get One PayGo | spike share 1.8x → 1.0x | stays at 1.8x |
+| 2 | Off-peak PayGo | off-peak share × 0.5 | stays at 1.0x |
+| 3 | Deferred + Batch | deferred × (0.5 + 0.5·harness), batch × 0.5 | stay at 1.0x |
+| 4 | Flexible Savings Plan | −10% or −20% on everything in scope | on-demand |
+| 5 | GSU term + GCP commit | PT line only | list, 1-month |
+| 6 | GSU Q3 offer | PT line only, tier discount then credits | none |
 
-```
-G            = P·V × wb/u1              // GSU spend at list
-G_afterFsp   = G × (1 − d)              // what S4 already charged for it
-τ            = P_term / P_LIST          // 1.000 (1m/3m) or 0.875 (1y)
-gsuRate      = max(d, g)                // NON-STACKING — see below
-G_afterCommit = G × τ × (1 − gsuRate)
+Steps 5 and 6 touch **only the PT line**, so a customer with little PT sees
+them do little — which is the honest answer.
 
-S5 = S4 − G_afterFsp + G_afterCommit    // step 5: GSU term + GCP commit
-
-// Step 6 — GSU Q3 offer. The tier is EARNED by committed GSU count, not chosen.
-G_afterQ3 = G_afterCommit × (1 − q3Discount)
-credits   = G_afterQ3 × q3Credits
-S6 = S5 − (G_afterCommit − G_afterQ3) − credits
-
-final = S6
-blendedMultiplier = final / (P·V)
-savingPct  = 1 − final/C0
-annualSave = (C0 − final) × 12
-```
-
-**Non-stacking is an anchored fact, not a modelling choice.** The decks state
-FSP is non-stacking with the on-demand rate as the ceiling, and that FSP draws
-down the EA rather than compounding with EA discounts. So the GSU line takes the
-*better* of the FSP rate and the GCP commit discount, never their product. The
-lever rail shows which one won.
+**Non-stacking is an anchored fact.** The decks state FSP is non-stacking with
+the on-demand rate as ceiling, and that FSP draws down the EA rather than
+compounding with it. So the PT line takes the *better* of the FSP rate and the
+GCP commit discount, never their product.
 
 ### GSU Q3 offer tiers
 
-The tier is qualified for, not negotiated — it is derived from the committed GSU
-count per month:
+Qualified for, not negotiated — derived from `ptGsus`:
 
-| Committed GSUs / month | Discount on GSU spend | Credits |
+| PT GSUs / month | Discount on PT spend | Credits |
 |---|---|---|
 | 2,000 or more | **30%**, fixed | **10%** |
 | 500 or more | **up to 15%**, a band | **10%** |
-| under 500 | none — does not qualify | — |
+| under 500 | does not qualify | — |
 
-The rail shows which tier the current commit qualifies for and how many more
-GSUs would reach the next one. Credits apply after the discount, on GSU spend
-only.
+The rail shows the qualifying tier and how many more GSUs reach the next one.
+Credits apply after the discount, on PT spend only.
 
-At the defaults (`term = 1 month`, GCP commit 0, Q3 not elected) the whole GSU
-layer is neutral: `S6 === S5 === S4`, so the §9 vectors are unaffected.
+### Derived figures
+
+```
+totalConsumed     = ptGsus × ptUtilization + paygoGsus
+idleGsus          = ptGsus × (1 − ptUtilization)
+blendedMultiplier = final / (P_LIST × totalConsumed)
+savingPct         = 1 − final / reference
+annualSave        = (reference − final) × 12
+commit.monthly    = PT line after term, commit discount, Q3 and credits
+commit.total      = commit.monthly × term months
+```
 
 ### Attribution
 
 | Component | Formula |
 |---|---|
-| Right-sizing | `atList − S1` |
+| Buy One PT Get One PayGo | `reference − S1` |
 | Placement (0.5x tiers) | `S1 − S3` |
 | FSP | `S3 − S4` |
 | GSU term + commit | `S4 − S5` |
 | GSU Q3 offer | `S5 − S6` |
 
-The five sum to `atList − final` exactly (asserted in the tests). Utilization repair
-goes negative when `u_pt < uPeak` — right-sizing that makes things worse — and
-the UI says so in red rather than hiding it.
-
-### Anchored vs. modelled
-
-Rendered with `●` (anchored to the decks) and `○` (modelled assumption):
-
-**Anchored** — PT = 1.0x Std PayGo at 100% utilization · Priority PayGo 1.8x ·
-Flex / Batch / Deferred / Off-peak = 0.5x · FSP 10% (1Y) / 20% (3Y), monthly
-enforcement, dollar-fungible across Vertex AI 1P including PT, non-stacking with
-the on-demand ceiling · Deferred discount = inference tokens only, harness fees
-at standard rates · Off-peak & Deferred = global endpoint only · Off-peak
-windows: weekdays 3–9 PM PT, Fri 3 PM – Sun 9 PM PT.
-
-**Modelled** — `u0`, `u1`, the workload shares, `h`, and the GSU term /
-commit / incentive levers. These are the user's.
-
----
+The five sum to `reference − final` exactly, and each is non-negative
+(asserted in the tests).
 
 ## Lever table
 
 | Lever | Meaning | Range | Default |
 |---|---|---|---|
-| `gsus` | New capacity, peak-sized GSUs | 100–5000, step 50 | 1000 |
-| `uPeak` | Utilization if the order were peak-sized | 0.35–0.90 | 0.55 |
-| `uPt` | Right-sized PT utilization | 0.60–0.98 | 0.85 |
-| `mix.pt` | **Workload placed on PT** | 0–1 | 0.55 |
-| `mix.spike` | Spike traffic (1.0x with BOGO, 1.8x without) | 0–1 | 0.07 |
-| `mix.offPeak` | Off-peak-eligible share | 0–1 | 0.18 |
-| `mix.deferred` | Deferred-agents share | 0–1 | 0.14 |
-| `mix.batch` | Batch share | 0–1 | 0.06 |
-| `harness` | Harness fee share within Deferred, billed 1.0x | 0–0.50 | 0.15 |
+| `ptGsus` | Incremental PT capacity | 0–5000, step 50 | 600 |
+| `ptUtilization` | How full that PT runs | 0.40–1.00 | 0.85 |
+| `paygoGsus` | Incremental PayGo demand, GSU-equiv | 0–5000, step 50 | 600 |
+| `paygoMix.spike` | Peak-sensitive share of PayGo | 0–1 | 0.15 |
+| `paygoMix.offPeak` | Off-peak-eligible share | 0–1 | 0.30 |
+| `paygoMix.deferred` | Deferred-agents share | 0–1 | 0.20 |
+| `paygoMix.batch` | Batch share | 0–1 | 0.10 |
+| `harness` | Harness fee share within Deferred | 0–0.50 | 0.15 |
+| `tpmPerGsu` | TPM per GSU — assumption | 10k–200k | 60,000 |
+| `modelId` | Model for the token comparison | — | Gemini 3.6 Flash |
 | `fspRate` | FSP rate when elected | {0.10, 0.20} | 0.20 |
 | `term` | GSU commitment term | {1m, 3m, 1y} | 1m |
 | `gcpCommit` | GCP commit discount on GSU pricing | 0–0.30 | 0 |
 | `q3Discount` | Discount within the qualifying Q3 band | 0–0.30 | 0.15 |
 
-Customers rarely put the whole workload on PT — `mix.pt` is the slider for that,
-and whatever is left rides the PayGo tiers below it. Mix shares auto-normalize
-(`w_i ← w_i / Σw`).
+Standard PayGo is the remainder of the four placement shares — there is no
+fifth slider fighting the others.
 
 ### Elections
 
-Each is a checkbox, defaulting to on except the Q3 offer:
-
-| Offer | Effect when elected | When not elected |
-|---|---|---|
-| `bogo` | Spikes ride protected PayGo at 1.0x. Needs 200+ committed GSUs. | Spikes bill at Priority PayGo 1.8x |
-| `offPeak` | Off-peak share at 0.5x | stays at 1.0x |
-| `deferred` | Deferred share at `0.5 + 0.5·harness` | stays at 1.0x |
-| `batch` | Batch share at 0.5x | stays at 1.0x |
-| `fsp` | `fspRate` off in-scope spend | no FSP discount |
-| `q3` | Tier discount + credits on GSU spend | no Q3 benefit |
-
-### Incremental commit
-
-The model reports the commit the customer takes on: the monthly GSU spend after
-term pricing, commit discount and Q3, and the total across the term (1, 3 or 12
-months). It is the GSU line only, never the whole bill — and it is incremental,
-on top of existing orders.
+Six checkboxes: `bogo`, `offPeak`, `deferred`, `batch`, `fsp`, `q3`. All default
+to elected. BOGO additionally requires 200+ PT GSUs and disables itself below
+that, explaining why.
 
 ### Shareable URLs
 
 ```
-?g=1000&up=55&ut=85&mix=55-7-18-14-6&h=15&fsp=20&t=1m&gcp=0&q3d=15
-  &o=bogo.offpeak.deferred.batch.fsp&preset=japac
+?pt=600&u=85&pg=600&mix=15-30-20-10&h=15&fsp=20&t=1m&gcp=0&q3d=15
+  &m=gemini-3-6-flash&tpm=60000&o=bogo.offpeak.deferred.batch.fsp.q3&preset=japac
 ```
 
-Percentages travel as whole numbers; elected offers travel as a dot-separated
-list in `o`. A `preset` supplies the base and explicit params override it, so a
-link tweaked after loading a preset round-trips exactly. Malformed values fall
-back to defaults instead of throwing. Note `o=` (empty) means *nothing*
-elected — it is not the same as omitting `o`, which keeps the base.
+Percentages travel as whole numbers; elected offers as a dot-separated list in
+`o`. `o=` (empty) means *nothing* elected — not the same as omitting `o`, which
+keeps the base. Malformed values fall back to defaults instead of throwing.
 
----
+## Assumptions
 
-## Test vectors
+Two numbers on this page are not in the source decks, and both are exposed as
+levers rather than buried:
 
-`npm test` (Vitest). All must pass before deploy.
+- **`tpmPerGsu` (default 60,000).** The decks quote customer traffic in TPM and
+  capacity in GSUs but never the conversion. The default is reverse-engineered
+  from the PT-percentile chart — a large customer peaking around 60M TPM against
+  an order in the high hundreds of GSUs. **Set this to your region's real figure
+  before quoting any TPM number from this site.**
+- **GSU term pricing.** Three terms, two published prices. List is $2,400 and a
+  commitment earns a discount, so sub-year terms sit at list and the 1-year term
+  takes $2,100. `GSU_TERM_PRICE` is the single place to change it.
 
-| Vector | Setup | Expectation | Status |
-|---|---|---|---|
-| A | Defaults | V=550, C0=2400.00, S1=1448.12, S2=1329.32, S3=1211.18, **S4=968.94**, blended 0.734, saving 59.6%, annual $17.17M | pass |
-| B | `u_pt=uPeak=.55`, mix 100/0/0/0/0, nothing elected | `S4 === atList` exactly (guards sign errors) | pass |
-| C | `u0=.55`, mix 0/0/40/40/20, `h=0`, `d=.20` | `S4 = P·V × 0.5 × 0.8 = 528.00` exactly | pass |
-| D | Raw mix 110/14/36/28/12 | normalizes to Vector A's shares; same S4 | pass |
-| Elections | Each offer unelected | costs more than electing it; BOGO ignored below 200 GSUs; spike moves 1.0x→1.8x | pass |
-| Q3 tiers | 2,000+ / 500+ / below | 30% fixed + 10% credits · up to 15% + 10% · no tier | pass |
-| E | `h=.50` | `defMult = 0.75` exactly | pass |
-| Property | Monotonicity | S4 non-increasing in the FSP rate and the off-peak share; final non-increasing in the GCP commit discount; S4 rises with the harness share | pass |
-| Integrity | Full lever grid | no NaN, final ≥ 0, deltas reconcile, attribution sums to total, model is pure | pass |
+## Model pricing comparison
 
----
+The "Compete" view compares published list prices per million tokens, and what
+they become once token consumption is accounted for — the decks are emphatic
+that the argument is cost-per-task, not cost-per-token.
+
+Every entry carries its provenance in the UI:
+
+| Source badge | Meaning |
+|---|---|
+| `deck` | Stated in the Q3 2026 commercial deck |
+| `derived` | Computed from a relative claim in the deck, not a rate card |
+| `no price` | Named in the deck as a comparison target, with no price given |
+
+Claude Sonnet is `derived` — the deck says it is priced about 2x higher on list
+than Gemini 3.6 Flash. The GPT models carry **no price at all** rather than an
+invented one. The effective-cost-per-task figures use directional EAP token
+ratios, not benchmarks. All of this is stated on the page itself; verify against
+the vendor's public pricing before using any of it with a customer.
 
 ## Authentication
 
@@ -462,6 +442,30 @@ palette, both noted at their definitions:
 Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
+
+### 0.3.0 — 2026-08-01
+
+- **Inputs are now volumes, not shares.** The builder asks for incremental PT
+  (GSUs) and incremental PayGo (GSU-equivalents) directly, normalised to GSUs,
+  with TPM backed out from an explicit `tpmPerGsu` assumption.
+- **Traffic shape chart** added above the fold: a representative day with the
+  reserved PT band, PayGo overflow above it, and the PT/PayGo split of both
+  volume and spend. The curve is *solved* so its two areas match the reported
+  split rather than merely suggesting one. No 50/50 assumption — the presets
+  span 15/85 to 78/22.
+- **The baseline is now incremental spend at standard rates**, so every
+  visualization answers one question: how much of the new spend do the programs
+  take back.
+- **Mathematical formulas removed from the site.** The spec lives here; the
+  page speaks in plain language.
+- **Compete view** comparing published list prices and effective cost per task
+  across Google, Anthropic and OpenAI models — each entry carrying its
+  provenance, and no invented prices.
+- **Model selection** added under Assumptions.
+- **Levers simplified again**: three groups plus an Assumptions disclosure.
+  Standard PayGo is the remainder of the placement shares rather than a fifth
+  competing slider, so nothing auto-normalises behind the user.
+- "Legacy" removed from the vocabulary entirely.
 
 ### 0.2.0 — 2026-08-01
 

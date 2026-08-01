@@ -21,49 +21,55 @@ function build(overrides: PresetOverrides): Levers {
   };
 }
 
-/**
- * Mix tuples are (PT, spike, off-peak, deferred, batch) — the same order as the
- * placement rail. Values are raw shares; the model normalizes them.
- */
 export const PRESETS: Preset[] = [
   {
     id: "default",
-    label: "Default / Illustrative",
-    note: "The reference scenario — a mid-sized new order with a real baseline, a modest spike, and genuine off-peak and async headroom.",
+    label: "Balanced (50/50)",
+    note: "An even split of new PT and new PayGo — a common starting shape, but only a starting point. Move the two volume sliders to match the real profile.",
     levers: DEFAULT_LEVERS,
   },
   {
-    id: "digital-native",
-    label: "Digital native, spiky",
-    note: "Consumer traffic with sharp peaks: PT sized to the baseline, protected PayGo carrying the spikes.",
+    id: "pt-heavy",
+    label: "PT-heavy baseline",
+    note: "Predictable, steady new workload — most of it reserved, a thin PayGo tail for bursts.",
     levers: build({
-      uPeak: 0.45,
-      uPt: 0.88,
-      mix: { pt: 0.5, spike: 0.15, offPeak: 0.15, deferred: 0.15, batch: 0.05 },
-      harness: 0.1,
-      fspRate: 0.2,
+      ptGsus: 1600,
+      ptUtilization: 0.88,
+      paygoGsus: 400,
+      paygoMix: { spike: 0.25, offPeak: 0.2, deferred: 0.1, batch: 0.05 },
+    }),
+  },
+  {
+    id: "paygo-heavy",
+    label: "PayGo-heavy, spiky",
+    note: "Mostly variable new demand with sharp peaks. Watch what Buy One PT Get One PayGo is worth here — untick it and the spike share jumps to 1.8x.",
+    levers: build({
+      ptGsus: 300,
+      ptUtilization: 0.8,
+      paygoGsus: 1400,
+      paygoMix: { spike: 0.35, offPeak: 0.2, deferred: 0.15, batch: 0.05 },
     }),
   },
   {
     id: "japac",
-    label: "JAPAC daytime heavy",
-    note: "US off-peak = JAPAC business morning. Live daytime traffic reprices at 0.5x with no workload changes.",
+    label: "JAPAC daytime",
+    note: "US off-peak is the JAPAC business morning, so a large share of live daytime traffic reprices at 0.5x with no workload changes.",
     levers: build({
-      uPeak: 0.55,
-      uPt: 0.85,
-      mix: { pt: 0.4, spike: 0.05, offPeak: 0.35, deferred: 0.12, batch: 0.08 },
-      harness: 0.15,
-      fspRate: 0.2,
+      ptGsus: 700,
+      ptUtilization: 0.85,
+      paygoGsus: 1100,
+      paygoMix: { spike: 0.1, offPeak: 0.55, deferred: 0.1, batch: 0.08 },
     }),
   },
   {
     id: "fsi",
-    label: "Regulated FSI (residency-constrained)",
-    note: "Off-peak & Deferred not available — global endpoint only. Batch where the residency class permits.",
+    label: "Regulated FSI",
+    note: "Off-peak and Deferred are global-endpoint only, so a residency-constrained customer cannot elect them — the shares stay at 1.0x.",
     levers: build({
-      uPeak: 0.6,
-      uPt: 0.82,
-      mix: { pt: 0.7, spike: 0.1, offPeak: 0, deferred: 0, batch: 0.2 },
+      ptGsus: 900,
+      ptUtilization: 0.82,
+      paygoGsus: 500,
+      paygoMix: { spike: 0.2, offPeak: 0.15, deferred: 0.1, batch: 0.2 },
       harness: 0,
       fspRate: 0.1,
       offers: { offPeak: false, deferred: false },
@@ -71,48 +77,41 @@ export const PRESETS: Preset[] = [
   },
   {
     id: "agent-fleet",
-    label: "Agent-fleet future",
-    note: "Watch the harness share — agent premiums dilute the 0.5x, so the blended saving lands well short of half.",
+    label: "Agent fleet",
+    note: "Mostly deferred agent work. Watch the harness share in Advanced — agent premiums dilute the 0.5x, so the blended saving lands well short of half.",
     levers: build({
-      uPeak: 0.5,
-      uPt: 0.85,
-      mix: { pt: 0.3, spike: 0.05, offPeak: 0.1, deferred: 0.5, batch: 0.05 },
+      ptGsus: 500,
+      ptUtilization: 0.8,
+      paygoGsus: 1800,
+      paygoMix: { spike: 0.05, offPeak: 0.1, deferred: 0.6, batch: 0.1 },
       harness: 0.25,
-      fspRate: 0.2,
     }),
   },
   {
-    id: "conservative",
-    label: "Conservative (no commitments)",
-    note: "Nothing elected beyond right-sizing — the floor case for what correct placement alone is worth.",
+    id: "q3-volume",
+    label: "Q3 volume (2,000+ GSUs)",
+    note: "A PT order past the 2,000 GSU floor — 30% off PT spend plus 10% in credits, on a 1-year term.",
     levers: build({
-      uPeak: 0.55,
-      uPt: 0.78,
-      mix: { pt: 0.6, spike: 0.1, offPeak: 0.12, deferred: 0.1, batch: 0.08 },
-      harness: 0.2,
+      ptGsus: 2400,
+      ptUtilization: 0.87,
+      paygoGsus: 900,
+      paygoMix: { spike: 0.15, offPeak: 0.25, deferred: 0.15, batch: 0.1 },
+      term: "1y",
+    }),
+  },
+  {
+    id: "nothing-elected",
+    label: "Nothing elected",
+    note: "The floor case — the same workload with no programmatic options taken at all. Everything on the waterfall to the right of the first bar is what is being left behind.",
+    levers: build({
       offers: {
-        bogo: true,
+        bogo: false,
         offPeak: false,
         deferred: false,
         batch: false,
         fsp: false,
         q3: false,
       },
-    }),
-  },
-  {
-    id: "q3-volume",
-    label: "Q3 volume play (2,000+ GSUs)",
-    note: "A large new order that clears the 2,000 GSU floor — 30% off GSU spend plus 10% in credits, on a 1-year term.",
-    levers: build({
-      gsus: 4000,
-      uPeak: 0.6,
-      uPt: 0.85,
-      mix: { pt: 0.75, spike: 0.07, offPeak: 0.08, deferred: 0.06, batch: 0.04 },
-      harness: 0.15,
-      fspRate: 0.2,
-      term: "1y",
-      offers: { q3: true },
     }),
   },
 ];
@@ -128,17 +127,18 @@ export function matchesPreset(levers: Levers, preset: Preset): boolean {
   const b = preset.levers;
   const close = (x: number, y: number) => Math.abs(x - y) < 1e-9;
   return (
-    close(a.gsus, b.gsus) &&
-    close(a.uPeak, b.uPeak) &&
-    close(a.uPt, b.uPt) &&
-    close(a.mix.pt, b.mix.pt) &&
-    close(a.mix.spike, b.mix.spike) &&
-    close(a.mix.offPeak, b.mix.offPeak) &&
-    close(a.mix.deferred, b.mix.deferred) &&
-    close(a.mix.batch, b.mix.batch) &&
+    close(a.ptGsus, b.ptGsus) &&
+    close(a.ptUtilization, b.ptUtilization) &&
+    close(a.paygoGsus, b.paygoGsus) &&
+    close(a.paygoMix.spike, b.paygoMix.spike) &&
+    close(a.paygoMix.offPeak, b.paygoMix.offPeak) &&
+    close(a.paygoMix.deferred, b.paygoMix.deferred) &&
+    close(a.paygoMix.batch, b.paygoMix.batch) &&
     close(a.harness, b.harness) &&
+    close(a.tpmPerGsu, b.tpmPerGsu) &&
     close(a.fspRate, b.fspRate) &&
     a.term === b.term &&
+    a.modelId === b.modelId &&
     close(a.gcpCommit, b.gcpCommit) &&
     close(a.q3Discount, b.q3Discount) &&
     a.offers.bogo === b.offers.bogo &&

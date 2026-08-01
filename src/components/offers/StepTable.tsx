@@ -86,7 +86,7 @@ export default function StepTable({ result }: { result: ModelResult }) {
       <table className="o-table" style={{ minWidth: 640 }}>
         <caption className="o-sr-only">
           Step-by-step monthly cost, the change each lever contributes, and the
-          cumulative saving against the legacy estate.
+          cumulative saving against the incremental spend baseline.
         </caption>
         <thead>
           <tr>

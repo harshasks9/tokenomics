@@ -37,7 +37,7 @@ body:has(.offers-root) {
   --ink-faint: #8aa5ba;
 
   /* Semantic accents — each colour means exactly one thing */
-  --gold: #e8b44c; /* legacy cost / premium-priced / caution */
+  --gold: #e8b44c; /* baseline spend / premium-priced / caution */
   --blue: #5ba8e0; /* standard 1.0x tier / utilization repair */
   --green: #4cc38a; /* 0.5x flexibility tiers / savings */
   --fsp: #c989e8; /* commitment layer (FSP) */

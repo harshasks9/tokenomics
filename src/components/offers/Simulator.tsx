@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AttributionBar from "./AttributionBar";
+import Compete from "./Compete";
+import TrafficProfile from "./TrafficProfile";
 import ExportButton from "./ExportButton";
 import Footnotes from "./Footnotes";
 import KpiStrip from "./KpiStrip";
@@ -16,13 +18,13 @@ import {
   computeModel,
 } from "@/lib/offers/model";
 import { paramsFromLevers } from "@/lib/offers/params";
-import { SCOPE_NOTE } from "@/lib/offers/descriptions";
+import { GOAL_NOTE, SCOPE_NOTE } from "@/lib/offers/descriptions";
 import { PRESETS, type Preset, matchesPreset } from "@/lib/offers/presets";
 import { moneyK, multiplier, percent } from "@/lib/offers/format";
 
 const LEGEND = [
-  { label: "At list", colour: "var(--gold)" },
-  { label: "Right-size PT", colour: "var(--blue)" },
+  { label: "Incremental spend", colour: "var(--gold)" },
+  { label: "BOGO", colour: "var(--blue)" },
   { label: "0.5x placement", colour: "var(--green)" },
   { label: "FSP", colour: "var(--fsp)" },
   { label: "GSU commit + Q3", colour: "var(--teal)" },
@@ -45,6 +47,7 @@ export default function Simulator({
   const [pinned, setPinned] = useState<LeverState | null>(null);
   const [present, setPresent] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [compete, setCompete] = useState(false);
 
   const result = useMemo(() => computeModel(levers), [levers]);
   const compareResult = useMemo(
@@ -119,9 +122,12 @@ export default function Simulator({
         {/* ── Header ─────────────────────────────────────────────────── */}
         <header>
           <p className="o-eyebrow">GenAI commercial framework · Internal</p>
-          <h1 className="o-h1 mt-3 max-w-[22ch]">
-            From peak-priced certainty to a placed portfolio.
+          <h1 className="o-h1 mt-3 max-w-[24ch]">
+            What the new workload costs, and what the programs take back.
           </h1>
+          <p className="o-dim mt-3 max-w-[64ch] text-[14px] leading-[1.6]">
+            {GOAL_NOTE}
+          </p>
 
           <div
             className="o-panel mt-5 flex flex-wrap items-start gap-x-3 gap-y-2 px-4 py-3"
@@ -135,38 +141,6 @@ export default function Simulator({
               {SCOPE_NOTE}
             </p>
           </div>
-
-          <details className="o-panel o-disclosure mt-3 px-4">
-            <summary>
-              <span className="o-eyebrow">The equation</span>
-            </summary>
-            <div className="pb-4">
-              <p className="o-equation">
-                <span style={{ color: "var(--ink)" }}>Placed</span> = P·V · [{" "}
-                <span className="o-eq-blue">w_pt/u_pt</span> +{" "}
-                <span className="o-eq-blue">w_spike</span>·m_spike +{" "}
-                <span className="o-eq-green">0.5</span>·w_off + (
-                <span className="o-eq-green">0.5</span>+
-                <span className="o-eq-green">0.5</span>
-                <span className="o-eq-gold">h</span>)·w_def +{" "}
-                <span className="o-eq-green">0.5</span>·w_batch ] · (1−
-                <span className="o-eq-fsp">d</span>)
-              </p>
-              <p className="o-equation mt-1">
-                <span style={{ color: "var(--ink)" }}>GSU line</span> = P·V·(
-                <span className="o-eq-blue">w_pt/u_pt</span>) ·{" "}
-                <span className="o-eq-teal">τ</span> · (1−max(
-                <span className="o-eq-fsp">d</span>,
-                <span className="o-eq-teal">g</span>)) · (1−
-                <span className="o-eq-teal">q</span>) · (1−
-                <span className="o-eq-teal">credits</span>)
-              </p>
-              <p className="o-mono o-faint mt-3 text-[10px] leading-[1.6]">
-                m_spike is 1.0x with Buy One PT Get One PayGo elected, 1.8x
-                without. Any construct left unelected bills its share at 1.0x.
-              </p>
-            </div>
-          </details>
 
           <p className="o-mono o-faint mt-2.5 text-[10px] leading-[1.6]">
             <span className="o-marker o-marker-anchored" aria-hidden="true">
@@ -199,6 +173,14 @@ export default function Simulator({
           >
             {present ? "Exit present" : "Present"}
           </button>
+          <button
+            type="button"
+            className="o-btn"
+            aria-pressed={compete}
+            onClick={() => setCompete((current) => !current)}
+          >
+            Compete
+          </button>
           <ShareButton levers={levers} presetId={activePresetId} />
           <ExportButton levers={levers} result={result} />
         </div>
@@ -215,8 +197,20 @@ export default function Simulator({
           </div>
         ) : null}
 
-        {/* ── KPI strip ──────────────────────────────────────────────── */}
+        {/* ── Traffic shape ──────────────────────────────────────────── */}
         <div className="mt-6">
+          <TrafficProfile result={result} />
+        </div>
+
+        {/* ── Compete ────────────────────────────────────────────────── */}
+        {compete ? (
+          <div className="o-fade-in mt-5">
+            <Compete />
+          </div>
+        ) : null}
+
+        {/* ── KPI strip ──────────────────────────────────────────────── */}
+        <div className="mt-5">
           <KpiStrip result={result} compare={compareResult} />
         </div>
 
@@ -251,10 +245,10 @@ export default function Simulator({
           >
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 id="waterfall-heading" className="o-eyebrow">
-                Cost waterfall · $K per month
+                Savings vs incremental spend · $K per month
               </h2>
               <p className="o-mono text-[11px]" style={{ color: "var(--ink-dim)" }}>
-                {moneyK(result.atList)} →{" "}
+                {moneyK(result.reference)} →{" "}
                 <span style={{ color: "var(--green)" }}>
                   {moneyK(result.final)}
                 </span>{" "}

@@ -24,12 +24,14 @@ describe("Shareable URLs", () => {
     }
   });
 
-  it("round-trips the commitment levers", () => {
+  it("round-trips the commitment and assumption levers", () => {
     const levers: Levers = {
       ...DEFAULT_LEVERS,
       term: "1y",
       gcpCommit: 0.25,
       q3Discount: 0.1,
+      tpmPerGsu: 90_000,
+      modelId: "gemini-3-5-flash-lite",
     };
     expect(roundTrip(levers).levers).toEqual(levers);
   });
@@ -49,13 +51,14 @@ describe("Shareable URLs", () => {
 
   it("produces the documented query shape", () => {
     const query = paramsFromLevers(DEFAULT_LEVERS).toString();
-    expect(query).toContain("g=1000");
-    expect(query).toContain("up=55");
-    expect(query).toContain("ut=85");
-    expect(query).toContain("mix=55-7-18-14-6");
+    expect(query).toContain("pt=600");
+    expect(query).toContain("pg=600");
+    expect(query).toContain("u=85");
+    expect(query).toContain("mix=15-30-20-10");
     expect(query).toContain("h=15");
     expect(query).toContain("fsp=20");
     expect(query).toContain("t=1m");
+    expect(query).toContain("tpm=60000");
   });
 
   it("lets explicit params override the named preset", () => {
@@ -65,16 +68,17 @@ describe("Shareable URLs", () => {
     const { levers, presetId } = leversFromParams(params);
     expect(presetId).toBe("japac");
     expect(levers.fspRate).toBe(0.1);
-    expect(levers.mix).toEqual(japac.levers.mix);
+    expect(levers.paygoMix).toEqual(japac.levers.paygoMix);
   });
 
   it("falls back to defaults on junk instead of throwing", () => {
     const junk = new URLSearchParams(
-      "g=notanumber&up=999&ut=-5&mix=broken&h=abc&fsp=37&t=99y&gcp=&q3d=&preset=nope",
+      "pt=notanumber&pg=x&u=-5&mix=broken&h=abc&fsp=37&t=99y&gcp=&q3d=&m=nope&tpm=&preset=nope",
     );
     const { levers, presetId } = leversFromParams(junk);
     expect(presetId).toBeNull();
-    expect(levers.mix).toEqual(DEFAULT_LEVERS.mix);
+    expect(levers.paygoMix).toEqual(DEFAULT_LEVERS.paygoMix);
+    expect(levers.modelId).toBe(DEFAULT_LEVERS.modelId);
     expect(levers.term).toBe(DEFAULT_LEVERS.term);
     expect(levers.fspRate).toBe(DEFAULT_LEVERS.fspRate); // 37 is not a valid tier
     expect(levers.harness).toBe(DEFAULT_LEVERS.harness);
@@ -89,17 +93,27 @@ describe("Shareable URLs", () => {
 
   it("clamps out-of-range values into the lever ranges", () => {
     const { levers } = leversFromParams(
-      new URLSearchParams("g=99999&up=5&ut=200&gcp=90&q3d=90"),
+      new URLSearchParams("pt=99999&pg=-40&u=200&gcp=90&q3d=90&tpm=9999999"),
     );
-    expect(levers.gsus).toBeLessThanOrEqual(5000);
-    expect(levers.gsus).toBeGreaterThanOrEqual(100);
-    expect(levers.uPeak).toBeGreaterThanOrEqual(0.35);
-    expect(levers.uPt).toBeLessThanOrEqual(0.98);
+    expect(levers.ptGsus).toBeLessThanOrEqual(5000);
+    expect(levers.paygoGsus).toBeGreaterThanOrEqual(0);
+    expect(levers.ptUtilization).toBeLessThanOrEqual(1);
     expect(levers.gcpCommit).toBeLessThanOrEqual(0.3);
     expect(levers.q3Discount).toBeLessThanOrEqual(0.3);
+    expect(levers.tpmPerGsu).toBeLessThanOrEqual(200_000);
   });
 
-  it("snaps the GSU count to its 50-GSU step", () => {
-    expect(leversFromParams(new URLSearchParams("g=1237")).levers.gsus).toBe(1250);
+  it("snaps GSU counts to their 50-GSU step", () => {
+    expect(leversFromParams(new URLSearchParams("pt=1237")).levers.ptGsus).toBe(1250);
+    expect(leversFromParams(new URLSearchParams("pg=1237")).levers.paygoGsus).toBe(1250);
+  });
+
+  it("only accepts a selectable model id", () => {
+    expect(
+      leversFromParams(new URLSearchParams("m=claude-sonnet")).levers.modelId,
+    ).toBe(DEFAULT_LEVERS.modelId);
+    expect(
+      leversFromParams(new URLSearchParams("m=gemini-2-5-pro")).levers.modelId,
+    ).toBe("gemini-2-5-pro");
   });
 });

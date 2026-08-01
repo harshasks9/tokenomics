@@ -8,9 +8,9 @@ export default function AttributionBar({ result }: { result: ModelResult }) {
 
   const parts = [
     {
-      key: "rightSizing",
-      label: "Right-sizing",
-      value: attribution.rightSizing,
+      key: "bogo",
+      label: "Buy One PT Get One PayGo",
+      value: attribution.bogo,
       colour: "var(--blue)",
       opacity: 1,
     },
@@ -45,7 +45,7 @@ export default function AttributionBar({ result }: { result: ModelResult }) {
   ].filter((part) => part.value > 0.01);
 
   const total = parts.reduce((sum, part) => sum + part.value, 0);
-  const negative = attribution.rightSizing < -0.01;
+  const negative = false;
 
   return (
     <section className="o-panel p-5" aria-labelledby="attribution-heading">

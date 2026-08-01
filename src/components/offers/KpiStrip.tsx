@@ -21,33 +21,33 @@ interface Cell {
 function cells(result: ModelResult): Cell[] {
   return [
     {
-      key: "atList",
-      value: moneyK(result.atList),
-      sub: `${result.gsus.toLocaleString("en-US")} peak-sized · ${result.v.toLocaleString("en-US", { maximumFractionDigits: 0 })} GSU-equiv used`,
+      key: "reference",
+      value: moneyK(result.reference),
+      sub: "at standard rates, nothing elected",
       colour: "var(--gold)",
     },
     {
       key: "final",
-      value: moneyK(result.final, 2),
-      sub: `${percent(result.savingPct)} below list`,
+      value: moneyK(result.final),
+      sub: `${percent(result.savingPct)} below incremental spend`,
       colour: "var(--green)",
     },
     {
-      key: "annualSave",
+      key: "saved",
       value: moneyM(result.annualSave),
-      sub: `${moneyK(result.atList - result.final)} per month`,
+      sub: `${moneyK(result.reference - result.final)} per month`,
       colour: "var(--green)",
     },
     {
       key: "commit",
       value: moneyK(result.commit.monthly),
-      sub: `${moneyK(result.commit.total)} over ${result.commit.months} mo · ${result.gsu.units.toFixed(0)} GSUs`,
+      sub: `${moneyK(result.commit.total)} over ${result.commit.months} mo · ${result.gsu.units.toLocaleString("en-US")} GSUs`,
       colour: "var(--teal)",
     },
     {
       key: "blendedMultiplier",
       value: multiplier(result.blendedMultiplier),
-      sub: `vs ${multiplier(result.peakMultiplier)} peak-sized`,
+      sub: "of Standard PayGo, all-in",
       colour: "var(--blue)",
     },
   ];
@@ -100,10 +100,10 @@ export default function KpiStrip({
 function ComparisonRow({ a, b }: { a: ModelResult; b: ModelResult }) {
   const deltas = [
     {
-      label: "At list",
-      text: moneyK(b.atList - a.atList),
-      good: b.atList <= a.atList,
-      neutral: Math.abs(b.atList - a.atList) < 0.5,
+      label: "Incremental",
+      text: moneyK(b.reference - a.reference),
+      good: b.reference <= a.reference,
+      neutral: Math.abs(b.reference - a.reference) < 0.5,
     },
     {
       label: "Monthly",
