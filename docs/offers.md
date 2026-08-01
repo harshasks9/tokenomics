@@ -443,6 +443,20 @@ Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
 
+### 0.3.1 — 2026-08-01
+
+- **The page opens with the question.** A "Step one — how much is the
+  incremental spend?" block leads: the estimate, then how it divides between
+  the PT order and everything else, with a proportional split bar.
+- **The traffic trace is an ECG, not a hill.** 5-minute resolution across the
+  day, with fast jitter, a slow ripple and sparse bursts over the diurnal
+  envelope — the shape real TPM traces have. Peakiness now flexes the envelope
+  only, so solving for the PT/PayGo split no longer amplifies noise into
+  implausible spikes.
+- **One unit per scale.** `pickUnit` / `inUnit` in `format.ts` choose a single
+  unit for a whole axis or readout and hold every value to it, with gridlines
+  on round numbers — no more "116.4M" sitting next to "60K" on the same chart.
+
 ### 0.3.0 — 2026-08-01
 
 - **Inputs are now volumes, not shares.** The builder asks for incremental PT

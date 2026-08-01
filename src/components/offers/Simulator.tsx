@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AttributionBar from "./AttributionBar";
 import Compete from "./Compete";
+import SpendEstimate from "./SpendEstimate";
 import TrafficProfile from "./TrafficProfile";
 import ExportButton from "./ExportButton";
 import Footnotes from "./Footnotes";
@@ -123,7 +124,7 @@ export default function Simulator({
         <header>
           <p className="o-eyebrow">GenAI commercial framework · Internal</p>
           <h1 className="o-h1 mt-3 max-w-[24ch]">
-            What the new workload costs, and what the programs take back.
+            Estimate the incremental spend. Then take it apart.
           </h1>
           <p className="o-dim mt-3 max-w-[64ch] text-[14px] leading-[1.6]">
             {GOAL_NOTE}
@@ -197,8 +198,13 @@ export default function Simulator({
           </div>
         ) : null}
 
-        {/* ── Traffic shape ──────────────────────────────────────────── */}
+        {/* ── Step one: the estimate ─────────────────────────────────── */}
         <div className="mt-6">
+          <SpendEstimate result={result} />
+        </div>
+
+        {/* ── What the traffic looks like ────────────────────────────── */}
+        <div className="mt-5">
           <TrafficProfile result={result} />
         </div>
 

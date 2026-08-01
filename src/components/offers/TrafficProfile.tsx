@@ -1,63 +1,86 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Tooltip from "./Tooltip";
 import type { ModelResult } from "@/lib/offers/model";
-import { moneyK, percent } from "@/lib/offers/format";
+import { inUnit, moneyK, niceStep, percent, pickUnit } from "@/lib/offers/format";
 
 /**
- * A representative day of the incremental workload: reserved PT capacity as a
- * band, demand riding over it, and everything above the band on PayGo.
+ * A day of the incremental workload at 5-minute resolution — jagged, the way
+ * real TPM traces are, not a smooth hill. The reserved PT band sits under it;
+ * everything above rides PayGo.
  *
- * The curve shape is a fixed diurnal profile — deterministic, so server and
- * client render identically — scaled to the actual volumes. It illustrates the
- * shape of the split; the numbers beside it are the real ones.
+ * The trace is deterministic (a fixed hash, no Math.random) so server and
+ * client render the same pixels, and it is shaped so the area under the PT band
+ * really equals the PT share the model reports.
  */
 
-/** 24 hourly points, normalised to a mean of 1. A working day with an evening dip. */
-const SHAPE = [
+/** 5-minute samples across 24 hours. */
+const SAMPLES = 288;
+const PER_HOUR = SAMPLES / 24;
+
+/** Hourly anchors for the diurnal envelope, mean ≈ 1. */
+const ENVELOPE = [
   0.42, 0.36, 0.33, 0.32, 0.35, 0.46, 0.68, 0.95, 1.24, 1.44, 1.52, 1.55,
   1.48, 1.51, 1.56, 1.49, 1.33, 1.14, 0.98, 0.86, 0.76, 0.66, 0.56, 0.47,
 ];
 
+/** Deterministic pseudo-noise in [0,1). Stable across server and client. */
+function hash(i: number): number {
+  const x = Math.sin(i * 127.1 + 311.7) * 43758.5453123;
+  return x - Math.floor(x);
+}
+
 /**
- * The day at a given peakiness. k=0 is flat, k=1 is the base shape, higher is
- * spikier. A power transform rather than a linear one: it is mean-preserving
- * and never goes negative, so the total under the curve always equals the
- * volume being modelled.
+ * Minute-to-minute texture, independent of the diurnal shape: fast jitter, a
+ * slow ripple, and sparse bursts. Held at fixed amplitude so that flexing the
+ * envelope below never turns noise into implausible spikes.
  */
-function curveAt(mean: number, k: number): number[] {
-  const raw = SHAPE.map((s) => s ** k);
+const TEXTURE: number[] = Array.from({ length: SAMPLES }, (_, i) => {
+  const jitter = 0.74 + hash(i) * 0.52;
+  const ripple = 1 + 0.09 * Math.sin(i * 0.9) + 0.05 * Math.sin(i * 2.7);
+  const burst = hash(i * 7.3) > 0.972 ? 1.3 + hash(i * 3.1) * 0.45 : 1;
+  return jitter * ripple * burst;
+});
+
+/** The diurnal envelope at 5-minute resolution, linearly interpolated. */
+const ENVELOPE_FINE: number[] = Array.from({ length: SAMPLES }, (_, i) => {
+  const h = i / PER_HOUR;
+  const lo = ENVELOPE[Math.floor(h) % 24];
+  const hi = ENVELOPE[(Math.floor(h) + 1) % 24];
+  return lo + (hi - lo) * (h - Math.floor(h));
+});
+
+/**
+ * The trace at a given peakiness. k flexes the diurnal envelope only — k=0 is a
+ * flat day, k=1 the base profile, higher more peaked — while the texture stays
+ * put. Mean-preserving, so the area always equals the volume being modelled.
+ */
+function traceAt(mean: number, k: number): number[] {
+  const raw = ENVELOPE_FINE.map((e, i) => Math.max(0.02, e ** k * TEXTURE[i]));
   const rawMean = raw.reduce((a, b) => a + b, 0) / raw.length;
   return raw.map((v) => (mean * v) / rawMean);
 }
 
 /**
  * Pick the peakiness whose area below the PT band equals the PT volume the
- * model actually reports, so the chart encodes the split rather than merely
- * suggesting one. Bisection — deterministic, so SSR and the client agree.
+ * model reports, so the picture and the numbers agree.
  */
-function shapedDemand(
-  mean: number,
-  capacity: number,
-  ptConsumed: number,
-): number[] {
-  if (mean <= 0) return curveAt(0, 1);
-  const servedAt = (p: number) =>
-    curveAt(mean, p).reduce((sum, d) => sum + Math.min(d, capacity), 0) /
-    SHAPE.length;
+function shapedTrace(mean: number, capacity: number, ptConsumed: number): number[] {
+  if (mean <= 0) return traceAt(0, 1);
+  const servedAt = (k: number) =>
+    traceAt(mean, k).reduce((sum, d) => sum + Math.min(d, capacity), 0) / SAMPLES;
 
-  // served() falls as the day gets peakier; find where it hits ptConsumed.
-  if (servedAt(0) <= ptConsumed) return curveAt(mean, 0);
+  if (servedAt(0) <= ptConsumed) return traceAt(mean, 0);
   let lo = 0;
-  let hi = 8;
-  if (servedAt(hi) > ptConsumed) return curveAt(mean, hi);
-  for (let i = 0; i < 40; i += 1) {
+  let hi = 5;
+  if (servedAt(hi) > ptConsumed) return traceAt(mean, hi);
+  for (let i = 0; i < 36; i += 1) {
     const mid = (lo + hi) / 2;
     if (servedAt(mid) > ptConsumed) lo = mid;
     else hi = mid;
   }
-  return curveAt(mean, (lo + hi) / 2);
+  return traceAt(mean, (lo + hi) / 2);
 }
 
 function useMeasuredWidth() {
@@ -77,50 +100,60 @@ function useMeasuredWidth() {
   return { ref, width };
 }
 
-function formatTpm(tpm: number): string {
-  if (tpm >= 1_000_000) return `${(tpm / 1_000_000).toFixed(1)}M`;
-  if (tpm >= 1_000) return `${Math.round(tpm / 1_000)}K`;
-  return String(Math.round(tpm));
-}
-
 export default function TrafficProfile({ result }: { result: ModelResult }) {
   const { ref, width: measured } = useMeasuredWidth();
   const width = Math.max(measured, 280);
   const compact = width < 620;
-  const height = compact ? 190 : 230;
+  const height = compact ? 200 : 250;
 
   const { traffic, levers } = result;
   const { tpmPerGsu } = levers;
 
-  const meanDemand = traffic.totalConsumed;
   const ptCapacity = levers.ptGsus;
-  // Shape the day so the area under the PT band really is the PT share of
-  // volume. Without this the picture and the numbers beside it disagree.
-  const demand = shapedDemand(meanDemand, ptCapacity, traffic.ptConsumed);
-  const peak = Math.max(...demand, ptCapacity, 1);
-  const yMax = peak * 1.12;
+  const trace = useMemo(
+    () => shapedTrace(traffic.totalConsumed, ptCapacity, traffic.ptConsumed),
+    [traffic.totalConsumed, ptCapacity, traffic.ptConsumed],
+  );
 
-  const margin = { top: 14, right: compact ? 8 : 12, bottom: 26, left: compact ? 40 : 52 };
+  // Everything on the y-axis is TPM, in one unit, with round gridlines.
+  const peakTpm = Math.max(...trace, ptCapacity, 1) * tpmPerGsu;
+  const yMax = peakTpm * 1.08;
+  const unit = pickUnit(yMax);
+  const step = niceStep(yMax / 3);
+  const gridlines: number[] = [];
+  for (let v = 0; v <= yMax; v += step) gridlines.push(v);
+
+  const margin = {
+    top: 16,
+    right: compact ? 8 : 12,
+    bottom: 28,
+    left: compact ? 44 : 58,
+  };
   const plotW = Math.max(width - margin.left - margin.right, 10);
   const plotH = Math.max(height - margin.top - margin.bottom, 10);
 
-  const x = (i: number) => margin.left + (i / (SHAPE.length - 1)) * plotW;
-  const y = (v: number) => margin.top + plotH - (v / yMax) * plotH;
+  const x = (i: number) => margin.left + (i / (SAMPLES - 1)) * plotW;
+  const y = (tpm: number) => margin.top + plotH - (tpm / yMax) * plotH;
   const baseline = margin.top + plotH;
 
-  // Area served by PT (demand clipped at capacity) and the PayGo overflow.
-  const served = demand.map((d) => Math.min(d, ptCapacity));
+  const demandTpm = trace.map((v) => v * tpmPerGsu);
+  const capacityTpm = ptCapacity * tpmPerGsu;
+  const servedTpm = demandTpm.map((d) => Math.min(d, capacityTpm));
+
   const areaPath = (values: number[], floor: number[] | null) => {
     const up = values.map((v, i) => `${i === 0 ? "M" : "L"}${x(i)},${y(v)}`).join("");
     const down = floor
       ? floor
-          .map((v, i) => `L${x(floor.length - 1 - i)},${y(floor[floor.length - 1 - i])}`)
+          .map((_, i) => {
+            const j = floor.length - 1 - i;
+            return `L${x(j)},${y(floor[j])}`;
+          })
           .join("")
       : `L${x(values.length - 1)},${baseline}L${x(0)},${baseline}`;
     return `${up}${down}Z`;
   };
 
-  const description = `Representative day of the incremental workload. Reserved PT capacity ${traffic.ptCapacityTpm.toLocaleString("en-US")} tokens per minute, carrying ${percent(traffic.ptShareOfVolume)} of delivered volume; PayGo carries the remaining ${percent(traffic.paygoShareOfVolume)}. PT is ${percent(traffic.ptShareOfSpend)} of the incremental spend.`;
+  const description = `A day of the incremental workload at five-minute resolution. Reserved PT capacity ${inUnit(capacityTpm, unit)} tokens per minute carries ${percent(traffic.ptShareOfVolume)} of delivered volume; PayGo carries the remaining ${percent(traffic.paygoShareOfVolume)}, and is ${percent(traffic.paygoShareOfSpend)} of the incremental spend.`;
 
   const splits = [
     {
@@ -143,18 +176,19 @@ export default function TrafficProfile({ result }: { result: ModelResult }) {
     <section className="o-panel p-4 sm:p-5" aria-labelledby="traffic-heading">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="traffic-heading" className="o-eyebrow flex items-center gap-1.5">
-          Incremental traffic shape
+          What the traffic looks like
           <Tooltip
             label="the traffic shape"
-            text="A representative day of the new workload. The blue area is what the reserved PT capacity absorbs; everything above the dashed line rides PayGo. The curve is shaped so the two areas match the split reported beside it, so the picture and the numbers agree. The time-of-day pattern itself is illustrative."
+            text="A day of the new workload at five-minute resolution. The blue band is what the reserved PT capacity absorbs; every spike above the dashed line rides PayGo. The trace is shaped so the two areas match the split reported beside it. The minute-to-minute pattern is illustrative; the split is computed from your inputs."
           />
         </h2>
         <p className="o-mono o-faint text-[10.5px]">
-          {formatTpm(traffic.totalTpm)} TPM total · {formatTpm(tpmPerGsu)} TPM per GSU
+          peak {inUnit(peakTpm, unit)} TPM · {inUnit(tpmPerGsu, pickUnit(tpmPerGsu))} TPM
+          per GSU
         </p>
       </div>
 
-      <div className="mt-3 grid gap-5 lg:grid-cols-[minmax(0,1fr)_240px]">
+      <div className="mt-3 grid gap-5 lg:grid-cols-[minmax(0,1fr)_236px]">
         <div ref={ref} className="w-full">
           {width > 0 ? (
             <svg
@@ -165,86 +199,92 @@ export default function TrafficProfile({ result }: { result: ModelResult }) {
               aria-label={description}
               style={{ display: "block", overflow: "visible" }}
             >
-              <title>Incremental traffic shape</title>
+              <title>Incremental traffic, one day</title>
               <desc>{description}</desc>
 
-              {/* y gridlines */}
               <g aria-hidden="true">
-                {[0, 0.5, 1].map((f) => (
-                  <g key={f}>
+                {gridlines.map((v) => (
+                  <g key={v}>
                     <line
                       x1={margin.left}
                       x2={width - margin.right}
-                      y1={y(yMax * f)}
-                      y2={y(yMax * f)}
+                      y1={y(v)}
+                      y2={y(v)}
                       stroke="var(--line)"
                       strokeWidth={1}
-                      opacity={f === 0 ? 1 : 0.5}
+                      opacity={v === 0 ? 1 : 0.45}
                     />
                     <text
                       x={margin.left - 7}
-                      y={y(yMax * f) + 3}
+                      y={y(v) + 3}
                       textAnchor="end"
                       className="o-mono"
                       fontSize={9}
                       fill="var(--ink-faint)"
                     >
-                      {formatTpm(yMax * f * tpmPerGsu)}
+                      {inUnit(v, unit)}
                     </text>
                   </g>
                 ))}
+                <text
+                  x={margin.left - 7}
+                  y={margin.top - 5}
+                  textAnchor="end"
+                  className="o-mono"
+                  fontSize={8.5}
+                  fill="var(--ink-faint)"
+                >
+                  TPM
+                </text>
               </g>
 
-              {/* PayGo overflow — demand above the PT band */}
-              <path
-                d={areaPath(demand, served)}
-                fill="var(--green)"
-                opacity={0.32}
-              />
-              {/* PT-served volume */}
-              <path d={areaPath(served, null)} fill="var(--blue)" opacity={0.34} />
+              {/* PayGo — every spike above the reserved band */}
+              <path d={areaPath(demandTpm, servedTpm)} fill="var(--green)" opacity={0.4} />
+              {/* PT — what the reserved capacity absorbs */}
+              <path d={areaPath(servedTpm, null)} fill="var(--blue)" opacity={0.4} />
 
-              {/* Reserved capacity line — what is actually billed */}
+              {/* Reserved capacity — what is actually billed */}
               <line
                 x1={margin.left}
                 x2={width - margin.right}
-                y1={y(ptCapacity)}
-                y2={y(ptCapacity)}
+                y1={y(capacityTpm)}
+                y2={y(capacityTpm)}
                 stroke="var(--blue)"
                 strokeWidth={1.5}
-                strokeDasharray="4 3"
+                strokeDasharray="5 3"
               />
               <text
-                x={margin.left + 4}
-                y={y(ptCapacity) - 5}
+                x={margin.left + 5}
+                y={y(capacityTpm) - 5}
                 className="o-mono"
                 fontSize={9.5}
                 fill="var(--blue)"
               >
-                PT capacity ordered
+                PT reserved · {inUnit(capacityTpm, unit)}
               </text>
 
-              {/* Demand outline */}
+              {/* The trace itself */}
               <path
-                d={demand.map((v, i) => `${i === 0 ? "M" : "L"}${x(i)},${y(v)}`).join("")}
+                d={demandTpm.map((v, i) => `${i === 0 ? "M" : "L"}${x(i)},${y(v)}`).join("")}
                 fill="none"
-                stroke="var(--ink-dim)"
-                strokeWidth={1.25}
+                stroke="var(--ink)"
+                strokeWidth={0.8}
+                strokeLinejoin="round"
+                opacity={0.85}
               />
 
-              {/* x labels */}
               <g aria-hidden="true">
-                {[0, 6, 12, 18, 23].map((i) => (
+                {[0, 6, 12, 18, 24].map((hour) => (
                   <text
-                    key={i}
-                    x={x(i)}
-                    y={baseline + 15}
-                    textAnchor={i === 0 ? "start" : i === 23 ? "end" : "middle"}
+                    key={hour}
+                    x={x(Math.min(hour * PER_HOUR, SAMPLES - 1))}
+                    y={baseline + 16}
+                    textAnchor={hour === 0 ? "start" : hour === 24 ? "end" : "middle"}
                     className="o-mono"
                     fontSize={9}
                     fill="var(--ink-faint)"
                   >
-                    {String(i).padStart(2, "0")}:00
+                    {String(hour % 24).padStart(2, "0")}:00
                   </text>
                 ))}
               </g>
@@ -254,7 +294,6 @@ export default function TrafficProfile({ result }: { result: ModelResult }) {
           )}
         </div>
 
-        {/* Split readout */}
         <div className="flex flex-col justify-center gap-3">
           {splits.map((split) => (
             <div key={split.label}>
@@ -279,9 +318,7 @@ export default function TrafficProfile({ result }: { result: ModelResult }) {
                 </span>
                 <span className="o-faint">
                   spend{" "}
-                  <span style={{ color: split.colour }}>
-                    {percent(split.spend, 0)}
-                  </span>
+                  <span style={{ color: split.colour }}>{percent(split.spend, 0)}</span>
                 </span>
                 <span className="o-faint">{moneyK(split.money)}/mo</span>
               </div>
@@ -294,8 +331,8 @@ export default function TrafficProfile({ result }: { result: ModelResult }) {
               style={{ color: "var(--gold)" }}
             >
               {traffic.idleGsus.toLocaleString("en-US", { maximumFractionDigits: 0 })}{" "}
-              GSUs of PT ordered but unused at {percent(levers.ptUtilization, 0)}{" "}
-              utilization — billed all the same.
+              GSUs reserved but unused at {percent(levers.ptUtilization, 0)} — billed
+              all the same.
             </p>
           ) : null}
         </div>
