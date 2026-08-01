@@ -1,0 +1,3 @@
+# offers.aitokenomics.app — internal, passcode-gated. Not for indexing.
+User-agent: *
+Disallow: /

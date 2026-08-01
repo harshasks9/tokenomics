@@ -39,6 +39,16 @@
         }
       ],
       "destination": "/voice/:path*"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [
+        {
+          "type": "host",
+          "value": "offers.aitokenomics.app"
+        }
+      ],
+      "destination": "/offers/robots.txt"
     }
   ]
 }
