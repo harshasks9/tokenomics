@@ -7,6 +7,16 @@ economics — into a live what-if simulator that GTM teammates can drive in a
 customer conversation: change a lever, watch the waterfall move, share the URL,
 export the chart.
 
+**Scope: new GSU / PT capacity being ordered, on an incremental commit.**
+Existing orders are not repriced and are not represented. The "at list" figure
+is the reference cost of the *new* order if bought peak-sized — not anyone's
+current bill.
+
+**Nothing is programmatic.** Buy One PT Get One PayGo, Off-peak, Deferred,
+Batch, FSP and the GSU Q3 offer are each an election, so each is a checkbox.
+A share whose construct is not elected bills at the standard 1.0x rate, and
+spike traffic without BOGO bills at Priority PayGo 1.8x.
+
 **Internal illustrative modeling. Not a rate card. Not for external
 distribution.**
 
@@ -88,21 +98,27 @@ All money is **$K per month** unless a name says otherwise.
 ### Core chain
 
 ```
-V  = N0 × u0                          // consumed GSU-equivalents
-C0 = N0 × P_LIST                      // legacy monthly $K
-legacyMultiplier = 1 / u0
+V      = gsus × uPeak                  // consumed GSU-equivalents
+atList = gsus × P_LIST                 // the new order peak-sized at list, $K/mo
+peakMultiplier = 1 / uPeak
 
-S1 = P·V × ( wb/u1 + (ws + wo + wd + wbt) × 1.0 )      // right-size PT + BOGO
-S2 = S1 − P·V × wo × 0.5                                // off-peak placement
-defMult = 0.5 + 0.5·h                                   // Deferred honesty term
-S3 = S2 − P·V × ( wd·(1 − defMult) + wbt·0.5 )          // deferred + batch
-S4 = S3 × (1 − d)                                       // FSP wrapper
+committedGsus = V × w_pt / u_pt        // drives BOGO eligibility and the Q3 tier
+
+m_spike = BOGO elected && committedGsus >= 200 ? 1.0 : 1.8
+
+S1 = P·V × ( w_pt/u_pt + w_spike×m_spike + w_off + w_def + w_batch )
+S2 = S1 − (offPeak elected  ? P·V × w_off × 0.5 : 0)
+defMult = 0.5 + 0.5·harness
+S3 = S2 − P·V × ( (deferred elected ? w_def×(1−defMult) : 0)
+                + (batch elected    ? w_batch×0.5       : 0) )
+S4 = S3 × (1 − (fsp elected ? fspRate : 0))
 ```
 
 Closed form, which is what the header renders as the master equation:
 
 ```
-S4 = P·V · [ wb/u1 + ws + 0.5·wo + (0.5 + 0.5h)·wd + 0.5·wbt ] · (1 − d)
+Placed = P·V · [ w_pt/u_pt + w_spike·m_spike + 0.5·w_off
+                 + (0.5 + 0.5·harness)·w_def + 0.5·w_batch ] · (1 − d)
 ```
 
 ### GSU commitment layer
@@ -121,9 +137,10 @@ G_afterCommit = G × τ × (1 − gsuRate)
 
 S5 = S4 − G_afterFsp + G_afterCommit    // step 5: GSU term + GCP commit
 
-G_afterInc   = G_afterCommit × (1 − i)
-credits      = G_afterInc × c
-S6 = S5 − (G_afterCommit − G_afterInc) − credits   // step 6: Q3 incentives
+// Step 6 — GSU Q3 offer. The tier is EARNED by committed GSU count, not chosen.
+G_afterQ3 = G_afterCommit × (1 − q3Discount)
+credits   = G_afterQ3 × q3Credits
+S6 = S5 − (G_afterCommit − G_afterQ3) − credits
 
 final = S6
 blendedMultiplier = final / (P·V)
@@ -137,22 +154,37 @@ down the EA rather than compounding with EA discounts. So the GSU line takes the
 *better* of the FSP rate and the GCP commit discount, never their product. The
 lever rail shows which one won.
 
-At the defaults (`term = 1 month`, `g = i = c = 0`) the whole GSU layer is
-neutral: `S6 === S5 === S4`, so the §9 vectors are unaffected.
+### GSU Q3 offer tiers
+
+The tier is qualified for, not negotiated — it is derived from the committed GSU
+count per month:
+
+| Committed GSUs / month | Discount on GSU spend | Credits |
+|---|---|---|
+| 2,000 or more | **30%**, fixed | **10%** |
+| 500 or more | **up to 15%**, a band | **10%** |
+| under 500 | none — does not qualify | — |
+
+The rail shows which tier the current commit qualifies for and how many more
+GSUs would reach the next one. Credits apply after the discount, on GSU spend
+only.
+
+At the defaults (`term = 1 month`, GCP commit 0, Q3 not elected) the whole GSU
+layer is neutral: `S6 === S5 === S4`, so the §9 vectors are unaffected.
 
 ### Attribution
 
 | Component | Formula |
 |---|---|
-| Utilization repair | `C0 − S1` |
+| Right-sizing | `atList − S1` |
 | Placement (0.5x tiers) | `S1 − S3` |
 | FSP | `S3 − S4` |
 | GSU term + commit | `S4 − S5` |
-| Q3 incentives | `S5 − S6` |
+| GSU Q3 offer | `S5 − S6` |
 
-The five sum to `C0 − final` exactly (asserted in the tests). Utilization repair
-goes negative when `u1 < u0` — right-sizing that makes things worse — and the UI
-says so in red rather than hiding it.
+The five sum to `atList − final` exactly (asserted in the tests). Utilization repair
+goes negative when `u_pt < uPeak` — right-sizing that makes things worse — and
+the UI says so in red rather than hiding it.
 
 ### Anchored vs. modelled
 
@@ -172,35 +204,58 @@ commit / incentive levers. These are the user's.
 
 ## Lever table
 
-| Symbol | Meaning | Range | Default |
+| Lever | Meaning | Range | Default |
 |---|---|---|---|
-| `N0` | Legacy peak-sized GSUs | 100–5000, step 50 | 1000 |
-| `u0` | Legacy utilization | 0.35–0.90 | 0.55 |
-| `u1` | Right-sized PT utilization | 0.60–0.98 | 0.85 |
-| `wb` | Baseload share → PT | 0–1 | 0.55 |
-| `ws` | Spike share → protected PayGo (1.0x) | 0–1 | 0.07 |
-| `wo` | Off-peak-eligible share (0.5x) | 0–1 | 0.18 |
-| `wd` | Deferred-agents share (0.5x tokens) | 0–1 | 0.14 |
-| `wbt` | Batch share (0.5x) | 0–1 | 0.06 |
-| `h` | Harness fee share within Deferred, billed 1.0x | 0–0.50 | 0.15 |
-| `d` | FSP discount | {0, 0.10, 0.20} | 0.20 |
+| `gsus` | New capacity, peak-sized GSUs | 100–5000, step 50 | 1000 |
+| `uPeak` | Utilization if the order were peak-sized | 0.35–0.90 | 0.55 |
+| `uPt` | Right-sized PT utilization | 0.60–0.98 | 0.85 |
+| `mix.pt` | **Workload placed on PT** | 0–1 | 0.55 |
+| `mix.spike` | Spike traffic (1.0x with BOGO, 1.8x without) | 0–1 | 0.07 |
+| `mix.offPeak` | Off-peak-eligible share | 0–1 | 0.18 |
+| `mix.deferred` | Deferred-agents share | 0–1 | 0.14 |
+| `mix.batch` | Batch share | 0–1 | 0.06 |
+| `harness` | Harness fee share within Deferred, billed 1.0x | 0–0.50 | 0.15 |
+| `fspRate` | FSP rate when elected | {0.10, 0.20} | 0.20 |
 | `term` | GSU commitment term | {1m, 3m, 1y} | 1m |
-| `g` | GCP commit discount (on GSU pricing) | 0–0.30 | 0 |
-| `i` | Q3 incremental discount (on GSU spend) | 0–0.30 | 0 |
-| `c` | Q3 credits (on GSU spend) | 0–0.20 | 0 |
+| `gcpCommit` | GCP commit discount on GSU pricing | 0–0.30 | 0 |
+| `q3Discount` | Discount within the qualifying Q3 band | 0–0.30 | 0.15 |
 
-Mix shares auto-normalize (`w_i ← w_i / Σw`); the rail shows raw and normalized
-values side by side.
+Customers rarely put the whole workload on PT — `mix.pt` is the slider for that,
+and whatever is left rides the PayGo tiers below it. Mix shares auto-normalize
+(`w_i ← w_i / Σw`).
+
+### Elections
+
+Each is a checkbox, defaulting to on except the Q3 offer:
+
+| Offer | Effect when elected | When not elected |
+|---|---|---|
+| `bogo` | Spikes ride protected PayGo at 1.0x. Needs 200+ committed GSUs. | Spikes bill at Priority PayGo 1.8x |
+| `offPeak` | Off-peak share at 0.5x | stays at 1.0x |
+| `deferred` | Deferred share at `0.5 + 0.5·harness` | stays at 1.0x |
+| `batch` | Batch share at 0.5x | stays at 1.0x |
+| `fsp` | `fspRate` off in-scope spend | no FSP discount |
+| `q3` | Tier discount + credits on GSU spend | no Q3 benefit |
+
+### Incremental commit
+
+The model reports the commit the customer takes on: the monthly GSU spend after
+term pricing, commit discount and Q3, and the total across the term (1, 3 or 12
+months). It is the GSU line only, never the whole bill — and it is incremental,
+on top of existing orders.
 
 ### Shareable URLs
 
 ```
-?n=1000&u0=55&u1=85&mix=55-7-18-14-6&h=15&d=20&t=1m&g=0&inc=0&cr=0&preset=japac
+?g=1000&up=55&ut=85&mix=55-7-18-14-6&h=15&fsp=20&t=1m&gcp=0&q3d=15
+  &o=bogo.offpeak.deferred.batch.fsp&preset=japac
 ```
 
-Percentages travel as whole numbers. A `preset` supplies the base and explicit
-params override it, so a link tweaked after loading a preset round-trips
-exactly. Malformed values fall back to defaults instead of throwing.
+Percentages travel as whole numbers; elected offers travel as a dot-separated
+list in `o`. A `preset` supplies the base and explicit params override it, so a
+link tweaked after loading a preset round-trips exactly. Malformed values fall
+back to defaults instead of throwing. Note `o=` (empty) means *nothing*
+elected — it is not the same as omitting `o`, which keeps the base.
 
 ---
 
@@ -211,11 +266,13 @@ exactly. Malformed values fall back to defaults instead of throwing.
 | Vector | Setup | Expectation | Status |
 |---|---|---|---|
 | A | Defaults | V=550, C0=2400.00, S1=1448.12, S2=1329.32, S3=1211.18, **S4=968.94**, blended 0.734, saving 59.6%, annual $17.17M | pass |
-| B | `u1=u0=.55`, mix 100/0/0/0/0, any `h`, `d=0` | `S4 === C0` exactly (guards sign errors) | pass |
+| B | `u_pt=uPeak=.55`, mix 100/0/0/0/0, nothing elected | `S4 === atList` exactly (guards sign errors) | pass |
 | C | `u0=.55`, mix 0/0/40/40/20, `h=0`, `d=.20` | `S4 = P·V × 0.5 × 0.8 = 528.00` exactly | pass |
 | D | Raw mix 110/14/36/28/12 | normalizes to Vector A's shares; same S4 | pass |
+| Elections | Each offer unelected | costs more than electing it; BOGO ignored below 200 GSUs; spike moves 1.0x→1.8x | pass |
+| Q3 tiers | 2,000+ / 500+ / below | 30% fixed + 10% credits · up to 15% + 10% · no tier | pass |
 | E | `h=.50` | `defMult = 0.75` exactly | pass |
-| Property | Monotonicity | S4 non-increasing in `d` and in `wo`; final non-increasing in `g`, `i`, `c`; S4 rises with `h` | pass |
+| Property | Monotonicity | S4 non-increasing in the FSP rate and the off-peak share; final non-increasing in the GCP commit discount; S4 rises with the harness share | pass |
 | Integrity | Full lever grid | no NaN, final ≥ 0, deltas reconcile, attribution sums to total, model is pure | pass |
 
 ---
@@ -405,6 +462,26 @@ palette, both noted at their definitions:
 Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
+
+### 0.2.0 — 2026-08-01
+
+- **Scope narrowed to new capacity.** The model now describes new GSU / PT
+  capacity on an incremental commit; existing orders are explicitly out of
+  scope. "Legacy" is gone from the vocabulary — the reference bar is "at list".
+- **Offers are opt-in.** BOGO, Off-peak, Deferred, Batch, FSP and the GSU Q3
+  offer are checkboxes rather than baked-in assumptions. An unelected share
+  bills at 1.0x; spike traffic without BOGO bills at Priority PayGo 1.8x, and
+  BOGO itself needs 200+ committed GSUs.
+- **GSU Q3 offer replaced by its two real tiers**: 2,000+ GSUs/month earns a
+  fixed 30% plus 10% credits; 500+ earns up to 15% plus 10% credits; below 500
+  does not qualify. The tier is derived from the committed GSU count, and the
+  rail shows how far away the next one is.
+- **Workload-on-PT promoted** to a first-class slider — customers rarely place
+  everything on PT.
+- **Incremental commit surfaced** as a KPI: monthly, term length, and total.
+- **Simplified rail**: five groups instead of seven, each construct's checkbox
+  sits with its own slider, the equation and the harness lever moved into
+  disclosures, and every attribute carries a "?" tooltip describing it.
 
 ### 0.1.0 — 2026-08-01
 

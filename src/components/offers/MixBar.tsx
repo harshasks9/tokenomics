@@ -9,11 +9,11 @@ import { share } from "@/lib/offers/format";
  * Solid lighter tints keep every label above 7:1 and read more clearly besides.
  */
 export const MIX_SEGMENTS = [
-  { key: "wb", label: "Baseload → PT", short: "PT", colour: "var(--blue)", tier: "1.0x" },
-  { key: "ws", label: "Spike → protected PayGo", short: "Spike", colour: "#8CC4EA", tier: "1.0x" },
-  { key: "wo", label: "Off-peak", short: "Off-pk", colour: "var(--green)", tier: "0.5x" },
-  { key: "wd", label: "Deferred agents", short: "Def", colour: "#6FD1A3", tier: "0.5x*" },
-  { key: "wbt", label: "Batch", short: "Batch", colour: "#93DEBC", tier: "0.5x" },
+  { key: "pt", label: "On Provisioned Throughput", short: "PT", colour: "var(--blue)", tier: "1.0x" },
+  { key: "spike", label: "Spike traffic", short: "Spike", colour: "#8CC4EA", tier: "1.0x" },
+  { key: "offPeak", label: "Off-peak", short: "Off-pk", colour: "var(--green)", tier: "0.5x" },
+  { key: "deferred", label: "Deferred agents", short: "Def", colour: "#6FD1A3", tier: "0.5x*" },
+  { key: "batch", label: "Batch", short: "Batch", colour: "#93DEBC", tier: "0.5x" },
 ] as const satisfies ReadonlyArray<{
   key: keyof WorkloadMix;
   label: string;

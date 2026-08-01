@@ -8,9 +8,9 @@ export default function AttributionBar({ result }: { result: ModelResult }) {
 
   const parts = [
     {
-      key: "utilization",
-      label: "Utilization repair",
-      value: attribution.utilization,
+      key: "rightSizing",
+      label: "Right-sizing",
+      value: attribution.rightSizing,
       colour: "var(--blue)",
       opacity: 1,
     },
@@ -36,16 +36,16 @@ export default function AttributionBar({ result }: { result: ModelResult }) {
       opacity: 1,
     },
     {
-      key: "incentives",
-      label: "Q3 incentives",
-      value: attribution.incentives,
-      colour: "var(--teal)",
-      opacity: 0.55,
+      key: "q3",
+      label: "GSU Q3 offer",
+      value: attribution.q3,
+      colour: "#7FD3DC",
+      opacity: 1,
     },
   ].filter((part) => part.value > 0.01);
 
   const total = parts.reduce((sum, part) => sum + part.value, 0);
-  const negative = attribution.utilization < -0.01;
+  const negative = attribution.rightSizing < -0.01;
 
   return (
     <section className="o-panel p-5" aria-labelledby="attribution-heading">
@@ -127,9 +127,9 @@ export default function AttributionBar({ result }: { result: ModelResult }) {
           className="o-mono mt-4 text-[10.5px] leading-[1.6]"
           style={{ color: "var(--red)" }}
         >
-          Right-sized utilization (u₁) is below legacy utilization (u₀), so the
-          PT step costs more than it saves. Utilization repair is excluded from
-          the bar above.
+          Right-sized utilization is at or below the peak-sized figure, so the
+          PT step costs more than it saves. Right-sizing is excluded from the
+          bar above.
         </p>
       ) : null}
 

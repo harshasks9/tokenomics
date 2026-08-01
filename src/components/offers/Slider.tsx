@@ -1,11 +1,14 @@
 "use client";
 
 import { useId } from "react";
+import Tooltip from "./Tooltip";
 
 export type Marker = "anchored" | "modelled";
 
 export interface SliderProps {
   label: string;
+  /** Explanation shown behind the "?" affordance next to the label. */
+  tooltip?: string;
   /** Right-hand mono readout, e.g. "55%" or "$2,400K". */
   readout: string;
   value: number;
@@ -24,6 +27,7 @@ export interface SliderProps {
 
 export default function Slider({
   label,
+  tooltip,
   readout,
   value,
   min,
@@ -41,17 +45,20 @@ export default function Slider({
   return (
     <div className="pt-1">
       <div className="flex items-baseline justify-between gap-3">
-        <label htmlFor={id} className="text-[12.5px] leading-tight">
-          <span
-            className={`o-marker ${
-              marker === "anchored" ? "o-marker-anchored" : "o-marker-modelled"
-            } mr-1.5`}
-            aria-hidden="true"
-          >
-            {marker === "anchored" ? "●" : "○"}
-          </span>
-          {label}
-        </label>
+        <span className="flex items-center gap-1.5">
+          <label htmlFor={id} className="text-[12.5px] leading-tight">
+            <span
+              className={`o-marker ${
+                marker === "anchored" ? "o-marker-anchored" : "o-marker-modelled"
+              } mr-1.5`}
+              aria-hidden="true"
+            >
+              {marker === "anchored" ? "●" : "○"}
+            </span>
+            {label}
+          </label>
+          {tooltip ? <Tooltip text={tooltip} label={label} /> : null}
+        </span>
         <span
           className="o-mono o-animate-value shrink-0 text-[12px]"
           style={{ color: accent }}

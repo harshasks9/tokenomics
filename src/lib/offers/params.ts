@@ -1,11 +1,13 @@
 /**
  * Offers — shareable scenario URLs.
  *
- * ?n=1000&u0=55&u1=85&mix=55-7-18-14-6&h=15&d=20&t=1m&g=0&inc=0&cr=0&preset=japac
+ * ?g=1000&up=55&ut=85&mix=55-7-18-14-6&h=15&fsp=20&t=1m&gcp=0&q3d=15
+ *   &o=bogo.offpeak.deferred.batch.fsp&preset=japac
  *
  * Percentages travel as whole numbers so the URL stays readable in a chat
- * window. Anything missing or malformed falls back to the default, so a
- * hand-edited link degrades instead of breaking.
+ * window; elected offers travel as a dot-separated list. Anything missing or
+ * malformed falls back to the default, so a hand-edited link degrades instead
+ * of breaking.
  */
 
 import {
@@ -13,6 +15,7 @@ import {
   type GsuTerm,
   LEVER_RANGES,
   type Levers,
+  type OfferElections,
 } from "./model";
 import { findPreset } from "./presets";
 
@@ -52,9 +55,33 @@ function readMix(params: URLSearchParams): Levers["mix"] | null {
   if (parts.length !== 5 || parts.some((n) => !Number.isFinite(n) || n < 0)) {
     return null;
   }
-  const [wb, ws, wo, wd, wbt] = parts;
-  if (wb + ws + wo + wd + wbt <= 0) return null;
-  return { wb: wb / 100, ws: ws / 100, wo: wo / 100, wd: wd / 100, wbt: wbt / 100 };
+  const [pt, spike, offPeak, deferred, batch] = parts;
+  if (pt + spike + offPeak + deferred + batch <= 0) return null;
+  return {
+    pt: pt / 100,
+    spike: spike / 100,
+    offPeak: offPeak / 100,
+    deferred: deferred / 100,
+    batch: batch / 100,
+  };
+}
+
+const OFFER_KEYS: ReadonlyArray<[keyof OfferElections, string]> = [
+  ["bogo", "bogo"],
+  ["offPeak", "offpeak"],
+  ["deferred", "deferred"],
+  ["batch", "batch"],
+  ["fsp", "fsp"],
+  ["q3", "q3"],
+];
+
+function readOffers(params: URLSearchParams): OfferElections | null {
+  const raw = params.get("o");
+  if (raw === null) return null;
+  const elected = new Set(raw.split(".").filter(Boolean));
+  const offers = {} as OfferElections;
+  for (const [key, token] of OFFER_KEYS) offers[key] = elected.has(token);
+  return offers;
 }
 
 /**
@@ -69,43 +96,39 @@ export function leversFromParams(params: URLSearchParams): {
   const preset = findPreset(params.get("preset"));
   const base = preset ? preset.levers : DEFAULT_LEVERS;
 
-  const n0 = readInt(params, "n");
-  const u0 = readPct(params, "u0", LEVER_RANGES.u0.min, LEVER_RANGES.u0.max);
-  const u1 = readPct(params, "u1", LEVER_RANGES.u1.min, LEVER_RANGES.u1.max);
+  const gsus = readInt(params, "g");
+  const uPeak = readPct(params, "up", LEVER_RANGES.uPeak.min, LEVER_RANGES.uPeak.max);
+  const uPt = readPct(params, "ut", LEVER_RANGES.uPt.min, LEVER_RANGES.uPt.max);
   const mix = readMix(params);
-  const h = readPct(params, "h", LEVER_RANGES.h.min, LEVER_RANGES.h.max);
-  const dRaw = readInt(params, "d");
+  const harness = readPct(params, "h", LEVER_RANGES.harness.min, LEVER_RANGES.harness.max);
+  const fspRaw = readInt(params, "fsp");
   const term = readTerm(params);
-  const gcp = readPct(params, "g", LEVER_RANGES.gcp.min, LEVER_RANGES.gcp.max);
-  const inc = readPct(params, "inc", LEVER_RANGES.inc.min, LEVER_RANGES.inc.max);
-  const cr = readPct(params, "cr", LEVER_RANGES.cr.min, LEVER_RANGES.cr.max);
+  const gcpCommit = readPct(params, "gcp", LEVER_RANGES.gcpCommit.min, LEVER_RANGES.gcpCommit.max);
+  const q3Discount = readPct(params, "q3d", 0, 0.3);
+  const offers = readOffers(params);
 
-  const d =
-    dRaw === null
-      ? base.d
-      : [0, 10, 20].includes(dRaw)
-        ? dRaw / 100
-        : base.d;
+  const fspRate =
+    fspRaw === null ? base.fspRate : [10, 20].includes(fspRaw) ? fspRaw / 100 : base.fspRate;
 
   return {
     levers: {
-      n0:
-        n0 === null
-          ? base.n0
+      gsus:
+        gsus === null
+          ? base.gsus
           : clamp(
-              Math.round(n0 / LEVER_RANGES.n0.step) * LEVER_RANGES.n0.step,
-              LEVER_RANGES.n0.min,
-              LEVER_RANGES.n0.max,
+              Math.round(gsus / LEVER_RANGES.gsus.step) * LEVER_RANGES.gsus.step,
+              LEVER_RANGES.gsus.min,
+              LEVER_RANGES.gsus.max,
             ),
-      u0: u0 ?? base.u0,
-      u1: u1 ?? base.u1,
+      uPeak: uPeak ?? base.uPeak,
+      uPt: uPt ?? base.uPt,
       mix: mix ?? base.mix,
-      h: h ?? base.h,
-      d,
+      harness: harness ?? base.harness,
+      fspRate,
       term: term ?? base.term,
-      gcp: gcp ?? base.gcp,
-      inc: inc ?? base.inc,
-      cr: cr ?? base.cr,
+      gcpCommit: gcpCommit ?? base.gcpCommit,
+      q3Discount: q3Discount ?? base.q3Discount,
+      offers: offers ?? base.offers,
     },
     presetId: preset?.id ?? null,
   };
@@ -118,21 +141,32 @@ export function paramsFromLevers(
   presetId?: string | null,
 ): URLSearchParams {
   const params = new URLSearchParams();
-  params.set("n", String(levers.n0));
-  params.set("u0", String(round(levers.u0)));
-  params.set("u1", String(round(levers.u1)));
+  params.set("g", String(levers.gsus));
+  params.set("up", String(round(levers.uPeak)));
+  params.set("ut", String(round(levers.uPt)));
   params.set(
     "mix",
-    [levers.mix.wb, levers.mix.ws, levers.mix.wo, levers.mix.wd, levers.mix.wbt]
+    [
+      levers.mix.pt,
+      levers.mix.spike,
+      levers.mix.offPeak,
+      levers.mix.deferred,
+      levers.mix.batch,
+    ]
       .map(round)
       .join("-"),
   );
-  params.set("h", String(round(levers.h)));
-  params.set("d", String(round(levers.d)));
+  params.set("h", String(round(levers.harness)));
+  params.set("fsp", String(round(levers.fspRate)));
   params.set("t", levers.term);
-  params.set("g", String(round(levers.gcp)));
-  params.set("inc", String(round(levers.inc)));
-  params.set("cr", String(round(levers.cr)));
+  params.set("gcp", String(round(levers.gcpCommit)));
+  params.set("q3d", String(round(levers.q3Discount)));
+  params.set(
+    "o",
+    OFFER_KEYS.filter(([key]) => levers.offers[key])
+      .map(([, token]) => token)
+      .join("."),
+  );
   if (presetId) params.set("preset", presetId);
   return params;
 }

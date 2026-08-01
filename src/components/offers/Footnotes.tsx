@@ -1,5 +1,13 @@
 export const FOOTNOTES = [
   {
+    id: "scope",
+    text: "This models new GSU / PT capacity on an incremental commit. Existing orders are not repriced and are not represented — the at-list figure is a reference for the new order, not anyone's current bill.",
+  },
+  {
+    id: "elective",
+    text: "Every construct here is opt-in. Buy One PT Get One PayGo (200+ committed GSUs), Off-peak, Deferred, Batch, FSP and the GSU Q3 offer each need to be elected; an unelected share bills at the standard 1.0x rate, and spikes without BOGO bill at Priority PayGo 1.8x.",
+  },
+  {
     id: "tokens-only",
     text: "Deferred Agents API discounts LLM inference tokens only. 1P agent premiums — harness fees — stay at standard rates, which is what the h lever models. A full agent bill never lands at 0.5x.",
   },

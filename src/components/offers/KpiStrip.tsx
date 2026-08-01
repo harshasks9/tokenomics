@@ -1,6 +1,8 @@
 "use client";
 
+import Tooltip from "./Tooltip";
 import type { ModelResult } from "@/lib/offers/model";
+import { KPI_INFO } from "@/lib/offers/descriptions";
 import {
   moneyK,
   moneyM,
@@ -10,7 +12,7 @@ import {
 } from "@/lib/offers/format";
 
 interface Cell {
-  eyebrow: string;
+  key: keyof typeof KPI_INFO;
   value: string;
   sub: string;
   colour: string;
@@ -19,28 +21,33 @@ interface Cell {
 function cells(result: ModelResult): Cell[] {
   return [
     {
-      eyebrow: "Legacy monthly",
-      value: moneyK(result.c0),
-      sub: `${result.v.toLocaleString("en-US", { maximumFractionDigits: 0 })} GSU-equiv consumed`,
+      key: "atList",
+      value: moneyK(result.atList),
+      sub: `${result.gsus.toLocaleString("en-US")} peak-sized · ${result.v.toLocaleString("en-US", { maximumFractionDigits: 0 })} GSU-equiv used`,
       colour: "var(--gold)",
     },
     {
-      eyebrow: "Portfolio monthly",
-      // Two decimals: this is the number people read aloud off the screen.
+      key: "final",
       value: moneyK(result.final, 2),
-      sub: `${percent(result.savingPct)} below legacy`,
+      sub: `${percent(result.savingPct)} below list`,
       colour: "var(--green)",
     },
     {
-      eyebrow: "Annualized saving",
+      key: "annualSave",
       value: moneyM(result.annualSave),
-      sub: `${moneyK(result.c0 - result.final)} per month`,
+      sub: `${moneyK(result.atList - result.final)} per month`,
       colour: "var(--green)",
     },
     {
-      eyebrow: "Blended multiplier",
+      key: "commit",
+      value: moneyK(result.commit.monthly),
+      sub: `${moneyK(result.commit.total)} over ${result.commit.months} mo · ${result.gsu.units.toFixed(0)} GSUs`,
+      colour: "var(--teal)",
+    },
+    {
+      key: "blendedMultiplier",
       value: multiplier(result.blendedMultiplier),
-      sub: `vs ${multiplier(result.legacyMultiplier)} legacy effective`,
+      sub: `vs ${multiplier(result.peakMultiplier)} peak-sized`,
       colour: "var(--blue)",
     },
   ];
@@ -57,37 +64,35 @@ export default function KpiStrip({
 
   return (
     <div className="o-panel">
-      <div className="grid grid-cols-2 lg:grid-cols-4">
-        {live.map((cell, index) => (
-          <div
-            key={cell.eyebrow}
-            className="border-b p-4 lg:border-b-0 lg:p-5"
-            style={{
-              borderColor: "var(--line)",
-              borderRightWidth: index % 2 === 0 ? 1 : 0,
-              borderRightStyle: "solid",
-              borderBottomWidth: index < 2 ? 1 : 0,
-            }}
-          >
-            <p className="o-eyebrow" style={{ color: "var(--ink-faint)" }}>
-              {cell.eyebrow}
-            </p>
-            <p
-              className="o-mono o-animate-value mt-2.5 text-[clamp(1.15rem,0.9rem+1vw,1.65rem)] leading-none"
-              style={{ color: cell.colour }}
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+        {live.map((cell, index) => {
+          const info = KPI_INFO[cell.key];
+          return (
+            <div
+              key={cell.key}
+              className="border-b border-r p-4 lg:p-5"
+              style={{ borderColor: "var(--line)" }}
             >
-              {cell.value}
-            </p>
-            <p className="o-mono o-faint mt-2 text-[10.5px] leading-tight">
-              {cell.sub}
-            </p>
-          </div>
-        ))}
+              <p className="o-eyebrow flex items-center gap-1.5" style={{ color: "var(--ink-faint)" }}>
+                {info.label}
+                <Tooltip text={info.tooltip} label={info.label} />
+              </p>
+              <p
+                className="o-mono o-animate-value mt-2.5 text-[clamp(1.05rem,0.85rem+0.9vw,1.5rem)] leading-none"
+                style={{ color: cell.colour }}
+              >
+                {cell.value}
+              </p>
+              <p className="o-mono o-faint mt-2 text-[10.5px] leading-tight">
+                {cell.sub}
+              </p>
+              <span className="o-sr-only">{index + 1} of {live.length}</span>
+            </div>
+          );
+        })}
       </div>
 
-      {compare ? (
-        <ComparisonRow a={compare} b={result} />
-      ) : null}
+      {compare ? <ComparisonRow a={compare} b={result} /> : null}
     </div>
   );
 }
@@ -95,10 +100,10 @@ export default function KpiStrip({
 function ComparisonRow({ a, b }: { a: ModelResult; b: ModelResult }) {
   const deltas = [
     {
-      label: "Legacy",
-      text: moneyK(b.c0 - a.c0),
-      good: b.c0 <= a.c0,
-      neutral: Math.abs(b.c0 - a.c0) < 0.5,
+      label: "At list",
+      text: moneyK(b.atList - a.atList),
+      good: b.atList <= a.atList,
+      neutral: Math.abs(b.atList - a.atList) < 0.5,
     },
     {
       label: "Monthly",
@@ -107,10 +112,10 @@ function ComparisonRow({ a, b }: { a: ModelResult; b: ModelResult }) {
       neutral: Math.abs(b.final - a.final) < 0.5,
     },
     {
-      label: "Annual",
-      text: moneyM(b.annualSave - a.annualSave),
-      good: b.annualSave >= a.annualSave,
-      neutral: Math.abs(b.annualSave - a.annualSave) < 5,
+      label: "Commit",
+      text: moneyK(b.commit.monthly - a.commit.monthly),
+      good: b.commit.monthly <= a.commit.monthly,
+      neutral: Math.abs(b.commit.monthly - a.commit.monthly) < 0.5,
     },
     {
       label: "Saving",
