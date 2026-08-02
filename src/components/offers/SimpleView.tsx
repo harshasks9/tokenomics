@@ -5,10 +5,12 @@ import Waterfall from "./Waterfall";
 import Tooltip from "./Tooltip";
 import {
   type Accent,
+  GSU_TERM_LABEL,
   type ModelResult,
   SIMPLE_OFFER_KEYS,
   SIMPLE_RANGES,
   type SimpleInputs,
+  type Step,
 } from "@/lib/offers/model";
 import { OFFER_INFO } from "@/lib/offers/descriptions";
 import { inUnit, moneyK, moneyM, multiplier, percent, pickUnit } from "@/lib/offers/format";
@@ -23,24 +25,25 @@ const ACCENT_VAR: Record<Accent, string> = {
 
 /**
  * The two-input version. One sentence describing the customer, the concessions
- * applied in order, and what they blend to. Everything else takes a stated
- * default — Pro mode is where the assumptions come apart.
+ * applied in order, and what they blend to. It reads the same scenario Pro
+ * does — it just shows fewer of its dials, so the two always agree.
  */
 export default function SimpleView({
   simple,
   result,
+  steps,
   onChange,
 }: {
   simple: SimpleInputs;
   result: ModelResult;
+  /** The columns to chart — the elected steps, shared with Pro. */
+  steps: Step[];
   onChange: (patch: Partial<SimpleInputs>) => void;
 }) {
   const { levers, traffic } = result;
   const tpmUnit = pickUnit(traffic.totalTpm);
   const paygoShare = 1 - simple.ptShare;
 
-  // BOGO is not part of simple mode, so it never appears as a column.
-  const steps = result.steps.filter((step) => step.id !== "bogo");
   const movers = steps.filter(
     (step) => step.index > 0 && Math.abs(step.delta) > 0.005,
   );
@@ -269,10 +272,12 @@ export default function SimpleView({
         </div>
 
         <p className="o-mono o-faint mt-5 text-[10px] leading-[1.7]">
-          Simple mode assumes the PT is right-sized (100% utilization), a 1-year
-          GSU term and FSP at the 3-year rate, and models no spike traffic — so
-          Buy One PT Get One PayGo does not apply here. Switch to Pro to vary
-          utilization, the placement mix, the term, spike traffic and BOGO.
+          Same scenario as Pro, same arithmetic — this view just shows fewer
+          dials. Running on {percent(levers.ptUtilization, 0)} PT utilization, a{" "}
+          {GSU_TERM_LABEL[levers.term]} GSU term and FSP at{" "}
+          {percent(levers.fspRate, 0)}; carried over from Pro, and changed
+          there. Simple models no spike traffic, so Buy One PT Get One PayGo has
+          nothing to rescue and is left out here.
         </p>
       </section>
     </div>

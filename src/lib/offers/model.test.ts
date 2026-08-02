@@ -8,8 +8,12 @@ import {
   P_LIST,
   Q3_TIERS,
   computeModel,
+  electedSteps,
   isOverAllocated,
+  leversFromSimple,
+  normalizeForSimple,
   qualifyingTier,
+  simpleFromLevers,
   standardShare,
 } from "./model";
 
@@ -399,5 +403,127 @@ describe("Model integrity", () => {
     for (let i = 1; i < Q3_TIERS.length; i += 1) {
       expect(Q3_TIERS[i - 1].minGsus).toBeGreaterThan(Q3_TIERS[i].minGsus);
     }
+  });
+});
+
+describe("Simple and Pro are one scenario", () => {
+  const scenarios: Levers[] = [
+    normalizeForSimple(DEFAULT_LEVERS),
+    normalizeForSimple(
+      levers({ ptGsus: 2000, paygoGsus: 800, ptUtilization: 0.7, term: "1y" }),
+    ),
+    normalizeForSimple(
+      levers({
+        ptGsus: 150,
+        paygoGsus: 1850,
+        gcpCommit: 0.25,
+        offers: allOffers(false),
+      }),
+    ),
+  ];
+
+  it("round-trips the two simple inputs without moving the number", () => {
+    for (const scenario of scenarios) {
+      const round = leversFromSimple(simpleFromLevers(scenario), scenario);
+      expect(round).toEqual(scenario);
+      expect(computeModel(round).final).toBeCloseTo(
+        computeModel(scenario).final,
+        9,
+      );
+    }
+  });
+
+  it("keeps everything simple mode does not expose", () => {
+    const base = levers({
+      ptUtilization: 0.62,
+      term: "3m",
+      fspRate: 0.14,
+      harness: 0.4,
+      gcpCommit: 0.18,
+      q3Discount: 0.09,
+      tpmPerGsu: 90_000,
+    });
+    const next = leversFromSimple(
+      { totalDemand: 3000, ptShare: 0.4, offers: simpleFromLevers(base).offers },
+      base,
+    );
+    expect(next.ptUtilization).toBe(0.62);
+    expect(next.term).toBe("3m");
+    expect(next.fspRate).toBe(0.14);
+    expect(next.harness).toBe(0.4);
+    expect(next.gcpCommit).toBe(0.18);
+    expect(next.q3Discount).toBe(0.09);
+    expect(next.tpmPerGsu).toBe(90_000);
+    // ...while moving only what it does expose.
+    expect(next.ptGsus).toBe(1200);
+    expect(next.paygoGsus).toBe(1800);
+  });
+
+  it("splits total demand exactly — no GSU lost to rounding", () => {
+    for (const totalDemand of [100, 1201, 3333, 8000])
+      for (const ptShare of [0, 0.33, 0.5, 0.666, 1]) {
+        const l = leversFromSimple({
+          totalDemand,
+          ptShare,
+          offers: simpleFromLevers(DEFAULT_LEVERS).offers,
+        });
+        expect(l.ptGsus + l.paygoGsus).toBe(totalDemand);
+      }
+  });
+
+  it("normalizing for simple mode is idempotent and drops only spike + BOGO", () => {
+    const once = normalizeForSimple(DEFAULT_LEVERS);
+    expect(once.paygoMix.spike).toBe(0);
+    expect(once.offers.bogo).toBe(false);
+    expect(normalizeForSimple(once)).toEqual(once);
+    expect(once.paygoMix.offPeak).toBe(DEFAULT_LEVERS.paygoMix.offPeak);
+    expect(once.ptUtilization).toBe(DEFAULT_LEVERS.ptUtilization);
+  });
+
+  it("leaves BOGO with nothing to do once normalized", () => {
+    const r = computeModel({
+      ...normalizeForSimple(DEFAULT_LEVERS),
+      offers: { ...normalizeForSimple(DEFAULT_LEVERS).offers, bogo: true },
+    });
+    expect(r.s1).toBeCloseTo(r.reference, 9);
+  });
+});
+
+describe("electedSteps", () => {
+  it("keeps the reference and every step that moved", () => {
+    const r = computeModel(DEFAULT_LEVERS);
+    const kept = electedSteps(r.steps);
+    expect(kept[0].id).toBe("reference");
+    expect(kept.every((s) => s.index === 0 || s.elected)).toBe(true);
+  });
+
+  it("drops exactly the steps whose bar equals the one before it", () => {
+    const r = computeModel(levers({ offers: allOffers(false), term: "1m" }));
+    // Nothing elected: every concession is a no-op, so only the reference
+    // survives and the final equals the reference.
+    expect(electedSteps(r.steps).map((s) => s.id)).toEqual(["reference"]);
+    expect(r.final).toBeCloseTo(r.reference, 9);
+  });
+
+  it("never changes the endpoints of the chain it charts", () => {
+    for (const term of ["1m", "3m", "1y"] as const)
+      for (const on of [true, false]) {
+        const r = computeModel(levers({ term, offers: allOffers(on) }));
+        const kept = electedSteps(r.steps);
+        expect(kept[0].value).toBeCloseTo(r.reference, 9);
+        expect(kept[kept.length - 1].value).toBeCloseTo(r.final, 9);
+      }
+  });
+
+  it("drops a concession the moment it is unelected, and only that one", () => {
+    const all = computeModel(levers({ term: "1y", offers: allOffers(true) }));
+    const withoutFsp = computeModel(
+      levers({ term: "1y", offers: { ...allOffers(true), fsp: false } }),
+    );
+    const before = electedSteps(all.steps).map((s) => s.id);
+    const after = electedSteps(withoutFsp.steps).map((s) => s.id);
+    expect(before).toContain("fsp");
+    expect(after).not.toContain("fsp");
+    expect(after).toEqual(before.filter((id) => id !== "fsp"));
   });
 });

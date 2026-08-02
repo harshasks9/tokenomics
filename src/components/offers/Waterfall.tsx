@@ -73,6 +73,11 @@ export default function Waterfall({ result, steps: stepsProp, compare, present }
   const plotW = Math.max(width - margin.left - margin.right, 10);
   const plotH = Math.max(height - margin.top - margin.bottom, 10);
 
+  // The pinned scenario may have elected a different set of concessions, so its
+  // columns are matched to the live ones by step id, never by position.
+  const compareAt = (id: string) =>
+    compare?.steps.find((s) => s.id === id) ?? null;
+
   const peak = Math.max(
     ...steps.map((s) => s.value),
     ...(compare ? compare.steps.map((s) => s.value) : []),
@@ -94,7 +99,11 @@ export default function Waterfall({ result, steps: stepsProp, compare, present }
   const labelFont = compact ? 8.5 : 10;
   const valueFont = compact ? 9 : present ? 12 : 11;
 
-  const description = `Savings waterfall in thousands of dollars per month. Incremental spend ${moneyK(result.reference)}, falling across ${steps.length - 1} placement and commitment steps to a final cost of ${moneyK(result.final)} — a ${percent(result.savingPct)} saving at a blended ${multiplier(result.blendedMultiplier)} of Standard PayGo.`;
+  const elected = steps.length - 1;
+  const description =
+    elected === 0
+      ? `Savings waterfall in thousands of dollars per month. Incremental spend ${moneyK(result.reference)}. Nothing is elected, so there is nothing to take off it.`
+      : `Savings waterfall in thousands of dollars per month. Incremental spend ${moneyK(result.reference)}, falling across ${elected} elected ${elected === 1 ? "step" : "steps"} to a final cost of ${moneyK(result.final)} — a ${percent(result.savingPct)} saving at a blended ${multiplier(result.blendedMultiplier)} of Standard PayGo.`;
 
   return (
     <div ref={ref} className="w-full">
@@ -168,20 +177,24 @@ export default function Waterfall({ result, steps: stepsProp, compare, present }
           {/* Pinned scenario A, ghost outline only. */}
           {compare ? (
             <g aria-hidden="true">
-              {compare.steps.map((step, i) => (
-                <rect
-                  key={`compare-${step.id}`}
-                  x={cx(i) - barW / 2 - 3}
-                  y={y(step.value)}
-                  width={barW + 6}
-                  height={Math.max(baseline - y(step.value), 0)}
-                  fill="none"
-                  stroke="var(--ink-faint)"
-                  strokeWidth={1}
-                  strokeDasharray="2 3"
-                  className="o-bar"
-                />
-              ))}
+              {steps.map((step, i) => {
+                const ghost = compareAt(step.id);
+                if (!ghost) return null;
+                return (
+                  <rect
+                    key={`compare-${step.id}`}
+                    x={cx(i) - barW / 2 - 3}
+                    y={y(ghost.value)}
+                    width={barW + 6}
+                    height={Math.max(baseline - y(ghost.value), 0)}
+                    fill="none"
+                    stroke="var(--ink-faint)"
+                    strokeWidth={1}
+                    strokeDasharray="2 3"
+                    className="o-bar"
+                  />
+                );
+              })}
             </g>
           ) : null}
 

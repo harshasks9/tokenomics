@@ -231,7 +231,12 @@ function usableMix(mix: PayGoMix): PayGoMix & { standard: number } {
 
 /**
  * The whole conversation in two numbers: total demand, and how much of it goes
- * on Provisioned Throughput. Everything else takes a stated default.
+ * on Provisioned Throughput.
+ *
+ * Simple and Pro are two control surfaces over ONE scenario, not two models.
+ * Simple exposes fewer inputs; everything it does not expose keeps whatever
+ * Pro set. So the same scenario always produces the same number on both, and
+ * toggling between them never moves the answer.
  */
 export interface SimpleInputs {
   /** Total incremental demand, GSU-equivalents per month. */
@@ -244,12 +249,6 @@ export interface SimpleInputs {
    */
   offers: Omit<OfferElections, "bogo">;
 }
-
-export const DEFAULT_SIMPLE: SimpleInputs = {
-  totalDemand: 1200,
-  ptShare: 0.5,
-  offers: { offPeak: true, deferred: true, batch: true, fsp: true, q3: true },
-};
 
 /** The concessions simple mode exposes, in the order they are applied. */
 export const SIMPLE_OFFER_KEYS = [
@@ -266,33 +265,56 @@ export const SIMPLE_RANGES = {
 } as const;
 
 /**
- * Expand the two simple inputs into the full lever set.
- *
- * Simple mode assumes the PT is right-sized — capacity ordered equals the
- * demand placed on it, so utilization is 100% — and that every programmatic
- * option is elected on the best published terms. It answers "what could this
- * customer get?", not "what will they settle for". Pro mode is where the
- * utilization, the placement mix and the individual elections come apart.
+ * Read the two simple inputs off a full lever set. A projection, not a
+ * conversion — nothing is invented and nothing is discarded.
  */
-export function leversFromSimple(simple: SimpleInputs): Levers {
+export function simpleFromLevers(levers: Levers): SimpleInputs {
+  const totalDemand = Math.max(0, levers.ptGsus + levers.paygoGsus);
+  return {
+    totalDemand,
+    ptShare: totalDemand > 0 ? levers.ptGsus / totalDemand : 0,
+    offers: {
+      offPeak: levers.offers.offPeak,
+      deferred: levers.offers.deferred,
+      batch: levers.offers.batch,
+      fsp: levers.offers.fsp,
+      q3: levers.offers.q3,
+    },
+  };
+}
+
+/**
+ * Push the two simple inputs back onto the scenario they came from. Everything
+ * simple mode does not expose — utilization, the placement mix, the term, the
+ * FSP and Q3 rates — is carried through from `base` untouched, which is what
+ * keeps the two modes on the same number.
+ */
+export function leversFromSimple(
+  simple: SimpleInputs,
+  base: Levers = DEFAULT_LEVERS,
+): Levers {
   const total = Math.max(0, simple.totalDemand);
   const share = Math.min(1, Math.max(0, simple.ptShare));
   const ptGsus = Math.round(total * share);
   return {
-    ...DEFAULT_LEVERS,
+    ...base,
     ptGsus,
     paygoGsus: Math.max(0, Math.round(total - ptGsus)),
-    ptUtilization: 1,
-    term: "1y",
-    fspRate: 0.2,
-    // No spike share, so nothing bills at Priority PayGo and BOGO has nothing
-    // to rescue — it is left out of simple mode entirely rather than sitting
-    // there as a no-op.
-    paygoMix: {
-      ...DEFAULT_LEVERS.paygoMix,
-      spike: 0,
-    },
-    offers: { ...simple.offers, bogo: false },
+    offers: { ...base.offers, ...simple.offers, bogo: false },
+  };
+}
+
+/**
+ * Simple mode has no spike-share slider and no BOGO checkbox, so it cannot
+ * show either. Rather than let them move the number invisibly, entering simple
+ * mode zeroes the spike share and unelects BOGO. Everything else survives the
+ * round trip, so Simple → Pro → Simple is stable.
+ */
+export function normalizeForSimple(levers: Levers): Levers {
+  return {
+    ...levers,
+    paygoMix: { ...levers.paygoMix, spike: 0 },
+    offers: { ...levers.offers, bogo: false },
   };
 }
 
@@ -334,6 +356,19 @@ export interface Step {
   cumulativeSavingPct: number;
   accent: Accent;
   elected: boolean;
+}
+
+/**
+ * The columns worth drawing. A concession that was not elected changes nothing
+ * — its bar is the previous bar, to the cent — so it is not part of the story
+ * and does not earn a column. Both modes use this, so a given scenario draws
+ * the same chart whichever surface set it up.
+ *
+ * Dropping these steps cannot break the chain: an unelected step's value is
+ * exactly its predecessor's, so the remaining bars still read left to right.
+ */
+export function electedSteps(steps: Step[]): Step[] {
+  return steps.filter((step) => step.index === 0 || step.elected);
 }
 
 export interface Attribution {
