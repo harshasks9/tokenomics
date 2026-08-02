@@ -443,6 +443,17 @@ Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
 
+### 0.6.1 — 2026-08-02
+
+- **"Show me the math" reaches Simple mode.** The tab existed only in Pro, so
+  anyone working in Simple had no way to see the arithmetic behind the
+  waterfall. Both modes now render the same `ChartTabs` component rather than a
+  copy of it, and the selected tab survives a mode toggle.
+- Simple mode's audit trail omits BOGO, the one construct it does not model.
+  It keeps the *unelected* concessions, though — the chart shows what moved,
+  the math shows what was left on the table.
+- `MathTrace` takes an optional `steps` override, mirroring `Waterfall`.
+
 ### 0.6.0 — 2026-08-02
 
 - **An unelected concession no longer gets a column.** Untick an offer in Pro
