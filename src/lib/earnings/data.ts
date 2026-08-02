@@ -170,6 +170,9 @@ export const MAP_NODES: MapNode[] = [
       { k: "Business customers", v: "300,000+ · 1,000+ paying >$1M", c: "fact" },
       { k: "Fortune 100 penetration", v: "70%", c: "fact" },
       { k: "2026 compute spend", v: "~$19B", c: "fact" },
+    { k: "Commitment to AWS", v: "$100B+ over 10 years, up to 5GW — Anthropic buying, not AWS investing", c: "fact" },
+    { k: "Customers >$100K/yr", v: "Up 7x over one year", c: "fact" },
+    { k: "Claude Code, Feb 2026", v: "$2.5B+ run-rate · enterprise >half of it · business subs 4x since Jan", c: "fact" },
       { k: "Availability", v: "Bedrock · Vertex · Foundry (GA Jun 29 2026)", c: "fact" },
     ],
     quote: {
@@ -192,7 +195,9 @@ export const MAP_NODES: MapNode[] = [
       { k: "Revenue mix", v: "~70% ChatGPT subs · ~25% API", c: "fact" },
       { k: "Operating margin", v: "~−122%", c: "fact" },
       { k: "Projected 2026 losses", v: "~$14B", c: "inference" },
-      { k: "Valuation", v: "~$850B", c: "fact" },
+      { k: "Valuation", v: "~$850B — $852B post-money on a $122B raise, Mar 31 2026", c: "fact" },
+    { k: "Jul 30 2026 price cuts", v: "GPT-5.6 Luna −80% to $0.20/$1.20; Terra −20% to $2/$12", c: "fact" },
+    { k: "Rollout", v: "OpenAI said the July pricing would begin rolling out in AWS", c: "fact" },
       { k: "Payments to Microsoft", v: "~20% of revenue, capped at $38B through 2030", c: "fact" },
       { k: "Oracle commitment", v: "$300B / 5 years, 4.5GW/yr from 2027", c: "fact" },
       { k: "GPT-5.6 on Bedrock", v: "GA July 9 2026", c: "fact" },
@@ -235,7 +240,9 @@ export const MAP_NODES: MapNode[] = [
       { k: "DeepSeek V4 Flash", v: "$0.09 / $0.18 per M — the price floor", c: "fact" },
       { k: "DeepSeek V4 Pro", v: "$0.435 / $0.87 per M", c: "fact" },
       { k: "Alibaba Cloud AI", v: "~$5.3B run-rate · triple-digit growth 11 straight quarters", c: "fact" },
-      { k: "Llama", v: "Fallen off the OpenRouter rankings entirely", c: "fact" },
+      { k: "Kimi K3", v: "1M context at $3 / $15 — launched mid-July", c: "fact" },
+    { k: "DeepSeek peak pricing", v: "Peak rates planned at 2x regular — scarcity is being monetised, not just capacity", c: "fact" },
+    { k: "Llama", v: "Fallen off the OpenRouter rankings entirely", c: "fact" },
     ],
     quote: {
       text: "By May 2026, Chinese open-weight models were ~61% of all tokens consumed on OpenRouter… Four of the five most-used models are Chinese — and Meta's Llama has fallen off the rankings entirely.",
@@ -259,6 +266,10 @@ export const MAP_NODES: MapNode[] = [
       { k: "xAI", v: "~$3.2B 2025 revenue · $6.4B operating loss · 117M Grok MAU", c: "fact" },
       { k: "Meta Muse Spark 1.1", v: "First serious API business, ~75% cheaper than Claude Opus", c: "fact" },
       { k: "Meta Q2 2026", v: "$60.8B revenue (+28%) · FCF collapsed to $784M", c: "fact" },
+    { k: "Mistral Medium 3.5", v: "$1.50 / $7.50 per M · powers remote coding agents · open weights", c: "fact" },
+    { k: "Cohere Command A+", v: "Runs on as few as two H100s — the sovereign/constrained-capacity wedge", c: "inference" },
+    { k: "Grok pricing", v: "Grok 4.3 on Bedrock $1.25 / $2.50; Grok 4.5 $2 / $6, 2x token efficiency claimed", c: "inference" },
+    { k: "Tencent Q1 2026", v: "Revenue RMB196.5B (+9%) · capex RMB31.9B (+16%) · AI products cut operating profit", c: "fact" },
     ],
     jump: 5,
   },
@@ -293,6 +304,13 @@ export const MAP_NODES: MapNode[] = [
       { k: "Backlog", v: "$514B (+$50B sequential)", c: "fact" },
       { k: "Backlog composition", v: "Majority typical GCP contracts, not just AI", c: "fact" },
       { k: "Free cash flow", v: "−$5.9B in Q2 — capex ahead of monetisation", c: "fact" },
+    { k: "Q2 capex", v: "$44.9B — roughly 60% servers, 40% data centres and networking", c: "fact" },
+    { k: "2026 capex guidance", v: "Raised to $195–205B", c: "fact" },
+    {
+      k: "Caveat on the 82%",
+      v: "Includes TPU system sales; Alphabet says growth still accelerated meaningfully excluding them, but does not disclose the split",
+      c: "fact",
+    },
       { k: "TPU external strategy", v: "Blackstone JV $5B / 500MW 2027 + direct hardware sales", c: "fact" },
     ],
     jump: 5,
@@ -333,6 +351,11 @@ export const MAP_NODES: MapNode[] = [
       { k: "OpenAI RPO concentration", v: "~45% of $625B commercial RPO (Jan 2026)", c: "fact" },
       { k: "1P routing proof", v: "MAI-Cyber-1-Flash completes 90% of security tasks; frontier models take the hard 10%", c: "fact" },
       { k: "Anthropic equity gain", v: "$3.2B unrealized in Q2", c: "fact" },
+    { k: "Foundry customers", v: "100,000", c: "fact" },
+    { k: "1T-token/yr Foundry customers", v: "Up 4x YoY — production scale, though total tokens undisclosed", c: "fact" },
+    { k: "M365 Copilot", v: "30M+ paid seats; net seat adds more than doubled QoQ", c: "fact" },
+    { k: "Agent 365", v: "~40M agents registered in two months", c: "fact" },
+    { k: "MAI in GitHub Copilot", v: "10% lower median token use at higher acceptance, alongside OpenAI and Anthropic", c: "inference" },
     ],
     quote: {
       text: "Azure is now the only cloud providing access to both Claude and GPT frontier models to customers on one platform.",
@@ -353,6 +376,8 @@ export const MAP_NODES: MapNode[] = [
       { k: "RPO", v: "$638B (+363%)", c: "fact" },
       { k: "OpenAI deal", v: "$300B / 5 years · 4.5GW/yr from 2027", c: "fact" },
       { k: "Multicloud database", v: "+404%", c: "fact" },
+    { k: "RPO movement", v: "+$85B sequential", c: "fact" },
+    { k: "Customer-funded hardware", v: "$75B of large AI contracts prepaid or customer-supplied", c: "fact" },
     ],
     jump: 5,
   },
@@ -367,6 +392,9 @@ export const MAP_NODES: MapNode[] = [
       { k: "Revenue", v: "~$6B (+38%)", c: "fact" },
       { k: "AI run-rate", v: "~$5.3B · triple-digit growth 11 consecutive quarters", c: "fact" },
       { k: "Qwen", v: "Most-used open model family · SAP global partnership", c: "fact" },
+    { k: "As reported (Mar quarter)", v: "Cloud revenue RMB41.6B (+38%) · external cloud +40% · Cloud EBITA +57%", c: "fact" },
+    { k: "Qwen 3.7 Max pricing", v: "$1.65 / $4.951 per M · 1M context · night discount up to 80%", c: "fact" },
+    { k: "Regional reach", v: "Qwen served from Singapore and Tokyo with region-specific pricing", c: "fact" },
     ],
     jump: 7,
   },
@@ -397,7 +425,10 @@ export const MAP_NODES: MapNode[] = [
       { k: "Mosaic AI", v: "~26% of revenue", c: "inference" },
       { k: "Agent Bricks", v: "100,000+ agents · 1+ quadrillion tokens/yr", c: "fact" },
       { k: "Raise", v: "~$3B at ~$118B (Coatue)", c: "fact" },
-      { k: "Partnerships", v: "All three clouds + 5-yr Anthropic + $100M OpenAI + Palantir + SAP", c: "fact" },
+      { k: "Disclosed Feb 2026", v: "$5.4B+ run-rate (+65%) · AI products $1.4B+ · NRR >140%", c: "fact" },
+    { k: "Customers >$1M", v: "800+ · more than 60% of the Fortune 500 use Databricks", c: "fact" },
+    { k: "Gateway risk", v: "Unity AI Gateway can hold evaluation history, budgets, guardrails and routing rules", c: "inference" },
+    { k: "Partnerships", v: "All three clouds + 5-yr Anthropic + $100M OpenAI + Palantir + SAP", c: "fact" },
     ],
     jump: 5,
   },
@@ -432,7 +463,12 @@ export const MAP_NODES: MapNode[] = [
       { k: "Rule of 40", v: "145%", c: "fact" },
       { k: "US commercial RDV", v: "+112% to $4.92B", c: "fact" },
       { k: "FY26 guide", v: "Raised to $7.65B+ (US commercial +120%)", c: "fact" },
-      { k: "Posture", v: "Explicitly model-agnostic — “commodity cognition”", c: "fact" },
+      { k: "Q1 total revenue", v: "$1.633B — the US $1.28B is 79% of it", c: "fact" },
+    { k: "GAAP gross margin", v: "87%, up from 80% — above the cloud it runs on", c: "fact" },
+    { k: "Third-party cloud hosting", v: "Added $39M to cost of revenue and $25M to R&D", c: "fact" },
+    { k: "Top 20 customers", v: "$108M average trailing-twelve-month revenue, +55% — deep but concentrated", c: "fact" },
+    { k: "Geographic concentration", v: "79% US; only 13% outside the US and UK — limits APAC extrapolation", c: "fact" },
+    { k: "Posture", v: "Explicitly model-agnostic — “commodity cognition”", c: "fact" },
     ],
     jump: 5,
   },
@@ -759,7 +795,7 @@ export const SANKEY_LINKS: SankeyLink[] = [
   { from: "f-price", to: "m-gemini", value: 12, note: "Cheapest frontier tier at ~$2/$12" },
   { from: "f-latency", to: "m-gemini", value: 8, note: "Flash tiers built for latency" },
   { from: "f-latency", to: "m-claude", value: 6, note: "4.6s median vs Kimi's 29s in one test" },
-  { from: "f-context", to: "m-gemini", value: 7, note: "Largest context window" },
+  { from: "f-context", to: "m-gemini", value: 7, note: "1M context — at parity with GPT-5.5, Claude, Qwen and Kimi" },
   { from: "f-context", to: "m-claude", value: 5, note: "1M context" },
   { from: "f-residency", to: "m-gemini", value: 6, note: "In-region Vertex, sovereignty motions" },
   { from: "f-residency", to: "m-claude", value: 4, note: "Enterprise trust position" },
@@ -813,7 +849,11 @@ export const SCOREBOARDS: ScoreTable[] = [
           { s: 1, t: "Good", e: "Losing enterprise coding share to Claude; Antigravity at 2.4M WAU is promising but sub-scale" },
           { s: 2, t: "Strong", e: "GPQA Diamond 94.3%; LiveCodeBench Pro ~2,439 Elo vs GPT-5.1 ~2,243" },
           { s: 2, t: "Strong", e: "Gemini Enterprise Agent Platform and ADK, but orchestration is still emerging" },
-          { s: 3, t: "Largest", e: "Largest context window of any frontier family" },
+          {
+            s: 2,
+            t: "1M",
+            e: "Up to 1M on current Gemini 3 models — parity, not a lead. A second research pass found GPT-5.5, Claude, Qwen 3.7 Max, Kimi K3 and Grok all at 1M too, so context length is no longer a Gemini differentiator.",
+          },
           { s: 3, t: "Cheapest frontier", e: "~$2 / $12 per M tokens — the cheapest frontier tier" },
           { s: 1, t: "GCP-native + Apple", e: "GCP-native, plus the Apple partnership powering Apple Foundation Models/Siri from Jan 2026" },
           { s: 3, t: "Very high", e: "Alphabet-funded; Google Cloud at 35.6% operating margin" },
@@ -841,7 +881,7 @@ export const SCOREBOARDS: ScoreTable[] = [
           { s: 2, t: "Strong", e: "GPT-Codex leads terminal and autonomous-agent coding; 21% enterprise coding share" },
           { s: 2, t: "Strong", e: "Competitive across reasoning tiers" },
           { s: 2, t: "Strong", e: "Strong agent tooling" },
-          { s: 2, t: "Large", e: "Large context, below Gemini and Claude's 1M" },
+          { s: 2, t: "1M", e: "GPT-5.5 ships 1M context at $5/$30, with Batch and Flex at half price and Priority at 2.5x" },
           { s: 1, t: "Mid", e: "Mid-market pricing between Gemini and Claude" },
           { s: 2, t: "Azure + Bedrock + Oracle", e: "GPT-5.6 GA on Bedrock July 9 2026; non-exclusive Microsoft license; Oracle $300B" },
           { s: 0, t: "Low", e: "~−122% operating margin; ~$14B projected 2026 losses" },
@@ -1021,6 +1061,20 @@ export const SCOREBOARDS: ScoreTable[] = [
         ],
       },
       {
+        name: "Tencent Cloud",
+        layer: "hyperscalers",
+        cells: [
+          { s: 1, t: "+9%", e: "Group revenue RMB196.5B in Q1 2026; cloud not separately disclosed" },
+          { s: 1, t: "Diluted by AI", e: "Operating profit excluding new AI products RMB84.4B versus RMB75.6B reported" },
+          { s: 0, t: "Not disclosed", e: "No comparable backlog disclosure" },
+          { s: 2, t: "Hunyuan", e: "Hunyuan, WorkBuddy and CodeBuddy; early agent traction reported" },
+          { s: 1, t: "Regional", e: "Primarily its own family" },
+          { s: 1, t: "In-house", e: "Capex RMB31.9B (+16%), funded from a profitable core business" },
+          { s: 2, t: "China", e: "Strong China distribution; limited outside" },
+          { s: 0, t: "None", e: "No Anthropic relationship" },
+        ],
+      },
+      {
         name: "Alibaba Cloud",
         layer: "hyperscalers",
         cells: [
@@ -1173,7 +1227,10 @@ export const TOKEN_DEFLATION = {
   levers: [
     { k: "Prompt caching", v: "90% cached-input discounts on Bedrock", c: "fact" as Confidence },
     { k: "Batch inference", v: "60% of real-time on Kimi", c: "fact" as Confidence },
-    { k: "Off-peak pricing", v: "Now a standard lever", c: "fact" as Confidence },
+    { k: "Batch / Flex", v: "Half price on GPT-5.5", c: "fact" as Confidence },
+    { k: "Priority tier", v: "2.5x list on GPT-5.5 — latency is now a paid product", c: "fact" as Confidence },
+    { k: "Off-peak", v: "Qwen discounts night usage up to 80%", c: "fact" as Confidence },
+    { k: "Peak surcharge", v: "DeepSeek plans peak rates at 2x regular", c: "fact" as Confidence },
   ],
 };
 
@@ -1471,6 +1528,24 @@ export const RISKS: Risk[] = [
     c: "hypothesis",
   },
   {
+    id: "tpu-embedded",
+    severity: 2,
+    title: "The 82% embeds TPU system sales",
+    body: "Google Cloud revenue includes TPU systems supplied to customer data centres, which is not recurring model consumption.",
+    evidence:
+      "Alphabet states that Cloud growth still accelerated meaningfully excluding TPU system sales, but does not disclose the split or the recurring-services growth rate. Read against 2026 capex guidance of $195–205B, revenue growth and economic return have to be measured separately.",
+    c: "fact",
+  },
+  {
+    id: "runrate-basis",
+    severity: 2,
+    title: "Run-rates are company-defined, not audited revenue",
+    body: "Anthropic's $47B, Databricks' $5.4B and $6.9B, and Claude Code's $2.5B and ~$8B are annualised run-rates on differing bases and dates.",
+    evidence:
+      "A second research pass independently confirmed the February and April Anthropic waypoints but never reached the May Series H figure. Databricks' $5.4B is a February disclosure; the $6.9B is a June third-party estimate. Direction is reliable; level and comparability are not.",
+    c: "inference",
+  },
+  {
     id: "estimates",
     severity: 1,
     title: "Third-party estimates flagged",
@@ -1487,6 +1562,142 @@ export const RISKS: Risk[] = [
     evidence:
       "No single model dominates, and vendor-reported benchmarks lack independent verification. Any scorecard is a snapshot, not a standing.",
     c: "fact",
+  },
+];
+
+
+/* ── Cross-check against a second, independent research pass ─────────────── */
+
+/**
+ * A second deep-research pass over the same window (2 Feb – 2 Aug 2026) was
+ * reconciled against this dataset line by line. Agreements are recorded because
+ * an independently sourced match is stronger evidence than either pass alone;
+ * conflicts are recorded because a site that hides them is worth less than one
+ * that shows its working.
+ */
+export type CrossCheckKind = "agreed" | "reconciled" | "conflict" | "added" | "gap";
+
+export type CrossCheckItem = {
+  kind: CrossCheckKind;
+  claim: string;
+  detail: string;
+};
+
+export const CROSS_CHECK_KIND_LABEL: Record<CrossCheckKind, string> = {
+  agreed: "Independently confirmed",
+  reconciled: "Reconciled",
+  conflict: "Conflict — corrected",
+  added: "Added",
+  gap: "Gap in the second pass",
+};
+
+export const CROSS_CHECK: CrossCheckItem[] = [
+  {
+    kind: "agreed",
+    claim: "Google Cloud Q2: $24.8B, +82%, $8.8B operating income, 35.6% margin, $514B backlog",
+    detail:
+      "Every figure matched, including the +$50B sequential backlog move and the margin rising from 20.7%.",
+  },
+  {
+    kind: "agreed",
+    claim: "22B tokens per minute, up from 16B",
+    detail: "Confirmed. The exact sequential change is +37.5%; this site rounds it to ~37%.",
+  },
+  {
+    kind: "agreed",
+    claim: "AWS $42.2B (+37%), $16.6B operating income; Snowflake $1.33B (+34%), 13,600+ AI accounts",
+    detail:
+      "Matched line for line. The second pass adds that AWS operating income grew 64% and derives the same ~39.4% segment margin.",
+  },
+  {
+    kind: "agreed",
+    claim: "Anthropic: $14B run-rate in February, $30B+ in April, from ~$9B at end-2025",
+    detail:
+      "Both waypoints confirmed from the same primary disclosures, and the >$1M customer count doubling from 500+ to 1,000+ between February and April.",
+  },
+  {
+    kind: "reconciled",
+    claim: "Palantir US $1.28B versus total revenue $1.633B",
+    detail:
+      "Not a conflict: 79% of $1.633B is $1.29B. The second pass supplies the total and the geographic split; this site had only the US figure.",
+  },
+  {
+    kind: "reconciled",
+    claim: "Anthropic–AWS: $13.8B+ versus $100B+ over ten years",
+    detail:
+      "Two different flows in opposite directions. AWS invested ~$13.8B+ of equity into Anthropic; Anthropic committed $100B+ over ten years to buy AWS technologies, securing up to 5GW. Both now appear, labelled.",
+  },
+  {
+    kind: "reconciled",
+    claim: "Databricks $5.4B versus $6.9B run-rate",
+    detail:
+      "Different dates and different evidence grades. $5.4B is a February company disclosure; $6.9B is a June third-party estimate. Both are shown, so the disclosed figure is no longer hidden behind the estimate.",
+  },
+  {
+    kind: "reconciled",
+    claim: "Claude Code $2.5B versus ~$8B",
+    detail:
+      "A trajectory, not a disagreement: $2.5B+ disclosed in February, ~$8B estimated by May. The February figure is a company disclosure and is now shown alongside the estimate.",
+  },
+  {
+    kind: "conflict",
+    claim: "Gemini's context window was described as the largest",
+    detail:
+      "Corrected. Gemini 3 reaches 1M, but so do GPT-5.5, Claude, Qwen 3.7 Max, Kimi K3 and Grok. The scorecard now reads 1M at parity rather than a lead, and the selection-flow note was changed to match.",
+  },
+  {
+    kind: "conflict",
+    claim: "The 82% Google Cloud growth figure carried no caveat",
+    detail:
+      "Corrected. Cloud revenue embeds TPU system sales. Alphabet states growth still accelerated meaningfully excluding them but does not disclose the split, so the headline cannot be read as pure recurring consumption.",
+  },
+  {
+    kind: "added",
+    claim: "Alphabet 2026 capex guidance raised to $195–205B; $44.9B spent in Q2",
+    detail:
+      "Roughly 60% servers and 40% data centres and networking. This is the denominator the $24.8B has to earn against, and it was missing entirely.",
+  },
+  {
+    kind: "added",
+    claim: "Oracle: $75B of large AI contracts prepaid or customer-supplied hardware",
+    detail:
+      "A customer-funded capacity model that shifts capital off the provider's balance sheet — and makes the $638B RPO less comparable to ordinary cloud backlog than it first appears.",
+  },
+  {
+    kind: "added",
+    claim: "Microsoft Foundry: 100,000 customers, 1T-token/yr customers up 4x, 30M+ Copilot seats, ~40M agents",
+    detail:
+      "The strongest available evidence that the harness doctrine is backed by production consumption rather than positioning alone.",
+  },
+  {
+    kind: "added",
+    claim: "Palantir 87% GAAP gross margin, on $39M of third-party cloud hosting",
+    detail:
+      "The cleanest single proof of the up-stack thesis: the application layer earns a higher margin than the infrastructure it rents.",
+  },
+  {
+    kind: "added",
+    claim: "Latency and time-of-day are now priced products",
+    detail:
+      "GPT-5.5 Batch and Flex at half price and Priority at 2.5x; Qwen discounting nights up to 80%; DeepSeek planning 2x peak rates. Price compression and yield management are running at the same time.",
+  },
+  {
+    kind: "added",
+    claim: "OpenAI raised $122B at an $852B post-money valuation, and cut prices on July 30",
+    detail:
+      "GPT-5.6 Luna fell 80% to $0.20/$1.20 and Terra 20% to $2/$12, with rollout beginning in AWS — funding and price competition moving together.",
+  },
+  {
+    kind: "gap",
+    claim: "The second pass never reached Anthropic's $47B",
+    detail:
+      "Its Anthropic evidence stops at the April disclosures, so it misses the May 28 Series H announcement of a $47B run-rate at a $965B valuation. This site's headline figure stands and is the more current of the two.",
+  },
+  {
+    kind: "gap",
+    claim: "Minor date discrepancy on Kimi K3",
+    detail:
+      "This site dates the K3 launch to July 15; the second pass says July 16. Neither is load-bearing for any conclusion here.",
   },
 ];
 
