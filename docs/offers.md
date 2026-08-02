@@ -443,6 +443,70 @@ Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
 
+### 0.6.0 — 2026-08-02
+
+- **An unelected concession no longer gets a column.** Untick an offer in Pro
+  and its bar disappears from the waterfall instead of sitting there as a
+  zero-delta repeat of the bar before it. `electedSteps()` in the model is the
+  single rule, shared by both modes, so a scenario draws the same chart whichever
+  surface set it up. Dropping the step cannot break the chain: an unelected
+  step's value is exactly its predecessor's, so the first bar is still the
+  incremental spend and the last is still the final cost.
+  - The chart legend and the "saved this step" key now list only what is
+    actually drawn.
+  - Compare mode matches the pinned scenario to the live columns **by step id**,
+    not by position — the two can now elect different sets, so index alignment
+    would have drawn scenario A's FSP bar over the live Q3 column.
+  - The step table and "show me the math" tab still list every construct,
+    elected or not, with a hollow marker. The chart shows what moved; the audit
+    trail shows what was left on the table.
+
+- **Simple and Pro reconciled onto one scenario.** They were two independent
+  lever sets, so the same customer produced two different numbers and toggling
+  modes moved the answer. There is now a single scenario; Simple is a reduced
+  control surface over it, not a second model.
+  - Editing the two Simple sliders or its checkboxes writes back to the same
+    levers Pro edits. Simple → Pro → Simple is stable.
+  - Simple no longer forces a 1-year term, 100% utilization or a 20% FSP rate.
+    It reads whatever Pro holds and prints those live values in its footnote.
+  - Entering Simple mode zeroes the spike share and unelects BOGO — the only two
+    things it has no control for, which would otherwise move the number
+    invisibly. `normalizeForSimple` is idempotent and touches nothing else.
+  - A `?mode=simple` share link now restores its own scenario. Previously the
+    URL carried the levers but Simple ignored them and opened on defaults.
+
+### 0.5.0 — 2026-08-01
+
+- **Simple / Pro modes**, toggled at the top. Everything built so far is now
+  Pro.
+- **Simple mode is two inputs**: total demand, and the share of it going to PT.
+  It states the customer in one sentence — "Total demand of 1,200 GSUs, of which
+  50% goes to Provisioned Throughput and 50% goes to PayGo" — applies the
+  concessions in sequence, shows the waterfall, and closes on the blended
+  multiplier.
+- `simpleFromLevers` / `leversFromSimple` project the two numbers on and off
+  the shared lever set. Everything simple mode does not expose — utilization,
+  the placement mix, the term, the FSP and Q3 rates — carries through untouched.
+  The live values are printed under the result rather than asserted as fixed
+  defaults.
+- Simple mode carries its own concession checkboxes — off-peak, deferred, batch,
+  FSP and the Q3 offer — so the same "what if we don't give them X" question
+  works there.
+- **BOGO is absent from simple mode by design.** Simple mode models no spike
+  share, so nothing bills at Priority PayGo and Buy One PT Get One PayGo has
+  nothing to rescue; leaving it in would have shown a permanent no-op column.
+  Spike traffic and BOGO live in Pro.
+- Mode travels in the URL as `?mode=simple`, so a simple scenario shares as one.
+
+### 0.4.0 — 2026-08-01
+
+- **"Show me the math" tab** on the savings chart. The model now emits its own
+  working — one line per operation, with the live values substituted rather than
+  abstract symbols — and the chart card tabs between the waterfall and the full
+  arithmetic: every step's inputs, its running total, cumulative saving, and a
+  closing reconciliation. Formulas stayed off the default view; the audit trail
+  is one click away.
+
 ### 0.3.1 — 2026-08-01
 
 - **The page opens with the question.** A "Step one — how much is the
