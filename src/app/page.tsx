@@ -16,6 +16,7 @@ import {
   Layers,
   Scale,
   Activity,
+  LineChart,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -104,6 +105,15 @@ const modelComparisons = [
     roiTeaser: "Price per token vs cost per task",
     enabled: true,
     external: true,
+  },
+  {
+    id: "earnings",
+    name: "EARNINGS",
+    href: "/earnings",
+    icon: LineChart,
+    gradient: "linear-gradient(135deg, #003153 0%, #0F766E 100%)",
+    roiTeaser: "Model-as-a-Service intelligence · Feb–Aug 2026",
+    enabled: true,
   },
   {
     id: "modelcomp",
