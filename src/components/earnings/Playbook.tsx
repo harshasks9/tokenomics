@@ -1,7 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { APAC, INDIA_NOTE, PLAYBOOK, RISKS, SEQUENCING } from "@/lib/earnings/data";
+import {
+  APAC,
+  CROSS_CHECK,
+  CROSS_CHECK_KIND_LABEL,
+  INDIA_NOTE,
+  PLAYBOOK,
+  RISKS,
+  SEQUENCING,
+  type CrossCheckKind,
+} from "@/lib/earnings/data";
 import { Pill, Reveal, ZoneHead, layerClass } from "./primitives";
 
 export function Playbook() {
@@ -190,6 +199,120 @@ export function Risks() {
           ))}
         </div>
       </Reveal>
+
+      <CrossCheck />
     </>
+  );
+}
+
+/** Colour by what the reconciliation found, not by layer. */
+const KIND_TONE: Record<CrossCheckKind, string> = {
+  agreed: "var(--economics)",
+  reconciled: "var(--hyperscalers)",
+  conflict: "var(--sev-3)",
+  added: "var(--platforms)",
+  gap: "var(--models)",
+};
+
+const KIND_ORDER: CrossCheckKind[] = ["conflict", "reconciled", "agreed", "added", "gap"];
+
+function CrossCheck() {
+  const [filter, setFilter] = useState<CrossCheckKind | null>(null);
+  const shown = filter ? CROSS_CHECK.filter((c) => c.kind === filter) : CROSS_CHECK;
+
+  const count = (k: CrossCheckKind) => CROSS_CHECK.filter((c) => c.kind === k).length;
+
+  return (
+    <Reveal style={{ marginTop: 46 }}>
+      <div className="ea-zone-head">
+        <span className="ea-kicker">Cross-check</span>
+      </div>
+      <h3 className="ea-h2" style={{ fontSize: "1.4rem", marginBottom: 6 }}>
+        Reconciled against a second research pass
+      </h3>
+      <p className="ea-note" style={{ marginBottom: 14 }}>
+        An independent deep-research pass over the same window was compared line by line. Agreement
+        from a separately sourced pass is stronger than either pass alone, so it is recorded here
+        rather than assumed.
+      </p>
+
+      <div className="ea-controls" style={{ marginBottom: 14 }}>
+        <button
+          type="button"
+          className="ea-btn"
+          aria-pressed={filter === null}
+          onClick={() => setFilter(null)}
+        >
+          All {CROSS_CHECK.length}
+        </button>
+        {KIND_ORDER.map((k) => (
+          <button
+            key={k}
+            type="button"
+            className="ea-btn"
+            aria-pressed={filter === k}
+            onClick={() => setFilter(filter === k ? null : k)}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                background: KIND_TONE[k],
+                display: "inline-block",
+              }}
+            />
+            {CROSS_CHECK_KIND_LABEL[k]} {count(k)}
+          </button>
+        ))}
+      </div>
+
+      <div>
+        {shown.map((c) => (
+          <div
+            key={c.claim}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "10px 1fr",
+              gap: 12,
+              padding: "14px 0",
+              borderTop: "1px solid var(--rule)",
+              alignItems: "start",
+            }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: KIND_TONE[c.kind],
+                marginTop: 6,
+              }}
+            />
+            <div>
+              <p
+                style={{
+                  fontSize: 9.5,
+                  fontWeight: 700,
+                  letterSpacing: "0.13em",
+                  textTransform: "uppercase",
+                  color: KIND_TONE[c.kind],
+                }}
+              >
+                {CROSS_CHECK_KIND_LABEL[c.kind]}
+              </p>
+              <h4 className="ea-h3" style={{ marginTop: 4 }}>
+                {c.claim}
+              </h4>
+              <p style={{ fontSize: 12.5, marginTop: 5, color: "var(--muted)", lineHeight: 1.55 }}>
+                {c.detail}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Reveal>
   );
 }
