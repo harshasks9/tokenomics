@@ -15,6 +15,7 @@ import {
   Eye,
   Layers,
   Scale,
+  Activity,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -103,6 +104,15 @@ const modelComparisons = [
     roiTeaser: "Price per token vs cost per task",
     enabled: true,
     external: true,
+  },
+  {
+    id: "modelcomp",
+    name: "MODELCOMP",
+    href: "/modelcomp",
+    icon: Activity,
+    gradient: "linear-gradient(135deg, #16324F 0%, #4285F4 100%)",
+    roiTeaser: "12 months of frontier · Gemini 15 pts behind",
+    enabled: true,
   },
 ];
 
