@@ -390,7 +390,6 @@ export const Y_DOMAIN_MAIN: [number, number] = [26, 65];
 export const Y_DOMAIN_FLASH: [number, number] = [22, 60];
 
 export const COMPILED_ON = "Aug 2, 2026";
-export const PASSCODE = "MODELCOMP26";
 
 export type Inflection = {
   n: number;

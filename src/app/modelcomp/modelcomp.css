@@ -837,73 +837,7 @@ body:has(.mc-root) {
   color: var(--muted);
 }
 
-/* ── Gate ───────────────────────────────────────────────────────────────── */
-
-.mc-gate {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 20px;
-  background: var(--paper);
-}
-
-.mc-gate-card {
-  width: 100%;
-  max-width: 400px;
-  background: var(--card);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: clamp(24px, 5vw, 36px);
-}
-
-.mc-input {
-  width: 100%;
-  min-height: 44px;
-  background: var(--paper);
-  border: 1px solid #cdd4dd;
-  border-radius: var(--radius);
-  padding: 0 12px;
-  font: inherit;
-  font-size: 15px;
-  letter-spacing: 0.14em;
-  color: var(--ink);
-}
-
-.mc-input::placeholder {
-  letter-spacing: 0.2em;
-  color: #9aa3b0;
-}
-
-.mc-input:focus {
-  outline: 2px solid var(--prussian);
-  outline-offset: 1px;
-  border-color: var(--prussian);
-}
-
-.mc-btn {
-  width: 100%;
-  min-height: 44px;
-  font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: var(--prussian);
-  color: #ffffff;
-  border: 1px solid var(--prussian);
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: opacity var(--dur) var(--ease);
-}
-
-.mc-btn:disabled {
-  background: var(--card);
-  color: var(--muted);
-  border-color: var(--hairline);
-  cursor: not-allowed;
-}
+/* ── Inline errors ──────────────────────────────────────────────────────── */
 
 .mc-error {
   color: var(--trail);
