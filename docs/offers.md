@@ -443,6 +443,22 @@ Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
 
+### 0.5.0 — 2026-08-01
+
+- **Simple / Pro modes**, toggled at the top. Everything built so far is now
+  Pro.
+- **Simple mode is two inputs**: total demand, and the share of it going to PT.
+  It states the customer in one sentence — "Total demand of 1,200 GSUs, of which
+  50% goes to Provisioned Throughput and 50% goes to PayGo" — applies the
+  concessions in sequence, shows the waterfall, and closes on the blended
+  multiplier.
+- `leversFromSimple` expands those two numbers into the full lever set with
+  stated defaults: PT right-sized at 100% utilization, a 1-year GSU term, FSP at
+  the 3-year rate, and every option elected. It answers "what could this
+  customer get?" — the assumption is printed under the result, and Pro is where
+  it comes apart.
+- Mode travels in the URL as `?mode=simple`, so a simple scenario shares as one.
+
 ### 0.4.0 — 2026-08-01
 
 - **"Show me the math" tab** on the savings chart. The model now emits its own

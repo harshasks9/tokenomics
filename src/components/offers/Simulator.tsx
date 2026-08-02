@@ -11,13 +11,17 @@ import KpiStrip from "./KpiStrip";
 import MathTrace from "./MathTrace";
 import Levers from "./Levers";
 import ScenarioBar from "./ScenarioBar";
+import SimpleView from "./SimpleView";
 import ShareButton from "./ShareButton";
 import StepTable from "./StepTable";
 import Waterfall from "./Waterfall";
 import {
   DEFAULT_LEVERS,
+  DEFAULT_SIMPLE,
   type Levers as LeverState,
+  type SimpleInputs,
   computeModel,
+  leversFromSimple,
 } from "@/lib/offers/model";
 import { paramsFromLevers } from "@/lib/offers/params";
 import { GOAL_NOTE, SCOPE_NOTE } from "@/lib/offers/descriptions";
@@ -35,9 +39,11 @@ const LEGEND = [
 export default function Simulator({
   initialLevers,
   initialPresetId,
+  initialMode,
 }: {
   initialLevers: LeverState;
   initialPresetId: string | null;
+  initialMode: "simple" | "pro";
 }) {
   const [levers, setLevers] = useState<LeverState>(initialLevers);
   // A shared link that names a preset opens with that preset's rationale, but
@@ -51,8 +57,12 @@ export default function Simulator({
   const [sheetOpen, setSheetOpen] = useState(false);
   const [compete, setCompete] = useState(false);
   const [chartTab, setChartTab] = useState<"chart" | "math">("chart");
+  const [mode, setMode] = useState<"simple" | "pro">(initialMode);
+  const [simple, setSimple] = useState<SimpleInputs>(DEFAULT_SIMPLE);
 
-  const result = useMemo(() => computeModel(levers), [levers]);
+  const simpleLevers = useMemo(() => leversFromSimple(simple), [simple]);
+  const activeLevers = mode === "simple" ? simpleLevers : levers;
+  const result = useMemo(() => computeModel(activeLevers), [activeLevers]);
   const compareResult = useMemo(
     () => (pinned ? computeModel(pinned) : null),
     [pinned],
@@ -69,7 +79,8 @@ export default function Simulator({
   useEffect(() => {
     if (syncTimer.current) clearTimeout(syncTimer.current);
     syncTimer.current = setTimeout(() => {
-      const params = paramsFromLevers(levers, activePresetId);
+      const params = paramsFromLevers(activeLevers, mode === "simple" ? null : activePresetId);
+      if (mode === "simple") params.set("mode", "simple");
       window.history.replaceState(
         null,
         "",
@@ -79,7 +90,7 @@ export default function Simulator({
     return () => {
       if (syncTimer.current) clearTimeout(syncTimer.current);
     };
-  }, [levers, activePresetId]);
+  }, [activeLevers, activePresetId, mode]);
 
   // Esc leaves presenter mode / closes the mobile sheet.
   useEffect(() => {
@@ -157,8 +168,40 @@ export default function Simulator({
           </p>
         </header>
 
+        {/* ── Mode ───────────────────────────────────────────────────── */}
+        <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div
+            className="o-seg"
+            role="group"
+            aria-label="Detail level"
+            style={{ width: 200 }}
+          >
+            {(
+              [
+                ["simple", "Simple"],
+                ["pro", "Pro"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                aria-pressed={mode === id}
+                onClick={() => setMode(id)}
+                style={{ ["--seg-active" as string]: "var(--gold)" }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="o-mono o-faint text-[10.5px]">
+            {mode === "simple"
+              ? "Two inputs, every option elected."
+              : "Every lever, every election, the full audit trail."}
+          </p>
+        </div>
+
         {/* ── Toolbar ────────────────────────────────────────────────── */}
-        <div className="mt-7 flex flex-wrap items-center gap-2">
+        <div className="mt-5 flex flex-wrap items-center gap-2" style={{ display: mode === "pro" ? undefined : "none" }}>
           <button
             type="button"
             className="o-btn"
@@ -188,6 +231,18 @@ export default function Simulator({
           <ExportButton levers={levers} result={result} />
         </div>
 
+        {mode === "simple" ? (
+          <div className="o-fade-in mt-6">
+            <SimpleView
+              simple={simple}
+              result={result}
+              onChange={(patch) =>
+                setSimple((current) => ({ ...current, ...patch }))
+              }
+            />
+          </div>
+        ) : (
+          <>
         {/* ── Scenarios ──────────────────────────────────────────────── */}
         {!present ? (
           <div className="mt-6">
@@ -389,12 +444,15 @@ export default function Simulator({
             <AttributionBar result={result} />
           </div>
         </div>
+          </>
+        )}
+
       </main>
 
       <Footnotes />
 
       {/* ── Mobile lever sheet ───────────────────────────────────────── */}
-      {!present ? (
+      {!present && mode === "pro" ? (
         <button
           type="button"
           className="o-fab lg:hidden"

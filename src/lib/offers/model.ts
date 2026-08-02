@@ -226,6 +226,62 @@ function usableMix(mix: PayGoMix): PayGoMix & { standard: number } {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Simple mode
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * The whole conversation in two numbers: total demand, and how much of it goes
+ * on Provisioned Throughput. Everything else takes a stated default.
+ */
+export interface SimpleInputs {
+  /** Total incremental demand, GSU-equivalents per month. */
+  totalDemand: number;
+  /** Share of that demand placed on PT. The rest rides PayGo. */
+  ptShare: number;
+}
+
+export const DEFAULT_SIMPLE: SimpleInputs = {
+  totalDemand: 1200,
+  ptShare: 0.5,
+};
+
+export const SIMPLE_RANGES = {
+  totalDemand: { min: 100, max: 8000, step: 50 },
+  ptShare: { min: 0, max: 1, step: 0.01 },
+} as const;
+
+/**
+ * Expand the two simple inputs into the full lever set.
+ *
+ * Simple mode assumes the PT is right-sized — capacity ordered equals the
+ * demand placed on it, so utilization is 100% — and that every programmatic
+ * option is elected on the best published terms. It answers "what could this
+ * customer get?", not "what will they settle for". Pro mode is where the
+ * utilization, the placement mix and the individual elections come apart.
+ */
+export function leversFromSimple(simple: SimpleInputs): Levers {
+  const total = Math.max(0, simple.totalDemand);
+  const share = Math.min(1, Math.max(0, simple.ptShare));
+  const ptGsus = Math.round(total * share);
+  return {
+    ...DEFAULT_LEVERS,
+    ptGsus,
+    paygoGsus: Math.max(0, Math.round(total - ptGsus)),
+    ptUtilization: 1,
+    term: "1y",
+    fspRate: 0.2,
+    offers: {
+      bogo: true,
+      offPeak: true,
+      deferred: true,
+      batch: true,
+      fsp: true,
+      q3: true,
+    },
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Output
 // ─────────────────────────────────────────────────────────────────────────────
 

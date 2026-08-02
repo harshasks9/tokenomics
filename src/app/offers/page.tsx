@@ -20,11 +20,16 @@ export default async function OffersPage({
     else if (Array.isArray(value) && value[0]) query.set(key, value[0]);
   }
   const { levers, presetId } = leversFromParams(query);
+  const mode = query.get("mode") === "simple" ? "simple" : "pro";
 
   return (
     <>
       <Nav base={basePathFor(hostnameFrom(headerList))} current="simulator" />
-      <Simulator initialLevers={levers} initialPresetId={presetId} />
+      <Simulator
+        initialLevers={levers}
+        initialPresetId={presetId}
+        initialMode={mode}
+      />
     </>
   );
 }
