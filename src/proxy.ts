@@ -263,6 +263,28 @@ export async function proxy(request: NextRequest) {
     });
   }
 
+  // MODELCOMP. The brief named the .com host; the rest of the family lives on
+  // .app, so both are routed here rather than guessing which DNS record exists.
+  if (
+    hostname === "modelcomp.aitokenomics.com" ||
+    hostname === "modelcomp.aitokenomics.app"
+  ) {
+    const modelcompUrl = request.nextUrl.clone();
+    if (modelcompUrl.pathname === "/") {
+      modelcompUrl.pathname = "/modelcomp";
+    } else if (!modelcompUrl.pathname.startsWith("/modelcomp")) {
+      modelcompUrl.pathname = `/modelcomp${modelcompUrl.pathname}`;
+    }
+    const response = NextResponse.rewrite(modelcompUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
