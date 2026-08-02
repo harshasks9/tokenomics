@@ -195,7 +195,7 @@ export default function Simulator({
           </div>
           <p className="o-mono o-faint text-[10.5px]">
             {mode === "simple"
-              ? "Two inputs, every option elected."
+              ? "Two inputs and the concessions you're offering."
               : "Every lever, every election, the full audit trail."}
           </p>
         </div>

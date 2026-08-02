@@ -2,12 +2,15 @@
 
 import Slider from "./Slider";
 import Waterfall from "./Waterfall";
+import Tooltip from "./Tooltip";
 import {
   type Accent,
   type ModelResult,
+  SIMPLE_OFFER_KEYS,
   SIMPLE_RANGES,
   type SimpleInputs,
 } from "@/lib/offers/model";
+import { OFFER_INFO } from "@/lib/offers/descriptions";
 import { inUnit, moneyK, moneyM, multiplier, percent, pickUnit } from "@/lib/offers/format";
 
 const ACCENT_VAR: Record<Accent, string> = {
@@ -36,10 +39,19 @@ export default function SimpleView({
   const tpmUnit = pickUnit(traffic.totalTpm);
   const paygoShare = 1 - simple.ptShare;
 
-  // Only the steps that actually moved the number are worth showing here.
-  const movers = result.steps.filter(
+  // BOGO is not part of simple mode, so it never appears as a column.
+  const steps = result.steps.filter((step) => step.id !== "bogo");
+  const movers = steps.filter(
     (step) => step.index > 0 && Math.abs(step.delta) > 0.005,
   );
+
+  const OFFER_COLOUR: Record<(typeof SIMPLE_OFFER_KEYS)[number], string> = {
+    offPeak: "var(--green)",
+    deferred: "var(--green)",
+    batch: "var(--green)",
+    fsp: "var(--fsp)",
+    q3: "var(--teal)",
+  };
 
   return (
     <div className="space-y-5">
@@ -98,8 +110,39 @@ export default function SimpleView({
           />
         </div>
 
+        <div className="mt-6 border-t pt-4" style={{ borderColor: "var(--line)" }}>
+          <p className="o-eyebrow" style={{ color: "var(--ink-faint)" }}>
+            Concessions on the table
+          </p>
+          <div className="mt-1 flex flex-wrap gap-x-6 gap-y-0">
+            {SIMPLE_OFFER_KEYS.map((key) => {
+              const info = OFFER_INFO[key];
+              return (
+                <label key={key} className="o-check">
+                  <input
+                    type="checkbox"
+                    checked={simple.offers[key]}
+                    onChange={(event) =>
+                      onChange({
+                        offers: { ...simple.offers, [key]: event.target.checked },
+                      })
+                    }
+                    style={{ ["--tick" as string]: OFFER_COLOUR[key] }}
+                  />
+                  <span className="flex items-center gap-1.5">
+                    <span className="text-[12.5px] leading-tight">
+                      {info.label}
+                    </span>
+                    <Tooltip text={info.tooltip} label={info.label} />
+                  </span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+
         <div
-          className="mt-5 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t pt-4"
+          className="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t pt-4"
           style={{ borderColor: "var(--line)" }}
         >
           <span className="o-mono text-[11px]">
@@ -109,7 +152,7 @@ export default function SimpleView({
             </span>
           </span>
           <span className="o-mono text-[11px]">
-            <span className="o-faint">With every option elected </span>
+            <span className="o-faint">With the above elected </span>
             <span style={{ color: "var(--green)" }}>{moneyK(result.final)}/mo</span>
           </span>
           <span className="o-mono text-[11px]">
@@ -134,7 +177,7 @@ export default function SimpleView({
         </div>
 
         <div className="mt-3">
-          <Waterfall result={result} />
+          <Waterfall result={result} steps={steps} />
         </div>
 
         <ol
@@ -166,8 +209,8 @@ export default function SimpleView({
           ))}
           {movers.length === 0 ? (
             <li className="o-faint text-[12.5px]">
-              No concession moves the number at this demand — the Q3 tiers need
-              500+ GSUs on PT.
+              Nothing elected moves the number. Tick a concession above, or note
+              that the Q3 tiers need 500+ GSUs on PT.
             </li>
           ) : null}
         </ol>
@@ -227,10 +270,9 @@ export default function SimpleView({
 
         <p className="o-mono o-faint mt-5 text-[10px] leading-[1.7]">
           Simple mode assumes the PT is right-sized (100% utilization), a 1-year
-          GSU term, FSP at the 3-year rate, and every option elected — it answers
-          what this customer <em>could</em> get. Switch to Pro to vary
-          utilization, the placement mix, the term, and which options are
-          actually on the table.
+          GSU term and FSP at the 3-year rate, and models no spike traffic — so
+          Buy One PT Get One PayGo does not apply here. Switch to Pro to vary
+          utilization, the placement mix, the term, spike traffic and BOGO.
         </p>
       </section>
     </div>

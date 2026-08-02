@@ -49,18 +49,20 @@ function useMeasuredWidth() {
 
 export interface WaterfallProps {
   result: ModelResult;
+  /** Override the columns — simple mode omits steps it does not model. */
+  steps?: Step[];
   /** Pinned scenario A, drawn as a ghost outline behind the live bars. */
   compare?: ModelResult | null;
   present?: boolean;
 }
 
-export default function Waterfall({ result, compare, present }: WaterfallProps) {
+export default function Waterfall({ result, steps: stepsProp, compare, present }: WaterfallProps) {
   const { ref, width: measured } = useMeasuredWidth();
   const width = Math.max(measured, 280);
   const compact = width < 700;
   const height = present ? 560 : compact ? 380 : 470;
 
-  const steps = result.steps;
+  const steps = stepsProp ?? result.steps;
 
   const margin = {
     top: compact ? 30 : 38,

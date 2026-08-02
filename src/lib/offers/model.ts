@@ -238,12 +238,27 @@ export interface SimpleInputs {
   totalDemand: number;
   /** Share of that demand placed on PT. The rest rides PayGo. */
   ptShare: number;
+  /**
+   * Which concessions are on. BOGO is deliberately absent — simple mode does
+   * not model a spike share, so there is no Priority PayGo for it to rescue.
+   */
+  offers: Omit<OfferElections, "bogo">;
 }
 
 export const DEFAULT_SIMPLE: SimpleInputs = {
   totalDemand: 1200,
   ptShare: 0.5,
+  offers: { offPeak: true, deferred: true, batch: true, fsp: true, q3: true },
 };
+
+/** The concessions simple mode exposes, in the order they are applied. */
+export const SIMPLE_OFFER_KEYS = [
+  "offPeak",
+  "deferred",
+  "batch",
+  "fsp",
+  "q3",
+] as const satisfies ReadonlyArray<keyof Omit<OfferElections, "bogo">>;
 
 export const SIMPLE_RANGES = {
   totalDemand: { min: 100, max: 8000, step: 50 },
@@ -270,14 +285,14 @@ export function leversFromSimple(simple: SimpleInputs): Levers {
     ptUtilization: 1,
     term: "1y",
     fspRate: 0.2,
-    offers: {
-      bogo: true,
-      offPeak: true,
-      deferred: true,
-      batch: true,
-      fsp: true,
-      q3: true,
+    // No spike share, so nothing bills at Priority PayGo and BOGO has nothing
+    // to rescue — it is left out of simple mode entirely rather than sitting
+    // there as a no-op.
+    paygoMix: {
+      ...DEFAULT_LEVERS.paygoMix,
+      spike: 0,
     },
+    offers: { ...simple.offers, bogo: false },
   };
 }
 

@@ -457,6 +457,13 @@ Either is a one-line revert if the exact swatches matter more.
   the 3-year rate, and every option elected. It answers "what could this
   customer get?" — the assumption is printed under the result, and Pro is where
   it comes apart.
+- Simple mode carries its own concession checkboxes — off-peak, deferred, batch,
+  FSP and the Q3 offer — so the same "what if we don't give them X" question
+  works there.
+- **BOGO is absent from simple mode by design.** Simple mode models no spike
+  share, so nothing bills at Priority PayGo and Buy One PT Get One PayGo has
+  nothing to rescue; leaving it in would have shown a permanent no-op column.
+  Spike traffic and BOGO live in Pro.
 - Mode travels in the URL as `?mode=simple`, so a simple scenario shares as one.
 
 ### 0.4.0 — 2026-08-01
