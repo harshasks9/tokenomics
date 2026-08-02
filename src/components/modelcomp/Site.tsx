@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { COMPILED_ON, KPIS } from "@/lib/modelcomp/data";
-import Gate from "./Gate";
 import MainChart from "./MainChart";
 import InflectionRail from "./InflectionRail";
 import FlashChart from "./FlashChart";
@@ -134,10 +133,7 @@ function Footer() {
 }
 
 export default function Site() {
-  const [unlocked, setUnlocked] = useState(false);
   const [activeInflection, setActiveInflection] = useState<number | null>(null);
-
-  if (!unlocked) return <Gate onUnlock={() => setUnlocked(true)} />;
 
   return (
     <>
