@@ -278,6 +278,35 @@ export function tpmForGsus(
 }
 
 /**
+ * Monthly spend → tokens per minute, at a model's standard PayGo rate.
+ *
+ * Sellers know budget, not tokens. This is the bridge: "they're spending about
+ * $300K a month" becomes a TPM figure the model can size against. It reads the
+ * rate the same way the model does, so the estimate round-trips.
+ */
+export function tpmFromMonthlySpend(
+  monthlySpendK: number,
+  modelId: string,
+  outputShare: number,
+): number {
+  const rate = blendedPerMtok(findModel(modelId), outputShare);
+  if (rate === null || rate <= 0) return 0;
+  const mtokPerMonth = (Math.max(0, monthlySpendK) * 1000) / rate;
+  return (mtokPerMonth * 1e6) / MINUTES_PER_MONTH;
+}
+
+/** The inverse — what a TPM figure costs per month at standard PayGo. */
+export function monthlySpendFromTpm(
+  tpm: number,
+  modelId: string,
+  outputShare: number,
+): number {
+  const rate = blendedPerMtok(findModel(modelId), outputShare);
+  if (rate === null) return 0;
+  return ((Math.max(0, tpm) * MINUTES_PER_MONTH) / 1e6) * rate / 1000;
+}
+
+/**
  * Requests per minute → tokens per minute. Offered because the feedback asks
  * for requests/min as an entry point; the model runs on tokens either way.
  */

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AttributionBar from "./AttributionBar";
 import ChartTabs, { type ChartTab } from "./ChartTabs";
 import Compete from "./Compete";
+import GuidedFlow from "./GuidedFlow";
 import SpendEstimate from "./SpendEstimate";
 import TrafficProfile from "./TrafficProfile";
 import ExportButton from "./ExportButton";
@@ -12,7 +13,6 @@ import KpiStrip from "./KpiStrip";
 import MathTrace from "./MathTrace";
 import Levers from "./Levers";
 import ScenarioBar from "./ScenarioBar";
-import SimpleView from "./SimpleView";
 import ShareButton from "./ShareButton";
 import StepTable from "./StepTable";
 import Waterfall from "./Waterfall";
@@ -20,13 +20,11 @@ import {
   type Accent,
   DEFAULT_LEVERS,
   type Levers as LeverState,
-  type SimpleInputs,
   computeModel,
   electedSteps,
-  leversFromSimple,
-  normalizeForSimple,
-  simpleFromLevers,
 } from "@/lib/offers/model";
+import { recommend } from "@/lib/offers/recommend";
+import { DEFAULT_WORKLOAD_ID, findWorkload, matchWorkload } from "@/lib/offers/workloads";
 import { paramsFromLevers } from "@/lib/offers/params";
 import { GOAL_NOTE, SCOPE_NOTE } from "@/lib/offers/descriptions";
 import { PRESETS, type Preset, matchesPreset } from "@/lib/offers/presets";
@@ -44,15 +42,21 @@ export default function Simulator({
   initialLevers,
   initialPresetId,
   initialMode,
+  initialFromLink,
 }: {
   initialLevers: LeverState;
   initialPresetId: string | null;
-  initialMode: "simple" | "pro";
+  initialMode: "guided" | "pro";
+  /** True when the URL carried a scenario, so it must not be overwritten. */
+  initialFromLink: boolean;
 }) {
   // ONE scenario. Simple and Pro are two control surfaces over it, never two
   // models — so the number never moves when you toggle between them.
+  // A cold open should land on the recommendation, not on raw defaults — the
+  // first thing a seller sees ought to be an answer. A shared link carries its
+  // own scenario and is left exactly as it was sent.
   const [levers, setLevers] = useState<LeverState>(() =>
-    initialMode === "simple" ? normalizeForSimple(initialLevers) : initialLevers,
+    initialFromLink ? initialLevers : recommend(initialLevers, DEFAULT_WORKLOAD_ID).levers,
   );
   // A shared link that names a preset opens with that preset's rationale, but
   // only if the link's levers still match it — a tweaked link is its own thing.
@@ -65,10 +69,30 @@ export default function Simulator({
   const [sheetOpen, setSheetOpen] = useState(false);
   const [compete, setCompete] = useState(false);
   const [chartTab, setChartTab] = useState<ChartTab>("chart");
-  const [mode, setMode] = useState<"simple" | "pro">(initialMode);
+  const [mode, setMode] = useState<"guided" | "pro">(initialMode);
+  const [workloadId, setWorkloadId] = useState<string>(
+    () => matchWorkload(initialLevers)?.id ?? DEFAULT_WORKLOAD_ID,
+  );
 
-  const simple = useMemo(() => simpleFromLevers(levers), [levers]);
   const result = useMemo(() => computeModel(levers), [levers]);
+
+  // The house position on this deal, recomputed whenever the inputs move.
+  const recommendation = useMemo(
+    () => recommend(levers, workloadId),
+    [levers, workloadId],
+  );
+  // Whether the seller is still sitting on it, or has taken it apart.
+  const onRecommendation = useMemo(() => {
+    const r = recommendation.levers;
+    return (
+      Math.abs(r.ptShare - levers.ptShare) < 1e-9 &&
+      r.term === levers.term &&
+      Math.abs(r.fspRate - levers.fspRate) < 1e-9 &&
+      (Object.keys(r.offers) as Array<keyof typeof r.offers>).every(
+        (k) => r.offers[k] === levers.offers[k],
+      )
+    );
+  }, [recommendation, levers]);
   const compareResult = useMemo(
     () => (pinned ? computeModel(pinned) : null),
     [pinned],
@@ -96,8 +120,8 @@ export default function Simulator({
   useEffect(() => {
     if (syncTimer.current) clearTimeout(syncTimer.current);
     syncTimer.current = setTimeout(() => {
-      const params = paramsFromLevers(levers, mode === "simple" ? null : activePresetId);
-      if (mode === "simple") params.set("mode", "simple");
+      const params = paramsFromLevers(levers, mode === "guided" ? null : activePresetId);
+      if (mode === "guided") params.set("mode", "guided");
       window.history.replaceState(
         null,
         "",
@@ -134,18 +158,28 @@ export default function Simulator({
     setNoteFor(preset);
   }, []);
 
-  // Simple mode carries the whole scenario across; it only has to drop the two
-  // things it has no control for, or they would move the number invisibly.
-  const selectMode = useCallback((next: "simple" | "pro") => {
+  // Both surfaces read and write one scenario, so switching never moves a number.
+  const selectMode = useCallback((next: "guided" | "pro") => {
     setMode(next);
-    if (next === "simple") setLevers(normalizeForSimple);
   }, []);
 
-  const updateSimple = useCallback((patch: Partial<SimpleInputs>) => {
-    setLevers((current) =>
-      leversFromSimple({ ...simpleFromLevers(current), ...patch }, current),
-    );
+  // Choosing a workload rewrites the things the seller cannot know, and
+  // re-sizes the demand so the spend they typed still means the same money.
+  const selectWorkload = useCallback((id: string) => {
+    const w = findWorkload(id);
+    setWorkloadId(id);
+    setLevers((current) => ({
+      ...current,
+      outputShare: w.outputShare,
+      paygoMix: w.paygoMix,
+      harness: w.harness,
+      ptShare: w.suggestedPtShare,
+    }));
   }, []);
+
+  const applyRecommendation = useCallback(() => {
+    setLevers(recommendation.levers);
+  }, [recommendation]);
 
   const leverRail = (
     <Levers
@@ -208,7 +242,7 @@ export default function Simulator({
           >
             {(
               [
-                ["simple", "Simple"],
+                ["guided", "Guided"],
                 ["pro", "Pro"],
               ] as const
             ).map(([id, label]) => (
@@ -224,8 +258,8 @@ export default function Simulator({
             ))}
           </div>
           <p className="o-mono o-faint text-[10.5px]">
-            {mode === "simple"
-              ? "The request, the split, and the concessions you're offering."
+            {mode === "guided"
+              ? "Three questions, a recommended shape, and what to say."
               : "Every lever, every election, the full audit trail."}
           </p>
         </div>
@@ -261,15 +295,21 @@ export default function Simulator({
           <ExportButton levers={levers} result={result} />
         </div>
 
-        {mode === "simple" ? (
+        {mode === "guided" ? (
           <div className="o-fade-in mt-6">
-            <SimpleView
-              simple={simple}
+            <GuidedFlow
+              levers={levers}
               result={result}
               steps={chartSteps}
               chartTab={chartTab}
+              recommendation={recommendation}
+              onRecommendation={onRecommendation}
+              workloadId={workloadId}
               onChartTabChange={setChartTab}
-              onChange={updateSimple}
+              onChange={update}
+              onWorkload={selectWorkload}
+              onApplyRecommendation={applyRecommendation}
+              onOpenPro={() => setMode("pro")}
             />
           </div>
         ) : (

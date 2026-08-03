@@ -355,6 +355,42 @@ body:has(.offers-root) {
   background: color-mix(in srgb, var(--gold) 12%, transparent);
 }
 
+/* Progressive disclosure — a full-width row that opens a section. */
+.o-disclose {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-size: 13.5px;
+  text-align: left;
+  padding: 16px 20px;
+  min-height: 56px;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+
+.o-disclose:hover {
+  background: var(--panel-2);
+}
+
+.o-disclose > span:first-child::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1em;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  color: var(--ink-faint);
+}
+
+.o-disclose[aria-expanded="true"] > span:first-child::before {
+  content: "\2212";
+  color: var(--gold);
+}
+
 .o-input {
   width: 100%;
   background: var(--canvas);

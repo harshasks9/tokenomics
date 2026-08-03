@@ -502,6 +502,48 @@ Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
 
+### 0.9.0 — 2026-08-03 — redesigned around the seller
+
+Audited every control against four questions: does the seller know this, is it
+essential to the customer conversation, is the wording clear, can it be
+inferred? The Pro rail had **21 controls**. Eight of them asked for things a
+seller cannot reasonably know — output-token ratio, off-peak eligibility,
+deferred share, harness fee, PT utilization, tokens-per-GSU, spike share, batch
+share. Guided mode now infers all eight.
+
+**The new default view is Guided**, and it asks three questions:
+
+1. **What are they building?** — five workload archetypes (chat, agentic,
+   batch, coding, mixed). Picking one sets the output ratio, the whole placement
+   mix and the harness share. Every value is a modelled default, labelled, and
+   still editable in Pro.
+2. **How much are they adding, per month?** — in **dollars**, typed, with
+   quick-picks. Sellers know budget, not tokens per minute. `tpmFromMonthlySpend()`
+   converts at the model's own rate, and the inverse round-trips exactly.
+3. **Which model?** — chips, which set both the PayGo rate and the GSU
+   conversion.
+
+**Then it takes a position.** `recommend()` picks the term (a year once the
+volume clears the Q3 floor, three months below it — a long lock-up that earns
+no incentive is a hard sell), elects the concessions the profile actually has
+traffic for, and writes the headline as a sentence a seller can say out loud.
+A cold open lands on the recommendation, not on raw defaults. Deviating from it
+is visible, and one click restores it.
+
+**The output is executive-first**: headline sentence, four numbers (they pay /
+they save / over a year / blended rate), *why this shape*, *what to say*, and
+*check before you quote* — which surfaces unpublished assumptions, the BOGO
+threshold, the distance to the next Q3 tier, and material idle capacity.
+
+**Complexity is behind two disclosures**, both collapsed by default: *Adjust the
+offer* (PT share, term, the six elections) and *Show the working* (waterfall and
+the full arithmetic). One slider is visible on first paint, down from twelve
+controls.
+
+Simple mode is replaced by Guided; Pro is unchanged and one click away. The
+`SimpleInputs` helpers remain in the model for now but have no UI callers.
+
+
 ### 0.8.0 — 2026-08-03 — burndown rates, folded-in math tab
 
 Second pass on the Offer Portal feedback, once the source doc arrived.
