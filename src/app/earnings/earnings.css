@@ -1196,7 +1196,82 @@ body:has(.ea-root) {
 
 /* ── Print ──────────────────────────────────────────────────────────────── */
 
+/* ── The numbers: normalized metrics table ──────────────────────────────── */
+
+.ea-metrics {
+  min-width: 1480px;
+  table-layout: fixed;
+}
+
+.ea-metrics th {
+  width: 132px;
+}
+
+.ea-metrics th:first-child {
+  width: 148px;
+}
+
+.ea-metrics td:first-child {
+  vertical-align: top;
+  padding: 9px 12px 9px 0;
+  white-space: normal;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.ea-metrics-layer {
+  display: block;
+  margin-top: 3px;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ea-metrics-cell {
+  vertical-align: top;
+  padding: 9px 10px 9px 9px;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.ea-metrics-v {
+  display: block;
+  color: var(--ink);
+  font-weight: 550;
+  /* Confidence rides on the underline so the tag survives without a pill per cell. */
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.ea-metrics-cell[data-conf="fact"] .ea-metrics-v {
+  border-bottom-color: var(--fact);
+}
+
+.ea-metrics-cell[data-conf="inference"] .ea-metrics-v {
+  border-bottom-color: var(--inference);
+}
+
+.ea-metrics-cell[data-conf="hypothesis"] .ea-metrics-v {
+  border-bottom-style: dotted;
+  border-bottom-color: var(--hypothesis);
+}
+
+.ea-metrics-d {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.ea-metrics-empty {
+  color: var(--rule);
+  font-size: 13px;
+}
+
 @media print {
+
   .ea-top,
   .ea-rail,
   .ea-float,

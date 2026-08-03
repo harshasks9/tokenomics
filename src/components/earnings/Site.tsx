@@ -16,6 +16,7 @@ import MindMap from "./MindMap";
 import Demand from "./Demand";
 import Choose from "./Choose";
 import Scoreboard from "./Scoreboard";
+import Metrics from "./Metrics";
 import Dollar from "./Dollar";
 import { Playbook, Risks } from "./Playbook";
 
@@ -222,6 +223,7 @@ export default function Site() {
           {/* 5 · Scoreboard */}
           <section className="ea-zone" id="ea-scoreboard">
             <Scoreboard />
+            <Metrics />
           </section>
 
           {/* 6 · Dollar */}
