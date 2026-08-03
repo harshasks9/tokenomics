@@ -1,8 +1,12 @@
 /**
  * Offers — shareable scenario URLs.
  *
- * ?pt=600&u=85&pg=600&mix=15-30-20-10&h=15&fsp=20&t=1m&gcp=0&q3d=15
+ * ?d=72000000&pts=50&u=85&out=25&mix=15-30-20-10&h=15&fsp=20&t=1m&gcp=0&q3d=15
  *   &m=gemini-3-6-flash&tpm=60000&o=bogo.offpeak.deferred.batch.fsp.q3&preset=japac
+ *
+ * `d` is the customer's request in tokens per minute — the starting point.
+ * `tpm` is the fallback tokens-per-GSU assumption, used only where the model
+ * has no published throughput figure.
  *
  * Percentages travel as whole numbers; elected offers travel as a
  * dot-separated list. Anything missing or malformed falls back to the default,
@@ -94,8 +98,14 @@ export function leversFromParams(params: URLSearchParams): {
   const preset = findPreset(params.get("preset"));
   const base = preset ? preset.levers : DEFAULT_LEVERS;
 
-  const ptGsus = readNum(params, "pt");
-  const paygoGsus = readNum(params, "pg");
+  const demandTpm = readNum(params, "d");
+  const ptShare = readPct(params, "pts", LEVER_RANGES.ptShare.min, LEVER_RANGES.ptShare.max);
+  const outputShare = readPct(
+    params,
+    "out",
+    LEVER_RANGES.outputShare.min,
+    LEVER_RANGES.outputShare.max,
+  );
   const ptUtilization = readPct(
     params,
     "u",
@@ -120,19 +130,12 @@ export function leversFromParams(params: URLSearchParams): {
 
   return {
     levers: {
-      ptGsus:
-        ptGsus === null
-          ? base.ptGsus
-          : snap(ptGsus, LEVER_RANGES.ptGsus.step, LEVER_RANGES.ptGsus.min, LEVER_RANGES.ptGsus.max),
-      paygoGsus:
-        paygoGsus === null
-          ? base.paygoGsus
-          : snap(
-              paygoGsus,
-              LEVER_RANGES.paygoGsus.step,
-              LEVER_RANGES.paygoGsus.min,
-              LEVER_RANGES.paygoGsus.max,
-            ),
+      tpm:
+        demandTpm === null
+          ? base.tpm
+          : snap(demandTpm, LEVER_RANGES.tpm.step, LEVER_RANGES.tpm.min, LEVER_RANGES.tpm.max),
+      ptShare: ptShare ?? base.ptShare,
+      outputShare: outputShare ?? base.outputShare,
       ptUtilization: ptUtilization ?? base.ptUtilization,
       paygoMix: mix ?? base.paygoMix,
       harness: harness ?? base.harness,
@@ -163,9 +166,10 @@ export function paramsFromLevers(
   presetId?: string | null,
 ): URLSearchParams {
   const params = new URLSearchParams();
-  params.set("pt", String(levers.ptGsus));
+  params.set("d", String(levers.tpm));
+  params.set("pts", String(round(levers.ptShare)));
   params.set("u", String(round(levers.ptUtilization)));
-  params.set("pg", String(levers.paygoGsus));
+  params.set("out", String(round(levers.outputShare)));
   params.set(
     "mix",
     [

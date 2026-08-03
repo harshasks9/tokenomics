@@ -1,3 +1,11 @@
+import {
+  ASSUMED_BURNDOWN,
+  blendedPerMtok,
+  burndownWeight,
+  findModel,
+  tpmPerGsuFor,
+} from "./models";
+
 /**
  * Offers — GenAI commercial pricing model.
  *
@@ -8,9 +16,31 @@
  * The question it answers: against the incremental spend that new workload
  * would cost at standard rates, how much do the programmatic options take off?
  *
+ * THE FLOW, in the order the questions get asked:
+ *   1. What does the customer need? — TPM, for a named model.
+ *   2. How much of that goes on Provisioned Throughput vs PayGo?
+ *   3. Which PayGo tiers does the rest land in?
+ *
+ * GSUs are DERIVED, never entered. The conversion is Google's:
+ *
+ *   throughput_per_second = (burndown-adjusted inputs + outputs) x queries/sec
+ *   GSUs                  = throughput_per_second / throughput_per_GSU
+ *
+ * Burndown matters as much as the model does. An output token costs 5 standard
+ * units against 1 for an input token on Gemini 3.6 Flash, so a chatty workload
+ * needs far more capacity than its raw token count suggests — raw TPM alone
+ * cannot size a reservation. GSUs are then rounded up to the model's minimum
+ * purchase increment, because that is what actually gets bought.
+ *
+ * Burndown is a CAPACITY concept, not a billing one: PayGo still bills raw
+ * tokens at the model's own $/Mtok, never at parity with the GSU rate.
+ *
  * Pure functions, no React, no side effects, no `any`.
  * Units: money is $K per month unless a name says otherwise.
  */
+
+/** Minutes in the billing month — the bridge from TPM to tokens per month. */
+export const MINUTES_PER_MONTH = 60 * 24 * 30;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constants
@@ -142,18 +172,34 @@ export const PAYGO_MIX_KEYS = ["spike", "offPeak", "deferred", "batch"] as const
 export type PayGoMixKey = (typeof PAYGO_MIX_KEYS)[number];
 
 export interface Levers {
-  /** Incremental PT capacity being ordered, in GSUs. */
-  ptGsus: number;
-  /** How full that PT actually runs. 0.40–1.00. */
+  /**
+   * STEP ONE. What the customer needs, in tokens per minute, for `modelId`.
+   * Everything else is derived from this — GSUs are an output, not an input.
+   */
+  tpm: number;
+  /** STEP TWO. Share of that demand served from Provisioned Throughput. */
+  ptShare: number;
+  /**
+   * How full the reservation runs. PT is sized to carry `ptShare` of the
+   * demand, so a customer who will not keep it busy has to order MORE than the
+   * traffic strictly needs: ordered = needed ÷ utilization.
+   */
   ptUtilization: number;
-  /** Incremental PayGo demand, in GSU-equivalents. */
-  paygoGsus: number;
+  /** STEP THREE. Which PayGo tiers the remainder lands in. */
   paygoMix: PayGoMix;
-  /** Which model the token-economics view compares. */
+  /** The working model. Sets both the GSU conversion and the PayGo rate. */
   modelId: string;
+  /**
+   * Share of tokens that are output rather than input. Output bills several
+   * times higher, so this moves the PayGo rate materially.
+   */
+  outputShare: number;
   /** Harness fee share within Deferred, billed at 1.0x. 0–0.50. */
   harness: number;
-  /** TPM delivered per GSU — the assumption behind every TPM figure shown. */
+  /**
+   * Fallback tokens-per-minute per GSU, used only for models with no published
+   * throughput figure. A stated assumption, never a rate.
+   */
   tpmPerGsu: number;
   term: GsuTerm;
   fspRate: number;
@@ -163,11 +209,12 @@ export interface Levers {
 }
 
 export const DEFAULT_LEVERS: Levers = {
-  ptGsus: 600,
+  tpm: 72_000_000,
+  ptShare: 0.5,
   ptUtilization: 0.85,
-  paygoGsus: 600,
   paygoMix: { spike: 0.15, offPeak: 0.3, deferred: 0.2, batch: 0.1 },
   modelId: "gemini-3-6-flash",
+  outputShare: 0.2,
   harness: 0.15,
   tpmPerGsu: DEFAULT_TPM_PER_GSU,
   term: "1m",
@@ -185,14 +232,58 @@ export const DEFAULT_LEVERS: Levers = {
 };
 
 export const LEVER_RANGES = {
-  ptGsus: { min: 0, max: 5000, step: 50 },
+  tpm: { min: 0, max: 400_000_000, step: 1_000_000 },
+  ptShare: { min: 0, max: 1, step: 0.01 },
   ptUtilization: { min: 0.4, max: 1, step: 0.01 },
-  paygoGsus: { min: 0, max: 5000, step: 50 },
+  outputShare: { min: 0, max: 1, step: 0.01 },
   mixShare: { min: 0, max: 1, step: 0.01 },
   harness: { min: 0, max: 0.5, step: 0.01 },
   gcpCommit: { min: 0, max: 0.3, step: 0.01 },
-  tpmPerGsu: { min: 10_000, max: 200_000, step: 5_000 },
+  tpmPerGsu: { min: 10_000, max: 400_000, step: 5_000 },
 } as const;
+
+/**
+ * Raw tokens per minute one GSU carries for this scenario — the model's
+ * published throughput divided by the burndown weight of its output mix, or
+ * the stated assumption where no figure has been loaded. Exported so presets
+ * and tests size against exactly the same rule the model uses.
+ */
+export function effectiveTpmPerGsu(levers: Levers): number {
+  const model = findModel(levers.modelId);
+  const weight = burndownWeight(
+    model.burndown ?? ASSUMED_BURNDOWN,
+    levers.outputShare,
+  );
+  const published = tpmPerGsuFor(model);
+  return published !== null && weight > 0 ? published / weight : levers.tpmPerGsu;
+}
+
+/**
+ * TPM that sizes to a given PT and PayGo GSU count on a model's throughput.
+ * Scenarios and tests are still easiest to state in GSUs — this converts that
+ * intent into the TPM the model now takes as its input.
+ */
+export function tpmForGsus(
+  ptGsus: number,
+  paygoGsus: number,
+  tpmPerGsu: number = DEFAULT_TPM_PER_GSU,
+  ptUtilization = 1,
+): { tpm: number; ptShare: number } {
+  const ptDemand = ptGsus * ptUtilization;
+  const total = ptDemand + paygoGsus;
+  return {
+    tpm: total * tpmPerGsu,
+    ptShare: total > 0 ? ptDemand / total : 0,
+  };
+}
+
+/**
+ * Requests per minute → tokens per minute. Offered because the feedback asks
+ * for requests/min as an entry point; the model runs on tokens either way.
+ */
+export function tpmFromRpm(rpm: number, tokensPerRequest: number): number {
+  return Math.max(0, rpm) * Math.max(0, tokensPerRequest);
+}
 
 /** Standard PayGo takes whatever the other four leave. */
 export function standardShare(mix: PayGoMix): number {
@@ -239,10 +330,17 @@ function usableMix(mix: PayGoMix): PayGoMix & { standard: number } {
  * toggling between them never moves the answer.
  */
 export interface SimpleInputs {
-  /** Total incremental demand, GSU-equivalents per month. */
-  totalDemand: number;
+  /** Total incremental demand, tokens per minute — the same step-one number. */
+  tpm: number;
   /** Share of that demand placed on PT. The rest rides PayGo. */
   ptShare: number;
+  /**
+   * How the PayGo remainder splits across tiers. Simple mode carries this
+   * because the split is what the concessions actually act on — without it the
+   * checkboxes would be electing discounts on traffic nobody had placed.
+   * Spike is absent: simple mode has no BOGO, so it models no Priority PayGo.
+   */
+  paygoMix: Omit<PayGoMix, "spike">;
   /**
    * Which concessions are on. BOGO is deliberately absent — simple mode does
    * not model a spike share, so there is no Priority PayGo for it to rescue.
@@ -259,20 +357,32 @@ export const SIMPLE_OFFER_KEYS = [
   "q3",
 ] as const satisfies ReadonlyArray<keyof Omit<OfferElections, "bogo">>;
 
+/** The PayGo tiers simple mode lets you place traffic into. */
+export const SIMPLE_MIX_KEYS = [
+  "offPeak",
+  "deferred",
+  "batch",
+] as const satisfies ReadonlyArray<keyof Omit<PayGoMix, "spike">>;
+
 export const SIMPLE_RANGES = {
-  totalDemand: { min: 100, max: 8000, step: 50 },
+  tpm: { min: 0, max: 400_000_000, step: 1_000_000 },
   ptShare: { min: 0, max: 1, step: 0.01 },
+  mixShare: { min: 0, max: 1, step: 0.01 },
 } as const;
 
 /**
- * Read the two simple inputs off a full lever set. A projection, not a
- * conversion — nothing is invented and nothing is discarded.
+ * Read the simple inputs off a full lever set. A projection, not a conversion —
+ * nothing is invented and nothing is discarded.
  */
 export function simpleFromLevers(levers: Levers): SimpleInputs {
-  const totalDemand = Math.max(0, levers.ptGsus + levers.paygoGsus);
   return {
-    totalDemand,
-    ptShare: totalDemand > 0 ? levers.ptGsus / totalDemand : 0,
+    tpm: Math.max(0, levers.tpm),
+    ptShare: Math.min(1, Math.max(0, levers.ptShare)),
+    paygoMix: {
+      offPeak: levers.paygoMix.offPeak,
+      deferred: levers.paygoMix.deferred,
+      batch: levers.paygoMix.batch,
+    },
     offers: {
       offPeak: levers.offers.offPeak,
       deferred: levers.offers.deferred,
@@ -284,22 +394,20 @@ export function simpleFromLevers(levers: Levers): SimpleInputs {
 }
 
 /**
- * Push the two simple inputs back onto the scenario they came from. Everything
- * simple mode does not expose — utilization, the placement mix, the term, the
- * FSP and Q3 rates — is carried through from `base` untouched, which is what
- * keeps the two modes on the same number.
+ * Push the simple inputs back onto the scenario they came from. Everything
+ * simple mode does not expose — utilization, the model, the term, the FSP and
+ * Q3 rates — is carried through from `base` untouched, which is what keeps the
+ * two modes on the same number.
  */
 export function leversFromSimple(
   simple: SimpleInputs,
   base: Levers = DEFAULT_LEVERS,
 ): Levers {
-  const total = Math.max(0, simple.totalDemand);
-  const share = Math.min(1, Math.max(0, simple.ptShare));
-  const ptGsus = Math.round(total * share);
   return {
     ...base,
-    ptGsus,
-    paygoGsus: Math.max(0, Math.round(total - ptGsus)),
+    tpm: Math.max(0, simple.tpm),
+    ptShare: Math.min(1, Math.max(0, simple.ptShare)),
+    paygoMix: { ...simple.paygoMix, spike: 0 },
     offers: { ...base.offers, ...simple.offers, bogo: false },
   };
 }
@@ -381,6 +489,10 @@ export interface Attribution {
 }
 
 export interface TrafficSplit {
+  /** GSUs of PT the customer must ORDER, derived from TPM and utilization. */
+  ptGsus: number;
+  /** PayGo demand expressed in GSU-equivalents, for volume comparisons. */
+  paygoGsus: number;
   /** GSU-equivalents actually consumed on PT. */
   ptConsumed: number;
   /** GSU-equivalents of PayGo demand. */
@@ -392,7 +504,7 @@ export interface TrafficSplit {
   paygoShareOfSpend: number;
   /** PT capacity that is ordered but not used. */
   idleGsus: number;
-  /** Tokens per minute, using the tpmPerGsu assumption. */
+  /** The reservation's headline capacity — what was ordered, in TPM. */
   ptCapacityTpm: number;
   ptUsedTpm: number;
   paygoTpm: number;
@@ -423,6 +535,33 @@ export interface ModelResult {
   defMult: number;
   traffic: TrafficSplit;
 
+  /** How the request converted into capacity, and on whose authority. */
+  sizing: {
+    /** The working model's id and display name. */
+    modelId: string;
+    modelName: string;
+    /** Tokens per minute one GSU delivers for this model. */
+    tpmPerGsu: number;
+    /** True when that came from Google's table, false when assumed. */
+    throughputIsPublished: boolean;
+    /** Burndown-adjusted tokens/second one GSU delivers, as published. */
+    throughputPerGsu: number | null;
+    /** Standard units one raw token costs at this output mix. */
+    burndownWeight: number;
+    /** True when the model's own burndown table is loaded. */
+    burndownIsPublished: boolean;
+    minGsuIncrement: number;
+    /** GSUs the PT traffic strictly needs, before the utilization headroom. */
+    ptDemandGsus: number;
+    /** Blended PayGo rate actually applied, $ per million tokens. */
+    paygoPerMtok: number;
+    /** True when that came from the deck, false when derived at GSU parity. */
+    paygoRateIsPublished: boolean;
+    /** Millions of PayGo tokens per month. */
+    paygoMtokPerMonth: number;
+    outputShare: number;
+  };
+
   gsu: {
     atList: number;
     afterFsp: number;
@@ -443,7 +582,10 @@ export interface ModelResult {
   q3AppliedCredits: number;
   gsusToNextTier: number | null;
 
+  /** Final cost as a multiple of running the whole request on Standard PayGo. */
   blendedMultiplier: number;
+  /** $K/month if every token ran on Standard PayGo — the multiplier's base. */
+  allStandardPayGo: number;
   savingPct: number;
   annualSave: number;
 
@@ -463,32 +605,70 @@ const perGsu = (p: number) => `$${(p * 1000).toLocaleString("en-US")}`;
 const k = (x: number) => `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}K`;
 
 export function computeModel(levers: Levers): ModelResult {
-  const {
-    ptGsus,
-    ptUtilization,
-    paygoGsus,
-    harness,
-    tpmPerGsu,
-    term,
-    gcpCommit,
-    offers,
-  } = levers;
+  const { ptUtilization, harness, term, gcpCommit, offers } = levers;
 
   const mix = usableMix(levers.paygoMix);
   const overAllocated = isOverAllocated(levers.paygoMix);
 
-  // ── Volumes ────────────────────────────────────────────────────────────
-  const ptConsumed = ptGsus * ptUtilization;
+  // ── Step one — the customer's request, for a named model ───────────────
+  const model = findModel(levers.modelId);
+  const tpm = Math.max(0, levers.tpm);
+  const ptShare = Math.min(1, Math.max(0, levers.ptShare));
+  const outputShare = Math.min(1, Math.max(0, levers.outputShare));
+
+  // GSUs are DERIVED. Throughput is quoted in burndown-adjusted tokens, so raw
+  // TPM has to be weighted by the output mix before it can size anything.
+  const burndown = model.burndown ?? ASSUMED_BURNDOWN;
+  const burndownIsPublished = model.burndown !== null;
+  const weight = burndownWeight(burndown, outputShare);
+
+  const publishedTpmPerGsu = tpmPerGsuFor(model);
+  // Raw tokens per minute one GSU carries at this output mix — the figure the
+  // UI can honestly put next to a TPM number.
+  const tpmPerGsu =
+    publishedTpmPerGsu !== null && weight > 0
+      ? publishedTpmPerGsu / weight
+      : levers.tpmPerGsu;
+  const throughputIsPublished = publishedTpmPerGsu !== null;
+
+  // ── Step two — how the request splits ──────────────────────────────────
+  const ptTpm = tpm * ptShare;
+  const paygoTpm = tpm - ptTpm;
+
+  // PT is sized to carry its share. Utilization below 100% means ordering
+  // more than the traffic strictly needs, and paying for the slack.
+  const ptDemandGsus = tpmPerGsu > 0 ? ptTpm / tpmPerGsu : 0;
+  // Capacity is bought in whole increments, so the order rounds UP to one.
+  const increment = Math.max(1, model.minGsuIncrement);
+  const ptGsus =
+    ptUtilization > 0
+      ? Math.ceil(ptDemandGsus / ptUtilization / increment) * increment
+      : 0;
+  const ptConsumed = ptDemandGsus;
+
+  // PayGo priced from the MODEL's own rate, not at parity with the GSU price.
+  // A model with no published price falls back to GSU parity, flagged.
+  const publishedPerMtok = blendedPerMtok(model, outputShare);
+  const paygoPerMtok =
+    publishedPerMtok ?? (tpmPerGsu > 0 ? (P_LIST * 1000) / (tpmPerGsu * MINUTES_PER_MONTH / 1e6) : 0);
+  const paygoRateIsPublished = publishedPerMtok !== null;
+
+  const paygoMtokPerMonth = (paygoTpm * MINUTES_PER_MONTH) / 1e6;
+  // $K per month at standard rates, before any tier multiplier.
+  const paygoUnit = (paygoMtokPerMonth * paygoPerMtok) / 1000;
+
+  // GSU-equivalents, kept so volume-based rules (BOGO, blended multiplier)
+  // still have one currency to speak in.
+  const paygoGsus = tpmPerGsu > 0 ? paygoTpm / tpmPerGsu : 0;
   const totalConsumed = ptConsumed + paygoGsus;
 
   const bogoEligible = ptGsus >= BOGO_MIN_GSUS;
   const bogoOn = offers.bogo && bogoEligible;
 
   // ── Reference: what this incremental workload costs with nothing elected.
-  // PT bills on capacity at the list GSU rate; PayGo bills per tier, with
-  // spikes needing Priority PayGo at 1.8x because BOGO has not been taken.
+  // PT bills on ordered capacity at the list GSU rate; PayGo bills per tier,
+  // with spikes on Priority PayGo at 1.8x because BOGO has not been taken.
   const ptReference = ptGsus * P_LIST;
-  const paygoUnit = paygoGsus * P_LIST;
   const paygoReference =
     paygoUnit *
     (mix.spike * TIER_MULTIPLIER.priorityPayGo +
@@ -554,8 +734,13 @@ export function computeModel(levers: Levers): ModelResult {
         ? null
         : Math.ceil(topTier.minGsus - ptGsus);
 
-  const denominator = P_LIST * totalConsumed;
-  const blendedMultiplier = denominator > 0 ? final / denominator : 0;
+  // "Of Standard PayGo" has to mean exactly that: what these same tokens would
+  // cost if every one of them ran on Standard PayGo at the model's own rate.
+  // Measuring against P_LIST x GSUs would price PayGo at the GSU rate again.
+  const allStandardPayGo =
+    ((tpm * MINUTES_PER_MONTH) / 1e6) * paygoPerMtok / 1000;
+  const blendedMultiplier =
+    allStandardPayGo > 0 ? final / allStandardPayGo : 0;
   const savingPct = reference > 0 ? 1 - final / reference : 0;
   const annualSave = (reference - final) * 12;
 
@@ -563,6 +748,8 @@ export function computeModel(levers: Levers): ModelResult {
   const commitMonthly = gsuAfterQ3Discount - credits;
 
   const traffic: TrafficSplit = {
+    ptGsus,
+    paygoGsus,
     ptConsumed,
     paygoConsumed: paygoGsus,
     totalConsumed,
@@ -572,9 +759,9 @@ export function computeModel(levers: Levers): ModelResult {
     paygoShareOfSpend: reference > 0 ? paygoReference / reference : 0,
     idleGsus: Math.max(0, ptGsus - ptConsumed),
     ptCapacityTpm: ptGsus * tpmPerGsu,
-    ptUsedTpm: ptConsumed * tpmPerGsu,
-    paygoTpm: paygoGsus * tpmPerGsu,
-    totalTpm: (ptGsus + paygoGsus) * tpmPerGsu,
+    ptUsedTpm: ptTpm,
+    paygoTpm,
+    totalTpm: tpm,
   };
 
   const values: Array<{
@@ -817,6 +1004,21 @@ export function computeModel(levers: Levers): ModelResult {
     final,
     defMult,
     traffic,
+    sizing: {
+      modelId: model.id,
+      modelName: model.name,
+      tpmPerGsu,
+      throughputIsPublished,
+      throughputPerGsu: model.tokensPerSecPerGsu,
+      burndownWeight: weight,
+      burndownIsPublished,
+      minGsuIncrement: increment,
+      ptDemandGsus,
+      paygoPerMtok,
+      paygoRateIsPublished,
+      paygoMtokPerMonth,
+      outputShare,
+    },
     gsu: {
       atList: ptReference,
       afterFsp: gsuAfterFsp,
@@ -835,6 +1037,7 @@ export function computeModel(levers: Levers): ModelResult {
     q3AppliedCredits,
     gsusToNextTier,
     blendedMultiplier,
+    allStandardPayGo,
     savingPct,
     annualSave,
     steps,

@@ -124,23 +124,40 @@ export interface LeversProps {
 }
 
 export default function Levers({ levers, result, onChange, onReset }: LeversProps) {
-  const { q3Tier, gsusToNextTier, bogoEligible, traffic } = result;
+  const { q3Tier, gsusToNextTier, bogoEligible, traffic, sizing } = result;
 
   return (
     <div>
-      {/* ── Volume: what they're adding ──────────────────────────────── */}
-      <Group title="What they're adding" hint={`${formatTpm(traffic.totalTpm)} TPM`}>
+      {/* ── Step one: the request ────────────────────────────────────── */}
+      <Group
+        title="What the customer needs"
+        hint={`${formatTpm(traffic.totalTpm)} TPM`}
+      >
         <Slider
-          label={LEVER_INFO.ptGsus.label}
-          tooltip={LEVER_INFO.ptGsus.tooltip}
-          readout={`${levers.ptGsus.toLocaleString("en-US")} GSU`}
-          value={levers.ptGsus}
-          min={LEVER_RANGES.ptGsus.min}
-          max={LEVER_RANGES.ptGsus.max}
-          step={LEVER_RANGES.ptGsus.step}
-          onChange={(value) => onChange({ ptGsus: value })}
+          label={LEVER_INFO.tpm.label}
+          tooltip={LEVER_INFO.tpm.tooltip}
+          readout={`${formatTpm(levers.tpm)} TPM`}
+          value={levers.tpm}
+          min={LEVER_RANGES.tpm.min}
+          max={LEVER_RANGES.tpm.max}
+          step={LEVER_RANGES.tpm.step}
+          onChange={(value) => onChange({ tpm: value })}
+          accent="var(--gold)"
+          caption={`On ${sizing.modelName}, ${sizing.tpmPerGsu.toLocaleString("en-US")} TPM per GSU${
+            sizing.throughputIsPublished ? "" : " (assumption)"
+          }.`}
+        />
+        <Slider
+          label={LEVER_INFO.ptShare.label}
+          tooltip={LEVER_INFO.ptShare.tooltip}
+          readout={`${share(levers.ptShare)} PT · ${share(1 - levers.ptShare)} PayGo`}
+          value={levers.ptShare}
+          min={LEVER_RANGES.ptShare.min}
+          max={LEVER_RANGES.ptShare.max}
+          step={LEVER_RANGES.ptShare.step}
+          onChange={(value) => onChange({ ptShare: value })}
           accent="var(--blue)"
-          caption={`${moneyK(result.ptReference)}/mo at list · ${formatTpm(traffic.ptCapacityTpm)} TPM reserved.`}
+          caption={`${traffic.ptGsus.toLocaleString("en-US")} GSUs ordered (${moneyK(result.ptReference)}/mo) · ${moneyK(result.paygoReference)}/mo on PayGo.`}
         />
         <Slider
           label={LEVER_INFO.ptUtilization.label}
@@ -155,21 +172,23 @@ export default function Levers({ levers, result, onChange, onReset }: LeversProp
           marker="anchored"
           caption={
             traffic.idleGsus > 0.5
-              ? `${traffic.idleGsus.toFixed(0)} GSUs reserved but unused — billed anyway.`
-              : "Fully utilised."
+              ? `Needs ${sizing.ptDemandGsus.toFixed(0)} GSUs of traffic, so ${traffic.ptGsus.toLocaleString("en-US")} must be ordered — ${traffic.idleGsus.toFixed(0)} sit idle, billed anyway.`
+              : "Sized exactly to the traffic."
           }
         />
         <Slider
-          label={LEVER_INFO.paygoGsus.label}
-          tooltip={LEVER_INFO.paygoGsus.tooltip}
-          readout={`${levers.paygoGsus.toLocaleString("en-US")} GSU`}
-          value={levers.paygoGsus}
-          min={LEVER_RANGES.paygoGsus.min}
-          max={LEVER_RANGES.paygoGsus.max}
-          step={LEVER_RANGES.paygoGsus.step}
-          onChange={(value) => onChange({ paygoGsus: value })}
+          label={LEVER_INFO.outputShare.label}
+          tooltip={LEVER_INFO.outputShare.tooltip}
+          readout={share(levers.outputShare)}
+          value={levers.outputShare}
+          min={LEVER_RANGES.outputShare.min}
+          max={LEVER_RANGES.outputShare.max}
+          step={LEVER_RANGES.outputShare.step}
+          onChange={(value) => onChange({ outputShare: value })}
           accent="var(--green)"
-          caption={`${moneyK(result.paygoReference)}/mo at standard rates · ${formatTpm(traffic.paygoTpm)} TPM.`}
+          caption={`PayGo bills $${sizing.paygoPerMtok.toFixed(2)}/Mtok blended${
+            sizing.paygoRateIsPublished ? "" : " (derived at GSU parity — no deck price)"
+          }.`}
         />
       </Group>
 
@@ -190,7 +209,7 @@ export default function Levers({ levers, result, onChange, onReset }: LeversProp
           note={
             bogoEligible
               ? undefined
-              : `Needs ${BOGO_MIN_GSUS}+ PT GSUs (currently ${levers.ptGsus.toLocaleString("en-US")}).`
+              : `Needs ${BOGO_MIN_GSUS}+ PT GSUs (currently ${traffic.ptGsus.toLocaleString("en-US")}).`
           }
         />
         <OfferRow
