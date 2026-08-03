@@ -5,12 +5,19 @@ import { NADELLA_QUOTE, NADELLA_SECONDARY, SWITCHING_NOTE } from "@/lib/earnings
 import { SANKEY_H, SANKEY_W, sankey } from "@/lib/earnings/layout";
 import { Pill, Reveal, ZoneHead, useReveal } from "./primitives";
 
-/** Ribbon colour follows the model it ends at, so identity reads left to right. */
+/**
+ * Ribbon colour follows the model it ends at, so identity reads left to right.
+ *
+ * These are model-identity hues, deliberately outside the four layer accents —
+ * zone 2's legend assigns teal/violet/green to layers, so reusing them here
+ * (as an earlier revision did) made Gemini read as "hyperscaler" and GPT as
+ * "platform".
+ */
 const MODEL_COLOR: Record<string, string> = {
   "m-claude": "var(--models)",
-  "m-gemini": "var(--hyperscalers)",
-  "m-gpt": "var(--platforms)",
-  "m-open": "var(--economics)",
+  "m-gemini": "#4285f4",
+  "m-gpt": "#334155",
+  "m-open": "#db2777",
 };
 
 const COL_LABEL = ["Enterprise workloads", "Selection factors", "Models"];

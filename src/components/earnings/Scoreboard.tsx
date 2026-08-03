@@ -114,7 +114,7 @@ export default function Scoreboard() {
                           data-open={open === key}
                           style={{ color: INK_ON[s] }}
                           aria-label={`${row.name}, ${board.cols[i]}: ${cell.t}. ${cell.e}`}
-                          onClick={() => setOpen(open === key ? null : key)}
+                          onClick={() => setOpen(key)}
                           onPointerEnter={() => setOpen(key)}
                           onFocus={() => setOpen(key)}
                         >
@@ -130,7 +130,7 @@ export default function Scoreboard() {
         </div>
 
         <div
-          className="ea-card"
+          className="ea-card ea-evidence"
           style={{ padding: "12px 14px", marginTop: 10, minHeight: 56 }}
           aria-live="polite"
         >
@@ -145,6 +145,8 @@ export default function Scoreboard() {
               : "Hover or tap a cell to see the supporting evidence sentence."}
           </p>
         </div>
+
+        <p className="ea-hint">Scroll the matrix sideways →</p>
 
         <p className="ea-note" style={{ marginTop: 10 }}>
           {board.note}

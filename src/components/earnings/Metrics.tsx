@@ -7,7 +7,7 @@ import {
   METRICS_TABLE,
   type Layer,
 } from "@/lib/earnings/data";
-import { Reveal } from "./primitives";
+import { Reveal, layerClass } from "./primitives";
 
 const LAYER_LABEL: Record<Layer, string> = {
   models: "Model provider",
@@ -33,8 +33,8 @@ export default function Metrics() {
   const count = (l: Layer) => METRICS_TABLE.filter((r) => r.layer === l).length;
 
   return (
-    <Reveal style={{ marginTop: 46 }}>
-      <div className="ea-zone-head">
+    <Reveal style={{ marginTop: 46 }} className="ea-metrics-anchor">
+      <div className="ea-zone-head" id="ea-metrics">
         <span className="ea-kicker">The numbers</span>
       </div>
       <h3 className="ea-h2" style={{ fontSize: "1.4rem", marginBottom: 6 }}>
@@ -80,7 +80,7 @@ export default function Metrics() {
           </thead>
           <tbody>
             {rows.map((r) => (
-              <tr key={r.company}>
+              <tr key={r.company} className={layerClass(r.layer)}>
                 <td>
                   {r.company}
                   <span className="ea-metrics-layer">{LAYER_LABEL[r.layer]}</span>
