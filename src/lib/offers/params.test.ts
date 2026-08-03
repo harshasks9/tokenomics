@@ -51,8 +51,9 @@ describe("Shareable URLs", () => {
 
   it("produces the documented query shape", () => {
     const query = paramsFromLevers(DEFAULT_LEVERS).toString();
-    expect(query).toContain("pt=600");
-    expect(query).toContain("pg=600");
+    expect(query).toContain("d=72000000");
+    expect(query).toContain("pts=50");
+    expect(query).toContain("out=25");
     expect(query).toContain("u=85");
     expect(query).toContain("mix=15-30-20-10");
     expect(query).toContain("h=15");
@@ -93,19 +94,29 @@ describe("Shareable URLs", () => {
 
   it("clamps out-of-range values into the lever ranges", () => {
     const { levers } = leversFromParams(
-      new URLSearchParams("pt=99999&pg=-40&u=200&gcp=90&q3d=90&tpm=9999999"),
+      new URLSearchParams("d=999999999&pts=200&out=-30&u=200&gcp=90&q3d=90&tpm=9999999"),
     );
-    expect(levers.ptGsus).toBeLessThanOrEqual(5000);
-    expect(levers.paygoGsus).toBeGreaterThanOrEqual(0);
+    expect(levers.tpm).toBeLessThanOrEqual(400_000_000);
+    expect(levers.ptShare).toBeLessThanOrEqual(1);
+    expect(levers.ptShare).toBeGreaterThanOrEqual(0);
+    expect(levers.outputShare).toBeGreaterThanOrEqual(0);
     expect(levers.ptUtilization).toBeLessThanOrEqual(1);
     expect(levers.gcpCommit).toBeLessThanOrEqual(0.3);
     expect(levers.q3Discount).toBeLessThanOrEqual(0.3);
-    expect(levers.tpmPerGsu).toBeLessThanOrEqual(200_000);
+    expect(levers.tpmPerGsu).toBeLessThanOrEqual(400_000);
   });
 
-  it("snaps GSU counts to their 50-GSU step", () => {
-    expect(leversFromParams(new URLSearchParams("pt=1237")).levers.ptGsus).toBe(1250);
-    expect(leversFromParams(new URLSearchParams("pg=1237")).levers.paygoGsus).toBe(1250);
+  it("snaps the demand to its step", () => {
+    expect(leversFromParams(new URLSearchParams("d=71400000")).levers.tpm).toBe(
+      71_000_000,
+    );
+  });
+
+  it("a link written before the TPM rewrite falls back rather than breaking", () => {
+    // Old links carried pt=/pg= GSU counts, which no longer exist as inputs.
+    const { levers } = leversFromParams(new URLSearchParams("pt=600&pg=600"));
+    expect(levers.tpm).toBe(DEFAULT_LEVERS.tpm);
+    expect(levers.ptShare).toBe(DEFAULT_LEVERS.ptShare);
   });
 
   it("only accepts a selectable model id", () => {

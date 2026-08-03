@@ -1,4 +1,10 @@
-import { DEFAULT_LEVERS, type Levers, type OfferElections } from "./model";
+import {
+  DEFAULT_LEVERS,
+  LEVER_RANGES,
+  type Levers,
+  type OfferElections,
+  tpmForGsus,
+} from "./model";
 
 export interface Preset {
   id: string;
@@ -11,13 +17,34 @@ export interface Preset {
 /** Offers are patched, not replaced, so a preset only names what it changes. */
 type PresetOverrides = Partial<Omit<Levers, "offers">> & {
   offers?: Partial<OfferElections>;
+  /**
+   * Scenarios are easiest to picture as capacity, but the model now takes a
+   * request. Naming GSUs here sizes the equivalent TPM on the fallback
+   * throughput assumption; the model re-derives the GSU count from it.
+   */
+  sizeAsGsus?: { pt: number; paygo: number };
 };
 
-function build(overrides: PresetOverrides): Levers {
-  return {
+function build({ sizeAsGsus, ...overrides }: PresetOverrides): Levers {
+  const base = {
     ...DEFAULT_LEVERS,
     ...overrides,
     offers: { ...DEFAULT_LEVERS.offers, ...(overrides.offers ?? {}) },
+  };
+  if (!sizeAsGsus) return base;
+  const { tpm, ptShare } = tpmForGsus(
+    sizeAsGsus.pt,
+    sizeAsGsus.paygo,
+    base.tpmPerGsu,
+    base.ptUtilization,
+  );
+  // A shared link encodes demand on its step and shares as whole percents, so
+  // a preset has to be expressible in those terms or it will not survive its
+  // own share URL. Snap here rather than widening the URL for everyone.
+  return {
+    ...base,
+    tpm: Math.round(tpm / LEVER_RANGES.tpm.step) * LEVER_RANGES.tpm.step,
+    ptShare: Math.round(ptShare * 100) / 100,
   };
 }
 
@@ -33,9 +60,8 @@ export const PRESETS: Preset[] = [
     label: "PT-heavy baseline",
     note: "Predictable, steady new workload — most of it reserved, a thin PayGo tail for bursts.",
     levers: build({
-      ptGsus: 1600,
+      sizeAsGsus: { pt: 1600, paygo: 400 },
       ptUtilization: 0.88,
-      paygoGsus: 400,
       paygoMix: { spike: 0.25, offPeak: 0.2, deferred: 0.1, batch: 0.05 },
     }),
   },
@@ -44,9 +70,8 @@ export const PRESETS: Preset[] = [
     label: "PayGo-heavy, spiky",
     note: "Mostly variable new demand with sharp peaks. Watch what Buy One PT Get One PayGo is worth here — untick it and the spike share jumps to 1.8x.",
     levers: build({
-      ptGsus: 300,
+      sizeAsGsus: { pt: 300, paygo: 1400 },
       ptUtilization: 0.8,
-      paygoGsus: 1400,
       paygoMix: { spike: 0.35, offPeak: 0.2, deferred: 0.15, batch: 0.05 },
     }),
   },
@@ -55,9 +80,8 @@ export const PRESETS: Preset[] = [
     label: "JAPAC daytime",
     note: "US off-peak is the JAPAC business morning, so a large share of live daytime traffic reprices at 0.5x with no workload changes.",
     levers: build({
-      ptGsus: 700,
+      sizeAsGsus: { pt: 700, paygo: 1100 },
       ptUtilization: 0.85,
-      paygoGsus: 1100,
       paygoMix: { spike: 0.1, offPeak: 0.55, deferred: 0.1, batch: 0.08 },
     }),
   },
@@ -66,9 +90,8 @@ export const PRESETS: Preset[] = [
     label: "Regulated FSI",
     note: "Off-peak and Deferred are global-endpoint only, so a residency-constrained customer cannot elect them — the shares stay at 1.0x.",
     levers: build({
-      ptGsus: 900,
+      sizeAsGsus: { pt: 900, paygo: 500 },
       ptUtilization: 0.82,
-      paygoGsus: 500,
       paygoMix: { spike: 0.2, offPeak: 0.15, deferred: 0.1, batch: 0.2 },
       harness: 0,
       fspRate: 0.1,
@@ -80,9 +103,8 @@ export const PRESETS: Preset[] = [
     label: "Agent fleet",
     note: "Mostly deferred agent work. Watch the harness share in Advanced — agent premiums dilute the 0.5x, so the blended saving lands well short of half.",
     levers: build({
-      ptGsus: 500,
+      sizeAsGsus: { pt: 500, paygo: 1800 },
       ptUtilization: 0.8,
-      paygoGsus: 1800,
       paygoMix: { spike: 0.05, offPeak: 0.1, deferred: 0.6, batch: 0.1 },
       harness: 0.25,
     }),
@@ -92,9 +114,8 @@ export const PRESETS: Preset[] = [
     label: "Q3 volume (2,000+ GSUs)",
     note: "A PT order past the 2,000 GSU floor — 30% off PT spend plus 10% in credits, on a 1-year term.",
     levers: build({
-      ptGsus: 2400,
+      sizeAsGsus: { pt: 2400, paygo: 900 },
       ptUtilization: 0.87,
-      paygoGsus: 900,
       paygoMix: { spike: 0.15, offPeak: 0.25, deferred: 0.15, batch: 0.1 },
       term: "1y",
     }),
@@ -127,9 +148,10 @@ export function matchesPreset(levers: Levers, preset: Preset): boolean {
   const b = preset.levers;
   const close = (x: number, y: number) => Math.abs(x - y) < 1e-9;
   return (
-    close(a.ptGsus, b.ptGsus) &&
+    close(a.tpm, b.tpm) &&
+    close(a.ptShare, b.ptShare) &&
     close(a.ptUtilization, b.ptUtilization) &&
-    close(a.paygoGsus, b.paygoGsus) &&
+    close(a.outputShare, b.outputShare) &&
     close(a.paygoMix.spike, b.paygoMix.spike) &&
     close(a.paygoMix.offPeak, b.paygoMix.offPeak) &&
     close(a.paygoMix.deferred, b.paygoMix.deferred) &&

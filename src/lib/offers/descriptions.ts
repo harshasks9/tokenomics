@@ -13,16 +13,28 @@ export interface Info {
 }
 
 export const SCOPE_NOTE =
-  "Everything here is incremental new workload — the PT capacity and PayGo demand being added. Nothing on this page reprices or describes what the customer already runs.";
+  "Everything here is incremental new workload — the PT capacity and PayGo demand being added. Nothing on this page reprices or describes what the customer already runs. Start with the demand and the model; the GSU count is worked out from them.";
 
 export const GOAL_NOTE =
   "How much of that incremental spend the programmatic options take back.";
 
 export const LEVER_INFO = {
-  ptGsus: {
-    label: "Incremental PT",
+  tpm: {
+    label: "Demand",
     tooltip:
-      "GSUs of Provisioned Throughput being added. PT bills on capacity ordered, not on what you use — so this number, not your traffic, is what you pay for. It also sets Buy One PT Get One PayGo eligibility and the Q3 tier.",
+      "Step one: what the customer is actually asking for, in tokens per minute, for the model selected below. Everything else follows from this — GSUs are worked out from it, never typed in, because the same traffic needs a different reservation on a Flash model than on a Pro one.",
+    anchored: false,
+  },
+  ptShare: {
+    label: "Share on Provisioned Throughput",
+    tooltip:
+      "Step two: how much of that demand is served from reserved capacity. The remainder rides PayGo tiers. This is also what sets Buy One PT Get One PayGo eligibility and the Q3 tier, since both key off the committed GSU count.",
+    anchored: false,
+  },
+  outputShare: {
+    label: "Output share of tokens",
+    tooltip:
+      "How much of the traffic is output rather than input. Output bills several times higher than input, so this moves the blended PayGo rate materially — a chat workload and an extraction workload on the same TPM do not cost the same.",
     anchored: false,
   },
   ptUtilization: {
@@ -30,12 +42,6 @@ export const LEVER_INFO = {
     tooltip:
       "How full that reserved capacity actually runs. PT only reaches 1.0x economics at 100%; anything below is capacity you bought and did not use.",
     anchored: true,
-  },
-  paygoGsus: {
-    label: "Incremental PayGo",
-    tooltip:
-      "Expected PayGo demand, expressed in GSU-equivalents so it sits on the same scale as PT. The TPM figure beneath it is this number converted using the tokens-per-GSU assumption.",
-    anchored: false,
   },
   spike: {
     label: "Spike / peak-sensitive",
@@ -68,9 +74,9 @@ export const LEVER_INFO = {
     anchored: true,
   },
   tpmPerGsu: {
-    label: "Tokens per minute per GSU",
+    label: "Tokens per minute per GSU (fallback)",
     tooltip:
-      "The conversion used for every TPM figure on this page. The source decks quote traffic in TPM and capacity in GSUs but never the ratio, so this is an assumption — set it to your region's real figure before quoting a TPM number.",
+      "Used ONLY for models with no published throughput-per-GSU figure. Where Google publishes one, this slider does nothing and the published rate applies. Set it to the real figure from the burndown table before quoting a GSU count for an unpublished model.",
     anchored: false,
   },
   term: {

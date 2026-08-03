@@ -107,9 +107,9 @@ export default function TrafficProfile({ result }: { result: ModelResult }) {
   const height = compact ? 200 : 250;
 
   const { traffic, levers } = result;
-  const { tpmPerGsu } = levers;
+  const { tpmPerGsu } = result.sizing;
 
-  const ptCapacity = levers.ptGsus;
+  const ptCapacity = traffic.ptGsus;
   const trace = useMemo(
     () => shapedTrace(traffic.totalConsumed, ptCapacity, traffic.ptConsumed),
     [traffic.totalConsumed, ptCapacity, traffic.ptConsumed],

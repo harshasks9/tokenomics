@@ -7,12 +7,13 @@ import {
   type Accent,
   GSU_TERM_LABEL,
   type ModelResult,
+  SIMPLE_MIX_KEYS,
   SIMPLE_OFFER_KEYS,
   SIMPLE_RANGES,
   type SimpleInputs,
   type Step,
 } from "@/lib/offers/model";
-import { OFFER_INFO } from "@/lib/offers/descriptions";
+import { LEVER_INFO, OFFER_INFO } from "@/lib/offers/descriptions";
 import { inUnit, moneyK, moneyM, multiplier, percent, pickUnit } from "@/lib/offers/format";
 
 const ACCENT_VAR: Record<Accent, string> = {
@@ -69,11 +70,10 @@ export default function SimpleView({
         >
           Total demand of{" "}
           <span className="o-mono" style={{ color: "var(--ink)" }}>
-            {levers.ptGsus + levers.paygoGsus === 0
-              ? "0"
-              : (levers.ptGsus + levers.paygoGsus).toLocaleString("en-US")}{" "}
-            GSUs
-          </span>
+            {inUnit(simple.tpm, tpmUnit)} TPM
+          </span>{" "}
+          on{" "}
+          <span style={{ color: "var(--ink)" }}>{result.sizing.modelName}</span>
           , of which{" "}
           <span className="o-mono" style={{ color: "var(--blue)" }}>
             {percent(simple.ptShare, 0)}
@@ -88,16 +88,21 @@ export default function SimpleView({
 
         <div className="mt-6 grid gap-x-8 gap-y-4 md:grid-cols-2">
           <Slider
-            label="Total demand"
-            tooltip="Total incremental demand per month, in GSU-equivalents so PT and PayGo sit on one scale."
-            readout={`${simple.totalDemand.toLocaleString("en-US")} GSU`}
-            value={simple.totalDemand}
-            min={SIMPLE_RANGES.totalDemand.min}
-            max={SIMPLE_RANGES.totalDemand.max}
-            step={SIMPLE_RANGES.totalDemand.step}
-            onChange={(value) => onChange({ totalDemand: value })}
+            label={LEVER_INFO.tpm.label}
+            tooltip={LEVER_INFO.tpm.tooltip}
+            readout={`${inUnit(simple.tpm, tpmUnit)} TPM`}
+            value={simple.tpm}
+            min={SIMPLE_RANGES.tpm.min}
+            max={SIMPLE_RANGES.tpm.max}
+            step={SIMPLE_RANGES.tpm.step}
+            onChange={(value) => onChange({ tpm: value })}
             accent="var(--gold)"
-            caption={`${inUnit(traffic.totalTpm, tpmUnit)} TPM · ${moneyK(result.reference)}/mo at standard rates.`}
+            caption={`${moneyK(result.reference)}/mo at standard rates · ${inUnit(
+              result.sizing.tpmPerGsu,
+              pickUnit(result.sizing.tpmPerGsu),
+            )} TPM per GSU${
+              result.sizing.throughputIsPublished ? "" : " (assumption)"
+            }.`}
           />
           <Slider
             label="Share on Provisioned Throughput"
@@ -109,11 +114,54 @@ export default function SimpleView({
             step={SIMPLE_RANGES.ptShare.step}
             onChange={(value) => onChange({ ptShare: value })}
             accent="var(--blue)"
-            caption={`${levers.ptGsus.toLocaleString("en-US")} GSUs on PT · ${levers.paygoGsus.toLocaleString("en-US")} on PayGo.`}
+            caption={`${traffic.ptGsus.toLocaleString("en-US")} GSUs ordered on PT · ${inUnit(traffic.paygoTpm, tpmUnit)} TPM on PayGo.`}
           />
         </div>
 
         <div className="mt-6 border-t pt-4" style={{ borderColor: "var(--line)" }}>
+          <p className="o-eyebrow" style={{ color: "var(--ink-faint)" }}>
+            Where the PayGo goes ·{" "}
+            <span style={{ color: "var(--ink-dim)" }}>
+              {percent(result.mix.standard, 0)} standard
+            </span>
+          </p>
+          <div className="mt-3 grid gap-x-8 gap-y-3 md:grid-cols-3">
+            {SIMPLE_MIX_KEYS.map((key) => (
+              <Slider
+                key={key}
+                label={LEVER_INFO[key].label}
+                tooltip={LEVER_INFO[key].tooltip}
+                readout={percent(result.mix[key], 0)}
+                value={simple.paygoMix[key]}
+                min={SIMPLE_RANGES.mixShare.min}
+                max={SIMPLE_RANGES.mixShare.max}
+                step={SIMPLE_RANGES.mixShare.step}
+                onChange={(value) =>
+                  onChange({ paygoMix: { ...simple.paygoMix, [key]: value } })
+                }
+                accent={
+                  simple.offers[key] ? "var(--green)" : "var(--ink-faint)"
+                }
+                caption={
+                  simple.offers[key]
+                    ? "Elected — bills at 0.5x."
+                    : "Not elected — bills at 1.0x."
+                }
+              />
+            ))}
+          </div>
+          {result.overAllocated ? (
+            <p
+              className="o-mono mt-2 text-[10px]"
+              style={{ color: "var(--red)" }}
+            >
+              The tiers add up past 100% — they have been scaled back
+              proportionally.
+            </p>
+          ) : null}
+        </div>
+
+        <div className="mt-5 border-t pt-4" style={{ borderColor: "var(--line)" }}>
           <p className="o-eyebrow" style={{ color: "var(--ink-faint)" }}>
             Concessions on the table
           </p>
@@ -273,10 +321,14 @@ export default function SimpleView({
 
         <p className="o-mono o-faint mt-5 text-[10px] leading-[1.7]">
           Same scenario as Pro, same arithmetic — this view just shows fewer
-          dials. Running on {percent(levers.ptUtilization, 0)} PT utilization, a{" "}
-          {GSU_TERM_LABEL[levers.term]} GSU term and FSP at{" "}
-          {percent(levers.fspRate, 0)}; carried over from Pro, and changed
-          there. Simple models no spike traffic, so Buy One PT Get One PayGo has
+          dials. Running {result.sizing.modelName} at{" "}
+          {percent(levers.ptUtilization, 0)} PT utilization, a{" "}
+          {GSU_TERM_LABEL[levers.term]} GSU term, FSP at{" "}
+          {percent(levers.fspRate, 0)} and {percent(levers.outputShare, 0)}{" "}
+          output tokens; all carried over from Pro, and changed there. PayGo
+          bills ${result.sizing.paygoPerMtok.toFixed(2)}/Mtok blended
+          {result.sizing.paygoRateIsPublished ? "" : " (derived, no deck price)"}.
+          Simple models no spike traffic, so Buy One PT Get One PayGo has
           nothing to rescue and is left out here.
         </p>
       </section>

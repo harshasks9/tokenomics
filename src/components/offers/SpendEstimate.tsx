@@ -10,7 +10,7 @@ import { inUnit, moneyK, percent, pickUnit } from "@/lib/offers/format";
  * estimate divide between the PT order and everything else.
  */
 export default function SpendEstimate({ result }: { result: ModelResult }) {
-  const { traffic, levers } = result;
+  const { traffic } = result;
   const tpmUnit = pickUnit(traffic.totalTpm);
 
   const parts = [
@@ -20,7 +20,7 @@ export default function SpendEstimate({ result }: { result: ModelResult }) {
       value: result.ptReference,
       share: traffic.ptShareOfSpend,
       colour: "var(--blue)",
-      detail: `${levers.ptGsus.toLocaleString("en-US")} GSUs reserved · ${inUnit(traffic.ptCapacityTpm, tpmUnit)} TPM`,
+      detail: `${traffic.ptGsus.toLocaleString("en-US")} GSUs reserved · ${inUnit(traffic.ptCapacityTpm, tpmUnit)} TPM`,
       tooltip:
         "Provisioned Throughput bills on the capacity ordered, not on what gets used — so this half of the estimate is fixed the moment the order is signed.",
     },
@@ -30,7 +30,7 @@ export default function SpendEstimate({ result }: { result: ModelResult }) {
       value: result.paygoReference,
       share: traffic.paygoShareOfSpend,
       colour: "var(--green)",
-      detail: `${levers.paygoGsus.toLocaleString("en-US")} GSU-equiv · ${inUnit(traffic.paygoTpm, tpmUnit)} TPM`,
+      detail: `${Math.round(traffic.paygoGsus).toLocaleString("en-US")} GSU-equiv · ${inUnit(traffic.paygoTpm, tpmUnit)} TPM`,
       tooltip:
         "Everything not covered by the reserved capacity, billed per tier as it is consumed. Spikes sit on Priority PayGo at 1.8x until Buy One PT Get One PayGo is elected.",
     },
