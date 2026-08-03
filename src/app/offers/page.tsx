@@ -20,7 +20,12 @@ export default async function OffersPage({
     else if (Array.isArray(value) && value[0]) query.set(key, value[0]);
   }
   const { levers, presetId } = leversFromParams(query);
-  const mode = query.get("mode") === "simple" ? "simple" : "pro";
+  // Any lever key in the URL means the link is carrying a scenario of its own.
+  const LEVER_KEYS = ["d", "pts", "u", "out", "mix", "h", "fsp", "t", "gcp", "q3d", "m", "tpm", "o", "preset"];
+  const fromLink = LEVER_KEYS.some((k) => query.has(k));
+  // Guided is the default: a seller opening this cold should get a
+  // recommendation, not a control panel.
+  const mode = query.get("mode") === "pro" ? "pro" : "guided";
 
   return (
     <>
@@ -29,6 +34,7 @@ export default async function OffersPage({
         initialLevers={levers}
         initialPresetId={presetId}
         initialMode={mode}
+        initialFromLink={fromLink}
       />
     </>
   );
