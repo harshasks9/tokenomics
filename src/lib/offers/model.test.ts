@@ -9,6 +9,7 @@ import {
   Q3_TIERS,
   MINUTES_PER_MONTH,
   computeModel,
+  effectiveTpmPerGsu,
   electedSteps,
   isOverAllocated,
   leversFromSimple,
@@ -41,16 +42,19 @@ function sized(
   const { tpm, ptShare } = tpmForGsus(
     ptGsus,
     paygoGsus,
-    base.tpmPerGsu,
+    effectiveTpmPerGsu(base),
     base.ptUtilization,
   );
   return { ...base, tpm, ptShare };
 }
 
-/** The blended PayGo rate the defaults price at: $1.50 in / $7.50 out @ 25%. */
-const PAYGO_RATE = 3.0;
+/** The blended PayGo rate the defaults price at: $1.50 in / $7.50 out @ 20%. */
+const PAYGO_RATE = 2.7;
 /** $K per month of PayGo at standard rates for a given GSU-equivalent count. */
-function paygoUnitFor(paygoGsus: number, tpmPerGsu = DEFAULT_LEVERS.tpmPerGsu) {
+function paygoUnitFor(
+  paygoGsus: number,
+  tpmPerGsu = effectiveTpmPerGsu(DEFAULT_LEVERS),
+) {
   return ((paygoGsus * tpmPerGsu * MINUTES_PER_MONTH) / 1e6) * PAYGO_RATE / 1000;
 }
 
@@ -66,46 +70,77 @@ const allOffers = (on: boolean): OfferElections => ({
 describe("Vector A — defaults", () => {
   const r = computeModel(DEFAULT_LEVERS);
 
+  it("weights raw tokens by the burndown rates before sizing anything", () => {
+    // Gemini 3.6 Flash burns output at 5x and input at 1x, so at a 20% output
+    // mix one raw token costs 0.8x1 + 0.2x5 = 1.8 standard units. A GSU carries
+    // 675 standard tokens/sec = 40,500/min, i.e. 22,500 RAW tokens/min.
+    expect(r.sizing.throughputPerGsu).toBe(675);
+    expect(r.sizing.burndownWeight).toBeCloseTo(1.8, 9);
+    expect(r.sizing.tpmPerGsu).toBeCloseTo(22_500, 9);
+    expect(r.sizing.throughputIsPublished).toBe(true);
+    expect(r.sizing.burndownIsPublished).toBe(true);
+  });
+
+  it("reproduces Google's own worked example", () => {
+    // 10 QPS of 1,000 text + 500 audio in, 300 text out, on gemini-3.6-flash.
+    // Burndown-adjusted: (1,500 + 300x5) = 3,000 per query, 30,000 tokens/sec.
+    // 30,000 / 675 = 44.4 -> 45 GSUs at a minimum increment of 1.
+    const rawTokensPerSec = (1_000 + 500 + 300) * 10;
+    const r45 = computeModel(
+      levers({
+        tpm: rawTokensPerSec * 60,
+        ptShare: 1,
+        ptUtilization: 1,
+        // The example's mix is 300 output of 1,800 raw tokens.
+        outputShare: 300 / 1_800,
+      }),
+    );
+    expect(r45.sizing.burndownWeight).toBeCloseTo(1 + (300 / 1_800) * 4, 9);
+    expect(r45.traffic.ptGsus).toBe(45);
+  });
+
   it("derives the GSU order from the request, not the other way round", () => {
-    // 72M TPM, half on PT. At the 60,000 TPM/GSU fallback that is 600 GSUs of
-    // traffic; at 85% utilization the customer must ORDER ceil(600/0.85) = 706.
-    expect(r.sizing.tpmPerGsu).toBe(60_000);
-    expect(r.sizing.throughputIsPublished).toBe(false);
-    expect(r.sizing.ptDemandGsus).toBeCloseTo(600, 9);
-    expect(r.traffic.ptGsus).toBe(706);
-    expect(r.traffic.idleGsus).toBeCloseTo(106, 9);
+    // 36M TPM on PT / 22,500 = 1,600 GSUs of traffic; at 85% utilization the
+    // customer must ORDER ceil(1,600/0.85) = 1,883, rounded to the increment.
+    expect(r.sizing.ptDemandGsus).toBeCloseTo(1600, 9);
+    expect(r.sizing.minGsuIncrement).toBe(1);
+    expect(r.traffic.ptGsus).toBe(1883);
+    expect(r.traffic.idleGsus).toBeCloseTo(283, 9);
   });
 
   it("prices PayGo from the model's own rate, not at parity with the GSU", () => {
-    // Gemini 3.6 Flash: $1.50/Mtok in, $7.50 out, 25% output → $3.00 blended.
-    expect(r.sizing.paygoPerMtok).toBeCloseTo(3.0, 9);
+    // Gemini 3.6 Flash: $1.50/Mtok in, $7.50 out, 20% output → $2.70 blended.
+    expect(r.sizing.paygoPerMtok).toBeCloseTo(2.7, 9);
     expect(r.sizing.paygoRateIsPublished).toBe(true);
     expect(r.sizing.paygoMtokPerMonth).toBeCloseTo(1_555_200, 6);
-    // The old model charged PayGo at the GSU rate — 600 x $2.4K = $1,440K.
-    // Priced properly it is $4,665.60K before tier multipliers.
-    expect(paygoUnitFor(600)).toBeCloseTo(4665.6, 6);
   });
 
   it("splits the incremental spend into its PT and PayGo halves", () => {
-    expect(r.ptReference).toBeCloseTo(706 * P_LIST, 6); // 1694.40
-    // 4665.60 x (0.15x1.8 + 0.25 + 0.3 + 0.2 + 0.1) = 4665.60 x 1.12
-    expect(r.paygoReference).toBeCloseTo(5225.472, 6);
-    expect(r.reference).toBeCloseTo(6919.872, 6);
+    expect(r.ptReference).toBeCloseTo(1883 * P_LIST, 6); // 4519.20
+    // 4199.04 x (0.15x1.8 + 0.25 + 0.3 + 0.2 + 0.1) = 4199.04 x 1.12
+    expect(r.paygoReference).toBeCloseTo(4702.9248, 6);
+    expect(r.reference).toBeCloseTo(9222.1248, 6);
   });
 
   it("walks the steps to the derived figures", () => {
-    expect(r.s1).toBeCloseTo(6360.0, 6); // BOGO: spike 1.8x → 1.0x
-    expect(r.s2).toBeCloseTo(5660.16, 6); // off-peak halves
-    expect(r.s3).toBeCloseTo(5030.304, 6); // deferred @0.575x + batch @0.5x
-    expect(r.s4).toBeCloseTo(4024.2432, 6); // FSP −20%
-    expect(r.s5).toBeCloseTo(4024.2432, 6); // 1-month term, no GCP commit
-    expect(r.s6).toBeCloseTo(3705.696, 6); // Q3 500+ tier: −15% then 10% credits
-    expect(r.final).toBeCloseTo(3705.696, 6);
+    expect(r.s1).toBeCloseTo(8718.24, 6); // BOGO: spike 1.8x → 1.0x
+    expect(r.s2).toBeCloseTo(8088.384, 6); // off-peak halves
+    expect(r.s3).toBeCloseTo(7521.5136, 6); // deferred @0.575x + batch @0.5x
+    expect(r.s4).toBeCloseTo(6017.21088, 6); // FSP −20%
+    expect(r.s5).toBeCloseTo(6017.21088, 6); // 1-month term, no GCP commit
+    expect(r.s6).toBeCloseTo(5167.60128, 6); // Q3 500+ tier: −15% then 10% credits
+    expect(r.final).toBeCloseTo(5167.60128, 6);
   });
 
   it("reports the headline numbers", () => {
-    expect(r.savingPct * 100).toBeCloseTo(46.45, 1);
-    expect(r.annualSave).toBeCloseTo((6919.872 - 3705.696) * 12, 6);
+    expect(r.savingPct * 100).toBeCloseTo(43.97, 1);
+    expect(r.annualSave).toBeCloseTo((9222.1248 - 5167.60128) * 12, 6);
+  });
+
+  it("measures the blended multiplier against real Standard PayGo", () => {
+    // Not against P_LIST x GSUs, which would price PayGo at the GSU rate again.
+    expect(r.allStandardPayGo).toBeCloseTo(8398.08, 6);
+    expect(r.blendedMultiplier).toBeCloseTo(5167.60128 / 8398.08, 9);
   });
 
   it("standard PayGo takes the remainder of the mix", () => {
@@ -286,20 +321,39 @@ describe("Traffic split and TPM", () => {
   });
 
   it("the request round-trips through the GSU conversion", () => {
-    const r = computeModel(sized(500, 250, { tpmPerGsu: 60_000 }));
+    const l = sized(500, 250);
+    const perGsu = effectiveTpmPerGsu(l);
+    const r = computeModel(l);
     expect(r.traffic.ptGsus).toBe(500);
-    expect(r.traffic.ptCapacityTpm).toBeCloseTo(500 * 60_000, 6);
-    expect(r.traffic.paygoTpm).toBeCloseTo(250 * 60_000, 6);
-    expect(r.traffic.totalTpm).toBeCloseTo(750 * 60_000, 6);
+    expect(r.traffic.ptCapacityTpm).toBeCloseTo(500 * perGsu, 6);
+    expect(r.traffic.paygoTpm).toBeCloseTo(250 * perGsu, 6);
+    expect(r.traffic.totalTpm).toBeCloseTo(750 * perGsu, 6);
   });
 
-  it("a slower model needs more GSUs for the very same request", () => {
+  it("a chattier workload needs more GSUs for the same raw token count", () => {
+    // Burndown, not volume: output burns at 5x, so shifting the mix towards
+    // output raises the reservation without a single extra raw token.
     const request = { tpm: 60_000_000, ptShare: 1, ptUtilization: 1 };
-    const fast = computeModel(levers({ ...request, tpmPerGsu: 120_000 }));
-    const slow = computeModel(levers({ ...request, tpmPerGsu: 40_000 }));
-    expect(fast.traffic.ptGsus).toBe(500);
-    expect(slow.traffic.ptGsus).toBe(1500);
-    expect(slow.ptReference).toBeCloseTo(fast.ptReference * 3, 6);
+    const lean = computeModel(levers({ ...request, outputShare: 0 }));
+    const chatty = computeModel(levers({ ...request, outputShare: 0.5 }));
+    expect(lean.sizing.burndownWeight).toBeCloseTo(1, 9);
+    expect(chatty.sizing.burndownWeight).toBeCloseTo(3, 9);
+    // Compared before the purchase-increment rounding, which is a ceiling and
+    // so not multiplicative — 3x the demand is not always 3x the rounded order.
+    expect(chatty.sizing.ptDemandGsus).toBeCloseTo(
+      lean.sizing.ptDemandGsus * 3,
+      6,
+    );
+    expect(chatty.traffic.ptGsus).toBeGreaterThan(lean.traffic.ptGsus * 2.99);
+    expect(chatty.traffic.totalTpm).toBe(lean.traffic.totalTpm);
+  });
+
+  it("a model with no published throughput falls back, and says so", () => {
+    const r = computeModel(
+      levers({ modelId: "gemini-3-5-flash-lite", tpmPerGsu: 40_000 }),
+    );
+    expect(r.sizing.throughputIsPublished).toBe(false);
+    expect(r.sizing.tpmPerGsu).toBe(40_000);
   });
 
   it("a zero-volume scenario stays finite", () => {

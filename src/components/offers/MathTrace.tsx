@@ -1,6 +1,6 @@
 "use client";
 
-import type { Accent, ModelResult } from "@/lib/offers/model";
+import type { Accent, ModelResult, Step } from "@/lib/offers/model";
 import { moneyK, percent } from "@/lib/offers/format";
 
 const ACCENT_VAR: Record<Accent, string> = {
@@ -15,12 +15,25 @@ const ACCENT_VAR: Record<Accent, string> = {
  * The arithmetic behind every bar, with the live values substituted. Not
  * algebra — the working, so anyone challenged on a number can show where it
  * came from without leaving the page.
+ *
+ * Unlike the chart, this lists unelected constructs too: the point of an audit
+ * trail is to show what was left on the table, not only what was taken. Simple
+ * mode passes a narrowed list, since it has no BOGO to account for.
  */
-export default function MathTrace({ result }: { result: ModelResult }) {
+export default function MathTrace({
+  result,
+  steps: stepsProp,
+}: {
+  result: ModelResult;
+  /** Override the rows — simple mode omits constructs it does not model. */
+  steps?: Step[];
+}) {
+  const steps = stepsProp ?? result.steps;
+
   return (
     <div>
       <ol className="space-y-4">
-        {result.steps.map((step, index) => (
+        {steps.map((step, index) => (
           <li
             key={step.id}
             className="border-t pt-3.5 first:border-t-0 first:pt-0"
@@ -137,9 +150,9 @@ export default function MathTrace({ result }: { result: ModelResult }) {
           </p>
         </div>
         <p className="o-mono o-faint mt-2 text-[10px] leading-[1.6]">
-          Every figure is $K per month. Rates are anchored to the commercial
-          decks; GSU pricing, the Q3 tiers and tokens-per-GSU are stated
-          assumptions — see the caveats below.
+          Every figure is $K per month. PayGo rates and GSU throughput are
+          anchored where published; the GSU price, the Q3 tiers and any
+          unpublished throughput are stated assumptions — see the caveats.
         </p>
       </div>
     </div>

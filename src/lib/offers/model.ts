@@ -1,4 +1,10 @@
-import { blendedPerMtok, findModel, tpmPerGsuFor } from "./models";
+import {
+  ASSUMED_BURNDOWN,
+  blendedPerMtok,
+  burndownWeight,
+  findModel,
+  tpmPerGsuFor,
+} from "./models";
 
 /**
  * Offers — GenAI commercial pricing model.
@@ -15,10 +21,19 @@ import { blendedPerMtok, findModel, tpmPerGsuFor } from "./models";
  *   2. How much of that goes on Provisioned Throughput vs PayGo?
  *   3. Which PayGo tiers does the rest land in?
  *
- * GSUs are DERIVED, never entered: a TPM requirement converts to a GSU count
- * through the model's published throughput-per-GSU, so the same traffic needs a
- * different reservation on a Flash model than on a Pro one. PayGo is priced
- * from the model's own $/Mtok, not at parity with the GSU rate.
+ * GSUs are DERIVED, never entered. The conversion is Google's:
+ *
+ *   throughput_per_second = (burndown-adjusted inputs + outputs) x queries/sec
+ *   GSUs                  = throughput_per_second / throughput_per_GSU
+ *
+ * Burndown matters as much as the model does. An output token costs 5 standard
+ * units against 1 for an input token on Gemini 3.6 Flash, so a chatty workload
+ * needs far more capacity than its raw token count suggests — raw TPM alone
+ * cannot size a reservation. GSUs are then rounded up to the model's minimum
+ * purchase increment, because that is what actually gets bought.
+ *
+ * Burndown is a CAPACITY concept, not a billing one: PayGo still bills raw
+ * tokens at the model's own $/Mtok, never at parity with the GSU rate.
  *
  * Pure functions, no React, no side effects, no `any`.
  * Units: money is $K per month unless a name says otherwise.
@@ -199,7 +214,7 @@ export const DEFAULT_LEVERS: Levers = {
   ptUtilization: 0.85,
   paygoMix: { spike: 0.15, offPeak: 0.3, deferred: 0.2, batch: 0.1 },
   modelId: "gemini-3-6-flash",
-  outputShare: 0.25,
+  outputShare: 0.2,
   harness: 0.15,
   tpmPerGsu: DEFAULT_TPM_PER_GSU,
   term: "1m",
@@ -226,6 +241,22 @@ export const LEVER_RANGES = {
   gcpCommit: { min: 0, max: 0.3, step: 0.01 },
   tpmPerGsu: { min: 10_000, max: 400_000, step: 5_000 },
 } as const;
+
+/**
+ * Raw tokens per minute one GSU carries for this scenario — the model's
+ * published throughput divided by the burndown weight of its output mix, or
+ * the stated assumption where no figure has been loaded. Exported so presets
+ * and tests size against exactly the same rule the model uses.
+ */
+export function effectiveTpmPerGsu(levers: Levers): number {
+  const model = findModel(levers.modelId);
+  const weight = burndownWeight(
+    model.burndown ?? ASSUMED_BURNDOWN,
+    levers.outputShare,
+  );
+  const published = tpmPerGsuFor(model);
+  return published !== null && weight > 0 ? published / weight : levers.tpmPerGsu;
+}
 
 /**
  * TPM that sizes to a given PT and PayGo GSU count on a model's throughput.
@@ -513,6 +544,13 @@ export interface ModelResult {
     tpmPerGsu: number;
     /** True when that came from Google's table, false when assumed. */
     throughputIsPublished: boolean;
+    /** Burndown-adjusted tokens/second one GSU delivers, as published. */
+    throughputPerGsu: number | null;
+    /** Standard units one raw token costs at this output mix. */
+    burndownWeight: number;
+    /** True when the model's own burndown table is loaded. */
+    burndownIsPublished: boolean;
+    minGsuIncrement: number;
     /** GSUs the PT traffic strictly needs, before the utilization headroom. */
     ptDemandGsus: number;
     /** Blended PayGo rate actually applied, $ per million tokens. */
@@ -578,11 +616,19 @@ export function computeModel(levers: Levers): ModelResult {
   const ptShare = Math.min(1, Math.max(0, levers.ptShare));
   const outputShare = Math.min(1, Math.max(0, levers.outputShare));
 
-  // GSUs are DERIVED. The same TPM needs a different reservation per model,
-  // because a GSU delivers model-specific throughput. Where Google publishes
-  // no figure we fall back to the stated assumption and say so.
+  // GSUs are DERIVED. Throughput is quoted in burndown-adjusted tokens, so raw
+  // TPM has to be weighted by the output mix before it can size anything.
+  const burndown = model.burndown ?? ASSUMED_BURNDOWN;
+  const burndownIsPublished = model.burndown !== null;
+  const weight = burndownWeight(burndown, outputShare);
+
   const publishedTpmPerGsu = tpmPerGsuFor(model);
-  const tpmPerGsu = publishedTpmPerGsu ?? levers.tpmPerGsu;
+  // Raw tokens per minute one GSU carries at this output mix — the figure the
+  // UI can honestly put next to a TPM number.
+  const tpmPerGsu =
+    publishedTpmPerGsu !== null && weight > 0
+      ? publishedTpmPerGsu / weight
+      : levers.tpmPerGsu;
   const throughputIsPublished = publishedTpmPerGsu !== null;
 
   // ── Step two — how the request splits ──────────────────────────────────
@@ -592,8 +638,12 @@ export function computeModel(levers: Levers): ModelResult {
   // PT is sized to carry its share. Utilization below 100% means ordering
   // more than the traffic strictly needs, and paying for the slack.
   const ptDemandGsus = tpmPerGsu > 0 ? ptTpm / tpmPerGsu : 0;
+  // Capacity is bought in whole increments, so the order rounds UP to one.
+  const increment = Math.max(1, model.minGsuIncrement);
   const ptGsus =
-    ptUtilization > 0 ? Math.ceil(ptDemandGsus / ptUtilization) : 0;
+    ptUtilization > 0
+      ? Math.ceil(ptDemandGsus / ptUtilization / increment) * increment
+      : 0;
   const ptConsumed = ptDemandGsus;
 
   // PayGo priced from the MODEL's own rate, not at parity with the GSU price.
@@ -959,6 +1009,10 @@ export function computeModel(levers: Levers): ModelResult {
       modelName: model.name,
       tpmPerGsu,
       throughputIsPublished,
+      throughputPerGsu: model.tokensPerSecPerGsu,
+      burndownWeight: weight,
+      burndownIsPublished,
+      minGsuIncrement: increment,
       ptDemandGsus,
       paygoPerMtok,
       paygoRateIsPublished,

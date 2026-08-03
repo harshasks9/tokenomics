@@ -1,5 +1,7 @@
 "use client";
 
+import ChartTabs, { type ChartTab } from "./ChartTabs";
+import MathTrace from "./MathTrace";
 import Slider from "./Slider";
 import Waterfall from "./Waterfall";
 import Tooltip from "./Tooltip";
@@ -33,17 +35,25 @@ export default function SimpleView({
   simple,
   result,
   steps,
+  chartTab,
+  onChartTabChange,
   onChange,
 }: {
   simple: SimpleInputs;
   result: ModelResult;
   /** The columns to chart — the elected steps, shared with Pro. */
   steps: Step[];
+  chartTab: ChartTab;
+  onChartTabChange: (next: ChartTab) => void;
   onChange: (patch: Partial<SimpleInputs>) => void;
 }) {
   const { levers, traffic } = result;
   const tpmUnit = pickUnit(traffic.totalTpm);
   const paygoShare = 1 - simple.ptShare;
+
+  // The audit trail keeps unelected constructs — that is the point of it —
+  // but never BOGO, which simple mode does not model at all.
+  const mathSteps = result.steps.filter((step) => step.id !== "bogo");
 
   const movers = steps.filter(
     (step) => step.index > 0 && Math.abs(step.delta) > 0.005,
@@ -227,13 +237,39 @@ export default function SimpleView({
           </p>
         </div>
 
-        <div className="mt-3">
-          <Waterfall result={result} steps={steps} />
-        </div>
+        <ChartTabs
+          value={chartTab}
+          onChange={onChartTabChange}
+          idPrefix="simple-waterfall"
+        />
+
+        {chartTab === "chart" ? (
+          <div
+            className="mt-3"
+            id="simple-waterfall-panel-chart"
+            role="tabpanel"
+            aria-labelledby="simple-waterfall-tab-chart"
+          >
+            <Waterfall result={result} steps={steps} />
+          </div>
+        ) : (
+          <div
+            className="o-fade-in mt-4"
+            id="simple-waterfall-panel-math"
+            role="tabpanel"
+            aria-labelledby="simple-waterfall-tab-math"
+          >
+            <MathTrace result={result} steps={mathSteps} />
+          </div>
+        )}
 
         <ol
           className="mt-4 grid gap-x-6 gap-y-2 border-t pt-4 sm:grid-cols-2"
-          style={{ borderColor: "var(--line)" }}
+          style={{
+            borderColor: "var(--line)",
+            // The math tab already itemises every step; this would just repeat it.
+            display: chartTab === "chart" ? undefined : "none",
+          }}
         >
           {movers.map((step) => (
             <li

@@ -1,6 +1,7 @@
 import {
   DEFAULT_LEVERS,
   LEVER_RANGES,
+  effectiveTpmPerGsu,
   type Levers,
   type OfferElections,
   tpmForGsus,
@@ -35,7 +36,7 @@ function build({ sizeAsGsus, ...overrides }: PresetOverrides): Levers {
   const { tpm, ptShare } = tpmForGsus(
     sizeAsGsus.pt,
     sizeAsGsus.paygo,
-    base.tpmPerGsu,
+    effectiveTpmPerGsu(base),
     base.ptUtilization,
   );
   // A shared link encodes demand on its step and shares as whole percents, so

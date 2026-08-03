@@ -223,29 +223,64 @@ Percentages travel as whole numbers; elected offers as a dot-separated list in
 `o`. `o=` (empty) means *nothing* elected — not the same as omitting `o`, which
 keeps the base. Malformed values fall back to defaults instead of throwing.
 
-## Known gap — the burndown table
+## GSU sizing — the published maths
 
-The feedback links Google's "Calculate Provisioned Throughput requirements"
-page as the source for the GSU maths. That host is unreachable from the build
-environment, so only one figure could be verified from secondary sources:
-**gemini-2.5-flash delivers 2,690 tokens/second per GSU** (161,400 TPM/GSU).
+From Google Cloud, *Calculate Provisioned Throughput requirements* (last
+updated 2026-07-30):
 
-That single anchor is enough to show the remaining numbers do not sit on one
-base. Priced against a flat $2,400/GSU/month and the deck's $/Mtok rates, PT
-comes out 6–13x cheaper per token than PayGo depending on the output share:
+```
+inputs_per_query      = inputs_across_modalities_converted_using_burndown_rates
+outputs_per_query     = outputs_across_modalities_converted_using_burndown_rates
+throughput_per_second = (inputs_per_query + outputs_per_query) * queries_per_second
+GSUs                  = throughput_per_second / throughput_per_GSU
+```
 
-| Output share | PayGo blended | PT effective | PT advantage |
-| --- | --- | --- | --- |
-| 10% | $2.10/Mtok | $0.344/Mtok | 6.1x |
-| 25% | $3.00/Mtok | $0.344/Mtok | 8.7x |
-| 50% | $4.50/Mtok | $0.344/Mtok | 13.1x |
+**Gemini 3.6 Flash** — the only model whose full table has been loaded:
 
-A reservation should beat on-demand, but not by an order of magnitude. The
-likeliest explanation is that GSU price and throughput-per-GSU are both
-model-specific and must be quoted as a matched pair — a Pro GSU almost
-certainly costs more or delivers less than a Flash one. Until the real table is
-loaded into `MODEL_PRICES`, treat every GSU count and every PT/PayGo ratio on
-this page as structural rather than quotable.
+| Throughput per GSU | Units | Min GSU increment |
+| --- | --- | --- |
+| 675 | Tokens | 1 |
+
+| Burndown rate | Value |
+| --- | --- |
+| 1 input text / image / video / audio token | 1 token |
+| 1 input caching token (any modality) | 0.1 tokens |
+| 1 output text response token | **5 tokens** |
+
+Burndown is the part that is easy to miss: **an output token costs five times
+an input token**, so raw TPM alone cannot size a reservation. At a 20% output
+mix one raw token costs `0.8x1 + 0.2x5 = 1.8` standard units, so a GSU that
+carries 40,500 standard tokens/minute carries only **22,500 raw tokens/minute**.
+The simulator's `effectiveTpmPerGsu()` is exactly this conversion.
+
+The doc's worked example is reproduced as a test: 10 QPS of 1,000 text + 500
+audio in and 300 text out is `(1,500 + 1,500) x 10 = 30,000` tokens/second,
+`30,000 / 675 = 44.4` → **45 GSUs** at a minimum increment of 1.
+
+### This resolved the PT-vs-PayGo discrepancy
+
+An earlier revision of this page flagged that PT looked 6–13x cheaper per token
+than PayGo, and guessed that GSU price must therefore be model-specific. **That
+guess was wrong.** The error was entirely the old 60,000 TPM/GSU assumption.
+With the published figure the numbers are sane, and a flat $2,400/GSU/month
+holds up:
+
+| Output share | Burndown weight | Raw TPM/GSU | PT $/Mtok | PayGo $/Mtok | PT advantage |
+| --- | --- | --- | --- | --- | --- |
+| 10% | 1.4 | 28,929 | $1.92 | $2.10 | 1.09x |
+| 20% | 1.8 | 22,500 | $2.47 | $2.70 | 1.09x |
+| 25% | 2.0 | 20,250 | $2.74 | $3.00 | 1.09x |
+
+A reservation beating on-demand by ~9% on list is credible. The real savings
+come from the term discount, FSP, the Q3 tiers and 0.5x placement — not from
+the GSU rate itself.
+
+### Still unloaded
+
+Only Gemini 3.6 Flash has a full table here. `gemini-2.5-flash` has a published
+throughput (2,690 tokens/second per GSU) but its burndown rates have not been
+loaded, so `ASSUMED_BURNDOWN` applies. Gemini 3.5 Flash Lite and 2.5 Pro have
+neither and fall back to the `tpmPerGsu` lever. The UI labels every fallback.
 
 ## Assumptions
 
@@ -466,6 +501,26 @@ palette, both noted at their definitions:
 Either is a one-line revert if the exact swatches matter more.
 
 ## Changelog
+
+### 0.8.0 — 2026-08-03 — burndown rates, folded-in math tab
+
+Second pass on the Offer Portal feedback, once the source doc arrived.
+
+- **GSU sizing now uses Google's actual maths**, including burndown rates.
+  Gemini 3.6 Flash delivers 675 burndown-adjusted tokens/second per GSU, and an
+  output token burns at **5x** an input token — so raw TPM alone cannot size a
+  reservation. At the house 20% output mix a GSU carries 22,500 raw TPM, not
+  the 60,000 previously assumed. The doc's worked example (45 GSUs) is
+  reproduced as a test.
+- GSU orders round up to the model's **minimum purchase increment**.
+- **Output share defaults to 20%**, per the house assumption.
+- **The 6–13x PT-vs-PayGo discrepancy is resolved and was my error**, not a
+  missing model-specific GSU price. With the published throughput, PT comes out
+  ~9% cheaper per token than PayGo at every output mix. The earlier "GSU price
+  must be model-specific" hypothesis is withdrawn.
+- The **"show me the math" tab is folded in from the Simple-mode branch**, so
+  both modes share one `ChartTabs` component and the tab survives a mode toggle.
+
 
 ### 0.7.0 — 2026-08-03 — Offer Portal feedback
 
