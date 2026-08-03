@@ -66,7 +66,7 @@ const RIVAL_LABELS: Record<string, Placement> = {
   "Kimi K3": { dx: 0, dy: -14, anchor: "middle" },
   "Grok 4.5": { dx: -11, dy: -13, anchor: "end" },
   "Claude Sonnet 5": { dx: -11, dy: -6, anchor: "end" },
-  "DeepSeek V4 Flash": { dx: 36, dy: 37, anchor: "start" },
+  "DeepSeek V4 Flash": { dx: -10, dy: -11, anchor: "end" },
 };
 
 /** Flash release name + price placement, keyed by release date. */
@@ -187,7 +187,7 @@ export default function FlashChart() {
             {/* ── Rival value-tier bracket ───────────────────────────── */}
             <g aria-hidden="true">
               <path
-                d={`M ${PLOT.innerRight + 20} ${PLOT.y(57)} H ${PLOT.innerRight + 14} V ${PLOT.y(51)} H ${PLOT.innerRight + 20}`}
+                d={`M ${PLOT.innerRight + 20} ${PLOT.y(57)} H ${PLOT.innerRight + 14} V ${PLOT.y(50)} H ${PLOT.innerRight + 20}`}
                 fill="none"
                 stroke="var(--muted)"
                 strokeWidth={1}
@@ -197,10 +197,10 @@ export default function FlashChart() {
                 Rival value tier
               </text>
               <text x={PLOT.innerRight + 28} y={PLOT.y(57) + 8} fill="var(--muted)">
-                51–57 on the v4.1 index —
+                50–57 on the v4.1 index —
               </text>
               <text x={PLOT.innerRight + 28} y={PLOT.y(57) + 23} fill="var(--muted)">
-                all of it above Flash&rsquo;s 50.
+                at or above Flash&rsquo;s 50.
               </text>
             </g>
 

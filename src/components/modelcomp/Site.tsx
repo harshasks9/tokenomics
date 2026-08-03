@@ -105,11 +105,15 @@ function Methodology() {
           rather than any negotiated rate.
         </p>
         <p>
-          Source conflicts are disclosed rather than silently resolved. Grok 4.5 is reported as both
-          Jul 8 and Jul 9; the Gemini 3.1 Flash-Lite date is reported as both Mar 3 and May 19; the
-          Claude Opus 5 rollout spans Jul 23–24. In each case the earlier date is plotted and the
-          conflict is noted on the point. Gemini 3.5 Pro remains unreleased as of {COMPILED_ON}, and
-          Google announced Gemini 4 pretraining on Jul 21, 2026.
+          Source conflicts are disclosed rather than silently resolved. A verification pass on{" "}
+          {COMPILED_ON} settled three of them: Grok 4.5 shipped Jul 8, released by SpaceXAI after the
+          February merger; Gemini 3.1 Flash-Lite shipped Mar 3; and Claude Opus 5 was announced Jul
+          24 following a Jul 23 provider rollout, so the announcement date is the one plotted. Two
+          remain open and are marked as estimates on the chart rather than resolved: Grok 4.5&rsquo;s
+          v4.1 score is carried by aggregators only, and GPT-5.5 has never been pinned to a published
+          v4.1 figure. Gemini 3.5 Pro is still unreleased as of {COMPILED_ON} — it missed a June
+          target and remains in partner testing — and Google announced Gemini 4 pretraining on Jul
+          21, 2026.
         </p>
         <p>
           Sources: Artificial Analysis model pages and launch analyses; Anthropic announcements;

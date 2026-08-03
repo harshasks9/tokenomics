@@ -143,10 +143,10 @@ export const POINTS: ReleasePoint[] = [
     lab: "Google",
     s: 46,
     est: false,
-    price: "$2 / $12",
+    price: "$2 / $12 ≤200K",
     frontier: true,
     flagship: true,
-    note: "57 on the live index — 4 pts clear of Opus 4.6 at under half the cost. Still Google's last flagship.",
+    note: "57 on the live index — 4 pts clear of Opus 4.6 at under half the cost. Steps to $4 / $18 above 200K context. Still Google's last flagship.",
   },
   {
     d: "2026-03-05",
@@ -172,6 +172,7 @@ export const POINTS: ReleasePoint[] = [
     lab: "OpenAI",
     s: 53,
     est: true,
+    price: "$5 / $30",
     frontier: true,
     note: "Clear #1 at 60 on the live index — the decisive overtake",
   },
@@ -181,7 +182,7 @@ export const POINTS: ReleasePoint[] = [
     lab: "DeepSeek",
     s: 48,
     est: true,
-    price: "open · MIT",
+    price: "$0.435 / $0.87 · open",
   },
   {
     d: "2026-05-28",
@@ -215,9 +216,9 @@ export const POINTS: ReleasePoint[] = [
     m: "Grok 4.5",
     lab: "xAI",
     s: 54,
-    est: false,
+    est: true,
     price: "$2 / $6",
-    note: "Sources report Jul 8–9 public release",
+    note: "Released by SpaceXAI post-merger; xAI claims ~2x token efficiency vs Opus 4.8",
   },
   {
     d: "2026-07-09",
@@ -225,17 +226,17 @@ export const POINTS: ReleasePoint[] = [
     lab: "OpenAI",
     s: 59,
     est: false,
-    price: "~$5 / $30",
+    price: "$5 / $30",
     frontier: true,
-    note: "Previewed Jun 26–27, GA Jul 9",
+    note: "Previewed Jun 26–27, GA Jul 9; GA on Bedrock Jul 13",
   },
   {
-    d: "2026-07-15",
+    d: "2026-07-16",
     m: "Kimi K3",
     lab: "Moonshot",
     s: 57,
     est: false,
-    price: "open weights (Jul 27)",
+    price: "$3 / $15 · weights Jul 26",
   },
   {
     d: "2026-07-24",
@@ -346,26 +347,27 @@ export type RivalPoint = {
 
 export const RIVAL_VALUE_TIER: RivalPoint[] = [
   {
-    d: "2026-06-15",
+    d: "2026-06-13",
     m: "GLM-5.2",
     lab: "Z.ai",
     s: 51,
     est: true,
     price: "open · MIT",
-    note: "June release; date approximate",
+    note: "Released Jun 13; MIT weights Jun 16",
   },
   { d: "2026-06-30", m: "Claude Sonnet 5", lab: "Anthropic", s: 53, price: "$3 / $15" },
-  { d: "2026-07-08", m: "Grok 4.5", lab: "xAI", s: 54, price: "$2 / $6" },
-  { d: "2026-07-09", m: "GPT-5.6 Terra", lab: "OpenAI", s: 55 },
-  { d: "2026-07-09", m: "GPT-5.6 Luna", lab: "OpenAI", s: 51, price: "~$1 / $6" },
-  { d: "2026-07-15", m: "Kimi K3", lab: "Moonshot", s: 57, price: "open weights" },
-  { d: "2026-07-16", m: "Muse Spark 1.1", lab: "Meta", s: 51 },
+  { d: "2026-07-08", m: "Grok 4.5", lab: "xAI", s: 54, est: true, price: "$2 / $6" },
+  { d: "2026-07-09", m: "GPT-5.6 Terra", lab: "OpenAI", s: 55, price: "$2.50 / $15 → $2 / $12 (Jul 30)" },
+  { d: "2026-07-09", m: "GPT-5.6 Luna", lab: "OpenAI", s: 51, price: "$1 / $6 → $0.20 / $1.20 (Jul 30)" },
+  { d: "2026-07-16", m: "Kimi K3", lab: "Moonshot", s: 57, price: "$3 / $15 · open weights" },
+  { d: "2026-07-09", m: "Muse Spark 1.1", lab: "Meta", s: 51, price: "$1.25 / $4.25" },
   {
-    d: "2026-07-31",
+    d: "2026-04-24",
     m: "DeepSeek V4 Flash",
     lab: "DeepSeek",
     s: 50,
     price: "$0.14 / $0.28",
+    note: "Shipped alongside V4 Pro; $0.09 / $0.18 is reseller pricing, not DeepSeek's",
   },
 ];
 
@@ -389,7 +391,7 @@ export const X_DOMAIN: [string, string] = ["2025-08-01", "2026-08-06"];
 export const Y_DOMAIN_MAIN: [number, number] = [26, 65];
 export const Y_DOMAIN_FLASH: [number, number] = [22, 60];
 
-export const COMPILED_ON = "Aug 2, 2026";
+export const COMPILED_ON = "Aug 3, 2026";
 
 export type Inflection = {
   n: number;
@@ -442,7 +444,7 @@ export const INFLECTIONS: Inflection[] = [
     on: "gemini",
     title: "I/O promise slips",
     when: "May 19",
-    body: "3.5 Flash ships; Pichai promises 3.5 Pro “next month.” It misses June, misses the Jul 17 target, and slips a third time over coding shortfalls (Bloomberg).",
+    body: "3.5 Flash ships; Pichai promises 3.5 Pro “next month.” It misses June and slips repeatedly over reliability and coding shortfalls; partner testing only as of Aug 3.",
     dx: -4,
     dy: 44,
   },
@@ -467,7 +469,7 @@ export const KPIS = [
     tone: "trail" as const,
   },
   {
-    figure: "164",
+    figure: "165",
     unit: "days",
     label: "Since Google's last flagship",
     detail: "Gemini 3.1 Pro, Feb 19",
@@ -477,7 +479,7 @@ export const KPIS = [
     figure: "3×",
     unit: "",
     label: "Gemini 3.5 Pro delays",
-    detail: "June → Jul 17 → unshipped",
+    detail: "June target → slipped → unshipped",
     tone: "neutral" as const,
   },
   {
@@ -493,7 +495,7 @@ export const FLASH_CHIPS = [
   { figure: "5 vs 1", text: "Flash releases vs flagship releases in 12 months" },
   { figure: "50 > 46", text: "Flash now outscores Google's stalled flagship" },
   { figure: "3×", text: "Flash price step-up: $0.50/$3 → $1.50/$9" },
-  { figure: "51–57", text: "Where the rival value tier sits, above Flash's 50" },
+  { figure: "50–57", text: "Where the rival value tier sits, at or above Flash's 50" },
 ];
 
 /* ── Ledger ──────────────────────────────────────────────────────────────── */
