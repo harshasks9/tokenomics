@@ -116,6 +116,15 @@ const modelComparisons = [
     enabled: true,
   },
   {
+    id: "fsi",
+    name: "FSI Hub",
+    href: "/fsi",
+    icon: Landmark,
+    gradient: "linear-gradient(135deg, #175E40 0%, #46608C 100%)",
+    roiTeaser: "FSI evidence register · internal",
+    enabled: true,
+  },
+  {
     id: "modelcomp",
     name: "MODELCOMP",
     href: "/modelcomp",
