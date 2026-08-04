@@ -16,6 +16,7 @@ import MindMap from "./MindMap";
 import Demand from "./Demand";
 import Choose from "./Choose";
 import Scoreboard from "./Scoreboard";
+import Metrics from "./Metrics";
 import Dollar from "./Dollar";
 import { Playbook, Risks } from "./Playbook";
 
@@ -90,10 +91,15 @@ export default function Site() {
       behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       block: "start",
     });
+    // Sharable position: the URL names the zone without triggering a jump.
+    history.replaceState(null, "", `#ea-${z.id}`);
   }, []);
 
   return (
     <div className="ea-root" ref={root} data-facts-only={factsOnly}>
+      <a className="ea-skip" href="#ea-hero">
+        Skip to content
+      </a>
       {/* Top bar */}
       <div className="ea-top">
         <div className="ea-shell ea-top-inner">
@@ -114,23 +120,29 @@ export default function Site() {
             <span style={{ fontSize: 11, color: "rgba(255,255,255,.7)", whiteSpace: "nowrap" }}>
               {REPORT_WINDOW}
             </span>
+            <span className="ea-updated" title="Last data refresh">
+              Data updated {COMPILED_ON}
+            </span>
           </div>
         </div>
 
         <div className="ea-shell">
-          <div className="ea-strip" role="tablist" aria-label="Zones">
+          <nav className="ea-strip" aria-label="Zones">
             {ZONES.map((z) => (
-              <button
+              <a
                 key={z.id}
-                type="button"
                 className="ea-strip-item"
+                href={`#ea-${z.id}`}
                 aria-current={zone === z.n}
-                onClick={() => jump(z.n)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  jump(z.n);
+                }}
               >
                 {String(z.n).padStart(2, "0")} {z.label}
-              </button>
+              </a>
             ))}
-          </div>
+          </nav>
         </div>
 
         <div className="ea-progress" style={{ width: `${progress * 100}%` }} aria-hidden="true" />
@@ -185,6 +197,16 @@ export default function Site() {
               ))}
             </div>
 
+            <Reveal style={{ marginTop: 18 }}>
+              <p className="ea-note" style={{ maxWidth: "72ch" }}>
+                {(["fact", "inference", "hypothesis"] as Confidence[]).map((c) => (
+                  <span key={c} style={{ marginRight: 18, display: "inline-block" }}>
+                    <Pill c={c} /> {CONFIDENCE_BLURB[c]}
+                  </span>
+                ))}
+              </p>
+            </Reveal>
+
             <Reveal style={{ marginTop: 34 }}>
               <div className="ea-tldr">
                 {TLDR.map((t) => (
@@ -222,6 +244,7 @@ export default function Site() {
           {/* 5 · Scoreboard */}
           <section className="ea-zone" id="ea-scoreboard">
             <Scoreboard />
+            <Metrics />
           </section>
 
           {/* 6 · Dollar */}
@@ -256,7 +279,7 @@ export default function Site() {
         className="ea-float"
         aria-pressed={factsOnly}
         onClick={() => setFactsOnly((v) => !v)}
-        title="Dim everything that is not a disclosed fact"
+        title="Dim inference and hypothesis figures — disclosed facts stay at full strength"
       >
         <span className="ea-switch" aria-hidden="true" />
         Facts only

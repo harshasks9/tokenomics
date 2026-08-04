@@ -147,14 +147,15 @@ export default function Demand() {
                   })
                 }
                 onPointerLeave={() => setTip(null)}
-                onFocus={() =>
+                onFocus={(e) => {
+                  const r = e.currentTarget.getBoundingClientRect();
                   setTip({
                     label: `${p.label} · $${p.value}B`,
                     body: p.note ?? "Disclosed in Anthropic fundraise materials.",
-                    x: 0,
-                    y: 0,
-                  })
-                }
+                    x: r.left + r.width / 2,
+                    y: r.bottom,
+                  });
+                }}
                 onBlur={() => setTip(null)}
               >
                 <circle cx={x(i)} cy={y(p.value)} r={5} fill="var(--models)" stroke="#fff" strokeWidth={1.5} />
@@ -233,15 +234,7 @@ export default function Demand() {
           Coding and agents own the token volume
         </h3>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0,1fr) 300px",
-            gap: 16,
-            alignItems: "start",
-          }}
-          className="ea-tm-grid"
-        >
+        <div className="ea-tm-grid">
           <div className="ea-scroll">
             <svg viewBox="0 0 620 300" role="img" aria-labelledby="ea-tm-t ea-tm-d">
               <title id="ea-tm-t">Workload mix by share of token volume</title>

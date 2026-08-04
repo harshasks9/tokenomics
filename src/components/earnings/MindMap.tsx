@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   MAP_CENTER,
   MAP_EDGES,
@@ -50,12 +50,41 @@ function wrap(node: MapNode): string[] {
   return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
 }
 
+/** First segment of a metric value, short enough to sit inside a leaf circle. */
+function shortMetric(v: string): string {
+  const head = v.split(/[·—,(]/)[0].trim();
+  return head.length > 16 ? `${head.slice(0, 15)}…` : head;
+}
+
 export default function MindMap({ onJump }: { onJump: (zone: number) => void }) {
   const placed = useMemo(() => placeMap(), []);
   const byId = useMemo(() => new Map(placed.map((p) => [p.node.id, p])), [placed]);
   const [selected, setSelected] = useState<string>("control");
   const [hover, setHover] = useState<string | null>(null);
   const { ref, shown } = useReveal<HTMLDivElement>();
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
+
+  /** The map is wider than a phone: start centred on the hub, not the left edge. */
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (el && el.scrollWidth > el.clientWidth) {
+      el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+    }
+  }, []);
+
+  /** Below the breakpoint the panel is off-screen: selecting must reveal it. */
+  const select = (id: string) => {
+    setSelected(id);
+    if (window.matchMedia?.("(max-width: 1000px)").matches) {
+      panelRef.current?.scrollIntoView({
+        block: "nearest",
+        behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      });
+    }
+  };
 
   const node: MapNode = useMemo(
     () => MAP_NODES.find((n) => n.id === selected) ?? MAP_NODES[0],
@@ -88,7 +117,7 @@ export default function MindMap({ onJump }: { onJump: (zone: number) => void }) 
 
       <div className="ea-map-wrap" ref={ref} data-shown={shown}>
         <div>
-          <div className="ea-scroll">
+          <div className="ea-scroll" ref={scrollerRef}>
             <svg
               viewBox={`0 0 ${MAP_W} ${MAP_H}`}
               role="img"
@@ -210,11 +239,11 @@ export default function MindMap({ onJump }: { onJump: (zone: number) => void }) 
                       tabIndex={0}
                       aria-label={`${p.node.label} — ${p.node.blurb}`}
                       aria-pressed={on}
-                      onClick={() => setSelected(p.node.id)}
+                      onClick={() => select(p.node.id)}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
-                          setSelected(p.node.id);
+                          select(p.node.id);
                         }
                       }}
                       onPointerEnter={() => setHover(p.node.id)}
@@ -246,12 +275,24 @@ export default function MindMap({ onJump }: { onJump: (zone: number) => void }) 
                           key={i}
                           className={isHub ? "ea-hub-label" : "ea-node-label"}
                           x={p.x}
-                          y={p.y + 4 + (i - (lines.length - 1) / 2) * 12}
+                          y={p.y + (isHub ? 4 : 0) + (i - (lines.length - 1) / 2) * 12}
                           textAnchor="middle"
                         >
                           {line}
                         </text>
                       ))}
+                      {!isHub && p.node.metrics.length > 0 ? (
+                        <text
+                          className="ea-node-metric"
+                          x={p.x}
+                          y={p.y + (lines.length > 1 ? 20 : 14)}
+                          textAnchor="middle"
+                          fill={ACCENT[p.node.layer]}
+                          data-c={p.node.metrics[0].c}
+                        >
+                          {shortMetric(p.node.metrics[0].v)}
+                        </text>
+                      ) : null}
                     </g>
                   );
                 })}
@@ -288,9 +329,11 @@ export default function MindMap({ onJump }: { onJump: (zone: number) => void }) 
         </div>
 
         {/* Detail panel */}
-        <aside className={`ea-panel ${layerClass(node.layer)}`} aria-live="polite">
+        <aside className={`ea-panel ${layerClass(node.layer)}`} aria-live="polite" ref={panelRef}>
           <p className="ea-kicker" style={{ color: "var(--accent)" }}>
-            {node.kind === "hub" ? "Branch" : "Node"}
+            {node.kind === "hub" ? "Branch" : "Node"} ·{" "}
+            {MAP_NODES.findIndex((n) => n.id === node.id) + 1} of {MAP_NODES.length} — click any
+            other node
           </p>
           <h3 className="ea-h2" style={{ fontSize: "1.35rem", marginTop: 4 }}>
             {node.label}
