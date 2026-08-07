@@ -135,6 +135,16 @@ export async function proxy(request: NextRequest) {
     return rewriteWithLanguage(voiceUrl);
   }
 
+  if (hostname === "natives.aitokenomics.app") {
+    const nativesUrl = request.nextUrl.clone();
+    if (nativesUrl.pathname === "/") {
+      nativesUrl.pathname = "/natives";
+    } else if (!nativesUrl.pathname.startsWith("/natives")) {
+      nativesUrl.pathname = `/natives${nativesUrl.pathname}`;
+    }
+    return rewriteWithLanguage(nativesUrl);
+  }
+
   if (hostname === "brief.aitokenomics.app") {
     const briefUrl = request.nextUrl.clone();
     if (briefUrl.pathname === "/") {

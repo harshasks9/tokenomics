@@ -49,6 +49,16 @@
         }
       ],
       "destination": "/offers/robots.txt"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "natives.aitokenomics.app"
+        }
+      ],
+      "destination": "/natives/:path*"
     }
   ]
 }
