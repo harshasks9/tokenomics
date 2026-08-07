@@ -133,6 +133,15 @@ const modelComparisons = [
     roiTeaser: "12 months of frontier · Gemini 15 pts behind",
     enabled: true,
   },
+  {
+    id: "finops",
+    name: "FrontierOps",
+    href: "/finops",
+    icon: TrendingUp,
+    gradient: "linear-gradient(135deg, #1c5cab 0%, #5598e7 100%)",
+    roiTeaser: "Multi-cloud AI FinOps · Pareto frontier gap",
+    enabled: true,
+  },
 ];
 
 type TileItem = {

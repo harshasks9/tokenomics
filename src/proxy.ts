@@ -285,6 +285,24 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // FrontierOps — multi-cloud AI FinOps dashboard (DAIT).
+  if (hostname === "dait.aitokenomics.app") {
+    const daitUrl = request.nextUrl.clone();
+    if (daitUrl.pathname === "/") {
+      daitUrl.pathname = "/finops";
+    } else if (!daitUrl.pathname.startsWith("/finops")) {
+      daitUrl.pathname = `/finops${daitUrl.pathname}`;
+    }
+    const response = NextResponse.rewrite(daitUrl, {
+      headers: {
+        "Content-Language": "en",
+        Vary: "Host",
+      },
+    });
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
