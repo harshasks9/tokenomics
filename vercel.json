@@ -69,6 +69,16 @@
         }
       ],
       "destination": "/onedesk/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "campus.aitokenomics.app"
+        }
+      ],
+      "destination": "/campus/:path*"
     }
   ]
 }
