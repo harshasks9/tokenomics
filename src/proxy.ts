@@ -145,6 +145,16 @@ export async function proxy(request: NextRequest) {
     return rewriteWithLanguage(oneDeskUrl);
   }
 
+  if (hostname === "campus.aitokenomics.app") {
+    const campusUrl = request.nextUrl.clone();
+    if (campusUrl.pathname === "/") {
+      campusUrl.pathname = "/campus";
+    } else if (!campusUrl.pathname.startsWith("/campus")) {
+      campusUrl.pathname = `/campus${campusUrl.pathname}`;
+    }
+    return rewriteWithLanguage(campusUrl);
+  }
+
   if (hostname === "natives.aitokenomics.app") {
     const nativesUrl = request.nextUrl.clone();
     if (nativesUrl.pathname === "/") {
