@@ -135,6 +135,16 @@ export async function proxy(request: NextRequest) {
     return rewriteWithLanguage(voiceUrl);
   }
 
+  if (hostname === "onedesk.aitokenomics.app") {
+    const oneDeskUrl = request.nextUrl.clone();
+    if (oneDeskUrl.pathname === "/") {
+      oneDeskUrl.pathname = "/onedesk";
+    } else if (!oneDeskUrl.pathname.startsWith("/onedesk")) {
+      oneDeskUrl.pathname = `/onedesk${oneDeskUrl.pathname}`;
+    }
+    return rewriteWithLanguage(oneDeskUrl);
+  }
+
   if (hostname === "natives.aitokenomics.app") {
     const nativesUrl = request.nextUrl.clone();
     if (nativesUrl.pathname === "/") {

@@ -59,6 +59,16 @@
         }
       ],
       "destination": "/natives/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "onedesk.aitokenomics.app"
+        }
+      ],
+      "destination": "/onedesk/:path*"
     }
   ]
 }
