@@ -345,25 +345,6 @@ export const departments = [
   },
 ];
 
-export const proofPoints = [
-  {
-    title: "Samsung Electronics DX division",
-    detail:
-      "Announced 13 July 2026: Gemini Enterprise for approximately 50,000 DX employees worldwide, delivered with Samsung SDS as implementation partner, and characterised as the largest agentic AI deal in Korea to date.",
-    relevance:
-      "We mention it for one reason. The stated rationale was that it lets non-technical employees build their own agents — which is the same reason we think this works for your Seoul office population, and it is a Korean company known for cost discipline that could have built it itself.",
-    claim: "confirmed" as Claim,
-  },
-  {
-    title: "The partner-delivered model",
-    detail:
-      "Samsung's rollout is delivered by a Korean implementation partner with Google Cloud engineering behind it, rather than by Google alone.",
-    relevance:
-      "We would propose the same for you, and would name the delivery partner before 14 August so that the team running the workshop is the team that delivers the work.",
-    claim: "confirmed" as Claim,
-  },
-];
-
 export const whyGoogle = {
   label: "왜 구글 클라우드인가 · Why Google Cloud",
   headline: "Your problem is multilingual, multi-system and multi-country. That is a narrower requirement than it sounds.",
@@ -397,6 +378,166 @@ export const whyGoogle = {
       "We are not proposing a group-wide data platform before value is proven. Building one first is the most reliable way we know to spend two years and demonstrate nothing.",
     ],
   },
+};
+
+// ---------------------------------------------------------------------------
+// The Google Cloud AI story, told for a manufacturer rather than for a
+// technology audience. Product naming reflects Google Cloud Next '26: Vertex AI
+// was retired as a brand and its capabilities now sit in the Gemini Enterprise
+// Agent Platform.
+// ---------------------------------------------------------------------------
+
+export const googleStory = {
+  label: "구글 클라우드 AI · The Google Cloud AI story",
+  headline: "Four layers, one owner — and the reason that matters to you is cost per answer",
+  standfirst:
+    "Most AI vendors assemble their stack from other people's parts. Google designs the chip, trains the model, runs the platform and ships the interface. We would not raise this as an engineering boast; we raise it because it is what decides whether reading every invoice across 41 factories is an affordable habit or an expensive pilot.",
+  layers: [
+    {
+      n: "01",
+      layer: "Silicon",
+      name: "Ironwood TPUs",
+      detail:
+        "Google's seventh-generation inference chip, announced with roughly 80% better price-performance on inference than the prior generation.",
+      soWhat:
+        "Inference is the recurring cost of an agent that reads continuously. This is the layer that determines whether 'audit the whole population' stays affordable at 41 factories rather than at four.",
+    },
+    {
+      n: "02",
+      layer: "Models",
+      name: "Gemini",
+      detail:
+        "Frontier models with long context and native multimodality — able to work across Korean, Spanish, Vietnamese and English text, tables, scans and images in a single pass.",
+      soWhat:
+        "Your document estate is not one language and not one format. A model that handles a scanned Spanish invoice and a Korean contract in the same request removes an entire integration layer.",
+    },
+    {
+      n: "03",
+      layer: "Agent platform",
+      name: "Gemini Enterprise Agent Platform",
+      detail:
+        "Formerly Vertex AI, renamed at Google Cloud Next '26. Agent Studio for building, plus Agent Registry, Agent Identity, Agent Gateway and Agent Observability for running agents in production.",
+      soWhat:
+        "The difference between a demonstration and an operating system is knowing which agents exist, what they may touch, and what they did. That governance layer is the part that lets an internal auditor trust the output.",
+    },
+    {
+      n: "04",
+      layer: "Where people already are",
+      name: "Gemini Enterprise and Workspace",
+      detail:
+        "The interface your colleagues use, connected to the systems underneath rather than sitting beside them.",
+      soWhat:
+        "Adoption is not a training problem, it is a proximity problem. Capability that requires people to go somewhere else does not get used.",
+    },
+  ],
+  touches: {
+    title: "What Sae-A would actually touch, and when",
+    items: [
+      {
+        phase: "Phase 1 — 60 days",
+        what: "Gemini Enterprise",
+        detail:
+          "Grounded search and agents over the documents you already trust. No schema changes, no migration, no platform team required from you.",
+      },
+      {
+        phase: "Phase 2 — Q4 2026",
+        what: "Gemini Enterprise at scale, plus Agent Platform governance",
+        detail:
+          "1,000 seats across your Korean offices, with the agent registry, identity and observability configured inside the AI Basic Act grace period.",
+      },
+      {
+        phase: "Phase 3 — Q1 2027",
+        what: "BigQuery, Looker and the Agent Platform",
+        detail:
+          "The environmental and traceability foundation your buyers and the EU passport timeline require — built after adoption is proven, not before.",
+      },
+    ],
+  },
+  openness: {
+    title: "This is not a closed bet",
+    detail:
+      "Agent2Agent (A2A) and the Model Context Protocol (MCP) are open protocols, not Google formats. They are how an agent reaches an ERP, a factory system or a partner tool that Google does not own — which is most of your estate. If you later decide to run part of this elsewhere, the agents you build do not become stranded assets.",
+  },
+  dataHandling: {
+    title: "Your data",
+    points: [
+      "Enterprise data used for grounding is not used to train foundation models.",
+      "Regional data handling, access controls and audit logging are configured to your requirements during phase one.",
+      "Every grounded answer cites its source document, so a person can check the system rather than trust it.",
+      "Your Group CTO is a co-author of that design, not a recipient of it.",
+    ],
+  },
+};
+
+export const references = {
+  label: "레퍼런스 · What this has looked like elsewhere",
+  headline: "Five references, chosen because they answer a question you are likely to ask",
+  standfirst:
+    "We have deliberately not listed everything Google Cloud has done. These are the deployments that speak to a specific doubt about doing this at Global Sae-A — a manufacturer, in Korea, with a conservative cost posture and non-technical staff.",
+  items: [
+    {
+      customer: "GE Appliances",
+      geography: "United States",
+      headline: "800+ agents across manufacturing, logistics and supply chain",
+      detail:
+        "Gemini Enterprise embedded into GE Appliances' own Brilliant Factory manufacturing data platform, which tracks production performance, part genealogy and workforce activity across lines, shifts and plants. Their Supplier Collaboration Agent handles communication with more than 600 suppliers and automated order-status enquiries.",
+      outcome: "25% reduction in backorders from the supplier collaboration agent alone",
+      answers:
+        "The doubt this addresses: can agents work on top of an existing manufacturing data platform rather than replacing it? GE Appliances did not rebuild their systems. They put agents over what they had — which is exactly what we are proposing for your ERP estate, and their supplier-communication result maps directly onto your order-change problem.",
+      date: "Announced 22 April 2026",
+      accent: "#0047A0",
+    },
+    {
+      customer: "Samsung Electronics, DX division",
+      geography: "Korea, global workforce",
+      headline: "Approximately 50,000 employees worldwide",
+      detail:
+        "Gemini Enterprise deployed across the Device eXperience division globally, delivered with Samsung SDS as the implementation partner. Characterised by Google Cloud as the largest agentic AI adoption in the Korean market.",
+      outcome: "The largest agentic AI deal in Korea to date",
+      answers:
+        "The doubt this addresses: is this proven with a Korean conglomerate that watches cost closely? Samsung could have built this internally and chose not to. The stated reason was that it lets non-technical employees build their own agents.",
+      date: "Announced 13 July 2026",
+      accent: "#CD2E3A",
+    },
+    {
+      customer: "CJ Olive Young",
+      geography: "Korea",
+      headline: "Gemini Enterprise across all employees",
+      detail:
+        "Non-developer staff — merchandise planners and marketing managers — build their own AI tools for work previously done manually, including market research and customer data analysis.",
+      outcome: "Adoption driven by non-technical staff building their own tools",
+      answers:
+        "The doubt this addresses: will people who are not engineers actually use this? Olive Young's merchandisers are a close analogue to your planning, sourcing and marketing colleagues, and it is the pattern behind the adoption measure we propose to be judged on.",
+      date: "Announced April 2026",
+      accent: "#188038",
+    },
+    {
+      customer: "KakaoBank · Daewon Pharmaceutical · Weverse · Yanolja",
+      geography: "Korea",
+      headline: "Adoption across finance, healthcare, media and travel",
+      detail:
+        "A widening base of Korean enterprises adopting Google Cloud AI across regulated and consumer-facing industries.",
+      outcome: "Korea is no longer early-adopter territory for this",
+      answers:
+        "The doubt this addresses: are we taking a risk our peers are not taking? In the Korean market this has moved from experiment to procurement in roughly eighteen months.",
+      date: "Through 2026",
+      accent: "#7B61FF",
+    },
+    {
+      customer: "LG CNS",
+      geography: "Korea",
+      headline: "Google Cloud Partner of the Year 2026 for Korea",
+      detail:
+        "Has built hundreds of generative AI services across manufacturing, finance, retail, telecommunications and the public sector on Gemini and the Google Cloud AI platform.",
+      outcome: "Delivery capability inside Korea, not flown in",
+      answers:
+        "The doubt this addresses: who actually does the work, and are they here? The partner-delivered model — the one behind the Samsung rollout — means the team in the room on 14 August is the team that delivers.",
+      date: "Awarded 2026",
+      accent: "#E37400",
+    },
+  ],
+  caveat:
+    "Every figure above is from public announcements by Google Cloud or the customer, and each is another company's result achieved in their circumstances. We have not adjusted any of them to flatter a projection for Sae-A, and we would not ask you to plan against them. The only numbers we would ask you to plan against are the ones we measure together in the sixty days.",
 };
 
 export const notProposing = {
