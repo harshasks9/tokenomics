@@ -79,6 +79,16 @@
         }
       ],
       "destination": "/campus/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "models.aitokenomics.app"
+        }
+      ],
+      "destination": "/llm-landscape/:path*"
     }
   ]
 }

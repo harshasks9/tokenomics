@@ -333,6 +333,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // LLM Landscape & Model Evolution Explorer.
+  if (hostname === "models.aitokenomics.app") {
+    const modelsUrl = request.nextUrl.clone();
+    if (modelsUrl.pathname === "/") {
+      modelsUrl.pathname = "/llm-landscape";
+    } else if (!modelsUrl.pathname.startsWith("/llm-landscape")) {
+      modelsUrl.pathname = `/llm-landscape${modelsUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(modelsUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;

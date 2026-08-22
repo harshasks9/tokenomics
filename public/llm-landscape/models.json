@@ -81,7 +81,256 @@
       "high": "Same workload, same deployment model, evidence on both sides.",
       "medium": "Capable equivalent with a real trade-off the buyer must accept.",
       "low": "Nearest offering; expect a visible gap or a different deployment model."
-    }
+    },
+    "dimensions": [
+      {
+        "id": "reasoning-depth",
+        "label": "Reasoning depth on multi-step problems",
+        "conditional": false,
+        "keywords": [
+          "reasoning",
+          "arc-agi",
+          "thinking",
+          "hle",
+          "aime",
+          "math",
+          "deep think",
+          "gpqa",
+          "planning"
+        ]
+      },
+      {
+        "id": "coding-agentic-completion",
+        "label": "Coding and agentic task completion",
+        "conditional": false,
+        "keywords": [
+          "coding",
+          "swe-bench",
+          "agentic",
+          "code",
+          "terminal-bench",
+          "refactor",
+          "harness",
+          "autonom",
+          "claude code",
+          "codex"
+        ]
+      },
+      {
+        "id": "long-context-reliability",
+        "label": "Long-context reliability",
+        "conditional": false,
+        "keywords": [
+          "context",
+          "million-token",
+          "1m-token",
+          "long-document",
+          "needle",
+          "window",
+          "128k",
+          "200k",
+          "256k",
+          "repository"
+        ]
+      },
+      {
+        "id": "tool-structured-output",
+        "label": "Tool use and structured output adherence",
+        "conditional": false,
+        "keywords": [
+          "tool",
+          "function call",
+          "function-call",
+          "structured",
+          "json",
+          "malformed",
+          "instruction-following",
+          "schema"
+        ]
+      },
+      {
+        "id": "latency-throughput",
+        "label": "Latency and throughput",
+        "conditional": false,
+        "keywords": [
+          "latency",
+          "throughput",
+          "fast",
+          "slow",
+          "tokens/sec",
+          "t/s",
+          "speed",
+          "render",
+          "minutes per"
+        ]
+      },
+      {
+        "id": "cost-per-work",
+        "label": "Cost per unit of useful work",
+        "conditional": false,
+        "keywords": [
+          "price",
+          "pricing",
+          "cost",
+          "$",
+          "cheap",
+          "undercut",
+          "per m",
+          "/m",
+          "per-second",
+          "per image",
+          "off-peak",
+          "repric"
+        ]
+      },
+      {
+        "id": "multimodal-understanding",
+        "label": "Multimodal understanding",
+        "conditional": false,
+        "keywords": [
+          "multimodal",
+          "image input",
+          "vision",
+          "video input",
+          "audio input",
+          "screenshot",
+          "chart",
+          "document understanding",
+          "native vision"
+        ]
+      },
+      {
+        "id": "deployment-flexibility",
+        "label": "Deployment flexibility",
+        "conditional": false,
+        "keywords": [
+          "open weights",
+          "open-weights",
+          "self-host",
+          "license",
+          "apache",
+          "mit",
+          "on-prem",
+          "air-gapped",
+          "gdc",
+          "local",
+          "weights",
+          "fine-tun",
+          "lora"
+        ]
+      },
+      {
+        "id": "enterprise-posture",
+        "label": "Enterprise posture",
+        "conditional": false,
+        "keywords": [
+          "enterprise",
+          "residency",
+          "compliance",
+          "vertex",
+          "bedrock",
+          "deprecat",
+          "retire",
+          "shutdown",
+          "lifecycle",
+          "indemn",
+          "sla",
+          "export control",
+          "suspension",
+          "data retention",
+          "sovereign"
+        ]
+      },
+      {
+        "id": "image-gen",
+        "label": "Image generation",
+        "conditional": true,
+        "keywords": [
+          "image gen",
+          "text-to-image",
+          "image edit",
+          "imagen",
+          "nano banana",
+          "diffusion",
+          "flux",
+          "/image",
+          "per image",
+          "4k image",
+          "text rendering"
+        ]
+      },
+      {
+        "id": "video-gen",
+        "label": "Video generation",
+        "conditional": true,
+        "keywords": [
+          "video gen",
+          "text-to-video",
+          "veo",
+          "sora",
+          "clip",
+          "per-second",
+          "audio sync",
+          "omni flash"
+        ]
+      },
+      {
+        "id": "audio-voice",
+        "label": "Audio / voice",
+        "conditional": true,
+        "keywords": [
+          "voice",
+          "tts",
+          "speech",
+          "audio tag",
+          "cloning",
+          "realtime audio",
+          "live api",
+          "asr",
+          "transcription"
+        ]
+      },
+      {
+        "id": "embeddings",
+        "label": "Embeddings / retrieval",
+        "conditional": true,
+        "keywords": [
+          "embedding",
+          "mteb",
+          "vector",
+          "rag",
+          "retrieval",
+          "dimension",
+          "re-embed"
+        ]
+      },
+      {
+        "id": "computer-use",
+        "label": "Computer use",
+        "conditional": true,
+        "keywords": [
+          "computer use",
+          "computer-use",
+          "osworld",
+          "browser control",
+          "screen"
+        ]
+      },
+      {
+        "id": "search-grounding",
+        "label": "Search grounding",
+        "conditional": true,
+        "keywords": [
+          "grounding",
+          "search integration",
+          "web search",
+          "firehose",
+          "real-time x",
+          "ai mode"
+        ]
+      }
+    ],
+    "dimensions_note": "Comparison cells are derived: a dimension row shows the graded claims whose text matches its keywords, on each side. Where no sourced claim matches, the cell renders 'no sourced claim' — by design this dataset never invents a rating. Conditional rows appear only when a side has matching evidence."
   },
   "models": [
     {
