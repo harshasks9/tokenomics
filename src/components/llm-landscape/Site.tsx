@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Dataset, Model } from "@/lib/llm-landscape/types";
 import {
   ACCESS_LABEL,
@@ -12,6 +12,7 @@ import {
   encodeState,
   parseReleased,
   vendorGroup,
+  vendorHue,
 } from "@/lib/llm-landscape/model";
 import Compare from "./Compare";
 import Detail from "./Detail";
@@ -20,6 +21,8 @@ import Timeline from "./Timeline";
 import { Released, TierTag, VendorDot } from "./ui";
 
 const DATA_URL = "/llm-landscape/models.json";
+
+type FacetKey = "vendors" | "access" | "workload" | "tiers";
 
 export default function Site() {
   const [data, setData] = useState<Dataset | null>(null);
@@ -30,7 +33,8 @@ export default function Site() {
   const [state, setState] = useState<UiState>(() =>
     typeof window === "undefined" ? DEFAULT_STATE : decodeState(window.location.search),
   );
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [openFacet, setOpenFacet] = useState<FacetKey | null>(null);
+  const facetsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch(DATA_URL)
@@ -50,6 +54,20 @@ export default function Site() {
     }
   }, [state]);
 
+  // Close facet popovers on outside click / Escape.
+  useEffect(() => {
+    const onDown = (e: MouseEvent) => {
+      if (facetsRef.current && !facetsRef.current.contains(e.target as Node)) setOpenFacet(null);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpenFacet(null);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
   const update = useCallback((patch: Partial<UiState>) => {
     setState((s) => ({ ...s, ...patch }));
   }, []);
@@ -61,12 +79,33 @@ export default function Site() {
     [data, state.sel],
   );
 
-  const toggle = (key: "vendors" | "access" | "tiers", value: string | number) =>
-    setState((s) => {
-      const list = s[key] as (string | number)[];
-      const next = list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
-      return { ...s, [key]: next } as UiState;
-    });
+  // Faceted counts: count options against every filter EXCEPT the facet itself.
+  const countsFor = useCallback(
+    (facet: FacetKey): Map<string, number> => {
+      const counts = new Map<string, number>();
+      if (!data) return counts;
+      const probe: UiState = { ...state };
+      if (facet === "vendors") probe.vendors = [];
+      if (facet === "access") probe.access = [];
+      if (facet === "workload") probe.workload = null;
+      if (facet === "tiers") probe.tiers = [];
+      for (const m of applyFilters(data, probe)) {
+        const keys: string[] =
+          facet === "vendors"
+            ? [vendorGroup(m.vendor)]
+            : facet === "access"
+              ? m.access
+                ? [m.access]
+                : []
+              : facet === "tiers"
+                ? [String(m.tier)]
+                : (m.google_equivalents ?? []).map((r) => r.workload);
+        for (const k of keys) counts.set(k, (counts.get(k) ?? 0) + 1);
+      }
+      return counts;
+    },
+    [data, state],
+  );
 
   if (error) {
     return (
@@ -83,191 +122,230 @@ export default function Site() {
     );
   }
 
-  const vendors = [...new Set(data.models.map((m) => vendorGroup(m.vendor)))].sort();
-  const accesses = [...new Set(data.models.map((m) => m.access).filter(Boolean))] as string[];
-  const modalities = [
-    ...new Set(data.models.flatMap((m) => [...(m.modalities_in ?? []), ...(m.modalities_out ?? [])])),
+  const vendorOptions = [...new Set(data.models.map((m) => vendorGroup(m.vendor)))].sort();
+  const accessOptions = [...new Set(data.models.map((m) => m.access).filter(Boolean))] as string[];
+  const yearsPresent = [
+    ...new Set(
+      data.models.map((m) => parseReleased(m.released).year).filter((y): y is number => y != null),
+    ),
   ].sort();
-  const years = data.models
-    .map((m) => parseReleased(m.released).year)
-    .filter((y): y is number => y != null);
-  const [minYear, maxYear] = [Math.min(...years), Math.max(...years)];
-  const activeFilterCount =
-    state.vendors.length +
-    state.access.length +
-    (state.modality ? 1 : 0) +
-    (state.workload ? 1 : 0) +
-    (state.years ? 1 : 0) +
-    state.tiers.length;
+
+  const toggleList = (key: "vendors" | "access" | "tiers", value: string | number) =>
+    setState((s) => {
+      const list = s[key] as (string | number)[];
+      const next = list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
+      return { ...s, [key]: next } as UiState;
+    });
+
+  const clickYear = (y: number) =>
+    setState((s) => {
+      if (!s.years) return { ...s, years: [y, y] };
+      const [a, b] = s.years;
+      if (y >= a && y <= b) return { ...s, years: null };
+      return { ...s, years: [Math.min(a, y), Math.max(b, y)] };
+    });
+
+  const clearAll = () =>
+    update({ q: "", vendors: [], access: [], modality: null, workload: null, years: null, tiers: [] });
+
+  const wlLabel = (id: string) => data.meta.workloads.find((w) => w.id === id)?.label ?? id;
+
+  // Active chips.
+  const chips: { label: string; onRemove: () => void }[] = [];
+  if (state.q) chips.push({ label: `“${state.q}”`, onRemove: () => update({ q: "" }) });
+  for (const v of state.vendors)
+    chips.push({ label: v, onRemove: () => toggleList("vendors", v) });
+  for (const a of state.access)
+    chips.push({ label: ACCESS_LABEL[a] ?? a, onRemove: () => toggleList("access", a) });
+  if (state.workload)
+    chips.push({ label: wlLabel(state.workload), onRemove: () => update({ workload: null }) });
+  if (state.years)
+    chips.push({
+      label: state.years[0] === state.years[1] ? `${state.years[0]}` : `${state.years[0]}–${state.years[1]}`,
+      onRemove: () => update({ years: null }),
+    });
+  for (const t of state.tiers)
+    chips.push({ label: `Tier ${t}`, onRemove: () => toggleList("tiers", t) });
 
   const compareCandidates = data.models
     .filter((m) => (m.google_equivalents?.length ?? 0) > 0)
     .sort(byReleaseAsc)
     .reverse();
 
+  const facetDefs: {
+    key: FacetKey;
+    label: string;
+    options: { value: string; label: string }[];
+    active: number;
+    isOn: (v: string) => boolean;
+    toggle: (v: string) => void;
+  }[] = [
+    {
+      key: "vendors",
+      label: "Vendor",
+      options: vendorOptions.map((v) => ({ value: v, label: v })),
+      active: state.vendors.length,
+      isOn: (v) => state.vendors.includes(v),
+      toggle: (v) => toggleList("vendors", v),
+    },
+    {
+      key: "access",
+      label: "Access",
+      options: accessOptions.map((a) => ({ value: a, label: ACCESS_LABEL[a] ?? a })),
+      active: state.access.length,
+      isOn: (v) => state.access.includes(v),
+      toggle: (v) => toggleList("access", v),
+    },
+    {
+      key: "workload",
+      label: "Workload",
+      options: data.meta.workloads.map((w) => ({ value: w.id, label: w.label })),
+      active: state.workload ? 1 : 0,
+      isOn: (v) => state.workload === v,
+      toggle: (v) => update({ workload: state.workload === v ? null : v }),
+    },
+    {
+      key: "tiers",
+      label: "Tier",
+      options: [1, 2, 3].map((t) => ({ value: String(t), label: `Tier ${t}` })),
+      active: state.tiers.length,
+      isOn: (v) => state.tiers.includes(Number(v)),
+      toggle: (v) => toggleList("tiers", Number(v)),
+    },
+  ];
+
   return (
     <div className="shell">
-      <header className="masthead">
-        <div className="masthead-row">
-          <h1>
-            LLM LANDSCAPE<span className="cursor">_</span>
-          </h1>
-          <div className="snapshot">
-            snapshot <strong>{data.meta.snapshot_date}</strong>
-            <span className="snapshot-note">every claim carries an evidence grade</span>
+      <header className="hdr">
+        <div className="hdr-row">
+          <div className="hdr-brand">
+            <span className="hdr-logo" aria-hidden />
+            <h1>LLM Landscape</h1>
+            <span className="hdr-snapshot">snapshot {data.meta.snapshot_date}</span>
           </div>
+          <nav className="seg" aria-label="Views">
+            {(
+              [
+                ["timeline", "Timeline"],
+                ["families", "Families"],
+                ["compare", "Compare"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                className={`seg-btn ${state.view === id ? "on" : ""}`}
+                onClick={() => update({ view: id })}
+                aria-pressed={state.view === id}
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+          <input
+            className="hdr-search"
+            type="search"
+            placeholder="Search models or vendors…"
+            value={state.q}
+            onChange={(e) => update({ q: e.target.value })}
+            aria-label="Search models"
+          />
         </div>
-        <p className="tagline">{data.meta.purpose}</p>
-
-        <nav className="tabs" aria-label="Views">
-          {(
-            [
-              ["timeline", "Timeline"],
-              ["families", "Families"],
-              ["compare", "Compare"],
-            ] as const
-          ).map(([id, label]) => (
-            <button
-              key={id}
-              className={`tab ${state.view === id ? "tab-on" : ""}`}
-              onClick={() => update({ view: id })}
-              aria-pressed={state.view === id}
-            >
-              {label}
-            </button>
-          ))}
-          <button
-            className={`tab tab-filters ${activeFilterCount ? "tab-on" : ""}`}
-            onClick={() => setFiltersOpen((v) => !v)}
-            aria-expanded={filtersOpen}
-          >
-            Filters{activeFilterCount ? ` (${activeFilterCount})` : ""} {filtersOpen ? "▾" : "▸"}
-          </button>
-          {activeFilterCount > 0 && (
-            <button
-              className="tab tab-clear"
-              onClick={() =>
-                update({
-                  vendors: [],
-                  access: [],
-                  modality: null,
-                  workload: null,
-                  years: null,
-                  tiers: [],
-                })
-              }
-            >
-              clear
-            </button>
-          )}
-        </nav>
-
-        {filtersOpen && (
-          <div className="filterbar">
-            <div className="fgroup">
-              <span className="flabel">vendor</span>
-              {vendors.map((v) => (
-                <button
-                  key={v}
-                  className={`chip ${state.vendors.includes(v) ? "chip-on" : ""}`}
-                  onClick={() => toggle("vendors", v)}
-                >
-                  {v}
-                </button>
-              ))}
-            </div>
-            <div className="fgroup">
-              <span className="flabel">access</span>
-              {accesses.map((a) => (
-                <button
-                  key={a}
-                  className={`chip ${state.access.includes(a) ? "chip-on" : ""}`}
-                  onClick={() => toggle("access", a)}
-                >
-                  {ACCESS_LABEL[a] ?? a}
-                </button>
-              ))}
-            </div>
-            <div className="fgroup">
-              <span className="flabel">modality</span>
-              {modalities.map((m) => (
-                <button
-                  key={m}
-                  className={`chip ${state.modality === m ? "chip-on" : ""}`}
-                  onClick={() => update({ modality: state.modality === m ? null : m })}
-                >
-                  {m}
-                </button>
-              ))}
-            </div>
-            <div className="fgroup">
-              <span className="flabel">workload</span>
-              {data.meta.workloads.map((w) => (
-                <button
-                  key={w.id}
-                  className={`chip ${state.workload === w.id ? "chip-on" : ""}`}
-                  onClick={() => update({ workload: state.workload === w.id ? null : w.id })}
-                  title={w.definition}
-                >
-                  {w.label}
-                </button>
-              ))}
-            </div>
-            <div className="fgroup">
-              <span className="flabel">year</span>
-              {Array.from({ length: maxYear - minYear + 1 }, (_, i) => minYear + i).map((y) => {
-                const on = state.years != null && y >= state.years[0] && y <= state.years[1];
-                return (
-                  <button
-                    key={y}
-                    className={`chip ${on ? "chip-on" : ""}`}
-                    onClick={() =>
-                      update({
-                        years:
-                          state.years && state.years[0] === y && state.years[1] === y
-                            ? null
-                            : [y, y],
-                      })
-                    }
-                    title="Click selects a single year; use two clicks on the same year to clear"
-                  >
-                    {y}
-                  </button>
-                );
-              })}
-              {state.years && (
-                <span className="flabel">
-                  {state.years[0]}–{state.years[1]}
-                </span>
-              )}
-            </div>
-            <div className="fgroup">
-              <span className="flabel">tier</span>
-              {[1, 2, 3].map((t) => (
-                <button
-                  key={t}
-                  className={`chip ${state.tiers.includes(t) ? "chip-on" : ""}`}
-                  onClick={() => toggle("tiers", t)}
-                  title={data.meta.tier_definitions[String(t)]}
-                >
-                  Tier {t}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </header>
 
-      <main className="main">
-        {state.view === "timeline" && (
-          <Timeline models={filtered} onSelect={(id) => update({ sel: id })} />
+      <div className="fbar">
+        <div className="fbar-row" ref={facetsRef}>
+          {facetDefs.map((f) => {
+            const counts = openFacet === f.key ? countsFor(f.key) : null;
+            return (
+              <div key={f.key} className="facet">
+                <button
+                  className={`facet-btn ${f.active ? "active" : ""}`}
+                  onClick={() => setOpenFacet(openFacet === f.key ? null : f.key)}
+                  aria-expanded={openFacet === f.key}
+                >
+                  {f.label}
+                  {f.active > 0 && <b>{f.active}</b>}
+                  <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden>
+                    <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+                </button>
+                {openFacet === f.key && (
+                  <div className="facet-pop" role="listbox" aria-label={f.label}>
+                    {f.options.map((o) => {
+                      const n = counts?.get(o.value) ?? 0;
+                      return (
+                        <label key={o.value} className={`facet-opt ${n === 0 && !f.isOn(o.value) ? "zero" : ""}`}>
+                          <input
+                            type="checkbox"
+                            checked={f.isOn(o.value)}
+                            onChange={() => f.toggle(o.value)}
+                          />
+                          {f.key === "vendors" && (
+                            <i className="dot" style={{ background: vendorHue(o.value) }} aria-hidden />
+                          )}
+                          <span>{o.label}</span>
+                          <em>{n}</em>
+                        </label>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          <div className="facet-years" role="group" aria-label="Year range">
+            {yearsPresent.map((y) => {
+              const on = state.years != null && y >= state.years[0] && y <= state.years[1];
+              return (
+                <button
+                  key={y}
+                  className={`yr ${on ? "on" : ""}`}
+                  onClick={() => clickYear(y)}
+                  title="Click a year to filter; click a second year to extend the range; click inside the range to clear"
+                >
+                  {y}
+                </button>
+              );
+            })}
+          </div>
+
+          <span className="fbar-count">
+            <b>{filtered.length}</b> of {data.models.length} models
+          </span>
+        </div>
+
+        {chips.length > 0 && (
+          <div className="chips-row">
+            {chips.map((c, i) => (
+              <button key={i} className="chip-x" onClick={c.onRemove}>
+                {c.label} <span aria-hidden>×</span>
+              </button>
+            ))}
+            <button className="chip-clear" onClick={clearAll}>
+              Clear all
+            </button>
+          </div>
         )}
+      </div>
+
+      <main className="main">
+        {state.view === "timeline" &&
+          (filtered.length === 0 ? (
+            <div className="empty">
+              No models match. Loosen a filter — the chips above remove with one click.
+            </div>
+          ) : (
+            <Timeline
+              models={filtered}
+              allModels={data.models}
+              snapshot={data.meta.snapshot_date}
+              onSelect={(id) => update({ sel: id })}
+              onApplyYears={(range) => update({ years: range })}
+            />
+          ))}
         {state.view === "families" && (
-          <Families
-            models={filtered}
-            allModels={data.models}
-            onSelect={(id) => update({ sel: id })}
-          />
+          <Families models={filtered} allModels={data.models} onSelect={(id) => update({ sel: id })} />
         )}
         {state.view === "compare" &&
           (selected ? (
@@ -281,6 +359,9 @@ export default function Site() {
           ) : (
             <div className="picker">
               <h3>Pick the model you run today</h3>
+              <p className="picker-sub">
+                Each opens a side-by-side against its honest Google equivalent, per workload.
+              </p>
               <div className="picker-grid">
                 {compareCandidates.map((m) => (
                   <button

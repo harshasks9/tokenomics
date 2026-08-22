@@ -37,29 +37,29 @@ export function byReleaseAsc(a: Model, b: Model): number {
   return (a.tier ?? 9) - (b.tier ?? 9) || a.id.localeCompare(b.id);
 }
 
-/** Presentation constants (styling only — no facts). */
+/**
+ * Presentation constants (styling only — no facts).
+ * Categorical palette: validated slot order for the light surface
+ * (dataviz validator: adjacent CVD warn 7.2 on red↔green is mitigated by
+ * text-labeled lanes/markers and positional rows; low-contrast hues get
+ * hairline rings + labels per the relief rule). Vendors beyond the eight
+ * lanes fold to neutral gray — never generated hues.
+ */
 export const VENDOR_HUES: Record<string, string> = {
-  Google: "#4285F4",
-  "Google DeepMind": "#4285F4",
-  "Google (DeepMind)": "#4285F4",
-  OpenAI: "#10A37F",
-  Anthropic: "#D97757",
-  Meta: "#0866FF",
-  "Mistral AI": "#F5A623",
-  DeepSeek: "#6C5CE7",
-  Alibaba: "#E2543E",
-  "Moonshot AI": "#38BDF8",
-  "Zhipu AI (Z.ai)": "#34D399",
-  xAI: "#9CA3AF",
-  "Stability AI (CompVis / Runway / LAION collaboration)": "#C084FC",
-  "Black Forest Labs": "#C084FC",
-  ElevenLabs: "#F472B6",
+  OpenAI: "#1baf7a",
+  Google: "#2a78d6",
+  Anthropic: "#eb6834",
+  Meta: "#4a3aa7",
+  DeepSeek: "#e87ba4",
+  Alibaba: "#eda100",
+  "Mistral AI": "#e34948",
+  xAI: "#008300",
 };
 
+export const OTHER_HUE = "#898781";
+
 export function vendorHue(vendor: string): string {
-  if (VENDOR_HUES[vendor]) return VENDOR_HUES[vendor];
-  const key = Object.keys(VENDOR_HUES).find((k) => vendor.startsWith(k.split(" ")[0]));
-  return key ? VENDOR_HUES[key] : "#94A3B8";
+  return VENDOR_HUES[vendorGroup(vendor)] ?? VENDOR_HUES[vendor] ?? OTHER_HUE;
 }
 
 export const GRADE_META: Record<string, { short: string; label: string; cls: string }> = {
@@ -133,6 +133,7 @@ export type ViewId = "timeline" | "families" | "compare";
 
 export type UiState = {
   view: ViewId;
+  q: string; // search: name/vendor substring
   vendors: string[];
   access: string[];
   modality: string | null;
@@ -145,6 +146,7 @@ export type UiState = {
 
 export const DEFAULT_STATE: UiState = {
   view: "timeline",
+  q: "",
   vendors: [],
   access: [],
   modality: null,
@@ -167,6 +169,7 @@ export function decodeState(search: string): UiState {
   const view = p.get("view");
   return {
     view: view === "families" || view === "compare" ? view : "timeline",
+    q: p.get("q") ?? "",
     vendors: list("v"),
     access: list("a"),
     modality: p.get("m"),
@@ -181,6 +184,7 @@ export function decodeState(search: string): UiState {
 export function encodeState(s: UiState): string {
   const p = new URLSearchParams();
   if (s.view !== "timeline") p.set("view", s.view);
+  if (s.q) p.set("q", s.q);
   if (s.vendors.length) p.set("v", s.vendors.join(","));
   if (s.access.length) p.set("a", s.access.join(","));
   if (s.modality) p.set("m", s.modality);
@@ -195,7 +199,9 @@ export function encodeState(s: UiState): string {
 
 /** Composable filters over the model list. */
 export function applyFilters(data: Dataset, s: UiState): Model[] {
+  const q = s.q.trim().toLowerCase();
   return data.models.filter((m) => {
+    if (q && !`${m.name} ${m.vendor} ${m.family}`.toLowerCase().includes(q)) return false;
     if (s.vendors.length && !s.vendors.includes(vendorGroup(m.vendor))) return false;
     if (s.access.length) {
       if (!m.access || !s.access.includes(m.access)) return false;
