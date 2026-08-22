@@ -123,9 +123,54 @@ export function claimsFor(m: Model): { field: string; claim: Claim }[] {
   return out;
 }
 
-export function matchDimension(dim: Dimension, text: string): boolean {
+function escapeRe(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/** Word-boundary-aware keyword score: how strongly a text belongs to a dimension. */
+export function dimensionScore(dim: Dimension, text: string): number {
   const t = text.toLowerCase();
-  return dim.keywords.some((k) => t.includes(k.toLowerCase()));
+  let score = 0;
+  for (const k of dim.keywords) {
+    const kw = k.toLowerCase();
+    const pattern = /^[a-z0-9]/.test(kw) && /[a-z0-9]$/.test(kw)
+      ? new RegExp(`\\b${escapeRe(kw)}\\b`)
+      : new RegExp(escapeRe(kw));
+    if (pattern.test(t)) score += kw.includes(" ") ? 2 : 1; // multi-word hits are stronger signals
+  }
+  return score;
+}
+
+export function matchDimension(dim: Dimension, text: string): boolean {
+  return dimensionScore(dim, text) > 0;
+}
+
+/**
+ * Assign each claim to its single best dimension (highest score; earlier
+ * dimension wins ties). Prevents the same claim appearing under several
+ * dimensions and kills substring false-positives.
+ */
+export function assignDimensions<T extends { text: string }>(
+  items: T[],
+  dims: Dimension[],
+): Map<string, T[]> {
+  const out = new Map<string, T[]>();
+  for (const item of items) {
+    let best: Dimension | null = null;
+    let bestScore = 0;
+    for (const d of dims) {
+      const s = dimensionScore(d, item.text);
+      if (s > bestScore) {
+        best = d;
+        bestScore = s;
+      }
+    }
+    if (best) {
+      if (!out.has(best.id)) out.set(best.id, []);
+      out.get(best.id)!.push(item);
+    }
+  }
+  return out;
 }
 
 /** ---------- URL state ---------- */

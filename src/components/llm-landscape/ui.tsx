@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import type { Claim, Model } from "@/lib/llm-landscape/types";
 import {
   ACCESS_LABEL,
@@ -10,12 +11,60 @@ import {
   vendorHue,
 } from "@/lib/llm-landscape/model";
 
+/** Evidence-grade definitions come from the data file (meta.evidence_grades). */
+let GRADE_DEFS: Record<string, string> = {};
+export function setGradeDefs(defs: Record<string, string>) {
+  GRADE_DEFS = defs;
+}
+
 export function GradeBadge({ grade }: { grade: string }) {
   const g = GRADE_META[grade] ?? { short: grade, label: grade, cls: "g-analyst" };
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
   return (
-    <span className={`badge ${g.cls}`} title={g.label}>
-      {g.short}
+    <span className="badge-wrap" ref={ref}>
+      <button
+        className={`badge ${g.cls}`}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        title={g.label}
+      >
+        {g.short}
+      </button>
+      {open && (
+        <span className="badge-pop" role="note">
+          <strong>{grade}</strong>
+          {GRADE_DEFS[grade] ? ` — ${GRADE_DEFS[grade]}` : ` — ${g.label}`}
+        </span>
+      )}
     </span>
+  );
+}
+
+/** One-line legend pinned atop evidence-heavy views. */
+export function EvidenceLegend() {
+  return (
+    <div className="ev-legend" aria-label="Evidence grade legend">
+      <span className="ev-legend-title">evidence grades</span>
+      {Object.entries(GRADE_META).map(([k, g]) => (
+        <span key={k} className="ev-legend-item" title={GRADE_DEFS[k] ?? g.label}>
+          <span className={`badge ${g.cls}`}>{g.short}</span> {g.label}
+        </span>
+      ))}
+    </div>
   );
 }
 

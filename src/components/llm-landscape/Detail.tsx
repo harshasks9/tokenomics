@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Dataset, Model } from "@/lib/llm-landscape/types";
 import { fmtMods, fmtTokens } from "@/lib/llm-landscape/model";
 import {
   AccessPill,
   ClaimList,
   ConfidencePill,
+  EvidenceLegend,
   GradeBadge,
   Released,
   StatusPill,
@@ -20,12 +21,16 @@ export default function Detail({
   onClose,
   onCompare,
   onJump,
+  onPrev,
+  onNext,
 }: {
   model: Model;
   data: Dataset;
   onClose: () => void;
   onCompare: (workload: string) => void;
   onJump: (id: string) => void;
+  onPrev?: () => void;
+  onNext?: () => void;
 }) {
   const [openDispute, setOpenDispute] = useState<number | null>(null);
   const geq = model.google_equivalents ?? [];
@@ -33,13 +38,35 @@ export default function Detail({
   const predecessor = model.predecessor_id
     ? data.models.find((m) => m.id === model.predecessor_id)
     : null;
+  const successor = data.models.find((m) => m.predecessor_id === model.id && m.tier < 3);
+
+  // Arrow keys page through records while the sheet is open.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (/^(INPUT|SELECT|TEXTAREA)$/.test((e.target as HTMLElement)?.tagName ?? "")) return;
+      if (e.key === "ArrowLeft" && onPrev) onPrev();
+      if (e.key === "ArrowRight" && onNext) onNext();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onPrev, onNext]);
 
   return (
     <aside className="pane" aria-label={`${model.name} record`}>
       <div className="pane-head">
-        <button className="pane-close" onClick={onClose} aria-label="Close record">
-          ✕ close
-        </button>
+        <div className="pane-nav">
+          <button className="pane-close" onClick={onClose} aria-label="Close record (Esc)">
+            ✕ close
+          </button>
+          <span className="pane-pager">
+            <button className="pane-close" onClick={onPrev} disabled={!onPrev} aria-label="Previous model (←)">
+              ‹ prev
+            </button>
+            <button className="pane-close" onClick={onNext} disabled={!onNext} aria-label="Next model (→)">
+              next ›
+            </button>
+          </span>
+        </div>
         <div className="card-top">
           <VendorDot vendor={model.vendor} />
           <TierTag tier={model.tier} />
@@ -56,6 +83,14 @@ export default function Detail({
               <span className="dot-sep">·</span>
               <button className="link" onClick={() => onJump(predecessor.id)}>
                 ← {predecessor.name}
+              </button>
+            </>
+          )}
+          {successor && (
+            <>
+              <span className="dot-sep">·</span>
+              <button className="link" onClick={() => onJump(successor.id)}>
+                {successor.name} →
               </button>
             </>
           )}
@@ -124,6 +159,7 @@ export default function Detail({
           </section>
         )}
 
+        {(model.known_for?.length ?? 0) > 0 && <EvidenceLegend />}
         <ClaimList title="Known for" claims={model.known_for} />
         <ClaimList title="Best use cases" claims={model.best_use_cases} />
         <ClaimList title="Weaknesses" claims={model.weaknesses} tone="weak" />
