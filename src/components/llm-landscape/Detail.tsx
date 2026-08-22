@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Dataset, Model } from "@/lib/llm-landscape/types";
-import { fmtMods, fmtTokens } from "@/lib/llm-landscape/model";
+import { fmtMods, fmtTokens, vendorGroup } from "@/lib/llm-landscape/model";
 import {
   AccessPill,
   ClaimList,
@@ -19,22 +19,27 @@ export default function Detail({
   model,
   data,
   onClose,
-  onCompare,
+  onHeadToHead,
   onJump,
+  onVendor,
   onPrev,
   onNext,
 }: {
   model: Model;
   data: Dataset;
   onClose: () => void;
-  onCompare: (workload: string) => void;
+  onHeadToHead: (bId: string | null, workload: string) => void;
   onJump: (id: string) => void;
+  onVendor?: (vendor: string) => void;
   onPrev?: () => void;
   onNext?: () => void;
 }) {
   const [openDispute, setOpenDispute] = useState<number | null>(null);
-  const geq = model.google_equivalents ?? [];
+  const alts = model.alternatives ?? [];
   const wl = (id: string) => data.meta.workloads.find((w) => w.id === id)?.label ?? id;
+  const hasVendorProfile = (data.meta.vendor_profiles ?? []).some(
+    (p) => p.vendor === vendorGroup(model.vendor),
+  );
   const predecessor = model.predecessor_id
     ? data.models.find((m) => m.id === model.predecessor_id)
     : null;
@@ -94,6 +99,14 @@ export default function Detail({
               </button>
             </>
           )}
+          {hasVendorProfile && onVendor && (
+            <>
+              <span className="dot-sep">·</span>
+              <button className="link" onClick={() => onVendor(vendorGroup(model.vendor))}>
+                vendor profile
+              </button>
+            </>
+          )}
         </div>
         {model.last_verified && <div className="verified">last verified {model.last_verified}</div>}
       </div>
@@ -133,26 +146,35 @@ export default function Detail({
           </section>
         )}
 
-        {/* Google equivalents — the payload */}
-        {geq.length > 0 && (
+        {/* Nearest alternatives — the advisory payload, vendor-neutral */}
+        {alts.length > 0 && (
           <section className="geq">
-            <h4>Google equivalent, by workload</h4>
-            {geq.map((row, i) => (
-              <div key={i} className={`geq-row ${row.google_model === null ? "geq-null" : ""}`}>
+            <h4>Nearest alternatives, by workload</h4>
+            {alts.map((row, i) => (
+              <div key={i} className={`geq-row ${row.model_id === null ? "geq-null" : ""}`}>
                 <div className="geq-head">
                   <span className="geq-workload">{wl(row.workload)}</span>
                   <ConfidencePill level={row.confidence} />
                 </div>
                 <div className="geq-target">
-                  {row.google_model ?? "No credible Google equivalent"}
+                  {row.model_id ? (
+                    <button className="link" onClick={() => onJump(row.model_id!)}>
+                      {row.model_label}
+                    </button>
+                  ) : (
+                    row.model_label
+                  )}
                 </div>
                 <p className="geq-rationale">{row.rationale}</p>
-                <div className="concession">
-                  <span className="concession-tag">what you give up</span>
-                  <p>{row.where_google_loses}</p>
+                <div className="tradeoffs">
+                  <span className="tradeoffs-tag">trade-offs, both ways</span>
+                  <p>{row.trade_offs}</p>
                 </div>
-                <button className="btn-compare" onClick={() => onCompare(row.workload)}>
-                  open comparison →
+                <button
+                  className="btn-compare"
+                  onClick={() => onHeadToHead(row.model_id, row.workload)}
+                >
+                  compare head-to-head →
                 </button>
               </div>
             ))}
