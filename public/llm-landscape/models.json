@@ -1960,7 +1960,7 @@
           "google_model": "Gemini Live API (gemini-3.1-flash-live-preview)",
           "rationale": "For speech-to-speech assistants, Google's Live API ($0.75/M in, $4.50/M out, 131K context) with native-audio Gemini models is the architectural equivalent of 4o's Advanced Voice / Realtime lane.",
           "confidence": "medium",
-          "where_google_loses": "Every Google Live/TTS id involved is still `-preview`; 4o's Advanced Voice set the expressiveness bar in consumer perception and no independent eval encountered shows Google matching it; and OpenAI's Realtime ecosystem (SDKs, integrations) is more battle-tested for phone-agent deployments."
+          "where_google_loses": "Every Google Live/TTS id involved is still `-preview`, while OpenAI's Realtime lane kept shipping as a GA product through 2026 (GPT-Realtime-2 in May; gpt-realtime-2.1's ~25% p95 latency cut in July) — the maturity gap is documented, not vibes; 4o's Advanced Voice also set the consumer expressiveness bar no independent eval has shown Google matching."
         }
       ],
       "sources": [
@@ -3099,9 +3099,9 @@
         {
           "workload": "video-generation",
           "google_model": "Veo 3.1 (Gemini Omni Flash for the Gemini-native lane)",
-          "rationale": "This mapping has unusual force: OpenAI exited — the Sora app closed 2026-04-26 and the Sora API sunsets 2026-09-24, weeks after the snapshot. Veo 3.1 ($0.40/s standard, $0.15/s fast, $0.05/s lite) is the mature API path; Gemini Omni Flash (I/O 2026, reported $0.10/s) is where Google is heading.",
+          "rationale": "This mapping has unusual force: OpenAI exited — the Sora app closed 2026-04-26 and the Sora API sunsets 2026-09-24, weeks after the snapshot. Veo 3.1 ($0.40/s standard, $0.15/s fast, $0.05/s lite) is the mature API path; Gemini Omni Flash (I/O 2026; $0.10/s, 720p, 3-10s clips, conversational editing) is where Google is heading.",
           "confidence": "high",
-          "where_google_loses": "Sora 2's social distribution — the app, cameos, the feed — has no Google equivalent and that audience is simply gone rather than migrated; Veo's standard tier lists 4x above Sora 2's old $0.10/s; and Veo's clip-length ceilings and daily generation caps (felt even on the $249/mo consumer tier) frustrated exactly the creators Sora attracted. Omni Flash's specs and pricing rest on thin public documentation so far."
+          "where_google_loses": "Sora 2's social distribution — the app, cameos, the feed — has no Google equivalent and that audience is simply gone rather than migrated; Veo's standard tier lists 4x above Sora 2's old $0.10/s; and Veo's clip-length ceilings and daily generation caps (felt even on the $249/mo consumer tier) frustrated exactly the creators Sora attracted. Omni Flash remains 720p/10s-capped for now, and ByteDance's Seedance 2.x — not Google — holds the aggressive spec frontier (native 30s clips) in mid-2026 comparisons."
         }
       ],
       "sources": [
@@ -4354,96 +4354,11 @@
       "vendor": "OpenAI",
       "family": "OpenAI o-series",
       "predecessor_id": "o1",
-      "tier": 2,
+      "tier": 3,
       "released": "2025-04-16",
       "released_precision": "exact",
       "status": "deprecated",
-      "access": "proprietary-api",
-      "license": null,
-      "size": null,
-      "context": null,
-      "modalities_in": [],
-      "modalities_out": [],
-      "known_for": [
-        {
-          "claim": "The December 2024 ARC-AGI breakthrough: 75.7% on the semi-private eval in low-compute mode (~$20/task) and 87.5% in high-compute mode at thousands of dollars per task (later estimated ~$4,500/task with 1,024 samples) — announced 2024-12-20, four months before release, with OpenAI disclosing the tested model had trained on 75% of ARC's public training set",
-          "evidence_grade": "measured-benchmark",
-          "source_url": "https://arcprize.org/blog/oai-o3-pub-breakthrough"
-        },
-        {
-          "claim": "First reasoning models (with o4-mini) to natively use tools inside the chain of thought — cropping/transforming images, searching the web, running Python mid-reasoning",
-          "evidence_grade": "vendor-claim",
-          "source_url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf"
-        },
-        {
-          "claim": "The shipped o3 (2025-04-16) was not the December-tested configuration: ARC Prize separately analyzed the released o3/o4-mini rather than carrying over the preview's headline scores, and the launch-vs-preview gap became the canonical example of announcement-demo inflation",
-          "evidence_grade": "independent-eval",
-          "source_url": "https://arcprize.org/blog/analyzing-o3-with-arc-agi"
-        }
-      ],
-      "best_use_cases": [],
-      "weaknesses": [],
-      "why_it_mattered": "The 2024-12-20 announcement, dropped as a scaling-wall debate raged, was read as proof that test-time compute still had headroom — and the accompanying cost disclosure (a benchmark score with a dollar figure attached) started the industry's price-per-task conversation. On release it made tool-use-inside-reasoning the new baseline for frontier models. o3 has no direct successor: OpenAI folded the o-series into GPT-5's routed system in August 2025 (GPT-5's launch materials benchmarked directly against o3, e.g. 74.9% vs 69.1% on SWE-bench Verified), and o3 was scheduled for retirement from ChatGPT on 2026-08-26 after a 90-day sunset. Its API price was also slashed in mid-2025 as competition intensified (price-cut specifics not verified this session; see notes).",
-      "market_reputation": null,
-      "reputation_shift": null,
-      "disputed": [],
-      "google_equivalents": [
-        {
-          "workload": "deep-reasoning",
-          "google_model": "Gemini 3.1 Pro",
-          "rationale": "o3's tool-use-inside-reasoning pattern is now standard; o3 leaves ChatGPT 2026-08-26 and the API 2026-10-23, so the migration is scheduled. 3.1 Pro is the reasoning default on the Google side.",
-          "confidence": "high",
-          "where_google_loses": "Maximum-effort Google reasoning (Deep Think) sits behind the Ultra subscription rather than a clean API SKU; o3-era agentic scaffolds built on OpenAI tool semantics need rework."
-        }
-      ],
-      "sources": [
-        {
-          "url": "https://arcprize.org/blog/oai-o3-pub-breakthrough",
-          "type": "independent-benchmark",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://arcprize.org/blog/analyzing-o3-with-arc-agi",
-          "type": "independent-benchmark",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://techcrunch.com/2024/12/20/openai-announces-new-o3-model/",
-          "type": "press",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://venturebeat.com/ai/openais-o3-shows-remarkable-progress-on-arc-agi-sparking-debate-on-ai-reasoning",
-          "type": "press",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://arxiv.org/html/2603.13372v1",
-          "type": "technical-report",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
-          "type": "vendor-doc",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/OpenAI_o3",
-          "type": "press",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://www.vellum.ai/blog/gpt-5-benchmarks",
-          "type": "practitioner",
-          "accessed": "2026-08-22"
-        },
-        {
-          "url": "https://benchr.org/deprecations",
-          "type": "practitioner",
-          "accessed": "2026-08-22"
-        }
-      ],
-      "last_verified": "2026-08-22"
+      "note": "The o-series peak: tool use inside the chain of thought, plus the Dec-2024 ARC-AGI-1 breakthrough (87.5% high-compute, at disputed thousands-of-dollars-per-task cost). GPT-5 absorbed the line in Aug 2025; o3 leaves ChatGPT 2026-08-26 and the API 2026-10-23. (Demoted from Tier 2 in the second pass to make room for MAI-Thinking-1 under the cap.)"
     },
     {
       "id": "o4-mini",
@@ -4788,9 +4703,9 @@
         {
           "workload": "video-generation",
           "google_model": "Veo 3.1 (Gemini Omni Flash for the Gemini-native lane)",
-          "rationale": "Upgrade-in-place: Veo 3's native-audio breakthrough continues as Veo 3.1 ($0.40/s, with $0.15 fast and $0.05 lite tiers, halved costs via 3.1 Lite in March 2026), while Gemini Omni Flash (I/O 2026) is the strategic direction — video folding into Gemini-native models the way image generation did.",
+          "rationale": "Upgrade-in-place: Veo 3's native-audio breakthrough continues as Veo 3.1 ($0.40/s, with $0.15 fast and $0.05 lite tiers, halved costs via 3.1 Lite in March 2026), while Gemini Omni Flash (I/O 2026; $0.10/s, corroborated across trackers) is the strategic direction — video folding into Gemini-native models the way image generation did, with conversational multi-turn editing as its differentiator.",
           "confidence": "high",
-          "where_google_loses": "Veo 3.1's weaker content filters drew misuse coverage (racist and antisemitic TikTok clips) that brand-safety reviews will surface; daily generation caps persisted even on the $249/mo consumer tier; clips remain seconds-long for a workload buyers keep hoping is minutes-long; and Omni Flash's public documentation is thin (single-source $0.10/s pricing)."
+          "where_google_loses": "Veo 3.1's weaker content filters drew misuse coverage (racist and antisemitic TikTok clips) that brand-safety reviews will surface; daily generation caps persisted even on the $249/mo consumer tier; Omni Flash tops out at 720p and 10-second clips against Veo 3.1's own 4K — and mid-2026 comparison coverage treats ByteDance's Seedance 2.x (native 30s clips, 50 reference inputs) as the quality bar, so Google's video lead is contested from China, not just from the departing Sora."
         }
       ],
       "sources": [
@@ -6778,15 +6693,15 @@
     },
     {
       "id": "seedance-2",
-      "name": "Seedance 2",
+      "name": "Seedance 2.0",
       "vendor": "ByteDance",
       "family": "Seedance",
-      "predecessor_id": null,
+      "predecessor_id": "seedance-1",
       "tier": 3,
-      "released": "2026",
-      "released_precision": "year",
-      "status": "current",
-      "note": "Appears in mid-2026 coverage as the quality bar Gemini Omni is measured against ('does it beat Seedance 2'). Release date and details unverified — stub exists because two independent 2026 comparison pieces treat it as a top-tier rival; coordinator should verify."
+      "released": "2026-02",
+      "released_precision": "month",
+      "status": "superseded",
+      "note": "ByteDance's video flagship of early 2026 — '#1-ranked video generator' claims at release, 15s clips, six aspect ratios; came to CapCut/Dreamina March 2026."
     },
     {
       "id": "kimi-k2-5",
@@ -6996,7 +6911,7 @@
       "released": "2026-02-26",
       "released_precision": "exact",
       "status": "current",
-      "note": "Gemini 3.1 Flash Image: Pro-level quality at Flash speed/price, made the default image engine across Gemini app, Search AI Mode, Lens, Ads and Flow at launch; reported #1 Text-to-Image on Artificial Analysis' arena within hours. A 'Nano Banana 2 Lite' (gemini-3.1-flash-lite-image) followed 2026-06-30. Day-precision from secondary guides; see notes.",
+      "note": "Launched 2026-02-26 as Google's default image engine across the Gemini app, Search AI Mode, Lens, Ads and Flow (API id gemini-3.1-flash-image-preview); #1 on Artificial Analysis' Image Arena within hours, at roughly half Nano Banana Pro's per-image price.",
       "sources": [
         {
           "url": "https://www.glbgpt.com/hub/how-to-use-nano-banana-2-gemini-3-flash-image-the-ultimate-2026-guide",
@@ -7403,7 +7318,7 @@
           "google_model": "Gemini Live API (gemini-3.1-flash-live-preview)",
           "rationale": "GPT-5.5-era voice traffic maps to the Live API's native-audio lane; Google also ships live translation (gemini-3.5-live-translate-preview) as a differentiator.",
           "confidence": "medium",
-          "where_google_loses": "Preview-status ids across the whole Google voice stack versus OpenAI's GA Realtime lane; expressiveness parity is unproven in independent testing."
+          "where_google_loses": "Preview-status ids across the whole Google voice stack versus OpenAI's GA Realtime lane, which iterated twice in 2026 (GPT-Realtime-2, then 2.1's latency cuts); Google's live-translate preview answers Realtime-Translate feature-for-feature but not maturity-for-maturity."
         }
       ],
       "sources": [
@@ -7735,7 +7650,7 @@
       "released": "2026-05",
       "released_precision": "month",
       "status": "current",
-      "note": "Announced at Google I/O 2026 (2026-05-19); unified multimodal video generation with conversational editing, rolled out same day to the Gemini app and Flow (AI Plus/Pro/Ultra) and free in YouTube Shorts/Create; Gemini API public preview 2026-06-30 (single source). Successor slot to Veo under new 'Omni' branding; larger 'Omni' presumably to follow."
+      "note": "Google's Gemini-native video lane (I/O 2026): $0.10/s (≈$17.50/M tokens at 5,792 tok/s), 720p/24fps, 3-10s clips, 16:9 or 9:16, with conversational multi-turn editing as the differentiator; Gemini API / AI Studio from 2026-06-30. Positioned as the successor lane to Veo."
     },
     {
       "id": "gemma-4",
@@ -8142,7 +8057,7 @@
       "released": "2026-07-08",
       "released_precision": "exact",
       "status": "current",
-      "note": "Coding/agent-focused release under the post-merger 'SpaceXAI' branding; Musk called it 'roughly comparable to Opus 4.7, but much faster'. Reported to run on a 1.5T 'V9' foundation trained on real developer (Cursor) session data after private testing inside SpaceX/Tesla — the Cursor claim is secondary-source reporting, not vendor-confirmed.",
+      "note": "SpaceXAI-branded coding/agentic model — 'roughly comparable to Opus 4.7, but much faster' (Musk); trained alongside Cursor (vendor-confirmed), tens of thousands of GB300s; 500K context, $2/$6 per MTok, 2x token-efficiency claim.",
       "sources": [
         {
           "url": "https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/",
@@ -8640,8 +8555,8 @@
       "family": "Gemini",
       "predecessor_id": null,
       "tier": 2,
-      "released": null,
-      "released_precision": null,
+      "released": "2025-07",
+      "released_precision": "month",
       "status": "current",
       "access": "proprietary-api",
       "license": null,
@@ -8664,6 +8579,11 @@
           "claim": "A successor line is live: 'Gemini Embedding 2.0' (gemini-embedding-2) appears in Google's official python-genai SDK from 2026-02-18 with multimodal (incl. video) embedding support, 8,192-token input at $0.20/M — but 001 remains the GA default at snapshot",
           "evidence_grade": "vendor-claim",
           "source_url": "https://raw.githubusercontent.com/googleapis/python-genai/main/CHANGELOG.md"
+        },
+        {
+          "claim": "Held the #1 spot on the MTEB Multilingual leaderboard (overall 68.32; retrieval 67.71) from its March 2025 experimental launch through GA in the Gemini API (July 2025; some trackers also date a May 2025 milestone).",
+          "evidence_grade": "vendor-claim",
+          "source_url": "https://developers.googleblog.com/gemini-embedding-available-gemini-api/"
         }
       ],
       "best_use_cases": null,
@@ -8696,6 +8616,16 @@
           "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/CHANGELOG.md",
           "type": "vendor-doc",
           "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://developers.googleblog.com/gemini-embedding-available-gemini-api/",
+          "type": "vendor-doc",
+          "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://www.marktechpost.com/2025/07/14/gemini-embedding-001-now-available-multilingual-ai-text-embeddings-via-google-api/",
+          "type": "press",
+          "accessed": "2026-08-22"
         }
       ],
       "last_verified": "2026-08-22"
@@ -8723,6 +8653,136 @@
           "accessed": "2026-08-22"
         }
       ]
+    },
+    {
+      "id": "mai-thinking-1",
+      "name": "MAI-Thinking-1",
+      "vendor": "Microsoft",
+      "family": "MAI",
+      "predecessor_id": "phi-4",
+      "tier": 2,
+      "released": "2026-06-02",
+      "released_precision": "exact",
+      "status": "current",
+      "access": "proprietary-api",
+      "license": null,
+      "size": null,
+      "context": null,
+      "modalities_in": null,
+      "modalities_out": null,
+      "known_for": [
+        {
+          "claim": "Microsoft's first-party flagship: a ~1T-total / 35B-active MoE reasoning model with 256K context; vendor-reported AIME 2025 97.0 and blind-rater preference over Sonnet 4.6 (Surge), framed as Opus-4.6-class results at far fewer active parameters.",
+          "evidence_grade": "vendor-claim",
+          "source_url": "https://microsoft.ai/models/mai-thinking-1/"
+        },
+        {
+          "claim": "Shipped in public preview across Microsoft Foundry and — notably — on Fireworks, Baseten, and OpenRouter, a platform-first posture; co-designed with Microsoft's Maia 200 accelerator (vendor-claimed 1.4x performance-per-watt running MAI end to end).",
+          "evidence_grade": "vendor-claim",
+          "source_url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/new-mai-models-in-microsoft-foundry-across-text-image-voice-and-speech/4524632"
+        },
+        {
+          "claim": "Launch analyses flagged that every benchmark number was self-reported ahead of broad public access, and that 'Frontier Tuning' — RL on the customer's own workflows inside their compliance boundary — is the actual enterprise pitch rather than leaderboard position.",
+          "evidence_grade": "practitioner-consensus",
+          "source_url": "https://techjacksolutions.com/ai-brief/ai-models-news-mai-thinking-1-official-microsofts-first-in-h/"
+        }
+      ],
+      "best_use_cases": null,
+      "weaknesses": null,
+      "why_it_mattered": "Build 2026's seven-model MAI launch (2026-06-02) formally ended Microsoft's posture as a reseller of OpenAI's frontier work: the largest enterprise software vendor now fields first-party models across reasoning, coding, image, voice and transcription, its own serving silicon, and an enterprise fine-tuning story that keeps customer data inside the tenant. For Azure-committed buyers, 'which model' now has a house answer — which changes every rival's sales motion, Google's included.",
+      "market_reputation": null,
+      "reputation_shift": null,
+      "disputed": null,
+      "google_equivalents": [
+        {
+          "workload": "deep-reasoning",
+          "google_model": "Gemini 3.1 Pro",
+          "rationale": "MAI-Thinking-1 is Microsoft's entry into the tier Gemini 3.1 Pro occupies. Google's counter is maturity: 3.1 Pro is the GA flagship with six months of production history and ARC-verified results, while MAI-Thinking-1 was in public preview with self-reported benchmarks at the snapshot.",
+          "confidence": "medium",
+          "where_google_loses": "In Microsoft-committed estates, MAI is the path of least resistance — Foundry-native, M365/Copilot-adjacent, priced on Microsoft paper, with Frontier Tuning's RL-inside-your-compliance-boundary pitch that Vertex has no identically packaged answer to. Google is fighting the default, not the benchmark."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://microsoft.ai/news/introducing-mai-thinking-1/",
+          "type": "vendor-doc",
+          "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://microsoft.ai/models/mai-thinking-1/",
+          "type": "vendor-doc",
+          "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/new-mai-models-in-microsoft-foundry-across-text-image-voice-and-speech/4524632",
+          "type": "vendor-doc",
+          "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://techjacksolutions.com/ai-brief/ai-models-news-mai-thinking-1-official-microsofts-first-in-h/",
+          "type": "practitioner",
+          "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://dev.to/akaranjkar08/microsoft-mai-thinking-1-mai-code-1-flash-developer-guide-to-7-new-mai-models-k4m",
+          "type": "practitioner",
+          "accessed": "2026-08-22"
+        },
+        {
+          "url": "https://enterprisedna.co/resources/news/microsoft-build-2026-mai-models-enterprise-ai/",
+          "type": "press",
+          "accessed": "2026-08-22"
+        }
+      ],
+      "last_verified": "2026-08-22"
+    },
+    {
+      "id": "seedance-1",
+      "name": "Seedance",
+      "vendor": "ByteDance",
+      "family": "Seedance",
+      "predecessor_id": null,
+      "tier": 3,
+      "released": "2025-06",
+      "released_precision": "month",
+      "status": "superseded",
+      "note": "ByteDance's first text-to-video model."
+    },
+    {
+      "id": "seedance-2-5",
+      "name": "Seedance 2.5",
+      "vendor": "ByteDance",
+      "family": "Seedance",
+      "predecessor_id": "seedance-2",
+      "tier": 3,
+      "released": "2026-07-31",
+      "released_precision": "exact",
+      "status": "current",
+      "note": "Native 30-second clips, up to 50 multimodal reference inputs, partial-frame re-draw editing; default video model in Jimeng/Dreamina."
+    },
+    {
+      "id": "gpt-realtime-2",
+      "name": "GPT-Realtime-2",
+      "vendor": "OpenAI",
+      "family": "GPT",
+      "predecessor_id": "gpt-4o",
+      "tier": 3,
+      "released": "2026-05-07",
+      "released_precision": "exact",
+      "status": "current",
+      "note": "GPT-5-class voice reasoning for the Realtime API, alongside Realtime-Translate (70+ input languages) and Realtime-Whisper ($0.017/min); gpt-realtime-2.1/-mini followed 2026-07-06 with ~25% p95 latency cuts."
+    },
+    {
+      "id": "phi-4",
+      "name": "Phi-4",
+      "vendor": "Microsoft",
+      "family": "Phi",
+      "predecessor_id": null,
+      "tier": 3,
+      "released": "2024-12",
+      "released_precision": "month",
+      "status": "superseded",
+      "note": "14B small model trained heavily on synthetic data — late 2024's small-model quality proof; the first-party line Microsoft superseded with MAI at Build 2026."
     }
   ]
 }
