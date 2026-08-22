@@ -142,6 +142,15 @@ const modelComparisons = [
     roiTeaser: "Multi-cloud AI FinOps · Pareto frontier gap",
     enabled: true,
   },
+  {
+    id: "llm-landscape",
+    name: "LLM LANDSCAPE",
+    href: "/llm-landscape",
+    icon: Layers,
+    gradient: "linear-gradient(135deg, #0B0E14 0%, #4285F4 100%)",
+    roiTeaser: "2022–2026 model evolution · honest Google equivalence",
+    enabled: true,
+  },
 ];
 
 type TileItem = {
