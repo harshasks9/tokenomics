@@ -38,5 +38,11 @@ export const viewport: Viewport = {
 };
 
 export default function LlmLandscapeLayout({ children }: { children: React.ReactNode }) {
-  return <div className={`${inter.variable} lls-root`}>{children}</div>;
+  return (
+    <div className={`${inter.variable} lls-root`}>
+      {/* Start the dataset download in parallel with hydration. */}
+      <link rel="preload" href="/llm-landscape/models.json" as="fetch" crossOrigin="anonymous" />
+      {children}
+    </div>
+  );
 }

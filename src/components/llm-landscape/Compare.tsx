@@ -1,23 +1,55 @@
 "use client";
 
 import { useMemo } from "react";
-import type { Claim, Dataset, Dimension, Model } from "@/lib/llm-landscape/types";
+import type { Claim, Dataset, Model } from "@/lib/llm-landscape/types";
 import {
   ACCESS_LABEL,
+  assignDimensions,
   claimsFor,
+  dimensionScore,
   fmtMods,
   fmtTokens,
-  matchDimension,
   parseReleased,
   resolveGoogleRecord,
+  vendorGroup,
 } from "@/lib/llm-landscape/model";
-import { ClaimList, ConfidencePill, GradeBadge, StatusPill, TierTag, VendorDot } from "./ui";
+import {
+  ClaimList,
+  ConfidencePill,
+  EvidenceLegend,
+  GradeBadge,
+  StatusPill,
+  TierTag,
+  VendorDot,
+} from "./ui";
 
-function DimCell({ claims }: { claims: { claim: Claim; weakness: boolean }[] }) {
-  if (claims.length === 0) return <div className="dim-cell dim-none">no sourced claim</div>;
+type Tagged = { text: string; claim: Claim; weakness: boolean };
+
+function DimCell({
+  items,
+  fallback,
+}: {
+  items: Tagged[];
+  fallback?: string | null;
+}) {
+  if (items.length === 0) {
+    return fallback ? (
+      <div className="dim-cell">
+        <div className="dim-claim dim-mapnote">
+          <div className="claim-head">
+            <GradeBadge grade="analyst-inference" />
+            <span className="mapnote-tag">from the mapping</span>
+          </div>
+          <p>{fallback}</p>
+        </div>
+      </div>
+    ) : (
+      <div className="dim-cell dim-none">—</div>
+    );
+  }
   return (
     <div className="dim-cell">
-      {claims.slice(0, 2).map(({ claim, weakness }, i) => (
+      {items.slice(0, 2).map(({ claim, weakness }, i) => (
         <div key={i} className={`dim-claim ${weakness ? "dim-weak" : ""}`}>
           <div className="claim-head">
             <GradeBadge grade={claim.evidence_grade} />
@@ -39,13 +71,17 @@ export default function Compare({
   model,
   workload,
   data,
+  candidates,
   onChangeWorkload,
+  onChangeModel,
   onOpenRecord,
 }: {
   model: Model;
   workload: string | null;
   data: Dataset;
+  candidates: Model[];
   onChangeWorkload: (w: string) => void;
+  onChangeModel: (id: string) => void;
   onOpenRecord: (id: string) => void;
 }) {
   const rows = model.google_equivalents ?? [];
@@ -55,20 +91,38 @@ export default function Compare({
     [active, data.models],
   );
   const wl = (id: string) => data.meta.workloads.find((w) => w.id === id)?.label ?? id;
+  const dims = useMemo(() => data.meta.dimensions ?? [], [data.meta.dimensions]);
 
-  const dims: Dimension[] = data.meta.dimensions ?? [];
-  const left = claimsFor(model).map((c) => ({ claim: c.claim, weakness: c.field === "weaknesses" }));
-  const right = google
-    ? claimsFor(google).map((c) => ({ claim: c.claim, weakness: c.field === "weaknesses" }))
-    : [];
+  // Each claim lands in exactly one dimension (word-boundary scored).
+  const { leftByDim, rightByDim } = useMemo(() => {
+    const tag = (m: Model | null): Tagged[] =>
+      m
+        ? claimsFor(m).map((c) => ({
+            text: c.claim.claim,
+            claim: c.claim,
+            weakness: c.field === "weaknesses",
+          }))
+        : [];
+    return {
+      leftByDim: assignDimensions(tag(model), dims),
+      rightByDim: assignDimensions(tag(google), dims),
+    };
+  }, [model, google, dims]);
 
+  // When the Google side has no claim for a dimension, fall back to the
+  // mapping's own text if it speaks to that dimension.
+  const mappingText = active ? `${active.rationale} ${active.where_google_loses}` : "";
   const dimRows = dims
-    .map((d) => {
-      const l = left.filter((c) => matchDimension(d, c.claim.claim));
-      const r = right.filter((c) => matchDimension(d, c.claim.claim));
-      return { d, l, r };
-    })
-    .filter(({ d, l, r }) => !d.conditional || l.length > 0 || r.length > 0);
+    .map((d) => ({
+      d,
+      l: leftByDim.get(d.id) ?? [],
+      r: rightByDim.get(d.id) ?? [],
+      fallback:
+        (rightByDim.get(d.id) ?? []).length === 0 && active && dimensionScore(d, mappingText) > 0
+          ? active.rationale
+          : null,
+    }))
+    .filter(({ l, r, fallback }) => l.length > 0 || r.length > 0 || fallback);
 
   if (!active) {
     return (
@@ -96,6 +150,32 @@ export default function Compare({
   return (
     <div className="compare">
       <div className="compare-controls">
+        <label htmlFor="model-select">you run</label>
+        <select id="model-select" value={model.id} onChange={(e) => onChangeModel(e.target.value)}>
+          {(() => {
+            const groups = new Map<string, Model[]>();
+            for (const c of candidates) {
+              const g = vendorGroup(c.vendor);
+              if (!groups.has(g)) groups.set(g, []);
+              groups.get(g)!.push(c);
+            }
+            if (!candidates.some((c) => c.id === model.id)) {
+              groups.set(vendorGroup(model.vendor), [
+                model,
+                ...(groups.get(vendorGroup(model.vendor)) ?? []),
+              ]);
+            }
+            return [...groups.entries()].map(([g, ms]) => (
+              <optgroup key={g} label={g}>
+                {ms.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name}
+                  </option>
+                ))}
+              </optgroup>
+            ));
+          })()}
+        </select>
         <label htmlFor="wl-select">workload</label>
         <select
           id="wl-select"
@@ -111,7 +191,6 @@ export default function Compare({
         <ConfidencePill level={active.confidence} />
       </div>
 
-      {/* Verdict */}
       <div className={`verdict ${active.google_model === null ? "geq-null" : ""}`}>
         <div className="verdict-cols">
           <div className="verdict-side">
@@ -145,7 +224,6 @@ export default function Compare({
         </div>
       </div>
 
-      {/* Spec table */}
       <div className="spec-table" role="table" aria-label="Specification comparison">
         <div className="spec-head" role="row">
           <span />
@@ -187,31 +265,33 @@ export default function Compare({
         )}
       </div>
 
-      {/* Dimension grid */}
       <section className="dims">
         <h4>Evidence by dimension</h4>
+        <EvidenceLegend />
         {data.meta.dimensions_note && <p className="dims-note">{data.meta.dimensions_note}</p>}
         <div className="dim-head">
           <span />
           <span>{model.name}</span>
           <span>{google?.name ?? active.google_model ?? "Google"}</span>
         </div>
-        {dimRows.map(({ d, l, r }) => (
+        {dimRows.map(({ d, l, r, fallback }) => (
           <div key={d.id} className="dim-row">
             <div className="dim-label">{d.label}</div>
-            <DimCell claims={l} />
-            {google ? (
-              <DimCell claims={r} />
+            <DimCell items={l} />
+            {google || fallback ? (
+              <DimCell items={r} fallback={fallback} />
             ) : (
               <div className="dim-cell dim-none">
-                {active.google_model === null ? "structural gap — see verdict" : "record not in dataset"}
+                {active.google_model === null ? "structural gap — see verdict" : "—"}
               </div>
             )}
           </div>
         ))}
+        {dimRows.length === 0 && (
+          <p className="dims-note">No dimension-tagged evidence for this pairing — the graded claims below carry it.</p>
+        )}
       </section>
 
-      {/* Full graded claims, side by side on wide screens */}
       <div className="compare-claims">
         <div>
           <h3 className="side-title">{model.name}</h3>

@@ -8,10 +8,12 @@ import { TierTag } from "./ui";
 export default function Families({
   models,
   allModels,
+  filteredIds,
   onSelect,
 }: {
   models: Model[]; // filtered set — decides which families show
   allModels: Model[]; // full set — chains render complete
+  filteredIds: Set<string>; // chain members outside the filter render dimmed
   onSelect: (id: string) => void;
 }) {
   const [openShift, setOpenShift] = useState<string | null>(null);
@@ -67,8 +69,13 @@ export default function Families({
                 const shifted = Boolean(m.reputation_shift);
                 const r = parseReleased(m.released);
                 const interactive = m.tier < 3;
+                const dimmed = !filteredIds.has(m.id);
                 return (
-                  <li key={m.id} className={`node node-t${m.tier} ${shifted ? "node-shift" : ""}`}>
+                  <li
+                    key={m.id}
+                    className={`node node-t${m.tier} ${shifted ? "node-shift" : ""} ${dimmed ? "node-dim" : ""}`}
+                    title={dimmed ? "Outside the active filters — shown for lineage continuity" : undefined}
+                  >
                     {branch && <div className="branch">↳ from {branch}</div>}
                     <div
                       className={`node-body ${interactive ? "node-link" : ""}`}
