@@ -43,12 +43,14 @@ export default function Timeline({
   snapshot,
   onSelect,
   onApplyYears,
+  onVendor,
 }: {
   models: Model[];
   allModels: Model[];
   snapshot: string;
   onSelect: (id: string) => void;
   onApplyYears: (range: [number, number]) => void;
+  onVendor?: (vendor: string) => void;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [containerW, setContainerW] = useState(1100);
@@ -419,11 +421,23 @@ export default function Timeline({
               style={{ top: lane.top + AXIS_H, height: lane.h, width: innerW }}
             >
               <span className="tl-lane-fade" aria-hidden />
-              <span className="tl-lane-label">
-                <i className="dot" style={{ background: lane.hue }} aria-hidden />
-                {lane.key}
-                <b>{lane.markers.length}</b>
-              </span>
+              {onVendor && lane.key !== "Other" ? (
+                <button
+                  className="tl-lane-label tl-lane-btn"
+                  onClick={() => onVendor(lane.key)}
+                  title={`${lane.key} vendor profile`}
+                >
+                  <i className="dot" style={{ background: lane.hue }} aria-hidden />
+                  {lane.key}
+                  <b>{lane.markers.length}</b>
+                </button>
+              ) : (
+                <span className="tl-lane-label">
+                  <i className="dot" style={{ background: lane.hue }} aria-hidden />
+                  {lane.key}
+                  <b>{lane.markers.length}</b>
+                </span>
+              )}
               {lane.markers.map(({ m, x: mx, row, labeled, flip }) => (
                 <button
                   key={m.id}

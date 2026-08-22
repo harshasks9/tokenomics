@@ -11,13 +11,34 @@ export type Claim = {
   source_url: string | null;
 };
 
-export type GoogleMapping = {
+export type Alternative = {
   workload: string;
-  google_model: string | null;
+  model_id: string | null;
+  model_label: string;
   rationale: string;
   confidence: "high" | "medium" | "low";
-  where_google_loses: string;
+  trade_offs: string;
 };
+
+export type GuideModel = {
+  model_id: string | null;
+  label: string;
+  access_note: string;
+  choose_when: string;
+  avoid_when: string;
+  trade_offs: string;
+};
+
+export type WorkloadGuide = {
+  workload: string;
+  market_direction: string;
+  representative_models: GuideModel[];
+  decision_factors: string[];
+};
+
+export type VendorProfile = { vendor: string; synthesis: string };
+
+export type MaturityEntry = { category: string; stage: string; justification: string };
 
 export type Disputed = {
   question: string;
@@ -55,7 +76,7 @@ export type Model = {
   market_reputation?: string | null;
   reputation_shift?: string | null;
   disputed?: Disputed[] | null;
-  google_equivalents?: GoogleMapping[] | null;
+  alternatives?: Alternative[] | null;
   sources?: Source[] | null;
   last_verified?: string | null;
   note?: string | null;
@@ -83,6 +104,9 @@ export type Meta = {
   confidence_levels: Record<string, string>;
   dimensions?: Dimension[];
   dimensions_note?: string;
+  workload_guides?: WorkloadGuide[];
+  vendor_profiles?: VendorProfile[];
+  maturity?: MaturityEntry[];
 };
 
 export type Dataset = { meta: Meta; models: Model[] };

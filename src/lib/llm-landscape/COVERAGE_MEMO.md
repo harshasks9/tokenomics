@@ -227,3 +227,80 @@ Post-pass totals: 178 models (24 / 20 / 134), 55 mapping rows (5 null-Google),
 26 lineage families. Remaining single-source items after this pass: Grok 4.6
 pricing, the Gemini 3.6 Flash July-21 day (kept at month precision), and the
 May-vs-July gemini-embedding-001 GA nuance.
+
+## 9. Analyst pivot (2026-08-22): universe expansion + de-biased schema
+
+The dataset's charter changed from "honest Google equivalence" to a
+vendor-neutral advisory. This section is the audit trail for both halves.
+
+### 9a. Expansion (six research passes)
+
+Totals moved from 178 models (24 T1 / 20 T2 / 134 T3) to **276 models
+(30 T1 / 44 T2 / 202 T3)**, 43 families with ≥2 members. New coverage:
+
+- **US platform vendors** — Amazon Nova (incl. the July 2026 wind-down:
+  Premier EOL 2026-09-14, Canvas/Reel 2026-09-30, Nova 2 Omni halted),
+  IBM Granite (4.1 T2), NVIDIA Nemotron (3 Ultra T2 — best US open weights
+  per Artificial Analysis, behind Kimi K2.6), plus honest dead-line stubs
+  for DBRX (retired 2025-04) and Snowflake Arctic (deprecated 2026-04).
+- **Enterprise independents** — Cohere Command line (Command A+ T2:
+  Apache 2.0 flagship, a Western-enterprise licensing first), the
+  Embed 4 + Rerank 4 retrieval pair, AI21 Jamba (1.5 T2 with the
+  RULER-validated long-context claim; no Jamba 2 exists), Microsoft MAI
+  fleet (10 stubs + MAI-Code-1-Flash T2; Phi corrected — not ended by MAI).
+- **China wave 2** — Baidu ERNIE (5.1 T2, #4 LMArena Search Arena),
+  Tencent Hunyuan (HunyuanVideo T2 — license verified from LICENSE.txt as
+  Tencent Community License, *not* Apache despite press; Hy3 genuinely
+  Apache 2.0), MiniMax (M2 T2 MIT; M2.7's quiet post-IPO re-licensing
+  recorded), Yi stubs (01.AI pivoted from pre-training 2025-03).
+  StepFun cut on inclusion routes, not existence.
+- **Music / speech / search** — Suno v5 (T1; Warner settled, UMG/Sony
+  still litigating), Udio (T2, deprecated: downloads frozen since 2025-11
+  awaiting licensed relaunch), Whisper promoted to T2, Deepgram Nova-3 T2,
+  Perplexity Sonar T2 recorded *deprecated at snapshot* (endpoints retire
+  2026-09-27, 45 days post-snapshot).
+- **Embeddings / safety** — Voyage 3/4 (first production MoE embedder;
+  open-weights voyage-4-nano shares the embedding space), BGE-M3 T2,
+  Llama Guard 4 T2, ShieldGemma + Granite Guardian stubs.
+- **Promotions** — five records rebuilt as full T1: GPT-5.6 Sol,
+  Claude Opus 5, Mistral Large 3, Muse Glimmer, MAI-Thinking-1 (now with
+  BenchLM independent placement: #118/218 overall, #2 instruction
+  following). Six stubs promoted to T2 incl. GPT Image 2 (+242 Elo arena
+  lead per LMArena's official post — one aggregator said 1386; the
+  official number was taken and the conflict noted on the record).
+
+Evidence caveat, unchanged from earlier passes: the sandbox egress proxy
+blocked nearly all direct page fetches during research, so most new
+citations are search-snippet-level rather than fetched-page level. This is
+disclosed here rather than silently graded up; each record's per-claim
+grades were assigned accordingly (fetched primary texts, e.g.
+HunyuanVideo's LICENSE.txt and NVIDIA's RULER repo, are the exceptions).
+
+### 9b. De-bias: google_equivalents → alternatives + workload_guides
+
+- `google_equivalents` is deleted dataset-wide. The validator now **errors**
+  if the key reappears.
+- Replacement 1: per-record `alternatives` (191 rows across all 74 T1/T2
+  records) — vendor-neutral nearest alternatives with symmetric
+  `trade_offs` ("both ways" — what each direction of the switch costs).
+  The concession research from the Google-mapping era was migrated into
+  these rows where it survived scrutiny, not discarded.
+- Replacement 2: `meta.workload_guides` — 11 buyer's guides (one per
+  workload, music-generation added), each with market_direction, a 3–5
+  model shortlist carrying choose_when / avoid_when / trade_offs, and 3–5
+  decision factors. ≥⅓ of guides include an open-weights option
+  (validator-enforced).
+- `meta.vendor_profiles` (21) and `meta.maturity` (10 categories staged
+  emerging → commodity) added; every synthesis is labeled
+  analyst-inference in the UI.
+- **Structural-default audit** (validator-computed): the most-targeted
+  vendor across all alternatives rows is Google at **22%** — under the 35%
+  watch threshold and far under the 45% error bar. Next: OpenAI 13%,
+  Anthropic 13%. No vendor is the house answer.
+- Seller-framing sweep (`seller / field sell / sales motion / honest
+  Google / Google bias|answer|pitch`): zero hits in prose (URLs excluded).
+- Neutral charter: meta.purpose / disclaimer / confidence_levels rewritten;
+  title is now "LLM Landscape — independent model advisory".
+
+Legacy URLs with `view=compare` decode to the Advisor view; `sel`/`cmp`
+params carry over.

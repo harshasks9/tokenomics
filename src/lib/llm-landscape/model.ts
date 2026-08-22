@@ -100,21 +100,6 @@ export function fmtTokens(n: number | null | undefined): string {
   return String(n);
 }
 
-/** Resolve a mapping's google_model display string to a dataset record. */
-export function resolveGoogleRecord(googleModel: string | null, models: Model[]): Model | null {
-  if (!googleModel) return null;
-  const hay = googleModel.toLowerCase();
-  const googles = models.filter((m) => m.vendor.toLowerCase().startsWith("google"));
-  let best: Model | null = null;
-  for (const m of googles) {
-    const name = m.name.toLowerCase();
-    if (hay.includes(name)) {
-      if (!best || name.length > best.name.length) best = m;
-    }
-  }
-  return best;
-}
-
 export function claimsFor(m: Model): { field: string; claim: Claim }[] {
   const out: { field: string; claim: Claim }[] = [];
   for (const field of ["known_for", "best_use_cases", "weaknesses"] as const) {
@@ -174,7 +159,7 @@ export function assignDimensions<T extends { text: string }>(
 }
 
 /** ---------- URL state ---------- */
-export type ViewId = "timeline" | "families" | "compare";
+export type ViewId = "timeline" | "families" | "advisor" | "maturity";
 
 export type UiState = {
   view: ViewId;
@@ -185,8 +170,10 @@ export type UiState = {
   workload: string | null;
   years: [number, number] | null;
   tiers: number[];
-  sel: string | null; // selected model id (detail pane)
-  cmp: string | null; // workload id for compare view
+  sel: string | null; // selected model id (detail pane / advisor model A)
+  b: string | null; // advisor head-to-head model B
+  cmp: string | null; // workload id focused in the advisor guides
+  vnd: string | null; // vendor profile drawer
 };
 
 export const DEFAULT_STATE: UiState = {
@@ -199,7 +186,9 @@ export const DEFAULT_STATE: UiState = {
   years: null,
   tiers: [],
   sel: null,
+  b: null,
   cmp: null,
+  vnd: null,
 };
 
 export function decodeState(search: string): UiState {
@@ -211,9 +200,16 @@ export function decodeState(search: string): UiState {
     const [a, b] = yr.split("-").map(Number);
     years = [Math.min(a, b), Math.max(a, b)];
   }
-  const view = p.get("view");
+  const raw = p.get("view");
+  // pre-pivot links used view=compare; the advisor absorbs them
+  const view: ViewId =
+    raw === "families" || raw === "advisor" || raw === "maturity"
+      ? raw
+      : raw === "compare"
+        ? "advisor"
+        : "timeline";
   return {
-    view: view === "families" || view === "compare" ? view : "timeline",
+    view,
     q: p.get("q") ?? "",
     vendors: list("v"),
     access: list("a"),
@@ -222,7 +218,9 @@ export function decodeState(search: string): UiState {
     years,
     tiers: list("t").map(Number).filter((n) => [1, 2, 3].includes(n)),
     sel: p.get("sel"),
+    b: p.get("b"),
     cmp: p.get("cmp"),
+    vnd: p.get("vnd"),
   };
 }
 
@@ -237,7 +235,9 @@ export function encodeState(s: UiState): string {
   if (s.years) p.set("y", `${s.years[0]}-${s.years[1]}`);
   if (s.tiers.length) p.set("t", s.tiers.join(","));
   if (s.sel) p.set("sel", s.sel);
+  if (s.b) p.set("b", s.b);
   if (s.cmp) p.set("cmp", s.cmp);
+  if (s.vnd) p.set("vnd", s.vnd);
   const q = p.toString();
   return q ? `?${q}` : "";
 }
@@ -256,7 +256,7 @@ export function applyFilters(data: Dataset, s: UiState): Model[] {
       if (!mods.includes(s.modality)) return false;
     }
     if (s.workload) {
-      const rows = m.google_equivalents ?? [];
+      const rows = m.alternatives ?? [];
       if (!rows.some((r) => r.workload === s.workload)) return false;
     }
     if (s.years) {

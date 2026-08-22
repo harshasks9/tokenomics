@@ -14,11 +14,13 @@ import {
   vendorGroup,
   vendorHue,
 } from "@/lib/llm-landscape/model";
-import Compare from "./Compare";
+import Advisor from "./Advisor";
 import Detail from "./Detail";
 import Families from "./Families";
+import Maturity from "./Maturity";
 import Timeline from "./Timeline";
-import { Released, TierTag, setGradeDefs } from "./ui";
+import VendorDrawer from "./VendorDrawer";
+import { TierTag, setGradeDefs } from "./ui";
 
 const DATA_URL = "/llm-landscape/models.json";
 
@@ -59,7 +61,11 @@ export default function Site() {
   const facetsRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const searchBoxRef = useRef<HTMLDivElement>(null);
-  const prevOverlay = useRef<{ sel: string | null; view: string }>({ sel: null, view: "timeline" });
+  const prevOverlay = useRef<{ sheet: boolean; vnd: string | null; view: string }>({
+    sheet: false,
+    vnd: null,
+    view: "timeline",
+  });
   const popping = useRef(false);
 
   useEffect(() => {
@@ -75,15 +81,18 @@ export default function Site() {
       .catch((e) => setError(String(e)));
   }, []);
 
-  // state -> URL. Opening an overlay (record sheet / compare) pushes a history
-  // entry so browser Back closes it; everything else replaces.
+  // state -> URL. Opening an overlay (record sheet / vendor drawer / advisor
+  // head-to-head) pushes a history entry so browser Back closes it; everything
+  // else replaces.
   useEffect(() => {
     const next = `${window.location.pathname}${encodeState(state)}`;
     const cur = `${window.location.pathname}${window.location.search}`;
     if (cur !== next) {
+      const sheet = Boolean(state.sel && state.view !== "advisor");
       const openedOverlay =
-        (state.sel && !prevOverlay.current.sel) ||
-        (state.view === "compare" && prevOverlay.current.view !== "compare");
+        (sheet && !prevOverlay.current.sheet) ||
+        (state.vnd && !prevOverlay.current.vnd) ||
+        (state.view === "advisor" && prevOverlay.current.view !== "advisor");
       if (!popping.current && openedOverlay) {
         window.history.pushState(null, "", next);
       } else if (!popping.current) {
@@ -91,7 +100,11 @@ export default function Site() {
       }
     }
     popping.current = false;
-    prevOverlay.current = { sel: state.sel, view: state.view };
+    prevOverlay.current = {
+      sheet: Boolean(state.sel && state.view !== "advisor"),
+      vnd: state.vnd,
+      view: state.view,
+    };
   }, [state]);
 
   useEffect(() => {
@@ -114,7 +127,9 @@ export default function Site() {
       } else if (e.key === "Escape") {
         setOpenFacet(null);
         setSearchOpen(false);
-        setState((s) => (s.sel && s.view !== "compare" ? { ...s, sel: null } : s));
+        setState((s) =>
+          s.vnd ? { ...s, vnd: null } : s.sel && s.view !== "advisor" ? { ...s, sel: null } : s,
+        );
       }
     };
     document.addEventListener("keydown", onKey);
@@ -151,14 +166,14 @@ export default function Site() {
   );
   const sheetIdx = selected ? sheetList.findIndex((m) => m.id === selected.id) : -1;
 
-  // Lock body scroll while the sheet is open.
+  // Lock body scroll while a side pane (record sheet / vendor drawer) is open.
   useEffect(() => {
-    const open = Boolean(selected && state.view !== "compare");
+    const open = Boolean((selected && state.view !== "advisor") || state.vnd);
     document.documentElement.style.overflow = open ? "hidden" : "";
     return () => {
       document.documentElement.style.overflow = "";
     };
-  }, [selected, state.view]);
+  }, [selected, state.view, state.vnd]);
 
   const countsFor = useCallback(
     (facet: FacetKey): Map<string, number> => {
@@ -179,7 +194,7 @@ export default function Site() {
                 : []
               : facet === "tiers"
                 ? [String(m.tier)]
-                : (m.google_equivalents ?? []).map((r) => r.workload);
+                : (m.alternatives ?? []).map((r) => r.workload);
         for (const k of keys) counts.set(k, (counts.get(k) ?? 0) + 1);
       }
       return counts;
@@ -210,7 +225,7 @@ export default function Site() {
       <div className="shell">
         <HeaderShell>
           <nav className="seg" aria-hidden>
-            {["Timeline", "Families", "Compare"].map((l) => (
+            {["Timeline", "Families", "Advisor", "Maturity"].map((l) => (
               <button key={l} className="seg-btn" disabled>
                 {l}
               </button>
@@ -282,9 +297,10 @@ export default function Site() {
   for (const t of state.tiers) chips.push({ label: `Tier ${t}`, onRemove: () => toggleList("tiers", t) });
 
   const compareCandidates = (filtered.length && (state.q || chips.length) ? filtered : data.models)
-    .filter((m) => (m.google_equivalents?.length ?? 0) > 0)
+    .filter((m) => m.tier < 3)
     .sort(byReleaseAsc)
     .reverse();
+  const modelB = state.b ? (data.models.find((m) => m.id === state.b) ?? null) : null;
 
   // Search-jump results: records first, then stubs.
   const q = state.q.trim().toLowerCase();
@@ -297,7 +313,7 @@ export default function Site() {
 
   const openSearchResult = (m: Model) => {
     setSearchOpen(false);
-    if (m.tier < 3) update({ sel: m.id, view: state.view === "compare" ? "compare" : state.view });
+    if (m.tier < 3) update({ sel: m.id });
     else setToast(`${m.name} is a lineage stub — no full record. ${m.note ?? ""}`.slice(0, 140));
     if (m.tier === 3) setTimeout(() => setToast(null), 3200);
   };
@@ -306,11 +322,8 @@ export default function Site() {
     total: data.models.length,
     t1: data.models.filter((m) => m.tier === 1).length,
     open: data.models.filter((m) => m.access === "open-weights").length,
-    mappings: data.models.reduce((n, m) => n + (m.google_equivalents?.length ?? 0), 0),
-    gaps: data.models.reduce(
-      (n, m) => n + (m.google_equivalents ?? []).filter((r) => r.google_model === null).length,
-      0,
-    ),
+    guides: data.meta.workload_guides?.length ?? 0,
+    categories: data.meta.maturity?.length ?? 0,
   };
 
   const facetDefs: {
@@ -341,7 +354,7 @@ export default function Site() {
     {
       key: "workload",
       label: "Workload",
-      caption: "Models with a Google-equivalent mapping for this workload",
+      caption: "Models with an analyst alternatives entry for this workload",
       options: data.meta.workloads.map((w) => ({ value: w.id, label: w.label })),
       active: state.workload ? 1 : 0,
       isOn: (v) => state.workload === v,
@@ -425,7 +438,8 @@ export default function Site() {
             [
               ["timeline", "Timeline"],
               ["families", "Families"],
-              ["compare", "Compare"],
+              ["advisor", "Advisor"],
+              ["maturity", "Maturity"],
             ] as const
           ).map(([id, label]) => (
             <button
@@ -553,13 +567,13 @@ export default function Site() {
                 <b>{stats.open}</b>
                 <span>open-weights models</span>
               </button>
-              <button className="tile" onClick={() => update({ view: "compare" })}>
-                <b>{stats.mappings}</b>
-                <span>Google mappings</span>
+              <button className="tile" onClick={() => update({ view: "advisor", sel: null, b: null })}>
+                <b>{stats.guides}</b>
+                <span>buyer&apos;s guides</span>
               </button>
-              <button className="tile tile-gap" onClick={() => update({ view: "compare" })}>
-                <b>{stats.gaps}</b>
-                <span>honest “no equivalent”</span>
+              <button className="tile" onClick={() => update({ view: "maturity" })}>
+                <b>{stats.categories}</b>
+                <span>categories rated</span>
               </button>
             </div>
             {filtered.length === 0 ? (
@@ -573,6 +587,7 @@ export default function Site() {
                 snapshot={data.meta.snapshot_date}
                 onSelect={(id) => update({ sel: id })}
                 onApplyYears={(range) => update({ years: range })}
+                onVendor={(v) => update({ vnd: v })}
               />
             )}
           </>
@@ -585,75 +600,56 @@ export default function Site() {
             onSelect={(id) => update({ sel: id })}
           />
         )}
-        {state.view === "compare" &&
-          (selected ? (
-            <Compare
-              model={selected}
-              workload={state.cmp}
-              data={data}
-              candidates={compareCandidates}
-              onChangeWorkload={(w) => update({ cmp: w })}
-              onChangeModel={(id) => update({ sel: id, cmp: null })}
-              onOpenRecord={(id) => update({ view: "timeline", sel: id })}
-            />
-          ) : (
-            <div className="picker">
-              <h3>Pick the model you run today</h3>
-              <p className="picker-sub">
-                Each opens a side-by-side against its honest Google equivalent, per workload.
-                {chips.length > 0 && " Respecting your active filters."}
-              </p>
-              {(() => {
-                const groups = new Map<string, Model[]>();
-                for (const m of compareCandidates) {
-                  const g = vendorGroup(m.vendor);
-                  if (!groups.has(g)) groups.set(g, []);
-                  groups.get(g)!.push(m);
-                }
-                return [...groups.entries()].map(([g, ms]) => (
-                  <section key={g} className="picker-group">
-                    <h4 className="picker-vendor">
-                      <i className="dot" style={{ background: vendorHue(g) }} aria-hidden />
-                      {g}
-                    </h4>
-                    <div className="picker-grid">
-                      {ms.map((m) => (
-                        <button
-                          key={m.id}
-                          className="picker-card"
-                          onClick={() => update({ sel: m.id, cmp: m.google_equivalents![0].workload })}
-                        >
-                          <span className="picker-name">{m.name}</span>
-                          <span className="picker-meta">
-                            <TierTag tier={m.tier} /> <Released model={m} />
-                          </span>
-                          <span className="picker-workloads">
-                            {(m.google_equivalents ?? []).map((r) => wlLabel(r.workload)).join(" · ")}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </section>
-                ));
-              })()}
-            </div>
-          ))}
+        {state.view === "advisor" && (
+          <Advisor
+            data={data}
+            a={selected}
+            b={modelB}
+            workload={state.cmp}
+            candidates={compareCandidates}
+            onChangeA={(id) => update({ sel: id })}
+            onChangeB={(id) => update({ b: id })}
+            onPickWorkload={(w) => update({ cmp: w })}
+            onOpenRecord={(id) => update({ view: "timeline", sel: id })}
+            onExitCompare={() => update({ sel: null, b: null })}
+          />
+        )}
+        {state.view === "maturity" && <Maturity data={data} onVendor={(v) => update({ vnd: v })} />}
       </main>
 
-      {selected && state.view !== "compare" && (
+      {selected && state.view !== "advisor" && (
         <>
           <div className="scrim" onClick={() => update({ sel: null })} aria-hidden />
           <Detail
             model={selected}
             data={data}
             onClose={() => update({ sel: null })}
-            onCompare={(w) => update({ view: "compare", cmp: w })}
+            onHeadToHead={(bId, w) => update({ view: "advisor", b: bId, cmp: w })}
             onJump={(id) => update({ sel: id })}
+            onVendor={(v) => update({ vnd: v })}
             onPrev={sheetIdx > 0 ? () => update({ sel: sheetList[sheetIdx - 1].id }) : undefined}
             onNext={
               sheetIdx >= 0 && sheetIdx < sheetList.length - 1
                 ? () => update({ sel: sheetList[sheetIdx + 1].id })
                 : undefined
+            }
+          />
+        </>
+      )}
+
+      {state.vnd && (
+        <>
+          <div className="scrim" onClick={() => update({ vnd: null })} aria-hidden />
+          <VendorDrawer
+            vendor={state.vnd}
+            data={data}
+            onClose={() => update({ vnd: null })}
+            onSelect={(id) =>
+              update({
+                vnd: null,
+                sel: id,
+                view: state.view === "advisor" ? "timeline" : state.view,
+              })
             }
           />
         </>
