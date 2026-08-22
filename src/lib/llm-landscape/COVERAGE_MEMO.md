@@ -187,5 +187,43 @@ recalled from training memory:
 | Tier-1 count within 18–24 | **Pass** — 24 (Tier-2 at 20/20) |
 | Coverage memo lists unverified fields and conflicts | **Pass** — this document, §3–§5 |
 
-Validator: `0 errors, 1 warning` (the warning is gemini-embedding-001's
-honestly-null release date, which the UI should render as "not published").
+Validator: `0 errors, 0 warnings` after the second pass below.
+
+## 8. Second pass (2026-08-22, post-publish verification)
+
+A same-day verification sweep over the flagged single-source facts and the
+comprehensiveness gaps, per the publish instruction. Changes:
+
+- **Microsoft added — the one real coverage hole.** Build 2026 (2026-06-02)
+  launched seven first-party MAI models, ending Microsoft's OpenAI-reseller
+  posture; an Azure-committed buyer would have found nothing here. Added
+  `mai-thinking-1` (Tier 2: ~1T/35B-active MoE, 256K ctx, vendor AIME 97.0,
+  public preview, Frontier Tuning pitch; all benchmarks self-reported —
+  flagged in-record) with a Google mapping row, plus a `phi-4` stub. To hold
+  the Tier-2 cap, **o3 was demoted to Tier 3** with its arc preserved in the
+  stub note — the least damaging trade since o1 and GPT-5 records carry the
+  o-series story and o3 exits ChatGPT four days after the snapshot.
+- **gemini-embedding-001 resolved**: GA July 2025 (Google's GA post; a May
+  2025 milestone appears in some trackers — noted in the claim) and the MTEB
+  Multilingual #1 (68.32) claim restored with URLs. §3's null is closed.
+- **Corroborations upgraded from single-source**: Gemini Omni Flash
+  ($0.10/s, 720p/24fps, 3–10s, API 2026-06-30 — multiple trackers);
+  Nano Banana 2 (2026-02-26 via Google's own posts; AA Image Arena #1 within
+  hours at ~half NB Pro's price); Grok 4.5 ("trained alongside Cursor" is
+  vendor-confirmed under SpaceXAI branding; 500K ctx, $2/$6).
+- **Seedance corrected and expanded**: the thin `seedance-2` stub became
+  Seedance 2.0 (2026-02, ByteDance) with `seedance-1` and `seedance-2-5`
+  (2026-07-31; native 30s clips, 50 refs) stubs — and the video mapping
+  concessions now say plainly that Google's video lead is contested by
+  ByteDance, not just the departing Sora.
+- **OpenAI voice 2026 sourced**: GPT-Realtime-2 (2026-05-07) and
+  gpt-realtime-2.1 (2026-07-06) — new `gpt-realtime-2` stub; the voice
+  mapping rows now cite the documented GA-vs-preview maturity gap instead of
+  a generic claim.
+- **Checked, unchanged**: ElevenLabs lineup (v3 remains flagship; no v4),
+  Qwen3.6 record, GLM/Kimi 2026 dates, Sora shutdown chain.
+
+Post-pass totals: 178 models (24 / 20 / 134), 55 mapping rows (5 null-Google),
+26 lineage families. Remaining single-source items after this pass: Grok 4.6
+pricing, the Gemini 3.6 Flash July-21 day (kept at month precision), and the
+May-vs-July gemini-embedding-001 GA nuance.
