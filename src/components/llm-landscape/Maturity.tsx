@@ -68,7 +68,7 @@ export default function Maturity({
               {rows.map((e) => (
                 <article key={e.category} className="mat-card">
                   <h4>{e.category}</h4>
-                  <p>{e.justification}</p>
+                  <p className="judgment">{e.justification}</p>
                 </article>
               ))}
             </section>
