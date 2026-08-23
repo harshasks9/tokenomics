@@ -5,8 +5,8 @@ import type { CustomerProfile } from "@/lib/profiles/types";
 import type { LucideIcon } from "lucide-react";
 
 const MODELS = [
-  { name: "Flash-Lite", tagline: "Routine tasks", color: "#059669", price: "$0.25 / $1.50" },
-  { name: "Flash",      tagline: "Standard tasks", color: "#0284C7", price: "$1.50 / $9.00" },
+  { name: "Flash-Lite", tagline: "Routine tasks", color: "#059669", price: "$0.30 / $2.50" },
+  { name: "Flash",      tagline: "Standard tasks", color: "#0284C7", price: "$1.50 / $7.50" },
   { name: "Opus",       tagline: "Complex tasks",  color: "#7C3AED", price: "$5.00 / $25.00" },
 ];
 

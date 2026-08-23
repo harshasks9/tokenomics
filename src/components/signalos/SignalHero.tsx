@@ -13,9 +13,9 @@ const phases = [
 ];
 
 const modelCards = [
-  { name: "Claude Opus 4.8",       role: "Orchestrator — SLA disputes, architecture, churn", vendor: "Anthropic", aaScore: 89, color: SKY },
-  { name: "Gemini 3.5 Flash",      role: "Executor — provisioning, billing adapters, NOC",   vendor: "Google",    aaScore: 81, color: "#1A73E8" },
-  { name: "Gemini 3.1 Flash-Lite", role: "Routine — status lookups, CRUD, tests, docs",      vendor: "Google",    aaScore: 68, color: "#188038" },
+  { name: "Claude Opus 5",       role: "Orchestrator — SLA disputes, architecture, churn", vendor: "Anthropic", aaScore: 63, color: SKY },
+  { name: "Gemini 3.7 Flash",      role: "Executor — provisioning, billing adapters, NOC",   vendor: "Google",    aaScore: 56, color: "#1A73E8" },
+  { name: "Gemini 3.5 Flash-Lite", role: "Routine — status lookups, CRUD, tests, docs",      vendor: "Google",    aaScore: 36, color: "#188038" },
 ];
 
 export default function SignalHero() {
@@ -90,7 +90,7 @@ export default function SignalHero() {
 
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
           className="mt-6 text-[10px] text-white/20">
-          AA scores from Artificial Analysis Intelligence Index (Jun 2026). Higher = stronger reasoning.
+          AA scores from Artificial Analysis Intelligence Index (v4.1.1, Aug 2026). Higher = stronger reasoning.
         </motion.p>
       </div>
     </section>

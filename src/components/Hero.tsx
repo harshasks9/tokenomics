@@ -11,10 +11,10 @@ const phases = [
 ];
 
 const MODELS = [
-  { name: "Claude Opus 4.8",       role: "Architecture, judgment, final review", price: "$5 / $25 per 1M", color: "#A78BFA", badge: "Keep for the hard work", highlight: true },
-  { name: "Gemini 3.5 Flash",      role: "Fast execution and multimodal work", price: "$1.50 / $9 per 1M", color: "#1A73E8", badge: "Replace Sonnet here" },
-  { name: "Gemini 3.1 Flash-Lite", role: "High-volume lookups and transforms", price: "$0.25 / $1.50 per 1M", color: "#00ACC1", badge: "Cheapest bounded work" },
-  { name: "Claude Sonnet 4.6",     role: "The conventional mid-tier pairing", price: "$3 / $15 per 1M", color: "#94A3B8", badge: "Comparison baseline", baseline: true },
+  { name: "Claude Opus 5",       role: "Architecture, judgment, final review", price: "$5 / $25 per 1M", color: "#A78BFA", badge: "Keep for the hard work", highlight: true },
+  { name: "Gemini 3.7 Flash",      role: "Fast execution and multimodal work", price: "$1.50 / $7.50 per 1M", color: "#1A73E8", badge: "Replace Sonnet here" },
+  { name: "Gemini 3.5 Flash-Lite", role: "High-volume lookups and transforms", price: "$0.30 / $2.50 per 1M", color: "#00ACC1", badge: "Cheapest bounded work" },
+  { name: "Claude Sonnet 5",     role: "The conventional mid-tier pairing", price: "$2 / $10 per 1M", color: "#94A3B8", badge: "Comparison baseline", baseline: true },
 ];
 
 export default function Hero() {
@@ -143,8 +143,8 @@ export default function Hero() {
           transition={{ delay: 1.2 }}
           className="mt-4 text-[10px] text-gray-600 max-w-5xl"
         >
-          Gemini 3.1 Pro scores 92 on the Artificial Analysis (AA) Intelligence Index vs Claude Opus 4.8 at 89.
-          AA Intelligence Index scores as of Q2 2026. See <span className="underline underline-offset-2">artificialanalysis.ai</span> for current rankings.
+          Claude Opus 5 leads the Artificial Analysis (AA) Intelligence Index at 63; Gemini 3.7 Flash is Google&apos;s strongest at 56 — at a fraction of the price.
+          AA Intelligence Index scores as of Aug 23, 2026. See <span className="underline underline-offset-2">artificialanalysis.ai</span> for current rankings.
         </motion.p>
 
         {/* Scroll indicator */}

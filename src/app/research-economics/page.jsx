@@ -20,10 +20,10 @@ const A_LIGHT = "linear-gradient(90deg,#0891b2,#7c3aed,#ea580c)";
 
 /* ---------- model fleet (real version names; illustrative economics) ---------- */
 const MODELS = {
-  Opus:           { label: "Opus 4.8",        tier: "Frontier",  rate: 30.0, quality: 98, lat: 1.40, c: "#a78bfa", cL: "#7c3aed" },
+  Opus:           { label: "Opus 5",        tier: "Frontier",  rate: 30.0, quality: 98, lat: 1.40, c: "#a78bfa", cL: "#7c3aed" },
   "GPT-5.5":      { label: "GPT-5.5",         tier: "Frontier",  rate: 12.0, quality: 92, lat: 1.20, c: "#22d3ee", cL: "#0891b2" },
-  Sonnet:         { label: "Sonnet 4.6",      tier: "Mid",       rate: 6.0,  quality: 80, lat: 1.00, c: "#5eead4", cL: "#0d9488" },
-  "Gemini Flash": { label: "Gemini Flash 3.5",tier: "Efficient", rate: 0.6,  quality: 62, lat: 0.50, c: "#fb923c", cL: "#ea580c" },
+  Sonnet:         { label: "Sonnet 5",      tier: "Mid",       rate: 6.0,  quality: 80, lat: 1.00, c: "#5eead4", cL: "#0d9488" },
+  "Gemini Flash": { label: "Gemini Flash 3.7",tier: "Efficient", rate: 0.6,  quality: 62, lat: 0.50, c: "#fb923c", cL: "#ea580c" },
 };
 
 /* ---------- six research stages ---------- */
@@ -61,17 +61,17 @@ const STAGES = [
    Six explicit model slots, one per stage.
    Stage order: Planning · Acquisition · Deep Research · Synthesis · Presentation · Evaluation */
 const ORCH = [
-  { id: "C1", name: "Frontier Premium",       blurb: "Opus 4.8 on every stage — the quality ceiling, and the most expensive way to run the task.",
+  { id: "C1", name: "Frontier Premium",       blurb: "Opus 5 on every stage — the quality ceiling, and the most expensive way to run the task.",
     seq: ["Opus", "Opus", "Opus", "Opus", "Opus", "Opus"] },
-  { id: "C2", name: "Balanced Claude",        blurb: "Opus 4.8 on the reasoning stages, Sonnet 4.6 on acquisition and the deck. An all-Claude tiered stack.",
+  { id: "C2", name: "Balanced Claude",        blurb: "Opus 5 on the reasoning stages, Sonnet 5 on acquisition and the deck. An all-Claude tiered stack.",
     seq: ["Opus", "Sonnet", "Opus", "Opus", "Sonnet", "Opus"] },
-  { id: "C3", name: "Lean Frontier (Claude)", blurb: "Opus 4.8 reasoning, Gemini Flash 3.5 on the routine stages. The recommended balance of cost and quality.",
+  { id: "C3", name: "Lean Frontier (Claude)", blurb: "Opus 5 reasoning, Gemini Flash 3.7 on the routine stages. The recommended balance of cost and quality.",
     seq: ["Opus", "Gemini Flash", "Opus", "Opus", "Gemini Flash", "Opus"] },
   { id: "C4", name: "GPT-5.5 Baseline",       blurb: "GPT-5.5 on every stage — a single-vendor frontier baseline for comparison.",
     seq: ["GPT-5.5", "GPT-5.5", "GPT-5.5", "GPT-5.5", "GPT-5.5", "GPT-5.5"] },
-  { id: "C5", name: "Economy Floor",          blurb: "Gemini Flash 3.5 on every stage — the cost floor, included to show what reasoning quality costs you.",
+  { id: "C5", name: "Economy Floor",          blurb: "Gemini Flash 3.7 on every stage — the cost floor, included to show what reasoning quality costs you.",
     seq: ["Gemini Flash", "Gemini Flash", "Gemini Flash", "Gemini Flash", "Gemini Flash", "Gemini Flash"] },
-  { id: "C6", name: "Lean Frontier (GPT)",    blurb: "GPT-5.5 reasoning, Gemini Flash 3.5 on the routine stages. The same lean pattern with a GPT brain — no Anthropic.",
+  { id: "C6", name: "Lean Frontier (GPT)",    blurb: "GPT-5.5 reasoning, Gemini Flash 3.7 on the routine stages. The same lean pattern with a GPT brain — no Anthropic.",
     seq: ["GPT-5.5", "Gemini Flash", "GPT-5.5", "GPT-5.5", "Gemini Flash", "GPT-5.5"] },
 ];
 
@@ -864,7 +864,7 @@ export default function App() {
           </Reveal>
           <Reveal delay={0.24}>
             <div style={{ marginTop: 30, display: "flex", flexWrap: "wrap", gap: "10px 26px", fontSize: 13, color: D.faint, fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.04em" }}>
-              <span>3 experiments</span><span>·</span><span>6 orchestrators</span><span>·</span><span>4 models · Opus 4.8 / GPT-5.5 / Sonnet 4.6 / Gemini Flash 3.5</span>
+              <span>3 experiments</span><span>·</span><span>6 orchestrators</span><span>·</span><span>4 models · Opus 5 / GPT-5.5 / Sonnet 5 / Gemini Flash 3.7</span>
             </div>
           </Reveal>
         </div>

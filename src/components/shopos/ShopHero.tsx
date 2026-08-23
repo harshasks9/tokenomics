@@ -11,10 +11,10 @@ const phases = [
 ];
 
 const MODELS = [
-  { name: "Claude Opus 4.8",       role: "Pricing, fraud, architecture", price: "$5 / $25", color: "#A78BFA", badge: "Complex (15%)", highlight: true },
-  { name: "Gemini 3.5 Flash",      role: "Features and multimodal", price: "$1.50 / $9", color: "#1A73E8", badge: "Mid (30%)" },
-  { name: "Gemini 3.1 Flash-Lite", role: "Lookups and scaffolding", price: "$0.25 / $1.50", color: "#00ACC1", badge: "Routine (55%)" },
-  { name: "Claude Sonnet 4.6",     role: "Conventional executor tier", price: "$3 / $15", color: "#94A3B8", badge: "Baseline", baseline: true },
+  { name: "Claude Opus 5",       role: "Pricing, fraud, architecture", price: "$5 / $25", color: "#A78BFA", badge: "Complex (15%)", highlight: true },
+  { name: "Gemini 3.7 Flash",      role: "Features and multimodal", price: "$1.50 / $7.50", color: "#1A73E8", badge: "Mid (30%)" },
+  { name: "Gemini 3.5 Flash-Lite", role: "Lookups and scaffolding", price: "$0.30 / $2.50", color: "#00ACC1", badge: "Routine (55%)" },
+  { name: "Claude Sonnet 5",     role: "Conventional executor tier", price: "$2 / $10", color: "#94A3B8", badge: "Baseline", baseline: true },
 ];
 
 export default function ShopHero() {
@@ -119,8 +119,8 @@ export default function ShopHero() {
         {/* AA citation footnote */}
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 1.1 }}
           className="mt-6 text-[10px] text-gray-600 max-w-5xl">
-          Gemini 3.1 Pro scores 92 on the Artificial Analysis (AA) Intelligence Index vs Claude Opus 4.8 at 89.
-          AA Intelligence Index scores as of Q2 2026. See <span className="underline underline-offset-2">artificialanalysis.ai</span> for current rankings.
+          Claude Opus 5 leads the Artificial Analysis (AA) Intelligence Index at 63; Gemini 3.7 Flash is Google&apos;s strongest at 56 — at a fraction of the price.
+          AA Intelligence Index scores as of Aug 23, 2026. See <span className="underline underline-offset-2">artificialanalysis.ai</span> for current rankings.
         </motion.p>
       </div>
     </section>
