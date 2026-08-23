@@ -64,7 +64,7 @@ export default function Ledger() {
 
   const csvRows = () => [
     ["MODELCOMP — release ledger"],
-    ["Compiled", "Aug 2, 2026"],
+    ["Compiled", "Aug 3, 2026 · extended Aug 23, 2026"],
     ["Basis", "Artificial Analysis Intelligence Index, v4.1"],
     [],
     CSV_HEADER,
@@ -109,7 +109,7 @@ export default function Ledger() {
                   exportCsv(
                     [
                       ["MODELCOMP — release ledger (complete)"],
-                      ["Compiled", "Aug 2, 2026"],
+                      ["Compiled", "Aug 3, 2026 · extended Aug 23, 2026"],
                       ["Basis", "Artificial Analysis Intelligence Index, v4.1"],
                       [],
                       CSV_HEADER,

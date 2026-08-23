@@ -864,7 +864,7 @@ export default function App() {
           </Reveal>
           <Reveal delay={0.24}>
             <div style={{ marginTop: 30, display: "flex", flexWrap: "wrap", gap: "10px 26px", fontSize: 13, color: D.faint, fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.04em" }}>
-              <span>3 experiments</span><span>·</span><span>6 orchestrators</span><span>·</span><span>4 models · Opus 4.8 / GPT-5.5 / Sonnet 4.6 / Gemini Flash 3.5</span>
+              <span>3 experiments</span><span>·</span><span>6 orchestrators</span><span>·</span><span>4 models · Opus 4.8 / GPT-5.5 / Sonnet 4.6 / Gemini Flash 3.5</span><span>·</span><span>recorded runs — models and rates as at experiment time (mid-2026)</span>
             </div>
           </Reveal>
         </div>

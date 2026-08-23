@@ -44,7 +44,9 @@ function Hero() {
       <p className="mc-lede" style={{ marginTop: 20 }}>
         Every model that set the intelligence frontier in the past 12 months, against the Google
         flagship available at that moment. Google held or shared #1 for 62 of 366 days — then Gemini
-        3.5 Pro slipped three times while rivals raised the bar 15 points.
+        3.5 Pro slipped three times while rivals raised the bar 15 points. Update, Aug 13: Google’s
+        own Gemini 3.7 Flash closed the gap to 7 (56 vs Opus 5’s 63 on AA v4.1.1) — a workhorse
+        answer, with the flagship still unshipped.
       </p>
 
       <div className="mc-kpis" style={{ marginTop: 32 }}>

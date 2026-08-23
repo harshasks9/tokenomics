@@ -80,9 +80,9 @@ export default function HcHero() {
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.85 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
           {[
-            { name: "Claude Opus 4.8", role: "Frontier reasoning", price: "$5 / $25 per 1M tokens", color: "#7B61FF", badge: "Complex tasks" },
-            { name: "Gemini 3.5 Flash", role: "Fast, native multimodal", price: "$1.50 / $9 per 1M tokens", color: "#1A73E8", badge: "Standard tasks" },
-            { name: "Gemini 3.1 Flash-Lite", role: "High-volume routing", price: "$0.25 / $1.50 per 1M tokens", color: "#00ACC1", badge: "Simple lookups" },
+            { name: "Claude Opus 5", role: "Frontier reasoning", price: "$5 / $25 per 1M tokens", color: "#7B61FF", badge: "Complex tasks" },
+            { name: "Gemini 3.7 Flash", role: "Fast, native multimodal", price: "$1.50 / $7.50 per 1M tokens", color: "#1A73E8", badge: "Standard tasks" },
+            { name: "Gemini 3.5 Flash-Lite", role: "High-volume routing", price: "$0.30 / $2.50 per 1M tokens", color: "#00ACC1", badge: "Simple lookups" },
           ].map((m, i) => (
             <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/8 transition-colors">
               <div className="flex items-center gap-2 mb-3">

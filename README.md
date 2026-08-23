@@ -1,6 +1,6 @@
 # AI Tokenomics — Multi-Industry Demo
 
-Interactive scenarios built around one thesis: **Opus is superior for the hardest work, but you do not need Opus for everything.** Keep Opus on architecture, nuanced judgment, planning, and review. Route bounded execution to Gemini 3.5 Flash or Gemini 3.1 Flash-Lite.
+Interactive scenarios built around one thesis: **Opus is superior for the hardest work, but you do not need Opus for everything.** Keep Opus on architecture, nuanced judgment, planning, and review. Route bounded execution to Gemini 3.7 Flash or Gemini 3.5 Flash-Lite.
 
 ## Japanese mirror
 
@@ -17,13 +17,19 @@ Each scenario compares the recommended **Opus + Gemini** route with an **Opus + 
 
 ## Routes
 
-| Route | Industry | Status |
-|-------|----------|--------|
-| `/` | iOS springboard homepage | Live |
-| `/wealthai` | WealthAI — Wealth Management | Live |
-| `/shopos` | ShopOS — Retail Commerce | Live |
-| `/healthcare` | Healthcare — Clinical AI | Coming Soon |
-| `/brief` | AI Daily Brief — Top 10 AI news with Google Cloud lens ([docs](src/app/brief/README.md)) | Live |
+The portfolio is 31 experiences plus five static archive artifacts; the
+springboard homepage at `/` is the canonical index (updated Aug 23, 2026).
+
+| Group | Routes |
+|-------|--------|
+| Industry showcases | `/wealthai` `/shopos` `/pulseai` `/civicos` `/factoryos` `/signalos` `/research-economics` |
+| Model & market intelligence | `/llm-landscape` `/modelcomp` `/harness` `/earnings` `/finops` `/governance` `/fsi` `/brief` ([docs](src/app/brief/README.md)) `/gemini25` `/gemini-plus` `/glm-vs-gemini` |
+| Account & regional microsites | `/mizubank` `/samgico` `/ausretail` `/blinkmart` `/citizensai` `/korea` `/prudential` `/voice` `/onedesk` `/campus` `/natives` `/data` `/smc` `/agent-economics` |
+| Gated (unlisted) | `/options` `/offers` |
+| Static archive | `/deck` `/strategy` `/agentic` `/agents` `/casestudies` |
+
+Most subdomain hosts of `aitokenomics.app` map onto these routes via
+`src/proxy.ts` and `vercel.json`.
 
 ## Quick Start
 
@@ -113,33 +119,33 @@ src/
 
 All dollar figures across all industries are computed via `callCost(model, inTok, outTok)` — never hard-coded.
 
-### Current Model Pricing (June 2026 list rates)
+### Current Model Pricing (list rates verified August 23, 2026)
 
-| Model | Input / 1M tokens | Output / 1M tokens |
-|-------|-------------------|-------------------|
-| Claude Opus 4.8 | $5.00 | $25.00 |
-| Claude Sonnet 4.6 | $3.00 | $15.00 |
-| Gemini 3.1 Pro | $2.00 | $12.00 |
-| Gemini 3.5 Flash | $1.50 | $9.00 |
-| Gemini 3.1 Flash-Lite | $0.25 | $1.50 |
+| Model | Input / 1M tokens | Output / 1M tokens | Note |
+|-------|-------------------|-------------------|------|
+| Claude Opus 5 | $5.00 | $25.00 | AA Intelligence Index leader (63) |
+| Claude Sonnet 5 | $2.00 | $10.00 | Launch rate made permanent Aug 2026 |
+| Gemini 3.1 Pro | $2.00 | $12.00 | Preview · ≤200K-context tier |
+| Gemini 3.7 Flash | $1.50 | $7.50 | GA Aug 13, 2026 · intro $0.75/$3.75 through Dec 31, 2026 |
+| Gemini 3.5 Flash-Lite | $0.30 | $2.50 | Matches old 2.5 Flash pricing |
 
-## ShopOS Headline Savings (at default slider values)
+## Headline Savings
 
-| Scenario | Opus + Sonnet | Opus + Gemini | Savings |
-|----------|----------|--------|---------|
-| S1 Build (6mo, 12 devs) | ~$8.0K | ~$4.7K | ~41% |
-| S2 Assistant (annual, 15M/mo) | ~$2.92M | ~$1.09M | ~62% |
-| S3 Visual Search (annual, 8M/yr) | ~$560K | ~$416K | ~26% |
-| S4 Merch Agent (annual, 5K SKUs/night) | ~$1.11M | ~$747K | ~33% |
+All dollar figures on every site are computed at render time from
+`src/lib/pricing.ts`, so they move automatically when list prices change —
+hardcoded tables here kept drifting and have been retired. Representative
+ratios at the August 23, 2026 rates (ratios are volume-independent):
 
-## WealthAI Headline Savings
+| Site | Build (vs all-Opus) | Queries (vs Opus + Sonnet) |
+|------|--------------------:|---------------------------:|
+| WealthAI | ~42% | ~47% |
+| ShopOS | ~58% | ~47% |
+| SignalOS | ~52% | ~37% |
+| PulseAI / CivicOS / FactoryOS | ~38–63% | ~68–77% (vs all-Opus) |
 
-| Scenario | Opus + Sonnet | Opus + Gemini | Savings |
-|----------|-------------|--------|---------|
-| S1 Build (6mo) | ~$3.3K | ~$2.6K | ~21% |
-| S2 In-App (annual) | ~$778K | ~$294K | ~62% |
-| S3 Multimodal (annual, 2M/yr) | ~$170K | ~$127K | ~25% |
-| S4 Agent (annual @50K/night) | ~$10.7M | ~$7.2M | ~33% |
+Note: Claude Sonnet 5's August 2026 price cut ($2/$10, made permanent)
+compressed the "vs Opus + Sonnet" savings story relative to earlier README
+snapshots — the current figures above are the honest ones.
 
 ## Tech Stack
 

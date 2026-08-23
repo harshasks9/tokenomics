@@ -63,7 +63,7 @@ export default function ProfileStickyNav({ profile }: { profile: CustomerProfile
       {/* Footer */}
       <div className="mt-auto px-3">
         <div className="text-[10px] text-[#9AA0A6] leading-relaxed">
-          Pricing: June 2026 list rates
+          Pricing: Aug 2026 list rates
           <br />
           All data pre-seeded
         </div>

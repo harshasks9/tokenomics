@@ -242,7 +242,7 @@ export default function MainChart({
               </text>
               <text
                 className="mc-caption"
-                x={(PLOT.x("2026-04-23") + PLOT.x("2026-08-06")) / 2}
+                x={(PLOT.x("2026-04-23") + PLOT.x("2026-08-23")) / 2}
                 y={PLOT.y(51)}
                 textAnchor="middle"
                 fill="var(--trail)"

@@ -25,7 +25,7 @@ function roleIcon(role: PsAgentNode["role"]) {
 
 function NodePopover({ node, cfg, onClose }: { node: PsAgentNode; cfg: PsS4Config; onClose: () => void }) {
   const color = nodeColor(node, cfg);
-  const modelLabel = node.role !== "executor" ? "Claude Opus 4.8" : cfg === "allOpus" ? "Claude Opus 4.8" : "Gemini 3.5 Flash";
+  const modelLabel = node.role !== "executor" ? "Claude Opus 5" : cfg === "allOpus" ? "Claude Opus 5" : "Gemini 3.7 Flash";
   return (
     <motion.div
       initial={{ opacity: 0, y: 4, scale: 0.95 }}

@@ -107,9 +107,9 @@ export default function SignalRunScenario() {
                 transition={{ duration: 0.25 }}
                 className="space-y-3">
                 {([
-                  { key: "flashLite" as const, label: "Flash-Lite", color: TEAL,  model: "Gemini 3.1 Flash-Lite" },
-                  { key: "flash"     as const, label: "Flash",      color: BLUE,  model: "Gemini 3.5 Flash"      },
-                  { key: "opus"      as const, label: "Opus",       color: AMBER, model: "Claude Opus 4.8"       },
+                  { key: "flashLite" as const, label: "Flash-Lite", color: TEAL,  model: "Gemini 3.5 Flash-Lite" },
+                  { key: "flash"     as const, label: "Flash",      color: BLUE,  model: "Gemini 3.7 Flash"      },
+                  { key: "opus"      as const, label: "Opus",       color: AMBER, model: "Claude Opus 5"       },
                 ]).map((m) => (
                   <div key={m.key} className="rounded-xl border border-gray-200 bg-white p-4">
                     <div className="flex items-center justify-between mb-2">

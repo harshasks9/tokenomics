@@ -265,7 +265,7 @@ export const FRONTIER_STEP: StepPoint[] = [
   ["2026-05-28", 56],
   ["2026-06-09", 60],
   ["2026-07-24", 61],
-  ["2026-08-06", 61],
+  ["2026-08-23", 61],
 ];
 
 /** The Google Pro-line flagship available at each moment, stepAfter. */
@@ -273,7 +273,7 @@ export const GEMINI_FLAGSHIP_STEP: StepPoint[] = [
   ["2025-08-01", 30],
   ["2025-11-18", 40],
   ["2026-02-19", 46],
-  ["2026-08-06", 46],
+  ["2026-08-23", 46],
 ];
 
 export type FlashPoint = {
@@ -316,6 +316,14 @@ export const FLASH: FlashPoint[] = [
     s: 50,
     est: false,
     note: "GA Jul 21, alongside the Gemini 4 pretraining announcement",
+  },
+  {
+    d: "2026-08-13",
+    m: "Gemini 3.7 Flash",
+    s: 56,
+    est: false,
+    price: "$0.75 / $3.75 intro",
+    note: "AA v4.1.1 read (56 at effort high) — now Google's highest-scoring model, above the stalled 3.1 Pro flagship. Intro pricing to Dec 31; list $1.50 / $7.50 from Jan 1, 2027. Extension datapoint added Aug 23.",
   },
 ];
 
@@ -386,12 +394,12 @@ export const LABELLED_RIVALS = new Set([
 ]);
 
 /** Shared x-domain for both charts — the Flash chart aligns to the main one. */
-export const X_DOMAIN: [string, string] = ["2025-08-01", "2026-08-06"];
+export const X_DOMAIN: [string, string] = ["2025-08-01", "2026-08-23"];
 
 export const Y_DOMAIN_MAIN: [number, number] = [26, 65];
 export const Y_DOMAIN_FLASH: [number, number] = [22, 60];
 
-export const COMPILED_ON = "Aug 3, 2026";
+export const COMPILED_ON = "Aug 3, 2026 · extended Aug 23, 2026";
 
 export type Inflection = {
   n: number;
@@ -462,17 +470,18 @@ export const INFLECTIONS: Inflection[] = [
 
 export const KPIS = [
   {
-    figure: "−15",
+    figure: "−7",
     unit: "pts",
     label: "Gap to frontier today",
-    detail: "Opus 5 at 61 vs Gemini 3.1 Pro at 46",
+    detail:
+      "Opus 5 at 63 vs Gemini 3.7 Flash at 56 (both AA v4.1.1, Aug 23). Google's best is now its workhorse Flash; the flagship line on the chart still ends at 46 (v4.1 basis).",
     tone: "trail" as const,
   },
   {
-    figure: "165",
+    figure: "185",
     unit: "days",
     label: "Since Google's last flagship",
-    detail: "Gemini 3.1 Pro, Feb 19",
+    detail: "Gemini 3.1 Pro, Feb 19 — 3.7 Flash (Aug 13) is a workhorse, not a flagship",
     tone: "neutral" as const,
   },
   {
@@ -492,9 +501,9 @@ export const KPIS = [
 ];
 
 export const FLASH_CHIPS = [
-  { figure: "5 vs 1", text: "Flash releases vs flagship releases in 12 months" },
-  { figure: "50 > 46", text: "Flash now outscores Google's stalled flagship" },
-  { figure: "3×", text: "Flash price step-up: $0.50/$3 → $1.50/$9" },
+  { figure: "6 vs 1", text: "Flash releases vs flagship releases in 12 months" },
+  { figure: "56 > 46", text: "3.7 Flash now far outscores Google's stalled flagship" },
+  { figure: "3×→½", text: "Flash price step-up ($0.50/$3 → $1.50/$9) — then 3.7 Flash intro-priced at $0.75/$3.75" },
   { figure: "50–57", text: "Where the rival value tier sits, at or above Flash's 50" },
 ];
 
