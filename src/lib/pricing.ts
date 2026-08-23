@@ -1,9 +1,9 @@
 // Per 1,000,000 tokens. Source: vendor list pricing, verified August 23, 2026.
 // aaScore: Artificial Analysis Intelligence Index v4.1.1 (artificialanalysis.ai).
-// Notes: Gemini 3.7 Flash (GA Aug 14, 2026) is priced at its standard list rate —
+// Notes: Gemini 3.7 Flash (GA Aug 13, 2026) is priced at its standard list rate —
 // an intro rate of $0.75/$3.75 runs through Dec 31, 2026. Gemini 3.1 Pro remains
 // the top price-listed Pro (Preview; ≤200K-context tier shown). Claude Sonnet 5's
-// launch rate of $2/$10 was made permanent in August 2026 per press reports.
+// launch rate of $2/$10 was made permanent in August 2026 (confirmed on Anthropic's pricing docs).
 export const MODELS = {
   // ── Google Cloud Gemini ──────────────────────────────────────────────────
   geminiPro: { name: "Gemini 3.1 Pro",        vendor: "Google", inPM: 2.00, outPM: 12.00, aaScore: 48 },

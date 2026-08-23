@@ -265,7 +265,7 @@ export const FRONTIER_STEP: StepPoint[] = [
   ["2026-05-28", 56],
   ["2026-06-09", 60],
   ["2026-07-24", 61],
-  ["2026-08-06", 61],
+  ["2026-08-23", 61],
 ];
 
 /** The Google Pro-line flagship available at each moment, stepAfter. */
@@ -273,7 +273,7 @@ export const GEMINI_FLAGSHIP_STEP: StepPoint[] = [
   ["2025-08-01", 30],
   ["2025-11-18", 40],
   ["2026-02-19", 46],
-  ["2026-08-06", 46],
+  ["2026-08-23", 46],
 ];
 
 export type FlashPoint = {
@@ -318,12 +318,12 @@ export const FLASH: FlashPoint[] = [
     note: "GA Jul 21, alongside the Gemini 4 pretraining announcement",
   },
   {
-    d: "2026-08-14",
+    d: "2026-08-13",
     m: "Gemini 3.7 Flash",
     s: 56,
     est: false,
-    price: "$1.50 / $7.50 · intro $0.75 / $3.75 to Dec 31",
-    note: "AA v4.1.1 read (56 at effort high) — now Google's highest-scoring model, above the stalled 3.1 Pro flagship. Extension datapoint added Aug 23.",
+    price: "$0.75 / $3.75 intro",
+    note: "AA v4.1.1 read (56 at effort high) — now Google's highest-scoring model, above the stalled 3.1 Pro flagship. Intro pricing to Dec 31; list $1.50 / $7.50 from Jan 1, 2027. Extension datapoint added Aug 23.",
   },
 ];
 
@@ -481,7 +481,7 @@ export const KPIS = [
     figure: "185",
     unit: "days",
     label: "Since Google's last flagship",
-    detail: "Gemini 3.1 Pro, Feb 19 — 3.7 Flash (Aug 14) is a workhorse, not a flagship",
+    detail: "Gemini 3.1 Pro, Feb 19 — 3.7 Flash (Aug 13) is a workhorse, not a flagship",
     tone: "neutral" as const,
   },
   {

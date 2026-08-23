@@ -269,7 +269,7 @@ function CriticalCorrection() {
               { model: "Gemini 3.1 Flash-Lite", tier: "Flash-Lite", status: "GA", statusColor: GREEN, note: "~$0.25 input. 'Matches 2.5 Flash performance.' Default for simple high-volume." },
               { model: "Gemini 3.5 Flash-Lite", tier: "Flash-Lite", status: "GA (Jul 21)", statusColor: GREEN, note: "$0.30/$2.50 — exactly matches 2.5 Flash pricing. Successor to 3.1 Flash-Lite." },
               { model: "Gemini 3.6 Flash", tier: "Flash", status: "GA (Jul 21)", statusColor: GREEN, note: "$1.50/$7.50 — output cheaper than 3.5 Flash; no intelligence gain over it." },
-              { model: "Gemini 3.7 Flash", tier: "Flash", status: "GA (Aug 14)", statusColor: GREEN, note: "Google's strongest model today (AA 56). Intro $0.75/$3.75 to Dec 31, 2026; then $1.50/$7.50." },
+              { model: "Gemini 3.7 Flash", tier: "Flash", status: "GA (Aug 13)", statusColor: GREEN, note: "Google's strongest model today (AA 56). Intro $0.75/$3.75 to Dec 31, 2026; then $1.50/$7.50." },
               { model: "Gemini 3.1 Pro", tier: "Pro", status: "Preview", statusColor: AMBER, note: "Most-advanced Pro. Preview terms apply — weaker SLA, version pinning." },
               { model: "\"Gemini 3.5 Pro\"", tier: "Pro", status: "Not enterprise-listed", statusColor: RED, note: "Previewed at I/O 2026. Not on Agent Platform as of Jun 18. Do not design around it." },
             ].map((row) => (
@@ -336,7 +336,7 @@ function ModelLandscape() {
           <div className="space-y-3">
             {[
               { name: "3.5 Flash-Lite",  price: "$0.30 / $2.50",        note: "GA Jul 21 · matches 2.5 Flash pricing · simple high-volume", color: GREEN },
-              { name: "3.7 Flash",       price: "$0.75 / $3.75 intro",   note: "GA Aug 14 · Google's strongest (AA 56) · $1.50/$7.50 from Jan 2027", color: G_BLUE },
+              { name: "3.7 Flash",       price: "$0.75 / $3.75 intro",   note: "GA Aug 13 · Google's strongest (AA 56) · $1.50/$7.50 from Jan 2027", color: G_BLUE },
               { name: "3.5 Flash",       price: "$1.50 / $9.00",         note: "GA · near-Pro · superseded by 3.6/3.7 for new builds", color: G_BLUE },
               { name: "3.1 Pro",         price: "$2 / $12 (≤200K)",      note: "Preview on Agent Platform · most-advanced reasoning", color: G_PURPLE },
               { name: "\"3.5 Pro\"",     price: "Not published",          note: "Previewed at I/O · not enterprise-listed — do not use", color: RED },

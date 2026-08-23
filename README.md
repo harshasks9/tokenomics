@@ -126,7 +126,7 @@ All dollar figures across all industries are computed via `callCost(model, inTok
 | Claude Opus 5 | $5.00 | $25.00 | AA Intelligence Index leader (63) |
 | Claude Sonnet 5 | $2.00 | $10.00 | Launch rate made permanent Aug 2026 |
 | Gemini 3.1 Pro | $2.00 | $12.00 | Preview · ≤200K-context tier |
-| Gemini 3.7 Flash | $1.50 | $7.50 | GA Aug 14, 2026 · intro $0.75/$3.75 through Dec 31, 2026 |
+| Gemini 3.7 Flash | $1.50 | $7.50 | GA Aug 13, 2026 · intro $0.75/$3.75 through Dec 31, 2026 |
 | Gemini 3.5 Flash-Lite | $0.30 | $2.50 | Matches old 2.5 Flash pricing |
 
 ## Headline Savings

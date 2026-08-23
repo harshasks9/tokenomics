@@ -49,7 +49,7 @@ const X_TICKS = monthTicks(X_DOMAIN);
 /** Flash releases as a stepAfter series, held flat to the right edge. */
 const FLASH_STEP: StepPoint[] = [
   ...FLASH.filter((f) => f.s !== null).map((f) => [f.d, f.s as number] as StepPoint),
-  ["2026-08-06", FLASH[FLASH.length - 1].s as number],
+  ["2026-08-23", FLASH[FLASH.length - 1].s as number],
 ];
 
 type Placement = { dx: number; dy: number; anchor: "start" | "end" | "middle" };
@@ -93,10 +93,11 @@ const FLASH_LABELS: Record<string, { name: Placement; price: Placement }> = {
     name: { dx: 0, dy: -19, anchor: "middle" },
     price: { dx: 0, dy: 20, anchor: "middle" },
   },
-  // Aug 23 extension point sits at the right edge: keep labels inside the plot.
-  "2026-08-14": {
-    name: { dx: -8, dy: -15, anchor: "end" },
-    price: { dx: -8, dy: 20, anchor: "end" },
+  // Aug 23 extension point sits at the right edge in a dense cluster: take the
+  // lane above Kimi K3, price tucked below the dot clear of Sonnet's label.
+  "2026-08-13": {
+    name: { dx: 8, dy: -44, anchor: "end" },
+    price: { dx: -2, dy: 60, anchor: "end" },
   },
 };
 
@@ -106,7 +107,7 @@ export default function FlashChart() {
   const { tip, show, hide } = useChartTooltip(frame);
 
   const overtakeX = PLOT.x("2026-05-19");
-  const rightX = PLOT.x("2026-08-06");
+  const rightX = PLOT.x("2026-08-23");
   const flashY = PLOT.y(50);
   const flagshipY = PLOT.y(46);
 
@@ -146,10 +147,10 @@ export default function FlashChart() {
               Gemini Flash releases against the Gemini flagship and the rival value tier
             </title>
             <desc id="mc-flash-desc">
-              Four scored Flash releases lift the Flash line from 27 to 50 while the Pro-line
-              flagship holds at 46 from February 2026, so Flash overtakes the flagship by 4 points
-              from May 19, 2026. Rival value-tier models score between 51 and 57 over the same
-              period. Full figures are in the release ledger below.
+              Five scored Flash releases lift the Flash line from 27 to 56 while the Pro-line
+              flagship holds at 46 from February 2026, so Flash overtakes the flagship from
+              May 19, 2026, stretching to ten points by August. Rival value-tier models score
+              between 51 and 57 over the same period. Full figures are in the release ledger below.
             </desc>
 
             {/* ── Grid ───────────────────────────────────────────────── */}
@@ -185,7 +186,7 @@ export default function FlashChart() {
                 textAnchor="end"
                 fill="var(--lab-google)"
               >
-                Flash &gt; flagship (+4)
+                Flash &gt; flagship
               </text>
             </g>
 

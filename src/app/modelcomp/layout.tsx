@@ -19,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "MODELCOMP — The frontier moved. Gemini didn't follow.",
   description:
-    "Twelve months of the AI capability frontier, Aug 2025 – Aug 2026, against the Google flagship available at each moment. Google held or shared #1 for 62 of 366 days; the 3.1 Pro flagship stood still at 46 while the frontier reached 61 — until Google's own 3.7 Flash (Aug 14) closed to 56, 7 behind Opus 5 on AA v4.1.1.",
+    "Twelve months of the AI capability frontier, Aug 2025 – Aug 2026, against the Google flagship available at each moment. Google held or shared #1 for 62 of 366 days; the 3.1 Pro flagship stood still at 46 while the frontier reached 61 — until Google's own 3.7 Flash (Aug 13) closed to 56, 7 behind Opus 5 on AA v4.1.1.",
   robots: {
     index: false,
     follow: false,
