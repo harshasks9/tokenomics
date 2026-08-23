@@ -72,7 +72,7 @@ export default function VendorDrawer({
             <h4>
               Strengths &amp; cautions <GradeBadge grade="analyst-inference" />
             </h4>
-            <p>{profile.synthesis}</p>
+            <p className="judgment">{profile.synthesis}</p>
           </section>
         )}
 

@@ -1,0 +1,945 @@
+{
+  "title": "LLM Landscape — independent model advisory",
+  "snapshot_date": "2026-08-22",
+  "schema_version": "1.0",
+  "purpose": "A vendor-neutral, snapshot-dated advisory on the model landscape for enterprise architects and CIOs: what exists, what it's actually good and bad at (with evidence grades on every claim), and how to choose per workload. No vendor is the house answer; every recommendation carries its trade-offs.",
+  "disclaimer": "Snapshot of a market that moves monthly. Numeric fields are either sourced or null — null renders as 'not published'. Vendor benchmark numbers are claims, not results, until independently reproduced. Shortlists and maturity positions are labeled analyst judgment with published reasoning — this dataset contains no composite scores by design.",
+  "evidence_grades": {
+    "vendor-claim": "From the vendor's own model card, blog, or benchmark table. Treat as marketing until independently reproduced.",
+    "measured-benchmark": "Reproducible public benchmark with a named methodology and public leaderboard.",
+    "independent-eval": "Third-party evaluation not run by the vendor.",
+    "practitioner-consensus": "Recurring, corroborated developer reporting across multiple venues.",
+    "analyst-inference": "Synthesis by the dataset's author. Labelled so you can discount it."
+  },
+  "source_types": [
+    "vendor-doc",
+    "technical-report",
+    "independent-benchmark",
+    "practitioner",
+    "press",
+    "adoption-case"
+  ],
+  "tier_definitions": {
+    "1": "Landmark release: full record. Introduced a capability at new quality, forced repricing/repositioning, became a workload default, or opened frontier capability in open weights.",
+    "2": "Important but derivative: compact record (name, vendor, released, known_for, why_it_mattered, Google equivalents).",
+    "3": "Name-only stub for family lineage continuity. No card."
+  },
+  "workloads": [
+    {
+      "id": "coding-agentic",
+      "label": "Coding / agentic tasks",
+      "definition": "Multi-step software work driven through an agent harness: implement, refactor, debug, run tools, keep long-horizon state."
+    },
+    {
+      "id": "deep-reasoning",
+      "label": "Deep reasoning",
+      "definition": "Multi-step analytical problems where test-time thinking measurably changes the answer: math, planning, scientific analysis."
+    },
+    {
+      "id": "long-document",
+      "label": "Long-document analysis",
+      "definition": "Retrieval and synthesis across very long inputs; what matters is accuracy at depth, not the advertised window."
+    },
+    {
+      "id": "high-volume-inference",
+      "label": "High-volume / low-cost inference",
+      "definition": "Classification, extraction, summarization, routing at scale, where unit cost and throughput dominate."
+    },
+    {
+      "id": "multimodal-understanding",
+      "label": "Multimodal understanding",
+      "definition": "Reading images, video, audio, and documents as input: charts, screenshots, scans, recordings."
+    },
+    {
+      "id": "image-generation",
+      "label": "Image generation & editing",
+      "definition": "Text-to-image and instruction-driven image editing, including identity/character consistency."
+    },
+    {
+      "id": "video-generation",
+      "label": "Video generation",
+      "definition": "Text/image-to-video with coherent motion; audio sync where offered."
+    },
+    {
+      "id": "voice-realtime",
+      "label": "Voice / realtime",
+      "definition": "Speech-to-speech assistants, TTS, transcription, low-latency conversational audio."
+    },
+    {
+      "id": "embeddings-retrieval",
+      "label": "Embeddings / retrieval",
+      "definition": "Vector representations powering RAG, search, dedup, and classification."
+    },
+    {
+      "id": "on-device",
+      "label": "Small / on-device",
+      "definition": "Models that run on laptops, phones, or single GPUs — for latency, privacy, or cost reasons."
+    },
+    {
+      "id": "music-generation",
+      "label": "Music generation",
+      "definition": "Text-to-music and song generation, including vocals; rights and licensing posture is integral to selection."
+    }
+  ],
+  "confidence_levels": {
+    "high": "Same workload and deployment model, with evidence on both sides of the comparison.",
+    "medium": "Capable substitute with a real trade-off the buyer must weigh.",
+    "low": "Nearest option; expect a visible gap or a different deployment model."
+  },
+  "dimensions": [
+    {
+      "id": "reasoning-depth",
+      "label": "Reasoning depth on multi-step problems",
+      "conditional": false,
+      "keywords": [
+        "reasoning",
+        "arc-agi",
+        "thinking",
+        "hle",
+        "aime",
+        "math",
+        "deep think",
+        "gpqa",
+        "planning"
+      ]
+    },
+    {
+      "id": "coding-agentic-completion",
+      "label": "Coding and agentic task completion",
+      "conditional": false,
+      "keywords": [
+        "coding",
+        "swe-bench",
+        "agentic",
+        "code",
+        "terminal-bench",
+        "refactor",
+        "harness",
+        "autonom",
+        "claude code",
+        "codex"
+      ]
+    },
+    {
+      "id": "long-context-reliability",
+      "label": "Long-context reliability",
+      "conditional": false,
+      "keywords": [
+        "context",
+        "million-token",
+        "1m-token",
+        "long-document",
+        "needle",
+        "window",
+        "128k",
+        "200k",
+        "256k",
+        "repository"
+      ]
+    },
+    {
+      "id": "tool-structured-output",
+      "label": "Tool use and structured output adherence",
+      "conditional": false,
+      "keywords": [
+        "tool",
+        "function call",
+        "function-call",
+        "structured",
+        "json",
+        "malformed",
+        "instruction-following",
+        "schema"
+      ]
+    },
+    {
+      "id": "latency-throughput",
+      "label": "Latency and throughput",
+      "conditional": false,
+      "keywords": [
+        "latency",
+        "throughput",
+        "fast",
+        "slow",
+        "tokens/sec",
+        "t/s",
+        "speed",
+        "render",
+        "minutes per"
+      ]
+    },
+    {
+      "id": "cost-per-work",
+      "label": "Cost per unit of useful work",
+      "conditional": false,
+      "keywords": [
+        "price",
+        "pricing",
+        "cost",
+        "$",
+        "cheap",
+        "undercut",
+        "per m",
+        "/m",
+        "per-second",
+        "per image",
+        "off-peak",
+        "repric"
+      ]
+    },
+    {
+      "id": "multimodal-understanding",
+      "label": "Multimodal understanding",
+      "conditional": false,
+      "keywords": [
+        "multimodal",
+        "image input",
+        "vision",
+        "video input",
+        "audio input",
+        "screenshot",
+        "chart",
+        "document understanding",
+        "native vision"
+      ]
+    },
+    {
+      "id": "deployment-flexibility",
+      "label": "Deployment flexibility",
+      "conditional": false,
+      "keywords": [
+        "open weights",
+        "open-weights",
+        "self-host",
+        "license",
+        "apache",
+        "mit",
+        "on-prem",
+        "air-gapped",
+        "gdc",
+        "local",
+        "weights",
+        "fine-tun",
+        "lora"
+      ]
+    },
+    {
+      "id": "enterprise-posture",
+      "label": "Enterprise posture",
+      "conditional": false,
+      "keywords": [
+        "enterprise",
+        "residency",
+        "compliance",
+        "vertex",
+        "bedrock",
+        "deprecat",
+        "retire",
+        "shutdown",
+        "lifecycle",
+        "indemn",
+        "sla",
+        "export control",
+        "suspension",
+        "data retention",
+        "sovereign"
+      ]
+    },
+    {
+      "id": "image-gen",
+      "label": "Image generation",
+      "conditional": true,
+      "keywords": [
+        "image gen",
+        "text-to-image",
+        "image edit",
+        "imagen",
+        "nano banana",
+        "diffusion",
+        "flux",
+        "/image",
+        "per image",
+        "4k image",
+        "text rendering"
+      ]
+    },
+    {
+      "id": "video-gen",
+      "label": "Video generation",
+      "conditional": true,
+      "keywords": [
+        "video gen",
+        "text-to-video",
+        "veo",
+        "sora",
+        "clip",
+        "per-second",
+        "audio sync",
+        "omni flash"
+      ]
+    },
+    {
+      "id": "audio-voice",
+      "label": "Audio / voice",
+      "conditional": true,
+      "keywords": [
+        "voice",
+        "tts",
+        "speech",
+        "audio tag",
+        "cloning",
+        "realtime audio",
+        "live api",
+        "asr",
+        "transcription"
+      ]
+    },
+    {
+      "id": "embeddings",
+      "label": "Embeddings / retrieval",
+      "conditional": true,
+      "keywords": [
+        "embedding",
+        "mteb",
+        "vector",
+        "rag",
+        "retrieval",
+        "dimension",
+        "re-embed"
+      ]
+    },
+    {
+      "id": "computer-use",
+      "label": "Computer use",
+      "conditional": true,
+      "keywords": [
+        "computer use",
+        "computer-use",
+        "osworld",
+        "browser control",
+        "screen"
+      ]
+    },
+    {
+      "id": "search-grounding",
+      "label": "Search grounding",
+      "conditional": true,
+      "keywords": [
+        "grounding",
+        "search integration",
+        "web search",
+        "firehose",
+        "real-time x",
+        "ai mode"
+      ]
+    }
+  ],
+  "dimensions_note": "Comparison cells are derived: a dimension row shows the graded claims whose text matches its keywords, on each side. Where no sourced claim matches, the cell renders 'no sourced claim' — by design this dataset never invents a rating. Conditional rows appear only when a side has matching evidence.",
+  "workload_guides": [
+    {
+      "workload": "coding-agentic",
+      "market_direction": "The most contested market in AI: three proprietary lines (Claude Opus 5, GPT-5.6 Sol, Gemini 3.1 Pro) sit within a few points on agentic suites, while open weights crossed the credibility line in 2026 — DeepSeek V4 and GLM-5.2 post vendor scores that would have led the field a year earlier. Harness lock-in (Claude Code, Codex, Gemini CLI, Cursor) now shapes selection as much as model quality, and the August 2026 DeepSeek repricing showed that open-API price floors are not guaranteed.",
+      "representative_models": [
+        {
+          "model_id": "claude-opus-5",
+          "label": "Claude Opus 5",
+          "access_note": "proprietary API",
+          "choose_when": "Agentic completion rate is the deciding metric and your team already lives in Claude Code — it holds the sourced SWE-bench Verified top (~96–97%) and is the harness's default.",
+          "avoid_when": "Unit cost dominates, you need long-context beyond 200K–1M-class limits at commodity rates, or single-vendor concentration is a board-level concern (the June 2026 Fable suspension made that risk concrete).",
+          "trade_offs": "Best-in-class harness reliability against premium pricing; moving away means retuning Claude-idiom prompts and tools, moving in means accepting Anthropic's data-retention and rate-limit terms."
+        },
+        {
+          "model_id": "gpt-5-6-sol",
+          "label": "GPT-5.6 Sol",
+          "access_note": "proprietary API",
+          "choose_when": "You are Codex-centric or need the co-leading agentic model with OpenAI's ecosystem breadth; token-efficiency reporting (~4x vs rivals in 2026 coverage) matters for long-running agents.",
+          "avoid_when": "Procurement is sensitive to tier complexity (Luna/Terra/Sol) or to the price direction OpenAI set with the 5.5-era increases.",
+          "trade_offs": "Ecosystem gravity and efficiency claims against a pricing trend that reversed the industry's falling curve; each direction of migration re-runs your eval suite."
+        },
+        {
+          "model_id": "gemini-3-1-pro",
+          "label": "Gemini 3.1 Pro",
+          "access_note": "proprietary API",
+          "choose_when": "Whole-repository context (1M tokens) and price-per-token are the deciding factors, or you are consolidating on Vertex/Workspace anyway; the free Gemini CLI tier is the cheapest credible agent on-ramp.",
+          "avoid_when": "You need the top of the agentic leaderboards today (it trails the leaders on sourced Aug-2026 aggregates) or your compliance review balks at a flagship still served under a `-preview` API id.",
+          "trade_offs": "Context economics and platform integration against a documented completion-rate gap and Google's fast model-lifecycle churn; leaving Gemini costs you the 1M window, joining it costs leaderboard headroom."
+        },
+        {
+          "model_id": "deepseek-v4",
+          "label": "DeepSeek V4",
+          "access_note": "open weights (MIT) + budget API",
+          "choose_when": "You can self-host (or tolerate China-hosted APIs) and want near-frontier coding at open-weights economics; the MIT license caps your worst case because anyone can re-host the weights.",
+          "avoid_when": "Regulated data cannot touch the hosted API and you lack the GPU estate for a 1.6T-parameter MoE (the 284B V4-Flash is the realistic self-host target); or pricing stability matters — August 2026 hikes reached four digits in percent.",
+          "trade_offs": "Radical economics and deployment freedom against verification gaps (its 80.6% SWE-bench claim was vendor-run and unreproduced at snapshot), serving complexity, and jurisdiction review."
+        },
+        {
+          "model_id": "glm-5-2",
+          "label": "GLM-5.2",
+          "access_note": "open weights (MIT) + coding plans",
+          "choose_when": "You want Claude-Code-compatible workflows at a fraction of the price, or self-hostable coding weights with a top-open SWE-bench Pro claim.",
+          "avoid_when": "Western-enterprise procurement friction around a China-based vendor outweighs the savings, or you need the absolute frontier.",
+          "trade_offs": "Unmetered-feeling economics and an open escape hatch against ecosystem maturity and compliance review effort."
+        }
+      ],
+      "decision_factors": [
+        "Which agent harness does your team actually run today — and what does leaving it cost in retuned prompts, tools, and evals?",
+        "Is your deciding metric completion rate, cost per completed task, or context size? The three leaders each win exactly one of those.",
+        "Can any code leave your boundary? If not, only the open-weights column is real, and your GPU estate sizes the choice.",
+        "How exposed are you to single-vendor risk? 2026 delivered both a model suspension (Fable) and an overnight repricing (DeepSeek).",
+        "What is your regression-test cost per migration? It is the hidden line item in every 'cheaper model' business case."
+      ]
+    },
+    {
+      "workload": "deep-reasoning",
+      "market_direction": "Reasoning became table stakes: every current flagship ships test-time thinking, and the differentiation moved to verified results on hard suites (ARC-AGI-2, HLE) and to effort-control ergonomics. The top tier (Claude Fable 5, GPT-5.6-class, Gemini 3.1 Pro with its ARC-verified 77.1%) is separated more by price and access model than by capability class, while open-weights reasoning (DeepSeek, Kimi K2 Thinking lineage, Qwen) sits one step behind at a fraction of the cost.",
+      "representative_models": [
+        {
+          "model_id": "claude-fable-5",
+          "label": "Claude Fable 5",
+          "access_note": "proprietary API (classifier-gated)",
+          "choose_when": "The problem genuinely needs the highest available capability — frontier-difficulty coding, long-horizon analysis — and you can absorb $10/$50 pricing, multi-minute turns, and 30-day retention terms.",
+          "avoid_when": "Your workload is security-adjacent enough to trip safety classifiers routinely, or availability risk matters more than peak capability (its 19-day 2026 suspension is the cautionary case).",
+          "trade_offs": "The capability ceiling against cost, latency, gating, and concentration risk; most workloads route to Opus-class daily drivers and escalate here."
+        },
+        {
+          "model_id": "gemini-3-1-pro",
+          "label": "Gemini 3.1 Pro",
+          "access_note": "proprietary API",
+          "choose_when": "You want ARC-verified reasoning (77.1% ARC-AGI-2) with 1M-token context at mainstream pricing — the strongest verified-results-per-dollar story in the top tier.",
+          "avoid_when": "Maximum-effort reasoning behind a clean API SKU matters — Deep Think sits behind a consumer subscription, and the like-for-like 3.5 Pro was still not GA at snapshot.",
+          "trade_offs": "Verified results and context economics against product-line churn and preview-status ids; rivals counter with steadier lifecycles at higher prices."
+        },
+        {
+          "model_id": "gpt-5-6-sol",
+          "label": "GPT-5.6 Sol",
+          "access_note": "proprietary API",
+          "choose_when": "You want frontier reasoning inside the OpenAI ecosystem with the strongest tooling continuity from the o-series era.",
+          "avoid_when": "Price sensitivity is high — the 5.5/5.6-era list broke the falling-price trend — or tier complexity is a procurement problem.",
+          "trade_offs": "Ecosystem continuity against price direction; migration in either direction is mostly prompt-and-eval labor, not capability loss."
+        },
+        {
+          "model_id": "deepseek-v4",
+          "label": "DeepSeek V4 (thinking modes)",
+          "access_note": "open weights (MIT)",
+          "choose_when": "You need reasoning at scale where unit economics dominate, or reasoning traces you can legally distill from.",
+          "avoid_when": "Hallucination tolerance is low (independent HHEM measurement put V4 at 8.6%, worst of its own line) or hosted-API jurisdiction is disqualifying.",
+          "trade_offs": "Cost and openness against measured factuality gaps and verification debt."
+        }
+      ],
+      "decision_factors": [
+        "Does the task demonstrably improve with more thinking? Pay for effort control only where the answer changes.",
+        "Verified results or vendor tables — which are you buying? ARC-verified and independent evals exist for some options and not others.",
+        "Escalation architecture: a cheap default plus an expensive escalation tier usually beats a single premium model.",
+        "Do you need visible reasoning traces (for audit or distillation)? That requirement alone moves you to open weights."
+      ]
+    },
+    {
+      "workload": "long-document",
+      "market_direction": "The million-token input window is now standard across flagships, so the honest differentiators are retrieval accuracy at depth, output ceilings, and the price of actually filling the window (long-context surcharges). The 2M-token era briefly opened by Gemini 1.5 Pro closed with its retirement; no current flagship restores it, and above-window workloads still need chunking or retrieval architecture.",
+      "representative_models": [
+        {
+          "model_id": "gemini-3-1-pro",
+          "label": "Gemini 3.1 Pro",
+          "access_note": "proprietary API",
+          "choose_when": "Whole-corpus analysis in one call is the workflow — 1M input at the lowest flagship rate, with context caching to amortize repeated bases.",
+          "avoid_when": "Your inputs routinely exceed 1M (nothing current serves 2M), or the >200K surcharge tier breaks the cost model.",
+          "trade_offs": "The best price-per-context-token against surcharge complexity; rivals answer with steadier terms at smaller effective budgets."
+        },
+        {
+          "model_id": "claude-opus-5",
+          "label": "Claude Opus 5",
+          "access_note": "proprietary API",
+          "choose_when": "Long-document work feeds agentic follow-up (read then refactor/act) — the same model carries both phases credibly.",
+          "avoid_when": "Raw window size per dollar is the metric.",
+          "trade_offs": "Continuity with the strongest agentic line against a smaller economic window; splitting read and act across vendors costs orchestration complexity instead."
+        },
+        {
+          "model_id": "kimi-k3",
+          "label": "Kimi K3",
+          "access_note": "open weights",
+          "choose_when": "You want 1M-token context in weights you control — the only open-weights option at that window and scale at snapshot.",
+          "avoid_when": "You cannot serve a 2.8T-parameter MoE or accept a custom license.",
+          "trade_offs": "Window-plus-ownership against extreme serving requirements; managed APIs invert that trade."
+        },
+        {
+          "model_id": "jamba",
+          "label": "AI21 Jamba line",
+          "access_note": "open weights (hybrid SSM)",
+          "choose_when": "Long-context efficiency on modest hardware matters more than frontier reasoning — the SSM-hybrid architecture was built for exactly this.",
+          "avoid_when": "You need top-tier reasoning over the retrieved content, not just faithful retrieval.",
+          "trade_offs": "Architecture-driven efficiency against a capability ceiling; verify against your own documents — depth-accuracy varies more than window size suggests."
+        }
+      ],
+      "decision_factors": [
+        "Measure retrieval-at-depth on your own documents; advertised windows and usable windows differ, and the gap is model-specific.",
+        "Price the full pipeline: window size × surcharge tiers × caching discounts, not the headline rate.",
+        "Does the output ceiling (often 64–128K) fit your synthesis step, or does the answer itself need chunking?",
+        "If documents cannot leave your boundary, the open-weights column plus a retrieval architecture beats any API window."
+      ]
+    },
+    {
+      "workload": "high-volume-inference",
+      "market_direction": "The volume tier is a knife-fight rebuilt twice a year: hyperscaler workhorses (Gemini Flash line, GPT mini/nano tiers, Nova-class ecosystem defaults) against open-weights self-hosting and Chinese budget APIs. 2026 added two cautions — Google hard-retired a volume default (2.0 Flash) with ~3.5 months' notice, and DeepSeek repriced overnight — so lifecycle and pricing stability now belong in the selection math alongside unit cost.",
+      "representative_models": [
+        {
+          "model_id": "gemini-3-7-flash",
+          "label": "Gemini 3.7 Flash (line)",
+          "access_note": "proprietary API",
+          "choose_when": "You want the current best-documented workhorse tier ($0.75/$3.75 with 1M context) with Flash-Lite below it for commodity calls.",
+          "avoid_when": "Your planning horizon exceeds Google's demonstrated lifecycle patience — pre-declared one-year sunsets are now standard on this line.",
+          "trade_offs": "Price-performance leadership against migration cadence; budget rivals undercut it, steadier vendors overcharge it."
+        },
+        {
+          "model_id": "deepseek-v4",
+          "label": "DeepSeek V4-Flash",
+          "access_note": "open weights (MIT) + budget API",
+          "choose_when": "Absolute unit cost decides and you can ride peak/off-peak windows or self-host the 284B Flash variant.",
+          "avoid_when": "You need contractual price stability (August 2026's increases were the counterexample) or Western data residency.",
+          "trade_offs": "The lowest credible prices against volatility and jurisdiction; the MIT weights are the structural hedge."
+        },
+        {
+          "model_id": "qwen3",
+          "label": "Qwen3 family (self-hosted)",
+          "access_note": "open weights (Apache 2.0)",
+          "choose_when": "You already run GPUs at utilization — the 0.6B–235B ladder lets you size the model to the task and pay no per-token price at all.",
+          "avoid_when": "Ops headcount and utilization risk make TCO worse than an API, which is true more often than teams admit.",
+          "trade_offs": "Zero marginal cost and total control against fleet economics; do the utilization math honestly before choosing this column."
+        },
+        {
+          "model_id": "nova-2-lite",
+          "label": "Amazon Nova tier",
+          "access_note": "proprietary API (AWS-native)",
+          "choose_when": "You are AWS-committed and the ecosystem-default route (billing, IAM, Bedrock guardrails already in place) outweighs picking the leaderboard winner.",
+          "avoid_when": "Capability parity with the Flash-class leaders is required — validate on your traffic first.",
+          "trade_offs": "Frictionless procurement against capability verification; the default is cheap to adopt and easy to under-scrutinize."
+        }
+      ],
+      "decision_factors": [
+        "Cost per successful call on YOUR traffic — quality failures re-run and erase paper savings.",
+        "Lifecycle risk: what did this vendor do to its last volume tier, and what migration notice did customers get?",
+        "Pricing stability: is the rate contractual, spot-like, or promotional?",
+        "At your volume, does self-hosting beat APIs after ops and utilization? There is a crossover point; find yours honestly."
+      ]
+    },
+    {
+      "workload": "multimodal-understanding",
+      "market_direction": "Image input is universal in current flagships; the differentiators are video input, audio input, and document fidelity (tables, handwriting, layout). Gemini's line has the broadest native intake including video, GPT and Claude flagships are strong on image+document work, and open weights (Qwen-VL lineage, Gemma, Muse Glimmer) now cover most understanding tasks credibly on-prem.",
+      "representative_models": [
+        {
+          "model_id": "gemini-3-1-pro",
+          "label": "Gemini 3.1 Pro",
+          "access_note": "proprietary API",
+          "choose_when": "Video-in or mixed media across a 1M-token context is the job — the broadest native multimodal intake at snapshot.",
+          "avoid_when": "Your workload is text-dominant with occasional images; you would pay multimodal breadth for nothing.",
+          "trade_offs": "Intake breadth against the same lifecycle cautions as the rest of the Gemini line."
+        },
+        {
+          "model_id": "gpt-5-6-sol",
+          "label": "GPT-5.6 line",
+          "access_note": "proprietary API",
+          "choose_when": "Image+document understanding feeds agentic or generative work already living in the OpenAI stack.",
+          "avoid_when": "Video input is required.",
+          "trade_offs": "Ecosystem continuity against narrower native intake."
+        },
+        {
+          "model_id": "qwen3",
+          "label": "Qwen-VL / open multimodal",
+          "access_note": "open weights (Apache 2.0)",
+          "choose_when": "Documents cannot leave your boundary — open multimodal understanding is mature enough for most OCR/layout/screenshot tasks.",
+          "avoid_when": "You need frontier-grade reasoning on top of the understanding step.",
+          "trade_offs": "Deployment freedom against a capability step-down that your own eval set may or may not detect — test before assuming it matters."
+        }
+      ],
+      "decision_factors": [
+        "Which modalities do you ACTUALLY ingest? Buy breadth only where it is used.",
+        "Document fidelity (tables, layout, handwriting) varies more between models than image captioning — benchmark your documents, not demo images.",
+        "Privacy-bound media (medical, KYC) pushes to open weights faster than any capability argument."
+      ]
+    },
+    {
+      "workload": "image-generation",
+      "market_direction": "A two-track market: closed instruction-driven editors (gpt-image-2, Gemini's Nano Banana line) trade blind-vote leadership month to month, while the open-weights track (FLUX.2, SD lineage) owns customization — LoRA training, identity pipelines, on-prem generation. The tracks are complements, not substitutes: most enterprises end up with one of each.",
+      "representative_models": [
+        {
+          "model_id": "gpt-image-2",
+          "label": "gpt-image-2",
+          "access_note": "proprietary API",
+          "choose_when": "Instruction-following editing quality and text rendering decide, and your users already live in ChatGPT-adjacent tooling — it led LMArena's blind votes in July 2026.",
+          "avoid_when": "You need trained identity/style consistency (adapters), local generation, or output indemnification terms your counsel prefers elsewhere.",
+          "trade_offs": "Editing UX and distribution against zero customization depth; the open track inverts this exactly."
+        },
+        {
+          "model_id": "nano-banana-2",
+          "label": "Nano Banana 2 / Pro (Gemini image line)",
+          "access_note": "proprietary API",
+          "choose_when": "Identity-consistent editing at volume pricing ($0.067/image) or 4K+text via the Pro tier; Artificial Analysis' arena ranked it #1 at launch.",
+          "avoid_when": "Same as its closed rival: customization or on-prem needs.",
+          "trade_offs": "Price and consistency against the same closed-track ceiling; between the two closed leaders, current-month arena standing is genuinely contested — pilot both."
+        },
+        {
+          "model_id": "flux-1",
+          "label": "FLUX.2 line (klein Apache 2.0)",
+          "access_note": "open weights",
+          "choose_when": "LoRA fine-tuning, brand/identity pipelines, air-gapped generation, or license-clean redistribution are requirements — the open track is the only track that does this.",
+          "avoid_when": "You want turnkey editing quality without an ML pipeline team.",
+          "trade_offs": "Total control against integration labor; note the license split (klein 4B is Apache, the larger dev tier is non-commercial)."
+        }
+      ],
+      "decision_factors": [
+        "Editing vs generating vs customizing — the three leaders are different products for each verb.",
+        "Does legal need output indemnification? Terms differ materially across the closed vendors.",
+        "Identity consistency: prompt-level (closed) or trained-adapter (open)? The answer picks your track.",
+        "Arena leadership rotates monthly; pin your decision to your own eval set, not the current #1."
+      ]
+    },
+    {
+      "workload": "video-generation",
+      "market_direction": "Consolidating fast and contested from three directions: Google's twin lanes (Veo 3.1's 4K quality, Gemini Omni Flash's cheap conversational clips), ByteDance's Seedance 2.x holding the aggressive spec frontier (native 30s clips, 50 reference inputs), and open weights (Wan, HunyuanVideo) for on-prem. OpenAI's exit (Sora app closed April 2026, API sunsetting September) removed the category's most famous name and stranded its users mid-2026.",
+      "representative_models": [
+        {
+          "model_id": "veo-3-1",
+          "label": "Veo 3.1",
+          "access_note": "proprietary API",
+          "choose_when": "Production quality with synchronized audio at 4K is the bar; tiered pricing ($0.40/$0.15/$0.05 per second) fits campaign work.",
+          "avoid_when": "You need long-form clips (seconds-class ceilings persist) or brand-safety review flags the 2025-26 misuse coverage.",
+          "trade_offs": "Quality leadership against clip-length ceilings and per-second cost; the spec frontier currently belongs to a rival."
+        },
+        {
+          "model_id": "gemini-omni-flash",
+          "label": "Gemini Omni Flash",
+          "access_note": "proprietary API",
+          "choose_when": "Volume social/product clips where $0.10/s and conversational multi-turn editing beat resolution (720p, ≤10s).",
+          "avoid_when": "4K deliverables or clips beyond ten seconds.",
+          "trade_offs": "Price and editing workflow against hard resolution/length caps."
+        },
+        {
+          "model_id": "seedance-2-5",
+          "label": "Seedance 2.5",
+          "access_note": "proprietary API (ByteDance)",
+          "choose_when": "Native 30-second clips and heavy reference-conditioning (up to 50 inputs) are the requirement — no Western rival matched the spec at snapshot.",
+          "avoid_when": "ByteDance procurement review is a non-starter for your organization.",
+          "trade_offs": "The spec frontier against jurisdiction friction — this is the category's sharpest capability-vs-compliance trade."
+        },
+        {
+          "model_id": "hunyuan-video",
+          "label": "Open-weights video (HunyuanVideo / Wan)",
+          "access_note": "open weights",
+          "choose_when": "On-prem generation or fine-tuned styles; the open track is young but real.",
+          "avoid_when": "You need closed-track quality or audio sync out of the box.",
+          "trade_offs": "Control against a visible quality gap that is narrowing, not closed."
+        }
+      ],
+      "decision_factors": [
+        "Clip length and resolution floors: the market splits cleanly on 10s/720p vs 30s vs 4K — your spec sheet picks your shortlist.",
+        "Sora's 2026 exit is the category's lesson: weight vendor commitment, not just demo quality.",
+        "Jurisdiction: the spec leader is ByteDance — decide the compliance question before falling in love with the capability.",
+        "Volume economics are per-second; storyboard-level cost modeling beats rate-card comparison."
+      ]
+    },
+    {
+      "workload": "voice-realtime",
+      "market_direction": "Two markets wearing one name: production TTS/cloning (ElevenLabs' v3 line remains the builder default, with a monetized voice marketplace no rival matches) and realtime speech-to-speech agents (OpenAI's GA Realtime lane iterated twice in 2026; Google's Live stack stayed preview-status; Amazon's Sonic sits in the AWS-native lane). ASR beneath it all is commoditizing around Whisper-class open weights and specialist APIs.",
+      "representative_models": [
+        {
+          "model_id": "eleven-v3",
+          "label": "Eleven v3",
+          "access_note": "proprietary API",
+          "choose_when": "Expressive narration, cloned-voice products, or the voice marketplace — self-serve cloning from low tiers is the moat.",
+          "avoid_when": "Ultra-low-latency agent calls (its own Flash family serves those) or hyperscaler-bundled procurement is mandatory.",
+          "trade_offs": "Voice quality and marketplace economics against single-vendor dependence for a capability your legal team already worries about (cloning consent)."
+        },
+        {
+          "model_id": "gpt-realtime-2",
+          "label": "GPT-Realtime-2 / 2.1",
+          "access_note": "proprietary API",
+          "choose_when": "Speech-to-speech agents with tool use — the GA lane with documented latency work (2.1's ~25% p95 cut) and translation/transcription siblings.",
+          "avoid_when": "You need cloned brand voices (not its lane) or non-OpenAI data terms.",
+          "trade_offs": "Agent-grade maturity against voice-identity limits; pair with a TTS specialist when both matter."
+        },
+        {
+          "model_id": "gemini-3-1-pro",
+          "label": "Gemini Live / TTS line",
+          "access_note": "proprietary API (preview ids)",
+          "choose_when": "You are Vertex-committed and can tolerate preview status for bundled-platform economics; live translation is a genuine differentiator.",
+          "avoid_when": "Production SLAs on voice are contractual requirements today.",
+          "trade_offs": "Platform bundling against maturity — the GA-vs-preview gap here is documented, not cosmetic."
+        },
+        {
+          "model_id": "whisper",
+          "label": "Whisper (open ASR)",
+          "access_note": "open weights",
+          "choose_when": "Transcription at scale or on-prem — the open default with a four-year ecosystem (faster-whisper, whisper.cpp).",
+          "avoid_when": "You need diarization/streaming SLAs that specialist ASR APIs sell.",
+          "trade_offs": "Free and everywhere against specialist accuracy/features at the margins."
+        }
+      ],
+      "decision_factors": [
+        "TTS product or realtime agent? Different markets; the best vendor differs.",
+        "Voice cloning consent and provenance policy — decide governance before capability.",
+        "Latency budget end-to-end (ASR+reasoning+TTS), not per-component headline numbers.",
+        "ASR is the commodity layer: default open unless a specialist feature earns its bill."
+      ]
+    },
+    {
+      "workload": "embeddings-retrieval",
+      "market_direction": "Quietly the most multi-polar market: 2026 production surveys rank open models (BGE-M3, Qwen3-Embedding) at or above the closed defaults, OpenAI has not shipped a new generation since January 2024, Google's line moved to multimodal (Embedding 2.0), and independents (Voyage under MongoDB, Cohere's enterprise pair) hold quality niches. Switching is cheap to decide and expensive to execute — re-embedding the corpus is the real cost.",
+      "representative_models": [
+        {
+          "model_id": "bge-m3",
+          "label": "BGE-M3 (open default)",
+          "access_note": "open weights",
+          "choose_when": "Production RAG at scale — survey-ranked at the top, free, self-hostable, multilingual.",
+          "avoid_when": "You need managed multimodal embedding or vendor support contracts.",
+          "trade_offs": "Cost and control against do-it-yourself serving; the closed rivals sell convenience, not measurably better retrieval for most corpora."
+        },
+        {
+          "model_id": "gemini-embedding-001",
+          "label": "Gemini Embedding line (001 / 2.0)",
+          "access_note": "proprietary API",
+          "choose_when": "MTEB-leading managed quality, or multimodal (video) embedding via 2.0.",
+          "avoid_when": "Long-chunk pipelines on 001 (2,048-token input cap) without adopting the newer tier.",
+          "trade_offs": "Leaderboard quality against input-cap and version-transition management; the pre-declared 2028 deprecation means a planned re-embed either way."
+        },
+        {
+          "model_id": "voyage-4-large",
+          "label": "Voyage line",
+          "access_note": "proprietary API",
+          "choose_when": "Domain-tuned retrieval quality (code, finance, legal variants) justifies a specialist.",
+          "avoid_when": "Generic corpora where open models tie for free.",
+          "trade_offs": "Specialist quality against another vendor relationship."
+        },
+        {
+          "model_id": "text-embedding-3-large",
+          "label": "text-embedding-3-large",
+          "access_note": "proprietary API",
+          "choose_when": "You are already on it and retrieval quality meets your bar — incumbency is a valid choice when re-embedding costs exceed gains.",
+          "avoid_when": "Starting fresh in 2026; the generation is 2.5 years old and surveys place open rivals ahead.",
+          "trade_offs": "Zero migration cost against aging quality; the honest incumbent-vs-challenger call."
+        }
+      ],
+      "decision_factors": [
+        "Price the re-embed: corpus size × pipeline runs is the real switching cost.",
+        "Benchmark on YOUR retrieval task; MTEB rank and your recall correlate loosely.",
+        "Chunk length: input caps (2K vs 8K) silently dictate chunking architecture.",
+        "Do you need multimodal or domain-tuned embeddings? Those are the only reasons left to pay premium rates."
+      ]
+    },
+    {
+      "workload": "on-device",
+      "market_direction": "Open small models made local inference boring — in the good sense. Apache-2.0 ladders (Qwen, gpt-oss, Muse Glimmer, Granite) compete with restricted-license quality (Gemma 4) while consumer hardware runs 30B-class models comfortably; the 2026 surprise was coding-capable MoEs (Qwen3.6-35B-A3B class) reaching laptop hardware. License terms, not capability, are now the main selection axis.",
+      "representative_models": [
+        {
+          "model_id": "qwen3",
+          "label": "Qwen family",
+          "access_note": "open weights (Apache 2.0)",
+          "choose_when": "You want the broadest size ladder and fine-tune ecosystem under a clean license — the community default.",
+          "avoid_when": "Org policy restricts China-origin weights even self-hosted (a policy question, not a technical one).",
+          "trade_offs": "Ecosystem depth against provenance review; nothing else offers the ladder."
+        },
+        {
+          "model_id": "gemma-4",
+          "label": "Gemma 4",
+          "access_note": "open weights (Gemma Terms)",
+          "choose_when": "Quality-per-parameter with hyperscaler backing and multi-cloud distribution (Bedrock, Cloudflare).",
+          "avoid_when": "Apache-clean redistribution is a legal requirement — the Gemma Terms are use-restricted.",
+          "trade_offs": "Polish and distribution against license friction; the exact inverse of its Apache rivals."
+        },
+        {
+          "model_id": "gpt-oss-120b",
+          "label": "gpt-oss-120b",
+          "access_note": "open weights (Apache 2.0)",
+          "choose_when": "Single-GPU (80GB) reasoning near o4-mini class under Apache terms.",
+          "avoid_when": "Knowledge-heavy tasks — its own card concedes the hallucination gap.",
+          "trade_offs": "Reasoning headroom per GPU against factual thinness; pair with retrieval."
+        },
+        {
+          "model_id": "granite-4-1",
+          "label": "IBM Granite line",
+          "access_note": "open weights (Apache 2.0)",
+          "choose_when": "Regulated-industry posture matters: indemnified enterprise variants, conservative training-data provenance.",
+          "avoid_when": "Peak capability per parameter is the metric.",
+          "trade_offs": "Governance story against leaderboard position — a trade many regulated buyers should make and rarely benchmark honestly."
+        }
+      ],
+      "decision_factors": [
+        "License first: Apache/MIT vs restricted terms decides redistribution, fine-tune ownership, and legal review time.",
+        "Fit the ladder to the hardware you actually deploy on, then benchmark the two nearest rungs.",
+        "Provenance policy on model origin — settle it org-wide once, not per project.",
+        "Fine-tune ecosystem depth predicts your total cost more than base-model quality does."
+      ]
+    },
+    {
+      "workload": "music-generation",
+      "market_direction": "A young market that spent 2024-26 in court and came out licensed: the consumer leaders fought the labels, then signed with them, and enterprise-usable music generation now exists with rights frameworks attached. Quality is consumer-delightful and brand-risky in equal measure; the honest advisory for most enterprises is scoped pilots under the new licensing regimes rather than production dependence.",
+      "representative_models": [
+        {
+          "model_id": "suno-v5",
+          "label": "Suno (current line)",
+          "access_note": "proprietary API/app",
+          "choose_when": "Full-song generation with the largest creator ecosystem and post-settlement licensing clarity.",
+          "avoid_when": "Your brand cannot absorb residual training-data controversy, or you need stems/DAW-grade control.",
+          "trade_offs": "Category-leading output against a governance history your legal team will read first."
+        },
+        {
+          "model_id": "lyria-3",
+          "label": "Lyria line (Google)",
+          "access_note": "proprietary API (preview)",
+          "choose_when": "You want hyperscaler-governed music inside an existing Vertex relationship.",
+          "avoid_when": "Preview status or catalog breadth matters.",
+          "trade_offs": "Governance and bundling against maturity."
+        },
+        {
+          "model_id": "udio",
+          "label": "Udio",
+          "access_note": "proprietary (label partnership)",
+          "choose_when": "The label-sanctioned path fits your rights requirements.",
+          "avoid_when": "Product-continuity risk matters — its arc has been turbulent.",
+          "trade_offs": "Rights clarity against platform stability."
+        }
+      ],
+      "decision_factors": [
+        "Rights and licensing FIRST: what can you legally do with the output, per the 2025-26 settlements?",
+        "Consumer delight or production asset? Stems, edit control, and consistency separate the two.",
+        "This market is early — contract for exit portability."
+      ]
+    }
+  ],
+  "vendor_profiles": [
+    {
+      "vendor": "OpenAI",
+      "synthesis": "The market-maker: created the category (ChatGPT), the frontier benchmark (GPT-4), the reasoning era (o1), and still fields a sourced co-leader (GPT-5.6 Sol). Cautions: 2026 reversed the falling-price curve ($5/$30-class flagships), the tier lineup churns fast (Instant/Thinking numbering diverged; Luna/Terra/Sol), and the company exits side bets abruptly — Sora's app and API sunset stranded users mid-2026, and October 2026 removes a dozen legacy model ids at once."
+    },
+    {
+      "vendor": "Anthropic",
+      "synthesis": "The agentic-coding standard-setter: Claude Code defined the harness category and Opus 5 holds the sourced SWE-bench top. Enterprise-friendly model-lifecycle discipline. Cautions: premium pricing across the line, safety-classifier friction on security-adjacent work (Fable 5's launch weeks), and 2026's unique event — a US export-control order took its flagship offline for 19 days, making single-vendor concentration a board-level topic."
+    },
+    {
+      "vendor": "Google",
+      "synthesis": "The verified-results and context leader: ARC-verified reasoning, 1M-token windows at the lowest flagship rates, the broadest multimodal intake, and credible options in every media category. Cautions: the fastest model-lifecycle churn in the industry (2.0 Flash hard-shutdown on ~3.5 months' notice; flagships living on `-preview` ids; a four-month flagship deprecation), and its like-for-like frontier answer (3.5 Pro) missed three GA dates in 2026."
+    },
+    {
+      "vendor": "Meta",
+      "synthesis": "Open-weights pioneer rebooting: Llama created commercial open weights and proved open frontier parity (405B), then Llama 4's credibility stumble ended the line's momentum; the Muse family (Apache 2.0) is a promising restart that was weeks old at snapshot. Caution: strategy discontinuity — teams that built on Llama were left without an in-family successor for a year."
+    },
+    {
+      "vendor": "Microsoft",
+      "synthesis": "From reseller to first party: Build 2026's seven-model MAI launch gives Azure a house answer with tenant-native fine-tuning (Frontier Tuning) and its own silicon story. Cautions: benchmarks were self-reported ahead of broad access at snapshot, and the MAI line is months old — the ecosystem-default pull is real, the track record is not yet."
+    },
+    {
+      "vendor": "DeepSeek",
+      "synthesis": "The price-structure breaker: R1 made open reasoning a market event; V4 put a frontier-class model under MIT with 1M context. Cautions: vendor-run benchmarks pending independent reproduction, measured hallucination regression (HHEM 8.6%), and the August 2026 repricing (up to four-digit percentage increases on days of notice) — the weights are the hedge, the API is not."
+    },
+    {
+      "vendor": "Alibaba",
+      "synthesis": "The open ecosystem's default base: Qwen's Apache ladder is the most-derived open family, and 2026 delivered both laptop-class coding MoEs and the largest open weights ever shipped (Qwen3.8). Cautions: a year of licensing zigzag (closed flagships, then an open Max-class under revenue-gated custom terms) means the license, not the model, is what to re-read each release."
+    },
+    {
+      "vendor": "Mistral AI",
+      "synthesis": "Europe's frontier: Apache 2.0 at frontier scale (Large 3) and the sovereignty option EU buyers actually mean. Cautions: a capability half-step behind the newest open rivals at snapshot, and a fast-shifting product map (unified reasoning, new MoE family in early access)."
+    },
+    {
+      "vendor": "Moonshot AI",
+      "synthesis": "The open-scale escalator: K2 made 1T-parameter agentic weights real; K3 pushed to 2.8T with vision and 1M context. Cautions: custom license naming (re-read K3's terms), serving these models is a cluster-scale project, and Western procurement review applies."
+    },
+    {
+      "vendor": "Zhipu (Z.ai)",
+      "synthesis": "The budget-coding insurgent: GLM's Claude-compatible serving and coding plans made frontier-adjacent agentic work nearly unmetered, with MIT weights as the escape hatch; GLM-5's Huawei-silicon training is a geopolitical milestone. Cautions: Western enterprise friction and top-open claims that rotate quickly among rivals."
+    },
+    {
+      "vendor": "xAI",
+      "synthesis": "Compute-scale proof: Grok reached the hard-benchmark frontier in two years and the current line prices aggressively; the real-time X firehose is a data moat nothing else has. Cautions: the governance record (moderation incidents, system-prompt findings) is part of the product's history, and the corporate structure changed mid-2026 (SpaceXAI branding)."
+    },
+    {
+      "vendor": "Amazon",
+      "synthesis": "The ecosystem default: Nova exists so AWS-committed teams have a one-procurement answer with Bedrock guardrails attached. Cautions: capability verification lags the leaders — validate on your own traffic rather than assuming parity with the volume-tier frontrunners."
+    },
+    {
+      "vendor": "IBM",
+      "synthesis": "Governance-first small models: Granite's Apache weights, conservative data provenance, and indemnified enterprise variants target regulated industries deliberately. Caution: leaderboard position is not the pitch, and it shows — pick Granite for posture, not peaks."
+    },
+    {
+      "vendor": "ElevenLabs",
+      "synthesis": "The voice product leader: expressive TTS, self-serve cloning, and the only monetized voice marketplace. Cautions: single-vendor dependence for a governance-sensitive capability, and the latency-vs-fidelity split across its own model families."
+    },
+    {
+      "vendor": "Cohere",
+      "synthesis": "The sovereignty specialist: Command A+ put a Western enterprise flagship under Apache 2.0 — a licensing first for the segment — and the Embed+Rerank pair is the only first-party retrieval stack among the independents. Cautions: capability sits below the frontier tier it prices against, and the open-weights pivot is months old — the private-deployment track record is longer than the open one."
+    },
+    {
+      "vendor": "NVIDIA",
+      "synthesis": "The silicon vendor as model vendor: Nemotron 3 Ultra holds the US open-weights capability lead on Artificial Analysis, with open data and recipes, and the Nemotron Coalition (Mistral, Perplexity, Cursor et al.) makes the roadmap an industry bet. Cautions: the NVIDIA Open Model License is not Apache 2.0, naming collides across generations (two different 'Nemotron 4' eras), and the tooling assumes you buy the stack."
+    },
+    {
+      "vendor": "Baidu",
+      "synthesis": "China's search-grounded default: ERNIE 5.1 debuted top-5 on LMArena's Search Arena and ships omni-modal into the Qianfan ecosystem. Cautions: proprietary API only — no weights escape hatch — and the product is built for the China market; ex-China procurement, support, and residency are afterthoughts."
+    },
+    {
+      "vendor": "Tencent",
+      "synthesis": "The open-video pioneer diversifying: HunyuanVideo seeded the largest open video fine-tune ecosystem, and 2026's Hy3 text model is genuinely Apache 2.0 — a family first. Cautions: the video line's Community License excludes the EU, UK, and South Korea and audits at 100M MAU (press routinely mislabels it Apache), and text capability sits mid-tier."
+    },
+    {
+      "vendor": "MiniMax",
+      "synthesis": "The efficiency radical: M2's 10B-active MoE made open agentic serving nearly free under MIT, and the Hailuo video line ships a credible open flagship. Cautions: the license retreated post-IPO — M2.7 quietly re-licensed to require written authorization for commercial use — so re-read terms every release; the family churns fast."
+    },
+    {
+      "vendor": "AI21 Labs",
+      "synthesis": "The long-context honesty vendor: Jamba's hybrid SSM architecture carries the rare RULER-validated effective-context claim, with Bedrock-native enterprise distribution. Cautions: capability is generations off the frontier, there is no Jamba 2, and the company's center of gravity has shifted to the Maestro orchestration platform rather than new base models."
+    },
+    {
+      "vendor": "Suno",
+      "synthesis": "The consumer music-generation category leader, now partly licensed: the Warner settlement created the first major-label framework for AI song generation. Cautions: UMG and Sony litigation continues toward trial, commercial rights exist only on paid tiers, and enterprise usage patterns for generated music barely exist."
+    }
+  ],
+  "maturity": [
+    {
+      "category": "Deep reasoning",
+      "stage": "competitive",
+      "justification": "Every flagship ships test-time thinking; differentiation moved to verified results and price — but leaders still leapfrog each other quarterly."
+    },
+    {
+      "category": "Agentic coding",
+      "stage": "competitive",
+      "justification": "Three near-tied proprietary leaders plus credible open challengers; harness lock-in, not capability, increasingly decides selection."
+    },
+    {
+      "category": "Open-weights frontier",
+      "stage": "emerging",
+      "justification": "2026 made frontier-class open weights real (V4, K3, Qwen3.8, Large 3), but licenses, serving economics, and verification practices are still unsettled."
+    },
+    {
+      "category": "High-volume inference",
+      "stage": "commodity",
+      "justification": "Multiple interchangeable tiers per price point; selection is about lifecycle and pricing stability, not capability."
+    },
+    {
+      "category": "Image generation",
+      "stage": "consolidating",
+      "justification": "Two closed editors trade the arena lead while the open track owns customization; Imagen's fold-in shows vendors rationalizing portfolios."
+    },
+    {
+      "category": "Video generation",
+      "stage": "emerging",
+      "justification": "A famous exit (Sora), spec leapfrogging (Seedance 30s), preview-grade successors (Omni) — capability is racing ahead of vendor stability."
+    },
+    {
+      "category": "Voice & realtime",
+      "stage": "consolidating",
+      "justification": "GA agent lanes and a clear TTS product leader, with hyperscaler stacks still in preview; roles are settling."
+    },
+    {
+      "category": "Embeddings & retrieval",
+      "stage": "commodity",
+      "justification": "Open models tie or beat closed defaults in production surveys; switching cost (re-embedding), not quality, protects incumbents."
+    },
+    {
+      "category": "Small / on-device",
+      "stage": "consolidating",
+      "justification": "30B-class local inference is routine; the axis of competition moved from capability to license terms."
+    },
+    {
+      "category": "Music generation",
+      "stage": "emerging",
+      "justification": "Post-litigation licensing frameworks are weeks-to-months old; enterprise usage patterns barely exist."
+    }
+  ]
+}

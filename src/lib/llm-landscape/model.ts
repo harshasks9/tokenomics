@@ -159,25 +159,30 @@ export function assignDimensions<T extends { text: string }>(
 }
 
 /** ---------- URL state ---------- */
-export type ViewId = "timeline" | "families" | "advisor" | "maturity";
+export type ViewId = "advisor" | "timeline" | "maturity";
 
 export type UiState = {
   view: ViewId;
-  q: string; // search: name/vendor substring
+  q: string; // search: name/vendor/claims substring
   vendors: string[];
   access: string[];
   modality: string | null;
   workload: string | null;
   years: [number, number] | null;
   tiers: number[];
-  sel: string | null; // selected model id (detail pane / advisor model A)
-  b: string | null; // advisor head-to-head model B
+  sel: string | null; // record sheet overlay — one meaning in every view
+  pairA: string | null; // head-to-head model A
+  b: string | null; // head-to-head model B
   cmp: string | null; // workload id focused in the advisor guides
   vnd: string | null; // vendor profile drawer
+  tv: "chart" | "table"; // timeline presentation
+  cOpen: boolean; // constraint: open weights only
+  cOrigin: string | null; // constraint: vendor origin (us/europe/china/non-china)
+  cCtx: number | null; // constraint: context window at least N tokens
 };
 
 export const DEFAULT_STATE: UiState = {
-  view: "timeline",
+  view: "advisor",
   q: "",
   vendors: [],
   access: [],
@@ -186,9 +191,14 @@ export const DEFAULT_STATE: UiState = {
   years: null,
   tiers: [],
   sel: null,
+  pairA: null,
   b: null,
   cmp: null,
   vnd: null,
+  tv: "chart",
+  cOpen: false,
+  cOrigin: null,
+  cCtx: null,
 };
 
 export function decodeState(search: string): UiState {
@@ -201,13 +211,13 @@ export function decodeState(search: string): UiState {
     years = [Math.min(a, b), Math.max(a, b)];
   }
   const raw = p.get("view");
-  // pre-pivot links used view=compare; the advisor absorbs them
+  // Legacy routes: view=compare was the pre-pivot head-to-head (sel carried
+  // model A there); view=families folded into the record sheet's lineage.
+  const legacyCompare = raw === "compare";
   const view: ViewId =
-    raw === "families" || raw === "advisor" || raw === "maturity"
-      ? raw
-      : raw === "compare"
-        ? "advisor"
-        : "timeline";
+    raw === "timeline" || raw === "families" ? "timeline" : raw === "maturity" ? "maturity" : "advisor";
+  const sel = p.get("sel");
+  const ctxRaw = Number(p.get("ctx"));
   return {
     view,
     q: p.get("q") ?? "",
@@ -217,16 +227,21 @@ export function decodeState(search: string): UiState {
     workload: p.get("w"),
     years,
     tiers: list("t").map(Number).filter((n) => [1, 2, 3].includes(n)),
-    sel: p.get("sel"),
+    sel: legacyCompare ? null : sel,
+    pairA: p.get("pa") ?? (legacyCompare ? sel : null),
     b: p.get("b"),
     cmp: p.get("cmp"),
     vnd: p.get("vnd"),
+    tv: p.get("tv") === "table" ? "table" : "chart",
+    cOpen: p.get("ow") === "1",
+    cOrigin: p.get("org"),
+    cCtx: Number.isFinite(ctxRaw) && ctxRaw > 0 ? ctxRaw : null,
   };
 }
 
 export function encodeState(s: UiState): string {
   const p = new URLSearchParams();
-  if (s.view !== "timeline") p.set("view", s.view);
+  if (s.view !== "advisor") p.set("view", s.view);
   if (s.q) p.set("q", s.q);
   if (s.vendors.length) p.set("v", s.vendors.join(","));
   if (s.access.length) p.set("a", s.access.join(","));
@@ -235,9 +250,14 @@ export function encodeState(s: UiState): string {
   if (s.years) p.set("y", `${s.years[0]}-${s.years[1]}`);
   if (s.tiers.length) p.set("t", s.tiers.join(","));
   if (s.sel) p.set("sel", s.sel);
+  if (s.pairA) p.set("pa", s.pairA);
   if (s.b) p.set("b", s.b);
   if (s.cmp) p.set("cmp", s.cmp);
   if (s.vnd) p.set("vnd", s.vnd);
+  if (s.tv === "table") p.set("tv", "table");
+  if (s.cOpen) p.set("ow", "1");
+  if (s.cOrigin) p.set("org", s.cOrigin);
+  if (s.cCtx) p.set("ctx", String(s.cCtx));
   const q = p.toString();
   return q ? `?${q}` : "";
 }
@@ -246,7 +266,7 @@ export function encodeState(s: UiState): string {
 export function applyFilters(data: Dataset, s: UiState): Model[] {
   const q = s.q.trim().toLowerCase();
   return data.models.filter((m) => {
-    if (q && !`${m.name} ${m.vendor} ${m.family}`.toLowerCase().includes(q)) return false;
+    if (q && !searchText(m).includes(q)) return false;
     if (s.vendors.length && !s.vendors.includes(vendorGroup(m.vendor))) return false;
     if (s.access.length) {
       if (!m.access || !s.access.includes(m.access)) return false;
@@ -274,4 +294,92 @@ export function vendorGroup(vendor: string): string {
   if (vendor.startsWith("Stability")) return "Stability AI";
   if (vendor.startsWith("Zhipu")) return "Zhipu (Z.ai)";
   return vendor;
+}
+
+/** ---------- constraint helpers (advisor guides) ---------- */
+
+/** Vendor origin buckets for the procurement constraint. Facts, not judgment. */
+const ORIGIN: Record<string, "us" | "europe" | "china" | "other"> = {
+  OpenAI: "us", Anthropic: "us", Google: "us", Meta: "us", Microsoft: "us",
+  Amazon: "us", IBM: "us", NVIDIA: "us", xAI: "us", Databricks: "us",
+  Snowflake: "us", Midjourney: "us", Ideogram: "us", Runway: "us",
+  Perplexity: "us", Deepgram: "us", AssemblyAI: "us", Suno: "us", Udio: "us",
+  ElevenLabs: "us", "Voyage AI (MongoDB)": "us",
+  "Mistral AI": "europe", "Stability AI": "europe", "Black Forest Labs": "europe",
+  "Jina AI": "europe",
+  DeepSeek: "china", Alibaba: "china", "Zhipu (Z.ai)": "china",
+  "Moonshot AI": "china", Baidu: "china", Tencent: "china", MiniMax: "china",
+  ByteDance: "china", Kuaishou: "china", "01.AI": "china", BAAI: "china",
+  Cohere: "other", "AI21 Labs": "other",
+};
+
+export function originOf(vendor: string): "us" | "europe" | "china" | "other" {
+  return ORIGIN[vendorGroup(vendor)] ?? "other";
+}
+
+export const ORIGIN_OPTIONS = [
+  { value: "", label: "Any origin" },
+  { value: "us", label: "US only" },
+  { value: "europe", label: "Europe only" },
+  { value: "china", label: "China only" },
+  { value: "non-china", label: "Exclude China" },
+] as const;
+
+export const CTX_OPTIONS = [
+  { value: 0, label: "Any context" },
+  { value: 128_000, label: "Context ≥ 128K" },
+  { value: 200_000, label: "Context ≥ 200K" },
+  { value: 1_000_000, label: "Context ≥ 1M" },
+] as const;
+
+export type ConstraintVerdict =
+  | { kind: "pass"; unknowns: string[] }
+  | { kind: "fail"; reasons: string[] };
+
+/** Evaluate a record against the advisor constraints. Nulls are unknowns —
+ *  flagged, never silently dropped. */
+export function checkConstraints(
+  m: Model,
+  c: { cOpen: boolean; cOrigin: string | null; cCtx: number | null },
+): ConstraintVerdict {
+  const reasons: string[] = [];
+  const unknowns: string[] = [];
+  if (c.cOpen) {
+    if (!m.access) unknowns.push("access not on file");
+    else if (m.access !== "open-weights") reasons.push(ACCESS_LABEL[m.access] ?? m.access);
+  }
+  if (c.cOrigin) {
+    const o = originOf(m.vendor);
+    const ok = c.cOrigin === "non-china" ? o !== "china" : o === c.cOrigin;
+    if (!ok) reasons.push(`origin: ${o === "us" ? "US" : o[0].toUpperCase() + o.slice(1)}`);
+  }
+  if (c.cCtx) {
+    const ctx = m.context?.input_tokens;
+    if (ctx == null) unknowns.push("context not published — verify");
+    else if (ctx < c.cCtx) reasons.push(`context ${fmtTokens(ctx)} < ${fmtTokens(c.cCtx)}`);
+  }
+  return reasons.length ? { kind: "fail", reasons } : { kind: "pass", unknowns };
+}
+
+export const TIER_LABEL: Record<number, string> = {
+  1: "Landmark",
+  2: "Full record",
+  3: "Stub",
+};
+
+/** Search haystack: name/vendor/family plus the graded claims, so
+ *  "1M context MIT" finds models by need, not just by name. */
+const SEARCH_CACHE = new WeakMap<Model, string>();
+export function searchText(m: Model): string {
+  let s = SEARCH_CACHE.get(m);
+  if (!s) {
+    s = [
+      m.name, m.vendor, m.family, m.license ?? "",
+      ...(m.known_for ?? []).map((c) => c.claim),
+      ...(m.best_use_cases ?? []).map((c) => c.claim),
+      ...(m.weaknesses ?? []).map((c) => c.claim),
+    ].join(" ").toLowerCase();
+    SEARCH_CACHE.set(m, s);
+  }
+  return s;
 }

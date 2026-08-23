@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { Dataset, Model } from "@/lib/llm-landscape/types";
-import { fmtMods, fmtTokens, vendorGroup } from "@/lib/llm-landscape/model";
+import { byReleaseAsc, fmtMods, fmtTokens, vendorGroup } from "@/lib/llm-landscape/model";
 import {
   AccessPill,
   ClaimList,
@@ -44,6 +44,10 @@ export default function Detail({
     ? data.models.find((m) => m.id === model.predecessor_id)
     : null;
   const successor = data.models.find((m) => m.predecessor_id === model.id && m.tier < 3);
+  // The whole family line, in release order — lineage lives here now.
+  const familyChain = data.models
+    .filter((x) => x.family === model.family)
+    .sort(byReleaseAsc);
 
   // Arrow keys page through records while the sheet is open.
   useEffect(() => {
@@ -109,6 +113,25 @@ export default function Detail({
           )}
         </div>
         {model.last_verified && <div className="verified">last verified {model.last_verified}</div>}
+        {familyChain.length >= 2 && (
+          <div className="lineage" aria-label={`${model.family} family lineage`}>
+            <span className="flabel">lineage</span>
+            <div className="lineage-row">
+              {familyChain.map((x, i) => (
+                <span key={x.id} className="lineage-item">
+                  {i > 0 && <span className="lineage-arrow" aria-hidden>→</span>}
+                  {x.id === model.id ? (
+                    <span className="lineage-chip on">{x.name}</span>
+                  ) : (
+                    <button className="lineage-chip" onClick={() => onJump(x.id)}>
+                      {x.name}
+                    </button>
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="pane-body">
@@ -174,7 +197,7 @@ export default function Detail({
                   className="btn-compare"
                   onClick={() => onHeadToHead(row.model_id, row.workload)}
                 >
-                  compare head-to-head →
+                  Compare these two →
                 </button>
               </div>
             ))}
@@ -219,7 +242,7 @@ export default function Detail({
                     <p>
                       <strong>Position B.</strong> {d.position_b}
                     </p>
-                    <p className="assessment">
+                    <p className="assessment judgment">
                       <GradeBadge grade="analyst-inference" /> {d.assessment}
                     </p>
                   </div>

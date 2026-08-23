@@ -1,28 +1,30 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { Dataset, Model } from "@/lib/llm-landscape/types";
+import type { Dataset, Meta, Model } from "@/lib/llm-landscape/types";
 import {
   ACCESS_LABEL,
   DEFAULT_STATE,
+  TIER_LABEL,
   type UiState,
   applyFilters,
   byReleaseAsc,
   decodeState,
   encodeState,
+  fmtTokens,
   parseReleased,
   vendorGroup,
   vendorHue,
 } from "@/lib/llm-landscape/model";
 import Advisor from "./Advisor";
 import Detail from "./Detail";
-import Families from "./Families";
 import Maturity from "./Maturity";
 import Timeline from "./Timeline";
 import VendorDrawer from "./VendorDrawer";
-import { TierTag, setGradeDefs } from "./ui";
+import { StatusPill, TierTag, setGradeDefs } from "./ui";
 
 const DATA_URL = "/llm-landscape/models.json";
+const META_URL = "/llm-landscape/meta.json";
 
 type FacetKey = "vendors" | "access" | "workload" | "tiers";
 
@@ -49,6 +51,7 @@ function HeaderShell({
 
 export default function Site() {
   const [data, setData] = useState<Dataset | null>(null);
+  const [metaOnly, setMetaOnly] = useState<Meta | null>(null);
   const [error, setError] = useState<string | null>(null);
   // URL is the state store (shareable views, no browser storage).
   const [state, setState] = useState<UiState>(() =>
@@ -58,6 +61,9 @@ export default function Site() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchIdx, setSearchIdx] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
+  const [tsort, setTsort] = useState<{ k: string; dir: 1 | -1 }>({ k: "released", dir: -1 });
+  // Clock captured once per mount — render stays pure (react-hooks/purity).
+  const [now] = useState(() => Date.now());
   const facetsRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const searchBoxRef = useRef<HTMLDivElement>(null);
@@ -69,6 +75,15 @@ export default function Site() {
   const popping = useRef(false);
 
   useEffect(() => {
+    // meta.json (~50 KB) paints the advisor landing; models.json (~760 KB) is
+    // the source of truth and replaces it the moment it lands.
+    fetch(META_URL)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((m: Meta) => {
+        setGradeDefs(m.evidence_grades);
+        setMetaOnly((prev) => prev ?? m);
+      })
+      .catch(() => {}); // purely an accelerator — models.json still carries everything
     fetch(DATA_URL)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -81,6 +96,13 @@ export default function Site() {
       .catch((e) => setError(String(e)));
   }, []);
 
+  // Everything renders from ds; `ready` marks the full universe being in.
+  const ds: Dataset | null = useMemo(
+    () => data ?? (metaOnly ? { meta: metaOnly, models: [] } : null),
+    [data, metaOnly],
+  );
+  const ready = Boolean(data);
+
   // state -> URL. Opening an overlay (record sheet / vendor drawer / advisor
   // head-to-head) pushes a history entry so browser Back closes it; everything
   // else replaces.
@@ -88,11 +110,11 @@ export default function Site() {
     const next = `${window.location.pathname}${encodeState(state)}`;
     const cur = `${window.location.pathname}${window.location.search}`;
     if (cur !== next) {
-      const sheet = Boolean(state.sel && state.view !== "advisor");
+      const sheet = Boolean(state.sel);
       const openedOverlay =
         (sheet && !prevOverlay.current.sheet) ||
         (state.vnd && !prevOverlay.current.vnd) ||
-        (state.view === "advisor" && prevOverlay.current.view !== "advisor");
+        (Boolean(state.pairA) && prevOverlay.current.view !== "h2h");
       if (!popping.current && openedOverlay) {
         window.history.pushState(null, "", next);
       } else if (!popping.current) {
@@ -101,9 +123,9 @@ export default function Site() {
     }
     popping.current = false;
     prevOverlay.current = {
-      sheet: Boolean(state.sel && state.view !== "advisor"),
+      sheet: Boolean(state.sel),
       vnd: state.vnd,
-      view: state.view,
+      view: state.pairA ? "h2h" : state.view,
     };
   }, [state]);
 
@@ -127,9 +149,7 @@ export default function Site() {
       } else if (e.key === "Escape") {
         setOpenFacet(null);
         setSearchOpen(false);
-        setState((s) =>
-          s.vnd ? { ...s, vnd: null } : s.sel && s.view !== "advisor" ? { ...s, sel: null } : s,
-        );
+        setState((s) => (s.vnd ? { ...s, vnd: null } : s.sel ? { ...s, sel: null } : s));
       }
     };
     document.addEventListener("keydown", onKey);
@@ -151,12 +171,11 @@ export default function Site() {
     setState((s) => ({ ...s, ...patch }));
   }, []);
 
-  const filtered = useMemo(() => (data ? applyFilters(data, state) : []), [data, state]);
-  const filteredIds = useMemo(() => new Set(filtered.map((m) => m.id)), [filtered]);
+  const filtered = useMemo(() => (ds ? applyFilters(ds, state) : []), [ds, state]);
 
   const selected: Model | null = useMemo(
-    () => (data && state.sel ? (data.models.find((m) => m.id === state.sel) ?? null) : null),
-    [data, state.sel],
+    () => (ds && state.sel ? (ds.models.find((m) => m.id === state.sel) ?? null) : null),
+    [ds, state.sel],
   );
 
   // Sheet prev/next within the filtered, chronological order (records only).
@@ -168,23 +187,23 @@ export default function Site() {
 
   // Lock body scroll while a side pane (record sheet / vendor drawer) is open.
   useEffect(() => {
-    const open = Boolean((selected && state.view !== "advisor") || state.vnd);
+    const open = Boolean(selected || state.vnd);
     document.documentElement.style.overflow = open ? "hidden" : "";
     return () => {
       document.documentElement.style.overflow = "";
     };
-  }, [selected, state.view, state.vnd]);
+  }, [selected, state.vnd]);
 
   const countsFor = useCallback(
     (facet: FacetKey): Map<string, number> => {
       const counts = new Map<string, number>();
-      if (!data) return counts;
+      if (!ds) return counts;
       const probe: UiState = { ...state };
       if (facet === "vendors") probe.vendors = [];
       if (facet === "access") probe.access = [];
       if (facet === "workload") probe.workload = null;
       if (facet === "tiers") probe.tiers = [];
-      for (const m of applyFilters(data, probe)) {
+      for (const m of applyFilters(ds, probe)) {
         const keys: string[] =
           facet === "vendors"
             ? [vendorGroup(m.vendor)]
@@ -199,7 +218,7 @@ export default function Site() {
       }
       return counts;
     },
-    [data, state],
+    [ds, state],
   );
 
   const copyLink = () => {
@@ -216,46 +235,42 @@ export default function Site() {
     return (
       <div className="shell">
         <HeaderShell />
-        <div className="empty">Failed to load the dataset ({error}). Reload to retry.</div>
+        <div className="empty">
+          The dataset didn&apos;t load ({error}).{" "}
+          <button className="link" onClick={() => window.location.reload()}>
+            Retry
+          </button>
+        </div>
       </div>
     );
   }
-  if (!data) {
+  if (!ds) {
     return (
       <div className="shell">
         <HeaderShell>
           <nav className="seg" aria-hidden>
-            {["Timeline", "Families", "Advisor", "Maturity"].map((l) => (
+            {["Choose a model", "Timeline", "Maturity"].map((l) => (
               <button key={l} className="seg-btn" disabled>
                 {l}
               </button>
             ))}
           </nav>
         </HeaderShell>
-        <div className="fbar">
-          <div className="fbar-row">
-            <span className="skel skel-pill" />
-            <span className="skel skel-pill" />
-            <span className="skel skel-pill" />
-          </div>
-        </div>
         <main className="main">
-          <div className="tl skel-chart" aria-label="Loading">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <div key={i} className="skel skel-lane" style={{ width: `${88 - i * 9}%` }} />
-            ))}
-          </div>
+          <div className="skel skel-pill" style={{ width: 320, height: 30, marginBottom: 14 }} />
+          <div className="skel skel-lane" style={{ width: "70%" }} />
+          <div className="skel skel-lane" style={{ width: "50%", marginTop: 10 }} />
         </main>
       </div>
     );
   }
 
-  /* ---------- loaded ---------- */
-  const vendorOptions = [...new Set(data.models.map((m) => vendorGroup(m.vendor)))].sort();
-  const accessOptions = [...new Set(data.models.map((m) => m.access).filter(Boolean))] as string[];
+  /* ---------- loaded (meta at minimum; `ready` = full universe) ---------- */
+  const vendorOptions = [...new Set(ds.models.map((m) => vendorGroup(m.vendor)))].sort();
+  const accessOptions = [...new Set(ds.models.map((m) => m.access).filter(Boolean))] as string[];
   const yearsPresent = [
     ...new Set(
-      data.models.map((m) => parseReleased(m.released).year).filter((y): y is number => y != null),
+      ds.models.map((m) => parseReleased(m.released).year).filter((y): y is number => y != null),
     ),
   ]
     .filter((y) => y >= 2022)
@@ -279,7 +294,7 @@ export default function Site() {
   const clearAll = () =>
     update({ q: "", vendors: [], access: [], modality: null, workload: null, years: null, tiers: [] });
 
-  const wlLabel = (id: string) => data.meta.workloads.find((w) => w.id === id)?.label ?? id;
+  const wlLabel = (id: string) => ds.meta.workloads.find((w) => w.id === id)?.label ?? id;
 
   const chips: { label: string; onRemove: () => void }[] = [];
   if (state.q) chips.push({ label: `“${state.q}”`, onRemove: () => update({ q: "" }) });
@@ -294,19 +309,21 @@ export default function Site() {
         state.years[0] === state.years[1] ? `${state.years[0]}` : `${state.years[0]}–${state.years[1]}`,
       onRemove: () => update({ years: null }),
     });
-  for (const t of state.tiers) chips.push({ label: `Tier ${t}`, onRemove: () => toggleList("tiers", t) });
+  for (const t of state.tiers)
+    chips.push({ label: TIER_LABEL[t] ?? `Tier ${t}`, onRemove: () => toggleList("tiers", t) });
 
-  const compareCandidates = (filtered.length && (state.q || chips.length) ? filtered : data.models)
+  const compareCandidates = (filtered.length && (state.q || chips.length) ? filtered : ds.models)
     .filter((m) => m.tier < 3)
     .sort(byReleaseAsc)
     .reverse();
-  const modelB = state.b ? (data.models.find((m) => m.id === state.b) ?? null) : null;
+  const modelA = state.pairA ? (ds.models.find((m) => m.id === state.pairA) ?? null) : null;
+  const modelB = state.b ? (ds.models.find((m) => m.id === state.b) ?? null) : null;
 
-  // Search-jump results: records first, then stubs.
+  // Search-jump results: records first, then stubs. The haystack includes the
+  // graded claims, so "1M context MIT" finds models by need.
   const q = state.q.trim().toLowerCase();
   const searchResults = q
-    ? data.models
-        .filter((m) => `${m.name} ${m.vendor} ${m.family}`.toLowerCase().includes(q))
+    ? applyFilters(ds, { ...DEFAULT_STATE, q })
         .sort((a, b) => a.tier - b.tier || byReleaseAsc(b, a))
         .slice(0, 8)
     : [];
@@ -318,23 +335,13 @@ export default function Site() {
     if (m.tier === 3) setTimeout(() => setToast(null), 3200);
   };
 
-  const stats = {
-    total: data.models.length,
-    t1: data.models.filter((m) => m.tier === 1).length,
-    open: data.models.filter((m) => m.access === "open-weights").length,
-    guides: data.meta.workload_guides?.length ?? 0,
-    categories: data.meta.maturity?.length ?? 0,
-  };
-
-  // Journey step 3 seed: the newest landmark's highest-confidence analyst
-  // pairing — data-driven, so no vendor is hard-coded as the demo default.
-  const heroPairing = (() => {
-    const t1s = data.models.filter((m) => m.tier === 1).sort(byReleaseAsc).reverse();
-    for (const m of t1s) {
-      const alt = (m.alternatives ?? []).find((a) => a.model_id && a.confidence === "high");
-      if (alt) return { a: m.id, b: alt.model_id! };
-    }
-    return null;
+  // Freshness: the age of the snapshot is trust-critical, so print it.
+  const snapshotAge = (() => {
+    const days = Math.max(
+      0,
+      Math.floor((now - Date.parse(`${ds.meta.snapshot_date}T00:00:00Z`)) / 86_400_000),
+    );
+    return days === 0 ? "today" : days === 1 ? "1 day old" : `${days} days old`;
   })();
 
   const facetDefs: {
@@ -366,16 +373,16 @@ export default function Site() {
       key: "workload",
       label: "Workload",
       caption: "Models with an analyst alternatives entry for this workload",
-      options: data.meta.workloads.map((w) => ({ value: w.id, label: w.label })),
+      options: ds.meta.workloads.map((w) => ({ value: w.id, label: w.label })),
       active: state.workload ? 1 : 0,
       isOn: (v) => state.workload === v,
       toggle: (v) => update({ workload: state.workload === v ? null : v }),
     },
     {
       key: "tiers",
-      label: "Tier",
-      caption: "1 landmark · 2 compact record · 3 lineage stub",
-      options: [1, 2, 3].map((t) => ({ value: String(t), label: `Tier ${t}` })),
+      label: "Depth",
+      caption: "Landmark: full dossier · Full record: compact dossier · Stub: lineage entry only",
+      options: [1, 2, 3].map((t) => ({ value: String(t), label: TIER_LABEL[t] })),
       active: state.tiers.length,
       isOn: (v) => state.tiers.includes(Number(v)),
       toggle: (v) => toggleList("tiers", Number(v)),
@@ -441,15 +448,17 @@ export default function Site() {
           </div>
         }
       >
-        <span className="hdr-snapshot" title="All facts frozen at this date; per-record last_verified shown on each card">
-          snapshot {data.meta.snapshot_date}
+        <span
+          className="hdr-snapshot"
+          title="Every fact is frozen at this date; each record also carries its own last-verified date"
+        >
+          Verified {ds.meta.snapshot_date} · {snapshotAge}
         </span>
         <nav className="seg" aria-label="Views">
           {(
             [
+              ["advisor", "Choose a model"],
               ["timeline", "Timeline"],
-              ["families", "Families"],
-              ["advisor", "Advisor"],
               ["maturity", "Maturity"],
             ] as const
           ).map(([id, label]) => (
@@ -464,10 +473,13 @@ export default function Site() {
           ))}
         </nav>
         <button className="hdr-share" onClick={copyLink} title="Copy a shareable link to this exact view">
-          Share view
+          Copy link
         </button>
       </HeaderShell>
 
+      {/* Facets are browse tools — they ride with the timeline; the advisor
+          has its own constraint bar. */}
+      {state.view === "timeline" && (
       <div className="fbar">
         <div className="fbar-row" ref={facetsRef}>
           {facetDefs.map((f) => {
@@ -531,7 +543,7 @@ export default function Site() {
           </div>
 
           <span className="fbar-count" aria-live="polite">
-            <b>{filtered.length}</b> of {data.models.length} models
+            <b>{filtered.length}</b> of {ds.models.length} models
           </span>
         </div>
 
@@ -548,118 +560,117 @@ export default function Site() {
           </div>
         )}
       </div>
+      )}
 
       <main className="main">
         {state.view === "timeline" && (
           <>
-            {!state.q && chips.length === 0 && (
-              <section className="hero">
-                <div className="hero-copy">
-                  <h2 className="hero-title">
-                    The model landscape, <em>mapped honestly</em>
-                  </h2>
-                  <p className="hero-sub">
-                    {stats.total} models with evidence-graded claims, frozen at the{" "}
-                    {data.meta.snapshot_date} snapshot — and no vendor as the house answer.
-                  </p>
-                </div>
-                <ol className="journey" aria-label="How to use this advisory">
-                  <li>
-                    <button className="jr jr-1" onClick={clearAll}>
-                      <i aria-hidden>1</i>
-                      <span className="jr-txt">
-                        <b>Explore the timeline</b>
-                        <span>who shipped what, when</span>
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="jr jr-2"
-                      onClick={() => update({ view: "advisor", sel: null, b: null })}
-                    >
-                      <i aria-hidden>2</i>
-                      <span className="jr-txt">
-                        <b>Pick a workload guide</b>
-                        <span>shortlists, with reasoning</span>
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      className="jr jr-3"
-                      onClick={() =>
-                        heroPairing
-                          ? update({ view: "advisor", sel: heroPairing.a, b: heroPairing.b })
-                          : update({ view: "advisor", sel: null, b: null })
-                      }
-                    >
-                      <i aria-hidden>3</i>
-                      <span className="jr-txt">
-                        <b>Go head-to-head</b>
-                        <span>any model vs any model</span>
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button className="jr jr-4" onClick={() => update({ view: "maturity" })}>
-                      <i aria-hidden>4</i>
-                      <span className="jr-txt">
-                        <b>Check market maturity</b>
-                        <span>stages, with reasons</span>
-                      </span>
-                    </button>
-                  </li>
-                </ol>
-              </section>
-            )}
-            <div className="tiles" role="group" aria-label="Dataset at a glance">
-              <button className="tile t-indigo" onClick={clearAll}>
-                <b>{stats.total}</b>
-                <span>models tracked</span>
+            <div className="tv-switch" role="tablist" aria-label="Timeline presentation">
+              <button
+                role="tab"
+                aria-selected={state.tv === "chart"}
+                className={`guide-tab ${state.tv === "chart" ? "on" : ""}`}
+                onClick={() => update({ tv: "chart" })}
+              >
+                Chart
               </button>
               <button
-                className={`tile t-amber ${state.tiers.length === 1 && state.tiers[0] === 1 ? "on" : ""}`}
-                onClick={() => update({ tiers: state.tiers.length === 1 && state.tiers[0] === 1 ? [] : [1] })}
+                role="tab"
+                aria-selected={state.tv === "table"}
+                className={`guide-tab ${state.tv === "table" ? "on" : ""}`}
+                onClick={() => update({ tv: "table" })}
               >
-                <b>{stats.t1}</b>
-                <span>landmark releases</span>
-              </button>
-              <button
-                className={`tile t-emerald ${state.access.length === 1 && state.access[0] === "open-weights" ? "on" : ""}`}
-                onClick={() =>
-                  update({
-                    access:
-                      state.access.length === 1 && state.access[0] === "open-weights"
-                        ? []
-                        : ["open-weights"],
-                  })
-                }
-              >
-                <b>{stats.open}</b>
-                <span>open-weights models</span>
-              </button>
-              <button
-                className="tile t-violet"
-                onClick={() => update({ view: "advisor", sel: null, b: null })}
-              >
-                <b>{stats.guides}</b>
-                <span>buyer&apos;s guides</span>
-              </button>
-              <button className="tile t-cyan" onClick={() => update({ view: "maturity" })}>
-                <b>{stats.categories}</b>
-                <span>categories rated</span>
+                Table
               </button>
             </div>
-            {filtered.length === 0 ? (
+            {!ready ? (
+              <div className="tl skel-chart" aria-label="Loading">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <div key={i} className="skel skel-lane" style={{ width: `${88 - i * 9}%` }} />
+                ))}
+              </div>
+            ) : filtered.length === 0 ? (
               <div className="empty">
                 No models match. Loosen a filter — the chips above remove with one click.
               </div>
+            ) : state.tv === "table" ? (
+              (() => {
+                const val = (m: Model, k: string): string | number => {
+                  switch (k) {
+                    case "name": return m.name.toLowerCase();
+                    case "vendor": return vendorGroup(m.vendor).toLowerCase();
+                    case "released": return parseReleased(m.released).sort;
+                    case "depth": return m.tier;
+                    case "status": return m.status ?? "";
+                    case "access": return m.access ? (ACCESS_LABEL[m.access] ?? m.access) : "";
+                    default: return m.context?.input_tokens ?? -1;
+                  }
+                };
+                const rows = [...filtered].sort((x, y) => {
+                  const a = val(x, tsort.k);
+                  const b = val(y, tsort.k);
+                  return (a < b ? -1 : a > b ? 1 : 0) * tsort.dir;
+                });
+                const cols: { k: string; label: string }[] = [
+                  { k: "name", label: "Model" },
+                  { k: "vendor", label: "Vendor" },
+                  { k: "released", label: "Released" },
+                  { k: "depth", label: "Depth" },
+                  { k: "status", label: "Status" },
+                  { k: "access", label: "Access" },
+                  { k: "ctx", label: "Context in" },
+                ];
+                return (
+                  <div className="tbl-wrap">
+                    <table className="tbl">
+                      <thead>
+                        <tr>
+                          {cols.map((c) => (
+                            <th key={c.k} aria-sort={tsort.k === c.k ? (tsort.dir === 1 ? "ascending" : "descending") : undefined}>
+                              <button
+                                className="tbl-sort"
+                                onClick={() =>
+                                  setTsort((s) =>
+                                    s.k === c.k ? { k: c.k, dir: s.dir === 1 ? -1 : 1 } : { k: c.k, dir: 1 },
+                                  )
+                                }
+                              >
+                                {c.label}
+                                {tsort.k === c.k && <span aria-hidden>{tsort.dir === 1 ? " ↑" : " ↓"}</span>}
+                              </button>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map((m) => (
+                          <tr
+                            key={m.id}
+                            className={m.tier < 3 ? "tbl-row" : "tbl-row tbl-stub"}
+                            onClick={() => openSearchResult(m)}
+                          >
+                            <td>
+                              <i className="dot" style={{ background: vendorHue(m.vendor) }} aria-hidden />{" "}
+                              {m.name}
+                            </td>
+                            <td>{vendorGroup(m.vendor)}</td>
+                            <td className="num">{parseReleased(m.released).display}</td>
+                            <td>{TIER_LABEL[m.tier]}</td>
+                            <td>{m.status ? <StatusPill status={m.status} /> : "—"}</td>
+                            <td>{m.access ? (ACCESS_LABEL[m.access] ?? m.access) : "—"}</td>
+                            <td className="num">{fmtTokens(m.context?.input_tokens)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              })()
             ) : (
               <Timeline
                 models={filtered}
-                allModels={data.models}
-                snapshot={data.meta.snapshot_date}
+                allModels={ds.models}
+                snapshot={ds.meta.snapshot_date}
                 onSelect={(id) => update({ sel: id })}
                 onApplyYears={(range) => update({ years: range })}
                 onVendor={(v) => update({ vnd: v })}
@@ -667,46 +678,47 @@ export default function Site() {
             )}
           </>
         )}
-        {state.view === "families" && (
-          <Families
-            models={filtered}
-            allModels={data.models}
-            filteredIds={filteredIds}
-            onSelect={(id) => update({ sel: id })}
-          />
-        )}
         {state.view === "advisor" && (
           <Advisor
-            data={data}
-            a={selected}
+            data={ds}
+            ready={ready}
+            a={modelA}
             b={modelB}
             workload={state.cmp}
             candidates={compareCandidates}
-            onChangeA={(id) => update({ sel: id })}
+            constraints={{ cOpen: state.cOpen, cOrigin: state.cOrigin, cCtx: state.cCtx }}
+            onChangeA={(id) => update({ pairA: id })}
             onChangeB={(id) => update({ b: id })}
             onPickWorkload={(w) => update({ cmp: w })}
-            onOpenRecord={(id) => update({ view: "timeline", sel: id })}
-            onExitCompare={() => update({ sel: null, b: null })}
+            onOpenRecord={(id) => update({ sel: id })}
+            onExitCompare={() => update({ pairA: null, b: null })}
             onMaturity={() => update({ view: "maturity" })}
+            onConstraint={(patch) => update(patch)}
+            onToast={(msg) => {
+              setToast(msg);
+              setTimeout(() => setToast(null), 2600);
+            }}
           />
         )}
         {state.view === "maturity" && (
           <Maturity
-            data={data}
+            data={ds}
             onVendor={(v) => update({ vnd: v })}
-            onAdvisor={() => update({ view: "advisor", sel: null, b: null })}
+            onAdvisor={() => update({ view: "advisor", pairA: null, b: null })}
           />
         )}
       </main>
 
-      {selected && state.view !== "advisor" && (
+      {selected && (
         <>
           <div className="scrim" onClick={() => update({ sel: null })} aria-hidden />
           <Detail
             model={selected}
-            data={data}
+            data={ds}
             onClose={() => update({ sel: null })}
-            onHeadToHead={(bId, w) => update({ view: "advisor", b: bId, cmp: w })}
+            onHeadToHead={(bId, w) =>
+              update({ view: "advisor", pairA: selected.id, b: bId, cmp: w, sel: null })
+            }
             onJump={(id) => update({ sel: id })}
             onVendor={(v) => update({ vnd: v })}
             onPrev={sheetIdx > 0 ? () => update({ sel: sheetList[sheetIdx - 1].id }) : undefined}
@@ -724,15 +736,9 @@ export default function Site() {
           <div className="scrim" onClick={() => update({ vnd: null })} aria-hidden />
           <VendorDrawer
             vendor={state.vnd}
-            data={data}
+            data={ds}
             onClose={() => update({ vnd: null })}
-            onSelect={(id) =>
-              update({
-                vnd: null,
-                sel: id,
-                view: state.view === "advisor" ? "timeline" : state.view,
-              })
-            }
+            onSelect={(id) => update({ vnd: null, sel: id })}
           />
         </>
       )}
@@ -744,9 +750,9 @@ export default function Site() {
       )}
 
       <footer className="foot">
-        <p>{data.meta.disclaimer}</p>
+        <p>{ds.meta.disclaimer}</p>
         <div className="legend">
-          {Object.entries(data.meta.evidence_grades).map(([k, v]) => (
+          {Object.entries(ds.meta.evidence_grades).map(([k, v]) => (
             <span key={k} className="legend-item">
               <strong>{k}</strong> — {v}
             </span>
