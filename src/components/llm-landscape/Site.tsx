@@ -326,6 +326,17 @@ export default function Site() {
     categories: data.meta.maturity?.length ?? 0,
   };
 
+  // Journey step 3 seed: the newest landmark's highest-confidence analyst
+  // pairing — data-driven, so no vendor is hard-coded as the demo default.
+  const heroPairing = (() => {
+    const t1s = data.models.filter((m) => m.tier === 1).sort(byReleaseAsc).reverse();
+    for (const m of t1s) {
+      const alt = (m.alternatives ?? []).find((a) => a.model_id && a.confidence === "high");
+      if (alt) return { a: m.id, b: alt.model_id! };
+    }
+    return null;
+  })();
+
   const facetDefs: {
     key: FacetKey;
     label: string;
@@ -444,7 +455,7 @@ export default function Site() {
           ).map(([id, label]) => (
             <button
               key={id}
-              className={`seg-btn ${state.view === id ? "on" : ""}`}
+              className={`seg-btn v-${id} ${state.view === id ? "on" : ""}`}
               onClick={() => update({ view: id })}
               aria-pressed={state.view === id}
             >
@@ -541,20 +552,81 @@ export default function Site() {
       <main className="main">
         {state.view === "timeline" && (
           <>
+            {!state.q && chips.length === 0 && (
+              <section className="hero">
+                <div className="hero-copy">
+                  <h2 className="hero-title">
+                    The model landscape, <em>mapped honestly</em>
+                  </h2>
+                  <p className="hero-sub">
+                    {stats.total} models with evidence-graded claims, frozen at the{" "}
+                    {data.meta.snapshot_date} snapshot — and no vendor as the house answer.
+                  </p>
+                </div>
+                <ol className="journey" aria-label="How to use this advisory">
+                  <li>
+                    <button className="jr jr-1" onClick={clearAll}>
+                      <i aria-hidden>1</i>
+                      <span className="jr-txt">
+                        <b>Explore the timeline</b>
+                        <span>who shipped what, when</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="jr jr-2"
+                      onClick={() => update({ view: "advisor", sel: null, b: null })}
+                    >
+                      <i aria-hidden>2</i>
+                      <span className="jr-txt">
+                        <b>Pick a workload guide</b>
+                        <span>shortlists, with reasoning</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="jr jr-3"
+                      onClick={() =>
+                        heroPairing
+                          ? update({ view: "advisor", sel: heroPairing.a, b: heroPairing.b })
+                          : update({ view: "advisor", sel: null, b: null })
+                      }
+                    >
+                      <i aria-hidden>3</i>
+                      <span className="jr-txt">
+                        <b>Go head-to-head</b>
+                        <span>any model vs any model</span>
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="jr jr-4" onClick={() => update({ view: "maturity" })}>
+                      <i aria-hidden>4</i>
+                      <span className="jr-txt">
+                        <b>Check market maturity</b>
+                        <span>stages, with reasons</span>
+                      </span>
+                    </button>
+                  </li>
+                </ol>
+              </section>
+            )}
             <div className="tiles" role="group" aria-label="Dataset at a glance">
-              <button className="tile" onClick={clearAll}>
+              <button className="tile t-indigo" onClick={clearAll}>
                 <b>{stats.total}</b>
                 <span>models tracked</span>
               </button>
               <button
-                className={`tile ${state.tiers.length === 1 && state.tiers[0] === 1 ? "on" : ""}`}
+                className={`tile t-amber ${state.tiers.length === 1 && state.tiers[0] === 1 ? "on" : ""}`}
                 onClick={() => update({ tiers: state.tiers.length === 1 && state.tiers[0] === 1 ? [] : [1] })}
               >
                 <b>{stats.t1}</b>
                 <span>landmark releases</span>
               </button>
               <button
-                className={`tile ${state.access.length === 1 && state.access[0] === "open-weights" ? "on" : ""}`}
+                className={`tile t-emerald ${state.access.length === 1 && state.access[0] === "open-weights" ? "on" : ""}`}
                 onClick={() =>
                   update({
                     access:
@@ -567,11 +639,14 @@ export default function Site() {
                 <b>{stats.open}</b>
                 <span>open-weights models</span>
               </button>
-              <button className="tile" onClick={() => update({ view: "advisor", sel: null, b: null })}>
+              <button
+                className="tile t-violet"
+                onClick={() => update({ view: "advisor", sel: null, b: null })}
+              >
                 <b>{stats.guides}</b>
                 <span>buyer&apos;s guides</span>
               </button>
-              <button className="tile" onClick={() => update({ view: "maturity" })}>
+              <button className="tile t-cyan" onClick={() => update({ view: "maturity" })}>
                 <b>{stats.categories}</b>
                 <span>categories rated</span>
               </button>
@@ -612,9 +687,16 @@ export default function Site() {
             onPickWorkload={(w) => update({ cmp: w })}
             onOpenRecord={(id) => update({ view: "timeline", sel: id })}
             onExitCompare={() => update({ sel: null, b: null })}
+            onMaturity={() => update({ view: "maturity" })}
           />
         )}
-        {state.view === "maturity" && <Maturity data={data} onVendor={(v) => update({ vnd: v })} />}
+        {state.view === "maturity" && (
+          <Maturity
+            data={data}
+            onVendor={(v) => update({ vnd: v })}
+            onAdvisor={() => update({ view: "advisor", sel: null, b: null })}
+          />
+        )}
       </main>
 
       {selected && state.view !== "advisor" && (

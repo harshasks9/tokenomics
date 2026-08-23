@@ -62,6 +62,7 @@ export default function Advisor({
   onPickWorkload,
   onOpenRecord,
   onExitCompare,
+  onMaturity,
 }: {
   data: Dataset;
   a: Model | null;
@@ -73,6 +74,7 @@ export default function Advisor({
   onPickWorkload: (w: string) => void;
   onOpenRecord: (id: string) => void;
   onExitCompare: () => void;
+  onMaturity?: () => void;
 }) {
   const guides = data.meta.workload_guides ?? [];
   const wlLabel = (id: string) => data.meta.workloads.find((w) => w.id === id)?.label ?? id;
@@ -157,6 +159,22 @@ export default function Advisor({
             Shortlists are representative, not exhaustive — the timeline holds the full universe.
             Start a head-to-head from any card, or pick any two models directly below.
           </p>
+          <div className="flow-next">
+            <span className="flabel">next in the flow</span>
+            {(() => {
+              const first = active.representative_models.find((rm) => rm.model_id);
+              return first ? (
+                <button className="chip jr-c3" onClick={() => onChangeA(first.model_id!)}>
+                  <i aria-hidden>3</i> put two head-to-head
+                </button>
+              ) : null;
+            })()}
+            {onMaturity && (
+              <button className="chip jr-c4" onClick={onMaturity}>
+                <i aria-hidden>4</i> check market maturity
+              </button>
+            )}
+          </div>
         </section>
       )}
 
