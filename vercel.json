@@ -95,6 +95,16 @@
       "has": [
         {
           "type": "host",
+          "value": "governance.aitokenomics.app"
+        }
+      ],
+      "destination": "/governance/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
           "value": "harness.aitokenomics.app"
         }
       ],

@@ -18,6 +18,7 @@ import {
   Activity,
   LineChart,
   Cpu,
+  ShieldCheck,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -150,6 +151,15 @@ const modelComparisons = [
     icon: Layers,
     gradient: "linear-gradient(135deg, #0B0E14 0%, #4285F4 100%)",
     roiTeaser: "2022–2026 model evolution · honest Google equivalence",
+    enabled: true,
+  },
+  {
+    id: "governance",
+    name: "GOVERNANCE",
+    href: "/governance",
+    icon: ShieldCheck,
+    gradient: "linear-gradient(135deg, #16324F 0%, #188038 100%)",
+    roiTeaser: "AI governance field guide · 7 layers, 3 depths",
     enabled: true,
   },
   {
