@@ -35,9 +35,11 @@ const STAGES: { id: string; label: string; blurb: string }[] = [
 export default function Maturity({
   data,
   onVendor,
+  onAdvisor,
 }: {
   data: Dataset;
   onVendor: (vendor: string) => void;
+  onAdvisor?: () => void;
 }) {
   const entries = data.meta.maturity ?? [];
   const profiles = data.meta.vendor_profiles ?? [];
@@ -73,6 +75,15 @@ export default function Maturity({
           );
         })}
       </div>
+
+      {onAdvisor && (
+        <div className="flow-next">
+          <span className="flabel">next in the flow</span>
+          <button className="chip jr-c2" onClick={onAdvisor}>
+            <i aria-hidden>2</i> get the buyer&apos;s guide for your workload
+          </button>
+        </div>
+      )}
 
       {profiles.length > 0 && (
         <section className="vendor-strip">

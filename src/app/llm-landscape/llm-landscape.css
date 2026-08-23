@@ -2345,3 +2345,231 @@ button.badge {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============ colorful flow layer ============ */
+/* UI accent hues (chrome, distinct from the vendor data palette).
+   Disc/text variants are darkened to hold >=4.5:1 with white numerals. */
+.lls-root {
+  --emerald: #059669;
+  --emerald-ink: #047857;
+  --emerald-soft: #ecfdf5;
+  --violet: #7c3aed;
+  --violet-soft: #f5f3ff;
+  --cyan: #0891b2;
+  --cyan-ink: #0e7490;
+  --cyan-soft: #ecfeff;
+  --rose: #db2777;
+  --amber: #d97706;
+}
+.main {
+  background-image:
+    radial-gradient(760px 300px at 12% -80px, rgba(79, 70, 229, 0.07), transparent 70%),
+    radial-gradient(680px 280px at 88% -80px, rgba(219, 39, 119, 0.05), transparent 70%);
+  background-repeat: no-repeat;
+}
+
+/* --- hero + journey stepper --- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.hero-copy {
+  min-width: 260px;
+}
+.hero-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--accent), var(--violet), var(--rose));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-sub {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-top: 3px;
+  max-width: 52ch;
+}
+.journey {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.journey li {
+  display: flex;
+  align-items: center;
+}
+.journey li:not(:last-child)::after {
+  content: "→";
+  color: var(--faint);
+  margin: 0 3px 0 7px;
+  font-size: 13px;
+}
+.lls-root .jr {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 8px 12px;
+  text-align: left;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.lls-root .jr:hover {
+  transform: translateY(-1px);
+}
+.jr i,
+.lls-root .chip i {
+  font-style: normal;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  flex: none;
+}
+.jr-txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.jr-txt b {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.jr-txt span {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.jr-1 i { background: var(--accent); }
+.jr-2 i { background: var(--emerald-ink); }
+.jr-3 i { background: var(--amber-ink); }
+.jr-4 i { background: var(--cyan-ink); }
+.lls-root .jr-1:hover { border-color: var(--accent); }
+.lls-root .jr-2:hover { border-color: var(--emerald); }
+.lls-root .jr-3:hover { border-color: var(--amber); }
+.lls-root .jr-4:hover { border-color: var(--cyan); }
+
+/* --- hued stat tiles (value stays ink; the hue is the accent bar) --- */
+.lls-root .tile {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+.tile.t-indigo { border-top-color: var(--accent); }
+.tile.t-amber { border-top-color: var(--amber); }
+.tile.t-emerald { border-top-color: var(--emerald); }
+.tile.t-violet { border-top-color: var(--violet); }
+.tile.t-cyan { border-top-color: var(--cyan); }
+.tile.t-amber:hover, .tile.t-amber.on { border-color: var(--amber); background: var(--amber-bg); }
+.tile.t-emerald:hover, .tile.t-emerald.on { border-color: var(--emerald); background: var(--emerald-soft); }
+.tile.t-violet:hover { border-color: var(--violet); background: var(--violet-soft); }
+.tile.t-cyan:hover { border-color: var(--cyan); background: var(--cyan-soft); }
+.tile.t-indigo:hover { border-color: var(--accent); background: var(--accent-soft); }
+.tile b {
+  font-variant-numeric: normal;
+}
+
+/* --- per-view accents on the nav --- */
+.seg-btn.v-timeline.on { color: var(--accent); }
+.seg-btn.v-families.on { color: var(--violet); }
+.seg-btn.v-advisor.on { color: var(--emerald-ink); }
+.seg-btn.v-maturity.on { color: var(--cyan-ink); }
+
+/* --- advisor guide header ribbon --- */
+.guide-direction {
+  position: relative;
+  overflow: hidden;
+}
+.guide-direction::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--violet), var(--rose));
+}
+
+/* --- maturity stage heads, tinted --- */
+.mat-col-head {
+  padding: 9px 11px;
+  border-radius: 9px;
+}
+.mat-emerging .mat-col-head { background: var(--amber-bg); }
+.mat-emerging .mat-col-head h3 { color: var(--amber-ink); }
+.mat-competitive .mat-col-head { background: var(--accent-soft); }
+.mat-competitive .mat-col-head h3 { color: var(--accent); }
+.mat-consolidating .mat-col-head { background: var(--cyan-soft); }
+.mat-consolidating .mat-col-head h3 { color: var(--cyan-ink); }
+.mat-commodity .mat-col-head { background: var(--emerald-soft); }
+.mat-commodity .mat-col-head h3 { color: var(--emerald-ink); }
+
+/* --- flow cross-links --- */
+.flow-next {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+.jr-c2 i { background: var(--emerald-ink); }
+.jr-c3 i { background: var(--amber-ink); }
+.jr-c4 i { background: var(--cyan-ink); }
+.lls-root .jr-c2:hover { border-color: var(--emerald); color: var(--emerald-ink); }
+.lls-root .jr-c3:hover { border-color: var(--amber); color: var(--amber-ink); }
+.lls-root .jr-c4:hover { border-color: var(--cyan); color: var(--cyan-ink); }
+
+/* --- view-enter motion --- */
+@media (prefers-reduced-motion: no-preference) {
+  .main > * {
+    animation: lls-rise 0.26s cubic-bezier(0.2, 0.8, 0.25, 1) both;
+  }
+}
+@keyframes lls-rise {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .journey {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .journey li::after {
+    display: none;
+  }
+  .journey li,
+  .lls-root .jr {
+    width: 100%;
+  }
+  .hero-title {
+    font-size: 20px;
+  }
+}
