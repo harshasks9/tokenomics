@@ -51,7 +51,7 @@ function StickyNav() {
       </Link>
       <div className="mb-8 px-3">
         <div className="text-[10px] font-bold tracking-widest uppercase mb-0.5" style={{ color: G_BLUE }}>Gemini Migration</div>
-        <div className="text-[10px] font-semibold tracking-wider uppercase text-[#BDC1C6]">Intelligence Brief · Jun 2026</div>
+        <div className="text-[10px] font-semibold tracking-wider uppercase text-[#BDC1C6]">Intelligence Brief · Jun 2026 · reverified Aug 23, 2026</div>
       </div>
       <div className="flex-1 space-y-0.5">
         {NAV_SECTIONS.map((s) => {
@@ -77,7 +77,7 @@ function StickyNav() {
       </div>
       <div className="mt-auto px-3">
         <div className="text-[10px] text-[#9AA0A6] leading-relaxed">
-          Research as of 20 Jun 2026<br />
+          Research 20 Jun 2026 · reverified 23 Aug 2026<br />
           Re-verify before customer use
         </div>
       </div>
@@ -175,7 +175,8 @@ function Hero() {
           className="text-white/60 text-lg max-w-2xl mb-14 leading-relaxed"
         >
           Gemini 3.5 Flash is genuinely more capable — but Flash input pricing moved from $0.30 to $1.50 per million tokens.
-          The new generation raises the feasible frontier; it does not lower your bill. The right answer is per-workload,
+          (Aug 2026 update: Gemini 3.7 Flash restores the value story at an intro $0.75/$3.75 through Dec 31, 2026 —
+          $1.50/$7.50 list from Jan 2027.) The new generation raises the feasible frontier; it does not automatically lower your bill. The right answer is per-workload,
           measured on cost per successful business outcome.
         </motion.p>
 
@@ -236,7 +237,8 @@ function CriticalCorrection() {
             <p className="text-sm font-bold text-red-800 mb-1">Read before designing any enterprise Pro migration</p>
             <p className="text-sm text-red-700 leading-relaxed">
               <strong>&ldquo;Gemini 3.5 Pro&rdquo; was previewed at Google I/O 2026 but is not listed on the enterprise Agent Platform
-              as of June 18, 2026.</strong> The GA Pro model is still Gemini 2.5 Pro. The most-advanced Pro model on the platform
+              as of June 18, 2026 — and the status was unchanged at an Aug 23, 2026 reverification.</strong> The GA Pro model is
+              still Gemini 2.5 Pro. The most-advanced Pro model on the platform
               is Gemini 3.1 Pro — labelled <strong>Preview</strong>. Do not design enterprise workloads around &ldquo;Gemini 3.5 Pro.&rdquo;
             </p>
           </div>
@@ -265,6 +267,9 @@ function CriticalCorrection() {
               { model: "Gemini 2.5 Flash-Lite", tier: "Flash-Lite", status: "GA (retiring)", statusColor: AMBER, note: "Cheapest option; $0.10/$0.40. Also on retirement path." },
               { model: "Gemini 3.5 Flash", tier: "Flash", status: "GA", statusColor: GREEN, note: "Near-Pro intelligence. $1.50/$9.00 /M — 5× 2.5 Flash input. No Live API." },
               { model: "Gemini 3.1 Flash-Lite", tier: "Flash-Lite", status: "GA", statusColor: GREEN, note: "~$0.25 input. 'Matches 2.5 Flash performance.' Default for simple high-volume." },
+              { model: "Gemini 3.5 Flash-Lite", tier: "Flash-Lite", status: "GA (Jul 21)", statusColor: GREEN, note: "$0.30/$2.50 — exactly matches 2.5 Flash pricing. Successor to 3.1 Flash-Lite." },
+              { model: "Gemini 3.6 Flash", tier: "Flash", status: "GA (Jul 21)", statusColor: GREEN, note: "$1.50/$7.50 — output cheaper than 3.5 Flash; no intelligence gain over it." },
+              { model: "Gemini 3.7 Flash", tier: "Flash", status: "GA (Aug 14)", statusColor: GREEN, note: "Google's strongest model today (AA 56). Intro $0.75/$3.75 to Dec 31, 2026; then $1.50/$7.50." },
               { model: "Gemini 3.1 Pro", tier: "Pro", status: "Preview", statusColor: AMBER, note: "Most-advanced Pro. Preview terms apply — weaker SLA, version pinning." },
               { model: "\"Gemini 3.5 Pro\"", tier: "Pro", status: "Not enterprise-listed", statusColor: RED, note: "Previewed at I/O 2026. Not on Agent Platform as of Jun 18. Do not design around it." },
             ].map((row) => (
@@ -330,8 +335,9 @@ function ModelLandscape() {
           </div>
           <div className="space-y-3">
             {[
-              { name: "3.1 Flash-Lite",  price: "~$0.25 / (secondary)", note: "GA · matches 2.5 Flash quality · simple high-volume", color: GREEN },
-              { name: "3.5 Flash",       price: "$1.50 / $9.00",         note: "GA · near-Pro · coding · agentic · no Live API", color: G_BLUE },
+              { name: "3.5 Flash-Lite",  price: "$0.30 / $2.50",        note: "GA Jul 21 · matches 2.5 Flash pricing · simple high-volume", color: GREEN },
+              { name: "3.7 Flash",       price: "$0.75 / $3.75 intro",   note: "GA Aug 14 · Google's strongest (AA 56) · $1.50/$7.50 from Jan 2027", color: G_BLUE },
+              { name: "3.5 Flash",       price: "$1.50 / $9.00",         note: "GA · near-Pro · superseded by 3.6/3.7 for new builds", color: G_BLUE },
               { name: "3.1 Pro",         price: "$2 / $12 (≤200K)",      note: "Preview on Agent Platform · most-advanced reasoning", color: G_PURPLE },
               { name: "\"3.5 Pro\"",     price: "Not published",          note: "Previewed at I/O · not enterprise-listed — do not use", color: RED },
             ].map((m) => (
@@ -917,7 +923,7 @@ function ProofOfValue() {
           <Info className="w-4 h-4 shrink-0 mt-0.5 text-[#9AA0A6]" />
           <p className="text-xs text-[#9AA0A6] leading-relaxed">
             <strong className="text-[#5F6368]">Re-verify before customer use.</strong> Model status, pricing, and lifecycle dates
-            in this brief are current as of 20 June 2026 and change on the order of weeks. Confirmed facts are tagged
+            in this brief were compiled 20 June 2026 and reverified on Aug 23, 2026 (3.6/3.7 Flash and 3.5 Flash-Lite added); statuses change on the order of weeks. Confirmed facts are tagged
             [Documented] with source references. Always check the live Agent Platform model list and pricing page before
             any customer-facing conversation.
           </p>

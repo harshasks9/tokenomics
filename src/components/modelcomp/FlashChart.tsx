@@ -93,6 +93,11 @@ const FLASH_LABELS: Record<string, { name: Placement; price: Placement }> = {
     name: { dx: 0, dy: -19, anchor: "middle" },
     price: { dx: 0, dy: 20, anchor: "middle" },
   },
+  // Aug 23 extension point sits at the right edge: keep labels inside the plot.
+  "2026-08-14": {
+    name: { dx: -8, dy: -15, anchor: "end" },
+    price: { dx: -8, dy: 20, anchor: "end" },
+  },
 };
 
 export default function FlashChart() {
