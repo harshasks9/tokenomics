@@ -333,6 +333,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // AI Governance field guide.
+  if (hostname === "governance.aitokenomics.app") {
+    const governanceUrl = request.nextUrl.clone();
+    if (governanceUrl.pathname === "/") {
+      governanceUrl.pathname = "/governance";
+    } else if (!governanceUrl.pathname.startsWith("/governance")) {
+      governanceUrl.pathname = `/governance${governanceUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(governanceUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   // LLM Landscape & Model Evolution Explorer.
   if (hostname === "models.aitokenomics.app") {
     const modelsUrl = request.nextUrl.clone();

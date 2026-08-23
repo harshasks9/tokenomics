@@ -89,6 +89,16 @@
         }
       ],
       "destination": "/llm-landscape/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "governance.aitokenomics.app"
+        }
+      ],
+      "destination": "/governance/:path*"
     }
   ]
 }
