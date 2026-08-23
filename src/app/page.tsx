@@ -17,6 +17,7 @@ import {
   Scale,
   Activity,
   LineChart,
+  Cpu,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -149,6 +150,15 @@ const modelComparisons = [
     icon: Layers,
     gradient: "linear-gradient(135deg, #0B0E14 0%, #4285F4 100%)",
     roiTeaser: "2022–2026 model evolution · honest Google equivalence",
+    enabled: true,
+  },
+  {
+    id: "harness",
+    name: "HARNESS CHOICE",
+    href: "/harness",
+    icon: Cpu,
+    gradient: "linear-gradient(135deg, #0c1220 0%, #1a73e8 100%)",
+    roiTeaser: "Model × Harness × Context · cost per successful task",
     enabled: true,
   },
 ];

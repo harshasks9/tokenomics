@@ -346,6 +346,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // HARNESS CHOICE — AI harness architecture guide.
+  if (hostname === "harness.aitokenomics.app") {
+    const harnessUrl = request.nextUrl.clone();
+    if (harnessUrl.pathname === "/") {
+      harnessUrl.pathname = "/harness";
+    } else if (!harnessUrl.pathname.startsWith("/harness")) {
+      harnessUrl.pathname = `/harness${harnessUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(harnessUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
