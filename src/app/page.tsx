@@ -17,6 +17,7 @@ import {
   Scale,
   Activity,
   LineChart,
+  Cpu,
   ShieldCheck,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
@@ -159,6 +160,15 @@ const modelComparisons = [
     icon: ShieldCheck,
     gradient: "linear-gradient(135deg, #16324F 0%, #188038 100%)",
     roiTeaser: "AI governance field guide · 7 layers, 3 depths",
+    enabled: true,
+  },
+  {
+    id: "harness",
+    name: "HARNESS CHOICE",
+    href: "/harness",
+    icon: Cpu,
+    gradient: "linear-gradient(135deg, #0c1220 0%, #1a73e8 100%)",
+    roiTeaser: "Model × Harness × Context · cost per successful task",
     enabled: true,
   },
 ];

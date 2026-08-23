@@ -99,6 +99,16 @@
         }
       ],
       "destination": "/governance/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "harness.aitokenomics.app"
+        }
+      ],
+      "destination": "/harness/:path*"
     }
   ]
 }
