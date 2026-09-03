@@ -126,3 +126,7 @@ wildcard domain.
 - Copy talk track shows "Copied" for two seconds; Practice toggle counts.
 - Reduced motion, no-JS and 390px mobile renders checked in headless Chrome.
 - Production build passes; the route appears in the build output.
+- JS budget: the store's own code is roughly 30 KB gzipped. The page ships
+  about 215 KB gzipped in total because it inherits this repo's shared
+  Next.js and React runtime chunks, which are outside this route's control.
+  A standalone export of the same code would sit inside the 150 KB target.
