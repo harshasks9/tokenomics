@@ -385,6 +385,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // THE DEPARTMENT STORE FOR AI — the platform explained as a department store.
+  if (hostname === "store.aitokenomics.app") {
+    const storeUrl = request.nextUrl.clone();
+    if (storeUrl.pathname === "/") {
+      storeUrl.pathname = "/store";
+    } else if (!storeUrl.pathname.startsWith("/store")) {
+      storeUrl.pathname = `/store${storeUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(storeUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;

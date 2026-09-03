@@ -35,6 +35,7 @@ import {
   Network,
   Newspaper,
   ArrowRightLeft,
+  Store,
 } from "lucide-react";
 import PolicyRouter from "@/components/router/PolicyRouter";
 
@@ -308,6 +309,15 @@ const modelComparisons = [
     icon: ShieldCheck,
     gradient: "linear-gradient(135deg, #16324F 0%, #188038 100%)",
     roiTeaser: "AI governance field guide · 7 layers, 3 depths",
+    enabled: true,
+  },
+  {
+    id: "store",
+    name: "THE DEPARTMENT STORE",
+    href: "/store",
+    icon: Store,
+    gradient: "linear-gradient(135deg, #153a2f 0%, #b8894a 100%)",
+    roiTeaser: "Google Cloud AI as a department store · one checkout, every brand",
     enabled: true,
   },
   {
