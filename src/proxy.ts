@@ -372,6 +372,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // IRAS — AI for the Modern Tax Authority (account microsite).
+  if (hostname === "iras.aitokenomics.app") {
+    const irasUrl = request.nextUrl.clone();
+    if (irasUrl.pathname === "/") {
+      irasUrl.pathname = "/iras";
+    } else if (!irasUrl.pathname.startsWith("/iras")) {
+      irasUrl.pathname = `/iras${irasUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(irasUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
