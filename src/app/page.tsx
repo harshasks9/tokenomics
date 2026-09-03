@@ -234,6 +234,15 @@ const accountSites = [
     roiTeaser: "Enterprise agent decision framework",
     enabled: true,
   },
+  {
+    id: "iras",
+    name: "IRAS",
+    href: "/iras",
+    icon: Landmark,
+    gradient: "linear-gradient(135deg, #0B1F3A 0%, #1A73E8 100%)",
+    roiTeaser: "AI for the modern tax authority · optionality at every layer",
+    enabled: true,
+  },
 ];
 
 const modelComparisons = [
