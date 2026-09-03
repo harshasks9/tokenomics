@@ -1,6 +1,6 @@
 "use client";
 
-import type { KeyboardEvent } from "react";
+import type { MouseEvent } from "react";
 
 /**
  * The whole building at once. viewBox 720×900. Six floors, two governance
@@ -49,39 +49,53 @@ const SHORT: Record<string, string> = {
 
 const LINE = { stroke: INK, strokeOpacity: 0.55, strokeWidth: 1.4, fill: "none" } as const;
 
+type Box = { x: number; y: number; w: number; h: number };
+
+/**
+ * A target is a drawing plus an SVG link laid over it. The link carries the
+ * accessible name and contains no text, so "label in name" cannot mismatch;
+ * without JavaScript it is still a working anchor to the floor.
+ */
 function Target({
   id,
   label,
+  hit,
   onSelect,
   onHover,
   children,
 }: {
   id: string;
   label: string;
+  hit: Box[];
   onSelect?: (id: string) => void;
   onHover?: (id: string | null) => void;
   children: React.ReactNode;
 }) {
-  const onKey = (e: KeyboardEvent<SVGGElement>) => {
-    if (e.key === "Enter" || e.key === " ") {
+  const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (onSelect) {
       e.preventDefault();
-      onSelect?.(id);
+      onSelect(id);
     }
   };
   return (
     <g
       className="ds-xs__target"
-      role="button"
-      tabIndex={0}
-      aria-label={`Go to ${label}`}
-      onClick={() => onSelect?.(id)}
-      onKeyDown={onKey}
       onMouseEnter={() => onHover?.(id)}
       onMouseLeave={() => onHover?.(null)}
-      onFocus={() => onHover?.(id)}
-      onBlur={() => onHover?.(null)}
     >
       {children}
+      <a
+        href={`#${id}`}
+        className="ds-xs__hit"
+        aria-label={`Go to ${label}`}
+        onClick={onClick}
+        onFocus={() => onHover?.(id)}
+        onBlur={() => onHover?.(null)}
+      >
+        {hit.map((b, i) => (
+          <rect key={i} x={b.x} y={b.y} width={b.w} height={b.h} fill="transparent" />
+        ))}
+      </a>
     </g>
   );
 }
@@ -130,7 +144,7 @@ export default function CrossSection({
         const y = floorY(i);
         const t = XS_TARGETS[i];
         return (
-          <Target key={t.id} id={t.id} label={t.label} onSelect={onSelect} onHover={onHover}>
+          <Target key={t.id} id={t.id} label={t.label} hit={[{ x: LEFT - WALL_W - 60, y, w: w + WALL_W + 60, h: FLOOR_H }]} onSelect={onSelect} onHover={onHover}>
             <rect className="ds-xs__fill" x={LEFT} y={y} width={w} height={FLOOR_H} fill={i % 2 ? "#EDE7DB" : IVORY} stroke={INK} strokeOpacity="0.35" />
             {/* slab */}
             <rect x={LEFT} y={y + FLOOR_H - 6} width={w} height="6" fill="#D9D4CA" />
@@ -257,7 +271,16 @@ export default function CrossSection({
       })}
 
       {/* ------------------------- the walls ------------------------- */}
-      <Target id="walls" label={XS_TARGETS[6].label} onSelect={onSelect} onHover={onHover}>
+      <Target
+        id="walls"
+        label={XS_TARGETS[6].label}
+        hit={[
+          { x: LEFT - WALL_W, y: FLOOR_TOP, w: WALL_W, h: groundY - FLOOR_TOP + 70 },
+          { x: RIGHT, y: FLOOR_TOP, w: WALL_W, h: groundY - FLOOR_TOP + 70 },
+        ]}
+        onSelect={onSelect}
+        onHover={onHover}
+      >
         <rect className="ds-xs__fill" x={LEFT - WALL_W} y={FLOOR_TOP} width={WALL_W} height={groundY - FLOOR_TOP + 70} fill={GREEN} />
         <rect className="ds-xs__fill" x={RIGHT} y={FLOOR_TOP} width={WALL_W} height={groundY - FLOOR_TOP + 70} fill={GREEN} />
         <text
@@ -285,7 +308,16 @@ export default function CrossSection({
       </Target>
 
       {/* ------------------------- ground: doors + annex ------------------------- */}
-      <Target id="doors" label={XS_TARGETS[7].label} onSelect={onSelect} onHover={onHover}>
+      <Target
+        id="doors"
+        label={XS_TARGETS[7].label}
+        hit={[
+          { x: LEFT, y: groundY, w, h: 96 },
+          { x: RIGHT + WALL_W, y: groundY - 176, w: 70, h: 250 },
+        ]}
+        onSelect={onSelect}
+        onHover={onHover}
+      >
         <rect className="ds-xs__fill" x={LEFT} y={groundY} width={w} height="70" fill="#EDE7DB" stroke={INK} strokeOpacity="0.35" />
         {/* ground slab */}
         <rect x={LEFT - WALL_W - 20} y={groundY + 70} width={w + 2 * WALL_W + 110} height="6" fill="#D9D4CA" />

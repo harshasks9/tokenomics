@@ -164,10 +164,7 @@ export function SceneObject({
   }, [isOpen, row.id, setOpen]);
 
   const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggle();
-    } else if (e.key === "Escape" && isOpen) {
+    if (e.key === "Escape" && isOpen) {
       e.preventDefault();
       setOpen(null);
     }
@@ -197,14 +194,18 @@ export function SceneObject({
       ref={ref}
       className={`ds-object${isOpen ? " is-open" : ""}${flow ? " ds-object--flow" : ""} ${className}`}
       style={pos}
-      role="button"
-      tabIndex={0}
-      aria-label={ariaLabel ?? `${row.element}: ${row.capability}`}
-      aria-expanded={isOpen}
-      aria-controls={tagId}
-      onClick={toggle}
       onKeyDown={onKey}
     >
+      {/* The control is a real button with no inner text, so its accessible
+          name is exactly the aria-label; the drawing beneath is decoration. */}
+      <button
+        type="button"
+        className="ds-object__hit"
+        aria-label={ariaLabel ?? `${row.element}: ${row.capability}`}
+        aria-expanded={isOpen}
+        aria-controls={tagId}
+        onClick={toggle}
+      />
       {extra}
       {spotlight && <span className="ds-object__spot" aria-hidden="true" />}
       <span className="ds-object__shadow" aria-hidden="true" />
