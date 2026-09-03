@@ -119,6 +119,16 @@
         }
       ],
       "destination": "/iras/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "store.aitokenomics.app"
+        }
+      ],
+      "destination": "/store/:path*"
     }
   ]
 }
