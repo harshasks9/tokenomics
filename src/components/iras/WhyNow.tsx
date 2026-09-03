@@ -50,8 +50,14 @@ export default function WhyNow() {
         <SectionHeading
           kicker="02 · Why Now"
           title="IRAS has already digitised tax. The next chapter is intelligence."
-          takeaway="Few tax authorities in the world run this efficiently. That is exactly why the remaining gains are not in more digitisation — they are in understanding, reasoning and acting on what is already digital."
+          takeaway="IRAS's stated vision is to be “the leading revenue authority in the world” — and few run this efficiently. That is exactly why the remaining gains are not in more digitisation. They are in understanding, reasoning and acting on what is already digital."
         />
+        <Reveal delay={0.05} className="mt-2">
+          <p className="text-[11px] text-[#9AA0A6]">
+            Vision as published by IRAS
+            <Cite k="iras-vision" />
+          </p>
+        </Reveal>
 
         {/* Stat band */}
         <Reveal delay={0.1}>
@@ -86,9 +92,11 @@ export default function WhyNow() {
             Nation 2.0<Cite k="smart-nation" />, a refreshed National AI Strategy
             <Cite k={["nais", "nais-refresh"]} />, and a 2026 national AI partnership between the
             Government and Google that includes a joint sandbox for government use of AI agents
-            <Cite k="natl-partnership" />. The question is no longer whether AI belongs in tax
-            administration — it is which platform lets IRAS adopt it fastest, safest, and without
-            betting the next decade on today&rsquo;s technology.
+            <Cite k="natl-partnership" />. Inside government, adoption is already normal: 40,000
+            public officers across 115 agencies have built 12,000 GenAI bots on GovTech&rsquo;s
+            AIBots platform<Cite k="govtech-aibots" />. The question is no longer whether AI
+            belongs in tax administration — it is which platform lets IRAS adopt it fastest,
+            safest, and without betting the next decade on today&rsquo;s technology.
           </p>
         </Reveal>
 

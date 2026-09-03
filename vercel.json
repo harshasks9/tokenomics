@@ -109,6 +109,16 @@
         }
       ],
       "destination": "/harness/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "iras.aitokenomics.app"
+        }
+      ],
+      "destination": "/iras/:path*"
     }
   ]
 }

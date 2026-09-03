@@ -236,6 +236,19 @@ export default function ModelRouter() {
                   </motion.span>
                 </div>
 
+                {sel.constraint === 1 && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 rounded-lg border border-[#188038]/30 bg-[#E6F4EA]/60 px-3.5 py-2 text-[12px] font-medium text-[#188038]"
+                  >
+                    In-region does not force self-hosting: Google Cloud offers in-region AI
+                    processing in Singapore (asia-southeast1), so managed Gemini tiers remain
+                    available under residency requirements.
+                    <Cite k={["google-sg", "residency"]} />
+                  </motion.p>
+                )}
+
                 <div className="mt-6 grid sm:grid-cols-2 gap-3.5">
                   {CLASSES.map((cls) => {
                     const active = winner === cls.id;

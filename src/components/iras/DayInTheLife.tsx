@@ -661,9 +661,10 @@ export default function DayInTheLife() {
                         Recommended focus areas
                       </p>
                       <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/60">
-                        Trace the C→E payment chain against bank records · verify the economic
-                        substance of the B–E address link · request the missing S$12K of invoices.
-                        The system recommends; the investigator decides what is pursued.
+                        Trace the 11 matched C→E transfers against bank records · verify the
+                        economic substance of the B–E shared address · obtain the contracts behind
+                        Entity C&rsquo;s 62% revenue share. The system recommends; the investigator
+                        decides what is pursued.
                       </p>
                     </motion.div>
                   )}

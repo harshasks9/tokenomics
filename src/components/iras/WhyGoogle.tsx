@@ -60,8 +60,8 @@ const POINTS = [
     title: "Built for Singapore, built for the long term",
     line: "In-country AI processing, air-gapped Gemini where policy demands it, Singapore-recognised certifications, purpose-built silicon economics — and a standing national AI partnership with the Singapore Government.",
     detail:
-      "Google Cloud has operated in Singapore since 2017 and announced in-country residency for AI training and inference, on top of US$5B of local infrastructure investment. Gemini runs on Google Distributed Cloud air-gapped for fully disconnected workloads. MTCS SS 584 Tier 3 and ISO/IEC 42001 attest platform and AI management. The 2026 Google–Singapore National AI Partnership includes a joint sandbox on government use of AI agents.",
-    cites: ["google-sg", "gdc", "mtcs", "iso42001", "natl-partnership", "tpu"],
+      "Google Cloud has operated in Singapore since 2017 and announced in-country residency for AI training and inference, on top of US$5B of local infrastructure investment. Gemini runs on Google Distributed Cloud air-gapped for fully disconnected workloads. MTCS SS 584 Tier 3 and ISO/IEC 42001 attest platform and AI management. And this is a working relationship, not a datasheet: AI Trailblazers put 100 government and industry GenAI use cases through delivery with Google Cloud, and the 2026 Google–Singapore National AI Partnership includes a joint sandbox on government use of AI agents.",
+    cites: ["google-sg", "gdc", "mtcs", "iso42001", "trailblazers", "natl-partnership"],
   },
 ];
 

@@ -28,7 +28,7 @@ type UseCase = {
   flow?: string[]; // signature flow
   tech: { label: string; detail: string }[]; // Level 3
   guardrail?: string;
-  citeKeys?: string[];
+  todayCites?: Record<number, string[]>; // citation keys attached to specific "today" bullets
 };
 
 const USE_CASES: UseCase[] = [
@@ -55,7 +55,7 @@ const USE_CASES: UseCase[] = [
       { label: "Actions", detail: "Agent tools exposed via MCP to myTax Portal APIs; every action permissioned, logged, and confirmable by the taxpayer." },
     ],
     guardrail: "The assistant explains and assists; assessments remain IRAS system-of-record outcomes.",
-    citeKeys: ["vica", "grounding"],
+    todayCites: { 1: ["vica"] },
   },
   {
     id: "officer",
@@ -80,7 +80,6 @@ const USE_CASES: UseCase[] = [
       { label: "Evaluation", detail: "Gen AI evaluation service scores groundedness and quality continuously against curated officer-reviewed cases." },
     ],
     guardrail: "Human decision authority is a design constraint: the copilot never corresponds with taxpayers or decides outcomes.",
-    citeKeys: ["gemini-models", "genai-eval"],
   },
   {
     id: "compliance",
@@ -104,7 +103,7 @@ const USE_CASES: UseCase[] = [
       { label: "Pattern discovery", detail: "Vector search across filings and documents finds structurally similar cases no rule anticipated." },
     ],
     guardrail: "No LLM determines tax liability or enforcement action. Models prioritise and explain; officers decide.",
-    citeKeys: ["iras-ai", "bigquery-ai"],
+    todayCites: { 0: ["iras-ai"] },
   },
   {
     id: "audit",
@@ -128,7 +127,7 @@ const USE_CASES: UseCase[] = [
       { label: "Comparable retrieval", detail: "Embedding search over closed cases surfaces precedent structures for the investigation strategy." },
     ],
     guardrail: "The workspace builds the picture; investigative and legal conclusions remain human.",
-    citeKeys: ["iras-ar"],
+    todayCites: { 2: ["iras-ar"] },
   },
   {
     id: "documents",
@@ -152,7 +151,7 @@ const USE_CASES: UseCase[] = [
       { label: "Validation logic", detail: "Extracted values reconciled against returns and third-party data; confidence-scored with reasoned discrepancy notes." },
       { label: "Scale economics", detail: "Flash-class and specialised extraction models keep per-document cost low enough for population-scale processing." },
     ],
-    citeKeys: ["docai", "iras-invoicenow"],
+    todayCites: { 2: ["iras-invoicenow"] },
   },
   {
     id: "knowledge",
@@ -176,7 +175,6 @@ const USE_CASES: UseCase[] = [
       { label: "Grounded generation", detail: "Answers cite passages; conflicting guidance is surfaced as conflicting, not silently merged." },
       { label: "Access control", detail: "Retrieval honours document-level permissions — an officer sees only what their role allows." },
     ],
-    citeKeys: ["grounding"],
   },
   {
     id: "devs",
@@ -199,7 +197,6 @@ const USE_CASES: UseCase[] = [
       { label: "SDLC integration", detail: "Assistance embedded in the development workflow: reviews, tests, docs and migration plans as first-class outputs." },
       { label: "Ops", detail: "AI over logs, traces and runbooks for faster diagnosis; every suggestion linked to the telemetry that produced it." },
     ],
-    citeKeys: ["gemini-models"],
   },
 ];
 
@@ -340,7 +337,7 @@ export default function UseCases() {
                         />
                         <span>
                           {line}
-                          {uc.citeKeys && i === 0 && mode === "today" && <Cite k={uc.citeKeys} />}
+                          {mode === "today" && uc.todayCites?.[i] && <Cite k={uc.todayCites[i]} />}
                         </span>
                       </li>
                     ))}
