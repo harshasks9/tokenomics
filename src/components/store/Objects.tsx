@@ -4,245 +4,181 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
-  useId,
   useMemo,
-  useRef,
   useState,
   type CSSProperties,
-  type KeyboardEvent,
   type ReactNode,
 } from "react";
-import type { Row } from "@/lib/store/copy";
+import type { Item } from "@/lib/store/copy";
 
 /* ------------------------------------------------------------------ */
-/* One hang-tag open per scene                                          */
+/* Exhibit: one room, one legend. Hovering or focusing an object lights  */
+/* its card; hovering a card lights its object.                          */
 /* ------------------------------------------------------------------ */
 
-type SceneCtx = {
-  open: string | null;
-  setOpen: (id: string | null) => void;
+type ExhibitCtx = {
+  active: string | null;
+  setActive: (id: string | null) => void;
+  pinned: string | null;
+  setPinned: (id: string | null) => void;
 };
 
-const SceneContext = createContext<SceneCtx>({ open: null, setOpen: () => {} });
+const ExhibitContext = createContext<ExhibitCtx>({
+  active: null,
+  setActive: () => {},
+  pinned: null,
+  setPinned: () => {},
+});
 
-export function SceneObjects({ children }: { children: ReactNode }) {
-  const [open, setOpen] = useState<string | null>(null);
-  const value = useMemo(() => ({ open, setOpen }), [open]);
-  return <SceneContext.Provider value={value}>{children}</SceneContext.Provider>;
+export function Exhibit({ children }: { children: ReactNode }) {
+  const [active, setActive] = useState<string | null>(null);
+  const [pinned, setPinned] = useState<string | null>(null);
+  const value = useMemo(() => ({ active, setActive, pinned, setPinned }), [active, pinned]);
+  return <ExhibitContext.Provider value={value}>{children}</ExhibitContext.Provider>;
+}
+
+export function useExhibit() {
+  return useContext(ExhibitContext);
 }
 
 /* ------------------------------------------------------------------ */
-/* Hang-tag                                                             */
+/* Hotspot: a physical object in the room with a numbered callout        */
 /* ------------------------------------------------------------------ */
 
-export function HangTag({
-  row,
-  id,
-  priceTag,
-  side = "right",
-}: {
-  row: Row;
+export type HotspotProps = {
   id: string;
-  priceTag?: boolean;
-  side?: "left" | "right";
-}) {
-  return (
-    <div
-      className={`ds-tag ds-tag--${side}${priceTag ? " ds-tag--price" : ""}`}
-      id={id}
-      role="note"
-    >
-      <span className="ds-tag__string" aria-hidden="true" />
-      <span className="ds-tag__hole" aria-hidden="true" />
-      <p className="ds-tag__element">{row.element}</p>
-      <p className="ds-tag__capability">{row.capability}</p>
-      <p className="ds-tag__meaning">{row.meaning}</p>
-      {priceTag && (
-        <p className="ds-tag__price" aria-label="Price: Same checkout">
-          <span className="ds-tag__price-dash" aria-hidden="true">
-            — — —
-          </span>
-          Same checkout.
-        </p>
-      )}
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Scene object: a physical thing in the room that carries a tag        */
-/* ------------------------------------------------------------------ */
-
-export type SceneObjectProps = {
-  row: Row;
-  /** Position inside the 1600×900 frame, in frame units. */
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  children: ReactNode; // the SVG prop, already sized to w×h
-  /** Where the tag swings in from. */
-  side?: "left" | "right";
-  priceTag?: boolean;
-  /** Extra classes for lighting / spotlight staggering. */
-  className?: string;
-  style?: CSSProperties;
-  /** Optional HTML signage rendered inside the object box (e.g. a rack label). */
-  label?: ReactNode;
-  /** Spotlight: draw a warm cone above the object. */
-  spotlight?: boolean;
-  /** Announce a different name than the store element. */
-  ariaLabel?: string;
-  /** Render in normal flow (the walls scene) instead of absolute in a frame. */
-  flow?: boolean;
-  /** Extra decoration rendered inside the object (e.g. a staggered spotlight). */
-  extra?: ReactNode;
-};
-
-/** A prop made of several props, laid out in percentages of the object box. */
-export function Composite({ children }: { children: ReactNode }) {
-  return <div className="ds-composite">{children}</div>;
-}
-
-export function Part({
-  x,
-  y,
-  w,
-  h,
-  children,
-}: {
+  /** Callout number, matches the card. */
+  n: number;
+  /** Accessible name of the control. */
+  label: string;
+  /** Position in the 1600×900 frame. */
   x: number;
   y: number;
   w: number;
   h: number;
   children: ReactNode;
-}) {
-  return (
-    <div className="ds-part" style={{ left: `${x}%`, top: `${y}%`, width: `${w}%`, height: `${h}%` }}>
-      {children}
-    </div>
-  );
-}
+  className?: string;
+  style?: CSSProperties;
+  /** Progress at which this object's light comes on. */
+  on?: number;
+  spot?: boolean;
+  /** Where the callout badge sits. */
+  callout?: "tl" | "tr" | "t";
+  /** Extra in-room signage rendered inside the hotspot. */
+  signage?: ReactNode;
+};
 
-export function SceneObject({
-  row,
+export function Hotspot({
+  id,
+  n,
+  label,
   x,
   y,
   w,
   h,
   children,
-  side = "right",
-  priceTag,
   className = "",
   style,
-  label,
-  spotlight = true,
-  ariaLabel,
-  flow = false,
-  extra,
-}: SceneObjectProps) {
-  const { open, setOpen } = useContext(SceneContext);
-  const reactId = useId();
-  const tagId = `tag-${row.id}-${reactId.replace(/[^a-zA-Z0-9]/g, "")}`;
-  const isOpen = open === row.id;
-  const ref = useRef<HTMLDivElement>(null);
+  on = 0,
+  spot = true,
+  callout = "tl",
+  signage,
+}: HotspotProps) {
+  const { active, setActive, pinned, setPinned } = useExhibit();
+  const isActive = active === id || pinned === id;
 
-  const toggle = useCallback(() => {
-    // On narrow screens the tag list beneath the scene is the canonical
-    // reading surface — tapping an object scrolls to its line there.
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      const target = document.getElementById(`list-${row.id}`);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "center" });
-        target.classList.add("is-flash");
-        window.setTimeout(() => target.classList.remove("is-flash"), 1400);
-      }
-      return;
+  const focusCard = useCallback(() => {
+    const card = document.getElementById(`card-${id}`);
+    if (!card) return;
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-    setOpen(isOpen ? null : row.id);
-  }, [isOpen, row.id, setOpen]);
+    card.classList.add("is-flash");
+    window.setTimeout(() => card.classList.remove("is-flash"), 1200);
+  }, [id]);
 
-  const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Escape" && isOpen) {
-      e.preventDefault();
-      setOpen(null);
-    }
-  };
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const onDoc = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(null);
-    };
-    document.addEventListener("pointerdown", onDoc);
-    return () => document.removeEventListener("pointerdown", onDoc);
-  }, [isOpen, setOpen]);
-
-  const pos: CSSProperties = flow
-    ? { ...style }
-    : {
-        left: `${(x / 1600) * 100}%`,
-        top: `${(y / 900) * 100}%`,
-        width: `${(w / 1600) * 100}%`,
-        height: `${(h / 900) * 100}%`,
-        ...style,
-      };
+  const pos: CSSProperties = {
+    left: `${(x / 1600) * 100}%`,
+    top: `${(y / 900) * 100}%`,
+    width: `${(w / 1600) * 100}%`,
+    height: `${(h / 900) * 100}%`,
+    "--on": on,
+    ...style,
+  } as CSSProperties;
 
   return (
     <div
-      ref={ref}
-      className={`ds-object${isOpen ? " is-open" : ""}${flow ? " ds-object--flow" : ""} ${className}`}
+      className={`ds-hotspot${isActive ? " is-active" : ""} ${className}`}
       style={pos}
-      onKeyDown={onKey}
+      data-id={id}
+      onMouseEnter={() => setActive(id)}
+      onMouseLeave={() => setActive(null)}
     >
-      {/* The control is a real button with no inner text, so its accessible
-          name is exactly the aria-label; the drawing beneath is decoration. */}
       <button
         type="button"
-        className="ds-object__hit"
-        aria-label={ariaLabel ?? `${row.element}: ${row.capability}`}
-        aria-expanded={isOpen}
-        aria-controls={tagId}
-        onClick={toggle}
+        className="ds-hotspot__hit"
+        aria-label={label}
+        aria-describedby={`card-${id}`}
+        aria-pressed={pinned === id}
+        onFocus={() => setActive(id)}
+        onBlur={() => setActive(null)}
+        onClick={() => {
+          setPinned(pinned === id ? null : id);
+          focusCard();
+        }}
       />
-      {extra}
-      {spotlight && <span className="ds-object__spot" aria-hidden="true" />}
-      <span className="ds-object__shadow" aria-hidden="true" />
-      <div className="ds-object__prop" aria-hidden="true">
+      {spot && <span className="ds-hotspot__spot" aria-hidden="true" />}
+      <span className="ds-hotspot__shadow" aria-hidden="true" />
+      <div className="ds-hotspot__prop" aria-hidden="true">
         {children}
       </div>
-      {label && <div className="ds-object__label">{label}</div>}
-      <HangTag row={row} id={tagId} side={side} priceTag={priceTag} />
+      {signage}
+      <span className={`ds-callout ds-callout--${callout}`} aria-hidden="true">
+        {n}
+      </span>
     </div>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/* Stacked tag list beneath a scene (mobile, reduced motion, no-JS)     */
+/* Card: the legend entry for one object                                 */
 /* ------------------------------------------------------------------ */
 
-export function TagList({
-  rows,
-  priceTag,
-  heading,
+export function Card({ item, n, on = 0 }: { item: Item; n: number; on?: number }) {
+  const { active, setActive, pinned } = useExhibit();
+  const isActive = active === item.id || pinned === item.id;
+  return (
+    <li
+      id={`card-${item.id}`}
+      className={`ds-card${isActive ? " is-active" : ""}`}
+      style={{ "--on": on } as CSSProperties}
+      onMouseEnter={() => setActive(item.id)}
+      onMouseLeave={() => setActive(null)}
+    >
+      <span className="ds-card__n" aria-hidden="true">
+        {n}
+      </span>
+      <p className="ds-card__object">{item.object}</p>
+      <h3 className="ds-card__cap">{item.capability}</h3>
+      <p className="ds-card__body">{item.body}</p>
+    </li>
+  );
+}
+
+/** A concierge line. */
+export function Narrator({
+  children,
+  className = "",
+  style,
 }: {
-  rows: readonly Row[];
-  priceTag?: boolean;
-  heading: string;
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
 }) {
   return (
-    <div className="ds-taglist" aria-label={`${heading} — hang-tags`}>
-      <ol className="ds-taglist__list">
-        {rows.map((r) => (
-          <li key={r.id} id={`list-${r.id}`} className="ds-taglist__item">
-            <p className="ds-tag__element">{r.element}</p>
-            <p className="ds-tag__capability">{r.capability}</p>
-            <p className="ds-tag__meaning">{r.meaning}</p>
-            {priceTag && <p className="ds-tag__price">Same checkout.</p>}
-          </li>
-        ))}
-      </ol>
+    <div className={`ds-narrator ${className}`} style={style}>
+      <span className="ds-narrator__who">Your concierge</span>
+      <p className="ds-narrator__line">{children}</p>
     </div>
   );
 }

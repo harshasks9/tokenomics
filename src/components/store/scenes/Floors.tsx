@@ -10,7 +10,8 @@ import {
   foundations,
   type Floor,
 } from "@/lib/store/copy";
-import { SceneObjects, SceneObject, TagList, Composite, Part } from "../Objects";
+import { Exhibit, Hotspot, Card, Narrator } from "../Objects";
+import { FloorStack } from "../Chrome";
 import { Grain } from "../Defs";
 import {
   StorefrontRoom,
@@ -44,65 +45,149 @@ import {
 
 const WALL_TEXT = "Security · Governance · Residency · Audit";
 
-function row(floor: Floor, id: string) {
-  const r = floor.rows.find((x) => x.id === id);
-  if (!r) throw new Error(`missing row ${id}`);
-  return r;
+/** Progress at which card/object i lights up. */
+export const onAt = (i: number) => 0.14 + i * 0.09;
+
+function itemIndex(floor: Floor, id: string) {
+  const i = floor.items.findIndex((x) => x.id === id);
+  if (i < 0) throw new Error(`missing item ${id}`);
+  return i;
 }
 
 /* ------------------------------------------------------------------ */
-/* Generic floor scene                                                  */
+/* Exhibit scene: room on top, legend beneath                           */
 /* ------------------------------------------------------------------ */
+
+export function ExhibitScene({
+  id,
+  className,
+  number,
+  name,
+  sub,
+  narrator,
+  items,
+  outro,
+  next,
+  room,
+  children,
+  dark = false,
+  cols,
+  signage,
+  ariaLabel,
+  level,
+}: {
+  id: string;
+  className: string;
+  number: string;
+  name: string;
+  sub: string;
+  narrator: string;
+  items: Floor["items"];
+  outro: string;
+  next: { id: string; number: string; name: string };
+  room: ReactNode;
+  children: ReactNode;
+  dark?: boolean;
+  cols?: number;
+  signage?: ReactNode;
+  ariaLabel?: string;
+  level: number;
+}) {
+  return (
+    <section
+      id={id}
+      data-scene={id}
+      className={`ds-scene ds-floor ${className}`}
+      aria-label={ariaLabel ?? `Floor ${number}: ${name}`}
+      style={{ "--cols": cols ?? Math.min(items.length, 4) } as CSSProperties}
+    >
+      <Exhibit>
+        <div className="ds-stage">
+          <div className="ds-exhibit">
+            <div className="ds-exhibit__scene">
+              <div className="ds-frame">
+                <div className="ds-layer ds-layer--move ds-floor__back">{room}</div>
+                <div className="ds-floor__light" aria-hidden="true" />
+                <div className="ds-layer ds-layer--interactive ds-layer--move ds-floor__objects">{children}</div>
+                {signage}
+              </div>
+              <div className="ds-wallmark ds-wallmark--l" aria-hidden="true">
+                <span>{WALL_TEXT}</span>
+              </div>
+              <div className="ds-wallmark ds-wallmark--r" aria-hidden="true">
+                <span>{WALL_TEXT}</span>
+              </div>
+              <header className={`ds-floorhead${dark ? " ds-floorhead--dark" : ""}`}>
+                <span className="ds-floorhead__num">{number}</span>
+                <div>
+                  <h2 className="ds-floorhead__name">{name}</h2>
+                  <p className="ds-floorhead__sub">{sub}</p>
+                </div>
+                <FloorStack level={level} />
+              </header>
+            </div>
+
+            <div className="ds-legend">
+              <Narrator className="ds-floor__narrator">{narrator}</Narrator>
+              <ol className="ds-cards" aria-label={`What is on floor ${number}`}>
+                {items.map((it, i) => (
+                  <Card key={it.id} item={it} n={i + 1} on={onAt(i)} />
+                ))}
+              </ol>
+              <a href={`#${next.id}`} className="ds-next">
+                <span className="ds-next__arrow" aria-hidden="true">
+                  ↓
+                </span>
+                <span className="ds-next__to">
+                  Next · {next.number} · {next.name}
+                </span>
+                <span className="ds-next__line">{outro}</span>
+              </a>
+            </div>
+          </div>
+          <Grain dark={dark} />
+        </div>
+      </Exhibit>
+    </section>
+  );
+}
 
 function FloorScene({
   floor,
   className,
   room,
   children,
-  dark = false,
-  priceTag = false,
-  headLight = false,
+  dark,
+  cols,
+  signage,
 }: {
   floor: Floor;
   className: string;
   room: ReactNode;
   children: ReactNode;
   dark?: boolean;
-  priceTag?: boolean;
-  headLight?: boolean;
+  cols?: number;
+  signage?: ReactNode;
 }) {
   return (
-    <section
+    <ExhibitScene
       id={floor.id}
-      data-scene={floor.id}
-      className={`ds-scene ds-floor ${className}`}
-      aria-label={`Floor ${floor.number}: ${floor.name}`}
+      className={className}
+      number={floor.number}
+      name={floor.name}
+      sub={floor.sub}
+      narrator={floor.narrator}
+      items={floor.items}
+      outro={floor.outro}
+      next={floor.next}
+      room={room}
+      dark={dark}
+      cols={cols}
+      signage={signage}
+      level={Number(floor.number)}
     >
-      <div className="ds-stage">
-        <div className="ds-frame">
-          <div className="ds-layer ds-layer--move ds-floor__back">{room}</div>
-          <div className="ds-floor__light" aria-hidden="true" />
-          <div className="ds-layer ds-layer--interactive ds-layer--move ds-floor__objects">
-            <SceneObjects>{children}</SceneObjects>
-          </div>
-        </div>
-        <div className="ds-wallmark ds-wallmark--l" aria-hidden="true">
-          <span>{WALL_TEXT}</span>
-        </div>
-        <div className="ds-wallmark ds-wallmark--r" aria-hidden="true">
-          <span>{WALL_TEXT}</span>
-        </div>
-        <div className="ds-copy ds-floor__head">
-          <header className={`ds-floorhead${headLight ? " ds-floorhead--light" : ""}`}>
-            <p className="ds-floorhead__number">Floor {floor.number}</p>
-            <h2 className="ds-floorhead__name">{floor.name}</h2>
-            <p className="ds-floorhead__tagline">{floor.tagline}</p>
-          </header>
-        </div>
-        <Grain dark={dark} />
-      </div>
-      <TagList rows={floor.rows} heading={floor.name} priceTag={priceTag} />
-    </section>
+      {children}
+    </ExhibitScene>
   );
 }
 
@@ -111,27 +196,25 @@ function FloorScene({
 /* ------------------------------------------------------------------ */
 
 export function StorefrontFloor() {
+  const f = storefront;
   return (
-    <FloorScene floor={storefront} className="ds-storefront" room={<StorefrontRoom />}>
-      <SceneObject
-        row={row(storefront, "concierge")}
+    <FloorScene floor={f} className="ds-storefront" room={<StorefrontRoom />}>
+      <Hotspot
+        id="concierge"
+        n={1}
+        label={`${f.items[0].object}: ${f.items[0].capability}`}
         x={560}
-        y={470}
+        y={430}
         w={400}
         h={260}
-        side="left"
-        label={
-          <span className="ds-desksign">
-            Gemini Enterprise
-            <small>Ask here</small>
-          </span>
-        }
+        on={onAt(0)}
+        signage={<span className="ds-desksign">{f.signs?.desk}</span>}
       >
         <ConciergeDesk />
-      </SceneObject>
-      <SceneObject row={row(storefront, "storecard")} x={880} y={480} w={140} h={102} side="right">
+      </Hotspot>
+      <Hotspot id="storecard" n={2} label={`${f.items[1].object}: ${f.items[1].capability}`} x={880} y={440} w={140} h={102} on={onAt(1)} callout="tr">
         <StoreCard />
-      </SceneObject>
+      </Hotspot>
     </FloorScene>
   );
 }
@@ -141,27 +224,42 @@ export function StorefrontFloor() {
 /* ------------------------------------------------------------------ */
 
 export function TailoringFloor() {
+  const f = tailoring;
+  const lab = (id: string) => {
+    const it = f.items[itemIndex(f, id)];
+    return `${it.object}: ${it.capability}`;
+  };
   return (
-    <FloorScene floor={tailoring} className="ds-tailoring" room={<TailoringRoom />}>
-      <SceneObject row={row(tailoring, "readytowear")} x={50} y={500} w={340} h={235} side="right">
+    <FloorScene floor={f} className="ds-tailoring" room={<TailoringRoom />}>
+      <Hotspot id="readytowear" n={4} label={lab("readytowear")} x={50} y={470} w={340} h={235} on={onAt(3)}>
         <ReadyToWearRail />
-      </SceneObject>
-      <SceneObject row={row(tailoring, "bench")} x={430} y={400} w={600} h={340} side="right">
-        <Composite>
-          <Part x={0} y={24} w={64} h={76}>
+      </Hotspot>
+      <Hotspot
+        id="bench"
+        n={1}
+        label={lab("bench")}
+        x={430}
+        y={370}
+        w={600}
+        h={340}
+        on={onAt(0)}
+        signage={<span className="ds-pinsign">{f.signs?.mannequin}</span>}
+      >
+        <div className="ds-composite">
+          <div className="ds-part" style={{ left: "0%", top: "24%", width: "64%", height: "76%" }}>
             <TailorBench />
-          </Part>
-          <Part x={64} y={0} w={36} h={100}>
+          </div>
+          <div className="ds-part" style={{ left: "64%", top: "0%", width: "36%", height: "100%" }}>
             <Mannequin />
-          </Part>
-        </Composite>
-      </SceneObject>
-      <SceneObject row={row(tailoring, "alterations")} x={1130} y={500} w={360} h={240} side="left">
+          </div>
+        </div>
+      </Hotspot>
+      <Hotspot id="alterations" n={2} label={lab("alterations")} x={1130} y={470} w={360} h={240} on={onAt(1)} callout="tr">
         <AlterationsCounter />
-      </SceneObject>
-      <SceneObject row={row(tailoring, "hangers")} x={1040} y={228} w={320} h={213} side="left" spotlight={false}>
+      </Hotspot>
+      <Hotspot id="hangers" n={3} label={lab("hangers")} x={1040} y={200} w={320} h={213} on={onAt(2)} spot={false} callout="tr">
         <HangerWall />
-      </SceneObject>
+      </Hotspot>
     </FloorScene>
   );
 }
@@ -170,14 +268,14 @@ export function TailoringFloor() {
 /* Floor 4 — The Model Floor                                            */
 /* ------------------------------------------------------------------ */
 
-const RACKS: { name: string; rowId: string; x: number; w: number; accent?: boolean }[] = [
-  { name: "GEMMA", rowId: "gemma", x: 90, w: 180 },
-  { name: "CLAUDE", rowId: "partner", x: 290, w: 180 },
-  { name: "LLAMA", rowId: "open", x: 490, w: 180 },
-  { name: "GEMINI", rowId: "gemini", x: 700, w: 210, accent: true },
-  { name: "MISTRAL", rowId: "partner", x: 930, w: 180 },
-  { name: "QWEN", rowId: "open", x: 1130, w: 180 },
-  { name: "DEEPSEEK", rowId: "open", x: 1330, w: 180 },
+const RACKS: { name: string; item: string; x: number; w: number; accent?: boolean }[] = [
+  { name: "GEMMA", item: "gemma", x: 90, w: 180 },
+  { name: "CLAUDE", item: "claude", x: 290, w: 180 },
+  { name: "LLAMA", item: "open", x: 490, w: 180 },
+  { name: "GEMINI", item: "gemini", x: 700, w: 210, accent: true },
+  { name: "MISTRAL", item: "open", x: 930, w: 180 },
+  { name: "QWEN", item: "open", x: 1130, w: 180 },
+  { name: "DEEPSEEK", item: "open", x: 1330, w: 180 },
 ];
 
 const COUNTERS: { name: string; kind: "camera" | "film" | "music" | "mic" | "pharmacy"; x: number }[] = [
@@ -188,95 +286,102 @@ const COUNTERS: { name: string; kind: "camera" | "film" | "music" | "mic" | "pha
   { name: "MEDLM", kind: "pharmacy", x: 930 },
 ];
 
-function RackSpot({ on, small = false }: { on: number; small?: boolean }) {
-  return (
-    <span
-      className={`ds-rack-spot${small ? " ds-rack-spot--small" : ""}`}
-      aria-hidden="true"
-      style={{ "--on": on } as CSSProperties}
-    />
-  );
-}
+const GROUPS = [
+  { label: "House brand", x: 700, w: 210 },
+  { label: "Own-label", x: 90, w: 180 },
+  { label: "Partner brand", x: 290, w: 180 },
+  { label: "Open-weights", x: 490, w: 180, span: true },
+];
 
 export function ModelFloorScene() {
-  // Spotlights come on left to right as the visitor walks in.
-  const order = [...RACKS].sort((a, b) => a.x - b.x);
+  const f = modelFloor;
+  const n = (id: string) => itemIndex(f, id) + 1;
+  const on = (id: string) => onAt(itemIndex(f, id));
+  const lab = (obj: string, id: string) => `${obj}: ${f.items[itemIndex(f, id)].capability}`;
   return (
-    <FloorScene floor={modelFloor} className="ds-model-floor" room={<ModelHall />} priceTag headLight>
-      {/* specialist counters, second row */}
-      {COUNTERS.map((c, i) => (
-        <SceneObject
+    <FloorScene
+      floor={f}
+      className="ds-model-floor"
+      room={<ModelHall />}
+      dark
+      cols={3}
+      signage={
+        <>
+          <span className="ds-inframe ds-overhead" style={{ left: "50%", top: "28.5%" }}>
+            {f.signs?.overhead}
+          </span>
+          {/* group brackets under the front row */}
+          {GROUPS.map((g) => (
+            <span
+              key={g.label}
+              className="ds-bracket"
+              style={{
+                left: `${(g.x / 1600) * 100}%`,
+                width: g.span ? `${((1510 - 490) / 1600) * 100}%` : `${(g.w / 1600) * 100}%`,
+                top: "73.5%",
+              }}
+            >
+              {g.label}
+            </span>
+          ))}
+        </>
+      }
+    >
+      {COUNTERS.map((c) => (
+        <Hotspot
           key={c.name}
-          row={row(modelFloor, "specialist")}
+          id="specialist"
+          n={n("specialist")}
+          label={lab(`The ${c.name} counter`, "specialist")}
           x={c.x}
-          y={450}
-          w={130}
-          h={130}
-          side={i > 2 ? "left" : "right"}
-          priceTag
-          ariaLabel={`${c.name} counter — ${row(modelFloor, "specialist").element}`}
-          style={{ "--on": 0.55 + i * 0.04 } as CSSProperties}
-          label={<span className="ds-racklabel ds-racklabel--small">{c.name}</span>}
-          extra={<RackSpot on={0.55 + i * 0.04} small />}
+          y={300}
+          w={120}
+          h={110}
+          on={on("specialist")}
+          className="ds-rack--counter"
+          callout="tr"
+          signage={<span className="ds-racklabel ds-racklabel--small">{c.name}</span>}
         >
           <SpecialistCounter kind={c.kind} />
-        </SceneObject>
+        </Hotspot>
       ))}
-      <SceneObject
-        row={row(modelFloor, "byo")}
+      <Hotspot
+        id="byo"
+        n={n("byo")}
+        label={lab("The desk at the end of the hall", "byo")}
         x={1090}
-        y={456}
-        w={190}
-        h={124}
-        side="left"
-        priceTag
-        style={{ "--on": 0.78 } as CSSProperties}
-        label={<span className="ds-racklabel ds-racklabel--small">Bring your own</span>}
-        extra={<RackSpot on={0.78} />}
+        y={300}
+        w={180}
+        h={110}
+        on={on("byo")}
+        callout="tr"
+        signage={<span className="ds-racklabel ds-racklabel--small">{f.signs?.byo}</span>}
       >
         <ByoDesk />
-      </SceneObject>
-
-      {/* the racks, front row */}
-      {order.map((r, i) => {
-        const on = 0.06 + i * 0.065;
-        return (
-          <SceneObject
-            key={r.name}
-            row={row(modelFloor, r.rowId)}
-            x={r.x}
-            y={r.accent ? 560 : 600}
-            w={r.w}
-            h={r.accent ? 320 : 280}
-            side={r.x > 800 ? "left" : "right"}
-            priceTag
-            ariaLabel={`${r.name} rack — ${row(modelFloor, r.rowId).element}`}
-            className={r.accent ? "ds-rack ds-rack--house" : "ds-rack"}
-            style={{ "--on": on } as CSSProperties}
-            label={<span className={`ds-racklabel${r.accent ? " ds-racklabel--house" : ""}`}>{r.name}</span>}
-            extra={<RackSpot on={on} />}
-          >
-            <Rack accent={r.accent} />
-          </SceneObject>
-        );
-      })}
-      {/* MODEL GARDEN overhead sign — the store floor itself */}
-      <SceneObject
-        row={row(modelFloor, "garden")}
-        x={560}
-        y={300}
-        w={480}
-        h={60}
-        side="right"
-        priceTag
-        spotlight={false}
-        className="ds-gardensign"
-        style={{ "--on": 0 } as CSSProperties}
-        label={<span className="ds-overhead">Model Garden</span>}
-      >
-        <span />
-      </SceneObject>
-
+      </Hotspot>
+      {RACKS.map((r, i) => (
+        <Hotspot
+          key={r.name}
+          id={r.item}
+          n={n(r.item)}
+          label={lab(`The ${r.name} rack`, r.item)}
+          x={r.x}
+          y={r.accent ? 380 : 400}
+          w={r.w}
+          h={r.accent ? 270 : 250}
+          on={onAt(itemIndex(f, r.item)) + i * 0.01}
+          className={r.accent ? "ds-rack ds-rack--house" : "ds-rack"}
+          callout={r.x > 800 ? "tr" : "tl"}
+          signage={
+            <>
+              <span className={`ds-racklabel${r.accent ? " ds-racklabel--house" : ""}`}>{r.name}</span>
+              <span className="ds-pricetag">{f.signs?.price}</span>
+            </>
+          }
+        >
+          <Rack accent={r.accent} />
+        </Hotspot>
+      ))}
     </FloorScene>
   );
 }
@@ -286,21 +391,32 @@ export function ModelFloorScene() {
 /* ------------------------------------------------------------------ */
 
 export function WardrobeFloor() {
+  const f = wardrobe;
   return (
-    <FloorScene floor={wardrobe} className="ds-wardrobe" room={<WardrobeRoom />}>
-      <SceneObject row={row(wardrobe, "closet")} x={260} y={300} w={440} h={360} side="right">
+    <FloorScene floor={f} className="ds-wardrobe" room={<WardrobeRoom />}>
+      <Hotspot
+        id="closet"
+        n={1}
+        label={`${f.items[0].object}: ${f.items[0].capability}`}
+        x={260}
+        y={280}
+        w={440}
+        h={360}
+        on={onAt(0)}
+        signage={<span className="ds-doorplaque">{f.signs?.plaque}</span>}
+      >
         <Wardrobe />
-      </SceneObject>
-      <SceneObject row={row(wardrobe, "measurements")} x={760} y={360} w={500} h={300} side="left">
-        <Composite>
-          <Part x={0} y={0} w={32} h={100}>
+      </Hotspot>
+      <Hotspot id="measurements" n={2} label={`${f.items[1].object}: ${f.items[1].capability}`} x={760} y={340} w={500} h={300} on={onAt(1)} callout="tr">
+        <div className="ds-composite">
+          <div className="ds-part" style={{ left: "0%", top: "0%", width: "32%", height: "100%" }}>
             <DressForm />
-          </Part>
-          <Part x={34} y={34} w={66} h={66}>
+          </div>
+          <div className="ds-part" style={{ left: "34%", top: "34%", width: "66%", height: "66%" }}>
             <MeasureBook />
-          </Part>
-        </Composite>
-      </SceneObject>
+          </div>
+        </div>
+      </Hotspot>
     </FloorScene>
   );
 }
@@ -310,25 +426,37 @@ export function WardrobeFloor() {
 /* ------------------------------------------------------------------ */
 
 export function BackOfHouseFloor() {
+  const f = backOfHouse;
   return (
-    <FloorScene floor={backOfHouse} className="ds-back-of-house" room={<BackOfHouseRoom />}>
-      <SceneObject row={row(backOfHouse, "register")} x={360} y={386} w={440} h={294} side="right">
+    <FloorScene
+      floor={f}
+      className="ds-back-of-house"
+      room={<BackOfHouseRoom />}
+      signage={
+        <span className="ds-inframe ds-sign ds-sign--small" style={{ left: "36%", top: "36%" }}>
+          {f.signs?.register}
+        </span>
+      }
+    >
+      <Hotspot id="register" n={1} label={`${f.items[0].object}: ${f.items[0].capability}`} x={360} y={366} w={440} h={294} on={onAt(0)}>
         <RegisterShelving />
-      </SceneObject>
-      <SceneObject
-        row={row(backOfHouse, "fitting")}
+      </Hotspot>
+      <Hotspot
+        id="fitting"
+        n={2}
+        label={`${f.items[1].object}: ${f.items[1].capability} — curtains draw back to show Gemini, Claude and Llama on the same outfit`}
         x={800}
-        y={384}
+        y={364}
         w={450}
         h={296}
-        side="left"
-        ariaLabel="Fitting rooms — hover or press to draw the curtains and compare Gemini, Claude and Llama on the same outfit"
+        on={onAt(1)}
+        callout="tr"
       >
         <FittingRooms />
-      </SceneObject>
-      <SceneObject row={row(backOfHouse, "qc")} x={1270} y={520} w={240} h={160} side="left">
+      </Hotspot>
+      <Hotspot id="qc" n={3} label={`${f.items[2].object}: ${f.items[2].capability}`} x={1270} y={500} w={240} h={160} on={onAt(2)} callout="tr">
         <QCBench />
-      </SceneObject>
+      </Hotspot>
     </FloorScene>
   );
 }
@@ -338,17 +466,18 @@ export function BackOfHouseFloor() {
 /* ------------------------------------------------------------------ */
 
 export function FoundationsFloor() {
+  const f = foundations;
   return (
-    <FloorScene floor={foundations} className="ds-foundations" room={<FoundationsRoom />} dark headLight>
-      <SceneObject row={row(foundations, "bays")} x={120} y={350} w={440} h={330} side="right">
+    <FloorScene floor={f} className="ds-foundations" room={<FoundationsRoom />} dark>
+      <Hotspot id="bays" n={1} label={`${f.items[0].object}: ${f.items[0].capability}`} x={120} y={330} w={440} h={330} on={onAt(0)}>
         <LoadingBays />
-      </SceneObject>
-      <SceneObject row={row(foundations, "franchise")} x={640} y={440} w={240} h={240} side="right">
+      </Hotspot>
+      <Hotspot id="franchise" n={2} label={`${f.items[1].object}: ${f.items[1].capability}`} x={640} y={420} w={240} h={240} on={onAt(1)}>
         <FranchiseModel />
-      </SceneObject>
-      <SceneObject row={row(foundations, "conveyor")} x={940} y={405} w={600} h={275} side="left">
+      </Hotspot>
+      <Hotspot id="conveyor" n={3} label={`${f.items[2].object}: ${f.items[2].capability}`} x={940} y={385} w={600} h={275} on={onAt(2)} callout="tr">
         <Conveyor />
-      </SceneObject>
+      </Hotspot>
     </FloorScene>
   );
 }

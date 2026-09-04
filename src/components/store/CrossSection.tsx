@@ -108,7 +108,7 @@ function FloorLabel({ y, text }: { y: number; text: string }) {
       y={y}
       textAnchor="end"
       fontFamily="Inter, system-ui, sans-serif"
-      fontSize="9"
+      fontSize="11"
       fontWeight="600"
       letterSpacing="1"
       fill={BRASS_L}
@@ -200,7 +200,7 @@ export default function CrossSection({
                           y={y + 14}
                           textAnchor="middle"
                           fontFamily="Inter, system-ui, sans-serif"
-                          fontSize={gem ? 9.5 : 7.4}
+                          fontSize={gem ? 10 : 8.2}
                           fontWeight="700"
                           letterSpacing="0.8"
                           fill={gem ? GREEN : INK}
