@@ -318,11 +318,11 @@ export function ModelHall() {
         );
       })}
       {/* far wall sign band */}
-      <rect x="560" y="300" width="480" height="60" fill="#153A2F" />
-      <rect x="560" y="300" width="480" height="4" fill={BRASS} />
-      <rect x="560" y="356" width="480" height="4" fill={BRASS} />
-      <line x1="640" y1="300" x2="660" y2="140" stroke="#B8894A" strokeWidth="2" />
-      <line x1="960" y1="300" x2="940" y2="140" stroke="#B8894A" strokeWidth="2" />
+      <rect x="560" y="228" width="480" height="58" fill="#153A2F" />
+      <rect x="560" y="228" width="480" height="4" fill={BRASS} />
+      <rect x="560" y="282" width="480" height="4" fill={BRASS} />
+      <line x1="640" y1="228" x2="660" y2="60" stroke="#B8894A" strokeWidth="2" />
+      <line x1="960" y1="228" x2="940" y2="60" stroke="#B8894A" strokeWidth="2" />
       {/* columns */}
       {[0.15, 0.4, 0.7].map((f) => {
         const xl = 500 - 500 * f;
@@ -401,10 +401,10 @@ export function BackOfHouseRoom() {
       {/* STAFF ONLY swing door, left */}
       <rect x="120" y="180" width="200" height="460" fill="#9A9A96" stroke="#1B1B1F" strokeOpacity="0.4" />
       <rect x="136" y="196" width="168" height="428" fill="#B0AFA7" />
-      <circle cx="220" cy="300" r="36" fill="#E9E4DA" stroke="#1B1B1F" strokeOpacity="0.3" strokeWidth="4" />
+      <circle cx="220" cy="330" r="36" fill="#E9E4DA" stroke="#1B1B1F" strokeOpacity="0.3" strokeWidth="4" />
       <rect x="170" y="380" width="100" height="6" fill="#8A8A88" />
-      <rect x="152" y="220" width="136" height="34" fill="#1B1B1F" />
-      <text x="220" y="243" textAnchor="middle" fontFamily="Inter, system-ui, sans-serif" fontSize="14" fontWeight="700" letterSpacing="3" fill="#F6F2EA">
+      <rect x="152" y="420" width="136" height="34" fill="#1B1B1F" />
+      <text x="220" y="443" textAnchor="middle" fontFamily="Inter, system-ui, sans-serif" fontSize="14" fontWeight="700" letterSpacing="3" fill="#F6F2EA">
         STAFF ONLY
       </text>
       {/* pipes */}
