@@ -62,10 +62,10 @@ export const floors: Floor[] = [
     level: "Floor 4",
     name: "Models",
     metaphor: "The model floor: house brand, premium brands, independent brands",
-    products: ["Model Garden", "Gemini 3.1 Pro · 3.8 Flash · 3.5 Flash-Lite", "Claude Opus 5 · Sonnet 5 · Haiku 4.5", "Grok · Mistral AI · AI21", "Gemma 4 · Llama 4 · DeepSeek · Qwen3 · gpt-oss"],
+    products: ["Model Garden", "Gemini 3.1 Pro · 3.8 Flash · 3.5 Flash-Lite", "Claude Fable 5.1 · Opus 5 · Sonnet 5 · Haiku 4.5", "Grok 4.6 · Codestral 2", "Gemma 4 · DeepSeek-V3.2 · GLM 5.2 · Kimi K2 · Qwen3-Next"],
     summary: "Shop for the right intelligence for the job across 200+ Google, partner and open models, in four tiers: frontier, workhorse, efficient, specialist.",
     detail:
-      "Model Garden is one place to discover more than 200 models. Google's own line runs from Gemini 3.1 Pro (frontier) through Gemini 3.8 Flash (the workhorse) to Gemini 3.5 Flash-Lite (efficient), with Veo, Imagen and Lyria as specialists. Partner brands such as Anthropic Claude, xAI Grok and Mistral AI sit on the same shelf as managed APIs. Open models from Google, Meta, DeepSeek, Alibaba and OpenAI are managed or self-deployed. The store carries its own flagship label and does not force you to buy it.",
+      "Model Garden is one place to discover more than 200 models. Google's own line runs from Gemini 3.1 Pro (frontier) through Gemini 3.8 Flash (the workhorse) to Gemini 3.5 Flash-Lite (efficient), with Veo, Imagen and Lyria as specialists. Partner brands such as Anthropic Claude, xAI Grok and Mistral AI sit on the same shelf as managed APIs. Open models from Google, DeepSeek, Zhipu, Moonshot and Alibaba are managed or self-deployed. The store carries its own flagship label and does not force you to buy it.",
     accent: accent.google,
     sectionId: "models",
   },
@@ -195,7 +195,15 @@ export const tiers: { id: Tier; label: string; tagline: string; exec: string }[]
   { id: "specialist", label: "Specialist", tagline: "One job, done well.", exec: "Image, video, music, speech, code, documents, embeddings. Built for a task rather than every task." },
 ];
 
-export type ShelfModel = { name: string; maker: string; tier: Tier; note: string; preview?: boolean };
+export type ShelfModel = { name: string; maker: string; tier: Tier; note: string; released: string; preview?: boolean };
+
+/**
+ * Recency rule: a model is featured only if it was released or materially
+ * refreshed within the last twelve months (September 2025 onward). Every
+ * entry carries its release month so the reader can judge for themselves.
+ */
+export const recencyRule = "Featured models were released within the last twelve months. Older families stay on the shelf but are not shown here.";
+export const olderOnShelf = "Also available but not featured: Llama 4 Maverick and Scout (Apr 2025), Qwen3 235B and Qwen3 Coder (2025), gpt-oss 120B and 20B (Aug 2025), Mistral Medium 3, Small 3.1 and OCR (2025), AI21 Jamba 1.5 (2024), and earlier Claude, Gemini and Gemma generations.";
 
 export const modelCategories: {
   id: "google" | "partner" | "open";
@@ -214,16 +222,16 @@ export const modelCategories: {
     body: "Gemini and Google’s specialised models. Deeply integrated with the rest of the store, and never the only thing on the shelf.",
     access: "Managed APIs on Agent Platform. Gemma 4 is also available as an open model.",
     models: [
-      { name: "Gemini 3.1 Pro", maker: "Google", tier: "frontier", note: "Most advanced reasoning model; 1M-token context; text, audio, image, video, PDF and whole code repositories.", preview: true },
-      { name: "Gemini 3.8 Flash", maker: "Google", tier: "workhorse", note: "Most intelligent workhorse model; software engineering, agentic tasks, multi-step reasoning; often approaches frontier performance at lower cost." },
-      { name: "Gemini 3.5 Flash-Lite", maker: "Google", tier: "efficient", note: "Cost-effective line for simple coding, precise document understanding and lightweight agents; built for high-throughput classification and extraction." },
-      { name: "Gemini 3.1 Flash Image", maker: "Google", tier: "specialist", note: "Image understanding and generation at a balance of price and performance." },
-      { name: "Gemini 3 Pro Image · Imagen", maker: "Google", tier: "specialist", note: "Text-to-image for the highest-fidelity creative work." },
-      { name: "Veo 3.1", maker: "Google", tier: "specialist", note: "Text-to-video and image-to-video." },
-      { name: "Gemini Omni 1.1 Flash", maker: "Google", tier: "specialist", note: "Video, image and text in one model, with video output alongside text.", preview: true },
-      { name: "Lyria 3", maker: "Google", tier: "specialist", note: "Music generation." },
-      { name: "Gemini 3.5 Transcribe · Live Translate · Chirp", maker: "Google", tier: "specialist", note: "Speech to text, live translation and speech recognition." },
-      { name: "Gemini Embedding 2", maker: "Google", tier: "specialist", note: "Embeddings for search, retrieval and grounding." },
+      { name: "Gemini 3.1 Pro", maker: "Google", tier: "frontier", released: "Feb 2026", note: "Most advanced reasoning model; 1M-token context; text, audio, image, video, PDF and whole code repositories.", preview: true },
+      { name: "Gemini 3.8 Flash", maker: "Google", tier: "workhorse", released: "Sep 2026", note: "Most intelligent workhorse model; software engineering, agentic tasks, multi-step reasoning; often approaches frontier performance at lower cost." },
+      { name: "Gemini 3.5 Flash-Lite", maker: "Google", tier: "efficient", released: "Jul 2026", note: "Cost-effective line for simple coding, precise document understanding and lightweight agents; built for high-throughput classification and extraction." },
+      { name: "Gemini 3.1 Flash Image", maker: "Google", tier: "specialist", released: "May 2026", note: "Image understanding and generation at a balance of price and performance." },
+      { name: "Gemini 3 Pro Image", maker: "Google", tier: "specialist", released: "Nov 2025", note: "Text-to-image for the highest-fidelity creative work." },
+      { name: "Gemini Omni 1.1 Flash", maker: "Google", tier: "specialist", released: "Aug 2026", note: "Video, image and text in one model, with video output alongside text.", preview: true },
+      { name: "Veo 3.1", maker: "Google", tier: "specialist", released: "Oct 2025", note: "Text-to-video and image-to-video." },
+      { name: "Lyria 3", maker: "Google", tier: "specialist", released: "Feb 2026", note: "Music generation." },
+      { name: "Gemini 3.5 Transcribe · Live Translate", maker: "Google", tier: "specialist", released: "Jul 2026", note: "Speech to text and live translation in the Gemini 3.5 line." },
+      { name: "Gemini Embedding 2", maker: "Google", tier: "specialist", released: "Apr 2026", note: "Natively multimodal embeddings for search, retrieval and grounding." },
     ],
   },
   {
@@ -234,18 +242,14 @@ export const modelCategories: {
     body: "Frontier models from other providers, sold as managed APIs inside the same environment, governed by the same platform, billed on the same account.",
     access: "Managed APIs (model as a service). No infrastructure to run.",
     models: [
-      { name: "Claude Opus 5", maker: "Anthropic", tier: "frontier", note: "Anthropic’s most advanced Opus model: long-running agents, ambitious coding, deep professional and financial analysis, computer use." },
-      { name: "Claude Fable 5.1", maker: "Anthropic", tier: "frontier", note: "Optimised for autonomous knowledge work and coding; long-running, complex and asynchronous tasks." },
-      { name: "Grok 4.6", maker: "xAI", tier: "frontier", note: "xAI’s most capable model for coding, agentic tasks and knowledge work.", preview: true },
-      { name: "Claude Sonnet 5", maker: "Anthropic", tier: "workhorse", note: "Most capable Sonnet yet; lead agent or sub-agent in production pipelines with the cost profile to run high-volume agentic work." },
-      { name: "Grok 4.20", maker: "xAI", tier: "workhorse", note: "Reasoning and non-reasoning variants; document understanding and long-horizon tool calling.", preview: true },
-      { name: "Mistral Medium 3", maker: "Mistral AI", tier: "workhorse", note: "Versatile model for coding, maths, long-document understanding, summarisation and dialogue." },
-      { name: "Jamba 1.5 Large · Mini", maker: "AI21 Labs", tier: "workhorse", note: "Long-context models balancing quality, throughput and cost.", preview: true },
-      { name: "Claude Haiku 4.5", maker: "Anthropic", tier: "efficient", note: "Near-frontier performance at the speed and cost for customer-service agents, sub-agents and high-volume experiences." },
-      { name: "Grok 4.1 Fast", maker: "xAI", tier: "efficient", note: "xAI’s most cost-effective model; search, summarisation and categorisation at volume.", preview: true },
-      { name: "Mistral Small 3.1", maker: "Mistral AI", tier: "efficient", note: "Small multimodal model with an extended context window." },
-      { name: "Codestral 2", maker: "Mistral AI", tier: "specialist", note: "Code generation and fill-in-the-middle completion." },
-      { name: "Mistral OCR", maker: "Mistral AI", tier: "specialist", note: "Document understanding: text, tables, media and equations." },
+      { name: "Claude Fable 5.1", maker: "Anthropic", tier: "frontier", released: "Sep 2026", note: "Anthropic’s newest top-tier model: autonomous knowledge work and coding; long-running, complex and asynchronous tasks." },
+      { name: "Claude Opus 5", maker: "Anthropic", tier: "frontier", released: "Jul 2026", note: "Most advanced Opus model: long-running agents, ambitious coding, deep professional and financial analysis, computer use." },
+      { name: "Grok 4.6", maker: "xAI", tier: "frontier", released: "Aug 2026", note: "xAI’s most capable model for coding, agentic tasks and knowledge work.", preview: true },
+      { name: "Claude Sonnet 5", maker: "Anthropic", tier: "workhorse", released: "Jun 2026", note: "Most capable Sonnet yet; lead agent or sub-agent in production pipelines with the cost profile to run high-volume agentic work." },
+      { name: "Grok 4.20", maker: "xAI", tier: "workhorse", released: "Mar 2026", note: "Reasoning and non-reasoning variants; document understanding and long-horizon tool calling.", preview: true },
+      { name: "Claude Haiku 4.5", maker: "Anthropic", tier: "efficient", released: "Oct 2025", note: "Anthropic’s current small model: near-frontier performance at the speed and cost for service agents, sub-agents and high-volume experiences." },
+      { name: "Grok 4.1 Fast", maker: "xAI", tier: "efficient", released: "Nov 2025", note: "xAI’s most cost-effective model; search, summarisation and categorisation at volume.", preview: true },
+      { name: "Codestral 2", maker: "Mistral AI", tier: "specialist", released: "Apr 2026", note: "Code generation and fill-in-the-middle completion." },
     ],
   },
   {
@@ -256,19 +260,14 @@ export const modelCategories: {
     body: "Open-weights choices from Google and the wider community. Managed as a service, or, for supported models, self-deployed into your own environment with your own weights.",
     access: "Managed APIs, or one-click self-deployment for supported models.",
     models: [
-      { name: "DeepSeek-V3.2", maker: "DeepSeek", tier: "frontier", note: "Computational efficiency with strong reasoning and agent performance; the reasoning tier of the open shelf." },
-      { name: "Kimi K2 Thinking", maker: "Moonshot AI", tier: "frontier", note: "Open thinking-agent model that reasons step by step and uses tools." },
-      { name: "Qwen3-Next-80B Thinking", maker: "Alibaba", tier: "frontier", note: "Complex problem-solving and deep reasoning in the Qwen3-Next family." },
-      { name: "Llama 4 Maverick", maker: "Meta", tier: "workhorse", note: "The largest Llama 4: coding, reasoning and image understanding in a mixture-of-experts model." },
-      { name: "Qwen3 235B", maker: "Alibaba", tier: "workhorse", note: "Hybrid thinking: switches between methodical reasoning and rapid conversation." },
-      { name: "GLM 5.2", maker: "Zhipu AI", tier: "workhorse", note: "Long-horizon agentic and coding tasks with a 1M-token context window." },
-      { name: "gpt-oss 120B", maker: "OpenAI", tier: "workhorse", note: "Open-weights model with high performance on reasoning tasks." },
-      { name: "Gemma 4 26B", maker: "Google", tier: "efficient", note: "Google’s open multimodal model; a house label you can take with you." },
-      { name: "Llama 4 Scout", maker: "Meta", tier: "efficient", note: "High performance for its size class; multimodal mixture-of-experts." },
-      { name: "gpt-oss 20B", maker: "OpenAI", tier: "efficient", note: "Optimised for efficiency and deployment on modest hardware." },
-      { name: "Qwen3 Coder", maker: "Alibaba", tier: "specialist", note: "Open-weights model built for advanced software development." },
-      { name: "DeepSeek-OCR", maker: "DeepSeek", tier: "specialist", note: "Optical character recognition for complex documents." },
-      { name: "MiniMax M2", maker: "MiniMax", tier: "specialist", note: "Agentic and code tasks: planning and executing complex tool calls." },
+      { name: "DeepSeek-V3.2", maker: "DeepSeek", tier: "frontier", released: "Dec 2025", note: "Computational efficiency with strong reasoning and agent performance; the reasoning tier of the open shelf." },
+      { name: "Kimi K2 Thinking", maker: "Moonshot AI", tier: "frontier", released: "Nov 2025", note: "Open thinking-agent model that reasons step by step and uses tools." },
+      { name: "Qwen3-Next-80B Thinking", maker: "Alibaba", tier: "frontier", released: "Sep 2025", note: "Complex problem-solving and deep reasoning in the Qwen3-Next family." },
+      { name: "GLM 5.2", maker: "Zhipu AI", tier: "workhorse", released: "Jun 2026", note: "Long-horizon agentic and coding tasks with a 1M-token context window; the newest open workhorse on the shelf." },
+      { name: "Gemma 4 26B", maker: "Google", tier: "efficient", released: "Apr 2026", note: "Google’s open multimodal model; a house label you can take with you." },
+      { name: "Qwen3-Next-80B Instruct", maker: "Alibaba", tier: "efficient", released: "Sep 2025", note: "Instruction-following at a small active-parameter cost." },
+      { name: "DeepSeek-OCR", maker: "DeepSeek", tier: "specialist", released: "Oct 2025", note: "Optical character recognition for complex documents." },
+      { name: "MiniMax M2", maker: "MiniMax", tier: "specialist", released: "Oct 2025", note: "Agentic and code tasks: planning and executing complex tool calls." },
     ],
   },
 ];
@@ -276,17 +275,17 @@ export const modelCategories: {
 export const modelGarden = {
   eyebrow: "Section 04 · Floor 4",
   title: ["Shop by outcome.", "Not by brand."],
-  lead: "Model Garden is one place to discover more than 200 models. The shelf below is what is actually on it today, sorted the way a buyer thinks: by the job, not the logo.",
-  howToRead: "Four tiers run across every shelf. Premium is a tier, not a brand: each shelf carries a frontier model, a workhorse and an efficient option.",
+  lead: "Model Garden is one place to discover more than 200 models. The shelf below is this generation only, sorted the way a buyer thinks: by the job, not the logo.",
+  howToRead: "Four tiers run across every shelf. Premium is a tier, not a brand: each shelf carries a frontier model, a workhorse and an efficient option. " + recencyRule,
   factors: ["Intelligence", "Latency", "Modality", "Cost", "Sovereignty", "Customisation", "Deployment requirements"],
-  caveat: "Deployment options differ by model: partner models are managed APIs; open models are managed or, where supported, self-deployed. Items marked Preview are pre-GA. Not every model on the 200+ shelf is shown.",
-  verified: "Model names, tiers and descriptions verified against Google Cloud documentation on 5 September 2026.",
+  caveat: "Deployment options differ by model: partner models are managed APIs; open models are managed or, where supported, self-deployed. Items marked Preview are pre-GA. " + olderOnShelf,
+  verified: "Names, tiers and release months verified against Google Cloud documentation and provider announcements on 5 September 2026.",
   matrixTitle: "The shelf at a glance",
   matrix: [
-    { tier: "frontier", google: "Gemini 3.1 Pro (Preview)", partner: "Claude Opus 5 · Claude Fable 5.1 · Grok 4.6 (Preview)", open: "DeepSeek-V3.2 · Kimi K2 Thinking · Qwen3-Next-80B Thinking" },
-    { tier: "workhorse", google: "Gemini 3.8 Flash", partner: "Claude Sonnet 5 · Grok 4.20 · Mistral Medium 3", open: "Llama 4 Maverick · Qwen3 235B · GLM 5.2 · gpt-oss 120B" },
-    { tier: "efficient", google: "Gemini 3.5 Flash-Lite", partner: "Claude Haiku 4.5 · Grok 4.1 Fast · Mistral Small 3.1", open: "Gemma 4 26B · Llama 4 Scout · gpt-oss 20B" },
-    { tier: "specialist", google: "Gemini 3.1 Flash Image · Veo 3.1 · Lyria 3 · Gemini 3.5 Transcribe · Gemini Embedding 2", partner: "Codestral 2 · Mistral OCR", open: "Qwen3 Coder · DeepSeek-OCR · MiniMax M2" },
+    { tier: "frontier", google: "Gemini 3.1 Pro (Preview)", partner: "Claude Fable 5.1 · Claude Opus 5 · Grok 4.6 (Preview)", open: "DeepSeek-V3.2 · Kimi K2 Thinking · Qwen3-Next-80B Thinking" },
+    { tier: "workhorse", google: "Gemini 3.8 Flash", partner: "Claude Sonnet 5 · Grok 4.20", open: "GLM 5.2" },
+    { tier: "efficient", google: "Gemini 3.5 Flash-Lite", partner: "Claude Haiku 4.5 · Grok 4.1 Fast", open: "Gemma 4 26B · Qwen3-Next-80B Instruct" },
+    { tier: "specialist", google: "Gemini 3.1 Flash Image · Gemini Omni 1.1 Flash · Veo 3.1 · Lyria 3 · Gemini Embedding 2", partner: "Codestral 2", open: "DeepSeek-OCR · MiniMax M2" },
   ],
 };
 
@@ -313,7 +312,7 @@ export const useCases: { id: string; label: string; agent: string; why: string; 
     models: [
       { name: "Gemini 3.8 Flash", category: "google", note: "Workhorse · software engineering and agentic tasks" },
       { name: "Claude Sonnet 5", category: "partner", note: "Workhorse · built for coding and agents at scale" },
-      { name: "Qwen3 Coder", category: "open", note: "Open specialist · advanced software development" },
+      { name: "GLM 5.2", category: "open", note: "Open workhorse · long-horizon coding, 1M-token context" },
     ],
   },
   {
@@ -334,7 +333,7 @@ export const useCases: { id: string; label: string; agent: string; why: string; 
     why: "Reading filings, forms and tables at volume. A specialist OCR model in front of a workhorse is often the right pairing.",
     models: [
       { name: "Gemini 3.8 Flash", category: "google", note: "Workhorse · multimodal document understanding" },
-      { name: "Mistral OCR", category: "partner", note: "Specialist · text, tables, media, equations" },
+      { name: "Claude Sonnet 5", category: "partner", note: "Workhorse · documents, spreadsheets, office files at scale" },
       { name: "DeepSeek-OCR", category: "open", note: "Open specialist · complex document OCR" },
     ],
   },
@@ -357,7 +356,7 @@ export const useCases: { id: string; label: string; agent: string; why: string; 
     models: [
       { name: "Gemini 3.5 Flash-Lite", category: "google", note: "Efficient · minimal thinking for routing and extraction" },
       { name: "Grok 4.1 Fast", category: "partner", note: "Efficient · summarisation and categorisation at volume · Preview" },
-      { name: "gpt-oss 20B", category: "open", note: "Open efficient · runs on modest hardware" },
+      { name: "Qwen3-Next-80B Instruct", category: "open", note: "Open efficient · small active-parameter cost" },
     ],
   },
 ];
@@ -609,7 +608,8 @@ export const sources = [
 
 export const methodology = [
   "Product names follow current official Google Cloud pages and documentation as of September 2026.",
-  "Model names and tiers were verified against the Agent Platform model documentation on 5 September 2026. Tiers (frontier, workhorse, efficient, specialist) are an editorial grouping based on each model's official description, not a Google classification.",
+  "Model names and tiers were verified against the Agent Platform model documentation on 5 September 2026; release months against provider announcements. Tiers (frontier, workhorse, efficient, specialist) are an editorial grouping based on each model's official description, not a Google classification.",
+  "Recency rule: only models released within the last twelve months are featured, because older generations no longer shape an enterprise's model strategy. Older families remain available on Model Garden and are named on the page.",
   "The department store is an analogy for the operating model; it is not a literal product architecture diagram.",
   "Deployment options differ by model. Nothing here implies every model is open or self-deployable.",
   "Enterprise data grounds agents; nothing here implies it trains public Google models.",

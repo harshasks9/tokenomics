@@ -57,6 +57,10 @@ Final message.
   OCR, Qwen3 235B, Qwen3 Coder, Qwen3-Next-80B, gpt-oss 120B and 20B, GLM 5.2,
   Kimi K2 Thinking, MiniMax M2). Preview status is shown where the docs show
   it. No statistics, benchmarks, prices or competitor names.
+- Recency rule: only models released within the last twelve months (September
+  2025 onward) are featured, each with its release month. Older families
+  (Llama 4, Qwen3 235B, Qwen3 Coder, gpt-oss, Mistral Medium 3, Small 3.1 and
+  OCR, Jamba 1.5) remain on the shelf and are named in a note but not featured.
 - The model floor groups every shelf into four tiers: Frontier, Workhorse,
   Efficient, Specialist. The tiers are an editorial grouping derived from each
   model's official description (for example, Gemini 3.8 Flash is documented as

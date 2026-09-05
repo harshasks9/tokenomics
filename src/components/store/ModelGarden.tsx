@@ -74,6 +74,7 @@ export default function ModelGarden() {
                               {m.name}
                             </span>
                             <span className="ds-small">{m.maker}</span>
+                            <span className="ds-small">· {m.released}</span>
                             {m.preview && <span className="rounded bg-[var(--bg-3)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">Preview</span>}
                           </div>
                           <p className="ds-small mt-0.5">{m.note}</p>
