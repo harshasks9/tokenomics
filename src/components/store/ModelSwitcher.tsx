@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type CSSProperties } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { accent, modelSwitch, useCases, type ModelChip } from "@/lib/store/data";
 import { Section, Reveal } from "./ui";
 
@@ -27,7 +27,6 @@ export function ArchitectureStack({
   switchKey: number;
   compact?: boolean;
 }) {
-  const reduced = useReducedMotion();
   return (
     <div className={`ds-arch ${compact ? "text-[13px]" : ""}`}>
       <div className="ds-arch__box">
@@ -41,9 +40,9 @@ export function ArchitectureStack({
             key={`${model.name}-${switchKey}`}
             className="ds-arch__chip"
             style={{ "--chip": CHIP_COLOR[model.category] } as CSSProperties}
-            initial={reduced ? false : { x: 140, opacity: 0 }}
+            initial={{ x: 140, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            exit={reduced ? undefined : { x: -140, opacity: 0 }}
+            exit={{ x: -140, opacity: 0 }}
             transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }}
           >
             <span>
@@ -72,12 +71,11 @@ export function ArchitectureStack({
 }
 
 function Unchanged({ k }: { k: number }) {
-  const reduced = useReducedMotion();
   return (
     <motion.span
       key={k}
       className="ds-unchanged"
-      initial={reduced || k === 0 ? false : { scale: 0.8, opacity: 0.4 }}
+      initial={k === 0 ? false : { scale: 0.8, opacity: 0.4 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.4 }}
     >

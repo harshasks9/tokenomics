@@ -1,12 +1,18 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { MotionConfig } from "framer-motion";
 import { TopBar, Navigator } from "./Nav";
+import { StoreProvider } from "./StoreContext";
 import Hero from "./Hero";
-import Idea from "./Idea";
-import Explore from "./Explore";
-import ModelGarden from "./ModelGarden";
+import Problem from "./Problem";
+import Analogy from "./Analogy";
 import ModelSwitcher from "./ModelSwitcher";
+import Differentiation from "./Differentiation";
+import TalkTrack from "./TalkTrack";
+import Explore from "./Explore";
+import CustomerJourney from "./CustomerJourney";
+import ModelGarden from "./ModelGarden";
 import AgentBuilder from "./AgentBuilder";
 import DataFlow from "./DataFlow";
 import OpennessStack from "./OpennessStack";
@@ -14,28 +20,45 @@ import GovernanceLayer from "./GovernanceLayer";
 import OptimizationLoop from "./OptimizationLoop";
 import InfrastructureLayer from "./InfrastructureLayer";
 import ArchetypeComparison from "./ArchetypeComparison";
-import CustomerJourney from "./CustomerJourney";
 import FinalCTA from "./FinalCTA";
 import SourcesDrawer from "./SourcesDrawer";
 import { methodology } from "@/lib/store/data";
 
+/**
+ * Narrative order: customer problem → local store analogy → why optionality
+ * matters → why this is different → the 90-second talk track → map the store
+ * to the platform → customer journey → then the platform as proof.
+ */
 export default function Site() {
   const [sources, setSources] = useState(false);
   const open = useCallback(() => setSources(true), []);
   const close = useCallback(() => setSources(false), []);
   return (
-    <>
-      <a className="ds-skip" href="#idea">
+    <StoreProvider>
+      <MotionConfig reducedMotion="user">
+      <a className="ds-skip" href="#problem">
         Skip to content
       </a>
       <TopBar onSources={open} />
       <Navigator />
       <main>
         <Hero />
-        <Idea />
-        <Explore />
-        <ModelGarden />
+        <Problem />
+        <Analogy />
         <ModelSwitcher />
+        <Differentiation />
+        <TalkTrack />
+        <Explore />
+        <CustomerJourney />
+        <div className="ds-section !pb-0" aria-hidden="true">
+          <div className="ds-container">
+            <p className="ds-eyebrow">The rest is proof</p>
+            <p className="ds-h2 mt-2" style={{ fontSize: "clamp(26px, 3vw, 40px)" }}>
+              Everything below is the building behind the thesis.
+            </p>
+          </div>
+        </div>
+        <ModelGarden />
         <AgentBuilder />
         <DataFlow />
         <OpennessStack />
@@ -43,7 +66,6 @@ export default function Site() {
         <OptimizationLoop />
         <InfrastructureLayer />
         <ArchetypeComparison />
-        <CustomerJourney />
         <FinalCTA />
       </main>
       <footer className="ds-section ds-dark !pt-8 !pb-10 border-t border-[var(--dark-line)]">
@@ -58,6 +80,7 @@ export default function Site() {
         </div>
       </footer>
       <SourcesDrawer open={sources} onClose={close} />
-    </>
+      </MotionConfig>
+    </StoreProvider>
   );
 }
