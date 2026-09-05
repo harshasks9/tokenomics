@@ -1,9 +1,9 @@
-# The Department Store for AI
+# The AI Department Store
 
-A single-page microsite that explains the Google Cloud AI platform to CEOs,
-CIOs and CTOs through one sustained analogy: the platform is a modern
-department store. A concierge walks beside the visitor; every floor is an
-exhibit with a numbered legend.
+A single-page executive microsite: Google Cloud as the department store for
+enterprise AI. One idea, fourteen sections, one hero interaction.
+
+> Don't bet on the winning model. Pick the right store.
 
 Live at **https://store.aitokenomics.app** (route `/store` in this repo).
 
@@ -17,113 +17,64 @@ npm run dev
 
 ## Deploy
 
-The site deploys automatically from `main` via Vercel. The repo's study
-workflow (`AGENTS.md`) merges a `study/*` branch into `main`; Vercel then builds
-and serves the route. The subdomain is routed in two places, both appended
-(never rewritten) for this site:
+Deploys automatically from `main` via Vercel (repo study workflow in
+`AGENTS.md`). The subdomain is routed in `src/proxy.ts` (host block) and
+`vercel.json` (host rewrite) and is attached to the Vercel project.
 
-- `src/proxy.ts` — host block for `store.aitokenomics.app` → `/store`
-- `vercel.json` — host rewrite for the same subdomain
-
-The subdomain is attached to the Vercel project; there is no wildcard domain.
-
-## Where things live
+## Structure
 
 | Path | What |
 | --- | --- |
-| `src/app/store/layout.tsx` | Route metadata, Fraunces via `next/font`, imports `store.css` |
-| `src/app/store/store.css` | The design system (`ds-` prefix): chrome, exhibit layout, cards, every scene |
-| `src/lib/store/copy.ts` | Every line of copy, verbatim from the narrative, in walking order |
-| `src/components/store/Site.tsx` | Composes the walk, mounts the scroll engine |
-| `src/components/store/engine.tsx` | Writes `--p` per scene, tracks the active stop |
-| `src/components/store/Chrome.tsx` | Top rail with progress line and directory; the building stack in each floor header |
-| `src/components/store/Objects.tsx` | `Exhibit` context, `Hotspot` (object + numbered callout), `Card`, `Narrator` |
-| `src/components/store/props.tsx` | SVG props: desks, racks, mannequin, wardrobe, register, fitting rooms, bays… |
-| `src/components/store/rooms.tsx` | SVG rooms, atrium rings, escalator |
-| `src/components/store/facade.tsx` | The night façade for the hero |
-| `src/components/store/CrossSection.tsx` | The building cross-section with eight linked targets |
-| `src/components/store/tableaus.tsx` | Window-display tableaus and the three shops across the street |
-| `src/components/store/scenes/*` | The scenes in walking order |
+| `src/lib/store/data.ts` | All structured content: floors, model categories, use cases, journey steps, archetypes, copy, sources |
+| `src/app/store/store.css` | Design tokens and primitives (`ds-` prefix); Tailwind utilities for layout |
+| `src/components/store/Building.tsx` | The architectural cutaway (outline / solid / x-ray), reused in hero, explorer, governance, journey and final |
+| `src/components/store/Nav.tsx` | Top bar with progress and sections menu; sticky building navigator |
+| `src/components/store/Hero.tsx` … `FinalCTA.tsx` | One component per section, in page order |
+| `src/components/store/ModelSwitcher.tsx` | The model-switch interaction; exports `ArchitectureStack`, reused in the journey's final step |
+| `src/components/store/SourcesDrawer.tsx` | Sources & methodology drawer |
 
-## How the walk is organised
+Page order: Hero · The idea · Explore the store · Model Garden · Model switch ·
+Build agents · Data · Openness · Governance (x-ray) · Operations ·
+Infrastructure (+ stores within the store) · Archetypes · Customer journey ·
+Final message.
 
-Fourteen stops, always visible in the top rail ("Stop 5 of 14 · 4 · The Model
-Floor") and in a directory panel split into the building and the street:
+## Positioning discipline
 
-1. Entrance (pavement) · 2. Atrium · 3–8. Floors 6 to 1 · 9. The Walls ·
-   10. The Doors · 11. Your Receipt · 12. Window Displays · 13. Across the
-   Street · 14. Talk Track.
+- The store is the operating model: Gemini Enterprise, Gemini Enterprise
+  Agent Platform (formerly Vertex AI), Data Cloud, AI Hypercomputer and the
+  ecosystem. Model Garden is the model floor inside it, not the store.
+- Product names follow current official Google Cloud pages and documentation
+  (September 2026): Agent Garden, Agent Studio, Agent Development Kit, Agent
+  Runtime, Agent Identity, Agent Gateway, Model Armor, evaluation and
+  observability, Model Garden with 200+ models.
+- Model examples are families ("Gemini (latest)", "Anthropic Claude", "Gemma",
+  "Llama"), never versions. No statistics, benchmarks, prices or competitor
+  names. Deployment differences and the training caveat are stated on the page.
+- The sources drawer lists the official pages used and the methodology.
 
-Every floor is one exhibit:
+## Decisions the brief left open
 
-- **Room above.** The illustration, with a numbered brass callout on each
-  object and small verbatim signage (GEMINI ENTERPRISE — ASK HERE, One suit.
-  Several brands. Made here., SAME CHECKOUT, EVERY BRAND. THIS TILL., TPU · GPU).
-- **Header plate.** Floor number, name, sub-banner, and a small building stack
-  with the current floor lit, so the visitor always knows where they stand.
-- **Legend beneath.** The concierge's line on the left; one card per object on
-  the right, numbered to match the callouts: the object, the Google Cloud
-  capability, and what it means. Hovering or focusing an object lights its card
-  and vice versa; clicking pins it. Nothing is hidden behind a hover.
-- **Next strip.** The concierge's line at the down escalator, as a link to the
-  next floor.
+1. **Interaction model.** Everything is visible on scroll; interactions add
+   depth (floor detail, model switch, journey stepper, archetype assembly).
+2. **Mobile.** The building explorer becomes an accordion of floors; the
+   navigator hides below 1180px in favour of a sections menu.
+3. **Use cases.** Six use cases, each with three model options drawn from the
+   categories Model Garden carries. "Image and video" offers Google specialist
+   models only, to avoid implying partner or open video models are available.
+4. **Agent Garden.** Cards show illustrative pattern categories, not a product
+   list, and say so.
+5. **Journey step 11.** Reuses the architecture diagram: only the model chip is
+   replaced; the platform and layers carry an "Unchanged" mark.
+6. **Fonts and colour.** Inter only. Colour marks layers (Google blue,
+   partner amber, open green, agents violet, data teal, security red,
+   infrastructure indigo); backgrounds stay neutral; governance and
+   infrastructure sections go dark.
+7. **Practice toggle and talk track** from the earlier brief were dropped; this
+   version ends on the final message.
 
-Scrolling a floor reveals the cards and switches on each object's light in
-sequence; the page reads fully by scrolling alone. The model floor groups the
-racks with brackets (House brand · Own-label · Partner brand · Open-weights)
-and hangs a SAME CHECKOUT tag on every rack.
+## Checks
 
-## How it is built
-
-- Each scene is a `[data-scene]` section taller than the viewport with a 100vh
-  `position: sticky` stage. The engine writes progress 0→1 as `--p`; all
-  motion is CSS `transform`/`opacity` computed from it. The revolving door
-  uses CSS `sin()`/`cos()`; the camera pushes through the door and out of the
-  exit.
-- Rooms compose inside a 16:9 frame (1600×900 units) that covers the room box,
-  so SVG layers and HTML signage share coordinates. Signage is sized in
-  container-query units so it scales with the room.
-- Below 1024px, and under `prefers-reduced-motion`, everything stacks: header,
-  room, concierge, cards, next. Without JavaScript the same stacked content
-  renders in order.
-
-## Decisions the narrative did not specify
-
-1. **Exhibit layout instead of hang-tags.** The narrative places copy on
-   hang-tags; this build shows every hang-tag as a numbered card beneath the
-   room so an executive can read a floor without hovering. The tag copy is
-   unchanged.
-2. **One escalator.** The ride up from the atrium is kept as a scene (it
-   carries the mid-ride line). The down escalators between floors were replaced
-   by the "next" strip carrying each floor's escalator line, which shortens the
-   walk by about a third.
-3. **Directory and stack instead of a lift panel.** The fourteen-stop
-   directory lives in a panel behind a Directory button; the floor indicator is
-   a small building stack inside each floor header rather than a floating
-   panel, which had collided with copy.
-4. **Doors header.** The Doors floor has no sub-banner in the narrative; the
-   exit-door lettering (Open APIs · Open weights · A2A · MCP) is used.
-5. **Walls "next".** The walls scene has no narrator hand-off in the
-   narrative, so its next strip carries only the destination.
-6. **Stop labels.** Eyebrows on the street scenes ("Stop 11 · One customer's
-   first day", "Stop 12 · Six reasons", "Stop 13 · Four ways to build",
-   "Stop 14 · Say it in ninety seconds") are navigation labels, not narrative.
-7. **Practice toggle.** Kept from the original brief beside "Copy talk track".
-8. **Repo, fonts, robots, grain, ultra-wide.** Built as a route in the shared
-   Next.js app (`noindex`, like the other field microsites); Fraunces plus the
-   root stylesheet's Inter; one tiled `feTurbulence` grain per stage; the
-   viewport frame is capped at 213vh wide for ultra-wide monitors.
-
-## Checks performed
-
-- All fourteen stops present in order; copy imported from one module.
-- Keyboard: Tab to an object focuses it and lights its card; Enter pins;
-  Escape releases. Hovering a card lights every object it describes (all four
-  open-weights racks). Cross-section targets are real links. Directory opens,
-  lists fourteen stops, closes on navigation.
-- Copy talk track shows "Copied" for two seconds; Practice counts.
-- No-JS, reduced motion and 390px mobile renders checked in headless Chrome.
+- Keyboard: floors, pills, steps, drawer and menu are buttons or links with
+  visible focus; the drawer traps Escape and restores scroll.
+- Reduced motion: every animation is skipped via `useReducedMotion` and CSS.
 - Production build passes; the route appears in the build output.
-- JS budget: the store's own code is roughly 30 KB gzipped; the page ships
-  about 215 KB gzipped in total because it inherits the repo's shared Next.js
-  and React runtime, which is outside this route's control.
