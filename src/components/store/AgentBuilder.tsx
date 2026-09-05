@@ -65,11 +65,9 @@ export default function AgentBuilder() {
           </Reveal>
           <ul className="grid gap-3 sm:grid-cols-2" aria-label="Reusable agent patterns">
             {b.garden.patterns.map((p, i) => (
-              <Reveal key={p.name} delay={0.1 + i * 0.07}>
-                <li className="ds-card h-full p-5">
-                  <p className="font-semibold">{p.name}</p>
-                  <p className="ds-small mt-1">{p.body}</p>
-                </li>
+              <Reveal key={p.name} as="li" delay={0.1 + i * 0.07} className="ds-card h-full p-5">
+                <p className="font-semibold">{p.name}</p>
+                <p className="ds-small mt-1">{p.body}</p>
               </Reveal>
             ))}
           </ul>

@@ -26,13 +26,13 @@ export default function Idea() {
         <div className="ds-card p-8" aria-label="Choice plus curation plus common platform plus governance equals optionality without chaos">
           <ol className="grid gap-3">
             {idea.terms.map((t, i) => (
-              <Reveal key={t} delay={0.1 + i * 0.12}>
-                <li className="flex items-center gap-4">
+              <Reveal key={t} as="li" delay={0.1 + i * 0.12} className="flex items-center gap-4">
+                <span className="contents">
                   <span className="grid h-9 w-9 place-items-center rounded-full border border-[var(--line-2)] text-lg font-semibold text-[var(--muted)]" aria-hidden="true">
                     {i === 0 ? "" : "+"}
                   </span>
                   <span className="ds-h3">{t}</span>
-                </li>
+                </span>
               </Reveal>
             ))}
           </ol>
