@@ -129,6 +129,7 @@ export default function ModelSwitcher() {
                 ))}
               </div>
             </div>
+            <p className="ds-body">{useCase.why}</p>
             <div>
               <p className="ds-tag mb-3">Models that could do the job</p>
               <div className="flex flex-wrap gap-2" role="group" aria-label="Choose a model">
@@ -152,6 +153,7 @@ export default function ModelSwitcher() {
             <p className="ds-body">
               The product on the shelf changes. The building doesn&rsquo;t. That is what optionality means once it leaves the slide and enters the architecture.
             </p>
+            <p className="ds-small">Model names as documented on Agent Platform, 5 September 2026. Preview models are pre-GA.</p>
           </div>
         </Reveal>
         <Reveal delay={0.1}>

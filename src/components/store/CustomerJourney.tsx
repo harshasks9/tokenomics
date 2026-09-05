@@ -7,7 +7,7 @@ import Building from "./Building";
 import { ArchitectureStack } from "./ModelSwitcher";
 import { Section, Reveal } from "./ui";
 
-const FIRST_MODEL: ModelChip = { name: "Gemini (latest)", category: "google", note: "Chosen on the model floor" };
+const FIRST_MODEL: ModelChip = { name: "Gemini 3.8 Flash", category: "google", note: "Workhorse tier · chosen on the model floor" };
 const NEW_MODEL: ModelChip = { name: "A better model, six months later", category: "open", note: "Same platform, same rules" };
 
 export default function CustomerJourney() {
