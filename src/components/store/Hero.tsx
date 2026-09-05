@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { hero } from "@/lib/store/data";
 import Building from "./Building";
-import { StorePicker } from "./StoreContext";
 
 export default function Hero() {
   const anim = (delay: number) => ({
@@ -33,9 +32,6 @@ export default function Hero() {
               {hero.cta}
               <span aria-hidden="true">↓</span>
             </a>
-          </motion.div>
-          <motion.div className="ds-card mt-2 p-5" {...anim(0.45)}>
-            <StorePicker label={hero.pickerLabel} customLabel={hero.pickerCustom} />
           </motion.div>
         </div>
         <div className="mx-auto w-full max-w-[520px]">

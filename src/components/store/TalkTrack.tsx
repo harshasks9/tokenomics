@@ -3,14 +3,12 @@
 import { useState } from "react";
 import { talk } from "@/lib/store/data";
 import { Section, Reveal } from "./ui";
-import { useFill } from "./StoreContext";
 
 export default function TalkTrack() {
-  const fill = useFill();
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(talk.script.map(fill).join("\n\n"));
+      await navigator.clipboard.writeText(talk.script.join("\n\n"));
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -27,7 +25,7 @@ export default function TalkTrack() {
                 <span className="ds-tag pt-1" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="text-[17px] leading-[1.55] md:text-[19px]">{fill(p)}</p>
+                <p className="text-[17px] leading-[1.55] md:text-[19px]">{p}</p>
               </li>
             ))}
           </ol>

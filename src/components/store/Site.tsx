@@ -3,7 +3,6 @@
 import { useCallback, useState } from "react";
 import { MotionConfig } from "framer-motion";
 import { TopBar, Navigator } from "./Nav";
-import { StoreProvider } from "./StoreContext";
 import Hero from "./Hero";
 import Problem from "./Problem";
 import Analogy from "./Analogy";
@@ -34,8 +33,7 @@ export default function Site() {
   const open = useCallback(() => setSources(true), []);
   const close = useCallback(() => setSources(false), []);
   return (
-    <StoreProvider>
-      <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="user">
       <a className="ds-skip" href="#problem">
         Skip to content
       </a>
@@ -80,7 +78,6 @@ export default function Site() {
         </div>
       </footer>
       <SourcesDrawer open={sources} onClose={close} />
-      </MotionConfig>
-    </StoreProvider>
+    </MotionConfig>
   );
 }

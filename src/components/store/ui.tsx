@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
-import { useFill } from "./StoreContext";
 
 /** A titled section with an optional dark treatment. */
 export function Section({
@@ -24,7 +23,6 @@ export function Section({
   children?: ReactNode;
   headAside?: ReactNode;
 }) {
-  const fill = useFill();
   return (
     <section id={id} className={`ds-section${dark ? " ds-dark" : ""} ${className}`} aria-labelledby={title ? `${id}-title` : undefined}>
       <div className="ds-container">
@@ -40,7 +38,7 @@ export function Section({
                 <h2 id={`${id}-title`} className="ds-h2">
                   {title.map((line, i) => (
                     <span key={i} className="block">
-                      {fill(line)}
+                      {line}
                     </span>
                   ))}
                 </h2>
@@ -48,7 +46,7 @@ export function Section({
             )}
             {lead && (
               <Reveal delay={0.1}>
-                <p className="ds-lead">{fill(lead)}</p>
+                <p className="ds-lead">{lead}</p>
               </Reveal>
             )}
             {headAside}

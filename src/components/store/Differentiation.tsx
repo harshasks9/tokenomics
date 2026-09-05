@@ -2,19 +2,17 @@
 
 import { different } from "@/lib/store/data";
 import { Section, Reveal } from "./ui";
-import { useFill } from "./StoreContext";
 
 function Column({ title, assumes, points, highlight }: { title: string; assumes: string; points: string[]; highlight?: boolean }) {
-  const fill = useFill();
   return (
     <article className={`ds-card h-full p-7 ${highlight ? "border-2 border-[var(--ink)]" : ""}`}>
-      <h3 className="ds-h3">{fill(title)}</h3>
+      <h3 className="ds-h3">{title}</h3>
       <p className="mt-2 text-[16px] font-semibold">{assumes}</p>
       <ul className="mt-5 grid gap-3">
         {points.map((p) => (
           <li key={p} className="ds-body flex gap-3">
             <span aria-hidden="true" className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: highlight ? "var(--ink)" : "var(--line-2)" }} />
-            {fill(p)}
+            {p}
           </li>
         ))}
       </ul>
