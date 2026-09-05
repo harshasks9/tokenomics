@@ -47,9 +47,24 @@ Final message.
   (September 2026): Agent Garden, Agent Studio, Agent Development Kit, Agent
   Runtime, Agent Identity, Agent Gateway, Model Armor, evaluation and
   observability, Model Garden with 200+ models.
-- Model examples are families ("Gemini (latest)", "Anthropic Claude", "Gemma",
-  "Llama"), never versions. No statistics, benchmarks, prices or competitor
-  names. Deployment differences and the training caveat are stated on the page.
+- Models are named specifically and were verified against the Agent Platform
+  model documentation on 5 September 2026: Google (Gemini 3.1 Pro, 3.8 Flash,
+  3.5 Flash-Lite, 3.1 Flash Image, Veo 3.1, Lyria 3, Gemini Omni 1.1 Flash,
+  Gemini Embedding 2, Gemma 4), partners as managed APIs (Anthropic Claude
+  Opus 5, Fable 5.1, Sonnet 5, Haiku 4.5; xAI Grok 4.6, 4.20, 4.1 Fast;
+  Mistral Medium 3, Small 3.1, Codestral 2, OCR; AI21 Jamba 1.5) and open
+  models managed or self-deployed (Llama 4 Maverick and Scout, DeepSeek-V3.2 and
+  OCR, Qwen3 235B, Qwen3 Coder, Qwen3-Next-80B, gpt-oss 120B and 20B, GLM 5.2,
+  Kimi K2 Thinking, MiniMax M2). Preview status is shown where the docs show
+  it. No statistics, benchmarks, prices or competitor names.
+- The model floor groups every shelf into four tiers: Frontier, Workhorse,
+  Efficient, Specialist. The tiers are an editorial grouping derived from each
+  model's official description (for example, Gemini 3.8 Flash is documented as
+  the "most intelligent workhorse model"; Claude Haiku 4.5 as the speed-and-cost
+  model for high-volume experiences), not a Google classification, and the
+  page says so. Premium is a tier, not a brand: each shelf has a frontier
+  option.
+- Deployment differences and the training caveat are stated on the page.
 - The sources drawer lists the official pages used and the methodology.
 
 ## Decisions the brief left open
@@ -58,8 +73,8 @@ Final message.
    depth (floor detail, model switch, journey stepper, archetype assembly).
 2. **Mobile.** The building explorer becomes an accordion of floors; the
    navigator hides below 1180px in favour of a sections menu.
-3. **Use cases.** Six use cases, each with three model options drawn from the
-   categories Model Garden carries. "Image and video" offers Google specialist
+3. **Use cases.** Six use cases, each with three specific models and a one-line
+   rationale for the tier chosen. "Image and video" offers Google specialist
    models only, to avoid implying partner or open video models are available.
 4. **Agent Garden.** Cards show illustrative pattern categories, not a product
    list, and say so.
