@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { CSSProperties, ReactNode } from "react";
+import { useFill } from "./StoreContext";
 
 /** A titled section with an optional dark treatment. */
 export function Section({
@@ -23,6 +24,7 @@ export function Section({
   children?: ReactNode;
   headAside?: ReactNode;
 }) {
+  const fill = useFill();
   return (
     <section id={id} className={`ds-section${dark ? " ds-dark" : ""} ${className}`} aria-labelledby={title ? `${id}-title` : undefined}>
       <div className="ds-container">
@@ -38,7 +40,7 @@ export function Section({
                 <h2 id={`${id}-title`} className="ds-h2">
                   {title.map((line, i) => (
                     <span key={i} className="block">
-                      {line}
+                      {fill(line)}
                     </span>
                   ))}
                 </h2>
@@ -46,7 +48,7 @@ export function Section({
             )}
             {lead && (
               <Reveal delay={0.1}>
-                <p className="ds-lead">{lead}</p>
+                <p className="ds-lead">{fill(lead)}</p>
               </Reveal>
             )}
             {headAside}
@@ -74,15 +76,6 @@ export function Reveal({
   y?: number;
   as?: "div" | "li";
 }) {
-  const reduced = useReducedMotion();
-  if (reduced) {
-    const Tag = as;
-    return (
-      <Tag className={className} style={style}>
-        {children}
-      </Tag>
-    );
-  }
   const MotionTag = as === "li" ? motion.li : motion.div;
   return (
     <MotionTag

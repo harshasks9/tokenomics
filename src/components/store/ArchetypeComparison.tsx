@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { archetypeSection, archetypes } from "@/lib/store/data";
 import { Section, Reveal, Tag } from "./ui";
 
@@ -52,7 +52,6 @@ function Icon({ id }: { id: string }) {
 }
 
 export default function ArchetypeComparison() {
-  const reduced = useReducedMotion();
   const others = archetypes.slice(0, 3);
   const store = archetypes[3];
   return (
@@ -88,7 +87,7 @@ export default function ArchetypeComparison() {
                 <motion.li
                   key={o.id}
                   className="ds-chip"
-                  initial={reduced ? false : { opacity: 0, x: -40 - i * 20, y: -10 }}
+                  initial={{ opacity: 0, x: -40 - i * 20, y: -10 }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true, margin: "0px 0px -15% 0px" }}
                   transition={{ duration: 0.6, delay: 0.5 + i * 0.18, ease: [0.2, 0.7, 0.2, 1] }}
@@ -98,7 +97,7 @@ export default function ArchetypeComparison() {
               ))}
               <motion.li
                 className="ds-chip !bg-[var(--ink)] !text-white"
-                initial={reduced ? false : { opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "0px 0px -15% 0px" }}
                 transition={{ duration: 0.5, delay: 1.1 }}

@@ -33,10 +33,20 @@ Deploys automatically from `main` via Vercel (repo study workflow in
 | `src/components/store/ModelSwitcher.tsx` | The model-switch interaction; exports `ArchitectureStack`, reused in the journey's final step |
 | `src/components/store/SourcesDrawer.tsx` | Sources & methodology drawer |
 
-Page order: Hero · The idea · Explore the store · Model Garden · Model switch ·
-Build agents · Data · Openness · Governance (x-ray) · Operations ·
-Infrastructure (+ stores within the store) · Archetypes · Customer journey ·
+Narrative order (customer problem first, platform as proof): Hero with a local
+store picker · The customer problem · Think of {store} (the analogy and the
+insight) · Why optionality matters (model switch) · Why this is different
+(single-brand store vs department store, Google's differentiation) · The
+90-second talk track · Map the store to the platform (mapping table + building
+explorer) · Customer journey · then proof: Model Garden · Build agents · Data ·
+Openness · Governance (x-ray) · Operations · Infrastructure · Four archetypes ·
 Final message.
+
+The seller picks a department store their customer knows (Tangs in Singapore
+by default; Takashimaya, Isetan, David Jones, Shinsegae, Lane Crawford,
+Central, Shoppers Stop and others, or any typed name). The name is substituted
+throughout the analogy, the talk track and the mapping table, and remembered
+in the browser. Store names are everyday analogies and imply no affiliation.
 
 ## Positioning discipline
 

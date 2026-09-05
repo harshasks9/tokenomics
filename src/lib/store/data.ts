@@ -43,7 +43,7 @@ export const floors: Floor[] = [
     detail:
       "One interface into enterprise AI. Employees search across enterprise information, discover and use agents, create their own, and execute work across connected systems such as Google Workspace and Microsoft 365. Permissions come with the person.",
     accent: accent.people,
-    sectionId: "explore",
+    sectionId: "map",
   },
   {
     id: "agents",
@@ -122,26 +122,33 @@ export const floors: Floor[] = [
 export const column = ["Identity", "Security", "Governance", "Open Standards"];
 
 export const nav = [
-  { id: "idea", label: "The idea" },
-  { id: "explore", label: "The store" },
+  { id: "problem", label: "The problem" },
+  { id: "analogy", label: "Think of the store" },
+  { id: "switch", label: "Why optionality" },
+  { id: "different", label: "Why different" },
+  { id: "talk", label: "90-second talk track" },
+  { id: "map", label: "Map the store" },
+  { id: "journey", label: "Customer journey" },
   { id: "models", label: "Model Garden" },
-  { id: "switch", label: "Model switch" },
   { id: "build", label: "Build agents" },
   { id: "data", label: "Data" },
   { id: "openness", label: "Openness" },
   { id: "governance", label: "Governance" },
   { id: "operations", label: "Operations" },
   { id: "infrastructure", label: "Infrastructure" },
-  { id: "archetypes", label: "Archetypes" },
-  { id: "journey", label: "Journey" },
+  { id: "archetypes", label: "Four archetypes" },
   { id: "final", label: "The point" },
 ] as const;
 
 export const sectionFloor: Record<string, FloorId | "column" | null> = {
-  idea: null,
-  explore: null,
-  models: "models",
+  problem: null,
+  analogy: null,
   switch: "models",
+  different: null,
+  talk: null,
+  map: null,
+  journey: null,
+  models: "models",
   build: "agents",
   data: "data",
   openness: "column",
@@ -149,9 +156,27 @@ export const sectionFloor: Record<string, FloorId | "column" | null> = {
   operations: "build",
   infrastructure: "foundation",
   archetypes: null,
-  journey: null,
   final: null,
 };
+
+/* Local stores a seller can name. Text only, used as an everyday analogy. */
+export const stores: { name: string; market: string }[] = [
+  { name: "Tangs", market: "Singapore" },
+  { name: "Takashimaya", market: "Singapore · Japan" },
+  { name: "Isetan", market: "Kuala Lumpur · Tokyo" },
+  { name: "David Jones", market: "Australia" },
+  { name: "Myer", market: "Australia" },
+  { name: "Shinsegae", market: "Seoul" },
+  { name: "Lotte", market: "Seoul" },
+  { name: "Lane Crawford", market: "Hong Kong" },
+  { name: "Central", market: "Bangkok" },
+  { name: "Shoppers Stop", market: "India" },
+  { name: "Rustan's", market: "Manila" },
+  { name: "Sogo", market: "Jakarta · Hong Kong" },
+  { name: "Selfridges", market: "London" },
+  { name: "Nordstrom", market: "United States" },
+];
+export const defaultStore = "Tangs";
 
 /* ------------------------------------------------------------------ */
 /* Copy                                                                 */
@@ -160,8 +185,93 @@ export const sectionFloor: Record<string, FloorId | "column" | null> = {
 export const hero = {
   eyebrow: "Google Cloud",
   headline: ["Don't bet on the winning model.", "Pick the right store."],
-  support: "AI is moving too quickly to lock your enterprise into one model, one framework or one architecture.",
-  cta: "Enter the AI Department Store",
+  support: "No enterprise wants to bet its AI strategy on one model, one vendor or one generation of technology. Everyone wants one trusted place that carries the best option for every need.",
+  cta: "Start with the store",
+  pickerLabel: "Make it local. Pick the store your customer already knows:",
+  pickerCustom: "Or type one",
+};
+
+export const problem = {
+  eyebrow: "01 · The customer problem",
+  title: ["The bet nobody can make."],
+  lead: "Every enterprise is being asked to place the same bet. Which model, which vendor, which architecture will still be right in three years?",
+  bets: [
+    { q: "Which model will be best in twelve months?", a: "Nobody knows. Not us, not them. The leaderboard has changed hands repeatedly and will again." },
+    { q: "Which vendor will lead in three years?", a: "Every provider has had a great season. None has had every season." },
+    { q: "Which architecture survives the next generation?", a: "Only the one that does not depend on the answer to the first two questions." },
+  ],
+  wantTitle: "What enterprises actually want",
+  wants: ["One trusted place.", "The best option for every need.", "The freedom to change their mind without rebuilding."],
+};
+
+export const analogy = {
+  eyebrow: "02 · The analogy",
+  title: ["Think of {store}."],
+  lead: "You don’t go to {store} because it makes everything. You go because it chooses well, and everything works under one roof.",
+  points: [
+    { title: "Choice", body: "Every serious brand, side by side on the same floor." },
+    { title: "Curation", body: "The buyers have already done the sorting. Not one of everything; the right things." },
+    { title: "One building", body: "One entrance, one card, one returns desk, one loyalty programme." },
+    { title: "One standard", body: "The same service, security and guarantee whichever brand you pick." },
+  ],
+  result: "Optionality without chaos",
+  insight: "Google Cloud is the {store} of enterprise AI. Gemini is our house brand and it sits on the front rack. But the same shelves carry Claude, Grok, Mistral, DeepSeek, Gemma and hundreds more, and every one of them runs on the same building: the same security, the same data, the same operations, the same bill.",
+  ask: "The question for the board is not which model to bet on. It is which store to shop in.",
+};
+
+export const different = {
+  eyebrow: "04 · Why this is different",
+  title: ["Betting on one house,", "or planning for change."],
+  lead: "A single-brand store asks you to believe one house wins every category forever. A department store assumes innovation stays fragmented, and gives you whichever brand wins. The difference is not which model is best this quarter; it is what each strategy assumes about the future.",
+  boutique: {
+    title: "The single-brand store",
+    assumes: "Assumes one provider will win every category, every year.",
+    points: ["Your whole wardrobe follows one house’s taste, pricing and roadmap.", "A bad season for them is a bad season for you.", "Changing your mind means moving house."],
+  },
+  store: {
+    title: "The department store",
+    assumes: "Assumes innovation will stay fragmented, and plans for it.",
+    points: ["Whichever brand wins a category is already on the shelf.", "You change the product, not the building.", "Security, data and operations are the store’s job, not the brand’s."],
+  },
+  google: {
+    title: "Google’s differentiation",
+    not: "Not “our model is always the best.”",
+    but: "The best model for the job today. A different one tomorrow if the market moves. One enterprise platform throughout.",
+  },
+};
+
+export const talk = {
+  eyebrow: "05 · The 90-second talk track",
+  title: ["Say it in ninety seconds."],
+  lead: "Simple, visual, repeatable. Works for a tax authority, a university or a bank, before anyone explains the technology.",
+  script: [
+    "Every enterprise I talk to is being asked to make the same bet: pick the model, pick the vendor, pick the architecture that will still be right in three years. Nobody can make that bet honestly.",
+    "So think of {store}. You don’t shop there because it makes everything. You shop there because it chooses well, and everything works under one roof: one entrance, one card, one returns desk, one standard of service whichever brand you pick.",
+    "Google Cloud is the {store} of enterprise AI. Gemini is our house brand, and it’s on the front rack. But the same shelves carry Claude, Grok, Mistral, DeepSeek, Gemma and hundreds more. Same checkout, same security, same audit trail, same contract.",
+    "Underneath is one platform. Your data grounds every answer in your business. Security and governance wrap the whole building, so adding a model never means adding a risk review. And the doors open both ways: bring what you’ve built, take out what you build here.",
+    "The point is simple. You shouldn’t have to predict the winner. You should be able to choose the best capability for every job today, change it tomorrow when the market moves, and never rebuild the store.",
+  ],
+  button: "Copy talk track",
+  copied: "Copied",
+  hint: "The store name follows your selection above.",
+};
+
+export const mapping = {
+  eyebrow: "06 · Map the store to the platform",
+  title: ["Every part of {store}", "has a name on the platform."],
+  lead: "Walk the building from the front door down. Each part of the store is one part of Google Cloud’s AI platform.",
+  rows: [
+    { store: "The store itself", platform: "Google Cloud AI platform: Gemini Enterprise Agent Platform", means: "One operating environment across build, scale, govern and optimise. The building everything else sits in." },
+    { store: "The front door and the concierge", platform: "Gemini Enterprise", means: "Where employees enter, ask, find agents and get work done, with their existing permissions." },
+    { store: "The brands and departments", platform: "Google models, partner models, open models, specialised capabilities", means: "Gemini on the front rack; Claude, Grok, Mistral, DeepSeek, Gemma and specialists for image, video, speech and code alongside." },
+    { store: "The breadth of the shelf", platform: "Model Garden", means: "More than 200 models under one roof, in four tiers: frontier, workhorse, efficient, specialist." },
+    { store: "The customer’s own measurements", platform: "Data and grounding: BigQuery, enterprise search, RAG, connectors", means: "The context that decides what is relevant. Your data makes every answer yours, and it is never used to train public models." },
+    { store: "The finished outfit", platform: "Agents and applications: Agent Garden, Agent Studio, ADK, Agent Runtime", means: "What the customer actually consumes: an agent that does a job from start to finish, assembled from models, tools and data." },
+    { store: "Security, standards and quality control", platform: "Agent Identity, Agent Gateway, Model Armor, evaluation, observability", means: "Common standards across the entire store. Add a brand and it inherits the controls." },
+    { store: "The building, logistics and supply chain", platform: "AI Hypercomputer: TPUs, GPUs, networking, storage", means: "Everything customers don’t see but depend on: performance, scale and economics." },
+  ],
+  exploreTitle: "Walk the floors",
+  exploreLead: "Seven levels. One structural column. Click a floor.",
 };
 
 export const idea = {
@@ -273,7 +383,7 @@ export const modelCategories: {
 ];
 
 export const modelGarden = {
-  eyebrow: "Section 04 · Floor 4",
+  eyebrow: "Proof 01 · Floor 4",
   title: ["Shop by outcome.", "Not by brand."],
   lead: "Model Garden is one place to discover more than 200 models. The shelf below is this generation only, sorted the way a buyer thinks: by the job, not the logo.",
   howToRead: "Four tiers run across every shelf. Premium is a tier, not a brand: each shelf carries a frontier model, a workhorse and an efficient option. " + recencyRule,
@@ -362,9 +472,9 @@ export const useCases: { id: string; label: string; agent: string; why: string; 
 ];
 
 export const modelSwitch = {
-  eyebrow: "Section 05 · The hero interaction",
+  eyebrow: "03 · Why optionality matters",
   title: ["Switch the model.", "Not the architecture."],
-  lead: "Your AI architecture shouldn’t have to change every time the leaderboard does.",
+  lead: "Optionality is the hero of this story. You don’t know which model will win tomorrow. In {store}, you don’t have to.",
   kicker: "One use case. Multiple choices.",
   layers: ["Data", "Security", "Governance", "Operations", "Infrastructure"],
   platform: "Common Google Cloud platform",
@@ -374,7 +484,7 @@ export const modelSwitch = {
 
 /* Build */
 export const buildSection = {
-  eyebrow: "Section 06 · Floor 5",
+  eyebrow: "Proof 02 · Floor 5",
   title: ["Don't just buy products.", "Build new ones."],
   lead: "Google Cloud meets developers where they are rather than forcing one development approach.",
   paths: [
@@ -412,7 +522,7 @@ export const buildSection = {
 
 /* Data */
 export const dataSection = {
-  eyebrow: "Section 07 · Floor 3",
+  eyebrow: "Proof 03 · Floor 3",
   title: ["Models know the world.", "Your data teaches them your business."],
   lead: "The store knows your business because the store keeps your context.",
   sources: ["BigQuery", "Databases", "Documents", "Enterprise search", "Google Workspace", "Microsoft 365", "SaaS systems", "APIs"],
@@ -422,7 +532,7 @@ export const dataSection = {
 
 /* Openness */
 export const opennessSection = {
-  eyebrow: "Section 08 · The column",
+  eyebrow: "Proof 04 · The column",
   title: ["Open at every layer."],
   lead: "Doors, corridors and standard interfaces. The point is optionality, not a slogan.",
   layers: [
@@ -438,7 +548,7 @@ export const opennessSection = {
 
 /* Governance */
 export const governanceSection = {
-  eyebrow: "Section 09 · Floor 1",
+  eyebrow: "Proof 05 · Floor 1",
   title: ["Autonomy without anarchy."],
   lead: "Switch to the X-ray. Every agent has an identity, every interaction has a controlled path, every interaction can be protected.",
   items: [
@@ -469,7 +579,7 @@ export const governanceSection = {
 
 /* Operations */
 export const operationsSection = {
-  eyebrow: "Section 10 · Floors 2 and 1",
+  eyebrow: "Proof 06 · Floors 2 and 1",
   title: ["AI you can actually operate."],
   lead: "Access to models is not an enterprise AI system. Enterprises need a production system around them.",
   pipeline: ["Idea", "Build", "Test", "Deploy", "Scale", "Operate"],
@@ -485,7 +595,7 @@ export const operationsSection = {
 
 /* Infrastructure */
 export const infraSection = {
-  eyebrow: "Section 11 · Foundation",
+  eyebrow: "Proof 07 · Foundation",
   title: ["The engine room."],
   lead: "Everything customers don't need to see, but depend on.",
   product: "AI Hypercomputer",
@@ -539,16 +649,16 @@ export const archetypes = [
 ];
 
 export const archetypeSection = {
-  eyebrow: "Section 12",
+  eyebrow: "Proof 08 · Four archetypes",
   title: ["Which kind of AI store", "are you building?"],
   lead: "Four ways to construct an enterprise AI stack. None is wrong. Each optimises for something different.",
 };
 
 /* Journey */
 export const journey = {
-  eyebrow: "Section 13",
-  title: ["Follow one AI idea", "through the store."],
-  brief: "An agent that researches a customer, analyses internal data, prepares a recommendation and initiates follow-up actions.",
+  eyebrow: "07 · Customer use cases",
+  title: ["Follow one AI idea", "through {store}."],
+  brief: "An agent that researches a customer, analyses internal data, prepares a recommendation and initiates follow-up actions. The same walk works for a tax authority, a university or a bank.",
   steps: [
     { n: 1, title: "Enter", product: "Gemini Enterprise", floor: "rooftop" as FloorId },
     { n: 2, title: "Choose intelligence", product: "Model Garden", floor: "models" as FloorId },
@@ -614,5 +724,6 @@ export const methodology = [
   "Deployment options differ by model. Nothing here implies every model is open or self-deployable.",
   "Enterprise data grounds agents; nothing here implies it trains public Google models.",
   "No customer statistics, benchmarks, cost comparisons or competitor claims are made.",
+  "Department store names are everyday analogies chosen by the seller for their market; they imply no affiliation or endorsement.",
   "A field narrative from Google Cloud JAPAC, built as a point of view. Product names belong to their owners.",
 ];

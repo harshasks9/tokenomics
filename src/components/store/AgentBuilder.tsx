@@ -1,11 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { accent, buildSection } from "@/lib/store/data";
 import { Section, Reveal, Tag } from "./ui";
 
 export default function AgentBuilder() {
-  const reduced = useReducedMotion();
   const b = buildSection;
   return (
     <Section id="build" eyebrow={b.eyebrow} title={b.title} lead={b.lead}>
@@ -31,7 +30,7 @@ export default function AgentBuilder() {
               <motion.div
                 key={part}
                 className="ds-assembly__part"
-                initial={reduced ? false : { opacity: 0, y: 14, scale: 0.96 }}
+                initial={{ opacity: 0, y: 14, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "0px 0px -10% 0px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
@@ -42,7 +41,7 @@ export default function AgentBuilder() {
           </div>
           <motion.div
             className="ds-assembly__agent"
-            initial={reduced ? false : { opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -10% 0px" }}
             transition={{ duration: 0.5, delay: 0.55 }}

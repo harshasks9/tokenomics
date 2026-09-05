@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { journey, type ModelChip } from "@/lib/store/data";
 import Building from "./Building";
 import { ArchitectureStack } from "./ModelSwitcher";
@@ -11,7 +11,6 @@ const FIRST_MODEL: ModelChip = { name: "Gemini 3.8 Flash", category: "google", n
 const NEW_MODEL: ModelChip = { name: "A better model, six months later", category: "open", note: "Same platform, same rules" };
 
 export default function CustomerJourney() {
-  const reduced = useReducedMotion();
   const [i, setI] = useState(0);
   const total = journey.steps.length + 1; // + the swap
   const isSwap = i === journey.steps.length;
@@ -63,7 +62,7 @@ export default function CustomerJourney() {
             <div className="grid content-start gap-5">
               <AnimatePresence mode="wait" initial={false}>
                 {!isSwap ? (
-                  <motion.div key={step.n} initial={reduced ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={reduced ? undefined : { opacity: 0, y: -8 }} transition={{ duration: 0.3 }}>
+                  <motion.div key={step.n} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3 }}>
                     <p className="ds-tag">Step {step.n} of 10</p>
                     <h3 className="ds-h2 mt-1" style={{ fontSize: "clamp(28px, 3vw, 40px)" }}>
                       {step.title}
@@ -71,15 +70,15 @@ export default function CustomerJourney() {
                     <p className="ds-lead mt-2">{step.product}</p>
                   </motion.div>
                 ) : (
-                  <motion.div key="swap" initial={reduced ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                  <motion.div key="swap" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
                     <p className="ds-tag">Step 11</p>
                     <h3 className="ds-h2 mt-1" style={{ fontSize: "clamp(24px, 2.6vw, 34px)" }}>
                       {journey.swap.question}
                     </h3>
-                    <motion.p className="ds-h2 mt-4" style={{ fontSize: "clamp(28px, 3.2vw, 44px)" }} initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.5 }}>
+                    <motion.p className="ds-h2 mt-4" style={{ fontSize: "clamp(28px, 3.2vw, 44px)" }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 0.5 }}>
                       {journey.swap.answer}
                     </motion.p>
-                    <motion.p className="ds-lead mt-2" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 0.5 }}>
+                    <motion.p className="ds-lead mt-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 0.5 }}>
                       {journey.swap.line.join(" ")}
                     </motion.p>
                   </motion.div>

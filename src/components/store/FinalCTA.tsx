@@ -1,20 +1,16 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { finalSection } from "@/lib/store/data";
 import Building from "./Building";
 
 export default function FinalCTA() {
-  const reduced = useReducedMotion();
-  const show = (delay: number) =>
-    reduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 16 },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, margin: "0px 0px -20% 0px" },
-          transition: { duration: 0.7, delay, ease: [0.2, 0.7, 0.2, 1] as const },
-        };
+  const show = (delay: number) => ({
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "0px 0px -20% 0px" },
+    transition: { duration: 0.7, delay, ease: [0.2, 0.7, 0.2, 1] as const },
+  });
   return (
     <section id="final" className="ds-section ds-dark relative overflow-hidden" aria-labelledby="final-title">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.12]" aria-hidden="true">

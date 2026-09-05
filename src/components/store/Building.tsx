@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { CSSProperties, KeyboardEvent } from "react";
 import { floors, column, type FloorId } from "@/lib/store/data";
 
@@ -149,11 +149,10 @@ export default function Building({
   className = "",
   showLabels = true,
 }: BuildingProps) {
-  const reduced = useReducedMotion();
   const xray = variant === "xray";
   const outline = variant === "outline";
   const stroke = xray ? "#67e8f9" : "#111318";
-  const draw = animate && !reduced;
+  const draw = animate;
 
   const onKey = (e: KeyboardEvent<SVGRectElement>, id: FloorId) => {
     if (e.key === "Enter" || e.key === " ") {
