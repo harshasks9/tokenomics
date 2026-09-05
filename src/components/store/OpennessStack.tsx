@@ -23,11 +23,9 @@ export default function OpennessStack() {
         </Reveal>
         <ol className="ds-stack" aria-label="Seven open layers">
           {opennessSection.layers.map((l, i) => (
-            <Reveal key={l.layer} delay={i * 0.07} y={12}>
-              <li className="ds-stack__layer" style={{ "--lc": COLORS[i] } as CSSProperties}>
-                <span className="ds-h3">{l.layer}</span>
-                <span className="ds-body">{l.examples}</span>
-              </li>
+            <Reveal key={l.layer} as="li" delay={i * 0.07} y={12} className="ds-stack__layer" style={{ "--lc": COLORS[i] } as CSSProperties}>
+              <span className="ds-h3">{l.layer}</span>
+              <span className="ds-body">{l.examples}</span>
             </Reveal>
           ))}
         </ol>
