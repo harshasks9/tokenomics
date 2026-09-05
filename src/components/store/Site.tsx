@@ -16,6 +16,7 @@ import AgentBuilder from "./AgentBuilder";
 import DataFlow from "./DataFlow";
 import OpennessStack from "./OpennessStack";
 import GovernanceLayer from "./GovernanceLayer";
+import SecurityLayer from "./SecurityLayer";
 import OptimizationLoop from "./OptimizationLoop";
 import InfrastructureLayer from "./InfrastructureLayer";
 import ArchetypeComparison from "./ArchetypeComparison";
@@ -61,6 +62,7 @@ export default function Site() {
         <DataFlow />
         <OpennessStack />
         <GovernanceLayer />
+        <SecurityLayer />
         <OptimizationLoop />
         <InfrastructureLayer />
         <ArchetypeComparison />

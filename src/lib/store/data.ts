@@ -98,10 +98,10 @@ export const floors: Floor[] = [
     level: "Floor 1",
     name: "Govern + Optimize",
     metaphor: "Security guards, access badges, loss prevention and quality control",
-    products: ["Agent Identity", "Agent Registry", "Agent Gateway", "Model Armor", "Agent Evaluation", "Agent Observability"],
+    products: ["Agent Identity", "Agent Registry", "Agent Gateway", "Model Armor", "CodeMender", "AI Protection", "Agent Evaluation", "Agent Observability"],
     summary: "Control which agents reach which systems, protect every interaction, and know how agents are performing.",
     detail:
-      "Agent Identity gives every agent an identity and granular permissions; Agent Registry keeps track of every agent, built here or sourced from partners. Agent Gateway is the policy enforcement point for agent, tool and user interactions. Model Armor screens prompts and responses for injection, harmful content and sensitive-data leakage. Evaluation and observability show what an agent did and whether it was any good.",
+      "Agent Identity gives every agent an identity and granular permissions; Agent Registry keeps track of every agent, built here or sourced from partners. Agent Gateway is the policy enforcement point for agent, tool and user interactions. Model Armor screens prompts and responses for injection, harmful content and sensitive-data leakage. CodeMender finds, proves and fixes vulnerabilities in the code you build here; AI Protection and Agent Platform Threat Detection in Security Command Center watch the agents while they run. Evaluation and observability show what an agent did and whether it was any good.",
     accent: accent.security,
     sectionId: "governance",
   },
@@ -134,6 +134,7 @@ export const nav = [
   { id: "data", label: "Data" },
   { id: "openness", label: "Openness" },
   { id: "governance", label: "Governance" },
+  { id: "security", label: "Security" },
   { id: "operations", label: "Operations" },
   { id: "infrastructure", label: "Infrastructure" },
   { id: "archetypes", label: "Four archetypes" },
@@ -153,6 +154,7 @@ export const sectionFloor: Record<string, FloorId | "column" | null> = {
   data: "data",
   openness: "column",
   governance: "govern",
+  security: "govern",
   operations: "build",
   infrastructure: "foundation",
   archetypes: null,
@@ -556,9 +558,73 @@ export const governanceSection = {
   controls: ["Authentication", "Authorisation", "Policy enforcement", "Controlled access to tools", "Prompt-injection protection", "Sensitive-data protection", "Enterprise guardrails"],
 };
 
+/* Security: CodeMender + AI threat detection */
+export const securitySection = {
+  eyebrow: "Proof 06 · Floor 1, continued",
+  title: ["Security is the store’s job.", "Not the brand’s."],
+  lead: "A department store does not ask each brand to bring its own guards. It has a maintenance crew that fixes the broken lock before anyone finds it, and a watch at the door, on the floor and in the control room. On Google Cloud that is CodeMender plus AI threat detection, and both apply whichever model you pick.",
+  why: {
+    tag: "Why now",
+    lines: [
+      "In May 2026 Google Threat Intelligence Group reported the first zero-day exploit it believes was written with AI, found in use against a widely deployed admin tool.",
+      "The same report describes state-backed groups using models for vulnerability discovery, and supply-chain compromises that reached AI gateway libraries and package registries.",
+      "Google’s reading: attackers now find and weaponise flaws at machine speed, so defenders need to find, prove and fix them at machine speed too.",
+    ],
+  },
+  mender: {
+    metaphor: "The maintenance crew",
+    product: "CodeMender",
+    status: "Public Preview · July 2026 · limited customers",
+    line: "Finds the flaw, proves it is real, writes the fix. You approve it.",
+    body: "CodeMender is a code-security agent from Google DeepMind, now hosted on Gemini Enterprise Agent Platform. It wraps a security-tuned harness around Gemini and works on the code you build in the store: agents, tools and the applications around them.",
+    steps: [
+      { n: "01", title: "Find", body: "Scans a repository for memory-corruption, injection, web, cryptographic and data-handling flaws, or imports findings from scanners you already run, including Wiz." },
+      { n: "02", title: "Verify", body: "Builds the code and runs a proof-of-concept exploit in a sandbox you manage. Only exploitable findings go forward, which cuts false positives." },
+      { n: "03", title: "Fix", body: "Generates a patch, tests it, and has a second model judge that behaviour is unchanged. The result is a diff in your CLI, IDE or CI pipeline for a developer to review and approve." },
+    ],
+    facts: [
+      "Source stays in your environment: the CLI sends snippets, findings and patches, never the repository; nothing is used to train models.",
+      "C/C++, Go, Java, Python, TypeScript/JavaScript, Rust and Ruby, with common frameworks.",
+      "Runs on current Gemini Flash and Pro models; you choose the model per run for cost, speed or depth.",
+      "Also the remediation stage of Google AI Threat Defense (May 2026), alongside Wiz, Mandiant and Google Security Operations.",
+    ],
+    provenance: "Announced by Google DeepMind on 6 October 2025 as a research agent; DeepMind reported 72 security fixes contributed to open-source projects in its first six months. Preview terms apply: supervise it, and keep a human on every change.",
+  },
+  watch: {
+    metaphor: "The watch",
+    title: "AI threat detection, three places at once",
+    rings: [
+      {
+        place: "At the door",
+        product: "Model Armor on Agent Gateway",
+        status: "Generally available",
+        body: "Every prompt, response and tool call that passes through the gateway is screened for prompt injection, jailbreaks, harmful content and sensitive-data leakage. Block, redact or log; violations surface in Security Command Center.",
+      },
+      {
+        place: "On the floor",
+        product: "Agent Platform Threat Detection · Agent Anomaly Detection",
+        status: "Preview · announced April 2026",
+        body: "A watcher sits beside each agent in Agent Runtime and flags malicious binaries, libraries or skills, reverse shells, container escapes and credential hunting; control-plane rules catch agent-initiated data exfiltration and suspicious token generation. Anomaly detection adds statistical models and a model-as-judge to flag reasoning that does not look like the agent’s normal behaviour.",
+      },
+      {
+        place: "In the control room",
+        product: "AI Protection in Security Command Center",
+        status: "Generally available · March 2026",
+        body: "An inventory of every model, agent, endpoint, data source and MCP server; CVEs and plaintext secrets in agent workloads; attack-path simulation with agents as high-value assets; over-privileged agents flagged. Findings appear in the Agent Platform’s own Security tab, and Google Security Operations agents triage and hunt across them.",
+      },
+    ],
+  },
+  point: {
+    tag: "What it means for the model choice",
+    line: "Change the brand. Keep the guards.",
+    body: "None of this is tied to a model. Swap Gemini for Claude, or Claude for an open model, and the door, the floor and the control room stay exactly where they were. Security is a property of the store, which is why adding a model never means adding a risk review.",
+  },
+  caveat: "Availability is as published by Google Cloud on 5 September 2026. CodeMender is a pre-GA offering for evaluation, not production, and its Gemini 3.5 Flash Cyber variant is limited to selected governments and partners. Figures are Google’s own, dated and attributed in Sources.",
+};
+
 /* Operations */
 export const operationsSection = {
-  eyebrow: "Proof 06 · Floors 2 and 1",
+  eyebrow: "Proof 07 · Floors 2 and 1",
   title: ["AI you can actually operate."],
   lead: "Access to models is not an enterprise AI system. Enterprises need a production system around them.",
   pipeline: ["Idea", "Build", "Test", "Deploy", "Scale", "Operate"],
@@ -574,7 +640,7 @@ export const operationsSection = {
 
 /* Infrastructure */
 export const infraSection = {
-  eyebrow: "Proof 07 · Foundation",
+  eyebrow: "Proof 08 · Foundation",
   title: ["The engine room."],
   lead: "Everything customers don't need to see, but depend on.",
   product: "AI Hypercomputer",
@@ -628,7 +694,7 @@ export const archetypes = [
 ];
 
 export const archetypeSection = {
-  eyebrow: "Proof 08 · Four archetypes",
+  eyebrow: "Proof 09 · Four archetypes",
   title: ["Which kind of AI store", "are you building?"],
   lead: "Four ways to construct an enterprise AI stack. None is wrong. Each optimises for something different.",
 };
@@ -668,6 +734,15 @@ export const finalSection = {
 
 /* Sources */
 export const sources = [
+  { label: "CodeMender overview — Agent Platform documentation (Preview)", url: "https://docs.cloud.google.com/gemini-enterprise-agent-platform/codemender" },
+  { label: "Now in preview: find and fix software vulnerabilities with CodeMender — Google Cloud blog, 22 July 2026", url: "https://cloud.google.com/blog/products/identity-security/find-and-fix-software-vulnerabilities-with-codemender" },
+  { label: "Introducing CodeMender — Google DeepMind, 6 October 2025", url: "https://deepmind.google/blog/introducing-codemender-an-ai-agent-for-code-security/" },
+  { label: "Introducing Google AI Threat Defense — Google Cloud blog, 28 May 2026", url: "https://cloud.google.com/blog/products/identity-security/introducing-google-ai-threat-defense" },
+  { label: "Agent Platform Threat Detection overview — Security Command Center documentation", url: "https://docs.cloud.google.com/security-command-center/docs/agent-platform-threat-detection-overview" },
+  { label: "AI Protection overview — Security Command Center documentation", url: "https://docs.cloud.google.com/security-command-center/docs/ai-protection-overview" },
+  { label: "Integrate Model Armor with Agent Gateway — documentation", url: "https://docs.cloud.google.com/model-armor/model-armor-agent-gateway-integration" },
+  { label: "Next ’26: redefining security for the AI era — Google Cloud blog, April 2026", url: "https://cloud.google.com/blog/products/identity-security/next26-redefining-security-for-the-ai-era-with-google-cloud-and-wiz" },
+  { label: "GTIG AI Threat Tracker: adversaries leverage AI for vulnerability exploitation — 12 May 2026", url: "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access" },
   { label: "Gemini Enterprise Agent Platform (formerly Vertex AI)", url: "https://cloud.google.com/products/gemini-enterprise-agent-platform" },
   { label: "Agent Platform overview — documentation", url: "https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview" },
   { label: "Introducing Gemini Enterprise Agent Platform — Google Cloud blog", url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform" },
@@ -696,6 +771,7 @@ export const sources = [
 ];
 
 export const methodology = [
+  "Security section: product status (Preview or generally available) follows the official documentation and release notes on 5 September 2026. The only figures quoted are Google’s own published ones, with their date and source; no third-party benchmarks are used.",
   "Product names follow current official Google Cloud pages and documentation as of September 2026.",
   "Model names and tiers were verified against the Agent Platform model documentation on 5 September 2026; release months against provider announcements. Tiers (frontier, workhorse, efficient, specialist) are an editorial grouping based on each model's official description, not a Google classification.",
   "Recency rule: only models released within the last twelve months are featured, because older generations no longer shape an enterprise's model strategy. Older families remain available on Model Garden and are named on the page.",

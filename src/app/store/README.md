@@ -39,12 +39,20 @@ analogy and the insight) · Why optionality matters (model switch) · Why this i
 (single-brand store vs department store, Google's differentiation) · The
 whole idea in ninety seconds · Map the store to the platform (mapping table + building
 explorer) · Customer journey · then proof: Model Garden · Build agents · Data ·
-Openness · Governance (x-ray) · Operations · Infrastructure · Four archetypes ·
+Openness · Governance (x-ray) · Security (CodeMender + AI threat detection) · Operations · Infrastructure · Four archetypes ·
 Final message.
 
 The page is written for the customer, not for a seller: no named retailers,
 no store picker, no talk-track framing. The department store is a generic,
 everyday analogy and no retailer is named, implied or endorsed.
+
+Security section (added 5 September 2026): CodeMender as the store's
+maintenance crew (find, verify with a real exploit in a customer sandbox, fix
+with a reviewed diff) and AI threat detection as the watch at the door (Model
+Armor on Agent Gateway), on the floor (Agent Platform Threat Detection, Agent
+Anomaly Detection) and in the control room (AI Protection in Security Command
+Center, Security Operations agents). Statuses and dates come from the official
+docs and release notes; the only figures are Google's own, attributed.
 
 ## Positioning discipline
 
