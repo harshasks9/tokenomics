@@ -1,62 +1,63 @@
 "use client";
 
-import { useMemo, useSyncExternalStore } from "react";
-import Defs from "./Defs";
-import { TopBar } from "./Chrome";
-import { EngineProvider, useReducedMotion, useReveal, useWalkEngine } from "./engine";
-import { Pavement, Atrium, EscalatorUp } from "./scenes/Walk";
-import {
-  StorefrontFloor,
-  TailoringFloor,
-  ModelFloorScene,
-  WardrobeFloor,
-  BackOfHouseFloor,
-  FoundationsFloor,
-} from "./scenes/Floors";
-import { WallsScene } from "./scenes/Walls";
-import { DoorsScene } from "./scenes/Doors";
-import { Receipt, Windows, Across, TalkTrack, Plaque, Footer } from "./scenes/Street";
+import { useCallback, useState } from "react";
+import { TopBar, Navigator } from "./Nav";
+import Hero from "./Hero";
+import Idea from "./Idea";
+import Explore from "./Explore";
+import ModelGarden from "./ModelGarden";
+import ModelSwitcher from "./ModelSwitcher";
+import AgentBuilder from "./AgentBuilder";
+import DataFlow from "./DataFlow";
+import OpennessStack from "./OpennessStack";
+import GovernanceLayer from "./GovernanceLayer";
+import OptimizationLoop from "./OptimizationLoop";
+import InfrastructureLayer from "./InfrastructureLayer";
+import ArchetypeComparison from "./ArchetypeComparison";
+import CustomerJourney from "./CustomerJourney";
+import FinalCTA from "./FinalCTA";
+import SourcesDrawer from "./SourcesDrawer";
+import { methodology } from "@/lib/store/data";
 
 export default function Site() {
-  const reduced = useReducedMotion();
-  const active = useWalkEngine(!reduced);
-  useReveal();
-  // true once hydrated on the client; false on the server and before JS runs.
-  const js = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-  const engine = useMemo(() => ({ active, reduced, js }), [active, reduced, js]);
-
+  const [sources, setSources] = useState(false);
+  const open = useCallback(() => setSources(true), []);
+  const close = useCallback(() => setSources(false), []);
   return (
-    <EngineProvider value={engine}>
-      <div className={`ds-site${js ? " js" : ""}`}>
-        <a className="ds-skip" href="#atrium">
-          Skip to the atrium
-        </a>
-        <Defs />
-        <TopBar active={active} />
-        <main>
-          <Pavement />
-          <Atrium />
-          <EscalatorUp />
-          <StorefrontFloor />
-          <TailoringFloor />
-          <ModelFloorScene />
-          <WardrobeFloor />
-          <BackOfHouseFloor />
-          <FoundationsFloor />
-          <WallsScene />
-          <DoorsScene />
-          <Receipt />
-          <Windows />
-          <Across />
-          <TalkTrack />
-          <Plaque />
-        </main>
-        <Footer />
-      </div>
-    </EngineProvider>
+    <>
+      <a className="ds-skip" href="#idea">
+        Skip to content
+      </a>
+      <TopBar onSources={open} />
+      <Navigator />
+      <main>
+        <Hero />
+        <Idea />
+        <Explore />
+        <ModelGarden />
+        <ModelSwitcher />
+        <AgentBuilder />
+        <DataFlow />
+        <OpennessStack />
+        <GovernanceLayer />
+        <OptimizationLoop />
+        <InfrastructureLayer />
+        <ArchetypeComparison />
+        <CustomerJourney />
+        <FinalCTA />
+      </main>
+      <footer className="ds-section ds-dark !pt-8 !pb-10 border-t border-[var(--dark-line)]">
+        <div className="ds-container flex flex-wrap items-center justify-between gap-4">
+          <p className="ds-small max-w-[70ch]">{methodology[methodology.length - 1]}</p>
+          <div className="flex items-center gap-3">
+            <button type="button" className="ds-btn ds-btn--ghost ds-btn--sm" onClick={open}>
+              Sources &amp; methodology
+            </button>
+            <span className="ds-small">2026</span>
+          </div>
+        </div>
+      </footer>
+      <SourcesDrawer open={sources} onClose={close} />
+    </>
   );
 }
