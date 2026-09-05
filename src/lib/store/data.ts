@@ -126,7 +126,7 @@ export const nav = [
   { id: "analogy", label: "Think of the store" },
   { id: "switch", label: "Why optionality" },
   { id: "different", label: "Why different" },
-  { id: "talk", label: "90-second talk track" },
+  { id: "talk", label: "The whole idea" },
   { id: "map", label: "Map the store" },
   { id: "journey", label: "Customer journey" },
   { id: "models", label: "Model Garden" },
@@ -159,25 +159,6 @@ export const sectionFloor: Record<string, FloorId | "column" | null> = {
   final: null,
 };
 
-/* Local stores a seller can name. Text only, used as an everyday analogy. */
-export const stores: { name: string; market: string }[] = [
-  { name: "Tangs", market: "Singapore" },
-  { name: "Takashimaya", market: "Singapore · Japan" },
-  { name: "Isetan", market: "Kuala Lumpur · Tokyo" },
-  { name: "David Jones", market: "Australia" },
-  { name: "Myer", market: "Australia" },
-  { name: "Shinsegae", market: "Seoul" },
-  { name: "Lotte", market: "Seoul" },
-  { name: "Lane Crawford", market: "Hong Kong" },
-  { name: "Central", market: "Bangkok" },
-  { name: "Shoppers Stop", market: "India" },
-  { name: "Rustan's", market: "Manila" },
-  { name: "Sogo", market: "Jakarta · Hong Kong" },
-  { name: "Selfridges", market: "London" },
-  { name: "Nordstrom", market: "United States" },
-];
-export const defaultStore = "Tangs";
-
 /* ------------------------------------------------------------------ */
 /* Copy                                                                 */
 /* ------------------------------------------------------------------ */
@@ -187,8 +168,6 @@ export const hero = {
   headline: ["Don't bet on the winning model.", "Pick the right store."],
   support: "No enterprise wants to bet its AI strategy on one model, one vendor or one generation of technology. Everyone wants one trusted place that carries the best option for every need.",
   cta: "Start with the store",
-  pickerLabel: "Make it local. Pick the store your customer already knows:",
-  pickerCustom: "Or type one",
 };
 
 export const problem = {
@@ -206,8 +185,8 @@ export const problem = {
 
 export const analogy = {
   eyebrow: "02 · The analogy",
-  title: ["Think of {store}."],
-  lead: "You don’t go to {store} because it makes everything. You go because it chooses well, and everything works under one roof.",
+  title: ["Think of the best department store", "in your city."],
+  lead: "You don’t go there because it makes everything. You go because it chooses well, and everything works under one roof.",
   points: [
     { title: "Choice", body: "Every serious brand, side by side on the same floor." },
     { title: "Curation", body: "The buyers have already done the sorting. Not one of everything; the right things." },
@@ -215,7 +194,7 @@ export const analogy = {
     { title: "One standard", body: "The same service, security and guarantee whichever brand you pick." },
   ],
   result: "Optionality without chaos",
-  insight: "Google Cloud is the {store} of enterprise AI. Gemini is our house brand and it sits on the front rack. But the same shelves carry Claude, Grok, Mistral, DeepSeek, Gemma and hundreds more, and every one of them runs on the same building: the same security, the same data, the same operations, the same bill.",
+  insight: "Google Cloud is the department store of enterprise AI. Gemini is our house brand and it sits on the front rack. But the same shelves carry Claude, Grok, Mistral, DeepSeek, Gemma and hundreds more, and every one of them runs on the same building: the same security, the same data, the same operations, the same bill.",
   ask: "The question for the board is not which model to bet on. It is which store to shop in.",
 };
 
@@ -241,24 +220,24 @@ export const different = {
 };
 
 export const talk = {
-  eyebrow: "05 · The 90-second talk track",
-  title: ["Say it in ninety seconds."],
-  lead: "Simple, visual, repeatable. Works for a tax authority, a university or a bank, before anyone explains the technology.",
+  eyebrow: "05 · The whole idea",
+  title: ["The whole idea, in ninety seconds."],
+  lead: "Simple, visual, repeatable. Read it before anyone explains the technology; the rest of this page only proves it.",
   script: [
-    "Every enterprise I talk to is being asked to make the same bet: pick the model, pick the vendor, pick the architecture that will still be right in three years. Nobody can make that bet honestly.",
-    "So think of {store}. You don’t shop there because it makes everything. You shop there because it chooses well, and everything works under one roof: one entrance, one card, one returns desk, one standard of service whichever brand you pick.",
-    "Google Cloud is the {store} of enterprise AI. Gemini is our house brand, and it’s on the front rack. But the same shelves carry Claude, Grok, Mistral, DeepSeek, Gemma and hundreds more. Same checkout, same security, same audit trail, same contract.",
+    "Every enterprise is being asked to make the same bet: pick the model, pick the vendor, pick the architecture that will still be right in three years. Nobody can make that bet honestly.",
+    "So think of the best department store in your city. You don’t shop there because it makes everything. You shop there because it chooses well, and everything works under one roof: one entrance, one card, one returns desk, one standard of service whichever brand you pick.",
+    "Google Cloud is the department store of enterprise AI. Gemini is our house brand, and it’s on the front rack. But the same shelves carry Claude, Grok, Mistral, DeepSeek, Gemma and hundreds more. Same checkout, same security, same audit trail, same contract.",
     "Underneath is one platform. Your data grounds every answer in your business. Security and governance wrap the whole building, so adding a model never means adding a risk review. And the doors open both ways: bring what you’ve built, take out what you build here.",
     "The point is simple. You shouldn’t have to predict the winner. You should be able to choose the best capability for every job today, change it tomorrow when the market moves, and never rebuild the store.",
   ],
-  button: "Copy talk track",
+  button: "Copy these five paragraphs",
   copied: "Copied",
-  hint: "The store name follows your selection above.",
+  hint: "Share them as they are. They are the whole argument.",
 };
 
 export const mapping = {
   eyebrow: "06 · Map the store to the platform",
-  title: ["Every part of {store}", "has a name on the platform."],
+  title: ["Every part of the store", "has a name on the platform."],
   lead: "Walk the building from the front door down. Each part of the store is one part of Google Cloud’s AI platform.",
   rows: [
     { store: "The store itself", platform: "Google Cloud AI platform: Gemini Enterprise Agent Platform", means: "One operating environment across build, scale, govern and optimise. The building everything else sits in." },
@@ -474,7 +453,7 @@ export const useCases: { id: string; label: string; agent: string; why: string; 
 export const modelSwitch = {
   eyebrow: "03 · Why optionality matters",
   title: ["Switch the model.", "Not the architecture."],
-  lead: "Optionality is the hero of this story. You don’t know which model will win tomorrow. In {store}, you don’t have to.",
+  lead: "Optionality is the hero of this story. You don’t know which model will win tomorrow. In a department store, you don’t have to.",
   kicker: "One use case. Multiple choices.",
   layers: ["Data", "Security", "Governance", "Operations", "Infrastructure"],
   platform: "Common Google Cloud platform",
@@ -657,8 +636,8 @@ export const archetypeSection = {
 /* Journey */
 export const journey = {
   eyebrow: "07 · Customer use cases",
-  title: ["Follow one AI idea", "through {store}."],
-  brief: "An agent that researches a customer, analyses internal data, prepares a recommendation and initiates follow-up actions. The same walk works for a tax authority, a university or a bank.",
+  title: ["Follow one AI idea", "through the store."],
+  brief: "An agent that researches a customer, analyses internal data, prepares a recommendation and initiates follow-up actions. The same walk works in any industry: the products change, the building does not.",
   steps: [
     { n: 1, title: "Enter", product: "Gemini Enterprise", floor: "rooftop" as FloorId },
     { n: 2, title: "Choose intelligence", product: "Model Garden", floor: "models" as FloorId },
@@ -724,6 +703,6 @@ export const methodology = [
   "Deployment options differ by model. Nothing here implies every model is open or self-deployable.",
   "Enterprise data grounds agents; nothing here implies it trains public Google models.",
   "No customer statistics, benchmarks, cost comparisons or competitor claims are made.",
-  "Department store names are everyday analogies chosen by the seller for their market; they imply no affiliation or endorsement.",
+  "The department store is an everyday analogy. No retailer is named, implied or endorsed.",
   "A field narrative from Google Cloud JAPAC, built as a point of view. Product names belong to their owners.",
 ];

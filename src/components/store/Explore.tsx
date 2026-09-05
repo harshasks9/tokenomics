@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { floors, mapping, type FloorId } from "@/lib/store/data";
 import Building from "./Building";
 import { Section, Reveal, Chip, Tag } from "./ui";
-import { useFill } from "./StoreContext";
 
 function FloorDetail({ id }: { id: FloorId }) {
   const f = floors.find((x) => x.id === id)!;
@@ -45,7 +44,6 @@ function FloorDetail({ id }: { id: FloorId }) {
 
 export default function Explore() {
   const [active, setActive] = useState<FloorId>("models");
-  const fill = useFill();
   return (
     <Section id="map" eyebrow={mapping.eyebrow} title={mapping.title} lead={mapping.lead}>
       {/* The mapping table */}
@@ -56,7 +54,7 @@ export default function Explore() {
               <thead>
                 <tr className="text-left">
                   <th scope="col" className="px-6 py-3">
-                    <span className="ds-tag">In {fill("{store}")}</span>
+                    <span className="ds-tag">In the store</span>
                   </th>
                   <th scope="col" className="px-4 py-3">
                     <span className="ds-tag" style={{ color: "var(--c-google)" }}>

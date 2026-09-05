@@ -2,10 +2,8 @@
 
 import { analogy } from "@/lib/store/data";
 import { Section, Reveal } from "./ui";
-import { useFill } from "./StoreContext";
 
 export default function Analogy() {
-  const fill = useFill();
   return (
     <Section id="analogy" eyebrow={analogy.eyebrow} title={analogy.title} lead={analogy.lead}>
       <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
@@ -37,13 +35,13 @@ export default function Analogy() {
             <div className="ds-card border-l-4 p-7" style={{ borderLeftColor: "var(--c-google)" }}>
               <p className="ds-tag mb-3">The insight</p>
               <p className="ds-h3" style={{ fontSize: "clamp(19px, 1.7vw, 24px)", lineHeight: 1.35 }}>
-                {fill(analogy.insight)}
+                {analogy.insight}
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.3}>
             <p className="ds-h2" style={{ fontSize: "clamp(26px, 2.8vw, 38px)" }}>
-              {fill(analogy.ask)}
+              {analogy.ask}
             </p>
           </Reveal>
         </div>
