@@ -5,8 +5,9 @@ Anthropic model workload and reports which is cheaper for the customer, by how
 much, and what would have to change to flip the answer. It never manufactures a
 Google win: if AWS is cheaper, it says so.
 
-Live route: `/deal-check` on the aitokenomics site (Next.js App Router, static,
-no API, no storage, no analytics).
+Live route: `/deal-check` on the aitokenomics site, also served as
+`dealcheck.aitokenomics.app` (host rewrite in `vercel.json` and `src/proxy.ts`).
+Next.js App Router, static, no API, no storage, no analytics.
 
 ## Run
 

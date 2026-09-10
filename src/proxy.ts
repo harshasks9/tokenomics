@@ -398,6 +398,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // Deal check — AWS MAP 2.0 vs Google Private Offer calculator (internal).
+  if (hostname === "dealcheck.aitokenomics.app") {
+    const dealUrl = request.nextUrl.clone();
+    if (dealUrl.pathname === "/") {
+      dealUrl.pathname = "/deal-check";
+    } else if (!dealUrl.pathname.startsWith("/deal-check")) {
+      dealUrl.pathname = `/deal-check${dealUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(dealUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
