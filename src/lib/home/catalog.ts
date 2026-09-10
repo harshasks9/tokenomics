@@ -155,6 +155,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "smc", name: "SMC Brief", href: "/smc", icon: FileText, section: "playbooks", audience: "account",
     gradient: "linear-gradient(135deg, #334155 0%, #94a3b8 100%)",
     blurb: "Executive AI brief", keywords: ["smc", "executive brief"] },
+  { id: "deal-check", name: "Deal Check", href: "/deal-check", icon: Scale, section: "playbooks", audience: "account",
+    gradient: "linear-gradient(135deg, #1c5cab 0%, #eb6834 100%)",
+    blurb: "AWS MAP 2.0 vs Google Private Offer for an Anthropic workload", keywords: ["deal", "map", "private offer", "anthropic", "incentive", "credits", "calculator"] },
 ];
 
 export const ARCHIVE_LINKS = [
