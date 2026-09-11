@@ -80,18 +80,23 @@ AWS bill.
 ## UI
 
 `src/app/deal-check/` holds the route (layout with noindex metadata, page,
-stylesheet). `src/components/deal-check/` holds the client components. The page
-is built for a seller: seven plain-language questions plus a scenario picker
-(`Questions.tsx`), a verdict hero with one cost bar per program and three
-sentences (`Verdict.tsx`, `CostBars.tsx`, `threeSentences()`), a three-step
-credit view with source tooltips (`SimpleCredits.tsx`, `Tip.tsx`), and a
-five-item deal checklist with the email to DPM (`Checklist.tsx`,
-`EmailActions.tsx`). Everything else is kept, collapsed: every assumption with
-its source under "Advanced assumptions", and under "Details" the Gemini tuner,
-the full explanation and levers, credits quarter by quarter, the economics
-table and cumulative chart, the reverse-solve table and sensitivity chart, the
-full deal construct, flags, the plain-text summary, and methodology and
-sources. Below 920px the inputs stack above the results with the verdict first.
+stylesheet) and `src/app/deal-check/simple/` the simple version. There are two
+views of the same deal:
+
+- **Full version** (`/deal-check`, `App.tsx`): verdict hero, Simple/Pro
+  assumptions, and tabs for the Gemini play and explanation, credits step by
+  step with source tooltips, economics and cumulative chart, what flips it,
+  deal construct and email to DPM, notes and sources.
+- **Simple version** (`/deal-check/simple`, `SimpleApp.tsx`): seven
+  plain-language questions, a verdict headline with one cost bar per program
+  and three sentences, a three-step credit view, a five-item deal checklist
+  with the email, and every deep view collapsed under Details.
+
+Each page links to the other. The working deal (customer, every input, the
+chosen scenario) is one shared session kept in the browser
+(`session.ts`, `useDealSession.ts`), so a change on either page shows on the
+other and survives a reload; Export writes it to a file. Below 920px the
+inputs stack above the results with the verdict first.
 
 ## The Gemini play
 

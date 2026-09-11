@@ -69,7 +69,7 @@
 .dc-headrow h2 { margin: 0; }
 
 /* Hero */
-.dc-hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px 18px; box-shadow: var(--shadow); }
+.dc-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr); gap: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px 18px; box-shadow: var(--shadow); }
 .dc-hero-rank { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .dc-hero-when { font-size: 12.5px; color: var(--muted); }
 .dc-hero-num { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; margin: 10px 0 2px; }
@@ -272,6 +272,7 @@ span.dc-tip:hover .dc-tip-pop, span.dc-tip:focus-within .dc-tip-pop { display: b
 
 /* Simple hero */
 .dc-hero-head { font-size: 30px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; margin: 10px 0 12px; }
+.dc-hero.simple { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; }
 .dc-hero-side { align-self: center; }
 .dc-hero-three { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; border-top: 1px solid var(--grid); padding-top: 14px; margin-top: 4px; }
 .dc-three { font-size: 13px; color: var(--ink-2); line-height: 1.5; }

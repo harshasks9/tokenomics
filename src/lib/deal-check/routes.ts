@@ -26,6 +26,7 @@ export function hostnameFrom(headers: { get(name: string): string | null }): str
 export function toAppPath(hostname: string, pathname: string): string {
   if (!isDealCheckHost(hostname)) return pathname;
   if (pathname === "/") return DEALCHECK_PREFIX;
+  if (pathname === DEALCHECK_PREFIX || pathname.startsWith(`${DEALCHECK_PREFIX}/`)) return pathname;
   return `${DEALCHECK_PREFIX}${pathname}`;
 }
 

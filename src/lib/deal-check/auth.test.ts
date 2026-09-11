@@ -44,6 +44,8 @@ describe("deal-check gate", () => {
     expect(toAppPath("dealcheck.aitokenomics.app", "/")).toBe("/deal-check");
     expect(toAppPath("dealcheck.aitokenomics.app", "/gate")).toBe("/deal-check/gate");
     expect(toAppPath("aitokenomics.app", "/deal-check/gate")).toBe("/deal-check/gate");
+    expect(toAppPath("dealcheck.aitokenomics.app", "/deal-check/simple")).toBe("/deal-check/simple");
+    expect(toAppPath("dealcheck.aitokenomics.app", "/simple")).toBe("/deal-check/simple");
     expect(isDealCheckPath("aitokenomics.app", "/deal-check")).toBe(true);
     expect(isDealCheckPath("aitokenomics.app", "/deal-checker")).toBe(false);
     expect(isDealCheckPath("dealcheck.aitokenomics.app", "/anything")).toBe(true);
