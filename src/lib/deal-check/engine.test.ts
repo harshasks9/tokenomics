@@ -75,6 +75,30 @@ describe("Google credit mechanics", () => {
   });
 });
 
+describe("Google offer terms from the summary", () => {
+  it("credits are earned on top-line spend: a GCP price discount does not shrink them", () => {
+    const r0 = evaluate(T1()), r1 = evaluate(T1({ gcpDiscount: 20 }));
+    near(r1.routes.gcp.totals.gcpEarned, r0.routes.gcp.totals.gcpEarned, 1e-9);
+    expect(r1.routes.gcp.totals.gross).toBeLessThan(r0.routes.gcp.totals.gross);
+  });
+  it("the pool is sized on the forecast Y1 incremental spend: forecast 5 → 0.50 earned of 1.20 accrued", () => {
+    const g = evaluate(T1({ gcpForecastY1: 5 })).routes.gcp;
+    near(g.google.pool, 0.5);
+    near(g.totals.gcpEarned, 0.5);
+    near(g.google.uncapped, 1.2);
+    expect(g.google.forecastBinding).toBe(true);
+    expect(g.google.capBinding).toBe(false);
+  });
+  it("a forecast above actual spend changes nothing: credits still follow actual incremental spend", () => {
+    near(evaluate(T1({ gcpForecastY1: 40 })).routes.gcp.totals.gcpEarned, 1.2);
+  });
+  it("the marketplace cap is 25% per commit leg, not per month: a ramp still counts the full 25%", () => {
+    const g = evaluate(T1({ migRamp: 6, gcpAiSpend: 2, gcpOtherSpend: 1 })).routes.gcp;
+    const counted = g.series.onGcp.slice(0, 12).reduce((s, x, i) => s + x - g.series.excessMkt[i], 0);
+    near(counted, 2.5);
+  });
+});
+
 /* ---------------- AWS MAP mechanics ---------------- */
 
 describe("AWS MAP mechanics", () => {
@@ -199,7 +223,7 @@ function randomInputs(seed: number): Inputs {
     mapPct: u(0, 40), partnerPass: u(0, 10), mapYears: i(1, 3), mapAfter: pick(["none", "extend", "restructure"]),
     mapCommitArr: r() < 0.5 ? 0 : u(5, 50), awsDiscount: u(0, 20), awsCreditUse: u(0, 100),
     gcpCommitNew: u(0, 40), gcpCommitYears: i(1, 4), gcpCommitExisting: u(0, 40), gcpCommitExistingMonths: i(0, 36),
-    gcpAiSpend: u(0, 30), gcpOtherSpend: u(0, 30), gcpPct: u(0, 20), gcpCap: u(0, 10), mktCapPct: u(0, 100),
+    gcpAiSpend: u(0, 30), gcpOtherSpend: u(0, 30), gcpPct: u(0, 20), gcpCap: u(0, 10), gcpForecastY1: r() < 0.7 ? 0 : u(1, 60), mktCapPct: u(0, 100),
     mktException: r() < 0.5, gcpDiscount: u(0, 20), directDiscount: u(0, 20),
   };
 }

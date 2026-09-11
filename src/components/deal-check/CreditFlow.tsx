@@ -6,13 +6,13 @@ import { usd } from "@/lib/deal-check/format";
 
 type Program = "aws" | "google";
 
-function Funnel({ f, program, title, subtitle, scale, notes }: { f: CreditFunnel; program: Program; title: string; subtitle: string; scale: number; notes: string[] }) {
+function Funnel({ f, program, title, subtitle, scale, notes, labels }: { f: CreditFunnel; program: Program; title: string; subtitle: string; scale: number; notes: string[]; labels: string[] }) {
   const rows: { label: string; value: number; note: string; ghost?: number }[] = [
-    { label: "Spend the program measures", value: f.spend, note: notes[0] },
-    { label: "Above the baseline", value: f.incremental, ghost: f.spend, note: notes[1] },
+    { label: labels[0], value: f.spend, note: notes[0] },
+    { label: labels[1], value: f.incremental, ghost: f.spend, note: notes[1] },
     { label: `Credit at ${f.rate}%`, value: f.gross, note: notes[2] },
-    { label: "After cap and gate", value: f.earned, note: notes[3] },
-    { label: "Usable within horizon", value: f.usable, note: notes[4] },
+    { label: labels[3], value: f.earned, note: notes[3] },
+    { label: labels[4], value: f.usable, note: notes[4] },
   ];
   const w = (v: number) => `${scale > 0 ? Math.max(v > 0 ? 1.5 : 0, (v / scale) * 100) : 0}%`;
   return (
@@ -92,10 +92,10 @@ export default function CreditFlow({ result }: { result: Result }) {
     `Applied to any AWS bill: Bedrock plus ${usd(i.awsOtherSpend)}/yr of other AWS spend, ${i.awsCreditUse}% consumable.`,
   ];
   const gcpNotes = [
-    `Anthropic spend on GCP marketplace inside the 12-month window (months ${g.google.windowStart + 1} to ${g.google.windowEnd + 1}).`,
+    `Top-line Anthropic MaaS spend via marketplace inside the 12-month window (months ${g.google.windowStart + 1} to ${g.google.windowEnd + 1}).`,
     i.gcpBaselineQ > 0 ? `Minus the last full quarter before signing (${usd(i.gcpBaselineQ)} per quarter).` : "Last full quarter on GCP was zero, so everything counts.",
     `${i.gcpPct}% on the excess, settled quarterly.`,
-    g.google.capBinding ? `The ${usd(i.gcpCap)} cap per account trims ${usd(f.gcp.gross)} to ${usd(f.gcp.earned)}.` : !g.google.eligible ? `Not eligible: new commit below ${usd(10)}/yr.` : `Below the ${usd(i.gcpCap)} cap; no gate.`,
+    g.google.capBinding ? `The ${usd(i.gcpCap)} cap per account trims ${usd(f.gcp.gross)} to ${usd(f.gcp.earned)}.` : g.google.forecastBinding ? `Pool sized on the forecast Y1 spend of ${usd(g.google.forecastY1)}: ${usd(g.google.pool)}.` : !g.google.eligible ? `Not eligible: new commit below ${usd(10)}/yr.` : `Pool ${usd(g.google.pool)} sized on forecast Y1 spend; below the ${usd(i.gcpCap)} cap.`,
     `Only against eligible GCP Cloud AI spend (${usd(i.gcpAiSpend)}/yr), never against Anthropic or other GCP spend.`,
   ];
   const awsMarkers: { month: number; text: string }[] = [];
@@ -107,8 +107,10 @@ export default function CreditFlow({ result }: { result: Result }) {
     <div>
       <p className="dc-note" style={{ marginTop: 0 }}>Each program takes the spend it measures, subtracts a baseline, pays a rate on what is left, and then limits where the credit can be spent. Bars are on a shared scale.</p>
       <div className="dc-two-col">
-        <Funnel f={f.aws} program="aws" title="AWS MAP 2.0" subtitle="pays on growth over last year" scale={scale} notes={awsNotes} />
-        <Funnel f={f.gcp} program="google" title="Google offer" subtitle="pays on new marketplace spend, capped" scale={scale} notes={gcpNotes} />
+        <Funnel f={f.aws} program="aws" title="AWS MAP 2.0" subtitle="pays on growth over last year" scale={scale} notes={awsNotes}
+          labels={["Tagged Bedrock spend measured", "Above last year's AWS AI spend", "", "After the 10%-of-ARR gate", "Usable within horizon, any AWS bill"]} />
+        <Funnel f={f.gcp} program="google" title="Google offer" subtitle="pays on new marketplace spend, sized and capped" scale={scale} notes={gcpNotes}
+          labels={["Marketplace spend in the 12-month window", "Above last full quarter × 4", "", "After forecast sizing and the $5M cap", "Usable within horizon, Cloud AI only"]} />
       </div>
       <div className="dc-legend" style={{ marginTop: 14 }}><span><span className="dc-swatch aws" style={{ opacity: 0.35 }} />spend</span><span><span className="dc-swatch aws" />above baseline</span><span><span className="qbase-key" />baseline</span><span><span className="dc-swatch aws" style={{ width: 5 }} />credit settled</span></div>
       <div className="dc-two-col">

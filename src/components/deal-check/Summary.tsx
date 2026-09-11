@@ -4,9 +4,10 @@ import { useMemo, useState } from "react";
 import type { Result } from "@/lib/deal-check/engine";
 import { accountSummary } from "@/lib/deal-check/summary";
 import { explanationText } from "@/lib/deal-check/explain";
+import { constructText, dealConstruct, type DealMeta } from "@/lib/deal-check/construct";
 
-export default function Summary({ result }: { result: Result }) {
-  const text = useMemo(() => `${accountSummary(result)}\n\nWhy the math comes out this way:\n${explanationText(result)}`, [result]);
+export default function Summary({ result, meta }: { result: Result; meta: DealMeta }) {
+  const text = useMemo(() => `${meta.customer ? `Customer: ${meta.customer}${meta.region ? ` (${meta.region})` : ""}\n\n` : ""}${accountSummary(result)}\n\nWhy the math comes out this way:\n${explanationText(result)}\n\n${constructText(dealConstruct(meta, result.inputs, result))}`, [result, meta]);
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {

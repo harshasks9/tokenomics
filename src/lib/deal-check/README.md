@@ -51,13 +51,20 @@ Vercel project at this repository.
 | `engine.ts` | The pure economic model: monthly simulation of three routes, MAP credits (baseline, quarterly settlement, 10% ARR gate, multi-year, extension/restructure), Google credits (12-month window, last-quarter baseline, $5M cap, Cloud-AI-only consumability), AWS and GCP commit consumption and stranding (marketplace cap per leg, existing-commit-first), net cost, verdict rank, break-even, driver sentence, flags, reverse solvers and sensitivity. |
 | `presets.ts` | The 24 named scenarios. Each sets only the inputs it needs. |
 | `summary.ts` | Plain-text account summary and the "smallest change to flip" sentence. |
+| `explain.ts` | Plain-language explanation of a result and the levers that move it. |
+| `construct.ts` | Deal files (save, export, import, browser list) and the deal construct: the Google offer as written for one customer, with the offer's checks, credit pool, milestones, approvals and request steps. |
+| `deals/` | `example.deal.json` template and the file schema notes. Real customer files stay out of this public repo. |
 | `format.ts` | Money, percent and month formatting. |
 | `engine.test.ts` | The 37-test suite: hand-computed credit and commit mechanics, accounting identities over all presets plus 200 seeded random input sets, verdict and solver behaviour. |
 
 Google terms: `GOOGLE.minIacv` ($10M), `GOOGLE.windowMonths` (12),
 `GOOGLE.baselineRule`, `GOOGLE.capTotal` ($5M), `GOOGLE.dpoMaxPct` (10%),
 `GOOGLE.dpoMaxYears` (3), `GOOGLE.executeBy` (Oct 31, 2026, month index 1),
-`GOOGLE.mktCapPct` (25%), `GOOGLE.creditScope`, `GOOGLE.eligibleAccounts`.
+`GOOGLE.mktCapPct` (25%), `GOOGLE.creditScope`, `GOOGLE.eligibleAccounts`,
+`GOOGLE.sizing` (pool sized on forecast Y1 incremental spend), `GOOGLE.topLine`
+(credits on undiscounted marketplace spend), `GOOGLE.delivery` (spend
+milestones, modelled as quarterly settlement), `GOOGLE.authority`,
+`GOOGLE.request` (execution steps).
 
 AWS terms: `AWS.creditPct` (25%), `AWS.gatePctOfArr` (10%), `AWS.settlement`,
 `AWS.commitType` (soft), `AWS.multiYear`, `AWS.approvals`,

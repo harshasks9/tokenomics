@@ -6,6 +6,9 @@ import { ChevronLeft } from "lucide-react";
 import { defaults, evaluate, reverseSolve, type Horizon, type Inputs } from "@/lib/deal-check/engine";
 import { PRESETS } from "@/lib/deal-check/presets";
 import Verdict from "./Verdict";
+import DealPanel from "./DealPanel";
+import DealConstruct from "./DealConstruct";
+import { emptyMeta, type DealFile, type DealMeta } from "@/lib/deal-check/construct";
 import Explanation from "./Explanation";
 import CreditFlow from "./CreditFlow";
 import Controls from "./Controls";
@@ -22,6 +25,7 @@ const HORIZONS: Horizon[] = [12, 24, 36];
 export default function DealCheckApp() {
   const [inputs, setInputs] = useState<Inputs>(defaults());
   const [presetId, setPresetId] = useState<string>("");
+  const [meta, setMeta] = useState<DealMeta>(emptyMeta());
 
   const result = useMemo(() => evaluate(inputs), [inputs]);
   const solve = useMemo(() => reverseSolve(inputs), [inputs]);
@@ -40,6 +44,7 @@ export default function DealCheckApp() {
     setInputs(defaults());
   };
   const setHorizon = (h: Horizon) => setInputs((prev) => ({ ...prev, horizon: h }));
+  const loadDeal = (file: DealFile) => { setMeta(file.meta); setInputs(file.inputs); setPresetId(""); };
 
   const tabs = (
     <div className="dc-tabs" role="tablist" aria-label="Horizon">
@@ -64,7 +69,7 @@ export default function DealCheckApp() {
         </form>
       </div>
 
-      <Verdict result={result} solve={solve} tabs={tabs} />
+      <Verdict result={result} solve={solve} tabs={tabs} customer={meta.customer} />
 
       <section className="dc-card" style={{ marginTop: 14 }}>
         <h2>Why the math comes out this way</h2>
@@ -73,9 +78,14 @@ export default function DealCheckApp() {
 
       <div className="dc-grid">
         <aside className="dc-inputs">
+          <DealPanel meta={meta} inputs={inputs} result={result} onMeta={setMeta} onLoad={loadDeal} />
           <Controls inputs={inputs} presetId={presetId} onChange={update} onPreset={applyPreset} onReset={reset} />
         </aside>
         <main className="dc-results">
+          <section className="dc-card">
+            <div className="dc-headrow"><h2 style={{ margin: 0 }}>Deal construct</h2>{tabs}</div>
+            <DealConstruct meta={meta} inputs={inputs} result={result} />
+          </section>
           <section className="dc-card">
             <div className="dc-headrow"><h2 style={{ margin: 0 }}>How the credits work</h2>{tabs}</div>
             <CreditFlow result={result} />
@@ -102,7 +112,7 @@ export default function DealCheckApp() {
           </section>
           <section className="dc-card">
             <h2>Account summary</h2>
-            <Summary result={result} />
+            <Summary result={result} meta={meta} />
           </section>
           <section className="dc-card dc-panel">
             <Methodology />

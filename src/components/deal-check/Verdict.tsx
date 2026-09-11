@@ -16,7 +16,7 @@ export function scalePosition(result: Result): number {
   return Math.max(3, 45 + ((p + 0.02) / 0.18) * 45);
 }
 
-export default function Verdict({ result, solve, tabs }: { result: Result; solve: ReverseSolve; tabs: ReactNode }) {
+export default function Verdict({ result, solve, tabs, customer }: { result: Result; solve: ReverseSolve; tabs: ReactNode; customer?: string }) {
   const { inputs: i, routes } = result;
   const a = routes.aws.totals, g = routes.gcp.totals;
   const winner = result.advantage >= 0 ? "Google" : "AWS";
@@ -28,7 +28,7 @@ export default function Verdict({ result, solve, tabs }: { result: Result; solve
   return (
     <section className="dc-card" aria-label="Verdict">
       <div className="dc-headrow">
-        <h2 style={{ margin: 0 }}>Verdict at {result.horizon} months</h2>
+        <h2 style={{ margin: 0 }}>{customer ? `${customer} · ` : ""}Verdict at {result.horizon} months</h2>
         {tabs}
       </div>
       <div className="dc-verdict">

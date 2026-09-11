@@ -46,6 +46,8 @@ export interface Inputs {
   gcpOtherSpend: number;
   gcpPct: number;
   gcpCap: number;
+  /** Forecast Y1 incremental marketplace spend the credit pool is sized on ($M); 0 = the model's own Y1 figure. */
+  gcpForecastY1: number;
   mktCapPct: number;
   mktException: boolean;
   gcpDiscount: number;
@@ -89,6 +91,7 @@ export function defaults(): Inputs {
     gcpOtherSpend: 4,
     gcpPct: GOOGLE.dpoMaxPct.value,
     gcpCap: GOOGLE.capTotal.value,
+    gcpForecastY1: 0,
     mktCapPct: GOOGLE.mktCapPct.value,
     mktException: false,
     gcpDiscount: 0,
@@ -187,6 +190,12 @@ export interface RouteResult {
     quarters: Quarter[];
     windowStart: number;
     windowEnd: number;
+    /** Forecast Y1 incremental marketplace spend the pool is sized on. */
+    forecastY1: number;
+    /** Credit pool: rate × forecast, then the account cap. */
+    pool: number;
+    /** True when the forecast sizing, not the $5M cap, limits the credit. */
+    forecastBinding: boolean;
   };
   map: {
     arr: number;
@@ -287,7 +296,7 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
   const migStart = Math.round(inp.migStart);
   const spend = spendSeries(inp);
 
-  const onAws = zeros(), onGcp = zeros(), onDirect = zeros(), anthNet = zeros(), mig = zeros();
+  const onAws = zeros(), onGcp = zeros(), onGcpGross = zeros(), onDirect = zeros(), anthNet = zeros(), mig = zeros();
 
   // 2. Allocation and discounts
   for (let m = 0; m < MONTHS; m++) {
@@ -301,6 +310,7 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
       alloc[target] = S;
     }
     onAws[m] = alloc.aws * (1 - inp.awsDiscount / 100);
+    onGcpGross[m] = alloc.gcp;
     onGcp[m] = alloc.gcp * (1 - inp.gcpDiscount / 100);
     onDirect[m] = alloc.direct * (1 - inp.directDiscount / 100);
     anthNet[m] = onAws[m] + onGcp[m] + onDirect[m];
@@ -361,23 +371,37 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
     quarters: [],
     windowStart: sign,
     windowEnd: sign + GOOGLE.windowMonths.value - 1,
+    forecastY1: 0,
+    pool: 0,
+    forecastBinding: false,
   };
   if (route === "gcp" && google.eligible) {
-    let earned = 0;
+    // Credits are earned on top-line (undiscounted) marketplace spend above the
+    // last-full-quarter baseline, sized on the forecast Y1 incremental spend and
+    // capped per account; quarterly settlement stands in for spend milestones.
+    const qs: { start: number; end: number; Sq: number; inc: number }[] = [];
     for (let q = 0; q < 4; q++) {
       const start = sign + 3 * q, end = start + 2;
       if (end >= MONTHS) break;
-      const Sq = sum(onGcp, start, end + 1);
-      const inc = Math.max(0, Sq - inp.gcpBaselineQ);
-      const c = inc * inp.gcpPct / 100;
+      const Sq = sum(onGcpGross, start, end + 1);
+      qs.push({ start, end, Sq, inc: Math.max(0, Sq - inp.gcpBaselineQ) });
+    }
+    const modelY1 = qs.reduce((t, q) => t + q.inc, 0);
+    google.forecastY1 = inp.gcpForecastY1 > 0 ? inp.gcpForecastY1 : modelY1;
+    const sized = (google.forecastY1 * inp.gcpPct) / 100;
+    google.pool = Math.max(0, Math.min(inp.gcpCap, sized));
+    let earned = 0;
+    for (const q of qs) {
+      const c = (q.inc * inp.gcpPct) / 100;
       google.uncapped += c;
-      const allowed = Math.max(0, Math.min(c, inp.gcpCap - earned));
+      const allowed = Math.max(0, Math.min(c, google.pool - earned));
       earned += allowed;
-      gcpCredit[end] += allowed;
-      google.quarters.push({ month: end, spend: Sq, baseline: inp.gcpBaselineQ, incremental: inc, credit: c, settled: allowed });
+      gcpCredit[q.end] += allowed;
+      google.quarters.push({ month: q.end, spend: q.Sq, baseline: inp.gcpBaselineQ, incremental: q.inc, credit: c, settled: allowed });
     }
     google.earned = earned;
-    google.capBinding = google.uncapped > inp.gcpCap + 1e-9;
+    google.capBinding = google.uncapped > inp.gcpCap + 1e-9 && inp.gcpCap <= sized + 1e-9;
+    google.forecastBinding = google.uncapped > google.pool + 1e-9 && sized < inp.gcpCap - 1e-9;
   }
 
   // Credit usage — greedy carry-forward, usable from the month after settlement
@@ -446,11 +470,26 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
   let existingConsumed = 0, existingConsumedWithinH = 0;
   let lastPoolExisting = 0;
   const legLast = new Map<number, number>();
+  // Marketplace spend counts towards a commit only up to mktCapPct of that commit
+  // (the existing commit over its term, each new leg over its year), unless the
+  // exception is granted. Pools are drawn existing-first, like consumption.
+  const capShare = clamp(inp.mktCapPct, 0, 100) / 100;
+  let existingCapLeft = inp.mktException ? Infinity : capShare * existingActiveAmount;
+  const legCapLeft = new Map<number, number>(legs.map((l) => [l.index, inp.mktException ? Infinity : capShare * l.amount]));
+  void annualisedExisting;
   for (let m = 0; m < MONTHS; m++) {
     const existingActive = existingActiveAmount > 0 && m < ET;
     const leg = legs.find((l) => m >= l.start && m <= l.end);
-    const commitInForce = (existingActive ? annualisedExisting : 0) + (leg ? leg.amount : 0);
-    const counted = inp.mktException ? onGcp[m] : Math.min(onGcp[m], (clamp(inp.mktCapPct, 0, 100) / 100) * commitInForce / 12);
+    let counted = 0, rem = onGcp[m];
+    if (existingActive) {
+      const take = Math.min(rem, existingCapLeft);
+      existingCapLeft -= take; counted += take; rem -= take;
+    }
+    if (leg) {
+      const left = legCapLeft.get(leg.index) ?? 0;
+      const take = Math.min(rem, left);
+      legCapLeft.set(leg.index, left - take); counted += take; rem -= take;
+    }
     excessMkt[m] = onGcp[m] - counted;
     let pool = counted + inp.gcpAiSpend / 12 + inp.gcpOtherSpend / 12;
     if (existingActive) {
@@ -608,6 +647,8 @@ function flagsOf(inp: Inputs, routes: Record<Route, RouteResult>, H: Horizon): F
     f.push({ id: "mkt-exception", level: "warn", text: "Marketplace cap exception in use: needs DPM + DPO approval and an exception form." });
   if (g.google.capBinding)
     f.push({ id: "cap", level: "info", text: `Google credit cap binds: $${g.google.uncapped.toFixed(2)}M would accrue uncapped, $${inp.gcpCap}M is the cap.` });
+  if (g.google.forecastBinding)
+    f.push({ id: "forecast", level: "warn", text: `Google pool is sized on a forecast Y1 incremental spend of $${g.google.forecastY1.toFixed(2)}M ($${g.google.pool.toFixed(2)}M); actual spend would accrue $${g.google.uncapped.toFixed(2)}M. Raise the forecast at signing if the plan supports it.` });
   const gUnused = g.totals.gcpEarned - g.totals.gcpUsed;
   if (gUnused > 0.005)
     f.push({ id: "gcp-unused", level: "warn", text: `$${gUnused.toFixed(2)}M of Google credits cannot be consumed within ${H} months: eligible Cloud AI spend is only $${inp.gcpAiSpend}M/yr.` });
