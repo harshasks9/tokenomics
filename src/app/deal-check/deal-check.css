@@ -180,3 +180,8 @@
 .dc-panel dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; font-size: 13px; }
 .dc-panel dt { font-weight: 600; color: var(--ink); }
 .dc-panel dd { margin: 0; color: var(--ink-2); }
+
+/* Gate */
+.dc-gate { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+.dc-gate-card { width: 100%; max-width: 400px; }
+.dc-gate-form { margin-top: 18px; }

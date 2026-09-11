@@ -57,6 +57,9 @@ export default function DealCheckApp() {
           <h1>Deal check: AWS MAP 2.0 vs Google Private Offer</h1>
           <p>Which program is cheaper for the customer&apos;s Anthropic workload, by how much, and what would flip it. Month 0 = Sep 2026.</p>
         </div>
+        <form action="/api/deal-check/logout" method="post" style={{ marginLeft: "auto" }}>
+          <button type="submit" className="dc-btn" title="Clear this browser's access">Lock</button>
+        </form>
       </div>
 
       <Verdict result={result} solve={solve} tabs={tabs} />
