@@ -185,3 +185,35 @@
 .dc-gate { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
 .dc-gate-card { width: 100%; max-width: 400px; }
 .dc-gate-form { margin-top: 18px; }
+
+/* Explanation */
+.dc-explain p { font-size: 13.5px; line-height: 1.55; color: var(--ink-2); margin: 0 0 10px; }
+.dc-explain p.lead { color: var(--ink); font-weight: 500; }
+.dc-explain b.aws { color: var(--aws); }
+.dc-explain b.google { color: var(--google); }
+.dc-explain h3 { margin: 12px 0 4px; }
+.dc-explain ul { margin: 0; padding-left: 18px; }
+.dc-explain li { font-size: 13px; color: var(--ink-2); margin: 3px 0; }
+.dc-two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.dc-link { font: inherit; font-size: inherit; color: var(--google); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+
+/* Credit funnel */
+.dc-funnel-head { display: flex; align-items: center; gap: 6px; font-size: 13px; margin: 6px 0 8px; }
+.dc-funnel-head span:last-child { color: var(--muted); }
+.dc-funnel-row { margin: 8px 0; }
+.dc-funnel-row .lab { display: flex; justify-content: space-between; font-size: 12.5px; }
+.dc-funnel-row .lab b { font-weight: 600; }
+.dc-funnel-row .track { position: relative; height: 12px; margin-top: 3px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+.dc-funnel-row .bar, .dc-funnel-row .ghost { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; transition: width 200ms; }
+.dc-funnel-row .ghost { background: var(--grid); }
+.dc-funnel.aws .bar { background: var(--aws); }
+.dc-funnel.google .bar { background: var(--google); }
+.dc-funnel-row .note { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.dc-chart .qbar.aws { fill: var(--aws); opacity: 0.35; }
+.dc-chart .qbar.google { fill: var(--google); opacity: 0.35; }
+.dc-chart .qinc.aws { fill: var(--aws); }
+.dc-chart .qinc.google { fill: var(--google); }
+.dc-chart .qcredit.aws { fill: var(--aws); }
+.dc-chart .qcredit.google { fill: var(--google); }
+.dc-chart .qbase { stroke: var(--ink); stroke-width: 2; }
+.qbase-key { display: inline-block; width: 12px; height: 2px; background: var(--ink); margin-right: 6px; vertical-align: middle; }

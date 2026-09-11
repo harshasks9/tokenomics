@@ -3,9 +3,10 @@
 import { useMemo, useState } from "react";
 import type { Result } from "@/lib/deal-check/engine";
 import { accountSummary } from "@/lib/deal-check/summary";
+import { explanationText } from "@/lib/deal-check/explain";
 
 export default function Summary({ result }: { result: Result }) {
-  const text = useMemo(() => accountSummary(result), [result]);
+  const text = useMemo(() => `${accountSummary(result)}\n\nWhy the math comes out this way:\n${explanationText(result)}`, [result]);
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {
