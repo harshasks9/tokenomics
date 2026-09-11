@@ -56,3 +56,16 @@ describe("explanation", () => {
     expect(e.google).toMatch(/cannot be consumed in time/);
   });
 });
+
+describe("three sentences", () => {
+  it("names both programs and what else separates them", async () => {
+    const { threeSentences } = await import("./explain");
+    const [s1, s2, s3] = threeSentences(evaluate(inp()));
+    expect(s1).toMatch(/^AWS MAP pays 25% only on Bedrock spend above last year's/);
+    expect(s2).toMatch(/^Google pays 10% on everything that moves/);
+    expect(s3).toMatch(/migrate/);
+    expect(threeSentences(evaluate(inp({ growth: 0 })))[0]).toMatch(/pays nothing/);
+    expect(threeSentences(evaluate(inp({ geminiShare: 40 })))[1]).toMatch(/Gemini/);
+    expect(threeSentences(evaluate(inp({ gcpCommitNew: 5 })))[1]).toMatch(/pays nothing until/);
+  });
+});

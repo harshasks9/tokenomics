@@ -305,3 +305,40 @@ export function dpmEmail(meta: DealMeta, inputs: Inputs, result: Result): DpmEma
   lines.push(``, `Approvals per go/sales-concessions will be obtained before execution. Happy to walk through the model.`, ``, `Thanks,`, meta.owner || "");
   return { subject: `Anthropic MaaS offer — ${name} — ${exceptions.length ? "exception review" : "DPO expert request"}`, body: lines.join("\n") };
 }
+
+/* ---------------- Deal checklist ---------------- */
+
+export interface ChecklistItem {
+  label: string;
+  /** true = passes, false = blocks, null = needs an approval. */
+  ok: boolean | null;
+  detail: string;
+}
+
+export interface DealChecklist {
+  items: ChecklistItem[];
+  numbers: { label: string; value: string; note: string }[];
+}
+
+/** The five things the offer summary requires, as yes/no, plus the three numbers the deal turns on. */
+export function dealChecklist(meta: DealMeta, inputs: Inputs, result: Result): DealChecklist {
+  const i = inputs, g = result.routes.gcp, f = creditFunnel(result).gcp;
+  const sign = Math.round(i.gcpSignMonth);
+  const eligible = i.gcpCommitNew >= GOOGLE.minIacv.value;
+  const withinDpo = i.gcpPct <= GOOGLE.dpoMaxPct.value && i.gcpCommitYears <= GOOGLE.dpoMaxYears.value;
+  const countedPerLeg = (i.mktCapPct / 100) * i.gcpCommitNew;
+  const overCap = !i.mktException && f.spend > countedPerLeg + 1e-9;
+  const items: ChecklistItem[] = [
+    { label: "Account is on the 40-account list", ok: meta.onTargetList, detail: meta.onTargetList ? "Confirmed." : "Not confirmed. The offer allows no exceptions to the list." },
+    { label: `New GCP commit of at least ${usd(GOOGLE.minIacv.value)} a year`, ok: eligible, detail: `${usd(i.gcpCommitNew)} a year for ${i.gcpCommitYears} year${i.gcpCommitYears === 1 ? "" : "s"}${eligible ? "." : ". Below the minimum, and not eligible for a DPM exception."}` },
+    { label: `Contract signed by ${GOOGLE.executeBy.value}`, ok: sign <= GOOGLE.executeByMonthIndex.value, detail: sign <= GOOGLE.executeByMonthIndex.value ? `Planned for month ${sign}.` : `Planned for month ${sign}, after the deadline.` },
+    { label: "Credit rate and term within DPO authority", ok: withinDpo ? true : null, detail: withinDpo ? `${i.gcpPct}% for ${i.gcpCommitYears} years is within DPO's ${GOOGLE.dpoMaxPct.value}% for deals of ${GOOGLE.dpoMaxYears.value} years or less.` : `${i.gcpPct}% for ${i.gcpCommitYears} years needs DPM approval.` },
+    { label: "Marketplace spend within the 25% commit cap", ok: i.mktException ? null : overCap ? null : true, detail: i.mktException ? "Exception requested: needs DPM and DPO approval and the exception form." : overCap ? `Year-one marketplace spend of ${usd(f.spend)} exceeds the ${usd(countedPerLeg)} that counts per leg; ask for the exception or accept that the rest does not retire commit.` : `Year-one marketplace spend of ${usd(f.spend)} fits within ${usd(countedPerLeg)} per leg.` },
+  ];
+  const numbers = [
+    { label: "New GCP commit", value: `${usd(i.gcpCommitNew)}/yr × ${i.gcpCommitYears}`, note: `${usd(i.gcpCommitNew * i.gcpCommitYears)} in total; this is the hard commitment the customer signs.` },
+    { label: "Credit pool", value: usd(g.google.pool), note: `${i.gcpPct}% of ${usd(g.google.forecastY1)} forecast first-year spend${g.google.pool < (g.google.forecastY1 * i.gcpPct) / 100 - 1e-9 ? `, capped at ${usd(i.gcpCap)}` : ""}; paid as spend milestones.` },
+    { label: "What the credits can pay for", value: `${usd(i.gcpAiSpend + (result.horizon > 0 ? (g.totals.geminiSpend * 12) / result.horizon : 0))}/yr`, note: `Other GCP AI spend${i.geminiShare > 0 ? " plus the Gemini bill" : ""}. Not the Anthropic spend itself.` },
+  ];
+  return { items, numbers };
+}
