@@ -9,20 +9,17 @@
  */
 
 import { GOOGLE } from "./terms";
-import { RANK_LABEL, creditFunnel, defaults, evaluate, type Inputs, type Rank, type Result } from "./engine";
+import { RANK_LABEL, creditFunnel, defaults, evaluate, geminiPlay, type Inputs, type Rank, type Result } from "./engine";
 import { usd, pct } from "./format";
-
-export type Region = "Americas" | "JAPAC" | "EMEA" | "";
 
 export interface DealMeta {
   customer: string;
-  region: Region;
   onTargetList: boolean;
   owner: string;
   notes: string;
 }
 
-export const emptyMeta = (): DealMeta => ({ customer: "", region: "", onTargetList: false, owner: "", notes: "" });
+export const emptyMeta = (): DealMeta => ({ customer: "", onTargetList: false, owner: "", notes: "" });
 
 export type RowStatus = "ok" | "warn" | "stop" | "info";
 
@@ -58,12 +55,6 @@ export interface DealFile {
   snapshot: { horizon: number; rank: Rank; advantage: number; awsNet: number; gcpNet: number };
 }
 
-const REGION_SLOTS: Record<Exclude<Region, "">, number> = {
-  Americas: GOOGLE.eligibleAccounts.value.americas,
-  JAPAC: GOOGLE.eligibleAccounts.value.japac,
-  EMEA: GOOGLE.eligibleAccounts.value.emea,
-};
-
 export function dealConstruct(meta: DealMeta, inputs: Inputs, result: Result): DealConstruct {
   const i = inputs, g = result.routes.gcp, f = creditFunnel(result).gcp;
   const rows: ConstructRow[] = [];
@@ -73,14 +64,15 @@ export function dealConstruct(meta: DealMeta, inputs: Inputs, result: Result): D
 
   rows.push({ label: "Customer", value: meta.customer || "(unnamed)", status: "info", note: [meta.owner && `Owner: ${meta.owner}`, meta.notes].filter(Boolean).join(" · ") || undefined });
   rows.push({
-    label: "Region and target list",
-    value: `${meta.region || "region not set"}${meta.region ? ` (${REGION_SLOTS[meta.region]} of the ${GOOGLE.eligibleAccounts.value.total} slots)` : ""} · ${meta.onTargetList ? "on the pre-approved list" : "not confirmed on the list"}`,
+    label: "Target list",
+    value: meta.onTargetList ? `On the pre-approved list of ${GOOGLE.eligibleAccounts.value.total}` : "Not confirmed on the pre-approved list",
     status: meta.onTargetList ? "ok" : "stop",
     note: meta.onTargetList ? undefined : "The offer is limited to 40 pre-approved accounts, no exceptions. Confirm the account is on the list before requesting terms.",
   });
   if (!meta.onTargetList) blockers.push("Account not confirmed on the 40-account target list.");
 
   rows.push({ label: "Workload today", value: `${usd(i.anthSpend)}/yr Anthropic spend ${({ direct: "direct", aws: "on AWS Bedrock", gcp: "on GCP marketplace" })[i.platform]}, ${i.growth}%/yr growth, ${i.migPct}% moving from month ${i.migStart}`, status: "info" });
+  if (i.geminiShare > 0) rows.push({ label: "Gemini offload", value: `${i.geminiShare}% of the traffic served by Gemini at ${i.geminiCostRatio}% of the Anthropic cost; ${100 - i.geminiShare}% stays on Anthropic via marketplace and earns credits`, status: "info", note: `Gemini spend of ${usd(g.totals.geminiSpend)} within the horizon is Cloud AI consumption, so the credits can be applied to it.` });
 
   rows.push({ label: "Qualification: marketplace paperwork", value: "Sign the Marketplace ToS and a Marketplace agreement", status: "info" });
   const eligible = i.gcpCommitNew >= GOOGLE.minIacv.value;
@@ -191,10 +183,8 @@ export function parseDeal(text: string): DealFile {
   if (![12, 24, 36].includes(inputs.horizon)) throw new Error("Horizon must be 12, 24 or 36.");
   if (!["none", "extend", "restructure"].includes(inputs.mapAfter)) throw new Error("Unknown MAP after-term option.");
   const m = isRecord(raw.meta) ? raw.meta : {};
-  const region = typeof m.region === "string" && ["Americas", "JAPAC", "EMEA", ""].includes(m.region) ? (m.region as Region) : "";
   const meta: DealMeta = {
     customer: typeof m.customer === "string" ? m.customer : "",
-    region,
     onTargetList: m.onTargetList === true,
     owner: typeof m.owner === "string" ? m.owner : "",
     notes: typeof m.notes === "string" ? m.notes : "",
@@ -274,4 +264,44 @@ export function constructText(c: DealConstruct): string {
   lines.push("", "Approvals required:"); for (const a of c.approvals) lines.push(`- ${a}`);
   lines.push("", "How to request:"); c.steps.forEach((s, k) => lines.push(`${k + 1}. ${s}`));
   return lines.join("\n");
+}
+
+/* ---------------- Email to DPM ---------------- */
+
+export interface DpmEmail {
+  subject: string;
+  body: string;
+}
+
+/** The deal as a direct email to Deal Pricing, ready to paste. */
+export function dpmEmail(meta: DealMeta, inputs: Inputs, result: Result): DpmEmail {
+  const c = dealConstruct(meta, inputs, result);
+  const i = inputs, g = result.routes.gcp, a = result.routes.aws;
+  const play = geminiPlay(inputs, result.horizon);
+  const name = meta.customer || "[customer]";
+  const exceptions = c.approvals.filter((x) => x.startsWith("DPM"));
+  const lines: string[] = [];
+  lines.push(`Hi DPM team,`, ``);
+  lines.push(`Requesting review of an Anthropic MaaS offer for ${name}${exceptions.length ? " with the exceptions listed below" : ""}. Expert Request raised in Vector with "Anthropic MaaS offer"${exceptions.length ? ' and "Offer Exception Required"' : ""} in the comments.`, ``);
+  lines.push(`Customer and workload`);
+  lines.push(`- ${name}${meta.owner ? ` (owner: ${meta.owner})` : ""}; ${meta.onTargetList ? "confirmed on the pre-approved target list" : "target-list status not yet confirmed"}.`);
+  lines.push(`- ${usd(i.anthSpend)}/yr Anthropic spend today ${({ direct: "direct with Anthropic", aws: "on AWS Bedrock", gcp: "on GCP marketplace" })[i.platform]}, ${i.growth}%/yr growth; ${i.migPct}% moves to GCP marketplace from month ${i.migStart}.`);
+  if (i.geminiShare > 0) lines.push(`- ${i.geminiShare}% of the traffic will be served by Gemini (at ${i.geminiCostRatio}% of the Anthropic cost); the remaining ${100 - i.geminiShare}% stays on Anthropic via marketplace.`);
+  lines.push(``, `Proposed construct`);
+  lines.push(`- Incremental GCP commit: ${usd(i.gcpCommitNew)}/yr iACV × ${i.gcpCommitYears} years (${usd(i.gcpCommitNew * i.gcpCommitYears)} total).`);
+  lines.push(`- Baseline: last full quarter ${usd(i.gcpBaselineQ)} × 4 = ${usd(i.gcpBaselineQ * 4)}/yr, set at signing.`);
+  lines.push(`- Forecast Y1 incremental marketplace spend: ${usd(g.google.forecastY1)}.`);
+  lines.push(`- Credit rate ${i.gcpPct}% → pool ${usd(g.google.pool)}${g.google.pool < (g.google.forecastY1 * i.gcpPct) / 100 - 1e-9 ? ` (capped at ${usd(i.gcpCap)})` : ""}, delivered as spend milestones scoped to Cloud AI (Gen AI / Gen AI v2).`);
+  lines.push(`- Milestones (proposed): ${c.milestones.map((m) => `${usd(m.threshold)} → ${usd(m.tranche)}`).join("; ")}.`);
+  lines.push(`- Marketplace commit cap: ${i.mktCapPct}% per leg = ${usd((i.mktCapPct / 100) * i.gcpCommitNew)}/yr counts${i.mktException ? "; exception requested so all marketplace spend counts (form attached)" : ""}.`);
+  lines.push(`- Eligible Cloud AI spend to consume credits: ${usd(i.gcpAiSpend)}/yr${i.geminiShare > 0 ? ` plus ${usd(g.totals.geminiSpend)} of Gemini spend within ${result.horizon} months` : ""}.`);
+  lines.push(`- Contract execution planned for month ${Math.round(i.gcpSignMonth)} (${Math.round(i.gcpSignMonth) <= 1 ? "before" : "AFTER"} the Oct 31, 2026 deadline).`);
+  lines.push(``, `Why it works against AWS MAP`);
+  lines.push(`- Over ${result.horizon} months: Google route ${usd(g.totals.net)} net vs AWS MAP ${usd(a.totals.net)} net → ${result.advantage >= 0 ? "Google" : "AWS"} ahead by ${usd(Math.abs(result.advantage))} (${pct(Math.abs(result.advPct))}). ${result.driver.sentence}`);
+  if (!play.winsNow && play.minShare !== null) lines.push(`- Serving ${play.minShare.toFixed(0)}% of the traffic with Gemini would put Google ahead while the rest stays on Anthropic with credits.`);
+  else if (play.winsNow && i.geminiShare > 0) lines.push(`- The Gemini share lowers the Anthropic bill by ${i.geminiShare}% and the total model bill by ${play.billCut.toFixed(0)}%.`);
+  if (exceptions.length) { lines.push(``, `Exceptions requested`); for (const e of exceptions) lines.push(`- ${e}`); }
+  if (c.blockers.length) { lines.push(``, `Open items before execution`); for (const b of c.blockers) lines.push(`- ${b}`); }
+  lines.push(``, `Approvals per go/sales-concessions will be obtained before execution. Happy to walk through the model.`, ``, `Thanks,`, meta.owner || "");
+  return { subject: `Anthropic MaaS offer — ${name} — ${exceptions.length ? "exception review" : "DPO expert request"}`, body: lines.join("\n") };
 }

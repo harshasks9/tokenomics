@@ -3,16 +3,17 @@
 import { useState } from "react";
 import { creditFunnel, type CreditFunnel, type Quarter, type Result } from "@/lib/deal-check/engine";
 import { usd } from "@/lib/deal-check/format";
+import Tip, { type TipKey } from "./Tip";
 
 type Program = "aws" | "google";
 
-function Funnel({ f, program, title, subtitle, scale, notes, labels }: { f: CreditFunnel; program: Program; title: string; subtitle: string; scale: number; notes: string[]; labels: string[] }) {
-  const rows: { label: string; value: number; note: string; ghost?: number }[] = [
-    { label: labels[0], value: f.spend, note: notes[0] },
-    { label: labels[1], value: f.incremental, ghost: f.spend, note: notes[1] },
-    { label: `Credit at ${f.rate}%`, value: f.gross, note: notes[2] },
-    { label: labels[3], value: f.earned, note: notes[3] },
-    { label: labels[4], value: f.usable, note: notes[4] },
+function Funnel({ f, program, title, subtitle, scale, notes, labels, tips }: { f: CreditFunnel; program: Program; title: string; subtitle: string; scale: number; notes: string[]; labels: string[]; tips: TipKey[] }) {
+  const rows: { label: string; value: number; note: string; ghost?: number; tip: TipKey }[] = [
+    { label: labels[0], value: f.spend, note: notes[0], tip: tips[0] },
+    { label: labels[1], value: f.incremental, ghost: f.spend, note: notes[1], tip: tips[1] },
+    { label: `Credit at ${f.rate}%`, value: f.gross, note: notes[2], tip: tips[2] },
+    { label: labels[3], value: f.earned, note: notes[3], tip: tips[3] },
+    { label: labels[4], value: f.usable, note: notes[4], tip: tips[4] },
   ];
   const w = (v: number) => `${scale > 0 ? Math.max(v > 0 ? 1.5 : 0, (v / scale) * 100) : 0}%`;
   return (
@@ -20,7 +21,7 @@ function Funnel({ f, program, title, subtitle, scale, notes, labels }: { f: Cred
       <div className="dc-funnel-head"><span className={`dc-swatch ${program}`} /><b>{title}</b><span>{subtitle}</span></div>
       {rows.map((r) => (
         <div key={r.label} className="dc-funnel-row">
-          <div className="lab"><span>{r.label}</span><b>{usd(r.value)}</b></div>
+          <div className="lab"><span>{r.label} <Tip id={r.tip} /></span><b>{usd(r.value)}</b></div>
           <div className="track">
             {r.ghost !== undefined && <div className="ghost" style={{ width: w(r.ghost) }} />}
             <div className="bar" style={{ width: w(r.value) }} />
@@ -96,7 +97,7 @@ export default function CreditFlow({ result }: { result: Result }) {
     i.gcpBaselineQ > 0 ? `Minus the last full quarter before signing (${usd(i.gcpBaselineQ)} per quarter).` : "Last full quarter on GCP was zero, so everything counts.",
     `${i.gcpPct}% on the excess, settled quarterly.`,
     g.google.capBinding ? `The ${usd(i.gcpCap)} cap per account trims ${usd(f.gcp.gross)} to ${usd(f.gcp.earned)}.` : g.google.forecastBinding ? `Pool sized on the forecast Y1 spend of ${usd(g.google.forecastY1)}: ${usd(g.google.pool)}.` : !g.google.eligible ? `Not eligible: new commit below ${usd(10)}/yr.` : `Pool ${usd(g.google.pool)} sized on forecast Y1 spend; below the ${usd(i.gcpCap)} cap.`,
-    `Only against eligible GCP Cloud AI spend (${usd(i.gcpAiSpend)}/yr), never against Anthropic or other GCP spend.`,
+    `Only against eligible GCP Cloud AI spend (${usd(i.gcpAiSpend)}/yr${i.geminiShare > 0 ? ` plus ${usd(g.totals.geminiSpend)} of Gemini spend` : ""}), never against Anthropic or other GCP spend.`,
   ];
   const awsMarkers: { month: number; text: string }[] = [];
   if (a.map.gateMonth !== null && a.map.gateMonth > a.map.programStart + 2) awsMarkers.push({ month: a.map.gateMonth, text: "gate opens" });
@@ -105,12 +106,14 @@ export default function CreditFlow({ result }: { result: Result }) {
   if (capQ) gcpMarkers.push({ month: capQ.month, text: "cap bites" });
   return (
     <div>
-      <p className="dc-note" style={{ marginTop: 0 }}>Each program takes the spend it measures, subtracts a baseline, pays a rate on what is left, and then limits where the credit can be spent. Bars are on a shared scale.</p>
+      <p className="dc-note" style={{ marginTop: 0 }}>Each program takes the spend it measures, subtracts a baseline, pays a rate on what is left, and then limits where the credit can be spent. Bars share one scale; the <span className="dc-tip-btn static">i</span> marks quote the source behind each step.</p>
       <div className="dc-two-col">
         <Funnel f={f.aws} program="aws" title="AWS MAP 2.0" subtitle="pays on growth over last year" scale={scale} notes={awsNotes}
-          labels={["Tagged Bedrock spend measured", "Above last year's AWS AI spend", "", "After the 10%-of-ARR gate", "Usable within horizon, any AWS bill"]} />
+          labels={["Tagged Bedrock spend measured", "Above last year's AWS AI spend", "", "After the 10%-of-ARR gate", "Usable within horizon, any AWS bill"]}
+          tips={["awsSpend", "awsBaseline", "awsRate", "awsGate", "awsUse"]} />
         <Funnel f={f.gcp} program="google" title="Google offer" subtitle="pays on new marketplace spend, sized and capped" scale={scale} notes={gcpNotes}
-          labels={["Marketplace spend in the 12-month window", "Above last full quarter × 4", "", "After forecast sizing and the $5M cap", "Usable within horizon, Cloud AI only"]} />
+          labels={["Marketplace spend in the 12-month window", "Above last full quarter × 4", "", "After forecast sizing and the $5M cap", "Usable within horizon, Cloud AI only"]}
+          tips={["gcpSpend", "gcpBaseline", "gcpRate", "gcpCap", "gcpUse"]} />
       </div>
       <div className="dc-legend" style={{ marginTop: 14 }}><span><span className="dc-swatch aws" style={{ opacity: 0.35 }} />spend</span><span><span className="dc-swatch aws" />above baseline</span><span><span className="qbase-key" />baseline</span><span><span className="dc-swatch aws" style={{ width: 5 }} />credit settled</span></div>
       <div className="dc-two-col">

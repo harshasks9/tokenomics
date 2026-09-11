@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { defaults, evaluate, type Inputs } from "./engine";
-import { constructText, dealConstruct, dealFileName, emptyMeta, parseDeal, serializeDeal, toDealFile, type DealMeta } from "./construct";
+import { constructText, dealConstruct, dealFileName, dpmEmail, emptyMeta, parseDeal, serializeDeal, toDealFile, type DealMeta } from "./construct";
 import example from "./deals/example.deal.json";
 
 const inp = (o: Partial<Inputs> = {}): Inputs => ({ ...defaults(), ...o });
-const meta = (o: Partial<DealMeta> = {}): DealMeta => ({ ...emptyMeta(), customer: "Acme", region: "Americas", onTargetList: true, ...o });
+const meta = (o: Partial<DealMeta> = {}): DealMeta => ({ ...emptyMeta(), customer: "Acme", onTargetList: true, ...o });
 
 describe("deal construct", () => {
   it("sizes the pool at rate × forecast, capped at $5M, and lays out four milestones", () => {
@@ -35,6 +35,19 @@ describe("deal construct", () => {
     const row = dealConstruct(meta(), x, evaluate(x)).rows.find((r) => r.label === "Marketplace commit cap");
     expect(row?.status).toBe("warn");
     expect(row?.note).toMatch(/exception/);
+  });
+  it("the DPM email is a direct request with the construct and any exceptions", () => {
+    const x = inp({ gcpPct: 15, geminiShare: 30 });
+    const e = dpmEmail(meta({ owner: "Kiran" }), x, evaluate(x));
+    expect(e.subject).toMatch(/Anthropic MaaS offer — Acme — exception review/);
+    expect(e.body).toMatch(/Hi DPM team/);
+    expect(e.body).toMatch(/Offer Exception Required/);
+    expect(e.body).toMatch(/DPM \(credit rate above 10%\)/);
+    expect(e.body).toMatch(/30% of the traffic will be served by Gemini/);
+    expect(e.body).toMatch(/Thanks,\nKiran$/);
+    const plain = dpmEmail(meta(), inp(), evaluate(inp()));
+    expect(plain.subject).toMatch(/DPO expert request/);
+    expect(plain.body).not.toMatch(/Exceptions requested/);
   });
   it("text form carries rows, approvals and steps", () => {
     const x = inp();

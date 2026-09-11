@@ -6,6 +6,7 @@ import {
   capBiteSpend,
   defaults,
   evaluate,
+  geminiPlay,
   optimalMigStart,
   reverseSolve,
   solveParam,
@@ -96,6 +97,32 @@ describe("Google offer terms from the summary", () => {
     const g = evaluate(T1({ migRamp: 6, gcpAiSpend: 2, gcpOtherSpend: 1 })).routes.gcp;
     const counted = g.series.onGcp.slice(0, 12).reduce((s, x, i) => s + x - g.series.excessMkt[i], 0);
     near(counted, 2.5);
+  });
+});
+
+describe("Gemini offload play", () => {
+  it("40% to Gemini at 40% cost cuts the Google route's model bill by 24% and keeps credits on the rest", () => {
+    const r0 = evaluate(T1()), r1 = evaluate(T1({ geminiShare: 40, geminiCostRatio: 40 }));
+    const g0 = r0.routes.gcp.totals, g1 = r1.routes.gcp.totals;
+    near(g1.anthropicSpend, g0.anthropicSpend * 0.6, 1e-9);
+    near(g1.geminiSpend, g0.anthropicSpend * 0.4 * 0.4, 1e-9);
+    near(g1.gross, g0.gross * 0.76, 1e-9);
+    near(g1.gcpEarned, g0.gcpEarned * 0.6, 1e-9);
+    expect(r1.routes.aws.totals.geminiSpend).toBe(0);
+  });
+  it("Gemini spend absorbs Google credits even with no other eligible Cloud AI spend", () => {
+    const g = evaluate(T1({ geminiShare: 50, gcpAiSpend: 0 })).routes.gcp;
+    expect(g.totals.gcpUsed).toBeGreaterThan(0);
+    expect(g.totals.gcpUsed).toBeLessThanOrEqual(g.totals.gcpEarned + 1e-9);
+  });
+  it("the play solver finds the smallest Gemini share that beats AWS", () => {
+    const base = inp({ platform: "aws", awsBaseline: 2 }); // MAP pays on almost everything: AWS wins at 0% Gemini
+    expect(evaluate(base).advantage).toBeLessThan(0);
+    const play = geminiPlay(base);
+    expect(play.winsNow).toBe(false);
+    expect(play.minShare).not.toBeNull();
+    expect(Math.abs(advantageOf({ ...base, geminiShare: play.minShare as number }))).toBeLessThan(0.01);
+    expect(advantageOf({ ...base, geminiShare: (play.minShare as number) + 5 })).toBeGreaterThan(0);
   });
 });
 
@@ -225,6 +252,7 @@ function randomInputs(seed: number): Inputs {
     gcpCommitNew: u(0, 40), gcpCommitYears: i(1, 4), gcpCommitExisting: u(0, 40), gcpCommitExistingMonths: i(0, 36),
     gcpAiSpend: u(0, 30), gcpOtherSpend: u(0, 30), gcpPct: u(0, 20), gcpCap: u(0, 10), gcpForecastY1: r() < 0.7 ? 0 : u(1, 60), mktCapPct: u(0, 100),
     mktException: r() < 0.5, gcpDiscount: u(0, 20), directDiscount: u(0, 20),
+    geminiShare: r() < 0.5 ? 0 : u(0, 100), geminiCostRatio: u(10, 100),
   };
 }
 
@@ -246,7 +274,7 @@ describe("Accounting identities", () => {
   });
   it("23. with zero discounts, gross Anthropic spend is identical across routes", () => {
     for (const c of CONFIGS) for (const H of HORIZONS) {
-      const r = evaluate({ ...c.inputs, awsDiscount: 0, gcpDiscount: 0, directDiscount: 0 }, H);
+      const r = evaluate({ ...c.inputs, awsDiscount: 0, gcpDiscount: 0, directDiscount: 0, geminiShare: 0 }, H);
       const g = r.routes.nothing.totals.gross;
       near(r.routes.aws.totals.gross, g, 1e-9);
       near(r.routes.gcp.totals.gross, g, 1e-9);

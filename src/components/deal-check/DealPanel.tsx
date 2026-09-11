@@ -2,7 +2,7 @@
 
 import { useRef, useState, useSyncExternalStore } from "react";
 import type { Inputs, Result } from "@/lib/deal-check/engine";
-import { dealFileName, deleteDeal, parseDeal, saveDeal, savedDealsSnapshot, serializeDeal, serverDealsSnapshot, subscribeSavedDeals, toDealFile, type DealFile, type DealMeta, type Region } from "@/lib/deal-check/construct";
+import { dealFileName, deleteDeal, parseDeal, saveDeal, savedDealsSnapshot, serializeDeal, serverDealsSnapshot, subscribeSavedDeals, toDealFile, type DealFile, type DealMeta } from "@/lib/deal-check/construct";
 import example from "@/lib/deal-check/deals/example.deal.json";
 
 export default function DealPanel({ meta, inputs, result, onMeta, onLoad }: {
@@ -46,18 +46,10 @@ export default function DealPanel({ meta, inputs, result, onMeta, onLoad }: {
 
   return (
     <div className="dc-card" style={{ marginBottom: 14 }}>
-      <h2>Customer &amp; deal</h2>
+      <h2>Customer</h2>
       <div className="dc-field">
         <div className="lab"><span>Customer</span></div>
         <div className="ctl single"><input className="dc-num" style={{ textAlign: "left" }} value={meta.customer} onChange={(e) => set({ customer: e.target.value })} placeholder="Customer name" aria-label="Customer name" /></div>
-      </div>
-      <div className="dc-field">
-        <div className="lab"><span>Region</span></div>
-        <div className="ctl single">
-          <select className="dc-select" value={meta.region} onChange={(e) => set({ region: e.target.value as Region })} aria-label="Region">
-            <option value="">Select region</option><option value="Americas">Americas (25 slots)</option><option value="JAPAC">JAPAC (10 slots)</option><option value="EMEA">EMEA (5 slots)</option>
-          </select>
-        </div>
       </div>
       <label className="dc-check"><input type="checkbox" checked={meta.onTargetList} onChange={(e) => set({ onTargetList: e.target.checked })} /><span>Confirmed on the 40-account target list</span></label>
       <div className="dc-field">

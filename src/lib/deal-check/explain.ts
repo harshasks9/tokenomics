@@ -58,6 +58,11 @@ export function explain(result: Result): Explanation {
     if (g.migrates && i.migStart + Math.max(0, i.migRamp - 1) >= g.google.windowStart + 3) google += ` Part of the earning window passes before the workload is fully on GCP, which is why the window and the migration timing matter.`;
   }
 
+  if (i.geminiShare > 0 && g.totals.geminiSpend > 0) {
+    const saved = result.routes.aws.totals.gross - g.totals.gross;
+    google += ` ${i.geminiShare}% of the traffic is served by Gemini at ${i.geminiCostRatio}% of the Anthropic cost, which takes ${usd(Math.abs(saved))} ${saved >= 0 ? "off" : "onto"} the model bill compared with AWS; Gemini spend is Cloud AI consumption, so the credits can be applied to it.`;
+  }
+
   // Commits and migration
   const parts: string[] = [];
   const awsStrandGap = g.awsCommit.stranded - a.awsCommit.stranded;

@@ -49,10 +49,10 @@ Vercel project at this repository.
 |---|---|
 | `terms.ts` | Every program constant with a `source` tag: `documented` (Google internal sales summary), `field` (AWS MAP 2.0, one region, unverified), `assumption` (not in either source). Also the per-input metadata (label, tag, range, help). Nothing in the engine may use a term that is not declared here. |
 | `engine.ts` | The pure economic model: monthly simulation of three routes, MAP credits (baseline, quarterly settlement, 10% ARR gate, multi-year, extension/restructure), Google credits (12-month window, last-quarter baseline, $5M cap, Cloud-AI-only consumability), AWS and GCP commit consumption and stranding (marketplace cap per leg, existing-commit-first), net cost, verdict rank, break-even, driver sentence, flags, reverse solvers and sensitivity. |
-| `presets.ts` | The 24 named scenarios. Each sets only the inputs it needs. |
+| `presets.ts` | The seven scenarios that come up most often, including the Gemini offload play. Each sets only the inputs it needs. |
 | `summary.ts` | Plain-text account summary and the "smallest change to flip" sentence. |
 | `explain.ts` | Plain-language explanation of a result and the levers that move it. |
-| `construct.ts` | Deal files (save, export, import, browser list) and the deal construct: the Google offer as written for one customer, with the offer's checks, credit pool, milestones, approvals and request steps. |
+| `construct.ts` | Deal files (save, export, import, browser list), the deal construct (the Google offer as written for one customer, with the offer's checks, credit pool, milestones, approvals and request steps) and the email to DPM. |
 | `deals/` | `example.deal.json` template and the file schema notes. Real customer files stay out of this public repo. |
 | `format.ts` | Money, percent and month formatting. |
 | `engine.test.ts` | The 37-test suite: hand-computed credit and commit mechanics, accounting identities over all presets plus 200 seeded random input sets, verdict and solver behaviour. |
@@ -85,3 +85,19 @@ panel, inputs (slider + number with a source tag per label), horizon tabs,
 economics table, cumulative net-cost chart (inline SVG), reverse-solve table,
 sensitivity chart (inline SVG), flags, copyable summary, methodology and sources
 panels. Below 920px the inputs stack above the results with the verdict first.
+
+## The Gemini play
+
+On the Google route a share of the traffic can be served by Gemini at a cost
+ratio to Anthropic (`geminiShare`, `geminiCostRatio`). That spend is billed at
+the ratio, counts as GCP Cloud AI consumption (so the offer's credits can be
+applied to it) and consumes GCP commit without the marketplace cap; the
+remaining traffic stays on Anthropic via marketplace and earns the credits.
+`geminiPlay()` finds the smallest share at which Google beats AWS, and the
+verdict, overview and DPM email state it.
+
+## Inputs kept out of the assumptions panel
+
+`gcpCap`, `mktCapPct`, `mapCommitArr`, `awsCreditUse` and `directDiscount`
+stay in the engine (they are program constants or test hooks) but are marked
+`hidden` in `INPUT_META` and do not appear as assumptions.
