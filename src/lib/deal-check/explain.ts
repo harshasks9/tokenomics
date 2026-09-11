@@ -51,7 +51,9 @@ export function explain(result: Result): Explanation {
   } else {
     const base = i.gcpBaselineQ > 0 ? `your last full quarter on GCP marketplace (${usd(i.gcpBaselineQ)}, so ${usd(i.gcpBaselineQ * 4)}/yr)` : `your last full quarter on GCP marketplace, which is zero`;
     google = `The Google offer compares each quarter of marketplace spend with ${base}, for the 12 months after signing. ${i.gcpBaselineQ > 0 ? `${usd(f.gcp.incremental)} of ${usd(f.gcp.spend)} counts as incremental` : `Because the workload is new to GCP, all ${usd(f.gcp.spend)} counts as incremental`}, and Google returns ${f.gcp.rate}%: ${usd(f.gcp.gross)}.`;
+    google += ` The pool is sized at signing on the forecast year-one incremental spend (${usd(g.google.forecastY1)}) and paid out as spend milestones.`;
     if (g.google.capBinding) google += ` The ${usd(i.gcpCap)} cap per account trims that to ${usd(f.gcp.earned)}.`;
+    else if (g.google.forecastBinding) google += ` Actual spend runs ahead of the forecast, so the pool of ${usd(g.google.pool)} is the limit.`;
     google += ` The catch is where the credits can go: only against eligible GCP Cloud AI consumption, never against the Anthropic spend itself. With ${usd(i.gcpAiSpend)}/yr of eligible spend, ${usd(f.gcp.usable)} is used within the horizon${f.gcp.usable < f.gcp.earned - 0.005 ? ` and ${usd(f.gcp.earned - f.gcp.usable)} cannot be consumed in time` : ""}.`;
     if (g.migrates && i.migStart + Math.max(0, i.migRamp - 1) >= g.google.windowStart + 3) google += ` Part of the earning window passes before the workload is fully on GCP, which is why the window and the migration timing matter.`;
   }
