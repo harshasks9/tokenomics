@@ -114,6 +114,8 @@ export interface InputMeta {
   label: string;
   source: Source;
   group: InputGroup;
+  /** Kept for the engine and tests but not shown as an assumption. */
+  hidden?: boolean;
   unit?: string;
   min?: number;
   max?: number;
@@ -140,9 +142,9 @@ export const INPUT_META = {
   partnerPass: { label: "Partner pass-back", source: "field", group: "AWS", unit: "%", min: 0, max: 20, step: 1, help: "Added to the MAP rate in indirect deals." },
   mapYears: { label: "MAP years", source: "field", group: "AWS", unit: "years", min: 1, max: 3, step: 1, help: "Year 2+ counts only the increment over the prior year." },
   mapAfter: { label: "After MAP term", source: "field", group: "AWS", help: "None, extension, or partner restructure that resets the baseline to zero." },
-  mapCommitArr: { label: "MAP committed ARR", source: "field", group: "AWS", unit: "$M", min: 0, max: 100, step: 1, help: "0 = year-1 AWS Anthropic spend. Sets the 10% redemption gate." },
+  mapCommitArr: { label: "MAP committed ARR", source: "field", group: "AWS", unit: "$M", min: 0, max: 100, step: 1, help: "0 = year-1 AWS Anthropic spend. Sets the 10% redemption gate." , hidden: true },
   awsDiscount: { label: "AWS price discount", source: "assumption", group: "AWS", unit: "%", min: 0, max: 40, step: 1, help: "Applied to Anthropic-on-Bedrock spend." },
-  awsCreditUse: { label: "AWS credit consumability", source: "assumption", group: "AWS", unit: "%", min: 0, max: 100, step: 5, help: "Share of the AWS bill the credits can be applied to." },
+  awsCreditUse: { label: "AWS credit consumability", source: "assumption", group: "AWS", unit: "%", min: 0, max: 100, step: 5, help: "Share of the AWS bill the credits can be applied to." , hidden: true },
   gcpCommitNew: { label: "New GCP commit", source: "documented", group: "GCP", unit: "$M/yr", min: 0, max: 100, step: 1, help: "Incremental commitment; must be ≥ $10M iACV for eligibility." },
   gcpCommitYears: { label: "New GCP commit years", source: "documented", group: "GCP", unit: "years", min: 1, max: 5, step: 1, help: "Over 3 years needs DPM." },
   gcpCommitExisting: { label: "Existing GCP commit remaining", source: "assumption", group: "GCP", unit: "$M", min: 0, max: 100, step: 1, help: "Unconsumed balance on a current GCP commit." },
@@ -150,12 +152,14 @@ export const INPUT_META = {
   gcpAiSpend: { label: "Eligible GCP Cloud AI spend", source: "assumption", group: "GCP", unit: "$M/yr", min: 0, max: 100, step: 0.5, help: "Non-Anthropic Gen AI consumption the Google credits can offset." },
   gcpOtherSpend: { label: "Other GCP spend", source: "assumption", group: "GCP", unit: "$M/yr", min: 0, max: 100, step: 1, help: "Consumes GCP commit; cannot absorb credits." },
   gcpPct: { label: "Google credit rate", source: "documented", group: "GCP", unit: "%", min: 0, max: 30, step: 1, help: "Up to 10% within DPO authority; above needs DPM." },
-  gcpCap: { label: "Google credit cap", source: "documented", group: "GCP", unit: "$M", min: 0, max: 20, step: 0.5, help: "$5M per strategic account." },
+  gcpCap: { label: "Google credit cap", source: "documented", group: "GCP", unit: "$M", min: 0, max: 20, step: 0.5, help: "$5M per strategic account." , hidden: true },
   gcpForecastY1: { label: "Forecast Y1 incremental marketplace spend", source: "documented", group: "GCP", unit: "$M", min: 0, max: 100, step: 0.5, help: "The credit pool is sized on this forecast at signing. 0 = use the model's own year-one figure." },
-  mktCapPct: { label: "Marketplace share of commit", source: "documented", group: "GCP", unit: "%", min: 0, max: 100, step: 5, help: "Marketplace spend counted against commit, per leg." },
+  mktCapPct: { label: "Marketplace share of commit", source: "documented", group: "GCP", unit: "%", min: 0, max: 100, step: 5, help: "Marketplace spend counted against commit, per leg." , hidden: true },
   mktException: { label: "Marketplace cap exception", source: "documented", group: "GCP", help: "Needs DPM + DPO approval and an exception form." },
   gcpDiscount: { label: "GCP price discount", source: "assumption", group: "GCP", unit: "%", min: 0, max: 40, step: 1, help: "Applied to Anthropic-on-GCP spend." },
-  directDiscount: { label: "Direct price discount", source: "assumption", group: "Customer", unit: "%", min: 0, max: 40, step: 1, help: "Applied to spend that stays direct with Anthropic." },
+  directDiscount: { label: "Direct price discount", source: "assumption", group: "Customer", unit: "%", min: 0, max: 40, step: 1, help: "Applied to spend that stays direct with Anthropic.", hidden: true },
+  geminiShare: { label: "Traffic served by Gemini", source: "assumption", group: "GCP", unit: "%", min: 0, max: 100, step: 5, help: "On the Google route, this share of the workload runs on Gemini; the rest stays on Anthropic via marketplace and earns credits." },
+  geminiCostRatio: { label: "Gemini cost vs Anthropic", source: "assumption", group: "GCP", unit: "%", min: 10, max: 100, step: 5, help: "What the offloaded traffic costs on Gemini as a share of its Anthropic cost." },
 } as const satisfies Record<string, InputMeta>;
 
 export type InputKey = keyof typeof INPUT_META;
@@ -165,3 +169,30 @@ export const SOURCE_LABEL: Record<Source, string> = {
   field: "field-reported",
   assumption: "assumption",
 };
+
+/* ------------------------------------------------------------------ */
+/* Source quotes for the credit mechanics                                */
+/* ------------------------------------------------------------------ */
+
+export interface SourceQuote {
+  source: Source;
+  /** Where in the source document. */
+  where: string;
+  quote: string;
+}
+
+export const CREDIT_SOURCES = {
+  gcpSpend: { source: "documented", where: "Google Private Offer summary — Core Offer", quote: "Earn GCP credits on incremental top-line Anthropic spend on MaaS (Model APIs including PT) via marketplace during the first 12 months from a qualification event." },
+  gcpBaseline: { source: "documented", where: "Google Private Offer summary — Core Offer and Baseline & Scope", quote: "Incremental spend is calculated as last full quarter spend × 4. The baseline is established at the signing of the new or committed contract. Credits apply only to spend above this baseline." },
+  gcpRate: { source: "documented", where: "Google Private Offer summary — Authority & Execution", quote: "DPO has authority to approve up to 10% in GCP credits for 3-year or shorter deals. Additional funding, discounts and other exception requests need to be escalated to Deal Pricing (DPM)." },
+  gcpCap: { source: "documented", where: "Google Private Offer summary — Baseline & Scope and Financial Cap", quote: "Credits will be based on the forecasted Y1 spend for the additional incremental commit. Credit rewards will be spend milestone based. Capped at a maximum of $5M total per strategic account." },
+  gcpUse: { source: "documented", where: "Google Private Offer summary — Credit Scoping", quote: "Credits will be scoped and applicable toward the GCP Cloud AI (Gen AI and Gen AI v2 SKU groups) portfolio (NOT Anthropic 3P spend)." },
+  gcpMkt: { source: "documented", where: "Google Private Offer summary — EA Marketplace Commit Cap", quote: "Marketplace spend is capped at 25% of the associated minimum commitment amount per commit leg. Any exception requests need to be escalated to Deal Pricing (DPM) and DPO for review and approval, and the exception form must be submitted." },
+  gcpEligibility: { source: "documented", where: "Google Private Offer summary — Target Audience and Qualification Events", quote: "40 total participant accounts from a pre-approved list of prioritized targets. No exceptions. Customers must sign the Marketplace ToS and a Marketplace agreement and agree to an incremental GCP commitment increase of at least $10M iACV." },
+  awsSpend: { source: "field", where: "AWS MAP 2.0 — field report, one region, unverified", quote: "Tagged spend is measured against baseline; the baseline is the customer's prior-year AWS consumption, zero for net-new customers." },
+  awsBaseline: { source: "field", where: "AWS MAP 2.0 — field report, one region, unverified", quote: "Baseline = prior-year AWS consumption. Multi-year (2–3 years) possible; in year 2 only the increment over year 1 counts." },
+  awsRate: { source: "field", where: "AWS MAP 2.0 — field report, one region, unverified", quote: "25% of incremental spend is returned as credits, settled quarterly. Same rate direct and indirect; in indirect deals partners pass 5%+ back to the customer." },
+  awsGate: { source: "field", where: "AWS MAP 2.0 — field report, one region, unverified", quote: "Credit redemption activates once Q1 tagged spend reaches 10% of committed ARR. Soft one-year commit with no shortfall penalty." },
+  awsUse: { source: "assumption", where: "Modelling assumption", quote: "AWS credits are usable against any AWS bill: Bedrock plus other AWS spend." },
+  gemini: { source: "assumption", where: "Modelling assumption", quote: "Traffic served by Gemini is billed at the cost ratio entered, counts as GCP Cloud AI consumption (so Google credits can be applied to it) and consumes GCP commit without the marketplace cap." },
+} as const satisfies Record<string, SourceQuote>;

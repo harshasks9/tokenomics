@@ -3,7 +3,6 @@
   "savedAt": "2026-09-11T00:00:00.000Z",
   "meta": {
     "customer": "Example Co (template)",
-    "region": "Americas",
     "onTargetList": true,
     "owner": "",
     "notes": "Template deal. Duplicate, rename, and adjust; keep real customer files out of this public repository."
@@ -42,6 +41,8 @@
     "mktCapPct": 25,
     "mktException": false,
     "gcpDiscount": 0,
-    "directDiscount": 0
+    "directDiscount": 0,
+    "geminiShare": 0,
+    "geminiCostRatio": 40
   }
 }

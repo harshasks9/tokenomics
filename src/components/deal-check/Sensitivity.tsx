@@ -5,12 +5,12 @@ import { sensitivity, type Inputs, type NumericKey } from "@/lib/deal-check/engi
 import { INPUT_META } from "@/lib/deal-check/terms";
 import { usd } from "@/lib/deal-check/format";
 
-const PARAMS: NumericKey[] = ["anthSpend", "growth", "migPct", "migStart", "migCost", "awsBaseline", "awsCommitRemaining", "awsOtherSpend", "mapPct", "partnerPass", "mapCommitArr", "gcpAiSpend", "gcpOtherSpend", "gcpPct", "gcpCap", "mktCapPct", "gcpCommitNew", "gcpCommitExisting", "awsDiscount", "gcpDiscount", "gcpSignMonth"];
+const PARAMS: NumericKey[] = ["geminiShare", "geminiCostRatio", "anthSpend", "growth", "migPct", "migStart", "migCost", "awsBaseline", "awsCommitRemaining", "awsOtherSpend", "mapPct", "partnerPass", "gcpAiSpend", "gcpOtherSpend", "gcpPct", "gcpForecastY1", "gcpCommitNew", "gcpCommitExisting", "awsDiscount", "gcpDiscount", "gcpSignMonth"];
 
 const W = 720, H = 260, PAD = { l: 52, r: 20, t: 14, b: 34 };
 
 export default function Sensitivity({ inputs }: { inputs: Inputs }) {
-  const [key, setKey] = useState<NumericKey>("gcpAiSpend");
+  const [key, setKey] = useState<NumericKey>("geminiShare");
   const [hover, setHover] = useState<number | null>(null);
   const meta = INPUT_META[key];
   const lo = "min" in meta ? meta.min : 0, hi = "max" in meta ? meta.max : 100;

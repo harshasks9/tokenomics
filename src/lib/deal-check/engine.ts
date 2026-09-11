@@ -52,6 +52,10 @@ export interface Inputs {
   mktException: boolean;
   gcpDiscount: number;
   directDiscount: number;
+  /** Share of the workload on the Google route served by Gemini instead of Anthropic (%). */
+  geminiShare: number;
+  /** Gemini cost for that traffic as a share of what Anthropic would have cost (%). */
+  geminiCostRatio: number;
   /** Test hook: 36 monthly $M values overriding the growth formula. */
   spendSeries?: number[];
 }
@@ -96,6 +100,8 @@ export function defaults(): Inputs {
     mktException: false,
     gcpDiscount: 0,
     directDiscount: 0,
+    geminiShare: 0,
+    geminiCostRatio: 40,
   };
 }
 
@@ -143,6 +149,9 @@ export interface Series {
   onAws: number[];
   onGcp: number[];
   onDirect: number[];
+  /** Gemini spend on the Google route (the offloaded share, at the cost ratio). */
+  gemini: number[];
+  /** Anthropic spend after platform discounts. */
   anthNet: number[];
   mig: number[];
   awsCredit: number[];
@@ -156,7 +165,10 @@ export interface Series {
 }
 
 export interface Totals {
+  /** All model spend within the horizon: Anthropic after discounts plus Gemini. */
   gross: number;
+  anthropicSpend: number;
+  geminiSpend: number;
   mig: number;
   strandedWithin: number;
   strandedBeyond: number;
@@ -296,7 +308,9 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
   const migStart = Math.round(inp.migStart);
   const spend = spendSeries(inp);
 
-  const onAws = zeros(), onGcp = zeros(), onGcpGross = zeros(), onDirect = zeros(), anthNet = zeros(), mig = zeros();
+  const onAws = zeros(), onGcp = zeros(), onGcpGross = zeros(), onDirect = zeros(), gemini = zeros(), anthNet = zeros(), mig = zeros();
+  const geminiShare = route === "gcp" ? clamp(inp.geminiShare, 0, 100) / 100 : 0;
+  const geminiRatio = Math.max(0, inp.geminiCostRatio) / 100;
 
   // 2. Allocation and discounts
   for (let m = 0; m < MONTHS; m++) {
@@ -310,8 +324,10 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
       alloc[target] = S;
     }
     onAws[m] = alloc.aws * (1 - inp.awsDiscount / 100);
-    onGcpGross[m] = alloc.gcp;
-    onGcp[m] = alloc.gcp * (1 - inp.gcpDiscount / 100);
+    // On the Google route a share of the GCP-bound traffic is served by Gemini at its own cost.
+    gemini[m] = alloc.gcp * geminiShare * geminiRatio;
+    onGcpGross[m] = alloc.gcp * (1 - geminiShare);
+    onGcp[m] = onGcpGross[m] * (1 - inp.gcpDiscount / 100);
     onDirect[m] = alloc.direct * (1 - inp.directDiscount / 100);
     anthNet[m] = onAws[m] + onGcp[m] + onDirect[m];
   }
@@ -419,7 +435,8 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
   {
     let bal = 0;
     for (let m = 0; m < MONTHS; m++) {
-      const cap = Math.max(0, inp.gcpAiSpend / 12);
+      // Google credits apply to Cloud AI consumption: the eligible spend entered plus any Gemini spend.
+      const cap = Math.max(0, inp.gcpAiSpend / 12 + gemini[m]);
       const use = Math.min(bal, cap);
       gcpUsed[m] = use;
       bal -= use;
@@ -491,7 +508,7 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
       legCapLeft.set(leg.index, left - take); counted += take; rem -= take;
     }
     excessMkt[m] = onGcp[m] - counted;
-    let pool = counted + inp.gcpAiSpend / 12 + inp.gcpOtherSpend / 12;
+    let pool = counted + gemini[m] + inp.gcpAiSpend / 12 + inp.gcpOtherSpend / 12;
     if (existingActive) {
       const take = Math.min(pool, Math.max(0, E - existingConsumed));
       lastPoolExisting = pool;
@@ -532,12 +549,13 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
   const net = zeros(), cumNet = zeros();
   let cum = 0;
   for (let m = 0; m < MONTHS; m++) {
-    net[m] = anthNet[m] + mig[m] + stranded[m] - awsUsed[m] - gcpUsed[m];
+    net[m] = anthNet[m] + gemini[m] + mig[m] + stranded[m] - awsUsed[m] - gcpUsed[m];
     cum += net[m];
     cumNet[m] = cum;
   }
 
-  const gross = sum(anthNet, 0, H);
+  const anthropicSpend = sum(anthNet, 0, H), geminiSpend = sum(gemini, 0, H);
+  const gross = anthropicSpend + geminiSpend;
   const migT = sum(mig, 0, H);
   const strandedWithin = sum(stranded, 0, H);
   const strandedBeyond =
@@ -553,6 +571,8 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
 
   const totals: Totals = {
     gross,
+    anthropicSpend,
+    geminiSpend,
     mig: migT,
     strandedWithin,
     strandedBeyond,
@@ -576,7 +596,7 @@ function simulateRoute(inp: Inputs, route: Route, H: Horizon): RouteResult {
   return {
     route,
     migrates,
-    series: { spend, onAws, onGcp, onDirect, anthNet, mig, awsCredit, gcpCredit, awsUsed, gcpUsed, stranded, excessMkt, net, cumNet },
+    series: { spend, onAws, onGcp, onDirect, gemini, anthNet, mig, awsCredit, gcpCredit, awsUsed, gcpUsed, stranded, excessMkt, net, cumNet },
     totals,
     google,
     map,
@@ -831,6 +851,9 @@ export function reverseSolve(inputs: Inputs, horizon: Horizon = inputs.horizon):
     (v, s) => v === null ? (s === "always" ? always : "Google cannot win at any credit rate in 0–50%.") : `Google wins at a ${fmt(v, "%")} credit rate${v > GOOGLE.dpoMaxPct.value ? " — above DPO authority, needs DPM" : ""}.`,
     (v) => v > GOOGLE.dpoMaxPct.value);
 
+  numeric("geminiShare", "Gemini share of traffic", 0, 100, "min", "%",
+    (v, s) => v === null ? (s === "always" ? always : "Even routing all traffic to Gemini does not let Google win.") : `Serving ${fmt(v, "%")} of the traffic with Gemini lowers the bill enough for Google to win; the rest stays on Anthropic with credits.`);
+
   // Marketplace exception
   {
     const withEx = advantageOf({ ...inp, mktException: true });
@@ -927,5 +950,42 @@ export function creditFunnel(result: Result): { aws: CreditFunnel; gcp: CreditFu
   return {
     aws: build(a.map.quarters, i.mapPct + i.partnerPass, a.totals.awsUsed, i.awsOtherSpend + a.map.yearTagged[0]),
     gcp: build(g.google.quarters, i.gcpPct, g.totals.gcpUsed, i.gcpAiSpend),
+  };
+}
+
+
+/* ------------------------------------------------------------------ */
+/* The Gemini play                                                       */
+/* ------------------------------------------------------------------ */
+
+export interface GeminiPlay {
+  /** Current Gemini share (%). */
+  share: number;
+  /** Smallest Gemini share at which Google beats AWS, or null if none in 0–100. */
+  minShare: number | null;
+  /** True when Google already wins at the current share. */
+  winsNow: boolean;
+  /** Anthropic spend removed by the current share, as a share of the migrated Anthropic bill (%). */
+  anthropicCut: number;
+  /** Total model bill reduction from the current share (%). */
+  billCut: number;
+  /** Advantage at the current share and at the recommended share. */
+  advantageNow: number;
+  advantageAtMin: number | null;
+}
+
+export function geminiPlay(inputs: Inputs, horizon: Horizon = inputs.horizon): GeminiPlay {
+  const inp = { ...inputs, horizon };
+  const advantageNow = advantageOf(inp);
+  const minShare = solveParam(inp, "geminiShare", 0, 100, "min");
+  const ratio = Math.max(0, inp.geminiCostRatio) / 100;
+  return {
+    share: inp.geminiShare,
+    minShare: minShare === null ? (advantageNow > 0 ? 0 : null) : minShare,
+    winsNow: advantageNow > 0,
+    anthropicCut: inp.geminiShare,
+    billCut: inp.geminiShare * (1 - ratio),
+    advantageNow,
+    advantageAtMin: minShare === null ? null : advantageOf({ ...inp, geminiShare: minShare + 1e-6 }),
   };
 }

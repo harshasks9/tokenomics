@@ -7,15 +7,17 @@ import { PRESETS } from "@/lib/deal-check/presets";
 
 type NumKey = { [K in InputKey]: Inputs[K] extends number ? K : never }[InputKey];
 
-/** The handful of assumptions that decide most deals. Pro exposes everything. */
-const SIMPLE_KEYS: InputKey[] = ["platform", "anthSpend", "growth", "awsBaseline", "migPct", "awsCommitRemaining", "gcpAiSpend", "gcpCommitNew"];
+/** The assumptions that decide most deals. Pro exposes everything that has an effect. */
+const SIMPLE_KEYS: InputKey[] = ["platform", "anthSpend", "growth", "awsBaseline", "migPct", "awsCommitRemaining", "gcpAiSpend", "gcpCommitNew", "geminiShare"];
 
-const GROUPS: { name: InputGroup; keys: InputKey[] }[] = [
-  { name: "Customer", keys: ["platform", "anthSpend", "growth", "awsBaseline", "gcpBaselineQ", "directDiscount"] },
+const RAW_GROUPS: { name: InputGroup; keys: InputKey[] }[] = [
+  { name: "Customer", keys: ["platform", "anthSpend", "growth", "awsBaseline", "gcpBaselineQ"] },
   { name: "Migration", keys: ["migPct", "migStart", "migRamp", "migCost", "gcpSignMonth"] },
-  { name: "AWS", keys: ["awsCommitRemaining", "awsCommitMonths", "awsOtherSpend", "mapPct", "partnerPass", "mapYears", "mapAfter", "mapCommitArr", "awsDiscount", "awsCreditUse"] },
-  { name: "GCP", keys: ["gcpCommitNew", "gcpCommitYears", "gcpCommitExisting", "gcpCommitExistingMonths", "gcpAiSpend", "gcpOtherSpend", "gcpPct", "gcpCap", "mktCapPct", "mktException", "gcpDiscount"] },
+  { name: "AWS", keys: ["awsCommitRemaining", "awsCommitMonths", "awsOtherSpend", "mapPct", "partnerPass", "mapYears", "mapAfter", "awsDiscount"] },
+  { name: "GCP", keys: ["gcpCommitNew", "gcpCommitYears", "gcpCommitExisting", "gcpCommitExistingMonths", "gcpAiSpend", "gcpOtherSpend", "gcpPct", "gcpForecastY1", "mktException", "gcpDiscount", "geminiShare", "geminiCostRatio"] },
 ];
+const isHidden = (k: InputKey): boolean => Boolean((INPUT_META[k] as { hidden?: boolean }).hidden);
+const GROUPS = RAW_GROUPS.map((g) => ({ ...g, keys: g.keys.filter((k) => !isHidden(k)) }));
 
 function Tag({ k }: { k: InputKey }) {
   const s = INPUT_META[k].source;
@@ -27,10 +29,7 @@ function NumberField({ k, value, onChange }: { k: NumKey; value: number; onChang
   const min = "min" in m ? m.min : 0, max = "max" in m ? m.max : 100, step = "step" in m ? m.step : 1;
   return (
     <div className="dc-field">
-      <div className="lab">
-        <span>{m.label}<Tag k={k} /></span>
-        {"unit" in m && m.unit && <span className="unit">{m.unit}</span>}
-      </div>
+      <div className="lab"><span>{m.label}<Tag k={k} /></span>{"unit" in m && m.unit && <span className="unit">{m.unit}</span>}</div>
       <div className="ctl">
         <input type="range" min={min} max={max} step={step} value={Math.min(max, Math.max(min, value))} onChange={(e) => onChange(Number(e.target.value))} aria-label={m.label} />
         <input className="dc-num num" type="number" step={step} value={value} onChange={(e) => onChange(e.target.value === "" ? 0 : Number(e.target.value))} aria-label={`${m.label} value`} />
@@ -78,33 +77,28 @@ export default function Controls({ inputs, presetId, onChange, onPreset, onReset
     const nk = k as NumKey;
     return <NumberField key={k} k={nk} value={inputs[nk]} onChange={(v) => onChange({ [nk]: v } as Partial<Inputs>)} />;
   };
-  const proOnly = GROUPS.flatMap((g) => g.keys).filter((k) => !SIMPLE_KEYS.includes(k) && k !== "horizon").length;
+  const proOnly = GROUPS.flatMap((g) => g.keys).filter((k) => !SIMPLE_KEYS.includes(k)).length;
   return (
     <div className="dc-card">
       <div className="dc-headrow">
-        <h2 style={{ margin: 0 }}>Assumptions</h2>
-        <div className="dc-tabs" role="tablist" aria-label="Detail level">
+        <h2>Assumptions</h2>
+        <div className="dc-tabs small" role="tablist" aria-label="Detail level">
           <button role="tab" aria-selected={mode === "simple"} onClick={() => setMode("simple")}>Simple</button>
           <button role="tab" aria-selected={mode === "pro"} onClick={() => setMode("pro")}>Pro</button>
         </div>
       </div>
       <div className="dc-toolbar">
-        <select className="dc-select" value={presetId} onChange={(e) => onPreset(e.target.value)} aria-label="Preset">
-          <option value="">Preset scenario…</option>
+        <select className="dc-select" value={presetId} onChange={(e) => onPreset(e.target.value)} aria-label="Scenario">
+          <option value="">Scenario…</option>
           {PRESETS.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
         </select>
         <button className="dc-btn" onClick={onReset}>Reset</button>
       </div>
       {preset && <p className="dc-presetnote">{preset.note}</p>}
-
       {mode === "simple" ? (
         <>
-          <p className="dc-presetnote">The eight assumptions that decide most deals. Everything else sits at its default{presetId ? " or the preset's value" : ""}.</p>
           {SIMPLE_KEYS.map(field)}
-          <p className="dc-presetnote" style={{ marginTop: 14 }}>
-            Pro adds {proOnly} more: migration timing and cost, commit terms, program rates, caps and gates, discounts, credit consumability.{" "}
-            <button className="dc-link" onClick={() => setMode("pro")}>Switch to Pro</button>
-          </p>
+          <p className="dc-presetnote" style={{ marginTop: 14 }}>Pro adds {proOnly} more: migration timing and cost, commit terms, program rates, forecast sizing, discounts. <button className="dc-link" onClick={() => setMode("pro")}>Switch to Pro</button></p>
         </>
       ) : (
         GROUPS.map((g, gi) => (

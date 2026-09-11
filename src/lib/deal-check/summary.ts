@@ -28,7 +28,7 @@ export function accountSummary(result: Result): string {
   const lines: string[] = [];
   lines.push(`Anthropic workload deal check — ${H}-month horizon`);
   lines.push("");
-  lines.push(`Today: ${usd(i.anthSpend)}/yr Anthropic spend ${PLATFORM_LABEL[i.platform]}, ${i.growth}%/yr growth, ${i.migPct}% of the workload moving from month ${i.migStart}.`);
+  lines.push(`Today: ${usd(i.anthSpend)}/yr Anthropic spend ${PLATFORM_LABEL[i.platform]}, ${i.growth}%/yr growth, ${i.migPct}% of the workload moving from month ${i.migStart}${i.geminiShare > 0 ? `; ${i.geminiShare}% of the traffic served by Gemini on the Google route` : ""}.`);
   lines.push("");
   lines.push(`AWS MAP 2.0 (field-reported terms): usable credits ${usd(a.creditsUsed)} (${pct(a.effectiveIncentive)} of spend), net cost ${usd(a.net)}, soft commit ${usd(a.incrementalCommit)}.`);
   lines.push(`Google Private Offer: usable credits ${usd(g.creditsUsed)} (${pct(g.effectiveIncentive)} of spend), net cost ${usd(g.net)}, hard commit ${usd(g.incrementalCommit)}.`);
@@ -46,7 +46,7 @@ export function accountSummary(result: Result): string {
   lines.push("Inputs:");
   for (const [k, meta] of Object.entries(INPUT_META)) {
     const v = i[k as keyof typeof i];
-    if (v === undefined) continue;
+    if (v === undefined || ("hidden" in meta && meta.hidden)) continue;
     const shown = typeof v === "boolean" ? (v ? "yes" : "no") : `${v}${"unit" in meta && meta.unit ? " " + meta.unit : ""}`;
     lines.push(`- ${meta.label}: ${shown} [${meta.source}]`);
   }
