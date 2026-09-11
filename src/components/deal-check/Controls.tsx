@@ -1,10 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import type { Inputs, MapAfter, Platform } from "@/lib/deal-check/engine";
 import { INPUT_META, SOURCE_LABEL, type InputGroup, type InputKey } from "@/lib/deal-check/terms";
 import { PRESETS } from "@/lib/deal-check/presets";
 
 type NumKey = { [K in InputKey]: Inputs[K] extends number ? K : never }[InputKey];
+
+/** The handful of assumptions that decide most deals. Pro exposes everything. */
+const SIMPLE_KEYS: InputKey[] = ["platform", "anthSpend", "growth", "awsBaseline", "migPct", "awsCommitRemaining", "gcpAiSpend", "gcpCommitNew"];
 
 const GROUPS: { name: InputGroup; keys: InputKey[] }[] = [
   { name: "Customer", keys: ["platform", "anthSpend", "growth", "awsBaseline", "gcpBaselineQ", "directDiscount"] },
@@ -54,10 +58,36 @@ function SelectField<T extends string>({ k, value, options, onChange }: { k: Inp
 export default function Controls({ inputs, presetId, onChange, onPreset, onReset }: {
   inputs: Inputs; presetId: string; onChange: (p: Partial<Inputs>) => void; onPreset: (id: string) => void; onReset: () => void;
 }) {
+  const [mode, setMode] = useState<"simple" | "pro">("simple");
   const preset = PRESETS.find((p) => p.id === presetId);
+  const field = (k: InputKey) => {
+    if (k === "platform")
+      return <SelectField<Platform> key={k} k={k} value={inputs.platform} onChange={(v) => onChange({ platform: v })}
+        options={[{ v: "direct", l: "Direct with Anthropic" }, { v: "aws", l: "AWS Bedrock" }, { v: "gcp", l: "GCP marketplace" }]} />;
+    if (k === "mapAfter")
+      return <SelectField<MapAfter> key={k} k={k} value={inputs.mapAfter} onChange={(v) => onChange({ mapAfter: v })}
+        options={[{ v: "none", l: "Nothing" }, { v: "extend", l: "Extension (increment over prior year)" }, { v: "restructure", l: "Partner restructure (baseline reset to zero)" }]} />;
+    if (k === "mktException")
+      return (
+        <label key={k} className="dc-check">
+          <input type="checkbox" checked={inputs.mktException} onChange={(e) => onChange({ mktException: e.target.checked })} />
+          <span>{INPUT_META[k].label}<Tag k={k} /></span>
+        </label>
+      );
+    if (k === "horizon") return null;
+    const nk = k as NumKey;
+    return <NumberField key={k} k={nk} value={inputs[nk]} onChange={(v) => onChange({ [nk]: v } as Partial<Inputs>)} />;
+  };
+  const proOnly = GROUPS.flatMap((g) => g.keys).filter((k) => !SIMPLE_KEYS.includes(k) && k !== "horizon").length;
   return (
     <div className="dc-card">
-      <h2>Inputs</h2>
+      <div className="dc-headrow">
+        <h2 style={{ margin: 0 }}>Assumptions</h2>
+        <div className="dc-tabs" role="tablist" aria-label="Detail level">
+          <button role="tab" aria-selected={mode === "simple"} onClick={() => setMode("simple")}>Simple</button>
+          <button role="tab" aria-selected={mode === "pro"} onClick={() => setMode("pro")}>Pro</button>
+        </div>
+      </div>
       <div className="dc-toolbar">
         <select className="dc-select" value={presetId} onChange={(e) => onPreset(e.target.value)} aria-label="Preset">
           <option value="">Preset scenario…</option>
@@ -67,29 +97,23 @@ export default function Controls({ inputs, presetId, onChange, onPreset, onReset
       </div>
       {preset && <p className="dc-presetnote">{preset.note}</p>}
 
-      {GROUPS.map((g, gi) => (
-        <details key={g.name} className="dc-group" open={gi < 2}>
-          <summary>{g.name}</summary>
-          {g.keys.map((k) => {
-            if (k === "platform")
-              return <SelectField<Platform> key={k} k={k} value={inputs.platform} onChange={(v) => onChange({ platform: v })}
-                options={[{ v: "direct", l: "Direct with Anthropic" }, { v: "aws", l: "AWS Bedrock" }, { v: "gcp", l: "GCP marketplace" }]} />;
-            if (k === "mapAfter")
-              return <SelectField<MapAfter> key={k} k={k} value={inputs.mapAfter} onChange={(v) => onChange({ mapAfter: v })}
-                options={[{ v: "none", l: "Nothing" }, { v: "extend", l: "Extension (increment over prior year)" }, { v: "restructure", l: "Partner restructure (baseline reset to zero)" }]} />;
-            if (k === "mktException")
-              return (
-                <label key={k} className="dc-check">
-                  <input type="checkbox" checked={inputs.mktException} onChange={(e) => onChange({ mktException: e.target.checked })} />
-                  <span>{INPUT_META[k].label}<Tag k={k} /></span>
-                </label>
-              );
-            if (k === "horizon") return null;
-            const nk = k as NumKey;
-            return <NumberField key={k} k={nk} value={inputs[nk]} onChange={(v) => onChange({ [nk]: v } as Partial<Inputs>)} />;
-          })}
-        </details>
-      ))}
+      {mode === "simple" ? (
+        <>
+          <p className="dc-presetnote">The eight assumptions that decide most deals. Everything else sits at its default{presetId ? " or the preset's value" : ""}.</p>
+          {SIMPLE_KEYS.map(field)}
+          <p className="dc-presetnote" style={{ marginTop: 14 }}>
+            Pro adds {proOnly} more: migration timing and cost, commit terms, program rates, caps and gates, discounts, credit consumability.{" "}
+            <button className="dc-link" onClick={() => setMode("pro")}>Switch to Pro</button>
+          </p>
+        </>
+      ) : (
+        GROUPS.map((g, gi) => (
+          <details key={g.name} className="dc-group" open={gi < 2}>
+            <summary>{g.name}</summary>
+            {g.keys.map(field)}
+          </details>
+        ))
+      )}
     </div>
   );
 }

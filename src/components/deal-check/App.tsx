@@ -6,6 +6,8 @@ import { ChevronLeft } from "lucide-react";
 import { defaults, evaluate, reverseSolve, type Horizon, type Inputs } from "@/lib/deal-check/engine";
 import { PRESETS } from "@/lib/deal-check/presets";
 import Verdict from "./Verdict";
+import Explanation from "./Explanation";
+import CreditFlow from "./CreditFlow";
 import Controls from "./Controls";
 import EconomicsTable from "./EconomicsTable";
 import CumChart from "./CumChart";
@@ -64,11 +66,20 @@ export default function DealCheckApp() {
 
       <Verdict result={result} solve={solve} tabs={tabs} />
 
+      <section className="dc-card" style={{ marginTop: 14 }}>
+        <h2>Why the math comes out this way</h2>
+        <Explanation result={result} />
+      </section>
+
       <div className="dc-grid">
         <aside className="dc-inputs">
           <Controls inputs={inputs} presetId={presetId} onChange={update} onPreset={applyPreset} onReset={reset} />
         </aside>
         <main className="dc-results">
+          <section className="dc-card">
+            <div className="dc-headrow"><h2 style={{ margin: 0 }}>How the credits work</h2>{tabs}</div>
+            <CreditFlow result={result} />
+          </section>
           <section className="dc-card">
             <div className="dc-headrow"><h2 style={{ margin: 0 }}>Economics over {inputs.horizon} months</h2>{tabs}</div>
             <EconomicsTable result={result} />

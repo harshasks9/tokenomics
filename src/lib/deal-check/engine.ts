@@ -849,3 +849,42 @@ export function sensitivity(inputs: Inputs, key: NumericKey, lo: number, hi: num
   }
   return out;
 }
+
+/* ------------------------------------------------------------------ */
+/* Credit funnel — how each program turns spend into usable credit       */
+/* ------------------------------------------------------------------ */
+
+export interface CreditFunnel {
+  /** Spend the program measures within the horizon (complete quarters only). */
+  spend: number;
+  /** Baseline the program subtracts over the same quarters. */
+  baseline: number;
+  /** Spend above baseline. */
+  incremental: number;
+  /** Credit rate applied (%). */
+  rate: number;
+  /** Rate × incremental, before any cap or gate. */
+  gross: number;
+  /** Credit actually settled within the horizon (after cap or gate). */
+  earned: number;
+  /** Credit applied to a bill within the horizon. */
+  usable: number;
+  /** $M/yr of bill the credits may be applied against. */
+  absorbs: number;
+  quarters: Quarter[];
+}
+
+/** Per-program funnel from measured spend down to usable credit, within the result's horizon. */
+export function creditFunnel(result: Result): { aws: CreditFunnel; gcp: CreditFunnel } {
+  const H = result.horizon, i = result.inputs;
+  const build = (qs: Quarter[], rate: number, usable: number, absorbs: number): CreditFunnel => {
+    const inH = qs.filter((q) => q.month < H);
+    const s = (f: (q: Quarter) => number) => inH.reduce((t, q) => t + f(q), 0);
+    return { spend: s((q) => q.spend), baseline: s((q) => q.baseline), incremental: s((q) => q.incremental), rate, gross: s((q) => q.credit), earned: s((q) => q.settled), usable, absorbs, quarters: inH };
+  };
+  const a = result.routes.aws, g = result.routes.gcp;
+  return {
+    aws: build(a.map.quarters, i.mapPct + i.partnerPass, a.totals.awsUsed, i.awsOtherSpend + a.map.yearTagged[0]),
+    gcp: build(g.google.quarters, i.gcpPct, g.totals.gcpUsed, i.gcpAiSpend),
+  };
+}
