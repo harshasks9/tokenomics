@@ -96,3 +96,35 @@ export function explanationText(result: Result): string {
   const e = explain(result);
   return [e.opening, e.aws, e.google, e.commits, e.verdict, "", "What moves the answer:", ...e.levers.map((l) => `- ${l}`)].join("\n");
 }
+
+/** The result in three plain sentences: what AWS pays, what Google pays, what else separates them. */
+export function threeSentences(result: Result): [string, string, string] {
+  const { inputs: i, horizon: H, routes } = result;
+  const f = creditFunnel(result);
+  const a = routes.aws, g = routes.gcp;
+  const yrs = H === 12 ? "a year" : `${H} months`;
+  let s1: string;
+  if (f.aws.spend <= 1e-9) s1 = `AWS MAP pays nothing here: no Anthropic spend lands on Bedrock within ${yrs}.`;
+  else if (f.aws.incremental <= 1e-9) s1 = `AWS MAP pays nothing, because MAP only rewards Bedrock spend above last year's ${usd(i.awsBaseline)} and this spend does not rise above it.`;
+  else s1 = `AWS MAP pays ${f.aws.rate}% only on Bedrock spend above last year's ${usd(i.awsBaseline)}: ${usd(f.aws.earned)} of credit over ${yrs}${a.map.heldForever > 0.005 ? `, with ${usd(a.map.heldForever)} more held back by the 10%-of-ARR gate` : ""}.`;
+  let s2: string;
+  if (!g.google.eligible) s2 = `Google pays nothing until the new GCP commit reaches ${usd(GOOGLE.minIacv.value)} a year; it is ${usd(i.gcpCommitNew)} now.`;
+  else if (f.gcp.spend <= 1e-9) s2 = `Google pays nothing here: no Anthropic spend reaches GCP marketplace inside its 12-month window.`;
+  else {
+    const what = i.geminiShare > 0 ? `the ${100 - i.geminiShare}% of the traffic that stays on Anthropic` : "everything that moves to marketplace";
+    const cap = g.google.capBinding ? `, capped at ${usd(i.gcpCap)}` : "";
+    const use = `${usd(i.gcpAiSpend)} a year of other GCP AI spend${i.geminiShare > 0 ? " and the Gemini bill" : ""}`;
+    s2 = `Google pays ${f.gcp.rate}% on ${what}${cap}: ${usd(f.gcp.earned)}, spendable only against ${use}${f.gcp.usable < f.gcp.earned - 0.005 ? `, which absorbs ${usd(f.gcp.usable)} within ${yrs}` : ""}.`;
+    if (i.geminiShare > 0) s2 += ` Serving ${i.geminiShare}% of the traffic with Gemini at ${i.geminiCostRatio}% of the cost takes ${usd(Math.abs(a.totals.gross - g.totals.gross))} off the model bill.`;
+  }
+  const parts: string[] = [];
+  const strand = g.awsCommit.stranded - a.awsCommit.stranded;
+  if (strand > 0.005) parts.push(`leaves ${usd(strand)} of the AWS commit unused`);
+  const legStrand = g.gcpLegs.reduce((t, l) => t + (l.strandMonth !== null && l.strandMonth < H ? l.stranded : 0), 0);
+  if (legStrand > 0.005) parts.push(`leaves ${usd(legStrand)} of the new GCP commit unfilled`);
+  const fill = a.gcpExisting.stranded - g.gcpExisting.stranded;
+  if (fill > 0.005) parts.push(`fills ${usd(fill)} of GCP commit that would otherwise go unused`);
+  if (g.totals.mig > 0.005 && a.totals.mig <= 0.005) parts.push(`costs ${usd(g.totals.mig)} to migrate`);
+  const s3 = parts.length ? `Moving to Google also ${parts.join(", ")}.` : `Nothing else separates the two: no commit is left unused and migration cost is the same either way.`;
+  return [s1, s2, s3];
+}

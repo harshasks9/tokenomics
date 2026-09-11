@@ -83,3 +83,18 @@ describe("deal file", () => {
     expect(d.inputs.gcpCommitNew).toBeGreaterThanOrEqual(10);
   });
 });
+
+describe("deal checklist", () => {
+  it("passes a clean deal and flags each requirement the summary imposes", async () => {
+    const { dealChecklist } = await import("./construct");
+    const clean = inp();
+    const c = dealChecklist(meta(), clean, evaluate(clean));
+    expect(c.items.length).toBe(5);
+    expect(c.items.filter((x) => x.ok === true).length).toBe(4);
+    expect(c.items.find((x) => x.label.startsWith("Marketplace"))?.ok).toBeNull();
+    expect(c.numbers.length).toBe(3);
+    const bad = inp({ gcpCommitNew: 8, gcpSignMonth: 3, gcpPct: 15 });
+    const d = dealChecklist(meta({ onTargetList: false }), bad, evaluate(bad));
+    expect(d.items.map((x) => x.ok)).toEqual([false, false, false, null, true]);
+  });
+});

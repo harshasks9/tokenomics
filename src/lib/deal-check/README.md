@@ -80,11 +80,18 @@ AWS bill.
 ## UI
 
 `src/app/deal-check/` holds the route (layout with noindex metadata, page,
-stylesheet). `src/components/deal-check/` holds the client components: verdict
-panel, inputs (slider + number with a source tag per label), horizon tabs,
-economics table, cumulative net-cost chart (inline SVG), reverse-solve table,
-sensitivity chart (inline SVG), flags, copyable summary, methodology and sources
-panels. Below 920px the inputs stack above the results with the verdict first.
+stylesheet). `src/components/deal-check/` holds the client components. The page
+is built for a seller: seven plain-language questions plus a scenario picker
+(`Questions.tsx`), a verdict hero with one cost bar per program and three
+sentences (`Verdict.tsx`, `CostBars.tsx`, `threeSentences()`), a three-step
+credit view with source tooltips (`SimpleCredits.tsx`, `Tip.tsx`), and a
+five-item deal checklist with the email to DPM (`Checklist.tsx`,
+`EmailActions.tsx`). Everything else is kept, collapsed: every assumption with
+its source under "Advanced assumptions", and under "Details" the Gemini tuner,
+the full explanation and levers, credits quarter by quarter, the economics
+table and cumulative chart, the reverse-solve table and sensitivity chart, the
+full deal construct, flags, the plain-text summary, and methodology and
+sources. Below 920px the inputs stack above the results with the verdict first.
 
 ## The Gemini play
 
