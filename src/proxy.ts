@@ -9,6 +9,16 @@ import {
   isOffersPath,
   toAppPath,
 } from "@/lib/offers/routes";
+import {
+  DEALCHECK_SESSION_COOKIE,
+  isSessionValid as isDealCheckSessionValid,
+} from "@/lib/deal-check/auth";
+import {
+  isDealCheckHost,
+  isDealCheckPath,
+  isGatePath as isDealCheckGatePath,
+  toAppPath as toDealCheckAppPath,
+} from "@/lib/deal-check/routes";
 
 function rewriteWithLanguage(url: URL) {
   return NextResponse.rewrite(url, {
@@ -79,6 +89,44 @@ async function handleOffersRequest(request: NextRequest, hostname: string) {
   return noindex(NextResponse.rewrite(targetUrl));
 }
 
+/**
+ * Deal check (dealcheck.aitokenomics.app · /deal-check) — passcode gate.
+ *
+ * Same shape as the Offers gate: everything except /gate needs a valid signed
+ * session cookie, and an unconfigured DEALCHECK_PASSCODE / session secret
+ * means no cookie can validate, so the gate never fails open.
+ */
+async function handleDealCheckRequest(request: NextRequest, hostname: string) {
+  const path = request.nextUrl.pathname;
+  const targetUrl = request.nextUrl.clone();
+  targetUrl.pathname = toDealCheckAppPath(hostname, path);
+
+  const noindex = (response: NextResponse) => {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    response.headers.set("Content-Language", "en");
+    response.headers.set("Vary", "Host");
+    return response;
+  };
+
+  if (isDealCheckGatePath(hostname, path)) {
+    return noindex(NextResponse.rewrite(targetUrl));
+  }
+
+  const authenticated = await isDealCheckSessionValid(
+    request.cookies.get(DEALCHECK_SESSION_COOKIE)?.value,
+  );
+
+  if (!authenticated) {
+    const gateUrl = request.nextUrl.clone();
+    gateUrl.pathname = isDealCheckHost(hostname) ? "/gate" : "/deal-check/gate";
+    gateUrl.search = "";
+    gateUrl.searchParams.set("next", `${path}${request.nextUrl.search}`);
+    return noindex(NextResponse.redirect(gateUrl));
+  }
+
+  return noindex(NextResponse.rewrite(targetUrl));
+}
+
 export async function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host");
   const host = forwardedHost ?? request.headers.get("host") ?? request.nextUrl.hostname;
@@ -87,6 +135,10 @@ export async function proxy(request: NextRequest) {
 
   if (isOffersPath(hostname, path)) {
     return handleOffersRequest(request, hostname);
+  }
+
+  if (isDealCheckPath(hostname, path)) {
+    return handleDealCheckRequest(request, hostname);
   }
 
   if (hostname === "options.aitokenomics.app" || path.startsWith("/options")) {
@@ -394,19 +446,6 @@ export async function proxy(request: NextRequest) {
       storeUrl.pathname = `/store${storeUrl.pathname}`;
     }
     const response = rewriteWithLanguage(storeUrl);
-    response.headers.set("X-Robots-Tag", "noindex, nofollow");
-    return response;
-  }
-
-  // Deal check — AWS MAP 2.0 vs Google Private Offer calculator (internal).
-  if (hostname === "dealcheck.aitokenomics.app") {
-    const dealUrl = request.nextUrl.clone();
-    if (dealUrl.pathname === "/") {
-      dealUrl.pathname = "/deal-check";
-    } else if (!dealUrl.pathname.startsWith("/deal-check")) {
-      dealUrl.pathname = `/deal-check${dealUrl.pathname}`;
-    }
-    const response = rewriteWithLanguage(dealUrl);
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
     return response;
   }

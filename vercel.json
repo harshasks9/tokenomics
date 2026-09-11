@@ -129,16 +129,6 @@
         }
       ],
       "destination": "/store/:path*"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "dealcheck.aitokenomics.app"
-        }
-      ],
-      "destination": "/deal-check/:path*"
     }
   ]
 }

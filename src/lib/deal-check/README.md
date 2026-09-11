@@ -6,8 +6,21 @@ much, and what would have to change to flip the answer. It never manufactures a
 Google win: if AWS is cheaper, it says so.
 
 Live route: `/deal-check` on the aitokenomics site, also served as
-`dealcheck.aitokenomics.app` (host rewrite in `vercel.json` and `src/proxy.ts`).
-Next.js App Router, static, no API, no storage, no analytics.
+`dealcheck.aitokenomics.app` (host handling in `src/proxy.ts`). Next.js App
+Router, no storage, no analytics.
+
+## Passcode gate
+
+Both addresses sit behind a shared passcode, built like the Offers gate:
+`src/proxy.ts` redirects every request without a valid `dealcheck_session`
+cookie to `/gate`; the gate posts to `/api/deal-check/auth`, which compares the
+candidate against `DEALCHECK_PASSCODE` in constant time and sets an HttpOnly,
+Secure, SameSite=Lax cookie signed with `DEALCHECK_SESSION_SECRET` (or the
+site-wide `SESSION_SECRET`). Five failures from one IP in ten minutes lock that
+IP out for ten minutes. The passcode is never committed; set it in the Vercel
+environment (`vercel env add DEALCHECK_PASSCODE production`) and redeploy. An
+unset passcode keeps the gate closed. `/api/deal-check/logout` clears the
+session.
 
 ## Run
 
