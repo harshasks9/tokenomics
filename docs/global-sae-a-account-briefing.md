@@ -118,7 +118,32 @@ No product name before the eighth beat. The first seven are about Sae-A's busine
 - AI Basic Act effective 22 Jan 2026, MSIT grace period ≥1 year, fines ~KRW 30m
 - Samsung DX: ~50,000 seats, ~KRW 100bn/yr, announced 13 Jul 2026, via Samsung SDS
 
-## 8. Open questions for 14 August
+## 8. Prior executive engagements by this team
+
+Not linked from the customer site — cross-linking one customer's strategy
+assessment from another customer's page is not a risk worth taking. Use these as
+credentials in conversation, or send individually if asked.
+
+- **Prudential plc — "The Agentic Insurer"** (`prudential.aitokenomics.app`) —
+  agentic operating model for a 24-market insurer.
+- **San Miguel Corporation — Enterprise AI Executive Brief** (`/smc`) — a
+  conglomerate brief across banking, infrastructure, food and beverage, and fuel
+  retail. The closest structural analogue to Sae-A in the set: multi-subsidiary,
+  owner-influenced, cost-conscious.
+
+If Sae-A asks "who else have you done this for at executive level", these are the
+answer. Ask before sending.
+
+## 9. Product naming — corrected July 2026
+
+**Vertex AI was retired as a brand at Google Cloud Next '26** and its capabilities
+now sit in the **Gemini Enterprise Agent Platform** (Agent Studio, Agent Registry,
+Agent Identity, Agent Gateway, Agent Observability). The customer site was updated
+accordingly. Do not say "Vertex AI" in the room except as "formerly Vertex AI" —
+in front of a customer evaluating Google's seriousness, stale product naming is a
+cheap own goal.
+
+## 10. Open questions for 14 August
 
 1. What actually sits in the ERP estate after Ssangyong (2022) and Tegra (2024)?
 2. Is GSDCost data centrally accessible, or per-factory?

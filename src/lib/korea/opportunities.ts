@@ -25,7 +25,7 @@ export const opportunities: Opportunity[] = [
       "Deciding which of 41 factories should take a Walmart or Target programme, and at what fully-landed cost, means assembling duty exposure, standard-minute data, capacity, lead time and freight by hand. Since 24 July the duty component of that answer can change faster than the answer can be produced.",
     solution:
       "An agent that reads the buyer's enquiry, retrieves current duty treatment by origin, pulls standard-minute and capacity data, and returns a ranked factory recommendation with a fully-landed cost and its working shown — so your commercial team can interrogate it rather than assemble it.",
-    googleStack: ["Gemini Enterprise", "Enterprise Agents", "BigQuery", "Vertex AI Search"],
+    googleStack: ["Gemini Enterprise", "Enterprise Agents", "BigQuery", "Gemini Enterprise Agent Platform"],
     metric: "Hours to produce a duty-inclusive quote across four candidate factories",
     horizon: "Phase 1 · 60 days",
     value: 5,
@@ -42,7 +42,7 @@ export const opportunities: Opportunity[] = [
       "Auditing 41 factories across 10 countries means travel and the manual review of invoices, ERP extracts and contracts in Korean, English, Spanish and Vietnamese. Coverage is necessarily a sample of the population.",
     solution:
       "A document pipeline that reads the full population rather than a sample, flags anomalies against your policy, and returns a ranked exception list in which every flag cites its source document. Your auditors decide; the system does the reading.",
-    googleStack: ["Gemini Enterprise", "Document AI", "Vertex AI Search", "BigQuery"],
+    googleStack: ["Gemini Enterprise", "Document AI", "Gemini Enterprise Agent Platform", "BigQuery"],
     metric: "Auditor-days and travel cost per cycle; share of transactions actually reviewed",
     horizon: "Phase 1 · 60 days",
     value: 5,
@@ -76,7 +76,7 @@ export const opportunities: Opportunity[] = [
       "Knowledge across apparel, construction and paper sits in mail, shared drives and long tenure. Two acquisitions since 2022 have made finding what the group already knows harder, not easier.",
     solution:
       "Grounded search across your document estate, and the ability for colleagues in planning, HR, marketing and administration to build their own simple agents — the pattern behind the Samsung DX rollout announced in July.",
-    googleStack: ["Gemini Enterprise", "NotebookLM", "Workspace", "Vertex AI Search"],
+    googleStack: ["Gemini Enterprise", "NotebookLM", "Workspace", "Gemini Enterprise Agent Platform"],
     metric: "Weekly active users outside IT; agents built by non-technical colleagues",
     horizon: "Phase 1 · 60 days",
     value: 4,
@@ -93,7 +93,7 @@ export const opportunities: Opportunity[] = [
       "Overseas orders grew roughly eightfold to USD 650M a year across Dubai, Equatorial Guinea and beyond, while senior engineers approach retirement. Method statements, claims history and lessons learned live in archives that are rarely searched.",
     solution:
       "Grounded retrieval across drawings, method statements, claims and handover documents, so an engineer abroad can ask what the group learned on the last comparable structure and receive a cited answer.",
-    googleStack: ["Gemini Enterprise", "NotebookLM", "Document AI", "Vertex AI Search"],
+    googleStack: ["Gemini Enterprise", "NotebookLM", "Document AI", "Gemini Enterprise Agent Platform"],
     metric: "Rework and claim incidence on overseas projects; time to answer a technical query",
     horizon: "Phase 2 · Q4 2026",
     value: 4,
@@ -125,7 +125,7 @@ export const opportunities: Opportunity[] = [
       "Human monitoring of active sites is necessarily sampled, and the evidentiary record of what the safety system was doing at a given moment is thin.",
     solution:
       "Vision analysis on site CCTV for protective-equipment compliance and hazardous-zone conditions, producing both continuous detection and a timestamped compliance record.",
-    googleStack: ["Vertex AI Vision", "Cloud Storage", "Looker", "BigQuery"],
+    googleStack: ["Gemini Enterprise Agent Platform — Vision", "Cloud Storage", "Looker", "BigQuery"],
     metric: "Protective-equipment compliance rate; near-miss detections; completeness of the record",
     horizon: "Phase 2 · Q4 2026",
     value: 4,
@@ -142,7 +142,7 @@ export const opportunities: Opportunity[] = [
       "Orders are at risk when certified recycled or organic material logs cannot be produced on demand. Your vertical integration means the evidence exists inside the group but is not linked from yarn through to finished garment.",
     solution:
       "A traceability layer linking yarn lots to fabric rolls to garment cartons with certificate evidence attached, exportable in both buyer formats and the emerging Digital Product Passport structure.",
-    googleStack: ["BigQuery", "Vertex AI", "Gemini Enterprise", "Looker"],
+    googleStack: ["BigQuery", "Gemini Enterprise Agent Platform", "Gemini Enterprise", "Looker"],
     metric: "Share of shipments with complete chain-of-custody evidence available on demand",
     horizon: "Phase 3 · 2027",
     value: 4,
@@ -159,7 +159,7 @@ export const opportunities: Opportunity[] = [
       "Steam and electricity dominate controllable cost across more than 20 domestic mills, and unplanned boiler or line downtime is expensive in both cash and carbon.",
     solution:
       "Forecasting of boiler and heavy-machinery behaviour, and energy optimisation tuned to Korean electricity tariff structures.",
-    googleStack: ["Vertex AI", "BigQuery", "Looker"],
+    googleStack: ["Gemini Enterprise Agent Platform", "BigQuery", "Looker"],
     metric: "Unplanned downtime hours; energy cost per tonne of output",
     horizon: "Phase 3 · 2027",
     value: 3,
