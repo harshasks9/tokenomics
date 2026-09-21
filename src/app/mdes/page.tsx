@@ -9,6 +9,8 @@ export default async function MdesPage() {
   const raw = h.get("x-forwarded-host") ?? h.get("host") ?? "";
   const hostname = raw.split(":")[0].toLowerCase();
   // On the dedicated subdomain the family home is the apex; inside the main site it is "/".
-  const home = isMdesHost(hostname) ? "https://aitokenomics.app/" : "/";
-  return <App home={home} />;
+  const mdesHost = isMdesHost(hostname);
+  const home = mdesHost ? "https://aitokenomics.app/" : "/";
+  const customerHref = mdesHost ? "/customer" : "/mdes/customer";
+  return <App home={home} customerHref={customerHref} />;
 }

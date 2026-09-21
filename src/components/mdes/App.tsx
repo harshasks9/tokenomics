@@ -30,7 +30,7 @@ function savedSubscribe(l: () => void) { savedListeners.add(l); return () => { s
 function setSaved(next: SavedScenario[]) { savedCache = next; for (const l of savedListeners) l(); }
 const EMPTY: SavedScenario[] = [];
 
-export default function App({ home }: { home: string }) {
+export default function App({ home, customerHref }: { home: string; customerHref: string }) {
   const { inputs, update, set, reset } = usePlan();
   const hydrated = useHydrated();
   const result = useMemo(() => evaluate(inputs), [inputs]);
@@ -88,6 +88,7 @@ export default function App({ home }: { home: string }) {
           <button type="button" className="mg-btn" onClick={onExport}>CSV</button>
           <button type="button" className="mg-btn" onClick={() => window.print()}>Print</button>
           <button type="button" className="mg-btn ghost" onClick={onReset}>Reset baseline</button>
+          <a className="mg-btn accent" href={customerHref}>Customer view →</a>
         </div>
       </header>
 
@@ -135,10 +136,10 @@ function Method() {
         <li><b>Validation.</b> The ordered schedule sums to 5,400,000 user-months = 450,000 average billed users; at $2 that is exactly $10.8M. The engine carries full precision; K and M rounding happens only in the display (hover any figure for the exact value).</li>
         <li><b>Price.</b> Any price at or above the $1.85 floor is accepted; below it is rejected. $2 is the Order Form price (list $5 less 60%) and the Maximum Retail Price; any other price is flagged as needing an amended order form.</li>
         <li><b>Solvers.</b> &ldquo;Required Month-12 users&rdquo; bisects on the Month-12 value of the current ramp shape (launch month, pattern, ceiling) until window consumption equals the commitment; when the ceiling or launch timing makes that impossible it says how far short the maximum reachable ramp falls. &ldquo;Flat from launch&rdquo; is the constant billed user count that would do the same.</li>
-        <li><b>Extension.</b> Months beyond 12 hold the Month-12 billed users and GCP spend unless edited. The extension price is a visible assumption. The Month-12 milestone (650K billed users) is evaluated at Month 12 in every scenario and never moves.</li>
+        <li><b>Extension.</b> Months beyond 12 hold the term-end billed users and GCP spend unless edited. The extension price is a visible assumption. The term-end milestone (650K billed users) is evaluated at the end of the 12-month term in every scenario and never moves. For the as-signed schedule that is M11, the last month with an order term; for a modelled ramp it is M12.</li>
         <li><b>Cases and sensitivity.</b> Low/high cases scale the ramp and shift the launch; the sensitivity grid does the same across a range and reports the unconsumed commitment under the current GCP and window settings.</li>
       </ol>
-      <p className="mg-hint">Planning months run from the 15th to the 14th, matching the Order Form billing periods (M1 = 15 Sep – 14 Oct 2026). The first order term starts &ldquo;upon provisioning&rdquo;; the planner assumes provisioning on 15 Oct 2026 so the six terms run back-to-back to 14 Sep 2027. Nothing here is stored outside this browser.</p>
+      <p className="mg-hint">Month 1 is October 2026, the provisioning month. Billing periods run from the 15th to the 14th, so the six order terms cover M1–M11 back-to-back (15 Oct 2026 – 14 Sep 2027) and M12 (September 2027) is the month the final term ends. Nothing here is stored outside this browser.</p>
     </section>
   );
 }

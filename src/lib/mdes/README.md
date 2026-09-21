@@ -21,12 +21,14 @@ UI lives in `src/components/mdes/` and `src/app/mdes/`.
 
 ## Calendar
 
-Planning months follow the Order Form billing periods (15th to 14th).
-M1 = 15 Sep – 14 Oct 2026 (Order Form effective, nothing provisioned yet);
-the first order term starts "upon provisioning", assumed 15 Oct 2026, so the
-six order terms map to M2–M12 and the final six-month term ends 14 Sep 2027.
-Ordered units: 0, 100K, 200K, 300K, 400K, 500K, then 650K × 6 = 5.4M
-user-months = USD 10.8M at USD 2.
+M1 = October 2026, the provisioning month. Billing periods run 15th to 14th,
+so the six order terms cover M1–M11 back-to-back (15 Oct 2026 – 14 Sep 2027)
+and M12 (September 2027) is the month in which the final term ends; no order
+term starts in M12. Ordered units: 100K, 200K, 300K, 400K, 500K, then
+650K × 6, then 0 = 5.4M user-months = USD 10.8M at USD 2.
+
+"Users at term end" is measured in M12 when anything is billed there, and
+in M11 for a series that stops with the as-signed schedule.
 
 ## Rules the engine enforces
 

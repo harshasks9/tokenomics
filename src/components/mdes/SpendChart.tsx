@@ -59,7 +59,7 @@ export default function SpendChart({ result }: { result: Result }) {
         {result.completionMonth !== null && (
           <g>
             <circle cx={x(result.completionMonth)} cy={y(rows[result.completionMonth - 1].cumConsumption)} r={5} className="dot" />
-            <text x={x(result.completionMonth) - 9} y={y(rows[result.completionMonth - 1].cumConsumption) + 16} textAnchor="end" className="lbl">consumed M{result.completionMonth}</text>
+            <text x={x(result.completionMonth) - 9} y={y(rows[result.completionMonth - 1].cumConsumption) + 24} textAnchor="end" className="lbl">consumed M{result.completionMonth}</text>
           </g>
         )}
         {Array.from({ length: n }, (_, i) => i + 1).filter((m) => n <= 18 || m % 2 === 0).map((m) => (

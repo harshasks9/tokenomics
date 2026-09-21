@@ -80,7 +80,7 @@ export default function Assumptions({ inputs, result, update, set }: Props) {
         <div className="mg-two">
           <label className="mg-field" htmlFor="launch">
             <span className="lab">Launch month</span>
-            <select id="launch" className="mg-select" value={ramp.preset === "contract" ? 2 : ramp.launchMonth} onChange={(e) => setRamp({ launchMonth: Number(e.target.value) })}>
+            <select id="launch" className="mg-select" value={ramp.launchMonth} onChange={(e) => setRamp({ launchMonth: Number(e.target.value) })}>
               {Array.from({ length: TERM_MONTHS }, (_, i) => i + 1).map((m) => <option key={m} value={m}>M{m} · {monthLabel(m)}</option>)}
             </select>
           </label>
@@ -222,7 +222,7 @@ export default function Assumptions({ inputs, result, update, set }: Props) {
           )}
         </div>
         {inputs.timeline.windowMonths > TERM_MONTHS ? (
-          <p className="mg-hint warn">Months 13–{inputs.timeline.windowMonths} hold the Month-12 billed users{inputs.gcp.enabled ? " and GCP spend" : ""} unless edited in the table. Continued pricing needs written agreement. The Month-12 user milestone does not move.</p>
+          <p className="mg-hint warn">Months 13–{inputs.timeline.windowMonths} hold the term-end billed users{inputs.gcp.enabled ? " and GCP spend" : ""} unless edited in the table. Continued pricing needs written agreement. The term-end user milestone does not move.</p>
         ) : (
           <p className="mg-hint">As contracted: the Order Form ends with the final six-month term. Extending is a proposal that needs approval.</p>
         )}
