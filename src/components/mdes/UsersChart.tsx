@@ -8,7 +8,9 @@ const W = 760, H = 290, PAD = { l: 54, r: 16, t: 18, b: 34 };
 
 interface Props {
   result: Result;
-  update: (patch: Partial<Inputs> | ((prev: Inputs) => Partial<Inputs>)) => void;
+  update?: (patch: Partial<Inputs> | ((prev: Inputs) => Partial<Inputs>)) => void;
+  /** Customer view: hover only, no drag editing. */
+  readOnly?: boolean;
 }
 
 /** Set the billed/adoption value for planning month m (1-based), flipping the ramp to custom. */
@@ -30,7 +32,8 @@ export function setMonthUsers(prev: Inputs, m: number, value: number): Partial<I
   return { ramp: { ...prev.ramp, preset: "custom" }, billed };
 }
 
-export default function UsersChart({ result, update }: Props) {
+export default function UsersChart({ result, update, readOnly = false }: Props) {
+  const editable = !readOnly && Boolean(update);
   const [hover, setHover] = useState<number | null>(null);
   const dragging = useRef(false);
   const n = result.window;
@@ -54,7 +57,7 @@ export default function UsersChart({ result, update }: Props) {
     return { m, v };
   };
   const apply = (m: number, v: number) => {
-    if (m < 1 || m > n) return;
+    if (!editable || !update || m < 1 || m > n) return;
     update((prev) => setMonthUsers(prev, m, Math.round(v / 1000) * 1000));
   };
 
@@ -64,21 +67,21 @@ export default function UsersChart({ result, update }: Props) {
   return (
     <div className="mg-chartwrap">
       <div className="mg-legend">
-        <span><i className="sw billed" />Billed users{linked ? " (= adoption)" : ""}</span>
+        <span><i className="sw billed" />{readOnly ? "Planned users" : `Billed users${linked ? " (= adoption)" : ""}`}</span>
         {!linked && <span><i className="sw adoption" />Adoption</span>}
         <span><i className="sw contracted" />Ordered units (contract)</span>
         <span><i className="sw req" />650K requirement</span>
-        <span className="muted">drag bars to edit</span>
+        {editable && <span className="muted">drag bars to edit</span>}
       </div>
       <svg
         className="mg-chart"
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label="Monthly billed users versus the contracted schedule"
-        style={{ touchAction: "none", cursor: "crosshair" }}
-        onPointerDown={(e) => { dragging.current = true; e.currentTarget.setPointerCapture(e.pointerId); const { m, v } = pointToMonthValue(e); apply(m, v); }}
+        style={{ touchAction: editable ? "none" : "auto", cursor: editable ? "crosshair" : "default" }}
+        onPointerDown={(e) => { if (!editable) return; dragging.current = true; e.currentTarget.setPointerCapture(e.pointerId); const { m, v } = pointToMonthValue(e); apply(m, v); }}
         onPointerMove={(e) => { const { m, v } = pointToMonthValue(e); setHover(m >= 1 && m <= n ? m : null); if (dragging.current) apply(m, v); }}
-        onPointerUp={(e) => { dragging.current = false; e.currentTarget.releasePointerCapture(e.pointerId); }}
+        onPointerUp={(e) => { if (!dragging.current) return; dragging.current = false; e.currentTarget.releasePointerCapture(e.pointerId); }}
         onPointerLeave={() => { if (!dragging.current) setHover(null); }}
       >
         {n > TERM_MONTHS && <rect className="ext" x={x(TERM_MONTHS + 1)} y={PAD.t} width={slot * (n - TERM_MONTHS)} height={innerH} />}
@@ -105,7 +108,7 @@ export default function UsersChart({ result, update }: Props) {
           <g className="tip" transform={`translate(${Math.min(W - 170, Math.max(PAD.l, x(hover) + slot / 2 - 80))},${PAD.t + 2})`}>
             <rect width={160} height={linked ? 40 : 54} rx={6} />
             <text x={8} y={15} className="t1">M{hover} · {rows[hover - 1].label.split(" · ")[1]}{rows[hover - 1].isExtension ? " · ext" : ""}</text>
-            <text x={8} y={31} className="t2">Billed {Math.round(rows[hover - 1].billed).toLocaleString("en-US")} · ordered {Math.round(rows[hover - 1].contracted).toLocaleString("en-US")}</text>
+            <text x={8} y={31} className="t2">{readOnly ? "Planned" : "Billed"} {Math.round(rows[hover - 1].billed).toLocaleString("en-US")} · ordered {Math.round(rows[hover - 1].contracted).toLocaleString("en-US")}</text>
             {!linked && <text x={8} y={46} className="t2">Adoption {Math.round(rows[hover - 1].adoption).toLocaleString("en-US")}</text>}
           </g>
         )}

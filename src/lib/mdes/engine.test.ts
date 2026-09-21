@@ -36,17 +36,23 @@ describe("contract facts", () => {
     expect(um).toBe(5_400_000);
     expect(um / 12).toBe(450_000);
     expect(um * PUPM).toBe(COMMITMENT);
-    expect(CONTRACTED_UNITS[11]).toBe(650_000);
+    expect(CONTRACTED_UNITS[0]).toBe(100_000); // October = M1
+    expect(CONTRACTED_UNITS[10]).toBe(650_000);
+    expect(CONTRACTED_UNITS[11]).toBe(0); // final term ends 14 Sep 2027, no order term starts in M12
   });
-  it("baseline (contracted) consumes exactly the commitment in M12 with utilization 100%", () => {
+  it("baseline (contracted) consumes exactly the commitment by M11 with utilization 100%", () => {
     const r = evaluate(defaults());
     expect(r.total.consumption).toBe(COMMITMENT);
     expect(r.total.utilization).toBe(1);
     expect(r.total.unconsumed).toBe(0);
     expect(r.total.above).toBe(0);
-    expect(r.completionMonth).toBe(12);
+    expect(r.completionMonth).toBe(11);
     expect(r.extraMonths).toBe(0);
-    expect(r.m12.met).toBe(true);
+    expect(r.termEnd.month).toBe(11);
+    expect(r.termEnd.billed).toBe(650_000);
+    expect(r.termEnd.met).toBe(true);
+    expect(r.months[0].label).toBe("M1 · Oct 26");
+    expect(r.months[11].label).toBe("M12 · Sep 27");
     expect(r.userMonths12).toBe(5_400_000);
     expect(r.avgBilled12).toBe(450_000);
     expect(r.approvals).toEqual([]);
@@ -72,8 +78,9 @@ describe("monthly arithmetic", () => {
     const billed = new Array(12).fill(300_000);
     const r = evaluate(normalize({ ...defaults(), ramp: { ...defaults().ramp, preset: "custom" }, adoption, billedLinked: false, billed }));
     expect(r.total.geSpend).toBe(300_000 * 2 * 12);
-    expect(r.m12.adoption).toBe(700_000);
-    expect(r.m12.billed).toBe(300_000);
+    expect(r.termEnd.adoption).toBe(700_000);
+    expect(r.termEnd.billed).toBe(300_000);
+    expect(r.termEnd.month).toBe(12);
   });
   it("shortfall never reduces the amount owed; excess is spend above the commitment", () => {
     const low = evaluate(custom(new Array(12).fill(100_000)));
@@ -93,8 +100,9 @@ describe("monthly arithmetic", () => {
     expect(r.total.utilization).toBe(0);
     expect(r.completionMonth).toBeNull();
     expect(r.monthsBeyondWindowEstimate).toBeNull();
-    expect(r.m12.met).toBe(false);
-    expect(r.m12.shortfallUsers).toBe(650_000);
+    expect(r.termEnd.met).toBe(false);
+    expect(r.termEnd.month).toBe(12);
+    expect(r.termEnd.shortfallUsers).toBe(650_000);
     expect(readout(r)).toMatch(/still owed/);
     const s = solveExitUsers(r.inputs);
     expect(s.feasible).toBe(true);
@@ -224,12 +232,20 @@ describe("timeline extension", () => {
     expect(r.total.unconsumed).toBe(0);
     expect(r.approvals.join(" ")).toMatch(/beyond Month 12/);
   });
-  it("extension never moves the Month-12 milestone", () => {
+  it("extension never moves the term-end milestone", () => {
     const a = evaluate(flat());
     const b = evaluate(normalize({ ...flat(), timeline: { windowMonths: 24, extPupm: null, extUsers: new Array(12).fill(900_000), extGcp: [] } }));
-    expect(b.m12.billed).toBe(a.m12.billed);
-    expect(b.m12.met).toBe(false);
+    expect(b.termEnd.billed).toBe(a.termEnd.billed);
+    expect(b.termEnd.met).toBe(false);
     expect(b.months[12].billed).toBe(900_000);
+  });
+  it("as-signed schedule: term end measured at M11 and extension holds 650K, not the empty M12", () => {
+    const r = evaluate(normalize({ ...defaults(), timeline: { windowMonths: 15, extPupm: null, extUsers: [], extGcp: [] } }));
+    expect(r.months[11].billed).toBe(0);
+    expect(r.months[12].billed).toBe(650_000);
+    expect(r.termEnd.month).toBe(11);
+    expect(r.termEnd.billed).toBe(650_000);
+    expect(r.total.above).toBe(650_000 * 2 * 3);
   });
   it("extension price is a separate assumption and respects the floor", () => {
     const r = evaluate(normalize({ ...flat(), timeline: { windowMonths: 15, extPupm: 1.9, extUsers: [], extGcp: [] } }));
@@ -316,11 +332,11 @@ describe("scenario comparison", () => {
     const cmp = compareScenarios(normalize({ ...defaults(), ramp: { preset: "delayed", launchMonth: 4, startUsers: 50_000, exitUsers: 650_000, pattern: "scurve", ceiling: null } }));
     for (const c of ["low", "base", "high"] as const) {
       expect(cmp[c].baseline.consumption).toBe(COMMITMENT);
-      expect(cmp[c].baseline.m12Billed).toBe(650_000);
+      expect(cmp[c].baseline.termEndBilled).toBe(650_000);
       expect(cmp[c].baseline.approvals).toEqual([]);
       expect(cmp[c].baseline.window).toBe(12);
     }
-    expect(cmp.low.baseline.m12Adoption).toBeLessThan(cmp.high.baseline.m12Adoption);
+    expect(cmp.low.baseline.termEndAdoption).toBeLessThan(cmp.high.baseline.termEndAdoption);
   });
   it("scenarios add GCP and extension on top of the ramp with approval dependencies", () => {
     const inputs = normalize({ ...defaults(), ramp: { preset: "delayed", launchMonth: 4, startUsers: 50_000, exitUsers: 650_000, pattern: "scurve", ceiling: null }, gcp: { enabled: false, monthly: 200_000, startMonth: 1, capMode: "none", capValue: 0 }, timeline: { windowMonths: 12, extPupm: null, extUsers: [], extGcp: [] } });
@@ -336,9 +352,9 @@ describe("scenario comparison", () => {
     expect(b.rampGcp.approvals.join(" ")).toMatch(/GCP/);
     expect(b.rampExt.approvals.join(" ")).toMatch(/beyond Month 12/);
     expect(b.combined.approvals.length).toBe(3); // re-basing + GCP + extension
-    // Month-12 milestone identical across the non-baseline scenarios.
-    expect(b.rampExt.m12Billed).toBe(b.ramp.m12Billed);
-    expect(b.combined.m12Billed).toBe(b.ramp.m12Billed);
+    // Term-end milestone identical across the non-baseline scenarios.
+    expect(b.rampExt.termEndBilled).toBe(b.ramp.termEndBilled);
+    expect(b.combined.termEndBilled).toBe(b.ramp.termEndBilled);
   });
   it("low and high cases scale and delay the series, honouring the ceiling", () => {
     expect(transformSeries([10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120], 2, 2)).toEqual([0, 0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200]);
@@ -369,6 +385,7 @@ describe("normalize", () => {
     expect(normalize(undefined)).toEqual(defaults());
     const n = normalize({ ramp: { preset: "nope" as never, launchMonth: 99, startUsers: -5, exitUsers: NaN, pattern: "zig" as never, ceiling: -1 }, pupm: NaN } as never);
     expect(n.ramp.preset).toBe("contract");
+    expect(n.adoption).toEqual(CONTRACTED_UNITS);
     expect(n.ramp.launchMonth).toBe(12);
     expect(n.ramp.startUsers).toBe(0);
     expect(n.ramp.exitUsers).toBe(0);
@@ -376,7 +393,7 @@ describe("normalize", () => {
     expect(n.pupm).toBe(2);
   });
   it("regenerates adoption from the ramp unless the preset is custom", () => {
-    const n = normalize({ ...defaults(), ramp: { ...defaults().ramp, preset: "immediate", launchMonth: 1 }, adoption: new Array(12).fill(1) });
+    const n = normalize({ ...defaults(), ramp: { ...defaults().ramp, preset: "immediate" }, adoption: new Array(12).fill(1) });
     expect(n.adoption[0]).toBe(100_000);
     const c = normalize({ ...defaults(), ramp: { ...defaults().ramp, preset: "custom" }, adoption: new Array(12).fill(1) });
     expect(c.adoption).toEqual(new Array(12).fill(1));

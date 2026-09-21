@@ -22,20 +22,26 @@ export const PUPM = 2;
 export const PUPM_FLOOR = 1.85;
 
 /**
- * Ordered units per billing month, mapped onto a 12-month planning window
- * (M1 = 15 Sep – 14 Oct 2026 … M12 = 15 Aug – 14 Sep 2027).
+ * Ordered units per planning month. M1 = October 2026, the provisioning month
+ * in which the first order term starts; M12 = September 2027, the month in
+ * which the final order term ends (14 Sep 2027).
  *
- * The first order term starts "Upon Provisioning" and each later term starts
- * on the 15th, so with provisioning on 15 Oct 2026 the six order terms run
- * back-to-back from M2 to M12 and the final six-month term ends 14 Sep 2027.
- * M1 carries no ordered units (nothing is provisioned yet).
+ * Billing periods run from the 15th: the first term starts "Upon Provisioning"
+ * (assumed 15 Oct 2026) and each later term on the 15th, so the six order terms
+ * run back-to-back over M1–M11 and the final six-month term (15 Mar – 14 Sep
+ * 2027) covers M6–M11. No order term starts in M12: the Order Form's last
+ * billing period ends 14 Sep 2027.
  *
  * Σ units = 5,400,000 user-months; × $2 = $10,800,000 = the Order Form total.
  */
 export const CONTRACTED_UNITS: readonly number[] = [
-  0, 100_000, 200_000, 300_000, 400_000, 500_000,
-  650_000, 650_000, 650_000, 650_000, 650_000, 650_000,
+  100_000, 200_000, 300_000, 400_000, 500_000,
+  650_000, 650_000, 650_000, 650_000, 650_000, 650_000, 0,
 ];
+
+/** Last planning month with an ordered quantity; the final order term ends 14 Sep 2027. */
+export const LAST_ORDERED_MONTH = 11;
+export const TERM_END_DATE = "14 Sep 2027";
 
 export interface OrderTerm {
   start: string;
@@ -55,9 +61,9 @@ export const ORDER_TERMS: readonly OrderTerm[] = [
   { start: "15 Mar 2027", months: 6, units: 650_000, feesPerMonth: 1_300_000, total: 7_800_000 },
 ];
 
-/** Calendar label for planning month m (1-based). M1 = Sep 2026. */
+/** Calendar label for planning month m (1-based). M1 = Oct 2026. */
 export function monthLabel(m: number): string {
-  const d = new Date(Date.UTC(2026, 8 + (m - 1), 1));
+  const d = new Date(Date.UTC(2026, 9 + (m - 1), 1));
   return d.toLocaleDateString("en-US", { month: "short", year: "2-digit", timeZone: "UTC" });
 }
 
@@ -89,14 +95,14 @@ export const TERM_NOTES: readonly TermNote[] = [
     id: "schedule",
     title: "Ordered users ramp 100K → 200K → 300K → 400K → 500K, then 650K for six months",
     basis: "contract",
-    text: "First term starts upon provisioning, later terms on the 15th of each month, final six-month term from 15 Mar 2027. Mapped here as M2–M12 of a 12-month window that starts with the Order Form effective date (Sep 2026).",
+    text: "First term starts upon provisioning (assumed 15 Oct 2026 = M1), later terms on the 15th of each month, final six-month term from 15 Mar 2027 to 14 Sep 2027 (M6–M11). The planning window runs October 2026 to September 2027; no order term starts in M12.",
     source: "Order Form p.1–2 (fee table)",
   },
   {
     id: "m12",
-    title: "650,000 users at Month 12",
+    title: "650,000 users at the end of the term",
     basis: "contract",
-    text: "The final order term bills 650,000 users per month for its six months, ending 14 Sep 2027. The planner keeps this milestone visible in every scenario; extending the spending period never moves it.",
+    text: "The final order term bills 650,000 users per month for its six months, ending 14 Sep 2027 (Month 12). The planner checks the count at term end in every scenario; extending the spending period never moves it.",
     source: "Order Form p.2 (final order term); account-team framing",
   },
   {

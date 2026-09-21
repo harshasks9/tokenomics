@@ -44,8 +44,9 @@ export function toCsv(result: Result): string {
   lines.push(["Commitment remaining at Month 12 (USD)", result.term.unconsumed].map(cell).join(","));
   lines.push(["Completion month", result.completionMonth].map(cell).join(","));
   lines.push(["Additional months beyond 12", result.extraMonths].map(cell).join(","));
-  lines.push(["Month-12 billed users", result.m12.billed].map(cell).join(","));
-  lines.push(["Month-12 requirement met (650,000)", result.m12.met].map(cell).join(","));
+  lines.push(["Users at term end", result.termEnd.billed].map(cell).join(","));
+  lines.push(["Term-end month used", result.termEnd.month].map(cell).join(","));
+  lines.push(["Term-end requirement met (650,000)", result.termEnd.met].map(cell).join(","));
   lines.push(["Billed user-months (term)", result.userMonths12].map(cell).join(","));
   lines.push(["Average billed users (term)", result.avgBilled12].map(cell).join(","));
   for (const a of result.approvals) lines.push(["Approval dependency", a].map(cell).join(","));
@@ -54,11 +55,11 @@ export function toCsv(result: Result): string {
 
   const cmp = compareScenarios(result.inputs);
   lines.push("");
-  lines.push(["Scenario comparison", "Case", "Window", "Month-12 billed users", "Month-12 adoption", "Month-12 met", "GE spend (USD)", "Eligible GCP (USD)", "GCP counted (USD)", "Total consumption (USD)", "Utilization", "Unconsumed (USD)", "Above (USD)", "Completion month", "Approvals"].map(cell).join(","));
+  lines.push(["Scenario comparison", "Case", "Window", "Term-end billed users", "Term-end adoption", "Term-end met", "GE spend (USD)", "Eligible GCP (USD)", "GCP counted (USD)", "Total consumption (USD)", "Utilization", "Unconsumed (USD)", "Above (USD)", "Completion month", "Approvals"].map(cell).join(","));
   for (const c of CASE_IDS) {
     for (const s of SCENARIO_IDS) {
       const x = cmp[c][s];
-      lines.push([SCENARIO_LABEL[s], CASE_LABEL[c], x.window, x.m12Billed, x.m12Adoption, x.m12Met, x.geSpend, x.gcpEligible, x.gcpCounted, x.consumption, x.utilization, x.unconsumed, x.above, x.completionMonth, x.approvals.join(" | ")].map(cell).join(","));
+      lines.push([SCENARIO_LABEL[s], CASE_LABEL[c], x.window, x.termEndBilled, x.termEndAdoption, x.termEndMet, x.geSpend, x.gcpEligible, x.gcpCounted, x.consumption, x.utilization, x.unconsumed, x.above, x.completionMonth, x.approvals.join(" | ")].map(cell).join(","));
     }
   }
   return lines.join("\n") + "\n";

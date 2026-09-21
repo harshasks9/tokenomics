@@ -52,7 +52,7 @@ export default function Scenarios({ inputs }: { inputs: Inputs }) {
               <tr>
                 <th>Scenario</th>
                 <th className="num">Window</th>
-                <th className="num">M12 billed</th>
+                <th className="num">Term-end users</th>
                 <th className="num">GE spend</th>
                 <th className="num">GCP counted</th>
                 <th className="num">Consumption</th>
@@ -70,9 +70,9 @@ export default function Scenarios({ inputs }: { inputs: Inputs }) {
                   <tr key={s} className={s === "baseline" ? "base" : undefined}>
                     <td className="mo"><b>{SCENARIO_LABEL[s]}</b><span className="cal">{SCENARIO_NOTE[s]}</span></td>
                     <td className="num">{x.window} mo</td>
-                    <td className="num" title={`${exactUsers(x.m12Billed)} billed · ${exactUsers(x.m12Adoption)} adopted`}>
-                      {users(x.m12Billed)} <span className={`mg-dot ${x.m12Met ? "good" : "bad"}`} title={x.m12Met ? "650K met" : "below 650K"} />
-                      {s === "baseline" && x.m12Adoption < x.m12Billed && <span className="cal">adopted {users(x.m12Adoption)}</span>}
+                    <td className="num" title={`${exactUsers(x.termEndBilled)} billed · ${exactUsers(x.termEndAdoption)} adopted`}>
+                      {users(x.termEndBilled)} <span className={`mg-dot ${x.termEndMet ? "good" : "bad"}`} title={x.termEndMet ? "650K met" : "below 650K"} />
+                      {s === "baseline" && x.termEndAdoption < x.termEndBilled && <span className="cal">adopted {users(x.termEndAdoption)}</span>}
                     </td>
                     <td className="num" title={exactUsd(x.geSpend)}>{usd(x.geSpend)}</td>
                     <td className="num" title={`${exactUsd(x.gcpCounted)} counted of ${exactUsd(x.gcpEligible)} eligible`}>{x.gcpCounted > 0 ? usd(x.gcpCounted) : "—"}</td>
@@ -108,7 +108,7 @@ export default function Scenarios({ inputs }: { inputs: Inputs }) {
                   {row.map((cell) => {
                     const share = cell.unconsumed / COMMITMENT;
                     return (
-                      <td key={cell.mult} className="num heat" style={{ background: `color-mix(in srgb, var(--bad) ${Math.round(share * 70)}%, var(--surface))` }} title={`${exactUsd(cell.unconsumed)} unconsumed · utilization ${pct(cell.utilization)} · M12 billed ${exactUsers(cell.m12Billed)} · completed ${month(cell.completionMonth)}`}>
+                      <td key={cell.mult} className="num heat" style={{ background: `color-mix(in srgb, var(--bad) ${Math.round(share * 70)}%, var(--surface))` }} title={`${exactUsd(cell.unconsumed)} unconsumed · utilization ${pct(cell.utilization)} · term-end users ${exactUsers(cell.termEndBilled)} · completed ${month(cell.completionMonth)}`}>
                         {cell.unconsumed > 0 ? usd(cell.unconsumed) : <span className="ok">consumed M{cell.completionMonth}</span>}
                       </td>
                     );
@@ -118,7 +118,7 @@ export default function Scenarios({ inputs }: { inputs: Inputs }) {
             </tbody>
           </table>
         </div>
-        <p className="mg-hint">Delay shifts the modelled ramp right (months before launch bill zero); adoption scales every month. Hover a cell for utilization and Month-12 users.</p>
+        <p className="mg-hint">Delay shifts the modelled ramp right (months before launch bill zero); adoption scales every month. Hover a cell for utilization and term-end users.</p>
       </section>
     </>
   );

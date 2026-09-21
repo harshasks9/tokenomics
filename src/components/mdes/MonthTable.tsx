@@ -67,7 +67,7 @@ export default function MonthTable({ result, update }: Props) {
                 <b>M{r.m}</b> <span className="cal">{r.label.split(" · ")[1]}</span>
                 {r.isExtension && <span className="mg-badge proposed tiny">ext</span>}
               </td>
-              <td className="num" title={r.isExtension ? "No order term beyond Month 12" : exactUsers(r.contracted)}>{r.isExtension ? "—" : users(r.contracted)}</td>
+              <td className="num" title={r.isExtension ? "No order term beyond the Order Form" : r.m === 12 ? "No order term starts in M12: the final term ends 14 Sep 2027" : exactUsers(r.contracted)}>{r.isExtension ? "—" : r.m === 12 ? <span className="dim">term ends 14 Sep</span> : users(r.contracted)}</td>
               <td className="num edit">
                 {r.isExtension && !linked ? <U v={r.adoption} /> : (
                   <Field compact kind="users" value={r.adoption} min={0} ariaLabel={`Adoption month ${r.m}`} onCommit={(v) => setAdoption(r.m, v)} />
@@ -114,7 +114,7 @@ export default function MonthTable({ result, update }: Props) {
       </table>
       <p className="mg-hint">
         Adoption{linked ? "" : " and billed"} cells are editable; editing switches the ramp to Custom. Ordered units are the Order Form quantities and are invoiced as signed.
-        {result.window > TERM_MONTHS && " Extension rows (ext) hold the Month-12 values until edited — a proposed exception, not a contractual right."}
+        {result.window > TERM_MONTHS && " Extension rows (ext) hold the term-end values until edited — a proposed exception, not a contractual right."}
         {gcpOn && " In the term, eligible GCP spend is the monthly figure from the GCP panel; extension months can be edited here."}
       </p>
     </div>

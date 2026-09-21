@@ -9,7 +9,7 @@ export default function PrintSummary({ result }: { result: Result }) {
       <h1>MDES × Human Intelligence — Gemini Enterprise commitment plan</h1>
       <p className="sub">Printed {new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · Internal · Proposed flexibility is not approved</p>
       <div className="row">
-        <div><b>Commitment</b> {usd(COMMITMENT, 1)} · 12-month Order Form (15 Sep 2026 – 14 Sep 2027) · Gemini Enterprise for EDU · $2.00 per user per month · 650K users at Month 12</div>
+        <div><b>Commitment</b> {usd(COMMITMENT, 1)} · 12 months, Oct 2026 – Sep 2027 (final order term ends 14 Sep 2027) · Gemini Enterprise for EDU · $2.00 per user per month · 650K users at term end</div>
       </div>
       <div className="kpis">
         <div><span>Utilization</span><b>{pct(r.total.utilization)}</b></div>
@@ -17,7 +17,7 @@ export default function PrintSummary({ result }: { result: Result }) {
         <div><span>Unconsumed</span><b>{usd(r.total.unconsumed)}</b></div>
         <div><span>Above commitment</span><b>{usd(r.total.above)}</b></div>
         <div><span>Completion month</span><b>{month(r.completionMonth)}</b></div>
-        <div><span>Month-12 billed users</span><b>{users(r.m12.billed)} {r.m12.met ? "✓" : `(below ${users(REQUIRED_USERS_M12)})`}</b></div>
+        <div><span>Users at term end (M{r.termEnd.month})</span><b>{users(r.termEnd.billed)} {r.termEnd.met ? "✓" : `(below ${users(REQUIRED_USERS_M12)})`}</b></div>
       </div>
       <p>{readout(r)}</p>
       <h2>Assumptions</h2>
@@ -25,7 +25,7 @@ export default function PrintSummary({ result }: { result: Result }) {
         <li>Price {price(r.inputs.pupm)} per user per month in the term{r.window > 12 ? `; ${price(r.inputs.timeline.extPupm ?? r.inputs.pupm)} in extension months (assumption)` : ""}.</li>
         <li>Billed users {r.inputs.billedLinked ? "equal adoption" : "modelled separately from adoption"}.</li>
         <li>GCP allocation {r.inputs.gcp.enabled ? `on: ${usd(r.inputs.gcp.monthly)} per month from M${r.inputs.gcp.startMonth}${r.gcp.cap !== null ? `, capped at ${usd(r.gcp.cap)}` : ""} (proposed)` : "off"}.</li>
-        <li>Spending window {r.window} months{r.window > 12 ? " (proposed extension; Month-12 milestone unchanged)" : " (as contracted)"}.</li>
+        <li>Spending window {r.window} months{r.window > 12 ? " (proposed extension; term-end milestone unchanged)" : " (as contracted)"}.</li>
       </ul>
       {r.approvals.length > 0 && (
         <>

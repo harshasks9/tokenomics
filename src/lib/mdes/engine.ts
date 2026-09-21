@@ -16,6 +16,7 @@
 import {
   COMMITMENT,
   CONTRACTED_UNITS,
+  LAST_ORDERED_MONTH,
   PUPM,
   PUPM_FLOOR,
   REQUIRED_USERS_M12,
@@ -119,22 +120,22 @@ export function generateRamp(spec: RampSpec): number[] {
 export const PRESETS: Record<Exclude<PresetId, "custom">, { label: string; blurb: string; ramp: Omit<RampSpec, "preset"> }> = {
   contract: {
     label: "Contracted schedule",
-    blurb: "Ordered units from the Order Form: 100K from M2 rising to 650K from M7.",
-    ramp: { launchMonth: 2, startUsers: 100_000, exitUsers: 650_000, pattern: "linear", ceiling: null },
+    blurb: "Ordered units from the Order Form: 100K in October rising to 650K from March.",
+    ramp: { launchMonth: 1, startUsers: 100_000, exitUsers: 650_000, pattern: "linear", ceiling: null },
   },
   immediate: {
     label: "Immediate launch",
-    blurb: "Public launch in M1, linear growth to 650K by M12.",
+    blurb: "Public launch in October (M1), linear growth to 650K by M12.",
     ramp: { launchMonth: 1, startUsers: 100_000, exitUsers: 650_000, pattern: "linear", ceiling: null },
   },
   slow: {
     label: "Slow start",
-    blurb: "Launch in M2 at 50K, back-loaded growth to 650K as the Level-3 pipeline fills.",
-    ramp: { launchMonth: 2, startUsers: 50_000, exitUsers: 650_000, pattern: "back", ceiling: null },
+    blurb: "October launch at 50K, back-loaded growth to 650K as the Level-3 pipeline fills.",
+    ramp: { launchMonth: 1, startUsers: 50_000, exitUsers: 650_000, pattern: "back", ceiling: null },
   },
   delayed: {
     label: "Delayed launch",
-    blurb: "Public launch slips to M4; S-curve to 650K by M12.",
+    blurb: "Public launch slips to January (M4); S-curve to 650K by M12.",
     ramp: { launchMonth: 4, startUsers: 50_000, exitUsers: 650_000, pattern: "scurve", ceiling: null },
   },
 };
@@ -286,7 +287,8 @@ export interface Result {
   extraMonths: number | null;
   /** Rough months beyond the window at the final month's run rate, when not complete. */
   monthsBeyondWindowEstimate: number | null;
-  m12: { billed: number; adoption: number; required: number; met: boolean; shortfallUsers: number };
+  /** Users at the end of the term (see termEndMonth). */
+  termEnd: { month: number; billed: number; adoption: number; required: number; met: boolean; shortfallUsers: number };
   userMonths12: number;
   avgBilled12: number;
   contractedUserMonths: number;
@@ -303,11 +305,25 @@ function gcpCap(gcp: GcpSpec): number | null {
   return Math.max(0, (gcp.capValue / 100) * COMMITMENT);
 }
 
+/**
+ * Month whose billed users count as "users at term end". The Order Form's final
+ * billing period ends 14 Sep 2027 inside M12 but no order term starts in M12,
+ * so a series that stops after M11 (the as-signed schedule) is measured at M11;
+ * anything billed in M12 is measured at M12.
+ */
+export function termEndMonth(billed: readonly number[]): number {
+  return (billed[TERM_MONTHS - 1] ?? 0) > 0 || (billed[LAST_ORDERED_MONTH - 1] ?? 0) === 0 ? TERM_MONTHS : LAST_ORDERED_MONTH;
+}
+
+export function termEndUsers(series: readonly number[], billed: readonly number[] = series): number {
+  return series[termEndMonth(billed) - 1] ?? 0;
+}
+
 /** Billed users for every month of the window, applying extension defaults. */
 export function billedSeries(inputs: Inputs): number[] {
   const n = inputs.timeline.windowMonths;
   const out: number[] = [];
-  const hold = inputs.billed[TERM_MONTHS - 1] ?? 0;
+  const hold = termEndUsers(inputs.billed);
   for (let m = 1; m <= n; m += 1) {
     if (m <= TERM_MONTHS) out.push(inputs.billed[m - 1] ?? 0);
     else {
@@ -321,8 +337,8 @@ export function billedSeries(inputs: Inputs): number[] {
 export function adoptionSeries(inputs: Inputs): number[] {
   const n = inputs.timeline.windowMonths;
   const out: number[] = [];
-  const hold = inputs.adoption[TERM_MONTHS - 1] ?? 0;
-  const billedHold = inputs.billed[TERM_MONTHS - 1] ?? 0;
+  const hold = termEndUsers(inputs.adoption, inputs.billed);
+  const billedHold = termEndUsers(inputs.billed);
   for (let m = 1; m <= n; m += 1) {
     if (m <= TERM_MONTHS) out.push(inputs.adoption[m - 1] ?? 0);
     else {
@@ -421,13 +437,15 @@ export function evaluate(raw: Inputs): Result {
   const total = summarize(n);
   const term = summarize(TERM_MONTHS);
 
-  const m12Billed = billed[TERM_MONTHS - 1];
-  const m12 = {
-    billed: m12Billed,
-    adoption: adoption[TERM_MONTHS - 1],
+  const teMonth = termEndMonth(billed);
+  const teBilled = billed[teMonth - 1];
+  const termEnd = {
+    month: teMonth,
+    billed: teBilled,
+    adoption: adoption[teMonth - 1],
     required: REQUIRED_USERS_M12,
-    met: m12Billed >= REQUIRED_USERS_M12,
-    shortfallUsers: Math.max(0, REQUIRED_USERS_M12 - m12Billed),
+    met: teBilled >= REQUIRED_USERS_M12,
+    shortfallUsers: Math.max(0, REQUIRED_USERS_M12 - teBilled),
   };
 
   const shortfallBeforeGcp = Math.max(0, COMMITMENT - total.geSpend);
@@ -447,13 +465,14 @@ export function evaluate(raw: Inputs): Result {
   }
 
   // Approval dependencies and warnings.
-  const belowContracted = months.slice(0, TERM_MONTHS).some((r) => r.billed < r.contracted);
-  const aboveContracted = months.slice(0, TERM_MONTHS).some((r) => r.billed > r.contracted);
+  // Compared over the months that carry an order term (M1–M11); M12 has none.
+  const belowContracted = months.slice(0, LAST_ORDERED_MONTH).some((r) => r.billed < r.contracted);
+  const aboveContracted = months.slice(0, LAST_ORDERED_MONTH).some((r) => r.billed > r.contracted);
   if (belowContracted) approvals.push("Billing fewer users than the ordered quantities in one or more months — re-basing the order schedule needs an amended order form. As signed, the ordered units are invoiced whether or not they are used.");
   if (aboveContracted) warnings.push("Billing more users than ordered in one or more months. The Order Form allows adding users coterminously (new order form or amendment) if all payments are on time.");
   if (inputs.gcp.enabled) approvals.push("Counting eligible GCP spend toward the commitment — not in the Order Form; requires approval.");
   if (n > TERM_MONTHS) approvals.push(`Spending beyond Month 12 (window of ${n} months) at $${extPupm.toFixed(2)} per user per month — the Order Form does not renew and post-term usage is at list price unless agreed in writing; requires approval.`);
-  if (!m12.met) warnings.push(`Month-12 billed users (${Math.round(m12Billed).toLocaleString("en-US")}) are below the 650,000 in the final order term.`);
+  if (!termEnd.met) warnings.push(`Billed users at term end (${Math.round(teBilled).toLocaleString("en-US")} in M${teMonth}) are below the 650,000 in the final order term.`);
   if (inputs.gcp.enabled && total.gcpEligible === 0) warnings.push("GCP allocation is on but no eligible GCP spend is entered, so nothing is counted.");
   if (total.above > 0) warnings.push("Modelled consumption exceeds the commitment; the excess is additional spend, not a credit.");
   if (userMonths12 === 0) warnings.push("Zero billed users in the term: nothing is consumed and the full commitment is still owed.");
@@ -462,7 +481,7 @@ export function evaluate(raw: Inputs): Result {
   return {
     inputs: { ...inputs, pupm, timeline: { ...inputs.timeline, extPupm: inputs.timeline.extPupm === null ? null : extPupm } },
     months, window: n, total, term, completionMonth, extraMonths, monthsBeyondWindowEstimate,
-    m12, userMonths12, avgBilled12: userMonths12 / TERM_MONTHS,
+    termEnd, userMonths12, avgBilled12: userMonths12 / TERM_MONTHS,
     contractedUserMonths, unusedContractedUserMonths: unusedUM,
     gcp: { shortfallBeforeGcp, covered, gapAfter, cap, capBinding },
     approvals, warnings, errors,
@@ -643,9 +662,9 @@ export interface ScenarioCell {
   c: CaseId;
   result: Result;
   window: number;
-  m12Billed: number;
-  m12Adoption: number;
-  m12Met: boolean;
+  termEndBilled: number;
+  termEndAdoption: number;
+  termEndMet: boolean;
   geSpend: number;
   gcpEligible: number;
   gcpCounted: number;
@@ -668,7 +687,7 @@ export function compareScenarios(inputs0: Inputs): Record<CaseId, Record<Scenari
       const r = evaluate(si);
       out[c][s] = {
         scenario: s, c, result: r, window: r.window,
-        m12Billed: r.m12.billed, m12Adoption: r.m12.adoption, m12Met: r.m12.met,
+        termEndBilled: r.termEnd.billed, termEndAdoption: r.termEnd.adoption, termEndMet: r.termEnd.met,
         geSpend: r.total.geSpend, gcpEligible: r.total.gcpEligible, gcpCounted: r.total.gcpCounted,
         consumption: r.total.consumption, utilization: r.total.utilization,
         unconsumed: r.total.unconsumed, above: r.total.above,
@@ -687,7 +706,7 @@ export function compareScenarios(inputs0: Inputs): Record<CaseId, Record<Scenari
 export const SENS_DELAYS = [0, 1, 2, 3, 4, 6];
 export const SENS_MULTS = [0.5, 0.75, 1, 1.25, 1.5];
 
-export interface SensCell { delay: number; mult: number; unconsumed: number; utilization: number; m12Billed: number; completionMonth: number | null }
+export interface SensCell { delay: number; mult: number; unconsumed: number; utilization: number; termEndBilled: number; completionMonth: number | null }
 
 export function sensitivity(inputs0: Inputs): SensCell[][] {
   const inputs = normalize(inputs0);
@@ -696,7 +715,7 @@ export function sensitivity(inputs0: Inputs): SensCell[][] {
     const adoption = transformSeries(inputs.adoption, mult, delay).map(cap);
     const billed = inputs.billedLinked ? adoption : transformSeries(inputs.billed, mult, delay).map(cap);
     const r = evaluate(normalize({ ...inputs, ramp: { ...inputs.ramp, preset: "custom" }, adoption, billed }));
-    return { delay, mult, unconsumed: r.total.unconsumed, utilization: r.total.utilization, m12Billed: r.m12.billed, completionMonth: r.completionMonth };
+    return { delay, mult, unconsumed: r.total.unconsumed, utilization: r.total.utilization, termEndBilled: r.termEnd.billed, completionMonth: r.completionMonth };
   }));
 }
 
@@ -709,9 +728,9 @@ export function readout(r: Result): string {
   const n = r.window;
   const consumed = fmtUsd(r.total.consumption);
   const util = `${(r.total.utilization * 100).toFixed(0)}%`;
-  const m12 = r.m12.met
-    ? `Month-12 billed users ${fmtUsers(r.m12.billed)} meet the 650K requirement.`
-    : `Month-12 billed users ${fmtUsers(r.m12.billed)} fall ${fmtUsers(r.m12.shortfallUsers)} short of the 650K requirement.`;
+  const m12 = r.termEnd.met
+    ? `Billed users at term end (${fmtUsers(r.termEnd.billed)}) meet the 650K requirement.`
+    : `Billed users at term end (${fmtUsers(r.termEnd.billed)}) fall ${fmtUsers(r.termEnd.shortfallUsers)} short of the 650K requirement.`;
   if (r.completionMonth !== null && r.completionMonth <= TERM_MONTHS) {
     return `The $10.8M commitment is fully consumed by M${r.completionMonth}, inside the 12-month term${r.total.above > 0 ? `, with ${fmtUsd(r.total.above)} of spend above it over ${n} months` : ""}. ${m12}`;
   }
