@@ -19,6 +19,7 @@ import {
   isGatePath as isDealCheckGatePath,
   toAppPath as toDealCheckAppPath,
 } from "@/lib/deal-check/routes";
+import { isMdesPath, toAppPath as toMdesAppPath } from "@/lib/mdes/routes";
 
 function rewriteWithLanguage(url: URL) {
   return NextResponse.rewrite(url, {
@@ -127,6 +128,40 @@ async function handleDealCheckRequest(request: NextRequest, hostname: string) {
   return noindex(NextResponse.rewrite(targetUrl));
 }
 
+/**
+ * MDES planner (mdes.aitokenomics.app · /mdes) — behind the Deal Check gate.
+ *
+ * Reuses the Deal Check session cookie and passcode: an unlocked Deal Check
+ * session opens this site too, and a locked one lands on /deal-check/gate with
+ * a return path. Same never-fails-open behaviour.
+ */
+async function handleMdesRequest(request: NextRequest, hostname: string) {
+  const path = request.nextUrl.pathname;
+  const targetUrl = request.nextUrl.clone();
+  targetUrl.pathname = toMdesAppPath(hostname, path);
+
+  const noindex = (response: NextResponse) => {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    response.headers.set("Content-Language", "en");
+    response.headers.set("Vary", "Host");
+    return response;
+  };
+
+  const authenticated = await isDealCheckSessionValid(
+    request.cookies.get(DEALCHECK_SESSION_COOKIE)?.value,
+  );
+
+  if (!authenticated) {
+    const gateUrl = request.nextUrl.clone();
+    gateUrl.pathname = "/deal-check/gate";
+    gateUrl.search = "";
+    gateUrl.searchParams.set("next", `${path}${request.nextUrl.search}`);
+    return noindex(NextResponse.redirect(gateUrl));
+  }
+
+  return noindex(NextResponse.rewrite(targetUrl));
+}
+
 export async function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host");
   const host = forwardedHost ?? request.headers.get("host") ?? request.nextUrl.hostname;
@@ -139,6 +174,10 @@ export async function proxy(request: NextRequest) {
 
   if (isDealCheckPath(hostname, path)) {
     return handleDealCheckRequest(request, hostname);
+  }
+
+  if (isMdesPath(hostname, path)) {
+    return handleMdesRequest(request, hostname);
   }
 
   if (hostname === "options.aitokenomics.app" || path.startsWith("/options")) {
