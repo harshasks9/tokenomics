@@ -158,6 +158,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "deal-check", name: "Deal Check", href: "/deal-check", icon: Scale, section: "playbooks", audience: "account",
     gradient: "linear-gradient(135deg, #1c5cab 0%, #eb6834 100%)",
     blurb: "AWS MAP 2.0 vs Google Private Offer for an Anthropic workload", keywords: ["deal", "map", "private offer", "anthropic", "incentive", "credits", "calculator"] },
+  { id: "mdes", name: "MDES Commitment Planner", href: "/mdes", icon: GraduationCap, section: "playbooks", audience: "account",
+    gradient: "linear-gradient(135deg, #0b3d91 0%, #1a73e8 100%)",
+    blurb: "Gemini Enterprise for EDU — $10.8M commitment ramp, GCP allocation and timeline planner", keywords: ["mdes", "thailand", "human intelligence", "gemini enterprise", "commitment", "ramp", "calculator", "edu"] },
 ];
 
 export const ARCHIVE_LINKS = [
