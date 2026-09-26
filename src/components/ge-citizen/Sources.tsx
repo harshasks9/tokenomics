@@ -14,6 +14,16 @@ const CARRIED = [
   "A free, invited test cohort before general availability",
 ];
 
+const PRODUCT = [
+  "One always-on agent per person across web, desktop, mobile and chat tools, with unified memory the user can view and edit",
+  "Skills that capture how an organization works, reusable across surfaces",
+  "Scheduled tasks, event-based triggers, notifications and long-running tasks with human review",
+  "Connectors and MCP, subagents, agent-to-agent invocation, and sharing agents and tasks",
+  "Model choice with smart routing to low-cost models for routine steps",
+  "Spend guardrails and hard budget caps; consumption billing, observability and FinOps",
+  "Agent identity, registry and activity logs; isolated sandbox; approval gates before consequential actions",
+];
+
 const GAPS = [
   { g: "Municipal transactional loop", d: "Bills, payments, street and utility reports, and status tracking — the most frequent citizen tasks — are absent from the national plan." },
   { g: "Proactive reminders", d: "Renewals, deadlines and appointments; the plan is reactive (citizen asks first)." },
@@ -39,7 +49,7 @@ export default function Sources() {
       id="gec-sources"
       eyebrow="Sources, gaps & assumptions"
       title="What came from the project, and what this page adds"
-      lede="Project material reviewed: one internal brief describing a national-scale citizen deployment of Gemini Enterprise (deal structure, use cases, architecture, security, enablement and timeline). Its commercial terms, customer details and quota figures are confidential and are not reproduced here."
+      lede="Project material reviewed: an internal brief describing a national-scale citizen deployment of Gemini Enterprise (deal structure, use cases, architecture, security, enablement and timeline), and internal product-direction slides for the Gemini agent and Gemini Enterprise. Commercial terms, customer details, quota figures, release dates and certification plans are confidential and are not reproduced here."
       alt
     >
       <div className="grid gap-6 lg:grid-cols-2">
@@ -53,6 +63,21 @@ export default function Sources() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="rounded-2xl border border-[#E8EAED] bg-white p-5 lg:col-span-2">
+          <p className="text-[14px] font-semibold text-[#174EA6]">Aligned to Gemini agent product direction</p>
+          <ul className="mt-3 grid gap-2 md:grid-cols-2">
+            {PRODUCT.map((c) => (
+              <li key={c} className="flex gap-2 text-[13px] leading-snug text-[#3C4043]">
+                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1A73E8]" />
+                {c}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[12px] text-[#80868B]">
+            Described as direction, not availability. Citizen use adds requirements the employee product does not cover — marked
+            &ldquo;citizen extension to design&rdquo; in section 2.
+          </p>
         </div>
         <div className="rounded-2xl border border-[#E8EAED] bg-white p-5">
           <p className="text-[14px] font-semibold text-[#B06000]">Gaps identified and addressed here</p>

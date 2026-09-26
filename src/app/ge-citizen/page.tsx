@@ -6,6 +6,7 @@ import { EconProvider } from "@/components/ge-citizen/EconContext";
 import GecNav from "@/components/ge-citizen/GecNav";
 import GecHero from "@/components/ge-citizen/GecHero";
 import DayInLife from "@/components/ge-citizen/DayInLife";
+import PlatformFit from "@/components/ge-citizen/PlatformFit";
 import UseCaseExplorer from "@/components/ge-citizen/UseCaseExplorer";
 import MarketMap from "@/components/ge-citizen/MarketMap";
 import Economics from "@/components/ge-citizen/Economics";
@@ -28,6 +29,7 @@ export default function GeCitizenPage() {
       <main className="overflow-x-hidden lg:ml-56">
         <GecHero />
         <DayInLife />
+        <PlatformFit />
         <UseCaseExplorer />
         <MarketMap />
         <Economics />

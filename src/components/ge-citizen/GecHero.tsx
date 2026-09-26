@@ -27,7 +27,7 @@ export default function GecHero() {
     >
       <div className="relative mx-auto max-w-6xl">
         <motion.p initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#8AB4F8]">
-          GE for Citizen · A proposition for government leaders
+          GE for Citizen · The Gemini agent, extended to every resident
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
@@ -39,9 +39,10 @@ export default function GecHero() {
           everyday government tasks, for about <span className="text-[#8AB4F8]">$2 per citizen per year</span>.
         </motion.h1>
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="mt-5 max-w-3xl text-[16px] leading-relaxed text-[#BDC1C6]">
-          Not a chatbot on a website: one agent per citizen that knows their bills, deadlines and open requests, works in their
-          language, and hands consequential decisions to people. This page tests the idea — the journeys, the first buyers, the
-          economics and what must be true before launch.
+          Gemini Enterprise is heading toward one always-on agent for every employee — on every surface, with skills,
+          connectors, human approval gates and hard budget caps. GE for Citizen points that same agent at residents: one agent per
+          citizen that knows their bills, deadlines and open requests, works in their language, and hands consequential decisions
+          to people. This page tests the idea — the journeys, the first buyers, the economics and what must be true before launch.
         </motion.p>
 
         <div className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -77,7 +78,7 @@ export default function GecHero() {
               ))}
             </ol>
             <p className="mt-4 border-t border-white/10 pt-3 text-[12px] text-[#9AA0A6]">
-              It never spends money, accepts terms or decides eligibility on its own.
+              It never spends money, accepts terms or decides eligibility on its own — approval gates are built into the Gemini agent.
             </p>
           </div>
           <div className="rounded-xl border border-white/10 p-5">

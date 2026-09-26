@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Lock, Plug, CheckCircle2, Bell } from "lucide-react";
-import { JOURNEY, PERSONA } from "@/lib/ge-citizen/data";
-import { Basis, ClassBadge, Section } from "./ui";
+import { JOURNEY, JOURNEY_CAPABILITIES, PERSONA } from "@/lib/ge-citizen/data";
+import { Basis, CapabilityChips, ClassBadge, Section } from "./ui";
 
 export default function DayInLife() {
   const [i, setI] = useState(0);
@@ -73,7 +73,11 @@ export default function DayInLife() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-4 md:grid-cols-3">
+              <div className="mt-4">
+                <CapabilityChips ids={JOURNEY_CAPABILITIES[s.time] ?? []} />
+              </div>
+
+              <div className="mt-4 grid gap-4 md:grid-cols-3">
                 <div className="rounded-xl border border-[#E8EAED] p-4">
                   <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-[#5F6368]">
                     <Lock size={12} /> Permission

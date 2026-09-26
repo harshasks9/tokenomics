@@ -57,6 +57,9 @@ export const defaultInteractionCost = (c: ServiceClass): number => {
   return callCost(b.model, b.inTok, b.outTok) + b.overhead;
 };
 
+/** Inform-session cost if routing is off: same tokens on Flash instead of Flash-Lite. */
+export const UNROUTED_INFORM_COST = callCost("flash", COST_BASIS.inform.inTok, COST_BASIS.inform.outTok) + COST_BASIS.inform.overhead;
+
 export interface EconInputs {
   /** Citizens covered by the contract. */
   population: number;
@@ -66,6 +69,11 @@ export interface EconInputs {
   monthlyActive: number;
   /** Task sessions per monthly-active citizen per month. */
   interactions: number;
+  /**
+   * Smart model routing: routine "inform" sessions go to the low-cost model.
+   * When off, every session runs on the workhorse model (see UNROUTED_INFORM_COST).
+   */
+  routing: boolean;
   /** Hard per-citizen monthly cap on interactions (pooled-quota guardrail). 0 = no cap. */
   cap: number;
   /** Service mix, shares summing to 1. */
@@ -91,6 +99,7 @@ export const DEFAULT_INPUTS: EconInputs = {
   activation: 0.35,
   monthlyActive: 0.4,
   interactions: 5,
+  routing: true,
   cap: 60,
   mix: { inform: 0.6, prepare: 0.3, act: 0.1 },
   cost: {
@@ -155,7 +164,8 @@ export function compute(i: EconInputs): EconOutputs {
   const avgMonthlyActive = activated * i.monthlyActive;
   const effInteractions = i.cap > 0 ? Math.min(i.interactions, i.cap) : i.interactions;
   const annualInteractions = avgMonthlyActive * effInteractions * 12;
-  const blendedCost = mix.inform * i.cost.inform + mix.prepare * i.cost.prepare + mix.act * i.cost.act;
+  const informCost = i.routing ? i.cost.inform : Math.max(i.cost.inform, UNROUTED_INFORM_COST);
+  const blendedCost = mix.inform * informCost + mix.prepare * i.cost.prepare + mix.act * i.cost.act;
   const variableCost = annualInteractions * blendedCost;
   const runCost = variableCost + i.opsAnnual;
   const contribution = revenue - runCost;
@@ -204,6 +214,13 @@ export function compute(i: EconInputs): EconOutputs {
       level: "warn",
       title: "Fixed costs dominate",
       detail: "Fixed run costs exceed half of revenue — the covered population is too small for a per-citizen price. Consider a platform fee or a consortium of municipalities.",
+    });
+  }
+  if (!i.routing) {
+    flags.push({
+      level: "warn",
+      title: "Smart routing is off",
+      detail: `Every quick answer runs on the larger model, so an inform session costs ${fmtMoney(UNROUTED_INFORM_COST)} instead of ${fmtMoney(i.cost.inform)}. Routing routine steps to low-cost models is the main cost lever.`,
     });
   }
   if (i.cap === 0) {

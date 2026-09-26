@@ -64,7 +64,7 @@ export default function Pilot() {
   return (
     <Section
       id="gec-pilot"
-      eyebrow="5 · Pilot & roadmap"
+      eyebrow="6 · Pilot & roadmap"
       title="A 90-day pilot in one city, then expand by service and by peer"
       lede={
         <>

@@ -55,7 +55,7 @@ export default function MarketMap() {
   return (
     <Section
       id="gec-markets"
-      eyebrow="3 · Market heat map"
+      eyebrow="4 · Market heat map"
       title="Who to launch for first"
       lede={
         <>

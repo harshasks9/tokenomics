@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Check } from "lucide-react";
-import { ACTION_CLASS, type ActionClass } from "@/lib/ge-citizen/data";
+import { ACTION_CLASS, CAPABILITY, type ActionClass, type CapabilityId } from "@/lib/ge-citizen/data";
 import { Basis, ClassBadge, Section } from "./ui";
 
 const LADDER: { c: ActionClass; can: string; cannot: string; gate: string }[] = [
@@ -13,19 +13,19 @@ const LADDER: { c: ActionClass; can: string; cannot: string; gate: string }[] = 
   { c: "human", can: "Prepare the case file and explain the decision afterwards", cannot: "Decide eligibility, approvals, penalties or disputes", gate: "A named public official decides" },
 ];
 
-const REQUIREMENTS = [
-  { k: "Government identity", d: "Federated sign-in with the national or city identity provider; step-up verification before any action." },
-  { k: "Service APIs", d: "Read and write access to billing, service-request, licensing and scheduling systems, with sandbox environments." },
-  { k: "Payment provider", d: "Tokenized payments authorized by the citizen in the provider's own flow; the agent receives confirmations only." },
-  { k: "Consent records", d: "Per-purpose consent the citizen can see and revoke; reminders and proactive messages are opt-in." },
-  { k: "Data handling", d: "In-country or approved-region storage, no training on citizen data, masking of national identifiers before model calls, retention limits." },
-  { k: "Accessibility", d: "WCAG 2.2 AA, voice in and out, low-bandwidth and messaging channels, and assisted access at service counters." },
-  { k: "Local languages", d: "Languages chosen with the city; translation reviewed by native speakers for each service." },
-  { k: "Human escalation", d: "Ask-for-a-person at any point; warm hand-off with context to contact-centre and caseworker queues." },
-  { k: "Audit trail", d: "Every action logged with source, consent, confirmation and outcome; available to the citizen and to auditors." },
-  { k: "Usage guardrails", d: "Pooled quota with hard caps, per-citizen limits and abuse detection so spend cannot exceed budget." },
-  { k: "Safety routing", d: "Risk signals override every flow and hand off to emergency and hotline services." },
-  { k: "Content ownership", d: "Each department owns and signs off the procedures the agent explains; a change process keeps them current." },
+const REQUIREMENTS: { k: string; p: CapabilityId | undefined; d: string }[] = [
+  { k: "Government identity", p: "byoid", d: "Federated sign-in with the national or city identity provider; step-up verification before any action." },
+  { k: "Service APIs", p: "connectors", d: "Read and write access to billing, service-request, licensing and scheduling systems, with sandbox environments." },
+  { k: "Payment provider", p: "approval", d: "Tokenized payments authorized by the citizen in the provider's own flow; the agent receives confirmations only." },
+  { k: "Consent records", p: "memory", d: "Per-purpose consent the citizen can see and revoke; reminders and proactive messages are opt-in." },
+  { k: "Data handling", p: "sandbox", d: "In-country or approved-region storage, no training on citizen data, masking of national identifiers before model calls, retention limits." },
+  { k: "Accessibility", p: "surfaces", d: "WCAG 2.2 AA, voice in and out, low-bandwidth and messaging channels, and assisted access at service counters." },
+  { k: "Local languages", p: undefined, d: "Languages chosen with the city; translation reviewed by native speakers for each service." },
+  { k: "Human escalation", p: "approval", d: "Ask-for-a-person at any point; warm hand-off with context to contact-centre and caseworker queues." },
+  { k: "Audit trail", p: "agentid", d: "Every action logged with source, consent, confirmation and outcome; available to the citizen and to auditors." },
+  { k: "Usage guardrails", p: "budget", d: "Pooled quota with hard caps, per-citizen limits and abuse detection so spend cannot exceed budget." },
+  { k: "Safety routing", p: "subagents", d: "Risk signals override every flow and hand off to emergency and hotline services." },
+  { k: "Content ownership", p: "skills", d: "Each department owns and signs off the procedures the agent explains; a change process keeps them current." },
 ];
 
 export default function Trust() {
@@ -35,9 +35,9 @@ export default function Trust() {
   return (
     <Section
       id="gec-trust"
-      eyebrow="6 · Trust, consent & operations"
+      eyebrow="7 · Trust, consent & operations"
       title="The agent acts only with permission — and people still decide"
-      lede="A consent ladder sets what the agent may do at each step. The list below is what a city must put in place before launch: design and deployment requirements, not claims that they already exist."
+      lede="A consent ladder sets what the agent may do at each step, using the Gemini agent's approval gates. The list below is what a city must put in place before launch — each item notes the platform capability it builds on. These are design and deployment requirements, not claims that they already exist."
       alt
     >
       <div className="overflow-x-auto rounded-2xl border border-[#E8EAED] bg-white">
@@ -95,6 +95,9 @@ export default function Trust() {
                 <span>
                   <span className="block text-[13px] font-semibold text-[#202124]">{r.k}</span>
                   <span className="mt-0.5 block text-[12px] leading-snug text-[#5F6368]">{r.d}</span>
+                  <span className="mt-1.5 block text-[11px] font-medium text-[#174EA6]">
+                    {r.p ? `Builds on: ${CAPABILITY[r.p].name}` : "City-specific — not a platform feature"}
+                  </span>
                 </span>
               </button>
             </li>

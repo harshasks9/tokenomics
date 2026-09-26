@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Landmark, Sun, LayoutGrid, Map, Calculator, Flag, ShieldCheck, FileCheck2, BookOpen } from "lucide-react";
+import { Landmark, Sun, Sparkles, LayoutGrid, Map, Calculator, Flag, ShieldCheck, FileCheck2, BookOpen } from "lucide-react";
 
 const BLUE = "#1A73E8";
 
 export const NAV_ITEMS = [
   { id: "gec-hero", label: "Proposition", Icon: Landmark },
   { id: "gec-day", label: "Day in the life", Icon: Sun },
+  { id: "gec-platform", label: "Gemini agent fit", Icon: Sparkles },
   { id: "gec-usecases", label: "Use cases", Icon: LayoutGrid },
   { id: "gec-markets", label: "Market map", Icon: Map },
   { id: "gec-economics", label: "$2 economics", Icon: Calculator },

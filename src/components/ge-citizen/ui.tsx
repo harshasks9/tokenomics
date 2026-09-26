@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { ACTION_CLASS, type ActionClass } from "@/lib/ge-citizen/data";
+import { ACTION_CLASS, CAPABILITY, type ActionClass, type CapabilityId } from "@/lib/ge-citizen/data";
 
 export const INK = "#202124";
 export const MUTED = "#5F6368";
@@ -45,6 +45,25 @@ export function ClassBadge({ c, size = "sm" }: { c: ActionClass; size?: "sm" | "
     >
       {size === "xs" ? a.short : a.label}
     </span>
+  );
+}
+
+/** Gemini agent capabilities a journey or use case relies on. */
+export function CapabilityChips({ ids, label = "Gemini agent capabilities" }: { ids: CapabilityId[]; label?: string }) {
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <span className="text-[11px] font-bold uppercase tracking-wide text-[#5F6368]">{label}</span>
+      {ids.map((id) => (
+        <span
+          key={id}
+          title={CAPABILITY[id].citizen}
+          className="inline-flex items-center gap-1 rounded-md border border-[#D2E3FC] bg-white px-2 py-[2px] text-[11px] font-medium text-[#174EA6]"
+        >
+          <span className="h-1 w-1 rounded-full bg-[#1A73E8]" />
+          {CAPABILITY[id].name}
+        </span>
+      ))}
+    </div>
   );
 }
 

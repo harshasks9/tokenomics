@@ -82,7 +82,7 @@ export default function Economics() {
   return (
     <Section
       id="gec-economics"
-      eyebrow="4 · Economics calculator"
+      eyebrow="5 · Economics calculator"
       title="Does $2 per citizen per year work?"
       lede={
         <>
@@ -132,15 +132,34 @@ export default function Economics() {
             <Slider label="Monthly active (share of activated)" value={i.monthlyActive} min={0.05} max={1} step={0.01} display={pct(i.monthlyActive)} onChange={(v) => set("monthlyActive", v)} />
             <Slider label="Task sessions per active citizen / month" value={i.interactions} min={1} max={60} step={1} display={`${i.interactions}`} onChange={(v) => set("interactions", v)} />
             <Slider
-              label="Hard cap per citizen / month"
+              label="Hard budget cap per citizen / month"
               value={i.cap}
               min={0}
               max={100}
               step={5}
               display={i.cap === 0 ? "None" : `${i.cap}`}
               onChange={(v) => set("cap", v)}
-              hint="A pooled-quota guardrail with per-user limits — the pattern the project's reference deployment uses. 0 = uncapped."
+              hint="Maps to the Gemini agent's spend guardrails and hard budget caps, and the pooled quota in the project's reference deployment. 0 = uncapped."
             />
+          </Group>
+
+          <Group title="Gemini agent cost levers">
+            <label className="flex cursor-pointer items-start justify-between gap-3">
+              <span>
+                <span className="block text-[13px] font-medium text-[#3C4043]">Smart model routing</span>
+                <span className="mt-0.5 block text-[11px] leading-snug text-[#80868B]">
+                  Routine answers go to a low-cost model; applications and transactions to the workhorse model. Off = every session on
+                  the larger model.
+                </span>
+              </span>
+              <input
+                type="checkbox"
+                checked={i.routing}
+                onChange={(e) => set("routing", e.target.checked)}
+                className="mt-1 h-4 w-4 shrink-0 accent-[#1A73E8]"
+                aria-label="Smart model routing"
+              />
+            </label>
           </Group>
 
           <Group title="Service mix">

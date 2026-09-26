@@ -43,4 +43,11 @@ describe("ge-citizen economics", () => {
     const rows = sensitivity({ ...DEFAULT_INPUTS, cap: 0 });
     for (let k = 1; k < rows.length; k++) expect(rows[k].margin).toBeLessThan(rows[k - 1].margin);
   });
+
+  it("turning smart routing off raises cost and flags it", () => {
+    const on = compute(DEFAULT_INPUTS);
+    const off = compute({ ...DEFAULT_INPUTS, routing: false });
+    expect(off.variableCost).toBeGreaterThan(on.variableCost * 1.25);
+    expect(off.flags.some((f) => f.title === "Smart routing is off")).toBe(true);
+  });
 });

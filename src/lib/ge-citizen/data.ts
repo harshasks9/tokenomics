@@ -497,3 +497,241 @@ export const JOURNEY: JourneyStep[] = [
     outcome: "Five government tasks handled in one day without a queue or a call",
   },
 ];
+
+/* ─── Product alignment: Gemini agent direction ───────────────────────── */
+
+/**
+ * The citizen agent is framed as the Gemini agent (Gemini Enterprise) extended
+ * from employees to residents. Capability names follow internal product-direction
+ * material; availability dates and certifications are deliberately omitted —
+ * confirm what is generally available for a public-sector tenant before committing.
+ */
+
+export type CapabilityId =
+  | "skills"
+  | "triggers"
+  | "notifications"
+  | "longtasks"
+  | "approval"
+  | "surfaces"
+  | "memory"
+  | "connectors"
+  | "subagents"
+  | "a2a"
+  | "sharing"
+  | "routing"
+  | "budget"
+  | "agentid"
+  | "byoid"
+  | "sandbox"
+  | "observability";
+
+export interface Capability {
+  id: CapabilityId;
+  name: string;
+  /** What the product does for an employee today. */
+  product: string;
+  /** What it becomes for a resident. */
+  citizen: string;
+  /** Why it matters to the government buying it. */
+  government: string;
+  /** True where the citizen use needs more than the employee product (a gap to design). */
+  extension?: boolean;
+}
+
+export interface Pillar {
+  id: string;
+  title: string;
+  productLine: string;
+  citizenLine: string;
+  capabilities: Capability[];
+}
+
+export const PILLARS: Pillar[] = [
+  {
+    id: "work",
+    title: "Getting work done",
+    productLine: "Skills, memory and connectors run long tasks; scheduled and event-based automation with human review.",
+    citizenLine: "Government tasks get finished, not just explained — and keep moving while the resident gets on with their day.",
+    capabilities: [
+      {
+        id: "skills",
+        name: "Skills",
+        product: "Turn your best employee's process into a reusable skill",
+        citizen: "Each department's procedure — renew a licence, apply for a subsidy — becomes a skill the agent follows exactly",
+        government: "Departments own and sign off their skill; one update reaches every resident",
+      },
+      {
+        id: "triggers",
+        name: "Scheduled tasks & event-based triggers",
+        product: "Automation on a schedule or when something happens",
+        citizen: "A new bill, an approaching deadline or a closed repair ticket starts the right task automatically",
+        government: "Moves demand from reactive calls to proactive, on-time completion",
+      },
+      {
+        id: "notifications",
+        name: "Notifications",
+        product: "The agent tells you when work needs you",
+        citizen: "Reminders and status updates on the channel and hours the resident chose",
+        government: "Fewer ‘where is my request?’ contacts",
+      },
+      {
+        id: "longtasks",
+        name: "Long-running tasks & subtasks",
+        product: "Multi-step work that keeps going on a cloud agent",
+        citizen: "A permit or benefit application progresses over days without the resident starting again",
+        government: "Complete submissions instead of abandoned forms",
+      },
+      {
+        id: "approval",
+        name: "Human review & approval gates",
+        product: "Shows its live plan and waits for sign-off before consequential actions",
+        citizen: "Nothing is paid or submitted until the resident confirms; officials decide eligibility",
+        government: "Keeps accountability with people, as the law requires",
+      },
+    ],
+  },
+  {
+    id: "surfaces",
+    title: "Meets residents where they are",
+    productLine: "One agent on web, desktop and mobile, with consistent memory and task state; works inside the chat tools people already use.",
+    citizenLine: "One agent across the city website, app, messaging and voice — it remembers the household's context everywhere.",
+    capabilities: [
+      {
+        id: "surfaces",
+        name: "One agent on every surface",
+        product: "Web, desktop and mobile with the same task state",
+        citizen: "Start on the bus by phone, finish at home on the web; messaging and voice for residents who prefer them",
+        government: "One platform instead of a separate bot per channel",
+        extension: true,
+      },
+      {
+        id: "memory",
+        name: "Unified memory you can view and edit",
+        product: "One shared memory and personal profile, visible and editable by the user",
+        citizen: "Knows your address, vehicles and open requests — and you can see, correct or delete any of it",
+        government: "Transparency by design; supports data-protection rights",
+      },
+    ],
+  },
+  {
+    id: "connected",
+    title: "Connected to government systems and people",
+    productLine: "Out-of-the-box connectors and MCP; create and run subagents; invoke external agents; share agents and tasks.",
+    citizenLine: "Reaches billing, service-request, licensing and scheduling systems, and hands work between department agents.",
+    capabilities: [
+      {
+        id: "connectors",
+        name: "Connectors & MCP",
+        product: "Out-of-the-box connectors and MCP to business apps",
+        citizen: "Reads a bill, files a report, books an appointment in the city's own systems",
+        government: "Standard integration pattern; reuse across peer cities on the same systems",
+      },
+      {
+        id: "subagents",
+        name: "Subagents",
+        product: "An orchestrator that creates and runs specialist subagents",
+        citizen: "Utilities, roads, licensing and schools each run a specialist agent behind one front door — the pattern in the project's reference deployment",
+        government: "Departments join one at a time without rebuilding the front door",
+      },
+      {
+        id: "a2a",
+        name: "Agent-to-agent (A2A)",
+        product: "Invoke external agents across vendors",
+        citizen: "The city agent can hand a task to a state or national agency's agent",
+        government: "The route from a city pilot to state and national services",
+      },
+      {
+        id: "sharing",
+        name: "Sharing tasks and agents",
+        product: "Share tasks and agents with coworkers",
+        citizen: "A daughter helps her mother with an application — with the mother's recorded consent",
+        government: "Supports carers and assisted access; needs a delegation model",
+        extension: true,
+      },
+    ],
+  },
+  {
+    id: "governance",
+    title: "Choice, billing and governance",
+    productLine: "Model choice with smart routing, consumption billing with hard budget caps, agent identity and registry, observability and enterprise controls.",
+    citizenLine: "What makes $2 per resident affordable, auditable and safe.",
+    capabilities: [
+      {
+        id: "routing",
+        name: "Model choice & smart routing",
+        product: "Routine steps go to low-cost models; complex planning to top models",
+        citizen: "Quick answers are cheap; complex applications get the stronger model",
+        government: "The main lever that keeps delivery cost well under $2 — see the calculator",
+      },
+      {
+        id: "budget",
+        name: "Spend guardrails & hard budget caps",
+        product: "Hard spend freezes pause new calls before overruns",
+        citizen: "A fair-use limit per resident; essential and safety flows exempt",
+        government: "The budget cannot be exceeded — no surprise bills",
+      },
+      {
+        id: "agentid",
+        name: "Agent identity, registry & activity log",
+        product: "Every agent gets its own ID and activity log, inheriting permissions",
+        citizen: "Residents can see which department's agent acted and when",
+        government: "Audit trail for every action; one register of what is deployed",
+      },
+      {
+        id: "byoid",
+        name: "Bring your own identity",
+        product: "Enterprise identity integration",
+        citizen: "Sign in with the national or city digital ID the resident already has",
+        government: "No new identity system to run; step-up checks before actions",
+        extension: true,
+      },
+      {
+        id: "sandbox",
+        name: "Isolated sandbox & data protection",
+        product: "Code runs in an isolated space; sensitive data leaks blocked",
+        citizen: "Personal data stays inside the government's controls",
+        government: "Supports residency and data-protection obligations",
+      },
+      {
+        id: "observability",
+        name: "Observability & FinOps",
+        product: "Full observability, cost management and consumption billing",
+        citizen: "—",
+        government: "Live pilot metrics and cost per resident, from day one",
+      },
+    ],
+  },
+];
+
+export const CAPABILITY: Record<CapabilityId, Capability> = Object.fromEntries(
+  PILLARS.flatMap((p) => p.capabilities.map((c) => [c.id, c])),
+) as Record<CapabilityId, Capability>;
+
+/** Product capabilities each day-in-the-life moment relies on, by journey time. */
+export const JOURNEY_CAPABILITIES: Record<string, CapabilityId[]> = {
+  "07:40": ["triggers", "connectors", "approval", "notifications"],
+  "09:15": ["surfaces", "connectors", "subagents"],
+  "12:30": ["triggers", "skills", "memory", "approval"],
+  "16:10": ["memory", "skills", "connectors"],
+  "19:00": ["surfaces", "skills", "longtasks", "approval"],
+  "21:05": ["triggers", "notifications", "agentid"],
+};
+
+/** Product capabilities each use case relies on most. */
+export const USE_CASE_CAPABILITIES: Record<string, CapabilityId[]> = {
+  bills: ["triggers", "connectors", "approval"],
+  reports: ["connectors", "subagents", "notifications"],
+  reminders: ["triggers", "notifications", "memory"],
+  procedures: ["skills", "routing"],
+  benefits: ["skills", "longtasks", "approval", "sharing"],
+  certificates: ["a2a", "longtasks", "byoid"],
+  permits: ["skills", "longtasks", "approval"],
+  health: ["connectors", "approval"],
+  family: ["memory", "connectors"],
+  business: ["a2a", "longtasks", "approval"],
+  tax: ["skills", "a2a"],
+  rights: ["skills", "routing"],
+  jobs: ["skills", "memory"],
+  crisis: ["subagents", "approval"],
+};

@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { ChevronDown, RotateCcw } from "lucide-react";
-import { ACTION_CLASS, DEFAULT_WEIGHTS, USE_CASES, score, type ActionClass, type Weights } from "@/lib/ge-citizen/data";
-import { Basis, ClassBadge, Section, Slider } from "./ui";
+import { ACTION_CLASS, DEFAULT_WEIGHTS, USE_CASES, USE_CASE_CAPABILITIES, score, type ActionClass, type Weights } from "@/lib/ge-citizen/data";
+import { Basis, CapabilityChips, ClassBadge, Section, Slider } from "./ui";
 
 const CRITERIA: { key: keyof Weights; label: string; hint: string }[] = [
   { key: "frequency", label: "Frequency", hint: "How often a household needs it" },
@@ -31,7 +31,7 @@ export default function UseCaseExplorer() {
   return (
     <Section
       id="gec-usecases"
-      eyebrow="2 · Use-case explorer"
+      eyebrow="3 · Use-case explorer"
       title="What citizens would actually use — ranked by your priorities"
       lede={
         <>
@@ -145,6 +145,9 @@ export default function UseCaseExplorer() {
                         <span className="font-semibold text-[#3C4043]">Needs connecting: </span>
                         {u.systems.join(" · ")}
                       </p>
+                      <div className="mt-3">
+                        <CapabilityChips ids={USE_CASE_CAPABILITIES[u.id] ?? []} label="Uses" />
+                      </div>
                     </div>
                     <dl className="grid grid-cols-2 gap-2 self-start">
                       {CRITERIA.map((c) => (
