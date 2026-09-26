@@ -161,6 +161,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "mdes", name: "MDES Commitment Planner", href: "/mdes", icon: GraduationCap, section: "playbooks", audience: "account",
     gradient: "linear-gradient(135deg, #0b3d91 0%, #1a73e8 100%)",
     blurb: "Gemini Enterprise for EDU — $10.8M commitment ramp, GCP allocation and timeline planner", keywords: ["mdes", "thailand", "human intelligence", "gemini enterprise", "commitment", "ramp", "calculator", "edu"] },
+  { id: "ge-citizen", name: "GE for Citizen", href: "/ge-citizen", icon: Landmark, section: "playbooks", audience: "account",
+    gradient: "linear-gradient(135deg, #0B1F3A 0%, #1A73E8 100%)",
+    blurb: "A Gemini agent for every resident at ~$2 a year — journeys, market map, economics and pilot", keywords: ["citizen", "government", "municipal", "city", "gemini enterprise", "public sector", "calculator", "$2"] },
 ];
 
 export const ARCHIVE_LINKS = [
