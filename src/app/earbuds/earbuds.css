@@ -1,0 +1,298 @@
+/* ============================================================
+   EARBUDS PARETO — design system (prefix: eb-)
+   Premium editorial: warm off-white paper, charcoal type,
+   one restrained electric-blue accent. Data is the only loud thing.
+   ============================================================ */
+
+/* Paint the canvas behind the microsite so overscroll and scroll-anchoring never flash white. */
+html:has(.eb-root),
+body:has(.eb-root) {
+  background: #f7f4ee;
+}
+
+/* Layered so Tailwind utilities (e.g. lg:hidden) can override component display rules. */
+@layer components {
+.eb-root {
+  --eb-paper: #f7f4ee;
+  --eb-paper-2: #efeae1;
+  --eb-card: #fffdf9;
+  --eb-ink: #1c1b19;
+  --eb-ink-2: #45413b;
+  --eb-muted: #6b655c;
+  --eb-rule: #e2dcd1;
+  --eb-rule-2: #cfc7b9;
+  --eb-accent: #2350e6;
+  --eb-accent-ink: #1a3db8;
+  --eb-accent-wash: #e8edfd;
+  --eb-dominated: #8c857a;
+  --eb-caution-ink: #7a4a00;
+  --eb-caution-wash: #fbf1de;
+  --eb-radius: 14px;
+  --eb-shadow: 0 1px 2px rgba(28, 27, 25, 0.04), 0 10px 30px -18px rgba(28, 27, 25, 0.18);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  color: var(--eb-ink);
+  background: var(--eb-paper);
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.eb-root * {
+  box-sizing: border-box;
+}
+
+.eb-root ::selection {
+  background: rgba(35, 80, 230, 0.16);
+}
+
+.eb-display {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+.eb-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--eb-muted);
+}
+
+.eb-card {
+  background: var(--eb-card);
+  border: 1px solid var(--eb-rule);
+  border-radius: var(--eb-radius);
+  box-shadow: var(--eb-shadow);
+}
+
+.eb-rule {
+  border-color: var(--eb-rule);
+}
+
+.eb-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus: always visible, never colour-only. */
+.eb-root :where(a, button, input, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--eb-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Chips (presets, toggles) */
+.eb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--eb-rule-2);
+  background: var(--eb-card);
+  color: var(--eb-ink-2);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+  cursor: pointer;
+}
+
+.eb-chip:hover {
+  border-color: var(--eb-ink-2);
+  color: var(--eb-ink);
+}
+
+.eb-chip[aria-pressed="true"],
+.eb-chip[aria-checked="true"] {
+  background: var(--eb-ink);
+  border-color: var(--eb-ink);
+  color: var(--eb-paper);
+}
+
+.eb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--eb-rule-2);
+  background: var(--eb-card);
+  color: var(--eb-ink);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.eb-btn:hover {
+  background: var(--eb-paper-2);
+}
+
+.eb-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.eb-btn-accent {
+  background: var(--eb-accent);
+  border-color: var(--eb-accent);
+  color: #fff;
+}
+
+.eb-btn-accent:hover {
+  background: var(--eb-accent-ink);
+}
+
+.eb-link {
+  color: var(--eb-accent-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(26, 61, 184, 0.35);
+  text-underline-offset: 3px;
+}
+
+.eb-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Form controls */
+.eb-select {
+  appearance: none;
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 34px 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--eb-rule-2);
+  background: var(--eb-card)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2345413b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
+  color: var(--eb-ink);
+  font-size: 14px;
+}
+
+.eb-range {
+  width: 100%;
+  accent-color: var(--eb-accent);
+  height: 28px;
+}
+
+.eb-check {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--eb-accent);
+  flex: none;
+}
+
+/* Badges */
+.eb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--eb-rule-2);
+  color: var(--eb-ink-2);
+  background: var(--eb-paper);
+  white-space: nowrap;
+}
+
+.eb-badge-accent {
+  border-color: transparent;
+  background: var(--eb-accent-wash);
+  color: var(--eb-accent-ink);
+}
+
+.eb-caution {
+  background: var(--eb-caution-wash);
+  color: var(--eb-caution-ink);
+  border: 1px solid #ecd6ad;
+  border-radius: 12px;
+}
+
+/* Table */
+.eb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.eb-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--eb-muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--eb-rule-2);
+  white-space: nowrap;
+}
+
+.eb-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--eb-rule);
+  vertical-align: middle;
+}
+
+.eb-table tbody tr {
+  transition: background-color 120ms ease;
+}
+
+.eb-table tbody tr:hover,
+.eb-table tbody tr[data-active="true"] {
+  background: var(--eb-paper);
+}
+
+/* Chart */
+.eb-chart .recharts-cartesian-grid line {
+  stroke: var(--eb-rule);
+}
+
+.eb-chart .recharts-cartesian-axis-tick-value {
+  fill: var(--eb-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.eb-chart .recharts-surface {
+  overflow: visible;
+}
+
+.eb-point {
+  cursor: pointer;
+}
+
+.eb-point .eb-point-dot {
+  transition: r 160ms ease, opacity 200ms ease;
+}
+
+/* Narrow charts: only label what the reader picked; the list carries the rest. */
+@media (max-width: 640px) {
+  .eb-point-label:not([data-emph]) {
+    display: none;
+  }
+}
+
+.eb-point:hover .eb-point-dot,
+.eb-point:focus-visible .eb-point-dot {
+  r: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eb-root *,
+  .eb-root *::before,
+  .eb-root *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+}

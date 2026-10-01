@@ -41,7 +41,10 @@ describe("dataset integrity", () => {
   it("keeps metric values inside plausible ranges", () => {
     for (const p of PRODUCTS) {
       const m = p.metrics;
-      if (m.anc.value !== null) expect(m.anc.value).toBeGreaterThanOrEqual(0), expect(m.anc.value).toBeLessThanOrEqual(10);
+      if (m.anc.value !== null) {
+        expect(m.anc.value).toBeGreaterThanOrEqual(0);
+        expect(m.anc.value).toBeLessThanOrEqual(10);
+      }
       if (m.comfort.value !== null) expect(m.comfort.value).toBeLessThanOrEqual(10);
       if (m.price.value !== null) expect(m.price.value).toBeGreaterThan(0);
       if (m.weight.value !== null) expect(m.weight.value).toBeLessThan(15);

@@ -3,7 +3,7 @@ import {
   TrendingUp, ShoppingBag, Heart, Landmark, Factory, Wifi, FlaskConical, Layers, Scale,
   Activity, LineChart, Cpu, ShieldCheck, Banknote, Building2, ShoppingCart, Zap, Globe,
   MapPin, Umbrella, Mic, GraduationCap, School, Rocket, Plane, FileText, Network, Newspaper,
-  ArrowRightLeft, Store, Route,
+  ArrowRightLeft, Store, Route, Headphones,
 } from "lucide-react";
 
 /** Homepage last reorganized/audited — bump when the portfolio changes. */
@@ -100,6 +100,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "glm-vs-gemini", name: "GLM vs Gemini", href: "/glm-vs-gemini", icon: Scale, section: "intelligence", audience: "public", external: true,
     gradient: "linear-gradient(135deg, #4285F4 0%, #B45309 100%)",
     blurb: "Price per token vs cost per task", keywords: ["glm", "zhipu", "comparison", "open weights"] },
+  { id: "earbuds", name: "Earbuds Tradeoff", short: "Earbuds", href: "/earbuds", icon: Headphones, section: "intelligence", audience: "public",
+    gradient: "linear-gradient(135deg, #1c1b19 0%, #2350e6 100%)",
+    blurb: "Pareto frontier of wireless earbuds, by activity", keywords: ["earbuds", "headphones", "pareto", "frontier", "airpods", "sony", "bose", "noise cancelling"] },
 
   // Playbooks (segment-level, not a named customer)
   { id: "router", name: "Routing Policy", href: "/router", icon: Route, section: "playbooks", audience: "public",
