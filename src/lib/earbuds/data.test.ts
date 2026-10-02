@@ -51,8 +51,23 @@ describe("dataset integrity", () => {
     }
   });
 
-  it("every product has a price (the one axis with full coverage)", () => {
-    expect(PRODUCTS.every((p) => p.metrics.price.value !== null)).toBe(true);
+  it("every product has a price in at least one market", () => {
+    const priceless = PRODUCTS.filter((p) => p.metrics.price.value === null && p.metrics.priceInr.value === null && p.indiaAvailable !== true);
+    // Allowed only for catalog entries with other substantive data; never for deep entries.
+    expect(priceless.filter((p) => p.tier === "deep").map((p) => p.id)).toEqual([]);
+  });
+
+  it("catalog ids are unique and every catalog value cites a source", () => {
+    const catalog = PRODUCTS.filter((p) => p.tier === "catalog");
+    expect(catalog.length).toBeGreaterThan(100);
+    for (const p of catalog) for (const [k, d] of Object.entries(p.metrics)) if (d.value !== null) expect(d.sources.length, `${p.id}.${k}`).toBeGreaterThan(0);
+  });
+
+  it("India prices are plausible rupee amounts", () => {
+    for (const p of PRODUCTS) {
+      const v = p.metrics.priceInr.value;
+      if (v !== null) expect(v).toBeGreaterThanOrEqual(300);
+    }
   });
 
   it("source URLs are absolute https", () => {

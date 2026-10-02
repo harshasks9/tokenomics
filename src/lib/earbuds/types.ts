@@ -46,11 +46,18 @@ export interface Datum<T> {
 /** The comparable numeric metrics that can be put on a chart axis. */
 export type MetricId =
   | "price"
+  | "priceInr"
   | "anc"
+  | "ancClaim"
   | "batteryClaim"
+  | "batteryMax"
+  | "batteryTotal"
   | "batteryMeasured"
   | "comfort"
   | "weight";
+
+/** Which market's prices and availability scope the explorer. */
+export type Market = "in" | "us";
 
 /** Axes the brief asked for that research could not substantiate. */
 export type GapMetricId = "sound" | "mic";
@@ -59,17 +66,13 @@ export type AxisId = MetricId | GapMetricId;
 
 export type Direction = "lower" | "higher";
 
-export type Brand =
-  | "Apple"
-  | "Beats"
-  | "Google"
-  | "Sony"
-  | "Bose"
-  | "Samsung"
-  | "Nothing"
-  | "CMF"
-  | "Sennheiser"
-  | "Technics";
+/** Brand display name as the manufacturer writes it (e.g. "boAt", "CMF"). */
+export type Brand = string;
+
+/** in-ear = sealed tips; semi-in-ear = unsealed AirPods-style; open-ear/clip sit outside the canal. */
+export type Form = "in-ear" | "semi-in-ear" | "open-ear" | "ear-hook" | "clip";
+
+export type AncType = "none" | "anc" | "adaptive";
 
 export type FitAid = "ear-hook" | "wing-or-fin" | "stability-band" | "tips-only" | "open-fit";
 
@@ -90,14 +93,25 @@ export interface ProductNote {
 
 export interface Product {
   id: string;
+  /** deep = hand-researched with activity notes; catalog = sourced spec-sheet entry. */
+  tier: "deep" | "catalog";
   brand: Brand;
   name: string;
   /** Short label used on the chart. */
   short: string;
   generation: string;
   released: string;
+  /** yyyy-mm, for recency filtering; null when unknown. */
+  releasedMonth: string | null;
+  form: Form | null;
+  /** Sold in India per our sources (null = not established). */
+  indiaAvailable: boolean | null;
   /** Street-price context — not plotted. */
   priceNote?: string;
+  /** Research caveats for catalog entries (conflicts, estimates). */
+  researchNote?: string;
+  /** Overall confidence of a catalog entry. */
+  confidence?: Confidence;
   metrics: Record<MetricId, Datum<number>>;
   features: {
     /** Buds' IP code exactly as documented, e.g. "IP57", "IPX4". */
@@ -114,6 +128,9 @@ export interface Product {
     android: Datum<OsSupport>;
     /** Claimed total playback with case, ANC on (hours). */
     caseTotalHours: Datum<number>;
+    ancType: Datum<AncType>;
+    codecs: Datum<string>;
+    bluetooth: Datum<string>;
   };
   notes: ProductNote[];
 }

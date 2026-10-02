@@ -57,7 +57,7 @@ export const PRESETS: ActivityPreset[] = [
     y: "anc",
     axisRationale: "The classic tradeoff: measured noise cancelling against launch price.",
     weights: { anc: 3, price: 2, batteryClaim: 1, weight: 1 },
-    features: ["transparency", "wirelessCharging", "caseTotalHours", "ipRating"],
+    features: ["ancType", "transparency", "wirelessCharging", "caseTotalHours", "ipRating"],
     suggested: [],
     caution: AWARENESS_CAUTION,
   },
@@ -80,7 +80,7 @@ export const PRESETS: ActivityPreset[] = [
     y: "anc",
     axisRationale: "Lab-measured endurance against lab-measured noise cancelling — both from independent tests.",
     weights: { anc: 3, batteryMeasured: 3, comfort: 2, price: 1 },
-    features: ["caseTotalHours", "wirelessCharging", "transparency"],
+    features: ["ancType", "caseTotalHours", "wirelessCharging", "transparency", "codecs"],
     suggested: [{ label: "Wireless charging", patch: { wirelessCharging: true } }],
   },
   {
@@ -114,6 +114,9 @@ export const FEATURE_LABEL: Record<FeatureKey, string> = {
   ios: "iPhone support",
   android: "Android support",
   caseTotalHours: "Total with case (ANC on)",
+  ancType: "Noise cancelling",
+  codecs: "Codecs",
+  bluetooth: "Bluetooth",
 };
 
 export const FIT_AID_LABEL = {

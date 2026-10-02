@@ -1,4 +1,4 @@
-import type { AxisId, Direction, GapMetricId, MetricId } from "./types";
+import type { AxisId, Direction, GapMetricId, Market, MetricId } from "./types";
 
 export interface MetricDef {
   id: MetricId;
@@ -13,6 +13,10 @@ export interface MetricDef {
   definition: string;
   evidenceLabel: "Manufacturer claim" | "Independent measurement" | "Reviewer rating (subjective)";
   format: (v: number) => string;
+  /** Compact axis-tick format; falls back to format. */
+  tick?: (v: number) => string;
+  /** Plot on a log scale (prices spanning 50×, where linear crushes the budget end). */
+  log?: boolean;
   domainPad: number;
 }
 
@@ -28,8 +32,8 @@ const hours = (v: number) => `${Number(v.toFixed(2))} h`;
 export const METRICS: Record<MetricId, MetricDef> = {
   price: {
     id: "price",
-    label: "Price",
-    axis: "Launch price (USD)",
+    label: "Price (US)",
+    axis: "US launch price (USD)",
     unit: "USD",
     direction: "lower",
     sourceLine: "US launch MSRP from manufacturers and launch coverage",
@@ -37,6 +41,21 @@ export const METRICS: Record<MetricId, MetricDef> = {
     evidenceLabel: "Manufacturer claim",
     format: (v) => `$${Number.isInteger(v) ? v : v.toFixed(2)}`,
     domainPad: 20,
+  },
+  priceInr: {
+    id: "priceInr",
+    label: "Price (India)",
+    axis: "India launch price (₹)",
+    unit: "INR",
+    direction: "lower",
+    sourceLine: "India launch prices from brands, launch coverage and spec aggregators",
+    definition:
+      "The price announced at India launch, not MRP and not a sale price. Indian street prices often drop well below launch within weeks; MRP is shown on cards where known.",
+    evidenceLabel: "Manufacturer claim",
+    format: (v) => `₹${Math.round(v).toLocaleString("en-IN")}`,
+    tick: (v) => (v >= 1000 ? `₹${Number((v / 1000).toFixed(1))}k` : `₹${v}`),
+    log: true,
+    domainPad: 500,
   },
   anc: {
     id: "anc",
@@ -51,9 +70,22 @@ export const METRICS: Record<MetricId, MetricDef> = {
     format: (v) => v.toFixed(1),
     domainPad: 0.4,
   },
+  ancClaim: {
+    id: "ancClaim",
+    label: "ANC depth (claimed)",
+    axis: "Claimed max ANC depth (dB) — manufacturer figure",
+    unit: "dB",
+    direction: "higher",
+    sourceLine: "Manufacturer 'up to X dB' claims",
+    definition:
+      "The brand's own 'up to X dB' noise-cancelling figure. Brands measure it differently (frequency, rig, peak vs average), so a higher claim does not reliably mean better cancellation — use the lab score where it exists.",
+    evidenceLabel: "Manufacturer claim",
+    format: (v) => `${v} dB`,
+    domainPad: 2,
+  },
   batteryClaim: {
     id: "batteryClaim",
-    label: "Battery (claimed)",
+    label: "Battery, ANC on (claimed)",
     axis: "Battery, ANC on — manufacturer claim (hours)",
     unit: "hours",
     direction: "higher",
@@ -62,6 +94,30 @@ export const METRICS: Record<MetricId, MetricDef> = {
     evidenceLabel: "Manufacturer claim",
     format: hours,
     domainPad: 1,
+  },
+  batteryMax: {
+    id: "batteryMax",
+    label: "Battery, buds (claimed max)",
+    axis: "Battery, earbuds alone — claimed maximum (hours)",
+    unit: "hours",
+    direction: "higher",
+    sourceLine: "Manufacturer specifications, best-case condition (usually ANC off)",
+    definition: "The longest single-charge playtime the brand claims for the earbuds. Usually measured with ANC off at moderate volume, so it flatters every model; widely available, so useful for broad comparisons.",
+    evidenceLabel: "Manufacturer claim",
+    format: hours,
+    domainPad: 1,
+  },
+  batteryTotal: {
+    id: "batteryTotal",
+    label: "Battery with case (claimed)",
+    axis: "Total playtime with case — claimed maximum (hours)",
+    unit: "hours",
+    direction: "higher",
+    sourceLine: "Manufacturer specifications, best-case condition",
+    definition: "Earbuds plus all case recharges, as claimed. Budget brands often lead here on paper; real use with ANC is lower.",
+    evidenceLabel: "Manufacturer claim",
+    format: hours,
+    domainPad: 4,
   },
   batteryMeasured: {
     id: "batteryMeasured",
@@ -109,7 +165,7 @@ export const GAPS: Record<GapMetricId, GapDef> = {
     id: "sound",
     label: "Sound quality",
     why:
-      "No source scores sound the same way across all 14 models. RTINGS' sound scores are paywalled, and SoundGuys' MDAQS scores change version between reviews and say they aren't directly comparable. Plotting them would create a false frontier.",
+      "No source scores sound the same way across this set of models. RTINGS' sound scores are paywalled, and SoundGuys' MDAQS scores change version between reviews and say they aren't directly comparable. Plotting them would create a false frontier.",
     instead: "Each product card carries sourced notes on sound character, including where reviewers disagree.",
   },
   mic: {
@@ -122,15 +178,34 @@ export const GAPS: Record<GapMetricId, GapDef> = {
 };
 
 export const AXIS_OPTIONS: { id: AxisId; gap: boolean }[] = [
+  { id: "priceInr", gap: false },
   { id: "price", gap: false },
   { id: "anc", gap: false },
+  { id: "ancClaim", gap: false },
   { id: "sound", gap: true },
   { id: "batteryClaim", gap: false },
+  { id: "batteryMax", gap: false },
+  { id: "batteryTotal", gap: false },
   { id: "batteryMeasured", gap: false },
   { id: "comfort", gap: false },
   { id: "weight", gap: false },
   { id: "mic", gap: true },
 ];
+
+/** The price metric for a market, and the one that should be hidden there. */
+export function priceMetric(market: Market): MetricId {
+  return market === "in" ? "priceInr" : "price";
+}
+
+/** Swap a USD/INR price id for the market's own; leaves other metrics alone. */
+export function forMarket(id: MetricId, market: Market): MetricId {
+  return id === "price" || id === "priceInr" ? priceMetric(market) : id;
+}
+
+export function axisOptionsFor(market: Market) {
+  const hide = market === "in" ? "price" : "priceInr";
+  return AXIS_OPTIONS.filter((o) => o.id !== hide);
+}
 
 export function isMetric(id: AxisId): id is MetricId {
   return id in METRICS;

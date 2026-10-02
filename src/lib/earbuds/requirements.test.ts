@@ -75,12 +75,38 @@ describe("checkProduct", () => {
 
   it("brand filter excludes other brands", () => {
     const res = applyRequirements(PRODUCTS, NO_REQUIREMENTS, ["Sony"]);
-    expect(res.filter((r) => r.eligible).map((r) => r.product.brand)).toEqual(["Sony", "Sony", "Sony"]);
+    const eligible = res.filter((r) => r.eligible).map((r) => r.product.brand);
+    expect(eligible.length).toBeGreaterThanOrEqual(3);
+    expect(new Set(eligible)).toEqual(new Set(["Sony"]));
   });
 
   it("counts active requirements", () => {
     expect(countActive(NO_REQUIREMENTS)).toBe(0);
     expect(countActive({ ...NO_REQUIREMENTS, multipoint: true, water: 4 })).toBe(2);
+  });
+});
+
+describe("new requirements", () => {
+  it("ANC requirement fails documented no-ANC and treats unknown as unknown", () => {
+    const res = applyRequirements(PRODUCTS, { ...NO_REQUIREMENTS, anc: true });
+    for (const r of res) {
+      const a = r.product.features.ancType.value;
+      if (a === "anc" || a === "adaptive") expect(r.eligible).toBe(true);
+      else expect(r.exclusions.find((e) => e.requirement === "anc")?.kind).toBe(a === null ? "unknown" : "fails");
+    }
+  });
+
+  it("release-year filter never passes an undated product", () => {
+    const res = applyRequirements(PRODUCTS, { ...NO_REQUIREMENTS, releasedSince: 2025 });
+    for (const r of res) {
+      if (r.product.releasedMonth === null) expect(r.eligible).toBe(false);
+      else expect(r.eligible).toBe(Number(r.product.releasedMonth.slice(0, 4)) >= 2025);
+    }
+  });
+
+  it("form filter separates sealed and open designs", () => {
+    const open = applyRequirements(PRODUCTS, { ...NO_REQUIREMENTS, form: "open" }).filter((r) => r.eligible);
+    expect(open.every((r) => ["open-ear", "clip", "semi-in-ear"].includes(r.product.form ?? ""))).toBe(true);
   });
 });
 

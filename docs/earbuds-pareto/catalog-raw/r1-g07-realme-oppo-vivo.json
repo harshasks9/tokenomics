@@ -1,0 +1,855 @@
+[
+  {
+    "id": "realme-buds-air-7-pro",
+    "brand": "realme",
+    "model": "Buds Air 7 Pro",
+    "released": "2025-05",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 5499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 53,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 12,
+    "batteryTotalMax": 48,
+    "ip": "IP55",
+    "weightG": 4.89,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": [
+      "SBC",
+      "AAC",
+      "LHDC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 45,
+    "drivers": "11mm woofer + 6mm micro-planar tweeter (dual driver)",
+    "sources": [
+      {
+        "url": "https://www.bajajfinserv.in/realme-buds-air-7-pro",
+        "publisher": "Bajaj Finserv",
+        "kind": "retailer",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "drivers",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/bytes/realme-buds-air-7-pro-launched-in-india/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "released",
+          "launchPriceINR",
+          "codecs",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/realme-buds-air7-pro-india-launch-date-27-may-2025",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/453762/realme-buds-air-7-pro-india-launch-date.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      }
+    ],
+    "notes": "India launch 27 May 2025 (with GT 7 series), on sale 30 May 2025. Announced price Rs 5,499; special launch price Rs 4,999. LHDC 5.0, 6-mic call NC, AI live translation. Fast charge: 10 min = 10 h (Bajaj) vs 11 h (Smartprix). Multipoint not confirmed in results.",
+    "confidence": "high"
+  },
+  {
+    "id": "realme-buds-air-7",
+    "brand": "realme",
+    "model": "Buds Air 7",
+    "released": "2025-03",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 3299,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "adaptive",
+    "ancClaimDb": 52,
+    "batteryBudsAncOn": 7.5,
+    "batteryBudsMax": 13,
+    "batteryTotalMax": 52,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": [
+      "LHDC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 45,
+    "drivers": "12.4mm dynamic (titanium-coated diaphragm)",
+    "sources": [
+      {
+        "url": "https://croma.com/unboxed/realme-buds-air7-launched-in-india",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc",
+          "ancClaimDb",
+          "drivers",
+          "codecs",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/449077/realme-buds-air-7-price-india-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "bluetooth",
+          "latencyMs",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/448476/realme-buds-air-7-india-launch-date.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/amphtml/accessories/news/realme-buds-air7-launched-in-india-with-up-to-52-hours-of-playback-check-price-and-features-011-111771.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "batteryTotalMax"
+        ]
+      }
+    ],
+    "notes": "India launch 19 March (year 2025 inferred from article sequence; launched before Buds Air 7 Pro of May 2025). Rs 3,299 with Rs 500 bank offer -> Rs 2,799 effective. 'Smart ANC' adapts to ambient noise automatically (classified adaptive). LHDC 5.0; only LHDC named in results (SBC/AAC not confirmed). Weight and multipoint not found.",
+    "confidence": "medium"
+  },
+  {
+    "id": "realme-buds-air-6-pro",
+    "brand": "realme",
+    "model": "Buds Air 6 Pro",
+    "released": "2024-06",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 4999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 40,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 55,
+    "drivers": "11mm bass driver + 6mm micro-planar tweeter",
+    "sources": [
+      {
+        "url": "https://www.gizbot.com/amphtml/accessories/news/realme-buds-air6-pro-launched-in-india-for-rs-4-999-check-features-and-sale-date-097923.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "released"
+        ]
+      },
+      {
+        "url": "https://mysmartprice.com/gear/?p=409595",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers",
+          "ancClaimDb",
+          "codecs",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "multipoint",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.bajajfinserv.in/realme-buds-air-6-pro-price-guide",
+        "publisher": "Bajaj Finserv",
+        "kind": "retailer",
+        "fields": [
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/realme-buds-air-6-pro-launching-in-india-on-june-20th-via-flipkart/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      }
+    ],
+    "notes": "India launch 20 June 2024, sale from 27 June via realme.com/Flipkart. Rs 4,999; introductory Rs 4,199 (+Rs 300 bank offer -> Rs 3,899). LDAC, 6-mic call NC. Status assumed older-still-sold since successor (Air 7 Pro) launched 2025.",
+    "confidence": "high"
+  },
+  {
+    "id": "realme-buds-air-6",
+    "brand": "realme",
+    "model": "Buds Air 6",
+    "released": "2024-05",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 3299,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": 6.5,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LHDC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 55,
+    "drivers": "12.4mm titanium-plated dynamic",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/424499/realme-buds-air-6-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "codecs"
+        ]
+      },
+      {
+        "url": "https://m.gsmarena.com/realme_buds_wireless_3_neo_buds_air6_india_price_sale_date-news-62971.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "released",
+          "launchPriceINR",
+          "batteryBudsAncOn",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://91mobiles.com/hub/realme-buds-air-6-royal-violet-colour-launched-india",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "drivers",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "codecs",
+          "latencyMs",
+          "multipoint"
+        ]
+      }
+    ],
+    "notes": "On sale in India from 27 May 2024 at Rs 3,299 (Flame Silver, Forest Green); Royal Violet colour added July 2024 at Rs 2,999. Battery: 6.5 h buds / 26 h total with ANC on; 40 h total ANC off at 50% volume. Buds-only ANC-off figure not found. LHDC 5.0, Dual Device Connection 2.0, Google Fast Pair.",
+    "confidence": "high"
+  },
+  {
+    "id": "realme-buds-air-5-pro",
+    "brand": "realme",
+    "model": "Buds Air 5 Pro",
+    "released": "2023-08",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 4999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": 7,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 40,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm woofer + 6mm planar tweeter",
+    "sources": [
+      {
+        "url": "https://www.mysmartprice.com/gear/realme-buds-air-5-series-launched-price-in-india-specifications/",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers",
+          "codecs",
+          "ancClaimDb",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "multipoint",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/403060/realme-buds-air-5-buds-air-5-pro-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb"
+        ]
+      },
+      {
+        "url": "https://m.gsmarena.com/realme_buds_air_5_pro_will_go_global_on_august_23-amp-59592.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.91mobiles.com/hub/?p=535097",
+        "publisher": "91mobiles",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "Launched in India Aug 2023 (global launch 23 Aug 2023; India sale from 29 Aug). Rs 4,999; introductory Rs 4,499. LDAC (990 kbps), Hi-Res, 360 spatial audio. Status unverified.",
+    "confidence": "medium"
+  },
+  {
+    "id": "realme-buds-air-5",
+    "brand": "realme",
+    "model": "Buds Air 5",
+    "released": "2023-08",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 3699,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": null,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/403060/realme-buds-air-5-buds-air-5-pro-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb"
+        ]
+      },
+      {
+        "url": "https://www.mysmartprice.com/gear/realme-buds-air-5-series-launched-price-in-india-specifications/",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb"
+        ]
+      }
+    ],
+    "notes": "Launched alongside Buds Air 5 Pro in India (Aug 2023); FoneArena headline 'starting at Rs. 3699' (the non-Pro). 50dB ANC and 6-mic call NC shared with the Pro. Other specs not retrieved (search budget exhausted).",
+    "confidence": "low"
+  },
+  {
+    "id": "realme-buds-t310",
+    "brand": "realme",
+    "model": "Buds T310",
+    "released": "2024-07",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 46,
+    "batteryBudsAncOn": 6,
+    "batteryBudsMax": 9,
+    "batteryTotalMax": 40,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 45,
+    "drivers": "12.4mm dynamic bass driver",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/430743/realme-buds-t310-price-india-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "drivers",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "multipoint",
+          "bluetooth",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/realme-buds-t310-india-launch-date-30-july-2024-teaser",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/realme-buds-t310-india",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "India launch 30 July 2024. Rs 2,499 with Rs 300 cashback -> Rs 2,199. Hybrid ANC; 26 h total with ANC on. 3 mics per bud, 360 spatial audio.",
+    "confidence": "high"
+  },
+  {
+    "id": "realme-buds-t300",
+    "brand": "realme",
+    "model": "Buds T300",
+    "released": "2023-09",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2299,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 30,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 50,
+    "drivers": "12.4mm dynamic bass driver",
+    "sources": [
+      {
+        "url": "https://www.mysmartprice.com/gear/realme-buds-t300-launched-price-in-india-specifications/",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "drivers",
+          "bluetooth",
+          "latencyMs",
+          "batteryTotalMax",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/404560/realme-buds-t300-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "released",
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://www.notebookcheck.net/Realme-Buds-T300-make-a-stylish-debut-with-ANC-and-Spatial-Audio-for-under-US-30.747394.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "news",
+        "fields": [
+          "form"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/realme-buds-t300-tws-earbuds-with-active-noise-cancellation-ip55-water-resistant-360-degree-spatial-audio-effect-dome-green-/p/305914",
+        "publisher": "Croma",
+        "kind": "retailer",
+        "fields": [
+          "ancClaimDb",
+          "ip"
+        ]
+      }
+    ],
+    "notes": "India sale from 12 Sept (2023 per article context; FoneArena/Notebookcheck coverage). Regular price Rs 2,299, introductory Rs 2,199. One summary describes it as 'semi-in-ear resembling AirPods Pro'; recorded as in-ear (AirPods Pro-style with tips). 4-mic call NC, 360 spatial audio.",
+    "confidence": "medium"
+  },
+  {
+    "id": "realme-buds-t200",
+    "brand": "realme",
+    "model": "Buds T200",
+    "released": "2025-07",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 32,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.4",
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 45,
+    "drivers": "12.4mm dynamic bass driver",
+    "sources": [
+      {
+        "url": "https://www.gizbot.com/amphtml/accessories/news/realme-buds-t200-affordable-tws-earbuds-with-anc-hi-res-audio-3d-spatial-audio-launched-in-india-011-117023.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers",
+          "codecs",
+          "ancClaimDb",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/459347/realme-buds-t200-india-launch-date.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "released",
+          "drivers",
+          "codecs",
+          "ancClaimDb",
+          "latencyMs",
+          "bluetooth",
+          "batteryTotalMax",
+          "multipoint",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/unboxed/realme-buds-t200-launched-in-india",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      }
+    ],
+    "notes": "India launch 24 July 2025 with realme 15 series. Rs 1,999; Rs 1,699 effective with Rs 300 bank offer. Total 50 h ANC off / 35 h ANC on; buds-only figures not found. Dual device pairing, LDAC, Hi-Res.",
+    "confidence": "high"
+  },
+  {
+    "id": "realme-buds-t200x",
+    "brand": "realme",
+    "model": "Buds T200x",
+    "released": null,
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 25,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 48,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/455148/realme-buds-t200x-price-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "batteryTotalMax",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://us.smartprix.com/bytes/realme-buds-t200x-launched-in-india/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "indiaAvailable"
+        ]
+      }
+    ],
+    "notes": "Existence and India launch confirmed by headlines only ('up to 25dB ANC, up to 48h total playback launched in India'), likely mid-2025; price and other specs not retrieved (search budget exhausted).",
+    "confidence": "low"
+  },
+  {
+    "id": "realme-buds-t110",
+    "brand": "realme",
+    "model": "Buds T110",
+    "released": "2024-04",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7,
+    "batteryTotalMax": 38,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 88,
+    "drivers": "10mm dynamic (PEEK+PU composite diaphragm)",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/421747/realme-buds-t110-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.mysmartprice.com/gear/?p=394862",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "released",
+          "launchPriceINR",
+          "drivers",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "bluetooth",
+          "latencyMs",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.notebookcheck.net/Realme-Buds-T110-New-completely-wireless-headphones-with-ENC-support-launch-at-a-low-price.828432.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "news",
+        "fields": [
+          "anc"
+        ]
+      },
+      {
+        "url": "https://smartprix.com/mobile_headphones/realme-buds-t110-true-wireless-earbuds-ppd1uwy4jq7z",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "India launch 15 April 2024 with realme P1 series. Rs 1,499; introductory Rs 1,299. AI ENC for calls only (no ANC). Form assumed in-ear (not explicitly confirmed).",
+    "confidence": "medium"
+  },
+  {
+    "id": "realme-buds-t01",
+    "brand": "realme",
+    "model": "Buds T01",
+    "released": "2024-08",
+    "status": "current",
+    "form": "semi-in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1299,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 6,
+    "batteryTotalMax": 28,
+    "ip": "IPX4",
+    "weightG": 4,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 88,
+    "drivers": "13mm dynamic bass driver",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/433473/realme-buds-t01-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/realme-buds-t01-with-88ms-super-low-latency-and-ai-enc-launched-in-india-at-rs-1299/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "latencyMs",
+          "anc"
+        ]
+      },
+      {
+        "url": "https://www.reliancedigital.in/product/realme-buds-t01-truly-wireless-in-ear-earbuds-with-ai-enc-for-calls-13-mm-dynamic-bass-driver-upto-28-hrs-battery-88-mm-latency-bluetooth-v54-and-google-fast-pair-black-m0kw9i-8549241",
+        "publisher": "Reliance Digital",
+        "kind": "retailer",
+        "fields": [
+          "drivers",
+          "batteryTotalMax",
+          "latencyMs",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://m.gsmarena.com/realme_buds_t01_launch_with_12mm_drivers_lowlatency_gaming_mode-news-64335.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "released",
+          "form",
+          "weightG",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip"
+        ]
+      }
+    ],
+    "notes": "Debuted 29 Aug 2024; India price Rs 1,299. Driver size conflict: 13mm per FoneArena India launch & Reliance Digital listing vs 12mm per GSMArena/Malaysia coverage. Half in-ear design, ~4 g per bud. AI ENC for calls only.",
+    "confidence": "medium"
+  },
+  {
+    "id": "realme-buds-q2s",
+    "brand": "realme",
+    "model": "Buds Q2s",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7,
+    "batteryTotalMax": 30,
+    "ip": "IPX4",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.2",
+    "codecs": [
+      "AAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 88,
+    "drivers": "10mm bass boost driver (PEEK + TPU diaphragm)",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/362802/realme-buds-q2s-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "bluetooth",
+          "codecs",
+          "drivers",
+          "latencyMs",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/364007/realme-buds-q2s-review.html",
+        "publisher": "FoneArena",
+        "kind": "review",
+        "fields": []
+      }
+    ],
+    "notes": "Pre-2023 model (launched alongside Buds Air 3 era, on sale from 'May 2nd' - year not stated in result, likely 2022). Rs 1,999 at launch. AI ENC for calls only. Form assumed in-ear (not explicitly confirmed). Included because it was on the assigned list; may be outside the 2023-2026 window.",
+    "confidence": "medium"
+  }
+]

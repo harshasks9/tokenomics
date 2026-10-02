@@ -1,0 +1,796 @@
+[
+  {
+    "id": "shokz-openfit-2",
+    "brand": "Shokz",
+    "model": "OpenFit 2",
+    "released": "2025-01",
+    "status": "current",
+    "form": "open-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 179.95,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 11,
+    "batteryTotalMax": 48,
+    "ip": "IP55",
+    "weightG": 9.4,
+    "multipoint": true,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": false,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://shokz.com/products/openfit-2",
+        "publisher": "Shokz",
+        "kind": "manufacturer",
+        "fields": [
+          "launchPriceUSD",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://www.digitec.ch/en/s1/product/shokz-openfit-2-11-h-wireless-headphones-58253673",
+        "publisher": "Digitec",
+        "kind": "retailer",
+        "fields": [
+          "weightG",
+          "batteryBudsMax",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.memoryexpress.com/Products/MX00132420",
+        "publisher": "Memory Express",
+        "kind": "retailer",
+        "fields": [
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://tomsguide.com/audio/headphones/shokz-just-announced-the-openfit-2-at-ces-2025-here-are-the-4-updates-im-most-excited-about",
+        "publisher": "Tom's Guide",
+        "kind": "news",
+        "fields": [
+          "released",
+          "multipoint"
+        ]
+      },
+      {
+        "url": "https://www.soundguys.com/shokz-openfit-2-vs-openfit-should-you-upgrade-134311/",
+        "publisher": "SoundGuys",
+        "kind": "review",
+        "fields": [
+          "multipoint"
+        ]
+      },
+      {
+        "url": "https://www.techradar.com/health-fitness/fitness-headphones/i-went-for-a-run-with-the-all-new-shokz-openfit-2-and-theyre-already-threatening-to-become-my-go-to-running-headphones",
+        "publisher": "TechRadar",
+        "kind": "review",
+        "fields": [
+          "wirelessCharging"
+        ]
+      }
+    ],
+    "notes": "Announced at CES 2025 (Tom's Guide); Galaxus/Digitec list release date 2025-06-05 (Europe). Earbud battery 56 mAh; 10 min quick charge noted for 2+ variant. wirelessCharging=false inferred from sources stating wireless charging is the OpenFit 2+ differentiator. DirectPitch 2.0 driver (size not stated). No official India launch found; Smartprix shows only the OpenFit 2+ as 'upcoming'. anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "high"
+  },
+  {
+    "id": "shokz-openfit-2-plus",
+    "brand": "Shokz",
+    "model": "OpenFit 2+",
+    "released": null,
+    "status": "current",
+    "form": "open-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 199.95,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 11,
+    "batteryTotalMax": 48,
+    "ip": "IP55",
+    "weightG": 9.4,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": true,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.techradar.com/health-fitness/fitness-headphones/i-went-for-a-run-with-the-all-new-shokz-openfit-2-and-theyre-already-threatening-to-become-my-go-to-running-headphones",
+        "publisher": "TechRadar",
+        "kind": "review",
+        "fields": [
+          "launchPriceUSD",
+          "wirelessCharging"
+        ]
+      },
+      {
+        "url": "https://endurance.biz/2025/industry-news/shokz-unveils-openfit-2-and-openfit-2-wireless-earbuds/",
+        "publisher": "MultiSport Research",
+        "kind": "news",
+        "fields": [
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "wirelessCharging",
+          "ip",
+          "bluetooth",
+          "weightG"
+        ]
+      },
+      {
+        "url": "https://www.johnlewis.com/shokz-openfit-2-bluetooth-true-wireless-open-ear-headphones/black/p113753491",
+        "publisher": "John Lewis",
+        "kind": "retailer",
+        "fields": [
+          "ip",
+          "weightG"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/shokz-brand",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "notes"
+        ]
+      }
+    ],
+    "notes": "UK price £179. Adds Dolby Audio and wireless charging over OpenFit 2; 10 min quick charge = 2 h. Case 56 g. Launched 2025 (month not confirmed). Smartprix lists 'OpenFit 2 Plus' at ₹16,999 marked UPCOMING for India - expected price, not a confirmed launch price, so launchPriceINR left null. Multipoint not stated for the + variant in sources (OpenFit 2 has it). anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "shokz-openfit",
+    "brand": "Shokz",
+    "model": "OpenFit",
+    "released": null,
+    "status": "older-still-sold",
+    "form": "open-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 179,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7,
+    "batteryTotalMax": 28,
+    "ip": "IP54",
+    "weightG": 8.3,
+    "multipoint": null,
+    "bluetooth": "5.2",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.istudio.store/en/products/shokz-openfit-black",
+        "publisher": "iStudio",
+        "kind": "retailer",
+        "fields": [
+          "weightG",
+          "ip",
+          "batteryBudsMax",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.jbhifi.com.au/products/shokz-openfit-true-wireless-earphones-black",
+        "publisher": "JB Hi-Fi",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      },
+      {
+        "url": "https://www.trustedreviews.com/reviews/shokz-openfit",
+        "publisher": "Trusted Reviews",
+        "kind": "review",
+        "fields": [
+          "launchPriceUSD",
+          "bluetooth",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.soundguys.com/shokz-openfit-2-vs-openfit-should-you-upgrade-134311/",
+        "publisher": "SoundGuys",
+        "kind": "review",
+        "fields": [
+          "notes"
+        ]
+      }
+    ],
+    "notes": "Shokz's 2023 open-ear model (month not confirmed). Battery: 58 mAh buds, 600 mAh case; case 57 g, not waterproof. Multipoint CONFLICT: one source says it has multipoint, another says the original OpenFit is single-device and OpenFit 2 introduced multipoint - left null. Air-conduction (not bone-conduction). Successor OpenFit 2 is current. anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "shokz-openfit-air",
+    "brand": "Shokz",
+    "model": "OpenFit Air",
+    "released": "2024-06",
+    "status": "older-still-sold",
+    "form": "open-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 119,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 6,
+    "batteryTotalMax": 28,
+    "ip": "IP54",
+    "weightG": 8.7,
+    "multipoint": null,
+    "bluetooth": "5.2",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://tomsguide.com/wellness/fitness/shokz-openfit-air-review",
+        "publisher": "Tom's Guide",
+        "kind": "review",
+        "fields": [
+          "released",
+          "launchPriceUSD"
+        ]
+      },
+      {
+        "url": "https://www.techradar.com/health-fitness/fitness-headphones/shokzs-openfit-air-headphones-are-perfect-for-open-air-running",
+        "publisher": "TechRadar",
+        "kind": "review",
+        "fields": [
+          "released",
+          "launchPriceUSD"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/shokz-openfit-air-true-wireless-earbuds-ppd10qwlckb0",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "bluetooth",
+          "ip",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "weightG",
+          "notes"
+        ]
+      },
+      {
+        "url": "https://www.tanotis.com/products/shokz-openfit-air-true-wireless-open-ear-headphones-black",
+        "publisher": "Tanotis",
+        "kind": "retailer",
+        "fields": [
+          "notes"
+        ]
+      },
+      {
+        "url": "https://www.jbhifi.com.au/products/shokz-openfit-air-2-open-ear-headphones-ice-blue",
+        "publisher": "JB Hi-Fi",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      }
+    ],
+    "notes": "Launched June 2024 at $119 / £119. India: Smartprix lists ₹25,136 with import-retailer offers ₹16,265-22,530 (e.g. Tanotis) - these are import/grey listings, not an official launch price, so INR fields left null. Composite driver (size not stated). Total weight with case 73.8 g. status older-still-sold because an 'OpenFit Air 2' listing exists (JB Hi-Fi). anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "shokz-opendots-one",
+    "brand": "Shokz",
+    "model": "OpenDots ONE",
+    "released": "2025-04",
+    "status": "current",
+    "form": "clip",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 199.95,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 40,
+    "ip": "IP54",
+    "weightG": 6.5,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": true,
+    "latencyMs": null,
+    "drivers": "dual driver (16mm per retailer listing)",
+    "sources": [
+      {
+        "url": "https://shokz.com/products/opendots-one",
+        "publisher": "Shokz",
+        "kind": "manufacturer",
+        "fields": [
+          "launchPriceUSD",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "weightG",
+          "ip",
+          "wirelessCharging"
+        ]
+      },
+      {
+        "url": "https://www.tomsguide.com/audio/earbuds/shokz-opendots-one-vs-shokz-openfit-2-which-open-ear-buds-are-right-for-you",
+        "publisher": "Tom's Guide",
+        "kind": "review",
+        "fields": [
+          "launchPriceUSD",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.techradar.com/audio/earbuds-airpods/shokz-launches-its-smallest-open-earbuds-yet-and-im-ready-to-hear-this-one-out-despite-the-high-price",
+        "publisher": "TechRadar",
+        "kind": "news",
+        "fields": [
+          "form"
+        ]
+      },
+      {
+        "url": "https://www.samsclub.com/ip/shokz-opendots-one-open-ear-true-wireless-earbuds/17577507033",
+        "publisher": "Sam's Club",
+        "kind": "retailer",
+        "fields": [
+          "drivers",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/shokz-opendots-one-true-wireless-earbuds-ppd13u6uru5l",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "notes"
+        ]
+      }
+    ],
+    "notes": "US release April 29 (2025 per launch coverage), Australia June 3. Dolby Audio, nickel-titanium clip, auto ear detection, interchangeable L/R, Qi wireless charging; 10 min charge = 2 h. Smartprix shows ₹30,456 in India (import listing, not an official launch price). anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "bose-ultra-open-earbuds",
+    "brand": "Bose",
+    "model": "Ultra Open Earbuds",
+    "released": "2024-04",
+    "status": "older-still-sold",
+    "form": "clip",
+    "indiaAvailable": true,
+    "launchPriceINR": 25900,
+    "mrpINR": null,
+    "launchPriceUSD": 299,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7.5,
+    "batteryTotalMax": 27,
+    "ip": "IPX4",
+    "weightG": 5.9,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": [
+      "aptX Adaptive"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.gizmochina.com/2024/04/10/bose-ultra-open-earbuds-announced-in-india/",
+        "publisher": "Gizmochina",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "released",
+          "codecs",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/bose-ultra-open-true-wireless-earbuds-ppd12v0tjwik",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "launchPriceINR",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG"
+        ]
+      },
+      {
+        "url": "https://www.notebookcheck.net/Bose-begins-selling-Ultra-Open-Earbuds-for-299-with-promise-of-future-Bluetooth-Multipoint-support.803724.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "multipoint"
+        ]
+      },
+      {
+        "url": "https://earbudsarena.com/bose-ultra-open-earbuds/",
+        "publisher": "Earbuds Arena",
+        "kind": "review",
+        "fields": [
+          "batteryBudsMax"
+        ]
+      },
+      {
+        "url": "https://luxury.tatacliq.com/bose-new-ultra-open-earbuds-with-openaudio-technology-upto-48h-of-battery-black-true-wireless/p-mp000000022958045",
+        "publisher": "Tata CLiQ Luxury",
+        "kind": "retailer",
+        "fields": [
+          "notes"
+        ]
+      }
+    ],
+    "notes": "released = India launch (Gizmochina 2024-04-10; sold via Amazon, Reliance Digital, Croma, Vijay Sales). Global sale began earlier at $299 (Notebookcheck) - one snippet says unveiled at CES '2023' via a Kith special edition, which conflicts with the 2024 sale/India timeline. 7.5 h buds is with Immersive Audio off. Total 27 h per Smartprix; Tata CLiQ title says 'upto 48h' (unverified). Multipoint was promised as a future update at launch - left null. Aggregator spec lines (BT 5.4, wireless charging, multi-device pairing, Cinema mode) appear to mix in the Gen 2 listing, so BT/wireless charging left null; weight 5.9 g from same aggregator - medium confidence. Snapdragon Sound / aptX Adaptive; SBC/AAC not stated in sources. Superseded by Ultra Open Earbuds (2nd Gen) in Oct 2026. anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "bose-ultra-open-earbuds-2nd-gen",
+    "brand": "Bose",
+    "model": "Ultra Open Earbuds (2nd Gen)",
+    "released": "2026-10",
+    "status": "current",
+    "form": "clip",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 299,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 9,
+    "batteryTotalMax": 29,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": [
+      "aptX"
+    ],
+    "wirelessCharging": true,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.notebookcheck.net/Bose-Ultra-Open-Earbuds-2nd-Gen-Pricing-specifications-and-release-date-officially-revealed.1401907.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "released",
+          "batteryBudsMax"
+        ]
+      },
+      {
+        "url": "https://bgr.com/2262187/new-bose-earbuds-ultra-open-upgrades-features/",
+        "publisher": "BGR",
+        "kind": "news",
+        "fields": [
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "wirelessCharging"
+        ]
+      },
+      {
+        "url": "https://www.newsbytesapp.com/news/science/bose-launches-ultra-and-sport-open-earbuds-available-october-1/tldr",
+        "publisher": "NewsBytes",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/bose-ultra-open-true-wireless-earbuds-gen-ppd1m6owyq20",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "bluetooth",
+          "codecs",
+          "notes"
+        ]
+      }
+    ],
+    "notes": "On sale October 1 (2026), $299 / EUR 299.95. Battery 9 h buds (20% more than Gen 1's 7.5 h) + 'roughly 20' h in the new wireless charging case -> total ~29 h (computed). Snapdragon Sound (aptX). India: Smartprix shows an EXPECTED price of ₹29,990 - not launched/confirmed, so launchPriceINR null. Launched alongside a new Bose Sport open-earbud model ('starting at $199') which was not added (name/specs not confirmed). anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "sony-linkbuds-open",
+    "brand": "Sony",
+    "model": "LinkBuds Open (WF-L910)",
+    "released": "2024-10",
+    "status": "current",
+    "form": "open-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 19990,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 8,
+    "batteryTotalMax": 22,
+    "ip": "IPX4",
+    "weightG": 5.1,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "SBC",
+      "AAC",
+      "LC3"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm ring driver",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/438760/sony-linkbuds-open-wf-l910-price-india-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "codecs",
+          "multipoint",
+          "drivers",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/bytes/sony-linkbuds-open-with-open-ear-11mm-driver-and-22-hour-battery-life-launched-in-india/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "drivers",
+          "batteryTotalMax",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.sony.com.tw/en/headphones/products/linkbuds-open/spec",
+        "publisher": "Sony",
+        "kind": "manufacturer",
+        "fields": [
+          "weightG",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.digit.in/audio/sony-linkbuds-open-wf-l910-true-wireless-earbuds.html",
+        "publisher": "Digit",
+        "kind": "aggregator",
+        "fields": [
+          "batteryBudsMax"
+        ]
+      }
+    ],
+    "notes": "released = India availability (from Oct 24, 2024 via Amazon, Flipkart, Sony retail). Weight 5.1 g includes fitting supporters. 8 h buds + 14 h case = 22 h; 3 min charge = 60 min. Open-ring design. US MSRP not confirmed in sources (left null). anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "high"
+  },
+  {
+    "id": "sony-linkbuds-clip",
+    "brand": "Sony",
+    "model": "LinkBuds Clip",
+    "released": "2026-07",
+    "status": "current",
+    "form": "clip",
+    "indiaAvailable": true,
+    "launchPriceINR": 18990,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 9,
+    "batteryTotalMax": 37,
+    "ip": "IPX4",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "10mm",
+    "sources": [
+      {
+        "url": "https://www.91mobiles.com/hub/sony-linkbuds-clip-launched-india-price-features/",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.republicworld.com/tech/sony-launches-linkbuds-clip-in-india-with-open-ear-design-ai-powered-calls-at-18990-2026-07-13-132176",
+        "publisher": "Republic World",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/accessories/news/sony-linkbuds-clip-launched-in-india-price-features-and-where-to-buy-your-new-open-ear-earbuds-2026-014-127307.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "bluetooth",
+          "drivers",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/bytes/sony-linkbuds-clip-launched-in-india-at-₹18990-open-ear-design-features-everything-else/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "released = India launch (July 13, 2026). 9 h buds + 28 h case = 37 h; 3 min charge = 1 h. DSEE. Weight, multipoint, codecs and US price not in sources. anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  },
+  {
+    "id": "sony-linkbuds",
+    "brand": "Sony",
+    "model": "LinkBuds",
+    "released": null,
+    "status": "unknown",
+    "form": "open-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 19900,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": null,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12mm open ring driver",
+    "sources": [
+      {
+        "url": "https://telecomtalk.info/?p=539887",
+        "publisher": "TelecomTalk",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/370987/sony-linkbuds-price-india-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "drivers",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://beebom.com/sony-linkbuds-launched-india/amp/",
+        "publisher": "Beebom",
+        "kind": "news",
+        "fields": [
+          "form"
+        ]
+      },
+      {
+        "url": "https://us.smartprix.com/bytes/sony-linkbuds-launched-in-india/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "form"
+        ]
+      }
+    ],
+    "notes": "Original ring-driver LinkBuds; India launch at ₹19,900 with 12 mm open ring drivers, adaptive volume control, precise voice pickup. Launch date, battery, IP, weight not captured in sources (search budget exhausted). Predecessor of LinkBuds Open. anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "low"
+  },
+  {
+    "id": "huawei-freeclip",
+    "brand": "Huawei",
+    "model": "FreeClip",
+    "released": "2023-12",
+    "status": "older-still-sold",
+    "form": "clip",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 8,
+    "batteryTotalMax": 32,
+    "ip": "IP54",
+    "weightG": 5.6,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.huaweicentral.com/huawei-freeclip-earphones-will-launch-on-december-26-in-china/amp/",
+        "publisher": "Huawei Central",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.huaweicentral.com/huawei-freeclip-open-back-earphones-launched-in-global-market-with-32-hours-battery-life/amp/",
+        "publisher": "Huawei Central",
+        "kind": "news",
+        "fields": [
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "notes"
+        ]
+      },
+      {
+        "url": "https://consumer.huawei.com/no/headphones/freeclip/specs/",
+        "publisher": "Huawei",
+        "kind": "manufacturer",
+        "fields": [
+          "ip",
+          "batteryBudsMax"
+        ]
+      },
+      {
+        "url": "https://www.dateks.lv/en/cenas/austinas/1303711-huawei-huawei-freeclip-2-blue",
+        "publisher": "Dateks",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      }
+    ],
+    "notes": "China launch Dec 26, 2023. 'Global' price reported as $216 (1,500 yuan conversion) - not a US MSRP (not sold in US), so launchPriceUSD null; EUR 199 / GBP 179.99 in Europe. 55 mAh buds / 510 mAh case; 10 min charge = 3 h. C-bridge clip design. No India launch found. Successor FreeClip 2 exists (Dateks listing) but its specs could not be gathered. anc='none' reflects the open-ear (unsealed) design confirmed by sources; no ANC claim exists for it.",
+    "confidence": "medium"
+  }
+]

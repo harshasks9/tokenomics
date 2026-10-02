@@ -47,6 +47,17 @@ function niceDomain(values: number[], pad: number): { domain: [number, number]; 
   return { domain: [lo, hi], ticks };
 }
 
+const LOG_TICKS = [100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000];
+
+/** Log-scale domain padded by ~15% each side, with 1-2-5 ticks inside it. */
+function logDomain(values: number[]): { domain: [number, number]; ticks: number[] } {
+  if (!values.length) return { domain: [100, 1000], ticks: [100, 1000] };
+  const lo = Math.min(...values) / 1.18;
+  const hi = Math.max(...values) * 1.18;
+  const ticks = LOG_TICKS.filter((t) => t >= lo && t <= hi);
+  return { domain: [lo, hi], ticks: ticks.length >= 2 ? ticks : [Math.round(lo), Math.round(hi)] };
+}
+
 const ARROW: Record<string, string> = { "left-top": "↖", "right-top": "↗", "left-bottom": "↙", "right-bottom": "↘" };
 
 interface ShapeProps {
@@ -58,8 +69,10 @@ interface ShapeProps {
 export default function ParetoChart({ x, y, points, frontier, pinned, activeId, onSelect }: Props) {
   const mx = METRICS[x];
   const my = METRICS[y];
-  const xs = useMemo(() => niceDomain(points.map((p) => p.x), mx.domainPad), [points, mx.domainPad]);
-  const ys = useMemo(() => niceDomain(points.map((p) => p.y), my.domainPad), [points, my.domainPad]);
+  const xs = useMemo(() => (mx.log ? logDomain(points.map((p) => p.x)) : niceDomain(points.map((p) => p.x), mx.domainPad)), [points, mx]);
+  const ys = useMemo(() => (my.log ? logDomain(points.map((p) => p.y)) : niceDomain(points.map((p) => p.y), my.domainPad)), [points, my]);
+  // Position along the axis as 0–1, in the axis' own scale, for label placement.
+  const xFrac = (v: number) => (mx.log ? Math.log(v / xs.domain[0]) / Math.log(xs.domain[1] / xs.domain[0]) : (v - xs.domain[0]) / (xs.domain[1] - xs.domain[0]));
   const corner = betterCorner(x, y);
   const dominated = points.filter((p) => !p.onFrontier);
   const pinnedSet = new Set(pinned);
@@ -74,7 +87,7 @@ export default function ParetoChart({ x, y, points, frontier, pinned, activeId, 
     const isPinned = pinnedSet.has(payload.id);
     const isActive = activeId === payload.id;
     const showLabel = payload.onFrontier || isPinned || isActive;
-    const nearRight = (payload.x - xs.domain[0]) / (xs.domain[1] - xs.domain[0]) > 0.62;
+    const nearRight = xFrac(payload.x) > 0.62;
     const r = payload.onFrontier ? 6.5 : 5.5;
     return (
       <g
@@ -118,7 +131,8 @@ export default function ParetoChart({ x, y, points, frontier, pinned, activeId, 
     <figure className="relative m-0">
       <figcaption className="sr-only">{summary}</figcaption>
       <p className="mb-1 pl-1 text-[12px] font-medium text-[var(--eb-muted)]">
-        ↑ {my.axis} · <span className="text-[var(--eb-ink-2)]">{my.direction === "higher" ? "higher is better" : "lower is better"}</span>
+        ↑ {my.axis}
+        {my.log ? " · log scale" : ""} · <span className="text-[var(--eb-ink-2)]">{my.direction === "higher" ? "higher is better" : "lower is better"}</span>
       </p>
       <div className="eb-chart relative h-[360px] w-full sm:h-[440px]" role="img" aria-label={summary}>
         <span
@@ -135,9 +149,10 @@ export default function ParetoChart({ x, y, points, frontier, pinned, activeId, 
             <XAxis
               type="number"
               dataKey="x"
+              scale={mx.log ? "log" : "auto"}
               domain={xs.domain}
               ticks={xs.ticks}
-              tickFormatter={(v: number) => mx.format(v)}
+              tickFormatter={(v: number) => (mx.tick ?? mx.format)(v)}
               tickLine={false}
               axisLine={{ stroke: "#cfc7b9" }}
               allowDataOverflow
@@ -145,9 +160,10 @@ export default function ParetoChart({ x, y, points, frontier, pinned, activeId, 
             <YAxis
               type="number"
               dataKey="y"
+              scale={my.log ? "log" : "auto"}
               domain={ys.domain}
               ticks={ys.ticks}
-              tickFormatter={(v: number) => my.format(v)}
+              tickFormatter={(v: number) => (my.tick ?? my.format)(v)}
               tickLine={false}
               axisLine={{ stroke: "#cfc7b9" }}
               width={56}
@@ -180,7 +196,8 @@ export default function ParetoChart({ x, y, points, frontier, pinned, activeId, 
         </ResponsiveContainer>
       </div>
       <p className="mt-1 pr-2 text-right text-[12px] font-medium text-[var(--eb-muted)]">
-        {mx.axis} · <span className="text-[var(--eb-ink-2)]">{mx.direction === "higher" ? "higher is better" : "lower is better"}</span> →
+        {mx.axis}
+        {mx.log ? " · log scale" : ""} · <span className="text-[var(--eb-ink-2)]">{mx.direction === "higher" ? "higher is better" : "lower is better"}</span> →
       </p>
     </figure>
   );

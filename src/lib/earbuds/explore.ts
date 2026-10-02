@@ -1,7 +1,7 @@
 import { METRICS } from "./metrics";
 import { paretoFrontier } from "./pareto";
 import { applyRequirements, partitionForAxes, type EligibilityResult, type Requirements } from "./requirements";
-import type { Brand, MetricId, Product } from "./types";
+import type { Brand, Market, MetricId, Product } from "./types";
 
 /**
  * One pass from UI state to everything the explorer renders. Order is fixed:
@@ -16,6 +16,8 @@ export interface ExploreState {
   y: MetricId;
   requirements: Requirements;
   brands: Brand[];
+  /** null = no market scoping (all products). */
+  market?: Market | null;
 }
 
 export interface PlotPoint {
@@ -36,19 +38,22 @@ export interface ExploreResult {
   unknown: EligibilityResult[];
   /** Excluded by the brand filter (takes precedence over requirement reasons). */
   brandFiltered: EligibilityResult[];
+  /** Not sold in the selected market per our sources (takes precedence over everything). */
+  outOfMarket: EligibilityResult[];
   missing: { product: Product; metrics: MetricId[] }[];
   points: PlotPoint[];
   frontier: PlotPoint[];
 }
 
 export function explore(products: Product[], state: ExploreState): ExploreResult {
-  const eligibility = applyRequirements(products, state.requirements, state.brands);
+  const eligibility = applyRequirements(products, state.requirements, state.brands, state.market ?? null);
   const eligible = eligibility.filter((r) => r.eligible).map((r) => r.product);
   const excluded = eligibility.filter((r) => !r.eligible);
 
-  // The brand filter wins: a hidden brand is not also reported as failing requirements.
-  const brandFiltered = excluded.filter((r) => r.exclusions.some((e) => e.requirement === "brand"));
-  const rest = excluded.filter((r) => !brandFiltered.includes(r));
+  // Market scope wins, then the brand filter: hidden products aren't also reported as failing requirements.
+  const outOfMarket = excluded.filter((r) => r.exclusions.some((e) => e.requirement === "market"));
+  const brandFiltered = excluded.filter((r) => !outOfMarket.includes(r) && r.exclusions.some((e) => e.requirement === "brand"));
+  const rest = excluded.filter((r) => !outOfMarket.includes(r) && !brandFiltered.includes(r));
   const failed = rest.filter((r) => r.exclusions.some((e) => e.requirement !== "brand" && e.kind === "fails"));
   const unknown = rest.filter((r) => !failed.includes(r));
 
@@ -75,6 +80,7 @@ export function explore(products: Product[], state: ExploreState): ExploreResult
     failed,
     unknown,
     brandFiltered,
+    outOfMarket,
     missing,
     points,
     frontier: points.filter((p) => p.onFrontier).sort((a, b) => a.x - b.x || a.y - b.y),

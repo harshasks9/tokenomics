@@ -1,16 +1,43 @@
 "use client";
 
-import { useId } from "react";
-import { AXIS_OPTIONS, axisLabel } from "@/lib/earbuds/metrics";
-import type { OsRequirement, Requirements, WaterRequirement } from "@/lib/earbuds/requirements";
-import type { AxisId, Brand } from "@/lib/earbuds/types";
+import { useId, useMemo, useState } from "react";
+import { axisLabel, axisOptionsFor } from "@/lib/earbuds/metrics";
+import type { FormRequirement, OsRequirement, Requirements, WaterRequirement } from "@/lib/earbuds/requirements";
+import type { AxisId, Brand, Market } from "@/lib/earbuds/types";
 
-export const ALL_BRANDS: Brand[] = ["Apple", "Beats", "Google", "Sony", "Bose", "Samsung", "Nothing", "CMF", "Sennheiser", "Technics"];
+export const BUDGET: Record<Market, { min: number; max: number; step: number; fmt: (v: number) => string }> = {
+  in: { min: 500, max: 35000, step: 500, fmt: (v) => `₹${v.toLocaleString("en-IN")}` },
+  us: { min: 40, max: 340, step: 10, fmt: (v) => `$${v}` },
+};
 
-export const BUDGET_MIN = 60;
-export const BUDGET_MAX = 340;
+export function MarketSwitch({ market, onChange }: { market: Market; onChange: (m: Market) => void }) {
+  const opts: { id: Market; label: string; hint: string }[] = [
+    { id: "in", label: "India", hint: "₹ launch prices · sold in India" },
+    { id: "us", label: "United States", hint: "$ launch prices · sold in the US" },
+  ];
+  return (
+    <div role="radiogroup" aria-label="Market" className="inline-flex rounded-full border border-[var(--eb-rule-2)] bg-[var(--eb-card)] p-1">
+      {opts.map((o) => (
+        <button
+          key={o.id}
+          type="button"
+          role="radio"
+          aria-checked={market === o.id}
+          title={o.hint}
+          onClick={() => onChange(o.id)}
+          className={`rounded-full px-4 py-1.5 text-[13.5px] font-semibold transition-colors ${
+            market === o.id ? "bg-[var(--eb-ink)] text-[var(--eb-paper)]" : "text-[var(--eb-ink-2)] hover:text-[var(--eb-ink)]"
+          }`}
+        >
+          {o.label}
+          <span className="sr-only"> — {o.hint}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
 
-export function AxisPicker({ x, y, onChange }: { x: AxisId; y: AxisId; onChange: (x: AxisId, y: AxisId) => void }) {
+export function AxisPicker({ x, y, market, onChange }: { x: AxisId; y: AxisId; market: Market; onChange: (x: AxisId, y: AxisId) => void }) {
   const xId = useId();
   const yId = useId();
   const set = (axis: "x" | "y", value: AxisId) => {
@@ -18,14 +45,14 @@ export function AxisPicker({ x, y, onChange }: { x: AxisId; y: AxisId; onChange:
     if (axis === "x") onChange(value, value === y ? x : y);
     else onChange(value === x ? y : x, value);
   };
-  const options = AXIS_OPTIONS.map((o) => (
+  const options = axisOptionsFor(market).map((o) => (
     <option key={o.id} value={o.id}>
       {axisLabel(o.id)}
       {o.gap ? " (evidence gap)" : ""}
     </option>
   ));
   return (
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
       <div>
         <label htmlFor={xId} className="mb-1 block text-[12px] font-semibold text-[var(--eb-ink-2)]">
           Horizontal axis
@@ -58,10 +85,10 @@ function Toggle({ checked, onChange, label, hint }: { checked: boolean; onChange
   );
 }
 
-export function RequirementsPanel({ req, onChange }: { req: Requirements; onChange: (r: Requirements) => void }) {
-  const budgetId = useId();
-  const waterId = useId();
-  const budget = req.maxPrice ?? BUDGET_MAX;
+export function RequirementsPanel({ req, market, onChange }: { req: Requirements; market: Market; onChange: (r: Requirements) => void }) {
+  const base = useId();
+  const b = BUDGET[market];
+  const budget = req.maxPrice ?? b.max;
   const patch = (p: Partial<Requirements>) => onChange({ ...req, ...p });
   const osOptions: { id: OsRequirement; label: string }[] = [
     { id: "any", label: "Any" },
@@ -73,59 +100,91 @@ export function RequirementsPanel({ req, onChange }: { req: Requirements; onChan
       <legend className="sr-only">Hard requirements</legend>
       <div>
         <div className="flex items-baseline justify-between">
-          <label htmlFor={budgetId} className="text-[12px] font-semibold text-[var(--eb-ink-2)]">
+          <label htmlFor={`${base}-budget`} className="text-[12px] font-semibold text-[var(--eb-ink-2)]">
             Budget (launch price)
           </label>
-          <span className="eb-tabular text-[13px] font-semibold">{req.maxPrice === null ? "No cap" : `≤ $${req.maxPrice}`}</span>
+          <span className="eb-tabular text-[13px] font-semibold">{req.maxPrice === null ? "No cap" : `≤ ${b.fmt(req.maxPrice)}`}</span>
         </div>
         <input
-          id={budgetId}
+          id={`${base}-budget`}
           type="range"
           className="eb-range"
-          min={BUDGET_MIN}
-          max={BUDGET_MAX}
-          step={10}
-          value={budget}
-          aria-valuetext={req.maxPrice === null ? "No budget cap" : `Up to ${req.maxPrice} dollars`}
+          min={b.min}
+          max={b.max}
+          step={b.step}
+          value={Math.min(budget, b.max)}
+          aria-valuetext={req.maxPrice === null ? "No budget cap" : `Up to ${b.fmt(req.maxPrice)}`}
           onChange={(e) => {
             const v = Number(e.target.value);
-            patch({ maxPrice: v >= BUDGET_MAX ? null : v });
+            patch({ maxPrice: v >= b.max ? null : v });
           }}
         />
       </div>
 
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label htmlFor={`${base}-anc`} className="mb-1 block text-[12px] font-semibold text-[var(--eb-ink-2)]">
+            Noise cancelling
+          </label>
+          <select id={`${base}-anc`} className="eb-select" value={req.anc ? "yes" : "any"} onChange={(e) => patch({ anc: e.target.value === "yes" })}>
+            <option value="any">Any</option>
+            <option value="yes">Must have ANC</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor={`${base}-form`} className="mb-1 block text-[12px] font-semibold text-[var(--eb-ink-2)]">
+            Fit style
+          </label>
+          <select id={`${base}-form`} className="eb-select" value={req.form} onChange={(e) => patch({ form: e.target.value as FormRequirement })}>
+            <option value="any">Any</option>
+            <option value="sealed">Sealed in-ear</option>
+            <option value="open">Open / unsealed</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor={`${base}-year`} className="mb-1 block text-[12px] font-semibold text-[var(--eb-ink-2)]">
+            Released
+          </label>
+          <select id={`${base}-year`} className="eb-select" value={req.releasedSince ?? "any"} onChange={(e) => patch({ releasedSince: e.target.value === "any" ? null : Number(e.target.value) })}>
+            <option value="any">Any year</option>
+            <option value="2024">2024 or later</option>
+            <option value="2025">2025 or later</option>
+            <option value="2026">2026</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor={`${base}-water`} className="mb-1 block text-[12px] font-semibold text-[var(--eb-ink-2)]">
+            Water rating
+          </label>
+          <select
+            id={`${base}-water`}
+            className="eb-select"
+            value={String(req.water)}
+            onChange={(e) => {
+              const v = e.target.value;
+              patch({ water: (v === "none" || v === "documented" ? v : Number(v)) as WaterRequirement });
+            }}
+          >
+            <option value="none">Any</option>
+            <option value="documented">Any IP rating</option>
+            <option value="4">IPX4+ (sweat)</option>
+            <option value="5">IPX5+ (jets)</option>
+            <option value="7">IPX7+ (immersion)</option>
+          </select>
+        </div>
+      </div>
+
       <div>
-        <p className="mb-1.5 text-[12px] font-semibold text-[var(--eb-ink-2)]" id={`${budgetId}-os`}>
+        <p className="mb-1.5 text-[12px] font-semibold text-[var(--eb-ink-2)]" id={`${base}-os`}>
           Phone (needs full app support)
         </p>
-        <div role="radiogroup" aria-labelledby={`${budgetId}-os`} className="flex flex-wrap gap-1.5">
+        <div role="radiogroup" aria-labelledby={`${base}-os`} className="flex flex-wrap gap-1.5">
           {osOptions.map((o) => (
             <button key={o.id} type="button" role="radio" aria-checked={req.os === o.id} className="eb-chip !min-h-[32px] !px-3 !text-[13px]" onClick={() => patch({ os: o.id })}>
               {o.label}
             </button>
           ))}
         </div>
-      </div>
-
-      <div>
-        <label htmlFor={waterId} className="mb-1 block text-[12px] font-semibold text-[var(--eb-ink-2)]">
-          Water resistance (earbuds)
-        </label>
-        <select
-          id={waterId}
-          className="eb-select"
-          value={String(req.water)}
-          onChange={(e) => {
-            const v = e.target.value;
-            patch({ water: (v === "none" || v === "documented" ? v : Number(v)) as WaterRequirement });
-          }}
-        >
-          <option value="none">No requirement</option>
-          <option value="documented">Any documented IP rating</option>
-          <option value="4">IPX4 or better (splashes, sweat)</option>
-          <option value="5">IPX5 or better (water jets)</option>
-          <option value="7">IPX7 or better (1 m immersion)</option>
-        </select>
       </div>
 
       <div className="border-t border-[var(--eb-rule)] pt-2">
@@ -138,12 +197,17 @@ export function RequirementsPanel({ req, onChange }: { req: Requirements; onChan
   );
 }
 
-export function BrandFilter({ brands, onChange }: { brands: Brand[]; onChange: (b: Brand[]) => void }) {
+export function BrandFilter({ brands, counts, onChange }: { brands: Brand[]; counts: [Brand, number][]; onChange: (b: Brand[]) => void }) {
+  const [q, setQ] = useState("");
+  const id = useId();
   const toggle = (b: Brand) => onChange(brands.includes(b) ? brands.filter((x) => x !== b) : [...brands, b]);
+  const shown = useMemo(() => counts.filter(([b]) => b.toLowerCase().includes(q.trim().toLowerCase()) || brands.includes(b)), [counts, q, brands]);
   return (
     <div>
       <div className="mb-1.5 flex items-baseline justify-between">
-        <p className="text-[12px] font-semibold text-[var(--eb-ink-2)]">Brands</p>
+        <label htmlFor={id} className="text-[12px] font-semibold text-[var(--eb-ink-2)]">
+          Brands ({counts.length})
+        </label>
         {brands.length ? (
           <button type="button" className="text-[12px] font-medium text-[var(--eb-accent-ink)] underline underline-offset-2" onClick={() => onChange([])}>
             Show all
@@ -152,12 +216,15 @@ export function BrandFilter({ brands, onChange }: { brands: Brand[]; onChange: (
           <span className="text-[12px] text-[var(--eb-muted)]">All shown</span>
         )}
       </div>
-      <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by brand">
-        {ALL_BRANDS.map((b) => (
+      <input id={id} type="search" placeholder="Find a brand" value={q} onChange={(e) => setQ(e.target.value)} className="eb-select mb-2 !bg-none !pr-3" />
+      <div className="flex max-h-44 flex-wrap gap-1.5 overflow-y-auto pr-1" role="group" aria-label="Filter by brand">
+        {shown.map(([b, n]) => (
           <button key={b} type="button" aria-pressed={brands.includes(b)} className="eb-chip !min-h-[30px] !px-2.5 !text-[12.5px]" onClick={() => toggle(b)}>
             {b}
+            <span className="text-[11px] opacity-60">{n}</span>
           </button>
         ))}
+        {shown.length === 0 ? <p className="text-[12px] text-[var(--eb-muted)]">No brand matches “{q}”.</p> : null}
       </div>
     </div>
   );

@@ -1,25 +1,32 @@
 "use client";
 
-import { useId, useMemo } from "react";
+import { useId, useMemo, useState } from "react";
 import { METRIC_IDS, METRICS } from "@/lib/earbuds/metrics";
 import { MIN_COVERAGE, preferenceEstimate, type Weights } from "@/lib/earbuds/preference";
 import { PRODUCT_BY_ID } from "@/lib/earbuds/products";
-import type { MetricId, Product } from "@/lib/earbuds/types";
+import type { Market, MetricId, Product } from "@/lib/earbuds/types";
 
 interface Props {
   eligible: Product[];
   weights: Weights;
+  market: Market;
   onChange: (w: Weights) => void;
   onSelect: (id: string) => void;
 }
 
 const WEIGHT_WORD = ["Ignore", "A little", "Matters", "Top priority"];
 
-export default function PreferencePanel({ eligible, weights, onChange, onSelect }: Props) {
+const TOP = 20;
+
+export default function PreferencePanel({ eligible, weights, market, onChange, onSelect }: Props) {
   const baseId = useId();
-  const rows = useMemo(() => preferenceEstimate(eligible, weights), [eligible, weights]);
-  const active = METRIC_IDS.filter((m) => (weights[m] ?? 0) > 0);
-  const ranked = rows.filter((r) => r.rank !== null);
+  const [showAll, setShowAll] = useState(false);
+  const metrics = METRIC_IDS.filter((m) => m !== (market === "in" ? "price" : "priceInr"));
+  const marketWeights = useMemo(() => Object.fromEntries(metrics.map((m) => [m, weights[m] ?? 0])) as Weights, [metrics, weights]);
+  const rows = useMemo(() => preferenceEstimate(eligible, marketWeights), [eligible, marketWeights]);
+  const active = metrics.filter((m) => (weights[m] ?? 0) > 0);
+  const allRanked = rows.filter((r) => r.rank !== null);
+  const ranked = showAll ? allRanked : allRanked.slice(0, TOP);
   const unranked = rows.filter((r) => r.rank === null);
 
   return (
@@ -28,7 +35,7 @@ export default function PreferencePanel({ eligible, weights, onChange, onSelect 
         <p className="eb-eyebrow">Your preferences</p>
         <p className="mt-1 text-[13px] leading-snug text-[var(--eb-muted)]">Weights shape the derived estimate only. They never change the frontier or which products qualify.</p>
         <div className="mt-4 space-y-3">
-          {METRIC_IDS.map((m) => {
+          {metrics.map((m) => {
             const w = weights[m] ?? 0;
             const id = `${baseId}-${m}`;
             return (
@@ -112,20 +119,22 @@ export default function PreferencePanel({ eligible, weights, onChange, onSelect 
                     <td className="eb-tabular text-right">{r.rankRange && r.rankRange[0] !== r.rankRange[1] ? `${r.rankRange[0]}–${r.rankRange[1]}` : "stable"}</td>
                   </tr>
                 ))}
-                {unranked.map((r) => (
-                  <tr key={r.id}>
-                    <td className="text-[var(--eb-muted)]">—</td>
-                    <th scope="row" className="!whitespace-normal !text-left !font-normal !normal-case !tracking-normal text-[var(--eb-muted)]">
-                      {PRODUCT_BY_ID[r.id].brand} {PRODUCT_BY_ID[r.id].name}
-                      <span className="block text-[11.5px]">Insufficient data for these weights</span>
-                    </th>
-                    <td className="text-right text-[var(--eb-muted)]">—</td>
-                    <td className="eb-tabular text-right text-[var(--eb-muted)]">{Math.round(r.coverage * 100)}%</td>
-                    <td className="text-right text-[var(--eb-muted)]">—</td>
+                {unranked.length ? (
+                  <tr>
+                    <td colSpan={5} className="text-[13px] text-[var(--eb-muted)]">
+                      {unranked.length} more model{unranked.length === 1 ? "" : "s"} not ranked: under {Math.round(MIN_COVERAGE * 100)}% of the weighted metrics have sourced values for {unranked.length === 1 ? "it" : "them"}.
+                    </td>
                   </tr>
-                ))}
+                ) : null}
               </tbody>
             </table>
+            {allRanked.length > TOP ? (
+              <div className="border-t border-[var(--eb-rule)] px-5 py-3 text-center">
+                <button type="button" className="eb-btn !min-h-[32px]" onClick={() => setShowAll((v) => !v)}>
+                  {showAll ? `Show top ${TOP}` : `Show all ${allRanked.length} ranked`}
+                </button>
+              </div>
+            ) : null}
           </div>
         )}
       </div>

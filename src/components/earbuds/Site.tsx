@@ -5,14 +5,14 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AlertTriangle, RotateCcw, SlidersHorizontal, X } from "lucide-react";
 import { explore } from "@/lib/earbuds/explore";
-import { GAPS, isMetric, METRIC_IDS, METRICS } from "@/lib/earbuds/metrics";
+import { forMarket, GAPS, isMetric, METRIC_IDS, METRICS, priceMetric } from "@/lib/earbuds/metrics";
 import { MIN_COVERAGE, type Weights } from "@/lib/earbuds/preference";
 import { FEATURE_LABEL, PRESET_BY_ID, PRESETS } from "@/lib/earbuds/presets";
 import { PRODUCT_BY_ID, PRODUCTS } from "@/lib/earbuds/products";
 import { countActive, NO_REQUIREMENTS, type Requirements } from "@/lib/earbuds/requirements";
 import { SNAPSHOT_DATE, SOURCE_LIST } from "@/lib/earbuds/sources";
-import type { ActivityId, AxisId, Brand, GapMetricId, MetricId, ProductNote } from "@/lib/earbuds/types";
-import { AxisPicker, BrandFilter, RequirementsPanel } from "./Controls";
+import type { ActivityId, AxisId, Brand, GapMetricId, Market, MetricId, ProductNote } from "@/lib/earbuds/types";
+import { AxisPicker, BrandFilter, MarketSwitch, RequirementsPanel } from "./Controls";
 import Method from "./Method";
 import ParetoChart from "./ParetoChart";
 import PreferencePanel from "./PreferencePanel";
@@ -20,7 +20,23 @@ import ProductCard, { type FrontierStatus } from "./ProductCard";
 import ProductList from "./ProductList";
 import { SectionHeading, SourceLinks } from "./ui";
 
-const DEFAULT_WEIGHTS: Weights = { price: 2, anc: 2, batteryClaim: 1, comfort: 1 };
+const DEFAULT_WEIGHTS: Weights = { price: 2, anc: 2, batteryMax: 1, comfort: 1 };
+const DEFAULT_MARKET: Market = "in";
+
+/** Presets and defaults speak in "price"; each market has its own price metric. */
+function weightsFor(w: Weights, market: Market): Weights {
+  const out: Weights = {};
+  for (const [k, v] of Object.entries(w)) out[forMarket(k as MetricId, market)] = v;
+  return out;
+}
+
+const axisFor = (a: AxisId, market: Market): AxisId => (isMetric(a) ? forMarket(a, market) : a);
+
+const IN_MARKET_COUNTS = {
+  in: PRODUCTS.filter((p) => p.indiaAvailable === true || p.metrics.priceInr.value !== null).length,
+  us: PRODUCTS.filter((p) => p.metrics.price.value !== null).length,
+};
+const BRAND_COUNT = new Set(PRODUCTS.map((p) => p.brand)).size;
 const MAX_COMPARE = 3;
 
 const NAV = [
@@ -32,28 +48,47 @@ const NAV = [
 ];
 
 /** Valid metric pair for the table/list when an evidence-gap axis is selected. */
-function fallbackAxes(x: AxisId, y: AxisId): [MetricId, MetricId] {
-  const fx: MetricId = isMetric(x) ? x : "price";
-  const fy: MetricId = isMetric(y) ? y : fx === "anc" ? "price" : "anc";
-  return fx === fy ? [fx, fx === "price" ? "anc" : "price"] : [fx, fy];
+function fallbackAxes(x: AxisId, y: AxisId, market: Market): [MetricId, MetricId] {
+  const price = priceMetric(market);
+  const fx: MetricId = isMetric(x) ? x : price;
+  const fy: MetricId = isMetric(y) ? y : fx === "anc" ? price : "anc";
+  return fx === fy ? [fx, fx === price ? "anc" : price] : [fx, fy];
 }
 
 export default function Site() {
   const reduce = useReducedMotion();
   const [activity, setActivity] = useState<ActivityId | null>(null);
-  const [x, setX] = useState<AxisId>("price");
+  const [market, setMarket] = useState<Market>(DEFAULT_MARKET);
+  const [x, setX] = useState<AxisId>(priceMetric(DEFAULT_MARKET));
   const [y, setY] = useState<AxisId>("anc");
   const [req, setReq] = useState<Requirements>(NO_REQUIREMENTS);
   const [brands, setBrands] = useState<Brand[]>([]);
   const [pinned, setPinned] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [weights, setWeights] = useState<Weights>(DEFAULT_WEIGHTS);
+  const [weights, setWeights] = useState<Weights>(weightsFor(DEFAULT_WEIGHTS, DEFAULT_MARKET));
   const [notice, setNotice] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const gapAxis: GapMetricId | null = !isMetric(x) ? (x as GapMetricId) : !isMetric(y) ? (y as GapMetricId) : null;
-  const [mx, my] = fallbackAxes(x, y);
-  const result = useMemo(() => explore(PRODUCTS, { x: mx, y: my, requirements: req, brands }), [mx, my, req, brands]);
+  const [mx, my] = fallbackAxes(x, y, market);
+  const result = useMemo(() => explore(PRODUCTS, { x: mx, y: my, requirements: req, brands, market }), [mx, my, req, brands, market]);
+  const brandCounts = useMemo(() => {
+    const c = new Map<Brand, number>();
+    for (const e of result.eligibility) if (!result.outOfMarket.includes(e)) c.set(e.product.brand, (c.get(e.product.brand) ?? 0) + 1);
+    return [...c.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  }, [result]);
+
+  const switchMarket = (m: Market) => {
+    if (m === market) return;
+    setMarket(m);
+    setX((a) => axisFor(a, m));
+    setY((a) => axisFor(a, m));
+    setWeights((w) => weightsFor(w, m));
+    // A budget in one currency means nothing in the other.
+    setReq((r) => ({ ...r, maxPrice: null }));
+    setBrands([]);
+    setNotice(m === "in" ? "Showing earbuds sold in India, priced in rupees." : "Showing earbuds sold in the US, priced in dollars.");
+  };
   const preset = activity ? PRESET_BY_ID[activity] : null;
   const activeReqs = countActive(req) + (brands.length ? 1 : 0);
 
@@ -61,14 +96,14 @@ export default function Site() {
     setActivity(id);
     if (id) {
       const p = PRESET_BY_ID[id];
-      setX(p.x);
-      setY(p.y);
-      setWeights(p.weights);
-      setNotice(`${p.label} preset: chart now shows ${METRICS[p.x].label} against ${METRICS[p.y].label}.`);
+      setX(forMarket(p.x, market));
+      setY(forMarket(p.y, market));
+      setWeights(weightsFor(p.weights, market));
+      setNotice(`${p.label} preset: chart now shows ${METRICS[forMarket(p.x, market)].label} against ${METRICS[forMarket(p.y, market)].label}.`);
     } else {
-      setX("price");
+      setX(priceMetric(market));
       setY("anc");
-      setWeights(DEFAULT_WEIGHTS);
+      setWeights(weightsFor(DEFAULT_WEIGHTS, market));
       setNotice("Showing all activities: price against noise cancellation.");
     }
   };
@@ -95,13 +130,13 @@ export default function Site() {
 
   const resetAll = () => {
     setActivity(null);
-    setX("price");
+    setX(priceMetric(market));
     setY("anc");
     setReq(NO_REQUIREMENTS);
     setBrands([]);
     setPinned([]);
     setActiveId(null);
-    setWeights(DEFAULT_WEIGHTS);
+    setWeights(weightsFor(DEFAULT_WEIGHTS, market));
     setNotice("Everything reset to the default view.");
   };
 
@@ -113,11 +148,12 @@ export default function Site() {
     const miss = result.missing.find((m) => m.product.id === id);
     if (miss) return { label: `Not plotted: no comparable ${miss.metrics.map((m) => METRICS[m].label.toLowerCase()).join(" or ")} data.`, tone: "missing" };
     const ex = result.eligibility.find((e) => e.product.id === id);
+    if (ex && result.outOfMarket.includes(ex)) return { label: `Not in the ${market === "in" ? "India" : "US"} view: ${ex.exclusions.find((e) => e.requirement === "market")?.reason}.`, tone: "excluded" };
     return { label: `Excluded by your filters: ${ex?.exclusions.map((e) => e.reason).join("; ")}.`, tone: "excluded" };
   };
 
   const active = activeId ? PRODUCT_BY_ID[activeId] : null;
-  const notPlotted = result.failed.length + result.unknown.length + result.missing.length + result.brandFiltered.length;
+  const notPlotted = result.failed.length + result.unknown.length + result.missing.length + result.brandFiltered.length + result.outOfMarket.length;
 
   return (
     <div className={`min-h-screen ${pinned.length ? "pb-24" : ""}`}>
@@ -149,7 +185,7 @@ export default function Site() {
         {/* ── Hero ───────────────────────────────────────────────── */}
         <section className="pb-12 pt-16 sm:pb-16 sm:pt-24" aria-labelledby="hero-title">
           <motion.div initial={reduce ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-            <p className="eb-eyebrow">Wireless earbuds · Pareto frontier · US pricing</p>
+            <p className="eb-eyebrow">Wireless earbuds · Pareto frontier · India &amp; US pricing</p>
             <h1 id="hero-title" className="eb-display mt-4 max-w-4xl text-[46px] leading-[1.02] sm:text-[76px]">
               Find your best <em className="text-[var(--eb-accent)]">tradeoff</em>.
             </h1>
@@ -164,9 +200,9 @@ export default function Site() {
             className="mt-10 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5 border-t border-[var(--eb-rule)] pt-6 sm:grid-cols-4"
           >
             {[
-              { k: `${PRODUCTS.length}`, v: "current models, 10 brands" },
-              { k: `${METRIC_IDS.length}`, v: "comparable metrics" },
-              { k: "2", v: "evidence gaps disclosed, not filled" },
+              { k: `${PRODUCTS.length}`, v: `models across ${BRAND_COUNT} brands` },
+              { k: `${IN_MARKET_COUNTS.in}`, v: "documented as sold in India, with ₹ launch prices where announced" },
+              { k: `${METRIC_IDS.length}`, v: "comparable metrics; 2 evidence gaps disclosed, not filled" },
               { k: `${SOURCE_LIST.length}`, v: "cited sources" },
             ].map((s) => (
               <div key={s.v}>
@@ -181,8 +217,17 @@ export default function Site() {
         {/* ── Explore ────────────────────────────────────────────── */}
         <section id="explore" aria-labelledby="explore-title" className="scroll-mt-20 border-t border-[var(--eb-rule)] py-14 sm:py-16">
           <SectionHeading eyebrow="Explore" title="What are they for?" id="explore-title">
-            <p>Pick an activity to get suggested axes and the features that matter. Hard requirements decide which models qualify; the frontier is drawn only among them.</p>
+            <p>Pick a market and an activity to get suggested axes and the features that matter. Hard requirements decide which models qualify; the frontier is drawn only among them.</p>
           </SectionHeading>
+
+          <div className="mb-5 flex flex-wrap items-center gap-3">
+            <MarketSwitch market={market} onChange={switchMarket} />
+            <p className="text-[13px] text-[var(--eb-muted)]">
+              {market === "in"
+                ? `${IN_MARKET_COUNTS.in} models documented as sold in India · prices are India launch prices in ₹`
+                : `${IN_MARKET_COUNTS.us} models with a US launch price · prices in $`}
+            </p>
+          </div>
 
           <div className="flex flex-wrap gap-2" role="group" aria-label="Activity presets">
             <button type="button" className="eb-chip" aria-pressed={activity === null} onClick={() => choosePreset(null)}>
@@ -210,7 +255,7 @@ export default function Site() {
                   <p className="mt-1.5 text-[16px] leading-snug">{preset.needs}</p>
                   <p className="mt-3 text-[13.5px] leading-relaxed text-[var(--eb-ink-2)]">
                     <span className="font-semibold">Chart: </span>
-                    {METRICS[preset.x].label} × {METRICS[preset.y].label}. {preset.axisRationale}
+                    {METRICS[forMarket(preset.x, market)].label} × {METRICS[forMarket(preset.y, market)].label}. {preset.axisRationale}
                   </p>
                   <p className="mt-3 flex flex-wrap gap-1.5">
                     {preset.features.map((f) => (
@@ -270,6 +315,7 @@ export default function Site() {
                   <AxisPicker
                     x={x}
                     y={y}
+                    market={market}
                     onChange={(nx, ny) => {
                       setX(nx);
                       setY(ny);
@@ -281,10 +327,10 @@ export default function Site() {
                     <p className="eb-eyebrow">Hard requirements</p>
                     {countActive(req) ? <span className="eb-badge eb-badge-accent">{countActive(req)} active</span> : null}
                   </div>
-                  <RequirementsPanel req={req} onChange={setReq} />
+                  <RequirementsPanel req={req} market={market} onChange={setReq} />
                 </div>
                 <div className="eb-card p-4">
-                  <BrandFilter brands={brands} onChange={setBrands} />
+                  <BrandFilter brands={brands} counts={brandCounts} onChange={setBrands} />
                 </div>
                 <button type="button" className="eb-btn w-full" onClick={resetAll}>
                   <RotateCcw size={14} aria-hidden /> Reset everything
@@ -344,6 +390,33 @@ export default function Site() {
                 ) : (
                   <>
                     <p className="mb-2 text-[12px] text-[var(--eb-muted)] sm:hidden">Tap a point for details. Labels are hidden on small screens — the list below names every point.</p>
+                    {(() => {
+                      const inScope = result.eligibility.length - result.outOfMarket.length;
+                      if (inScope === 0 || result.points.length / inScope >= 0.4) return null;
+                      const pm = priceMetric(market);
+                      const alts: [MetricId, MetricId][] = ([[pm, "ancClaim"], [pm, "batteryMax"], [pm, "batteryTotal"]] as [MetricId, MetricId][]).filter(([a, b]) => !(a === mx && b === my));
+                      return (
+                        <div className="mb-3 flex flex-wrap items-center gap-2 rounded-xl bg-[var(--eb-paper)] px-3 py-2.5 text-[13px] text-[var(--eb-ink-2)]">
+                          <span>
+                            Only <strong>{result.points.length}</strong> of {inScope} models in this view have sourced values for both axes{my === "anc" || mx === "anc" ? " (lab ANC scores exist for few models)" : ""}. Broader, claim-based views:
+                          </span>
+                          {alts.map(([a, b]) => (
+                            <button
+                              key={b}
+                              type="button"
+                              className="eb-chip !min-h-[28px] !px-2.5 !text-[12.5px]"
+                              onClick={() => {
+                                setX(a);
+                                setY(b);
+                                setNotice(`Chart now shows ${METRICS[a].label} against ${METRICS[b].label} — manufacturer claims.`);
+                              }}
+                            >
+                              {METRICS[b].label}
+                            </button>
+                          ))}
+                        </div>
+                      );
+                    })()}
                     <ParetoChart x={mx} y={my} points={result.points} frontier={result.frontier} pinned={pinned} activeId={activeId} onSelect={select} />
                     <p className="mt-4 text-[14px] leading-relaxed text-[var(--eb-ink-2)]">
                       <span className="font-semibold text-[var(--eb-ink)]">Reading the frontier: </span>
@@ -359,7 +432,7 @@ export default function Site() {
                   </>
                 )}
 
-                {notPlotted && !gapAxis ? <Exclusions result={result} /> : null}
+                {notPlotted && !gapAxis ? <Exclusions result={result} market={market} /> : null}
               </div>
 
               <AnimatePresence initial={false}>
@@ -396,7 +469,7 @@ export default function Site() {
             <p className="mb-4 mt-1 text-[13.5px] text-[var(--eb-muted)]">
               The same data and frontier as the chart, keyboard-friendly. {gapAxis ? `Showing ${METRICS[mx].label.toLowerCase()} and ${METRICS[my].label.toLowerCase()} while an evidence-gap axis is selected.` : ""} Tick up to three to compare.
             </p>
-            <ProductList x={mx} y={my} result={result} pinned={pinned} activeId={activeId} onTogglePin={togglePin} onSelect={select} />
+            <ProductList x={mx} y={my} market={market} result={result} pinned={pinned} activeId={activeId} onTogglePin={togglePin} onSelect={select} />
           </div>
         </section>
 
@@ -442,7 +515,7 @@ export default function Site() {
               coverage aren&apos;t ranked. Sound and mic quality are excluded because they can&apos;t be compared fairly.
             </p>
           </SectionHeading>
-          <PreferencePanel eligible={result.eligible} weights={weights} onChange={setWeights} onSelect={select} />
+          <PreferencePanel eligible={result.eligible} weights={weights} market={market} onChange={setWeights} onSelect={select} />
         </section>
 
         <Method />
@@ -496,53 +569,69 @@ export default function Site() {
 
 /* ── Sub-views ──────────────────────────────────────────────────────────── */
 
-function Exclusions({ result }: { result: ReturnType<typeof explore> }) {
-  const groups: { title: string; hint: string; items: { id: string; name: string; reason: string }[] }[] = [
+function ExclusionGroup({ title, hint, items }: { title: string; hint: string; items: { id: string; name: string; reason: string }[] }) {
+  const [all, setAll] = useState(false);
+  const shown = all ? items : items.slice(0, 8);
+  return (
+    <div>
+      <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--eb-muted)]">
+        {title} · {items.length}
+      </p>
+      {hint ? <p className="text-[12px] text-[var(--eb-muted)]">{hint}</p> : null}
+      <ul className="mt-1.5 space-y-1.5 text-[13px] leading-snug">
+        {shown.map((i) => (
+          <li key={i.id}>
+            <span className="font-medium text-[var(--eb-ink)]">{i.name}</span>
+            {i.reason ? <span className="text-[var(--eb-ink-2)]"> — {i.reason}</span> : null}
+          </li>
+        ))}
+      </ul>
+      {items.length > shown.length ? (
+        <button type="button" className="mt-1.5 text-[12.5px] font-medium text-[var(--eb-accent-ink)] underline underline-offset-2" onClick={() => setAll(true)}>
+          Show all {items.length}
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
+function Exclusions({ result, market }: { result: ReturnType<typeof explore>; market: Market }) {
+  const name = (p: { brand: string; name: string }) => `${p.brand} ${p.name}`;
+  const groups = [
     {
       title: "Fails a requirement",
       hint: "Documented as not meeting what you asked for.",
-      items: result.failed.map((r) => ({ id: r.product.id, name: `${r.product.brand} ${r.product.name}`, reason: r.exclusions.filter((e) => e.kind === "fails").map((e) => e.reason).join("; ") })),
+      items: result.failed.map((r) => ({ id: r.product.id, name: name(r.product), reason: r.exclusions.filter((e) => e.kind === "fails").map((e) => e.reason).join("; ") })),
     },
     {
       title: "Unknown — not assumed to pass",
       hint: "Our sources don't establish the required feature.",
-      items: result.unknown.map((r) => ({ id: r.product.id, name: `${r.product.brand} ${r.product.name}`, reason: r.exclusions.map((e) => e.reason).join("; ") })),
+      items: result.unknown.map((r) => ({ id: r.product.id, name: name(r.product), reason: r.exclusions.map((e) => e.reason).join("; ") })),
     },
     {
       title: "Missing a chart metric",
-      hint: "Eligible, but no comparable value for one of the axes.",
+      hint: "Eligible, but no sourced value for one of the axes.",
       items: result.missing.map((m) => ({
         id: m.product.id,
-        name: `${m.product.brand} ${m.product.name}`,
-        reason: m.metrics.map((k) => m.product.metrics[k].note ?? `No ${METRICS[k].label.toLowerCase()} data`).join(" "),
+        name: name(m.product),
+        reason: m.metrics.map((k) => (m.product.tier === "deep" ? m.product.metrics[k].note : null) ?? `No ${METRICS[k].label.toLowerCase()} data`).join(" "),
       })),
     },
+    { title: "Hidden by brand filter", hint: "", items: result.brandFiltered.map((r) => ({ id: r.product.id, name: name(r.product), reason: "" })) },
     {
-      title: "Hidden by brand filter",
-      hint: "",
-      items: result.brandFiltered.map((r) => ({ id: r.product.id, name: `${r.product.brand} ${r.product.name}`, reason: "" })),
+      title: market === "in" ? "Not documented as sold in India" : "No US launch price",
+      hint: "Outside this market per our sources — switch market to see them.",
+      items: result.outOfMarket.map((r) => ({ id: r.product.id, name: name(r.product), reason: "" })),
     },
   ].filter((g) => g.items.length);
+  const total = groups.reduce((n, g) => n + g.items.length, 0);
 
   return (
-    <details className="mt-5 rounded-xl border border-[var(--eb-rule)] bg-[var(--eb-paper)] px-4 py-3" open={result.points.length > 0 && result.failed.length + result.unknown.length + result.missing.length <= 4}>
-      <summary className="cursor-pointer text-[13.5px] font-semibold text-[var(--eb-ink-2)]">
-        {`Why ${result.failed.length + result.unknown.length + result.missing.length + result.brandFiltered.length} of ${PRODUCTS.length} models aren't on this chart`}
-      </summary>
-      <div className="mt-3 grid gap-4 sm:grid-cols-2">
+    <details className="mt-5 rounded-xl border border-[var(--eb-rule)] bg-[var(--eb-paper)] px-4 py-3">
+      <summary className="cursor-pointer text-[13.5px] font-semibold text-[var(--eb-ink-2)]">{`Why ${total} of ${PRODUCTS.length} models aren't on this chart`}</summary>
+      <div className="mt-3 grid gap-5 sm:grid-cols-2">
         {groups.map((g) => (
-          <div key={g.title}>
-            <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--eb-muted)]">{g.title}</p>
-            {g.hint ? <p className="text-[12px] text-[var(--eb-muted)]">{g.hint}</p> : null}
-            <ul className="mt-1.5 space-y-1.5 text-[13px] leading-snug">
-              {g.items.map((i) => (
-                <li key={i.id}>
-                  <span className="font-medium text-[var(--eb-ink)]">{i.name}</span>
-                  {i.reason ? <span className="text-[var(--eb-ink-2)]"> — {i.reason}</span> : null}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ExclusionGroup key={g.title} {...g} />
         ))}
       </div>
     </details>

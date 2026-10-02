@@ -1,3 +1,4 @@
+import { CATALOG_SOURCES } from "./catalog";
 import type { Source } from "./types";
 
 /**
@@ -183,6 +184,10 @@ const list: Source[] = [
   { id: "whf-az100", publisher: "What Hi-Fi?", title: "Technics EAH-AZ100 review", url: "https://www.whathifi.com/reviews/technics-eah-az100", kind: "review", accessed: A },
 ];
 
-export const SOURCES: Record<string, Source> = Object.fromEntries(list.map((s) => [s.id, s]));
-export const SOURCE_LIST = list;
+/** Hand-curated sources (deep research and methodology). */
+export const CURATED_SOURCES = list;
+
+// The catalog build reuses curated ids for URLs already listed here, so ids never collide.
+export const SOURCE_LIST: Source[] = [...list, ...CATALOG_SOURCES.filter((c) => !list.some((s) => s.id === c.id))];
+export const SOURCES: Record<string, Source> = Object.fromEntries(SOURCE_LIST.map((s) => [s.id, s]));
 export const SNAPSHOT_DATE = A;

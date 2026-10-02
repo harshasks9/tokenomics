@@ -7,7 +7,7 @@ import { SOURCES } from "@/lib/earbuds/sources";
 import type { ActivityId, MetricId, Product, ProductNote } from "@/lib/earbuds/types";
 import { EvidenceBadge, FeatureRow, SourceLinks } from "./ui";
 
-const DEFAULT_FEATURES: FeatureKey[] = ["ipRating", "fitAid", "multipoint", "transparency", "wirelessCharging", "controls", "ios", "android"];
+const DEFAULT_FEATURES: FeatureKey[] = ["ancType", "ipRating", "fitAid", "multipoint", "transparency", "wirelessCharging", "codecs", "bluetooth", "controls", "ios", "android"];
 
 const TOPIC_LABEL: Record<ProductNote["topic"], string> = {
   gym: "Gym",
@@ -47,7 +47,12 @@ function notesFor(product: Product, activity: ActivityId | null): ProductNote[] 
 
 export default function ProductCard({ product, activity, highlight, status, pinned, canPin, onTogglePin, onClose, headingLevel = "h3" }: Props) {
   const H = headingLevel;
-  const features = activity ? Array.from(new Set([...PRESET_BY_ID[activity].features, "ipRating", "multipoint"] as FeatureKey[])) : DEFAULT_FEATURES;
+  const catalog = product.tier === "catalog";
+  const baseFeatures = activity ? Array.from(new Set([...PRESET_BY_ID[activity].features, "ancType", "ipRating", "multipoint"] as FeatureKey[])) : DEFAULT_FEATURES;
+  // Catalog entries only list what the spec-sheet research covered, plus the unknowns that matter for the activity.
+  const features = catalog ? baseFeatures.filter((k) => product.features[k].value !== null || (activity ? PRESET_BY_ID[activity].features.includes(k) : ["ancType", "ipRating", "multipoint"].includes(k))) : baseFeatures;
+  const metricIds = catalog ? METRIC_IDS.filter((id) => product.metrics[id].value !== null || highlight.includes(id)) : METRIC_IDS;
+  const hiddenMetrics = METRIC_IDS.length - metricIds.length;
   const notes = notesFor(product, activity);
   const strengths = notes.filter((n) => n.kind === "strength");
   const limits = notes.filter((n) => n.kind === "limitation");
@@ -69,6 +74,11 @@ export default function ProductCard({ product, activity, highlight, status, pinn
           <H className="eb-display mt-1 text-[22px] leading-tight">{product.name}</H>
           <p className="mt-1 text-[13px] text-[var(--eb-muted)]">
             {product.generation} · {product.released}
+          </p>
+          <p className="mt-1.5 flex flex-wrap gap-1.5">
+            {catalog ? <span className="eb-badge">Catalog · spec-sheet research</span> : <span className="eb-badge eb-badge-accent">Deep dive · activity notes</span>}
+            {catalog && product.confidence ? <span className="eb-badge">{product.confidence} confidence</span> : null}
+            {product.indiaAvailable ? <span className="eb-badge">Sold in India</span> : null}
           </p>
         </div>
         <div className="flex flex-none items-center gap-1.5 self-end sm:self-auto">
@@ -105,7 +115,7 @@ export default function ProductCard({ product, activity, highlight, status, pinn
       <section className="mt-5" aria-label="Comparable metrics">
         <p className="eb-eyebrow mb-2">Verified metrics</p>
         <dl className="divide-y divide-[var(--eb-rule)]">
-          {METRIC_IDS.map((id) => {
+          {metricIds.map((id) => {
             const d = product.metrics[id];
             const m = METRICS[id];
             const hi = highlight.includes(id);
@@ -129,7 +139,14 @@ export default function ProductCard({ product, activity, highlight, status, pinn
             );
           })}
         </dl>
+        {hiddenMetrics > 0 ? <p className="mt-2 text-[12px] italic text-[var(--eb-muted)]">{hiddenMetrics} other metrics not established by our sources for this model.</p> : null}
         {product.priceNote ? <p className="mt-2 text-[12px] text-[var(--eb-muted)]">Price note: {product.priceNote}</p> : null}
+        {product.researchNote ? (
+          <details className="mt-2 text-[12px] text-[var(--eb-muted)]">
+            <summary className="cursor-pointer font-semibold text-[var(--eb-ink-2)]">Research notes & conflicts</summary>
+            <p className="mt-1 leading-snug">{product.researchNote}</p>
+          </details>
+        ) : null}
       </section>
 
       <section className="mt-5" aria-label="Functionality">
@@ -144,7 +161,11 @@ export default function ProductCard({ product, activity, highlight, status, pinn
       <section className="mt-5" aria-label="Strengths and limitations">
         <p className="eb-eyebrow mb-2">{activity ? `${PRESET_BY_ID[activity].label}: strengths & limitations` : "Activity strengths & limitations"}</p>
         {strengths.length + limits.length + context.length === 0 ? (
-          <p className="text-[13px] italic text-[var(--eb-muted)]">No sourced notes for this activity — that is a gap in the evidence, not a verdict.</p>
+          <p className="text-[13px] italic text-[var(--eb-muted)]">
+            {catalog
+              ? "Catalog entries carry spec-sheet data only — activity notes weren't researched for this model. Absence of notes is a gap in the evidence, not a verdict."
+              : "No sourced notes for this activity — that is a gap in the evidence, not a verdict."}
+          </p>
         ) : (
           <ul className="space-y-2.5">
             {[...strengths, ...limits, ...context].map((n, i) => (

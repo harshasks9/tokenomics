@@ -1,0 +1,26 @@
+r1-g10-india-budget.json:Mivi SuperPods Hype: stub — skipped
+r1-g10-india-budget.json:Mivi SuperPods Harmony: stub — skipped
+r1-g10-india-budget.json:Mivi AI Buds: stub — skipped
+r1-g12-open-sport.json:Shokz OpenFit 2+: merged into Shokz OpenFit 2
+r1-g12-open-sport.json:Bose Ultra Open Earbuds: merged into Bose Ultra Open Earbuds
+lab Apple AirPods Pro 2: no catalog entry (key "apple airpods pro 2") — lab scores unused
+lab Apple AirPods 4 (ANC): no catalog entry (key "apple airpods 4 anc") — lab scores unused
+lab Beats Fit Pro: no catalog entry (key "beats fit pro") — lab scores unused
+lab Google Pixel Buds 2a: no catalog entry (key "google pixel buds 2a") — lab scores unused
+lab Sony WF-1000XM4: no catalog entry (key "sony wf 1000xm4") — lab scores unused
+lab Sony LinkBuds S: no catalog entry (key "sony linkbuds s") — lab scores unused
+lab Sony WF-C710N: no catalog entry (key "sony wf c710n") — lab scores unused
+lab Sony WF-C510: no catalog entry (key "sony wf c510") — lab scores unused
+lab Sennheiser Momentum True Wireless 4: no catalog entry (key "sennheiser momentum 4") — lab scores unused
+boAt Airdopes 131: only 1 substantive sourced value(s) — excluded
+boAt Airdopes 181 Pro: only 1 substantive sourced value(s) — excluded
+boAt Airdopes 190: only 1 substantive sourced value(s) — excluded
+boAt Airdopes Prime 800D: only 1 substantive sourced value(s) — excluded
+boAt Airdopes Prime 701 ANC: only 0 substantive sourced value(s) — excluded
+boAt Airdopes Prime 513 ANC: only 0 substantive sourced value(s) — excluded
+boAt Airdopes Prime 700 ANC: only 0 substantive sourced value(s) — excluded
+boAt Airdopes Primo: only 1 substantive sourced value(s) — excluded
+boAt Airdopes Max: only 0 substantive sourced value(s) — excluded
+pTron Zenbuds X1: only 1 substantive sourced value(s) — excluded
+Truke Buds F1 Ultra: only 1 substantive sourced value(s) — excluded
+Sony LinkBuds: only 1 substantive sourced value(s) — excluded

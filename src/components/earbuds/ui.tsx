@@ -54,6 +54,7 @@ export function featureText(key: FeatureKey, product: Product): string {
   if (key === "fitAid") return FIT_AID_LABEL[d.value as keyof typeof FIT_AID_LABEL];
   if (key === "caseTotalHours") return `${d.value} h`;
   if (key === "ios" || key === "android") return d.value === "full" ? "Full app support" : "Limited";
+  if (key === "ancType") return d.value === "adaptive" ? "Adaptive active noise cancelling" : d.value === "anc" ? "Active noise cancelling" : "No active noise cancelling";
   if (d.value === "yes") return "Yes";
   if (d.value === "no") return "No";
   return String(d.value);

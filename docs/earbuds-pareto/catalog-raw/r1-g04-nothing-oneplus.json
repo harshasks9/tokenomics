@@ -1,0 +1,970 @@
+[
+  {
+    "id": "nothing-ear-3",
+    "brand": "Nothing",
+    "model": "Ear (3)",
+    "released": "2025-09",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 179,
+    "anc": "adaptive",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 38,
+    "ip": "IP54",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": true,
+    "latencyMs": null,
+    "drivers": "12mm dynamic (PMI + TPU diaphragm)",
+    "sources": [
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/nothing-ear-3-true-wireless-earbuds-ppd1rlw0e36l",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "wirelessCharging",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://telecomtalk.info/?p=999903",
+        "publisher": "TelecomTalk",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "released",
+          "anc"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/amphtml/accessories/news/nothing-launches-ear-3-with-adaptive-noise-cancellation-and-38-hour-battery-life-011-118893.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "anc",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.techlusive.in/wearables/nothing-ear-3-tws-earbuds-launch-in-india-on-september-18-price-features-and-expected-upgrades-revealed-availability-launch-date-and-time-india-price-design-chatgpt-integration-where-to-buy-and-more-1596113/",
+        "publisher": "Techlusive",
+        "kind": "news",
+        "fields": [
+          "indiaAvailable",
+          "released"
+        ]
+      }
+    ],
+    "notes": "Global price £179/$179/€179; global pre-orders from 2025-09-18. India launch price not found in search results (Smartprix shows only an 'expected' ₹12,999). ANC dB claim, weight, codecs and multipoint not found. indiaAvailable based on Techlusive report of India launch on Sept 18.",
+    "confidence": "medium"
+  },
+  {
+    "id": "nothing-ear-3a",
+    "brand": "Nothing",
+    "model": "Ear (3a)",
+    "released": "2026-07",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": 99,
+    "anc": "adaptive",
+    "ancClaimDb": 45,
+    "batteryBudsAncOn": 6,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 42,
+    "ip": "IP54",
+    "weightG": 4.53,
+    "multipoint": null,
+    "bluetooth": "6.0",
+    "codecs": [
+      "SBC",
+      "AAC",
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12mm dynamic",
+    "sources": [
+      {
+        "url": "https://techcabal.com/?p=192098",
+        "publisher": "TechCabal",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "released",
+          "anc",
+          "ancClaimDb",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "codecs",
+          "drivers",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.latestly.com/technology/nothing-ear-3a-price-features-and-specifications-revealed-7506816.html",
+        "publisher": "LatestLY",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/nothing-ear-3a-launches-globally-with-12mm-driver-hi-res-audio-anc-up-to-42-hours-of-playback-and-more-india-launch-still-unconfirmed/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "indiaAvailable",
+          "drivers",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://telecomtalk.info/nothing-ear-3a-launched-price-and-specifications/1009476/",
+        "publisher": "TelecomTalk",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/nothing-ear-3a-ppd1a97qaj2i",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "Global launch 2026-07-07 alongside Phone 4b at $99/£99/€99. India launch/price not confirmed in sources (estimates ₹9,999 or ₹8,999 only - not recorded). Case weighs 40.9 g. Hi-Res Wireless, Bluetooth 6.0; multipoint not confirmed.",
+    "confidence": "medium"
+  },
+  {
+    "id": "nothing-ear-2024",
+    "brand": "Nothing",
+    "model": "Ear (2024)",
+    "released": "2024-04",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 11999,
+    "mrpINR": null,
+    "launchPriceUSD": 149,
+    "anc": "anc",
+    "ancClaimDb": 45,
+    "batteryBudsAncOn": 5.2,
+    "batteryBudsMax": 8.5,
+    "batteryTotalMax": 40.5,
+    "ip": "IP54",
+    "weightG": 4.62,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LDAC",
+      "LHDC 5.0"
+    ],
+    "wirelessCharging": true,
+    "latencyMs": null,
+    "drivers": "11mm dynamic, ceramic diaphragm",
+    "sources": [
+      {
+        "url": "https://www.91mobiles.com/hub/?p=579804",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.aajtak.in/technology/tech-news/story/nothing-ear-and-nothing-ear-a-price-in-india-launch-specifications-ttec-1924283-2024-04-19",
+        "publisher": "Aaj Tak",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "wirelessCharging",
+          "drivers",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/nothing-ear-india",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/422049/nothing-ear-price-india-features-ear-a.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.notebookcheck.net/Comparison-test-All-of-the-latest-wireless-Nothing-headphones-reviewed.875347.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "review",
+        "fields": [
+          "weightG"
+        ]
+      },
+      {
+        "url": "https://www.google.se/amp/s/m.gsmarena.com/nothing_ear_and_ear_a_announced-news-62496.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "released"
+        ]
+      },
+      {
+        "url": "https://the-gadgeteer.com/?p=433051",
+        "publisher": "The Gadgeteer",
+        "kind": "review",
+        "fields": [
+          "bluetooth",
+          "multipoint",
+          "codecs"
+        ]
+      }
+    ],
+    "notes": "Global price $149/€149/£129. Battery: 40.5 h total ANC off / 24 h total ANC on; buds 8.5 h ANC off / 5.2 h ANC on. 2.5W Qi wireless charging. Codec list partial (SBC/AAC not confirmed in sources). Sources only say 'ANC up to 45dB' for this model (adaptive mode not confirmed in gathered results). Successor Ear (3) launched 2025-09; current sale status not confirmed.",
+    "confidence": "high"
+  },
+  {
+    "id": "nothing-ear-a",
+    "brand": "Nothing",
+    "model": "Ear (a)",
+    "released": "2024-04",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 7999,
+    "mrpINR": null,
+    "launchPriceUSD": 99,
+    "anc": "adaptive",
+    "ancClaimDb": 45,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 42.5,
+    "ip": "IP54",
+    "weightG": 4.8,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm dynamic",
+    "sources": [
+      {
+        "url": "https://www.91mobiles.com/hub/?p=579804",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/422049/nothing-ear-price-india-features-ear-a.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "anc",
+          "ancClaimDb",
+          "codecs"
+        ]
+      },
+      {
+        "url": "https://www.mysmartprice.com/gear/?p=395966",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "batteryTotalMax",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.notebookcheck.net/Comparison-test-All-of-the-latest-wireless-Nothing-headphones-reviewed.875347.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "review",
+        "fields": [
+          "weightG"
+        ]
+      },
+      {
+        "url": "https://www.google.se/amp/s/m.gsmarena.com/nothing_ear_and_ear_a_announced-news-62496.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.slashgear.com/1569667/nothing-ear-a-vs-nothing-ear-2024-difference-best-earbuds-anc/",
+        "publisher": "SlashGear",
+        "kind": "review",
+        "fields": [
+          "drivers",
+          "codecs"
+        ]
+      }
+    ],
+    "notes": "India price ₹7,999; a special launch price of ₹5,999 with Flipkart offers was also reported (offer price, not recorded). Global $99/€99/£99. Earbuds IP54, case IPX2. 46 mAh buds / 500 mAh case. Codec list partial. Buds-alone battery and Bluetooth version not found. Successor Ear (3a) launched 2026-07.",
+    "confidence": "high"
+  },
+  {
+    "id": "nothing-ear-2",
+    "brand": "Nothing",
+    "model": "Ear (2)",
+    "released": "2023-03",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 9999,
+    "mrpINR": null,
+    "launchPriceUSD": 149,
+    "anc": "anc",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 36,
+    "ip": "IP54",
+    "weightG": 4.4,
+    "multipoint": null,
+    "bluetooth": "5.2",
+    "codecs": [
+      "LHDC 5.0"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.businessinsider.in/tech/news/nothing-ear-2-price-specifications-and-availability/articleshow/98936986.cms",
+        "publisher": "Business Insider India",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable",
+          "anc"
+        ]
+      },
+      {
+        "url": "https://www.thequint.com/amp/story/tech-and-auto/tech-news/nothing-ear-2-launched-in-india-check-features-specs-price-and-sale-date",
+        "publisher": "The Quint",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "codecs"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/bytes/carl-peis-nothing-launches-nothing-ear-2-in-india/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://www.91mobiles.com/hub/?p=530414",
+        "publisher": "91mobiles",
+        "kind": "aggregator",
+        "fields": [
+          "ip",
+          "weightG",
+          "batteryTotalMax",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://www.businesstoday.in/technology/story/nothing-ear-2-review-in-5-points-is-it-worth-your-money-374540-2023-03-23",
+        "publisher": "Business Today",
+        "kind": "review",
+        "fields": [
+          "released"
+        ]
+      }
+    ],
+    "notes": "Global price $149/€129/£129. One source snippet listed '7 hours (29 hours with case)' which conflicts with the 36 h total claim, so buds-alone battery left null. Driver size in snippet was ambiguous; left null. Hi-Res certified, LHDC 5.0, game mode. Codec list partial. Released date inferred from late-March 2023 India launch/review coverage.",
+    "confidence": "medium"
+  },
+  {
+    "id": "nothing-ear-open",
+    "brand": "Nothing",
+    "model": "Ear (open)",
+    "released": null,
+    "status": "current",
+    "form": "open-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 17999,
+    "mrpINR": null,
+    "launchPriceUSD": 149,
+    "anc": null,
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 8,
+    "batteryTotalMax": 30,
+    "ip": "IP54",
+    "weightG": 8.1,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 120,
+    "drivers": "14.2mm dynamic, titanium-coated",
+    "sources": [
+      {
+        "url": "https://beebom.com/nothing-ear-open-launches-design-specifications-price/amp/",
+        "publisher": "Beebom",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "launchPriceUSD"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/nothing-ear-open-true-wireless-earbuds-ppd19x0uvo32",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "batteryTotalMax",
+          "weightG",
+          "ip",
+          "bluetooth",
+          "multipoint",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/464885/nothing-ear-open-price-india-specifications.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/amphtml/accessories/news/nothing-ear-open-earbuds-launched-in-india-with-innovative-features-and-design-features-price-011-119013.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "indiaAvailable"
+        ]
+      }
+    ],
+    "notes": "Conflict: Beebom reports India launch at ₹17,999 ($149 US); a FoneArena headline says 'launched in India for Rs. 9999' and Smartprix shows current price ₹9,999 (likely a later price cut/relaunch) - kept ₹17,999. Buds 64 mAh / case 635 mAh; 6 h talk per bud, 24 h talk with case; 10 min charge = 2 h. Case + buds 63.8 g. ANC presence and release month not stated in gathered results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "nothing-ear-stick",
+    "brand": "Nothing",
+    "model": "Ear (stick)",
+    "released": null,
+    "status": "unknown",
+    "form": "semi-in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 8499,
+    "mrpINR": null,
+    "launchPriceUSD": 99,
+    "anc": null,
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7,
+    "batteryTotalMax": 29,
+    "ip": "IP54",
+    "weightG": 4.4,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.6mm dynamic",
+    "sources": [
+      {
+        "url": "https://us.smartprix.com/bytes/nothing-ear-stick-launched-with-cylindrical-case-at-inr-8499/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/377363/nothing-ear-stick-price-india-specifications.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.91mobiles.com/hub/?p=487439",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "form"
+        ]
+      },
+      {
+        "url": "https://www.mysmartprice.com/gear/?p=297167",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceUSD"
+        ]
+      },
+      {
+        "url": "https://www.mymobileindia.com/nothing-ear-stick-launched-in-india-to-go-on-sale-from-november-4-details-inside/amp/",
+        "publisher": "MyMobileIndia",
+        "kind": "news",
+        "fields": [
+          "indiaAvailable"
+        ]
+      }
+    ],
+    "notes": "Half in-ear (unsealed) design with cylindrical case; Bass Lock tech; Clear Voice tech with 3 mics. India sale from November 4 (year not shown in gathered snippet, so released left null). ANC status not stated in results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "cmf-buds-pro-2",
+    "brand": "CMF by Nothing",
+    "model": "Buds Pro 2",
+    "released": "2024-07",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 4299,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 43,
+    "ip": "IP55",
+    "weightG": 4.9,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm dynamic (bass) + 6mm micro-planar tweeter",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/428142/cmf-buds-pro-2-price-india-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc",
+          "ancClaimDb",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "codecs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://91mobiles.com/hub/cmf-buds-pro-2-50db-hybrid-anc",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb"
+        ]
+      },
+      {
+        "url": "https://sathee.iitk.ac.in/gk/current-affair/09-07-2024/technology/nothing-launches-cmf-phone-1-in-india-along-with-cmf-watch-pro-2-and-buds-pro-2",
+        "publisher": "SATHEE (IIT Kanpur)",
+        "kind": "news",
+        "fields": [
+          "released",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.reliancedigital.in/product/cmf-buds-pro-2-tws-earbuds-pink-msyr4h-10469579",
+        "publisher": "Reliance Digital",
+        "kind": "retailer",
+        "fields": [
+          "indiaAvailable"
+        ]
+      }
+    ],
+    "notes": "Hybrid ANC up to 50 dB. Battery 43 h total ANC off / 26 h total ANC on; buds-alone hours not in results. 60 mAh buds / 460 mAh case; 10 min = 7 h. Case 46 g. US price not confirmed in results. Status: still listed at Reliance Digital; no Buds Pro successor confirmed.",
+    "confidence": "high"
+  },
+  {
+    "id": "cmf-buds-2a",
+    "brand": "CMF by Nothing",
+    "model": "Buds 2a",
+    "released": "2025-05",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2199,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 42,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 8,
+    "batteryTotalMax": 35.5,
+    "ip": "IP54",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm dynamic, bio-fibre diaphragm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/452373/cmf-buds-2a-buds-2-buds-2-plus-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.digit.in/news/mobile-phones/cmf-phone-2-pro-buds-2-and-buds-2-plus-launched-in-india-check-price-specifications-features-and-more.html",
+        "publisher": "Digit",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "drivers",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.theweek.in/wire-updates/business/2025/05/01/dcm8-nothing.html",
+        "publisher": "The Week",
+        "kind": "news",
+        "fields": [
+          "released",
+          "ancClaimDb"
+        ]
+      },
+      {
+        "url": "https://checkout-us.nothing.tech/products/cmf-buds-2a",
+        "publisher": "Nothing (US store)",
+        "kind": "manufacturer",
+        "fields": []
+      }
+    ],
+    "notes": "Launched in India with CMF Phone 2 Pro (wire report dated 2025-05-01; launch event may have been end-April). Sold on Nothing's US store, but per-model US launch price not found (a 2026 article says the Buds 2 family launched between US$49 and US$69). Weight not found.",
+    "confidence": "medium"
+  },
+  {
+    "id": "cmf-buds-2",
+    "brand": "CMF by Nothing",
+    "model": "Buds 2",
+    "released": "2025-05",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2699,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 48,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 55,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm dynamic, PMI diaphragm (Dirac Opteo tuning)",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/452373/cmf-buds-2a-buds-2-buds-2-plus-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.digit.in/news/mobile-phones/cmf-phone-2-pro-buds-2-and-buds-2-plus-launched-in-india-check-price-specifications-features-and-more.html",
+        "publisher": "Digit",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "drivers",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.theweek.in/wire-updates/business/2025/05/01/dcm8-nothing.html",
+        "publisher": "The Week",
+        "kind": "news",
+        "fields": [
+          "released",
+          "ancClaimDb"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/cmf-buds-2a-cmf-buds-2-cmf-buds-2-plus-india-launch",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://tbreak.com/cmf-buds-3-teaser-nothing-earbuds/",
+        "publisher": "tbreak",
+        "kind": "news",
+        "fields": []
+      }
+    ],
+    "notes": "48 dB hybrid ANC, Spatial Audio Effect. 'Up to 55 hours' total battery. Per-model US price not found (Buds 2 family launched between US$49-69 per tbreak). Buds-alone battery, IP rating, weight not found.",
+    "confidence": "medium"
+  },
+  {
+    "id": "cmf-buds-2-plus",
+    "brand": "CMF by Nothing",
+    "model": "Buds 2 Plus",
+    "released": "2025-05",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 3299,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 14,
+    "batteryTotalMax": 61.5,
+    "ip": "IP55",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/452373/cmf-buds-2a-buds-2-buds-2-plus-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.digit.in/news/mobile-phones/cmf-phone-2-pro-buds-2-and-buds-2-plus-launched-in-india-check-price-specifications-features-and-more.html",
+        "publisher": "Digit",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "codecs",
+          "batteryBudsMax",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.theweek.in/wire-updates/business/2025/05/01/dcm8-nothing.html",
+        "publisher": "The Week",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.pricekeeda.com/cmf-buds-2-plus-price-in-india/",
+        "publisher": "PriceKeeda",
+        "kind": "aggregator",
+        "fields": [
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.galaxus.at/en/s1/product/cmf-buds-2-plus-anc-750-h-wireless-headphones-59106820",
+        "publisher": "Galaxus",
+        "kind": "retailer",
+        "fields": []
+      }
+    ],
+    "notes": "50 dB hybrid ANC, Hi-Res LDAC, hearing compensation, full EQ. Battery 14 h buds / 61.5 h total (AAC, ANC off). A listing cites 51.5 g weight - appears to be buds+case, not one earbud, so weightG left null. Per-model US price not found (family US$49-69).",
+    "confidence": "medium"
+  },
+  {
+    "id": "cmf-buds",
+    "brand": "CMF by Nothing",
+    "model": "Buds",
+    "released": "2024-03",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 42,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 35.5,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm dynamic",
+    "sources": [
+      {
+        "url": "https://businesstoday.in/technology/news/story/nothing-launches-cmf-buds-and-neckband-pro-priced-under-rs-3000-in-india-420282-2024-03-06",
+        "publisher": "Business Today",
+        "kind": "news",
+        "fields": [
+          "released",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.notebookcheck.net/Nothing-launches-CMF-Buds-with-42-dB-ANC-35-5-hours-of-battery-life-and-an-affordable-price.810160.0.html",
+        "publisher": "Notebookcheck",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://91mobiles.com/hub/?p=594488",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://androidauthority.com/p-3455002",
+        "publisher": "Android Authority",
+        "kind": "news",
+        "fields": [
+          "bluetooth",
+          "drivers"
+        ]
+      }
+    ],
+    "notes": "Launched in India March 2024 alongside CMF Neckband Pro. 4-mic setup with wind noise reduction. IP rating, weight and US price not confirmed in gathered results. Succeeded by Buds 2 series (2025).",
+    "confidence": "medium"
+  },
+  {
+    "id": "cmf-buds-pro",
+    "brand": "CMF by Nothing",
+    "model": "Buds Pro",
+    "released": "2023-09",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 3499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": null,
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": null,
+    "ip": "IP54",
+    "weightG": null,
+    "multipoint": false,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.dtnext.in/lifestyle/technology/cmf-by-nothing-unveils-watch-pro-buds-pro-in-india-738469",
+        "publisher": "DT Next",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "indiaAvailable",
+          "ip",
+          "multipoint"
+        ]
+      },
+      {
+        "url": "https://www.business-standard.com/technology/gadgets/cmf-by-nothing-goes-official-debuts-watch-pro-buds-pro-and-power-65w-gan-123092600710_1.html",
+        "publisher": "Business Standard",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.91mobiles.com/hub/?p=544319",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "CMF brand debut (Sept 2023), sale from Sept 30. Circular case, single-device Bluetooth, IP54 buds. ANC dB, battery, weight and US price not found in gathered results (search budget exhausted).",
+    "confidence": "low"
+  }
+]
