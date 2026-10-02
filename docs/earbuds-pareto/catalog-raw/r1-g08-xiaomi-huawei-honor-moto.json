@@ -1,0 +1,764 @@
+[
+  {
+    "id": "xiaomi-redmi-buds-6",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 6",
+    "released": "2024-12",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 49,
+    "batteryBudsAncOn": 6.5,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 42,
+    "ip": "IP54",
+    "weightG": 5,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": [
+      "SBC",
+      "AAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm titanium dynamic + 5.5mm piezoelectric ceramic (dual driver)",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/441786/redmi-buds-6-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "codecs",
+          "drivers",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.gsmarena.com/redmi_buds_6_india-news-65668.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "indiaAvailable",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/redmi-buds-6-tws-earbuds-with-hybrid-active-noise-cancellation-ip54-water-resistant-42-hours-playback-spectre-black-/p/312468",
+        "publisher": "Croma",
+        "kind": "retailer",
+        "fields": [
+          "indiaAvailable",
+          "ip",
+          "batteryTotalMax",
+          "status"
+        ]
+      },
+      {
+        "url": "https://www.flipkart.com/redmi-buds-6-bluetooth/p/itm3b3bdde1c3735",
+        "publisher": "Flipkart",
+        "kind": "retailer",
+        "fields": [
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/bytes/redmi-buds-6-review-pros-and-cons/",
+        "publisher": "Smartprix",
+        "kind": "review",
+        "fields": []
+      }
+    ],
+    "notes": "India launch price Rs 2,999 with introductory offer Rs 2,799 until Dec 19 (FoneArena). Released month inferred from that offer window and the Jan 2025 global Buds 6 Pro coverage noting Buds 6 had launched in India; year not stated verbatim. Batteries: 10h/42h ANC off, 6.5h/26h ANC on. Hybrid ANC, adaptive not stated. Multipoint not stated in sources.",
+    "confidence": "high"
+  },
+  {
+    "id": "xiaomi-redmi-buds-6-pro",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 6 Pro",
+    "released": "2025-01",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 55,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 9.5,
+    "batteryTotalMax": 36,
+    "ip": "IP54",
+    "weightG": 5.2,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "Coaxial triple driver: 11mm titanium dynamic + dual PZT tweeters",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/444154/redmi-buds-6-pro-price-features-global.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "codecs",
+          "multipoint",
+          "bluetooth",
+          "drivers",
+          "released"
+        ]
+      },
+      {
+        "url": "https://mezha.ua/en/2025/01/13/redmi-buds-6-pro-with-anc-debuted-on-the-global-market/",
+        "publisher": "Mezha",
+        "kind": "news",
+        "fields": [
+          "released",
+          "batteryBudsMax",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://katalog.atcomp.cz/katalog/95XIS1127/Redmi-Buds-6-Pro-O76-One-pager.pdf",
+        "publisher": "Xiaomi one-pager (via AT Computers)",
+        "kind": "manufacturer",
+        "fields": [
+          "weightG",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.galaxus.nl/en/s1/product/xiaomi-redmi-buds-6-pro-anc-950-h-wireless-headphones-53393701",
+        "publisher": "Galaxus",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      },
+      {
+        "url": "https://www.digit.in/audio/xiaomi-redmi-buds-6-pro-true-wireless-earbuds.html",
+        "publisher": "Digit",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "Global launch Jan 2025 alongside Redmi Note 14 series; first launched in China in Nov 2024. Global price EUR 74.9 (not converted). India launch not confirmed: Digit lists Rs 4,999 but no India launch announcement found, so launchPriceINR/indiaAvailable left null. Only LDAC confirmed among codecs. Hi-Res Audio Wireless certified; Google Fast Pair; head-tracking spatial audio. ANC-on battery not stated.",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-redmi-buds-6-lite",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 6 Lite",
+    "released": null,
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 40,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7,
+    "batteryTotalMax": 38,
+    "ip": "IP54",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm titanium dynamic",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/433750/redmi-buds-6-lite-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.mi.com/sa-en/product/redmi-buds-6-lite/specs/",
+        "publisher": "Xiaomi",
+        "kind": "manufacturer",
+        "fields": []
+      },
+      {
+        "url": "https://www.phonearena.com/news/xiaomi-launches-the-super-affordable-redmi-buds-6-lite_id162126",
+        "publisher": "PhoneArena",
+        "kind": "news",
+        "fields": []
+      },
+      {
+        "url": "https://arvutitark.ee/en/pcs-and-accessories/audio-devices/korvaklapid/xiaomi-redmi-buds-6-lite-blue-1394773",
+        "publisher": "Arvutitark",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      }
+    ],
+    "notes": "Global price EUR 19.99 (not converted). Per FoneArena it was launched in India as the Redmi Buds 5C (rebrand); India price for that SKU not found. One summary claimed 'Rs 3,499' for 6 Lite in India - unverified, not used. Battery conflict: spec line says 7h buds / 38h with case; same article text also says 36h with case. Driver figure (12.4mm) is stated for the India twin Redmi Buds 5C. Launch month not found.",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-redmi-buds-6-play",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 6 Play",
+    "released": null,
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 7.5,
+    "batteryTotalMax": 36,
+    "ip": null,
+    "weightG": 3.6,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "10mm dynamic",
+    "sources": [
+      {
+        "url": "https://www.mi.com/global/product/redmi-buds-6-play/specs",
+        "publisher": "Xiaomi",
+        "kind": "manufacturer",
+        "fields": [
+          "weightG",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://galaxus.nl/en/s1/product/xiaomi-redmi-buds-6-play-pink-bhr8775gl-no-noise-cancelling-36-h-wireless-headphones-47975356",
+        "publisher": "Galaxus",
+        "kind": "retailer",
+        "fields": [
+          "anc",
+          "status"
+        ]
+      },
+      {
+        "url": "https://us.smartprix.com/mobile_headphones/xiaomi-redmi-buds-6-play-ppd1avjahngu",
+        "publisher": "Smartprix US",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "Smartprix US shows $18.99, but that is a marketplace price, not an official US launch MSRP (left null). India availability and launch date not found. IP rating not in sources. Bean-shaped in-ear design per Xiaomi.",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-redmi-buds-5",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 5",
+    "released": "2024-02",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 2999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 46,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": 40,
+    "ip": "IP54",
+    "weightG": 5.3,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm titanium dynamic",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/416410/redmi-buds-5-price-india-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb"
+        ]
+      },
+      {
+        "url": "https://www.91mobiles.com/hub/?p=567390",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ip",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/bytes/redmi-buds-5-to-launch-in-india-on-february-12/",
+        "publisher": "Smartprix",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.mysmartprice.com/gear/?p=382477",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "weightG",
+          "multipoint",
+          "bluetooth",
+          "drivers"
+        ]
+      }
+    ],
+    "notes": "India launch Feb 12, 2024; sale from Feb 20. Battery conflict: one source says 38h total with case, another 10h buds / 40h with 480mAh case - used 40h. Weight conflict: 5.3g per bud vs '10.25g for the pair' in India launch coverage. Codecs not stated. Successor Redmi Buds 6 launched Dec 2024, so current status unknown.",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-redmi-buds-5-pro",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 5 Pro",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 52,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 10,
+    "batteryTotalMax": null,
+    "ip": "IP54",
+    "weightG": 5.1,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LDAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "10mm piezoelectric ceramic tweeter + 11mm titanium dynamic",
+    "sources": [
+      {
+        "url": "https://www.mysmartprice.com/gear/?p=382477",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "batteryBudsMax",
+          "ip",
+          "weightG",
+          "multipoint",
+          "bluetooth",
+          "codecs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/redmi-buds-5-pro-global",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": []
+      },
+      {
+        "url": "https://www.cashify.in/xiaomi-redmi-buds-5-pro-earbud-price-in-india",
+        "publisher": "Cashify",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "India launch not confirmed; Cashify lists Rs 4,699 (not an official launch price, not used). Launch date not found (global launch covered by MobiGyaan, date not in results). Total battery left null: one summary said '28 hours with the 480mAh case', which looks inconsistent and could not be verified. 3 mics with AI call noise reduction; Google Fast Pair.",
+    "confidence": "low"
+  },
+  {
+    "id": "xiaomi-redmi-buds-5a",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 5A",
+    "released": "2024-04",
+    "status": "older-still-sold",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 25,
+    "batteryBudsAncOn": 3.5,
+    "batteryBudsMax": 5,
+    "batteryTotalMax": 30,
+    "ip": "IPX4",
+    "weightG": 3.6,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 60,
+    "drivers": "12mm dynamic",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/422401/redmi-buds-5a-price-india-specifications.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "released",
+          "ancClaimDb",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/redmi-buds-5a-tws-earbuds-with-active-noise-cancellation-ipx4-sweat-resistant-10-mins-quick-charge-black-/p/308411",
+        "publisher": "Croma",
+        "kind": "retailer",
+        "fields": [
+          "ip",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.reliancedigital.in/redmi-buds-5a-active-noise-cancelling-true-wireless-earbuds-upto-30hr-playtime-ai-powered-enc-for-clear-calls-bluetooth-v5-4-low-latency-gaming-mode-with-touch-controls-black/p/494410455",
+        "publisher": "Reliance Digital",
+        "kind": "retailer",
+        "fields": [
+          "batteryTotalMax",
+          "bluetooth",
+          "indiaAvailable"
+        ]
+      },
+      {
+        "url": "https://www.phonebunch.com/news/redmi-buds-5a-launch-india-price-specifications_7397.html",
+        "publisher": "PhoneBunch",
+        "kind": "news",
+        "fields": []
+      }
+    ],
+    "notes": "Rs 1,499 is the special/introductory launch price (sale from April 29 via mi.com, Xiaomi retail, Reliance); regular MRP not found. Launched in India with Redmi Pad SE; year 2024 inferred from launch coverage ordering, not stated verbatim. Totals: 30h ANC off / 23h ANC on. Status from Croma/Reliance listings; in-stock state not verified.",
+    "confidence": "high"
+  },
+  {
+    "id": "xiaomi-redmi-buds-7s",
+    "brand": "Xiaomi",
+    "model": "Redmi Buds 7S",
+    "released": "2025-04",
+    "status": "current",
+    "form": "semi-in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "adaptive",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 6.5,
+    "batteryTotalMax": 32,
+    "ip": "IP54",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.4",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm titanium-plated dynamic + 5.5mm piezoelectric ceramic tweeter",
+    "sources": [
+      {
+        "url": "https://m.gsmarena.com/redmi_buds_7s_announced_-news-67293.php",
+        "publisher": "GSMArena",
+        "kind": "news",
+        "fields": [
+          "anc",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://propakistani.pk/2025/04/09/redmi-buds-7s-bring-32-hours-of-battery-and-anc-for-under-30/amp/",
+        "publisher": "ProPakistani",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.mymobileindia.com/web-stories/redmi-buds-7s-launched-with-32hr-battery-anc-spatial-audio/",
+        "publisher": "MyMobile India",
+        "kind": "news",
+        "fields": [
+          "form",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/xiaomi-redmi-buds-7s-true-wireless-earbuds-ppd1s6fpoldw",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": []
+      }
+    ],
+    "notes": "China launch (deliveries from April 11, 2025) at CNY 200 (not converted). No India or global launch found in results. Semi-in-ear (no silicone tips) design with adaptive ANC; ANC dB claim not stated. No other Redmi Buds 7/8-series models could be checked (search budget exhausted).",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-buds-5",
+    "brand": "Xiaomi",
+    "model": "Xiaomi Buds 5",
+    "released": null,
+    "status": "current",
+    "form": "semi-in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 46,
+    "batteryBudsAncOn": 3.5,
+    "batteryBudsMax": 6.5,
+    "batteryTotalMax": 39,
+    "ip": "IP54",
+    "weightG": 4.2,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": [
+      "aptX Lossless"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm dynamic",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/429731/xiaomi-buds-5-price-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "batteryBudsAncOn",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "codecs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://lowyat.net/2024/333514/xiaomi-buds-5",
+        "publisher": "Lowyat.NET",
+        "kind": "news",
+        "fields": []
+      },
+      {
+        "url": "https://galaxus.nl/en/s1/product/xiaomi-buds-5-anc-39-h-wireless-headphones-47574746",
+        "publisher": "Galaxus",
+        "kind": "retailer",
+        "fields": [
+          "batteryTotalMax",
+          "status"
+        ]
+      },
+      {
+        "url": "https://arvutitark.ee/en/pcs-and-accessories/audio-devices/korvaklapid/xiaomi-buds-5-titan-gray-1401576",
+        "publisher": "Arvutitark",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      }
+    ],
+    "notes": "China launch 2024 at CNY 699 (not converted); exact month and India availability not found. Battery: buds 6.5h ANC off / 3.5h ANC on, total 39h ANC off / 20h ANC on (spec sheet); another line in coverage claims 10h buds / 40h total - not used. Form set to semi-in-ear from product design (half-in-ear); not stated verbatim in the sources found. Spatial audio supported.",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-buds-5-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi Buds 5 Pro",
+    "released": "2025-03",
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "adaptive",
+    "ancClaimDb": 55,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 8,
+    "batteryTotalMax": 40,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "Coaxial triple driver: 11mm dual-magnetic dynamic + planar diaphragm unit",
+    "sources": [
+      {
+        "url": "https://www.ubergizmo.com/2025/03/xiaomi-buds-5-pro/",
+        "publisher": "Ubergizmo",
+        "kind": "news",
+        "fields": [
+          "released",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.androidplanet.nl/xiaomi/buds-5-pro/",
+        "publisher": "Android Planet",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://lowyat.net/2025/344001/xiaomi-buds-5-pro-sirim",
+        "publisher": "Lowyat.NET",
+        "kind": "news",
+        "fields": [
+          "anc",
+          "ancClaimDb",
+          "batteryBudsMax",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.techradar.com/audio/earbuds-airpods/xiaomi-buds-5-pro-review",
+        "publisher": "TechRadar",
+        "kind": "review",
+        "fields": []
+      },
+      {
+        "url": "https://arvutitark.ee/en/pcs-and-accessories/audio-devices/korvaklapid/xiaomi-buds-5-pro-bt-white-1435499",
+        "publisher": "Arvutitark",
+        "kind": "retailer",
+        "fields": [
+          "status"
+        ]
+      }
+    ],
+    "notes": "Global launch at MWC 2025 (March 2025) after a China launch. Two variants: Bluetooth (8h buds / 40h total) and Wi-Fi (10h buds; Wi-Fi audio up to 4.2Mbps). Prices: EUR 199.99 (BT) / EUR 219.99 (Wi-Fi); China CNY 1,299 / 1,499 (not converted). India availability, weight, IP rating, codecs not found in results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "xiaomi-buds-4-pro",
+    "brand": "Xiaomi",
+    "model": "Xiaomi Buds 4 Pro",
+    "released": "2023-02",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": null,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 48,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 9,
+    "batteryTotalMax": 38,
+    "ip": "IP54",
+    "weightG": 5,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": [
+      "SBC",
+      "AAC",
+      "LDAC"
+    ],
+    "wirelessCharging": true,
+    "latencyMs": null,
+    "drivers": "11mm dual-magnetic dynamic",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/386623/xiaomi-buds-4-pro-xiaomi-watch-s1-pro-price-global.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/371733/xiaomi-buds-4-pro-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "bluetooth",
+          "codecs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://lowyat.net/2022/281933/xiaomi-buds-4-pro-spatial-audio",
+        "publisher": "Lowyat.NET",
+        "kind": "news",
+        "fields": [
+          "weightG",
+          "batteryBudsMax",
+          "batteryTotalMax",
+          "wirelessCharging",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://katalog.atcomp.cz/katalog/95XIS1157/-One-Page-Xiaomi-Buds-4-Pro-4-.pdf",
+        "publisher": "Xiaomi one-pager (via AT Computers)",
+        "kind": "manufacturer",
+        "fields": [
+          "codecs"
+        ]
+      },
+      {
+        "url": "https://galaxus.de/en/s1/product/xiaomi-buds-4-pro-anc-9-h-wireless-headphones-24464820",
+        "publisher": "Galaxus",
+        "kind": "retailer",
+        "fields": []
+      }
+    ],
+    "notes": "Global release Feb 27, 2023 (China launch was 2022 at CNY 1,099, not converted). Codec conflict: China launch spec lists SBC/AAC/LHDC 4.0; global coverage cites LDAC (990kbps) - recorded global LDAC. Battery 9h buds / 38h total, ANC off. Qi wireless charging; spatial audio with head tracking. India availability and global price not found.",
+    "confidence": "medium"
+  }
+]

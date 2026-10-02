@@ -489,6 +489,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // EARBUDS TRADEOFF — wireless earbuds Pareto explorer.
+  if (hostname === "earbuds.hkfire.app") {
+    const earbudsUrl = request.nextUrl.clone();
+    if (earbudsUrl.pathname === "/") {
+      earbudsUrl.pathname = "/earbuds";
+    } else if (!earbudsUrl.pathname.startsWith("/earbuds")) {
+      earbudsUrl.pathname = `/earbuds${earbudsUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(earbudsUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;
