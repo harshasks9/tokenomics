@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Database, Printer } from "lucide-react";
+import { Database, ListOrdered, Printer } from "lucide-react";
 import type { SiteModel } from "@/lib/korea-fy27/model";
 import type { CohortId } from "@/lib/korea-fy27/types";
 import { money } from "@/lib/korea-fy27/format";
@@ -33,10 +33,11 @@ export const SECTIONS = [
   { id: "appendix", num: "11", label: "Appendix" },
 ] as const;
 
-function useActiveSection() {
-  const [active, setActive] = useState<string>("summary");
+/** The section nearest the top of the viewport, by id. */
+export function useActiveSection(ids: readonly string[]) {
+  const [active, setActive] = useState<string>(ids[0]);
   useEffect(() => {
-    const els = SECTIONS.map((s) => document.getElementById(s.id)).filter((el): el is HTMLElement => Boolean(el));
+    const els = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => Boolean(el));
     const visible = new Map<string, number>();
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,11 +56,13 @@ function useActiveSection() {
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [ids]);
   return active;
 }
 
-function printPlan(mode: "exec" | "full") {
+const SECTION_IDS = SECTIONS.map((s) => s.id);
+
+export function printPlan(mode: "exec" | "full") {
   const root = document.querySelector<HTMLElement>(".k-root");
   if (!root) return;
   root.setAttribute("data-print-mode", mode);
@@ -79,13 +82,56 @@ function printPlan(mode: "exec" | "full") {
   window.print();
 }
 
-export default function KoreaPlanSite({ model }: { model: SiteModel }) {
-  const active = useActiveSection();
+/** "The plan in six numbers": the side rail on wide screens. */
+export function PlanRail({ model }: { model: SiteModel }) {
+  const startups = model.cohorts.find((c) => c.id === "startups");
+  const dn = model.market.segments.find((s) => s.id === "dn");
+  return (
+    <div className="k-rail" aria-label="The plan in six numbers">
+      <h4>The plan in six numbers</h4>
+      <dl>
+        <div>
+          <dt>FY26 Google AI</dt>
+          <dd>{money(model.headline.fy26Ai)}</dd>
+        </div>
+        <div>
+          <dt>FY27 plan</dt>
+          <dd>
+            {money(model.headline.fy27Plan, { approx: true })} <small>({model.headline.multipleLabel})</small>
+          </dd>
+        </div>
+        <div>
+          <dt>Share of wallet</dt>
+          <dd>
+            {model.headline.shareFY26}% → {model.headline.shareFY27}%
+          </dd>
+        </div>
+        <div>
+          <dt>Growth</dt>
+          <dd>{money(model.headline.growth, { sign: true })}</dd>
+        </div>
+        <div>
+          <dt>Largest growth pillar</dt>
+          <dd>
+            DN {money(dn?.added ?? 0, { sign: true })}
+          </dd>
+        </div>
+        <div className="risk">
+          <dt>Largest new risk</dt>
+          <dd>
+            Startups {money(startups?.fy27 ?? 0, { approx: true })} <small>· ~{startups?.losPct}% line of sight</small>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  );
+}
+
+export default function KoreaPlanSite({ model, flowHref }: { model: SiteModel; flowHref?: string }) {
+  const active = useActiveSection(SECTION_IDS);
   const [drawer, setDrawer] = useState<{ id: CohortId; tab: DrawerTab } | null>(null);
   const openCohort = useCallback((id: CohortId, tab: DrawerTab = "economics") => setDrawer({ id, tab }), []);
   const ctx = useMemo(() => ({ model, openCohort }), [model, openCohort]);
-  const startups = model.cohorts.find((c) => c.id === "startups");
-  const dn = model.market.segments.find((s) => s.id === "dn");
 
   const nav = (cls: string) => (
     <nav className={cls} aria-label="Sections">
@@ -109,6 +155,12 @@ export default function KoreaPlanSite({ model }: { model: SiteModel }) {
           {model.meta.status}
         </span>
         <div className="k-top-actions k-noprint">
+          {flowHref ? (
+            <a className="k-btn" href={flowHref} title="The same plan, in the review flow: market intel, takeaways, motions, five verticals, Q4 plan, accountability and asks">
+              <ListOrdered aria-hidden="true" />
+              <span className="k-hide-sm">Flow version</span>
+            </a>
+          ) : null}
           <a className="k-btn" href="#appendix" title="Market assumptions, account tables, numbers ledger and conflict log">
             <Database aria-hidden="true" />
             <span className="k-hide-sm">Data room</span>
@@ -126,43 +178,7 @@ export default function KoreaPlanSite({ model }: { model: SiteModel }) {
       <div className="k-layout">
         <aside className="k-side k-noprint">
           {nav("k-nav")}
-          <div className="k-rail" aria-label="The plan in six numbers">
-            <h4>The plan in six numbers</h4>
-            <dl>
-              <div>
-                <dt>FY26 Google AI</dt>
-                <dd>{money(model.headline.fy26Ai)}</dd>
-              </div>
-              <div>
-                <dt>FY27 plan</dt>
-                <dd>
-                  {money(model.headline.fy27Plan, { approx: true })} <small>({model.headline.multipleLabel})</small>
-                </dd>
-              </div>
-              <div>
-                <dt>Share of wallet</dt>
-                <dd>
-                  {model.headline.shareFY26}% → {model.headline.shareFY27}%
-                </dd>
-              </div>
-              <div>
-                <dt>Growth</dt>
-                <dd>{money(model.headline.growth, { sign: true })}</dd>
-              </div>
-              <div>
-                <dt>Largest growth pillar</dt>
-                <dd>
-                  DN {money(dn?.added ?? 0, { sign: true })}
-                </dd>
-              </div>
-              <div className="risk">
-                <dt>Largest new risk</dt>
-                <dd>
-                  Startups {money(startups?.fy27 ?? 0, { approx: true })} <small>· ~{startups?.losPct}% line of sight</small>
-                </dd>
-              </div>
-            </dl>
-          </div>
+          <PlanRail model={model} />
         </aside>
 
         <main className="k-main" id="top">

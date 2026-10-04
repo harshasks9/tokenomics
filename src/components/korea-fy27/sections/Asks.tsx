@@ -6,7 +6,6 @@ import { money } from "@/lib/korea-fy27/format";
 
 export default function AsksSection() {
   const { model, openCohort } = useSite();
-  const name = (id: string) => model.cohorts.find((c) => c.id === id)?.name ?? id;
 
   const open = [
     { what: "Cohort owners", state: "[name] on all 8 cohort pages" },
@@ -28,62 +27,7 @@ export default function AsksSection() {
       lead="Each ask is tied to the line of the plan it unlocks. Where the deck leaves an amount or a name open, it stays open here."
     >
       <Block>
-        <div className="k-grid" style={{ gap: 14 }}>
-          {model.asks.items.map((a) => (
-            <div className="k-card" key={a.id} style={{ padding: 0, overflow: "hidden" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 0 }}>
-                <div style={{ padding: "18px 20px", background: "var(--navy-ink)", color: "#fff", display: "flex", gap: 14, alignItems: "baseline", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 13, fontWeight: 800, opacity: 0.8 }}>DECISION {a.num}</span>
-                  <h3 style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-0.02em" }}>
-                    {a.name}: {a.headline}
-                  </h3>
-                </div>
-                <div style={{ padding: "16px 20px 18px" }}>
-                  <p style={{ fontSize: 15.5, fontWeight: 600 }}>
-                    {a.decision} <Tag basis={a.decisionBasis} />
-                  </p>
-                  <div className="k-table-wrap" style={{ marginTop: 12 }}>
-                    <table className="k-table">
-                      <thead>
-                        <tr>
-                          <th scope="col">What we ask</th>
-                          <th scope="col">What it unlocks</th>
-                          <th scope="col">Cohorts</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {a.items.map((it) => (
-                          <tr key={it.text}>
-                            <td className="wrap" style={{ color: "var(--ink)", fontWeight: 600 }}>
-                              {it.text} {it.basis !== "stated" ? <Tag basis={it.basis} /> : null}
-                            </td>
-                            <td className="wrap">{it.unlocks}</td>
-                            <td>
-                              <span className="k-pill-row">
-                                {it.cohorts.length === 8 ? (
-                                  <span className="k-pill">All 8 cohorts</span>
-                                ) : (
-                                  it.cohorts.map((c) => (
-                                    <button key={c} type="button" className="k-pill" onClick={() => openCohort(c, "decisions")}>
-                                      {name(c)}
-                                    </button>
-                                  ))
-                                )}
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className="k-small k-muted" style={{ marginTop: 10 }}>
-                    Source state: {a.sourceState}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AskPanels />
         <p className="k-small k-muted" style={{ marginTop: 10 }}>{model.asks.linkNote}</p>
         <Src src={{ part: "main", slides: "3, 29, 38" }} basis={["stated", "to-confirm", "placeholder"]} />
       </Block>
@@ -128,5 +72,69 @@ export default function AsksSection() {
 
       <div className="k-callout" style={{ fontSize: 22 }}>{model.asks.closing}</div>
     </Section>
+  );
+}
+
+/** One panel per decision: each ask, what it unlocks and the cohorts it touches. */
+export function AskPanels() {
+  const { model, openCohort } = useSite();
+  const name = (id: string) => model.cohorts.find((c) => c.id === id)?.name ?? id;
+  return (
+    <div className="k-grid" style={{ gap: 14 }}>
+      {model.asks.items.map((a) => (
+        <div className="k-card" key={a.id} style={{ padding: 0, overflow: "hidden" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 0 }}>
+            <div style={{ padding: "18px 20px", background: "var(--navy-ink)", color: "#fff", display: "flex", gap: 14, alignItems: "baseline", flexWrap: "wrap" }}>
+              <span style={{ fontSize: 13, fontWeight: 800, opacity: 0.8 }}>DECISION {a.num}</span>
+              <h3 style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-0.02em" }}>
+                {a.name}: {a.headline}
+              </h3>
+            </div>
+            <div style={{ padding: "16px 20px 18px" }}>
+              <p style={{ fontSize: 15.5, fontWeight: 600 }}>
+                {a.decision} <Tag basis={a.decisionBasis} />
+              </p>
+              <div className="k-table-wrap" style={{ marginTop: 12 }}>
+                <table className="k-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">What we ask</th>
+                      <th scope="col">What it unlocks</th>
+                      <th scope="col">Cohorts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {a.items.map((it) => (
+                      <tr key={it.text}>
+                        <td className="wrap" style={{ color: "var(--ink)", fontWeight: 600 }}>
+                          {it.text} {it.basis !== "stated" ? <Tag basis={it.basis} /> : null}
+                        </td>
+                        <td className="wrap">{it.unlocks}</td>
+                        <td>
+                          <span className="k-pill-row">
+                            {it.cohorts.length === 8 ? (
+                              <span className="k-pill">All 8 cohorts</span>
+                            ) : (
+                              it.cohorts.map((c) => (
+                                <button key={c} type="button" className="k-pill" onClick={() => openCohort(c, "decisions")}>
+                                  {name(c)}
+                                </button>
+                              ))
+                            )}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="k-small k-muted" style={{ marginTop: 10 }}>
+                Source state: {a.sourceState}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
