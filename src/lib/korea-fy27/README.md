@@ -66,6 +66,37 @@ are never mixed in one chart:
    validator for colour-vision deficiency. Every chart has a table view and
    tooltips on hover and keyboard focus.
 
+## Flow version
+
+`/korea-fy27/flow` (and `korea.aitokenomics.app/flow`) is the same plan
+re-sequenced to the review outline. Both pages are built from the same model,
+so every number matches; the two link to each other from the top bar.
+
+| # | Outline step | What it shows |
+| --- | --- | --- |
+| 1 | Overall executive summary | Equation, the flow at a glance, given/commit/stretch ladder, three decisions |
+| 2 | Key insights from market intel | Six insights, wallet by segment, competitor cross-check, demand signals |
+| 3 | Top takeaways for our AI GTM in Korea | FY26 facts, then six "what we learned → what it means for GTM" rows tied to motions and verticals |
+| 4 | Three broad motions (Acquire, Deepen, Penetrate) | Waterfall in that order, motion cards, motion × segment grid |
+| 5 | Five-vertical approach (by revenue) | DN + Acquire, DN + Deepen, DN + Penetrate, Conglomerate + Deepen, Conglomerate + Penetrate: each with its approach, exec sponsor, Q4 plan into FY27 and a key example account; a strip ties the five (+$612M) and the other three cohorts (+$64M) back to +$675M |
+| 6 | Startup discovery & acquisition deep dive | The VC engine section, reused |
+| 7 | Q4 execution plan | 7.1 resources (hiring, squad formation), 7.2 skilling, 7.3 commercials |
+| 8 | Accountability deep dive | Owner, sponsor, target, run-rate and milestones for all eight cohorts; KPIs; operating rhythm |
+| 9 | Asks & follow-ups | The three decision panels, what the deck leaves open, decisions by vertical |
+
+What the deck does not have stays open on the page: exec sponsor names (slide
+99 only asks for C-level sponsors at Wrtn, Coupang, NAVER and Nexon), a skilling
+plan (7.2 is a proposed map built from slides 16–22), and a 90-day plan beyond
+the startup engine (slide 36 is an empty divider).
+
+`data/flow.ts` holds the outline's grouping and the few statements it needs
+(sponsors, Q4 actions, example accounts, takeaways, cadence, follow-ups), each
+with its slide. `flow.ts` derives everything else from the model, and
+`flow.test.ts` checks that it still ties: the five verticals and the other
+cohorts sum to +$675M within rounding, every example account is a row in its
+cohort's table, every target and commercial offer lands in exactly one bucket,
+and the hiring rows add up to the headcount snapshots.
+
 ## Layout
 
 | File | Role |
@@ -83,8 +114,10 @@ are never mixed in one chart:
 | `model.test.ts`, `routes.test.ts` | Every check passes; counts (3 motions, 4 segments, 8 cohorts, 6 plays); no employee names; routing. |
 | `format.ts` | Display helpers (pure). |
 | `routes.ts` | Host-aware routing for `korea.aitokenomics.app`. |
+| `data/flow.ts`, `flow.ts`, `flow-labels.ts` | The flow version: outline grouping, derived view, client-safe labels. |
 
-UI lives in `src/components/korea-fy27/` and `src/app/korea-fy27/`. The page is a
+UI lives in `src/components/korea-fy27/` (the flow version in `flow/`) and
+`src/app/korea-fy27/`. The page is a
 server component that checks the session, builds the model and passes it to the
 client as props. Client components import only types and the pure helpers in
 `format.ts` from this folder, so the data files are never bundled into client

@@ -7,17 +7,28 @@ import { Block, DataTable, Details, Fig, Section, Src, Tag } from "../ui";
 import { HBars } from "../charts";
 import { money } from "@/lib/korea-fy27/format";
 
-export default function VcSection() {
+/** The startup engine. The flow version reuses it under its own number and question. */
+export default function VcSection({
+  id = "vc",
+  num = "08",
+  label = "VC engine",
+  question = "How do we build the new-logo machine FY26 did not have?",
+}: {
+  id?: string;
+  num?: string;
+  label?: string;
+  question?: string;
+}) {
   const { model, openCohort } = useSite();
   const vc = model.vc;
   const startups = model.cohorts.find((c) => c.id === "startups")!;
 
   return (
     <Section
-      id="vc"
-      num="08"
-      label="VC engine"
-      question="How do we build the new-logo machine FY26 did not have?"
+      id={id}
+      num={num}
+      label={label}
+      question={question}
       headline="The startup engine is both the largest dependency and the largest new capability: ~$114M of the cohort's FY27 AI runs through investors."
       lead="FY26 growth came almost entirely from existing accounts. Breakout startups pick a cloud by Series B, and a few investors see most of the pipeline, so investors become the sourcing channel: a channel, not a contact list."
     >
