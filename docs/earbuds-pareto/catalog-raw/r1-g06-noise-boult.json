@@ -1,0 +1,1086 @@
+[
+  {
+    "id": "noise-buds-vs104",
+    "brand": "Noise",
+    "model": "Buds VS104",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": null,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": 6,
+    "batteryTotalMax": 45,
+    "ip": "IPX5",
+    "weightG": 5,
+    "multipoint": null,
+    "bluetooth": "5.2",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "13mm",
+    "sources": [
+      {
+        "url": "https://smartprix.com/mobile_headphones/noise-buds-vs104-true-wireless-earbuds-ppd1u34w7kun",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "batteryTotalMax",
+          "batteryBudsMax",
+          "ip",
+          "weightG",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.digit.in/audio-video/noise-buds-vs104-price-339567.html",
+        "publisher": "Digit",
+        "kind": "aggregator",
+        "fields": [
+          "batteryTotalMax",
+          "weightG",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://www.gonoise.com/products/noise-buds-vs104-truly-wireless-bt-earbuds",
+        "publisher": "Noise",
+        "kind": "manufacturer",
+        "fields": [
+          "batteryTotalMax",
+          "ip",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/noise-buds-vs104-tws-earbuds-with-environmental-noise-cancellation-ipx5-water-resistant-fast-charging-midnight-blue-/p/303624",
+        "publisher": "Croma",
+        "kind": "retailer",
+        "fields": [
+          "ip",
+          "anc"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). ENC (call mic noise reduction) only, no ANC; a separate 'VS104 Max' variant has ANC. Battery conflict: '45h total' vs '6h buds + 24h from case' (=30h) in the same result summary; 45h kept. A retail price of Rs 1,299 was shown but not confirmed as launch price or MRP. Launch date not found. Instacharge 10 min = 150 min.",
+    "confidence": "low"
+  },
+  {
+    "id": "noise-buds-vs102-elite",
+    "brand": "Noise",
+    "model": "Buds VS102 Elite",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 899,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/430730/noise-buds-vs102-elite-price-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/noise-buds-vs102-elite-india",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "anc",
+          "drivers"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Rs 899 was a limited-period special launch price; regular price stated as Rs 1,299 (not labelled MRP). Quad-mic ENC for calls, no ANC. Launch date not in results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-vs102-neo",
+    "brand": "Noise",
+    "model": "Buds VS102 Neo",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm",
+    "sources": [
+      {
+        "url": "https://www.mysmartprice.com/gear/noise-buds-vs102-neo-buds-vs106-launched-price-specifications/",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "drivers",
+          "anc"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Introductory price Rs 999. Quad-mic ENC for calls, no ANC. Launched alongside Buds VS106; launch date not in results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-vs102-pro",
+    "brand": "Noise",
+    "model": "Buds VS102 Pro",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1799,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 40,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.91mobiles.com/hub/?p=503990",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc",
+          "batteryTotalMax",
+          "ip",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.gizmochina.com/?p=557837",
+        "publisher": "Gizmochina",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Search summary did not attribute VS102 Pro figures to a specific one of these URLs. ANC dB claim not in results. Launch date not in results.",
+    "confidence": "low"
+  },
+  {
+    "id": "noise-buds-n1",
+    "brand": "Noise",
+    "model": "Buds N1",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 899,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 40,
+    "drivers": "11mm",
+    "sources": [
+      {
+        "url": "https://croma.com/unboxed/noise-buds-n1-launched-in-india-price-features",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.91mobiles.com/hub/?p=569024",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/noise-buds-n1-unveiled-officially-in-india-sale-starts-on-20th-february/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Short stemmed design. Quad-mic ENC for calls, no ANC. Sale start conflict: TheTechOutlook says 20 Feb, another source says Amazon from 27 Feb; year not stated in results. 10 min charge = 120 min.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-n1-pro",
+    "brand": "Noise",
+    "model": "Buds N1 Pro",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 32,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 60,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 40,
+    "drivers": "11mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/432079/noise-buds-n1-pro-price-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/amphtml/wearable-technology/news/noise-buds-n1-pro-debuts-at-1-499-offers-60-hour-battery-life-anc-and-11mm-drivers-101187.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/unboxed/noise-buds-n1-pro-launched",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.analyticsinsight.net/gadgets/the-noise-buds-n1-pro-have-arrivedavailable-starting-tomorrow-in-india-on-amazon-at-inr-1499-only",
+        "publisher": "Analytics Insight",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Amazon exclusive at launch. Instacharge 10 min = 200 min. Launch date not in results.",
+    "confidence": "high"
+  },
+  {
+    "id": "noise-air-buds-pro-3",
+    "brand": "Noise",
+    "model": "Air Buds Pro 3",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1799,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 30,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 45,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 40,
+    "drivers": "13mm",
+    "sources": [
+      {
+        "url": "https://www.mysmartprice.com/gear/noise-air-buds-3-air-buds-pro-3-launched-india-price-specifications/",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "batteryTotalMax",
+          "bluetooth",
+          "drivers",
+          "latencyMs",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.fonearena.com/blog/404757/noise-air-buds-pro-3-price-features-air-buds-3.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "ancClaimDb",
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/noise-air-buds-3-series-air-buds-pro-3-and-air-buds-3-to-launch-on-amazon-india-on-12-september-at-12-am-pre-book-available-at-rs-1/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Rs 1,799 was a special price for the first 500 customers; regular price not in results. Sale from 12 September (year not stated). Launched alongside Air Buds 3. 10 min charge = 180 min.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-x-prime",
+    "brand": "Noise",
+    "model": "Buds X Prime",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1399,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 120,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 50,
+    "drivers": "11mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/407299/noise-buds-x-prime-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.gizmochina.com/?p=572453",
+        "publisher": "Gizmochina",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/noise-buds-x-prime-tws-earbuds-with-environmental-noise-cancellation-ipx5-water-resistant-fast-charge-silver-grey-/p/306551",
+        "publisher": "Croma",
+        "kind": "retailer",
+        "fields": [
+          "ip",
+          "anc"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Quad-mic ENC for calls, no ANC (one Croma listing says 'passive noise cancellation'). Billed as Noise's first 120h earbuds. On sale from 7 October on Amazon (year not stated). 10 min charge = 200 min.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-connect-2",
+    "brand": "Noise",
+    "model": "Buds Connect 2",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 40,
+    "drivers": "10mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/440661/noise-buds-connect-2-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "multipoint",
+          "bluetooth",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.mobigyaan.com/noise-buds-connect-2-india",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Introductory price. Quad-mic ENC for calls, no ANC. In-ear detection, dual-device pairing. A weight of 43 g was given (likely buds + case, not per earbud), so weightG left null. Launch date not in results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-master-buds",
+    "brand": "Noise",
+    "model": "Master Buds",
+    "released": "2025-02",
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 7999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "adaptive",
+    "ancClaimDb": 49,
+    "batteryBudsAncOn": 6,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 44,
+    "ip": "IPX5",
+    "weightG": 4.2,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": [
+      "LHDC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12.4mm dynamic (PEEK + titanium)",
+    "sources": [
+      {
+        "url": "https://croma.com/unboxed/noise-master-buds-launched",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc",
+          "ancClaimDb",
+          "drivers",
+          "codecs",
+          "batteryTotalMax",
+          "bluetooth",
+          "ip",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/amphtml/accessories/news/noise-master-buds-with-bose-technology-are-now-available-for-purchase-in-india-check-price-specs-011-110493.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.turbovs.com/review/noise-master-buds-2405",
+        "publisher": "TurboVS",
+        "kind": "aggregator",
+        "fields": [
+          "weightG",
+          "multipoint",
+          "codecs",
+          "batteryBudsAncOn",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://smartprix.com/mobile_headphones/noise-master-buds-true-wireless-earbuds-ppd1ryoc1cww",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "weightG",
+          "bluetooth"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Sound by Bose. LHDC 5.0 supported (SBC/AAC not confirmed in results). On sale in India from 26 Feb 2025. 6-mic array. 10 min charge = 6h playback. A US listing (Staples) exists but no US price was captured.",
+    "confidence": "high"
+  },
+  {
+    "id": "noise-master-buds-2",
+    "brand": "Noise",
+    "model": "Master Buds 2",
+    "released": null,
+    "status": "current",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 7999,
+    "mrpINR": 9999,
+    "launchPriceUSD": null,
+    "anc": "adaptive",
+    "ancClaimDb": 51,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 30,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "6.1",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "10mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/476338/noise-master-buds-2-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://telecomtalk.info/?p=1004726",
+        "publisher": "TelecomTalk",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc"
+        ]
+      },
+      {
+        "url": "https://www.reliancedigital.in/product/noise-master-buds-2-truly-wireless-bluetooth-earbuds-carbon-mmyuex-9989779",
+        "publisher": "Reliance Digital",
+        "kind": "retailer",
+        "fields": [
+          "mrpINR"
+        ]
+      },
+      {
+        "url": "https://www.smartprix.com/mobile_headphones/noise-master-buds-2-true-wireless-earbuds-ppd1ary2q9ex",
+        "publisher": "Smartprix",
+        "kind": "aggregator",
+        "fields": [
+          "batteryTotalMax"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Sound by Bose; successor to Master Buds; showcased at CES 2026 then launched in India (exact month not in results, so released null). 360 spatial audio with head tracking, 6-mic ENC. Charging case + buds total weight 62.4 g. 10 min charge = 6h.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-combat",
+    "brand": "Noise",
+    "model": "Buds Combat",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1499,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 36,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 40,
+    "drivers": "13mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/383758/noise-buds-combat-price-features.html",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "latencyMs"
+        ]
+      },
+      {
+        "url": "https://www.latestly.com/technology/noise-launches-its-first-gaming-tws-named-buds-combat-checkout-price-and-specs-here-4756570.html/amp",
+        "publisher": "LatestLY",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "drivers",
+          "bluetooth"
+        ]
+      },
+      {
+        "url": "https://www.mymobileindia.com/noise-buds-combat-tws-gaming-earbuds-launched-in-india-price-specifications/",
+        "publisher": "MyMobileIndia",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Noise's first gaming TWS; in-ear design stated. Quad-mic ENC for calls, no ANC. Introductory price. Launch date not in results (may predate 2023).",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-combat-z",
+    "brand": "Noise",
+    "model": "Combat Z",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": null,
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 35,
+    "drivers": "10mm",
+    "sources": [
+      {
+        "url": "https://www.mysmartprice.com/gear/noise-combat-z-tws-launched-price-in-india-specifications/",
+        "publisher": "MySmartPrice",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "latencyMs",
+          "drivers",
+          "ip"
+        ]
+      },
+      {
+        "url": "https://www.mymobileindia.com/noise-buds-combat-z-launched-in-india-price-specifications-availability-more/",
+        "publisher": "MyMobileIndia",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Affordable gaming TWS (also called Buds Combat Z). Rs 999 was a launch-offer price. ANC status not stated. Launch date not in results.",
+    "confidence": "low"
+  },
+  {
+    "id": "noise-aura-buds",
+    "brand": "Noise",
+    "model": "Aura Buds",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1399,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 60,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": 50,
+    "drivers": "12mm polymer composite",
+    "sources": [
+      {
+        "url": "https://www.gizmochina.com/?p=584275",
+        "publisher": "Gizmochina",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "ip",
+          "multipoint",
+          "bluetooth",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.cashify.in/noise-aura-buds-earbud-price-in-india",
+        "publisher": "Cashify",
+        "kind": "aggregator",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Silicone ear tips (in-ear). Quad-mic ENC for calls, no ANC. Sale from 23 November on Amazon/gonoise (year not stated). 10 min charge = 150 min. Search summary did not attribute figures to a specific URL.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-pop-buds",
+    "brand": "Noise",
+    "model": "Pop Buds",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "10mm",
+    "sources": [
+      {
+        "url": "https://telecomtalk.info/?p=970330",
+        "publisher": "TelecomTalk",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      },
+      {
+        "url": "https://croma.com/unboxed/noise-pop-buds-india-launch-price-features",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "batteryTotalMax",
+          "bluetooth",
+          "ip",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/noise-pop-buds-tws-earbuds-with-environmental-noise-cancellation-ipx5-water-resistant-hyper-sync-steel-pop-/p/311049",
+        "publisher": "Croma",
+        "kind": "retailer",
+        "fields": [
+          "ip",
+          "anc"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Launch price Rs 999 (TelecomTalk headline); another source gives a Rs 3,499 price (likely MRP, not confirmed). Quad-mic ENC for calls, no ANC. 10 min = 150 min. Not the older 'Buds Pop'. Launch date not in results.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-venus",
+    "brand": "Noise",
+    "model": "Buds Venus",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 1699,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "anc",
+    "ancClaimDb": 30,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": "5.3",
+    "codecs": [
+      "SBC",
+      "AAC"
+    ],
+    "wirelessCharging": null,
+    "latencyMs": 45,
+    "drivers": "10mm",
+    "sources": [
+      {
+        "url": "https://www.fonearena.com/blog/400213/noise-buds-venus-price-features.html/amp",
+        "publisher": "FoneArena",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "ancClaimDb",
+          "batteryTotalMax",
+          "ip",
+          "bluetooth",
+          "codecs",
+          "latencyMs",
+          "drivers"
+        ]
+      },
+      {
+        "url": "https://beebom.com/noise-buds-venus-launched-india/amp/",
+        "publisher": "Beebom",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc"
+        ]
+      },
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/noise-buds-venus-earbuds-launching-on-the-26th-of-july-today-with-launch-price-of-%e2%82%b91699/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Launched 26 July (year not stated in results). Quad-mic ENC for calls. 10 min = 120 min.",
+    "confidence": "high"
+  },
+  {
+    "id": "noise-air-clips-2",
+    "brand": "Noise",
+    "model": "Air Clips 2",
+    "released": "2025-07",
+    "status": "current",
+    "form": "clip",
+    "indiaAvailable": true,
+    "launchPriceINR": 2999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 40,
+    "ip": "IPX5",
+    "weightG": null,
+    "multipoint": true,
+    "bluetooth": "5.3",
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "12mm",
+    "sources": [
+      {
+        "url": "https://www.thetechoutlook.com/new-release/gadgets-release/earphones/noise-air-clips-2-launching-in-india-on-29th-july-will-be-available-at-launch-price-rs-2999/",
+        "publisher": "The Tech Outlook",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.gizbot.com/amphtml/wearable-technology/news/noise-launches-air-clips-2-in-india-with-open-ear-design-and-40-hour-battery-life-011-117195.html",
+        "publisher": "Gizbot",
+        "kind": "news",
+        "fields": [
+          "batteryTotalMax",
+          "form"
+        ]
+      },
+      {
+        "url": "https://www.croma.com/unboxed/noise-air-clips-2-launches-with-open-ear-design",
+        "publisher": "Croma Unboxed",
+        "kind": "news",
+        "fields": [
+          "ip",
+          "drivers",
+          "released"
+        ]
+      },
+      {
+        "url": "https://www.reliancedigital.in/product/noise-newly-launched-air-clips-2-wireless-open-ear-earbuds-with-clip-design-airwave-technology-up-to-40-h-playtime-dual-device-pairing-quad-mic-with-enc-12-mm-driver-bt-v53-frost-black-me8hcv-9321268",
+        "publisher": "Reliance Digital",
+        "kind": "retailer",
+        "fields": [
+          "bluetooth",
+          "multipoint",
+          "drivers",
+          "batteryTotalMax"
+        ]
+      }
+    ],
+    "notes": "Open-ear clip design. Price conflict: launch price Rs 2,999 (TheTechOutlook) vs Rs 3,999 (listed price in other sources). Available from 29 July 2025. Quad-mic ENC for calls. 10 min = 180 min.",
+    "confidence": "medium"
+  },
+  {
+    "id": "noise-buds-xero",
+    "brand": "Noise",
+    "model": "Buds Xero",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 3999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "adaptive",
+    "ancClaimDb": 50,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": null,
+    "sources": [
+      {
+        "url": "https://www.91mobiles.com/hub/?p=566926",
+        "publisher": "91mobiles",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "anc",
+          "ancClaimDb",
+          "batteryTotalMax"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Hybrid adaptive ANC up to 50 dB. Introductory price Rs 3,999; listed at Rs 4,999 on the official site (not labelled MRP). Launch date not in results.",
+    "confidence": "low"
+  },
+  {
+    "id": "noise-buds-f1",
+    "brand": "Noise",
+    "model": "Buds F1",
+    "released": null,
+    "status": "unknown",
+    "form": "in-ear",
+    "indiaAvailable": true,
+    "launchPriceINR": 999,
+    "mrpINR": null,
+    "launchPriceUSD": null,
+    "anc": "none",
+    "ancClaimDb": null,
+    "batteryBudsAncOn": null,
+    "batteryBudsMax": null,
+    "batteryTotalMax": 50,
+    "ip": null,
+    "weightG": null,
+    "multipoint": null,
+    "bluetooth": null,
+    "codecs": null,
+    "wirelessCharging": null,
+    "latencyMs": null,
+    "drivers": "11mm",
+    "sources": [
+      {
+        "url": "https://www.mobigyaan.com/noise-buds-f1-india",
+        "publisher": "MobiGyaan",
+        "kind": "news",
+        "fields": [
+          "launchPriceINR",
+          "batteryTotalMax",
+          "drivers",
+          "anc"
+        ]
+      }
+    ],
+    "notes": "Form assumed in-ear (not explicitly stated in search results). Introductory price; Flipkart exclusive. Quad-mic ENC for calls, no ANC. 10 min = 150 min. Launch date not in results.",
+    "confidence": "low"
+  }
+]

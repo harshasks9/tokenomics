@@ -1,0 +1,1088 @@
+[
+ {
+  "brand": "Apple",
+  "model": "AirPods Pro 2",
+  "sgAncScore": 8.2,
+  "sgAncPct": null,
+  "sgComfort": 8.3,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/apple-airpods-pro-2nd-Generation-review-78938/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   }
+  ],
+  "notes": "Search summary of SG review: overall 7.6, Active Noise Cancelling 8.2, Comfort 8.3, Battery life SCORE 6.0 (a 0-10 score, not hours). No measured hours shown."
+ },
+ {
+  "brand": "Apple",
+  "model": "AirPods 4 (ANC)",
+  "sgAncScore": 5.3,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/product/apple-airpods-4-with-active-noise-cancellation/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/apple-airpods-4-with-active-noise-cancellation-review-124137/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "AMBIGUITY: product page shows 'Noise isolation / ANC' = 2.3/10 (bottom quarter); summary separately reports 'Active Noise Cancelling' rating 5.3. Recorded 5.3 as sgAncScore; 2.3 is the combined score. Verify on page."
+ },
+ {
+  "brand": "Beats",
+  "model": "Studio Buds +",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/product/beats-studio-buds/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "Search returned only the ORIGINAL Beats Studio Buds page (Noise isolation/ANC 2.8/10; 9 h earbud battery; overall 6.3) - not the Studio Buds + . Nothing recorded for Studio Buds +."
+ },
+ {
+  "brand": "Beats",
+  "model": "Solo Buds",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/beats-solo-buds-review-118283",
+    "publisher": "SoundGuys",
+    "fields": []
+   },
+   {
+    "url": "https://www.soundguys.com/product/beats-solo-buds/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "No ANC hardware, so no ANC score expected. SG overall rating 7.1; 'earbud battery life' listed as a pro but no hours shown in summary. Comfort score not shown."
+ },
+ {
+  "brand": "Beats",
+  "model": "Fit Pro",
+  "sgAncScore": 8.0,
+  "sgAncPct": null,
+  "sgComfort": 7.8,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://shopsavvy.com/reviews-tldr/beats-fit-pro",
+    "publisher": "SoundGuys (as quoted by ShopSavvy TLDR)",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   }
+  ],
+  "notes": "Values quoted second-hand: 'SoundGuys review (Nov 2022): Noise cancelling 8.0, Isolation 5.0, Battery life 6.3 (score), Comfort & fit 7.8'. The only soundguys.com URL in the results was /product/beats-powerbeats-fit-pro/ (likely a different product). Medium confidence - verify on SG Beats Fit Pro page."
+ },
+ {
+  "brand": "Google",
+  "model": "Pixel Buds Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://reviewfinder.com/p/google-pixel-buds-pro",
+    "publisher": "ReviewFinder (aggregator)",
+    "fields": []
+   }
+  ],
+  "notes": "AMBIGUOUS: aggregator says 'lowest score by SoundGuys is 75' (out of 100) - unclear which metric; not recorded. Battery 11 h is Google spec, not SG measured."
+ },
+ {
+  "brand": "Google",
+  "model": "Pixel Buds 2a",
+  "sgAncScore": 7.6,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/product/google-pixel-buds-2a/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/google-pixel-buds-2a-review-diet-pixel-buds-at-a-palatable-price-145804/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore"
+    ]
+   }
+  ],
+  "notes": "Summary: overall 7.4, 'Active Noise Cancelling' 7.6; product page 'Noise isolation / ANC' 5.6/10 (beats 47%). Product page lists earbud battery 10 h / 20 h with case - matches Google ANC-off bud spec, so NOT recorded as measured ANC-on hours."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds3 Pro",
+  "sgAncScore": 7.6,
+  "sgAncPct": null,
+  "sgComfort": 6.6,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/product/samsung-galaxy-buds-3-pro/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   }
+  ],
+  "notes": "SG: overall 7.7, Noise cancelling 7.6, Isolation 5.7, Battery life score 5.3, Comfort & fit 6.6, Connectivity 7.0, Build 9.2."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds3",
+  "sgAncScore": 3.5,
+  "sgAncPct": null,
+  "sgComfort": 3.9,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/samsung-galaxy-buds3-review-121385/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/samsung-galaxy-buds-3/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "SG overall 6.6; Noise cancelling 3.5; Comfort & fit 3.9 (low but as reported - open-type AirPods-style design). Verify comfort value."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds FE",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "Search returned only Galaxy Buds3 FE SG data; no SG scores for original Buds FE (2023) found."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds3 FE",
+  "sgAncScore": 8.6,
+  "sgAncPct": null,
+  "sgComfort": 7.0,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/samsung-galaxy-buds-3-fe-review-144120/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/samsung-galaxy-buds-3-fe/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore"
+    ]
+   }
+  ],
+  "notes": "SG overall 7.7; Active Noise Cancelling 8.6; Comfort & fit 7.0; Battery life score 5.5 (score, not hours)."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds4",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "No SoundGuys result returned (only TechRadar/Which?/CGM). Other reviews note open-fit design with weak ANC."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds2 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/samsung-galaxy-buds-2-pro-review-78415/",
+    "publisher": "SoundGuys",
+    "fields": []
+   },
+   {
+    "url": "https://www.soundguys.com/product/samsung-galaxy-buds-2-pro/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "Only SG overall score 7.4 surfaced; no ANC/comfort/battery numbers in summary."
+ },
+ {
+  "brand": "Sony",
+  "model": "WF-1000XM4",
+  "sgAncScore": 8.3,
+  "sgAncPct": null,
+  "sgComfort": 8.2,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/sony-wf-1000xm4-review-53454/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/sony-wf-1000xm4/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "SG overall 7.7; Noise cancelling 8.3; Comfort & fit 8.2; Battery life score 6.9. '8 h ANC on' cited is Sony spec, not SG measured."
+ },
+ {
+  "brand": "Sony",
+  "model": "LinkBuds S",
+  "sgAncScore": 8.1,
+  "sgAncPct": null,
+  "sgComfort": 8.0,
+  "sgBatteryH": 5.7,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/sony-linkbuds-s-review-74398",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort",
+     "sgBatteryH"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/sony-linkbuds-s/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "SG overall 7.8; Active Noise Cancelling 8.1; Isolation 8.5; Comfort & fit 8.0; Battery score 6.0. Measured battery 5 h 41 min (=5.68 h) at 75 dB(SPL) - ANC state not stated in summary (SG standard test runs ANC on)."
+ },
+ {
+  "brand": "Sony",
+  "model": "WF-C700N",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/product/sony-wf-c700n/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "AMBIGUOUS: product page gives only combined 'Noise isolation / ANC' 5.1/10 - not recorded as sgAncScore. Page lists 10 h earbud battery / 15 h with case (Sony spec is 7.5 h NC-on, 10 h NC-off) - not recorded as measured ANC-on hours."
+ },
+ {
+  "brand": "Sony",
+  "model": "WF-C710N",
+  "sgAncScore": 8.5,
+  "sgAncPct": null,
+  "sgComfort": 8.0,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/sony-wf-c710n-review-136737/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/sony-wf-c710n/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "SG overall 8.0; Noise cancelling 8.5; Isolation 7.6; Comfort & fit 8.0; Connectivity 5.0; Battery score 7.4. '12 h / 30 h with case' matches Sony NC-off spec - not recorded as measured ANC-on hours."
+ },
+ {
+  "brand": "Sony",
+  "model": "WF-C510",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": 7.9,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://soundguys.com/sony-wf-c510-review-123428",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgComfort"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/sony-wf-c510/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "No ANC hardware (ancScore N/A). SG overall 7.9; Comfort & fit 7.9; Battery life score 7.7 (score, not hours)."
+ },
+ {
+  "brand": "Bose",
+  "model": "QuietComfort Ultra Earbuds (1st gen)",
+  "sgAncScore": 8.4,
+  "sgAncPct": null,
+  "sgComfort": 8.2,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://soundguys.com/bose-quietcomfort-ultra-earbuds-review-101362",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/bose-quietcomfort-ultra-1st-gen/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "SG overall 7.3; Active Noise Cancelling 8.4; Comfort 8.2; Battery life score 6.3 (score, not hours)."
+ },
+ {
+  "brand": "Bose",
+  "model": "QuietComfort Earbuds (2024)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/bose-quietcomfort-earbuds-review-44747/",
+    "publisher": "SoundGuys",
+    "fields": []
+   },
+   {
+    "url": "https://www.soundguys.com/product/bose-quietcomfort-earbuds/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "AMBIGUOUS: results surfaced the ORIGINAL 2020 QC Earbuds review (overall 7.9, noise cancelling 8.2) - not the 2024 model. Not recorded for 2024."
+ },
+ {
+  "brand": "Bose",
+  "model": "QuietComfort Earbuds II",
+  "sgAncScore": 8.5,
+  "sgAncPct": null,
+  "sgComfort": 8.2,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/product/bose-quietcomfort-ii/",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore",
+     "sgComfort"
+    ]
+   }
+  ],
+  "notes": "SG overall 6.9 'Worth a look'; Noise cancelling 8.5; Isolation 3.3; Battery life score 6.7; Comfort & fit 8.2; Connectivity 5.0; Design 7.4."
+ },
+ {
+  "brand": "Sennheiser",
+  "model": "Momentum True Wireless 4",
+  "sgAncScore": 8.3,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [
+   {
+    "url": "https://www.soundguys.com/sennheiser-momentum-true-wireless-4-review-111429",
+    "publisher": "SoundGuys",
+    "fields": [
+     "sgAncScore"
+    ]
+   },
+   {
+    "url": "https://www.soundguys.com/product/sennheiser-momentum-true-wireless-4/",
+    "publisher": "SoundGuys",
+    "fields": []
+   }
+  ],
+  "notes": "SG overall 8.5; Active Noise Cancelling 8.3; Battery life score 6.9. 7 h ANC-on is Sennheiser spec. Comfort not shown."
+ },
+ {
+  "brand": "Sennheiser",
+  "model": "Momentum Sport",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Sennheiser",
+  "model": "Accentum True Wireless",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Technics",
+  "model": "EAH-AZ80",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Technics",
+  "model": "EAH-AZ60M2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Jabra",
+  "model": "Elite 10 Gen 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Jabra",
+  "model": "Elite 8 Active Gen 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Jabra",
+  "model": "Elite 5",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Nothing",
+  "model": "Ear (2024)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Nothing",
+  "model": "Ear (a)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Nothing",
+  "model": "Ear (2)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "CMF by Nothing",
+  "model": "Buds 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "CMF by Nothing",
+  "model": "Buds 2a",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "OnePlus",
+  "model": "Buds Pro 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "OnePlus",
+  "model": "Buds 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "OnePlus",
+  "model": "Nord Buds 3 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "Liberty 5",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "Liberty 4 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "Liberty 4 NC",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "Space A40",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "P40i",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "P30i",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Soundcore",
+  "model": "R50i NC",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "JBL",
+  "model": "Tour Pro 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "JBL",
+  "model": "Tour Pro 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "JBL",
+  "model": "Live Beam 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "JBL",
+  "model": "Live Buds 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "JBL",
+  "model": "Tune Beam 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "EarFun",
+  "model": "Air Pro 4",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "EarFun",
+  "model": "Air Pro 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "EarFun",
+  "model": "Free Pro 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "SoundPEATS",
+  "model": "Air4 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "SoundPEATS",
+  "model": "Capsule3 Pro+",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Edifier",
+  "model": "NeoBuds Pro 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Xiaomi",
+  "model": "Buds 5 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Redmi",
+  "model": "Buds 6 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Huawei",
+  "model": "FreeBuds Pro 4",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Marshall",
+  "model": "Motif II A.N.C.",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Bang & Olufsen",
+  "model": "Beoplay EX",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Master & Dynamic",
+  "model": "MW09",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Audio-Technica",
+  "model": "ATH-TWX9",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Shokz",
+  "model": "OpenFit 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Bose",
+  "model": "Ultra Open Earbuds",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Sony",
+  "model": "LinkBuds Open",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Sony",
+  "model": "LinkBuds Fit",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Sony",
+  "model": "WF-1000XM5",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Sony",
+  "model": "WF-1000XM6",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Apple",
+  "model": "AirPods Pro 3",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Bose",
+  "model": "QuietComfort Ultra Earbuds (2nd gen)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Samsung",
+  "model": "Galaxy Buds4 Pro",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Nothing",
+  "model": "Ear (3)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Nothing",
+  "model": "Ear (3a)",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "CMF by Nothing",
+  "model": "Buds Pro 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Google",
+  "model": "Pixel Buds Pro 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Beats",
+  "model": "Powerbeats Pro 2",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Technics",
+  "model": "EAH-AZ100",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ },
+ {
+  "brand": "Sennheiser",
+  "model": "Momentum True Wireless 5",
+  "sgAncScore": null,
+  "sgAncPct": null,
+  "sgComfort": null,
+  "sgBatteryH": null,
+  "rtingsBatteryH": null,
+  "sources": [],
+  "notes": "NOT SEARCHED: session-wide WebSearch budget (200/200) was exhausted before this model was reached."
+ }
+]
