@@ -20,6 +20,12 @@ import {
   toAppPath as toDealCheckAppPath,
 } from "@/lib/deal-check/routes";
 import { isMdesPath, toAppPath as toMdesAppPath } from "@/lib/mdes/routes";
+import {
+  gatePathFor as koreaFy27GatePathFor,
+  isGatePath as isKoreaFy27GatePath,
+  isKoreaFy27Path,
+  toAppPath as toKoreaFy27AppPath,
+} from "@/lib/korea-fy27/routes";
 
 function rewriteWithLanguage(url: URL) {
   return NextResponse.rewrite(url, {
@@ -162,6 +168,42 @@ async function handleMdesRequest(request: NextRequest, hostname: string) {
   return noindex(NextResponse.rewrite(targetUrl));
 }
 
+/**
+ * Korea AI FY27 plan (korea.aitokenomics.app · /korea-fy27) — behind the Deal
+ * Check gate, like MDES. Owns "/" and "/gate" on the Korea host; the Global
+ * Sae-A site keeps /korea through the Korea host block further down.
+ */
+async function handleKoreaFy27Request(request: NextRequest, hostname: string) {
+  const path = request.nextUrl.pathname;
+  const targetUrl = request.nextUrl.clone();
+  targetUrl.pathname = toKoreaFy27AppPath(hostname, path);
+
+  const noindex = (response: NextResponse) => {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    response.headers.set("Content-Language", "en");
+    response.headers.set("Vary", "Host");
+    return response;
+  };
+
+  if (isKoreaFy27GatePath(hostname, path)) {
+    return noindex(NextResponse.rewrite(targetUrl));
+  }
+
+  const authenticated = await isDealCheckSessionValid(
+    request.cookies.get(DEALCHECK_SESSION_COOKIE)?.value,
+  );
+
+  if (!authenticated) {
+    const gateUrl = request.nextUrl.clone();
+    gateUrl.pathname = koreaFy27GatePathFor(hostname);
+    gateUrl.search = "";
+    gateUrl.searchParams.set("next", `${path}${request.nextUrl.search}`);
+    return noindex(NextResponse.redirect(gateUrl));
+  }
+
+  return noindex(NextResponse.rewrite(targetUrl));
+}
+
 export async function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host");
   const host = forwardedHost ?? request.headers.get("host") ?? request.nextUrl.hostname;
@@ -178,6 +220,12 @@ export async function proxy(request: NextRequest) {
 
   if (isMdesPath(hostname, path)) {
     return handleMdesRequest(request, hostname);
+  }
+
+  // Korea AI FY27 plan: takes "/" and "/gate" on korea.aitokenomics.app ahead
+  // of the Korea host block below, which keeps serving the Sae-A site at /korea.
+  if (isKoreaFy27Path(hostname, path)) {
+    return handleKoreaFy27Request(request, hostname);
   }
 
   if (hostname === "options.aitokenomics.app" || path.startsWith("/options")) {
