@@ -20,6 +20,9 @@ export type ProviderId =
 
 export type SourceLink = { label: string; url: string };
 
+/** Normalized position in a provider's lineup: top model, middle tier, fast/cheap tier. */
+export type Rung = "flagship" | "mid" | "light";
+
 export type Modality = "text" | "image" | "audio" | "video" | "pdf";
 
 export type ModelPricing = {
@@ -92,6 +95,12 @@ export type Model = {
   benchmarks: Record<string, BenchScore>;
   /** Editorial tier used for grouping: frontier / balanced / economy. */
   tier: "frontier" | "balanced" | "economy";
+  /**
+   * The provider's own product tier (Pro / Flash / Flash-Lite, Astra / Sol / Luna,
+   * Fable / Opus / Sonnet / Haiku…), normalized to a rung so lineups can be
+   * compared rung-for-rung across providers.
+   */
+  series: { name: string; rung: Rung };
   /** Workload strengths, keyed to WORKLOAD_PRESETS ids where possible. */
   bestFor: string[];
   /** One-sentence honest trade-off. */

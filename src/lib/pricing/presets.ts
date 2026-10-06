@@ -108,3 +108,10 @@ export const presetById = (id: string) => WORKLOAD_PRESETS.find((p) => p.id === 
 
 /** Placeholder until research lands; benchmarks.ts exports the verified defs. */
 export type { BenchmarkDef };
+
+/** Rung lanes for the market ladder; order is the display order. */
+export const RUNGS: { id: import("./types").Rung; label: string; desc: string }[] = [
+  { id: "flagship", label: "Flagship", desc: "The provider's most capable model (Pro, Astra, Fable/Opus, Max, Large…)" },
+  { id: "mid", label: "Mid tier", desc: "The balanced workhorse (Flash, Sol, Sonnet, Plus, Medium…)" },
+  { id: "light", label: "Light tier", desc: "The fastest / cheapest tier (Flash-Lite, Luna, Haiku, Small…)" },
+];
