@@ -79,6 +79,12 @@ export default function Scatter({ models, workload, benchId, onBench }: { models
   const yTicks: number[] = [];
   for (let v = Math.ceil(yDom[0] / yStep) * yStep; v <= yDom[1] + 1e-9; v += yStep) yTicks.push(Number(v.toFixed(6)));
   const labelAll = pts.length <= 8;
+  // Frontier polyline (cheapest → best): step down in price as score rises.
+  const frontierPts = pts.filter((p) => frontier.has(p.m.id)).sort((a, b) => a.x - b.x);
+  const frontierPath = frontierPts.map((p, i) => `${i === 0 ? "M" : "L"}${sx(p.x).toFixed(1)},${sy(p.y).toFixed(1)}`).join(" ");
+  const washPath = frontierPts.length > 1
+    ? `${frontierPath} L${sx(frontierPts[frontierPts.length - 1].x).toFixed(1)},${(H - PAD.b).toFixed(1)} L${sx(frontierPts[0].x).toFixed(1)},${(H - PAD.b).toFixed(1)} Z`
+    : "";
 
   const providersShown = PROVIDERS.filter((p) => pts.some((q) => q.m.provider === p.id));
 
@@ -151,6 +157,8 @@ export default function Scatter({ models, workload, benchId, onBench }: { models
             {bench.short} ({bench.unit}) → better is up
           </text>
 
+          {washPath && <path className="frontier-wash" d={washPath} />}
+          {frontierPts.length > 1 && <path className="frontier" d={frontierPath} />}
           {pts.map((p) => {
             const cx = sx(p.x);
             const cy = sy(p.y);
@@ -226,6 +234,7 @@ export default function Scatter({ models, workload, benchId, onBench }: { models
             <span className="sw" style={{ background: TIER_HEX[t] }} /> {TIER_LABEL[t]} tier
           </span>
         ))}
+        <span className="k"><span style={{ width: 16, height: 0, borderTop: "1.5px solid var(--ink-3)", display: "inline-block" }} /> cost–capability frontier</span>
         <span className="px-sep" />
         {providersShown.map((p) => (
           <span key={p.id} className="k">

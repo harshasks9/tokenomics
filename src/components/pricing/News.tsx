@@ -23,6 +23,7 @@ export default function News({ items, refreshedAt, live, catalogDate }: { items:
     <div className="px-news">
       <div>
         <div className="px-card px-filters" style={{ marginBottom: 12 }}>
+          <div className="px-frow">
           <span className="lbl">Provider</span>
           <button className={`px-chip ${filter === "all" ? "on" : ""}`} onClick={() => setFilter("all")}>
             All
@@ -39,6 +40,7 @@ export default function News({ items, refreshedAt, live, catalogDate }: { items:
               {k === "all" ? "All" : KIND_LABEL[k]}
             </button>
           ))}
+          </div>
         </div>
         <div className="px-card">
           {shown.length === 0 && <div className="px-cmp-empty">No items match.</div>}

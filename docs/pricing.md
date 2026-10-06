@@ -9,7 +9,7 @@ Answers: *"Which model best fits my workload, and what will it actually cost?"*
 | Path | Purpose |
 |---|---|
 | `src/app/pricing/` | Route: `layout.tsx` (metadata, fonts, CSS), `page.tsx`, `pricing.css` (design system, prefix `px-`) |
-| `src/components/pricing/` | UI: `Site` (shell + state), `FilterBar`, `PricingBars`, `Calculator`, `CapabilityMatrix`, `Compare`, `Scatter`, `Recommend`, `News`, `Methodology`, `Tooltip` |
+| `src/components/pricing/` | UI: `Site` (shell + state), `FilterBar` (focus-style provider/tier selection), `Ladder` (provider × tier market map + head-to-head), `PricingBars` (input→output dumbbells), `Calculator`, `CapabilityMatrix`, `Compare`, `Scatter`, `Recommend`, `News`, `Methodology`, `Tooltip` |
 | `src/lib/pricing/catalog.ts` | **The data.** Hand-verified model catalog + seeded news. Edit this to update prices/specs. |
 | `src/lib/pricing/benchmarks.ts` | Benchmark definitions (source, snapshot date, caveat) |
 | `src/lib/pricing/presets.ts` | Providers (palette slots + glyphs), workload presets, tier ramp |
@@ -40,7 +40,7 @@ curl -H "Authorization: Bearer $CRON_SECRET" "https://pricing.aitokenomics.app/a
 
 ## Updating data by hand
 
-1. Edit the model entry in `catalog.ts` (prices in USD per 1M tokens, standard tier, first-party unless `thirdPartyPricing`).
+1. Edit the model entry in `catalog.ts` — including `series` (the provider's own tier name, e.g. Flash / Sol / Sonnet, and its normalized `rung`: flagship / mid / light; every provider needs a flagship) (prices in USD per 1M tokens, standard tier, first-party unless `thirdPartyPricing`).
 2. Bump `lastVerified`, set `verification` (`official` / `indexed` / `secondary`) and list anything unconfirmable in `unverified`.
 3. If a price changed, add a `SEED_NEWS` item (newest first) with a source link.
 4. Bump `CATALOG_VERSION` / `CATALOG_DATE`. Live overrides from the cron still apply on top.

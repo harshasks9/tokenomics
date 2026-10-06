@@ -10,6 +10,7 @@ const base: Model = {
   name: "Test",
   provider: "openai",
   family: "t",
+  series: { name: "Test", rung: "mid" },
   released: "2026-01-01",
   status: "ga",
   servedBy: "test",
@@ -124,5 +125,18 @@ describe("catalog integrity", () => {
   it("benchmark ids reference known benchmarks", () => {
     const known = new Set(["aa-index", "lmarena", "gpqa", "swe-verified", "aime", "mmlu-pro"]);
     for (const m of CATALOG) for (const k of Object.keys(m.benchmarks)) expect(known.has(k), `${m.id}:${k}`).toBe(true);
+  });
+});
+
+describe("series ladder", () => {
+  it("every model has a provider tier name and a valid rung", () => {
+    for (const m of CATALOG) {
+      expect(m.series?.name, m.id).toBeTruthy();
+      expect(["flagship", "mid", "light"], m.id).toContain(m.series.rung);
+    }
+  });
+  it("every provider has a flagship", () => {
+    const providers = new Set(CATALOG.map((m) => m.provider));
+    for (const p of providers) expect(CATALOG.some((m) => m.provider === p && m.series.rung === "flagship"), p).toBe(true);
   });
 });

@@ -8,6 +8,7 @@ import { fmtPerM } from "@/lib/pricing/calc";
 import { PROVIDERS, WORKLOAD_PRESETS, presetById } from "@/lib/pricing/presets";
 import { TooltipProvider } from "./Tooltip";
 import FilterBar, { DEFAULT_FILTERS, applyFilters, type Filters } from "./FilterBar";
+import Ladder from "./Ladder";
 import PricingBars from "./PricingBars";
 import Calculator from "./Calculator";
 import CapabilityMatrix from "./CapabilityMatrix";
@@ -18,6 +19,7 @@ import News from "./News";
 import Methodology from "./Methodology";
 
 const NAV = [
+  { id: "map", label: "Market map" },
   { id: "pricing", label: "Pricing" },
   { id: "calculator", label: "Calculator" },
   { id: "capabilities", label: "Capabilities" },
@@ -48,7 +50,7 @@ export default function Site() {
   const [presetId, setPresetId] = useState<string>(WORKLOAD_PRESETS[0].id);
   const [compare, setCompare] = useState<string[]>([]);
   const [benchId, setBenchId] = useState<string>(WORKLOAD_PRESETS[0].qualityBench);
-  const [active, setActive] = useState("pricing");
+  const [active, setActive] = useState("map");
   const rootRef = useRef<HTMLDivElement>(null);
 
   const visible = useMemo(() => applyFilters(data.models, filters), [data.models, filters]);
@@ -157,23 +159,37 @@ export default function Site() {
         </header>
 
         <Section
-          id="pricing"
-          kicker="01 · Pricing"
-          title="Token prices, normalized"
+          id="map"
+          kicker="01 · Market map"
+          title="Every provider's lineup, tier by tier"
           lede={
             <>
-              USD per 1M tokens, standard context tier, first-party API unless marked 3rd-party. Filters scope everything below them. Hover any bar for the
-              full price card; switch to the table for exact values.
+              Pro / Flash / Flash-Lite lines up against Astra / Sol / Luna and Fable+Opus / Sonnet / Haiku. Click a provider to focus on it, click a second
+              for a rung-by-rung head-to-head; the tier chips narrow every chart below to one class of model. Click any model to add it to the comparison.
             </>
           }
         >
           <FilterBar filters={filters} onChange={setFilters} count={visible.length} total={data.models.length} />
+          <Ladder models={visible} providers={filters.providers} rungs={filters.rungs} compare={compare} onToggleCompare={toggleCompare} />
+        </Section>
+
+        <Section
+          id="pricing"
+          kicker="02 · Pricing"
+          title="Input → output, on one scale"
+          lede={
+            <>
+              Each row is one model: the filled dot is the input price, the hollow dot the output price, the dotted tick the cached-input price — all in USD per
+              1M tokens on a log axis. The bar between them is the output premium. Sort by any of them; switch to the table for exact values.
+            </>
+          }
+        >
           <PricingBars models={visible} />
         </Section>
 
         <Section
           id="calculator"
-          kicker="02 · Calculator"
+          kicker="03 · Calculator"
           title="What it costs for your traffic"
           lede={
             <>
@@ -187,7 +203,7 @@ export default function Site() {
 
         <Section
           id="capabilities"
-          kicker="03 · Capabilities"
+          kicker="04 · Capabilities"
           title="What each model supports — and what has been measured"
           lede={
             <>
@@ -201,7 +217,7 @@ export default function Site() {
 
         <Section
           id="compare"
-          kicker="04 · Compare"
+          kicker="05 · Compare"
           title="Side by side"
           lede={<>Up to four models, every attribute in one table — including monthly cost at your calculator workload and every comparable benchmark.</>}
         >
@@ -210,12 +226,12 @@ export default function Site() {
 
         <Section
           id="value"
-          kicker="05 · Cost vs capability"
+          kicker="06 · Cost vs capability"
           title="Where price buys capability"
           lede={
             <>
-              Blended price for your workload against a benchmark you choose. Models without a comparable score are excluded and listed, never estimated;
-              Pareto-frontier models are labeled.
+              Blended price for your workload against a benchmark you choose. The line traces the cost–capability frontier: nothing visible is both cheaper
+              and better than a model on it. Models without a comparable score are excluded and listed, never estimated.
             </>
           }
         >
@@ -224,7 +240,7 @@ export default function Site() {
 
         <Section
           id="recommend"
-          kicker="06 · Decision support"
+          kicker="07 · Decision support"
           title={`Lowest-cost fit for “${preset.name}”`}
           lede={
             <>
@@ -245,7 +261,7 @@ export default function Site() {
 
         <Section
           id="news"
-          kicker="07 · Pricing news"
+          kicker="08 · Pricing news"
           title="What changed"
           lede={<>Price cuts, increases, launches and retirements — seeded from the research snapshot and extended daily by the automated pricing check.</>}
         >
@@ -254,7 +270,7 @@ export default function Site() {
 
         <Section
           id="method"
-          kicker="08 · Methodology"
+          kicker="09 · Methodology"
           title="How to read this page"
           lede={<>Where the numbers come from, how the calculator computes cost, and what this page deliberately does not claim.</>}
         >
