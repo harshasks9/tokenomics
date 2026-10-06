@@ -7,6 +7,10 @@
     {
       "path": "/api/options/cron",
       "schedule": "30 21 * * *"
+    },
+    {
+      "path": "/api/pricing/cron",
+      "schedule": "40 2 * * *"
     }
   ],
   "rewrites": [
@@ -129,6 +133,16 @@
         }
       ],
       "destination": "/store/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "pricing.aitokenomics.app"
+        }
+      ],
+      "destination": "/pricing/:path*"
     }
   ]
 }

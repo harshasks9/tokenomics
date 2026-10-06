@@ -537,6 +537,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // PRICING — model pricing, capability and value explorer (daily-refreshed).
+  if (hostname === "pricing.aitokenomics.app") {
+    const pricingUrl = request.nextUrl.clone();
+    if (pricingUrl.pathname === "/") {
+      pricingUrl.pathname = "/pricing";
+    } else if (!pricingUrl.pathname.startsWith("/pricing") && !pricingUrl.pathname.startsWith("/api/")) {
+      pricingUrl.pathname = `/pricing${pricingUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(pricingUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;

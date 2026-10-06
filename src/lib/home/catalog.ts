@@ -3,11 +3,11 @@ import {
   TrendingUp, ShoppingBag, Heart, Landmark, Factory, Wifi, FlaskConical, Layers, Scale,
   Activity, LineChart, Cpu, ShieldCheck, Banknote, Building2, ShoppingCart, Zap, Globe,
   MapPin, Umbrella, Mic, GraduationCap, School, Rocket, Plane, FileText, Network, Newspaper,
-  ArrowRightLeft, Store, Route,
+  ArrowRightLeft, Store, Route, Coins,
 } from "lucide-react";
 
 /** Homepage last reorganized/audited — bump when the portfolio changes. */
-export const PORTFOLIO_UPDATED = "Sep 7, 2026";
+export const PORTFOLIO_UPDATED = "Oct 6, 2026";
 
 export type Section = "industries" | "intelligence" | "playbooks";
 
@@ -100,6 +100,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "glm-vs-gemini", name: "GLM vs Gemini", href: "/glm-vs-gemini", icon: Scale, section: "intelligence", audience: "public", external: true,
     gradient: "linear-gradient(135deg, #4285F4 0%, #B45309 100%)",
     blurb: "Price per token vs cost per task", keywords: ["glm", "zhipu", "comparison", "open weights"] },
+  { id: "pricing", name: "Model Pricing", href: "/pricing", icon: Coins, section: "intelligence", audience: "public",
+    gradient: "linear-gradient(135deg, #0b1020 0%, #2a78d6 100%)",
+    blurb: "Verified token prices, capabilities and a workload cost calculator — refreshed daily", keywords: ["pricing", "price", "tokens", "cost", "calculator", "benchmark", "compare", "gpt-6", "claude", "gemini", "deepseek"] },
 
   // Playbooks (segment-level, not a named customer)
   { id: "router", name: "Routing Policy", href: "/router", icon: Route, section: "playbooks", audience: "public",

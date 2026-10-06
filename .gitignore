@@ -46,3 +46,6 @@ next-env.d.ts
 
 # allow env placeholder file
 !.env.example
+
+# Pricing explorer local snapshot store (daily cron fallback)
+/data/pricing/
