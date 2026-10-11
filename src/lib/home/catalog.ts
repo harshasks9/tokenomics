@@ -3,11 +3,11 @@ import {
   TrendingUp, ShoppingBag, Heart, Landmark, Factory, Wifi, FlaskConical, Layers, Scale,
   Activity, LineChart, Cpu, ShieldCheck, Banknote, Building2, ShoppingCart, Zap, Globe,
   MapPin, Umbrella, Mic, GraduationCap, School, Rocket, Plane, FileText, Network, Newspaper,
-  ArrowRightLeft, Store, Route, Coins,
+  ArrowRightLeft, Store, Route, Coins, Orbit,
 } from "lucide-react";
 
 /** Homepage last reorganized/audited — bump when the portfolio changes. */
-export const PORTFOLIO_UPDATED = "Oct 6, 2026";
+export const PORTFOLIO_UPDATED = "Oct 11, 2026";
 
 export type Section = "industries" | "intelligence" | "playbooks";
 
@@ -103,6 +103,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "pricing", name: "Model Pricing", href: "/pricing", icon: Coins, section: "intelligence", audience: "public",
     gradient: "linear-gradient(135deg, #0b1020 0%, #2a78d6 100%)",
     blurb: "Verified token prices, capabilities and a workload cost calculator — refreshed daily", keywords: ["pricing", "price", "tokens", "cost", "calculator", "benchmark", "compare", "gpt-6", "claude", "gemini", "deepseek"] },
+  { id: "atlas", name: "AI Intelligence Atlas", short: "Atlas", href: "/atlas", icon: Orbit, section: "intelligence", audience: "public",
+    gradient: "linear-gradient(135deg, #0d1424 0%, #4a3aa7 100%)",
+    blurb: "30 AI minds, 221 dated predictions, scored against what happened", keywords: ["atlas", "knowledge graph", "predictions", "foresight", "thinkers", "agi", "scaling", "debates", "scenarios", "hinton", "altman", "lecun"] },
 
   // Playbooks (segment-level, not a named customer)
   { id: "router", name: "Routing Policy", href: "/router", icon: Route, section: "playbooks", audience: "public",

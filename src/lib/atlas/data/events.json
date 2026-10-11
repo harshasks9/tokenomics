@@ -1,0 +1,2023 @@
+[
+ {
+  "id": "evt-2012-alexnet",
+  "date": "2012-09",
+  "title": "AlexNet wins ImageNet (ILSVRC 2012)",
+  "kind": "research",
+  "layers": [
+   "architecture",
+   "training",
+   "semis",
+   "data"
+  ],
+  "summary": "A GPU-trained deep convolutional network from Hinton's Toronto lab won ILSVRC 2012 with 15.3% top-5 error versus 26.2% for the runner-up.",
+  "significance": "Interpretation: Converted the field to deep learning on GPUs almost overnight and tied AI progress to commodity NVIDIA hardware plus large labeled datasets.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-40",
+   "ev-ctx-36"
+  ]
+ },
+ {
+  "id": "evt-2013-word2vec",
+  "date": "2013-01",
+  "title": "word2vec dense word embeddings",
+  "kind": "research",
+  "layers": [
+   "architecture",
+   "data"
+  ],
+  "summary": "Mikolov et al. at Google released word2vec, efficiently learning vector word representations from large unlabeled corpora.",
+  "significance": "Interpretation: Made 'learn representations from raw text' the default in NLP, a precursor of self-supervised pretraining.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-42"
+  ]
+ },
+ {
+  "id": "evt-2013-dqn",
+  "date": "2013-12",
+  "title": "DeepMind DQN learns Atari from pixels",
+  "kind": "research",
+  "layers": [
+   "agents",
+   "training"
+  ],
+  "summary": "DeepMind's Deep Q-Network learned many Atari games from raw pixels using one architecture.",
+  "significance": "Interpretation: Made deep reinforcement learning the leading candidate path to general agents for the rest of the decade.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-44"
+  ]
+ },
+ {
+  "id": "evt-2014-deepmind-acquisition",
+  "date": "2014-01",
+  "title": "Google acquires DeepMind",
+  "kind": "capital",
+  "layers": [
+   "economics",
+   "agents"
+  ],
+  "summary": "Google agreed to acquire London-based DeepMind; the price was not disclosed and press reports ranged roughly $400-650M. It followed Google's 2013 purchase of Hinton's DNNresearch and Facebook's creation of FAIR under LeCun (Dec 2013).",
+  "significance": "Interpretation: First large bet on an explicitly AGI-oriented lab; set the pattern of hyperscalers owning or funding frontier labs.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-46",
+   "ev-ctx-43",
+   "ev-ctx-45"
+  ]
+ },
+ {
+  "id": "evt-2014-gans",
+  "date": "2014-06",
+  "title": "Generative adversarial networks",
+  "kind": "research",
+  "layers": [
+   "architecture",
+   "apps"
+  ],
+  "summary": "Goodfellow et al. introduced GANs, training a generator against a discriminator.",
+  "significance": "Interpretation: Opened modern generative modeling of images; the generative lineage later passed to diffusion models in 2021-22.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-47"
+  ]
+ },
+ {
+  "id": "evt-2014-superintelligence",
+  "date": "2014-07",
+  "title": "Bostrom's 'Superintelligence' frames AI existential risk",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "Nick Bostrom published Superintelligence, arguing advanced AI could pose an existential risk.",
+  "significance": "Interpretation: Gave a then-fringe risk concern an academic vocabulary that influenced OpenAI's founders and, later, the 2023 statements on extinction risk.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-50"
+  ]
+ },
+ {
+  "id": "evt-2014-seq2seq-attention",
+  "date": "2014-09",
+  "title": "Sequence-to-sequence learning and attention",
+  "kind": "research",
+  "layers": [
+   "architecture"
+  ],
+  "summary": "Sutskever, Vinyals and Le published LSTM encoder-decoder translation; Bahdanau, Cho and Bengio introduced attention the same month.",
+  "significance": "Interpretation: Established end-to-end neural language generation; attention became the core of the Transformer three years later.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-48",
+   "ev-ctx-49"
+  ]
+ },
+ {
+  "id": "evt-2015-tensorflow",
+  "date": "2015-11",
+  "title": "Google open-sources TensorFlow",
+  "kind": "product",
+  "layers": [
+   "platforms"
+  ],
+  "summary": "Google released TensorFlow as open source on 9 November 2015.",
+  "significance": "Interpretation: Treated frameworks as strategic distribution for cloud and talent; frameworks then commoditized (PyTorch overtook TensorFlow in research).",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-51"
+  ]
+ },
+ {
+  "id": "evt-2015-resnet",
+  "date": "2015-12",
+  "title": "ResNet surpasses estimated human ImageNet error",
+  "kind": "research",
+  "layers": [
+   "architecture",
+   "training"
+  ],
+  "summary": "Microsoft Research's 152-layer residual networks won ILSVRC 2015 with 3.57% top-5 error.",
+  "significance": "Interpretation: Residual connections made very deep networks trainable and became a component of the Transformer; vision benchmarks began to saturate.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-52",
+   "ev-ctx-36"
+  ]
+ },
+ {
+  "id": "evt-2015-openai-founded",
+  "date": "2015-12",
+  "title": "OpenAI founded as non-profit with $1B pledged",
+  "kind": "org",
+  "layers": [
+   "economics",
+   "society",
+   "models"
+  ],
+  "summary": "OpenAI launched as a non-profit research company with $1 billion in total commitments from Altman, Musk, Brockman, Thiel, Hoffman, AWS, Infosys and others.",
+  "significance": "Interpretation: Created a lab explicitly aimed at AGI outside big tech; its later scaling bet and capital structure reshaped the industry.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-53"
+  ]
+ },
+ {
+  "id": "evt-2016-alphago",
+  "date": "2016-03",
+  "title": "AlphaGo defeats Lee Sedol 4-1",
+  "kind": "research",
+  "layers": [
+   "agents",
+   "training",
+   "society"
+  ],
+  "summary": "DeepMind's AlphaGo beat Lee Sedol 4-1 in Seoul in March 2016, years before many experts expected Go to fall.",
+  "significance": "Interpretation: A public 'Sputnik moment', especially in China and Korea, that raised AI to a national-strategy priority.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-54"
+  ]
+ },
+ {
+  "id": "evt-2016-pascal-dgx1",
+  "date": "2016-04",
+  "title": "NVIDIA Pascal P100 and DGX-1; first DGX-1 to OpenAI",
+  "kind": "infra",
+  "layers": [
+   "semis",
+   "cloud"
+  ],
+  "summary": "NVIDIA launched the P100 and DGX-1 system for deep learning; Jensen Huang delivered the first DGX-1 to OpenAI in August 2016.",
+  "significance": "Interpretation: NVIDIA repositioned from gaming to deep-learning systems; its FY2017 filing attributed 145% datacenter growth to deep learning training.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-55",
+   "ev-ctx-8"
+  ]
+ },
+ {
+  "id": "evt-2016-tpu",
+  "date": "2016-05",
+  "title": "Google discloses the TPU",
+  "kind": "infra",
+  "layers": [
+   "semis",
+   "inference",
+   "cloud"
+  ],
+  "summary": "Google revealed it had used custom Tensor Processing Units for inference in its data centers for over a year.",
+  "significance": "Interpretation: First evidence that hyperscalers would design their own AI silicon; the TPU line later trained PaLM and Gemini.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-56"
+  ]
+ },
+ {
+  "id": "evt-2016-deepmind-cooling",
+  "date": "2016-07",
+  "title": "DeepMind ML cuts Google data-center cooling energy by up to 40%",
+  "kind": "infra",
+  "layers": [
+   "energy",
+   "cloud"
+  ],
+  "summary": "DeepMind reported its system reduced energy used for cooling in Google data centers by up to 40%.",
+  "significance": "Interpretation: Energy entered the AI story as an application area, not yet as a binding constraint on AI itself.",
+  "magnitude": 2,
+  "evidenceIds": [
+   "ev-ctx-57"
+  ]
+ },
+ {
+  "id": "evt-2017-volta-v100",
+  "date": "2017-05",
+  "title": "NVIDIA Volta V100 with Tensor Cores",
+  "kind": "infra",
+  "layers": [
+   "semis"
+  ],
+  "summary": "NVIDIA introduced the Volta V100 with Tensor Cores; it began shipping in the first half of NVIDIA fiscal 2018 and drove datacenter revenue to $1.93B, up 133%.",
+  "significance": "Interpretation: Dedicated matrix-math units made GPUs AI-specific accelerators, widening NVIDIA's lead over CPUs.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-7"
+  ]
+ },
+ {
+  "id": "evt-2017-ai-first",
+  "date": "2017-05",
+  "title": "Google declares an 'AI-first' strategy at I/O",
+  "kind": "market",
+  "layers": [
+   "distribution",
+   "apps",
+   "cloud"
+  ],
+  "summary": "Sundar Pichai described Google's shift from mobile-first to AI-first and announced Cloud TPUs.",
+  "significance": "Interpretation: Defined the period's belief that incumbents with users and data would capture AI value by embedding it in existing products.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-60"
+  ]
+ },
+ {
+  "id": "evt-2017-transformer",
+  "date": "2017-06",
+  "title": "'Attention Is All You Need': the Transformer",
+  "kind": "research",
+  "layers": [
+   "architecture",
+   "training"
+  ],
+  "summary": "Google researchers introduced the Transformer, built entirely on attention.",
+  "significance": "Interpretation: Its parallelizable architecture made scaling on GPUs/TPUs efficient and became the substrate of every later foundation model.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-59"
+  ]
+ },
+ {
+  "id": "evt-2017-china-aidp",
+  "date": "2017-07",
+  "title": "China's New Generation AI Development Plan",
+  "kind": "policy",
+  "layers": [
+   "society",
+   "economics"
+  ],
+  "summary": "China's State Council set a goal of world leadership in AI by 2030 with a core industry over 1 trillion yuan.",
+  "significance": "Interpretation: Turned AI into an explicit US-China strategic competition, foreshadowing chip export controls.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-61"
+  ]
+ },
+ {
+  "id": "evt-2017-alphago-zero",
+  "date": "2017-10",
+  "title": "AlphaGo Zero and AlphaZero: superhuman play from self-play",
+  "kind": "research",
+  "layers": [
+   "agents",
+   "training"
+  ],
+  "summary": "AlphaGo Zero (Oct 2017) learned Go without human data; AlphaZero (Dec 2017) generalized to chess and shogi. AlphaGo Zero remained the largest training run by compute until August 2021 (Epoch).",
+  "significance": "Interpretation: Reinforced the belief that RL plus search, not language modeling, was the frontier path; RL returned in 2024-25 inside LLM reasoning.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-62",
+   "ev-ctx-63",
+   "ev-ctx-29"
+  ]
+ },
+ {
+  "id": "evt-2018-ai-and-compute",
+  "date": "2018-05",
+  "title": "OpenAI 'AI and Compute': 3.4-month doubling",
+  "kind": "research",
+  "layers": [
+   "cloud",
+   "training",
+   "economics"
+  ],
+  "summary": "OpenAI estimated compute in the largest training runs had grown more than 300,000x since 2012, doubling every 3.4 months.",
+  "significance": "Interpretation: Reframed AI progress as a compute-supply story, the intellectual basis for OpenAI's capital-raising strategy.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-28"
+  ]
+ },
+ {
+  "id": "evt-2018-elmo-gpt1-bert",
+  "date": "2018-10",
+  "title": "Pretrain-then-fine-tune: ELMo, GPT-1, BERT",
+  "kind": "research",
+  "layers": [
+   "architecture",
+   "training",
+   "models"
+  ],
+  "summary": "ELMo (Feb 2018), OpenAI's GPT-1 (Jun 2018) and Google's BERT (Oct 2018) showed self-supervised pretraining on unlabeled text transfers to many tasks.",
+  "significance": "Interpretation: Made language-model pretraining the NLP default; BERT was the consensus winner, while GPT's generative decoder approach was the minority that later dominated.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-64",
+   "ev-ctx-65",
+   "ev-ctx-66"
+  ]
+ },
+ {
+  "id": "evt-2019-gpt2",
+  "date": "2019-02",
+  "title": "GPT-2 and staged release",
+  "kind": "model",
+  "layers": [
+   "models",
+   "society"
+  ],
+  "summary": "OpenAI announced the 1.5B-parameter GPT-2 and initially withheld the full weights over misuse concerns, releasing it in stages through November 2019.",
+  "significance": "Interpretation: First time a lab treated a language model's capability as a release-policy question; previewed later open vs closed debates.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-67"
+  ]
+ },
+ {
+  "id": "evt-2019-openai-lp",
+  "date": "2019-03",
+  "title": "OpenAI LP 'capped-profit' structure",
+  "kind": "capital",
+  "layers": [
+   "economics",
+   "society"
+  ],
+  "summary": "OpenAI created a capped-profit company governed by its non-profit, capping first-round returns at 100x.",
+  "significance": "Interpretation: Acknowledged that frontier AI needs billions in capital; the hybrid governance later produced the November 2023 board crisis.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-68"
+  ]
+ },
+ {
+  "id": "evt-2019-mellanox",
+  "date": "2019-03",
+  "title": "NVIDIA agrees to buy Mellanox for $6.9B",
+  "kind": "infra",
+  "layers": [
+   "semis",
+   "cloud"
+  ],
+  "summary": "NVIDIA agreed to acquire interconnect maker Mellanox; it closed in April 2020 and contributed 10% of NVIDIA revenue in FY2021.",
+  "significance": "Interpretation: Extended NVIDIA from chips to data-center systems; networking became part of its moat in the cluster era.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-71",
+   "ev-ctx-4"
+  ]
+ },
+ {
+  "id": "evt-2019-bitter-lesson",
+  "date": "2019-03",
+  "title": "Sutton's 'The Bitter Lesson'",
+  "kind": "research",
+  "layers": [
+   "training",
+   "architecture"
+  ],
+  "summary": "Richard Sutton argued that general methods leveraging computation ultimately beat human-knowledge-based approaches.",
+  "significance": "Interpretation: Became the canonical statement of the scaling worldview, still a minority position in academia at the time.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-69"
+  ]
+ },
+ {
+  "id": "evt-2019-huawei-entity-list",
+  "date": "2019-05",
+  "title": "US adds Huawei to the Entity List",
+  "kind": "policy",
+  "layers": [
+   "semis",
+   "society"
+  ],
+  "summary": "The US Commerce Department restricted Huawei's access to US-origin technology.",
+  "significance": "Interpretation: Started using semiconductor supply chains as a geopolitical weapon, the template for the 2022 AI chip controls.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-72"
+  ]
+ },
+ {
+  "id": "evt-2019-strubell-energy",
+  "date": "2019-06",
+  "title": "Strubell et al. quantify energy cost of NLP training",
+  "kind": "research",
+  "layers": [
+   "energy",
+   "society"
+  ],
+  "summary": "An ACL 2019 paper estimated the energy and carbon costs of training large NLP models.",
+  "significance": "Interpretation: First widely cited warning that AI's energy footprint mattered, though at 2019 scale it was framed as an environmental concern, not a capacity constraint.",
+  "magnitude": 2,
+  "evidenceIds": [
+   "ev-ctx-121"
+  ]
+ },
+ {
+  "id": "evt-2019-microsoft-openai-1b",
+  "date": "2019-07",
+  "title": "Microsoft invests $1B in OpenAI",
+  "kind": "capital",
+  "layers": [
+   "cloud",
+   "economics"
+  ],
+  "summary": "Microsoft invested $1B in OpenAI, with Azure as exclusive cloud provider.",
+  "significance": "Interpretation: Created the hyperscaler-lab coupling (compute for equity and exclusivity) that defined frontier AI economics afterwards.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-73"
+  ]
+ },
+ {
+  "id": "evt-2020-scaling-laws",
+  "date": "2020-01",
+  "title": "Kaplan et al. 'Scaling Laws for Neural Language Models'",
+  "kind": "research",
+  "layers": [
+   "training",
+   "economics"
+  ],
+  "summary": "OpenAI showed language-model loss falls as a smooth power law in parameters, data and compute over more than seven orders of magnitude.",
+  "significance": "Interpretation: Made capability gains predictable enough to justify large capital commitments; its parameter-heavy recipe was revised by Chinchilla in 2022.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-34"
+  ]
+ },
+ {
+  "id": "evt-2020-azure-supercomputer",
+  "date": "2020-05",
+  "title": "Microsoft's Azure supercomputer for OpenAI",
+  "kind": "infra",
+  "layers": [
+   "cloud",
+   "semis"
+  ],
+  "summary": "Microsoft said it built for OpenAI one of the world's top five supercomputers with 285,000+ CPU cores and 10,000 GPUs. The same month NVIDIA launched the A100.",
+  "significance": "Interpretation: Bespoke hyperscaler clusters for one lab became the unit of frontier competition.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-131",
+   "ev-ctx-75"
+  ]
+ },
+ {
+  "id": "evt-2020-gpt3",
+  "date": "2020-05",
+  "title": "GPT-3 and the OpenAI API",
+  "kind": "model",
+  "layers": [
+   "models",
+   "platforms",
+   "inference"
+  ],
+  "summary": "OpenAI published GPT-3 (175B parameters, ~3.14e23 FLOP) showing few-shot in-context learning, and opened a commercial API in June 2020. Microsoft took an exclusive license to GPT-3 in September 2020.",
+  "significance": "Interpretation: Demonstrated that one general model could be prompted for many tasks, and introduced model-as-API as a business.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-33",
+   "ev-ctx-74",
+   "ev-ctx-76"
+  ]
+ },
+ {
+  "id": "evt-2020-alphafold2",
+  "date": "2020-11",
+  "title": "AlphaFold 2 at CASP14",
+  "kind": "research",
+  "layers": [
+   "apps",
+   "society"
+  ],
+  "summary": "DeepMind's AlphaFold 2 reached a median GDT of ~92.4 at CASP14, competitive with experimental structure determination for many proteins.",
+  "significance": "Interpretation: Strongest evidence yet of AI producing scientific value; recognized with the 2024 Nobel Prize in Chemistry (hindsight).",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-77"
+  ]
+ },
+ {
+  "id": "evt-2021-chip-shortage",
+  "date": "2021-02",
+  "title": "Global semiconductor shortage",
+  "kind": "market",
+  "layers": [
+   "semis"
+  ],
+  "summary": "Pandemic demand shifts and supply disruptions produced a chip shortage that cut auto production through 2021.",
+  "significance": "Interpretation: Made semiconductor supply chains a political issue, feeding the CHIPS Act; AI-specific supply limits (CoWoS, HBM) arrived later.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-86"
+  ]
+ },
+ {
+  "id": "evt-2021-eu-ai-act-proposal",
+  "date": "2021-04",
+  "title": "European Commission proposes the AI Act",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "The Commission proposed a risk-based regulation for AI systems.",
+  "significance": "Interpretation: Its pre-LLM, use-case-based design had to be retrofitted for general-purpose models in 2023.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-80"
+  ]
+ },
+ {
+  "id": "evt-2021-anthropic",
+  "date": "2021-05",
+  "title": "Anthropic founded ($124M Series A)",
+  "kind": "org",
+  "layers": [
+   "models",
+   "society",
+   "economics"
+  ],
+  "summary": "Former OpenAI researchers including Dario and Daniela Amodei announced Anthropic with a $124M Series A.",
+  "significance": "Interpretation: Institutionalized 'safety-focused scaling' and created a third frontier lab later backed by Amazon and Google.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-81"
+  ]
+ },
+ {
+  "id": "evt-2021-copilot-preview",
+  "date": "2021-06",
+  "title": "GitHub Copilot technical preview",
+  "kind": "product",
+  "layers": [
+   "apps",
+   "distribution"
+  ],
+  "summary": "GitHub launched a Copilot preview powered by OpenAI Codex; general availability followed June 2022 at $10/month.",
+  "significance": "Interpretation: First mass-market paid LLM product, showing coding as the first high-value use case and incumbents' distribution advantage.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-82"
+  ]
+ },
+ {
+  "id": "evt-2021-foundation-models",
+  "date": "2021-08",
+  "title": "'On the Opportunities and Risks of Foundation Models'",
+  "kind": "research",
+  "layers": [
+   "models",
+   "society"
+  ],
+  "summary": "Stanford CRFM coined 'foundation models' for broadly trained models adaptable to many tasks.",
+  "significance": "Interpretation: Gave academia and policymakers a shared frame; the term later entered the EU AI Act and US EO.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-83"
+  ]
+ },
+ {
+  "id": "evt-2022-chain-of-thought",
+  "date": "2022-01",
+  "title": "Chain-of-thought prompting",
+  "kind": "research",
+  "layers": [
+   "agents",
+   "inference"
+  ],
+  "summary": "Wei et al. showed prompting large models with intermediate reasoning steps sharply improved reasoning performance.",
+  "significance": "Interpretation: First evidence that spending more inference tokens on reasoning raises capability, the seed of 2024-25 reasoning models.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-115"
+  ]
+ },
+ {
+  "id": "evt-2022-h100",
+  "date": "2022-03",
+  "title": "NVIDIA announces H100 (Hopper)",
+  "kind": "infra",
+  "layers": [
+   "semis"
+  ],
+  "summary": "NVIDIA announced the H100 with a Transformer Engine supporting FP8.",
+  "significance": "Interpretation: The chip of the generative-AI boom; demand for it in 2023 far exceeded supply.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-87"
+  ]
+ },
+ {
+  "id": "evt-2022-instructgpt",
+  "date": "2022-03",
+  "title": "InstructGPT: RLHF makes small models preferred over GPT-3",
+  "kind": "research",
+  "layers": [
+   "training",
+   "models"
+  ],
+  "summary": "OpenAI showed outputs of a 1.3B RLHF-tuned model were preferred over 175B GPT-3.",
+  "significance": "Interpretation: Post-training, not only pretraining scale, became a key lever for usefulness.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-116"
+  ]
+ },
+ {
+  "id": "evt-2022-chinchilla",
+  "date": "2022-03",
+  "title": "Chinchilla compute-optimal scaling",
+  "kind": "research",
+  "layers": [
+   "training",
+   "data",
+   "inference"
+  ],
+  "summary": "DeepMind's 70B Chinchilla, trained on 1.4T tokens with Gopher's compute, outperformed Gopher (280B) and GPT-3.",
+  "significance": "Interpretation: Shifted the bottleneck from parameters to training data and made smaller, cheaper-to-serve models the target.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-35"
+  ]
+ },
+ {
+  "id": "evt-2022-palm",
+  "date": "2022-04",
+  "title": "PaLM 540B on Pathways/TPU v4",
+  "kind": "model",
+  "layers": [
+   "models",
+   "semis",
+   "cloud"
+  ],
+  "summary": "Google trained the 540B dense PaLM on 6,144 TPU v4 chips (~2.56e24 FLOP).",
+  "significance": "Interpretation: Showed Google's vertically integrated TPU stack was competitive at the frontier.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-88"
+  ]
+ },
+ {
+  "id": "evt-2022-image-diffusion",
+  "date": "2022-08",
+  "title": "Diffusion image generation goes public: DALL-E 2, Midjourney, Stable Diffusion",
+  "kind": "product",
+  "layers": [
+   "apps",
+   "models",
+   "data"
+  ],
+  "summary": "DALL-E 2 (April), Midjourney's open beta (July) and the openly licensed Stable Diffusion weights (22 Aug 2022) brought text-to-image generation to the public. They built on CLIP/DALL-E (Jan 2021) and open datasets such as LAION-5B.",
+  "significance": "Interpretation: First consumer generative-AI wave and first proof open weights could spread a capability overnight; 'generative AI' became an investment category before ChatGPT.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-89",
+   "ev-ctx-90",
+   "ev-ctx-91",
+   "ev-ctx-78",
+   "ev-ctx-129"
+  ]
+ },
+ {
+  "id": "evt-2022-chips-act",
+  "date": "2022-08",
+  "title": "CHIPS and Science Act",
+  "kind": "policy",
+  "layers": [
+   "semis",
+   "society"
+  ],
+  "summary": "The US enacted roughly $52.7B in semiconductor support including ~$39B in manufacturing incentives.",
+  "significance": "Interpretation: Industrial policy aimed at physical supply-chain resilience, a precursor to treating AI infrastructure as national infrastructure.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-92"
+  ]
+ },
+ {
+  "id": "evt-2022-export-controls",
+  "date": "2022-10",
+  "title": "US export controls on advanced AI chips to China",
+  "kind": "policy",
+  "layers": [
+   "semis",
+   "society"
+  ],
+  "summary": "BIS restricted exports to China of A100/H100-class AI chips and advanced chipmaking equipment.",
+  "significance": "Interpretation: Made compute access an instrument of state power and split the AI hardware market geographically.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-93"
+  ]
+ },
+ {
+  "id": "evt-2022-chatgpt",
+  "date": "2022-11",
+  "title": "ChatGPT launches",
+  "kind": "product",
+  "layers": [
+   "apps",
+   "distribution",
+   "models",
+   "economics"
+  ],
+  "summary": "OpenAI released ChatGPT, fine-tuned from GPT-3.5 with RLHF, as a free research preview on 30 Nov 2022; UBS estimated 100M monthly users by January 2023.",
+  "significance": "Interpretation: Turned LLMs from a developer API into a mass consumer product and triggered the capital and policy response of 2023.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-94",
+   "ev-ctx-95"
+  ]
+ },
+ {
+  "id": "evt-2023-microsoft-openai-10b",
+  "date": "2023-01",
+  "title": "Microsoft's multibillion investment in OpenAI",
+  "kind": "capital",
+  "layers": [
+   "economics",
+   "cloud"
+  ],
+  "summary": "Microsoft announced a multiyear, multibillion-dollar investment in OpenAI, widely reported as $10B.",
+  "significance": "Interpretation: Set the template of hyperscaler capital in exchange for compute consumption and model rights.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-96"
+  ]
+ },
+ {
+  "id": "evt-2023-bing-chat",
+  "date": "2023-02",
+  "title": "Microsoft launches GPT-powered Bing",
+  "kind": "product",
+  "layers": [
+   "distribution",
+   "apps"
+  ],
+  "summary": "Microsoft launched Bing chat on a next-generation OpenAI model (later confirmed as GPT-4).",
+  "significance": "Interpretation: Opened the incumbent-distribution battle over search; Google's search share proved more resilient than expected (hindsight).",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-114"
+  ]
+ },
+ {
+  "id": "evt-2023-llama",
+  "date": "2023-02",
+  "title": "Meta LLaMA released and weights leak",
+  "kind": "model",
+  "layers": [
+   "models",
+   "platforms"
+  ],
+  "summary": "Meta released LLaMA (7B-65B) under a research license; LLaMA-13B outperformed GPT-3 on most benchmarks; weights leaked publicly in early March.",
+  "significance": "Interpretation: Launched the open-weight ecosystem; capability at a given size became reproducible and commoditizing.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-97"
+  ]
+ },
+ {
+  "id": "evt-2023-gpt4",
+  "date": "2023-03",
+  "title": "GPT-4",
+  "kind": "model",
+  "layers": [
+   "models",
+   "apps"
+  ],
+  "summary": "OpenAI announced GPT-4 on 14 March 2023, with near-human results on many professional exams and no disclosure of size, compute or data; Epoch estimates ~2e25 FLOP.",
+  "significance": "Interpretation: Set the frontier benchmark that competitors took most of 2023 to approach; ended routine disclosure of training details.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-98",
+   "ev-ctx-30"
+  ]
+ },
+ {
+  "id": "evt-2023-cais-statement",
+  "date": "2023-05",
+  "title": "CAIS one-sentence statement on extinction risk",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "Hundreds of researchers and lab leaders signed a statement that mitigating AI extinction risk should be a global priority alongside pandemics and nuclear war. It followed the FLI 'pause' letter (22 Mar 2023) and Geoffrey Hinton's departure from Google to speak about AI risk (1 May 2023).",
+  "significance": "Interpretation: Lab CEOs publicly endorsing extinction-risk framing helped set up the Bletchley summit and the EO.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-101",
+   "ev-ctx-99",
+   "ev-ctx-100"
+  ]
+ },
+ {
+  "id": "evt-2023-llama2",
+  "date": "2023-07",
+  "title": "Llama 2 open weights for commercial use",
+  "kind": "model",
+  "layers": [
+   "models",
+   "platforms",
+   "distribution"
+  ],
+  "summary": "Meta released Llama 2 (7B-70B) with chat variants, free for most commercial use, with Microsoft as preferred partner.",
+  "significance": "Interpretation: Legitimized open weights as a corporate strategy (commoditize the complement).",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-103"
+  ]
+ },
+ {
+  "id": "evt-2023-nvidia-q2fy24",
+  "date": "2023-08",
+  "title": "NVIDIA data-center revenue doubles in a quarter amid H100 shortage",
+  "kind": "market",
+  "layers": [
+   "semis",
+   "cloud",
+   "economics"
+  ],
+  "summary": "NVIDIA reported $10.32B quarterly data-center revenue, more than double the prior quarter, with H100 supply constrained; FY2024 data-center revenue reached $47.5B, up 217%. NVIDIA had briefly passed a $1T market value on 30 May 2023.",
+  "significance": "Interpretation: The ChatGPT demand shock showed up first and most clearly in GPU revenue.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx-105",
+   "ev-ctx-1",
+   "ev-ctx-102"
+  ]
+ },
+ {
+  "id": "evt-2023-amazon-anthropic",
+  "date": "2023-09",
+  "title": "Amazon to invest up to $4B in Anthropic",
+  "kind": "capital",
+  "layers": [
+   "economics",
+   "cloud",
+   "semis"
+  ],
+  "summary": "Amazon agreed to invest up to $4B in Anthropic, with AWS as primary cloud and use of Trainium/Inferentia chips.",
+  "significance": "Interpretation: Every hyperscaler now had a frontier-lab partner; custom silicon was part of the deal.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-106"
+  ]
+ },
+ {
+  "id": "evt-2023-biden-eo",
+  "date": "2023-10",
+  "title": "US Executive Order 14110 on AI",
+  "kind": "policy",
+  "layers": [
+   "society",
+   "training"
+  ],
+  "summary": "The order required developers of models trained above 1e26 operations to report training and red-teaming to the government.",
+  "significance": "Interpretation: First US rule keyed to training compute, treating FLOP as a regulatory proxy for risk; revoked in January 2025 (hindsight).",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-107"
+  ]
+ },
+ {
+  "id": "evt-2023-bletchley",
+  "date": "2023-11",
+  "title": "Bletchley Park AI Safety Summit",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "28 countries plus the EU, including the US and China, signed the Bletchley Declaration on frontier AI risks on 1-2 Nov 2023.",
+  "significance": "Interpretation: First intergovernmental agreement on frontier AI risk; spawned national AI safety institutes.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-108"
+  ]
+ },
+ {
+  "id": "evt-2023-devday-gpt4-turbo",
+  "date": "2023-11",
+  "title": "OpenAI DevDay: GPT-4 Turbo price cut, GPTs, Assistants API",
+  "kind": "product",
+  "layers": [
+   "inference",
+   "platforms",
+   "agents"
+  ],
+  "summary": "OpenAI launched GPT-4 Turbo at $10/$30 per 1M input/output tokens (a third and a half of GPT-4's launch prices) plus custom GPTs and an Assistants API.",
+  "significance": "Interpretation: Price per capability began falling fast; OpenAI tried to become a platform rather than only a model vendor.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-27",
+   "ev-ctx-26"
+  ]
+ },
+ {
+  "id": "evt-2023-openai-board-crisis",
+  "date": "2023-11",
+  "title": "OpenAI board fires and reinstates Sam Altman",
+  "kind": "org",
+  "layers": [
+   "society",
+   "economics"
+  ],
+  "summary": "OpenAI's non-profit board removed Altman on 17 Nov 2023; after a staff revolt and Microsoft's offer to hire them, he returned with a new board on 21-22 Nov.",
+  "significance": "Interpretation: Showed that capital, compute partners and talent outweighed non-profit governance at frontier labs.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-109"
+  ]
+ },
+ {
+  "id": "evt-2023-gemini",
+  "date": "2023-12",
+  "title": "Google launches Gemini 1.0",
+  "kind": "model",
+  "layers": [
+   "models",
+   "semis",
+   "distribution"
+  ],
+  "summary": "Google DeepMind announced Gemini 1.0 (Ultra, Pro, Nano), natively multimodal and trained on TPUs.",
+  "significance": "Interpretation: Google's first credible GPT-4-class response; signalled the frontier would be a multi-player race.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-110"
+  ]
+ },
+ {
+  "id": "evt-2023-eu-ai-act-deal",
+  "date": "2023-12",
+  "title": "EU AI Act political agreement",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "EU co-legislators reached a provisional agreement on the AI Act, adding obligations for general-purpose AI models.",
+  "significance": "Interpretation: First comprehensive binding AI law, retrofitted for foundation models.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx-111"
+  ]
+ },
+ {
+  "id": "evt-2023-mixtral",
+  "date": "2023-12",
+  "title": "Mistral's Mixtral 8x7B open sparse MoE",
+  "kind": "model",
+  "layers": [
+   "architecture",
+   "models",
+   "inference"
+  ],
+  "summary": "Mistral released Mixtral 8x7B under Apache 2.0, a sparse mixture-of-experts using ~13B of ~47B parameters per token, matching or beating GPT-3.5 on many benchmarks.",
+  "significance": "Interpretation: Brought MoE into the open-weight mainstream and showed GPT-3.5-class quality had become cheap and widely available.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-112",
+   "ev-ctx-79"
+  ]
+ },
+ {
+  "id": "evt-2023-nyt-lawsuit",
+  "date": "2023-12",
+  "title": "New York Times sues OpenAI and Microsoft",
+  "kind": "policy",
+  "layers": [
+   "data",
+   "society"
+  ],
+  "summary": "The NYT filed a copyright suit alleging unlicensed use of its articles for model training.",
+  "significance": "Interpretation: Turned training-data provenance into a legal and commercial bottleneck, pushing labs toward data licensing.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx-113"
+  ]
+ },
+ {
+  "id": "evt-2024-gemini-15-long-context",
+  "date": "2024-02-15",
+  "title": "Gemini 1.5 Pro ships 1M-token context",
+  "kind": "model",
+  "layers": [
+   "models",
+   "architecture",
+   "inference"
+  ],
+  "summary": "Google previewed Gemini 1.5 Pro, a mixture-of-experts model with a 1M-token context window.",
+  "significance": "Interpretation: made long context a competitive axis and weakened the assumption that retrieval pipelines were the only way to ground models in large corpora.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-47"
+  ]
+ },
+ {
+  "id": "evt-2024-sora",
+  "date": "2024-02-15",
+  "title": "OpenAI previews Sora text-to-video",
+  "kind": "model",
+  "layers": [
+   "models",
+   "apps",
+   "architecture"
+  ],
+  "summary": "OpenAI previewed Sora, a diffusion-transformer video model producing minute-long clips; public release came in December 2024.",
+  "significance": "Interpretation: extended the 'scale the transformer' thesis to video and fed the 'world simulator' framing.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-48"
+  ]
+ },
+ {
+  "id": "evt-2024-claude-3",
+  "date": "2024-03-04",
+  "title": "Claude 3 family ends GPT-4's solo lead",
+  "kind": "model",
+  "layers": [
+   "models",
+   "economics"
+  ],
+  "summary": "Anthropic released Claude 3 (Haiku/Sonnet/Opus), followed by Claude 3.5 Sonnet on 2024-06-20.",
+  "significance": "Interpretation: the frontier became a multi-lab race, undercutting the belief that a single lab's lead was durable.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-46"
+  ]
+ },
+ {
+  "id": "evt-2024-acquihire-deals",
+  "date": "2024-03-19",
+  "title": "License-and-hire deals absorb Inflection and Character.AI",
+  "kind": "org",
+  "layers": [
+   "economics",
+   "models"
+  ],
+  "summary": "Microsoft hired Inflection's leadership with a ~$650M licensing payment (Mar 2024); Google did a ~$2.7B license-and-rehire of Character.AI's founders (Aug 2024).",
+  "significance": "Interpretation: signalled that independent second-tier model labs struggled to fund frontier training and that talent, not companies, was the asset being bought.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-59"
+  ]
+ },
+ {
+  "id": "evt-2024-amazon-talen-nuclear",
+  "date": "2024-03",
+  "title": "Amazon buys nuclear-adjacent data center campus from Talen",
+  "kind": "infra",
+  "layers": [
+   "energy",
+   "cloud"
+  ],
+  "summary": "Amazon acquired Talen Energy's data center campus next to the Susquehanna nuclear plant (~$650M).",
+  "significance": "Interpretation: first clear sign that hyperscalers would co-locate with firm (nuclear) generation to secure AI power.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-55"
+  ]
+ },
+ {
+  "id": "evt-2024-gpt-4o",
+  "date": "2024-05-13",
+  "title": "GPT-4o: native multimodal flagship made free",
+  "kind": "model",
+  "layers": [
+   "models",
+   "apps",
+   "inference",
+   "distribution"
+  ],
+  "summary": "OpenAI launched GPT-4o, a natively multimodal model, free in ChatGPT and at half GPT-4 Turbo's API price.",
+  "significance": "Interpretation: GPT-4-class capability became a free consumer commodity, shifting competition to distribution and price.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-45",
+   "ev-ctx2-80"
+  ]
+ },
+ {
+  "id": "evt-2024-situational-awareness",
+  "date": "2024-06",
+  "title": "'Situational Awareness' essay frames AGI-by-2027 and a compute race",
+  "kind": "research",
+  "layers": [
+   "society",
+   "economics",
+   "cloud"
+  ],
+  "summary": "Leopold Aschenbrenner published a long essay extrapolating compute OOMs to AGI around 2027 and trillion-dollar clusters.",
+  "significance": "Interpretation: crystallized the national-security and compute-scaling narrative later echoed in Stargate and US policy.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-51"
+  ]
+ },
+ {
+  "id": "evt-2024-sequoia-600b",
+  "date": "2024-06",
+  "title": "Sequoia's 'AI's $600B Question'",
+  "kind": "market",
+  "layers": [
+   "economics"
+  ],
+  "summary": "David Cahn estimated a ~$600B gap between implied AI infrastructure spend and AI revenue.",
+  "significance": "Interpretation: became the canonical framing of the AI-bubble debate for the next two years.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-52"
+  ]
+ },
+ {
+  "id": "evt-2024-nvidia-most-valuable",
+  "date": "2024-06-18",
+  "title": "Nvidia briefly becomes the world's most valuable company",
+  "kind": "market",
+  "layers": [
+   "semis",
+   "economics"
+  ],
+  "summary": "Nvidia's market cap passed ~$3.3T, briefly overtaking Microsoft.",
+  "significance": "Interpretation: markets priced accelerators as the main value-capture layer of the AI stack.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-53"
+  ]
+ },
+ {
+  "id": "evt-2024-llama-31-405b",
+  "date": "2024-07-23",
+  "title": "Llama 3.1 405B: frontier-class open weights",
+  "kind": "model",
+  "layers": [
+   "models",
+   "distribution",
+   "economics"
+  ],
+  "summary": "Meta released Llama 3.1 405B open weights alongside Zuckerberg's 'Open Source AI Is the Path Forward'; Llama 3 8B/70B had shipped in April.",
+  "significance": "Interpretation: open weights near the frontier challenged the idea that model weights themselves were the moat.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-49"
+  ]
+ },
+ {
+  "id": "evt-2024-gpt4o-mini",
+  "date": "2024-07-18",
+  "title": "GPT-4o mini prices GPT-4-class quality at $0.15/1M input tokens",
+  "kind": "product",
+  "layers": [
+   "inference",
+   "economics"
+  ],
+  "summary": "OpenAI released GPT-4o mini at $0.15/$0.60 per 1M input/output tokens, versus $30/$60 for GPT-4 at launch in March 2023.",
+  "significance": "Interpretation: made 'LLMflation' (rapid constant-capability price decline) visible to every developer.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-80",
+   "ev-ctx2-39"
+  ]
+ },
+ {
+  "id": "evt-2024-eu-ai-act",
+  "date": "2024-08-01",
+  "title": "EU AI Act enters into force",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "The AI Act entered into force with staged application dates for prohibitions (Feb 2025), GPAI duties (Aug 2025) and high-risk rules (Aug 2026, later delayed).",
+  "significance": "Interpretation: first comprehensive horizontal AI law; set the compliance baseline that later became a target for simplification.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-57"
+  ]
+ },
+ {
+  "id": "evt-2024-o1",
+  "date": "2024-09-12",
+  "title": "OpenAI o1: inference-time compute becomes a scaling axis",
+  "kind": "model",
+  "layers": [
+   "agents",
+   "inference",
+   "training",
+   "models"
+  ],
+  "summary": "OpenAI released o1-preview, trained with RL to reason in long chains of thought, with performance scaling in both RL training and test-time compute.",
+  "significance": "Interpretation: reframed scaling from pretraining-only to RL plus test-time compute, shifting demand toward inference and opening the reasoning era.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-50"
+  ]
+ },
+ {
+  "id": "evt-2024-xai-colossus",
+  "date": "2024-09",
+  "title": "xAI Colossus: ~100k H100s online in Memphis",
+  "kind": "infra",
+  "layers": [
+   "cloud",
+   "semis",
+   "energy"
+  ],
+  "summary": "xAI announced its ~100,000-GPU Colossus cluster online after about four months of construction.",
+  "significance": "Interpretation: showed that speed-to-power and build execution could be a competitive advantage in its own right.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-56"
+  ]
+ },
+ {
+  "id": "evt-2024-tmi-restart",
+  "date": "2024-09-20",
+  "title": "Nuclear PPAs: Microsoft restarts TMI Unit 1; Google signs Kairos SMRs",
+  "kind": "infra",
+  "layers": [
+   "energy"
+  ],
+  "summary": "Constellation and Microsoft signed a 20-year PPA to restart TMI Unit 1 (Sept 20); Google agreed to buy up to ~500 MW from Kairos SMRs (Oct 14, 2024).",
+  "significance": "Interpretation: AI demand began reviving retired firm generation and underwriting next-generation nuclear, making power a recognized binding constraint.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-55"
+  ]
+ },
+ {
+  "id": "evt-2024-sb1047-veto",
+  "date": "2024-09-29",
+  "title": "California Gov. Newsom vetoes SB 1047",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "Newsom vetoed the frontier-model safety bill, citing its focus on model size rather than deployment risk.",
+  "significance": "Interpretation: marked the limit of compute-threshold safety regulation in the US and shifted fights to transparency laws and federal preemption.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-58"
+  ]
+ },
+ {
+  "id": "evt-2024-nobel-ai",
+  "date": "2024-10-08",
+  "title": "Nobel prizes to Hinton (Physics) and Hassabis/Jumper (Chemistry)",
+  "kind": "research",
+  "layers": [
+   "society",
+   "architecture"
+  ],
+  "summary": "Physics 2024 went to Hopfield and Hinton; Chemistry 2024 half to Hassabis and Jumper for AlphaFold.",
+  "significance": "Interpretation: institutional scientific validation of deep learning and of AI-for-science.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-60"
+  ]
+ },
+ {
+  "id": "evt-2024-computer-use-mcp",
+  "date": "2024-11-25",
+  "title": "Computer use (Oct) and Model Context Protocol (Nov) from Anthropic",
+  "kind": "product",
+  "layers": [
+   "agents",
+   "platforms"
+  ],
+  "summary": "Anthropic shipped computer-use beta (Oct 22, 2024) and open-sourced MCP (Nov 25, 2024), later adopted by OpenAI (Mar 2025) and others.",
+  "significance": "Interpretation: MCP became the de facto tool-connection standard, commoditizing integration and accelerating agents.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-61"
+  ]
+ },
+ {
+  "id": "evt-2024-lbnl-report",
+  "date": "2024-12-20",
+  "title": "LBNL: data centers 4.4% of US electricity, up to 12% by 2028",
+  "kind": "research",
+  "layers": [
+   "energy",
+   "society"
+  ],
+  "summary": "DOE/LBNL reported data centers used ~176 TWh (4.4%) of US electricity in 2023 and could reach 6.7-12% by 2028.",
+  "significance": "Interpretation: gave policymakers an official baseline for AI-driven load growth.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-34",
+   "ev-ctx2-44"
+  ]
+ },
+ {
+  "id": "evt-2024-o3-arc",
+  "date": "2024-12-20",
+  "title": "o3 scores ~76-88% on ARC-AGI-1",
+  "kind": "research",
+  "layers": [
+   "agents",
+   "models"
+  ],
+  "summary": "OpenAI previewed o3; ARC Prize verified ~75.7% (limited compute) and ~87.5% (high compute) on ARC-AGI-1.",
+  "significance": "Interpretation: test-time compute cracked a benchmark designed to resist scaling, though at very high cost per task.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-62"
+  ]
+ },
+ {
+  "id": "evt-2025-deepseek-r1",
+  "date": "2025-01-20",
+  "title": "DeepSeek-R1: open-weight reasoning at a fraction of the cost",
+  "kind": "model",
+  "layers": [
+   "models",
+   "training",
+   "distribution",
+   "economics"
+  ],
+  "summary": "DeepSeek released R1 under MIT license, matching o1 on many benchmarks; its V3 base reported a ~$5.6M final training run.",
+  "significance": "Interpretation: showed RL-based reasoning could be replicated cheaply and openly, compressing frontier leads and triggering a market repricing.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-63"
+  ]
+ },
+ {
+  "id": "evt-2025-stargate",
+  "date": "2025-01-21",
+  "title": "Stargate: $500B US AI infrastructure pledge",
+  "kind": "capital",
+  "layers": [
+   "cloud",
+   "energy",
+   "economics"
+  ],
+  "summary": "OpenAI, SoftBank, Oracle and MGX announced Stargate, intending $500B over four years ($100B immediately).",
+  "significance": "Interpretation: moved frontier labs from renting compute to directly sponsoring GW-scale campuses.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-65"
+  ]
+ },
+ {
+  "id": "evt-2025-nvidia-deepseek-drop",
+  "date": "2025-01-27",
+  "title": "Nvidia loses ~$589B in one day",
+  "kind": "market",
+  "layers": [
+   "semis",
+   "economics"
+  ],
+  "summary": "Nvidia fell ~17% after DeepSeek, the largest single-day market-value loss for a US company at the time.",
+  "significance": "Interpretation: markets briefly feared efficiency would shrink compute demand (Jevons debate); demand subsequently accelerated.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-64"
+  ]
+ },
+ {
+  "id": "evt-2025-claude-code",
+  "date": "2025-02-24",
+  "title": "Claude Code launches; coding agents become the killer app",
+  "kind": "product",
+  "layers": [
+   "agents",
+   "apps",
+   "platforms"
+  ],
+  "summary": "Anthropic launched Claude Code with Claude 3.7 Sonnet (preview) and made it GA with Claude 4 (May 22, 2025).",
+  "significance": "Interpretation: terminal-native coding agents became the first agent category with large paid usage, reshaping revenue mix toward agentic tokens.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-66"
+  ]
+ },
+ {
+  "id": "evt-2025-metr-horizons",
+  "date": "2025-03-19",
+  "title": "METR: AI task horizons double every ~7 months",
+  "kind": "research",
+  "layers": [
+   "agents",
+   "society"
+  ],
+  "summary": "METR found frontier models' 50% task-completion horizon had doubled ~every 7 months since 2019 (Claude 3.7 Sonnet ~50 minutes).",
+  "significance": "Interpretation: offered a single trend line for agent capability that anchored forecasts and policy discussion.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-37"
+  ]
+ },
+ {
+  "id": "evt-2025-reasoning-wave",
+  "date": "2025-04-16",
+  "title": "Reasoning goes mainstream: Gemini 2.5 Pro, o3, o4-mini",
+  "kind": "model",
+  "layers": [
+   "models",
+   "agents",
+   "inference"
+  ],
+  "summary": "Google shipped Gemini 2.5 Pro (Mar 25) as a thinking model; OpenAI released o3 and o4-mini (Apr 16) with tool use inside reasoning.",
+  "significance": "Interpretation: reasoning became table stakes across labs and inference-time compute a standard cost driver.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-67"
+  ]
+ },
+ {
+  "id": "evt-2025-h20-controls",
+  "date": "2025-04",
+  "title": "H20 export licensing and the revenue-share reversal",
+  "kind": "policy",
+  "layers": [
+   "semis",
+   "society",
+   "economics"
+  ],
+  "summary": "The US required licenses for Nvidia H20 sales to China (Apr 2025), then allowed them under a 15% revenue-share arrangement (Aug 2025); H200 sales were later allowed under license.",
+  "significance": "Interpretation: chip export policy turned transactional, and China accelerated domestic accelerators and open models.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-68",
+   "ev-ctx2-1"
+  ]
+ },
+ {
+  "id": "evt-2025-claude-4",
+  "date": "2025-05-22",
+  "title": "Claude 4 (Opus/Sonnet) targets long-running agents",
+  "kind": "model",
+  "layers": [
+   "models",
+   "agents"
+  ],
+  "summary": "Anthropic released Claude Opus 4 and Sonnet 4, emphasizing multi-hour agentic coding; activated ASL-3 protections for Opus 4.",
+  "significance": "Interpretation: frontier competition shifted from chat quality to sustained agentic work.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-66"
+  ]
+ },
+ {
+  "id": "evt-2025-meta-msl",
+  "date": "2025-06",
+  "title": "Meta buys 49% of Scale AI and forms Superintelligence Labs",
+  "kind": "org",
+  "layers": [
+   "data",
+   "models",
+   "economics"
+  ],
+  "summary": "Meta invested ~$14.3B in Scale AI, hired Alexandr Wang, and launched Meta Superintelligence Labs with large talent offers.",
+  "significance": "Interpretation: talent and data pipelines priced like strategic assets; marked Meta's pivot away from Llama-first open strategy.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-70"
+  ]
+ },
+ {
+  "id": "evt-2025-china-open-wave",
+  "date": "2025-07-11",
+  "title": "Chinese open-weight wave: Qwen3, Kimi K2, DeepSeek V3.x",
+  "kind": "model",
+  "layers": [
+   "models",
+   "distribution"
+  ],
+  "summary": "Alibaba (Qwen3, Apr), Moonshot (Kimi K2, Jul) and DeepSeek (V3.1/V3.2) released strong open-weight models.",
+  "significance": "Interpretation: China became the center of gravity for open weights as Meta retreated, keeping the open-closed gap to a few months.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-69",
+   "ev-ctx2-42"
+  ]
+ },
+ {
+  "id": "evt-2025-ai-action-plan",
+  "date": "2025-07-23",
+  "title": "US AI Action Plan",
+  "kind": "policy",
+  "layers": [
+   "society",
+   "energy",
+   "cloud"
+  ],
+  "summary": "The White House issued America's AI Action Plan prioritizing deregulation, data-center/power permitting and AI exports.",
+  "significance": "Interpretation: US policy pivoted from safety framing (2023 EO) to build-out and competitiveness.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-71"
+  ]
+ },
+ {
+  "id": "evt-2025-gpt-5",
+  "date": "2025-08-07",
+  "title": "GPT-5 launches to mixed reception",
+  "kind": "model",
+  "layers": [
+   "models",
+   "inference",
+   "apps"
+  ],
+  "summary": "OpenAI released GPT-5 as a routed system at $1.25/$10 per 1M tokens.",
+  "significance": "Interpretation: aggressive pricing and an incremental-feeling launch fed 'scaling plateau' and bubble narratives in late 2025.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-72"
+  ]
+ },
+ {
+  "id": "evt-2025-mit-nanda",
+  "date": "2025-08",
+  "title": "MIT NANDA '95% of GenAI pilots fail' report",
+  "kind": "research",
+  "layers": [
+   "economics",
+   "apps"
+  ],
+  "summary": "MIT NANDA's 'GenAI Divide' report claimed ~95% of organizations saw zero measurable return from GenAI pilots.",
+  "significance": "Interpretation: became a widely cited (and contested) data point in the enterprise-ROI and bubble debate.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-73"
+  ]
+ },
+ {
+  "id": "evt-2025-canaries",
+  "date": "2025-08",
+  "title": "Stanford 'Canaries in the Coal Mine' entry-level labor study",
+  "kind": "research",
+  "layers": [
+   "society",
+   "economics"
+  ],
+  "summary": "ADP payroll analysis found ~13% relative employment decline for 22-25-year-olds in the most AI-exposed occupations.",
+  "significance": "Interpretation: first large-sample evidence of early-career labor effects, shifting the labor debate from speculation to measurement.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-74"
+  ]
+ },
+ {
+  "id": "evt-2025-compute-megadeals",
+  "date": "2025-10-06",
+  "title": "OpenAI's GW-scale compute deals with Oracle, Nvidia, AMD, Broadcom",
+  "kind": "capital",
+  "layers": [
+   "cloud",
+   "semis",
+   "energy",
+   "economics"
+  ],
+  "summary": "Reported ~$300B Oracle contract, Nvidia up-to-$100B investment LOI (10 GW), AMD 6 GW with warrants, Broadcom 10 GW, AWS $38B.",
+  "significance": "Interpretation: supplier-financed demand ('circular financing') became the core of the bubble critique.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-75"
+  ]
+ },
+ {
+  "id": "evt-2025-openai-recap",
+  "date": "2025-10-28",
+  "title": "OpenAI recapitalizes as a public benefit corporation",
+  "kind": "org",
+  "layers": [
+   "economics",
+   "society"
+  ],
+  "summary": "OpenAI's for-profit became OpenAI Group PBC under the OpenAI Foundation; Microsoft took ~27%.",
+  "significance": "Interpretation: removed the structural barrier to mega-fundraising and an eventual IPO.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-76"
+  ]
+ },
+ {
+  "id": "evt-2025-nvidia-5t",
+  "date": "2025-10-29",
+  "title": "Nvidia first company to reach $5 trillion market cap",
+  "kind": "market",
+  "layers": [
+   "semis",
+   "economics"
+  ],
+  "summary": "Nvidia closed above $5T market capitalization.",
+  "significance": "Interpretation: peak expression of the belief that value accrues to the accelerator layer.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-54"
+  ]
+ },
+ {
+  "id": "evt-2025-gemini-3",
+  "date": "2025-11-18",
+  "title": "Gemini 3 retakes benchmark lead; Antigravity agent IDE",
+  "kind": "model",
+  "layers": [
+   "models",
+   "agents",
+   "distribution"
+  ],
+  "summary": "Google released Gemini 3 across Search, the Gemini app and developer platforms with record benchmark claims (e.g., 37.5% HLE).",
+  "significance": "Interpretation: shifted perception toward Google's full-stack (TPU + distribution) advantage.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-17"
+  ]
+ },
+ {
+  "id": "evt-2025-oracle-cds",
+  "date": "2025-12-11",
+  "title": "Oracle CDS at highest since 2009 as AI debt fears mount",
+  "kind": "market",
+  "layers": [
+   "economics",
+   "cloud"
+  ],
+  "summary": "Oracle five-year CDS hit post-2009 highs amid large bond issuance and ~$248B in data-center lease commitments.",
+  "significance": "Interpretation: AI-bubble concern moved from equity valuations to credit markets.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-32",
+   "ev-ctx2-33"
+  ]
+ },
+ {
+  "id": "evt-2025-preemption-eo",
+  "date": "2025-12-11",
+  "title": "Executive Order 14365 targets state AI laws",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "Trump signed an EO creating a DOJ AI Litigation Task Force to challenge state AI laws and directing a federal preemption proposal.",
+  "significance": "Interpretation: federal-vs-state jurisdiction became the central US AI governance fight.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-28"
+  ]
+ },
+ {
+  "id": "evt-2026-frontier-refresh-q1",
+  "date": "2026-02-19",
+  "title": "Q1 frontier refresh: Claude Opus 4.6 and Gemini 3.1 Pro",
+  "kind": "model",
+  "layers": [
+   "models",
+   "agents"
+  ],
+  "summary": "Aggregator timelines list Claude Opus 4.6 (Feb 5) and Gemini 3.1 Pro (Feb 19, 2026).",
+  "significance": "Interpretation: release cadence compressed to roughly bi-monthly frontier increments.",
+  "magnitude": 2,
+  "evidenceIds": [
+   "ev-ctx2-16"
+  ]
+ },
+ {
+  "id": "evt-2026-nvidia-fy26",
+  "date": "2026-02-25",
+  "title": "Nvidia FY2026: $215.9B revenue, $62.3B data center quarter",
+  "kind": "market",
+  "layers": [
+   "semis",
+   "economics"
+  ],
+  "summary": "NVIDIA reported Q4 FY2026 revenue $68.1B and data center $62.3B; FY2026 revenue $215.9B (+65%).",
+  "significance": "Interpretation: demand kept accelerating despite the DeepSeek scare and bubble debate.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-3"
+  ]
+ },
+ {
+  "id": "evt-2026-pentagon-anthropic",
+  "date": "2026-03-05",
+  "title": "Pentagon labels Anthropic a supply chain risk",
+  "kind": "policy",
+  "layers": [
+   "society",
+   "economics"
+  ],
+  "summary": "After Anthropic refused to drop restrictions on mass domestic surveillance and autonomous weapons uses, the Pentagon designated it a supply chain risk.",
+  "significance": "Interpretation: lab usage policies became a direct point of conflict with the US government.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-27"
+  ]
+ },
+ {
+  "id": "evt-2026-openai-852b",
+  "date": "2026-03",
+  "title": "OpenAI raises $122B at $852B post-money",
+  "kind": "capital",
+  "layers": [
+   "economics"
+  ],
+  "summary": "OpenAI reportedly closed a $122B round at an $852B valuation led by SoftBank and Microsoft.",
+  "significance": "Interpretation: private capital scale for labs reached sovereign-wealth levels.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-11"
+  ]
+ },
+ {
+  "id": "evt-2026-glasswing",
+  "date": "2026-04-07",
+  "title": "Project Glasswing: Claude Mythos withheld for cyber-defense only",
+  "kind": "model",
+  "layers": [
+   "models",
+   "society",
+   "agents"
+  ],
+  "summary": "Anthropic gave its unreleased Claude Mythos Preview to 40+ security partners to find and fix vulnerabilities instead of releasing it generally.",
+  "significance": "Interpretation: first major case of a lab withholding a frontier model on offensive-cyber capability grounds.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-24"
+  ]
+ },
+ {
+  "id": "evt-2026-meta-muse-spark",
+  "date": "2026-04-09",
+  "title": "Meta's first post-Llama model (Avocado series) after delays",
+  "kind": "model",
+  "layers": [
+   "models",
+   "distribution"
+  ],
+  "summary": "After delaying Avocado, Meta reportedly released Muse Spark (first Avocado-series model) in the Meta AI app, replacing Llama in its assistants.",
+  "significance": "Interpretation: confirmed Meta's shift away from open Llama releases toward closed, product-first models.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-23"
+  ]
+ },
+ {
+  "id": "evt-2026-gpt-55",
+  "date": "2026-04-23",
+  "title": "GPT-5.5 released",
+  "kind": "model",
+  "layers": [
+   "models",
+   "agents"
+  ],
+  "summary": "OpenAI released GPT-5.5, framed as a step toward doing work on a computer.",
+  "significance": "Interpretation: computer-use agents became the headline capability for frontier releases.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-18"
+  ]
+ },
+ {
+  "id": "evt-2026-deepseek-v4",
+  "date": "2026-04-24",
+  "title": "DeepSeek V4: 1.6T open MoE with 1M context",
+  "kind": "model",
+  "layers": [
+   "models",
+   "distribution",
+   "architecture"
+  ],
+  "summary": "DeepSeek released V4-Pro (1.6T) and V4-Flash (284B) open-weight MoE previews with 1M-token context.",
+  "significance": "Interpretation: Chinese open weights stayed within months of the frontier (Epoch: ~4-month lag in 2026).",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-22",
+   "ev-ctx2-41"
+  ]
+ },
+ {
+  "id": "evt-2026-capex-raise",
+  "date": "2026-04-30",
+  "title": "Big-four 2026 capex guidance reaches ~$700-725B",
+  "kind": "capital",
+  "layers": [
+   "cloud",
+   "energy",
+   "semis",
+   "economics"
+  ],
+  "summary": "Q1 2026 earnings put combined Amazon, Microsoft, Alphabet and Meta 2026 capex at roughly $700-725B, up ~75% from ~$410B in 2025; three of four raised guidance.",
+  "significance": "Interpretation: capex kept rising despite bubble concerns, with analysts projecting >$1T in 2027; part of the rise is component inflation.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-5",
+   "ev-ctx2-6",
+   "ev-ctx2-7"
+  ]
+ },
+ {
+  "id": "evt-2026-anthropic-series-h",
+  "date": "2026-05-28",
+  "title": "Anthropic Series H: $65B at $965B; $47B run-rate",
+  "kind": "capital",
+  "layers": [
+   "economics",
+   "models"
+  ],
+  "summary": "Anthropic raised $65B at a $965B post-money valuation, above OpenAI's $852B, with run-rate revenue above $47B.",
+  "significance": "Interpretation: enterprise/agentic-coding revenue made Anthropic the highest-valued private lab, overturning the consumer-first assumption.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-13",
+   "ev-ctx2-15"
+  ]
+ },
+ {
+  "id": "evt-2026-openai-ipo-filing",
+  "date": "2026-06-08",
+  "title": "OpenAI confidentially files for an IPO",
+  "kind": "capital",
+  "layers": [
+   "economics"
+  ],
+  "summary": "OpenAI confidentially submitted a draft registration statement (reported May 22/June 8), with reports of a Q4 2026 target at $852B-$1T+.",
+  "significance": "Interpretation: frontier labs moving to public markets would test AI valuations against disclosure.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-12"
+  ]
+ },
+ {
+  "id": "evt-2026-commerce-mythos-order",
+  "date": "2026-06-12",
+  "title": "US Commerce order leads Anthropic to cut off Mythos 5 and Fable 5",
+  "kind": "policy",
+  "layers": [
+   "society",
+   "models",
+   "distribution"
+  ],
+  "summary": "A Commerce letter asked Anthropic to restrict Fable 5 and Mythos 5 for foreign nationals; Anthropic shut off both for all customers; Mythos 5 was partially restored to US critical-infrastructure defenders on June 27.",
+  "significance": "Interpretation: first de facto US government recall of a deployed commercial frontier model; model access became export-controlled.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-25",
+   "ev-ctx2-26"
+  ]
+ },
+ {
+  "id": "evt-2026-eu-omnibus",
+  "date": "2026-06-16",
+  "title": "EU Digital Omnibus delays AI Act high-risk obligations",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "Parliament adopted the deal delaying Annex III high-risk obligations from Aug 2, 2026 to Dec 2, 2027 and Annex I to Aug 2, 2028.",
+  "significance": "Interpretation: Europe shifted from rule-setting toward competitiveness, mirroring the US deregulatory turn.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-30"
+  ]
+ },
+ {
+  "id": "evt-2026-lbnl-update",
+  "date": "2026-06",
+  "title": "LBNL update: data centers 4.7% of US power in 2024, ~11.8% by 2030",
+  "kind": "research",
+  "layers": [
+   "energy",
+   "society"
+  ],
+  "summary": "LBNL's 2025 update projected data centers at 11.8% of US electricity by 2030 (range 9.5-15.3%); secondary reporting puts 2024 use at 192 TWh (4.7%).",
+  "significance": "Interpretation: near-term load came in below some forecasts, but the decade outlook still implies a structural power build.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-35",
+   "ev-ctx2-36"
+  ]
+ },
+ {
+  "id": "evt-2026-preemption-draft",
+  "date": "2026-06",
+  "title": "Bipartisan federal AI preemption discussion draft",
+  "kind": "policy",
+  "layers": [
+   "society"
+  ],
+  "summary": "Reps. Obernolte and Trahan released a draft freezing state laws on AI development for three years; it stalled by September.",
+  "significance": "Interpretation: legislative preemption remained unresolved, leaving a patchwork of state laws.",
+  "magnitude": 2,
+  "evidenceIds": [
+   "ev-ctx2-29"
+  ]
+ },
+ {
+  "id": "evt-2026-opus-5",
+  "date": "2026-07-24",
+  "title": "Claude Opus 5 launches the Claude 5 family",
+  "kind": "model",
+  "layers": [
+   "models",
+   "agents"
+  ],
+  "summary": "Anthropic released Claude Opus 5 at $5/$25 per 1M tokens with 1M context, alongside Sonnet 5 and Fable 5 tiers.",
+  "significance": "Interpretation: frontier list prices held flat while capability rose.",
+  "magnitude": 3,
+  "evidenceIds": [
+   "ev-ctx2-20"
+  ]
+ },
+ {
+  "id": "evt-2026-nvidia-q2fy27",
+  "date": "2026-08-27",
+  "title": "Nvidia Q2 FY2027: $89B data center quarter, $108B guide",
+  "kind": "market",
+  "layers": [
+   "semis",
+   "economics"
+  ],
+  "summary": "NVIDIA reported revenue ~$96.2B and data center $89.0B (+117% y/y), guided Q3 to $108B, and said Vera Rubin was ramping.",
+  "significance": "Interpretation: AI hardware demand was still accelerating at the research cutoff.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-1",
+   "ev-ctx2-2"
+  ]
+ },
+ {
+  "id": "evt-2026-lab-runrates",
+  "date": "2026-09",
+  "title": "Lab run-rates reach ~$65-70B (Anthropic, OpenAI)",
+  "kind": "market",
+  "layers": [
+   "economics",
+   "apps",
+   "agents"
+  ],
+  "summary": "Anthropic's run-rate reportedly topped $65B by end-July 2026 (from ~$9B at end-2025); OpenAI's reportedly neared $70B in September.",
+  "significance": "Interpretation: if accurate, AI model revenue grew fast enough to narrow Sequoia's '$600B question' gap, though run-rates are not audited revenue.",
+  "magnitude": 5,
+  "evidenceIds": [
+   "ev-ctx2-14",
+   "ev-ctx2-10"
+  ]
+ },
+ {
+  "id": "evt-2026-gpt-6",
+  "date": "2026-09-03",
+  "title": "GPT-6 'Astra' rolls out with cyber guardrails",
+  "kind": "model",
+  "layers": [
+   "models",
+   "society"
+  ],
+  "summary": "OpenAI rolled out GPT-6 Astra to business testers, with a cyber-guardrailed version for paid ChatGPT users; reported API price $10/$50 per 1M tokens.",
+  "significance": "Interpretation: frontier list prices rose again for the newest tier, and cyber controls became a launch prerequisite.",
+  "magnitude": 4,
+  "evidenceIds": [
+   "ev-ctx2-19"
+  ]
+ },
+ {
+  "id": "evt-2026-opus-55",
+  "date": "2026-09-22",
+  "title": "Claude Opus 5.5 at lower price",
+  "kind": "model",
+  "layers": [
+   "models",
+   "inference"
+  ],
+  "summary": "Anthropic launched Claude Opus 5.5 at $4/$20 per 1M tokens, 20% below Opus 5 on list price (the source headline says 40% cheaper, possibly on effective cost).",
+  "significance": "Interpretation: price competition at the frontier continued alongside capability gains.",
+  "magnitude": 2,
+  "evidenceIds": [
+   "ev-ctx2-21"
+  ]
+ }
+]

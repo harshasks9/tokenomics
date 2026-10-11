@@ -1,0 +1,2013 @@
+[
+ {
+  "id": "scale-works",
+  "title": "Scale drives capability",
+  "statement": "Bigger networks, more data and more compute reliably buy better capability — general methods that exploit computation beat hand-engineering.",
+  "layers": [
+   "semis",
+   "cloud",
+   "training"
+  ],
+  "topics": [
+   "scaling"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Compute keeps getting cheaper per FLOP",
+   "Enough data exists to feed larger models",
+   "Gains show up in useful capability, not just loss"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2012-09",
+    "status": "partial",
+    "note": "AlexNet shows large GPU-trained nets beat hand-engineered vision.",
+    "evidenceIds": [
+     "ev-ctx-40",
+     "ev-ctx-36"
+    ],
+    "eventIds": [
+     "evt-2012-alexnet"
+    ]
+   },
+   {
+    "date": "2017-10",
+    "status": "partial",
+    "note": "AlphaZero and Transformers reward general methods + compute.",
+    "evidenceIds": [
+     "ev-ctx-62",
+     "ev-ctx-63",
+     "ev-ctx-29",
+     "ev-ctx-59"
+    ],
+    "eventIds": [
+     "evt-2017-alphago-zero",
+     "evt-2017-transformer"
+    ]
+   },
+   {
+    "date": "2020-01",
+    "status": "validated",
+    "note": "Kaplan et al. show smooth power laws; GPT-3 confirms in May 2020.",
+    "evidenceIds": [
+     "ev-ctx-34",
+     "ev-ctx-33",
+     "ev-ctx-74",
+     "ev-ctx-76"
+    ],
+    "eventIds": [
+     "evt-2020-scaling-laws",
+     "evt-2020-gpt3"
+    ]
+   },
+   {
+    "date": "2023-03",
+    "status": "validated",
+    "note": "GPT-4 extends the trend.",
+    "evidenceIds": [
+     "ev-ctx-98",
+     "ev-ctx-30"
+    ],
+    "eventIds": [
+     "evt-2023-gpt4"
+    ]
+   },
+   {
+    "date": "2025-08",
+    "status": "validated",
+    "note": "Pretraining returns are debated (GPT-5 reception), but scale — now in RL and inference — still drives the frontier.",
+    "evidenceIds": [
+     "ev-ctx2-72",
+     "ev-ctx2-50"
+    ],
+    "eventIds": [
+     "evt-2025-gpt-5",
+     "evt-2024-o1"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Held for 2012–2026: every frontier gain came with more compute, though since 2024 the compute shifted from pretraining to RL and inference.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-34",
+   "ev-ctx-98",
+   "ev-ctx-30",
+   "ev-ctx2-50"
+  ]
+ },
+ {
+  "id": "scaling-sufficient",
+  "title": "Scaling LLMs is enough for AGI",
+  "statement": "Continuing to scale today's transformer LLM recipe (plus incremental unhobbling) will by itself reach human-level general intelligence.",
+  "layers": [
+   "training",
+   "models",
+   "society"
+  ],
+  "topics": [
+   "scaling",
+   "agi-timelines"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Next-token prediction learns a world model ('compression is understanding')",
+   "No new architectural ingredient is required",
+   "Data and compute keep pace"
+  ],
+  "dependsOn": [
+   "scale-works"
+  ],
+  "statusHistory": [
+   {
+    "date": "2020-05",
+    "status": "unresolved",
+    "note": "GPT-3's few-shot ability makes the 'pure scaling' bet credible to a minority.",
+    "evidenceIds": [
+     "ev-ctx-33",
+     "ev-ctx-74",
+     "ev-ctx-76"
+    ],
+    "eventIds": [
+     "evt-2020-gpt3"
+    ]
+   },
+   {
+    "date": "2023-03",
+    "status": "contested",
+    "note": "GPT-4 strengthens the scaling camp; critics point to hallucination and reasoning failures.",
+    "evidenceIds": [
+     "ev-ctx-98",
+     "ev-ctx-30"
+    ],
+    "eventIds": [
+     "evt-2023-gpt4"
+    ]
+   },
+   {
+    "date": "2024-12",
+    "status": "contested",
+    "note": "Leading voices (Sutskever, Pichai) say pretraining gains are slowing; o1/o3 move gains to inference & RL.",
+    "evidenceIds": [
+     "ev-ctx2-50",
+     "ev-ctx2-62"
+    ],
+    "eventIds": [
+     "evt-2024-o1",
+     "evt-2024-o3-arc"
+    ]
+   },
+   {
+    "date": "2025-11",
+    "status": "contested",
+    "note": "Sutskever declares the 'age of scaling' over; Hassabis, LeCun, Sutton, Karpathy all expect extra ingredients.",
+    "evidenceIds": [
+     "ev-ctx2-72"
+    ],
+    "eventIds": [
+     "evt-2025-gpt-5"
+    ]
+   }
+  ],
+  "status": "contested",
+  "outcome": "Unsettled at the cutoff: capability kept rising, but via RL, search and tool use layered on LLMs — not plain scale-up — and no system meets common AGI definitions.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-50",
+   "ev-ctx2-72"
+  ]
+ },
+ {
+  "id": "inference-scaling",
+  "title": "Reasoning = a new scaling axis",
+  "statement": "Search, deliberation and RL at inference/post-training time ('System 2') unlock capability that pretraining alone does not.",
+  "layers": [
+   "inference",
+   "training",
+   "agents"
+  ],
+  "topics": [
+   "reasoning",
+   "post-training"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Verifiable rewards exist for enough domains",
+   "Inference compute stays affordable",
+   "Reasoning traces generalize"
+  ],
+  "dependsOn": [
+   "scale-works"
+  ],
+  "statusHistory": [
+   {
+    "date": "2016-03",
+    "status": "partial",
+    "note": "AlphaGo shows search + learned value functions beat pure pattern-matching in games.",
+    "evidenceIds": [
+     "ev-ctx-54"
+    ],
+    "eventIds": [
+     "evt-2016-alphago"
+    ]
+   },
+   {
+    "date": "2022-01",
+    "status": "partial",
+    "note": "Chain-of-thought prompting hints that LLMs reason better when allowed to think.",
+    "evidenceIds": [
+     "ev-ctx-115"
+    ],
+    "eventIds": [
+     "evt-2022-chain-of-thought"
+    ]
+   },
+   {
+    "date": "2024-09",
+    "status": "validated",
+    "note": "OpenAI o1 makes test-time compute a product and a scaling law.",
+    "evidenceIds": [
+     "ev-ctx2-50"
+    ],
+    "eventIds": [
+     "evt-2024-o1"
+    ]
+   },
+   {
+    "date": "2025-01",
+    "status": "validated",
+    "note": "DeepSeek-R1 replicates RL-trained reasoning in the open; reasoning goes mainstream.",
+    "evidenceIds": [
+     "ev-ctx2-63",
+     "ev-ctx2-67"
+    ],
+    "eventIds": [
+     "evt-2025-deepseek-r1",
+     "evt-2025-reasoning-wave"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated: reasoning models defined 2025–26 frontier progress and multiplied inference compute demand.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-50",
+   "ev-ctx2-63"
+  ]
+ },
+ {
+  "id": "data-wall",
+  "title": "Human data runs out",
+  "statement": "High-quality human text is finite; pretraining as practised will plateau and progress must come from synthetic data, RL and experience.",
+  "layers": [
+   "data",
+   "training"
+  ],
+  "topics": [
+   "data",
+   "post-training",
+   "scaling"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Web-scale text is near exhaustion",
+   "Synthetic/experiential data can substitute",
+   "Data efficiency does not leap"
+  ],
+  "dependsOn": [
+   "scale-works"
+  ],
+  "statusHistory": [
+   {
+    "date": "2022-03",
+    "status": "unresolved",
+    "note": "Chinchilla shows models were data-starved — data becomes the binding input.",
+    "evidenceIds": [
+     "ev-ctx-35"
+    ],
+    "eventIds": [
+     "evt-2022-chinchilla"
+    ]
+   },
+   {
+    "date": "2024-12",
+    "status": "partial",
+    "note": "Sutskever's 'peak data' talk; labs pivot to RL environments and synthetic data.",
+    "evidenceIds": [
+     "ev-ctx2-50"
+    ],
+    "eventIds": [
+     "evt-2024-o1"
+    ]
+   },
+   {
+    "date": "2026-04",
+    "status": "partial",
+    "note": "Frontier progress continues through RL/post-training; no hard wall observed, but pretraining is no longer the main lever.",
+    "evidenceIds": [
+     "ev-ctx2-22",
+     "ev-ctx2-41"
+    ],
+    "eventIds": [
+     "evt-2026-deepseek-v4"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partly borne out: labs shifted to RL environments, synthetic and agentic data; no capability wall appeared.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-35"
+  ]
+ },
+ {
+  "id": "beyond-llms",
+  "title": "LLMs are a dead end",
+  "statement": "Autoregressive language models cannot reach human-level intelligence; world models, experiential RL or program synthesis are needed.",
+  "layers": [
+   "architecture",
+   "training"
+  ],
+  "topics": [
+   "architecture",
+   "reasoning",
+   "agi-timelines"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Text lacks grounding in physical reality",
+   "Error compounds in autoregressive generation",
+   "A rival paradigm can be made to work at scale"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2018-01",
+    "status": "contested",
+    "note": "Critics catalogue deep learning's limits; few alternatives are competitive.",
+    "evidenceIds": [
+     "ev-ctx-64",
+     "ev-ctx-65",
+     "ev-ctx-66"
+    ],
+    "eventIds": [
+     "evt-2018-elmo-gpt1-bert"
+    ]
+   },
+   {
+    "date": "2022-11",
+    "status": "contested",
+    "note": "ChatGPT's success puts LLM skeptics on the defensive.",
+    "evidenceIds": [
+     "ev-ctx-94",
+     "ev-ctx-95"
+    ],
+    "eventIds": [
+     "evt-2022-chatgpt"
+    ]
+   },
+   {
+    "date": "2025-11",
+    "status": "contested",
+    "note": "LeCun leaves Meta to build world models; Sutskever calls for an 'age of research'; no rival paradigm has yet beaten LLM-based systems.",
+    "evidenceIds": [
+     "ev-ctx2-72"
+    ],
+    "eventIds": [
+     "evt-2025-gpt-5"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "contested",
+    "note": "LLM-centric systems still define the frontier (GPT-6, Claude 5); world-model startups are funded but pre-product.",
+    "evidenceIds": [
+     "ev-ctx2-19"
+    ],
+    "eventIds": [
+     "evt-2026-gpt-6"
+    ]
+   }
+  ],
+  "status": "contested",
+  "outcome": "Unresolved: LLM-based systems kept improving through 2026; no alternative architecture has displaced them, but neither has scaling delivered AGI.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-19"
+  ]
+ },
+ {
+  "id": "self-supervision",
+  "title": "Self-supervision is the cake",
+  "statement": "Most learning should come from predicting the world from raw data (self-supervised), not from labels or reward.",
+  "layers": [
+   "training",
+   "data"
+  ],
+  "topics": [
+   "data",
+   "scaling"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Unlabeled data is abundant",
+   "Prediction objectives yield transferable representations"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2016-12",
+    "status": "unresolved",
+    "note": "Supervised ImageNet-style learning dominates.",
+    "evidenceIds": [
+     "ev-ctx-52",
+     "ev-ctx-36"
+    ],
+    "eventIds": [
+     "evt-2015-resnet"
+    ]
+   },
+   {
+    "date": "2018-10",
+    "status": "partial",
+    "note": "ELMo/GPT/BERT pretraining shows self-supervised text pretraining transfers.",
+    "evidenceIds": [
+     "ev-ctx-64",
+     "ev-ctx-65",
+     "ev-ctx-66"
+    ],
+    "eventIds": [
+     "evt-2018-elmo-gpt1-bert"
+    ]
+   },
+   {
+    "date": "2020-05",
+    "status": "validated",
+    "note": "GPT-3 makes self-supervised pretraining the foundation of the field.",
+    "evidenceIds": [
+     "ev-ctx-33",
+     "ev-ctx-74",
+     "ev-ctx-76"
+    ],
+    "eventIds": [
+     "evt-2020-gpt3"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated: self-supervised pretraining became the base layer of every foundation model.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-64",
+   "ev-ctx-65",
+   "ev-ctx-66",
+   "ev-ctx-33",
+   "ev-ctx-74",
+   "ev-ctx-76"
+  ]
+ },
+ {
+  "id": "rl-experience",
+  "title": "RL from experience is the path",
+  "statement": "Agents maximizing reward from their own experience — not imitation of human data — are the route to superhuman intelligence.",
+  "layers": [
+   "training",
+   "agents"
+  ],
+  "topics": [
+   "post-training",
+   "agents"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Rich environments with reward signals can be built",
+   "Credit assignment scales",
+   "Experience can be gathered cheaply enough"
+  ],
+  "dependsOn": [
+   "data-wall"
+  ],
+  "statusHistory": [
+   {
+    "date": "2016-03",
+    "status": "partial",
+    "note": "AlphaGo / AlphaZero: superhuman play from self-play RL.",
+    "evidenceIds": [
+     "ev-ctx-54",
+     "ev-ctx-62",
+     "ev-ctx-63",
+     "ev-ctx-29"
+    ],
+    "eventIds": [
+     "evt-2016-alphago",
+     "evt-2017-alphago-zero"
+    ]
+   },
+   {
+    "date": "2022-03",
+    "status": "partial",
+    "note": "RLHF shows RL matters for LLM usefulness.",
+    "evidenceIds": [
+     "ev-ctx-116"
+    ],
+    "eventIds": [
+     "evt-2022-instructgpt"
+    ]
+   },
+   {
+    "date": "2025-01",
+    "status": "partial",
+    "note": "RL with verifiable rewards drives reasoning models; continual experiential learning not yet realized.",
+    "evidenceIds": [
+     "ev-ctx2-63"
+    ],
+    "eventIds": [
+     "evt-2025-deepseek-r1"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partly validated: RL became central to post-training and reasoning, but open-ended learning from lifelong experience is still a research goal.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-63"
+  ]
+ },
+ {
+  "id": "open-closes-gap",
+  "title": "Open weights catch the frontier",
+  "statement": "Open-weight models will match or closely trail the best closed models, eroding closed-model moats.",
+  "layers": [
+   "models",
+   "economics"
+  ],
+  "topics": [
+   "open-weights",
+   "commoditization"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Training recipes diffuse quickly",
+   "Open developers can access enough compute",
+   "Distillation/efficiency gains spread"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2023-02",
+    "status": "unresolved",
+    "note": "LLaMA weights leak; open models trail GPT-4 by a wide margin.",
+    "evidenceIds": [
+     "ev-ctx-97"
+    ],
+    "eventIds": [
+     "evt-2023-llama"
+    ]
+   },
+   {
+    "date": "2024-07",
+    "status": "partial",
+    "note": "Llama 3.1 405B reaches frontier-class on many benchmarks.",
+    "evidenceIds": [
+     "ev-ctx2-49"
+    ],
+    "eventIds": [
+     "evt-2024-llama-31-405b"
+    ]
+   },
+   {
+    "date": "2025-01",
+    "status": "partial",
+    "note": "DeepSeek-R1 matches o1-class reasoning in the open at a fraction of cost.",
+    "evidenceIds": [
+     "ev-ctx2-63"
+    ],
+    "eventIds": [
+     "evt-2025-deepseek-r1"
+    ]
+   },
+   {
+    "date": "2026-04",
+    "status": "partial",
+    "note": "DeepSeek V4 and Chinese open models trail the closed frontier by months; Meta retreats from fully open frontier releases.",
+    "evidenceIds": [
+     "ev-ctx2-22",
+     "ev-ctx2-41",
+     "ev-ctx2-23"
+    ],
+    "eventIds": [
+     "evt-2026-deepseek-v4",
+     "evt-2026-meta-muse-spark"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partly validated: open weights trail by months (Epoch estimates ~3–4), not years — but the very top remains closed and Meta itself pulled back.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-22",
+   "ev-ctx2-41"
+  ]
+ },
+ {
+  "id": "open-safer",
+  "title": "Openness is safer than control",
+  "statement": "Open release and light-touch rules protect competition and safety better than licensing regimes that favor incumbents.",
+  "layers": [
+   "society",
+   "models"
+  ],
+  "topics": [
+   "open-weights",
+   "safety"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Misuse risk from open models is manageable",
+   "Regulation would be captured by incumbents",
+   "Many eyes improve security"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2023-05",
+    "status": "contested",
+    "note": "Senate hearings float licensing; open-source advocates warn of regulatory capture.",
+    "evidenceIds": [
+     "ev-ctx-101",
+     "ev-ctx-99",
+     "ev-ctx-100"
+    ],
+    "eventIds": [
+     "evt-2023-cais-statement"
+    ]
+   },
+   {
+    "date": "2024-09",
+    "status": "contested",
+    "note": "SB 1047 vetoed; EU AI Act in force with GPAI duties.",
+    "evidenceIds": [
+     "ev-ctx2-58",
+     "ev-ctx2-57"
+    ],
+    "eventIds": [
+     "evt-2024-sb1047-veto",
+     "evt-2024-eu-ai-act"
+    ]
+   },
+   {
+    "date": "2026-06",
+    "status": "contested",
+    "note": "Governments restrict access to the most capable closed models (Mythos), while open Chinese models proliferate.",
+    "evidenceIds": [
+     "ev-ctx2-25",
+     "ev-ctx2-26",
+     "ev-ctx2-22",
+     "ev-ctx2-41"
+    ],
+    "eventIds": [
+     "evt-2026-commerce-mythos-order",
+     "evt-2026-deepseek-v4"
+    ]
+   }
+  ],
+  "status": "contested",
+  "outcome": "A values-laden debate, not settled by events: neither catastrophic open-model misuse nor regulatory capture has been clearly demonstrated by the cutoff.",
+  "outcomeEvidenceIds": []
+ },
+ {
+  "id": "models-commoditize",
+  "title": "Models commoditize",
+  "statement": "Prices for a given capability collapse and model APIs become interchangeable, compressing model-layer margins.",
+  "layers": [
+   "inference",
+   "models",
+   "economics"
+  ],
+  "topics": [
+   "commoditization",
+   "value-accrual"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Competitors reach parity quickly",
+   "Switching costs stay low",
+   "Efficiency gains are passed to price"
+  ],
+  "dependsOn": [
+   "open-closes-gap"
+  ],
+  "statusHistory": [
+   {
+    "date": "2023-11",
+    "status": "partial",
+    "note": "GPT-4 Turbo price cuts begin a price war.",
+    "evidenceIds": [
+     "ev-ctx-27",
+     "ev-ctx-26"
+    ],
+    "eventIds": [
+     "evt-2023-devday-gpt4-turbo"
+    ]
+   },
+   {
+    "date": "2024-07",
+    "status": "partial",
+    "note": "GPT-4o mini prices GPT-4-class quality ~100x below launch price.",
+    "evidenceIds": [
+     "ev-ctx2-80",
+     "ev-ctx2-39"
+    ],
+    "eventIds": [
+     "evt-2024-gpt4o-mini"
+    ]
+   },
+   {
+    "date": "2025-01",
+    "status": "partial",
+    "note": "DeepSeek prices near cost; Nvidia drops $589B in a day on efficiency fears.",
+    "evidenceIds": [
+     "ev-ctx2-63",
+     "ev-ctx2-64"
+    ],
+    "eventIds": [
+     "evt-2025-deepseek-r1",
+     "evt-2025-nvidia-deepseek-drop"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "partial",
+    "note": "Fixed-capability prices kept falling ~10x/yr, yet frontier labs reached ~$65–70B run-rates — premium frontier tiers retain pricing power.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Half right: capability-adjusted prices collapsed as predicted, but frontier model revenue exploded rather than commoditizing.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-80",
+   "ev-ctx2-39",
+   "ev-ctx2-14",
+   "ev-ctx2-10"
+  ]
+ },
+ {
+  "id": "jevons",
+  "title": "Cheaper AI → more total demand",
+  "statement": "Falling cost per unit of intelligence increases total consumption and spending (Jevons paradox) rather than shrinking the market.",
+  "layers": [
+   "inference",
+   "cloud",
+   "economics"
+  ],
+  "topics": [
+   "commoditization",
+   "infra-cycle"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Demand is highly elastic",
+   "New use cases (agents, reasoning) absorb cheap tokens"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2024-07",
+    "status": "partial",
+    "note": "Token prices fall sharply while usage grows.",
+    "evidenceIds": [
+     "ev-ctx2-80",
+     "ev-ctx2-39"
+    ],
+    "eventIds": [
+     "evt-2024-gpt4o-mini"
+    ]
+   },
+   {
+    "date": "2025-02",
+    "status": "validated",
+    "note": "After DeepSeek, reasoning and agents multiply token demand; capex rises instead of falling.",
+    "evidenceIds": [
+     "ev-ctx2-67",
+     "ev-ctx2-66"
+    ],
+    "eventIds": [
+     "evt-2025-reasoning-wave",
+     "evt-2025-claude-code"
+    ]
+   },
+   {
+    "date": "2026-04",
+    "status": "validated",
+    "note": "Capex guidance reaches ~$700B+ despite collapsing unit prices.",
+    "evidenceIds": [
+     "ev-ctx2-5",
+     "ev-ctx2-6",
+     "ev-ctx2-7"
+    ],
+    "eventIds": [
+     "evt-2026-capex-raise"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated through the cutoff: unit prices fell while total compute spend and lab revenue rose steeply.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-5",
+   "ev-ctx2-6",
+   "ev-ctx2-7",
+   "ev-ctx2-14",
+   "ev-ctx2-10"
+  ]
+ },
+ {
+  "id": "infra-supercycle",
+  "title": "AI infra is a supercycle",
+  "statement": "Demand for AI compute (GPUs, data centers) will sustain a multi-year, trillion-dollar build-out rather than a short boom.",
+  "layers": [
+   "semis",
+   "cloud",
+   "energy"
+  ],
+  "topics": [
+   "infra-cycle",
+   "hyperscalers"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Model and agent demand keeps compounding",
+   "Capital markets keep funding capex",
+   "No efficiency shock collapses compute needs"
+  ],
+  "dependsOn": [
+   "jevons",
+   "scale-works"
+  ],
+  "statusHistory": [
+   {
+    "date": "2019-01",
+    "status": "unresolved",
+    "note": "Crypto bust hits Nvidia; AI demand still small.",
+    "evidenceIds": [
+     "ev-ctx-71",
+     "ev-ctx-4"
+    ],
+    "eventIds": [
+     "evt-2019-mellanox"
+    ]
+   },
+   {
+    "date": "2023-08",
+    "status": "partial",
+    "note": "Nvidia data-center revenue doubles in a quarter amid H100 shortage.",
+    "evidenceIds": [
+     "ev-ctx-105",
+     "ev-ctx-1",
+     "ev-ctx-102"
+    ],
+    "eventIds": [
+     "evt-2023-nvidia-q2fy24"
+    ]
+   },
+   {
+    "date": "2025-01",
+    "status": "validated",
+    "note": "Stargate and record hyperscaler capex; DeepSeek scare does not dent spending.",
+    "evidenceIds": [
+     "ev-ctx2-65",
+     "ev-ctx2-64"
+    ],
+    "eventIds": [
+     "evt-2025-stargate",
+     "evt-2025-nvidia-deepseek-drop"
+    ]
+   },
+   {
+    "date": "2026-08",
+    "status": "validated",
+    "note": "Big-four capex ~$700–725B; Nvidia data-center revenue ~$89B a quarter.",
+    "evidenceIds": [
+     "ev-ctx2-5",
+     "ev-ctx2-6",
+     "ev-ctx2-7",
+     "ev-ctx2-1",
+     "ev-ctx2-2"
+    ],
+    "eventIds": [
+     "evt-2026-capex-raise",
+     "evt-2026-nvidia-q2fy27"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated through Oct 2026 — the largest capex cycle in tech history — though whether it ends in overbuild is a separate, open question.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-5",
+   "ev-ctx2-6",
+   "ev-ctx2-7",
+   "ev-ctx2-1",
+   "ev-ctx2-2"
+  ]
+ },
+ {
+  "id": "capex-pays-back",
+  "title": "The capex will pay back",
+  "statement": "End-user AI revenue will grow fast enough to justify the infrastructure spend; fears of an AI bubble are overdone.",
+  "layers": [
+   "economics",
+   "cloud"
+  ],
+  "topics": [
+   "infra-cycle",
+   "value-accrual",
+   "enterprise-roi"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "AI revenue keeps compounding at triple digits",
+   "Depreciation lives hold",
+   "Financing stays available"
+  ],
+  "dependsOn": [
+   "infra-supercycle"
+  ],
+  "statusHistory": [
+   {
+    "date": "2023-09",
+    "status": "contested",
+    "note": "Sequoia's $200B question: revenue far below capex.",
+    "evidenceIds": [
+     "ev-ctx-105",
+     "ev-ctx-1",
+     "ev-ctx-102"
+    ],
+    "eventIds": [
+     "evt-2023-nvidia-q2fy24"
+    ]
+   },
+   {
+    "date": "2024-06",
+    "status": "contested",
+    "note": "The gap becomes 'AI's $600B question'.",
+    "evidenceIds": [
+     "ev-ctx2-52"
+    ],
+    "eventIds": [
+     "evt-2024-sequoia-600b"
+    ]
+   },
+   {
+    "date": "2025-12",
+    "status": "contested",
+    "note": "Circular financing and Oracle credit spreads raise bubble fears.",
+    "evidenceIds": [
+     "ev-ctx2-32",
+     "ev-ctx2-33",
+     "ev-ctx2-75"
+    ],
+    "eventIds": [
+     "evt-2025-oracle-cds",
+     "evt-2025-compute-megadeals"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "unresolved",
+    "note": "Lab revenue run-rates of ~$65–70B narrow but do not close the gap with ~$700B annual capex.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10",
+     "ev-ctx2-5",
+     "ev-ctx2-6",
+     "ev-ctx2-7"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates",
+     "evt-2026-capex-raise"
+    ]
+   }
+  ],
+  "status": "unresolved",
+  "outcome": "Unresolved: revenue is growing faster than skeptics expected, but remains a fraction of annual capex; the payback test falls after the cutoff.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-14",
+   "ev-ctx2-10",
+   "ev-ctx2-32",
+   "ev-ctx2-33"
+  ]
+ },
+ {
+  "id": "power-binding",
+  "title": "Power becomes the binding constraint",
+  "statement": "Electricity, grid interconnects and permitted data-center shells — not chips — become the limiting factor for AI build-out.",
+  "layers": [
+   "energy",
+   "cloud"
+  ],
+  "topics": [
+   "infra-cycle"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Chip supply catches up",
+   "Grid and permitting move slowly",
+   "Demand keeps rising"
+  ],
+  "dependsOn": [
+   "infra-supercycle"
+  ],
+  "statusHistory": [
+   {
+    "date": "2019-06",
+    "status": "unresolved",
+    "note": "Energy cost of training is an academic concern.",
+    "evidenceIds": [
+     "ev-ctx-121"
+    ],
+    "eventIds": [
+     "evt-2019-strubell-energy"
+    ]
+   },
+   {
+    "date": "2024-09",
+    "status": "partial",
+    "note": "Hyperscalers sign nuclear PPAs and restart reactors.",
+    "evidenceIds": [
+     "ev-ctx2-55",
+     "ev-ctx2-34",
+     "ev-ctx2-44"
+    ],
+    "eventIds": [
+     "evt-2024-tmi-restart",
+     "evt-2024-lbnl-report"
+    ]
+   },
+   {
+    "date": "2025-11",
+    "status": "validated",
+    "note": "CEOs report chips waiting on power and shells; GW-scale campuses become the unit of planning.",
+    "evidenceIds": [
+     "ev-ctx2-75"
+    ],
+    "eventIds": [
+     "evt-2025-compute-megadeals"
+    ]
+   },
+   {
+    "date": "2026-06",
+    "status": "validated",
+    "note": "LBNL: data centers ~4.7% of US power and rising toward ~12% by 2030.",
+    "evidenceIds": [
+     "ev-ctx2-35",
+     "ev-ctx2-36"
+    ],
+    "eventIds": [
+     "evt-2026-lbnl-update"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Largely validated by 2025–26: power and site readiness became the gating factor for new capacity.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-35",
+   "ev-ctx2-36",
+   "ev-ctx2-55"
+  ]
+ },
+ {
+  "id": "frontier-consolidates",
+  "title": "Frontier AI consolidates",
+  "statement": "Building frontier models requires capital and compute only a handful of hyperscaler-backed players can sustain.",
+  "layers": [
+   "cloud",
+   "models",
+   "economics"
+  ],
+  "topics": [
+   "hyperscalers",
+   "value-accrual",
+   "scaling"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Frontier training costs keep rising",
+   "Distribution and capital are scarce",
+   "Efficiency shocks don't reset the race"
+  ],
+  "dependsOn": [
+   "scale-works"
+  ],
+  "statusHistory": [
+   {
+    "date": "2019-07",
+    "status": "partial",
+    "note": "OpenAI needs Microsoft's $1B and Azure to keep scaling.",
+    "evidenceIds": [
+     "ev-ctx-73"
+    ],
+    "eventIds": [
+     "evt-2019-microsoft-openai-1b"
+    ]
+   },
+   {
+    "date": "2023-09",
+    "status": "partial",
+    "note": "Anthropic aligns with Amazon/Google; Microsoft deepens OpenAI tie.",
+    "evidenceIds": [
+     "ev-ctx-106",
+     "ev-ctx-96"
+    ],
+    "eventIds": [
+     "evt-2023-amazon-anthropic",
+     "evt-2023-microsoft-openai-10b"
+    ]
+   },
+   {
+    "date": "2024-03",
+    "status": "validated",
+    "note": "Independent labs (Inflection, Character) fold into hyperscalers via license-and-hire deals.",
+    "evidenceIds": [
+     "ev-ctx2-59"
+    ],
+    "eventIds": [
+     "evt-2024-acquihire-deals"
+    ]
+   },
+   {
+    "date": "2026-05",
+    "status": "validated",
+    "note": "OpenAI ($852B) and Anthropic ($965B) raise mega-rounds; 01.AI exits pretraining. DeepSeek remains the efficient exception.",
+    "evidenceIds": [
+     "ev-ctx2-11",
+     "ev-ctx2-13",
+     "ev-ctx2-15"
+    ],
+    "eventIds": [
+     "evt-2026-openai-852b",
+     "evt-2026-anthropic-series-h"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated with an exception: the frontier narrowed to a few capital-rich US labs plus a small group of efficient Chinese labs.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-59",
+   "ev-ctx2-13",
+   "ev-ctx2-15"
+  ]
+ },
+ {
+  "id": "incumbents-hold",
+  "title": "Incumbents absorb the disruption",
+  "statement": "Platform incumbents (Google, Microsoft, Meta) defend their core franchises by embedding generative AI rather than being displaced by it.",
+  "layers": [
+   "distribution",
+   "apps"
+  ],
+  "topics": [
+   "hyperscalers",
+   "app-moats"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Distribution beats model quality",
+   "Incumbents move fast enough",
+   "Users don't switch default habits"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2023-02",
+    "status": "contested",
+    "note": "Bing Chat vows to 'make Google dance'; Google rushes Bard.",
+    "evidenceIds": [
+     "ev-ctx-114"
+    ],
+    "eventIds": [
+     "evt-2023-bing-chat"
+    ]
+   },
+   {
+    "date": "2025-11",
+    "status": "partial",
+    "note": "Google's Gemini 3 retakes benchmark lead; search revenue holds.",
+    "evidenceIds": [
+     "ev-ctx2-17"
+    ],
+    "eventIds": [
+     "evt-2025-gemini-3"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "partial",
+    "note": "Incumbents hold distribution, but OpenAI and Anthropic became platform-scale companies in their own right.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partly validated: no major incumbent franchise collapsed by 2026, but new AI-native platforms reached incumbent scale.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-17"
+  ]
+ },
+ {
+  "id": "app-layer-value",
+  "title": "Value accrues to apps & agents",
+  "statement": "Durable value will accrue to application, workflow and agent layers built on top of models (the software-after-Nvidia thesis).",
+  "layers": [
+   "apps",
+   "agents",
+   "economics"
+  ],
+  "topics": [
+   "app-moats",
+   "value-accrual"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Models commoditize beneath apps",
+   "Workflow and data create switching costs",
+   "Apps capture a share of labor budgets"
+  ],
+  "dependsOn": [
+   "models-commoditize"
+  ],
+  "statusHistory": [
+   {
+    "date": "2023-06",
+    "status": "unresolved",
+    "note": "Value concentrates in Nvidia; apps are 'thin wrappers'.",
+    "evidenceIds": [
+     "ev-ctx-105",
+     "ev-ctx-1",
+     "ev-ctx-102"
+    ],
+    "eventIds": [
+     "evt-2023-nvidia-q2fy24"
+    ]
+   },
+   {
+    "date": "2025-02",
+    "status": "partial",
+    "note": "Coding agents (Cursor, Claude Code) become the first breakout application category.",
+    "evidenceIds": [
+     "ev-ctx2-66"
+    ],
+    "eventIds": [
+     "evt-2025-claude-code"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "contested",
+    "note": "Model labs move up-stack into agents and apps, competing with their own customers.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates"
+    ]
+   }
+  ],
+  "status": "contested",
+  "outcome": "Unresolved: some app-layer companies grew fast, but model labs captured much of the agent value themselves through 2026.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-66"
+  ]
+ },
+ {
+  "id": "agents-soon",
+  "title": "Reliable agents arrive in 2025–26",
+  "statement": "Autonomous agents will join the workforce as reliable coworkers within a year or two, materially changing company output.",
+  "layers": [
+   "agents",
+   "apps"
+  ],
+  "topics": [
+   "agents",
+   "enterprise-roi",
+   "labor"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Reliability over long horizons is achievable soon",
+   "Tool/computer use matures",
+   "Enterprises restructure work around agents"
+  ],
+  "dependsOn": [
+   "inference-scaling"
+  ],
+  "statusHistory": [
+   {
+    "date": "2023-07",
+    "status": "unresolved",
+    "note": "Copilots launch; autonomy is aspirational.",
+    "evidenceIds": [
+     "ev-ctx-27",
+     "ev-ctx-26"
+    ],
+    "eventIds": [
+     "evt-2023-devday-gpt4-turbo"
+    ]
+   },
+   {
+    "date": "2025-03",
+    "status": "partial",
+    "note": "METR shows task horizons doubling ~every 7 months; coding agents work for hours.",
+    "evidenceIds": [
+     "ev-ctx2-37",
+     "ev-ctx2-66"
+    ],
+    "eventIds": [
+     "evt-2025-metr-horizons",
+     "evt-2025-claude-code"
+    ]
+   },
+   {
+    "date": "2025-08",
+    "status": "partial",
+    "note": "Enterprise pilots mostly fail to show P&L impact (MIT NANDA).",
+    "evidenceIds": [
+     "ev-ctx2-73"
+    ],
+    "eventIds": [
+     "evt-2025-mit-nanda"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "partial",
+    "note": "Agents are productive in coding and narrow workflows; general 'digital employees' remain unreliable.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partly right, early elsewhere: agents transformed software engineering by 2026 but not general knowledge work.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-37",
+   "ev-ctx2-73"
+  ]
+ },
+ {
+  "id": "coding-first",
+  "title": "Software is automated first",
+  "statement": "Programming becomes the first profession transformed: natural language and neural nets increasingly write the code.",
+  "layers": [
+   "apps",
+   "agents"
+  ],
+  "topics": [
+   "coding",
+   "labor"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Code is verifiable and data-rich",
+   "Developers adopt tools quickly"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2017-11",
+    "status": "unresolved",
+    "note": "'Software 2.0' framing; little practical automation.",
+    "evidenceIds": [
+     "ev-ctx-59"
+    ],
+    "eventIds": [
+     "evt-2017-transformer"
+    ]
+   },
+   {
+    "date": "2021-06",
+    "status": "partial",
+    "note": "GitHub Copilot preview shows LLM code completion works.",
+    "evidenceIds": [
+     "ev-ctx-82"
+    ],
+    "eventIds": [
+     "evt-2021-copilot-preview"
+    ]
+   },
+   {
+    "date": "2025-02",
+    "status": "validated",
+    "note": "Agentic coding (Claude Code, Cursor) becomes the killer app.",
+    "evidenceIds": [
+     "ev-ctx2-66"
+    ],
+    "eventIds": [
+     "evt-2025-claude-code"
+    ]
+   },
+   {
+    "date": "2026-03",
+    "status": "validated",
+    "note": "AI writes the majority of code at leading labs and many startups; coding agents drive lab revenue.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated: software development was the first large-scale professional domain transformed by AI.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-82",
+   "ev-ctx2-66"
+  ]
+ },
+ {
+  "id": "agi-near",
+  "title": "Human-level AGI is near",
+  "statement": "Human-level (or greater) general AI will arrive within a few years of the claim — on most such claims, before ~2030.",
+  "layers": [
+   "models",
+   "society"
+  ],
+  "topics": [
+   "agi-timelines"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Current trends extrapolate",
+   "No missing ingredient",
+   "Compute build-out continues"
+  ],
+  "dependsOn": [
+   "scaling-sufficient"
+  ],
+  "statusHistory": [
+   {
+    "date": "2014-10",
+    "status": "unresolved",
+    "note": "AGI timelines are speculative; most researchers say decades.",
+    "evidenceIds": [
+     "ev-ctx-50"
+    ],
+    "eventIds": [
+     "evt-2014-superintelligence"
+    ]
+   },
+   {
+    "date": "2023-05",
+    "status": "unresolved",
+    "note": "GPT-4 shortens many experts' timelines (Hinton, Bengio).",
+    "evidenceIds": [
+     "ev-ctx-98",
+     "ev-ctx-30",
+     "ev-ctx-101",
+     "ev-ctx-99",
+     "ev-ctx-100"
+    ],
+    "eventIds": [
+     "evt-2023-gpt4",
+     "evt-2023-cais-statement"
+    ]
+   },
+   {
+    "date": "2026-01",
+    "status": "unresolved",
+    "note": "Deadlines set for 2025 (e.g. Musk) pass without AGI; Amodei/Aschenbrenner windows (2026–27) still open.",
+    "evidenceIds": [
+     "ev-ctx2-72"
+    ],
+    "eventIds": [
+     "evt-2025-gpt-5"
+    ]
+   }
+  ],
+  "status": "unresolved",
+  "outcome": "Unresolved: no consensus AGI by the cutoff; several specific near-term deadlines (2025) were missed while capability rose quickly.",
+  "outcomeEvidenceIds": []
+ },
+ {
+  "id": "existential-risk",
+  "title": "Advanced AI is an existential risk",
+  "statement": "Advanced AI could cause catastrophic or existential harm and warrants strong safety work and governance now.",
+  "layers": [
+   "society"
+  ],
+  "topics": [
+   "safety"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Capabilities will exceed human control",
+   "Alignment is not solved by default",
+   "Coordination is possible"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2014-07",
+    "status": "contested",
+    "note": "Bostrom's Superintelligence frames the risk; most researchers dismiss it.",
+    "evidenceIds": [
+     "ev-ctx-50"
+    ],
+    "eventIds": [
+     "evt-2014-superintelligence"
+    ]
+   },
+   {
+    "date": "2023-05",
+    "status": "contested",
+    "note": "CAIS statement signed by Hinton, Bengio, Altman, Amodei, Hassabis; LeCun dissents.",
+    "evidenceIds": [
+     "ev-ctx-101",
+     "ev-ctx-99",
+     "ev-ctx-100"
+    ],
+    "eventIds": [
+     "evt-2023-cais-statement"
+    ]
+   },
+   {
+    "date": "2026-06",
+    "status": "contested",
+    "note": "Governments restrict frontier cyber-capable models (Glasswing/Mythos); evaluations show deceptive behaviors; no catastrophe observed.",
+    "evidenceIds": [
+     "ev-ctx2-24",
+     "ev-ctx2-25",
+     "ev-ctx2-26"
+    ],
+    "eventIds": [
+     "evt-2026-glasswing",
+     "evt-2026-commerce-mythos-order"
+    ]
+   }
+  ],
+  "status": "contested",
+  "outcome": "Not resolvable by observation at the cutoff; the risk debate moved from fringe to government policy.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-101",
+   "ev-ctx-99",
+   "ev-ctx-100",
+   "ev-ctx2-24"
+  ]
+ },
+ {
+  "id": "mass-displacement",
+  "title": "AI causes mass job loss",
+  "statement": "AI will displace a large share of human jobs (or tasks) within roughly a decade of the claim.",
+  "layers": [
+   "society",
+   "apps"
+  ],
+  "topics": [
+   "labor"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Capability translates quickly into deployment",
+   "Firms substitute rather than augment",
+   "New job creation lags"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2016-11",
+    "status": "unresolved",
+    "note": "Radiology and driving cited as first to go.",
+    "evidenceIds": [
+     "ev-ctx-54"
+    ],
+    "eventIds": [
+     "evt-2016-alphago"
+    ]
+   },
+   {
+    "date": "2021-11",
+    "status": "partial",
+    "note": "Five-year radiology deadline passes; radiologist demand still rises — first concrete miss.",
+    "evidenceIds": [
+     "ev-ctx-82"
+    ],
+    "eventIds": [
+     "evt-2021-copilot-preview"
+    ]
+   },
+   {
+    "date": "2025-08",
+    "status": "unresolved",
+    "note": "Early evidence of reduced entry-level hiring in AI-exposed occupations; no aggregate unemployment spike.",
+    "evidenceIds": [
+     "ev-ctx2-74"
+    ],
+    "eventIds": [
+     "evt-2025-canaries"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "unresolved",
+    "note": "Aggregate employment intact at the cutoff; most decade-scale deadlines not yet reached.",
+    "evidenceIds": [
+     "ev-ctx2-74"
+    ],
+    "eventIds": [
+     "evt-2025-canaries"
+    ]
+   }
+  ],
+  "status": "unresolved",
+  "outcome": "Unresolved overall; specific early calls (radiologists by 2021, 80% of doctors' work by 2025) failed, while entry-level effects are emerging.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-74"
+  ]
+ },
+ {
+  "id": "china-parity",
+  "title": "China reaches near-parity",
+  "statement": "Chinese AI will match or nearly match the US frontier despite compute disadvantages and export controls.",
+  "layers": [
+   "models",
+   "semis",
+   "society"
+  ],
+  "topics": [
+   "open-weights",
+   "infra-cycle"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Engineering efficiency offsets compute gap",
+   "Talent and data are sufficient",
+   "Controls leak or are circumvented"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2017-07",
+    "status": "unresolved",
+    "note": "China's AI plan targets leadership by 2030.",
+    "evidenceIds": [
+     "ev-ctx-61"
+    ],
+    "eventIds": [
+     "evt-2017-china-aidp"
+    ]
+   },
+   {
+    "date": "2022-10",
+    "status": "contested",
+    "note": "US export controls aim to freeze China's compute.",
+    "evidenceIds": [
+     "ev-ctx-93"
+    ],
+    "eventIds": [
+     "evt-2022-export-controls"
+    ]
+   },
+   {
+    "date": "2025-01",
+    "status": "partial",
+    "note": "DeepSeek-R1 shocks markets with near-frontier reasoning.",
+    "evidenceIds": [
+     "ev-ctx2-63"
+    ],
+    "eventIds": [
+     "evt-2025-deepseek-r1"
+    ]
+   },
+   {
+    "date": "2026-04",
+    "status": "partial",
+    "note": "DeepSeek V4 / Qwen / Kimi trail the frontier by months; compute still constrains China.",
+    "evidenceIds": [
+     "ev-ctx2-22",
+     "ev-ctx2-41",
+     "ev-ctx2-69",
+     "ev-ctx2-42"
+    ],
+    "eventIds": [
+     "evt-2026-deepseek-v4",
+     "evt-2025-china-open-wave"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partly validated: China reached near-parity in open models with months of lag, not leadership; compute access remains its binding constraint.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-63",
+   "ev-ctx2-22",
+   "ev-ctx2-41"
+  ]
+ },
+ {
+  "id": "ai-for-science",
+  "title": "AI becomes an engine of science",
+  "statement": "AI systems will solve fundamental scientific problems and become primary tools of discovery.",
+  "layers": [
+   "models",
+   "apps"
+  ],
+  "topics": [
+   "reasoning"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Scientific problems have learnable structure",
+   "Verification is possible"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2016-03",
+    "status": "unresolved",
+    "note": "AlphaGo hints at superhuman search in hard domains.",
+    "evidenceIds": [
+     "ev-ctx-54"
+    ],
+    "eventIds": [
+     "evt-2016-alphago"
+    ]
+   },
+   {
+    "date": "2020-11",
+    "status": "validated",
+    "note": "AlphaFold 2 solves protein structure prediction at CASP14.",
+    "evidenceIds": [
+     "ev-ctx-77"
+    ],
+    "eventIds": [
+     "evt-2020-alphafold2"
+    ]
+   },
+   {
+    "date": "2024-10",
+    "status": "validated",
+    "note": "Nobel Prize in Chemistry for AlphaFold.",
+    "evidenceIds": [
+     "ev-ctx2-60"
+    ],
+    "eventIds": [
+     "evt-2024-nobel-ai"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "partial",
+    "note": "Models contribute novel math results; AI-designed drugs still in early trials.",
+    "evidenceIds": [
+     "ev-ctx2-19"
+    ],
+    "eventIds": [
+     "evt-2026-gpt-6"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Validated for structural biology and parts of mathematics; broader 'AI scientist' claims remain partial.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-77",
+   "ev-ctx2-60"
+  ]
+ },
+ {
+  "id": "language-interface",
+  "title": "Language becomes the interface",
+  "statement": "Natural-language conversation becomes a primary computing interface — 'English is the new programming language'.",
+  "layers": [
+   "distribution",
+   "apps"
+  ],
+  "topics": [
+   "agents",
+   "coding"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Models understand intent reliably",
+   "Users prefer asking to clicking"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2016-03",
+    "status": "unresolved",
+    "note": "Chatbots ('bots are the new apps') underwhelm.",
+    "evidenceIds": [
+     "ev-ctx-54"
+    ],
+    "eventIds": [
+     "evt-2016-alphago"
+    ]
+   },
+   {
+    "date": "2022-11",
+    "status": "validated",
+    "note": "ChatGPT reaches 100M users in two months.",
+    "evidenceIds": [
+     "ev-ctx-94",
+     "ev-ctx-95"
+    ],
+    "eventIds": [
+     "evt-2022-chatgpt"
+    ]
+   },
+   {
+    "date": "2025-02",
+    "status": "validated",
+    "note": "Coding by natural language ('vibe coding') goes mainstream.",
+    "evidenceIds": [
+     "ev-ctx2-66"
+    ],
+    "eventIds": [
+     "evt-2025-claude-code"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Validated: conversational interfaces reached hundreds of millions of weekly users and natural language became a programming interface.",
+  "outcomeEvidenceIds": [
+   "ev-ctx-94",
+   "ev-ctx-95"
+  ]
+ },
+ {
+  "id": "fsd-imminent",
+  "title": "Full self-driving is a year away",
+  "statement": "Camera-only neural driving will deliver unsupervised autonomy at scale within about a year of each claim.",
+  "layers": [
+   "agents",
+   "apps"
+  ],
+  "topics": [
+   "agents"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "End-to-end vision is sufficient",
+   "Fleet data solves the long tail",
+   "Regulators approve quickly"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2017-12",
+    "status": "falsified",
+    "note": "The promised 2017 coast-to-coast autonomous drive does not happen.",
+    "evidenceIds": [],
+    "eventIds": []
+   },
+   {
+    "date": "2020-12",
+    "status": "falsified",
+    "note": "No million robotaxis in 2020.",
+    "evidenceIds": [],
+    "eventIds": []
+   },
+   {
+    "date": "2025-12",
+    "status": "falsified",
+    "note": "Robotaxi coverage of half the US by end-2025 does not happen; service remains limited.",
+    "evidenceIds": [],
+    "eventIds": []
+   }
+  ],
+  "status": "falsified",
+  "outcome": "Falsified on the stated timelines (2017, 2020, 2025); whether vision-only autonomy ultimately scales is a separate, open question.",
+  "outcomeEvidenceIds": [
+   "ev-out-tesla-1"
+  ]
+ },
+ {
+  "id": "benchmarks-not-intelligence",
+  "title": "Skill ≠ intelligence",
+  "statement": "Benchmark skill can be bought with data; intelligence is efficiency of adapting to novelty, and AI capability is 'jagged'.",
+  "layers": [
+   "platforms",
+   "models"
+  ],
+  "topics": [
+   "reasoning",
+   "agi-timelines"
+  ],
+  "lens": "technical",
+  "assumptions": [
+   "Benchmarks leak into training data",
+   "Novel-task adaptation is measurable"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2019-11",
+    "status": "unresolved",
+    "note": "ARC benchmark introduced; LLMs score near zero.",
+    "evidenceIds": [],
+    "eventIds": []
+   },
+   {
+    "date": "2024-12",
+    "status": "partial",
+    "note": "o3 breaks ARC-AGI-1 with heavy test-time compute.",
+    "evidenceIds": [
+     "ev-ctx2-62"
+    ],
+    "eventIds": [
+     "evt-2024-o3-arc"
+    ]
+   },
+   {
+    "date": "2025-06",
+    "status": "validated",
+    "note": "ARC-AGI-2 again exposes a large human–AI gap; 'jagged intelligence' becomes common vocabulary.",
+    "evidenceIds": [
+     "ev-ctx2-62"
+    ],
+    "eventIds": [
+     "evt-2024-o3-arc"
+    ]
+   }
+  ],
+  "status": "validated",
+  "outcome": "Largely validated as a measurement critique: frontier systems remain jagged — superhuman on many benchmarks, brittle on novel tasks.",
+  "outcomeEvidenceIds": [
+   "ev-chollet-7",
+   "ev-out-arc2-1"
+  ]
+ },
+ {
+  "id": "productivity-roi",
+  "title": "Enterprise AI pays off fast",
+  "statement": "Generative AI will quickly deliver large, measurable enterprise productivity gains and ROI.",
+  "layers": [
+   "apps",
+   "economics",
+   "society"
+  ],
+  "topics": [
+   "enterprise-roi",
+   "labor"
+  ],
+  "lens": "commercial",
+  "assumptions": [
+   "Workflows can be redesigned quickly",
+   "Quality is sufficient for production",
+   "Gains show up in P&L"
+  ],
+  "dependsOn": [],
+  "statusHistory": [
+   {
+    "date": "2023-07",
+    "status": "unresolved",
+    "note": "Copilot priced at $30/user/month; ROI unproven.",
+    "evidenceIds": [
+     "ev-ctx-27",
+     "ev-ctx-26"
+    ],
+    "eventIds": [
+     "evt-2023-devday-gpt4-turbo"
+    ]
+   },
+   {
+    "date": "2025-08",
+    "status": "contested",
+    "note": "MIT NANDA: ~95% of GenAI pilots show no P&L impact; coding is the exception.",
+    "evidenceIds": [
+     "ev-ctx2-73"
+    ],
+    "eventIds": [
+     "evt-2025-mit-nanda"
+    ]
+   },
+   {
+    "date": "2026-09",
+    "status": "partial",
+    "note": "Enterprise spend surges (lab run-rates), concentrated in coding and customer operations; economy-wide productivity gains not yet visible in statistics.",
+    "evidenceIds": [
+     "ev-ctx2-14",
+     "ev-ctx2-10"
+    ],
+    "eventIds": [
+     "evt-2026-lab-runrates"
+    ]
+   }
+  ],
+  "status": "partial",
+  "outcome": "Partial: spending and adoption are real and concentrated; macro productivity effects had not appeared by the cutoff.",
+  "outcomeEvidenceIds": [
+   "ev-ctx2-73",
+   "ev-ctx2-14",
+   "ev-ctx2-10"
+  ]
+ }
+]

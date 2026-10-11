@@ -1,0 +1,3104 @@
+{
+  "agent": "researchers-1",
+  "thinkers": [
+    {
+      "id": "geoffrey-hinton",
+      "name": "Geoffrey Hinton",
+      "cohort": "researchers",
+      "roles": [
+        {
+          "org": "University of Toronto",
+          "title": "Professor",
+          "from": "1987",
+          "to": null
+        },
+        {
+          "org": "Google (Brain)",
+          "title": "VP & Engineering Fellow",
+          "from": "2013",
+          "to": "2023-05"
+        }
+      ],
+      "bio": "Pioneer of backpropagation-era neural networks and co-author of AlexNet (2012); 2018 Turing Award and 2024 Nobel Prize in Physics laureate who became a leading voice on AI existential risk after leaving Google in 2023.",
+      "selection": {
+        "influence": [
+          5,
+          "Foundational figure in deep learning; trained Sutskever and many leaders."
+        ],
+        "foresight": [
+          3,
+          "Early deep-learning conviction vindicated; radiology prediction failed; risk timelines unresolved."
+        ],
+        "allocation": [
+          3,
+          "Limited capital control, but large agenda-setting effect on governments and public."
+        ],
+        "contribution": [
+          5,
+          "Backprop popularization, Boltzmann machines, dropout, AlexNet."
+        ],
+        "corpus": [
+          4,
+          "Many dated interviews and talks, though often reported secondhand."
+        ],
+        "future": [
+          4,
+          "Nobel laureate whose risk warnings shape policy debate."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Large neural nets trained on GPUs would beat engineered systems; deep learning would rapidly outperform specialists in perception tasks such as radiology.",
+          "evidenceIds": [
+            "ev-hinton-9",
+            "ev-hinton-1"
+          ]
+        },
+        {
+          "period": "p2017",
+          "summary": "Skeptical of backprop as the path to brain-like learning; advocated starting over with new algorithms (capsules).",
+          "evidenceIds": [
+            "ev-hinton-7"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Concluded digital nets may learn better than brains; superhuman AI 5-20 years away rather than 30-50; left Google to warn of existential risk.",
+          "evidenceIds": [
+            "ev-hinton-2",
+            "ev-hinton-3",
+            "ev-hinton-11",
+            "ev-hinton-10"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Nobel laureate; 10-20% extinction risk within ~30 years.",
+          "evidenceIds": [
+            "ev-hinton-5"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Shortened superintelligence timeline to 'a good chance' within 10 years; predicted mass displacement of mundane intellectual labour.",
+          "evidenceIds": [
+            "ev-hinton-4",
+            "ev-hinton-6"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Urged Congress it has maybe a year to regulate before losing control.",
+          "evidenceIds": [
+            "ev-hinton-8"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2023-05",
+          "from": "Superhuman AI 30-50+ years away; backprop inferior to brain learning",
+          "to": "Superhuman AI 5-20 years away; digital learning may be superior to biological; existential risk is serious",
+          "trigger": "Capabilities of PaLM/GPT-4-era LLMs and reflection on digital weight-sharing",
+          "evidenceIds": [
+            "ev-hinton-2",
+            "ev-hinton-3",
+            "ev-hinton-12"
+          ]
+        },
+        {
+          "date": "2025-04",
+          "from": "5-20 years to superintelligence",
+          "to": "good chance within 10 years or less",
+          "trigger": "Rapid progress, especially AI agents",
+          "evidenceIds": [
+            "ev-hinton-4"
+          ]
+        }
+      ],
+      "corpusNotes": "Most statements available only via secondary reporting of interviews; no primary transcripts fetched (all page fetches failed). Probabilistic, long-horizon risk claims dominate post-2023."
+    },
+    {
+      "id": "yann-lecun",
+      "name": "Yann LeCun",
+      "cohort": "researchers",
+      "roles": [
+        {
+          "org": "NYU",
+          "title": "Professor",
+          "from": "2003",
+          "to": null
+        },
+        {
+          "org": "Meta (FAIR)",
+          "title": "Founding Director, then Chief AI Scientist",
+          "from": "2013-12",
+          "to": "2025-12"
+        },
+        {
+          "org": "AMI Labs (Advanced Machine Intelligence)",
+          "title": "Founder & Executive Chairman",
+          "from": "2026",
+          "to": null
+        }
+      ],
+      "bio": "Inventor of convolutional networks and 2018 Turing Award laureate; led Meta's FAIR and its open-weights strategy, and is the most prominent critic of LLMs as a path to human-level AI and of AI existential-risk claims. Left Meta at end-2025 to found the world-model startup AMI Labs.",
+      "selection": {
+        "influence": [
+          5,
+          "CNNs, self-supervised learning advocacy, FAIR leadership."
+        ],
+        "foresight": [
+          3,
+          "Self-supervision call vindicated; LLM 'doomed' claims not borne out so far; paradigm-shift predictions unresolved."
+        ],
+        "allocation": [
+          4,
+          "Shaped Meta's open-weights Llama strategy; raised $1.03B for AMI."
+        ],
+        "contribution": [
+          5,
+          "ConvNets; JEPA research programme."
+        ],
+        "corpus": [
+          5,
+          "Prolific on social media, talks and position papers."
+        ],
+        "future": [
+          4,
+          "Leads the best-funded non-LLM bet."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Self-supervised/predictive learning is the bulk of intelligence ('cake'), with RL as the cherry.",
+          "evidenceIds": [
+            "ev-lecun-14"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Human-level AI requires JEPA world models; auto-regressive LLMs are doomed; x-risk fears preposterous; open source is safer.",
+          "evidenceIds": [
+            "ev-lecun-9",
+            "ev-lecun-1",
+            "ev-lecun-3",
+            "ev-lecun-4",
+            "ev-lecun-10"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "LLMs are an off-ramp/dead end on the path to human-level AI; current AI dumber than a house cat.",
+          "evidenceIds": [
+            "ev-lecun-6",
+            "ev-lecun-11"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Predicted a new paradigm within 3-5 years; left Meta to pursue world models independently.",
+          "evidenceIds": [
+            "ev-lecun-5",
+            "ev-lecun-2",
+            "ev-lecun-7"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Funded AMI Labs ($1.03B); called the LLM-to-human-level bet 'complete BS'; no product yet by October.",
+          "evidenceIds": [
+            "ev-lecun-8",
+            "ev-lecun-13",
+            "ev-lecun-12"
+          ]
+        }
+      ],
+      "reversals": [],
+      "corpusNotes": "Highly consistent views; no documented reversal on LLMs or x-risk. Many quotes come from secondary coverage of X/LinkedIn posts and talks; dating of the 'off-ramp' quote is uncertain (Apr 2024 vs Nov 2025)."
+    },
+    {
+      "id": "yoshua-bengio",
+      "name": "Yoshua Bengio",
+      "cohort": "researchers",
+      "roles": [
+        {
+          "org": "Université de Montréal / Mila",
+          "title": "Professor; Founder & Scientific Advisor of Mila",
+          "from": "1993",
+          "to": null
+        },
+        {
+          "org": "International AI Safety Report",
+          "title": "Chair",
+          "from": "2023-11",
+          "to": null
+        },
+        {
+          "org": "LawZero",
+          "title": "Founder & President",
+          "from": "2025-06",
+          "to": null
+        }
+      ],
+      "bio": "Deep-learning pioneer (attention, neural language models) and 2018 Turing Award laureate who in 2023 became one of the most prominent scientific voices on catastrophic AI risk, chairing the International AI Safety Report and founding LawZero.",
+      "selection": {
+        "influence": [
+          5,
+          "Neural language models, attention, GANs lineage via Mila; most-cited computer scientist."
+        ],
+        "foresight": [
+          3,
+          "System-2 call partially vindicated; risk timeline claims unresolved."
+        ],
+        "allocation": [
+          3,
+          "Policy influence via international report; modest capital."
+        ],
+        "contribution": [
+          5,
+          "Foundational sequence-modeling and attention work."
+        ],
+        "corpus": [
+          4,
+          "Essays on his blog, testimony, papers."
+        ],
+        "future": [
+          4,
+          "Shapes international AI safety governance."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2017",
+          "summary": "Deep learning needs System-2 reasoning and causal, compositional representations to generalize.",
+          "evidenceIds": [
+            "ev-bengio-4"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Converted to taking catastrophic risk seriously; human-level AI 5-20 years away; supported pause and regulation.",
+          "evidenceIds": [
+            "ev-bengio-1",
+            "ev-bengio-2",
+            "ev-bengio-3",
+            "ev-bengio-5"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Agency is the core danger; proposed non-agentic Scientist AI and founded LawZero; chaired International AI Safety Report.",
+          "evidenceIds": [
+            "ev-bengio-6",
+            "ev-bengio-7",
+            "ev-bengio-8",
+            "ev-bengio-9"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2023-05",
+          "from": "Human-level AI decades to centuries away; risk discussion premature",
+          "to": "Human-level AI plausibly 5-20 years away; catastrophic/loss-of-control risk a priority",
+          "trigger": "ChatGPT/GPT-4 capabilities",
+          "evidenceIds": [
+            "ev-bengio-2",
+            "ev-bengio-3"
+          ]
+        }
+      ],
+      "corpusNotes": "All Bengio evidence is 'recalled' — search budget was exhausted and page fetches failed before Bengio could be re-verified. No 2026 developments verified."
+    },
+    {
+      "id": "ilya-sutskever",
+      "name": "Ilya Sutskever",
+      "cohort": "researchers",
+      "roles": [
+        {
+          "org": "Google Brain",
+          "title": "Research Scientist",
+          "from": "2013",
+          "to": "2015"
+        },
+        {
+          "org": "OpenAI",
+          "title": "Co-founder & Chief Scientist",
+          "from": "2015-12",
+          "to": "2024-05"
+        },
+        {
+          "org": "Safe Superintelligence Inc.",
+          "title": "Co-founder; CEO from 2025-07",
+          "from": "2024-06",
+          "to": null
+        }
+      ],
+      "bio": "Co-author of AlexNet and seq2seq, co-founder and longtime chief scientist of OpenAI, and an early, influential believer in scaling; founded Safe Superintelligence Inc. in 2024.",
+      "selection": {
+        "influence": [
+          5,
+          "Driving force behind OpenAI's scaling research."
+        ],
+        "foresight": [
+          4,
+          "Early scaling conviction vindicated; 'peak data' call broadly on target."
+        ],
+        "allocation": [
+          4,
+          "Raised billions for SSI; shaped OpenAI direction."
+        ],
+        "contribution": [
+          5,
+          "AlexNet, seq2seq, GPT lineage."
+        ],
+        "corpus": [
+          2,
+          "Rare public statements; few dated predictions."
+        ],
+        "future": [
+          4,
+          "SSI is a well-funded independent frontier bet."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Big networks on big data guarantee success.",
+          "evidenceIds": [
+            "ev-hinton-9",
+            "ev-sutskever-1",
+            "ev-sutskever-2"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Next-token prediction implies understanding; superintelligence may come this decade and alignment must be solved urgently.",
+          "evidenceIds": [
+            "ev-sutskever-3",
+            "ev-sutskever-4",
+            "ev-sutskever-5"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Left OpenAI and founded SSI; pretraining as we know it will end because data is finite.",
+          "evidenceIds": [
+            "ev-sutskever-6",
+            "ev-sutskever-7"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Age of scaling is over; back to research; generalization is the key gap.",
+          "evidenceIds": [
+            "ev-sutskever-8"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2024-12",
+          "from": "Scaling a big network on a big dataset guarantees success",
+          "to": "Pretraining scale is data-limited; progress now requires research breakthroughs (age of research)",
+          "trigger": "Finite internet data and diminishing pretraining returns",
+          "evidenceIds": [
+            "ev-sutskever-2",
+            "ev-sutskever-7",
+            "ev-sutskever-8"
+          ]
+        }
+      ],
+      "corpusNotes": "Sparse public corpus; all Sutskever evidence is 'recalled' (no searches remained). Musk v. OpenAI deposition/trial material and any 2026 SSI developments not verified."
+    },
+    {
+      "id": "gary-marcus",
+      "name": "Gary Marcus",
+      "cohort": "researchers",
+      "roles": [
+        {
+          "org": "NYU",
+          "title": "Professor Emeritus of Psychology and Neural Science",
+          "from": "1997",
+          "to": null
+        },
+        {
+          "org": "Geometric Intelligence (acquired by Uber)",
+          "title": "Founder & CEO",
+          "from": "2014",
+          "to": "2016"
+        },
+        {
+          "org": "Robust.AI",
+          "title": "Co-founder",
+          "from": "2019",
+          "to": null
+        }
+      ],
+      "bio": "Cognitive scientist and author who is the most prominent public critic of deep learning and LLM scaling, advocating neurosymbolic AI and stronger regulation; testified to the US Senate in 2023.",
+      "selection": {
+        "influence": [
+          3,
+          "Shapes public/policy skepticism more than technical direction."
+        ],
+        "foresight": [
+          3,
+          "Correct on persistent hallucinations and 2024 commoditization; wrong on 'wall' in 2022."
+        ],
+        "allocation": [
+          2,
+          "Little capital control."
+        ],
+        "contribution": [
+          2,
+          "Limited architectural contribution."
+        ],
+        "corpus": [
+          5,
+          "Very prolific Substack with many dated predictions."
+        ],
+        "future": [
+          2,
+          "Influential critic rather than builder."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2017",
+          "summary": "Deep learning has ten fundamental limits; hybrids needed.",
+          "evidenceIds": [
+            "ev-marcus-1"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Scaling hitting a wall; LLMs unreliable; AGI not by 2029; strong regulation needed; GenAI may be a dud.",
+          "evidenceIds": [
+            "ev-marcus-2",
+            "ev-marcus-3",
+            "ev-marcus-4",
+            "ev-marcus-6"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Commoditization of GPT-4-level models, no GPT-5, diminishing returns.",
+          "evidenceIds": [
+            "ev-marcus-5",
+            "ev-marcus-7"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "GPT-5 underwhelming; hallucinations unsolved; bubble warnings.",
+          "evidenceIds": [
+            "ev-marcus-8"
+          ]
+        }
+      ],
+      "reversals": [],
+      "corpusNotes": "Large dated corpus on Substack, but all Marcus evidence here is 'recalled' because searches ran out before he could be researched and substack fetches failed; specific URLs omitted. No 2026 statements verified."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-hinton-1",
+      "url": "https://dataskeptic.com/blog/ai/2017/are-radiologists-being-replace-by-ai",
+      "title": "Are radiologists being replaced by AI?",
+      "publisher": "Data Skeptic",
+      "date": "2016-11",
+      "speaker": "geoffrey-hinton",
+      "type": "talk",
+      "primary": false,
+      "passage": "Hinton said people should stop training radiologists now because it is completely obvious that within five years deep learning will do better than radiologists; it might be ten years.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Remark made at the 'Machine Learning and the Market for Intelligence' conference, Toronto (Creative Destruction Lab), Nov 2016. Secondary write-up; search summary notes transcripts differ slightly in wording but the 'five years, maybe ten' timeline is consistent."
+    },
+    {
+      "id": "ev-out-radiology-1",
+      "url": "https://fortune.com/2026/05/04/godfather-of-ai-geoffrey-hinton-radiologists-future-of-work-tech-ai-job-anxiety/",
+      "title": "A decade after the 'Godfather of AI' said radiologists were obsolete (Fortune)",
+      "publisher": "Fortune",
+      "date": "2026-05-04",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Medscape puts average US radiologist pay at $571,000 in 2025, up 9% year over year, attributed to a shortage; radiology case loads rose about 25% from 2018 to early 2025 (JACR).",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Seen only via search summary (fortune.com not fetchable). Job-listing counts conflict between versions of the article (4,333 vs 7,469), so they are not used."
+    },
+    {
+      "id": "ev-out-radiology-2",
+      "url": "https://radiologybusiness.com/topics/artificial-intelligence/ny-times-revisits-nobel-prize-winners-prediction-ai-will-render-radiologists-obsolete",
+      "title": "NY Times revisits Nobel Prize winner's prediction AI will render radiologists obsolete",
+      "publisher": "Radiology Business",
+      "date": "2025",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Coverage of NYT reporting that radiology faces a shortage rather than obsolescence; Mayo Clinic radiology staff grew ~55% since 2016 to ~400 radiologists.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Exact publication date not confirmed (2025). The Mayo figure appears in a related resident essay summarized in the same search results."
+    },
+    {
+      "id": "ev-out-radiology-3",
+      "url": "https://www.rcr.ac.uk/media/n1fjvrv4/rcr-2025-clinical-radiology-workforce-census-report.pdf",
+      "title": "RCR 2025 Clinical Radiology Workforce Census",
+      "publisher": "Royal College of Radiologists",
+      "date": "2025",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "UK radiologist shortfall reported to have more than doubled over the past decade.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "UK data; shows continued shortage outside the US."
+    },
+    {
+      "id": "ev-hinton-2",
+      "url": "https://www.cnbc.com/2023/05/01/godfather-of-ai-leaves-google-after-a-decade-to-warn-of-dangers.html",
+      "title": "'Godfather of AI' leaves Google after a decade to warn of dangers",
+      "publisher": "CNBC (citing NYT interview)",
+      "date": "2023-05-01",
+      "speaker": "geoffrey-hinton",
+      "type": "interview",
+      "primary": false,
+      "passage": "I thought it was 30 to 50 years or even longer away",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Hinton to the New York Times about when AI could become smarter than people; he said he left Google so he could talk about AI dangers without considering how this impacts Google, and was not blaming Google."
+    },
+    {
+      "id": "ev-hinton-3",
+      "url": "https://www.smithsonianmag.com/smart-news/the-godfather-of-ai-now-warns-of-its-dangers-180982108/",
+      "title": "The 'Godfather of A.I.' Now Warns of Its Dangers",
+      "publisher": "Smithsonian Magazine",
+      "date": "2023-05",
+      "speaker": "geoffrey-hinton",
+      "type": "news",
+      "primary": false,
+      "passage": "He once thought it would take up to 50 years for the technology to outsmart humans, but now tentatively predicts it will be just 5 to 20.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary report of Hinton's May 2023 statements; Toronto Life gives the same range."
+    },
+    {
+      "id": "ev-hinton-4",
+      "url": "https://www.yahoo.com/news/godfather-ai-says-hes-glad-110151161.html",
+      "title": "'Godfather of AI' says he's 'glad' to be 77 because the tech probably won't take over the world in his lifetime",
+      "publisher": "Business Insider (via Yahoo), reporting CBS News interview",
+      "date": "2025-04",
+      "speaker": "geoffrey-hinton",
+      "type": "interview",
+      "primary": false,
+      "passage": "there's a good chance it'll be here in 10 years or less.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "CBS interview with Brook Silva-Braga (reported as Apr 26, 2025). Refers to AI surpassing human intelligence in every domain; BI notes a year earlier he said 5 to 20 years. He also gave a 'sort of 10 to 20% chance' AI systems eventually seize control."
+    },
+    {
+      "id": "ev-hinton-5",
+      "url": "https://origin01-en.protothema.gr/2024/12/30/terrifying-warning-from-the-godfather-of-ai-it-could-destroy-humanity-in-the-next-30-years",
+      "title": "Terrifying warning from the godfather of AI: it could destroy humanity in the next 30 years",
+      "publisher": "Proto Thema (reporting BBC Radio 4 Today)",
+      "date": "2024-12",
+      "speaker": "geoffrey-hinton",
+      "type": "interview",
+      "primary": false,
+      "passage": "Not particularly, 10% to 20%.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Answer on BBC Radio 4 (late Dec 2024) when asked whether he had revised his estimate of the chance AI leads to human extinction within ~30 years; he had earlier cited ~10%."
+    },
+    {
+      "id": "ev-hinton-6",
+      "url": "https://www.businessinsider.nl/the-godfather-of-ai-reveals-which-jobs-are-safest-and-where-everybody-will-get-replaced/",
+      "title": "The Godfather of AI reveals which jobs are safest — and where 'everybody' will get replaced",
+      "publisher": "Business Insider (reporting Diary of a CEO podcast)",
+      "date": "2025-06-16",
+      "speaker": "geoffrey-hinton",
+      "type": "interview",
+      "primary": false,
+      "passage": "So a good bet would be to be a plumber.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Diary of a CEO episode aired June 16, 2025. He said AI will replace everybody in 'mundane intellectual labor' and that mass job displacement is more likely than not and already upon us in some ways."
+    },
+    {
+      "id": "ev-hinton-7",
+      "url": "https://www.axios.com/ai-pioneer-advocates-starting-over-2485537027.html",
+      "title": "Artificial intelligence pioneer says we need to start over",
+      "publisher": "Axios",
+      "date": "2017-09-15",
+      "speaker": "geoffrey-hinton",
+      "type": "interview",
+      "primary": false,
+      "passage": "My view is throw it all away and start again",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Said on the sidelines of a Toronto AI conference; Axios reported he was 'deeply suspicious' of back-propagation. Quote confirmed via multiple secondary outlets (i-programmer, Slashdot); Axios page itself not opened."
+    },
+    {
+      "id": "ev-hinton-8",
+      "url": "https://thenextweb.com/news/hinton-senate-briefing-ai-regulation-year",
+      "title": "'Maybe a year': Geoffrey Hinton gives the Senate a deadline on AI",
+      "publisher": "The Next Web",
+      "date": "2026-09-16",
+      "speaker": "geoffrey-hinton",
+      "type": "testimony",
+      "primary": false,
+      "passage": "Maybe a year, but not much more than a year",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Closed-door bipartisan senators' briefing convened by Sen. Bernie Sanders on Sept 16, 2026 with Max Tegmark and Ajeya Cotra; refers to time Congress has to put guardrails on AI. Also reported by political.org (2026-09-21) and Common Dreams."
+    },
+    {
+      "id": "ev-hinton-9",
+      "url": "https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks",
+      "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "publisher": "NeurIPS 2012",
+      "date": "2012-12",
+      "speaker": "geoffrey-hinton",
+      "type": "paper",
+      "primary": true,
+      "passage": "Krizhevsky, Sutskever and Hinton train a large deep CNN on GPUs that wins ILSVRC-2012 by a wide margin.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "AlexNet paper; co-authored with Ilya Sutskever."
+    },
+    {
+      "id": "ev-hinton-10",
+      "url": "https://www.safe.ai/work/statement-on-ai-risk",
+      "title": "Statement on AI Risk",
+      "publisher": "Center for AI Safety",
+      "date": "2023-05-30",
+      "speaker": "Center for AI Safety (signatories incl. Hinton, Bengio, Sutskever)",
+      "type": "letter",
+      "primary": true,
+      "passage": "One-sentence statement that mitigating the risk of extinction from AI should be a global priority alongside pandemics and nuclear war.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Hinton and Bengio were top signatories; Sutskever also signed (recalled). LeCun did not sign."
+    },
+    {
+      "id": "ev-hinton-11",
+      "url": "https://bdtechtalks.com/2022/12/19/forward-forward-algorithm-geoffrey-hinton/amp/",
+      "title": "Understanding Geoff Hinton's forward-forward algorithm",
+      "publisher": "TechTalks",
+      "date": "2022-12-19",
+      "speaker": "geoffrey-hinton",
+      "type": "news",
+      "primary": false,
+      "passage": "At NeurIPS 2022 Hinton introduced the 'forward-forward algorithm', a new learning algorithm inspired by neural activations in the brain, as an alternative to back-propagation.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Shows continuity of his 2017 search for a backprop alternative."
+    },
+    {
+      "id": "ev-hinton-12",
+      "url": "",
+      "title": "Geoffrey Hinton tells us why he's now scared of the tech he helped build",
+      "publisher": "MIT Technology Review",
+      "date": "2023-05-02",
+      "speaker": "geoffrey-hinton",
+      "type": "interview",
+      "primary": true,
+      "passage": "Hinton said he had changed his mind: digital neural networks trained with backpropagation may already learn more efficiently than brains, which is why he now fears they will surpass us.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-confirmed this session; URL withheld because not verified."
+    },
+    {
+      "id": "ev-out-jobs-1",
+      "url": "https://fortune.com/article/godfather-of-ai-geoffrey-hinton-massive-unemployment-warning-big-tech-replacing-workers/",
+      "title": "Godfather of AI Geoffrey Hinton massive unemployment warning (Fortune)",
+      "publisher": "Fortune",
+      "date": "2026",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Fortune notes layoffs haven't spiked, but evidence is mounting that AI is shrinking opportunities, especially at the entry level.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Seen only as search summary; exact date not confirmed."
+    },
+    {
+      "id": "ev-lecun-1",
+      "url": "https://finance.sina.cn/tech/2023-03-27/detail-imynhzkz8651731.d.html",
+      "title": "LeCun: auto-regressive LLMs have no future (Chinese-language report)",
+      "publisher": "Sina Finance",
+      "date": "2023-03-27",
+      "speaker": "yann-lecun",
+      "type": "news",
+      "primary": false,
+      "passage": "LeCun argued auto-regressive LLMs are doomed: if each generated token has probability e of leaving the set of correct answers, an answer of length n is correct with probability (1-e)^n; the problem can be reduced by training but not eliminated, so LLMs must be replaced by world-model-based systems.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Reports LeCun's early-2023 slides/posts ('Auto-Regressive LLMs are doomed'). LeCun reused the slide at an NYU Center for Data Science seminar on Sept 10, 2025 (PPC Land)."
+    },
+    {
+      "id": "ev-lecun-2",
+      "url": "https://ppc.land/lecun-calls-auto-regressive-llms-doomed-at-nyu-seminar/",
+      "title": "LeCun calls auto-regressive LLMs doomed at NYU seminar",
+      "publisher": "PPC Land",
+      "date": "2025-09",
+      "speaker": "yann-lecun",
+      "type": "talk",
+      "primary": false,
+      "passage": "LeCun used the phrase 'Auto-Regressive LLMs are doomed' in a Sept 10, 2025 seminar at NYU's Center for Data Science (67-slide deck).",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Shows the view was unchanged from 2023 to late 2025."
+    },
+    {
+      "id": "ev-lecun-3",
+      "url": "https://www.fortune.com/2023/06/14/metas-chief-a-i-scientist-calls-a-i-doomers-preposterous-and-predicts-llms-are-just-a-passing-fad",
+      "title": "Meta's chief A.I. scientist calls A.I. doomers 'preposterous' and predicts LLMs are just a passing fad",
+      "publisher": "Fortune",
+      "date": "2023-06-14",
+      "speaker": "yann-lecun",
+      "type": "talk",
+      "primary": false,
+      "passage": "At VivaTech Paris LeCun described worries that AI poses an existential risk to humanity as 'preposterous' and predicted LLMs are a passing fad.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Headline and summary seen in search results only."
+    },
+    {
+      "id": "ev-lecun-4",
+      "url": "https://cointelegraph.com/news/meta-chief-ai-scientist-ai-wont-threaten-humans",
+      "title": "Meta chief AI scientist says AI won't threaten humans",
+      "publisher": "Cointelegraph (reporting Financial Times interview)",
+      "date": "2023-10",
+      "speaker": "yann-lecun",
+      "type": "interview",
+      "primary": false,
+      "passage": "The existential-risk debate is very premature until there is a design for a system that can even rival a cat in learning capabilities; regulating AI R&D is incredibly counterproductive.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "FT interview, Oct 2023; FT original not accessed."
+    },
+    {
+      "id": "ev-lecun-5",
+      "url": "https://techcrunch.com/2025/01/23/metas-yann-lecun-predicts-a-new-ai-architectures-paradigm-within-5-years-and-decade-of-robotics",
+      "title": "Meta's Yann LeCun predicts a new AI architectures paradigm within 5 years and 'decade of robotics'",
+      "publisher": "TechCrunch",
+      "date": "2025-01-23",
+      "speaker": "yann-lecun",
+      "type": "talk",
+      "primary": false,
+      "passage": "if the plan that we're working on succeeds, with the timetable that we hope, within three to five years we'll have systems that are a completely different paradigm.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Davos 'Debating Technology' session. TechCrunch also reports he said that within five years nobody in their right mind would use current LLMs, at least not as the central component of an AI system. Conditional on Meta's research plan succeeding."
+    },
+    {
+      "id": "ev-lecun-6",
+      "url": "https://oodaloop.com/briefs/technology/metas-ai-chief-llms-will-never-reach-human-level-intelligence",
+      "title": "Meta's AI chief: LLMs will never reach human-level intelligence",
+      "publisher": "OODA Loop",
+      "date": "2024-04",
+      "speaker": "yann-lecun",
+      "type": "interview",
+      "primary": false,
+      "passage": "on the path towards human-level intelligence, an LLM is basically an off-ramp, a distraction, a dead end.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Date uncertain: Gizmodo places the remark in April 2024; 36Kr associates similar 'dead end' wording with a Nov 23, 2025 conversation. He added 'They're useful, there's no question about that.'"
+    },
+    {
+      "id": "ev-lecun-7",
+      "url": "https://euronews.com/next/2025/11/20/french-godfather-of-ai-yann-lecun-confirms-he-is-leaving-meta-to-launch-ai-start-up",
+      "title": "French 'godfather of AI' Yann LeCun confirms he is leaving Meta to launch AI start-up",
+      "publisher": "Euronews",
+      "date": "2025-11-20",
+      "speaker": "yann-lecun",
+      "type": "announcement",
+      "primary": false,
+      "passage": "They are not a path to human-level intelligence.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "LeCun announced on Nov 19, 2025 (Facebook/LinkedIn) that he would leave Meta at end-2025 after 12 years (5 as FAIR founding director, 7 as chief AI scientist) to found an Advanced Machine Intelligence startup; Meta to be a partner. Context: Meta Superintelligence Labs reorg under Alexandr Wang."
+    },
+    {
+      "id": "ev-lecun-8",
+      "url": "https://siliconangle.com/2026/03/10/yann-lecuns-new-startup-ami-labs-raises-1-03b-train-world-models/",
+      "title": "Yann LeCun's new startup AMI Labs raises $1.03B to train world models",
+      "publisher": "SiliconANGLE",
+      "date": "2026-03-10",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "AMI Labs announced a $1.03 billion round at a $3.5 billion pre-money valuation, co-led by Cathay Innovation, Greycroft, Hiro Capital, HV Capital and Bezos Expeditions; backers include NVIDIA, Samsung, Temasek and Toyota Ventures.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Paris HQ; LeCun chairman, Alexandre LeBrun CEO. Heise reported the round as EUR 890M."
+    },
+    {
+      "id": "ev-lecun-9",
+      "url": "https://www.shaped.ai/blog/yann-lecun-a-path-towards-autonomous-machine-intelligence",
+      "title": "Yann LeCun: A Path Towards Autonomous Machine Intelligence (review)",
+      "publisher": "Shaped.ai blog",
+      "date": "2022-06-27",
+      "speaker": "yann-lecun",
+      "type": "paper",
+      "primary": false,
+      "passage": "LeCun's position paper 'A Path Towards Autonomous Machine Intelligence' appeared on OpenReview on June 27, 2022, proposing world models built on H-JEPA (Hierarchical Joint Embedding Predictive Architecture).",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary description of a primary position paper; OpenReview URL not verified."
+    },
+    {
+      "id": "ev-lecun-10",
+      "url": "https://aibusiness.com/nlp/in-a-rare-outburst-meta-s-lecun-blasts-openai-turing-awardees",
+      "title": "In a rare outburst, Meta's LeCun blasts OpenAI, Turing awardees",
+      "publisher": "AI Business",
+      "date": "2023-10",
+      "speaker": "yann-lecun",
+      "type": "social",
+      "primary": false,
+      "passage": "LeCun accused Altman, Hassabis and Amodei of attempting regulatory capture and argued openness makes AI platforms safer; restricting open models would let a small number of companies control AI.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Late-Oct 2023 X posts responding to Hinton/Bengio-aligned calls for regulation; exact date of each post not confirmed."
+    },
+    {
+      "id": "ev-lecun-11",
+      "url": "https://techcrunch.com/?p=2898103",
+      "title": "Yann LeCun (TechCrunch, house-cat remark)",
+      "publisher": "TechCrunch / Wall Street Journal interview",
+      "date": "2024-10",
+      "speaker": "yann-lecun",
+      "type": "interview",
+      "primary": false,
+      "passage": "Before worrying about controlling superintelligent AI we would need the beginning of a hint of a design for a system smarter than a house cat; he called existential warnings complete B.S. (WSJ).",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Date approximate (WSJ interview reposted Oct 14, 2024)."
+    },
+    {
+      "id": "ev-lecun-12",
+      "url": "https://www.startuphub.ai/ai-news/ai-research/2026/yann-lecun-says-flying-trimarans-will-beat-llms.md",
+      "title": "Yann LeCun says flying trimarans will beat LLMs",
+      "publisher": "StartupHub.ai (reporting La Tribune Evenements interview)",
+      "date": "2026-10",
+      "speaker": "yann-lecun",
+      "type": "interview",
+      "primary": false,
+      "passage": "Six months after launch, AMI Labs had no product to ship; team of 50-60 researchers across Paris, New York, Montreal and Singapore betting JEPA world models will outrun LLMs.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Most recent LeCun item found; reported Oct 2026."
+    },
+    {
+      "id": "ev-lecun-13",
+      "url": "https://www.brown.edu/index%2ephp/news/2026-04-01/yann-lecun-artificial-intelligence-pioneer",
+      "title": "Yann LeCun, artificial intelligence pioneer (Brown University news)",
+      "publisher": "Brown University",
+      "date": "2026-04-01",
+      "speaker": "yann-lecun",
+      "type": "talk",
+      "primary": false,
+      "passage": "LeCun called the industry's bet that LLMs will reach human-level intelligence 'complete BS'.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": ""
+    },
+    {
+      "id": "ev-lecun-14",
+      "url": "",
+      "title": "NIPS 2016 keynote 'Predictive Learning' (cake analogy)",
+      "publisher": "NeurIPS 2016",
+      "date": "2016-12",
+      "speaker": "yann-lecun",
+      "type": "talk",
+      "primary": true,
+      "passage": "If intelligence is a cake, unsupervised (later 'self-supervised') learning is the bulk of the cake, supervised learning the icing, and reinforcement learning the cherry.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-confirmed this session (search budget exhausted)."
+    },
+    {
+      "id": "ev-out-llm-1",
+      "url": "https://www.longtermwiki.com/knowledge-base/people/track-records/yann-lecun-predictions",
+      "title": "Yann LeCun predictions track record",
+      "publisher": "Longterm Wiki",
+      "date": "2026",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "Secondary tracker states LLMs remained dominant as of 2026 and no paradigm shift away from them had occurred.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary/commentary source; used only as weak outcome evidence."
+    },
+    {
+      "id": "ev-lecun-15",
+      "url": "https://aiweekly.co/alerts/yann-lecun-calls-llms-dead-end-rejects-hinton",
+      "title": "Yann LeCun Calls LLMs Dead End, Rejects Hinton",
+      "publisher": "AI Weekly",
+      "date": "2025",
+      "speaker": "yann-lecun",
+      "type": "news",
+      "primary": false,
+      "passage": "Headline reports LeCun calling LLMs a dead end and rejecting Hinton's view.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Only the headline was seen; date not confirmed."
+    },
+    {
+      "id": "ev-bengio-1",
+      "url": "https://futureoflife.org/open-letter/pause-giant-ai-experiments/",
+      "title": "Pause Giant AI Experiments: An Open Letter",
+      "publisher": "Future of Life Institute",
+      "date": "2023-03-22",
+      "speaker": "Future of Life Institute (signatories incl. Bengio, Marcus)",
+      "type": "letter",
+      "primary": true,
+      "passage": "Calls on all AI labs to immediately pause for at least 6 months the training of AI systems more powerful than GPT-4.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Bengio and Gary Marcus were prominent early signatories (recalled)."
+    },
+    {
+      "id": "ev-bengio-2",
+      "url": "https://yoshuabengio.org/2023/05/22/how-rogue-ais-may-arise/",
+      "title": "How Rogue AIs may Arise",
+      "publisher": "yoshuabengio.org",
+      "date": "2023-05-22",
+      "speaker": "yoshua-bengio",
+      "type": "essay",
+      "primary": true,
+      "passage": "Bengio describes how goal-directed AI systems that are smarter than humans could become 'rogue' and act against humanity, and explains he had shortened his estimate of when human-level AI could arrive.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-fetched this session (all fetches failed with DNS errors)."
+    },
+    {
+      "id": "ev-bengio-3",
+      "url": "https://yoshuabengio.org/2023/06/24/faq-on-catastrophic-ai-risks/",
+      "title": "FAQ on Catastrophic AI Risks",
+      "publisher": "yoshuabengio.org",
+      "date": "2023-06-24",
+      "speaker": "yoshua-bengio",
+      "type": "essay",
+      "primary": true,
+      "passage": "Bengio writes that he previously placed human-level AI decades to centuries away but now estimates roughly 5 to 20 years with 90% confidence.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "The 5-20 years / 90% figure is from memory and was not re-verified; exact location (this post vs. 'How Rogue AIs may Arise') uncertain."
+    },
+    {
+      "id": "ev-bengio-4",
+      "url": "",
+      "title": "From System 1 Deep Learning to System 2 Deep Learning (NeurIPS 2019 keynote)",
+      "publisher": "NeurIPS 2019",
+      "date": "2019-12",
+      "speaker": "yoshua-bengio",
+      "type": "talk",
+      "primary": true,
+      "passage": "Bengio argued deep learning must move from fast, intuitive 'System 1' pattern recognition to 'System 2' abilities: reasoning, out-of-distribution generalization, causal and compositional representations.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "URL not verified."
+    },
+    {
+      "id": "ev-bengio-5",
+      "url": "",
+      "title": "Senate Judiciary Subcommittee hearing 'Oversight of A.I.: Principles for Regulation' testimony",
+      "publisher": "US Senate Judiciary Committee",
+      "date": "2023-07-25",
+      "speaker": "yoshua-bengio",
+      "type": "testimony",
+      "primary": true,
+      "passage": "Bengio testified (with Dario Amodei and Stuart Russell) that human-level AI could arrive within a few years to a couple of decades and urged rapid regulation, licensing and international coordination.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "URL not verified."
+    },
+    {
+      "id": "ev-bengio-6",
+      "url": "https://www.gov.uk/government/publications/international-ai-safety-report-2025",
+      "title": "International AI Safety Report 2025",
+      "publisher": "UK Government / DSIT (chair: Yoshua Bengio)",
+      "date": "2025-01-29",
+      "speaker": "yoshua-bengio",
+      "type": "filing",
+      "primary": true,
+      "passage": "First full International AI Safety Report, written by ~100 experts and chaired by Bengio, mandated after the 2023 Bletchley summit; presented ahead of the Paris AI Action Summit.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Interim report May 2024; a 2026 edition was released early 2026 (recalled, not verified)."
+    },
+    {
+      "id": "ev-bengio-7",
+      "url": "https://arxiv.org/abs/2502.15657",
+      "title": "Superintelligent Agents Pose Catastrophic Risks: Can Scientist AI Offer a Safer Path?",
+      "publisher": "arXiv",
+      "date": "2025-02",
+      "speaker": "yoshua-bengio",
+      "type": "paper",
+      "primary": true,
+      "passage": "Proposes 'Scientist AI': a non-agentic system that explains the world via Bayesian world models and inference rather than taking actions, as a safer alternative to agentic AI.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "arXiv id from memory; fetch attempt failed with DNS error, not 404."
+    },
+    {
+      "id": "ev-bengio-8",
+      "url": "https://lawzero.org",
+      "title": "LawZero",
+      "publisher": "LawZero",
+      "date": "2025-06-03",
+      "speaker": "yoshua-bengio",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Bengio launched LawZero, a non-profit to build 'safe-by-design' non-agentic Scientist AI, with roughly $30M in initial philanthropic funding.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Funding figure and date recalled, not verified."
+    },
+    {
+      "id": "ev-bengio-9",
+      "url": "",
+      "title": "Bengio statements on deception and self-preservation in frontier models (2025)",
+      "publisher": "various (LawZero launch, interviews)",
+      "date": "2025-06",
+      "speaker": "yoshua-bengio",
+      "type": "interview",
+      "primary": true,
+      "passage": "Bengio cited evidence that frontier models show deception, cheating, and self-preservation behaviours in tests as a reason for urgency.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "No specific source re-verified."
+    },
+    {
+      "id": "ev-out-scheming-1",
+      "url": "https://arxiv.org/abs/2412.04984",
+      "title": "Frontier Models are Capable of In-context Scheming",
+      "publisher": "Apollo Research (arXiv)",
+      "date": "2024-12",
+      "speaker": "outcome",
+      "type": "paper",
+      "primary": false,
+      "passage": "Evaluations found several frontier models engaged in in-context scheming (e.g. disabling oversight, sandbagging) when given conflicting goals in test scenarios.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "arXiv id from memory; not re-verified this session."
+    },
+    {
+      "id": "ev-sutskever-1",
+      "url": "https://arxiv.org/abs/1409.3215",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "publisher": "NeurIPS 2014 / arXiv",
+      "date": "2014-09",
+      "speaker": "ilya-sutskever",
+      "type": "paper",
+      "primary": true,
+      "passage": "Sutskever, Vinyals and Le show a large deep LSTM can perform English-French translation end-to-end.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": ""
+    },
+    {
+      "id": "ev-sutskever-2",
+      "url": "",
+      "title": "Sequence to Sequence Learning with Neural Networks (NeurIPS 2014 talk slides, re-shown at NeurIPS 2024)",
+      "publisher": "NeurIPS",
+      "date": "2014-12",
+      "speaker": "ilya-sutskever",
+      "type": "talk",
+      "primary": true,
+      "passage": "Slide stating that if you have a large dataset and train a very big neural network, success is guaranteed (the 'scaling hypothesis' in early form).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from his Dec 2024 test-of-time talk, where he revisited this slide; wording not verified."
+    },
+    {
+      "id": "ev-sutskever-3",
+      "url": "",
+      "title": "Fireside chat with Jensen Huang (GTC) / Dwarkesh Podcast interviews",
+      "publisher": "NVIDIA GTC; Dwarkesh Podcast",
+      "date": "2023-03",
+      "speaker": "ilya-sutskever",
+      "type": "interview",
+      "primary": true,
+      "passage": "Sutskever argued that predicting the next token well requires understanding the underlying reality that produced the text — compression implies understanding.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Theme repeated in his Aug 2023 Simons Institute talk 'An Observation on Generalization' (compression view of unsupervised learning). Not re-verified."
+    },
+    {
+      "id": "ev-sutskever-4",
+      "url": "https://openai.com/index/introducing-superalignment/",
+      "title": "Introducing Superalignment",
+      "publisher": "OpenAI",
+      "date": "2023-07-05",
+      "speaker": "ilya-sutskever",
+      "type": "announcement",
+      "primary": true,
+      "passage": "OpenAI launched a Superalignment team co-led by Sutskever and Jan Leike, dedicating 20% of secured compute, with the goal of solving the core technical challenges of superintelligence alignment in four years.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Corporate announcement co-authored by Sutskever and Leike."
+    },
+    {
+      "id": "ev-sutskever-5",
+      "url": "https://openai.com/index/openai-announces-leadership-transition/",
+      "title": "OpenAI announces leadership transition",
+      "publisher": "OpenAI",
+      "date": "2023-11-17",
+      "speaker": "OpenAI board (incl. Sutskever)",
+      "type": "announcement",
+      "primary": true,
+      "passage": "The board said Altman was 'not consistently candid in his communications' and removed him as CEO.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Sutskever was a board member who voted for removal; on Nov 20, 2023 he posted on X that he deeply regretted his participation in the board's actions; Altman was reinstated Nov 22."
+    },
+    {
+      "id": "ev-sutskever-6",
+      "url": "https://ssi.inc",
+      "title": "Safe Superintelligence Inc.",
+      "publisher": "SSI",
+      "date": "2024-06-19",
+      "speaker": "ilya-sutskever",
+      "type": "announcement",
+      "primary": true,
+      "passage": "SSI announced as the world's first 'straight-shot SSI lab' with one goal and one product: a safe superintelligence, insulated from short-term commercial pressures.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Founded with Daniel Gross and Daniel Levy, after Sutskever left OpenAI in May 2024."
+    },
+    {
+      "id": "ev-sutskever-7",
+      "url": "",
+      "title": "Sequence to sequence learning with neural networks: what a decade (NeurIPS 2024 Test of Time talk)",
+      "publisher": "NeurIPS 2024 (reported by The Verge, Reuters)",
+      "date": "2024-12-13",
+      "speaker": "ilya-sutskever",
+      "type": "talk",
+      "primary": true,
+      "passage": "Sutskever said pre-training as we know it will unquestionably end because compute grows but data does not: 'we have but one internet'; data is the fossil fuel of AI; future systems will be agentic, reason, and be less predictable.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Widely reported; URL withheld because not verified this session."
+    },
+    {
+      "id": "ev-sutskever-8",
+      "url": "https://www.dwarkesh.com/p/ilya-sutskever-2",
+      "title": "Ilya Sutskever — We're moving from the age of scaling to the age of research",
+      "publisher": "Dwarkesh Podcast",
+      "date": "2025-11-25",
+      "speaker": "ilya-sutskever",
+      "type": "interview",
+      "primary": true,
+      "passage": "Sutskever said 2020-2025 was the 'age of scaling' and the field is back in an 'age of research, just with big computers'; models generalize dramatically worse than people; he estimated roughly 5 to 20 years to systems that learn as well as humans.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-fetched (DNS failure). Wording paraphrased."
+    },
+    {
+      "id": "ev-out-ssi-1",
+      "url": "",
+      "title": "SSI funding and leadership reports (Reuters/FT/Bloomberg)",
+      "publisher": "various news",
+      "date": "2025-07",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "SSI raised $1B in Sept 2024 and was reported valued at ~$32B in April 2025; co-founder Daniel Gross left for Meta in July 2025 and Sutskever became CEO.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not verified this session; no 2026 SSI product release found (search budget exhausted)."
+    },
+    {
+      "id": "ev-marcus-1",
+      "url": "https://arxiv.org/abs/1801.00631",
+      "title": "Deep Learning: A Critical Appraisal",
+      "publisher": "arXiv",
+      "date": "2018-01-02",
+      "speaker": "gary-marcus",
+      "type": "paper",
+      "primary": true,
+      "passage": "Marcus listed ten challenges for deep learning (data hunger, limited transfer, no hierarchical structure, struggles with open-ended inference, opacity, poor integration with prior knowledge, correlation vs causation, etc.) and argued it must be supplemented by other techniques.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": ""
+    },
+    {
+      "id": "ev-marcus-2",
+      "url": "https://nautil.us/deep-learning-is-hitting-a-wall-238440/",
+      "title": "Deep Learning Is Hitting a Wall",
+      "publisher": "Nautilus",
+      "date": "2022-03-10",
+      "speaker": "gary-marcus",
+      "type": "essay",
+      "primary": true,
+      "passage": "Marcus argued that scaling deep learning was approaching limits on reliability and understanding and that neurosymbolic hybrids were needed.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": ""
+    },
+    {
+      "id": "ev-marcus-3",
+      "url": "",
+      "title": "Marcus offer of a bet to Elon Musk on AGI by 2029",
+      "publisher": "Substack / X",
+      "date": "2022-05",
+      "speaker": "gary-marcus",
+      "type": "social",
+      "primary": true,
+      "passage": "Marcus offered Musk a $100,000 bet (later raised with others' backing) that AGI would not arrive by 2029, with specified criteria (e.g. understanding movies/novels, writing bug-free large programs).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-verified."
+    },
+    {
+      "id": "ev-marcus-4",
+      "url": "https://www.judiciary.senate.gov/committee-activity/hearings/oversight-of-ai-rules-for-artificial-intelligence",
+      "title": "Oversight of A.I.: Rules for Artificial Intelligence",
+      "publisher": "US Senate Judiciary Subcommittee on Privacy, Technology and the Law",
+      "date": "2023-05-16",
+      "speaker": "gary-marcus",
+      "type": "testimony",
+      "primary": true,
+      "passage": "Marcus testified alongside Sam Altman and IBM's Christina Montgomery, calling for an FDA-like agency/licensing, independent audits and international oversight of AI.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Hearing URL recalled with moderate-high confidence."
+    },
+    {
+      "id": "ev-marcus-5",
+      "url": "",
+      "title": "Marcus predictions for AI in 2024 and end-of-2024 scorecard",
+      "publisher": "Marcus on AI (Substack) / X",
+      "date": "2023-12",
+      "speaker": "gary-marcus",
+      "type": "social",
+      "primary": true,
+      "passage": "Predicted for 2024: roughly 7-10 GPT-4-level models; no massive advance (no GPT-5-level model); price wars; little moat; no robust solution to hallucinations; modest corporate adoption and profits.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Paraphrased from memory; he later claimed all held. Not re-verified."
+    },
+    {
+      "id": "ev-marcus-6",
+      "url": "",
+      "title": "What if Generative AI turned out to be a Dud?",
+      "publisher": "Marcus on AI (Substack)",
+      "date": "2023-08",
+      "speaker": "gary-marcus",
+      "type": "essay",
+      "primary": true,
+      "passage": "Marcus argued generative AI's economic value might be far smaller than valuations implied, raising the prospect of a bubble.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Title and date recalled; not verified."
+    },
+    {
+      "id": "ev-marcus-7",
+      "url": "",
+      "title": "Marcus on diminishing returns in LLM scaling (Substack, Nov 2024)",
+      "publisher": "Marcus on AI (Substack)",
+      "date": "2024-11",
+      "speaker": "gary-marcus",
+      "type": "essay",
+      "primary": true,
+      "passage": "After reports of slowing gains in next-generation pretraining runs, Marcus declared LLMs had reached a point of diminishing returns, as he had predicted.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-verified."
+    },
+    {
+      "id": "ev-marcus-8",
+      "url": "",
+      "title": "Marcus reaction to GPT-5 release",
+      "publisher": "Marcus on AI (Substack)",
+      "date": "2025-08",
+      "speaker": "gary-marcus",
+      "type": "essay",
+      "primary": true,
+      "passage": "Marcus called GPT-5 overdue, overhyped and underwhelming, citing persistent hallucinations and reasoning errors.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-verified."
+    },
+    {
+      "id": "ev-out-hallucination-1",
+      "url": "",
+      "title": "Why Language Models Hallucinate",
+      "publisher": "OpenAI (paper)",
+      "date": "2025-09",
+      "speaker": "outcome",
+      "type": "paper",
+      "primary": false,
+      "passage": "OpenAI researchers argued hallucinations persist because training and evaluation reward guessing over abstaining; hallucination rates reduced but not eliminated in newer models.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Not re-verified."
+    },
+    {
+      "id": "ev-out-gpt5-1",
+      "url": "",
+      "title": "OpenAI GPT-5 launch",
+      "publisher": "OpenAI",
+      "date": "2025-08-07",
+      "speaker": "outcome",
+      "type": "announcement",
+      "primary": false,
+      "passage": "OpenAI released GPT-5 in August 2025 (no GPT-5 release in 2024).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": ""
+    }
+  ],
+  "assertions": [
+    {
+      "id": "as-hinton-1",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2012-12",
+      "claim": "Large deep convolutional networks trained on GPUs with lots of labelled data can decisively beat hand-engineered computer vision (AlexNet, with Krizhevsky and Sutskever).",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "training",
+        "semis"
+      ],
+      "topics": [
+        "scaling",
+        "architecture"
+      ],
+      "assumptions": [
+        "GPU compute and ImageNet-scale data suffice to make deep nets outperform feature engineering"
+      ],
+      "predictedOutcome": "Deep neural networks become the dominant approach in vision and then other perception tasks.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Neural nets were a minority approach in 2012 computer vision; SVMs and hand-crafted features dominated.",
+      "evidenceIds": [
+        "ev-hinton-9"
+      ],
+      "outcome": "AlexNet won ILSVRC-2012 by a wide margin; deep learning became the dominant paradigm across AI and underpins all frontier models through 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "The bet on large GPU-trained neural nets was contrarian in 2012 and was decisively vindicated.",
+      "confidence": "high",
+      "originality": 5,
+      "causal": 5,
+      "specificity": 3,
+      "evolution": "Hinton's group was acquired by Google (DNNresearch, 2013); no revision of the core view."
+    },
+    {
+      "id": "as-hinton-2",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2016-11",
+      "claim": "People should stop training radiologists now; it is completely obvious that within five years deep learning will do better than radiologists — it might be ten years.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "society"
+      ],
+      "topics": [
+        "labor"
+      ],
+      "assumptions": [
+        "Image classification accuracy translates into replacing the radiologist's job",
+        "Regulation, liability and workflow would not slow substitution",
+        "Radiologists' work is mostly image reading"
+      ],
+      "predictedOutcome": "By ~2021 (at most ~2026) deep learning outperforms radiologists enough that training new radiologists is unnecessary.",
+      "horizon": "within 5 years (maybe 10) of Nov 2016",
+      "horizonDate": "2026",
+      "contextAtTime": "Deep CNNs had just surpassed humans on ImageNet classification (2015); early papers showed strong results on specific medical imaging tasks.",
+      "evidenceIds": [
+        "ev-hinton-1"
+      ],
+      "outcome": "By 2025-26 the US and UK faced radiologist shortages; US average radiologist pay rose to ~$571k in 2025 (+9% y/y, Medscape) and case loads rose ~25% 2018-early 2025. AI tools are used as aids, not replacements; Mayo Clinic's radiology staff grew ~55% since 2016.",
+      "outcomeEvidenceIds": [
+        "ev-out-radiology-1",
+        "ev-out-radiology-2",
+        "ev-out-radiology-3"
+      ],
+      "verdict": "incorrect",
+      "timing": "premature",
+      "verdictRationale": "Both the 5- and 10-year horizons have passed and demand for radiologists rose rather than fell. Task-level image accuracy gains were real, but the job-substitution inference ignored workflow, regulation and Jevons-like demand growth.",
+      "confidence": "high",
+      "originality": 4,
+      "causal": 2,
+      "specificity": 5,
+      "evolution": "Reported to have later acknowledged he was off the mark (only weak LinkedIn-level evidence seen; NYT/Fortune revisited the claim in 2025-26). His 2025 job-loss warnings shifted to 'mundane intellectual labor' broadly."
+    },
+    {
+      "id": "as-hinton-3",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2017-09-15",
+      "claim": "He was 'deeply suspicious' of back-propagation: 'My view is throw it all away and start again.'",
+      "claimIsQuote": true,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "training",
+        "architecture"
+      ],
+      "topics": [
+        "architecture"
+      ],
+      "assumptions": [
+        "Brain-like (largely unsupervised) learning requires a mechanism other than backprop",
+        "Further progress needs a new learning algorithm"
+      ],
+      "predictedOutcome": "Progress toward more general AI would require replacing backprop-based training.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Backprop-trained deep nets were dominant; Hinton was pursuing capsule networks (2017) and brain-inspired alternatives.",
+      "evidenceIds": [
+        "ev-hinton-7",
+        "ev-hinton-11"
+      ],
+      "outcome": "All frontier systems 2017-2026 (transformers, LLMs, reasoning models) remain backprop/gradient-descent trained; alternatives such as capsules and forward-forward have not displaced it.",
+      "outcomeEvidenceIds": [],
+      "verdict": "incorrect",
+      "timing": "n/a",
+      "verdictRationale": "The subsequent decade of progress came entirely from scaling backprop-trained transformers; Hinton himself reversed in 2023, arguing backprop may be superior to the brain's learning.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 1,
+      "specificity": 2,
+      "evolution": "Reversed by May 2023: concluded digital nets with backprop may learn better than biological brains, which became a basis for his risk concerns."
+    },
+    {
+      "id": "as-hinton-4",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2023-05-01",
+      "claim": "Left Google to speak freely about AI dangers; revised his estimate for AI smarter than humans from '30 to 50 years or even longer away' to roughly 5 to 20 years.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models",
+        "society"
+      ],
+      "topics": [
+        "agi-timelines",
+        "safety"
+      ],
+      "assumptions": [
+        "Capabilities of LLMs like GPT-4 continue to scale",
+        "Digital learning (weight sharing across copies, backprop) is more efficient than biological learning"
+      ],
+      "predictedOutcome": "AI broadly smarter than humans arrives roughly between 2028 and 2043.",
+      "horizon": "5 to 20 years from 2023",
+      "horizonDate": "2043",
+      "contextAtTime": "ChatGPT (Nov 2022) and GPT-4 (Mar 2023) had just shown rapid capability gains; the FLI pause letter had been published in March 2023.",
+      "evidenceIds": [
+        "ev-hinton-2",
+        "ev-hinton-3",
+        "ev-hinton-12"
+      ],
+      "outcome": "As of Oct 2026 no consensus that AI is smarter than humans across the board; Hinton himself shortened the estimate further in 2025.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Horizon extends to 2043; earliest bound (2028) not yet reached.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Shortened again by April 2025 to 'a good chance it'll be here in 10 years or less'."
+    },
+    {
+      "id": "as-hinton-5",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2024-12",
+      "claim": "Estimated a 10% to 20% chance that AI leads to human extinction within about the next 30 years ('Not particularly, 10% to 20%' when asked if he had revised it).",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety",
+        "agi-timelines"
+      ],
+      "assumptions": [
+        "Superintelligent AI is built",
+        "Control/alignment is not solved",
+        "Competitive dynamics prevent a halt"
+      ],
+      "predictedOutcome": "A 10-20% probability of AI-caused human extinction or takeover over ~30 years.",
+      "horizon": "~30 years from 2024",
+      "horizonDate": null,
+      "contextAtTime": "Made weeks after his Nobel Prize in Physics (Oct 2024); frontier labs racing on reasoning models.",
+      "evidenceIds": [
+        "ev-hinton-5",
+        "ev-hinton-4"
+      ],
+      "outcome": "No resolution possible as of Oct 2026; he repeated a 'sort of 10 to 20% chance' of AI taking control in April 2025.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Probabilistic, long-horizon claim; not falsifiable by 2026.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Earlier cited ~10%; raised range to 10-20% and has kept it through 2025."
+    },
+    {
+      "id": "as-hinton-6",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2025-04",
+      "claim": "On AI surpassing humans in every domain: 'there's a good chance it'll be here in 10 years or less.'",
+      "claimIsQuote": true,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models",
+        "agents"
+      ],
+      "topics": [
+        "agi-timelines",
+        "agents"
+      ],
+      "assumptions": [
+        "Agentic AI and continued scaling keep improving capability",
+        "Competition among firms and nations prevents slowdown"
+      ],
+      "predictedOutcome": "Superintelligence (better than humans in every domain) plausibly by ~2035.",
+      "horizon": "10 years or less from 2025",
+      "horizonDate": "2035",
+      "contextAtTime": "Reasoning models (o1/o3, DeepSeek-R1) and agents had advanced rapidly in late 2024-early 2025.",
+      "evidenceIds": [
+        "ev-hinton-4"
+      ],
+      "outcome": "Not resolvable by Oct 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Horizon not reached.",
+      "confidence": "high",
+      "originality": 2,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Further shortening of the 2023 5-20 year estimate; by Sept 2026 he told senators researchers' timelines were shortening."
+    },
+    {
+      "id": "as-hinton-7",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2025-06-16",
+      "claim": "AI will replace 'everybody' in mundane intellectual labor; mass job displacement is more likely than not and already starting; physical trades are safer for a long time — 'a good bet would be to be a plumber'.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "society",
+        "economics"
+      ],
+      "topics": [
+        "labor"
+      ],
+      "assumptions": [
+        "AI capability in cognitive tasks continues to improve",
+        "Firms substitute rather than augment labor",
+        "Robotics/physical manipulation lags"
+      ],
+      "predictedOutcome": "Large-scale displacement of white-collar routine cognitive jobs (paralegals, call centers) before physical trades.",
+      "horizon": "open-ended (described as already beginning)",
+      "horizonDate": null,
+      "contextAtTime": "2025 saw CEO statements about AI replacing white-collar roles and early evidence of weaker entry-level hiring.",
+      "evidenceIds": [
+        "ev-hinton-6"
+      ],
+      "outcome": "By 2026 Fortune reports layoffs had not spiked but evidence mounted of AI shrinking entry-level opportunities; no mass unemployment observed as of Oct 2026.",
+      "outcomeEvidenceIds": [
+        "ev-out-jobs-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "No dated horizon; early signals are mixed. Note that his 2016 occupation-specific forecast (radiology) failed.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Generalizes the 2016 radiology claim into a broad labor claim."
+    },
+    {
+      "id": "as-hinton-8",
+      "thinkerId": "geoffrey-hinton",
+      "date": "2026-09-16",
+      "claim": "Told US senators that Congress has 'Maybe a year, but not much more than a year' to put guardrails on AI before it may be too late.",
+      "claimIsQuote": true,
+      "kind": "conditional",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety",
+        "agi-timelines"
+      ],
+      "assumptions": [
+        "Superintelligence timelines are shortening",
+        "Regulation must precede highly capable autonomous systems to be effective"
+      ],
+      "predictedOutcome": "If Congress does not act within roughly a year (by ~Sept 2027), effective control may be lost.",
+      "horizon": "about one year from Sept 2026",
+      "horizonDate": "2027",
+      "contextAtTime": "Closed-door briefing convened by Sen. Sanders; House adjourned until after Nov 2026 midterms without AI legislation (single source).",
+      "evidenceIds": [
+        "ev-hinton-8"
+      ],
+      "outcome": "Horizon not reached as of Oct 11, 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Deadline after the research cutoff.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Escalation of his post-2023 regulatory advocacy."
+    },
+    {
+      "id": "as-lecun-1",
+      "thinkerId": "yann-lecun",
+      "date": "2016-12",
+      "claim": "If intelligence is a cake, unsupervised/predictive (later 'self-supervised') learning is the bulk of the cake, supervised learning the icing, and reinforcement learning the cherry.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "training",
+        "data"
+      ],
+      "topics": [
+        "data",
+        "scaling"
+      ],
+      "assumptions": [
+        "Most useful knowledge can be learned by predicting parts of raw data from other parts"
+      ],
+      "predictedOutcome": "Self-supervised learning on unlabelled data becomes the main source of AI capability.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "2016 successes were mostly supervised (ImageNet) and RL (AlphaGo); self-supervised pretraining at scale was unproven.",
+      "evidenceIds": [
+        "ev-lecun-14"
+      ],
+      "outcome": "Self-supervised next-token pretraining became the foundation of LLMs (GPT series, 2018-2026), with supervised fine-tuning and RL layered on top — though from 2024 RL for reasoning grew in importance.",
+      "outcomeEvidenceIds": [],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "The core claim that self-supervised prediction would provide most of the learned knowledge was borne out — ironically via the autoregressive LLMs LeCun later criticized.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Retained; he later argued the self-supervision should be in representation space (JEPA) rather than generative token prediction."
+    },
+    {
+      "id": "as-lecun-2",
+      "thinkerId": "yann-lecun",
+      "date": "2022-06-27",
+      "claim": "Autonomous machine intelligence requires learned world models trained by self-supervision in abstract representation space (H-JEPA), plus planning and objective-driven architecture, rather than generative models.",
+      "claimIsQuote": false,
+      "kind": "aspiration",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "models"
+      ],
+      "topics": [
+        "architecture",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Predicting in representation space avoids the intractability of predicting pixels/tokens",
+        "Physical-world understanding is a prerequisite for human-level AI"
+      ],
+      "predictedOutcome": "JEPA-style world models eventually outperform generative LLMs on the path to human-level AI.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Published months before ChatGPT; LLM scaling was gaining momentum (GPT-3, PaLM).",
+      "evidenceIds": [
+        "ev-lecun-9",
+        "ev-lecun-12"
+      ],
+      "outcome": "Meta published I-JEPA (2023) and V-JEPA; LeCun founded AMI Labs (raised $1.03B, Mar 2026) to pursue it. As of Oct 2026 AMI had no product and reported results were not independently validated; LLMs remained dominant.",
+      "outcomeEvidenceIds": [
+        "ev-lecun-8",
+        "ev-lecun-12",
+        "ev-out-llm-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Research programme with no deadline; neither vindicated nor falsified by Oct 2026.",
+      "confidence": "high",
+      "originality": 4,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision; became the basis of his 2025 departure from Meta."
+    },
+    {
+      "id": "as-lecun-3",
+      "thinkerId": "yann-lecun",
+      "date": "2023-03",
+      "claim": "Auto-regressive LLMs are doomed: because each token carries some probability of error that compounds exponentially with answer length, they cannot be made factual, non-toxic or controllable without an architectural change.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "models"
+      ],
+      "topics": [
+        "architecture",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Per-token errors are independent and uncorrectable",
+        "Training can reduce but not eliminate the error rate"
+      ],
+      "predictedOutcome": "Autoregressive LLMs hit a reliability ceiling and are replaced by non-autoregressive, world-model-based systems.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Weeks after ChatGPT/GPT-4 launches, amid widespread hallucination concerns.",
+      "evidenceIds": [
+        "ev-lecun-1",
+        "ev-lecun-2"
+      ],
+      "outcome": "By 2026 autoregressive LLMs remained dominant and improved markedly on long multi-step tasks via reasoning models that backtrack and self-correct within long chains of thought; hallucinations reduced but not eliminated.",
+      "outcomeEvidenceIds": [
+        "ev-out-llm-1",
+        "ev-out-hallucination-1"
+      ],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "Reliability problems persisted as he said, but the specific mechanism (independent exponential error compounding) was undercut by models that correct their own errors, and LLMs were not abandoned. The ultimate 'no path to human-level AI' claim remains unresolved.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 2,
+      "specificity": 3,
+      "evolution": "Repeated unchanged at NYU in Sept 2025."
+    },
+    {
+      "id": "as-lecun-4",
+      "thinkerId": "yann-lecun",
+      "date": "2023-06-14",
+      "claim": "Fears that AI poses an existential risk are 'preposterous'; the debate is premature until there is a design for a system that can even rival a cat's learning ability.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "Current systems are far from animal-level intelligence",
+        "Objective-driven systems with guardrails will be controllable"
+      ],
+      "predictedOutcome": "AI will not pose an existential threat; safety will be engineered incrementally.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Weeks after Hinton left Google and the CAIS extinction-risk statement signed by Hinton and Bengio.",
+      "evidenceIds": [
+        "ev-lecun-3",
+        "ev-lecun-4",
+        "ev-lecun-11"
+      ],
+      "outcome": "No existential catastrophe as of Oct 2026; labs and Bengio-chaired International AI Safety Report document growing dangerous-capability and deception findings; debate unresolved.",
+      "outcomeEvidenceIds": [
+        "ev-out-scheming-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "An opinion about long-run risk; absence of catastrophe to date does not falsify either side.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "No revision found; repeated in WSJ (Oct 2024) as 'complete B.S.'."
+    },
+    {
+      "id": "as-lecun-5",
+      "thinkerId": "yann-lecun",
+      "date": "2023-10",
+      "claim": "Open-source AI is safer and prevents concentration of power; calls by Altman, Hassabis and Amodei for regulation amount to attempted regulatory capture.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "models",
+        "platforms"
+      ],
+      "topics": [
+        "open-weights",
+        "safety"
+      ],
+      "assumptions": [
+        "Openness lets many actors find and fix flaws",
+        "Misuse risk from open weights is manageable"
+      ],
+      "predictedOutcome": "Open models will not cause catastrophic harm and will keep pace with closed ones.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Meta had released Llama 2 (July 2023); the UK Bletchley summit and US executive order were imminent.",
+      "evidenceIds": [
+        "ev-lecun-10"
+      ],
+      "outcome": "Open-weight models proliferated (Llama, DeepSeek, Qwen) and stayed close to the frontier; Meta itself became more cautious about open-sourcing its most capable models from mid-2025 (recalled). Hinton referenced a 2026 'Hugging Face incident' as a 'little Chernobyl' (details unverified).",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Normative claim; evidence cuts both ways and no decisive outcome by Oct 2026.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-lecun-6",
+      "thinkerId": "yann-lecun",
+      "date": "2024-04",
+      "claim": "'on the path towards human-level intelligence, an LLM is basically an off-ramp, a distraction, a dead end' — while acknowledging LLMs are useful.",
+      "claimIsQuote": true,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "models"
+      ],
+      "topics": [
+        "architecture",
+        "agi-timelines",
+        "scaling"
+      ],
+      "assumptions": [
+        "Text-only training cannot yield physical-world understanding, persistent memory, reasoning and planning"
+      ],
+      "predictedOutcome": "Scaling LLMs will not reach human-level intelligence.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "GPT-4-class models widespread; heavy industry investment premised on scaling LLMs.",
+      "evidenceIds": [
+        "ev-lecun-6",
+        "ev-lecun-7",
+        "ev-lecun-13"
+      ],
+      "outcome": "As of Oct 2026 no system is broadly accepted as human-level; LLM-based reasoning/agent systems kept improving and absorbed most investment.",
+      "outcomeEvidenceIds": [
+        "ev-out-llm-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Not falsifiable until human-level AI is (or is not) reached by some route.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Hardened over time ('complete BS', Apr 2026)."
+    },
+    {
+      "id": "as-lecun-7",
+      "thinkerId": "yann-lecun",
+      "date": "2025-01-23",
+      "claim": "If Meta's research plan succeeds on schedule, within three to five years there will be systems of a completely different paradigm; within five years nobody in their right mind would use current LLMs as the central component of an AI system.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "models"
+      ],
+      "topics": [
+        "architecture"
+      ],
+      "assumptions": [
+        "JEPA/world-model research succeeds on the hoped timetable"
+      ],
+      "predictedOutcome": "By 2028-2030 a non-LLM architecture displaces LLMs as the core of AI systems.",
+      "horizon": "3-5 years from Jan 2025",
+      "horizonDate": "2030",
+      "contextAtTime": "Similar 'passing fad' claim made at VivaTech June 2023; DeepSeek-R1 had just been released.",
+      "evidenceIds": [
+        "ev-lecun-5",
+        "ev-lecun-3"
+      ],
+      "outcome": "As of Oct 2026 LLMs remain central; AMI Labs had no product.",
+      "outcomeEvidenceIds": [
+        "ev-out-llm-1",
+        "ev-lecun-12"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Horizon (2028-2030) not reached; early trend does not favor it but cannot settle it.",
+      "confidence": "high",
+      "originality": 4,
+      "causal": null,
+      "specificity": 4,
+      "evolution": "Partly conditional on Meta's plan; after leaving Meta he moved the bet to AMI Labs."
+    },
+    {
+      "id": "as-lecun-8",
+      "thinkerId": "yann-lecun",
+      "date": "2025-11-19",
+      "claim": "Left Meta after 12 years to found Advanced Machine Intelligence (AMI Labs) to build systems that understand the physical world, have persistent memory, reason and plan; raised $1.03B in March 2026.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "models",
+        "architecture"
+      ],
+      "topics": [
+        "architecture",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "World models are the next paradigm",
+        "Capital can be raised for a non-LLM bet"
+      ],
+      "predictedOutcome": "AMI produces world models that outperform LLM approaches on physical-world tasks.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Meta had reorganized AI under Superintelligence Labs (Alexandr Wang) focused on LLMs/products.",
+      "evidenceIds": [
+        "ev-lecun-7",
+        "ev-lecun-8"
+      ],
+      "outcome": "AMI raised $1.03B at $3.5B pre-money (Mar 2026); by Oct 2026 ~50-60 researchers, no product, results not independently verified.",
+      "outcomeEvidenceIds": [
+        "ev-lecun-8",
+        "ev-lecun-12"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Too early to judge the venture.",
+      "confidence": "high",
+      "originality": 4,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Consistent with views held since 2022."
+    },
+    {
+      "id": "as-bengio-1",
+      "thinkerId": "yoshua-bengio",
+      "date": "2019-12",
+      "claim": "Deep learning must move from 'System 1' pattern recognition to 'System 2' capabilities — reasoning, out-of-distribution generalization, compositional and causal representations.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "models"
+      ],
+      "topics": [
+        "reasoning",
+        "architecture"
+      ],
+      "assumptions": [
+        "Current deep nets lack systematic generalization",
+        "New inductive biases/architectures are needed"
+      ],
+      "predictedOutcome": "Next major advances come from adding reasoning and causal structure to deep learning.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "GPT-2 era; scaling laws not yet published (Jan 2020).",
+      "evidenceIds": [
+        "ev-bengio-4"
+      ],
+      "outcome": "Reasoning became the main frontier theme in 2024-2026 (o1/o3, DeepSeek-R1), but achieved mainly by RL-trained chain-of-thought on LLMs rather than the attention/causal-representation mechanisms he proposed; OOD generalization remains a weakness.",
+      "outcomeEvidenceIds": [],
+      "verdict": "partial",
+      "timing": "early",
+      "verdictRationale": "Correct that reasoning would be the key gap; mechanism largely different from what he proposed.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "Focus shifted from capability research to safety after 2023."
+    },
+    {
+      "id": "as-bengio-2",
+      "thinkerId": "yoshua-bengio",
+      "date": "2023-03-22",
+      "claim": "Signed the FLI open letter calling for at least a six-month pause on training systems more powerful than GPT-4.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "governance",
+      "layers": [
+        "training",
+        "society"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "Capabilities were outpacing safety and governance",
+        "A coordinated pause was achievable"
+      ],
+      "predictedOutcome": "A pause would allow safety protocols and governance to catch up.",
+      "horizon": "6 months",
+      "horizonDate": "2023",
+      "contextAtTime": "Days after GPT-4's release.",
+      "evidenceIds": [
+        "ev-bengio-1"
+      ],
+      "outcome": "No pause occurred; labs continued training larger models (GPT-4o, Claude 3, Gemini, GPT-5).",
+      "outcomeEvidenceIds": [],
+      "verdict": "incorrect",
+      "timing": "n/a",
+      "verdictRationale": "As an action aimed at achieving a pause, it failed; it did, however, help shift public debate (e.g., CAIS statement, Bletchley summit).",
+      "confidence": "high",
+      "originality": 3,
+      "causal": 2,
+      "specificity": 4,
+      "evolution": "Moved toward institution-building (International AI Safety Report, LawZero)."
+    },
+    {
+      "id": "as-bengio-3",
+      "thinkerId": "yoshua-bengio",
+      "date": "2023-05",
+      "claim": "Revised his timeline: having placed human-level AI decades to centuries away, he now estimated roughly 5 to 20 years (with ~90% confidence), and warned that goal-directed superhuman AIs could go 'rogue'.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models",
+        "society"
+      ],
+      "topics": [
+        "agi-timelines",
+        "safety"
+      ],
+      "assumptions": [
+        "Scaling plus modest algorithmic advances close the gap to human-level",
+        "Agency can be added to capable models"
+      ],
+      "predictedOutcome": "Human-level AI arrives roughly 2028-2043.",
+      "horizon": "5-20 years from 2023",
+      "horizonDate": "2043",
+      "contextAtTime": "Post-ChatGPT/GPT-4; Hinton made a similar revision the same month.",
+      "evidenceIds": [
+        "ev-bengio-2",
+        "ev-bengio-3",
+        "ev-hinton-10"
+      ],
+      "outcome": "Not resolvable as of Oct 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Horizon not reached.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Maintained and intensified in 2024-2026 (International AI Safety Report, LawZero)."
+    },
+    {
+      "id": "as-bengio-4",
+      "thinkerId": "yoshua-bengio",
+      "date": "2023-07-25",
+      "claim": "Told the US Senate that human-level AI might come within a few years to a couple of decades and urged immediate regulation, licensing, and international coordination.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "Government action is feasible and effective in time"
+      ],
+      "predictedOutcome": "Binding national and international AI safety regulation needed quickly.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Testified with Dario Amodei and Stuart Russell; EU AI Act under negotiation.",
+      "evidenceIds": [
+        "ev-bengio-5"
+      ],
+      "outcome": "EU AI Act adopted (2024); no comprehensive US federal AI law as of Oct 2026 (Hinton's Sept 2026 briefing noted no legislation); international effort led to Bengio-chaired safety reports rather than binding treaties.",
+      "outcomeEvidenceIds": [
+        "ev-hinton-8"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Normative governance claim.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-bengio-5",
+      "thinkerId": "yoshua-bengio",
+      "date": "2025-01-29",
+      "claim": "As chair, delivered the first International AI Safety Report synthesising evidence on general-purpose AI capabilities and risks for governments.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "A shared scientific evidence base improves policy"
+      ],
+      "predictedOutcome": "An IPCC-like process informs international AI governance.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Mandated at the Nov 2023 Bletchley Park summit; presented before the Feb 2025 Paris AI Action Summit, which shifted emphasis away from safety.",
+      "evidenceIds": [
+        "ev-bengio-6"
+      ],
+      "outcome": "Report published; follow-up updates and a 2026 edition were produced (recalled).",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Institutional action; impact on policy not measurable yet.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Consistent with 2023 turn."
+    },
+    {
+      "id": "as-bengio-6",
+      "thinkerId": "yoshua-bengio",
+      "date": "2025-02",
+      "claim": "Superintelligent agents pose catastrophic risks; a safer path is non-agentic 'Scientist AI' that models and explains the world without pursuing goals — launched LawZero (June 2025) to build it.",
+      "claimIsQuote": false,
+      "kind": "aspiration",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "agents"
+      ],
+      "topics": [
+        "safety",
+        "agents"
+      ],
+      "assumptions": [
+        "Agency, not intelligence per se, drives the main risks",
+        "Non-agentic systems can be competitive and useful (e.g., as guardrails or for science)"
+      ],
+      "predictedOutcome": "A non-agentic Scientist AI can serve as a guardrail on agentic systems and accelerate science safely.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Industry pivot to agents in 2025.",
+      "evidenceIds": [
+        "ev-bengio-7",
+        "ev-bengio-8"
+      ],
+      "outcome": "LawZero founded with ~$30M (recalled); no deployed Scientist AI as of Oct 2026 found.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Research agenda with no deadline.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Builds on his 2023 conversion; opposite bet to industry's agent focus."
+    },
+    {
+      "id": "as-bengio-7",
+      "thinkerId": "yoshua-bengio",
+      "date": "2025-06",
+      "claim": "Frontier models already display deception, cheating and self-preservation behaviours in tests — early warning signs of loss-of-control risk.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "models",
+        "agents"
+      ],
+      "topics": [
+        "safety",
+        "agents"
+      ],
+      "assumptions": [
+        "Behaviours in contrived evaluations indicate dispositions that matter in deployment"
+      ],
+      "predictedOutcome": "Such behaviours will become more capable and consequential as agency grows unless addressed.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Apollo Research scheming evaluations (Dec 2024) and lab system cards reported such behaviours.",
+      "evidenceIds": [
+        "ev-bengio-9"
+      ],
+      "outcome": "Multiple evaluations documented scheming/deception in test scenarios; no major real-world loss-of-control incident confirmed (a 2026 'Hugging Face incident' referenced by Hinton is unverified here).",
+      "outcomeEvidenceIds": [
+        "ev-out-scheming-1"
+      ],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "The empirical claim that such behaviours appear in evaluations is supported; the implication about real-world danger is not yet testable.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-sutskever-1",
+      "thinkerId": "ilya-sutskever",
+      "date": "2014-12",
+      "claim": "If you have a large dataset and you train a very big neural network, success is guaranteed (seq2seq-era statement of the scaling hypothesis).",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "training",
+        "models"
+      ],
+      "topics": [
+        "scaling"
+      ],
+      "assumptions": [
+        "Large networks trained on enough data can learn any function needed",
+        "Compute will keep growing"
+      ],
+      "predictedOutcome": "Bigger networks on more data will continue to deliver breakthroughs.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Following AlexNet (2012) and seq2seq translation (2014); mainstream ML still favored smaller models and hand-designed structure.",
+      "evidenceIds": [
+        "ev-sutskever-1",
+        "ev-sutskever-2",
+        "ev-hinton-9"
+      ],
+      "outcome": "Scaling became the dominant strategy from GPT-2/GPT-3 (2019-2020) through GPT-4 and beyond; scaling laws formalised the trend.",
+      "outcomeEvidenceIds": [],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "An early, contrarian conviction that was strongly vindicated over 2017-2024.",
+      "confidence": "medium",
+      "originality": 5,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Qualified in Dec 2024 ('pretraining as we know it will end') and Nov 2025 ('age of research')."
+    },
+    {
+      "id": "as-sutskever-2",
+      "thinkerId": "ilya-sutskever",
+      "date": "2015-12",
+      "claim": "Co-founded OpenAI as chief scientist to pursue AGI.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "agi-timelines",
+        "scaling"
+      ],
+      "assumptions": [
+        "AGI is achievable via scaled deep learning",
+        "A mission-driven lab can lead"
+      ],
+      "predictedOutcome": "OpenAI becomes a leading AGI lab.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Left Google Brain; OpenAI launched as a non-profit with ~$1B in pledges.",
+      "evidenceIds": [],
+      "outcome": "OpenAI produced GPT-3, ChatGPT and GPT-4, becoming the leading commercial AI lab.",
+      "outcomeEvidenceIds": [],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "The lab he co-founded became central to the field.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 1,
+      "evolution": "Left in May 2024."
+    },
+    {
+      "id": "as-sutskever-3",
+      "thinkerId": "ilya-sutskever",
+      "date": "2023-03",
+      "claim": "Predicting the next token well requires understanding the underlying reality that produced the text — compression is understanding.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "training",
+        "models"
+      ],
+      "topics": [
+        "scaling",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Good compression of data requires modelling its generative process"
+      ],
+      "predictedOutcome": "Better next-token predictors will exhibit increasingly genuine understanding and reasoning.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Post-GPT-4; directly opposed by LeCun and Marcus who argued LLMs lack understanding.",
+      "evidenceIds": [
+        "ev-sutskever-3"
+      ],
+      "outcome": "LLM capability on reasoning benchmarks rose sharply 2023-2026, but much of the gain came from RL post-training rather than pretraining alone; debate over 'understanding' remains open, and Sutskever himself stressed a generalization gap in 2025.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Philosophical/technical claim not settled by evidence to date.",
+      "confidence": "low",
+      "originality": 4,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "By Nov 2025 emphasised that models generalize dramatically worse than people."
+    },
+    {
+      "id": "as-sutskever-4",
+      "thinkerId": "ilya-sutskever",
+      "date": "2023-07-05",
+      "claim": "Co-led OpenAI's Superalignment team with the goal of solving the core technical challenges of superintelligence alignment within four years, backed by 20% of OpenAI's secured compute.",
+      "claimIsQuote": false,
+      "kind": "aspiration",
+      "category": "technical",
+      "layers": [
+        "training",
+        "models"
+      ],
+      "topics": [
+        "safety",
+        "post-training"
+      ],
+      "assumptions": [
+        "Superintelligence could arrive within the decade",
+        "Automated alignment researchers can be built"
+      ],
+      "predictedOutcome": "Core superintelligence alignment problems solved by mid-2027.",
+      "horizon": "four years from July 2023",
+      "horizonDate": "2027",
+      "contextAtTime": "Corporate OpenAI announcement co-authored with Jan Leike.",
+      "evidenceIds": [
+        "ev-sutskever-4"
+      ],
+      "outcome": "The team was dissolved in May 2024 after Sutskever and Leike left OpenAI; the four-year horizon has not elapsed.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Deadline (2027) not reached, though the programme as constituted ended early.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 4,
+      "evolution": "Continued the safety-first goal at SSI."
+    },
+    {
+      "id": "as-sutskever-5",
+      "thinkerId": "ilya-sutskever",
+      "date": "2023-11-17",
+      "claim": "As an OpenAI board member, voted to remove Sam Altman as CEO; days later said he deeply regretted participating in the board's actions.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "governance",
+      "layers": [
+        "platforms"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "Board oversight could constrain leadership in service of the non-profit mission"
+      ],
+      "predictedOutcome": "Leadership change at OpenAI.",
+      "horizon": "immediate",
+      "horizonDate": "2023",
+      "contextAtTime": "Tension between commercialization and safety at OpenAI.",
+      "evidenceIds": [
+        "ev-sutskever-5"
+      ],
+      "outcome": "Altman was reinstated within five days after employee revolt; Sutskever left the board and departed OpenAI in May 2024.",
+      "outcomeEvidenceIds": [],
+      "verdict": "incorrect",
+      "timing": "n/a",
+      "verdictRationale": "The action failed to achieve its aim and was reversed within days.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": 2,
+      "specificity": 4,
+      "evolution": "Publicly reversed (regret post, Nov 20, 2023)."
+    },
+    {
+      "id": "as-sutskever-6",
+      "thinkerId": "ilya-sutskever",
+      "date": "2024-06-19",
+      "claim": "Founded Safe Superintelligence Inc. as a 'straight-shot' lab with one goal and one product — safe superintelligence — insulated from short-term commercial pressure.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "safety",
+        "agi-timelines",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "Superintelligence is reachable by a small focused team with a different research approach",
+        "Investors will fund years without product revenue"
+      ],
+      "predictedOutcome": "SSI develops safe superintelligence without intermediate products.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Weeks after leaving OpenAI.",
+      "evidenceIds": [
+        "ev-sutskever-6"
+      ],
+      "outcome": "SSI raised ~$1B (Sept 2024) and was reportedly valued ~$32B (Apr 2025); co-founder Daniel Gross left for Meta (July 2025) and Sutskever became CEO. No public product found as of Oct 2026 (unverified for Jul-Oct 2026).",
+      "outcomeEvidenceIds": [
+        "ev-out-ssi-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Venture outcome not yet determinable.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Consistent with Superalignment-era priorities."
+    },
+    {
+      "id": "as-sutskever-7",
+      "thinkerId": "ilya-sutskever",
+      "date": "2024-12-13",
+      "claim": "Pre-training as we know it will unquestionably end: compute keeps growing but data does not — 'we have but one internet'; data is the fossil fuel of AI. Future systems will be agentic, reason, and be less predictable.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "data",
+        "training"
+      ],
+      "topics": [
+        "scaling",
+        "data",
+        "reasoning",
+        "agents"
+      ],
+      "assumptions": [
+        "High-quality human-generated data is finite",
+        "Returns from pure pretraining scale diminish"
+      ],
+      "predictedOutcome": "Labs shift emphasis from scaling pretraining to new axes (reasoning, synthetic data, agents, inference compute).",
+      "horizon": "unspecified (near-term direction)",
+      "horizonDate": null,
+      "contextAtTime": "Reports in late 2024 of disappointing returns from next-gen pretraining runs; o1 had shown reasoning gains.",
+      "evidenceIds": [
+        "ev-sutskever-7"
+      ],
+      "outcome": "2025-2026 frontier progress came largely from RL-based reasoning, inference-time compute and agents; GPT-4.5 (Feb 2025) was seen as showing diminishing pretraining returns. Pretraining nonetheless continued at larger scale and was not abandoned.",
+      "outcomeEvidenceIds": [],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "Direction (shift to reasoning/agents, data as constraint) proved right; 'end' of pretraining did not occur literally by 2026.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Extended in Nov 2025 into 'age of research' framing — a revision of his 2014-era 'scale guarantees success' view."
+    },
+    {
+      "id": "as-sutskever-8",
+      "thinkerId": "ilya-sutskever",
+      "date": "2025-11-25",
+      "claim": "2020-2025 was the 'age of scaling'; we are back in an 'age of research, just with big computers'. Models generalize dramatically worse than people; systems that learn as well as humans could come in roughly 5 to 20 years.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "training",
+        "models"
+      ],
+      "topics": [
+        "scaling",
+        "agi-timelines",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Scaling current recipes yields diminishing returns",
+        "A new learning approach can close the generalization gap"
+      ],
+      "predictedOutcome": "Next breakthroughs come from new ideas rather than more scale; human-like learners in 5-20 years.",
+      "horizon": "5-20 years from 2025",
+      "horizonDate": "2045",
+      "contextAtTime": "Industry capex at record levels premised partly on continued scaling; reasoning-model gains continuing.",
+      "evidenceIds": [
+        "ev-sutskever-8"
+      ],
+      "outcome": "Not resolvable as of Oct 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Long horizon.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Reversal relative to his earlier scaling maximalism."
+    },
+    {
+      "id": "as-marcus-1",
+      "thinkerId": "gary-marcus",
+      "date": "2018-01-02",
+      "claim": "Deep learning faces ten fundamental challenges (data hunger, poor transfer, lack of hierarchical structure, weak open-ended inference, opacity, poor integration of prior knowledge, correlation vs causation, etc.) and must be supplemented by other (symbolic) techniques to reach general intelligence.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "architecture",
+        "models"
+      ],
+      "topics": [
+        "architecture",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Scale alone cannot overcome these limits"
+      ],
+      "predictedOutcome": "Pure deep learning stalls short of general intelligence; hybrids needed.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Just before GPT-1/BERT (2018) and the pretraining revolution.",
+      "evidenceIds": [
+        "ev-marcus-1"
+      ],
+      "outcome": "Several challenges (data efficiency, reliability, OOD generalization) remain open; others (transfer, open-ended language inference) improved dramatically through scale. Tool use and code execution in LLM agents add some symbolic components.",
+      "outcomeEvidenceIds": [],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "Correctly flagged persistent weaknesses but underestimated how much scale would solve.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "Consistent; restated repeatedly 2019-2026."
+    },
+    {
+      "id": "as-marcus-2",
+      "thinkerId": "gary-marcus",
+      "date": "2022-03-10",
+      "claim": "Deep learning is hitting a wall: scaling will not deliver reliability or understanding; neurosymbolic approaches are needed.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models",
+        "training"
+      ],
+      "topics": [
+        "scaling",
+        "architecture"
+      ],
+      "assumptions": [
+        "Scaling yields diminishing returns on reasoning and reliability"
+      ],
+      "predictedOutcome": "Near-term scaled models would show limited progress on reasoning/reliability.",
+      "horizon": "near-term (unspecified)",
+      "horizonDate": null,
+      "contextAtTime": "Pre-ChatGPT; GPT-3 and early PaLM existed; scaling laws widely accepted.",
+      "evidenceIds": [
+        "ev-marcus-2"
+      ],
+      "outcome": "ChatGPT (Nov 2022), GPT-4 (Mar 2023) and reasoning models (2024-2025) delivered large measured gains on reasoning and professional benchmarks and massive adoption; hallucinations and reliability issues persisted.",
+      "outcomeEvidenceIds": [
+        "ev-out-hallucination-1"
+      ],
+      "verdict": "incorrect",
+      "timing": "premature",
+      "verdictRationale": "Measured capabilities rose steeply in the following years, contradicting a 'wall' in 2022; his reliability concerns were partly valid but do not rescue the headline claim.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 2,
+      "specificity": 2,
+      "evolution": "Re-asserted in Nov 2024 ('diminishing returns') after pretraining slowdown reports."
+    },
+    {
+      "id": "as-marcus-3",
+      "thinkerId": "gary-marcus",
+      "date": "2022-05",
+      "claim": "Offered Elon Musk a bet that AGI would not arrive by 2029, under specified criteria.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "agi-timelines"
+      ],
+      "assumptions": [
+        "Current approaches lack robust understanding"
+      ],
+      "predictedOutcome": "No AGI meeting his criteria by end of 2029.",
+      "horizon": "by 2029",
+      "horizonDate": "2029",
+      "contextAtTime": "Musk had said he expected AGI by 2029.",
+      "evidenceIds": [
+        "ev-marcus-3"
+      ],
+      "outcome": "Not resolvable as of Oct 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Deadline not reached.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": null,
+      "specificity": 4,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-marcus-4",
+      "thinkerId": "gary-marcus",
+      "date": "2023-05-16",
+      "claim": "Testified to the US Senate (alongside Sam Altman) calling for an FDA-like licensing agency, independent audits and international oversight of AI.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "Self-regulation by AI companies is insufficient"
+      ],
+      "predictedOutcome": "Strong external regulation is needed to manage AI risks.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "First major congressional AI hearing after ChatGPT.",
+      "evidenceIds": [
+        "ev-marcus-4"
+      ],
+      "outcome": "No US federal AI licensing agency as of Oct 2026; EU AI Act adopted.",
+      "outcomeEvidenceIds": [
+        "ev-hinton-8"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Normative claim.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Later grew more critical of OpenAI/Altman (2024 book 'Taming Silicon Valley')."
+    },
+    {
+      "id": "as-marcus-5",
+      "thinkerId": "gary-marcus",
+      "date": "2023-12",
+      "claim": "For 2024: roughly 7-10 GPT-4-level models; no massive advance (no GPT-5-level model); price wars; little moat; no robust solution to hallucinations; modest corporate adoption and profits.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "models",
+        "economics"
+      ],
+      "topics": [
+        "commoditization",
+        "scaling",
+        "enterprise-roi"
+      ],
+      "assumptions": [
+        "Scaling returns slowing",
+        "Many labs could replicate GPT-4"
+      ],
+      "predictedOutcome": "By end-2024: multiple GPT-4-class peers, no GPT-5, falling prices.",
+      "horizon": "calendar 2024",
+      "horizonDate": "2024",
+      "contextAtTime": "Gemini announced Dec 2023; Claude 2/Llama 2 below GPT-4; widespread expectation of GPT-5 in 2024.",
+      "evidenceIds": [
+        "ev-marcus-5"
+      ],
+      "outcome": "2024 saw many GPT-4-class models (Claude 3/3.5, Gemini 1.5, Llama 3.1 405B, Qwen, DeepSeek-V2/V3), steep API price cuts, no GPT-5 (released Aug 2025), and persistent hallucinations. OpenAI's o1 (Sept 2024) was a notable reasoning advance some would call a substantial leap.",
+      "outcomeEvidenceIds": [
+        "ev-out-gpt5-1",
+        "ev-out-hallucination-1"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "Most specific components held by end-2024; the o1 reasoning jump is the main caveat.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 4,
+      "evolution": "Issued follow-on predictions for 2025."
+    },
+    {
+      "id": "as-marcus-6",
+      "thinkerId": "gary-marcus",
+      "date": "2023-08",
+      "claim": "Generative AI could turn out to be an economic 'dud' — its value far below what valuations implied — and the boom resembles a bubble.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "economics",
+        "apps"
+      ],
+      "topics": [
+        "enterprise-roi",
+        "infra-cycle"
+      ],
+      "assumptions": [
+        "Hallucinations limit enterprise adoption",
+        "Revenue will not justify capex"
+      ],
+      "predictedOutcome": "Disappointing revenue relative to investment and a correction in AI valuations.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Mid-2023 hype after ChatGPT; capex ramp beginning.",
+      "evidenceIds": [
+        "ev-marcus-6",
+        "ev-marcus-7"
+      ],
+      "outcome": "Through mid-2026 AI capex and lab revenues kept growing rapidly; no broad AI market crash had occurred as of the last verified information (Jul-Oct 2026 not verified). Enterprise ROI evidence remained mixed.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "No deadline; a bubble cannot be confirmed or refuted until a cycle completes.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "Repeated through 2024-2025."
+    },
+    {
+      "id": "as-marcus-7",
+      "thinkerId": "gary-marcus",
+      "date": "2025-08",
+      "claim": "GPT-5 was overdue, overhyped and underwhelming; hallucinations and reasoning errors remain unsolved in pure LLMs.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "technical",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "scaling",
+        "reasoning"
+      ],
+      "assumptions": [
+        "LLMs lack world models and robust reasoning"
+      ],
+      "predictedOutcome": "LLM scaling will not eliminate hallucinations.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "GPT-5 released Aug 7, 2025 to mixed reviews.",
+      "evidenceIds": [
+        "ev-marcus-8"
+      ],
+      "outcome": "Hallucinations reduced but not eliminated as of 2026; OpenAI researchers acknowledged structural incentives behind them (Sept 2025).",
+      "outcomeEvidenceIds": [
+        "ev-out-gpt5-1",
+        "ev-out-hallucination-1"
+      ],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "Persistence of hallucinations supports him; 'underwhelming' is a judgment, and GPT-5 class models were widely used.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "No revision found."
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-1",
+      "from": "ilya-sutskever",
+      "to": "geoffrey-hinton",
+      "type": "influenced_by",
+      "date": "2012",
+      "note": "Sutskever was Hinton's PhD student and co-authored AlexNet with him and Krizhevsky.",
+      "evidenceIds": [
+        "ev-hinton-9"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-2",
+      "from": "yann-lecun",
+      "to": "geoffrey-hinton",
+      "type": "challenges",
+      "date": "2023",
+      "note": "LeCun publicly dismissed the existential-risk concerns Hinton raised after leaving Google, calling AI doom fears 'preposterous'; later headlines report LeCun 'rejects Hinton' while calling LLMs a dead end.",
+      "evidenceIds": [
+        "ev-lecun-3",
+        "ev-lecun-4",
+        "ev-lecun-15"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-3",
+      "from": "yann-lecun",
+      "to": "yoshua-bengio",
+      "type": "challenges",
+      "date": "2023",
+      "note": "LeCun disputed Bengio's catastrophic-risk arguments and calls for regulation; in Oct 2023 criticized 'Turing awardees' backing restrictions (AI Business headline).",
+      "evidenceIds": [
+        "ev-lecun-10"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-4",
+      "from": "yoshua-bengio",
+      "to": "geoffrey-hinton",
+      "type": "agrees_with",
+      "date": "2023-05",
+      "note": "Both revised AI timelines in May 2023 and signed the CAIS extinction-risk statement.",
+      "evidenceIds": [
+        "ev-hinton-10",
+        "ev-bengio-3",
+        "ev-hinton-3"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-5",
+      "from": "yann-lecun",
+      "to": "sam-altman",
+      "type": "challenges",
+      "date": "2023-10",
+      "note": "LeCun accused Altman (with Hassabis and Amodei) of attempting regulatory capture.",
+      "evidenceIds": [
+        "ev-lecun-10"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-6",
+      "from": "yann-lecun",
+      "to": "dario-amodei",
+      "type": "challenges",
+      "date": "2023-10",
+      "note": "LeCun accused Amodei/Anthropic of lobbying to restrict open source (regulatory capture).",
+      "evidenceIds": [
+        "ev-lecun-10"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-7",
+      "from": "yann-lecun",
+      "to": "demis-hassabis",
+      "type": "challenges",
+      "date": "2023-10",
+      "note": "Named alongside Altman and Amodei in LeCun's regulatory-capture accusation.",
+      "evidenceIds": [
+        "ev-lecun-10"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-8",
+      "from": "yann-lecun",
+      "to": "mark-zuckerberg",
+      "type": "agrees_with",
+      "date": "2023",
+      "note": "As Meta's chief AI scientist LeCun championed the open-weights Llama strategy that Zuckerberg endorsed; they diverged in 2025 when Meta reorganised around Superintelligence Labs and LeCun left.",
+      "evidenceIds": [
+        "ev-lecun-10",
+        "ev-lecun-7"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-9",
+      "from": "yann-lecun",
+      "to": "tech:world-models",
+      "type": "built",
+      "date": "2022-06",
+      "note": "Proposed H-JEPA world models (2022) and founded AMI Labs (2025-26) to build them.",
+      "evidenceIds": [
+        "ev-lecun-9",
+        "ev-lecun-8"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-10",
+      "from": "ilya-sutskever",
+      "to": "sam-altman",
+      "type": "contradicts",
+      "date": "2023-11",
+      "note": "Sutskever voted with the OpenAI board to remove Altman as CEO, then said he regretted it.",
+      "evidenceIds": [
+        "ev-sutskever-5"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-11",
+      "from": "ilya-sutskever",
+      "to": "org:Safe Superintelligence Inc.",
+      "type": "built",
+      "date": "2024-06",
+      "note": "Co-founded SSI with Daniel Gross and Daniel Levy; CEO since July 2025.",
+      "evidenceIds": [
+        "ev-sutskever-6",
+        "ev-out-ssi-1"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-12",
+      "from": "ilya-sutskever",
+      "to": "tech:scaling",
+      "type": "changed_position",
+      "date": "2024-12",
+      "note": "Moved from 'big network + big data = guaranteed success' (2014) to 'pretraining will end' (2024) and 'age of research' (2025).",
+      "evidenceIds": [
+        "ev-sutskever-2",
+        "ev-sutskever-7",
+        "ev-sutskever-8"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-13",
+      "from": "gary-marcus",
+      "to": "sam-altman",
+      "type": "challenges",
+      "date": "2023-05",
+      "note": "Testified alongside Altman at the May 2023 Senate hearing and has since been a persistent critic of OpenAI and Altman.",
+      "evidenceIds": [
+        "ev-marcus-4"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-14",
+      "from": "gary-marcus",
+      "to": "yann-lecun",
+      "type": "challenges",
+      "date": "2022",
+      "note": "Long-running public dispute: Marcus argues LeCun dismissed his critiques of deep learning and later adopted similar conclusions about LLM limits; they agree LLMs are insufficient for human-level AI but disagree on remedies (neurosymbolic vs JEPA) and on AI risk/regulation.",
+      "evidenceIds": [
+        "ev-marcus-2",
+        "ev-lecun-6"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-15",
+      "from": "gary-marcus",
+      "to": "elon-musk",
+      "type": "challenges",
+      "date": "2022-05",
+      "note": "Offered Musk a bet that AGI would not arrive by 2029.",
+      "evidenceIds": [
+        "ev-marcus-3"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-16",
+      "from": "gary-marcus",
+      "to": "ilya-sutskever",
+      "type": "challenges",
+      "date": "2024-12",
+      "note": "Marcus's 'diminishing returns' and 'wall' claims are the opposite of Sutskever's earlier scaling conviction; after Sutskever's NeurIPS 2024 'peak data' talk and Nov 2025 'age of research' remarks, the two converge on the view that pure scaling is insufficient.",
+      "evidenceIds": [
+        "ev-marcus-7",
+        "ev-sutskever-7",
+        "ev-sutskever-8"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-17",
+      "from": "geoffrey-hinton",
+      "to": "tech:backpropagation",
+      "type": "changed_position",
+      "date": "2023-05",
+      "note": "From 'throw it all away and start again' (2017) to viewing backprop-trained digital nets as potentially superior to brains (2023).",
+      "evidenceIds": [
+        "ev-hinton-7",
+        "ev-hinton-12"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-18",
+      "from": "yoshua-bengio",
+      "to": "org:LawZero",
+      "type": "built",
+      "date": "2025-06",
+      "note": "Founded LawZero to build non-agentic Scientist AI.",
+      "evidenceIds": [
+        "ev-bengio-8"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-19",
+      "from": "gary-marcus",
+      "to": "yoshua-bengio",
+      "type": "agrees_with",
+      "date": "2023-03",
+      "note": "Both signed the FLI pause letter (recalled).",
+      "evidenceIds": [
+        "ev-bengio-1"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-20",
+      "from": "yoshua-bengio",
+      "to": "dario-amodei",
+      "type": "agrees_with",
+      "date": "2023-07",
+      "note": "Testified together at the July 2023 Senate hearing in favour of AI regulation (recalled).",
+      "evidenceIds": [
+        "ev-bengio-5"
+      ],
+      "inferred": false
+    }
+  ],
+  "gaps": [
+    "TOOLING LIMIT: WebFetch failed with DNS errors (ENOTFOUND) for every domain tried (fortune, cnbc, smithsonianmag, axios, thenextweb, substack, wikipedia, arxiv, dwarkesh), and the shared WebSearch budget (200 per turn across all agents) was exhausted after ~25 searches. Only Hinton and LeCun were researched via search snippets; ALL Bengio, Sutskever and Marcus evidence is 'recalled' and should be re-verified in a follow-up session.",
+    "No 'fetched' evidence anywhere; 'verbatim': true is used only for short phrases shown in quotation marks in search-result summaries, not for text seen on the original page.",
+    "Jul-Oct 2026 developments verified only for Hinton (Sept 16, 2026 Senate briefing) and LeCun (Oct 2026 AMI status). Not checked: SSI 2026 news, Bengio's 2026 International AI Safety Report / LawZero progress, Marcus's 2026 predictions and bubble claims, Musk v. OpenAI trial testimony by Sutskever.",
+    "Hinton 2016 radiology quote: wording varies by transcript; no primary video/transcript accessed. Report that Hinton later acknowledged the error rests on weak (LinkedIn) evidence and is not used as a claim.",
+    "Hinton referenced a recent 'Hugging Face incident' as a 'little Chernobyl' (Sept 2026, single source); nature of the incident unknown — not characterised.",
+    "LeCun 'off-ramp/dead end' quote dated Apr 2024 per Gizmodo but 36Kr associates the phrasing with a Nov 23, 2025 conversation; date uncertain. The 'Auto-Regressive LLMs are doomed' slide is dated from early-2023 reports (Sina, Mar 27, 2023) — original slide URL not found.",
+    "Radiology outcome figures come from Fortune (May 2026) search summaries; listing counts conflict between article versions and were excluded. A claimed 'record high' US radiologist employment figure could not be verified.",
+    "Bengio's '5 to 20 years, 90% confidence' figure and the exact blog post containing it are from memory.",
+    "Sutskever's quotes ('we have but one internet', 'age of research', 5-20 years) are recalled paraphrases; URLs withheld except ssi.inc, OpenAI announcements and the Dwarkesh page (fetch failed with DNS error, not 404).",
+    "Marcus's 2024 prediction list is recalled from his Dec 2023 posts; exact wording and the number of items not verified. No Substack URLs given because none were seen this session.",
+    "LeCun cake analogy (NIPS 2016) recalled; URL omitted."
+  ]
+}

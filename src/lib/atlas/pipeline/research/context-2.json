@@ -1,0 +1,3035 @@
+{
+ "agent": "context-2 (recent context 2024-2026-10-11)",
+ "events": [
+  {
+   "id": "evt-2024-gemini-15-long-context",
+   "date": "2024-02-15",
+   "title": "Gemini 1.5 Pro ships 1M-token context",
+   "kind": "model",
+   "layers": [
+    "models",
+    "architecture",
+    "inference"
+   ],
+   "summary": "Google previewed Gemini 1.5 Pro, a mixture-of-experts model with a 1M-token context window.",
+   "significance": "Interpretation: made long context a competitive axis and weakened the assumption that retrieval pipelines were the only way to ground models in large corpora.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-47"
+   ]
+  },
+  {
+   "id": "evt-2024-sora",
+   "date": "2024-02-15",
+   "title": "OpenAI previews Sora text-to-video",
+   "kind": "model",
+   "layers": [
+    "models",
+    "apps",
+    "architecture"
+   ],
+   "summary": "OpenAI previewed Sora, a diffusion-transformer video model producing minute-long clips; public release came in December 2024.",
+   "significance": "Interpretation: extended the 'scale the transformer' thesis to video and fed the 'world simulator' framing.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-48"
+   ]
+  },
+  {
+   "id": "evt-2024-claude-3",
+   "date": "2024-03-04",
+   "title": "Claude 3 family ends GPT-4's solo lead",
+   "kind": "model",
+   "layers": [
+    "models",
+    "economics"
+   ],
+   "summary": "Anthropic released Claude 3 (Haiku/Sonnet/Opus), followed by Claude 3.5 Sonnet on 2024-06-20.",
+   "significance": "Interpretation: the frontier became a multi-lab race, undercutting the belief that a single lab's lead was durable.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-46"
+   ]
+  },
+  {
+   "id": "evt-2024-acquihire-deals",
+   "date": "2024-03-19",
+   "title": "License-and-hire deals absorb Inflection and Character.AI",
+   "kind": "org",
+   "layers": [
+    "economics",
+    "models"
+   ],
+   "summary": "Microsoft hired Inflection's leadership with a ~$650M licensing payment (Mar 2024); Google did a ~$2.7B license-and-rehire of Character.AI's founders (Aug 2024).",
+   "significance": "Interpretation: signalled that independent second-tier model labs struggled to fund frontier training and that talent, not companies, was the asset being bought.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-59"
+   ]
+  },
+  {
+   "id": "evt-2024-amazon-talen-nuclear",
+   "date": "2024-03",
+   "title": "Amazon buys nuclear-adjacent data center campus from Talen",
+   "kind": "infra",
+   "layers": [
+    "energy",
+    "cloud"
+   ],
+   "summary": "Amazon acquired Talen Energy's data center campus next to the Susquehanna nuclear plant (~$650M).",
+   "significance": "Interpretation: first clear sign that hyperscalers would co-locate with firm (nuclear) generation to secure AI power.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-55"
+   ]
+  },
+  {
+   "id": "evt-2024-gpt-4o",
+   "date": "2024-05-13",
+   "title": "GPT-4o: native multimodal flagship made free",
+   "kind": "model",
+   "layers": [
+    "models",
+    "apps",
+    "inference",
+    "distribution"
+   ],
+   "summary": "OpenAI launched GPT-4o, a natively multimodal model, free in ChatGPT and at half GPT-4 Turbo's API price.",
+   "significance": "Interpretation: GPT-4-class capability became a free consumer commodity, shifting competition to distribution and price.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-45",
+    "ev-ctx2-80"
+   ]
+  },
+  {
+   "id": "evt-2024-situational-awareness",
+   "date": "2024-06",
+   "title": "'Situational Awareness' essay frames AGI-by-2027 and a compute race",
+   "kind": "research",
+   "layers": [
+    "society",
+    "economics",
+    "cloud"
+   ],
+   "summary": "Leopold Aschenbrenner published a long essay extrapolating compute OOMs to AGI around 2027 and trillion-dollar clusters.",
+   "significance": "Interpretation: crystallized the national-security and compute-scaling narrative later echoed in Stargate and US policy.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-51"
+   ]
+  },
+  {
+   "id": "evt-2024-sequoia-600b",
+   "date": "2024-06",
+   "title": "Sequoia's 'AI's $600B Question'",
+   "kind": "market",
+   "layers": [
+    "economics"
+   ],
+   "summary": "David Cahn estimated a ~$600B gap between implied AI infrastructure spend and AI revenue.",
+   "significance": "Interpretation: became the canonical framing of the AI-bubble debate for the next two years.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-52"
+   ]
+  },
+  {
+   "id": "evt-2024-nvidia-most-valuable",
+   "date": "2024-06-18",
+   "title": "Nvidia briefly becomes the world's most valuable company",
+   "kind": "market",
+   "layers": [
+    "semis",
+    "economics"
+   ],
+   "summary": "Nvidia's market cap passed ~$3.3T, briefly overtaking Microsoft.",
+   "significance": "Interpretation: markets priced accelerators as the main value-capture layer of the AI stack.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-53"
+   ]
+  },
+  {
+   "id": "evt-2024-llama-31-405b",
+   "date": "2024-07-23",
+   "title": "Llama 3.1 405B: frontier-class open weights",
+   "kind": "model",
+   "layers": [
+    "models",
+    "distribution",
+    "economics"
+   ],
+   "summary": "Meta released Llama 3.1 405B open weights alongside Zuckerberg's 'Open Source AI Is the Path Forward'; Llama 3 8B/70B had shipped in April.",
+   "significance": "Interpretation: open weights near the frontier challenged the idea that model weights themselves were the moat.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-49"
+   ]
+  },
+  {
+   "id": "evt-2024-gpt4o-mini",
+   "date": "2024-07-18",
+   "title": "GPT-4o mini prices GPT-4-class quality at $0.15/1M input tokens",
+   "kind": "product",
+   "layers": [
+    "inference",
+    "economics"
+   ],
+   "summary": "OpenAI released GPT-4o mini at $0.15/$0.60 per 1M input/output tokens, versus $30/$60 for GPT-4 at launch in March 2023.",
+   "significance": "Interpretation: made 'LLMflation' (rapid constant-capability price decline) visible to every developer.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-80",
+    "ev-ctx2-39"
+   ]
+  },
+  {
+   "id": "evt-2024-eu-ai-act",
+   "date": "2024-08-01",
+   "title": "EU AI Act enters into force",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "The AI Act entered into force with staged application dates for prohibitions (Feb 2025), GPAI duties (Aug 2025) and high-risk rules (Aug 2026, later delayed).",
+   "significance": "Interpretation: first comprehensive horizontal AI law; set the compliance baseline that later became a target for simplification.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-57"
+   ]
+  },
+  {
+   "id": "evt-2024-o1",
+   "date": "2024-09-12",
+   "title": "OpenAI o1: inference-time compute becomes a scaling axis",
+   "kind": "model",
+   "layers": [
+    "agents",
+    "inference",
+    "training",
+    "models"
+   ],
+   "summary": "OpenAI released o1-preview, trained with RL to reason in long chains of thought, with performance scaling in both RL training and test-time compute.",
+   "significance": "Interpretation: reframed scaling from pretraining-only to RL plus test-time compute, shifting demand toward inference and opening the reasoning era.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-50"
+   ]
+  },
+  {
+   "id": "evt-2024-xai-colossus",
+   "date": "2024-09",
+   "title": "xAI Colossus: ~100k H100s online in Memphis",
+   "kind": "infra",
+   "layers": [
+    "cloud",
+    "semis",
+    "energy"
+   ],
+   "summary": "xAI announced its ~100,000-GPU Colossus cluster online after about four months of construction.",
+   "significance": "Interpretation: showed that speed-to-power and build execution could be a competitive advantage in its own right.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-56"
+   ]
+  },
+  {
+   "id": "evt-2024-tmi-restart",
+   "date": "2024-09-20",
+   "title": "Nuclear PPAs: Microsoft restarts TMI Unit 1; Google signs Kairos SMRs",
+   "kind": "infra",
+   "layers": [
+    "energy"
+   ],
+   "summary": "Constellation and Microsoft signed a 20-year PPA to restart TMI Unit 1 (Sept 20); Google agreed to buy up to ~500 MW from Kairos SMRs (Oct 14, 2024).",
+   "significance": "Interpretation: AI demand began reviving retired firm generation and underwriting next-generation nuclear, making power a recognized binding constraint.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-55"
+   ]
+  },
+  {
+   "id": "evt-2024-sb1047-veto",
+   "date": "2024-09-29",
+   "title": "California Gov. Newsom vetoes SB 1047",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "Newsom vetoed the frontier-model safety bill, citing its focus on model size rather than deployment risk.",
+   "significance": "Interpretation: marked the limit of compute-threshold safety regulation in the US and shifted fights to transparency laws and federal preemption.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-58"
+   ]
+  },
+  {
+   "id": "evt-2024-nobel-ai",
+   "date": "2024-10-08",
+   "title": "Nobel prizes to Hinton (Physics) and Hassabis/Jumper (Chemistry)",
+   "kind": "research",
+   "layers": [
+    "society",
+    "architecture"
+   ],
+   "summary": "Physics 2024 went to Hopfield and Hinton; Chemistry 2024 half to Hassabis and Jumper for AlphaFold.",
+   "significance": "Interpretation: institutional scientific validation of deep learning and of AI-for-science.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-60"
+   ]
+  },
+  {
+   "id": "evt-2024-computer-use-mcp",
+   "date": "2024-11-25",
+   "title": "Computer use (Oct) and Model Context Protocol (Nov) from Anthropic",
+   "kind": "product",
+   "layers": [
+    "agents",
+    "platforms"
+   ],
+   "summary": "Anthropic shipped computer-use beta (Oct 22, 2024) and open-sourced MCP (Nov 25, 2024), later adopted by OpenAI (Mar 2025) and others.",
+   "significance": "Interpretation: MCP became the de facto tool-connection standard, commoditizing integration and accelerating agents.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-61"
+   ]
+  },
+  {
+   "id": "evt-2024-lbnl-report",
+   "date": "2024-12-20",
+   "title": "LBNL: data centers 4.4% of US electricity, up to 12% by 2028",
+   "kind": "research",
+   "layers": [
+    "energy",
+    "society"
+   ],
+   "summary": "DOE/LBNL reported data centers used ~176 TWh (4.4%) of US electricity in 2023 and could reach 6.7-12% by 2028.",
+   "significance": "Interpretation: gave policymakers an official baseline for AI-driven load growth.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-34",
+    "ev-ctx2-44"
+   ]
+  },
+  {
+   "id": "evt-2024-o3-arc",
+   "date": "2024-12-20",
+   "title": "o3 scores ~76-88% on ARC-AGI-1",
+   "kind": "research",
+   "layers": [
+    "agents",
+    "models"
+   ],
+   "summary": "OpenAI previewed o3; ARC Prize verified ~75.7% (limited compute) and ~87.5% (high compute) on ARC-AGI-1.",
+   "significance": "Interpretation: test-time compute cracked a benchmark designed to resist scaling, though at very high cost per task.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-62"
+   ]
+  },
+  {
+   "id": "evt-2025-deepseek-r1",
+   "date": "2025-01-20",
+   "title": "DeepSeek-R1: open-weight reasoning at a fraction of the cost",
+   "kind": "model",
+   "layers": [
+    "models",
+    "training",
+    "distribution",
+    "economics"
+   ],
+   "summary": "DeepSeek released R1 under MIT license, matching o1 on many benchmarks; its V3 base reported a ~$5.6M final training run.",
+   "significance": "Interpretation: showed RL-based reasoning could be replicated cheaply and openly, compressing frontier leads and triggering a market repricing.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-63"
+   ]
+  },
+  {
+   "id": "evt-2025-stargate",
+   "date": "2025-01-21",
+   "title": "Stargate: $500B US AI infrastructure pledge",
+   "kind": "capital",
+   "layers": [
+    "cloud",
+    "energy",
+    "economics"
+   ],
+   "summary": "OpenAI, SoftBank, Oracle and MGX announced Stargate, intending $500B over four years ($100B immediately).",
+   "significance": "Interpretation: moved frontier labs from renting compute to directly sponsoring GW-scale campuses.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-65"
+   ]
+  },
+  {
+   "id": "evt-2025-nvidia-deepseek-drop",
+   "date": "2025-01-27",
+   "title": "Nvidia loses ~$589B in one day",
+   "kind": "market",
+   "layers": [
+    "semis",
+    "economics"
+   ],
+   "summary": "Nvidia fell ~17% after DeepSeek, the largest single-day market-value loss for a US company at the time.",
+   "significance": "Interpretation: markets briefly feared efficiency would shrink compute demand (Jevons debate); demand subsequently accelerated.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-64"
+   ]
+  },
+  {
+   "id": "evt-2025-claude-code",
+   "date": "2025-02-24",
+   "title": "Claude Code launches; coding agents become the killer app",
+   "kind": "product",
+   "layers": [
+    "agents",
+    "apps",
+    "platforms"
+   ],
+   "summary": "Anthropic launched Claude Code with Claude 3.7 Sonnet (preview) and made it GA with Claude 4 (May 22, 2025).",
+   "significance": "Interpretation: terminal-native coding agents became the first agent category with large paid usage, reshaping revenue mix toward agentic tokens.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-66"
+   ]
+  },
+  {
+   "id": "evt-2025-metr-horizons",
+   "date": "2025-03-19",
+   "title": "METR: AI task horizons double every ~7 months",
+   "kind": "research",
+   "layers": [
+    "agents",
+    "society"
+   ],
+   "summary": "METR found frontier models' 50% task-completion horizon had doubled ~every 7 months since 2019 (Claude 3.7 Sonnet ~50 minutes).",
+   "significance": "Interpretation: offered a single trend line for agent capability that anchored forecasts and policy discussion.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-37"
+   ]
+  },
+  {
+   "id": "evt-2025-reasoning-wave",
+   "date": "2025-04-16",
+   "title": "Reasoning goes mainstream: Gemini 2.5 Pro, o3, o4-mini",
+   "kind": "model",
+   "layers": [
+    "models",
+    "agents",
+    "inference"
+   ],
+   "summary": "Google shipped Gemini 2.5 Pro (Mar 25) as a thinking model; OpenAI released o3 and o4-mini (Apr 16) with tool use inside reasoning.",
+   "significance": "Interpretation: reasoning became table stakes across labs and inference-time compute a standard cost driver.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-67"
+   ]
+  },
+  {
+   "id": "evt-2025-h20-controls",
+   "date": "2025-04",
+   "title": "H20 export licensing and the revenue-share reversal",
+   "kind": "policy",
+   "layers": [
+    "semis",
+    "society",
+    "economics"
+   ],
+   "summary": "The US required licenses for Nvidia H20 sales to China (Apr 2025), then allowed them under a 15% revenue-share arrangement (Aug 2025); H200 sales were later allowed under license.",
+   "significance": "Interpretation: chip export policy turned transactional, and China accelerated domestic accelerators and open models.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-68",
+    "ev-ctx2-1"
+   ]
+  },
+  {
+   "id": "evt-2025-claude-4",
+   "date": "2025-05-22",
+   "title": "Claude 4 (Opus/Sonnet) targets long-running agents",
+   "kind": "model",
+   "layers": [
+    "models",
+    "agents"
+   ],
+   "summary": "Anthropic released Claude Opus 4 and Sonnet 4, emphasizing multi-hour agentic coding; activated ASL-3 protections for Opus 4.",
+   "significance": "Interpretation: frontier competition shifted from chat quality to sustained agentic work.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-66"
+   ]
+  },
+  {
+   "id": "evt-2025-meta-msl",
+   "date": "2025-06",
+   "title": "Meta buys 49% of Scale AI and forms Superintelligence Labs",
+   "kind": "org",
+   "layers": [
+    "data",
+    "models",
+    "economics"
+   ],
+   "summary": "Meta invested ~$14.3B in Scale AI, hired Alexandr Wang, and launched Meta Superintelligence Labs with large talent offers.",
+   "significance": "Interpretation: talent and data pipelines priced like strategic assets; marked Meta's pivot away from Llama-first open strategy.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-70"
+   ]
+  },
+  {
+   "id": "evt-2025-china-open-wave",
+   "date": "2025-07-11",
+   "title": "Chinese open-weight wave: Qwen3, Kimi K2, DeepSeek V3.x",
+   "kind": "model",
+   "layers": [
+    "models",
+    "distribution"
+   ],
+   "summary": "Alibaba (Qwen3, Apr), Moonshot (Kimi K2, Jul) and DeepSeek (V3.1/V3.2) released strong open-weight models.",
+   "significance": "Interpretation: China became the center of gravity for open weights as Meta retreated, keeping the open-closed gap to a few months.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-69",
+    "ev-ctx2-42"
+   ]
+  },
+  {
+   "id": "evt-2025-ai-action-plan",
+   "date": "2025-07-23",
+   "title": "US AI Action Plan",
+   "kind": "policy",
+   "layers": [
+    "society",
+    "energy",
+    "cloud"
+   ],
+   "summary": "The White House issued America's AI Action Plan prioritizing deregulation, data-center/power permitting and AI exports.",
+   "significance": "Interpretation: US policy pivoted from safety framing (2023 EO) to build-out and competitiveness.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-71"
+   ]
+  },
+  {
+   "id": "evt-2025-gpt-5",
+   "date": "2025-08-07",
+   "title": "GPT-5 launches to mixed reception",
+   "kind": "model",
+   "layers": [
+    "models",
+    "inference",
+    "apps"
+   ],
+   "summary": "OpenAI released GPT-5 as a routed system at $1.25/$10 per 1M tokens.",
+   "significance": "Interpretation: aggressive pricing and an incremental-feeling launch fed 'scaling plateau' and bubble narratives in late 2025.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-72"
+   ]
+  },
+  {
+   "id": "evt-2025-mit-nanda",
+   "date": "2025-08",
+   "title": "MIT NANDA '95% of GenAI pilots fail' report",
+   "kind": "research",
+   "layers": [
+    "economics",
+    "apps"
+   ],
+   "summary": "MIT NANDA's 'GenAI Divide' report claimed ~95% of organizations saw zero measurable return from GenAI pilots.",
+   "significance": "Interpretation: became a widely cited (and contested) data point in the enterprise-ROI and bubble debate.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-73"
+   ]
+  },
+  {
+   "id": "evt-2025-canaries",
+   "date": "2025-08",
+   "title": "Stanford 'Canaries in the Coal Mine' entry-level labor study",
+   "kind": "research",
+   "layers": [
+    "society",
+    "economics"
+   ],
+   "summary": "ADP payroll analysis found ~13% relative employment decline for 22-25-year-olds in the most AI-exposed occupations.",
+   "significance": "Interpretation: first large-sample evidence of early-career labor effects, shifting the labor debate from speculation to measurement.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-74"
+   ]
+  },
+  {
+   "id": "evt-2025-compute-megadeals",
+   "date": "2025-10-06",
+   "title": "OpenAI's GW-scale compute deals with Oracle, Nvidia, AMD, Broadcom",
+   "kind": "capital",
+   "layers": [
+    "cloud",
+    "semis",
+    "energy",
+    "economics"
+   ],
+   "summary": "Reported ~$300B Oracle contract, Nvidia up-to-$100B investment LOI (10 GW), AMD 6 GW with warrants, Broadcom 10 GW, AWS $38B.",
+   "significance": "Interpretation: supplier-financed demand ('circular financing') became the core of the bubble critique.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-75"
+   ]
+  },
+  {
+   "id": "evt-2025-openai-recap",
+   "date": "2025-10-28",
+   "title": "OpenAI recapitalizes as a public benefit corporation",
+   "kind": "org",
+   "layers": [
+    "economics",
+    "society"
+   ],
+   "summary": "OpenAI's for-profit became OpenAI Group PBC under the OpenAI Foundation; Microsoft took ~27%.",
+   "significance": "Interpretation: removed the structural barrier to mega-fundraising and an eventual IPO.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-76"
+   ]
+  },
+  {
+   "id": "evt-2025-nvidia-5t",
+   "date": "2025-10-29",
+   "title": "Nvidia first company to reach $5 trillion market cap",
+   "kind": "market",
+   "layers": [
+    "semis",
+    "economics"
+   ],
+   "summary": "Nvidia closed above $5T market capitalization.",
+   "significance": "Interpretation: peak expression of the belief that value accrues to the accelerator layer.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-54"
+   ]
+  },
+  {
+   "id": "evt-2025-gemini-3",
+   "date": "2025-11-18",
+   "title": "Gemini 3 retakes benchmark lead; Antigravity agent IDE",
+   "kind": "model",
+   "layers": [
+    "models",
+    "agents",
+    "distribution"
+   ],
+   "summary": "Google released Gemini 3 across Search, the Gemini app and developer platforms with record benchmark claims (e.g., 37.5% HLE).",
+   "significance": "Interpretation: shifted perception toward Google's full-stack (TPU + distribution) advantage.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-17"
+   ]
+  },
+  {
+   "id": "evt-2025-oracle-cds",
+   "date": "2025-12-11",
+   "title": "Oracle CDS at highest since 2009 as AI debt fears mount",
+   "kind": "market",
+   "layers": [
+    "economics",
+    "cloud"
+   ],
+   "summary": "Oracle five-year CDS hit post-2009 highs amid large bond issuance and ~$248B in data-center lease commitments.",
+   "significance": "Interpretation: AI-bubble concern moved from equity valuations to credit markets.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-32",
+    "ev-ctx2-33"
+   ]
+  },
+  {
+   "id": "evt-2025-preemption-eo",
+   "date": "2025-12-11",
+   "title": "Executive Order 14365 targets state AI laws",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "Trump signed an EO creating a DOJ AI Litigation Task Force to challenge state AI laws and directing a federal preemption proposal.",
+   "significance": "Interpretation: federal-vs-state jurisdiction became the central US AI governance fight.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-28"
+   ]
+  },
+  {
+   "id": "evt-2026-frontier-refresh-q1",
+   "date": "2026-02-19",
+   "title": "Q1 frontier refresh: Claude Opus 4.6 and Gemini 3.1 Pro",
+   "kind": "model",
+   "layers": [
+    "models",
+    "agents"
+   ],
+   "summary": "Aggregator timelines list Claude Opus 4.6 (Feb 5) and Gemini 3.1 Pro (Feb 19, 2026).",
+   "significance": "Interpretation: release cadence compressed to roughly bi-monthly frontier increments.",
+   "magnitude": 2,
+   "evidenceIds": [
+    "ev-ctx2-16"
+   ]
+  },
+  {
+   "id": "evt-2026-nvidia-fy26",
+   "date": "2026-02-25",
+   "title": "Nvidia FY2026: $215.9B revenue, $62.3B data center quarter",
+   "kind": "market",
+   "layers": [
+    "semis",
+    "economics"
+   ],
+   "summary": "NVIDIA reported Q4 FY2026 revenue $68.1B and data center $62.3B; FY2026 revenue $215.9B (+65%).",
+   "significance": "Interpretation: demand kept accelerating despite the DeepSeek scare and bubble debate.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-3"
+   ]
+  },
+  {
+   "id": "evt-2026-pentagon-anthropic",
+   "date": "2026-03-05",
+   "title": "Pentagon labels Anthropic a supply chain risk",
+   "kind": "policy",
+   "layers": [
+    "society",
+    "economics"
+   ],
+   "summary": "After Anthropic refused to drop restrictions on mass domestic surveillance and autonomous weapons uses, the Pentagon designated it a supply chain risk.",
+   "significance": "Interpretation: lab usage policies became a direct point of conflict with the US government.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-27"
+   ]
+  },
+  {
+   "id": "evt-2026-openai-852b",
+   "date": "2026-03",
+   "title": "OpenAI raises $122B at $852B post-money",
+   "kind": "capital",
+   "layers": [
+    "economics"
+   ],
+   "summary": "OpenAI reportedly closed a $122B round at an $852B valuation led by SoftBank and Microsoft.",
+   "significance": "Interpretation: private capital scale for labs reached sovereign-wealth levels.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-11"
+   ]
+  },
+  {
+   "id": "evt-2026-glasswing",
+   "date": "2026-04-07",
+   "title": "Project Glasswing: Claude Mythos withheld for cyber-defense only",
+   "kind": "model",
+   "layers": [
+    "models",
+    "society",
+    "agents"
+   ],
+   "summary": "Anthropic gave its unreleased Claude Mythos Preview to 40+ security partners to find and fix vulnerabilities instead of releasing it generally.",
+   "significance": "Interpretation: first major case of a lab withholding a frontier model on offensive-cyber capability grounds.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-24"
+   ]
+  },
+  {
+   "id": "evt-2026-meta-muse-spark",
+   "date": "2026-04-09",
+   "title": "Meta's first post-Llama model (Avocado series) after delays",
+   "kind": "model",
+   "layers": [
+    "models",
+    "distribution"
+   ],
+   "summary": "After delaying Avocado, Meta reportedly released Muse Spark (first Avocado-series model) in the Meta AI app, replacing Llama in its assistants.",
+   "significance": "Interpretation: confirmed Meta's shift away from open Llama releases toward closed, product-first models.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-23"
+   ]
+  },
+  {
+   "id": "evt-2026-gpt-55",
+   "date": "2026-04-23",
+   "title": "GPT-5.5 released",
+   "kind": "model",
+   "layers": [
+    "models",
+    "agents"
+   ],
+   "summary": "OpenAI released GPT-5.5, framed as a step toward doing work on a computer.",
+   "significance": "Interpretation: computer-use agents became the headline capability for frontier releases.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-18"
+   ]
+  },
+  {
+   "id": "evt-2026-deepseek-v4",
+   "date": "2026-04-24",
+   "title": "DeepSeek V4: 1.6T open MoE with 1M context",
+   "kind": "model",
+   "layers": [
+    "models",
+    "distribution",
+    "architecture"
+   ],
+   "summary": "DeepSeek released V4-Pro (1.6T) and V4-Flash (284B) open-weight MoE previews with 1M-token context.",
+   "significance": "Interpretation: Chinese open weights stayed within months of the frontier (Epoch: ~4-month lag in 2026).",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-22",
+    "ev-ctx2-41"
+   ]
+  },
+  {
+   "id": "evt-2026-capex-raise",
+   "date": "2026-04-30",
+   "title": "Big-four 2026 capex guidance reaches ~$700-725B",
+   "kind": "capital",
+   "layers": [
+    "cloud",
+    "energy",
+    "semis",
+    "economics"
+   ],
+   "summary": "Q1 2026 earnings put combined Amazon, Microsoft, Alphabet and Meta 2026 capex at roughly $700-725B, up ~75% from ~$410B in 2025; three of four raised guidance.",
+   "significance": "Interpretation: capex kept rising despite bubble concerns, with analysts projecting >$1T in 2027; part of the rise is component inflation.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-5",
+    "ev-ctx2-6",
+    "ev-ctx2-7"
+   ]
+  },
+  {
+   "id": "evt-2026-anthropic-series-h",
+   "date": "2026-05-28",
+   "title": "Anthropic Series H: $65B at $965B; $47B run-rate",
+   "kind": "capital",
+   "layers": [
+    "economics",
+    "models"
+   ],
+   "summary": "Anthropic raised $65B at a $965B post-money valuation, above OpenAI's $852B, with run-rate revenue above $47B.",
+   "significance": "Interpretation: enterprise/agentic-coding revenue made Anthropic the highest-valued private lab, overturning the consumer-first assumption.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-13",
+    "ev-ctx2-15"
+   ]
+  },
+  {
+   "id": "evt-2026-openai-ipo-filing",
+   "date": "2026-06-08",
+   "title": "OpenAI confidentially files for an IPO",
+   "kind": "capital",
+   "layers": [
+    "economics"
+   ],
+   "summary": "OpenAI confidentially submitted a draft registration statement (reported May 22/June 8), with reports of a Q4 2026 target at $852B-$1T+.",
+   "significance": "Interpretation: frontier labs moving to public markets would test AI valuations against disclosure.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-12"
+   ]
+  },
+  {
+   "id": "evt-2026-commerce-mythos-order",
+   "date": "2026-06-12",
+   "title": "US Commerce order leads Anthropic to cut off Mythos 5 and Fable 5",
+   "kind": "policy",
+   "layers": [
+    "society",
+    "models",
+    "distribution"
+   ],
+   "summary": "A Commerce letter asked Anthropic to restrict Fable 5 and Mythos 5 for foreign nationals; Anthropic shut off both for all customers; Mythos 5 was partially restored to US critical-infrastructure defenders on June 27.",
+   "significance": "Interpretation: first de facto US government recall of a deployed commercial frontier model; model access became export-controlled.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-25",
+    "ev-ctx2-26"
+   ]
+  },
+  {
+   "id": "evt-2026-eu-omnibus",
+   "date": "2026-06-16",
+   "title": "EU Digital Omnibus delays AI Act high-risk obligations",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "Parliament adopted the deal delaying Annex III high-risk obligations from Aug 2, 2026 to Dec 2, 2027 and Annex I to Aug 2, 2028.",
+   "significance": "Interpretation: Europe shifted from rule-setting toward competitiveness, mirroring the US deregulatory turn.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-30"
+   ]
+  },
+  {
+   "id": "evt-2026-lbnl-update",
+   "date": "2026-06",
+   "title": "LBNL update: data centers 4.7% of US power in 2024, ~11.8% by 2030",
+   "kind": "research",
+   "layers": [
+    "energy",
+    "society"
+   ],
+   "summary": "LBNL's 2025 update projected data centers at 11.8% of US electricity by 2030 (range 9.5-15.3%); secondary reporting puts 2024 use at 192 TWh (4.7%).",
+   "significance": "Interpretation: near-term load came in below some forecasts, but the decade outlook still implies a structural power build.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-35",
+    "ev-ctx2-36"
+   ]
+  },
+  {
+   "id": "evt-2026-preemption-draft",
+   "date": "2026-06",
+   "title": "Bipartisan federal AI preemption discussion draft",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "Reps. Obernolte and Trahan released a draft freezing state laws on AI development for three years; it stalled by September.",
+   "significance": "Interpretation: legislative preemption remained unresolved, leaving a patchwork of state laws.",
+   "magnitude": 2,
+   "evidenceIds": [
+    "ev-ctx2-29"
+   ]
+  },
+  {
+   "id": "evt-2026-opus-5",
+   "date": "2026-07-24",
+   "title": "Claude Opus 5 launches the Claude 5 family",
+   "kind": "model",
+   "layers": [
+    "models",
+    "agents"
+   ],
+   "summary": "Anthropic released Claude Opus 5 at $5/$25 per 1M tokens with 1M context, alongside Sonnet 5 and Fable 5 tiers.",
+   "significance": "Interpretation: frontier list prices held flat while capability rose.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx2-20"
+   ]
+  },
+  {
+   "id": "evt-2026-nvidia-q2fy27",
+   "date": "2026-08-27",
+   "title": "Nvidia Q2 FY2027: $89B data center quarter, $108B guide",
+   "kind": "market",
+   "layers": [
+    "semis",
+    "economics"
+   ],
+   "summary": "NVIDIA reported revenue ~$96.2B and data center $89.0B (+117% y/y), guided Q3 to $108B, and said Vera Rubin was ramping.",
+   "significance": "Interpretation: AI hardware demand was still accelerating at the research cutoff.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-1",
+    "ev-ctx2-2"
+   ]
+  },
+  {
+   "id": "evt-2026-lab-runrates",
+   "date": "2026-09",
+   "title": "Lab run-rates reach ~$65-70B (Anthropic, OpenAI)",
+   "kind": "market",
+   "layers": [
+    "economics",
+    "apps",
+    "agents"
+   ],
+   "summary": "Anthropic's run-rate reportedly topped $65B by end-July 2026 (from ~$9B at end-2025); OpenAI's reportedly neared $70B in September.",
+   "significance": "Interpretation: if accurate, AI model revenue grew fast enough to narrow Sequoia's '$600B question' gap, though run-rates are not audited revenue.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx2-14",
+    "ev-ctx2-10"
+   ]
+  },
+  {
+   "id": "evt-2026-gpt-6",
+   "date": "2026-09-03",
+   "title": "GPT-6 'Astra' rolls out with cyber guardrails",
+   "kind": "model",
+   "layers": [
+    "models",
+    "society"
+   ],
+   "summary": "OpenAI rolled out GPT-6 Astra to business testers, with a cyber-guardrailed version for paid ChatGPT users; reported API price $10/$50 per 1M tokens.",
+   "significance": "Interpretation: frontier list prices rose again for the newest tier, and cyber controls became a launch prerequisite.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx2-19"
+   ]
+  },
+  {
+   "id": "evt-2026-opus-55",
+   "date": "2026-09-22",
+   "title": "Claude Opus 5.5 at lower price",
+   "kind": "model",
+   "layers": [
+    "models",
+    "inference"
+   ],
+   "summary": "Anthropic launched Claude Opus 5.5 at $4/$20 per 1M tokens, 20% below Opus 5 on list price (the source headline says 40% cheaper, possibly on effective cost).",
+   "significance": "Interpretation: price competition at the frontier continued alongside capability gains.",
+   "magnitude": 2,
+   "evidenceIds": [
+    "ev-ctx2-21"
+   ]
+  }
+ ],
+ "periods": [
+  {
+   "id": "p2024",
+   "label": "Multimodal, open-weight and infrastructure year; reasoning arrives",
+   "range": [
+    "2024-01",
+    "2024-12"
+   ],
+   "boundaryRationale": "Starts as GPT-4 parity spreads (Gemini 1.5, Claude 3) and infrastructure/power becomes the story; ends Dec 2024 with o3/ARC-AGI. Proposed revision (interpretation): the conceptual break to the reasoning era is o1 (2024-09-12), so a research-driven split would end p2024 at 2024-08 and start p2025 at 2024-09; we keep calendar ranges for comparability but tag Sept-Dec 2024 events as the opening of the reasoning era.",
+   "consensus": "Scaling pretraining compute remained the dominant thesis, with frontier quality converging across OpenAI, Anthropic, Google and (open) Meta. Advantage was believed to sit in compute access and Nvidia GPUs, and power emerged as the new constraint, driving nuclear PPAs. Multimodality and long context were seen as the next product frontier; by late 2024, o1 introduced inference-time compute as a second scaling axis.",
+   "minorityViews": [
+    {
+     "view": "Pretraining scaling is hitting diminishing returns; new paradigms (RL/test-time compute) needed.",
+     "heldBy": "Ilya Sutskever (NeurIPS Dec 2024 'pretraining as we know it will end'), Gary Marcus",
+     "laterImportance": "Hindsight: partly vindicated as RL/reasoning drove 2025 gains, though pretraining scale-ups (e.g., larger 2026 models) continued."
+    },
+    {
+     "view": "AI capex vastly outruns revenue (the '$600B question').",
+     "heldBy": "David Cahn (Sequoia), Goldman Sachs' Jim Covello",
+     "laterImportance": "Hindsight: framed the 2025-26 bubble debate; reported 2026 lab run-rates (~$65-70B each) narrowed but did not close the gap."
+    },
+    {
+     "view": "AGI by ~2027 via compute OOMs; a national-security race with China.",
+     "heldBy": "Leopold Aschenbrenner",
+     "laterImportance": "Hindsight: the compute race and government involvement (Stargate, export controls, 2026 Commerce order) materialized; AGI claim unresolved."
+    }
+   ],
+   "technologies": [
+    "GPT-4o and native multimodality",
+    "1M-token context (Gemini 1.5)",
+    "Claude 3/3.5 Sonnet",
+    "Llama 3/3.1 405B open weights",
+    "Sora/video diffusion transformers",
+    "o1 reasoning (RL + test-time compute)",
+    "Computer use and MCP",
+    "H100/H200 clusters; Blackwell announced",
+    "100k-GPU clusters (xAI Colossus)"
+   ],
+   "architectures": [
+    "Dense and MoE decoder-only transformers",
+    "Diffusion transformers for video/image",
+    "RL-trained chain-of-thought reasoning models (late 2024)"
+   ],
+   "bottlenecks": [
+    {
+     "item": "GPU supply (H100/Blackwell)",
+     "kind": "physical",
+     "note": "Allocation constrained; Nvidia captured most value."
+    },
+    {
+     "item": "Grid power and interconnection",
+     "kind": "physical",
+     "note": "Drove nuclear PPAs (TMI restart, Kairos, Talen)."
+    },
+    {
+     "item": "AI revenue vs capex gap",
+     "kind": "commercial",
+     "note": "Sequoia's $600B question."
+    },
+    {
+     "item": "High-quality pretraining data",
+     "kind": "technical",
+     "note": "'Data wall' discussion; synthetic data and RL as responses."
+    },
+    {
+     "item": "Frontier-model safety legislation",
+     "kind": "regulatory",
+     "note": "EU AI Act in force; California SB 1047 vetoed."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Compute scale and access to Nvidia GPUs",
+    "Frontier model quality (benchmark leadership)",
+    "Consumer distribution (ChatGPT)",
+    "Talent (license-and-hire deals)"
+   ],
+   "actualAdvantage": [
+    "Interpretation (as of 2026-10-11): Nvidia's accelerator position captured the largest realized profits (data center revenue rose from $47.5B in FY2024 to $193.7B in FY2026; evidence nvda_fy, nv_q4fy26).",
+    "Interpretation: enterprise/developer focus (Anthropic's coding position seeded by Claude 3.5 Sonnet) proved more valuable than expected, per 2026 run-rates and valuation.",
+    "Interpretation: model weights were not a durable moat; open models stayed months behind (Epoch)."
+   ],
+   "investment": "Attention centered on GPUs and data centers; Nvidia became the most valuable company in June 2024. Hyperscaler capex rose sharply in 2024 (combined total not re-sourced this session; see gaps). OpenAI's 2024 revenue was ~$3.7B (reported), far below infrastructure spend.",
+   "layers": {
+    "energy": {
+     "state": "Power became a recognized constraint; first nuclear PPAs for AI loads.",
+     "heat": 2
+    },
+    "semis": {
+     "state": "Nvidia H100/H200 dominant; Blackwell announced; market cap record.",
+     "heat": 3
+    },
+    "cloud": {
+     "state": "Hyperscaler capex ramp; 100k-GPU clusters; GPU clouds proliferate.",
+     "heat": 3
+    },
+    "data": {
+     "state": "'Data wall' concerns; licensing deals and synthetic data.",
+     "heat": 2
+    },
+    "architecture": {
+     "state": "Transformers dominant; MoE and long context spread; diffusion transformers for video.",
+     "heat": 2
+    },
+    "training": {
+     "state": "Pretraining scaling plus RL for reasoning (o1) emerges late in the year.",
+     "heat": 3
+    },
+    "inference": {
+     "state": "Prices for GPT-4-class quality collapse (GPT-4o mini); test-time compute introduced.",
+     "heat": 2
+    },
+    "models": {
+     "state": "Multi-lab frontier parity; open weights reach 405B.",
+     "heat": 3
+    },
+    "platforms": {
+     "state": "APIs and early agent tooling; MCP launched in Nov.",
+     "heat": 1
+    },
+    "agents": {
+     "state": "Computer use and o1 make agents plausible but unreliable.",
+     "heat": 1
+    },
+    "apps": {
+     "state": "ChatGPT dominates; copilots in enterprise; early coding assistants.",
+     "heat": 2
+    },
+    "distribution": {
+     "state": "Assistants bundled into OS/productivity suites; free GPT-4o.",
+     "heat": 2
+    },
+    "economics": {
+     "state": "Bubble question raised; talent acquihires; labs heavily loss-making.",
+     "heat": 2
+    },
+    "society": {
+     "state": "EU AI Act in force; SB 1047 vetoed; Nobel prizes for AI.",
+     "heat": 2
+    }
+   },
+   "commoditized": [
+    "GPT-4-class chat quality",
+    "Long-context capability",
+    "Basic multimodality"
+   ],
+   "underestimated": [
+    "Inference-time compute/reasoning",
+    "Coding as the first large agent market",
+    "Chinese open-weight labs (DeepSeek)",
+    "Power as a binding constraint"
+   ],
+   "evidenceIds": [
+    "ev-ctx2-45",
+    "ev-ctx2-46",
+    "ev-ctx2-47",
+    "ev-ctx2-49",
+    "ev-ctx2-50",
+    "ev-ctx2-51",
+    "ev-ctx2-52",
+    "ev-ctx2-55",
+    "ev-ctx2-56",
+    "ev-ctx2-57",
+    "ev-ctx2-58",
+    "ev-ctx2-79",
+    "ev-ctx2-9",
+    "ev-ctx2-43"
+   ]
+  },
+  {
+   "id": "p2025",
+   "label": "Reasoning, inference scaling and coding agents; the circular-capex boom",
+   "range": [
+    "2025-01",
+    "2025-12"
+   ],
+   "boundaryRationale": "Opens with DeepSeek-R1 and Stargate (Jan 20-21, 2025), which together reframed costs and capital; closes with Gemini 3 / Opus 4.5 (Nov), Oracle credit stress and EO 14365 (Dec). Proposed revision (interpretation): the reasoning era arguably begins with o1 in Sept 2024; the agentic-coding/compute-megadeal phase could be dated from Feb 2025 (Claude Code) onward.",
+   "consensus": "Reasoning via RL and test-time compute became the main scaling lever, and coding agents the first clear product-market fit for agents. Efficiency shocks (DeepSeek) did not reduce demand; instead labs signed GW-scale compute deals and hyperscaler capex roughly doubled. Policy turned toward build-out and competition (AI Action Plan), while the bubble debate intensified around circular financing and enterprise ROI.",
+   "minorityViews": [
+    {
+     "view": "Most enterprise GenAI pilots deliver no ROI.",
+     "heldBy": "MIT NANDA report authors",
+     "laterImportance": "Hindsight: contested; 2026 enterprise run-rate growth at Anthropic/OpenAI suggests concentrated ROI in coding/agents."
+    },
+    {
+     "view": "Circular financing and debt-funded data centers resemble a bubble.",
+     "heldBy": "Credit analysts; commentators citing Oracle CDS",
+     "laterImportance": "Hindsight: no crash by 2026-10-11; capex guidance kept rising, but credit concerns persisted."
+    },
+    {
+     "view": "LLMs are a dead end for AGI; world models needed.",
+     "heldBy": "Yann LeCun",
+     "laterImportance": "Hindsight: unresolved; LLM-based agents kept improving on METR horizons."
+    }
+   ],
+   "technologies": [
+    "o3/o4-mini, Gemini 2.5, Claude 4, GPT-5, Gemini 3",
+    "Claude Code, Codex and agentic IDEs",
+    "MCP as cross-vendor standard",
+    "Open-weight reasoning models (R1, Qwen3, Kimi K2)",
+    "Blackwell (GB200 NVL72) racks",
+    "GW-scale campuses (Stargate Abilene)"
+   ],
+   "architectures": [
+    "Large sparse MoE transformers",
+    "RL-trained reasoning models with tool use",
+    "Hybrid routed systems (GPT-5)"
+   ],
+   "bottlenecks": [
+    {
+     "item": "Power and GW-scale sites",
+     "kind": "physical",
+     "note": "Labs contracted 10+ GW of future capacity."
+    },
+    {
+     "item": "Chip export controls",
+     "kind": "regulatory",
+     "note": "H20 licensing reversals; China pushed domestic chips."
+    },
+    {
+     "item": "Agent reliability on long tasks",
+     "kind": "technical",
+     "note": "METR 50% horizons ~1-5 hours by late 2025."
+    },
+    {
+     "item": "Enterprise ROI evidence",
+     "kind": "commercial",
+     "note": "MIT NANDA 95% claim vs fast coding-agent adoption."
+    },
+    {
+     "item": "Financing of capex (debt, vendor financing)",
+     "kind": "commercial",
+     "note": "Oracle CDS at post-2009 highs."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Reasoning-model leadership",
+    "Compute commitments measured in GW",
+    "Talent (Meta MSL offers)",
+    "Coding-agent product and developer mindshare",
+    "Full-stack integration (Google TPUs + distribution)"
+   ],
+   "actualAdvantage": [
+    "Interpretation (as of 2026-10-11): coding/agentic enterprise usage produced the fastest revenue growth (Anthropic run-rate ~$9B end-2025 to >$65B by July 2026, press-reported).",
+    "Interpretation: Nvidia continued to capture outsized profits (data center revenue +117% y/y in Q2 FY2027).",
+    "Interpretation: DeepSeek-style efficiency did not erode compute demand; capex roughly doubled again in 2026 guidance."
+   ],
+   "investment": "Big-four capex reached roughly $410B in 2025 (per 2026 reporting). OpenAI signed ~26+ GW of compute commitments across Oracle, Nvidia, AMD, Broadcom and AWS; Stargate pledged $500B. Meta invested ~$14.3B in Scale AI. Anthropic raised $13B at $183B (Sept 2025); Nvidia reached a $5T market cap (Oct 2025).",
+   "layers": {
+    "energy": {
+     "state": "GW-scale campuses planned; gas turbines and nuclear deals; permitting prioritized by US policy.",
+     "heat": 3
+    },
+    "semis": {
+     "state": "Blackwell ramps; custom ASICs (TPU, Trainium, Broadcom) gain; export-control whiplash.",
+     "heat": 3
+    },
+    "cloud": {
+     "state": "Neoclouds and Oracle become major AI hosts; multi-GW contracts.",
+     "heat": 3
+    },
+    "data": {
+     "state": "RL environments and expert data vendors (Scale, Surge, Mercor) become strategic.",
+     "heat": 2
+    },
+    "architecture": {
+     "state": "Sparse MoE and efficient attention spread from Chinese labs.",
+     "heat": 2
+    },
+    "training": {
+     "state": "RL post-training scaled; reasoning distilled into smaller models.",
+     "heat": 3
+    },
+    "inference": {
+     "state": "Reasoning tokens drive inference demand; prices per capability keep falling.",
+     "heat": 3
+    },
+    "models": {
+     "state": "Rapid frontier releases; open weights led by Chinese labs.",
+     "heat": 3
+    },
+    "platforms": {
+     "state": "MCP adopted across vendors; agent SDKs.",
+     "heat": 2
+    },
+    "agents": {
+     "state": "Coding agents reach broad adoption; task horizons ~hours.",
+     "heat": 3
+    },
+    "apps": {
+     "state": "Coding tools (Cursor, Claude Code, Codex) are the breakout category.",
+     "heat": 3
+    },
+    "distribution": {
+     "state": "Google integrates Gemini into Search; ChatGPT scale; Meta retreats from open Llama.",
+     "heat": 2
+    },
+    "economics": {
+     "state": "Circular financing, Oracle debt, enterprise ROI and entry-level labor debates.",
+     "heat": 3
+    },
+    "society": {
+     "state": "US AI Action Plan; EU GPAI obligations from Aug 2025; preemption EO in Dec.",
+     "heat": 2
+    }
+   },
+   "commoditized": [
+    "Chain-of-thought reasoning (replicated openly by R1)",
+    "Tool-connection standards (MCP)",
+    "GPT-4o-class models"
+   ],
+   "underestimated": [
+    "Speed of enterprise agentic-coding revenue",
+    "Government intervention in model access (2026)",
+    "Credit-market exposure to AI infrastructure"
+   ],
+   "evidenceIds": [
+    "ev-ctx2-63",
+    "ev-ctx2-65",
+    "ev-ctx2-64",
+    "ev-ctx2-66",
+    "ev-ctx2-37",
+    "ev-ctx2-67",
+    "ev-ctx2-70",
+    "ev-ctx2-69",
+    "ev-ctx2-71",
+    "ev-ctx2-72",
+    "ev-ctx2-73",
+    "ev-ctx2-74",
+    "ev-ctx2-75",
+    "ev-ctx2-76",
+    "ev-ctx2-17",
+    "ev-ctx2-32",
+    "ev-ctx2-28",
+    "ev-ctx2-5",
+    "ev-ctx2-14"
+   ]
+  },
+  {
+   "id": "p2026",
+   "label": "Agentic enterprise revenue, ~$700B capex and government control of frontier access",
+   "range": [
+    "2026-01",
+    "2026-10"
+   ],
+   "boundaryRationale": "Calendar start; the research cutoff is 2026-10-11. Defining events: Pentagon-Anthropic clash (Mar), Glasswing/Mythos (Apr), ~$700B+ capex guidance (Apr), Anthropic $965B (May), Commerce order cutting off Mythos 5/Fable 5 (Jun), GPT-6 and Claude 5.x (Jul-Sep). Proposed revision (interpretation): Dec 2025 (Gemini 3/Opus 4.5 frontier, EO 14365, Oracle credit stress) could open this period, since 2026 themes continue from it.",
+   "consensus": "As understood during 2026 (per contemporaneous reporting): agentic coding and enterprise agents drove the fastest revenue growth in software history, with Anthropic and OpenAI reporting run-rates in the tens of billions. Hyperscaler capex guidance of ~$700B+ and accelerating Nvidia sales signalled no near-term slowdown, even as IPO plans and credit concerns tested valuations. Frontier capability, especially offensive cyber, drew direct government intervention (Pentagon designation, Commerce order), and regulation shifted toward delay (EU omnibus) and federal preemption attempts.",
+   "minorityViews": [
+    {
+     "view": "Run-rate revenue figures overstate durable revenue; AI infrastructure is overbuilt and debt-financed.",
+     "heldBy": "Credit analysts and bubble commentators (various)",
+     "laterImportance": "Unresolved at cutoff; IPO disclosures would test it."
+    },
+    {
+     "view": "Restricting frontier models by government order is a dangerous precedent.",
+     "heldBy": "Anthropic (publicly disagreed with the Commerce order); critics of the Pentagon designation incl. Sen. Gillibrand",
+     "laterImportance": "Unresolved at cutoff."
+    },
+    {
+     "view": "Open weights will keep pace with the frontier.",
+     "heldBy": "Open-model advocates; Chinese labs",
+     "laterImportance": "Epoch measured a ~4-month lag in 2026, slightly larger than 2025's ~3 months."
+    }
+   ],
+   "technologies": [
+    "GPT-5.5, GPT-6 Astra",
+    "Claude Opus 4.6-4.8, Claude 5 family (Opus 5, Sonnet 5, Fable 5), Opus 5.5, Mythos (restricted)",
+    "Gemini 3.1 Pro and later Gemini 3.x",
+    "DeepSeek V4 (1.6T MoE, 1M context)",
+    "Meta Muse Spark (Avocado series)",
+    "Nvidia Vera Rubin ramp",
+    "Stargate Abilene ~0.3 GW operating (Apr est.)"
+   ],
+   "architectures": [
+    "Trillion-parameter sparse MoE with 1M-token context",
+    "RL-heavy agentic post-training",
+    "Restricted-access frontier tiers with cyber guardrails"
+   ],
+   "bottlenecks": [
+    {
+     "item": "Government permission to deploy frontier models",
+     "kind": "regulatory",
+     "note": "Commerce order on Mythos 5/Fable 5; Pentagon supply-chain designation."
+    },
+    {
+     "item": "Memory and component supply/inflation",
+     "kind": "physical",
+     "note": "Nvidia supply commitments ~$279B mostly memory; Microsoft cited ~$25B component inflation."
+    },
+    {
+     "item": "Power for GW campuses",
+     "kind": "physical",
+     "note": "Abilene ramping toward 1.2 GW by Q4 2026 (Epoch est.)."
+    },
+    {
+     "item": "Measuring agent capability",
+     "kind": "technical",
+     "note": "METR horizons above ~16h reported unreliable with current suite."
+    },
+    {
+     "item": "Valuation vs disclosed financials",
+     "kind": "commercial",
+     "note": "OpenAI confidential IPO filing; Anthropic IPO expected."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Enterprise agent revenue and trust",
+    "Compute (GW) secured through 2027-28",
+    "Frontier cyber/agentic capability",
+    "Government relationships and compliance posture"
+   ],
+   "actualAdvantage": [
+    "Not assessable with hindsight at the cutoff (2026-10-11); see gaps."
+   ],
+   "investment": "Big-four 2026 capex guidance ~$700-725B (vs ~$410B in 2025). OpenAI raised $122B at $852B (Mar); Anthropic $30B at $380B (Feb) then $65B at $965B (May). Nvidia data center revenue $75.2B (Q1 FY27) and $89.0B (Q2 FY27), with Q3 guide $108B total revenue.",
+   "layers": {
+    "energy": {
+     "state": "GW campuses ramping; LBNL projects ~11.8% of US power by 2030.",
+     "heat": 3
+    },
+    "semis": {
+     "state": "Nvidia data center revenue +117% y/y; Vera Rubin ramp; H200 to China under license.",
+     "heat": 3
+    },
+    "cloud": {
+     "state": "~$700B+ hyperscaler capex; >$1T projected for 2027.",
+     "heat": 3
+    },
+    "data": {
+     "state": "Enterprise and agentic data, RL environments (not re-sourced this session).",
+     "heat": 1
+    },
+    "architecture": {
+     "state": "1M-context trillion-parameter MoE becomes standard at the frontier and in open weights.",
+     "heat": 2
+    },
+    "training": {
+     "state": "Continued RL scaling; specific 2026 research shifts not confirmed this session.",
+     "heat": 2
+    },
+    "inference": {
+     "state": "Agentic workloads dominate; frontier list prices flat to higher (GPT-6 $10/$50).",
+     "heat": 3
+    },
+    "models": {
+     "state": "Monthly frontier cadence; restricted tiers (Mythos).",
+     "heat": 3
+    },
+    "platforms": {
+     "state": "Agent platforms and coding environments central (details not re-sourced).",
+     "heat": 2
+    },
+    "agents": {
+     "state": "Agents for coding, computer use and cyber defense; horizons ~half-day+.",
+     "heat": 3
+    },
+    "apps": {
+     "state": "Coding and enterprise agents drive run-rate growth.",
+     "heat": 3
+    },
+    "distribution": {
+     "state": "Access controlled by government orders and enterprise channels; Meta replaces Llama with closed models.",
+     "heat": 2
+    },
+    "economics": {
+     "state": "Lab valuations near $1T; IPO filings; credit concerns.",
+     "heat": 3
+    },
+    "society": {
+     "state": "Pentagon-Anthropic conflict; Commerce order; EU delays; US preemption stalls.",
+     "heat": 3
+    }
+   },
+   "commoditized": [
+    "Open-weight frontier-minus-4-months models",
+    "Non-frontier inference"
+   ],
+   "underestimated": [
+    "Not assessable with hindsight at the cutoff."
+   ],
+   "evidenceIds": [
+    "ev-ctx2-16",
+    "ev-ctx2-3",
+    "ev-ctx2-27",
+    "ev-ctx2-11",
+    "ev-ctx2-24",
+    "ev-ctx2-23",
+    "ev-ctx2-18",
+    "ev-ctx2-22",
+    "ev-ctx2-5",
+    "ev-ctx2-13",
+    "ev-ctx2-41",
+    "ev-ctx2-12",
+    "ev-ctx2-25",
+    "ev-ctx2-26",
+    "ev-ctx2-30",
+    "ev-ctx2-35",
+    "ev-ctx2-29",
+    "ev-ctx2-20",
+    "ev-ctx2-1",
+    "ev-ctx2-14",
+    "ev-ctx2-10",
+    "ev-ctx2-19",
+    "ev-ctx2-21",
+    "ev-ctx2-31"
+   ]
+  }
+ ],
+ "metrics": [
+  {
+   "id": "m-nvidia-dc-revenue",
+   "label": "NVIDIA Data Center revenue (fiscal year)",
+   "unit": "USD bn",
+   "layer": "semis",
+   "points": [
+    {
+     "date": "2024",
+     "value": 47.5,
+     "evidenceId": "ev-ctx2-79",
+     "note": "FY2024 ended Jan 2024 (recalled)"
+    },
+    {
+     "date": "2025",
+     "value": 115.2,
+     "evidenceId": "ev-ctx2-79",
+     "note": "FY2025 ended Jan 2025 (recalled)"
+    },
+    {
+     "date": "2026",
+     "value": 193.7,
+     "evidenceId": "ev-ctx2-3",
+     "note": "FY2026 ended Jan 25, 2026; sum of quarters: Q4 $62.3B (snippet) + Q1-Q3 $39.1B/$41.1B/$51.2B (recalled, ev nvda_fy)"
+    }
+   ],
+   "caveat": "NVIDIA fiscal years end in late January (FY2026 = Feb 2025-Jan 2026). FY2026 total is computed from quarterly figures, not directly quoted. FY2027 is partial (see quarterly series). From Q1 FY2027 NVIDIA reports Data Center and Edge Computing platforms, which may slightly change segment definitions."
+  },
+  {
+   "id": "m-nvidia-dc-revenue-quarterly",
+   "label": "NVIDIA Data Center revenue (quarterly)",
+   "unit": "USD bn",
+   "layer": "semis",
+   "points": [
+    {
+     "date": "2025-01",
+     "value": 35.6,
+     "evidenceId": "ev-ctx2-79",
+     "note": "Q4 FY2025 (recalled)"
+    },
+    {
+     "date": "2025-04",
+     "value": 39.1,
+     "evidenceId": "ev-ctx2-79",
+     "note": "Q1 FY2026 (recalled)"
+    },
+    {
+     "date": "2025-07",
+     "value": 41.1,
+     "evidenceId": "ev-ctx2-79",
+     "note": "Q2 FY2026 (recalled)"
+    },
+    {
+     "date": "2025-10",
+     "value": 51.2,
+     "evidenceId": "ev-ctx2-79",
+     "note": "Q3 FY2026 (recalled)"
+    },
+    {
+     "date": "2026-01",
+     "value": 62.3,
+     "evidenceId": "ev-ctx2-3",
+     "note": "Q4 FY2026, +75% y/y"
+    },
+    {
+     "date": "2026-04",
+     "value": 75.2,
+     "evidenceId": "ev-ctx2-4",
+     "note": "Q1 FY2027, +92% y/y"
+    },
+    {
+     "date": "2026-07",
+     "value": 89.0,
+     "evidenceId": "ev-ctx2-1",
+     "note": "Q2 FY2027, +117% y/y; Q3 FY2027 total-revenue guide $108B"
+    }
+   ],
+   "caveat": "Dates are quarter-end months. Recalled FY2026 quarters are consistent with the y/y growth rates reported in 2026 sources. Excludes China data center compute from guidance only, not from reported results."
+  },
+  {
+   "id": "m-hyperscaler-capex",
+   "label": "Combined capex: Microsoft + Alphabet + Amazon + Meta",
+   "unit": "USD bn",
+   "layer": "cloud",
+   "points": [
+    {
+     "date": "2025",
+     "value": 410,
+     "evidenceId": "ev-ctx2-5",
+     "note": "Approximate actual, as cited in 2026 reporting ('roughly $410B')"
+    },
+    {
+     "date": "2026",
+     "value": 725,
+     "evidenceId": "ev-ctx2-5",
+     "note": "Guidance after Q1 2026 earnings (aggregator sum; ~$700B per Yahoo Finance)"
+    }
+   ],
+   "caveat": "Company-level figures mix calendar and fiscal years (Microsoft FY ends June) and include finance leases inconsistently. 2026 is guidance, partly inflated by component prices (~$25B of Microsoft's per its own comment). 2024 combined total was not re-sourced this session (gap). Analysts (Evercore, BofA) project >$1T for 2027."
+  },
+  {
+   "id": "m-openai-revenue",
+   "label": "OpenAI revenue milestones (annualized run-rate unless noted)",
+   "unit": "USD bn",
+   "layer": "economics",
+   "points": [
+    {
+     "date": "2024",
+     "value": 3.7,
+     "evidenceId": "ev-ctx2-9",
+     "note": "Full-year 2024 revenue (not run-rate)"
+    },
+    {
+     "date": "2025-06",
+     "value": 10,
+     "evidenceId": "ev-ctx2-77",
+     "note": "~$10B ARR (recalled)"
+    },
+    {
+     "date": "2025-12",
+     "value": 21.4,
+     "evidenceId": "ev-ctx2-8",
+     "note": "Annualized revenue end-2025"
+    },
+    {
+     "date": "2026-02",
+     "value": 25,
+     "evidenceId": "ev-ctx2-8",
+     "note": "Topped $25B end-Feb 2026 (The Information via Techloy)"
+    },
+    {
+     "date": "2026-09",
+     "value": 70,
+     "evidenceId": "ev-ctx2-10",
+     "note": "'Nearing $70B' (Axios via Digg); single aggregator relay"
+    }
+   ],
+   "caveat": "Run-rate = recent month(s) annualized; mixes definitions with full-year revenue. Not audited. The Sept 2026 figure implies extraordinary growth and should be treated as provisional."
+  },
+  {
+   "id": "m-anthropic-run-rate",
+   "label": "Anthropic annualized revenue run-rate",
+   "unit": "USD bn",
+   "layer": "economics",
+   "points": [
+    {
+     "date": "2025-01",
+     "value": 1,
+     "evidenceId": "ev-ctx2-78",
+     "note": "~$1B at start of 2025 (recalled, company statement)"
+    },
+    {
+     "date": "2025-08",
+     "value": 5,
+     "evidenceId": "ev-ctx2-78",
+     "note": ">$5B (recalled, company statement at Series F)"
+    },
+    {
+     "date": "2025-12",
+     "value": 9,
+     "evidenceId": "ev-ctx2-14",
+     "note": "~$9B end of 2025 (press)"
+    },
+    {
+     "date": "2026-03",
+     "value": 19,
+     "evidenceId": "ev-ctx2-8",
+     "note": "~$19B (The Information via Techloy; month approximate)"
+    },
+    {
+     "date": "2026-04",
+     "value": 30,
+     "evidenceId": "ev-ctx2-15",
+     "note": "~$30B (press, around Apr 2026)"
+    },
+    {
+     "date": "2026-05",
+     "value": 47,
+     "evidenceId": "ev-ctx2-13",
+     "note": ">$47B, company-stated at Series H"
+    },
+    {
+     "date": "2026-07",
+     "value": 65,
+     "evidenceId": "ev-ctx2-14",
+     "note": ">$65B end-July (Bloomberg/Reuters via press; not company-confirmed)"
+    }
+   ],
+   "caveat": "Run-rate, not booked revenue; Anthropic does not publish audited figures. Some points press-reported. FT reported investor expectations of $100-120B by end-2026 (expectation, not data)."
+  },
+  {
+   "id": "m-token-price-gpt4-class",
+   "label": "Cheapest OpenAI list price for ~GPT-4-class quality (input tokens)",
+   "unit": "USD per 1M tokens",
+   "layer": "inference",
+   "points": [
+    {
+     "date": "2023-03",
+     "value": 30,
+     "evidenceId": "ev-ctx2-80",
+     "note": "GPT-4 (8k) input; output $60 (recalled)"
+    },
+    {
+     "date": "2024-05",
+     "value": 5,
+     "evidenceId": "ev-ctx2-80",
+     "note": "GPT-4o input; output $15 (recalled)"
+    },
+    {
+     "date": "2024-07",
+     "value": 0.15,
+     "evidenceId": "ev-ctx2-80",
+     "note": "GPT-4o mini input; output $0.60 (recalled)"
+    }
+   ],
+   "caveat": "Single-vendor list prices; 'GPT-4-class' is approximate (MMLU-level). For cross-vendor constant-capability trends see a16z LLMflation (~10x/yr) and Epoch (9-900x/yr; ~40x/yr at GPT-4-level GPQA)."
+  },
+  {
+   "id": "m-token-price-frontier",
+   "label": "Frontier flagship list price (input tokens)",
+   "unit": "USD per 1M tokens",
+   "layer": "inference",
+   "points": [
+    {
+     "date": "2023-03",
+     "value": 30,
+     "evidenceId": "ev-ctx2-80",
+     "note": "GPT-4 (recalled)"
+    },
+    {
+     "date": "2024-08",
+     "value": 2.5,
+     "evidenceId": "ev-ctx2-80",
+     "note": "GPT-4o after Aug 2024 cut (recalled)"
+    },
+    {
+     "date": "2025-08",
+     "value": 1.25,
+     "evidenceId": "ev-ctx2-72",
+     "note": "GPT-5; output $10 (recalled)"
+    },
+    {
+     "date": "2025-11",
+     "value": 5,
+     "evidenceId": "ev-ctx2-81",
+     "note": "Claude Opus 4.5; output $25 (recalled)"
+    },
+    {
+     "date": "2026-07",
+     "value": 5,
+     "evidenceId": "ev-ctx2-20",
+     "note": "Claude Opus 5; output $25"
+    },
+    {
+     "date": "2026-09",
+     "value": 10,
+     "evidenceId": "ev-ctx2-19",
+     "note": "GPT-6 Astra; output $50 (reported via Techmeme/The Verge)"
+    },
+    {
+     "date": "2026-09",
+     "value": 4,
+     "evidenceId": "ev-ctx2-21",
+     "note": "Claude Opus 5.5; output $20"
+    }
+   ],
+   "caveat": "Mixed vendors; frontier list prices did not follow constant-capability declines and rose again for the newest tier (GPT-6). Excludes reasoning-token volume, which raises effective cost per task."
+  },
+  {
+   "id": "m-inference-price-decline",
+   "label": "Annual decline in price for fixed capability",
+   "unit": "x per year",
+   "layer": "inference",
+   "points": [
+    {
+     "date": "2024-11",
+     "value": 10,
+     "evidenceId": "ev-ctx2-39",
+     "note": "a16z LLMflation, MMLU-based"
+    },
+    {
+     "date": "2025-03",
+     "value": 40,
+     "evidenceId": "ev-ctx2-40",
+     "note": "Epoch: GPT-4-level on GPQA; overall range 9-900x/yr"
+    }
+   ],
+   "caveat": "Different benchmarks and methods; not a time series of the same quantity."
+  },
+  {
+   "id": "m-open-closed-gap",
+   "label": "Open-weight lag behind frontier closed models",
+   "unit": "months",
+   "layer": "models",
+   "points": [
+    {
+     "date": "2025-10",
+     "value": 3,
+     "evidenceId": "ev-ctx2-42",
+     "note": "Epoch average lag"
+    },
+    {
+     "date": "2026-05",
+     "value": 4,
+     "evidenceId": "ev-ctx2-41",
+     "note": "Epoch ECI average lag since Jan 2026 (~8 ECI points)"
+    }
+   ],
+   "caveat": "Earlier Epoch report (2024) found 5-22 months on individual benchmarks and ~15 months on training compute; methods differ. Epoch notes sparse evaluations of new open models may overstate the 2026 gap."
+  },
+  {
+   "id": "m-largest-ai-dc-power",
+   "label": "Estimated operating power of flagship frontier AI campus (Stargate Abilene)",
+   "unit": "GW",
+   "layer": "energy",
+   "points": [
+    {
+     "date": "2026-04",
+     "value": 0.3,
+     "evidenceId": "ev-ctx2-31",
+     "note": "Epoch estimate, ~4 of 8 buildings; projected 1.2 GW by Q4 2026"
+    }
+   ],
+   "caveat": "Only one sourced point; comparable operating figures for xAI Colossus 1/2, Meta Prometheus and Hyperion were not confirmed this session. Planned capacities (1-5 GW) are not operating capacity."
+  },
+  {
+   "id": "m-us-dc-electricity-share",
+   "label": "US data centers' share of total electricity consumption",
+   "unit": "%",
+   "layer": "energy",
+   "points": [
+    {
+     "date": "2023",
+     "value": 4.4,
+     "evidenceId": "ev-ctx2-34",
+     "note": "176 TWh (LBNL 2024 report)"
+    },
+    {
+     "date": "2024",
+     "value": 4.7,
+     "evidenceId": "ev-ctx2-36",
+     "note": "192 TWh (secondary relay of LBNL 2025 update; EPRI: 177-192 TWh)"
+    },
+    {
+     "date": "2030",
+     "value": 11.8,
+     "evidenceId": "ev-ctx2-35",
+     "note": "Projection, central; range 9.5-15.3%"
+    }
+   ],
+   "caveat": "2030 is a projection, not an observation. Includes all data centers, not only AI. The 2024 report projected 6.7-12% for 2028."
+  },
+  {
+   "id": "m-metr-time-horizon",
+   "label": "METR 50% task-completion time horizon (frontier model)",
+   "unit": "minutes",
+   "layer": "agents",
+   "points": [
+    {
+     "date": "2025-02",
+     "value": 50,
+     "evidenceId": "ev-ctx2-37",
+     "note": "Claude 3.7 Sonnet (~50 min)"
+    },
+    {
+     "date": "2025-04",
+     "value": 110,
+     "evidenceId": "ev-ctx2-37",
+     "note": "o3 (~110 min), later paper version"
+    },
+    {
+     "date": "2025-11",
+     "value": 289,
+     "evidenceId": "ev-ctx2-38",
+     "note": "Claude Opus 4.5 ~4h49m (CI 1h49m-20h25m), via secondary page quoting METR"
+    }
+   ],
+   "caveat": "Dates are model release months. Doubling time ~7 months (2019-2025, METR paper); METR TH1.1 reportedly ~131 days post-2023 (secondary). Wide confidence intervals; METR reportedly flags measurements above ~16h as unreliable with its task suite. 2026 model horizons not confirmed this session."
+  }
+ ],
+ "evidence": [
+  {
+   "id": "ev-ctx2-1",
+   "url": "https://www.iphoneincanada.ca/2026/08/27/nvidia-blows-past-expectations-with-96-2-billion-revenue-in-q2-2027/",
+   "title": "Nvidia Blows Past Expectations with $96.2 Billion Revenue in Q2 2027",
+   "publisher": "iPhone in Canada",
+   "date": "2026-08-27",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "NVIDIA Q2 FY2027 (quarter ended 2026-07-26): revenue ~$96.2B (+106% y/y); Data Center revenue $89.0B (+117% y/y, +18% q/q); Q3 FY2027 outlook $108.0B +/-2%, excluding China data center compute.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Figures consistent across several search results (iPhone in Canada, Runtimewire, Pulse 2.0, The Energy Mag). Same coverage notes Vera Rubin ramping into production, supply commitments of ~$279B (mostly memory), and H200 shipments to China under US licenses at <1% of data center revenue (single-source detail)."
+  },
+  {
+   "id": "ev-ctx2-2",
+   "url": "https://theenergymag.com/news/market-news/nvidia-q2-revenue-hits-96-2-b-as-data-center-surges-117-and-vera-rubin-ramps",
+   "title": "NVIDIA Q2 Revenue Hits $96.2B as Data Center Surges 117% and Vera Rubin Ramps",
+   "publisher": "The Energy Mag",
+   "date": "2026-08",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Q2 FY2027 data center revenue up 117% y/y; Vera Rubin platform ramping.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Corroborating secondary source for the Q2 FY2027 result."
+  },
+  {
+   "id": "ev-ctx2-3",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000019/q4fy26pr.htm",
+   "title": "NVIDIA Corp Form 8-K exhibit: Q4 and fiscal 2026 results press release",
+   "publisher": "NVIDIA via SEC EDGAR",
+   "date": "2026-02-25",
+   "speaker": "NVIDIA",
+   "type": "filing",
+   "primary": true,
+   "passage": "Q4 FY2026 (ended 2026-01-25) revenue $68.1B (+73% y/y); Data Center $62.3B (+75% y/y, +22% q/q); FY2026 revenue $215.9B (+65%); Q1 FY2027 outlook ~$78B excluding China data center.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Seen in search-result summary of the SEC-filed press release (page itself could not be fetched; egress blocked)."
+  },
+  {
+   "id": "ev-ctx2-4",
+   "url": "https://www.telecomtv.com/content/digital-platforms-services/nvidia-announces-financial-results-for-first-quarter-fiscal-2027-55538/",
+   "title": "Nvidia announces financial results for first quarter fiscal 2027",
+   "publisher": "TelecomTV (reprinting NVIDIA release)",
+   "date": "2026-05-20",
+   "speaker": "NVIDIA",
+   "type": "announcement",
+   "primary": false,
+   "passage": "Q1 FY2027 (ended 2026-04-26) record revenue $81.6B (+85% y/y); Data Center $75.2B (+92% y/y); Q2 outlook $91B +/-2%; added $80B buyback authorization; dividend raised to $0.25/quarter.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "NVIDIA began reporting two platforms (Data Center and Edge Computing) from this quarter, which may affect comparability."
+  },
+  {
+   "id": "ev-ctx2-5",
+   "url": "https://aiweekly.co/alerts/amazon-microsoft-alphabet-meta-plan-725b-ai-capex-in-2026",
+   "title": "Amazon, Microsoft, Alphabet, Meta Plan $725B AI Capex in 2026",
+   "publisher": "AI Weekly",
+   "date": "2026-05",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "The four companies collectively plan roughly $725B of 2026 capex, up ~77% from roughly $410B in 2025; Amazon ~$200B, Microsoft ~$190B, Alphabet $175-185B, Meta $115-135B (later raised to $125-145B).",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Newsletter aggregation of Q1 2026 earnings guidance; company-level figures mix calendar and fiscal years and should be checked against filings. Same coverage: Microsoft said ~$25B of its ~$190B was component price inflation; Evercore/BofA project >$1T combined in 2027."
+  },
+  {
+   "id": "ev-ctx2-6",
+   "url": "https://finance.yahoo.com/sectors/technology/articles/hyperscalers-hit-700-billion-2026-111243744.html",
+   "title": "Hyperscalers Hit $700 Billion in 2026 AI Spending Plans",
+   "publisher": "Yahoo Finance",
+   "date": "2026",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "The big four told investors they will spend roughly $700B on capital expenditures in 2026, nearly double 2025.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Independent corroboration of the ~$700B+ order of magnitude."
+  },
+  {
+   "id": "ev-ctx2-7",
+   "url": "https://om.co/2026/04/30/what-i-learned-about-hyperscalers-ai-spend/",
+   "title": "What I Learned about Hyperscalers' AI Spend",
+   "publisher": "Om Malik (om.co)",
+   "date": "2026-04-30",
+   "speaker": "Om Malik",
+   "type": "essay",
+   "primary": false,
+   "passage": "Commentary on Q1 2026 hyperscaler earnings: three of four raised capex guidance; Amazon held its $200B figure published in February 2026.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Attribution of the 'three of four raised' detail to this specific page is from a combined search summary; treat as approximate."
+  },
+  {
+   "id": "ev-ctx2-8",
+   "url": "https://www.techloy.com/openai-hits-25-billion-in-annualized-revenue-while-anthropic-surges-to-19-billion/",
+   "title": "OpenAI hits $25 billion in annualized revenue while Anthropic surges to $19 billion",
+   "publisher": "Techloy (citing The Information)",
+   "date": "2026-03",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI topped $25B annualized revenue at end of February 2026, up from $21.4B at end of 2025; Anthropic at ~$19B.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Run-rate = recent month x12; not booked annual revenue. Publication month inferred from content."
+  },
+  {
+   "id": "ev-ctx2-9",
+   "url": "https://finder.techleap.nl/news/feed/openai-s-annualised-revenue-hits-25b-up-from-3-7b-in-2024",
+   "title": "OpenAI's annualised revenue hits $25B, up from $3.7B in 2024",
+   "publisher": "Techleap Finder",
+   "date": "2026-03",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI annualised revenue hits $25B, up from $3.7B (full-year revenue) in 2024.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Headline only; $3.7B is calendar-2024 revenue, a different basis than run-rate."
+  },
+  {
+   "id": "ev-ctx2-10",
+   "url": "https://digg.com/tech/g9qgeu1y",
+   "title": "OpenAI's annualized revenue run rate reportedly neared $70 billion in September 2026",
+   "publisher": "Digg (aggregating Axios)",
+   "date": "2026-09",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Axios reported OpenAI's annualized revenue run rate was nearing $70B in September 2026, growing more than 70% since the start of Q3.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Single aggregator relay of an Axios report; the jump from $25B (Feb) is very large and needs primary confirmation."
+  },
+  {
+   "id": "ev-ctx2-11",
+   "url": "https://www.gradually.ai/en/openai-ipo/",
+   "title": "OpenAI IPO",
+   "publisher": "gradually.ai",
+   "date": "2026",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI raised $122B at an $852B post-money valuation in March 2026, led by SoftBank and Microsoft.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Secondary explainer; another source dates the close to April 2026."
+  },
+  {
+   "id": "ev-ctx2-12",
+   "url": "https://letsdatascience.com/news/openai-confidentially-files-for-ipo-prepares-wall-street-deb-3128ea01",
+   "title": "OpenAI confidentially files for IPO, prepares Wall Street debut",
+   "publisher": "Let's Data Science",
+   "date": "2026-06",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI confidentially submitted a draft registration statement (reported May 22 / announced June 8, 2026); reports target a Q4 2026 debut at $852B to >$1T.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Filing date conflicts across sources (May 22 vs June 8). OpenAI said timing was undecided."
+  },
+  {
+   "id": "ev-ctx2-13",
+   "url": "https://tech-insider.org/anthropic-65-billion-series-h-965-billion-valuation-2026/",
+   "title": "Anthropic $65 billion Series H at $965 billion valuation",
+   "publisher": "Tech Insider",
+   "date": "2026-05-28",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Anthropic raised $65B Series H at a $965B post-money valuation (May 28, 2026), led by Altimeter, Dragoneer, Greenoaks and Sequoia; run-rate revenue crossed $47B earlier that month.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Includes ~$15B of previously committed hyperscaler investment (incl. $5B Amazon). Reported as exceeding OpenAI's $852B March valuation."
+  },
+  {
+   "id": "ev-ctx2-14",
+   "url": "https://www.freepressjournal.in/tech/anthropics-revenue-run-rate-tops-65-billion-ahead-of-expected-ipo",
+   "title": "Anthropic's Revenue Run Rate Tops $65 Billion Ahead Of Expected IPO",
+   "publisher": "Free Press Journal (citing Bloomberg/Reuters)",
+   "date": "2026-08-17",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Anthropic's annualized revenue run rate topped $65B at the end of July 2026, up from $47B in May and about $9B at end of 2025.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Press-reported (Bloomberg Aug 17, 2026; Reuters source); Anthropic's own latest official figure was $47B. FT reported investors expect $100-120B by year-end 2026."
+  },
+  {
+   "id": "ev-ctx2-15",
+   "url": "https://www.thenextweb.com/news/anthropic-800-billion-valuation-revenue-30-billion-ipo",
+   "title": "Anthropic investor offers at ~$800B valuation; revenue run-rate ~$30B",
+   "publisher": "The Next Web",
+   "date": "2026-04-15",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Investor offers reportedly valued Anthropic at about $800B, more than double the $380B valuation at which it closed a $30B round two months earlier; run-rate ~ $30B.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Implies the Series G ($30B at $380B) closed ~February 2026."
+  },
+  {
+   "id": "ev-ctx2-16",
+   "url": "https://llmgateway.io/timeline/2026",
+   "title": "LLMs Released in 2026 - AI Model Release Dates",
+   "publisher": "LLM Gateway",
+   "date": "2026",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "Timeline lists Claude Opus 4.6 (Feb 5, 2026), Gemini 3.1 Pro (Feb 19, 2026), Claude Opus 4.7 (Apr 16), Claude Opus 4.8 (May 28).",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Aggregator timeline; not an official lab source."
+  },
+  {
+   "id": "ev-ctx2-17",
+   "url": "https://gulfnews.com/technology/media/google-launches-gemini-3-with-record-setting-benchmarks-1.500351348",
+   "title": "Google launches Gemini 3 with record-setting benchmarks",
+   "publisher": "Gulf News",
+   "date": "2025-11-18",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Google released Gemini 3 on Nov 18, 2025 across the Gemini app, AI Mode in Search, AI Studio and Vertex; reported 37.5% on Humanity's Last Exam vs 26.5% for GPT-5.1; Antigravity agentic coding tool launched alongside.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Benchmark numbers are Google's own claims as relayed by press."
+  },
+  {
+   "id": "ev-ctx2-18",
+   "url": "https://technews.tw/2026/04/24/openai-introduces-gpt%e2%80%915-5/",
+   "title": "OpenAI introduces GPT-5.5",
+   "publisher": "TechNews (Taiwan)",
+   "date": "2026-04-24",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI released GPT-5.5 on April 23, 2026, calling it its smartest and most intuitive model and a step toward new ways of doing work on a computer.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Translated paraphrase of Chinese-language report; API access reportedly followed Apr 24."
+  },
+  {
+   "id": "ev-ctx2-19",
+   "url": "https://news.bgov.com/artificial-intelligence/openai-rolls-out-gpt-6-astra-model-with-cyber-guardrails-1",
+   "title": "OpenAI Rolls Out GPT-6 Astra Model With Cyber Guardrails",
+   "publisher": "Bloomberg Government",
+   "date": "2026-09-03",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI rolled out GPT-6 Astra to business users in its Daybreak testing program, with a version with added cybersecurity guardrails for paid ChatGPT users.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Techmeme (Sept 4, 2026) cited The Verge listing API pricing of $10/$50 per 1M input/output tokens. A single source reports a broader ChatGPT GPT-6 rollout from Oct 7, 2026 (unconfirmed)."
+  },
+  {
+   "id": "ev-ctx2-20",
+   "url": "https://www.gigazine.net/gsc_news/en/20260725-claude-opus-5",
+   "title": "Anthropic releases Claude Opus 5",
+   "publisher": "GIGAZINE",
+   "date": "2026-07-25",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Claude Opus 5 released (July 24, 2026 US time) as the top of the Claude 5 family above Sonnet 5 and Fable 5; $5/$25 per 1M input/output tokens; 1M-token context.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Secondary coverage; Anthropic's own page not seen."
+  },
+  {
+   "id": "ev-ctx2-21",
+   "url": "https://gori.me/?p=170548",
+   "title": "Anthropic announces Claude Opus 5.5, 40% cheaper than Opus 5",
+   "publisher": "gori.me",
+   "date": "2026-09-22",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Anthropic launched Claude Opus 5.5 on Sept 22, 2026 at $4/$20 per 1M input/output tokens; Sonnet 5.5 and Haiku 5.5 to follow.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Japanese-language secondary report."
+  },
+  {
+   "id": "ev-ctx2-22",
+   "url": "https://rits.shanghai.nyu.edu/ai/deepseek-releases-v4-open-source-1-6t-moe-with-1m-context",
+   "title": "DeepSeek Releases V4: Open-Source 1.6T MoE with 1M Context",
+   "publisher": "NYU Shanghai RITS",
+   "date": "2026-04",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "DeepSeek released V4 (April 24, 2026) as open-weight MoE models: V4-Pro (1.6T params) and V4-Flash (284B), both with 1M-token context, positioned as previews.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Earlier reporting (The Information) had expected a mid-February 2026 launch."
+  },
+  {
+   "id": "ev-ctx2-23",
+   "url": "https://www.storyboard18.com/amp/digital/metas-new-ai-model-avocado-delayed-until-mid-2026-despite-massive-ai-investment-92079.htm",
+   "title": "Meta's new AI model 'Avocado' delayed until mid-2026 despite massive AI investment",
+   "publisher": "Storyboard18",
+   "date": "2026-03",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Meta delayed its Avocado text/coding model after internal performance reportedly fell between Gemini 2.5 and Gemini 3.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Search summary also reported Meta unveiled 'Muse Spark', first model in the Avocado series, on April 9, 2026 in the Meta AI app, replacing Llama in Meta's assistants; the specific URL for that report was not pinned down."
+  },
+  {
+   "id": "ev-ctx2-24",
+   "url": "https://www.constellationr.com/insights/news/anthropic-launches-project-glasswing-claude-mythos-preview-ai-cybersecurity-push",
+   "title": "Anthropic launches Project Glasswing, Claude Mythos Preview in AI cybersecurity push",
+   "publisher": "Constellation Research",
+   "date": "2026-04-07",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Anthropic announced Project Glasswing (April 7, 2026), sharing the unreleased Claude Mythos Preview with 40+ security partners (incl. AWS, Apple, Google, Microsoft, Nvidia, CrowdStrike) to find and fix vulnerabilities rather than releasing it generally.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Capability claims (thousands of high-severity vulnerabilities found) are Anthropic's own as relayed by press."
+  },
+  {
+   "id": "ev-ctx2-25",
+   "url": "https://news.bloomberglaw.com/ip-law/anthropic-says-us-limits-foreign-access-to-fable-5-mythos-5",
+   "title": "Anthropic Shuts Down Mythos Access After Sweeping US Order",
+   "publisher": "Bloomberg Law",
+   "date": "2026-06",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "A US Commerce Department letter asked Anthropic to restrict Fable 5 and Mythos 5 for foreign nationals; Anthropic shut off access to both for all customers to ensure compliance, and publicly disagreed with the order.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Dates vary June 12-16, 2026 across sources; letter itself not seen. Reported trigger: a possible jailbreak of Fable 5 guardrails."
+  },
+  {
+   "id": "ev-ctx2-26",
+   "url": "https://www.neowin.net/amp/us-partially-reverses-anthropic-ai-ban-for-mythos-but-keeps-fable-5-off-the-market/",
+   "title": "U.S. partially reverses Anthropic AI ban for Mythos but keeps Fable 5 off the market",
+   "publisher": "Neowin",
+   "date": "2026-06-27",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "On June 27, 2026 Anthropic said Mythos 5 could be redeployed to US organizations operating and defending critical infrastructure; Fable 5 remained unavailable.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Status after June 2026 not confirmed."
+  },
+  {
+   "id": "ev-ctx2-27",
+   "url": "https://www.adn.com/nation-world/2026/03/05/pentagon-is-labeling-ai-company-anthropic-a-supply-chain-risk-effective-immediately/",
+   "title": "Pentagon is labeling AI company Anthropic a supply chain risk 'effective immediately'",
+   "publisher": "Anchorage Daily News (AP)",
+   "date": "2026-03-05",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "The Pentagon designated Anthropic a supply chain risk effective immediately after CEO Dario Amodei refused to drop restrictions on use for mass domestic surveillance or autonomous weapons.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Amodei said the notice applied only to Claude use as a direct part of military contracts; Microsoft said non-defense work could continue. Later litigation/reversal status not found."
+  },
+  {
+   "id": "ev-ctx2-28",
+   "url": "https://axios.com/2025/12/11/trump-signs-executive-order-state-ai-laws",
+   "title": "Trump signs executive order targeting state AI laws",
+   "publisher": "Axios",
+   "date": "2025-12-11",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Executive order 'Ensuring a National Policy Framework for Artificial Intelligence' (EO 14365) creates a DOJ AI Litigation Task Force to challenge state AI laws and ties some federal funds to state AI policy.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Legal force contested; congressional moratorium attempts failed in July 2025 (Senate 99-1) and in the NDAA."
+  },
+  {
+   "id": "ev-ctx2-29",
+   "url": "https://broadbandbreakfast.com/ai-preemption-battle-lands-in-congress-with-substantive-discussion-draft/",
+   "title": "AI Preemption Battle Lands in Congress With Substantive Discussion Draft",
+   "publisher": "Broadband Breakfast",
+   "date": "2026-06",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Reps. Obernolte and Trahan released a 269-page discussion draft (Great American AI Act of 2026) that would freeze state laws on how AI systems are built for three years while leaving states power over AI use.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "A CASRAI note (Sept 20, 2026) says the draft had stalled since June."
+  },
+  {
+   "id": "ev-ctx2-30",
+   "url": "https://datamatters.sidley.com/2026/06/22/eu-lawmakers-reach-provisional-agreement-to-delay-key-eu-ai-act-obligations/",
+   "title": "EU Lawmakers Reach Provisional Agreement to Delay Key EU AI Act Obligations",
+   "publisher": "Sidley Austin (Data Matters)",
+   "date": "2026-06-22",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "European Parliament voted June 16, 2026 to adopt the Digital Omnibus provisional agreement delaying AI Act high-risk obligations: Annex III moves from 2 Aug 2026 to 2 Dec 2027; Annex I from 2 Aug 2027 to 2 Aug 2028.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "One law-firm summary reports Official Journal publication on 24 July 2026 (Regulation (EU) 2026/1744); not independently confirmed. GPAI obligations (since 2 Aug 2025) and prohibitions (since 2 Feb 2025) unaffected."
+  },
+  {
+   "id": "ev-ctx2-31",
+   "url": "https://epochai.substack.com/p/openai-stargate-where-the-us-sites",
+   "title": "OpenAI Stargate: where the US sites stand",
+   "publisher": "Epoch AI",
+   "date": "2026-04-23",
+   "speaker": "Epoch AI",
+   "type": "data",
+   "primary": false,
+   "passage": "Stargate Abilene estimated operating at ~0.3 GW with ~4 of 8 buildings operational; projected 1.2 GW by Q4 2026; OpenAI reversed plans to expand the site to 2.1 GW.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Epoch estimates from satellite imagery/permits, not company-reported figures."
+  },
+  {
+   "id": "ev-ctx2-32",
+   "url": "https://www.treasuryandrisk.com/amp/2025/12/11/oracle-hits-highest-credit-risk-since-2009/",
+   "title": "Oracle hits highest credit risk since 2009",
+   "publisher": "Treasury & Risk",
+   "date": "2025-12-11",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Oracle's five-year CDS spreads hit their highest level since 2009 amid ~$26B of 2025 bond issuance and ~$248B of off-balance-sheet data center lease commitments.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Related coverage: Bank of England warned AI-infrastructure debt could heighten financial-stability risk; JPMorgan estimated AI-linked firms at ~14% of its IG index."
+  },
+  {
+   "id": "ev-ctx2-33",
+   "url": "https://finance.yahoo.com/news/how-oracle-became-a-poster-child-for-ai-bubble-fears-150039511.html",
+   "title": "How Oracle became a poster child for AI bubble fears",
+   "publisher": "Yahoo Finance",
+   "date": "2025-12",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Oracle described as the poster child for AI bubble fears as debt-funded data center commitments to OpenAI grew.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Date approximate (late 2025)."
+  },
+  {
+   "id": "ev-ctx2-34",
+   "url": "https://eta-publications.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report",
+   "title": "2024 United States Data Center Energy Usage Report",
+   "publisher": "Lawrence Berkeley National Laboratory",
+   "date": "2024-12",
+   "speaker": "LBNL",
+   "type": "data",
+   "primary": true,
+   "passage": "US data centers consumed about 4.4% of total US electricity in 2023 (176 TWh, up from 58 TWh in 2014) and could reach 6.7-12% by 2028.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "DOE release dated Dec 20, 2024."
+  },
+  {
+   "id": "ev-ctx2-35",
+   "url": "https://eta-publications.lbl.gov/publications/united-states-data-center-energy-2025",
+   "title": "United States Data Center Energy Usage Report: 2025 Update",
+   "publisher": "Lawrence Berkeley National Laboratory",
+   "date": "2026-06",
+   "speaker": "LBNL",
+   "type": "data",
+   "primary": true,
+   "passage": "Data centers could account for 11.8% of US electricity by 2030 (scenario range 9.5-15.3%); new bottom-up shipment model marked down recent chip deliveries.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Published June 2026 per search summary."
+  },
+  {
+   "id": "ev-ctx2-36",
+   "url": "https://www.independentwomen.com/2026/06/30/data-center-power-use-below-last-years-forecasts/",
+   "title": "Data center power use below last year's forecasts",
+   "publisher": "Independent Women's Forum",
+   "date": "2026-06-30",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Later LBNL report found US data centers used 192 TWh in 2024, or 4.7% of national electricity; 649 TWh (11.8%) projected by 2030.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Secondary relay of LBNL figures; EPRI (Feb 2026) gives 177-192 TWh for 2024."
+  },
+  {
+   "id": "ev-ctx2-37",
+   "url": "https://arxiv.org/pdf/2503.14499",
+   "title": "Measuring AI Ability to Complete Long Software Tasks",
+   "publisher": "METR (arXiv 2503.14499)",
+   "date": "2025-03-19",
+   "speaker": "METR",
+   "type": "paper",
+   "primary": true,
+   "passage": "Frontier AI 50% task-completion time horizon has doubled roughly every seven months since 2019, possibly faster since 2024; Claude 3.7 Sonnet ~50 minutes; a later version reports o3 at ~110 minutes.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Horizon depends on task suite and human baselines; 80%-reliability horizons are far shorter."
+  },
+  {
+   "id": "ev-ctx2-38",
+   "url": "https://manifold.markets/Bayesian/best-metr-time-horizons-in-2026",
+   "title": "Best METR time horizons in 2026 (prediction market, quoting METR)",
+   "publisher": "Manifold Markets",
+   "date": "2026",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "Quotes METR's estimate for Claude Opus 4.5 (Dec 2025) of a 50% time horizon of ~4h49m (95% CI 1h49m-20h25m); market comments cite METR's TH1.1 doubling time of ~131 days post-2023 and note measurements above ~16h are unreliable.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Secondary (prediction-market page quoting METR); Opus 4.6 '14.5h' figure seen only in a comment and not used."
+  },
+  {
+   "id": "ev-ctx2-39",
+   "url": "https://www.a16z.com/llmflation-llm-inference-cost",
+   "title": "Welcome to LLMflation - LLM inference cost is going down fast",
+   "publisher": "Andreessen Horowitz",
+   "date": "2024-11",
+   "speaker": "Guido Appenzeller (a16z)",
+   "type": "essay",
+   "primary": false,
+   "passage": "For an LLM of equivalent performance, cost is decreasing by ~10x every year; GPT-3-level (MMLU 42) went from $60/1M tokens (Nov 2021) to $0.06 (Llama 3.2 3B), ~1,000x in three years; ~62x decline at MMLU 83 since GPT-4's launch.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Constant-capability price, not frontier list price; MMLU contamination caveat acknowledged by authors."
+  },
+  {
+   "id": "ev-ctx2-40",
+   "url": "https://epoch.ai/data-insights/llm-inference-price-trends",
+   "title": "LLM inference prices have fallen rapidly but unequally across tasks",
+   "publisher": "Epoch AI",
+   "date": "2025-03",
+   "speaker": "Epoch AI",
+   "type": "data",
+   "primary": false,
+   "passage": "Price to reach a fixed performance level fell 9x to 900x per year depending on threshold; GPT-4-level performance on PhD-level science questions (GPQA) fell ~40x per year.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Publication month recalled (not re-confirmed). Fastest drops concentrated in the most recent year."
+  },
+  {
+   "id": "ev-ctx2-41",
+   "url": "https://epoch.ai/data-insights/open-closed-eci-gap",
+   "title": "Open-weight models lag frontier closed models by ~4 months on the ECI (Data Insight)",
+   "publisher": "Epoch AI",
+   "date": "2026-05-29",
+   "speaker": "Epoch AI",
+   "type": "data",
+   "primary": false,
+   "passage": "Since January 2026, the most capable open-weight models lagged frontier closed models by an average of four months on the Epoch Capabilities Index (~8 ECI points), slightly more than the ~3 months estimated in October 2025.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Epoch notes limited evaluations of new open models may overstate the gap."
+  },
+  {
+   "id": "ev-ctx2-42",
+   "url": "https://epoch.ai/data-insights/open-weights-vs-closed-weights-models",
+   "title": "Open-weight models lag state-of-the-art by around 3 months on average",
+   "publisher": "Epoch AI",
+   "date": "2025-10",
+   "speaker": "Epoch AI",
+   "type": "data",
+   "primary": false,
+   "passage": "Open-weight models lag state-of-the-art by around 3 months on average.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Earlier Epoch open-models report (2024) found lags of 5-22 months on benchmarks and ~15 months on training compute."
+  },
+  {
+   "id": "ev-ctx2-43",
+   "url": "https://epoch.ai/blog/open-models-report",
+   "title": "Open models report",
+   "publisher": "Epoch AI",
+   "date": "2024-11",
+   "speaker": "Epoch AI",
+   "type": "paper",
+   "primary": false,
+   "passage": "Best open LLMs have lagged the best closed LLMs by 5 to 22 months on benchmarks; largest open models lag largest closed by ~15 months in training compute.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Publication date recalled (late 2024), not re-confirmed."
+  },
+  {
+   "id": "ev-ctx2-44",
+   "url": "https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers",
+   "title": "DOE Releases New Report Evaluating Increase in Electricity Demand from Data Centers",
+   "publisher": "US Department of Energy",
+   "date": "2024-12-20",
+   "speaker": "US DOE",
+   "type": "announcement",
+   "primary": true,
+   "passage": "DOE release of the LBNL report finding data center load tripled over the past decade and may double or triple by 2028.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Passage paraphrased."
+  },
+  {
+   "id": "ev-ctx2-45",
+   "url": "https://openai.com/index/hello-gpt-4o/",
+   "title": "Hello GPT-4o",
+   "publisher": "OpenAI",
+   "date": "2024-05-13",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "GPT-4o: natively multimodal (text, audio, vision) flagship offered free in ChatGPT and at half GPT-4 Turbo's API price.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; not re-confirmed this session."
+  },
+  {
+   "id": "ev-ctx2-46",
+   "url": "https://www.anthropic.com/news/claude-3-family",
+   "title": "Introducing the next generation of Claude",
+   "publisher": "Anthropic",
+   "date": "2024-03-04",
+   "speaker": "Anthropic",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Claude 3 family (Haiku, Sonnet, Opus); Opus reported to beat GPT-4 on several benchmarks. Claude 3.5 Sonnet followed on 2024-06-20.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-47",
+   "url": "",
+   "title": "Gemini 1.5 announcement (1M-token context)",
+   "publisher": "Google",
+   "date": "2024-02-15",
+   "speaker": "Google DeepMind",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Gemini 1.5 Pro introduced a mixture-of-experts model with a 1M-token context window in preview (later 2M).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; URL not confirmed."
+  },
+  {
+   "id": "ev-ctx2-48",
+   "url": "",
+   "title": "Sora video generation preview",
+   "publisher": "OpenAI",
+   "date": "2024-02-15",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI previewed Sora, a diffusion-transformer text-to-video model generating up to one-minute clips; public release December 2024.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-49",
+   "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+   "title": "Introducing Llama 3.1",
+   "publisher": "Meta AI",
+   "date": "2024-07-23",
+   "speaker": "Meta",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Meta released Llama 3.1 405B open weights, claimed competitive with leading closed models; Zuckerberg's letter 'Open Source AI Is the Path Forward' accompanied it. Llama 3 (8B/70B) had launched 2024-04-18.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-50",
+   "url": "https://openai.com/index/learning-to-reason-with-llms/",
+   "title": "Learning to Reason with LLMs",
+   "publisher": "OpenAI",
+   "date": "2024-09-12",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "o1 performance improves with more reinforcement learning (train-time compute) and with more time spent thinking (test-time compute).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled paraphrase of the post's central claim."
+  },
+  {
+   "id": "ev-ctx2-51",
+   "url": "https://situational-awareness.ai/",
+   "title": "Situational Awareness: The Decade Ahead",
+   "publisher": "Leopold Aschenbrenner",
+   "date": "2024-06",
+   "speaker": "Leopold Aschenbrenner",
+   "type": "essay",
+   "primary": true,
+   "passage": "Argued AGI by ~2027 is strikingly plausible by extrapolating OOMs of compute and 'unhobbling', forecasting trillion-dollar clusters and a US-China national-security race.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled paraphrase."
+  },
+  {
+   "id": "ev-ctx2-52",
+   "url": "https://www.sequoiacap.com/article/ais-600b-question/",
+   "title": "AI's $600B Question",
+   "publisher": "Sequoia Capital (David Cahn)",
+   "date": "2024-06",
+   "speaker": "David Cahn",
+   "type": "essay",
+   "primary": true,
+   "passage": "Updated an earlier '$200B question': the revenue gap between AI infrastructure spend implied by Nvidia run-rate and actual AI revenue had grown to ~$600B.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled paraphrase."
+  },
+  {
+   "id": "ev-ctx2-53",
+   "url": "",
+   "title": "Nvidia briefly becomes world's most valuable company",
+   "publisher": "press (multiple)",
+   "date": "2024-06-18",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Nvidia passed ~$3.3T market cap, briefly overtaking Microsoft as the most valuable listed company (June 2024).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; exact figure approximate."
+  },
+  {
+   "id": "ev-ctx2-54",
+   "url": "",
+   "title": "Nvidia becomes first $5 trillion company",
+   "publisher": "press (multiple)",
+   "date": "2025-10-29",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Nvidia's market capitalization closed above $5 trillion for the first time on Oct 29, 2025.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-55",
+   "url": "",
+   "title": "Big Tech nuclear power deals (Talen/Amazon, Constellation/Microsoft, Kairos/Google)",
+   "publisher": "press (multiple)",
+   "date": "2024",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Amazon bought Talen's Susquehanna-adjacent data center campus (~$650M, March 2024); Microsoft signed a 20-year PPA to restart Three Mile Island Unit 1 (Sept 20, 2024); Google agreed to buy power from Kairos SMRs (up to 500 MW, Oct 14, 2024).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; dollar/MW figures approximate."
+  },
+  {
+   "id": "ev-ctx2-56",
+   "url": "",
+   "title": "xAI Colossus (Memphis) online",
+   "publisher": "press / Elon Musk on X",
+   "date": "2024-09",
+   "speaker": "xAI",
+   "type": "news",
+   "primary": false,
+   "passage": "xAI brought its Colossus cluster of ~100,000 H100 GPUs online in Memphis in about four months (announced early Sept 2024), later expanding toward 200,000 GPUs.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-57",
+   "url": "",
+   "title": "EU AI Act enters into force",
+   "publisher": "European Commission",
+   "date": "2024-08-01",
+   "speaker": "European Union",
+   "type": "announcement",
+   "primary": true,
+   "passage": "AI Act entered into force Aug 1, 2024 with staged application: prohibitions Feb 2025, GPAI obligations Aug 2025, most high-risk rules Aug 2026 (later delayed).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; later delay confirmed via eu_omnibus evidence."
+  },
+  {
+   "id": "ev-ctx2-58",
+   "url": "",
+   "title": "Newsom vetoes SB 1047",
+   "publisher": "press (multiple)",
+   "date": "2024-09-29",
+   "speaker": "Gavin Newsom",
+   "type": "news",
+   "primary": false,
+   "passage": "California Gov. Newsom vetoed SB 1047 (frontier model safety bill), arguing it focused on model size rather than deployment risk.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-59",
+   "url": "",
+   "title": "Microsoft-Inflection and Google-Character.AI license-and-hire deals",
+   "publisher": "press (multiple)",
+   "date": "2024",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Microsoft hired Inflection's leadership incl. Mustafa Suleyman with a ~$650M licensing payment (Mar 2024); Google licensed Character.AI tech and rehired Noam Shazeer (~$2.7B, Aug 2024).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; dollar amounts as reported at the time."
+  },
+  {
+   "id": "ev-ctx2-60",
+   "url": "https://www.nobelprize.org/prizes/physics/2024/summary/",
+   "title": "The Nobel Prize in Physics 2024",
+   "publisher": "Nobel Prize Outreach",
+   "date": "2024-10-08",
+   "speaker": "Royal Swedish Academy of Sciences",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Physics 2024 to Hopfield and Hinton for foundational work enabling machine learning with neural networks; Chemistry 2024 (Oct 9) half to Hassabis and Jumper for AlphaFold protein structure prediction.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-61",
+   "url": "https://www.anthropic.com/news/model-context-protocol",
+   "title": "Introducing the Model Context Protocol",
+   "publisher": "Anthropic",
+   "date": "2024-11-25",
+   "speaker": "Anthropic",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Anthropic open-sourced MCP as a standard for connecting AI assistants to data sources and tools; OpenAI adopted it in March 2025. Anthropic had shipped 'computer use' in beta on 2024-10-22.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-62",
+   "url": "",
+   "title": "OpenAI o3 breakthrough on ARC-AGI-1",
+   "publisher": "ARC Prize",
+   "date": "2024-12-20",
+   "speaker": "ARC Prize Foundation",
+   "type": "data",
+   "primary": false,
+   "passage": "o3 scored ~75.7% on the ARC-AGI-1 semi-private set at the compute-limited setting and ~87.5% at high compute; ARC-AGI-2 (March 2025) reset frontier scores to low single digits.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-63",
+   "url": "",
+   "title": "DeepSeek-R1 release",
+   "publisher": "DeepSeek",
+   "date": "2025-01-20",
+   "speaker": "DeepSeek",
+   "type": "paper",
+   "primary": true,
+   "passage": "DeepSeek released R1, an open-weight (MIT-licensed) reasoning model trained with large-scale RL, matching o1 on many benchmarks at far lower API prices; V3's reported final training run cost was ~$5.6M.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; the $5.6M figure excludes prior research and infrastructure."
+  },
+  {
+   "id": "ev-ctx2-64",
+   "url": "",
+   "title": "Nvidia loses ~$589B in a day after DeepSeek",
+   "publisher": "press (multiple)",
+   "date": "2025-01-27",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Nvidia shares fell ~17% on Jan 27, 2025, erasing roughly $589B of market value, the largest one-day loss for any US company at the time.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-65",
+   "url": "https://openai.com/index/announcing-the-stargate-project/",
+   "title": "Announcing The Stargate Project",
+   "publisher": "OpenAI",
+   "date": "2025-01-21",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Stargate: a new company intending to invest $500B over four years in US AI infrastructure for OpenAI, deploying $100B immediately; equity from SoftBank, OpenAI, Oracle, MGX.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-66",
+   "url": "",
+   "title": "Claude 3.7 Sonnet and Claude Code; Claude 4",
+   "publisher": "Anthropic",
+   "date": "2025-02-24",
+   "speaker": "Anthropic",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Claude Code launched as a research preview with Claude 3.7 Sonnet (Feb 24, 2025) and went GA with Claude Opus 4 / Sonnet 4 (May 22, 2025), positioned for long-running agentic coding.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-67",
+   "url": "",
+   "title": "Reasoning model wave: Gemini 2.5 Pro, o3 and o4-mini",
+   "publisher": "Google / OpenAI",
+   "date": "2025-04-16",
+   "speaker": "outcome",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Gemini 2.5 Pro (Mar 25, 2025) launched as a 'thinking' model; OpenAI released o3 and o4-mini (Apr 16, 2025) with agentic tool use inside the reasoning loop.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-68",
+   "url": "",
+   "title": "US chip export controls on Nvidia H20",
+   "publisher": "press (multiple)",
+   "date": "2025-04",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "US required licenses for H20 sales to China in April 2025 (Nvidia took a ~$4.5B charge); licenses resumed in July-August 2025 under an unusual 15% revenue-share arrangement; in Dec 2025 H200 sales were allowed under license.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; H200 licensing corroborated indirectly by Q2 FY2027 coverage (nv_q2fy27)."
+  },
+  {
+   "id": "ev-ctx2-69",
+   "url": "",
+   "title": "Chinese open-weight wave: Qwen3, Kimi K2, DeepSeek V3.x",
+   "publisher": "Alibaba / Moonshot / DeepSeek",
+   "date": "2025-07-11",
+   "speaker": "outcome",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Alibaba released Qwen3 (Apr 29, 2025); Moonshot released Kimi K2, a ~1T-parameter open MoE agentic model (Jul 11, 2025); DeepSeek shipped V3.1 (Aug) and V3.2 (late 2025).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-70",
+   "url": "",
+   "title": "Meta invests in Scale AI and forms Meta Superintelligence Labs",
+   "publisher": "press (multiple)",
+   "date": "2025-06",
+   "speaker": "Meta",
+   "type": "news",
+   "primary": false,
+   "passage": "Meta invested ~$14.3B for 49% of Scale AI, hired CEO Alexandr Wang, and reorganized AI into Meta Superintelligence Labs (June 30, 2025) with large compensation offers to rival researchers.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-71",
+   "url": "",
+   "title": "America's AI Action Plan",
+   "publisher": "The White House",
+   "date": "2025-07-23",
+   "speaker": "US Government",
+   "type": "announcement",
+   "primary": true,
+   "passage": "AI Action Plan (with three EOs) prioritized deregulation, faster permitting for data centers and power, and exporting the 'American AI stack'.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-72",
+   "url": "",
+   "title": "Introducing GPT-5",
+   "publisher": "OpenAI",
+   "date": "2025-08-07",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "GPT-5 launched as a unified system routing between fast and reasoning modes, priced at $1.25/$10 per 1M input/output tokens; reception was mixed relative to expectations.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-73",
+   "url": "",
+   "title": "The GenAI Divide: State of AI in Business 2025",
+   "publisher": "MIT NANDA",
+   "date": "2025-08",
+   "speaker": "MIT NANDA",
+   "type": "paper",
+   "primary": false,
+   "passage": "Report claimed ~95% of organizations were getting zero measurable return from generative-AI pilots despite $30-40B of enterprise spend.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; methodology (interviews/surveys) widely criticized."
+  },
+  {
+   "id": "ev-ctx2-74",
+   "url": "",
+   "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of AI",
+   "publisher": "Stanford Digital Economy Lab",
+   "date": "2025-08",
+   "speaker": "Brynjolfsson, Chandar, Chen",
+   "type": "paper",
+   "primary": false,
+   "passage": "Using ADP payroll data, workers aged 22-25 in the most AI-exposed occupations saw ~13% relative employment decline since late 2022, concentrated where AI automates rather than augments.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-75",
+   "url": "",
+   "title": "OpenAI compute megadeals (Oracle, Nvidia, AMD, Broadcom)",
+   "publisher": "press / company releases",
+   "date": "2025-10",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Reported Oracle contract ~$300B over ~5 years (Sept 2025); Nvidia LOI to invest up to $100B tied to 10 GW (Sept 22); AMD 6 GW with warrants for up to 160M AMD shares (Oct 6); Broadcom 10 GW custom accelerators (Oct 13); AWS $38B (Nov 3).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; widely discussed as 'circular financing' because suppliers invest in their customer."
+  },
+  {
+   "id": "ev-ctx2-76",
+   "url": "",
+   "title": "OpenAI completes recapitalization",
+   "publisher": "OpenAI",
+   "date": "2025-10-28",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI's for-profit became OpenAI Group PBC controlled by the OpenAI Foundation (~26% stake); Microsoft holds ~27% with a revised agreement.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-77",
+   "url": "",
+   "title": "OpenAI hits $10B annualized revenue",
+   "publisher": "CNBC (reported)",
+   "date": "2025-06",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "OpenAI annual recurring revenue reached ~$10B by June 2025.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-78",
+   "url": "",
+   "title": "Anthropic Series F ($13B at $183B)",
+   "publisher": "Anthropic",
+   "date": "2025-09-02",
+   "speaker": "Anthropic",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Run-rate revenue grew from ~$1B at the start of 2025 to over $5B by August 2025.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  },
+  {
+   "id": "ev-ctx2-79",
+   "url": "",
+   "title": "NVIDIA fiscal 2024/2025 results and FY2026 quarterly releases",
+   "publisher": "NVIDIA",
+   "date": "2025-11-19",
+   "speaker": "NVIDIA",
+   "type": "earnings",
+   "primary": true,
+   "passage": "Data Center revenue: FY2024 $47.5B; FY2025 $115.2B; Q4 FY2025 $35.6B; Q1 FY2026 $39.1B; Q2 FY2026 $41.1B; Q3 FY2026 $51.2B.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled; consistent with the y/y growth rates reported in 2026 snippets (Q4 FY26 +75%, Q1 FY27 +92%, Q2 FY27 +117%)."
+  },
+  {
+   "id": "ev-ctx2-80",
+   "url": "",
+   "title": "OpenAI API list prices (GPT-4, GPT-4o, GPT-4o mini)",
+   "publisher": "OpenAI",
+   "date": "2024-07-18",
+   "speaker": "OpenAI",
+   "type": "data",
+   "primary": true,
+   "passage": "GPT-4 (Mar 2023) $30/$60 per 1M input/output tokens; GPT-4o (May 2024) $5/$15, cut to $2.50/$10 (Aug 2024); GPT-4o mini (Jul 18, 2024) $0.15/$0.60.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled list prices."
+  },
+  {
+   "id": "ev-ctx2-81",
+   "url": "",
+   "title": "Claude Opus 4.5",
+   "publisher": "Anthropic",
+   "date": "2025-11-24",
+   "speaker": "Anthropic",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Claude Opus 4.5 launched at $5/$25 per 1M tokens (down from $15/$75 for Opus 4/4.1), positioned as state of the art on SWE-bench Verified.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Recalled."
+  }
+ ],
+ "gaps": [
+  "Tooling limits: WebFetch could not resolve any host and the shared web-search budget was exhausted mid-session, so no page was opened; all 2026 items are 'snippet' (search-result summaries, not verbatim) and most 2024-2025 background is 'recalled'. No passage is marked verbatim.",
+  "2024 combined hyperscaler capex (MSFT+GOOGL+AMZN+META) not re-sourced; omitted from m-hyperscaler-capex.",
+  "NVIDIA FY2024/FY2025 data center totals and FY2026 Q1-Q3 quarters are recalled; FY2026 total is computed.",
+  "OpenAI ~$70B run-rate (Sept 2026) rests on a single aggregator relay of Axios; Anthropic $65B (July 2026) is press-reported, not company-confirmed.",
+  "OpenAI $122B/$852B round date conflicts (March vs April 2026); IPO confidential filing date conflicts (May 22 vs June 8, 2026). Anthropic IPO timing and the reported '$2T' investor expectation were not confirmed.",
+  "2026 model details (Opus 4.6/4.7/4.8 dates, Gemini 3.1 Pro, Gemini 3.5/4, GPT-5.6, GPT-6 Sol/Luna, Claude Fable 5, Sonnet 5) come from aggregators or secondary press; official lab pages not seen. A single source reports GPT-6 broad ChatGPT rollout on Oct 7, 2026 (unconfirmed, not used).",
+  "Meta 'Muse Spark' (Apr 9, 2026) seen only in a search summary; specific URL not pinned.",
+  "Commerce Department letter on Mythos 5/Fable 5: date (June 12-16) varies and the letter text was not seen; post-June status unknown. Pentagon supply-chain-risk designation: subsequent litigation or reversal not found.",
+  "EU Digital Omnibus Official Journal publication (24 July 2026, Regulation (EU) 2026/1744) reported by one law-firm summary only.",
+  "Not researched/confirmed for 2026 (search budget exhausted): Qwen 3.x releases, enterprise agent adoption statistics, 2026 labor-market evidence, continual learning / world models / RL-environment research shifts, specific safety incidents, explicit AGI claims, state AI laws enacted in 2026, DOJ AI Litigation Task Force suits, Nvidia market cap in 2026, ARC-AGI-2/3 results, METR horizons for 2026 models (Opus 4.6 '14.5h' seen only in a forum comment).",
+  "Largest operating AI datacenter power: only Epoch's Abilene estimate (~0.3 GW, Apr 2026) is sourced; Colossus 2, Prometheus and others not confirmed as operating at GW scale.",
+  "Recalled 2024-2025 items needing re-verification: nuclear deal figures, acquihire amounts, ARC-AGI o3 scores, DeepSeek V3 $5.6M figure, H20 policy sequence, OpenAI compute megadeal sizes, OpenAI recapitalization stakes, MIT NANDA and Stanford 'Canaries' figures, Sutskever's Dec 2024 'pretraining will end' remark (cited in a minority view without its own evidence entry).",
+  "Period boundary proposals are interpretation: o1 (Sept 2024) as the start of the reasoning era; Dec 2025 as a possible start for the 2026 period."
+ ]
+}

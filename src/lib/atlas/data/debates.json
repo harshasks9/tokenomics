@@ -1,0 +1,1316 @@
+[
+ {
+  "id": "scaling-vs-architecture",
+  "title": "Scaling vs new architectures",
+  "question": "Will scaling today's transformer recipe keep producing capability gains, or is a fundamentally new architecture required?",
+  "layers": [
+   "architecture",
+   "training"
+  ],
+  "camps": [
+   {
+    "id": "scale",
+    "label": "Scale the recipe",
+    "position": "General methods plus compute win; LLMs plus RL and search will keep improving toward general intelligence.",
+    "thinkers": [
+     "ilya-sutskever",
+     "dario-amodei",
+     "sam-altman",
+     "leopold-aschenbrenner",
+     "jensen-huang"
+    ],
+    "assumptions": [
+     "Loss keeps falling predictably with compute",
+     "Post-training/RL can fix reliability",
+     "Data limits can be routed around"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2020-01",
+      "text": "Scaling laws show smooth power-law gains.",
+      "evidenceIds": [
+       "ev-ctx-34"
+      ]
+     },
+     {
+      "date": "2020-05",
+      "text": "GPT-3 few-shot learning emerges from scale.",
+      "evidenceIds": [
+       "ev-ctx-33",
+       "ev-ctx-74",
+       "ev-ctx-76"
+      ]
+     },
+     {
+      "date": "2023-03",
+      "text": "GPT-4 extends the trend across professional exams.",
+      "evidenceIds": [
+       "ev-ctx-98",
+       "ev-ctx-30"
+      ]
+     },
+     {
+      "date": "2024-09",
+      "text": "o1 adds an inference-time scaling axis.",
+      "evidenceIds": [
+       "ev-ctx2-50"
+      ]
+     },
+     {
+      "date": "2026-09",
+      "text": "GPT-6 and Claude 5 keep the frontier moving with LLM-based systems.",
+      "evidenceIds": [
+       "ev-ctx2-19"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "new",
+    "label": "New ideas needed",
+    "position": "Autoregressive LLMs lack world models, planning and efficient learning; a different paradigm (world models, experiential RL, program synthesis) is required.",
+    "thinkers": [
+     "yann-lecun",
+     "gary-marcus",
+     "francois-chollet",
+     "richard-sutton",
+     "fei-fei-li"
+    ],
+    "assumptions": [
+     "Text alone cannot ground understanding",
+     "Errors compound in autoregressive generation",
+     "Sample efficiency matters for intelligence"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2022-03",
+      "text": "Chinchilla shows data, not just parameters, binds.",
+      "evidenceIds": [
+       "ev-ctx-35"
+      ]
+     },
+     {
+      "date": "2024-12",
+      "text": "Sutskever: 'pretraining as we know it will end'.",
+      "evidenceIds": [
+       "ev-sutskever-7"
+      ]
+     },
+     {
+      "date": "2025-08",
+      "text": "GPT-5's mixed reception fuels 'diminishing returns' talk.",
+      "evidenceIds": [
+       "ev-ctx2-72"
+      ]
+     },
+     {
+      "date": "2025-11",
+      "text": "Sutskever: back to an 'age of research'.",
+      "evidenceIds": [
+       "ev-sutskever-8"
+      ]
+     },
+     {
+      "date": "2025-06",
+      "text": "ARC-AGI-2 keeps a large human–AI gap.",
+      "evidenceIds": [
+       "ev-chollet-7",
+       "ev-out-arc2-1"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2017",
+    "value": 0.4,
+    "note": "Deep learning works but transformers are new; skeptics (Marcus) catalogue limits."
+   },
+   {
+    "date": "2020-06",
+    "value": -0.4,
+    "note": "GPT-3 and scaling laws swing the field toward scale."
+   },
+   {
+    "date": "2023-03",
+    "value": -0.6,
+    "note": "GPT-4 is the high-water mark for 'scale is all you need'."
+   },
+   {
+    "date": "2024-12",
+    "value": -0.1,
+    "note": "Pretraining slowdown concedes ground; but o1/o3 show the LLM stack still has headroom."
+   },
+   {
+    "date": "2025-11",
+    "value": 0.1,
+    "note": "Even scaling's champion calls for new research; LLM-based systems still lead every benchmark."
+   },
+   {
+    "date": "2026-09",
+    "value": 0.0,
+    "note": "Stalemate: LLM-centric systems define the frontier, but via RL/search additions that the 'new ideas' camp predicted."
+   }
+  ],
+  "bothRight": "Both are partly right if 'scaling' is read broadly: the frontier kept advancing on transformer backbones, but the gains since 2024 came from new training ideas (RL with verifiable rewards, test-time search) layered on top — exactly the kind of addition skeptics said was needed.",
+  "status": "unresolved",
+  "verdictNote": "No rival architecture had displaced transformer LLMs by Oct 2026, and no LLM system met AGI definitions. The debate has narrowed to whether additions on an LLM base count as 'scaling'.",
+  "thesisIds": [
+   "scaling-sufficient",
+   "beyond-llms",
+   "inference-scaling"
+  ]
+ },
+ {
+  "id": "llm-vs-world-models",
+  "title": "Language models vs world models",
+  "question": "Can intelligence be learned from text, or must models learn grounded representations of the physical world?",
+  "layers": [
+   "architecture",
+   "data"
+  ],
+  "camps": [
+   {
+    "id": "lang",
+    "label": "Language is enough",
+    "position": "Predicting text well forces a model to learn the world that produced it ('compression is understanding').",
+    "thinkers": [
+     "ilya-sutskever",
+     "andrej-karpathy",
+     "sam-altman"
+    ],
+    "assumptions": [
+     "Text encodes most human knowledge",
+     "Multimodality can be bolted on"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2023-03",
+      "text": "GPT-4 shows broad world knowledge from text pretraining.",
+      "evidenceIds": [
+       "ev-ctx-98",
+       "ev-ctx-30"
+      ]
+     },
+     {
+      "date": "2024-05",
+      "text": "GPT-4o adds native multimodality on the same backbone.",
+      "evidenceIds": [
+       "ev-ctx2-45",
+       "ev-ctx2-80"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "world",
+    "label": "World models first",
+    "position": "Systems must learn predictive models of physical reality (JEPA, spatial intelligence) to plan and reason robustly.",
+    "thinkers": [
+     "yann-lecun",
+     "fei-fei-li",
+     "demis-hassabis",
+     "richard-sutton"
+    ],
+    "assumptions": [
+     "Most knowledge is non-verbal",
+     "Planning requires predictive state models"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2024-09",
+      "text": "World Labs founded for large world models.",
+      "evidenceIds": [
+       "ev-li-7",
+       "ev-li-11"
+      ]
+     },
+     {
+      "date": "2025-11",
+      "text": "LeCun leaves Meta to found AMI Labs for world models.",
+      "evidenceIds": [
+       "ev-lecun-7",
+       "ev-lecun-8"
+      ]
+     },
+     {
+      "date": "2025-11",
+      "text": "Marble ships from World Labs.",
+      "evidenceIds": [
+       "ev-li-10",
+       "ev-li-12"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2022-06",
+    "value": 0.2,
+    "note": "LeCun's JEPA proposal; LLMs not yet mainstream."
+   },
+   {
+    "date": "2023-03",
+    "value": -0.5,
+    "note": "GPT-4 makes text-only learning look sufficient."
+   },
+   {
+    "date": "2025-11",
+    "value": -0.1,
+    "note": "Capital flows to world-model startups; Hassabis says world models are one of the missing pieces."
+   },
+   {
+    "date": "2026-09",
+    "value": -0.2,
+    "note": "World-model labs are funded but pre-product at scale; multimodal LLMs dominate deployment (AMD agrees to acquire World Labs)."
+   }
+  ],
+  "bothRight": "Both may hold: language models dominate digital knowledge work, while world models may prove necessary for robotics and physical autonomy — different domains, different bottlenecks.",
+  "status": "unresolved",
+  "verdictNote": "Undecided at the cutoff; the decisive test (robotics, physical agents) had not played out.",
+  "thesisIds": [
+   "beyond-llms"
+  ]
+ },
+ {
+  "id": "open-vs-closed",
+  "title": "Open weights vs closed models",
+  "question": "Will open-weight models keep pace with — and erode the moats of — closed frontier labs?",
+  "layers": [
+   "models",
+   "economics",
+   "society"
+  ],
+  "camps": [
+   {
+    "id": "open",
+    "label": "Open wins",
+    "position": "Recipes diffuse; open models will become the standard like Linux, and closed moats are temporary.",
+    "thinkers": [
+     "mark-zuckerberg",
+     "liang-wenfeng",
+     "yann-lecun",
+     "marc-andreessen",
+     "bill-gurley"
+    ],
+    "assumptions": [
+     "Knowledge diffuses within months",
+     "Efficiency beats raw compute"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2024-07",
+      "text": "Llama 3.1 405B reaches frontier class.",
+      "evidenceIds": [
+       "ev-ctx2-49"
+      ]
+     },
+     {
+      "date": "2025-01",
+      "text": "DeepSeek-R1 matches o1-class reasoning in the open.",
+      "evidenceIds": [
+       "ev-ctx2-63"
+      ]
+     },
+     {
+      "date": "2026-04",
+      "text": "DeepSeek V4: 1.6T open MoE.",
+      "evidenceIds": [
+       "ev-ctx2-22",
+       "ev-ctx2-41"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "closed",
+    "label": "Closed frontier holds",
+    "position": "The best models stay closed; frontier capability needs scale, security and control.",
+    "thinkers": [
+     "vinod-khosla",
+     "dario-amodei",
+     "leopold-aschenbrenner",
+     "sam-altman"
+    ],
+    "assumptions": [
+     "Frontier compute is scarce",
+     "Security concerns justify closure"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2026-04",
+      "text": "Meta retreats from fully open frontier releases.",
+      "evidenceIds": [
+       "ev-ctx2-23"
+      ]
+     },
+     {
+      "date": "2026-05",
+      "text": "Closed labs' revenue reaches tens of billions.",
+      "evidenceIds": [
+       "ev-ctx2-13",
+       "ev-ctx2-15"
+      ]
+     },
+     {
+      "date": "2026-06",
+      "text": "Most capable models are withheld or access-restricted (Mythos).",
+      "evidenceIds": [
+       "ev-ctx2-25",
+       "ev-ctx2-26"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2023-02",
+    "value": 0.5,
+    "note": "Closed GPT-4 far ahead; LLaMA leak starts open era."
+   },
+   {
+    "date": "2024-07",
+    "value": 0.1,
+    "note": "Llama 3.1 narrows the gap."
+   },
+   {
+    "date": "2025-01",
+    "value": -0.3,
+    "note": "DeepSeek-R1 shock."
+   },
+   {
+    "date": "2026-06",
+    "value": 0.2,
+    "note": "Open trails by months, while the very top (and Meta) moves closed."
+   }
+  ],
+  "bothRight": "Both are right on different axes: open weights commoditize capability a few months behind the frontier (pressuring prices), while closed labs keep the frontier and most revenue.",
+  "status": "leaning",
+  "verdictNote": "Leaning to a two-tier equilibrium: closed frontier with pricing power, open models months behind setting the price floor.",
+  "thesisIds": [
+   "open-closes-gap",
+   "models-commoditize",
+   "open-safer"
+  ]
+ },
+ {
+  "id": "agi-timelines",
+  "title": "Fast AGI vs gradual capability",
+  "question": "Is human-level general AI a few years away, or a decade-plus of gradual, jagged progress?",
+  "layers": [
+   "models",
+   "society"
+  ],
+  "camps": [
+   {
+    "id": "fast",
+    "label": "AGI within a few years",
+    "position": "Extrapolating compute and algorithmic gains implies AGI around 2026–2028.",
+    "thinkers": [
+     "elon-musk",
+     "masayoshi-son",
+     "dario-amodei",
+     "leopold-aschenbrenner",
+     "sam-altman"
+    ],
+    "assumptions": [
+     "Trend lines continue",
+     "No missing ingredients"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2023-03",
+      "text": "GPT-4 shortens timelines for many experts.",
+      "evidenceIds": [
+       "ev-ctx-98",
+       "ev-ctx-30"
+      ]
+     },
+     {
+      "date": "2025-03",
+      "text": "METR: task horizons double every ~7 months.",
+      "evidenceIds": [
+       "ev-ctx2-37"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "slow",
+    "label": "Decade-plus, jagged progress",
+    "position": "Capability is jagged; reliability, continual learning and agency need breakthroughs — think a decade, not years.",
+    "thinkers": [
+     "andrej-karpathy",
+     "demis-hassabis",
+     "yann-lecun",
+     "francois-chollet",
+     "sundar-pichai",
+     "satya-nadella"
+    ],
+    "assumptions": [
+     "Benchmarks overstate generality",
+     "Diffusion into economy is slow"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-10",
+      "text": "Karpathy: 'decade of agents', agents 'just don't work' yet.",
+      "evidenceIds": [
+       "ev-karpathy-6",
+       "ev-karpathy-9"
+      ]
+     },
+     {
+      "date": "2025-12",
+      "text": "Musk's AGI-by-2025 deadline passes.",
+      "evidenceIds": [
+       "ev-musk-9",
+       "ev-out-imo-1"
+      ]
+     },
+     {
+      "date": "2025-06",
+      "text": "ARC-AGI-2 gap persists.",
+      "evidenceIds": [
+       "ev-chollet-7",
+       "ev-out-arc2-1"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2016",
+    "value": 0.7,
+    "note": "Most researchers place AGI decades out."
+   },
+   {
+    "date": "2023-05",
+    "value": -0.2,
+    "note": "GPT-4 and the CAIS statement mainstream short timelines."
+   },
+   {
+    "date": "2025-03",
+    "value": -0.3,
+    "note": "METR doubling and reasoning models strengthen short timelines."
+   },
+   {
+    "date": "2026-01",
+    "value": 0.2,
+    "note": "2025 deadlines missed; jaggedness acknowledged widely."
+   },
+   {
+    "date": "2026-09",
+    "value": 0.1,
+    "note": "Rapid progress continues but no consensus AGI; 2027 deadlines still open."
+   }
+  ],
+  "bothRight": "Both can be right if 'AGI' is defined differently: superhuman performance on many tests may arrive on the fast camp's schedule while reliable, autonomous, generally competent agents take the slow camp's decade.",
+  "status": "unresolved",
+  "verdictNote": "Open: the earliest deadlines (2025) missed, the 2026–2028 windows still live. Definitions, not just evidence, divide the camps.",
+  "thesisIds": [
+   "agi-near",
+   "scaling-sufficient"
+  ]
+ },
+ {
+  "id": "infra-vs-models-value",
+  "title": "Infrastructure vs models: who captures value?",
+  "question": "Will economic value accrue mainly to chip/infrastructure providers, model labs, or applications?",
+  "layers": [
+   "semis",
+   "models",
+   "apps",
+   "economics"
+  ],
+  "camps": [
+   {
+    "id": "infra",
+    "label": "Picks and shovels",
+    "position": "Compute is the scarce input; Nvidia and hyperscalers capture most value.",
+    "thinkers": [
+     "jensen-huang",
+     "leopold-aschenbrenner",
+     "satya-nadella"
+    ],
+    "assumptions": [
+     "Demand outruns supply",
+     "Compute is not commoditized"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2023-08",
+      "text": "Nvidia data-center revenue doubles in a quarter.",
+      "evidenceIds": [
+       "ev-ctx-105",
+       "ev-ctx-1",
+       "ev-ctx-102"
+      ]
+     },
+     {
+      "date": "2026-08",
+      "text": "Nvidia ~$89B data-center quarter.",
+      "evidenceIds": [
+       "ev-ctx2-1",
+       "ev-ctx2-2"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "up",
+    "label": "Value moves up the stack",
+    "position": "Infrastructure overbuilds and commoditizes; models and applications/agents capture durable value.",
+    "thinkers": [
+     "cathie-wood",
+     "david-cahn",
+     "elad-gil",
+     "marc-andreessen"
+    ],
+    "assumptions": [
+     "Capex outruns revenue",
+     "GPU pricing power erodes"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2024-06",
+      "text": "AI's $600B question.",
+      "evidenceIds": [
+       "ev-ctx2-52"
+      ]
+     },
+     {
+      "date": "2026-09",
+      "text": "Lab run-rates reach ~$65–70B.",
+      "evidenceIds": [
+       "ev-ctx2-14",
+       "ev-ctx2-10"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2023-08",
+    "value": -0.7,
+    "note": "Nvidia captures the overwhelming share of AI profits."
+   },
+   {
+    "date": "2024-06",
+    "value": -0.6,
+    "note": "The $600B gap highlights app-layer shortfall."
+   },
+   {
+    "date": "2025-01",
+    "value": -0.3,
+    "note": "DeepSeek scare questions compute moats."
+   },
+   {
+    "date": "2026-09",
+    "value": -0.3,
+    "note": "Infrastructure still dominant, but model-lab revenue is now large."
+   }
+  ],
+  "bothRight": "Both: value capture has migrated in sequence — first chips, then clouds and frontier labs — and whether it reaches applications depends on whether models commoditize.",
+  "status": "leaning",
+  "verdictNote": "Through Oct 2026 infrastructure captured the most profit; model labs became the second profit pool; the application layer is the least proven.",
+  "thesisIds": [
+   "infra-supercycle",
+   "app-layer-value",
+   "capex-pays-back"
+  ]
+ },
+ {
+  "id": "bubble",
+  "title": "Bubble vs build-out",
+  "question": "Is the AI capex boom a bubble that will end in overcapacity, or a rational build-out ahead of demand?",
+  "layers": [
+   "economics",
+   "cloud",
+   "energy"
+  ],
+  "camps": [
+   {
+    "id": "bubble",
+    "label": "Bubble risk",
+    "position": "Revenue lags capex by an order of magnitude; circular financing and depreciation risk echo past manias.",
+    "thinkers": [
+     "david-cahn",
+     "gary-marcus",
+     "sundar-pichai"
+    ],
+    "assumptions": [
+     "Revenue cannot catch up in time",
+     "GPUs depreciate fast"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2024-06",
+      "text": "Revenue gap estimated at ~$600B/yr.",
+      "evidenceIds": [
+       "ev-ctx2-52"
+      ]
+     },
+     {
+      "date": "2025-12",
+      "text": "Oracle credit spreads widen on AI debt.",
+      "evidenceIds": [
+       "ev-ctx2-32",
+       "ev-ctx2-33"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "build",
+    "label": "Rational build-out",
+    "position": "Under-investment is the bigger risk; demand (reasoning, agents) will absorb capacity.",
+    "thinkers": [
+     "mark-zuckerberg",
+     "jensen-huang",
+     "masayoshi-son",
+     "cathie-wood"
+    ],
+    "assumptions": [
+     "Demand compounds",
+     "Infrastructure is reusable"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-02",
+      "text": "Reasoning and agents multiply token demand.",
+      "evidenceIds": [
+       "ev-ctx2-67"
+      ]
+     },
+     {
+      "date": "2026-09",
+      "text": "Lab revenue run-rates surge.",
+      "evidenceIds": [
+       "ev-ctx2-14",
+       "ev-ctx2-10"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2023-09",
+    "value": 0.0,
+    "note": "Sequoia's $200B question raises the gap."
+   },
+   {
+    "date": "2024-06",
+    "value": -0.2,
+    "note": "$600B question."
+   },
+   {
+    "date": "2025-12",
+    "value": -0.2,
+    "note": "Credit stress around AI debt."
+   },
+   {
+    "date": "2026-09",
+    "value": 0.1,
+    "note": "Revenue growth outpaces skeptics' expectations; gap persists."
+   }
+  ],
+  "bothRight": "Both can be true: a technology can be transformative and still overbuilt in the short run — railways and fiber both were.",
+  "status": "unresolved",
+  "verdictNote": "Unresolved at the cutoff; the payback test lies in 2027–2029.",
+  "thesisIds": [
+   "capex-pays-back",
+   "infra-supercycle"
+  ]
+ },
+ {
+  "id": "agents-replace-vs-augment",
+  "title": "Agents replace software vs augment it",
+  "question": "Will AI agents replace SaaS applications and workflows, or be embedded as features inside existing software?",
+  "layers": [
+   "agents",
+   "apps",
+   "distribution"
+  ],
+  "camps": [
+   {
+    "id": "replace",
+    "label": "Agents replace apps",
+    "position": "Business logic migrates into agents; SaaS becomes a database.",
+    "thinkers": [
+     "satya-nadella",
+     "jensen-huang",
+     "sam-altman"
+    ],
+    "assumptions": [
+     "Agents become reliable",
+     "Interfaces collapse into conversation"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-02",
+      "text": "Coding agents take over development workflows.",
+      "evidenceIds": [
+       "ev-ctx2-66"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "augment",
+    "label": "Agents augment software",
+    "position": "Agents are a new interface over durable systems of record; incumbents embed them.",
+    "thinkers": [
+     "reid-hoffman",
+     "andrej-karpathy",
+     "fei-fei-li"
+    ],
+    "assumptions": [
+     "Systems of record persist",
+     "Reliability limits autonomy"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-08",
+      "text": "Most enterprise pilots fail to reach P&L impact.",
+      "evidenceIds": [
+       "ev-ctx2-73"
+      ]
+     },
+     {
+      "date": "2025-10",
+      "text": "Karpathy: agents 'just don't work' as employees yet.",
+      "evidenceIds": [
+       "ev-karpathy-6",
+       "ev-karpathy-9"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2024-12",
+    "value": 0.0,
+    "note": "Nadella predicts SaaS collapse into agents."
+   },
+   {
+    "date": "2025-08",
+    "value": 0.3,
+    "note": "Enterprise pilots disappoint."
+   },
+   {
+    "date": "2026-09",
+    "value": 0.1,
+    "note": "Coding agents replace workflows; elsewhere agents augment."
+   }
+  ],
+  "bothRight": "Both: in software engineering agents replaced workflows; in most enterprise functions they augment systems of record.",
+  "status": "unresolved",
+  "verdictNote": "Domain-dependent and unresolved; coding is the counterexample to the 'augment only' view.",
+  "thesisIds": [
+   "agents-soon",
+   "app-layer-value"
+  ]
+ },
+ {
+  "id": "labor",
+  "title": "Replace labor vs raise productivity",
+  "question": "Will AI mainly displace workers or mainly raise their productivity?",
+  "layers": [
+   "society",
+   "apps"
+  ],
+  "camps": [
+   {
+    "id": "replace",
+    "label": "Mass displacement",
+    "position": "AI will replace large shares of white-collar work within years.",
+    "thinkers": [
+     "geoffrey-hinton",
+     "dario-amodei",
+     "vinod-khosla",
+     "kai-fu-lee",
+     "mustafa-suleyman"
+    ],
+    "assumptions": [
+     "Capability converts quickly to substitution"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-08",
+      "text": "Entry-level hiring declines in AI-exposed occupations.",
+      "evidenceIds": [
+       "ev-ctx2-74"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "augment",
+    "label": "Productivity, not unemployment",
+    "position": "AI raises productivity and demand; lump-of-labor fears are a fallacy.",
+    "thinkers": [
+     "marc-andreessen",
+     "reid-hoffman",
+     "fei-fei-li",
+     "jensen-huang"
+    ],
+    "assumptions": [
+     "Demand is elastic",
+     "New tasks emerge"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2021-11",
+      "text": "Radiology call misses: radiologist demand rises.",
+      "evidenceIds": [
+       "ev-hinton-1",
+       "ev-out-radiology-1"
+      ]
+     },
+     {
+      "date": "2026-09",
+      "text": "No aggregate unemployment spike by the cutoff.",
+      "evidenceIds": [
+       "ev-andreessen-13",
+       "ev-out-labor-1-investors-1"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2016-11",
+    "value": -0.3,
+    "note": "Radiology & driving predicted to go first."
+   },
+   {
+    "date": "2021-12",
+    "value": 0.3,
+    "note": "Radiology deadline passes."
+   },
+   {
+    "date": "2025-08",
+    "value": 0.0,
+    "note": "Entry-level effects emerge."
+   },
+   {
+    "date": "2026-09",
+    "value": 0.1,
+    "note": "Aggregate employment holds; early-career pressure visible."
+   }
+  ],
+  "bothRight": "Both: task-level substitution concentrated in entry-level roles can coexist with stable aggregate employment and rising productivity.",
+  "status": "unresolved",
+  "verdictNote": "Unresolved; most displacement deadlines fall after 2026, and early specific calls failed.",
+  "thesisIds": [
+   "mass-displacement",
+   "productivity-roi"
+  ]
+ },
+ {
+  "id": "xrisk",
+  "title": "Existential risk: serious vs overblown",
+  "question": "Does advanced AI pose existential risk requiring strong governance now?",
+  "layers": [
+   "society"
+  ],
+  "camps": [
+   {
+    "id": "serious",
+    "label": "Serious risk",
+    "position": "Loss of control and misuse could be catastrophic; governance must precede capability.",
+    "thinkers": [
+     "geoffrey-hinton",
+     "yoshua-bengio",
+     "dario-amodei",
+     "demis-hassabis",
+     "elon-musk",
+     "ilya-sutskever"
+    ],
+    "assumptions": [
+     "Alignment is unsolved",
+     "Capability may outpace control"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2023-05",
+      "text": "CAIS extinction-risk statement.",
+      "evidenceIds": [
+       "ev-ctx-101",
+       "ev-ctx-99",
+       "ev-ctx-100"
+      ]
+     },
+     {
+      "date": "2026-04",
+      "text": "Frontier cyber capabilities withheld (Glasswing).",
+      "evidenceIds": [
+       "ev-ctx2-24"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "overblown",
+    "label": "Overblown / counter-productive",
+    "position": "X-risk is speculative; regulation entrenches incumbents and slows benefits.",
+    "thinkers": [
+     "yann-lecun",
+     "marc-andreessen",
+     "richard-sutton",
+     "bill-gurley",
+     "francois-chollet"
+    ],
+    "assumptions": [
+     "No credible path to rogue AI",
+     "Open systems are safer"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2024-09",
+      "text": "SB 1047 vetoed.",
+      "evidenceIds": [
+       "ev-ctx2-58"
+      ]
+     },
+     {
+      "date": "2026-06",
+      "text": "EU delays AI Act high-risk rules.",
+      "evidenceIds": [
+       "ev-ctx2-30"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2014-10",
+    "value": 0.6,
+    "note": "Musk/Bostrom warnings are fringe."
+   },
+   {
+    "date": "2023-05",
+    "value": -0.2,
+    "note": "Hinton and Bengio join; CAIS statement."
+   },
+   {
+    "date": "2024-09",
+    "value": 0.1,
+    "note": "Regulatory pushback."
+   },
+   {
+    "date": "2026-06",
+    "value": -0.1,
+    "note": "Governments restrict frontier access on security grounds."
+   }
+  ],
+  "bothRight": "Both camps can be partly right: near-term misuse (cyber, bio) is real and governable, while long-term loss-of-control remains unobservable and contested.",
+  "status": "unresolved",
+  "verdictNote": "Not resolvable by observation; policy moved toward targeted security controls rather than broad licensing.",
+  "thesisIds": [
+   "existential-risk",
+   "open-safer"
+  ]
+ },
+ {
+  "id": "centralized-vs-distributed",
+  "title": "Centralized compute vs efficiency & distributed inference",
+  "question": "Will AI stay concentrated in giant centralized clusters, or will efficiency gains shift it to cheaper, distributed and edge inference?",
+  "layers": [
+   "energy",
+   "cloud",
+   "inference"
+  ],
+  "camps": [
+   {
+    "id": "central",
+    "label": "Giant clusters",
+    "position": "GW-scale centralized clusters remain decisive for training and serving frontier models.",
+    "thinkers": [
+     "leopold-aschenbrenner",
+     "sam-altman",
+     "elon-musk",
+     "jensen-huang"
+    ],
+    "assumptions": [
+     "Frontier needs ever-larger runs",
+     "Inference demand is centralized"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-10",
+      "text": "OpenAI GW-scale compute deals.",
+      "evidenceIds": [
+       "ev-ctx2-75"
+      ]
+     },
+     {
+      "date": "2026-04",
+      "text": "Capex guidance ~$700B+.",
+      "evidenceIds": [
+       "ev-ctx2-5",
+       "ev-ctx2-6",
+       "ev-ctx2-7"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "efficient",
+    "label": "Efficiency diffuses",
+    "position": "Architectural efficiency and open models push intelligence to cheaper hardware and the edge.",
+    "thinkers": [
+     "liang-wenfeng",
+     "kai-fu-lee",
+     "satya-nadella"
+    ],
+    "assumptions": [
+     "Efficiency gains outpace scale",
+     "Small models suffice for most tasks"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-01",
+      "text": "DeepSeek-R1 at a fraction of the cost.",
+      "evidenceIds": [
+       "ev-ctx2-63"
+      ]
+     },
+     {
+      "date": "2024-07",
+      "text": "GPT-4o mini makes GPT-4-class cheap.",
+      "evidenceIds": [
+       "ev-ctx2-80",
+       "ev-ctx2-39"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2023-08",
+    "value": -0.5,
+    "note": "H100 shortage centralizes."
+   },
+   {
+    "date": "2025-01",
+    "value": -0.1,
+    "note": "DeepSeek efficiency shock."
+   },
+   {
+    "date": "2026-04",
+    "value": -0.5,
+    "note": "Capex hits record; efficiency feeds demand (Jevons)."
+   }
+  ],
+  "bothRight": "Both: efficiency gains are real, but they increase total demand (Jevons) — so efficiency and centralization reinforce rather than replace each other.",
+  "status": "leaning",
+  "verdictNote": "Leaning centralized through 2026; efficiency gains were absorbed by demand.",
+  "thesisIds": [
+   "jevons",
+   "power-binding",
+   "infra-supercycle"
+  ]
+ },
+ {
+  "id": "foundation-vs-app",
+  "title": "Foundation models vs application-layer differentiation",
+  "question": "Do durable moats sit with foundation-model providers or with applications built on them?",
+  "layers": [
+   "models",
+   "apps",
+   "economics"
+  ],
+  "camps": [
+   {
+    "id": "model",
+    "label": "Model labs win",
+    "position": "Frontier capability, not wrappers, captures value; labs move up-stack.",
+    "thinkers": [
+     "sam-altman",
+     "dario-amodei",
+     "elad-gil"
+    ],
+    "assumptions": [
+     "Capability gaps persist",
+     "Labs control distribution via assistants"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2026-09",
+      "text": "Labs reach ~$65–70B run-rates, much from their own apps and agents.",
+      "evidenceIds": [
+       "ev-ctx2-14",
+       "ev-ctx2-10"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "app",
+    "label": "Apps differentiate",
+    "position": "Models commoditize; workflow, data and distribution create app moats.",
+    "thinkers": [
+     "cathie-wood",
+     "marc-andreessen",
+     "satya-nadella"
+    ],
+    "assumptions": [
+     "Models become interchangeable",
+     "Workflow lock-in matters"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2025-02",
+      "text": "Coding-agent applications become breakout businesses.",
+      "evidenceIds": [
+       "ev-ctx2-66"
+      ]
+     },
+     {
+      "date": "2024-07",
+      "text": "Model prices collapse.",
+      "evidenceIds": [
+       "ev-ctx2-80",
+       "ev-ctx2-39"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2023-06",
+    "value": 0.2,
+    "note": "'Thin wrapper' fears vs app hype."
+   },
+   {
+    "date": "2025-02",
+    "value": 0.1,
+    "note": "Coding apps break out."
+   },
+   {
+    "date": "2026-09",
+    "value": -0.3,
+    "note": "Labs capture much of the agent/app value directly."
+   }
+  ],
+  "bothRight": "Both: commodity tiers favor applications; frontier tiers favor labs — the split follows the capability frontier.",
+  "status": "unresolved",
+  "verdictNote": "Leaning to model labs at the cutoff, but the app layer's durability is not yet testable.",
+  "thesisIds": [
+   "app-layer-value",
+   "models-commoditize",
+   "frontier-consolidates"
+  ]
+ },
+ {
+  "id": "data-vs-reasoning",
+  "title": "Proprietary data vs general reasoning",
+  "question": "Will advantage come from proprietary data, or will general reasoning capability make data moats matter less?",
+  "layers": [
+   "data",
+   "training"
+  ],
+  "camps": [
+   {
+    "id": "data",
+    "label": "Data is the moat",
+    "position": "Unique data (labeled, proprietary, national) determines who wins.",
+    "thinkers": [
+     "kai-fu-lee",
+     "fei-fei-li"
+    ],
+    "assumptions": [
+     "Data is scarce and defensible"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2009-06",
+      "text": "ImageNet: data scale unlocks vision.",
+      "evidenceIds": [
+       "ev-li-2",
+       "ev-out-alexnet-1"
+      ]
+     },
+     {
+      "date": "2018-09",
+      "text": "'Age of data' favors China.",
+      "evidenceIds": [
+       "ev-lee-4",
+       "ev-out-china-1"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "reason",
+    "label": "General reasoning wins",
+    "position": "General methods and self-generated experience beat hand-curated proprietary data.",
+    "thinkers": [
+     "richard-sutton",
+     "david-silver",
+     "ilya-sutskever"
+    ],
+    "assumptions": [
+     "Self-play and RL generate data",
+     "Generality transfers"
+    ],
+    "evidenceFor": [
+     {
+      "date": "2017-10",
+      "text": "AlphaGo Zero beats human-data systems with self-play.",
+      "evidenceIds": [
+       "ev-ctx-62",
+       "ev-ctx-63",
+       "ev-ctx-29"
+      ]
+     },
+     {
+      "date": "2024-09",
+      "text": "Reasoning models trained by RL on verifiable tasks.",
+      "evidenceIds": [
+       "ev-ctx2-50"
+      ]
+     }
+    ]
+   }
+  ],
+  "balance": [
+   {
+    "date": "2012-09",
+    "value": -0.4,
+    "note": "Labeled data (ImageNet) is king."
+   },
+   {
+    "date": "2018-10",
+    "value": 0.0,
+    "note": "Self-supervised pretraining on public text."
+   },
+   {
+    "date": "2025-01",
+    "value": 0.4,
+    "note": "RL-generated reasoning data drives progress."
+   }
+  ],
+  "bothRight": "Both: proprietary data matters for enterprise workflows and evaluation, while general capability comes from public data plus self-generated experience.",
+  "status": "leaning",
+  "verdictNote": "Leaning to general reasoning for capability; proprietary data remains a deployment advantage.",
+  "thesisIds": [
+   "data-wall",
+   "rl-experience",
+   "self-supervision"
+  ]
+ }
+]

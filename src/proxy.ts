@@ -550,6 +550,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // ATLAS — AI Intelligence Atlas (knowledge graph of 30 AI thinkers, 2012 → Oct 2026).
+  if (hostname === "atlas.aitokenomics.app") {
+    const atlasUrl = request.nextUrl.clone();
+    if (atlasUrl.pathname === "/") {
+      atlasUrl.pathname = "/atlas";
+    } else if (!atlasUrl.pathname.startsWith("/atlas") && !atlasUrl.pathname.startsWith("/api/")) {
+      atlasUrl.pathname = `/atlas${atlasUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(atlasUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;

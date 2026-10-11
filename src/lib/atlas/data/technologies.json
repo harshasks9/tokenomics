@@ -1,0 +1,267 @@
+[
+ {
+  "id": "gpu-deep-learning",
+  "name": "GPU-trained deep nets",
+  "layer": "semis",
+  "date": "2012-09",
+  "summary": "Large convolutional nets trained on GPUs (AlexNet) made deep learning practical.",
+  "builtBy": [
+   "geoffrey-hinton",
+   "org:NVIDIA"
+  ],
+  "eventIds": [
+   "evt-2012-alexnet"
+  ],
+  "evidenceIds": [
+   "ev-ctx-40",
+   "ev-ctx-36"
+  ]
+ },
+ {
+  "id": "deep-rl-search",
+  "name": "Deep RL + tree search",
+  "layer": "training",
+  "date": "2016-03",
+  "summary": "Policy/value networks with Monte Carlo tree search and self-play (AlphaGo, AlphaZero).",
+  "builtBy": [
+   "david-silver",
+   "demis-hassabis"
+  ],
+  "eventIds": [
+   "evt-2016-alphago",
+   "evt-2017-alphago-zero"
+  ],
+  "evidenceIds": [
+   "ev-ctx-54",
+   "ev-ctx-62",
+   "ev-ctx-63",
+   "ev-ctx-29"
+  ]
+ },
+ {
+  "id": "tpu",
+  "name": "TPU (custom AI ASIC)",
+  "layer": "semis",
+  "date": "2016-05",
+  "summary": "Google's tensor processing unit — the first hyperscaler AI chip.",
+  "builtBy": [
+   "sundar-pichai",
+   "org:Google"
+  ],
+  "eventIds": [
+   "evt-2016-tpu"
+  ],
+  "evidenceIds": [
+   "ev-ctx-56"
+  ]
+ },
+ {
+  "id": "transformer",
+  "name": "Transformer",
+  "layer": "architecture",
+  "date": "2017-06",
+  "summary": "Attention-only architecture that became the substrate of all foundation models.",
+  "builtBy": [
+   "org:Google"
+  ],
+  "eventIds": [
+   "evt-2017-transformer"
+  ],
+  "evidenceIds": [
+   "ev-ctx-59"
+  ]
+ },
+ {
+  "id": "pretraining",
+  "name": "Self-supervised pretraining",
+  "layer": "training",
+  "date": "2018-10",
+  "summary": "Pretrain on raw text, then fine-tune (ELMo, GPT, BERT).",
+  "builtBy": [
+   "ilya-sutskever",
+   "org:OpenAI",
+   "org:Google"
+  ],
+  "eventIds": [
+   "evt-2018-elmo-gpt1-bert"
+  ],
+  "evidenceIds": [
+   "ev-ctx-64",
+   "ev-ctx-65",
+   "ev-ctx-66"
+  ]
+ },
+ {
+  "id": "scaling-laws",
+  "name": "Neural scaling laws",
+  "layer": "training",
+  "date": "2020-01",
+  "summary": "Empirical power laws relating loss to compute, data and parameters.",
+  "builtBy": [
+   "dario-amodei",
+   "org:OpenAI"
+  ],
+  "eventIds": [
+   "evt-2020-scaling-laws",
+   "evt-2022-chinchilla"
+  ],
+  "evidenceIds": [
+   "ev-ctx-34",
+   "ev-ctx-35"
+  ]
+ },
+ {
+  "id": "alphafold",
+  "name": "AlphaFold",
+  "layer": "models",
+  "date": "2020-11",
+  "summary": "Protein-structure prediction at experimental accuracy.",
+  "builtBy": [
+   "demis-hassabis"
+  ],
+  "eventIds": [
+   "evt-2020-alphafold2"
+  ],
+  "evidenceIds": [
+   "ev-ctx-77"
+  ]
+ },
+ {
+  "id": "rlhf",
+  "name": "RLHF / instruction tuning",
+  "layer": "training",
+  "date": "2022-03",
+  "summary": "Reinforcement learning from human feedback turned base models into assistants.",
+  "builtBy": [
+   "org:OpenAI",
+   "dario-amodei"
+  ],
+  "eventIds": [
+   "evt-2022-instructgpt",
+   "evt-2022-chatgpt"
+  ],
+  "evidenceIds": [
+   "ev-ctx-116",
+   "ev-ctx-94",
+   "ev-ctx-95"
+  ]
+ },
+ {
+  "id": "diffusion",
+  "name": "Diffusion models",
+  "layer": "architecture",
+  "date": "2022-08",
+  "summary": "Iterative denoising generators for images and video.",
+  "builtBy": [
+   "org:Stability",
+   "org:OpenAI"
+  ],
+  "eventIds": [
+   "evt-2022-image-diffusion",
+   "evt-2024-sora"
+  ],
+  "evidenceIds": [
+   "ev-ctx-89",
+   "ev-ctx-90",
+   "ev-ctx-91",
+   "ev-ctx-78",
+   "ev-ctx-129",
+   "ev-ctx2-48"
+  ]
+ },
+ {
+  "id": "moe",
+  "name": "Mixture-of-experts",
+  "layer": "architecture",
+  "date": "2023-12",
+  "summary": "Sparse expert routing that cuts inference cost (Mixtral, DeepSeek).",
+  "builtBy": [
+   "liang-wenfeng",
+   "org:Mistral"
+  ],
+  "eventIds": [
+   "evt-2023-mixtral",
+   "evt-2026-deepseek-v4"
+  ],
+  "evidenceIds": [
+   "ev-ctx-112",
+   "ev-ctx-79",
+   "ev-ctx2-22",
+   "ev-ctx2-41"
+  ]
+ },
+ {
+  "id": "open-llms",
+  "name": "Open-weight LLMs",
+  "layer": "models",
+  "date": "2023-02",
+  "summary": "Downloadable frontier-class weights (Llama, Qwen, DeepSeek).",
+  "builtBy": [
+   "mark-zuckerberg",
+   "yann-lecun",
+   "liang-wenfeng"
+  ],
+  "eventIds": [
+   "evt-2023-llama",
+   "evt-2024-llama-31-405b"
+  ],
+  "evidenceIds": [
+   "ev-ctx-97",
+   "ev-ctx2-49"
+  ]
+ },
+ {
+  "id": "reasoning-models",
+  "name": "Reasoning models (test-time compute)",
+  "layer": "inference",
+  "date": "2024-09",
+  "summary": "RL-trained models that think before answering (o1, R1, o3).",
+  "builtBy": [
+   "sam-altman",
+   "liang-wenfeng",
+   "org:OpenAI"
+  ],
+  "eventIds": [
+   "evt-2024-o1",
+   "evt-2025-deepseek-r1"
+  ],
+  "evidenceIds": [
+   "ev-ctx2-50",
+   "ev-ctx2-63"
+  ]
+ },
+ {
+  "id": "agents-mcp",
+  "name": "Agents, computer use & MCP",
+  "layer": "agents",
+  "date": "2024-11",
+  "summary": "Tool-using agents with standardized context protocols and coding harnesses.",
+  "builtBy": [
+   "dario-amodei",
+   "andrej-karpathy",
+   "org:Anthropic"
+  ],
+  "eventIds": [
+   "evt-2024-computer-use-mcp",
+   "evt-2025-claude-code"
+  ],
+  "evidenceIds": [
+   "ev-ctx2-61",
+   "ev-ctx2-66"
+  ]
+ },
+ {
+  "id": "world-models",
+  "name": "World models / JEPA",
+  "layer": "architecture",
+  "date": "2022-06",
+  "summary": "Predictive models of the physical world in representation space; spatial intelligence.",
+  "builtBy": [
+   "yann-lecun",
+   "fei-fei-li",
+   "demis-hassabis"
+  ],
+  "eventIds": [],
+  "evidenceIds": []
+ }
+]

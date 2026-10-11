@@ -1,0 +1,210 @@
+[
+ {
+  "thinkerId": "jensen-huang",
+  "updating": 4,
+  "updatingWhy": "Kept a consistent accelerated-computing thesis since ~2012 and expanded it (reasoning compute, AI factories) as evidence arrived; publicly admitted error on quantum timelines; shifted China rhetoric with commercial interest.",
+  "rightReasons": "Mostly right for the right reasons — understood that general-purpose parallel compute plus software ecosystems would be the bottleneck — though many statements are also sales positioning.",
+  "flagshipThesis": "infra-supercycle"
+ },
+ {
+  "thinkerId": "satya-nadella",
+  "updating": 4,
+  "updatingWhy": "Early, well-reasoned bet on OpenAI (2019); later re-negotiated exclusivity and moved AGI determination to an expert panel as the relationship and risks changed; skeptical of self-declared AGI.",
+  "rightReasons": "Strong causal grasp of distribution, cloud and Jevons dynamics; weaker on near-term consumer search disruption.",
+  "flagshipThesis": "jevons"
+ },
+ {
+  "thinkerId": "sundar-pichai",
+  "updating": 3,
+  "updatingWhy": "Moved from cautious slow release to rapid shipping after ChatGPT — a reactive rather than anticipatory update, but executed; candid that progress was getting harder in 2025.",
+  "rightReasons": "'AI-first' (2016) was early and correct; Google's caution in 2021–22 shows the gap between belief and action.",
+  "flagshipThesis": "incumbents-hold"
+ },
+ {
+  "thinkerId": "mark-zuckerberg",
+  "updating": 3,
+  "updatingWhy": "Two large pivots (metaverse→AI 2023; open→selective release 2025). Both responded to evidence, but the metaverse thesis absorbed tens of billions before the turn.",
+  "rightReasons": "Right that energy and compute scale matter; wrong that Llama would lead the frontier in 2025; open-source framing proved partly strategic.",
+  "flagshipThesis": "open-closes-gap"
+ },
+ {
+  "thinkerId": "liang-wenfeng",
+  "updating": 4,
+  "updatingWhy": "Small, consistent public corpus; shifted from quant trading to AGI research and stayed on an efficiency-first, open-weights course that events validated.",
+  "rightReasons": "Right for the right reasons on architecture-driven cost reduction and temporary closed moats; corpus is too thin for confident scoring.",
+  "flagshipThesis": "open-closes-gap"
+ },
+ {
+  "thinkerId": "sam-altman",
+  "updating": 3,
+  "updatingWhy": "Updated on open weights ('wrong side of history', gpt-oss) and on licensing; also re-framed earlier positions (non-profit → capped-profit → PBC) in ways that track commercial needs.",
+  "rightReasons": "Very good on cost curves and scaling economics; aggressive on agent and AGI timelines; strategic incentives make some claims hard to separate from fundraising.",
+  "flagshipThesis": "scale-works"
+ },
+ {
+  "thinkerId": "dario-amodei",
+  "updating": 4,
+  "updatingWhy": "Consistent scaling-plus-safety model since 2016–2020; dated, falsifiable forecasts (2026–27 'powerful AI', 90% code) that he has not walked back — updating is visible mostly in strategy (competing at the frontier).",
+  "rightReasons": "Scaling-law mechanism correct; timing on code automation and labor too aggressive industry-wide.",
+  "flagshipThesis": "scaling-sufficient"
+ },
+ {
+  "thinkerId": "demis-hassabis",
+  "updating": 4,
+  "updatingWhy": "Stable long-term view (solve intelligence, AGI 5–10 years, 'one or two breakthroughs needed'); adapted organization (Google DeepMind merger) to LLM era.",
+  "rightReasons": "Among the clearest causal models: search+learning, science applications, and caution that scaling alone may not suffice.",
+  "flagshipThesis": "ai-for-science"
+ },
+ {
+  "thinkerId": "elon-musk",
+  "updating": 1,
+  "updatingWhy": "Repeatedly re-dates the same predictions (self-driving, AGI, Optimus) without acknowledging misses; moved from pause-letter signatory to frontier racer within months.",
+  "rightReasons": "Correct that compute scale matters and that AI risk deserves attention; timelines have been systematically wrong.",
+  "flagshipThesis": "fsd-imminent"
+ },
+ {
+  "thinkerId": "mustafa-suleyman",
+  "updating": 3,
+  "updatingWhy": "Updated from independent startup to hyperscaler; reversed from building emotionally engaging companions to warning against 'seemingly conscious AI'.",
+  "rightReasons": "Insightful on proliferation/containment; specific capability dates (hallucinations solved by 2025, ACI) were wrong.",
+  "flagshipThesis": "agents-soon"
+ },
+ {
+  "thinkerId": "geoffrey-hinton",
+  "updating": 4,
+  "updatingWhy": "Dramatic, explicit, evidence-driven revision in 2023 (timelines and risk) after seeing GPT-4-era capability; acknowledged the radiology call was too early.",
+  "rightReasons": "Foundational causal understanding of deep learning; labor and radiology predictions overreached.",
+  "flagshipThesis": "mass-displacement"
+ },
+ {
+  "thinkerId": "yann-lecun",
+  "updating": 2,
+  "updatingWhy": "Highly consistent — arguably to a fault: maintains LLM skepticism and x-risk dismissal despite LLM progress; few acknowledged revisions.",
+  "rightReasons": "Right on self-supervision; strong claims that autoregressive LLMs are 'doomed' have not been borne out by 2026, though unresolved long-term.",
+  "flagshipThesis": "beyond-llms"
+ },
+ {
+  "thinkerId": "yoshua-bengio",
+  "updating": 5,
+  "updatingWhy": "The clearest documented belief revision in the set: moved from distant timelines to near-term risk in 2023 citing new evidence, and redirected his research (Scientist AI, LawZero).",
+  "rightReasons": "Strong causal reasoning; many of his current claims are not yet testable.",
+  "flagshipThesis": "existential-risk"
+ },
+ {
+  "thinkerId": "ilya-sutskever",
+  "updating": 4,
+  "updatingWhy": "Champion of scaling who publicly declared its limits (peak data, 'age of research') when the evidence turned — an unusual self-revision; regretted the 2023 board vote.",
+  "rightReasons": "Exceptionally early and right on scaling (2014–2020) for the right mechanistic reasons.",
+  "flagshipThesis": "scale-works"
+ },
+ {
+  "thinkerId": "gary-marcus",
+  "updating": 2,
+  "updatingWhy": "Consistent critique; tends to re-frame progress as confirming his view rather than revising, though his 2024 predictions were specific and largely right.",
+  "rightReasons": "Right about reliability and hallucinations and about price wars/commoditization; wrong about scaling 'hitting a wall' on capability.",
+  "flagshipThesis": "beyond-llms"
+ },
+ {
+  "thinkerId": "andrej-karpathy",
+  "updating": 4,
+  "updatingWhy": "Updates in public and quickly: 'decade of agents' (Oct 2025) to 'threshold of coherence' for coding agents (Jan 2026), explaining what changed.",
+  "rightReasons": "Excellent practical causal model of what LLMs are good at (Software 2.0/3.0, LLM OS); camera-only driving claim unresolved.",
+  "flagshipThesis": "coding-first"
+ },
+ {
+  "thinkerId": "fei-fei-li",
+  "updating": 4,
+  "updatingWhy": "Consistent human-centered and data-centric thesis, extended to spatial intelligence; skeptical of AGI as a term.",
+  "rightReasons": "ImageNet bet was early and right for the right reason (data scale); world-model thesis unresolved.",
+  "flagshipThesis": "self-supervision"
+ },
+ {
+  "thinkerId": "richard-sutton",
+  "updating": 3,
+  "updatingWhy": "Remarkably consistent (Bitter Lesson 2019 → Era of Experience 2025); his 2025 claim that LLMs are a dead end sits awkwardly with LLMs being the biggest beneficiary of the Bitter Lesson.",
+  "rightReasons": "The Bitter Lesson is among the most predictive ideas in the dataset.",
+  "flagshipThesis": "rl-experience"
+ },
+ {
+  "thinkerId": "david-silver",
+  "updating": 4,
+  "updatingWhy": "Consistent RL-centric program; adapted from games to math (AlphaProof) and to experiential learning for LLM-era agents.",
+  "rightReasons": "Search + RL thesis validated by reasoning models; 'reward is enough' remains unresolved.",
+  "flagshipThesis": "rl-experience"
+ },
+ {
+  "thinkerId": "francois-chollet",
+  "updating": 4,
+  "updatingWhy": "Openly updated after o3 (Dec 2024), calling it a genuine breakthrough while keeping his core definition of intelligence; designed new benchmarks rather than moving goalposts silently.",
+  "rightReasons": "Right that skill ≠ intelligence and that test-time adaptation was the missing piece; underestimated how far LLM-based systems with search would go.",
+  "flagshipThesis": "benchmarks-not-intelligence"
+ },
+ {
+  "thinkerId": "marc-andreessen",
+  "updating": 2,
+  "updatingWhy": "Consistent techno-optimist frame; positions shift with political alignment more than with evidence; job-loss skepticism restated without new data.",
+  "rightReasons": "Good on commoditization and open-source competition; labor and safety claims are largely unfalsifiable so far.",
+  "flagshipThesis": "open-safer"
+ },
+ {
+  "thinkerId": "vinod-khosla",
+  "updating": 3,
+  "updatingWhy": "Has repeated the 'AI does 80% of jobs' thesis for over a decade, pushing the date forward; early OpenAI bet shows conviction that matched evidence.",
+  "rightReasons": "Direction right on expertise becoming cheap; timing repeatedly early (doctors by 2025).",
+  "flagshipThesis": "mass-displacement"
+ },
+ {
+  "thinkerId": "bill-gurley",
+  "updating": 3,
+  "updatingWhy": "Consistent skepticism of regulatory capture and hype; thin dated AI record.",
+  "rightReasons": "Insufficient evidence to judge reasoning quality."
+ },
+ {
+  "thinkerId": "reid-hoffman",
+  "updating": 3,
+  "updatingWhy": "Pivoted Inflection into Microsoft when independent economics failed; consistent 'superagency' augmentation thesis.",
+  "rightReasons": "Augmentation view broadly consistent with 2026 labor data; Inflection bet on independent consumer AI failed.",
+  "flagshipThesis": "productivity-roi"
+ },
+ {
+  "thinkerId": "elad-gil",
+  "updating": 3,
+  "updatingWhy": "Explicitly framed uncertainty about market structure and updated views as it clarified; thin dated corpus.",
+  "rightReasons": "Insufficient evidence to judge."
+ },
+ {
+  "thinkerId": "masayoshi-son",
+  "updating": 2,
+  "updatingWhy": "Timelines compress with each statement (AGI 10 years → 2–3 years → 'much earlier') without reference to new evidence; sold Nvidia twice before major run-ups.",
+  "rightReasons": "Conviction-driven capital allocator; claims rarely state a mechanism.",
+  "flagshipThesis": "agi-near"
+ },
+ {
+  "thinkerId": "cathie-wood",
+  "updating": 2,
+  "updatingWhy": "Quantified forecasts are re-based rather than reconciled; exited and re-entered Nvidia.",
+  "rightReasons": "Cost-decline thesis directionally right; valuation calls wrong in timing.",
+  "flagshipThesis": "app-layer-value"
+ },
+ {
+  "thinkerId": "leopold-aschenbrenner",
+  "updating": 3,
+  "updatingWhy": "A single, highly specific 2024 forecast framework; too recent to show updating, but its 2026 checkpoints (GW clusters, ~$500B/yr) tracked reality.",
+  "rightReasons": "Mechanistic OOM-counting model; the early infrastructure checkpoints held, AGI-by-2027 is unresolved.",
+  "flagshipThesis": "agi-near"
+ },
+ {
+  "thinkerId": "david-cahn",
+  "updating": 4,
+  "updatingWhy": "Shifted emphasis from revenue gap to physical build-out as evidence accumulated, and stated the update explicitly.",
+  "rightReasons": "Clear arithmetic causal model of capex vs revenue; the payback question is still open.",
+  "flagshipThesis": "capex-pays-back"
+ },
+ {
+  "thinkerId": "kai-fu-lee",
+  "updating": 3,
+  "updatingWhy": "Pivoted 01.AI away from pretraining when DeepSeek made it uneconomic — an evidence-driven but costly update; job-loss timelines unrevised.",
+  "rightReasons": "Right that China could compete via efficiency; wrong that the 'age of discovery' was over in 2018.",
+  "flagshipThesis": "mass-displacement"
+ }
+]

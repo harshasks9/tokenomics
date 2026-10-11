@@ -1,0 +1,676 @@
+[
+ {
+  "id": "scaling-continues",
+  "name": "Scaling Continues",
+  "tagline": "Frontier models and giant compute stay central; capital intensity is the moat.",
+  "confidence": "elevated",
+  "confidenceNote": "The most historically predictive causal model in the dataset (Bitter Lesson, scaling laws, Jevons, infra supercycle) points here, and 2024–26 leading indicators (capex, lab revenue, reasoning-compute demand) are all observed. It breaks if revenue fails to close the capex gap or if a power/financing shock hits.",
+  "stack": {
+   "energy": {
+    "state": "GW-scale campuses and on-site generation are the unit of competition; power is the binding constraint.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "semis": {
+    "state": "Nvidia plus hyperscaler ASICs; HBM and advanced packaging stay scarce.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "cloud": {
+    "state": "A few hyperscalers and neoclouds run multi-GW fleets under long-term contracts.",
+    "control": 3,
+    "margin": "stable"
+   },
+   "data": {
+    "state": "RL environments, synthetic and agentic interaction data become the main training input.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "architecture": {
+    "state": "Transformer-based backbones with MoE and long-context improvements; incremental change.",
+    "control": 1,
+    "margin": "stable"
+   },
+   "training": {
+    "state": "RL and post-training compute rival pretraining; continual scaling of both.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "inference": {
+    "state": "Reasoning and agents multiply tokens per task; unit prices fall, total spend rises.",
+    "control": 2,
+    "margin": "compressing"
+   },
+   "models": {
+    "state": "3–5 frontier labs hold a capability lead of 6–12 months over open models.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "platforms": {
+    "state": "Lab-owned agent platforms and hyperscaler AI platforms dominate tooling.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "agents": {
+    "state": "Agents automate software engineering and parts of knowledge work, scaling with model capability.",
+    "control": 2,
+    "margin": "expanding"
+   },
+   "apps": {
+    "state": "Apps built on frontier APIs; labs move up-stack into the most valuable categories.",
+    "control": 1,
+    "margin": "compressing"
+   },
+   "distribution": {
+    "state": "Assistants become the default interface; incumbents with devices and suites hold share.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "economics": {
+    "state": "Value concentrates in chips, power and frontier labs; scale is the moat.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "society": {
+    "state": "National-security framing of frontier AI; compute governance and export controls tighten.",
+    "control": 3,
+    "margin": "stable"
+   }
+  },
+  "bottlenecks": [
+   "Power and grid interconnects",
+   "HBM/advanced packaging supply",
+   "Financing of $1T+ annual capex",
+   "Verifiable-reward environments for RL"
+  ],
+  "advantage": [
+   "Access to capital and long-term compute contracts",
+   "Frontier research talent",
+   "Proprietary RL environments and evals"
+  ],
+  "controlPoints": [
+   "Nvidia/ASIC supply",
+   "Power-ready sites",
+   "Frontier model weights",
+   "Government compute & export policy"
+  ],
+  "winners": [
+   {
+    "layer": "semis",
+    "who": "Nvidia, TSMC, HBM suppliers"
+   },
+   {
+    "layer": "energy",
+    "who": "Utilities, gas/nuclear developers"
+   },
+   {
+    "layer": "models",
+    "who": "OpenAI, Anthropic, Google DeepMind"
+   },
+   {
+    "layer": "cloud",
+    "who": "Hyperscalers with power"
+   }
+  ],
+  "losers": [
+   {
+    "layer": "apps",
+    "who": "Thin wrappers competing with labs"
+   },
+   {
+    "layer": "models",
+    "who": "Sub-scale independent labs"
+   }
+  ],
+  "capitalIntensity": "Extreme and rising: annual AI capex well above the ~$700B of 2026, financed increasingly by debt and sovereign capital.",
+  "enterprise": "Enterprises buy capability from a few labs/clouds; spend shifts to agentic services priced per task; vendor concentration risk rises.",
+  "assumptions": [
+   "Capability keeps improving with compute",
+   "Revenue grows fast enough to finance capex",
+   "No efficiency shock collapses compute demand",
+   "Power can be built fast enough"
+  ],
+  "indicators": [
+   {
+    "text": "Big-four capex guidance rising year over year (≈$700B+ in 2026)",
+    "status": "observed"
+   },
+   {
+    "text": "Lab revenue run-rates compounding >2x per year (~$65–70B by Sep 2026)",
+    "status": "observed"
+   },
+   {
+    "text": "GW-scale campuses energized on schedule",
+    "status": "watch"
+   },
+   {
+    "text": "Frontier model releases keep widening the gap over open weights",
+    "status": "watch"
+   },
+   {
+    "text": "Capex financing shifts to bonds/private credit without spread blowouts",
+    "status": "watch"
+   }
+  ],
+  "invalidators": [
+   "A sustained capex cut by two or more hyperscalers",
+   "Frontier releases stall for 12+ months despite more compute",
+   "An open model matches the frontier at a fraction of the cost and holds",
+   "Credit event at a major AI infrastructure borrower"
+  ],
+  "supporters": [
+   {
+    "thinkerId": "jensen-huang",
+    "why": "AI factories and reasoning compute imply a multi-trillion build-out.",
+    "assertionIds": [
+     "as-huang-6",
+     "as-huang-8"
+    ]
+   },
+   {
+    "thinkerId": "leopold-aschenbrenner",
+    "why": "OOM counting: GW → 10 GW → 100 GW clusters.",
+    "assertionIds": [
+     "as-asch-2",
+     "as-asch-3"
+    ]
+   },
+   {
+    "thinkerId": "dario-amodei",
+    "why": "Scaling laws plus RL keep delivering.",
+    "assertionIds": [
+     "as-amodei-1",
+     "as-amodei-4"
+    ]
+   },
+   {
+    "thinkerId": "sam-altman",
+    "why": "Compute is the input; 30 GW committed.",
+    "assertionIds": [
+     "as-altman-9",
+     "as-altman-7"
+    ]
+   },
+   {
+    "thinkerId": "richard-sutton",
+    "why": "The Bitter Lesson: general methods + compute win.",
+    "assertionIds": [
+     "as-sutton-1"
+    ]
+   }
+  ],
+  "challengers": [
+   {
+    "thinkerId": "ilya-sutskever",
+    "why": "Age of scaling is over; research is the bottleneck.",
+    "assertionIds": [
+     "as-sutskever-8"
+    ]
+   },
+   {
+    "thinkerId": "david-cahn",
+    "why": "Revenue gap makes the capex trajectory fragile.",
+    "assertionIds": [
+     "as-cahn-2"
+    ]
+   },
+   {
+    "thinkerId": "gary-marcus",
+    "why": "Scaling yields diminishing returns on reliability.",
+    "assertionIds": [
+     "as-marcus-7"
+    ]
+   }
+  ],
+  "thesisIds": [
+   "scale-works",
+   "infra-supercycle",
+   "power-binding",
+   "frontier-consolidates",
+   "jevons"
+  ]
+ },
+ {
+  "id": "intelligence-commoditizes",
+  "name": "Intelligence Commoditizes",
+  "tagline": "Open weights and efficiency compress model margins; value migrates to data, workflow and distribution.",
+  "confidence": "moderate",
+  "confidenceNote": "Strongly supported on price (fixed-capability cost falling ~10x/yr; open weights months behind) but contradicted, so far, on margins: frontier labs' revenue grew rather than shrinking. It becomes dominant if the frontier gap stops mattering for most workloads.",
+  "stack": {
+   "energy": {
+    "state": "Power still matters but demand growth slows as efficiency outpaces usage.",
+    "control": 2,
+    "margin": "compressing"
+   },
+   "semis": {
+    "state": "Inference-optimized and edge chips gain; GPU pricing power erodes.",
+    "control": 2,
+    "margin": "compressing"
+   },
+   "cloud": {
+    "state": "Overbuilt capacity; GPU-hour prices fall; neoclouds consolidate.",
+    "control": 1,
+    "margin": "compressing"
+   },
+   "data": {
+    "state": "Proprietary enterprise data and feedback loops become the differentiator.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "architecture": {
+    "state": "Efficiency innovations (MoE, distillation, new attention) diffuse within weeks.",
+    "control": 1,
+    "margin": "stable"
+   },
+   "training": {
+    "state": "Distillation and fine-tuning of open bases dominate; few frontier pretraining runs.",
+    "control": 1,
+    "margin": "compressing"
+   },
+   "inference": {
+    "state": "Cost per task collapses; small models run on device and on-prem.",
+    "control": 1,
+    "margin": "compressing"
+   },
+   "models": {
+    "state": "Open-weight models within weeks of the frontier for most tasks; models interchangeable.",
+    "control": 1,
+    "margin": "compressing"
+   },
+   "platforms": {
+    "state": "Routing, evaluation, security and governance platforms capture value.",
+    "control": 2,
+    "margin": "expanding"
+   },
+   "agents": {
+    "state": "Agent frameworks are open; value sits in workflow integration.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "apps": {
+    "state": "Vertical apps with proprietary data and distribution win.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "distribution": {
+    "state": "OS, browser, suite and marketplace owners control access to users.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "economics": {
+    "state": "Value migrates from model layer to data, distribution and workflow ownership.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "society": {
+    "state": "Proliferation of capable open models complicates governance; national open-model champions.",
+    "control": 2,
+    "margin": "stable"
+   }
+  },
+  "bottlenecks": [
+   "Enterprise integration and change management",
+   "Trust, evaluation and liability",
+   "Proprietary data access"
+  ],
+  "advantage": [
+   "Proprietary data and feedback loops",
+   "Distribution and default placement",
+   "Workflow ownership and switching costs"
+  ],
+  "controlPoints": [
+   "Operating systems and app stores",
+   "Enterprise systems of record",
+   "Model routing and evaluation layers"
+  ],
+  "winners": [
+   {
+    "layer": "apps",
+    "who": "Vertical AI with proprietary data"
+   },
+   {
+    "layer": "distribution",
+    "who": "Apple, Microsoft, Google, Meta (distribution)"
+   },
+   {
+    "layer": "platforms",
+    "who": "Routing/eval/governance vendors"
+   }
+  ],
+  "losers": [
+   {
+    "layer": "models",
+    "who": "Pure-play model labs without distribution"
+   },
+   {
+    "layer": "cloud",
+    "who": "Leveraged GPU lessors"
+   },
+   {
+    "layer": "semis",
+    "who": "Training-GPU pricing power"
+   }
+  ],
+  "capitalIntensity": "Falls after 2027 as overbuilt capacity is absorbed; write-downs on GPU fleets.",
+  "enterprise": "Buying shifts from models to platforms, workflows and outcomes; multi-model routing becomes standard; on-prem/open models for sensitive data.",
+  "assumptions": [
+   "Capability plateaus relative to task needs",
+   "Open releases continue (esp. from China)",
+   "Efficiency gains outpace demand growth"
+  ],
+  "indicators": [
+   {
+    "text": "Open-weight lag vs frontier at 3–4 months (Epoch)",
+    "status": "observed"
+   },
+   {
+    "text": "Fixed-capability price falling ~10x/yr",
+    "status": "observed"
+   },
+   {
+    "text": "Frontier labs' gross margins and price per token at the top tier falling",
+    "status": "watch"
+   },
+   {
+    "text": "Enterprise share of spend going to open/self-hosted models rising",
+    "status": "watch"
+   },
+   {
+    "text": "GPU rental prices and utilization falling",
+    "status": "watch"
+   }
+  ],
+  "invalidators": [
+   "Frontier labs sustain premium pricing and >50% revenue growth",
+   "A capability jump (e.g. reliable agents) only available from closed models",
+   "Open releases restricted by regulation"
+  ],
+  "supporters": [
+   {
+    "thinkerId": "liang-wenfeng",
+    "why": "Closed moats are temporary; price near cost.",
+    "assertionIds": [
+     "as-liang-3",
+     "as-liang-5"
+    ]
+   },
+   {
+    "thinkerId": "marc-andreessen",
+    "why": "Selling intelligence may be like selling rice.",
+    "assertionIds": [
+     "as-andreessen-5"
+    ]
+   },
+   {
+    "thinkerId": "gary-marcus",
+    "why": "Price wars and no moat.",
+    "assertionIds": [
+     "as-marcus-5"
+    ]
+   },
+   {
+    "thinkerId": "kai-fu-lee",
+    "why": "Efficient labs approach frontier with a fraction of compute.",
+    "assertionIds": [
+     "as-lee-7"
+    ]
+   },
+   {
+    "thinkerId": "satya-nadella",
+    "why": "Jevons: AI becomes a commodity we can't get enough of.",
+    "assertionIds": [
+     "as-nadella-6"
+    ]
+   }
+  ],
+  "challengers": [
+   {
+    "thinkerId": "dario-amodei",
+    "why": "Frontier capability gaps persist and command premium.",
+    "assertionIds": [
+     "as-amodei-5"
+    ]
+   },
+   {
+    "thinkerId": "vinod-khosla",
+    "why": "Frontier AI should not be open-sourced.",
+    "assertionIds": [
+     "as-khosla-4"
+    ]
+   },
+   {
+    "thinkerId": "jensen-huang",
+    "why": "Reasoning compute demand keeps rising.",
+    "assertionIds": [
+     "as-huang-6"
+    ]
+   }
+  ],
+  "thesisIds": [
+   "models-commoditize",
+   "open-closes-gap",
+   "app-layer-value",
+   "china-parity"
+  ]
+ },
+ {
+  "id": "agentic-transformation",
+  "name": "Agentic & Architectural Transformation",
+  "tagline": "Reliable agents, memory, continual learning or world models reshape the stack around outcomes.",
+  "confidence": "moderate",
+  "confidenceNote": "Coding agents already show the pattern (2025–26), and METR task horizons doubling ~every 7 months is the strongest leading indicator. But general-purpose reliability, continual learning and world models were still research problems at the cutoff, and the most specific near-term agent forecasts were early.",
+  "stack": {
+   "energy": {
+    "state": "Demand driven by always-on agents; inference dominates power use.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "semis": {
+    "state": "Inference and memory-bandwidth-optimized silicon; on-device agents.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "cloud": {
+    "state": "Agent runtimes, sandboxes and long-running compute become cloud products.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "data": {
+    "state": "Experience data from agents' own interactions; persistent memory as an asset.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "architecture": {
+    "state": "Memory, continual learning and world-model components join or replace pure next-token models.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "training": {
+    "state": "Online/experiential learning (Era of Experience) supplements batch pretraining.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "inference": {
+    "state": "Long-horizon test-time computation; cost per outcome replaces cost per token.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "models": {
+    "state": "Models become components inside agent systems; capability measured by task completion.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "platforms": {
+    "state": "Agent identity, permissions, audit and evaluation become critical infrastructure.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "agents": {
+    "state": "Agents run multi-day tasks reliably in many functions; humans supervise portfolios of agents.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "apps": {
+    "state": "Apps restructure as agents sold on outcomes; seat-based SaaS erodes.",
+    "control": 2,
+    "margin": "stable"
+   },
+   "distribution": {
+    "state": "Whoever owns the agent the user delegates to owns the customer.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "economics": {
+    "state": "Pricing shifts to outcomes and labor budgets; value accrues to agent owners and trusted platforms.",
+    "control": 3,
+    "margin": "expanding"
+   },
+   "society": {
+    "state": "Labor-market restructuring, especially entry-level knowledge work; liability and agent identity regulation.",
+    "control": 3,
+    "margin": "stable"
+   }
+  },
+  "bottlenecks": [
+   "Long-horizon reliability",
+   "Continual learning without forgetting",
+   "Security and permissioning of autonomous actions",
+   "Organizational redesign"
+  ],
+  "advantage": [
+   "Owning the primary agent relationship",
+   "Memory and context about users and firms",
+   "Trust, auditability and liability coverage"
+  ],
+  "controlPoints": [
+   "Agent identity and permission systems",
+   "Systems of record agents act on",
+   "Persistent memory stores"
+  ],
+  "winners": [
+   {
+    "layer": "agents",
+    "who": "Agent platforms with trust and memory"
+   },
+   {
+    "layer": "platforms",
+    "who": "Security, identity and audit for agents"
+   },
+   {
+    "layer": "apps",
+    "who": "Outcome-priced vertical agents"
+   }
+  ],
+  "losers": [
+   {
+    "layer": "apps",
+    "who": "Seat-based SaaS without agent strategy"
+   },
+   {
+    "layer": "society",
+    "who": "Entry-level knowledge work"
+   }
+  ],
+  "capitalIntensity": "High but shifting from training to inference and agent runtimes; new spend on security and evaluation.",
+  "enterprise": "Buyers purchase outcomes (resolved tickets, shipped code) rather than models or seats; ROI becomes measurable per task.",
+  "assumptions": [
+   "Agent reliability keeps compounding (METR horizons)",
+   "Memory/continual learning breakthroughs arrive",
+   "Organizations can absorb autonomous agents"
+  ],
+  "indicators": [
+   {
+    "text": "METR 50% task horizon doubling ~every 7 months (≈5h by 2026)",
+    "status": "observed"
+   },
+   {
+    "text": "Coding agents writing most code at leading firms",
+    "status": "observed"
+   },
+   {
+    "text": "Outcome-based pricing spreading beyond software engineering",
+    "status": "watch"
+   },
+   {
+    "text": "Published continual-learning or world-model systems deployed at scale",
+    "status": "watch"
+   },
+   {
+    "text": "Measurable productivity in national statistics",
+    "status": "watch"
+   }
+  ],
+  "invalidators": [
+   "Task-horizon growth stalls for a year",
+   "Major agent security incidents trigger restrictions",
+   "Enterprise agent deployments fail to show P&L impact through 2028"
+  ],
+  "supporters": [
+   {
+    "thinkerId": "andrej-karpathy",
+    "why": "Coding agents crossed a coherence threshold; LLM OS.",
+    "assertionIds": [
+     "as-karpathy-3",
+     "as-karpathy-9"
+    ]
+   },
+   {
+    "thinkerId": "david-silver",
+    "why": "Era of Experience: agents learn from their own streams.",
+    "assertionIds": [
+     "as-silver-6"
+    ]
+   },
+   {
+    "thinkerId": "satya-nadella",
+    "why": "Business logic migrates to agents.",
+    "assertionIds": [
+     "as-nadella-5"
+    ]
+   },
+   {
+    "thinkerId": "yann-lecun",
+    "why": "World models and memory are the next paradigm.",
+    "assertionIds": [
+     "as-lecun-7"
+    ]
+   },
+   {
+    "thinkerId": "demis-hassabis",
+    "why": "World models, planning and continual learning are missing pieces.",
+    "assertionIds": [
+     "as-hassabis-8"
+    ]
+   }
+  ],
+  "challengers": [
+   {
+    "thinkerId": "gary-marcus",
+    "why": "Reliability problems persist.",
+    "assertionIds": [
+     "as-marcus-7"
+    ]
+   },
+   {
+    "thinkerId": "francois-chollet",
+    "why": "Novel-task adaptation still lags humans.",
+    "assertionIds": [
+     "as-chollet-8"
+    ]
+   },
+   {
+    "thinkerId": "andrej-karpathy",
+    "why": "It's a decade of agents, not a year.",
+    "assertionIds": [
+     "as-karpathy-6"
+    ]
+   }
+  ],
+  "thesisIds": [
+   "agents-soon",
+   "coding-first",
+   "rl-experience",
+   "beyond-llms"
+  ]
+ }
+]

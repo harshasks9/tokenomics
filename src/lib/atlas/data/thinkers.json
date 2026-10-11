@@ -1,0 +1,3149 @@
+[
+ {
+  "id": "jensen-huang",
+  "name": "Jensen Huang",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "NVIDIA",
+    "title": "Co-founder, President & CEO",
+    "from": "1993",
+    "to": null
+   }
+  ],
+  "bio": "Co-founder and CEO of NVIDIA, whose GPUs and CUDA software stack became the dominant hardware platform for training and running deep learning models after 2012. He has been the leading public advocate of 'accelerated computing', 'AI factories' and 'sovereign AI'.",
+  "selection": {
+   "influence": [
+    4,
+    "Framed the industry's infrastructure narrative (accelerated computing, AI factories, sovereign AI) adopted by governments and hyperscalers."
+   ],
+   "foresight": [
+    4,
+    "Early, sustained bet on GPUs for AI and correct calls on compute demand after DeepSeek; some calls (AGI-by-tests, $3-4T) unresolved."
+   ],
+   "allocation": [
+    5,
+    "Controls the scarcest input of the AI boom; allocation of GPU supply shapes which labs and countries can scale."
+   ],
+   "contribution": [
+    5,
+    "CUDA, DGX systems and data-center GPUs are the core commercial substrate of modern AI."
+   ],
+   "corpus": [
+    4,
+    "Many keynotes, earnings calls and interviews, but heavily promotional and rarely falsifiable."
+   ],
+   "future": [
+    5,
+    "Roadmap (Blackwell, Rubin) and China/export policy positions directly shape 2026-2030 compute supply."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "After AlexNet showed GPUs could train deep nets, Huang repositioned NVIDIA around deep learning; in 2016 he hand-delivered the first DGX-1 to OpenAI. GPUs were framed as the engine of a new AI computing model.",
+    "evidenceIds": []
+   },
+   {
+    "period": "p2017",
+    "summary": "Argued that AI would 'eat software' and that the end of CPU scaling made accelerated (GPU) computing the successor architecture; deep learning was still concentrated in a few internet companies.",
+    "evidenceIds": [
+     "ev-huang-1"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Framed generative AI as a platform shift and data centers as factories producing intelligence; demand for accelerated computing reached a 'tipping point'.",
+    "evidenceIds": [
+     "ev-huang-2"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Pushed 'sovereign AI' (every nation should own its AI infrastructure), claimed the ~$1T installed data-center base would shift to accelerated computing within a few years, gave a conditional five-year AGI-by-tests forecast, and said AI would make programming unnecessary for most people.",
+    "evidenceIds": [
+     "ev-huang-3",
+     "ev-huang-4",
+     "ev-huang-5",
+     "ev-huang-6"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Treated reasoning/inference scaling as a multiplier on compute demand (100x for reasoning models) and dismissed DeepSeek-driven fears; called export controls a failure that accelerated Chinese rivals; forecast $3-4T AI infrastructure spend by 2030 and cited $500B Blackwell+Rubin visibility through 2026.",
+    "evidenceIds": [
+     "ev-huang-7",
+     "ev-huang-8",
+     "ev-huang-9",
+     "ev-huang-10",
+     "ev-huang-11"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Raised Blackwell+Rubin expectations to ~$1T through 2027 and argued China's market would open 'over time', while Nvidia guided to zero China data-center compute revenue.",
+    "evidenceIds": [
+     "ev-huang-13",
+     "ev-huang-14"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2025-11",
+    "from": "'China is going to win the AI race' (FT summit)",
+    "to": "'China is nanoseconds behind America in AI' — America must race ahead and win developers",
+    "trigger": "Immediate backlash to the FT remark in Washington; same-day clarification on X.",
+    "evidenceIds": [
+     "ev-huang-11",
+     "ev-huang-12"
+    ]
+   },
+   {
+    "date": "2025-03",
+    "from": "Useful quantum computers 15-30 years away (CES, Jan 2025)",
+    "to": "Publicly said he had been wrong; hosted Quantum Day at GTC",
+    "trigger": "Market reaction and pushback from quantum-computing firms.",
+    "evidenceIds": [
+     "ev-huang-17"
+    ]
+   }
+  ],
+  "corpusNotes": "Rich corpus (GTC keynotes, quarterly calls, interviews) but statements are mostly promotional for NVIDIA's products and rarely carry explicit dated targets. Transcripts and nvidianews were unreachable during research; quotes come from search snippets of press coverage."
+ },
+ {
+  "id": "satya-nadella",
+  "name": "Satya Nadella",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "Microsoft",
+    "title": "EVP Cloud & Enterprise",
+    "from": "2011",
+    "to": "2014"
+   },
+   {
+    "org": "Microsoft",
+    "title": "CEO",
+    "from": "2014-02",
+    "to": null
+   },
+   {
+    "org": "Microsoft",
+    "title": "Chairman",
+    "from": "2021-06",
+    "to": null
+   }
+  ],
+  "bio": "CEO of Microsoft since 2014; made the 2019 bet on OpenAI that put GPT models on Azure and into Microsoft products (Bing, GitHub Copilot, Microsoft 365 Copilot).",
+  "selection": {
+   "influence": [
+    4,
+    "Shaped the enterprise framing of AI (copilots, agents, Jevons paradox, GDP as the AGI test)."
+   ],
+   "foresight": [
+    3,
+    "Early on conversational interfaces and OpenAI; overestimated Bing's search disruption and early Copilot uptake."
+   ],
+   "allocation": [
+    5,
+    "Directs one of the largest AI capex budgets and was OpenAI's main financier."
+   ],
+   "contribution": [
+    4,
+    "Commercialized frontier models at enterprise scale via Azure and Copilot."
+   ],
+   "corpus": [
+    4,
+    "Earnings calls, long-form podcasts (Dwarkesh, BG2), essays and keynotes."
+   ],
+   "future": [
+    5,
+    "Azure capacity, OpenAI stake (~27%) and Copilot distribution make Microsoft pivotal through 2030."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Saw 'conversation as a platform': bots as the new apps and human language as the new UI, alongside a human-AI partnership ethic (2016 Slate essay).",
+    "evidenceIds": [
+     "ev-nadella-1",
+     "ev-nadella-2"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Bet that large-scale models trained on Azure supercomputers would be a platform shift, investing $1B in OpenAI (2019) as its exclusive cloud.",
+    "evidenceIds": [
+     "ev-nadella-9"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Moved fast to productize GPT-4: AI-powered Bing to challenge Google ('made them dance'), copilots across Office, and backed Altman during the Nov 2023 OpenAI crisis.",
+    "evidenceIds": [
+     "ev-nadella-3",
+     "ev-nadella-4",
+     "ev-nadella-11"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Hedged OpenAI dependence by hiring Suleyman to build Microsoft AI; argued agents would collapse SaaS business logic into an 'AI tier'.",
+    "evidenceIds": [
+     "ev-nadella-10",
+     "ev-nadella-5"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Argued efficiency gains (DeepSeek) would raise total demand (Jevons paradox); dismissed self-declared AGI milestones in favor of GDP growth as the real test; renegotiated the OpenAI deal; identified power, not chips, as the binding constraint.",
+    "evidenceIds": [
+     "ev-nadella-6",
+     "ev-nadella-7",
+     "ev-nadella-8",
+     "ev-out-msft-3"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Azure passed $100B annual revenue and Copilot reached ~30M paid seats while capex kept rising.",
+    "evidenceIds": [
+     "ev-out-msft-1",
+     "ev-out-msft-2"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2025-10",
+    "from": "Exclusive compute provider to OpenAI with AGI determination left to OpenAI's board (2019-2023 structure)",
+    "to": "Non-exclusive relationship, AGI claims verified by an independent expert panel, Microsoft free to pursue AGI on its own",
+    "trigger": "OpenAI's compute needs and restructuring into a PBC; Nadella's stated skepticism of self-declared AGI milestones.",
+    "evidenceIds": [
+     "ev-out-msft-3",
+     "ev-nadella-7"
+    ]
+   }
+  ],
+  "corpusNotes": "Good long-form corpus, but most statements are framed as strategy rather than dated forecasts. Several 2025 quotes reached only via secondary coverage; the power-constraint quote's original venue unconfirmed."
+ },
+ {
+  "id": "sundar-pichai",
+  "name": "Sundar Pichai",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "Google",
+    "title": "CEO",
+    "from": "2015-10",
+    "to": null
+   },
+   {
+    "org": "Alphabet",
+    "title": "CEO",
+    "from": "2019-12",
+    "to": null
+   }
+  ],
+  "bio": "CEO of Google since 2015 and Alphabet since 2019; declared Google 'AI-first' in 2016 and oversaw Google Brain/DeepMind, the Gemini models, TPUs and the integration of generative AI into Search.",
+  "selection": {
+   "influence": [
+    3,
+    "Agenda-setting slogans (AI-first, 'more profound than fire') more than technical ideas."
+   ],
+   "foresight": [
+    3,
+    "AI-first call was early; 'low-hanging fruit is gone' underestimated 2025 progress; AGI timing unresolved."
+   ],
+   "allocation": [
+    5,
+    "Controls one of the largest AI capex budgets plus TPUs, DeepMind and Search distribution."
+   ],
+   "contribution": [
+    4,
+    "Google invented the transformer and built Gemini/TPUs, though productization lagged OpenAI in 2022-23."
+   ],
+   "corpus": [
+    3,
+    "Founders' letters, earnings calls and some long interviews; mostly measured corporate language."
+   ],
+   "future": [
+    5,
+    "Owns a full stack (chips, cloud, models, Search, Android, YouTube) that shapes AI distribution."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Declared a shift from mobile-first to AI-first; the computer would become an intelligent assistant (2016).",
+    "evidenceIds": [
+     "ev-pichai-1"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Called AI more profound than electricity or fire while stressing its risks must be managed.",
+    "evidenceIds": [
+     "ev-pichai-2"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "After ChatGPT, moved from cautious release of LaMDA to launching Bard and AI in Search (Feb 2023) and merging Brain with DeepMind.",
+    "evidenceIds": [
+     "ev-pichai-7"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Argued under-investing in AI was a bigger risk than over-investing; reported that over a quarter of new Google code was AI-generated; predicted progress would get harder in 2025.",
+    "evidenceIds": [
+     "ev-pichai-3",
+     "ev-pichai-8",
+     "ev-pichai-4"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Described current systems as 'AJI' and placed AGI a bit after 2030; warned of 'elements of irrationality' in the boom and that no company would be immune to a correction.",
+    "evidenceIds": [
+     "ev-pichai-5",
+     "ev-pichai-6"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Kept raising capex (2026 guidance roughly double 2025) while Gemini gained share against Microsoft's Copilot.",
+    "evidenceIds": [
+     "ev-out-goog-1",
+     "ev-out-search-1"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-02",
+    "from": "Cautious, 'responsible' slow release of conversational models (LaMDA withheld 2021-22)",
+    "to": "Rapid public launch of Bard and generative AI in Search",
+    "trigger": "ChatGPT's launch (Nov 2022) and Microsoft's Bing+OpenAI challenge.",
+    "evidenceIds": [
+     "ev-pichai-7",
+     "ev-nadella-3"
+    ]
+   }
+  ],
+  "corpusNotes": "Pichai rarely makes dated, falsifiable forecasts; claims are mostly framing and capex justifications. Alphabet 2026 outcomes were not verifiable by search during research (search budget exhausted)."
+ },
+ {
+  "id": "mark-zuckerberg",
+  "name": "Mark Zuckerberg",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "Facebook / Meta Platforms",
+    "title": "Founder, Chairman & CEO",
+    "from": "2004",
+    "to": null
+   }
+  ],
+  "bio": "Founder and CEO of Meta; created FAIR (2013), championed open-weight Llama models (2023-24), pivoted capital from the metaverse to AI, and in 2025 launched Meta Superintelligence Labs.",
+  "selection": {
+   "influence": [
+    4,
+    "Made open-weight frontier models a mainstream strategy (Llama) and popularized 'personal superintelligence'."
+   ],
+   "foresight": [
+    2,
+    "Metaverse bet and 'Llama will be most advanced by 2025' did not pan out; energy-constraint call was early and correct."
+   ],
+   "allocation": [
+    5,
+    "Sole control of Meta's ~$100B+/yr capex and talent spending."
+   ],
+   "contribution": [
+    4,
+    "FAIR, PyTorch and Llama shaped the open AI ecosystem."
+   ],
+   "corpus": [
+    3,
+    "Earnings calls, letters and podcasts, but evidence during research is recalled, not re-verified."
+   ],
+   "future": [
+    4,
+    "Massive capex and distribution to 3B+ users, but uncertain model leadership."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Saw AI research as core to Facebook's future and created FAIR under Yann LeCun (2013).",
+    "evidenceIds": [
+     "ev-zuck-1"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Strongly optimistic about near-term AI benefits; called AI doomsday talk irresponsible.",
+    "evidenceIds": [
+     "ev-zuck-2"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "Bet the company's next platform on the metaverse, renaming Facebook to Meta (Oct 2021) and forecasting a billion metaverse users within a decade.",
+    "evidenceIds": [
+     "ev-zuck-3"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Declared a 'year of efficiency' and pivoted priority to generative AI, releasing LLaMA and open-licensed Llama 2.",
+    "evidenceIds": [
+     "ev-zuck-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Set a goal of building general intelligence and open-sourcing it responsibly; argued open source would become the industry standard like Linux and that energy, not chips, would bound scaling.",
+    "evidenceIds": [
+     "ev-zuck-5",
+     "ev-zuck-6",
+     "ev-zuck-7"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "After Llama 4 disappointed, reorganized around Meta Superintelligence Labs, invested in Scale AI, declared superintelligence 'in sight', and signaled more selective open-sourcing; argued the risk of under-spending exceeded misspending hundreds of billions.",
+    "evidenceIds": [
+     "ev-zuck-8",
+     "ev-zuck-9",
+     "ev-zuck-10",
+     "ev-zuck-11",
+     "ev-out-meta-1"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Capex guidance rose to roughly $115-135B while metaverse budgets were trimmed.",
+    "evidenceIds": [
+     "ev-out-meta-3",
+     "ev-out-meta-4"
+    ],
+    "unverified": true
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-02",
+    "from": "Metaverse as Meta's primary next platform and investment priority",
+    "to": "AI as the top priority (metaverse folded into AI-enabled wearables)",
+    "trigger": "2022 stock collapse, ChatGPT, and investor pressure ('year of efficiency').",
+    "evidenceIds": [
+     "ev-zuck-4",
+     "ev-out-meta-4"
+    ]
+   },
+   {
+    "date": "2025-07",
+    "from": "Open source AI is the path forward; Llama to be released openly as the industry standard",
+    "to": "Need to be careful about what Meta chooses to open source; frontier work centralized in a superintelligence lab",
+    "trigger": "Llama 4's weak reception, Chinese open models overtaking Llama, and safety/competitive concerns about superintelligence-level models.",
+    "evidenceIds": [
+     "ev-zuck-7",
+     "ev-zuck-9",
+     "ev-out-meta-1"
+    ]
+   }
+  ],
+  "corpusNotes": "Search budget was exhausted and Meta domains were blocked before Zuckerberg could be searched, so ALL Zuckerberg evidence is recalled from background knowledge (verification 'recalled'); dates and figures should be re-verified before publication."
+ },
+ {
+  "id": "liang-wenfeng",
+  "name": "Liang Wenfeng",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "High-Flyer (Huanfang) Quant",
+    "title": "Co-founder",
+    "from": "2015",
+    "to": null
+   },
+   {
+    "org": "DeepSeek",
+    "title": "Founder & CEO",
+    "from": "2023-07",
+    "to": null
+   }
+  ],
+  "bio": "Co-founder of quant fund High-Flyer and founder of DeepSeek, whose open-weight V3 and R1 models (Dec 2024 - Jan 2025) showed near-frontier performance at much lower reported training cost and shook AI markets.",
+  "selection": {
+   "influence": [
+    4,
+    "DeepSeek R1 reset assumptions about cost, open weights and China's position."
+   ],
+   "foresight": [
+    4,
+    "Early compute stockpile and the claim that closed-source moats are temporary were borne out (provisional)."
+   ],
+   "allocation": [
+    3,
+    "Self-funded lab via High-Flyer; limited by export controls."
+   ],
+   "contribution": [
+    5,
+    "MLA/MoE efficiency, GRPO-based RL reasoning and MIT-licensed releases."
+   ],
+   "corpus": [
+    2,
+    "Only a handful of interviews (2023, 2024); very few public statements."
+   ],
+   "future": [
+    4,
+    "Central to China's open-model ecosystem and domestic-chip adoption."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2020",
+    "summary": "Used High-Flyer's quant profits to build GPU clusters (Fire-Flyer), accumulating ~10,000 A100s before US export controls, betting that compute would be strategic.",
+    "evidenceIds": [
+     "ev-liang-1"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Founded DeepSeek (2023) explicitly to pursue AGI through fundamental research rather than near-term applications or outside financing.",
+    "evidenceIds": [
+     "ev-liang-1"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Held that closed-source moats are temporary, that team and culture are the real moat, that China must become an original innovator rather than a follower, and that chip embargoes, not money, were the binding constraint; priced DeepSeek-V2 near cost.",
+    "evidenceIds": [
+     "ev-liang-2",
+     "ev-liang-6",
+     "ev-liang-3"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Released R1 openly (MIT license); became a nationally recognized figure, attending symposia with Premier Li Qiang and Xi Jinping; made almost no public statements thereafter.",
+    "evidenceIds": [
+     "ev-liang-4",
+     "ev-liang-5"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-04",
+    "from": "Applying machine learning to quantitative trading at High-Flyer",
+    "to": "Building a dedicated AGI research lab (DeepSeek)",
+    "trigger": "ChatGPT/LLM breakthrough and existing GPU cluster capacity.",
+    "evidenceIds": [
+     "ev-liang-1"
+    ]
+   }
+  ],
+  "corpusNotes": "Very thin corpus: essentially two long Chinese-language interviews (May 2023, July 2024) plus DeepSeek papers. All Liang evidence is recalled (search budget exhausted before searching him), and translations vary. No reliable 2026 statements located."
+ },
+ {
+  "id": "sam-altman",
+  "name": "Sam Altman",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "Y Combinator",
+    "title": "President",
+    "from": "2014",
+    "to": "2019"
+   },
+   {
+    "org": "OpenAI",
+    "title": "Co-founder and co-chair",
+    "from": "2015-12",
+    "to": "2019"
+   },
+   {
+    "org": "OpenAI",
+    "title": "CEO (briefly removed by the board Nov 2023, reinstated days later)",
+    "from": "2019",
+    "to": null
+   }
+  ],
+  "bio": "Co-founder and CEO of OpenAI, which launched ChatGPT in Nov 2022 and turned large language models into a mass-market product. Uses his blog to publish AI forecasts and policy positions, and has led the industry's largest compute-financing push.",
+  "selection": {
+   "influence": [
+    4,
+    "Shapes public and policy narratives (AGI framing, licensing proposal, compute-cost 'observations') more than the technical research agenda."
+   ],
+   "foresight": [
+    3,
+    "Several directional calls held up, such as falling cost per capability and mainstream legal and medical use. Dated agent and superintelligence calls ran early or are still open."
+   ],
+   "allocation": [
+    5,
+    "Directs OpenAI capital, including the Microsoft partnership, Stargate and about $1.4T of stated compute commitments."
+   ],
+   "contribution": [
+    5,
+    "Led ChatGPT commercialization, the largest consumer AI product of the period."
+   ],
+   "corpus": [
+    4,
+    "Dated essays (2021 to 2025), testimony and frequent interviews. Much of it mixes personal forecasts with corporate positioning."
+   ],
+   "future": [
+    5,
+    "OpenAI's scale and compute commitments make his decisions central to the ecosystem through the end of the decade."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "As YC president and OpenAI co-founder (Dec 2015), he treated AGI as a long-horizon but real possibility. He co-founded OpenAI as a nonprofit counterweight to concentrated corporate AI.",
+    "evidenceIds": [
+     "ev-altman-13"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Concluded that AGI would need huge capital and compute. In 2019 he restructured OpenAI into a capped-profit entity and took Microsoft's $1B investment.",
+    "evidenceIds": [
+     "ev-altman-13"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "In 'Moore's Law for Everything' (Mar 2021) he forecast thinking programs within five years that could read legal documents and give medical advice. He argued that the resulting shift from labor to capital needed redistribution through taxes on companies and land.",
+    "evidenceIds": [
+     "ev-altman-1",
+     "ev-altman-2"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "After ChatGPT, he asked Congress for a licensing agency for models above a capability threshold (May 2023) and signed the CAIS extinction-risk statement. He presented safety and scaling as compatible.",
+    "evidenceIds": [
+     "ev-altman-3",
+     "ev-altman-14"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Framed deep learning as having 'worked' and predicted superintelligence possibly within 'a few thousand days' (Sep 2024). His rhetoric moved from risk toward abundance.",
+    "evidenceIds": [
+     "ev-altman-4"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Declared confidence in knowing how to build AGI, predicted agents joining the workforce in 2025, and said AI cost falls about 10x per year. He reversed on open weights (gpt-oss) and committed about $1.4T to compute.",
+    "evidenceIds": [
+     "ev-altman-5",
+     "ev-altman-6",
+     "ev-altman-7",
+     "ev-altman-8",
+     "ev-altman-9",
+     "ev-altman-11",
+     "ev-altman-12"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2025-01",
+    "from": "Closed frontier weights; OpenAI had released no open-weight LLM since GPT-2 (2019).",
+    "to": "Said OpenAI had been on the 'wrong side of history' on open source. OpenAI then released the gpt-oss-120b and gpt-oss-20b open-weight models (Aug 2025).",
+    "trigger": "DeepSeek's open-weight releases. Altman said DeepSeek had lessened OpenAI's lead.",
+    "evidenceIds": [
+     "ev-altman-7",
+     "ev-altman-8"
+    ]
+   },
+   {
+    "date": "2019-03",
+    "from": "Nonprofit lab funded by donations (2015).",
+    "to": "Capped-profit structure with large corporate investment (Microsoft, 2019). OpenAI later recapitalized into a public benefit corporation (Oct 2025).",
+    "trigger": "Belief that frontier compute costs could not be met with philanthropy.",
+    "evidenceIds": [
+     "ev-altman-13"
+    ]
+   },
+   {
+    "date": "2025-05",
+    "from": "Called for a federal licensing agency for capable models (May 2023).",
+    "to": "Recalled: in May 2025 Senate testimony he warned that requiring government pre-approval for model releases would be harmful, and favored light-touch federal rules.",
+    "trigger": "Competition with China and a changed US political climate (recalled; not re-verified during research).",
+    "evidenceIds": [
+     "ev-altman-3",
+     "ev-altman-17"
+    ]
+   }
+  ],
+  "corpusNotes": "The primary blog domains (blog.samaltman.com, ia.samaltman.com, moores.samaltman.com) could not be reached during research. Quotes come from search-snippet reproductions in secondary coverage. Altman's forecasts are often hedged ('may', 'likely') and are hard to separate from OpenAI marketing and fundraising."
+ },
+ {
+  "id": "dario-amodei",
+  "name": "Dario Amodei",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "Baidu",
+    "title": "Research scientist",
+    "from": "2014",
+    "to": "2015"
+   },
+   {
+    "org": "Google Brain",
+    "title": "Research scientist",
+    "from": "2015",
+    "to": "2016"
+   },
+   {
+    "org": "OpenAI",
+    "title": "VP of Research",
+    "from": "2016",
+    "to": "2020-12"
+   },
+   {
+    "org": "Anthropic",
+    "title": "Co-founder and CEO",
+    "from": "2021",
+    "to": null
+   }
+  ],
+  "bio": "Co-founder and CEO of Anthropic, and earlier OpenAI's VP of Research during GPT-2 and GPT-3. He co-authored the 2020 scaling-laws paper and is among the most explicit near-term forecasters of 'powerful AI' and its labor impact.",
+  "selection": {
+   "influence": [
+    5,
+    "Co-authored the scaling-laws work and the 'big blob of compute' thesis, and co-founded the 'safety lab at the frontier' model."
+   ],
+   "foresight": [
+    4,
+    "His scaling bet was early and right. His coding and labor forecasts are specific but ran early, or remain open."
+   ],
+   "allocation": [
+    4,
+    "Leads Anthropic, whose run-rate was reported at about $19B in early 2026."
+   ],
+   "contribution": [
+    5,
+    "Shaped GPT-2 and GPT-3 at OpenAI. Claude models, including Claude Code, became leading coding systems."
+   ],
+   "corpus": [
+    5,
+    "Long dated essays (Machines of Loving Grace, The Urgency of Interpretability, the DeepSeek and export-controls essay) plus many interviews with explicit dates."
+   ],
+   "future": [
+    5,
+    "A frontier lab CEO who also shapes export-control and safety policy."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Moved from biophysics into deep learning at Baidu (Deep Speech 2) and Google Brain. He co-authored 'Concrete Problems in AI Safety' (2016), treating safety as an empirical ML problem.",
+    "evidenceIds": [
+     "ev-amodei-2"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Held the 'big blob of compute' view: capability comes mostly from scaling compute and data with simple objectives. He led research at OpenAI through GPT-2.",
+    "evidenceIds": [
+     "ev-amodei-2"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "Co-authored the power-law scaling results (Jan 2020) and the GPT-3 paper. He left OpenAI to found Anthropic (2021) as a safety-focused lab that would still compete at the frontier.",
+    "evidenceIds": [
+     "ev-amodei-1",
+     "ev-amodei-8"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Forecast human-level conversational AI within two to three years (Aug 2023). He signed the CAIS statement and pushed responsible scaling policies.",
+    "evidenceIds": [
+     "ev-amodei-2",
+     "ev-altman-14"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "In 'Machines of Loving Grace' (Oct 2024) he described a 'country of geniuses in a datacenter' possibly arriving as early as 2026. He also described a 'compressed 21st century' of scientific progress.",
+    "evidenceIds": [
+     "ev-amodei-3"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Pressed hardest of any lab CEO on concrete short-term forecasts: AI writing 90% of code within 3 to 6 months, and half of entry-level white-collar jobs at risk. He backed export controls against China and urged interpretability by 2027.",
+    "evidenceIds": [
+     "ev-amodei-4",
+     "ev-amodei-5",
+     "ev-amodei-6",
+     "ev-amodei-7"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "An essay in Jan 2026 ('The Adolescence of Technology') restated near-term powerful-AI risks. In a Feb 2026 dispute he held to limits on military uses of Claude.",
+    "evidenceIds": [
+     "ev-amodei-9",
+     "ev-amodei-10"
+    ],
+    "unverified": true
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2020-12",
+    "from": "Led research at OpenAI and championed GPT-2 and GPT-3 scaling inside it.",
+    "to": "Left with colleagues to found Anthropic as a separate safety-focused lab.",
+    "trigger": "Reported disagreements over safety priorities and commercialization at OpenAI. His public explanation was a different approach to safety, not a single stated grievance.",
+    "evidenceIds": [
+     "ev-amodei-8"
+    ]
+   },
+   {
+    "date": "2024-03",
+    "from": "Early Anthropic messaging (2022 to 2023, as reported) suggested the lab would avoid advancing the capability frontier.",
+    "to": "Released models marketed as state of the art (Claude 3, 2024) and competed head-on at the frontier.",
+    "trigger": "Commercial competition and the 'race to the top' rationale. Recalled; the investor-deck reporting was not re-verified during research.",
+    "evidenceIds": [
+     "ev-amodei-8"
+    ]
+   }
+  ],
+  "corpusNotes": "darioamodei.com and the interview hosts were blocked during research, and the search budget ran out before any Amodei-specific search. All Amodei evidence is recalled, not re-confirmed, and is marked verbatim=false. The dates and wording of the CFR (Mar 2025) and Axios (May 2025) remarks are from memory. His forecasts are often explicitly hedged ('could', 'may'), and this file keeps those hedges."
+ },
+ {
+  "id": "demis-hassabis",
+  "name": "Demis Hassabis",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "DeepMind",
+    "title": "Co-founder and CEO",
+    "from": "2010",
+    "to": "2023-04"
+   },
+   {
+    "org": "Google DeepMind",
+    "title": "CEO",
+    "from": "2023-04",
+    "to": null
+   },
+   {
+    "org": "Isomorphic Labs",
+    "title": "Founder and CEO",
+    "from": "2021-11",
+    "to": null
+   }
+  ],
+  "bio": "Neuroscientist and co-founder of DeepMind (AlphaGo, AlphaFold), now CEO of Google DeepMind and Isomorphic Labs. He shared the 2024 Nobel Prize in Chemistry for AlphaFold.",
+  "selection": {
+   "influence": [
+    5,
+    "His AlphaGo and AlphaFold work defined deep RL and AI-for-science agendas."
+   ],
+   "foresight": [
+    4,
+    "His long-running AI-for-science thesis was vindicated by AlphaFold and the Nobel. His AGI timelines are comparatively measured."
+   ],
+   "allocation": [
+    4,
+    "Steers Google's frontier model effort (Gemini) and Isomorphic Labs."
+   ],
+   "contribution": [
+    5,
+    "AlphaGo, AlphaFold, and the Gemini program."
+   ],
+   "corpus": [
+    4,
+    "Many talks and interviews, but few dated, falsifiable forecasts; most are ranges like '5 to 10 years'."
+   ],
+   "future": [
+    5,
+    "Leads one of the two or three best-resourced frontier labs."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Mission: 'solve intelligence, then use it to solve everything else'. His route was neuroscience-inspired deep reinforcement learning (Atari DQN, AlphaGo), and he accepted Google's 2014 acquisition to get resources.",
+    "evidenceIds": [
+     "ev-hassabis-1",
+     "ev-hassabis-2"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Treated games as stepping stones toward general learning (AlphaZero) and turned toward scientific problems such as protein folding.",
+    "evidenceIds": [
+     "ev-hassabis-2"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "AlphaFold 2 (CASP14, 2020; Nature, 2021) showed AI could solve a 50-year-old scientific problem. He spun out Isomorphic Labs for drug discovery.",
+    "evidenceIds": [
+     "ev-hassabis-3"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Signed the CAIS extinction-risk statement and called for international oversight bodies (IPCC/CERN-like). He merged Brain and DeepMind into Google DeepMind to compete in generative AI.",
+    "evidenceIds": [
+     "ev-altman-14",
+     "ev-hassabis-5",
+     "ev-hassabis-10"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Warned that generative-AI investment carried crypto-like hype, while holding that AI was underhyped long-term. He received the Nobel Prize for AlphaFold.",
+    "evidenceIds": [
+     "ev-hassabis-6",
+     "ev-out-nobel-1"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Put AGI at roughly 5 to 10 years away and said scaling is necessary but may need one or two more breakthroughs, such as world models and consistency. He forecast AI-designed drugs entering clinical trials by end-2025.",
+    "evidenceIds": [
+     "ev-hassabis-7",
+     "ev-hassabis-8",
+     "ev-hassabis-9"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-04",
+    "from": "DeepMind ran as a research-first unit with limited productization and kept its distance from Google Brain.",
+    "to": "Merged with Brain into Google DeepMind, a product-driven organization shipping Gemini against OpenAI.",
+    "trigger": "ChatGPT's launch and competitive pressure on Google (recalled).",
+    "evidenceIds": [
+     "ev-hassabis-10"
+    ]
+   }
+  ],
+  "corpusNotes": "The search budget ran out before any Hassabis-specific query, so all evidence except the canonical Nature and Nobel pages is recalled and marked verbatim=false. His forecasts are mostly ranges with caveats, which limits falsifiability."
+ },
+ {
+  "id": "elon-musk",
+  "name": "Elon Musk",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "Tesla",
+    "title": "CEO",
+    "from": "2008",
+    "to": null
+   },
+   {
+    "org": "OpenAI",
+    "title": "Co-founder, co-chair and board member",
+    "from": "2015-12",
+    "to": "2018-02"
+   },
+   {
+    "org": "xAI",
+    "title": "Founder",
+    "from": "2023-07",
+    "to": null
+   }
+  ],
+  "bio": "CEO of Tesla, co-founder and early funder of OpenAI, and founder of xAI (Grok). He is one of the most prominent voices on AI existential risk and one of the most prolific makers of missed autonomy deadlines.",
+  "selection": {
+   "influence": [
+    3,
+    "Popularized AI existential-risk concerns early (2014) but contributed little to the research agenda."
+   ],
+   "foresight": [
+    2,
+    "His self-driving, robotaxi, AGI and Optimus deadlines have repeatedly been missed."
+   ],
+   "allocation": [
+    5,
+    "Controls very large capital flows: Tesla autonomy, xAI's Colossus clusters, and the 2015 OpenAI funding."
+   ],
+   "contribution": [
+    3,
+    "Built Tesla's vision-based driving stack and quickly built xAI's frontier compute (Colossus)."
+   ],
+   "corpus": [
+    3,
+    "Huge volume of tweets and calls with dated forecasts, but inconsistent and often promotional."
+   ],
+   "future": [
+    4,
+    "xAI compute scale, robotaxis and Optimus give him leverage, though his record lowers his credibility."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Called AI the biggest existential threat ('summoning the demon', 2014) and co-founded OpenAI (2015) as a nonprofit counterweight to Google/DeepMind.",
+    "evidenceIds": [
+     "ev-musk-1",
+     "ev-musk-7"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Called for proactive AI regulation (2017) while promising imminent full self-driving. He left the OpenAI board in Feb 2018.",
+    "evidenceIds": [
+     "ev-musk-2",
+     "ev-musk-3",
+     "ev-musk-4"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "Kept promising robotaxis within a year and pursued vision-only, end-to-end driving at Tesla.",
+    "evidenceIds": [
+     "ev-musk-3"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Signed the March 2023 pause letter, then founded xAI in July 2023 to build 'maximally truth-seeking' AI.",
+    "evidenceIds": [
+     "ev-musk-5",
+     "ev-musk-6"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Sued OpenAI for abandoning its open, nonprofit mission and released Grok-1 weights. He predicted AGI smarter than the smartest human by 2025 or 2026 and built the 100k-GPU Colossus.",
+    "evidenceIds": [
+     "ev-musk-7",
+     "ev-musk-8",
+     "ev-musk-9",
+     "ev-musk-10"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Led a $97.4B bid for control of OpenAI and launched the Austin robotaxi pilot. He forecast robotaxi coverage of about half the US population and thousands of Optimus robots by end-2025.",
+    "evidenceIds": [
+     "ev-musk-11",
+     "ev-musk-12",
+     "ev-musk-13"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-07",
+    "from": "Signed the March 2023 open letter calling on labs to pause training of systems more powerful than GPT-4 for six months.",
+    "to": "Founded xAI four months later and raced to build frontier models (Grok) and the largest GPU clusters.",
+    "trigger": "Stated desire for a 'truth-seeking' alternative to OpenAI and Google. Competitive motives were widely inferred.",
+    "evidenceIds": [
+     "ev-musk-5",
+     "ev-musk-6"
+    ]
+   },
+   {
+    "date": "2024-02",
+    "from": "Co-founder, co-chair and major early donor of OpenAI (2015 to 2018).",
+    "to": "Plaintiff suing OpenAI and Altman for breaching the founding nonprofit and open mission, and later bidder to take control (Feb 2025).",
+    "trigger": "OpenAI's capped-profit and Microsoft partnership path and its for-profit restructuring.",
+    "evidenceIds": [
+     "ev-musk-7",
+     "ev-musk-12"
+    ]
+   }
+  ],
+  "corpusNotes": "The search budget ran out before any Musk-specific query. All Musk evidence is recalled (tweets, earnings calls, talks), with no URLs except the FLI letter and the Grok-1 repo. His forecasts often come in earnings calls and tweets alongside marketing, so personal belief and promotion are hard to separate."
+ },
+ {
+  "id": "mustafa-suleyman",
+  "name": "Mustafa Suleyman",
+  "cohort": "builders",
+  "roles": [
+   {
+    "org": "DeepMind",
+    "title": "Co-founder; Head of Applied AI",
+    "from": "2010",
+    "to": "2019"
+   },
+   {
+    "org": "Google",
+    "title": "VP, AI product management and policy",
+    "from": "2019",
+    "to": "2022"
+   },
+   {
+    "org": "Inflection AI",
+    "title": "Co-founder and CEO",
+    "from": "2022",
+    "to": "2024-03"
+   },
+   {
+    "org": "Microsoft AI",
+    "title": "EVP and CEO",
+    "from": "2024-03",
+    "to": null
+   }
+  ],
+  "bio": "Co-founder of DeepMind and Inflection AI (Pi), now CEO of Microsoft AI responsible for Copilot and MAI models. He wrote 'The Coming Wave' (2023) on AI containment and the 2025 'seemingly conscious AI' warning.",
+  "selection": {
+   "influence": [
+    3,
+    "Shaped governance discourse (containment, the 'modern Turing test', seemingly conscious AI) more than technical direction."
+   ],
+   "foresight": [
+    2,
+    "His dated near-term calls (hallucinations solved by 2025, $100k to $1M ACI within about two years) appear premature. His longer-term calls are open."
+   ],
+   "allocation": [
+    3,
+    "Directs Microsoft's consumer AI and in-house model effort, within Microsoft's broader OpenAI-dependent strategy."
+   ],
+   "contribution": [
+    3,
+    "Co-founded DeepMind and built Pi and Microsoft Copilot consumer products."
+   ],
+   "corpus": [
+    4,
+    "A book, essays and many interviews with some dated forecasts."
+   ],
+   "future": [
+    3,
+    "Microsoft's in-house superintelligence effort gives him influence, but less than at the leading labs."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Co-founded DeepMind and led applied AI, including DeepMind Health. He believed AI could be deployed quickly in public services, a stance tested by the 2017 ICO ruling on NHS data.",
+    "evidenceIds": [
+     "ev-suleyman-10"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Focused on applied AI and ethics inside DeepMind and Google. Few dated public forecasts were found for this period.",
+    "evidenceIds": []
+   },
+   {
+    "period": "p2022",
+    "summary": "Founded Inflection to build a personal AI for everyone (Pi). He predicted hallucinations would be largely fixed by 2025 and proposed the $100k-to-$1M 'modern Turing test' for artificial capable intelligence. In 'The Coming Wave' he argued containment is not possible but must be.",
+    "evidenceIds": [
+     "ev-suleyman-1",
+     "ev-suleyman-2",
+     "ev-suleyman-3",
+     "ev-suleyman-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Joined Microsoft (Mar 2024) as Inflection's independent path ended. In a TED talk he described AI as a 'new digital species'.",
+    "evidenceIds": [
+     "ev-suleyman-5",
+     "ev-suleyman-6"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Warned that 'seemingly conscious AI' could arrive in 2 to 3 years and that labs should not build AI that presents as a person. He launched a 'humanist superintelligence' team after Microsoft won freedom to pursue AGI independently.",
+    "evidenceIds": [
+     "ev-suleyman-7",
+     "ev-suleyman-8"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "In Feb 2026 he forecast that most white-collar professional tasks would be automated within 12 to 18 months.",
+    "evidenceIds": [
+     "ev-suleyman-9"
+    ],
+    "unverified": true
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024-03",
+    "from": "Independent startup strategy: Inflection raised $1.3B in 2023 to build its own frontier models and the Pi assistant.",
+    "to": "Joined Microsoft with most of Inflection's staff, and Inflection pivoted to enterprise.",
+    "trigger": "Frontier-scale capital needs and weak consumer traction for Pi (recalled).",
+    "evidenceIds": [
+     "ev-suleyman-4",
+     "ev-suleyman-5"
+    ]
+   },
+   {
+    "date": "2025-08",
+    "from": "Built Pi as an empathetic, emotionally engaging personal AI companion (2023).",
+    "to": "Argued labs should not build AI that seems conscious or encourages attachment, warning of 'psychosis risk'.",
+    "trigger": "Reports of user over-attachment and 'AI psychosis', and the emerging 'model welfare' debate. The framing as a reversal is this analyst's interpretation.",
+    "evidenceIds": [
+     "ev-suleyman-7"
+    ]
+   }
+  ],
+  "corpusNotes": "The search budget ran out before any Suleyman-specific query. All evidence is recalled, and the outlet attribution for the 'hallucinations solved by 2025' remark and the Feb 2026 'white-collar in 12 to 18 months' remark is uncertain (low confidence). His book is the most coherent statement of his views, but book passages were not re-checked."
+ },
+ {
+  "id": "geoffrey-hinton",
+  "name": "Geoffrey Hinton",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "University of Toronto",
+    "title": "Professor",
+    "from": "1987",
+    "to": null
+   },
+   {
+    "org": "Google (Brain)",
+    "title": "VP & Engineering Fellow",
+    "from": "2013",
+    "to": "2023-05"
+   }
+  ],
+  "bio": "Pioneer of backpropagation-era neural networks and co-author of AlexNet (2012); 2018 Turing Award and 2024 Nobel Prize in Physics laureate who became a leading voice on AI existential risk after leaving Google in 2023.",
+  "selection": {
+   "influence": [
+    5,
+    "Foundational figure in deep learning; trained Sutskever and many leaders."
+   ],
+   "foresight": [
+    3,
+    "Early deep-learning conviction vindicated; radiology prediction failed; risk timelines unresolved."
+   ],
+   "allocation": [
+    3,
+    "Limited capital control, but large agenda-setting effect on governments and public."
+   ],
+   "contribution": [
+    5,
+    "Backprop popularization, Boltzmann machines, dropout, AlexNet."
+   ],
+   "corpus": [
+    4,
+    "Many dated interviews and talks, though often reported secondhand."
+   ],
+   "future": [
+    4,
+    "Nobel laureate whose risk warnings shape policy debate."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Large neural nets trained on GPUs would beat engineered systems; deep learning would rapidly outperform specialists in perception tasks such as radiology.",
+    "evidenceIds": [
+     "ev-hinton-9",
+     "ev-hinton-1"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Skeptical of backprop as the path to brain-like learning; advocated starting over with new algorithms (capsules).",
+    "evidenceIds": [
+     "ev-hinton-7"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Concluded digital nets may learn better than brains; superhuman AI 5-20 years away rather than 30-50; left Google to warn of existential risk.",
+    "evidenceIds": [
+     "ev-hinton-2",
+     "ev-hinton-3",
+     "ev-hinton-11",
+     "ev-hinton-10"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Nobel laureate; 10-20% extinction risk within ~30 years.",
+    "evidenceIds": [
+     "ev-hinton-5"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Shortened superintelligence timeline to 'a good chance' within 10 years; predicted mass displacement of mundane intellectual labour.",
+    "evidenceIds": [
+     "ev-hinton-4",
+     "ev-hinton-6"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Urged Congress it has maybe a year to regulate before losing control.",
+    "evidenceIds": [
+     "ev-hinton-8"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-05",
+    "from": "Superhuman AI 30-50+ years away; backprop inferior to brain learning",
+    "to": "Superhuman AI 5-20 years away; digital learning may be superior to biological; existential risk is serious",
+    "trigger": "Capabilities of PaLM/GPT-4-era LLMs and reflection on digital weight-sharing",
+    "evidenceIds": [
+     "ev-hinton-2",
+     "ev-hinton-3",
+     "ev-hinton-12"
+    ]
+   },
+   {
+    "date": "2025-04",
+    "from": "5-20 years to superintelligence",
+    "to": "good chance within 10 years or less",
+    "trigger": "Rapid progress, especially AI agents",
+    "evidenceIds": [
+     "ev-hinton-4"
+    ]
+   }
+  ],
+  "corpusNotes": "Most statements available only via secondary reporting of interviews; no primary transcripts fetched (all page fetches failed). Probabilistic, long-horizon risk claims dominate post-2023."
+ },
+ {
+  "id": "yann-lecun",
+  "name": "Yann LeCun",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "NYU",
+    "title": "Professor",
+    "from": "2003",
+    "to": null
+   },
+   {
+    "org": "Meta (FAIR)",
+    "title": "Founding Director, then Chief AI Scientist",
+    "from": "2013-12",
+    "to": "2025-12"
+   },
+   {
+    "org": "AMI Labs (Advanced Machine Intelligence)",
+    "title": "Founder & Executive Chairman",
+    "from": "2026",
+    "to": null
+   }
+  ],
+  "bio": "Inventor of convolutional networks and 2018 Turing Award laureate; led Meta's FAIR and its open-weights strategy, and is the most prominent critic of LLMs as a path to human-level AI and of AI existential-risk claims. Left Meta at end-2025 to found the world-model startup AMI Labs.",
+  "selection": {
+   "influence": [
+    5,
+    "CNNs, self-supervised learning advocacy, FAIR leadership."
+   ],
+   "foresight": [
+    3,
+    "Self-supervision call vindicated; LLM 'doomed' claims not borne out so far; paradigm-shift predictions unresolved."
+   ],
+   "allocation": [
+    4,
+    "Shaped Meta's open-weights Llama strategy; raised $1.03B for AMI."
+   ],
+   "contribution": [
+    5,
+    "ConvNets; JEPA research programme."
+   ],
+   "corpus": [
+    5,
+    "Prolific on social media, talks and position papers."
+   ],
+   "future": [
+    4,
+    "Leads the best-funded non-LLM bet."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Self-supervised/predictive learning is the bulk of intelligence ('cake'), with RL as the cherry.",
+    "evidenceIds": [
+     "ev-lecun-14"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Human-level AI requires JEPA world models; auto-regressive LLMs are doomed; x-risk fears preposterous; open source is safer.",
+    "evidenceIds": [
+     "ev-lecun-9",
+     "ev-lecun-1",
+     "ev-lecun-3",
+     "ev-lecun-4",
+     "ev-lecun-10"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "LLMs are an off-ramp/dead end on the path to human-level AI; current AI dumber than a house cat.",
+    "evidenceIds": [
+     "ev-lecun-6",
+     "ev-lecun-11"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Predicted a new paradigm within 3-5 years; left Meta to pursue world models independently.",
+    "evidenceIds": [
+     "ev-lecun-5",
+     "ev-lecun-2",
+     "ev-lecun-7"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Funded AMI Labs ($1.03B); called the LLM-to-human-level bet 'complete BS'; no product yet by October.",
+    "evidenceIds": [
+     "ev-lecun-8",
+     "ev-lecun-13",
+     "ev-lecun-12"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "Highly consistent views; no documented reversal on LLMs or x-risk. Many quotes come from secondary coverage of X/LinkedIn posts and talks; dating of the 'off-ramp' quote is uncertain (Apr 2024 vs Nov 2025)."
+ },
+ {
+  "id": "yoshua-bengio",
+  "name": "Yoshua Bengio",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "Université de Montréal / Mila",
+    "title": "Professor; Founder & Scientific Advisor of Mila",
+    "from": "1993",
+    "to": null
+   },
+   {
+    "org": "International AI Safety Report",
+    "title": "Chair",
+    "from": "2023-11",
+    "to": null
+   },
+   {
+    "org": "LawZero",
+    "title": "Founder & President",
+    "from": "2025-06",
+    "to": null
+   }
+  ],
+  "bio": "Deep-learning pioneer (attention, neural language models) and 2018 Turing Award laureate who in 2023 became one of the most prominent scientific voices on catastrophic AI risk, chairing the International AI Safety Report and founding LawZero.",
+  "selection": {
+   "influence": [
+    5,
+    "Neural language models, attention, GANs lineage via Mila; most-cited computer scientist."
+   ],
+   "foresight": [
+    3,
+    "System-2 call partially vindicated; risk timeline claims unresolved."
+   ],
+   "allocation": [
+    3,
+    "Policy influence via international report; modest capital."
+   ],
+   "contribution": [
+    5,
+    "Foundational sequence-modeling and attention work."
+   ],
+   "corpus": [
+    4,
+    "Essays on his blog, testimony, papers."
+   ],
+   "future": [
+    4,
+    "Shapes international AI safety governance."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2017",
+    "summary": "Deep learning needs System-2 reasoning and causal, compositional representations to generalize.",
+    "evidenceIds": [
+     "ev-bengio-4"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Converted to taking catastrophic risk seriously; human-level AI 5-20 years away; supported pause and regulation.",
+    "evidenceIds": [
+     "ev-bengio-1",
+     "ev-bengio-2",
+     "ev-bengio-3",
+     "ev-bengio-5"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Agency is the core danger; proposed non-agentic Scientist AI and founded LawZero; chaired International AI Safety Report.",
+    "evidenceIds": [
+     "ev-bengio-6",
+     "ev-bengio-7",
+     "ev-bengio-8",
+     "ev-bengio-9"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2023-05",
+    "from": "Human-level AI decades to centuries away; risk discussion premature",
+    "to": "Human-level AI plausibly 5-20 years away; catastrophic/loss-of-control risk a priority",
+    "trigger": "ChatGPT/GPT-4 capabilities",
+    "evidenceIds": [
+     "ev-bengio-2",
+     "ev-bengio-3"
+    ]
+   }
+  ],
+  "corpusNotes": "All Bengio evidence is 'recalled' — search budget was exhausted and page fetches failed before Bengio could be re-verified. No 2026 developments verified."
+ },
+ {
+  "id": "ilya-sutskever",
+  "name": "Ilya Sutskever",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "Google Brain",
+    "title": "Research Scientist",
+    "from": "2013",
+    "to": "2015"
+   },
+   {
+    "org": "OpenAI",
+    "title": "Co-founder & Chief Scientist",
+    "from": "2015-12",
+    "to": "2024-05"
+   },
+   {
+    "org": "Safe Superintelligence Inc.",
+    "title": "Co-founder; CEO from 2025-07",
+    "from": "2024-06",
+    "to": null
+   }
+  ],
+  "bio": "Co-author of AlexNet and seq2seq, co-founder and longtime chief scientist of OpenAI, and an early, influential believer in scaling; founded Safe Superintelligence Inc. in 2024.",
+  "selection": {
+   "influence": [
+    5,
+    "Driving force behind OpenAI's scaling research."
+   ],
+   "foresight": [
+    4,
+    "Early scaling conviction vindicated; 'peak data' call broadly on target."
+   ],
+   "allocation": [
+    4,
+    "Raised billions for SSI; shaped OpenAI direction."
+   ],
+   "contribution": [
+    5,
+    "AlexNet, seq2seq, GPT lineage."
+   ],
+   "corpus": [
+    2,
+    "Rare public statements; few dated predictions."
+   ],
+   "future": [
+    4,
+    "SSI is a well-funded independent frontier bet."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Big networks on big data guarantee success.",
+    "evidenceIds": [
+     "ev-hinton-9",
+     "ev-sutskever-1",
+     "ev-sutskever-2"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Next-token prediction implies understanding; superintelligence may come this decade and alignment must be solved urgently.",
+    "evidenceIds": [
+     "ev-sutskever-3",
+     "ev-sutskever-4",
+     "ev-sutskever-5"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Left OpenAI and founded SSI; pretraining as we know it will end because data is finite.",
+    "evidenceIds": [
+     "ev-sutskever-6",
+     "ev-sutskever-7"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Age of scaling is over; back to research; generalization is the key gap.",
+    "evidenceIds": [
+     "ev-sutskever-8"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024-12",
+    "from": "Scaling a big network on a big dataset guarantees success",
+    "to": "Pretraining scale is data-limited; progress now requires research breakthroughs (age of research)",
+    "trigger": "Finite internet data and diminishing pretraining returns",
+    "evidenceIds": [
+     "ev-sutskever-2",
+     "ev-sutskever-7",
+     "ev-sutskever-8"
+    ]
+   }
+  ],
+  "corpusNotes": "Sparse public corpus; all Sutskever evidence is 'recalled' (no searches remained). Musk v. OpenAI deposition/trial material and any 2026 SSI developments not verified."
+ },
+ {
+  "id": "gary-marcus",
+  "name": "Gary Marcus",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "NYU",
+    "title": "Professor Emeritus of Psychology and Neural Science",
+    "from": "1997",
+    "to": null
+   },
+   {
+    "org": "Geometric Intelligence (acquired by Uber)",
+    "title": "Founder & CEO",
+    "from": "2014",
+    "to": "2016"
+   },
+   {
+    "org": "Robust.AI",
+    "title": "Co-founder",
+    "from": "2019",
+    "to": null
+   }
+  ],
+  "bio": "Cognitive scientist and author who is the most prominent public critic of deep learning and LLM scaling, advocating neurosymbolic AI and stronger regulation; testified to the US Senate in 2023.",
+  "selection": {
+   "influence": [
+    3,
+    "Shapes public/policy skepticism more than technical direction."
+   ],
+   "foresight": [
+    3,
+    "Correct on persistent hallucinations and 2024 commoditization; wrong on 'wall' in 2022."
+   ],
+   "allocation": [
+    2,
+    "Little capital control."
+   ],
+   "contribution": [
+    2,
+    "Limited architectural contribution."
+   ],
+   "corpus": [
+    5,
+    "Very prolific Substack with many dated predictions."
+   ],
+   "future": [
+    2,
+    "Influential critic rather than builder."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2017",
+    "summary": "Deep learning has ten fundamental limits; hybrids needed.",
+    "evidenceIds": [
+     "ev-marcus-1"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Scaling hitting a wall; LLMs unreliable; AGI not by 2029; strong regulation needed; GenAI may be a dud.",
+    "evidenceIds": [
+     "ev-marcus-2",
+     "ev-marcus-3",
+     "ev-marcus-4",
+     "ev-marcus-6"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Commoditization of GPT-4-level models, no GPT-5, diminishing returns.",
+    "evidenceIds": [
+     "ev-marcus-5",
+     "ev-marcus-7"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "GPT-5 underwhelming; hallucinations unsolved; bubble warnings.",
+    "evidenceIds": [
+     "ev-marcus-8"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "Large dated corpus on Substack, but all Marcus evidence here is 'recalled' because searches ran out before he could be researched and substack fetches failed; specific URLs omitted. No 2026 statements verified."
+ },
+ {
+  "id": "andrej-karpathy",
+  "name": "Andrej Karpathy",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "Stanford University",
+    "title": "PhD student (CS231n co-instructor)",
+    "from": "2011",
+    "to": "2015"
+   },
+   {
+    "org": "OpenAI",
+    "title": "Founding member / research scientist",
+    "from": "2015",
+    "to": "2017"
+   },
+   {
+    "org": "Tesla",
+    "title": "Director / Sr. Director of AI (Autopilot vision)",
+    "from": "2017-06",
+    "to": "2022-07"
+   },
+   {
+    "org": "OpenAI",
+    "title": "Research scientist (second stint)",
+    "from": "2023-02",
+    "to": "2024-02"
+   },
+   {
+    "org": "Eureka Labs",
+    "title": "Founder",
+    "from": "2024-07",
+    "to": null
+   },
+   {
+    "org": "Anthropic",
+    "title": "Pretraining team (Claude-accelerated pretraining research)",
+    "from": "2026-05",
+    "to": null
+   }
+  ],
+  "bio": "Deep-learning researcher and educator (CS231n, nanoGPT/nanochat) who led Tesla's vision-only Autopilot neural-network effort and co-founded OpenAI. He coined widely adopted framings of the field: 'Software 2.0', 'LLM OS', 'vibe coding' and 'Software 3.0'.",
+  "selection": {
+   "influence": [
+    5,
+    "His framings (Software 2.0/3.0, vibe coding, LLM OS) and teaching materials shape how practitioners think about neural nets and LLMs."
+   ],
+   "foresight": [
+    4,
+    "Software 2.0 (2017) and 'English as programming language' (2023) anticipated coding agents; agent-timeline calls are still open."
+   ],
+   "allocation": [
+    3,
+    "Steered Tesla's vision-only stack; little direct capital allocation."
+   ],
+   "contribution": [
+    4,
+    "Led Tesla Autopilot neural nets; OpenAI founding team; major open-source educational code."
+   ],
+   "corpus": [
+    5,
+    "Extensive dated blog posts, tweets, talks and long interviews."
+   ],
+   "future": [
+    4,
+    "Joined Anthropic pretraining in May 2026 to use Claude to accelerate training runs; his tools and framings spread fast."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "End-to-end trained neural nets (CNNs, RNNs) are unreasonably effective. Simple architectures trained on data can learn rich structure such as language and image captions.",
+    "evidenceIds": [
+     "ev-karpathy-16"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Neural networks are a new kind of software ('Software 2.0'). Programmers will curate datasets and objectives, and optimization will write the weights, progressively eating hand-written code (as at Tesla).",
+    "evidenceIds": [
+     "ev-karpathy-1"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "At Tesla he argued camera-only vision plus large-scale fleet data and neural nets can replace lidar and HD maps, which he called unscalable.",
+    "evidenceIds": [
+     "ev-karpathy-14",
+     "ev-karpathy-15"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "After ChatGPT, natural language becomes the interface for programming ('the hottest new programming language is English'). LLMs are best seen as the kernel process of a new operating system that orchestrates tools, memory and I/O.",
+    "evidenceIds": [
+     "ev-karpathy-2",
+     "ev-karpathy-5"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Left OpenAI and bet on AI-native education. Human teachers design courses and AI teaching assistants scale them (Eureka Labs, LLM101n).",
+    "evidenceIds": [
+     "ev-karpathy-7"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "LLMs make 'vibe coding' and Software 3.0 possible, but they are fallible 'people spirits'. Build partial-autonomy tools rather than fully autonomous agents. This is the 'decade of agents', not the year: agents 'just don't work' yet (no continual learning, weak computer use), and RL is a noisy way to learn.",
+    "evidenceIds": [
+     "ev-karpathy-3",
+     "ev-karpathy-4",
+     "ev-karpathy-6"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Coding agents crossed a 'threshold of coherence' around December 2025. He switched to about 80% agent-written code and began automating ML research itself (autoresearch), then joined Anthropic to use Claude to accelerate pretraining research. He still flagged agents' wrong assumptions and sycophancy.",
+    "evidenceIds": [
+     "ev-karpathy-8",
+     "ev-karpathy-9",
+     "ev-karpathy-10",
+     "ev-karpathy-11"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2026-01",
+    "from": "Oct 2025: current agents 'just don't work' and are cognitively lacking. A mature agent era is a decade away.",
+    "to": "Jan 2026: coding agents 'crossed some kind of threshold of coherence around December 2025 and caused a phase shift in software engineering'. He now does about 80% agent coding.",
+    "trigger": "Hands-on experience with late-2025 coding agents (Claude Code era models) on real projects.",
+    "evidenceIds": [
+     "ev-karpathy-6",
+     "ev-karpathy-9"
+    ]
+   }
+  ],
+  "corpusNotes": "Very rich corpus, but primary pages (x.com, karpathy.medium.com, dwarkesh.com, YouTube) could not be fetched during research (DNS blocked). Quotes come from search snippets of secondary pages that reproduce his words. He gives few numeric, dated forecasts. His agent 'decade' framing is explicitly intuition-based. No dated self-driving timeline from his Tesla years could be found."
+ },
+ {
+  "id": "fei-fei-li",
+  "name": "Fei-Fei Li",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "Princeton / Stanford University",
+    "title": "Professor of Computer Science (ImageNet PI)",
+    "from": "2007",
+    "to": null
+   },
+   {
+    "org": "Stanford AI Lab",
+    "title": "Director",
+    "from": "2013",
+    "to": "2018"
+   },
+   {
+    "org": "Google Cloud",
+    "title": "Chief Scientist, AI/ML (sabbatical)",
+    "from": "2017-01",
+    "to": "2018-09"
+   },
+   {
+    "org": "Stanford HAI",
+    "title": "Co-Director",
+    "from": "2019-03",
+    "to": null
+   },
+   {
+    "org": "NAIRR Task Force (US)",
+    "title": "Member",
+    "from": "2021-06",
+    "to": "2023-01"
+   },
+   {
+    "org": "World Labs",
+    "title": "Co-founder & CEO",
+    "from": "2024",
+    "to": null
+   },
+   {
+    "org": "AMD",
+    "title": "EVP & Chief Scientist (announced with acquisition of World Labs; pending close)",
+    "from": "2026-09",
+    "to": null
+   }
+  ],
+  "bio": "Computer-vision scientist who created ImageNet (CVPR 2009), the dataset whose 2012 challenge launched the deep-learning era. She co-founded Stanford HAI, advocated a US National AI Research Resource, and founded World Labs (spatial intelligence / world models), which AMD agreed to acquire in Sept 2026.",
+  "selection": {
+   "influence": [
+    5,
+    "ImageNet reoriented AI toward large-scale data, and the 'human-centered AI' framing shaped policy discourse."
+   ],
+   "foresight": [
+    4,
+    "The data-centric bet (2006–2009) was strongly vindicated. The spatial-intelligence thesis is still open."
+   ],
+   "allocation": [
+    4,
+    "Raised ~$1.23B for World Labs, and its pending $8.2B sale to AMD redirects chipmaker strategy. Shaped NAIRR and California policy."
+   ],
+   "contribution": [
+    5,
+    "ImageNet/ILSVRC, plus Marble, a commercial world-model product."
+   ],
+   "corpus": [
+    4,
+    "Op-eds, memoir (The Worlds I See, 2023), essays, testimony, many interviews. Few numeric forecasts."
+   ],
+   "future": [
+    4,
+    "Will be AMD chief scientist after the deal closes. A leading voice on world models and public-sector AI."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Large, diverse labeled data, not just better models, is the key to visual intelligence. ImageNet's success with deep nets (2012) validated this.",
+    "evidenceIds": [
+     "ev-li-1",
+     "ev-li-2"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "AI must be 'human-centered': capture more of the depth of human intelligence, enhance rather than replace people, and be guided by concern for human impact. 'Data will redefine how we think about models.'",
+    "evidenceIds": [
+     "ev-li-1",
+     "ev-li-3",
+     "ev-li-16"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "Academia and the public sector are falling behind industry in compute and data. The US needs a National AI Research Resource. Served on the NAIRR Task Force from 2021.",
+    "evidenceIds": [
+     "ev-li-4"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Continued HAI policy work. Her memoir framed AI as a human story requiring public-sector investment, but she did not publicly theorize LLM scaling.",
+    "evidenceIds": [
+     "ev-li-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "The next frontier is spatial intelligence: models that perceive, generate and act in 3D worlds (World Labs). She opposed SB 1047 as harmful to academia, open source and 'little tech', and said she does not know what 'AGI' means.",
+    "evidenceIds": [
+     "ev-li-5",
+     "ev-li-7",
+     "ev-li-9"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "LLMs lack grounding in space, motion and consequence. World models that generate consistent 3D worlds are AI's next frontier. Shipped Marble. Called AGI more a marketing term than a scientific one.",
+    "evidenceIds": [
+     "ev-li-10",
+     "ev-li-11",
+     "ev-li-14"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Scaled World Labs ($1B round, Feb 2026), then agreed to sell it to AMD for ~$8.2B in stock and become AMD chief scientist. She bet that world models will matter to compute hardware roadmaps.",
+    "evidenceIds": [
+     "ev-li-12",
+     "ev-li-13"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "No primary pages could be fetched (NYT, Substack, Fortune blocked). Quotes come from search snippets of reposts and coverage. Her public statements are mostly framings and aspirations rather than dated forecasts. The 'first product by 2025' timing came from press reports, not her own words. Her World Labs claims are partly corporate messaging."
+ },
+ {
+  "id": "richard-sutton",
+  "name": "Richard Sutton",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "University of Alberta",
+    "title": "Professor of Computing Science",
+    "from": "2003",
+    "to": null
+   },
+   {
+    "org": "DeepMind (Alberta)",
+    "title": "Distinguished Research Scientist",
+    "from": "2017",
+    "to": "2023"
+   },
+   {
+    "org": "Keen Technologies",
+    "title": "Research scientist / partner (with John Carmack)",
+    "from": "2023",
+    "to": null
+   },
+   {
+    "org": "Amii",
+    "title": "Chief Scientific Advisor",
+    "from": "2017",
+    "to": null
+   }
+  ],
+  "bio": "Founding figure of modern reinforcement learning (TD learning, policy gradients, the Sutton & Barto textbook), and co-recipient of the 2024 ACM Turing Award (announced March 2025). His 2019 essay 'The Bitter Lesson' became the canonical argument for general, compute-leveraging methods.",
+  "selection": {
+   "influence": [
+    5,
+    "'The Bitter Lesson' is one of the most cited justifications for the scaling paradigm, and RL underlies modern reasoning-model post-training."
+   ],
+   "foresight": [
+    4,
+    "The compute-over-handcrafting thesis was vindicated. His LLM skepticism and experience-centric predictions are unresolved."
+   ],
+   "allocation": [
+    2,
+    "Little direct capital. Influence is via ideas, students and the Alberta ecosystem."
+   ],
+   "contribution": [
+    5,
+    "Core RL algorithms and textbook."
+   ],
+   "corpus": [
+    3,
+    "Short essays, talks, a few long interviews. Few dated numeric forecasts could be verified during research."
+   ],
+   "future": [
+    3,
+    "Shapes the 'experience/continual learning' research agenda (Alberta Plan, Keen, Era of Experience)."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2017",
+    "summary": "Seventy years of AI show that general methods leveraging computation (search and learning) beat approaches built on human knowledge. Researchers should stop building in how they think minds work.",
+    "evidenceIds": [
+     "ev-sutton-1"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "Co-authored the hypothesis that reward maximization is enough to drive intelligence and its associated abilities.",
+    "evidenceIds": [
+     "ev-silver-4"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Alberta Plan: AI research should focus on agents that learn continually from ordinary experience with a single stream of interaction. Succession to AI is inevitable and should be welcomed rather than feared.",
+    "evidenceIds": [
+     "ev-sutton-2",
+     "ev-sutton-4"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Era of Experience (with Silver): the era of human data is ending and agents will learn mostly from their own experience. On Dwarkesh he argued LLMs lack goals and ground truth, only imitate humans, and are not a real world model. He expects them to be superseded, in line with the Bitter Lesson.",
+    "evidenceIds": [
+     "ev-silver-6",
+     "ev-sutton-3"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "IMPORTANT: web search budget ran out before Sutton could be searched, and fetching was blocked. All Sutton evidence is recalled from background knowledge (verification='recalled') and was not re-confirmed during research. His views are highly consistent over time. No reversal found. Specific numeric AGI-probability statements attributed to him could not be verified and were omitted."
+ },
+ {
+  "id": "david-silver",
+  "name": "David Silver",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "Google DeepMind",
+    "title": "Principal Research Scientist; RL lead (AlphaGo, AlphaZero, AlphaProof)",
+    "from": "2013",
+    "to": "2026"
+   },
+   {
+    "org": "University College London",
+    "title": "Professor",
+    "from": "2013",
+    "to": null
+   }
+  ],
+  "bio": "Reinforcement-learning researcher who led AlphaGo, AlphaGo Zero, AlphaZero, MuZero and AlphaProof at DeepMind. Co-author with Sutton of 'Reward is enough' (2021) and 'Welcome to the Era of Experience' (2025).",
+  "selection": {
+   "influence": [
+    5,
+    "AlphaGo was the landmark demonstration of deep RL + search, and self-play/RL ideas now drive reasoning-model training."
+   ],
+   "foresight": [
+    4,
+    "Game results arrived years ahead of expert expectations. The broad 'reward is enough' / experience theses are unresolved."
+   ],
+   "allocation": [
+    3,
+    "Steered DeepMind's RL agenda. Reportedly left to found a startup in 2026 (unverified)."
+   ],
+   "contribution": [
+    5,
+    "AlphaGo/AlphaZero/MuZero/AlphaProof."
+   ],
+   "corpus": [
+    3,
+    "Mainly papers plus a few talks and podcasts. Few explicit forecasts."
+   ],
+   "future": [
+    4,
+    "The experience-driven RL agenda is a leading candidate for what comes after human-data scaling."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Deep neural networks combined with tree search and RL from self-play can master domains like Go long thought to require human intuition.",
+    "evidenceIds": [
+     "ev-silver-1"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Learning tabula rasa, without human data, can exceed systems trained on human knowledge. A single general algorithm can master multiple games.",
+    "evidenceIds": [
+     "ev-silver-2",
+     "ev-silver-3"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "Reward maximization is sufficient to drive the emergence of most or all abilities associated with intelligence.",
+    "evidenceIds": [
+     "ev-silver-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "RL with formal verification (Lean) and self-generated problems can reach olympiad-level mathematics (AlphaProof, IMO 2024 silver standard).",
+    "evidenceIds": [
+     "ev-silver-5"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Human-data-driven AI is approaching its limits. Agents learning from streams of their own experience, with grounded rewards, will drive the next era ('Era of Experience').",
+    "evidenceIds": [
+     "ev-silver-6"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "IMPORTANT: no web search budget remained for Silver and fetching was blocked. All evidence is recalled and not re-confirmed during research. Corpus is dominated by technical papers, which give results rather than forecasts. The 2026 departure/startup claim is low-confidence recall."
+ },
+ {
+  "id": "francois-chollet",
+  "name": "François Chollet",
+  "cohort": "researchers",
+  "roles": [
+   {
+    "org": "Google",
+    "title": "Software engineer / AI researcher; creator of Keras",
+    "from": "2015",
+    "to": "2024-11"
+   },
+   {
+    "org": "ARC Prize Foundation",
+    "title": "Co-founder (with Mike Knoop)",
+    "from": "2024-06",
+    "to": null
+   },
+   {
+    "org": "Ndea",
+    "title": "Co-founder",
+    "from": "2025-01",
+    "to": null
+   }
+  ],
+  "bio": "Creator of the Keras deep-learning library and author of 'On the Measure of Intelligence' (2019), which defined intelligence as skill-acquisition efficiency and introduced the ARC benchmark. He is the most prominent technically grounded skeptic that LLM scaling alone yields general intelligence.",
+  "selection": {
+   "influence": [
+    4,
+    "Keras democratized deep learning, and ARC-AGI became a key frontier benchmark cited by labs (e.g., at OpenAI's o3 launch)."
+   ],
+   "foresight": [
+    4,
+    "ARC resisted LLM scaling for ~5 years as he argued. He correctly forecast ARC-AGI-2 would humble o3. He conceded o3's breakthrough."
+   ],
+   "allocation": [
+    2,
+    "Small lab (Ndea) and benchmark/prize. Limited capital."
+   ],
+   "contribution": [
+    4,
+    "Keras and ARC-AGI benchmarks."
+   ],
+   "corpus": [
+    5,
+    "Prolific, dated essays, papers, tweets and long interviews."
+   ],
+   "future": [
+    3,
+    "ARC benchmarks shape how labs measure generalization. Ndea pursues program synthesis."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Deep learning should be accessible to all developers (Keras).",
+    "evidenceIds": [
+     "ev-chollet-1"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Intelligence is situated and bounded by environment. There will be no runaway 'intelligence explosion'. Intelligence is skill-acquisition efficiency, not task skill, so benchmarks that reward memorized skill mismeasure it (ARC).",
+    "evidenceIds": [
+     "ev-chollet-2",
+     "ev-chollet-3"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "LLMs are vast stores of memorized programs/patterns with little ability to adapt to genuine novelty. Scaling them does not produce fluid intelligence, as near-zero ARC scores show.",
+    "evidenceIds": [
+     "ev-chollet-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Launched the $1M ARC Prize, arguing LLM dominance and closed frontier research set back AGI progress. After o3 (Dec 2024) he called it a genuine step-function breakthrough in test-time adaptation, but not AGI.",
+    "evidenceIds": [
+     "ev-chollet-4",
+     "ev-chollet-5"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "AGI requires efficient test-time adaptation via program synthesis guided by deep learning (Ndea). Released ARC-AGI-2 and an interactive ARC-AGI-3 to keep measuring the human–AI generalization gap.",
+    "evidenceIds": [
+     "ev-chollet-6",
+     "ev-chollet-7"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024-12",
+    "from": "LLMs (memorization-based) cannot adapt to novelty and score near zero on ARC. Scale alone will not get there.",
+    "to": "o3 is a genuine breakthrough and a qualitative shift showing real test-time adaptation, though still not AGI.",
+    "trigger": "OpenAI o3 scoring 75.7% (semi-private, within compute limit) and 87.5% (high compute) on ARC-AGI-1.",
+    "evidenceIds": [
+     "ev-chollet-5"
+    ]
+   }
+  ],
+  "corpusNotes": "IMPORTANT: no web search budget remained for Chollet and fetching was blocked. All evidence is recalled, not re-confirmed during research, so verbatim flags are false throughout. ARC-AGI-2/3 scores from mid-2025 to Oct 2026 could not be verified. His own reversal is partial: he frames o3 as vindicating test-time search/program synthesis rather than LLM scaling."
+ },
+ {
+  "id": "marc-andreessen",
+  "name": "Marc Andreessen",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Andreessen Horowitz (a16z)",
+    "title": "Co-founder & General Partner",
+    "from": "2009",
+    "to": null
+   },
+   {
+    "org": "Meta (Facebook)",
+    "title": "Board member",
+    "from": "2008",
+    "to": null
+   }
+  ],
+  "bio": "Co-creator of Mosaic/Netscape and co-founder of Andreessen Horowitz, one of the largest venture firms investing in AI. Since 2023 he has been the most prominent investor voice for AI accelerationism, open-source AI and against precautionary AI regulation.",
+  "selection": {
+   "influence": [
+    4,
+    "His 2023 essays ('Why AI Will Save the World', 'Techno-Optimist Manifesto') set the terms of the accelerationist/anti-regulation side of the AI policy debate."
+   ],
+   "foresight": [
+    3,
+    "Directionally right on open-weight proliferation, China competition and model commoditization pressure; labor and risk claims are long-horizon and largely unresolved."
+   ],
+   "allocation": [
+    5,
+    "a16z deploys tens of billions of dollars and lobbies actively on US AI policy (SB 1047 opposition, joint statement with Microsoft, AI Action Plan input)."
+   ],
+   "contribution": [
+    3,
+    "Contribution is capital and policy influence rather than architecture; a16z backs many AI labs and apps."
+   ],
+   "corpus": [
+    4,
+    "Large public corpus (essays, podcasts, X posts) from 2023 on; thin and AI-nonspecific before 2023."
+   ],
+   "future": [
+    5,
+    "Close to US policymakers since 2025; a16z positions shape funding and regulatory direction."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Context: his 2011 'Software is eating the world' thesis held that software companies would take over large parts of the economy. No substantial AI-specific forecasts by him from 2012–2016 were found during research.",
+    "evidenceIds": []
+   },
+   {
+    "period": "p2022",
+    "summary": "AI is a tool owned and controlled by people, not a threat; fears of existential risk and mass unemployment are a moral panic. China is the real risk. Open source should be unrestricted, and large AI companies seeking regulation are 'bootleggers' after regulatory capture. Slowing AI 'costs lives'.",
+    "evidenceIds": [
+     "ev-andreessen-1",
+     "ev-andreessen-2",
+     "ev-andreessen-3",
+     "ev-andreessen-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Model building may become a commoditized 'race to the bottom' ('selling rice') or a Google-like winner-take-all; he treated this as open. Policy fight moved center stage: he publicly feuded with Khosla over open source (Mar 2024), co-signed a policy statement with Microsoft (Nov 2024), and cited Biden-administration AI policy as a reason for backing Trump. Said AI was producing a hiring boom.",
+    "evidenceIds": [
+     "ev-andreessen-5",
+     "ev-andreessen-6",
+     "ev-andreessen-7",
+     "ev-andreessen-8",
+     "ev-andreessen-9",
+     "ev-khosla-7"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Called DeepSeek-R1 'AI's Sputnik moment' and pushed the US to lead in open-source AI against China. On labor, said disruption will be slower than feared because many jobs are protected by licensing, unions or civil-service rules.",
+    "evidenceIds": [
+     "ev-andreessen-10",
+     "ev-andreessen-11",
+     "ev-out-openmodels-1"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Frames AI as an '80-year overnight success', not a hype cycle. Discusses the dot-com comparison for AI capex. Calls AI job-loss narratives 'fake' and expects employment gains. Secondary summaries say he sees the moat as what is built around the model, not the model itself.",
+    "evidenceIds": [
+     "ev-andreessen-12",
+     "ev-andreessen-13",
+     "ev-andreessen-14",
+     "ev-out-capex-1"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024-07",
+    "from": "Historically aligned with Democratic candidates (endorsed Hillary Clinton in 2016, per background knowledge)",
+    "to": "Publicly backed Donald Trump in 2024 together with Ben Horowitz",
+    "trigger": "He attributes it largely to Biden-administration tech policy, including May 2024 AI meetings he described as 'horrifying'. Former Biden officials dispute his account of those meetings.",
+    "evidenceIds": [
+     "ev-andreessen-8",
+     "ev-out-whitehouse-1"
+    ]
+   }
+  ],
+  "corpusNotes": "a16z.com, techcrunch.com, fortune.com and other primary hosts were unreachable (proxy blocked every fetch). Quotes come from search snippets. The essays' full text was not re-read during research. His AI-specific public corpus before 2023 is thin. Many 2025–26 statements are X posts and podcasts known only through secondary summaries."
+ },
+ {
+  "id": "vinod-khosla",
+  "name": "Vinod Khosla",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Khosla Ventures",
+    "title": "Founder",
+    "from": "2004",
+    "to": null
+   },
+   {
+    "org": "Sun Microsystems",
+    "title": "Co-founder",
+    "from": "1982",
+    "to": "1985"
+   }
+  ],
+  "bio": "Sun Microsystems co-founder and founder of Khosla Ventures. He was OpenAI's first venture investor (2019) and since 2012 has made some of the boldest public forecasts about AI replacing expert work, especially medicine.",
+  "selection": {
+   "influence": [
+    4,
+    "His 'doctor algorithm' thesis (2012) and '80% of 80% of jobs' forecasts (2024–26) are widely cited reference points in AI-and-labor debates."
+   ],
+   "foresight": [
+    3,
+    "Very early on AI's expert-replacement potential and on OpenAI (2019). His 2025 medical-replacement timeline failed badly."
+   ],
+   "allocation": [
+    4,
+    "His $50M 2019 OpenAI bet and a large AI portfolio (health, robotics, models) steered meaningful capital."
+   ],
+   "contribution": [
+    3,
+    "Capital and agenda-setting rather than technical contribution."
+   ],
+   "corpus": [
+    4,
+    "Long, consistent record of essays, keynotes and interviews from 2012 to 2026."
+   ],
+   "future": [
+    4,
+    "Major OpenAI stakeholder and active voice on US–China AI policy and labor transition (UBI)."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Data-driven software ('Doctor Algorithm') would take over most diagnosis and prescription work, leaving only the top ~20% of doctors temporarily. Medicine would go mobile with far fewer doctors.",
+    "evidenceIds": [
+     "ev-khosla-1",
+     "ev-khosla-2",
+     "ev-khosla-3",
+     "ev-khosla-4"
+    ]
+   },
+   {
+    "period": "p2017",
+    "summary": "Acted on an AGI-scale thesis by making a $50M investment in OpenAI in 2019, which he called his largest initial bet and nearly impossible to diligence given OpenAI's structure.",
+    "evidenceIds": [
+     "ev-khosla-5"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Strongly backed Sam Altman during the November 2023 OpenAI board crisis. Treated frontier AI as strategic national technology.",
+    "evidenceIds": [
+     "ev-khosla-6"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Frontier AI is a geopolitical race with China, so frontier models should not be open-sourced ('Would you open source the Manhattan Project?'). AI will be able to do 80% of the work in 80% of jobs. Expertise (doctors, tutors) will become near-free. Dystopian outcomes are policy choices, and UBI-style redistribution may be needed.",
+    "evidenceIds": [
+     "ev-khosla-7",
+     "ev-khosla-8",
+     "ev-khosla-9"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Put a timeline on the labor forecast: within five years AI will be able to do 80% of any economically valuable job.",
+    "evidenceIds": [
+     "ev-khosla-10"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Restated the forecast as 'starting in about 2030', with most jobs capable of being done by AI, framed as deflationary abundance rather than collapse.",
+    "evidenceIds": [
+     "ev-khosla-11",
+     "ev-out-oecd-1"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "No outright reversal found. The main evolution is horizon drift: the 2012-era claim that machines would do up to 80% of physicians' diagnostic and prescription work by 2025 resurfaces in 2024–26 as a general labor claim dated about 2030. The exact 2012 wording varies between the TechCrunch essay and secondary keynote reports. Primary pages could not be fetched; some quotes come from secondary sources (Wachter excerpt, Fortune)."
+ },
+ {
+  "id": "bill-gurley",
+  "name": "Bill Gurley",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Benchmark",
+    "title": "General Partner",
+    "from": "1999",
+    "to": null
+   }
+  ],
+  "bio": "Long-time Benchmark general partner (Uber, Zillow, Stitch Fix) who stopped leading new deals around 2020 and has since become an influential commentator. His September 2023 '2,851 Miles' talk framed AI regulation as a regulatory-capture risk.",
+  "selection": {
+   "influence": [
+    3,
+    "Popularized the regulatory-capture critique of frontier-lab calls for AI licensing in 2023."
+   ],
+   "foresight": [
+    2,
+    "Few dated, testable AI predictions found. Provisional score."
+   ],
+   "allocation": [
+    2,
+    "No longer leading new venture investments. Influence comes through commentary, not capital."
+   ],
+   "contribution": [
+    1,
+    "No direct architectural or commercial AI contribution identified."
+   ],
+   "corpus": [
+    2,
+    "Corpus is mostly talks and podcasts (All-In Summit, BG2). Little AI-specific written work was identified during research."
+   ],
+   "future": [
+    2,
+    "A commentator voice in policy and valuation debates."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2022",
+    "summary": "Incumbent AI firms calling for licensing and new agencies risk regulatory capture that would freeze out startups and open source. Washington's distance from Silicon Valley lets incumbents shape rules.",
+    "evidenceIds": [
+     "ev-gurley-1"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "Evidence is thin. The search budget ran out before Gurley-specific searches, and every fetch was blocked, so all Gurley evidence is recalled from background knowledge, unverified during research, with empty URLs. His 2024–26 views on AI capex and bubbles (e.g. on the BG2 podcast) could not be dated or quoted reliably and are not included as assertions."
+ },
+ {
+  "id": "reid-hoffman",
+  "name": "Reid Hoffman",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Greylock Partners",
+    "title": "Partner",
+    "from": "2009",
+    "to": null
+   },
+   {
+    "org": "OpenAI",
+    "title": "Founding donor; board member",
+    "from": "2015",
+    "to": "2023-03"
+   },
+   {
+    "org": "Microsoft",
+    "title": "Board member",
+    "from": "2017",
+    "to": null
+   },
+   {
+    "org": "Inflection AI",
+    "title": "Co-founder",
+    "from": "2022",
+    "to": null
+   },
+   {
+    "org": "Manas AI",
+    "title": "Co-founder",
+    "from": "2025",
+    "to": null
+   }
+  ],
+  "bio": "LinkedIn co-founder and Greylock partner. He was a founding donor and later board member of OpenAI, co-founded Inflection AI with Mustafa Suleyman, and sits on Microsoft's board. He is the leading investor voice for AI as human amplification ('Impromptu', 'Superagency').",
+  "selection": {
+   "influence": [
+    4,
+    "Bridge between OpenAI, Microsoft and policy circles. His books frame the 'amplification / iterative deployment' position."
+   ],
+   "foresight": [
+    3,
+    "Early backer of OpenAI (2015). His Inflection consumer-AI bet did not succeed as an independent company."
+   ],
+   "allocation": [
+    4,
+    "Funded OpenAI early, co-founded Inflection (which raised $1.3B in 2023), and sits on Microsoft's board."
+   ],
+   "contribution": [
+    3,
+    "Commercial: Inflection/Pi and a role in shaping the OpenAI–Microsoft ecosystem."
+   ],
+   "corpus": [
+    4,
+    "Two AI books (2023, 2025), the Possible podcast and many essays."
+   ],
+   "future": [
+    4,
+    "Microsoft board seat, Manas AI, and policy influence among Democrats."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2012",
+    "summary": "Backed the founding of OpenAI (December 2015) as a donor, implying belief that advanced AI was coming and should be developed by a mission-driven lab. This is an inference from the action.",
+    "evidenceIds": [
+     "ev-hoffman-1"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Large language models are an amplifier of human capability, a copilot for every profession, not a replacement ('Impromptu', written with GPT-4). Acted on a personal-AI thesis by co-founding Inflection (Pi).",
+    "evidenceIds": [
+     "ev-hoffman-2",
+     "ev-hoffman-3",
+     "ev-hoffman-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Inflection's consumer strategy ended when Microsoft hired its co-founders and most staff and licensed its models (March 2024).",
+    "evidenceIds": [
+     "ev-hoffman-5"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "'Superagency': a 'Bloomer' stance that broad, iterative public deployment, rather than precautionary regulation, is the safest route and will give individuals 'superagency'. Applied AI to drug discovery via Manas AI.",
+    "evidenceIds": [
+     "ev-hoffman-6",
+     "ev-hoffman-7"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024-03",
+    "from": "Building Inflection as an independent consumer personal-AI company (Pi)",
+    "to": "Microsoft hired Inflection's co-founders and staff and licensed its models. Inflection pivoted to enterprise.",
+    "trigger": "Difficulty competing with frontier labs on compute and capital (per contemporary reporting, recalled)",
+    "evidenceIds": [
+     "ev-hoffman-5"
+    ]
+   }
+  ],
+  "corpusNotes": "The search budget was exhausted before Hoffman-specific searches. Every Hoffman item is recalled from background knowledge (books, announcements) and unverified during research. Dated numeric predictions by Hoffman were not reliably identified. His public positions are mostly normative framing (amplification, iterative deployment)."
+ },
+ {
+  "id": "elad-gil",
+  "name": "Elad Gil",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Independent investor / Elad Blog",
+    "title": "Investor & essayist",
+    "from": "2010",
+    "to": null
+   }
+  ],
+  "bio": "Former Google and Twitter executive turned prolific solo investor, with early stakes in many AI companies. His essays on generative-AI market structure are widely read in Silicon Valley.",
+  "selection": {
+   "influence": [
+    3,
+    "His essays on generative-AI market structure circulate widely among founders and investors."
+   ],
+   "foresight": [
+    3,
+    "Provisional. The oligopoly framing for foundation models held up, but few dated testable predictions were found."
+   ],
+   "allocation": [
+    3,
+    "A prolific early-stage AI investor (e.g. Harvey, recalled)."
+   ],
+   "contribution": [
+    2,
+    "Capital and market-structure framing."
+   ],
+   "corpus": [
+    3,
+    "Regular blog essays, but during research could only work from recall."
+   ],
+   "future": [
+    3,
+    "Shapes early-stage AI application funding."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2022",
+    "summary": "Generative AI is a major platform shift. Backed application-layer companies in vertical domains (e.g. legal AI).",
+    "evidenceIds": [
+     "ev-gil-2"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Unusually, generative-AI market structure was becoming less clear over time. Key open questions: whether foundation models end up as an oligopoly aligned with the hyperscale clouds, the role of open source, and where value accrues between model and application layers.",
+    "evidenceIds": [
+     "ev-gil-1"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "Evidence is very thin. The search budget ran out before Gil-specific searches, and blog.eladgil.com was unreachable. Only items with dates recalled confidently are included. 2025–26 essays on which AI markets had 'clarified', on AI-enabled services roll-ups and on the model-vs-application value split could not be dated or verified, so they are omitted."
+ },
+ {
+  "id": "masayoshi-son",
+  "name": "Masayoshi Son",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "SoftBank Group",
+    "title": "Founder, Chairman & CEO",
+    "from": "1981",
+    "to": null
+   },
+   {
+    "org": "Stargate LLC",
+    "title": "Chairman",
+    "from": "2025-01",
+    "to": null
+   }
+  ],
+  "bio": "Founder of SoftBank Group, owner of Arm and the SoftBank Vision Funds. He became OpenAI's largest outside financial backer (about $64.6B and roughly 13% by Oct 2026) and chairs the Stargate data-center venture.",
+  "selection": {
+   "influence": [
+    3,
+    "Sets a maximalist ASI narrative that others quote, but has little influence on how AI is built technically."
+   ],
+   "foresight": [
+    2,
+    "His long-horizon singularity/ASI dates cannot be judged yet. His dated capital calls are mixed: he exited Nvidia twice before big gains, but bet early and heavily on OpenAI."
+   ],
+   "allocation": [
+    5,
+    "Controls one of the largest pools of AI capital: Vision Funds, a $64.6B position in OpenAI, Stargate financing, Arm."
+   ],
+   "contribution": [
+    3,
+    "Commercial and financial rather than technical. He funded the infrastructure and lab buildout and owns Arm's chip IP."
+   ],
+   "corpus": [
+    3,
+    "Many dated keynote and shareholder-meeting statements, mostly rhetorical and with few mechanisms. Snippets often come from translated or secondary coverage."
+   ],
+   "future": [
+    4,
+    "His OpenAI stake and Stargate role give him substantial leverage over the frontier-lab funding cycle through the late 2020s."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2017",
+    "summary": "Framed AI as the coming singularity. He predicted that by 2047 chips would surpass human intelligence (a chip 'IQ of 10,000'), based on a crude transistor-vs-neuron comparison, and positioned SoftBank and the Vision Fund to ride it.",
+    "evidenceIds": [
+     "ev-son-1",
+     "ev-son-2"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "After ChatGPT he went back on 'offense'. In Oct 2023 he said AGI (10x all of humanity's intelligence) would come within 10 years and called himself nearly alone in that view, with ASI about 20 years out.",
+    "evidenceIds": [
+     "ev-son-3",
+     "ev-son-4"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Shortened his timelines: in June 2024, ASI 10,000x smarter than humans within 10 years; by Oct 2024, AGI within 2–3 years. Said he was 'born' to realize ASI.",
+    "evidenceIds": [
+     "ev-son-5",
+     "ev-son-6",
+     "ev-son-7"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Moved from rhetoric to concentrated capital. He chaired Stargate ($500B over four years), committed up to $40B to OpenAI, said AGI would come 'much earlier' than 2–3 years, aimed for SoftBank to be the top ASI platform within 10 years, and sold his entire Nvidia stake to fund OpenAI.",
+    "evidenceIds": [
+     "ev-son-8",
+     "ev-son-9",
+     "ev-son-10",
+     "ev-son-11",
+     "ev-son-13",
+     "ev-son-16"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Called AI-bubble talk 'an insult to AI' and 'blasphemy', saying AI is at the internet's early stage. Pledged to lead SoftBank for 10–15 more years to pursue ASI, and completed a further $30B OpenAI investment.",
+    "evidenceIds": [
+     "ev-son-14",
+     "ev-son-15",
+     "ev-son-17",
+     "ev-out-softbank-openai-1"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024-10",
+    "from": "AGI within ~10 years (Oct 2023)",
+    "to": "AGI within 2–3 years (Oct 2024), then 'much earlier' than that (Feb 2025)",
+    "trigger": "Rapid LLM progress and his growing partnership with OpenAI. No specific technical trigger was stated in the sources found.",
+    "evidenceIds": [
+     "ev-son-3",
+     "ev-son-7",
+     "ev-son-8"
+    ]
+   },
+   {
+    "date": "2025-11",
+    "from": "Large Nvidia shareholder (re-accumulated after the 2019 Vision Fund exit)",
+    "to": "Sold the entire Nvidia stake (~$5.83B) to fund OpenAI",
+    "trigger": "Needed cash for the $22.5B OpenAI tranche. A person familiar said the sale was not about AI valuations.",
+    "evidenceIds": [
+     "ev-son-12",
+     "ev-son-13"
+    ]
+   }
+  ],
+  "corpusNotes": "Most of Son's statements are keynote or AGM rhetoric reported through news outlets (often translated). Numbers such as '10,000x' and 'IQ 10,000' are not operationalised. The Oct 2024 '2–3 years' remark was seen only via secondary coverage of a Bloomberg report. SoftBank investments are corporate actions and are not treated as proof of his personal beliefs."
+ },
+ {
+  "id": "cathie-wood",
+  "name": "Cathie Wood",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "ARK Invest",
+    "title": "Founder, CEO & CIO",
+    "from": "2014",
+    "to": null
+   }
+  ],
+  "bio": "Founder of ARK Invest, a thematic 'disruptive innovation' ETF manager. Its annual 'Big Ideas' reports publish some of the most quantified public AI cost-decline and productivity forecasts.",
+  "selection": {
+   "influence": [
+    2,
+    "Shapes retail and investor narratives about AI. Little influence on the technology itself."
+   ],
+   "foresight": [
+    2,
+    "The direction of her cost-decline calls was right. Her Nvidia exit (2023) and software-beneficiary calls look wrong so far, and most 2030 targets are unresolved."
+   ],
+   "allocation": [
+    3,
+    "Manages tens of billions in thematic ETFs. Visible but modest relative to hyperscaler capital."
+   ],
+   "contribution": [
+    1,
+    "No architectural or commercial contribution beyond investing."
+   ],
+   "corpus": [
+    4,
+    "Unusually quantified, dated annual forecasts (Big Ideas) plus frequent podcasts and posts."
+   ],
+   "future": [
+    2,
+    "Limited leverage over the future AI ecosystem."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2022",
+    "summary": "Applied Wright's Law to AI. She expected training costs to fall ~70% a year through 2030, AI software to reach up to $14T revenue by 2030 if vendors capture 10% of value created, and knowledge workers to be more than 4x as productive. She saw software and applications, not GPUs, as the next big beneficiaries, and took profits on Nvidia, calling it 'priced ahead of the curve'.",
+    "evidenceIds": [
+     "ev-wood-1",
+     "ev-wood-2",
+     "ev-wood-5",
+     "ev-wood-6",
+     "ev-wood-7"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Raised the training-cost-decline forecast to ~75% a year, splitting it into hardware (~53%) and algorithmic (~47%) improvements.",
+    "evidenceIds": [
+     "ev-wood-4"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Re-entered Nvidia in ARKK (April 2025). Argued the AI cycle differs from the tech/telecom bubble and found bubble worries reassuring.",
+    "evidenceIds": [
+     "ev-wood-8",
+     "ev-wood-9"
+    ]
+   },
+   {
+    "period": "p2026",
+    "summary": "Big Ideas 2026 'Great Acceleration': inference costs down >99% in a year, data-center investment rising to ~$1.4T by 2030, and real GDP growth possibly above 7% by 2030. Said the bubble is in gold, not AI.",
+    "evidenceIds": [
+     "ev-wood-9",
+     "ev-wood-10"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2025-04",
+    "from": "Exited Nvidia entirely from ARKK (Nov 2022–Jan 2023); called it priced ahead of the curve",
+    "to": "Bought Nvidia again for ARKK",
+    "trigger": "Nvidia's multi-year rally and the AI infrastructure buildout. Her explicit reasoning for the re-entry was not captured in sources during research.",
+    "evidenceIds": [
+     "ev-wood-7",
+     "ev-wood-8"
+    ]
+   },
+   {
+    "date": "2024-02",
+    "from": "AI training cost decline ~70%/yr",
+    "to": "~75%/yr through 2030",
+    "trigger": "Updated Wright's-law and algorithmic-efficiency estimates in Big Ideas 2024.",
+    "evidenceIds": [
+     "ev-wood-1",
+     "ev-wood-4"
+    ]
+   }
+  ],
+  "corpusNotes": "ARK forecasts are firm research products published under Wood's leadership, not always her personal words. Many figures were seen only via secondary summaries (Benzinga, iTiger, Motley Fool). ARK's '$14T' and 'AI spend' figures use broad definitions (all software spend), so they are hard to compare directly with realized 'AI revenue'."
+ },
+ {
+  "id": "leopold-aschenbrenner",
+  "name": "Leopold Aschenbrenner",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "OpenAI",
+    "title": "Researcher, Superalignment team",
+    "from": "2023",
+    "to": "2024-04"
+   },
+   {
+    "org": "Situational Awareness LP",
+    "title": "Founder",
+    "from": "2024",
+    "to": null
+   }
+  ],
+  "bio": "Former OpenAI Superalignment researcher who wrote the June 2024 essay series 'Situational Awareness: The Decade Ahead'. It made the most-cited quantitative case for AGI by ~2027, trillion-dollar clusters, and a US–China national-security race. He then founded an AI-focused investment fund.",
+  "selection": {
+   "influence": [
+    4,
+    "Situational Awareness became a reference text in Washington and Silicon Valley for compute-scaling and national-security framings."
+   ],
+   "foresight": [
+    3,
+    "Provisional. His 2026 infrastructure checkpoints (~1GW clusters, ~$500B/yr investment) were roughly met or exceeded. The AGI-2027 and intelligence-explosion claims are unresolved."
+   ],
+   "allocation": [
+    2,
+    "Runs a hedge fund; reported size is uncertain and was not verified during research."
+   ],
+   "contribution": [
+    1,
+    "No major architectural or commercial contribution documented."
+   ],
+   "corpus": [
+    3,
+    "One dense, specific, dated essay series plus a long podcast. There is little dated output afterwards."
+   ],
+   "future": [
+    3,
+    "Influences policy framing (AGI race, lab security) more than capital or technology."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2024",
+    "summary": "Extrapolated 'counting the OOMs' of effective compute: compute, algorithmic efficiency and 'unhobbling'. On that basis he judged AGI by 2027 'strikingly plausible', expected automated AI researchers to trigger an intelligence explosion to superintelligence by decade's end, and expected investment to scale to trillion-dollar clusters limited mainly by power. He framed AGI as a US–China national-security contest that requires locked-down labs and a government 'Project'.",
+    "evidenceIds": [
+     "ev-asch-1",
+     "ev-asch-2",
+     "ev-asch-3",
+     "ev-asch-4",
+     "ev-asch-5",
+     "ev-asch-6"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "Acted through capital. He ran Situational Awareness LP, reportedly positioned in AI-infrastructure and power-related public equities consistent with the essay's thesis. No new public long-form forecasts were found during research.",
+    "evidenceIds": [
+     "ev-asch-7"
+    ]
+   }
+  ],
+  "reversals": [],
+  "corpusNotes": "WebFetch was unavailable and the search budget ran out before Aschenbrenner-specific searches, so every claim comes from background knowledge of the essay (verification 'recalled'). Numbers come from the essay's tables as remembered and should be re-checked against situational-awareness.ai. No documented public revision of his forecasts was found, and he has published little since 2024."
+ },
+ {
+  "id": "david-cahn",
+  "name": "David Cahn",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Sequoia Capital",
+    "title": "Partner",
+    "from": null,
+    "to": null
+   }
+  ],
+  "bio": "Sequoia Capital partner whose essays 'AI's $200B Question' (Sept 2023) and 'AI's $600B Question' (June 2024) set the reference arithmetic for the gap between AI capex and AI revenue.",
+  "selection": {
+   "influence": [
+    3,
+    "His revenue-gap framing became the standard reference in AI-bubble debates."
+   ],
+   "foresight": [
+    3,
+    "Called the 2025 data-center construction boom. The revenue-gap thesis is neither vindicated nor falsified by Oct 2026."
+   ],
+   "allocation": [
+    3,
+    "Partner at a top-tier VC firm; individual allocation authority not documented."
+   ],
+   "contribution": [
+    1,
+    "Analytical contribution only."
+   ],
+   "corpus": [
+    3,
+    "A few influential, dated essays. Little else verified during research."
+   ],
+   "future": [
+    2,
+    "Narrative influence on investor discipline."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2022",
+    "summary": "Sept 2023: GPU capex implies ~$200B/yr of AI revenue needed, leaving a ~$125B 'hole' for each year of capex at then-current levels. AI is real but revenue lags infrastructure.",
+    "evidenceIds": [
+     "ev-cahn-3"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "June 2024: the gap had grown to ~$600B of required revenue against ~$100B of plausible revenue (a ~$500B gap). He warned of commoditised GPU compute, lack of pricing power and fast depreciation, while saying speculative frenzies are a normal part of technology. Later in 2024 ('AI is now shovel ready') he predicted 2025 would be the 'Year of the Data Center', with booms in steel, power and construction.",
+    "evidenceIds": [
+     "ev-cahn-1",
+     "ev-cahn-2",
+     "ev-cahn-4",
+     "ev-cahn-5"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2024",
+    "from": "Emphasis on the AI revenue gap and investment incineration (financial skepticism)",
+    "to": "Emphasis on the physical buildout as a durable, investable boom ('AI is now shovel ready'; servers, steel and power)",
+    "trigger": "Hyperscaler capex commitments and power and construction becoming the binding constraints. This is a shift of emphasis rather than a recantation; he did not retract the revenue-gap arithmetic.",
+    "evidenceIds": [
+     "ev-cahn-1",
+     "ev-cahn-4"
+    ]
+   }
+  ],
+  "corpusNotes": "Only secondary snippets were seen during research; sequoiacap.com could not be fetched. The date of 'AI is now shovel ready' is uncertain (one secondary source says July 2024). Later essays ('AI in 2026: A Tale of Two AIs'; a reported '$840B question'; a 2026 '$3 trillion question' framing) appeared only in secondary snippets with no verifiable date, so they are noted in gaps rather than used as assertions. The start date of his Sequoia role was not verified."
+ },
+ {
+  "id": "kai-fu-lee",
+  "name": "Kai-Fu Lee",
+  "cohort": "investors",
+  "roles": [
+   {
+    "org": "Microsoft Research Asia",
+    "title": "Founding director",
+    "from": "1998",
+    "to": "2000"
+   },
+   {
+    "org": "Google China",
+    "title": "President",
+    "from": "2005",
+    "to": "2009"
+   },
+   {
+    "org": "Sinovation Ventures",
+    "title": "Chairman & CEO",
+    "from": "2009",
+    "to": null
+   },
+   {
+    "org": "01.AI",
+    "title": "Founder & CEO",
+    "from": "2023",
+    "to": null
+   }
+  ],
+  "bio": "AI researcher turned investor. Author of 'AI Superpowers' (2018), which argued that China would rival or overtake the US in AI and that mass job displacement was the real threat, and co-author of 'AI 2041' (2021). In 2023 he founded the Chinese LLM startup 01.AI.",
+  "selection": {
+   "influence": [
+    4,
+    "'AI Superpowers' framed the US–China AI race and the jobs debate for policymakers worldwide."
+   ],
+   "foresight": [
+    3,
+    "China did close much of the gap, especially in open weights. His 'age of implementation' framing underrated the LLM research and compute shift, and his job-loss horizons are unresolved but not tracking so far."
+   ],
+   "allocation": [
+    3,
+    "Sinovation Ventures and 01.AI; meaningful in China, modest globally."
+   ],
+   "contribution": [
+    3,
+    "Early speech-recognition research, founding MSRA, and 01.AI's Yi models."
+   ],
+   "corpus": [
+    4,
+    "Two books, op-eds, many interviews with dated numeric predictions."
+   ],
+   "future": [
+    2,
+    "After 01.AI's pivot away from frontier pretraining, his leverage is mostly as a commentator and investor."
+   ]
+  },
+  "mentalModel": [
+   {
+    "period": "p2017",
+    "summary": "Deep learning's breakthrough was done. The next era would be one of 'implementation' and 'data', which favours China's data, entrepreneurs and state support, so China would match or overtake the US. The real danger was not superintelligence but mass job loss (roughly half of jobs within 10–15 years) and inequality.",
+    "evidenceIds": [
+     "ev-lee-1",
+     "ev-lee-2",
+     "ev-lee-3",
+     "ev-lee-4"
+    ]
+   },
+   {
+    "period": "p2020",
+    "summary": "'AI 2041' (2021) set out 20-year scenarios mixing optimism about AI benefits with concerns about jobs, privacy and inequality.",
+    "evidenceIds": [
+     "ev-lee-5"
+    ]
+   },
+   {
+    "period": "p2022",
+    "summary": "Saw generative AI/LLMs as 'AI 2.0', a platform shift, and founded 01.AI (2023) to build Chinese foundation models (the Yi series).",
+    "evidenceIds": [
+     "ev-lee-6"
+    ]
+   },
+   {
+    "period": "p2024",
+    "summary": "Argued that Chinese labs could approach US frontier models with a fraction of the compute through engineering efficiency (e.g. Yi-Lightning's claimed low training cost).",
+    "evidenceIds": [
+     "ev-lee-8"
+    ]
+   },
+   {
+    "period": "p2025",
+    "summary": "After DeepSeek, concluded that only a few giant players (DeepSeek, Alibaba, ByteDance) could keep pretraining frontier models in China. Pivoted 01.AI away from large-scale pretraining toward enterprise solutions built on open models such as DeepSeek.",
+    "evidenceIds": [
+     "ev-lee-7"
+    ]
+   }
+  ],
+  "reversals": [
+   {
+    "date": "2025-03",
+    "from": "01.AI would build world-class Chinese foundation models from scratch (2023)",
+    "to": "01.AI stops large-scale pretraining and builds on DeepSeek and other open models for enterprise",
+    "trigger": "DeepSeek-V3/R1 showed open models at near-frontier quality and low cost, while scaling costs kept rising.",
+    "evidenceIds": [
+     "ev-lee-6",
+     "ev-lee-7"
+    ]
+   }
+  ],
+  "corpusNotes": "The search budget ran out before Kai-Fu Lee searches, so every claim is 'recalled' from background knowledge and none was re-verified during research. Of his sources, only the NYT op-ed URL is given with confidence. The exact wording and dates of the 2017 '50% of jobs' and 2019 '40% of jobs' remarks need re-verification."
+ }
+]
