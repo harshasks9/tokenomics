@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { ASSERTIONS, DEBATES, EVENTS, JUDGMENTS, METRICS, PERIODS, SYNTHESIS, THESES, THINKERS, thinkerById } from "@/lib/atlas/data";
-import { DEFAULT_WEIGHTS, scoreAll } from "@/lib/atlas/scoring";
+import { DEFAULT_WEIGHTS, isScorable, scoreAll } from "@/lib/atlas/scoring";
 import { COHORTS, CUTOFF, LAYERS, THESIS_STATUS_META, cohortById, yearOf } from "@/lib/atlas/taxonomy";
 import type { ThesisStatus } from "@/lib/atlas/types";
 import { ExportMenu, KindLabel, useAtlas } from "./Shared";
@@ -18,7 +18,9 @@ export default function BigPicture() {
   const { go, open } = useAtlas();
   const rows = useMemo(() => scoreAll(THINKERS, ASSERTIONS, JUDGMENTS, DEFAULT_WEIGHTS, {}, 200), []);
   const ranked = rows.filter((r) => !r.insufficient);
-  const scored = ASSERTIONS.filter((a) => a.verdict !== "unresolved");
+  const scored = ASSERTIONS.filter(isScorable);
+  const unscored = ASSERTIONS.filter((a) => a.unscored).length;
+  const unresolved = ASSERTIONS.filter((a) => a.verdict === "unresolved").length;
   const pct = (v: string) => Math.round((scored.filter((a) => a.verdict === v).length / Math.max(1, scored.length)) * 100);
   const top = ranked.slice(0, 5);
   const tie = ranked.length > 1 && ranked[1].hi >= ranked[0].lo;
@@ -35,7 +37,7 @@ export default function BigPicture() {
             <div className="at-kpi"><b className="at-num">{THINKERS.length}</b><span>minds across {COHORTS.length} cohorts</span></div>
             <div className="at-kpi"><b className="at-num">{ASSERTIONS.length}</b><span>dated claims · {scored.length} scorable today</span></div>
             <div className="at-kpi"><b className="at-num">{pct("correct")}%</b><span>of scorable claims fully correct ({pct("partial")}% partial, {pct("incorrect")}% wrong)</span></div>
-            <div className="at-kpi"><b className="at-num">{ASSERTIONS.length - scored.length}</b><span>still unresolved — deadlines not yet reached</span></div>
+            <div className="at-kpi"><b className="at-num">{unresolved}</b><span>still unresolved — deadlines not yet reached (+{unscored} shown but unscored)</span></div>
           </div>
           <div className="at-row" style={{ marginTop: 26 }}>
             <button className="at-btn" style={{ background: "#fff", color: "var(--night)" }} onClick={() => go("graph")}>Explore the knowledge graph <ArrowRight size={14} /></button>

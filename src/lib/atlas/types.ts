@@ -112,6 +112,12 @@ export type Assertion = {
   evolution: string;
   /** Thesis ids this assertion supports (+) or opposes (−). Added in knowledge modeling. */
   theses?: { id: string; stance: "supports" | "opposes" }[];
+  /**
+   * Set when a claim is shown but excluded from the foresight score, with the reason:
+   * self-demonstrated results (announcing your own finished work is not foresight), investments
+   * (never proof of belief), advocacy whose outcome the speaker helped cause, governance acts.
+   */
+  unscored?: string;
   /** Competing readings of the outcome (Prediction Courtroom). */
   interpretations?: string[];
   /** Notes added by the independent audit (stage 6). */

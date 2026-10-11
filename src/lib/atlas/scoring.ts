@@ -43,10 +43,12 @@ export const WEIGHT_PRESETS: { id: string; name: string; weights: Weights }[] = 
 ];
 
 export const MIN_SCORED = 3;
+/** Minimum total evidential weight (sum of claim weights) to be ranked, so three low-weight claims can't top the board. */
+export const MIN_WEIGHT = 1.0;
 const K = 2; // shrinkage strength (pseudo-claims at the neutral prior)
 const PRIOR = 0.5;
 
-export const isScorable = (a: Assertion) => a.verdict !== "unresolved" && a.kind !== "aspiration";
+export const isScorable = (a: Assertion) => a.verdict !== "unresolved" && a.kind !== "aspiration" && !a.unscored;
 
 const confFactor = { high: 1, medium: 0.75, low: 0.5 } as const;
 export function claimWeight(a: Assertion): number {
@@ -178,7 +180,7 @@ export function scoreAll(
     }
     return {
       thinkerId: t.id, scored, unresolved: filterClaims(mine, filter).filter((a) => a.verdict === "unresolved").length,
-      dims, score, lo, hi, rank: 0, insufficient: scored.length < MIN_SCORED, tieAbove: false,
+      dims, score, lo, hi, rank: 0, insufficient: scored.length < MIN_SCORED || scored.reduce((w, a) => w + claimWeight(a), 0) < MIN_WEIGHT, tieAbove: false,
     };
   });
   const ranked = rows.filter((r) => !r.insufficient).sort((a, b) => b.score - a.score);

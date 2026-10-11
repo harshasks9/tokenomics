@@ -3,7 +3,7 @@
   {
    "id": "headline",
    "question": "In one paragraph",
-   "answer": "Across 221 dated claims from 30 people, the most reliable causal model of AI from 2012 to 2026 was the Bitter Lesson's: general methods that convert compute into capability kept winning, value pooled in whoever controlled the scarce physical inputs, and falling unit costs expanded demand rather than shrinking it. The people who reasoned from that mechanism — researchers like Hassabis, Silver, Sutton and Karpathy, and builders like Huang and Nadella — were most often right; those who reasoned from deadlines (self-driving next year, AGI next year, radiologists in five years) were most often wrong. No single forecaster stands clearly above the rest once uncertainty is shown."
+   "answer": "Of 221 dated claims from 30 people, only 88 could be fairly scored by October 2026: 117 have deadlines that have not arrived, and 21 are announcements of the speaker's own results, investments or advocacy, which are shown but not counted as foresight. On that thin record the most reliable causal model was a mechanism, not a person: general methods that convert compute into capability kept winning, value pooled in whoever controlled scarce physical inputs (chips, memory, power), and falling unit costs expanded demand rather than shrinking it. Among the eleven people with enough scorable evidence, Huang, Altman, Nadella, Aschenbrenner and Chollet lead with overlapping uncertainty intervals — no single winner is justified — and Musk's dated deployment promises are the one clearly separated result, at the bottom."
   },
   {
    "id": "mistakes",
@@ -12,20 +12,19 @@
    "items": [
     {
      "title": "Capability ≠ deployment",
-     "body": "Treating benchmark or demo capability as imminent job or product substitution: radiologists (2016), robotaxis (2017–2025), 80% of doctors' work by 2025, agents 'joining the workforce' in 2025.",
+     "body": "Treating benchmark or demo capability as imminent job or product substitution: radiologists (2016), robotaxis (2017–2025), 80% of doctors' work by 2025, 90% of code within 3–6 months (2025).",
      "thinkers": [
       "geoffrey-hinton",
       "elon-musk",
       "vinod-khosla",
-      "sam-altman"
+      "dario-amodei"
      ]
     },
     {
      "title": "'Deep learning is hitting a wall'",
-     "body": "Repeated declarations that scaling had stalled (2018–2022) — just before GPT-3, ChatGPT and GPT-4.",
+     "body": "Declaring in March 2022 that scaling had stalled — months before ChatGPT and a year before GPT-4. (The reliability critique inside it held up better than the headline.)",
      "thinkers": [
-      "gary-marcus",
-      "kai-fu-lee"
+      "gary-marcus"
      ]
     },
     {
@@ -36,11 +35,12 @@
      ]
     },
     {
-     "title": "Selling the shovels too early",
-     "body": "Exiting Nvidia (SoftBank 2019, ARK 2023) on valuation grounds, underestimating how long compute scarcity would last.",
+     "title": "Reliability on schedule",
+     "body": "Expecting reliability problems to be solved on a short clock: hallucinations 'largely eliminated by 2025', fully autonomous driving within a year, agents joining the workforce in 2025.",
      "thinkers": [
-      "masayoshi-son",
-      "cathie-wood"
+      "mustafa-suleyman",
+      "elon-musk",
+      "sam-altman"
      ]
     },
     {
@@ -55,7 +55,7 @@
   {
    "id": "insights",
    "question": "What were the five most consequential insights that turned out to be correct?",
-   "answer": "Each is a mechanism, not a date.",
+   "answer": "Each is a mechanism, not a date. Several were first shown by their authors' own results — those results are recorded as track record and not scored as forecasts — but the generalizations drawn from them were forward-looking and held.",
    "items": [
     {
      "title": "General methods + compute win",
@@ -63,13 +63,12 @@
      "thinkers": [
       "richard-sutton",
       "ilya-sutskever",
-      "dario-amodei",
-      "geoffrey-hinton"
+      "dario-amodei"
      ]
     },
     {
      "title": "Search and RL on top of learned models",
-     "body": "AlphaGo-style search + learning foreshadowed 2024–25 reasoning models and inference-time scaling.",
+     "body": "AlphaGo-style search + learning, generalized beyond games, foreshadowed 2024–25 reasoning models and inference-time scaling.",
      "thinkers": [
       "david-silver",
       "demis-hassabis",
@@ -77,8 +76,8 @@
      ]
     },
     {
-     "title": "Compute, then power, is the bottleneck",
-     "body": "Accelerated computing, then energy, as the binding constraint (2024) — validated by GW-scale planning in 2025–26.",
+     "title": "Compute, then power and memory, are the bottleneck",
+     "body": "Accelerated computing, then energy alongside HBM and packaging, as the binding constraints — borne out partly by GW-scale planning in 2025–26.",
      "thinkers": [
       "jensen-huang",
       "mark-zuckerberg",
@@ -106,21 +105,20 @@
   {
    "id": "early",
    "question": "Which thinkers were early, and which were merely eventually correct?",
-   "answer": "Early (right before consensus, for stated reasons): Sutskever and Hinton on scaling neural nets (2012–2014); Fei-Fei Li on data scale (2009); Silver/Hassabis on search + RL (2016); Sutton's Bitter Lesson (2019); Karpathy on Software 2.0 (2017); Liang Wenfeng on closed-source moats being temporary (2024); Aschenbrenner on GW clusters and power (2024). Eventually correct, after the evidence was in: Pichai's generative launch (reactive, 2023), Zuckerberg's pivot from metaverse to AI (2023), Chollet's revised view of LLM-based search after o3 (2024), Son's AI conviction (stated, re-dated, then funded). Premature: Khosla, Hinton (radiology) and Kai-Fu Lee on labor displacement — directionally plausible, years early."
+   "answer": "Early (right before consensus, for stated reasons): Sutskever on scaling big networks (2014); Fei-Fei Li on data scale (2009); Sutton's Bitter Lesson (2019); Karpathy on Software 2.0 (2017) and English as a programming language (2023); Huang on AI 'eating software' (2017). On time rather than early: Liang Wenfeng on closed-source moats being temporary (2024) and Aschenbrenner on GW-scale clusters (2024) — right, but stated as the trend became visible. Eventually correct, after the evidence was in: Pichai's generative launch (reactive, 2023), Chollet's revised view of LLM-based search after o3 (2024), Cahn's shift from the revenue gap to the physical build-out (2024). Premature: Khosla (80% of doctors' work by 2025), Hinton (radiologists), Amodei (90% of code in 3–6 months) and Musk (robotaxis) — directionally plausible, years early. Many of the boldest long-horizon calls (Kai-Fu Lee and Khosla on jobs, Son and Aschenbrenner on AGI) are still unresolved."
   },
   {
    "id": "causal",
    "question": "Which individuals demonstrated the best causal understanding of AI?",
-   "answer": "The strongest causal models explained why something would happen and kept working out of sample: Sutton (compute-leveraging general methods), Silver and Hassabis (learning + search), Sutskever (scale + data, then the data limit), Huang (parallel compute + software ecosystem as the bottleneck), Nadella (Jevons and distribution) and Karpathy (what LLMs are actually good at). Chollet's measurement critique (skill ≠ intelligence) is the best causal account of where systems remain brittle. Several of these records are too short in scorable claims to rank precisely — the leaderboard shows overlapping intervals.",
+   "answer": "Among those with enough scorable evidence, the highest 'right for the right reasons' scores go to Altman (cost curves and scaling economics), Chollet (skill ≠ intelligence; test-time adaptation as the missing piece), Huang (parallel compute and software ecosystem as the bottleneck) and Aschenbrenner (counting orders of magnitude of compute, power and capex). Nadella's Jevons-and-distribution model scored well on accuracy but is thinner on stated mechanism. Several of the most influential mechanism-level ideas come from people whose scorable records are too thin to rank: Sutton's Bitter Lesson rests on two claims from one essay, and Hassabis's and Silver's strongest evidence is their own demonstrated results, which the Atlas records as track record rather than forecasts. Their ideas are retained in the mental model on the strength of what later happened to them (reasoning models, RL post-training), not on a foresight score.",
    "items": [
     {
-     "title": "Mechanism over deadline",
-     "body": "Thinkers who stated mechanisms (scaling laws, Jevons, search) scored far better than those who stated dates.",
+     "title": "Mechanism vs deadline — a weaker effect than it looks",
+     "body": "Dated capability-to-deployment promises produced the dataset's worst misses, but most of them are Musk's. Excluding his claims, dated and undated scorable claims score almost the same (≈0.66 vs ≈0.67 weighted accuracy in the audit). The lesson is narrower: deployment deadlines are where forecasts fail, not dates as such.",
      "thinkers": [
-      "richard-sutton",
-      "david-silver",
-      "jensen-huang",
-      "satya-nadella"
+      "elon-musk",
+      "vinod-khosla",
+      "geoffrey-hinton"
      ]
     }
    ]
@@ -133,7 +131,7 @@
   {
    "id": "underestimated",
    "question": "What has consistently been underestimated?",
-   "answer": "Four things: (1) how far the same transformer recipe would go once combined with RL and search; (2) the speed of cost decline for a fixed capability (~10x per year) and the demand it unlocks; (3) physical constraints — power, grid, HBM and packaging — as the true bottleneck; (4) how quickly efficient challengers (DeepSeek, Qwen) could close the gap with far less compute."
+   "answer": "Four things: (1) how far the same transformer recipe would go once combined with RL and search; (2) the speed of cost decline for a fixed capability (~10x per year) and the demand it unlocks; (3) physical constraints — power, grid, HBM and packaging — as co-equal bottlenecks; (4) how quickly efficient challengers (DeepSeek, Qwen) could close the gap with far less compute."
   },
   {
    "id": "overestimated",
@@ -153,7 +151,7 @@
   {
    "id": "retain-discard",
    "question": "Which ideas should be retained — and which discarded — in a mental model for the next decade?",
-   "answer": "Retain mechanism-level ideas with out-of-sample records: the Bitter Lesson (Sutton), search + learning (Silver, Hassabis), scaling with data limits (Sutskever), Jevons dynamics (Nadella, Altman), compute/power as the bottleneck (Huang, Aschenbrenner), skill ≠ intelligence (Chollet), and Software 2.0 (Karpathy). Discard deadline-driven extrapolation, 'X is hitting a wall' declarations, and the assumption that capability translates directly into substitution."
+   "answer": "Retain mechanism-level ideas whose later history held up: the Bitter Lesson (Sutton), search + learning (Silver, Hassabis), scaling with data limits (Sutskever), Jevons dynamics (Nadella, Altman), compute, memory and power as bottlenecks (Huang, Aschenbrenner), skill ≠ intelligence (Chollet), and Software 2.0 (Karpathy). Discard deployment-deadline extrapolation, 'X is hitting a wall' declarations, and the assumption that capability translates directly into substitution. Treat this as provisional: more than half of the claims behind it are still unresolved."
   }
  ],
  "mentalModel": {
@@ -169,7 +167,7 @@
      "david-silver",
      "dario-amodei"
     ],
-    "confidence": "high"
+    "confidence": "medium"
    },
    {
     "id": "p2",
@@ -184,8 +182,8 @@
    },
    {
     "id": "p3",
-    "title": "The binding constraint is physical",
-    "body": "Chips, HBM, packaging and above all power and permitted sites gate the build-out. Strategic control points are physical and capital-intensive; algorithms diffuse within months.",
+    "title": "The binding constraints are physical",
+    "body": "Chips, HBM, packaging, power and permitted sites jointly gate the build-out. Strategic control points are physical and capital-intensive; algorithms diffuse within months.",
     "from": [
      "jensen-huang",
      "mark-zuckerberg",
@@ -252,10 +250,9 @@
   ],
   "discard": [
    {
-    "idea": "Deadline extrapolation ('next year')",
+    "idea": "Deployment-deadline extrapolation ('next year')",
     "heldBy": [
-     "elon-musk",
-     "masayoshi-son"
+     "elon-musk"
     ],
     "why": "The worst-performing claims in the dataset are dated capability-to-deployment promises."
    },
@@ -271,9 +268,9 @@
     "heldBy": [
      "geoffrey-hinton",
      "vinod-khosla",
-     "kai-fu-lee"
+     "dario-amodei"
     ],
-    "why": "Radiology, medicine and labor calls failed on timing; institutions and liability slow deployment."
+    "why": "Radiology, medicine and code-share calls failed on timing; institutions, liability and workflow change slow deployment."
    },
    {
     "idea": "One open (or closed) model will own the frontier",

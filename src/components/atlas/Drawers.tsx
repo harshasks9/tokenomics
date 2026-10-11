@@ -175,6 +175,7 @@ function ClaimDrawer({ id, onClose }: { id: string; onClose: () => void }) {
         <span className="at-tag">{a.category}</span>
         <ConfidenceMeter c={a.confidence} />
         {a.timing !== "n/a" && <span className="at-tag">timing: {a.timing}</span>}
+        {a.unscored && <span className="at-tag" style={{ color: "var(--interp)" }} title="Shown on the record but excluded from the foresight score">not scored: {a.unscored}</span>}
       </div>
       <p className="at-quote" style={{ margin: "0 0 10px" }}>{a.claimIsQuote ? `“${a.claim}”` : a.claim}</p>
       {!a.claimIsQuote && <p className="at-xs at-faint" style={{ marginTop: -6 }}>Precise paraphrase — see sources for the original wording.</p>}

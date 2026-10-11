@@ -641,8 +641,7 @@
     "position": "Revenue lags capex by an order of magnitude; circular financing and depreciation risk echo past manias.",
     "thinkers": [
      "david-cahn",
-     "gary-marcus",
-     "sundar-pichai"
+     "gary-marcus"
     ],
     "assumptions": [
      "Revenue cannot catch up in time",
@@ -674,7 +673,8 @@
      "mark-zuckerberg",
      "jensen-huang",
      "masayoshi-son",
-     "cathie-wood"
+     "cathie-wood",
+     "sundar-pichai"
     ],
     "assumptions": [
      "Demand compounds",
@@ -1207,7 +1207,7 @@
    }
   ],
   "bothRight": "Both: commodity tiers favor applications; frontier tiers favor labs — the split follows the capability frontier.",
-  "status": "unresolved",
+  "status": "leaning",
   "verdictNote": "Leaning to model labs at the cutoff, but the app layer's durability is not yet testable.",
   "thesisIds": [
    "app-layer-value",
@@ -1226,8 +1226,8 @@
   "camps": [
    {
     "id": "data",
-    "label": "Data is the moat",
-    "position": "Unique data (labeled, proprietary, national) determines who wins.",
+    "label": "Data decides capability",
+    "position": "The scale, curation and ownership of data (labeled, proprietary or national) determine who wins.",
     "thinkers": [
      "kai-fu-lee",
      "fei-fei-li"

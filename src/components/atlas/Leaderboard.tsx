@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import { ASSERTIONS, JUDGMENTS, THINKERS, thinkerById } from "@/lib/atlas/data";
 import {
-  DEFAULT_WEIGHTS, DIMENSIONS, MIN_SCORED, WEIGHT_PRESETS, accuracyBetween, claimValue, claimWeight, isScorable, scoreAll, sensitivity,
+  DEFAULT_WEIGHTS, DIMENSIONS, MIN_SCORED, MIN_WEIGHT, WEIGHT_PRESETS, accuracyBetween, claimValue, claimWeight, isScorable, scoreAll, sensitivity,
   type ClaimFilter, type ScoreRow, type Weights,
 } from "@/lib/atlas/scoring";
 import { cohortById } from "@/lib/atlas/taxonomy";
@@ -121,9 +121,17 @@ export default function Leaderboard({ who }: { who?: string }) {
             {ranked.length === 0 && <div className="at-empty">Not enough scorable claims for this ranking.</div>}
             {ranked.map((r) => <Row key={r.thinkerId} r={r} sel={sel === r.thinkerId} onClick={() => setSel(r.thinkerId)} metric={usesMetric} />)}
             {rows.some((r) => r.insufficient) && (
-              <div className="at-xs at-faint" style={{ marginTop: 10 }}>
-                Not ranked ({usesMetric ? "insufficient data for this lens" : `fewer than ${MIN_SCORED} scorable claims`}): {rows.filter((r) => r.insufficient).map((r) => `${thinkerById(r.thinkerId)?.name} (${r.scored.length})`).join(", ")}
-              </div>
+              <details style={{ marginTop: 12 }}>
+                <summary className="at-small" style={{ cursor: "pointer", fontWeight: 600 }}>
+                  Provisional — not enough scorable evidence to rank ({rows.filter((r) => r.insufficient).length})
+                </summary>
+                <p className="at-xs at-muted" style={{ margin: "6px 0" }}>
+                  {usesMetric ? "This lens needs data these thinkers lack." : `Ranking needs at least ${MIN_SCORED} scorable claims and ${MIN_WEIGHT.toFixed(1)} total evidential weight. Most of these records are dominated by unresolved claims (deadlines after the cutoff) or by unscored items (own results, investments, advocacy).`} Scores below are shown for transparency, not comparison.
+                </p>
+                <div style={{ opacity: 0.6 }}>
+                  {rows.filter((r) => r.insufficient).sort((a, b) => b.score - a.score).map((r) => <Row key={r.thinkerId} r={{ ...r, rank: 0 }} sel={sel === r.thinkerId} onClick={() => setSel(r.thinkerId)} metric={usesMetric && r.metric != null} />)}
+                </div>
+              </details>
             )}
           </div>
 
@@ -163,13 +171,13 @@ function Row({ r, sel, onClick, metric }: { r: ScoreRow & { metric?: number }; s
   const v = metric ? r.metric ?? 0 : r.score;
   return (
     <div className={`at-lb-row ${sel ? "sel" : ""}`} onClick={onClick} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter") onClick(); }}
-      aria-label={`Rank ${r.rank}: ${t.name}, score ${Math.round(v * 100)}${metric ? "" : `, interval ${Math.round(r.lo * 100)} to ${Math.round(r.hi * 100)}`}`}>
-      <span className="rk">{r.rank}{r.tieAbove ? "=" : ""}</span>
+      aria-label={`${r.rank ? `Rank ${r.rank}` : "Provisional"}: ${t.name}, score ${Math.round(v * 100)}${metric ? "" : `, interval ${Math.round(r.lo * 100)} to ${Math.round(r.hi * 100)}`}`}>
+      <span className="rk">{r.rank ? `${r.rank}${r.tieAbove ? "=" : ""}` : "–"}</span>
       <span className="at-row" style={{ flexWrap: "nowrap", gap: 10, minWidth: 0 }}>
         <Avatar id={t.id} />
         <span style={{ minWidth: 0 }}>
           <span className="at-small" style={{ fontWeight: 650, display: "block" }}>{t.name}</span>
-          <span className="at-xs at-faint">{r.scored.length} scored · {r.unresolved} pending</span>
+          <span className="at-xs at-faint">{r.scored.length} scored · {r.unresolved} pending{(() => { const u = ASSERTIONS.filter((a) => a.thinkerId === r.thinkerId && a.unscored).length; return u ? ` · ${u} not scored` : ""; })()}</span>
         </span>
       </span>
       <span className="at-ci" aria-hidden="true">
@@ -221,7 +229,16 @@ function Audit({ row, weights, sensRow, onClaim, onPerson }: { row: ScoreRow; we
           </tbody>
         </table>
       </div>
-      {pending.length > 0 && <p className="at-xs at-faint" style={{ marginBottom: 0 }}>Excluded (unresolved or aspirational): {pending.length} — {pending.map((a) => a.date).join(", ")}</p>}
+      {pending.length > 0 && (
+        <div className="at-xs at-muted" style={{ marginTop: 8 }}>
+          <b>Not scored ({pending.length}):</b>
+          <ul style={{ margin: "4px 0 0", paddingLeft: 18 }}>
+            {pending.map((a) => (
+              <li key={a.id}><button className="at-link" onClick={() => onClaim(a.id)}>{a.date}</button> — {a.unscored ? a.unscored : a.verdict === "unresolved" ? "unresolved (horizon not reached or not testable yet)" : "aspiration"}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

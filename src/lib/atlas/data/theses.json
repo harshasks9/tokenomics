@@ -1043,8 +1043,8 @@
    },
    {
     "date": "2025-11",
-    "status": "validated",
-    "note": "CEOs report chips waiting on power and shells; GW-scale campuses become the unit of planning.",
+    "status": "partial",
+    "note": "CEOs report chips waiting on power and shells; GW-scale campuses become the unit of planning — but HBM and packaging also stay tight.",
     "evidenceIds": [
      "ev-ctx2-75"
     ],
@@ -1054,8 +1054,8 @@
    },
    {
     "date": "2026-06",
-    "status": "validated",
-    "note": "LBNL: data centers ~4.7% of US power and rising toward ~12% by 2030.",
+    "status": "partial",
+    "note": "LBNL: data centers ~4.7% of US power and rising toward ~12% by 2030; power is a binding constraint alongside memory and packaging, not instead of them.",
     "evidenceIds": [
      "ev-ctx2-35",
      "ev-ctx2-36"
@@ -1065,8 +1065,8 @@
     ]
    }
   ],
-  "status": "validated",
-  "outcome": "Largely validated by 2025–26: power and site readiness became the gating factor for new capacity.",
+  "status": "partial",
+  "outcome": "Partly validated by 2025–26: power and site readiness became a gating factor for new capacity, alongside (not instead of) chips, HBM and packaging.",
   "outcomeEvidenceIds": [
    "ev-ctx2-35",
    "ev-ctx2-36",
@@ -1595,8 +1595,8 @@
    },
    {
     "date": "2021-11",
-    "status": "partial",
-    "note": "Five-year radiology deadline passes; radiologist demand still rises — first concrete miss.",
+    "status": "contested",
+    "note": "Five-year radiology deadline passes; radiologist demand still rises — first concrete miss for the thesis.",
     "evidenceIds": [
      "ev-ctx-82"
     ],
@@ -1928,8 +1928,8 @@
    },
    {
     "date": "2025-06",
-    "status": "validated",
-    "note": "ARC-AGI-2 again exposes a large human–AI gap; 'jagged intelligence' becomes common vocabulary.",
+    "status": "partial",
+    "note": "ARC-AGI-2 again exposes a large human–AI gap; 'jagged intelligence' becomes common vocabulary — though scores rose quickly later in 2025.",
     "evidenceIds": [
      "ev-ctx2-62"
     ],
@@ -1938,8 +1938,8 @@
     ]
    }
   ],
-  "status": "validated",
-  "outcome": "Largely validated as a measurement critique: frontier systems remain jagged — superhuman on many benchmarks, brittle on novel tasks.",
+  "status": "partial",
+  "outcome": "Partly validated as a measurement critique: frontier systems remain jagged, but each new benchmark gap narrowed faster than the critique implied.",
   "outcomeEvidenceIds": [
    "ev-chollet-7",
    "ev-out-arc2-1"

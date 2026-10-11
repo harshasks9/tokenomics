@@ -5,7 +5,7 @@ import {
   ASSERTIONS, DEBATES, EVENTS, EVIDENCE, IMPLICATIONS, JUDGMENTS, METHOD, METRICS, PERIODS, RELATIONS, SCENARIOS, SYNTHESIS,
   TECHNOLOGIES, THESES, THINKERS, thinkerById,
 } from "@/lib/atlas/data";
-import { DIMENSIONS, MIN_SCORED } from "@/lib/atlas/scoring";
+import { DIMENSIONS, MIN_SCORED, MIN_WEIGHT } from "@/lib/atlas/scoring";
 import { COHORTS, CUTOFF, LAYERS } from "@/lib/atlas/taxonomy";
 import { CohortTag, EvidenceCard, ExportMenu, SectionHead } from "./Shared";
 
@@ -102,10 +102,10 @@ export default function Method() {
           {DIMENSIONS.map((d) => <div key={d.id} className="at-ev"><div className="at-between"><b className="at-small">{d.name}</b><span className="at-mono">{d.defaultWeight}%</span></div><div className="at-xs at-muted">{d.desc}</div></div>)}
         </div>
         <ul className="at-small" style={{ marginBottom: 0, paddingLeft: 18 }}>
-          <li>Scored: claims whose outcome is observable by {CUTOFF}. Unresolved claims and pure aspirations are listed but never scored.</li>
+          <li>Scored: claims whose outcome is observable by {CUTOFF}. Unresolved claims, aspirations, and records that are not forecasts — announcements of the speaker&apos;s own demonstrated results, investments and divestments, advocacy whose outcome the speaker helped cause, and governance acts — are listed but never scored.</li>
           <li>Claim weight = specificity/5 × confidence (high 1, medium 0.75, low 0.5) × kind (prediction/conditional 1, opinion 0.75, strategic action 0.5 — an investment is not proof of belief).</li>
           <li>Values: correct 1, partial 0.5, incorrect 0; a precise (specificity ≥ 4) incorrect claim scores −0.25 — a penalty for material misses.</li>
-          <li>Each dimension is shrunk toward 0.5 with two pseudo-claims, normalizing for record length. Fewer than {MIN_SCORED} scorable claims → shown but not ranked.</li>
+          <li>Each dimension is shrunk toward 0.5 with two pseudo-claims, normalizing for record length. Fewer than {MIN_SCORED} scorable claims or less than {MIN_WEIGHT.toFixed(1)} total evidential weight → shown as provisional, not ranked.</li>
           <li>Uncertainty: 300-sample seeded bootstrap over each thinker&apos;s scored claims → 80% interval. Overlapping intervals are reported as ties; the sensitivity table re-ranks under five weighting schemes.</li>
           <li>Selective quotation & survivorship: assertions were chosen as each person&apos;s most consequential documented claims, including misses; claims are judged on information available when made; retrospective reinterpretations are recorded under “evolution”, not as the original claim.</li>
           <li>“Updating” is an analyst judgment per thinker, recorded with its reasoning in the audit trail.</li>

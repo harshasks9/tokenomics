@@ -3,7 +3,7 @@ import {
   ASSERTIONS, DEBATES, EVENTS, EVIDENCE, IMPLICATIONS, JUDGMENTS, METRICS, PERIODS, RELATIONS, SCENARIOS, SYNTHESIS, TECHNOLOGIES, THESES, THINKERS,
 } from "./data";
 import { CUTOFF, LAYERS, PERIOD_ORDER, TOPICS } from "./taxonomy";
-import { DEFAULT_WEIGHTS, MIN_SCORED, claimValue, composite, dimensions, isScorable, scoreAll } from "./scoring";
+import { DEFAULT_WEIGHTS, MIN_SCORED, MIN_WEIGHT, claimValue, claimWeight, composite, dimensions, isScorable, scoreAll } from "./scoring";
 import { buildGraph, thesisStatusAt } from "./graph";
 import type { Assertion } from "./types";
 
@@ -102,6 +102,14 @@ describe("foresight scorecard", () => {
     expect(isScorable(fixture({ verdict: "unresolved" }))).toBe(false);
     expect(isScorable(fixture({ kind: "aspiration" }))).toBe(false);
     expect(isScorable(fixture({}))).toBe(true);
+    expect(isScorable(fixture({ unscored: "Investment / financial position." }))).toBe(false);
+  });
+  it("never scores investments, self-demonstrated results or advocacy in the dataset", () => {
+    for (const a of ASSERTIONS) if (a.unscored) expect(isScorable(a), a.id).toBe(false);
+    for (const id of ["as-khosla-3", "as-silver-1", "as-hassabis-2", "as-andreessen-7"]) expect(ASSERTIONS.find((a) => a.id === id)?.unscored, id).toBeTruthy();
+  });
+  it("leaves claims with horizons after the cutoff unresolved", () => {
+    for (const a of ASSERTIONS) if (a.horizonDate && Number(a.horizonDate) > 2026) expect(a.verdict, a.id).toBe("unresolved");
   });
   it("penalizes precise misses below vague misses", () => {
     expect(claimValue(fixture({ verdict: "incorrect", specificity: 5 }))).toBeLessThan(claimValue(fixture({ verdict: "incorrect", specificity: 2 })));
@@ -128,7 +136,10 @@ describe("foresight scorecard", () => {
     for (const r of rows) {
       expect(r.lo).toBeLessThanOrEqual(r.score + 1e-9);
       expect(r.hi).toBeGreaterThanOrEqual(r.score - 1e-9);
-      if (r.rank > 0) expect(r.scored.length).toBeGreaterThanOrEqual(MIN_SCORED);
+      if (r.rank > 0) {
+        expect(r.scored.length).toBeGreaterThanOrEqual(MIN_SCORED);
+        expect(r.scored.reduce((w, a) => w + claimWeight(a), 0)).toBeGreaterThanOrEqual(MIN_WEIGHT);
+      }
     }
   });
 });

@@ -47,10 +47,15 @@ No server, cron or environment variables are required — the site is static.
 - **Selection**: six criteria from the brief, scored 1–5 per candidate with reasons; exclusions and biases listed on `#/method`.
 - **Assertions**: 5–10 per person where evidence allows; kind (prediction / opinion / aspiration / conditional / action),
   category, layers, assumptions, horizon, outcome by the cutoff, verdict, timing, confidence, originality, causal, specificity.
-  Unreached deadlines are unresolved. Strategic actions are scored at half weight and never treated as proof of belief.
+  Unreached deadlines are unresolved. Strategic actions are scored at half weight; investments, announcements of the
+  speaker's own demonstrated results, advocacy whose outcome the speaker helped cause and governance acts are shown
+  but never scored (`unscored` field with the reason).
 - **Scorecard**: accuracy 30 / originality 20 / timing 15 / causal 15 / updating 10 / breadth 10 (adjustable).
   Specificity- and confidence-weighted, Bayesian-shrunk for thin records, −0.25 for precise misses, bootstrap +
-  small-sample 80% intervals, ties reported, ranks re-computed under five weighting schemes.
+  small-sample 80% intervals, ties reported, ranks re-computed under five weighting schemes. Ranking requires
+  ≥3 scorable claims and ≥1.0 total evidential weight; everyone else is shown as provisional.
+- **Independent audit (stage 6)**: 31 findings applied through `pipeline/model.py` (`AUDIT`), `debates.py` and
+  `synthesis.py`; each is logged on `#/method` and on the affected case file.
 - **Graph grammar**: green = agreement/validation, red = disagreement/falsification, blue = influence/dependency/change of
   position, amber = unresolved, dashed = inferred or forecast. Thesis colors are read *as of* the slider date.
 
@@ -59,5 +64,6 @@ No server, cron or environment variables are required — the site is static.
 - Research ran behind a network proxy that blocked page fetches, and a shared web-search quota ran out mid-research:
   about 55% of evidence records are **unverified recall** (flagged in every view; never shown as verbatim quotes).
   A verification pass against primary sources is the top data-quality priority.
-- Half of the assertions are unresolved at the cutoff; scores rest on 3–7 scorable claims per person and most top ranks are ties.
+- 117 of 221 assertions are unresolved at the cutoff and 21 are unscored, leaving 88 scorable claims; only 11 of 30
+  people clear the ranking threshold, and their intervals overlap — there is no single winner.
 - Period heat and debate balance values are analyst readings, not measurements; 2026 facts come from news reporting.

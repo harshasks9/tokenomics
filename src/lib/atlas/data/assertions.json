@@ -88,12 +88,12 @@
    "ev-out-nvda-2",
    "ev-out-msft-2"
   ],
-  "verdict": "partial",
-  "timing": "on-time",
+  "verdict": "unresolved",
+  "timing": "n/a",
   "verdictRationale": "The demand-surge and AI-factory build-out components proved right through mid-2026, against widespread expectations of a correction; the literal claim that the whole installed base becomes accelerated is not yet testable or met.",
   "confidence": "medium",
   "originality": 3,
-  "causal": 4,
+  "causal": null,
   "specificity": 3,
   "evolution": "Scaled up in 2025 to a $3-4T AI infrastructure forecast by 2030 (see as-huang-8).",
   "theses": [
@@ -101,7 +101,8 @@
     "id": "infra-supercycle",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f12] Horizon (2027) is after the cutoff; the literal claim is not yet testable."
  },
  {
   "id": "as-huang-3",
@@ -356,7 +357,8 @@
     "id": "china-parity",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f30] Bundles statements from May, Oct and Nov 2025 under one date; the May 2025 statement is the dated claim, later remarks are context."
  },
  {
   "id": "as-huang-8",
@@ -1346,11 +1348,11 @@
   "outcomeEvidenceIds": [
    "ev-nadella-8"
   ],
-  "verdict": "correct",
-  "timing": "early",
+  "verdict": "partial",
+  "timing": "on-time",
   "verdictRationale": "He identified power as the next bottleneck when chips were the consensus constraint; an independent peer confirmed it by late 2025. Outcome evidence is a single interested party, so confidence is moderate.",
   "confidence": "low",
-  "originality": 4,
+  "originality": 3,
   "causal": 4,
   "specificity": 3,
   "evolution": "Meta later announced gigawatt-scale campuses (Prometheus, Hyperion) consistent with this view (recalled).",
@@ -1359,7 +1361,8 @@
     "id": "power-binding",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f11] Power-not-chips: graded partial and on-time for consistency with as-asch-5 — chips, HBM and packaging also bound through 2026."
  },
  {
   "id": "as-zuck-5",
@@ -1408,7 +1411,7 @@
     "stance": "supports"
    }
   ],
-  "audit": "Two parts: 'open source becomes the standard' (not borne out at the frontier) and 'Llama most advanced in 2025' (did not happen; Meta later pulled back from open frontier releases). Verdict incorrect on the testable part.",
+  "audit": "Two parts: 'open source becomes the standard' (not borne out at the frontier) and 'Llama most advanced in 2025' (did not happen). Verdict incorrect on the testable part.",
   "interpretations": [
    "Open weights did come within months of the frontier (DeepSeek, Qwen).",
    "But Llama did not lead, and Meta itself retreated from open frontier releases in 2026."
@@ -1572,7 +1575,7 @@
  {
   "id": "as-liang-1",
   "thinkerId": "liang-wenfeng",
-  "date": "2023-05",
+  "date": "2021",
   "claim": "High-Flyer acquired ~10,000 Nvidia A100 GPUs (by 2021) for its Fire-Flyer clusters before US export controls, a compute base later used for DeepSeek.",
   "claimIsQuote": false,
   "kind": "action",
@@ -1601,10 +1604,10 @@
    "ev-liang-3"
   ],
   "verdict": "correct",
-  "timing": "early",
+  "timing": "on-time",
   "verdictRationale": "The pre-control stockpile proved strategically decisive; however the action was made for quant trading, so the 'belief' about LLMs is partly retrospective.",
   "confidence": "low",
-  "originality": 4,
+  "originality": 3,
   "causal": 3,
   "specificity": 3,
   "evolution": "No revision found.",
@@ -1617,7 +1620,8 @@
     "id": "china-parity",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f16] The A100 purchase was completed by ~2021 for quant trading; redated and originality lowered — its LLM rationale is partly retrospective."
  },
  {
   "id": "as-liang-2",
@@ -2499,12 +2503,12 @@
   "outcomeEvidenceIds": [
    "ev-out-openai-rev-1"
   ],
-  "verdict": "partial",
+  "verdict": "unresolved",
   "timing": "n/a",
   "verdictRationale": "His cost-curve reading of DeepSeek fit the evidence and the compute-demand collapse narrative proved wrong. The policy counterfactual (controls being decisive) cannot be tested because the controls were loosened.",
   "confidence": "low",
   "originality": 3,
-  "causal": 3,
+  "causal": null,
   "specificity": 3,
   "evolution": "Continued advocacy into 2025 to 2026; a public clash with Huang (Jun 2025).",
   "theses": [
@@ -2516,7 +2520,8 @@
     "id": "china-parity",
     "stance": "opposes"
    }
-  ]
+  ],
+  "audit": "[f13] Core claim (export controls decisive for a unipolar world ~2026–27) not yet testable."
  },
  {
   "id": "as-amodei-6",
@@ -2553,12 +2558,12 @@
    "ev-out-code-2",
    "ev-out-code-3"
   ],
-  "verdict": "partial",
+  "verdict": "incorrect",
   "timing": "premature",
   "verdictRationale": "The directional bet (rapid shift to AI-written code) was right, and it came true inside frontier labs. As a general claim on his stated timeline, it overshot.",
   "confidence": "medium",
   "originality": 3,
-  "causal": 4,
+  "causal": 3,
   "specificity": 5,
   "evolution": "Later framed as true 'at Anthropic' and in some teams (recalled), narrowing the scope.",
   "theses": [
@@ -2571,6 +2576,7 @@
     "stance": "supports"
    }
   ],
+  "audit": "[f10] Industry-wide share of AI-written code was far below 90% within 3–6 months (lab-internal shares were high). Graded incorrect for consistency with other direction-right, magnitude/timing-wrong dated claims (khosla-2, hinton-2, musk-8).",
   "interpretations": [
    "Inside frontier labs and AI-native startups, ~90% AI-written code was reported by 2025–26.",
    "Industry-wide, the share was far lower within the 3–6 month window — the claim overreached in scope."
@@ -2806,7 +2812,9 @@
     "id": "rl-experience",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f2] Same AlphaGo result as as-silver-1; counted once and as track record, not foresight.",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-hassabis-3",
@@ -2845,14 +2853,16 @@
   "confidence": "high",
   "originality": 4,
   "causal": 5,
-  "specificity": 4,
+  "specificity": 2,
   "evolution": "Extended to drug discovery (Isomorphic) and AlphaFold 3 (2024).",
   "theses": [
    {
     "id": "ai-for-science",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f4] Dated at the CASP14 result it is credited with predicting; treated as track record. 'Primary tool for scientific discovery' is too vague for specificity 4.",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-hassabis-4",
@@ -2975,12 +2985,12 @@
   ],
   "outcome": "Not verified during research. To the analyst's recall, Isomorphic said in mid-2025 it was preparing for first human trials, and no public first-dosing announcement by end-2025 was confirmed.",
   "outcomeEvidenceIds": [],
-  "verdict": "unresolved",
+  "verdict": "incorrect",
   "timing": "n/a",
   "verdictRationale": "The horizon passed, but the outcome could not be verified. If no trial started in 2025, the verdict would be 'incorrect' (late).",
   "confidence": "low",
   "originality": 2,
-  "causal": null,
+  "causal": 2,
   "specificity": 5,
   "evolution": "Not tracked.",
   "theses": [
@@ -2988,7 +2998,8 @@
     "id": "ai-for-science",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f1] Deadline (end-2025) passed with no public first-dosing announcement recorded by the cutoff, so resolved as incorrect (low confidence: flips if a 2025 trial start is documented)."
  },
  {
   "id": "as-hassabis-7",
@@ -3976,7 +3987,9 @@
     "id": "scale-works",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f2] AlexNet is the authors' own demonstrated result — foundational, but not a forecast.",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-hinton-2",
@@ -4013,7 +4026,7 @@
   ],
   "verdict": "incorrect",
   "timing": "premature",
-  "verdictRationale": "Both the 5- and 10-year horizons have passed and demand for radiologists rose rather than fell. Task-level image accuracy gains were real, but the job-substitution inference ignored workflow, regulation and Jevons-like demand growth.",
+  "verdictRationale": "The 5-year horizon (Nov 2021) passed with AI used as an aid, not a replacement; the explicit advice to stop training radiologists was refuted by rising radiologist demand. The 10-year hedge ends Nov 2026, just after the cutoff, with no sign of displacement.",
   "confidence": "high",
   "originality": 4,
   "causal": 2,
@@ -4025,7 +4038,7 @@
     "stance": "supports"
    }
   ],
-  "audit": "Verdict kept incorrect: both the 5-year and 10-year framings concerned radiologists being outperformed and displaced; radiologist demand rose through 2026. Hinton later said he was too early and too specific.",
+  "audit": "[f15] The 5-year horizon (Nov 2021) passed with AI used as an aid, not a replacement, and the advice to stop training radiologists was refuted by rising radiologist demand and pay. The 'might be ten years' hedge runs to Nov 2026, just after the cutoff; Hinton later said he was too early and too specific.",
   "interpretations": [
    "Strict reading: radiologists were not outperformed or displaced within 5 or 10 years — incorrect.",
    "Charitable reading: AI does outperform radiologists on narrow detection tasks; the error was assuming task performance implies job loss."
@@ -4789,7 +4802,8 @@
     "stance": "supports"
    }
   ],
-  "audit": "Signing a pause letter is advocacy, not a forecast. Reclassified as an aspiration so it is shown but not scored; the advocated pause did not happen."
+  "audit": "Signing a pause letter is advocacy, not a forecast: shown (the advocated pause did not happen) but not scored.",
+  "unscored": "Advocacy, not a forecast."
  },
  {
   "id": "as-bengio-3",
@@ -5103,7 +5117,9 @@
     "id": "agi-near",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f31] No source attached for this record; shown, not scored until one is.",
+  "unscored": "No source attached."
  },
  {
   "id": "as-sutskever-3",
@@ -5231,7 +5247,8 @@
   "specificity": 4,
   "evolution": "Publicly reversed (regret post, Nov 20, 2023).",
   "theses": [],
-  "audit": "A governance vote is an action, not a forecast about the world; kept as a low-weight action whose implied belief (the CEO should go) he himself reversed within days."
+  "audit": "[f5] A board vote is a governance act, not a claim about AI's evolution; shown, not scored (consistent with as-bengio-2).",
+  "unscored": "Governance act, not a forecast."
  },
  {
   "id": "as-sutskever-6",
@@ -5477,7 +5494,7 @@
     "stance": "supports"
    }
   ],
-  "audit": "'Hitting a wall' judged incorrect on capabilities (rapid gains 2022–26), though Marcus's reliability critique (hallucinations) remains partly valid — see as-marcus-7.",
+  "audit": "Kept incorrect on the headline ('hitting a wall' on capability — rapid gains 2022–26). Auditor noted the parallel LeCun claim (as-lecun-3) is graded partial; the difference is that LeCun's claim concerned reliability/factuality only, while Marcus's headline concerned progress itself.",
   "interpretations": [
    "Capability reading: scaling kept delivering through 2026 — the 'wall' did not appear.",
    "Reliability reading: hallucination and robustness problems persisted, which was Marcus's core claim."
@@ -5976,7 +5993,9 @@
     "id": "coding-first",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f9] Coining 'vibe coding' described a practice the same day; its spread is self-fulfilling, not foresight.",
+  "unscored": "Description of a present practice."
  },
  {
   "id": "as-karpathy-6",
@@ -6349,15 +6368,17 @@
   "outcomeEvidenceIds": [
    "ev-out-nairr-1"
   ],
-  "verdict": "partial",
+  "verdict": "unresolved",
   "timing": "early",
   "verdictRationale": "Her diagnosis that academia would be priced out of frontier AI proved correct. The remedy was adopted only at pilot scale, far below industry compute.",
   "confidence": "medium",
   "originality": 3,
-  "causal": 4,
+  "causal": null,
   "specificity": 2,
   "evolution": "Repeated in later testimony and in the SB 1047 op-ed (concern for public sector/academia).",
-  "theses": []
+  "theses": [],
+  "audit": "[f7] Policy advocacy (NAIRR); outcome partly shaped by the advocacy itself. Treated like other advocacy (licensing calls) — shown, not scored.",
+  "unscored": "Advocacy; outcome shaped by the advocate."
  },
  {
   "id": "as-li-5",
@@ -6895,7 +6916,9 @@
     "id": "inference-scaling",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f2] Announces the authors' own demonstrated result (AlphaGo vs Fan Hui) — track record, not foresight.",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-silver-2",
@@ -6945,7 +6968,9 @@
     "id": "rl-experience",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f2] Announces a result already demonstrated in the paper (AlphaGo Zero).",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-silver-3",
@@ -6994,7 +7019,9 @@
     "id": "rl-experience",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f2] Announces a result already demonstrated (AlphaZero).",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-silver-4",
@@ -7092,7 +7119,9 @@
     "id": "ai-for-science",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f2] Announces a result already demonstrated (AlphaProof IMO silver).",
+  "unscored": "Self-demonstrated result."
  },
  {
   "id": "as-silver-6",
@@ -7699,12 +7728,12 @@
    "ev-out-regulation-1",
    "ev-out-openmodels-1"
   ],
-  "verdict": "partial",
+  "verdict": "unresolved",
   "timing": "n/a",
   "verdictRationale": "The policy direction he advocated largely prevailed and China did become a serious AI competitor, validating the salience of the China framing. Unrestricted US open source did not, however, keep the US ahead in open weights.",
   "confidence": "medium",
   "originality": 3,
-  "causal": 3,
+  "causal": null,
   "specificity": 2,
   "evolution": "After DeepSeek (January 2025) he shifted emphasis to the US actively leading open-source AI so the world does not run on Chinese models.",
   "theses": [
@@ -7712,7 +7741,9 @@
     "id": "open-safer",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f8] Winning a policy argument is not forecasting accuracy; shown, not scored.",
+  "unscored": "Advocacy; outcome shaped by the advocate."
  },
  {
   "id": "as-andreessen-4",
@@ -7885,12 +7916,12 @@
   "outcomeEvidenceIds": [
    "ev-out-regulation-1"
   ],
-  "verdict": "correct",
+  "verdict": "unresolved",
   "timing": "on-time",
   "verdictRationale": "Judged as an advocacy bet on policy direction, it largely prevailed. Influence here also shapes the outcome, so it is not pure foresight.",
   "confidence": "medium",
   "originality": 2,
-  "causal": 3,
+  "causal": null,
   "specificity": 2,
   "evolution": "a16z continued with recommendations for the National AI Action Plan (March 2025) and a 'Little Tech Agenda for AI' (2025).",
   "theses": [
@@ -7898,7 +7929,9 @@
     "id": "open-safer",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f8] Joint policy statement — advocacy, not a forecast.",
+  "unscored": "Advocacy; outcome shaped by the advocate."
  },
  {
   "id": "as-andreessen-8",
@@ -8133,7 +8166,9 @@
     "id": "scale-works",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f19] An investment is never proof of belief; shown on the record, not scored.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-khosla-4",
@@ -8473,7 +8508,9 @@
   "causal": 3,
   "specificity": 1,
   "evolution": "Joined OpenAI's board, then left in March 2023 over conflicts.",
-  "theses": []
+  "theses": [],
+  "audit": "[f19] A donation is not a forecast; shown, not scored.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-hoffman-2",
@@ -8694,15 +8731,16 @@
    "ev-out-inflection-1",
    "ev-out-openmodels-1"
   ],
-  "verdict": "correct",
-  "timing": "on-time",
+  "verdict": "unresolved",
+  "timing": "n/a",
   "verdictRationale": "The oligopoly-plus-open-source structure he flagged largely materialized. He posed it partly as a question, which lowers specificity.",
   "confidence": "low",
   "originality": 3,
-  "causal": 4,
+  "causal": null,
   "specificity": 2,
   "evolution": "Later posts reportedly describe markets 'clarifying' (not verified during research).",
-  "theses": []
+  "theses": [],
+  "audit": "[f18] Posed explicitly as an open question — not scorable as a correct opinion."
  },
  {
   "id": "as-gil-2",
@@ -8744,7 +8782,9 @@
     "id": "app-layer-value",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f19] An investment is not a forecast; shown, not scored.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-son-1",
@@ -8830,7 +8870,8 @@
     "stance": "opposes"
    }
   ],
-  "audit": "Selling the Nvidia stake in 2019 is an action; scored at half weight and not treated as proof of a belief about AI."
+  "audit": "[f19] A divestment is a financial position, not a stated forecast; shown, not scored.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-son-3",
@@ -9011,12 +9052,12 @@
    "ev-out-stargate-4",
    "ev-out-stargate-5"
   ],
-  "verdict": "partial",
-  "timing": "late",
+  "verdict": "unresolved",
+  "timing": "n/a",
   "verdictRationale": "The 'Stargate' brand did attract hundreds of billions of commitments, but SoftBank's own capacity delivery lagged badly behind the '$100B immediately' rhetoric. Most operating capacity came from Oracle and OpenAI deals. The 4-year horizon is unfinished, so this is a mid-course partial.",
   "confidence": "medium",
   "originality": 2,
-  "causal": 2,
+  "causal": null,
   "specificity": 4,
   "evolution": "No public retreat by Son. SoftBank shifted to direct OpenAI equity ($64.6B total) and SB Energy as its main channels.",
   "theses": [
@@ -9024,7 +9065,8 @@
     "id": "infra-supercycle",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f14] Aspiration with a 2029 horizon — unresolved."
  },
  {
   "id": "as-son-7",
@@ -9077,7 +9119,9 @@
     "id": "agi-near",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f19] Capital concentration in OpenAI is a financial position.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-son-8",
@@ -9367,7 +9411,9 @@
     "id": "infra-supercycle",
     "stance": "opposes"
    }
-  ]
+  ],
+  "audit": "[f19] A divestment is a financial position; her stated valuation view (as-wood-5) is scored instead.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-wood-5",
@@ -10008,7 +10054,9 @@
     "id": "agi-near",
     "stance": "supports"
    }
-  ]
+  ],
+  "audit": "[f19] Founding a fund is a financial position.",
+  "unscored": "Investment / financial position."
  },
  {
   "id": "as-cahn-1",
