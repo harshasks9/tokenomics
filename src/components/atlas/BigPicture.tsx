@@ -102,7 +102,7 @@ function TurningPoints({ onOpen }: { onOpen: (ids: string[], title: string) => v
   const [minMag, setMinMag] = useState(5);
   const evs = EVENTS.filter((e) => e.magnitude >= minMag);
   const W = 1240, pad = 30, LANE = 26;
-  const sx = (d: string) => pad + ((yearOf(d) - 2012) / (yearOf(CUTOFF) - 2012)) * (W - 2 * pad - 120);
+  const sx = (d: string) => pad + ((yearOf(d) - 2012) / (yearOf(CUTOFF) - 2012)) * (W - 2 * pad - 190);
   // Stagger labels into lanes so no two labels overlap (label width ≈ 6px per character).
   const lanes: number[] = [];
   const placed = evs.map((e) => {
