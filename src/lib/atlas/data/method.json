@@ -1,0 +1,158 @@
+{
+ "exclusions": [
+  {
+   "name": "Greg Brockman",
+   "cohort": "builders",
+   "why": "Thesis and public record overlap heavily with Altman's; less independent documented forecasting."
+  },
+  {
+   "name": "Lisa Su",
+   "cohort": "builders",
+   "why": "Major allocator (AMD) but a thinner corpus of falsifiable AI predictions."
+  },
+  {
+   "name": "Arthur Mensch",
+   "cohort": "builders",
+   "why": "Influential European open-weight builder; shorter record (2023–) and overlap with the open-weights camp already covered."
+  },
+  {
+   "name": "Alexandr Wang",
+   "cohort": "builders",
+   "why": "Important data-layer builder, but few dated theses beyond Scale AI positioning."
+  },
+  {
+   "name": "Ashish Vaswani",
+   "cohort": "researchers",
+   "why": "Foundational (Transformer) but a sparse public record of predictions; represented via the Transformer technology node."
+  },
+  {
+   "name": "Jared Kaplan",
+   "cohort": "researchers",
+   "why": "Scaling-laws author; overlaps with Amodei/Anthropic; represented via the scaling-laws event."
+  },
+  {
+   "name": "Noam Shazeer",
+   "cohort": "researchers",
+   "why": "Architectural contributions (Transformer, MoE) with few public forecasts."
+  },
+  {
+   "name": "Ben Horowitz",
+   "cohort": "investors",
+   "why": "Same firm and largely the same public theses as Andreessen."
+  },
+  {
+   "name": "Peter Thiel",
+   "cohort": "investors",
+   "why": "Few AI-specific falsifiable claims relative to his influence."
+  },
+  {
+   "name": "Sarah Guo",
+   "cohort": "investors",
+   "why": "Active AI investor; dated predictions are mostly portfolio commentary since 2022."
+  },
+  {
+   "name": "Naval Ravikant",
+   "cohort": "investors",
+   "why": "Aphoristic, largely non-falsifiable statements."
+  },
+  {
+   "name": "Michael Burry / Mary Meeker / David Sacks",
+   "cohort": "investors",
+   "why": "Respectively: short-horizon trades rather than AI theses; trend documentation rather than predictions; policy role rather than investment theses."
+  }
+ ],
+ "biases": [
+  "Anglophone, US-centric selection: only two China-based voices (Liang Wenfeng, Kai-Fu Lee) and no European or Indian builders.",
+  "No women in the builders or investors cohorts and one among researchers (Fei-Fei Li) — a reflection of who held these roles, which also narrows the range of views.",
+  "Survivorship: people were selected partly because they became prominent, which favors those whose bets worked.",
+  "Claim selection: assertions were chosen as each person's most consequential documented claims; prolific speakers (Altman, Musk, Marcus) have more scorable claims than reticent ones (Sutton, Liang).",
+  "Corporate messaging: CEOs' statements often double as marketing; the dataset labels strategic actions separately and never treats an investment as proof of belief.",
+  "Hindsight: verdict rationales were written to judge claims on information available at the time, but the analyst knows the outcomes."
+ ],
+ "limitations": [
+  "Research ran under a network proxy that blocked direct page fetches, and a shared search quota was exhausted mid-research. About 55% of evidence records are 'unverified recall' and are flagged everywhere; a follow-up verification pass is the top data-quality priority.",
+  "117 of 221 assertions are unresolved at the cutoff and 21 more are shown but unscored (self-demonstrated results, investments, advocacy, governance acts), leaving 88 scorable claims. Only 11 of the 30 people clear the ranking threshold (≥3 scorable claims and ≥1.0 total evidential weight); the other 19 are shown as provisional.",
+  "Known missing claims flagged by the audit, to add after verification: Marcus's dated 2024/2025 calls, LeCun's 'GPT-5000' remark, Cathie Wood's Tesla robotaxi targets, Musk's power-shortage and Austin robotaxi statements, and other high-profile claims that could shift rankings.",
+  "Period 'heat' values and debate 'balance' values are analyst readings of the record, not measured quantities.",
+  "2026 developments come from news reporting via search snippets; some figures (lab run-rates, capex) vary by source.",
+  "Some 2026 events in this dataset (e.g. model names, the Mythos access order) are reported from search results and could not be cross-checked against primary documents."
+ ],
+ "periodRevisions": [
+  "2012–16 effectively ends with the Transformer (June 2017), not December 2016; kept on calendar years for readability.",
+  "2022–23: technical shifts (Chinchilla, InstructGPT, H100, export controls) precede ChatGPT; ChatGPT (Nov 30, 2022) is the break for adoption, capital and policy.",
+  "The reasoning era starts with OpenAI o1 (Sept 2024), not January 2025; 2024's snapshot therefore already includes inference-time scaling.",
+  "The 2026 period could reasonably start in December 2025 (Gemini 3, credit stress, preemption EO)."
+ ],
+ "audit": [
+  {
+   "date": "2026-10-11",
+   "finding": "Signing the 2023 pause letter (Bengio) was coded as an 'incorrect' action.",
+   "action": "Reclassified as an aspiration (advocacy); shown but not scored."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "Altman's 'novel insights in 2026' was scored correct on contested reports.",
+   "action": "Confidence lowered to low (halves its weight)."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "Bootstrap intervals over 3–7 claims looked implausibly tight.",
+   "action": "Added a small-sample widening term; most top ranks are now reported as ties."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "55% of evidence could not be re-verified against sources.",
+   "action": "Flagged as 'unverified recall' in every view; evidence-grade filter added to the courtroom; no recalled text shown as a verbatim quote."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "Duplicate evidence ids across research batches (outcome sources).",
+   "action": "Renamed with batch suffixes; all references re-pointed."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "Several landmark verdicts admit two readings (Hinton radiology, Marcus 'wall', Amodei 90% code, Chollet on LLMs).",
+   "action": "Added competing interpretations to each case file."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "Musk's last place is robust across all five weightings; the top ranks are not.",
+   "action": "Leaderboard reports 'no clear winner' when top intervals overlap; sensitivity table shows rank ranges."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[Independent audit f2/f3] The top two ranks (Hassabis, Silver) rested on announcements of their own demonstrated results (AlphaGo counted twice), and Hassabis ranked on an effective weight of 1.45 — below the shrinkage prior.",
+   "action": "Self-demonstrated results, investments, advocacy and governance acts are now shown but unscored (21 claims); ranking also requires ≥1.0 total evidential weight. Hassabis and Silver move to provisional."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[f1] Hassabis's 'Isomorphic drugs in trials by end-2025' was past its deadline but left unresolved.",
+   "action": "Resolved incorrect at low confidence (flips if a 2025 first dosing is documented)."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[f10/f11] Inconsistent grading: Amodei's 90%-of-code overshoot was partial while comparable misses were incorrect; the power-not-chips claim was graded three ways.",
+   "action": "Amodei → incorrect (premature); Zuckerberg's power claim → partial, on-time, matching Aschenbrenner's."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[f12–f14, f18] Claims with horizons after the cutoff (Huang 2027, Amodei 2027, Son 2029) or posed as open questions (Gil) carried resolved verdicts.",
+   "action": "Set to unresolved."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[f15, f16, f4, f30] Date issues: Hinton's 10-year hedge ends Nov 2026; Liang's GPU purchase was ~2021; Hassabis's AlphaFold claim was dated at its own result; Huang's export-control record bundles three dates.",
+   "action": "Rationale rewritten; Liang redated to 2021 with originality lowered; AlphaFold claim treated as track record; Huang bundling noted."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[f20–f23] Synthesis overreach: the mechanism-beats-deadline effect largely disappears without Musk; Lee and Son were named for unresolved or absent claims; Sutton praised on two claims; Liang/Aschenbrenner labeled early though coded on-time.",
+   "action": "Synthesis rewritten to match the data and to separate retained ideas from foresight scores."
+  },
+  {
+   "date": "2026-10-11",
+   "finding": "[f24–f29] Thesis/debate labels: power-binding and benchmarks-not-intelligence overstated as validated; a contradicting radiology step labeled partial; one debate status inconsistent; two camp placements questionable.",
+   "action": "Both theses → partial; step → contested; foundation-vs-app → leaning; data camp relabeled; Pichai moved to the build-out camp."
+  }
+ ]
+}

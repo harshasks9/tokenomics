@@ -1,0 +1,297 @@
+{
+ "questions": [
+  {
+   "id": "headline",
+   "question": "In one paragraph",
+   "answer": "Of 221 dated claims from 30 people, only 88 could be fairly scored by October 2026: 117 have deadlines that have not arrived, and 21 are announcements of the speaker's own results, investments or advocacy, which are shown but not counted as foresight. On that thin record the most reliable causal model was a mechanism, not a person: general methods that convert compute into capability kept winning, value pooled in whoever controlled scarce physical inputs (chips, memory, power), and falling unit costs expanded demand rather than shrinking it. Among the eleven people with enough scorable evidence, Huang, Altman, Nadella, Aschenbrenner and Chollet lead with overlapping uncertainty intervals — no single winner is justified — and Musk's dated deployment promises are the one clearly separated result, at the bottom."
+  },
+  {
+   "id": "mistakes",
+   "question": "What were the five biggest mistakes in how influential people understood AI?",
+   "answer": "The costliest errors were about timing and substitution, not about direction.",
+   "items": [
+    {
+     "title": "Capability ≠ deployment",
+     "body": "Treating benchmark or demo capability as imminent job or product substitution: radiologists (2016), robotaxis (2017–2025), 80% of doctors' work by 2025, 90% of code within 3–6 months (2025).",
+     "thinkers": [
+      "geoffrey-hinton",
+      "elon-musk",
+      "vinod-khosla",
+      "dario-amodei"
+     ]
+    },
+    {
+     "title": "'Deep learning is hitting a wall'",
+     "body": "Declaring in March 2022 that scaling had stalled — months before ChatGPT and a year before GPT-4. (The reliability critique inside it held up better than the headline.)",
+     "thinkers": [
+      "gary-marcus"
+     ]
+    },
+    {
+     "title": "The age of discovery is over",
+     "body": "The 2018 view that AI had moved from invention to implementation, so data and execution (not research) would decide winners — then came transformers at scale, RLHF and reasoning models.",
+     "thinkers": [
+      "kai-fu-lee"
+     ]
+    },
+    {
+     "title": "Reliability on schedule",
+     "body": "Expecting reliability problems to be solved on a short clock: hallucinations 'largely eliminated by 2025', fully autonomous driving within a year, agents joining the workforce in 2025.",
+     "thinkers": [
+      "mustafa-suleyman",
+      "elon-musk",
+      "sam-altman"
+     ]
+    },
+    {
+     "title": "Open source will lead the frontier",
+     "body": "Expecting open models to become the most advanced (Llama in 2025); open weights trailed by months and the leading open champion retreated.",
+     "thinkers": [
+      "mark-zuckerberg"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "insights",
+   "question": "What were the five most consequential insights that turned out to be correct?",
+   "answer": "Each is a mechanism, not a date. Several were first shown by their authors' own results — those results are recorded as track record and not scored as forecasts — but the generalizations drawn from them were forward-looking and held.",
+   "items": [
+    {
+     "title": "General methods + compute win",
+     "body": "The Bitter Lesson (2019) and the 2014–2020 scaling bets anticipated a decade of progress.",
+     "thinkers": [
+      "richard-sutton",
+      "ilya-sutskever",
+      "dario-amodei"
+     ]
+    },
+    {
+     "title": "Search and RL on top of learned models",
+     "body": "AlphaGo-style search + learning, generalized beyond games, foreshadowed 2024–25 reasoning models and inference-time scaling.",
+     "thinkers": [
+      "david-silver",
+      "demis-hassabis",
+      "francois-chollet"
+     ]
+    },
+    {
+     "title": "Compute, then power and memory, are the bottleneck",
+     "body": "Accelerated computing, then energy alongside HBM and packaging, as the binding constraints — borne out partly by GW-scale planning in 2025–26.",
+     "thinkers": [
+      "jensen-huang",
+      "mark-zuckerberg",
+      "leopold-aschenbrenner"
+     ]
+    },
+    {
+     "title": "Cheaper intelligence expands demand",
+     "body": "~10x/yr cost declines plus Jevons dynamics explained why efficiency shocks (DeepSeek) raised rather than cut spending.",
+     "thinkers": [
+      "sam-altman",
+      "satya-nadella"
+     ]
+    },
+    {
+     "title": "Software is automated first",
+     "body": "Software 2.0 / 'English is the new programming language' anticipated coding as the first transformed profession.",
+     "thinkers": [
+      "andrej-karpathy",
+      "jensen-huang"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "early",
+   "question": "Which thinkers were early, and which were merely eventually correct?",
+   "answer": "Early (right before consensus, for stated reasons): Sutskever on scaling big networks (2014); Fei-Fei Li on data scale (2009); Sutton's Bitter Lesson (2019); Karpathy on Software 2.0 (2017) and English as a programming language (2023); Huang on AI 'eating software' (2017). On time rather than early: Liang Wenfeng on closed-source moats being temporary (2024) and Aschenbrenner on GW-scale clusters (2024) — right, but stated as the trend became visible. Eventually correct, after the evidence was in: Pichai's generative launch (reactive, 2023), Chollet's revised view of LLM-based search after o3 (2024), Cahn's shift from the revenue gap to the physical build-out (2024). Premature: Khosla (80% of doctors' work by 2025), Hinton (radiologists), Amodei (90% of code in 3–6 months) and Musk (robotaxis) — directionally plausible, years early. Many of the boldest long-horizon calls (Kai-Fu Lee and Khosla on jobs, Son and Aschenbrenner on AGI) are still unresolved."
+  },
+  {
+   "id": "causal",
+   "question": "Which individuals demonstrated the best causal understanding of AI?",
+   "answer": "Among those with enough scorable evidence, the highest 'right for the right reasons' scores go to Altman (cost curves and scaling economics), Chollet (skill ≠ intelligence; test-time adaptation as the missing piece), Huang (parallel compute and software ecosystem as the bottleneck) and Aschenbrenner (counting orders of magnitude of compute, power and capex). Nadella's Jevons-and-distribution model scored well on accuracy but is thinner on stated mechanism. Several of the most influential mechanism-level ideas come from people whose scorable records are too thin to rank: Sutton's Bitter Lesson rests on two claims from one essay, and Hassabis's and Silver's strongest evidence is their own demonstrated results, which the Atlas records as track record rather than forecasts. Their ideas are retained in the mental model on the strength of what later happened to them (reasoning models, RL post-training), not on a foresight score.",
+   "items": [
+    {
+     "title": "Mechanism vs deadline — a weaker effect than it looks",
+     "body": "Dated capability-to-deployment promises produced the dataset's worst misses, but most of them are Musk's. Excluding his claims, dated and undated scorable claims score almost the same (≈0.66 vs ≈0.67 weighted accuracy in the audit). The lesson is narrower: deployment deadlines are where forecasts fail, not dates as such.",
+     "thinkers": [
+      "elon-musk",
+      "vinod-khosla",
+      "geoffrey-hinton"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "updaters",
+   "question": "Which individuals changed their beliefs most intelligently?",
+   "answer": "Bengio (2023: from distant timelines to near-term risk, explicitly citing new evidence, and redirecting his research), Hinton (2023 risk/timeline revision; conceded the radiology call), Sutskever (declaring the end of the 'age of scaling' he had championed), Chollet (calling o3 a genuine breakthrough without abandoning his definition), Karpathy (from 'agents don't work' to 'threshold of coherence' within three months, with reasons), and Cahn (from revenue gap to physical build-out). Weakest updaters re-dated predictions without acknowledging misses (Musk, Son)."
+  },
+  {
+   "id": "underestimated",
+   "question": "What has consistently been underestimated?",
+   "answer": "Four things: (1) how far the same transformer recipe would go once combined with RL and search; (2) the speed of cost decline for a fixed capability (~10x per year) and the demand it unlocks; (3) physical constraints — power, grid, HBM and packaging — as co-equal bottlenecks; (4) how quickly efficient challengers (DeepSeek, Qwen) could close the gap with far less compute."
+  },
+  {
+   "id": "overestimated",
+   "question": "What has consistently been overestimated?",
+   "answer": "The speed of deployment and substitution in the physical and institutional world: autonomous driving, robotics, enterprise ROI from generic pilots, labor displacement and regulatory coordination. Also overestimated: the durability of any single lab's lead, and the likelihood that open models would lead the frontier."
+  },
+  {
+   "id": "value-shift",
+   "question": "How has the expected source of value shifted through the AI stack?",
+   "answer": "2012–16: algorithms and talent (acqui-hires, DeepMind). 2017–21: data and research labs. 2022–23: foundation models and GPUs. 2024–25: chips, clouds and power (Nvidia, hyperscaler capex, nuclear PPAs). 2026: frontier labs as platforms (tens of billions in revenue) and agents, with power the binding constraint. Expected value repeatedly ran ahead of captured value at the layer above — applications were always 'next'."
+  },
+  {
+   "id": "consensus-wrong",
+   "question": "Which consensus assumptions in October 2026 are most likely to be wrong?",
+   "answer": "Candidates, with the reasoning that makes each fragile: (1) that the capex trajectory self-finances — revenue still trails annual capex several-fold; (2) that frontier pricing power is durable — every prior tier commoditized within ~12 months; (3) that power is the permanent binding constraint — efficiency and siting may relieve it faster than expected; (4) that agents will generalize from coding to all knowledge work on coding's timeline — coding is unusually verifiable; (5) that AGI is a single threshold event rather than jagged, domain-by-domain capability."
+  },
+  {
+   "id": "retain-discard",
+   "question": "Which ideas should be retained — and which discarded — in a mental model for the next decade?",
+   "answer": "Retain mechanism-level ideas whose later history held up: the Bitter Lesson (Sutton), search + learning (Silver, Hassabis), scaling with data limits (Sutskever), Jevons dynamics (Nadella, Altman), compute, memory and power as bottlenecks (Huang, Aschenbrenner), skill ≠ intelligence (Chollet), and Software 2.0 (Karpathy). Discard deployment-deadline extrapolation, 'X is hitting a wall' declarations, and the assumption that capability translates directly into substitution. Treat this as provisional: more than half of the claims behind it are still unresolved."
+  }
+ ],
+ "mentalModel": {
+  "title": "Compute-driven capability, jagged deployment, migrating value",
+  "principles": [
+   {
+    "id": "p1",
+    "title": "General methods + compute keep winning — but the compute moves",
+    "body": "Expect capability to keep tracking effective compute, with the marginal compute shifting from pretraining to RL, search and inference. Bet on mechanisms that convert compute into capability, not on a fixed recipe.",
+    "from": [
+     "richard-sutton",
+     "ilya-sutskever",
+     "david-silver",
+     "dario-amodei"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "id": "p2",
+    "title": "Unit cost collapses, total spend rises",
+    "body": "Price for a fixed capability falls ~10x per year; demand expands faster (Jevons). Efficiency shocks raise total compute demand unless capability stops mattering.",
+    "from": [
+     "sam-altman",
+     "satya-nadella",
+     "jensen-huang"
+    ],
+    "confidence": "high"
+   },
+   {
+    "id": "p3",
+    "title": "The binding constraints are physical",
+    "body": "Chips, HBM, packaging, power and permitted sites jointly gate the build-out. Strategic control points are physical and capital-intensive; algorithms diffuse within months.",
+    "from": [
+     "jensen-huang",
+     "mark-zuckerberg",
+     "leopold-aschenbrenner"
+    ],
+    "confidence": "high"
+   },
+   {
+    "id": "p4",
+    "title": "Capability is jagged; measure adaptation, not benchmarks",
+    "body": "Superhuman on tests and brittle on novelty can coexist. Judge progress by task horizons and adaptation to genuinely new problems.",
+    "from": [
+     "francois-chollet",
+     "sundar-pichai",
+     "andrej-karpathy"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "id": "p5",
+    "title": "Deployment is slower than capability — except where outputs are verifiable",
+    "body": "Coding moved first because correctness is checkable; expect domains with verifiable outputs to follow, and institutions (health, law, transport) to lag by years.",
+    "from": [
+     "andrej-karpathy",
+     "satya-nadella",
+     "reid-hoffman"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "id": "p6",
+    "title": "Frontier leads are rented, not owned",
+    "body": "Open and efficient challengers trail by months. Durable advantage comes from capital, distribution, proprietary feedback loops and trust — not from a model.",
+    "from": [
+     "liang-wenfeng",
+     "elad-gil",
+     "marc-andreessen"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "id": "p7",
+    "title": "Value migrates upward in sequence",
+    "body": "Chips → clouds → frontier labs → agents/outcomes. Each layer captures value only once the layer below is abundant; watch for the layer that is becoming abundant next.",
+    "from": [
+     "david-cahn",
+     "satya-nadella",
+     "cathie-wood"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "id": "p8",
+    "title": "The next discontinuity is likely an addition, not a replacement",
+    "body": "Memory, continual learning, experiential RL and world models will most likely arrive as components of LLM-based systems — as reasoning did — rather than as a clean paradigm swap.",
+    "from": [
+     "demis-hassabis",
+     "yann-lecun",
+     "david-silver",
+     "ilya-sutskever"
+    ],
+    "confidence": "low"
+   }
+  ],
+  "discard": [
+   {
+    "idea": "Deployment-deadline extrapolation ('next year')",
+    "heldBy": [
+     "elon-musk"
+    ],
+    "why": "The worst-performing claims in the dataset are dated capability-to-deployment promises."
+   },
+   {
+    "idea": "'Scaling is hitting a wall'",
+    "heldBy": [
+     "gary-marcus"
+    ],
+    "why": "Declared repeatedly before each major jump; capability kept rising (reliability critiques remain valid)."
+   },
+   {
+    "idea": "Capability implies immediate substitution",
+    "heldBy": [
+     "geoffrey-hinton",
+     "vinod-khosla",
+     "dario-amodei"
+    ],
+    "why": "Radiology, medicine and code-share calls failed on timing; institutions, liability and workflow change slow deployment."
+   },
+   {
+    "idea": "One open (or closed) model will own the frontier",
+    "heldBy": [
+     "mark-zuckerberg"
+    ],
+    "why": "Leads lasted months; both open and closed champions were overtaken."
+   }
+  ],
+  "assumptions": [
+   "No severe financial or power shock interrupts the build-out",
+   "No regulatory freeze on frontier development",
+   "Historical relationships (compute→capability, price→demand) persist through 2030",
+   "The research record sampled here is representative of each thinker's views"
+  ],
+  "uncertainties": [
+   "Whether AI revenue closes the capex gap before financing tightens",
+   "Whether continual learning or world models produce a genuine discontinuity",
+   "Whether agent reliability generalizes beyond verifiable domains",
+   "Geopolitics: export controls, China's compute access, government control of frontier models",
+   "Labor-market effects beyond entry-level knowledge work"
+  ]
+ }
+}

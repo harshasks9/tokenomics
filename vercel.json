@@ -143,6 +143,16 @@
         }
       ],
       "destination": "/pricing/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "atlas.aitokenomics.app"
+        }
+      ],
+      "destination": "/atlas/:path*"
     }
   ]
 }

@@ -1,0 +1,2340 @@
+{
+  "agent": "investors-1",
+  "thinkers": [
+    {
+      "id": "marc-andreessen",
+      "name": "Marc Andreessen",
+      "cohort": "investors",
+      "roles": [
+        {
+          "org": "Andreessen Horowitz (a16z)",
+          "title": "Co-founder & General Partner",
+          "from": "2009",
+          "to": null
+        },
+        {
+          "org": "Meta (Facebook)",
+          "title": "Board member",
+          "from": "2008",
+          "to": null
+        }
+      ],
+      "bio": "Co-creator of Mosaic/Netscape and co-founder of Andreessen Horowitz, one of the largest venture firms investing in AI. Since 2023 he has been the most prominent investor voice for AI accelerationism, open-source AI and against precautionary AI regulation.",
+      "selection": {
+        "influence": [
+          4,
+          "His 2023 essays ('Why AI Will Save the World', 'Techno-Optimist Manifesto') set the terms of the accelerationist/anti-regulation side of the AI policy debate."
+        ],
+        "foresight": [
+          3,
+          "Directionally right on open-weight proliferation, China competition and model commoditization pressure; labor and risk claims are long-horizon and largely unresolved."
+        ],
+        "allocation": [
+          5,
+          "a16z deploys tens of billions of dollars and lobbies actively on US AI policy (SB 1047 opposition, joint statement with Microsoft, AI Action Plan input)."
+        ],
+        "contribution": [
+          3,
+          "Contribution is capital and policy influence rather than architecture; a16z backs many AI labs and apps."
+        ],
+        "corpus": [
+          4,
+          "Large public corpus (essays, podcasts, X posts) from 2023 on; thin and AI-nonspecific before 2023."
+        ],
+        "future": [
+          5,
+          "Close to US policymakers since 2025; a16z positions shape funding and regulatory direction."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Context: his 2011 'Software is eating the world' thesis held that software companies would take over large parts of the economy. No substantial AI-specific forecasts by him from 2012–2016 were found this session.",
+          "evidenceIds": []
+        },
+        {
+          "period": "p2022",
+          "summary": "AI is a tool owned and controlled by people, not a threat; fears of existential risk and mass unemployment are a moral panic. China is the real risk. Open source should be unrestricted, and large AI companies seeking regulation are 'bootleggers' after regulatory capture. Slowing AI 'costs lives'.",
+          "evidenceIds": [
+            "ev-andreessen-1",
+            "ev-andreessen-2",
+            "ev-andreessen-3",
+            "ev-andreessen-4"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Model building may become a commoditized 'race to the bottom' ('selling rice') or a Google-like winner-take-all; he treated this as open. Policy fight moved center stage: he publicly feuded with Khosla over open source (Mar 2024), co-signed a policy statement with Microsoft (Nov 2024), and cited Biden-administration AI policy as a reason for backing Trump. Said AI was producing a hiring boom.",
+          "evidenceIds": [
+            "ev-andreessen-5",
+            "ev-andreessen-6",
+            "ev-andreessen-7",
+            "ev-andreessen-8",
+            "ev-andreessen-9",
+            "ev-khosla-7"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Called DeepSeek-R1 'AI's Sputnik moment' and pushed the US to lead in open-source AI against China. On labor, said disruption will be slower than feared because many jobs are protected by licensing, unions or civil-service rules.",
+          "evidenceIds": [
+            "ev-andreessen-10",
+            "ev-andreessen-11",
+            "ev-out-openmodels-1"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Frames AI as an '80-year overnight success', not a hype cycle. Discusses the dot-com comparison for AI capex. Calls AI job-loss narratives 'fake' and expects employment gains. Secondary summaries say he sees the moat as what is built around the model, not the model itself.",
+          "evidenceIds": [
+            "ev-andreessen-12",
+            "ev-andreessen-13",
+            "ev-andreessen-14",
+            "ev-out-capex-1"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2024-07",
+          "from": "Historically aligned with Democratic candidates (endorsed Hillary Clinton in 2016, per background knowledge)",
+          "to": "Publicly backed Donald Trump in 2024 together with Ben Horowitz",
+          "trigger": "He attributes it largely to Biden-administration tech policy, including May 2024 AI meetings he described as 'horrifying'. Former Biden officials dispute his account of those meetings.",
+          "evidenceIds": [
+            "ev-andreessen-8",
+            "ev-out-whitehouse-1"
+          ]
+        }
+      ],
+      "corpusNotes": "a16z.com, techcrunch.com, fortune.com and other primary hosts were unreachable (proxy blocked every fetch). Quotes come from search snippets. The essays' full text was not re-read this session. His AI-specific public corpus before 2023 is thin. Many 2025–26 statements are X posts and podcasts known only through secondary summaries."
+    },
+    {
+      "id": "vinod-khosla",
+      "name": "Vinod Khosla",
+      "cohort": "investors",
+      "roles": [
+        {
+          "org": "Khosla Ventures",
+          "title": "Founder",
+          "from": "2004",
+          "to": null
+        },
+        {
+          "org": "Sun Microsystems",
+          "title": "Co-founder",
+          "from": "1982",
+          "to": "1985"
+        }
+      ],
+      "bio": "Sun Microsystems co-founder and founder of Khosla Ventures. He was OpenAI's first venture investor (2019) and since 2012 has made some of the boldest public forecasts about AI replacing expert work, especially medicine.",
+      "selection": {
+        "influence": [
+          4,
+          "His 'doctor algorithm' thesis (2012) and '80% of 80% of jobs' forecasts (2024–26) are widely cited reference points in AI-and-labor debates."
+        ],
+        "foresight": [
+          3,
+          "Very early on AI's expert-replacement potential and on OpenAI (2019). His 2025 medical-replacement timeline failed badly."
+        ],
+        "allocation": [
+          4,
+          "His $50M 2019 OpenAI bet and a large AI portfolio (health, robotics, models) steered meaningful capital."
+        ],
+        "contribution": [
+          3,
+          "Capital and agenda-setting rather than technical contribution."
+        ],
+        "corpus": [
+          4,
+          "Long, consistent record of essays, keynotes and interviews from 2012 to 2026."
+        ],
+        "future": [
+          4,
+          "Major OpenAI stakeholder and active voice on US–China AI policy and labor transition (UBI)."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Data-driven software ('Doctor Algorithm') would take over most diagnosis and prescription work, leaving only the top ~20% of doctors temporarily. Medicine would go mobile with far fewer doctors.",
+          "evidenceIds": [
+            "ev-khosla-1",
+            "ev-khosla-2",
+            "ev-khosla-3",
+            "ev-khosla-4"
+          ]
+        },
+        {
+          "period": "p2017",
+          "summary": "Acted on an AGI-scale thesis by making a $50M investment in OpenAI in 2019, which he called his largest initial bet and nearly impossible to diligence given OpenAI's structure.",
+          "evidenceIds": [
+            "ev-khosla-5"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Strongly backed Sam Altman during the November 2023 OpenAI board crisis. Treated frontier AI as strategic national technology.",
+          "evidenceIds": [
+            "ev-khosla-6"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Frontier AI is a geopolitical race with China, so frontier models should not be open-sourced ('Would you open source the Manhattan Project?'). AI will be able to do 80% of the work in 80% of jobs. Expertise (doctors, tutors) will become near-free. Dystopian outcomes are policy choices, and UBI-style redistribution may be needed.",
+          "evidenceIds": [
+            "ev-khosla-7",
+            "ev-khosla-8",
+            "ev-khosla-9"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Put a timeline on the labor forecast: within five years AI will be able to do 80% of any economically valuable job.",
+          "evidenceIds": [
+            "ev-khosla-10"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Restated the forecast as 'starting in about 2030', with most jobs capable of being done by AI, framed as deflationary abundance rather than collapse.",
+          "evidenceIds": [
+            "ev-khosla-11",
+            "ev-out-oecd-1"
+          ]
+        }
+      ],
+      "reversals": [],
+      "corpusNotes": "No outright reversal found. The main evolution is horizon drift: the 2012-era claim that machines would do up to 80% of physicians' diagnostic and prescription work by 2025 resurfaces in 2024–26 as a general labor claim dated about 2030. The exact 2012 wording varies between the TechCrunch essay and secondary keynote reports. Primary pages could not be fetched; some quotes come from secondary sources (Wachter excerpt, Fortune)."
+    },
+    {
+      "id": "bill-gurley",
+      "name": "Bill Gurley",
+      "cohort": "investors",
+      "roles": [
+        {
+          "org": "Benchmark",
+          "title": "General Partner",
+          "from": "1999",
+          "to": null
+        }
+      ],
+      "bio": "Long-time Benchmark general partner (Uber, Zillow, Stitch Fix) who stopped leading new deals around 2020 and has since become an influential commentator. His September 2023 '2,851 Miles' talk framed AI regulation as a regulatory-capture risk.",
+      "selection": {
+        "influence": [
+          3,
+          "Popularized the regulatory-capture critique of frontier-lab calls for AI licensing in 2023."
+        ],
+        "foresight": [
+          2,
+          "Few dated, testable AI predictions found. Provisional score."
+        ],
+        "allocation": [
+          2,
+          "No longer leading new venture investments. Influence comes through commentary, not capital."
+        ],
+        "contribution": [
+          1,
+          "No direct architectural or commercial AI contribution identified."
+        ],
+        "corpus": [
+          2,
+          "Corpus is mostly talks and podcasts (All-In Summit, BG2). Little AI-specific written work was identified this session."
+        ],
+        "future": [
+          2,
+          "A commentator voice in policy and valuation debates."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2022",
+          "summary": "Incumbent AI firms calling for licensing and new agencies risk regulatory capture that would freeze out startups and open source. Washington's distance from Silicon Valley lets incumbents shape rules.",
+          "evidenceIds": [
+            "ev-gurley-1"
+          ]
+        }
+      ],
+      "reversals": [],
+      "corpusNotes": "Evidence is thin. The search budget ran out before Gurley-specific searches, and every fetch was blocked, so all Gurley evidence is recalled from background knowledge, unverified this session, with empty URLs. His 2024–26 views on AI capex and bubbles (e.g. on the BG2 podcast) could not be dated or quoted reliably and are not included as assertions."
+    },
+    {
+      "id": "reid-hoffman",
+      "name": "Reid Hoffman",
+      "cohort": "investors",
+      "roles": [
+        {
+          "org": "Greylock Partners",
+          "title": "Partner",
+          "from": "2009",
+          "to": null
+        },
+        {
+          "org": "OpenAI",
+          "title": "Founding donor; board member",
+          "from": "2015",
+          "to": "2023-03"
+        },
+        {
+          "org": "Microsoft",
+          "title": "Board member",
+          "from": "2017",
+          "to": null
+        },
+        {
+          "org": "Inflection AI",
+          "title": "Co-founder",
+          "from": "2022",
+          "to": null
+        },
+        {
+          "org": "Manas AI",
+          "title": "Co-founder",
+          "from": "2025",
+          "to": null
+        }
+      ],
+      "bio": "LinkedIn co-founder and Greylock partner. He was a founding donor and later board member of OpenAI, co-founded Inflection AI with Mustafa Suleyman, and sits on Microsoft's board. He is the leading investor voice for AI as human amplification ('Impromptu', 'Superagency').",
+      "selection": {
+        "influence": [
+          4,
+          "Bridge between OpenAI, Microsoft and policy circles. His books frame the 'amplification / iterative deployment' position."
+        ],
+        "foresight": [
+          3,
+          "Early backer of OpenAI (2015). His Inflection consumer-AI bet did not succeed as an independent company."
+        ],
+        "allocation": [
+          4,
+          "Funded OpenAI early, co-founded Inflection (which raised $1.3B in 2023), and sits on Microsoft's board."
+        ],
+        "contribution": [
+          3,
+          "Commercial: Inflection/Pi and a role in shaping the OpenAI–Microsoft ecosystem."
+        ],
+        "corpus": [
+          4,
+          "Two AI books (2023, 2025), the Possible podcast and many essays."
+        ],
+        "future": [
+          4,
+          "Microsoft board seat, Manas AI, and policy influence among Democrats."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Backed the founding of OpenAI (December 2015) as a donor, implying belief that advanced AI was coming and should be developed by a mission-driven lab. This is an inference from the action.",
+          "evidenceIds": [
+            "ev-hoffman-1"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Large language models are an amplifier of human capability, a copilot for every profession, not a replacement ('Impromptu', written with GPT-4). Acted on a personal-AI thesis by co-founding Inflection (Pi).",
+          "evidenceIds": [
+            "ev-hoffman-2",
+            "ev-hoffman-3",
+            "ev-hoffman-4"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Inflection's consumer strategy ended when Microsoft hired its co-founders and most staff and licensed its models (March 2024).",
+          "evidenceIds": [
+            "ev-hoffman-5"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "'Superagency': a 'Bloomer' stance that broad, iterative public deployment, rather than precautionary regulation, is the safest route and will give individuals 'superagency'. Applied AI to drug discovery via Manas AI.",
+          "evidenceIds": [
+            "ev-hoffman-6",
+            "ev-hoffman-7"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2024-03",
+          "from": "Building Inflection as an independent consumer personal-AI company (Pi)",
+          "to": "Microsoft hired Inflection's co-founders and staff and licensed its models. Inflection pivoted to enterprise.",
+          "trigger": "Difficulty competing with frontier labs on compute and capital (per contemporary reporting, recalled)",
+          "evidenceIds": [
+            "ev-hoffman-5"
+          ]
+        }
+      ],
+      "corpusNotes": "The search budget was exhausted before Hoffman-specific searches. Every Hoffman item is recalled from background knowledge (books, announcements) and unverified this session. Dated numeric predictions by Hoffman were not reliably identified. His public positions are mostly normative framing (amplification, iterative deployment)."
+    },
+    {
+      "id": "elad-gil",
+      "name": "Elad Gil",
+      "cohort": "investors",
+      "roles": [
+        {
+          "org": "Independent investor / Elad Blog",
+          "title": "Investor & essayist",
+          "from": "2010",
+          "to": null
+        }
+      ],
+      "bio": "Former Google and Twitter executive turned prolific solo investor, with early stakes in many AI companies. His essays on generative-AI market structure are widely read in Silicon Valley.",
+      "selection": {
+        "influence": [
+          3,
+          "His essays on generative-AI market structure circulate widely among founders and investors."
+        ],
+        "foresight": [
+          3,
+          "Provisional. The oligopoly framing for foundation models held up, but few dated testable predictions were found."
+        ],
+        "allocation": [
+          3,
+          "A prolific early-stage AI investor (e.g. Harvey, recalled)."
+        ],
+        "contribution": [
+          2,
+          "Capital and market-structure framing."
+        ],
+        "corpus": [
+          3,
+          "Regular blog essays, but this session could only work from recall."
+        ],
+        "future": [
+          3,
+          "Shapes early-stage AI application funding."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2022",
+          "summary": "Generative AI is a major platform shift. Backed application-layer companies in vertical domains (e.g. legal AI).",
+          "evidenceIds": [
+            "ev-gil-2"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Unusually, generative-AI market structure was becoming less clear over time. Key open questions: whether foundation models end up as an oligopoly aligned with the hyperscale clouds, the role of open source, and where value accrues between model and application layers.",
+          "evidenceIds": [
+            "ev-gil-1"
+          ]
+        }
+      ],
+      "reversals": [],
+      "corpusNotes": "Evidence is very thin. The search budget ran out before Gil-specific searches, and blog.eladgil.com was unreachable. Only items with dates recalled confidently are included. 2025–26 essays on which AI markets had 'clarified', on AI-enabled services roll-ups and on the model-vs-application value split could not be dated or verified, so they are omitted."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-andreessen-1",
+      "url": "https://a16z.com/ai-will-save-the-world/",
+      "title": "Why AI Will Save the World",
+      "publisher": "Andreessen Horowitz (a16z.com)",
+      "date": "2023-06-06",
+      "speaker": "marc-andreessen",
+      "type": "essay",
+      "primary": true,
+      "passage": "AI will not destroy the world, and in fact may save it.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Opening line, confirmed across multiple search snippets (SiliconANGLE, CACM). The page itself was unreachable (proxy). Essay of roughly 7,000 words."
+    },
+    {
+      "id": "ev-andreessen-2",
+      "url": "https://siliconangle.com/2023/06/06/actually-ai-will-save-world-says-venture-capitalist-marc-andreessen/",
+      "title": "Actually, AI will save the world, says venture capitalist Marc Andreessen",
+      "publisher": "SiliconANGLE",
+      "date": "2023-06-06",
+      "speaker": "SiliconANGLE",
+      "type": "news",
+      "primary": false,
+      "passage": "Summarizes the essay. AI is math, code and computers, built, owned, used and controlled by people. He calls for driving AI into the economy and society as fast and aggressively as possible. He names China winning global AI dominance as the single greatest risk. He argues for open source and against regulatory capture.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary summary used to confirm the essay's main claims."
+    },
+    {
+      "id": "ev-andreessen-3",
+      "url": "https://draup.com/talent/ceo-newsletter/ai-and-the-evolution-of-work-unraveling-the-lump-of-labor-fallacy",
+      "title": "AI and the Evolution of Work: Unraveling the Lump of Labor Fallacy",
+      "publisher": "Draup (quoting a16z essay)",
+      "date": "2023-07",
+      "speaker": "Draup",
+      "type": "news",
+      "primary": false,
+      "passage": "Quotes 'Why AI Will Save the World': the lump-of-labor fallacy flows from naive intuition, which is wrong here. Productivity gains lower prices, free up spending power, and create new industries and jobs.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Paraphrase of the essay's jobs section as relayed by a secondary source."
+    },
+    {
+      "id": "ev-andreessen-4",
+      "url": "https://fortune.com/2023/10/17/marc-andreessen-techno-optimist-manifesto-ai-libertarianism-effective-accelerationism",
+      "title": "Marc Andreessen's Techno-Optimist Manifesto (coverage)",
+      "publisher": "Fortune",
+      "date": "2023-10-16",
+      "speaker": "marc-andreessen",
+      "type": "essay",
+      "primary": false,
+      "passage": "The manifesto (posted on a16z.com October 16, 2023) argues for accelerating technology. From memory, it contains the line that any deceleration of AI will cost lives and that deaths AI could have prevented amount to a form of murder.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Publication date confirmed via snippets (Wikipedia, Fortune). The 'deceleration of AI will cost lives' wording is recalled from background knowledge, not seen this session."
+    },
+    {
+      "id": "ev-andreessen-5",
+      "url": "https://techcrunch.com/?p=2903032",
+      "title": "Andreessen: LLM makers may be in a 'race to the bottom' (Ray Summit remarks)",
+      "publisher": "TechCrunch",
+      "date": "2024-10",
+      "speaker": "marc-andreessen",
+      "type": "talk",
+      "primary": false,
+      "passage": "Maybe all of these companies are in a race to the bottom",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Remarks at Anyscale's Ray Summit (late Sept–Oct 2024). Reported as 'earlier this month', so October 2024 is inferred. He set the 'selling rice' commodity scenario against a Google-search-like winner-take-all scenario, framing it as an open possibility rather than a forecast."
+    },
+    {
+      "id": "ev-andreessen-6",
+      "url": "https://officechai.com/stories/creating-llms-could-be-a-race-to-the-bottom-with-no-profits-marc-andreessen/",
+      "title": "Creating LLMs Could Be A Race To The Bottom With No Profits: Marc Andreessen",
+      "publisher": "OfficeChai",
+      "date": "2024-10",
+      "speaker": "OfficeChai",
+      "type": "news",
+      "primary": false,
+      "passage": "Reports his view that anyone can make an LLM by scraping the internet and buying GPUs, so selling intelligence could be like selling rice. He also acknowledged the opposite, Google-like monopoly scenario.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Confirms the conditional, two-scenario framing."
+    },
+    {
+      "id": "ev-andreessen-7",
+      "url": "https://techcrunch.com/2024/11/01/microsoft-and-a16z-set-aside-differences-join-hands-in-plea-against-ai-regulation/",
+      "title": "Microsoft and a16z set aside differences, join hands in plea against AI regulation",
+      "publisher": "TechCrunch",
+      "date": "2024-11-01",
+      "speaker": "TechCrunch",
+      "type": "news",
+      "primary": false,
+      "passage": "Andreessen and Horowitz co-signed a joint AI policy statement with Satya Nadella and Brad Smith. It backs regulating only when benefits exceed costs, supports both open-source and proprietary models, and proposes 'Open Data Commons'.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "TechCrunch is critical of the a16z lobbying campaign against SB 1047. Firm-level action co-signed by Andreessen."
+    },
+    {
+      "id": "ev-andreessen-8",
+      "url": "https://techcrunch.com/2024/12/14/why-marc-andreessen-was-very-scared-after-meeting-with-the-biden-administration-about-ai",
+      "title": "Why Marc Andreessen was 'very scared' after meeting with the Biden administration about AI",
+      "publisher": "TechCrunch",
+      "date": "2024-12-14",
+      "speaker": "marc-andreessen",
+      "type": "interview",
+      "primary": false,
+      "passage": "Andreessen said that in May 2024 meetings, officials signaled AI should be controlled by government working with a few large, cooperating companies, and discouraged funding AI startups. He cited this as a reason he and Ben Horowitz backed Trump.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "His account, given on podcasts including Joe Rogan and Bari Weiss's 'Honestly'. Exact quoted wording ('two or three companies...') could not be confirmed against a transcript."
+    },
+    {
+      "id": "ev-andreessen-9",
+      "url": "https://fortune.com/2024/11/15/marc-andreessen-ai-replace-jobs-hiring-boom",
+      "title": "Marc Andreessen: AI hiring boom (coverage)",
+      "publisher": "Fortune",
+      "date": "2024-11-15",
+      "speaker": "marc-andreessen",
+      "type": "interview",
+      "primary": false,
+      "passage": "He said what is happening today is an AI hiring boom, rejecting fears of AI-driven unemployment.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Fortune's page was not reachable. The paraphrase comes from a search summary."
+    },
+    {
+      "id": "ev-andreessen-10",
+      "url": "https://www.fortune.com/2025/01/27/marc-andreessen-deepseek-sputnik-ai-markets",
+      "title": "Marc Andreessen warns DeepSeek is 'AI's Sputnik moment'",
+      "publisher": "Fortune",
+      "date": "2025-01-26",
+      "speaker": "marc-andreessen",
+      "type": "social",
+      "primary": false,
+      "passage": "DeepSeek-R1 is AI's Sputnik moment",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "X post on Sunday, January 26, 2025, reported by Fortune on January 27."
+    },
+    {
+      "id": "ev-andreessen-11",
+      "url": "https://www.fortune.com/2025/10/08/billionaire-investor-marc-andreesssen-ai-jobs-personal-finance-careers-costs-plummet-healthcare-law",
+      "title": "Marc Andreessen on AI, jobs and costs (coverage)",
+      "publisher": "Fortune",
+      "date": "2025-10-08",
+      "speaker": "marc-andreessen",
+      "type": "interview",
+      "primary": false,
+      "passage": "He argued job disruption will come far more slowly than expected, because many US jobs carry licensing, union or civil-service protections that make them hard to automate. Some roles will stay human even where AI performs better.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Paraphrase from a search summary."
+    },
+    {
+      "id": "ev-andreessen-12",
+      "url": "https://latent.space/p/pmarca",
+      "title": "Marc Andreessen introspects on The Death of the Browser, Pi + OpenClaw, and Why 'This Time Is Different'",
+      "publisher": "Latent Space podcast",
+      "date": "2026-04-03",
+      "speaker": "marc-andreessen",
+      "type": "interview",
+      "primary": true,
+      "passage": "Frames the current period as an '80-year overnight success': ChatGPT, o1 and agents draw on an 80-year backlog of ideas, so AI is not just another hype cycle. Also discusses the dot-com comparison for AI capex.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Paraphrase from episode descriptions. His exact conclusion on the capex/dot-com comparison was not visible."
+    },
+    {
+      "id": "ev-andreessen-13",
+      "url": "https://cointelegraph.com/news/marc-andreessen-calls-ai-job-loss-fears-fake-expects-employment-gains?rand=50490",
+      "title": "Marc Andreessen calls AI job-loss fears 'fake', expects employment gains",
+      "publisher": "Cointelegraph",
+      "date": "2026-04",
+      "speaker": "marc-andreessen",
+      "type": "social",
+      "primary": false,
+      "passage": "In X posts he called AI job-loss narratives fake and predicted a productivity- and demand-driven employment boom. He blamed companies that cite AI for layoffs.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Article set the posts against a March 2026 jobs report showing 4.3% unemployment and rising long-term unemployment. Month inferred from the search summary ('April 2026')."
+    },
+    {
+      "id": "ev-andreessen-14",
+      "url": "https://www.the-ai-corner.com/p/marc-andreessen-ai-moat-not-the-model-2026",
+      "title": "Marc Andreessen: The AI moat is not the model",
+      "publisher": "The AI Corner (newsletter)",
+      "date": "2026",
+      "speaker": "The AI Corner",
+      "type": "news",
+      "primary": false,
+      "passage": "Secondary summary of a 2026 a16z LP meeting: the moat is not the model, it is what you build around it.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "A secondary summary, not a transcript. Low weight."
+    },
+    {
+      "id": "ev-khosla-1",
+      "url": "https://www.techcrunch.com/2012/01/10/doctors-or-algorithms",
+      "title": "Do We Need Doctors Or Algorithms?",
+      "publisher": "TechCrunch (guest essay by Vinod Khosla)",
+      "date": "2012-01-10",
+      "speaker": "vinod-khosla",
+      "type": "essay",
+      "primary": true,
+      "passage": "Eventually, we won't need the average doctor and will have much better and cheaper care for 90–99% of our medical needs.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Quoted in a 2013 Aalto University piece. The essay also says the top 10–20% of doctors would still be needed for a time to help software improve. The '80%' in the essay refers to doctors below the top 20%, not a replacement share."
+    },
+    {
+      "id": "ev-khosla-2",
+      "url": "https://medtech.citeline.com/MT031806/Machines-Can-Replace-80-Of-What-Doctors-Do--VC-Vinod-Khosla",
+      "title": "Machines Can Replace 80% Of What Doctors Do – VC Vinod Khosla",
+      "publisher": "Medtech Insight (Citeline)",
+      "date": "2012",
+      "speaker": "vinod-khosla",
+      "type": "talk",
+      "primary": false,
+      "passage": "At the 2012 Health Innovation Summit, Khosla argued technology/machines will replace about 80% of what doctors do and called healthcare 'like witchcraft'.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Keynote in San Francisco, 2012. Reports differ between '80% of doctors' and '80% of what doctors do'. The exact month was not confirmed."
+    },
+    {
+      "id": "ev-khosla-3",
+      "url": "https://www.the-hospitalist.org/hospitalist/article/139550/leadership-training/will-artificial-intelligence-make-us-better-doctors/2/",
+      "title": "Will artificial intelligence make us better doctors? (excerpt of Robert Wachter)",
+      "publisher": "The Hospitalist",
+      "date": "2012",
+      "speaker": "Robert Wachter (quoting Khosla)",
+      "type": "news",
+      "primary": false,
+      "passage": "Khosla wrote that by 2025 automated health care would displace up to 80 percent of physicians' diagnostic and prescription work.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Wachter notes Khosla has predicted since 2012 that most of what physicians do can, will and should be done by computers. Date of the underlying Khosla text taken as 2012, per Wachter."
+    },
+    {
+      "id": "ev-khosla-4",
+      "url": "https://www.technologyreview.com/2014/07/21/171990/more-phones-fewer-doctors/",
+      "title": "More Phones, Fewer Doctors",
+      "publisher": "MIT Technology Review",
+      "date": "2014-07-21",
+      "speaker": "vinod-khosla",
+      "type": "interview",
+      "primary": true,
+      "passage": "Interview in which Khosla argues medicine will go mobile and most doctors will be out of a job.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Paraphrase from a search summary."
+    },
+    {
+      "id": "ev-khosla-5",
+      "url": "https://www.fortune.com/2023/12/04/khosla-ventures-openai-sam-altman",
+      "title": "Vinod Khosla details how much his venture firm had on the line before Sam Altman's reinstatement at OpenAI",
+      "publisher": "Fortune",
+      "date": "2023-12-04",
+      "speaker": "vinod-khosla",
+      "type": "interview",
+      "primary": false,
+      "passage": "Khosla said the firm wrote a $50 million check to OpenAI in 2019, the largest initial bet he had made in 40 years, and called it almost impossible to diligence given OpenAI's governance structure.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "The Information reported a ~5% stake (secondary). Some sources say KV was first VC investor in 2018; the 2019 date for the check is better supported."
+    },
+    {
+      "id": "ev-khosla-6",
+      "url": "https://techcrunch.com/?p=2897757",
+      "title": "Khosla Ventures just backed OpenAI with $405M more, but not necessarily with its own capital",
+      "publisher": "TechCrunch",
+      "date": "2024-10",
+      "speaker": "TechCrunch",
+      "type": "news",
+      "primary": false,
+      "passage": "A filing shows Khosla Ventures raised $405M for OpenAI, mostly or entirely via an SPV of outside investors. OpenAI's 2019 valuation is not publicly known.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Month inferred from OpenAI's October 2024 round. The article URL carried no date. Khosla's support for Altman in the November 2023 crisis is from Fortune (ev-khosla-5) and background knowledge."
+    },
+    {
+      "id": "ev-khosla-7",
+      "url": "https://fortune.com/2024/03/05/marc-andreessen-vinod-khosla-public-dispute-ai-open-source",
+      "title": "Marc Andreessen and Vinod Khosla public dispute over AI and open source",
+      "publisher": "Fortune",
+      "date": "2024-03-04",
+      "speaker": "vinod-khosla",
+      "type": "social",
+      "primary": false,
+      "passage": "Would you open source the Manhattan Project?",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "X exchange. Khosla backed OpenAI/Altman against Musk's lawsuit. Andreessen accused him of 'lobbying to ban open source' and replied to the Manhattan Project line with an Oppenheimer image and the claim OpenAI 'must be immediately nationalized' (sarcastic). Khosla described the US as in a 'war' with China. Yann LeCun also replied to Khosla."
+    },
+    {
+      "id": "ev-khosla-8",
+      "url": "https://fortune.com/2024/09/24/silicon-valley-billionaire-vinod-khosla-universal-basic-income-ai-80-jobs",
+      "title": "Silicon Valley billionaire Vinod Khosla says AI will handle 80% of work in 80% of jobs",
+      "publisher": "Fortune",
+      "date": "2024-09-24",
+      "speaker": "vinod-khosla",
+      "type": "interview",
+      "primary": false,
+      "passage": "Khosla estimated that 80% of 80% of all jobs, maybe more, can be done by an AI. The piece also covers his support for UBI or redistribution.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "The headline is Fortune's wording. Linked to his essay 'AI: Dystopia or Utopia?'."
+    },
+    {
+      "id": "ev-khosla-9",
+      "url": "https://www.khoslaventures.com/wp-content/uploads/KV-Summit-2025_AI-Dystopia-or-Utopia_FINAL-2.pdf",
+      "title": "AI: Dystopia or Utopia? (KV Summit 2025 deck)",
+      "publisher": "Khosla Ventures",
+      "date": "2025-05",
+      "speaker": "vinod-khosla",
+      "type": "talk",
+      "primary": true,
+      "passage": "AI could provide tutors for every child on the planet and physician expertise for everyone at near-zero cost, extending to experts from oncologists to structural engineers. Most dystopian outcomes are societal choices.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Deck dated May 2025. The underlying essay (summary of about 3,150 words, full version about 13,150) is believed to date from September 2024, consistent with Fortune's coverage; exact essay date not confirmed."
+    },
+    {
+      "id": "ev-khosla-10",
+      "url": "https://fortune.com/2025/07/01/silicon-valley-investor-vinod-khosla-ai-job-prediction-interview",
+      "title": "Silicon Valley investor Vinod Khosla AI job prediction (Uncapped with Jack Altman)",
+      "publisher": "Fortune",
+      "date": "2025-07-01",
+      "speaker": "vinod-khosla",
+      "type": "interview",
+      "primary": false,
+      "passage": "Within the next five years, any economically valuable job humans can do, AI will be able to do 80% of it",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Said on the 'Uncapped with Jack Altman' podcast (2025). The quote appeared in quotation marks in a search summary. 'Able to do' is a capability claim, not a claim about actual displacement."
+    },
+    {
+      "id": "ev-khosla-11",
+      "url": "https://fortune.com/2026/03/06/vinod-khosla-predicts-80-percent-of-jobs-done-by-ai-15-trillion-of-gdp-going-away/",
+      "title": "Vinod Khosla predicts 80 percent of jobs done by AI, $15 trillion of GDP going away",
+      "publisher": "Fortune",
+      "date": "2026-03-06",
+      "speaker": "vinod-khosla",
+      "type": "interview",
+      "primary": false,
+      "passage": "Predicted that starting in about 2030 most jobs (he cited 80% and roughly two-thirds of all jobs) will be capable of being done by AI. Framed as deflationary abundance and equality, not collapse.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "The '$15 trillion of GDP going away' is Fortune's headline. The exact basis for that figure was not seen."
+    },
+    {
+      "id": "ev-gurley-1",
+      "url": "",
+      "title": "2,851 Miles (All-In Summit 2023 talk)",
+      "publisher": "All-In Summit",
+      "date": "2023-09",
+      "speaker": "bill-gurley",
+      "type": "talk",
+      "primary": true,
+      "passage": "Talk named for the distance between Silicon Valley and Washington, D.C. Argues incumbents use regulation to entrench themselves (regulatory capture), presents calls from leading AI firms for licensing/new agencies as an example of that risk, and defends open source and startups.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from background knowledge, not re-verified this session (search budget exhausted, fetch blocked). The exact wording and the specific AI examples used are not confirmed."
+    },
+    {
+      "id": "ev-hoffman-1",
+      "url": "https://openai.com/index/introducing-openai/",
+      "title": "Introducing OpenAI",
+      "publisher": "OpenAI",
+      "date": "2015-12-11",
+      "speaker": "OpenAI",
+      "type": "announcement",
+      "primary": true,
+      "passage": "OpenAI's launch post lists Reid Hoffman among the funders who committed to the initial $1B pledge.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Donation-type support via the non-profit, not an equity stake."
+    },
+    {
+      "id": "ev-hoffman-2",
+      "url": "",
+      "title": "Impromptu: Amplifying Our Humanity Through AI",
+      "publisher": "Dallepedia LLC (self-published book, co-written with GPT-4)",
+      "date": "2023-03",
+      "speaker": "reid-hoffman",
+      "type": "book",
+      "primary": true,
+      "passage": "Argues GPT-4-class models amplify human capability across education, business, creativity and journalism, acting as a copilot for professionals rather than a replacement.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from background knowledge. Published around March 2023, around GPT-4's release."
+    },
+    {
+      "id": "ev-hoffman-3",
+      "url": "",
+      "title": "Inflection AI founding announcement",
+      "publisher": "Inflection AI / Greylock",
+      "date": "2022-03",
+      "speaker": "reid-hoffman",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Hoffman co-founded Inflection AI with Mustafa Suleyman and Karén Simonyan, incubated at Greylock, to build personal AI. Pi launched May 2023; the company raised $1.3B in June 2023 from investors including Microsoft and Nvidia.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Dates and amounts not re-verified this session."
+    },
+    {
+      "id": "ev-hoffman-4",
+      "url": "",
+      "title": "Reid Hoffman steps down from OpenAI board",
+      "publisher": "Reid Hoffman (LinkedIn post) / press coverage",
+      "date": "2023-03",
+      "speaker": "reid-hoffman",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Hoffman left OpenAI's board, citing potential conflicts of interest from investments in AI companies such as Inflection.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Not re-verified this session."
+    },
+    {
+      "id": "ev-hoffman-5",
+      "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot/",
+      "title": "Mustafa Suleyman, DeepMind and Inflection co-founder, joins Microsoft to lead Copilot",
+      "publisher": "Microsoft (Official Microsoft Blog, Satya Nadella)",
+      "date": "2024-03-19",
+      "speaker": "Microsoft",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Microsoft hired Suleyman and Simonyan and most of Inflection's staff to form Microsoft AI. Inflection pivoted to enterprise. Microsoft reportedly paid about $650M, mostly as a model-licensing fee.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. The URL is believed correct but was not fetched this session. Hoffman sits on Microsoft's board and was an Inflection co-founder and investor."
+    },
+    {
+      "id": "ev-hoffman-6",
+      "url": "",
+      "title": "Superagency: What Could Possibly Go Right with Our AI Future (with Greg Beato)",
+      "publisher": "Authors Equity (book)",
+      "date": "2025-01-28",
+      "speaker": "reid-hoffman",
+      "type": "book",
+      "primary": true,
+      "passage": "Classifies stances as Doomers, Gloomers, Zoomers and Bloomers and identifies as a Bloomer. Argues iterative deployment with broad public participation is safer and more beneficial than precautionary regulation, giving individuals 'superagency'.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from background knowledge. Not re-verified this session."
+    },
+    {
+      "id": "ev-hoffman-7",
+      "url": "",
+      "title": "Manas AI launch",
+      "publisher": "Manas AI / press coverage",
+      "date": "2025-01",
+      "speaker": "reid-hoffman",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Hoffman co-founded Manas AI with oncologist Siddhartha Mukherjee to use AI to speed up drug discovery, starting with cancers.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Not re-verified this session."
+    },
+    {
+      "id": "ev-gil-1",
+      "url": "",
+      "title": "Things I Don't Know About AI",
+      "publisher": "Elad Blog (blog.eladgil.com)",
+      "date": "2024-02",
+      "speaker": "elad-gil",
+      "type": "essay",
+      "primary": true,
+      "passage": "Notes that in most markets things get clearer over time, but in generative AI the opposite has happened. Lists open questions: whether LLMs become an oligopoly tied to the big clouds, the role of open source, and where value accrues.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from background knowledge. Title and approximate date believed correct. Wording is a paraphrase."
+    },
+    {
+      "id": "ev-gil-2",
+      "url": "",
+      "title": "Harvey Series B financing",
+      "publisher": "Press coverage",
+      "date": "2023-12",
+      "speaker": "elad-gil",
+      "type": "news",
+      "primary": false,
+      "passage": "Elad Gil and Kleiner Perkins reportedly co-led an $80M Series B in legal-AI company Harvey.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled with medium-low confidence. An investment is not proof of a personal forecast."
+    },
+    {
+      "id": "ev-out-openmodels-1",
+      "url": "https://www.fortune.com/2025/10/27/open-source-ai-china-winning-race-andreessen-horowitz-partner-anjney-midha-deepseek-r1-openai",
+      "title": "Open-source AI: China winning the race, says a16z partner Anjney Midha",
+      "publisher": "Fortune",
+      "date": "2025-10-27",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "a16z partner Anjney Midha said China leads in the most powerful open-source models, apart from Mistral and a few small US models. Related reporting cites an MIT/Hugging Face study in which Chinese-made open models' share of new-model downloads rose to about 17%, ahead of US developers.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Partly an a16z voice, so not fully independent of Andreessen. The download figure is relayed secondhand."
+    },
+    {
+      "id": "ev-out-whitehouse-1",
+      "url": "https://aiweekly.co/alerts/ex-biden-officials-dispute-andreessens-story-on-ai-lunch",
+      "title": "Ex-Biden Officials Dispute Andreessen's Story on AI Lunch",
+      "publisher": "AI Weekly (summarizing Politico)",
+      "date": "2026",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Former Biden officials Bruce Reed and Ben Buchanan wrote in Politico that Andreessen's account is not what happened at the meeting. Sam Altman had earlier called the narrative a 'conspiracy theory' on Bari Weiss's podcast.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "The date of the Politico piece was not confirmed (one summary implied September 2026). Altman's remark reported by TechCrunch (techcrunch.com/?p=2935800), likely December 2024."
+    },
+    {
+      "id": "ev-out-labor-1",
+      "url": "https://cointelegraph.com/news/marc-andreessen-calls-ai-job-loss-fears-fake-expects-employment-gains?rand=50490",
+      "title": "Coverage of US labor data alongside Andreessen's April 2026 posts",
+      "publisher": "Cointelegraph",
+      "date": "2026-04",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "The March 2026 US jobs report showed 4.3% unemployment and rising long-term unemployment.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary relay of BLS data. Data for July–October 2026 could not be retrieved this session."
+    },
+    {
+      "id": "ev-out-labor-2",
+      "url": "",
+      "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+      "publisher": "Stanford Digital Economy Lab (Brynjolfsson, Chandar, Chen)",
+      "date": "2025-08",
+      "speaker": "outcome",
+      "type": "paper",
+      "primary": false,
+      "passage": "Found a relative employment decline (about 13%) for early-career workers aged 22–25 in the most AI-exposed occupations since late 2022, with no comparable decline for older workers.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from background knowledge. Not re-verified this session."
+    },
+    {
+      "id": "ev-out-labor-3",
+      "url": "",
+      "title": "Evaluating the Impact of AI on the Labor Market: Current State of Affairs",
+      "publisher": "Yale Budget Lab",
+      "date": "2025-10",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "Found no discernible broad disruption of the US occupational mix attributable to generative AI in the ~33 months after ChatGPT's release.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Not re-verified this session."
+    },
+    {
+      "id": "ev-out-capex-1",
+      "url": "https://www.mindstudio.ai/blog/ai-bubble-or-structural-boom-capex-forecast-comparison",
+      "title": "AI bubble or structural boom: capex forecast comparison",
+      "publisher": "MindStudio blog",
+      "date": "2026",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Reports Morgan Stanley raising its five-hyperscaler capex forecast to $805B for 2026 and $1.1T for 2027.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Weak secondary source relaying a sell-side forecast, not realized spend."
+    },
+    {
+      "id": "ev-out-tokens-1",
+      "url": "",
+      "title": "LLM inference price declines (e.g. a16z 'LLMflation', Nov 2024; Epoch AI price-trend analyses)",
+      "publisher": "a16z / Epoch AI",
+      "date": "2024-11",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "Price per token at a constant capability level fell by roughly an order of magnitude or more per year from 2022 to 2025. DeepSeek and other open-weight models further compressed prices in 2025.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. The a16z analysis is not independent of Andreessen. Exact rates vary by benchmark."
+    },
+    {
+      "id": "ev-out-labs-revenue-1",
+      "url": "",
+      "title": "Frontier-lab revenue growth (OpenAI, Anthropic) 2025–2026",
+      "publisher": "Press reporting (The Information, Reuters, CNBC)",
+      "date": "2026",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "OpenAI and Anthropic reported rapidly growing multi-billion-dollar annualized revenues through 2025 and into 2026, and raised capital at valuations in the hundreds of billions of dollars.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled from background knowledge (to about mid-2026). Specific figures deliberately omitted because they could not be re-verified."
+    },
+    {
+      "id": "ev-out-physicians-1",
+      "url": "",
+      "title": "US physician workforce and clinical AI adoption, 2025",
+      "publisher": "BLS / AAMC / AMA reporting",
+      "date": "2025",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "US physician employment continued to grow, with ongoing projected shortages. Clinical AI was adopted mainly as assistive tools (ambient scribes, imaging triage, decision support), not as replacements for physicians' diagnostic and prescribing roles.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. No 2025–26 source was retrieved this session."
+    },
+    {
+      "id": "ev-out-regulation-1",
+      "url": "",
+      "title": "US AI regulatory trajectory 2024–2026",
+      "publisher": "Press reporting / official actions",
+      "date": "2026",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "California's SB 1047 was vetoed (September 2024). The Biden AI executive order was revoked (January 2025). The July 2025 US AI Action Plan favored deployment and open models. No federal licensing regime for frontier models was adopted. California enacted the narrower transparency law SB 53 (September 2025).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Not re-verified this session."
+    },
+    {
+      "id": "ev-out-oecd-1",
+      "url": "https://oecd.ai/en/incidents/2026-03-06-fe5b",
+      "title": "Vinod Khosla Predicts AI Will Replace 80% of Jobs by 2030",
+      "publisher": "OECD AI Incidents Monitor",
+      "date": "2026-03-06",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Classifies the forecast as a speculative outlook on AI's future impact on employment and the economy.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Records the claim. It is not evidence of the outcome."
+    },
+    {
+      "id": "ev-out-inflection-1",
+      "url": "",
+      "title": "Inflection AI after the Microsoft deal",
+      "publisher": "Press reporting / UK CMA",
+      "date": "2024-09",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Inflection refocused on enterprise AI under new leadership. The UK CMA treated the Microsoft arrangement as a merger but cleared it. Pi was de-emphasized as a frontier consumer product.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Recalled. Not re-verified this session."
+    }
+  ],
+  "assertions": [
+    {
+      "id": "as-andreessen-1",
+      "thinkerId": "marc-andreessen",
+      "date": "2023-06-06",
+      "claim": "AI will not destroy the world, and in fact may save it.",
+      "claimIsQuote": true,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society",
+        "models"
+      ],
+      "topics": [
+        "safety",
+        "agi-timelines"
+      ],
+      "assumptions": [
+        "AI systems remain tools without independent goals",
+        "Humans keep control over deployment"
+      ],
+      "predictedOutcome": "No AI-caused catastrophe. AI benefits (productivity, science, medicine) dominate.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Published two weeks after the CAIS extinction-risk statement (May 2023) signed by Hinton, Bengio, Altman and Amodei, at the height of the AI-risk debate and calls for licensing.",
+      "evidenceIds": [
+        "ev-andreessen-1",
+        "ev-andreessen-2"
+      ],
+      "outcome": "No catastrophic AI event by 2026-10-11. Frontier AI is widely deployed. Safety concerns (misuse, cyber, bio uplift) remain actively debated, and the existential claim is not testable yet.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a normative, open-ended claim. The absence of catastrophe so far neither confirms nor refutes the long-run risk argument.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "No revision found. Restated in the October 2023 manifesto and in 2026 ('80-year overnight success')."
+    },
+    {
+      "id": "as-andreessen-2",
+      "thinkerId": "marc-andreessen",
+      "date": "2023-06-06",
+      "claim": "AI will not cause mass unemployment. Fear of AI taking jobs is the lump-of-labor fallacy, and AI-driven productivity growth will lower prices, raise demand and create new industries and jobs.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "economics",
+        "society"
+      ],
+      "topics": [
+        "labor"
+      ],
+      "assumptions": [
+        "Historical patterns of technology-driven job creation continue",
+        "Demand is elastic enough to absorb productivity gains",
+        "AI complements rather than fully substitutes for labor"
+      ],
+      "predictedOutcome": "No sustained AI-driven rise in unemployment. Total employment grows as AI diffuses.",
+      "horizon": "open-ended (long run)",
+      "horizonDate": null,
+      "contextAtTime": "Shortly after Goldman Sachs and others estimated hundreds of millions of jobs exposed to generative AI (2023). Mainstream economists were split.",
+      "evidenceIds": [
+        "ev-andreessen-1",
+        "ev-andreessen-3"
+      ],
+      "outcome": "Through 2026 there was no mass unemployment: US unemployment was about 4.3% in March 2026, though long-term unemployment was rising. Studies found weaker early-career employment in AI-exposed occupations but no broad disruption of the occupational mix through 2025.",
+      "outcomeEvidenceIds": [
+        "ev-out-labor-1",
+        "ev-out-labor-2",
+        "ev-out-labor-3"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Evidence through late 2026 is consistent with no mass unemployment, but the claim concerns the long run as AI capability rises, and early signs of displacement among young workers are mixed.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Reiterated with escalating confidence: an 'AI hiring boom' (November 2024), disruption slowed by licensing and unions (October 2025), job-loss fears 'fake' (April 2026)."
+    },
+    {
+      "id": "as-andreessen-3",
+      "thinkerId": "marc-andreessen",
+      "date": "2023-06-06",
+      "claim": "The single greatest risk of AI is China winning global AI dominance. The US should push AI into the economy as fast as possible, let big AI companies build freely without regulatory capture, and let open-source AI proliferate without restriction.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "models",
+        "society"
+      ],
+      "topics": [
+        "open-weights",
+        "safety"
+      ],
+      "assumptions": [
+        "Open models strengthen the US/Western ecosystem more than they help rivals",
+        "Regulation would mainly entrench incumbents"
+      ],
+      "predictedOutcome": "Policy that restricts open source or licenses frontier AI would hand advantage to China and incumbents. The US should avoid it.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Senate hearings (May 2023) with calls for licensing. Meta's LLaMA had just leaked/released. China's frontier models were widely seen as behind.",
+      "evidenceIds": [
+        "ev-andreessen-1",
+        "ev-andreessen-2"
+      ],
+      "outcome": "The US did not adopt frontier licensing. SB 1047 was vetoed, the Biden executive order was revoked, and the 2025 AI Action Plan endorsed open models. Chinese labs (DeepSeek, Qwen) came to lead open-weight models by 2025, and a16z partners themselves said China was 'winning' open source.",
+      "outcomeEvidenceIds": [
+        "ev-out-regulation-1",
+        "ev-out-openmodels-1"
+      ],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "The policy direction he advocated largely prevailed and China did become a serious AI competitor, validating the salience of the China framing. Unrestricted US open source did not, however, keep the US ahead in open weights.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "After DeepSeek (January 2025) he shifted emphasis to the US actively leading open-source AI so the world does not run on Chinese models."
+    },
+    {
+      "id": "as-andreessen-4",
+      "thinkerId": "marc-andreessen",
+      "date": "2023-10-16",
+      "claim": "Any deceleration of AI will cost lives. Deaths AI could have prevented are, in his framing, a form of murder.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety"
+      ],
+      "assumptions": [
+        "AI's near-term benefits (e.g. medicine) are large and contingent on speed",
+        "Safety-motivated slowdowns produce little offsetting risk reduction"
+      ],
+      "predictedOutcome": "Normative stance. Not directly testable.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Height of the 'effective accelerationism' vs AI-safety debate, one month before the OpenAI board crisis.",
+      "evidenceIds": [
+        "ev-andreessen-4"
+      ],
+      "outcome": "Not testable. The manifesto became a reference text for accelerationists and was widely criticized.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a value claim, not a forecast.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-andreessen-5",
+      "thinkerId": "marc-andreessen",
+      "date": "2024-10",
+      "claim": "LLM companies may be in a 'race to the bottom': anyone can scrape the internet and buy GPUs, so selling intelligence could be like selling rice, with thin margins. The alternative is a Google-search-like winner-take-all outcome.",
+      "claimIsQuote": false,
+      "kind": "conditional",
+      "category": "market",
+      "layers": [
+        "models",
+        "economics"
+      ],
+      "topics": [
+        "commoditization",
+        "value-accrual",
+        "open-weights"
+      ],
+      "assumptions": [
+        "Model quality converges across labs and open source",
+        "Switching costs between models stay low"
+      ],
+      "predictedOutcome": "Either rapidly falling model prices and weak model-layer margins, or a winner-take-all leader.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Late 2024: GPT-4-class capability had spread to many labs and Llama 3.1. Per-token prices were collapsing. OpenAI had just raised $6.6B.",
+      "evidenceIds": [
+        "ev-andreessen-5",
+        "ev-andreessen-6"
+      ],
+      "outcome": "Per-token prices kept falling steeply, and DeepSeek intensified price pressure in 2025. Frontier labs nonetheless grew revenue rapidly and raised capital at valuations in the hundreds of billions. Neither pure scenario materialized cleanly.",
+      "outcomeEvidenceIds": [
+        "ev-out-tokens-1",
+        "ev-out-labs-revenue-1"
+      ],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "Price commoditization at a fixed capability level occurred as described, but frontier-model revenue concentrated in a few labs rather than margins collapsing. He hedged between both outcomes.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "By 2026, secondary summaries have him saying 'the moat is not the model', i.e. value lies around the model."
+    },
+    {
+      "id": "as-andreessen-6",
+      "thinkerId": "marc-andreessen",
+      "date": "2024-12",
+      "claim": "In May 2024 meetings, Biden-administration officials signaled that AI should be controlled by the government working with a small number of large cooperating companies, and told him not to fund AI startups. This was a key reason he backed Trump.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society",
+        "models"
+      ],
+      "topics": [
+        "open-weights",
+        "safety"
+      ],
+      "assumptions": [
+        "His recollection of the meetings is accurate"
+      ],
+      "predictedOutcome": "Continuation of that administration would have led to an oligopolistic, licensed AI sector.",
+      "horizon": "n/a (counterfactual)",
+      "horizonDate": null,
+      "contextAtTime": "Post-2024 election. Told on Joe Rogan's and Bari Weiss's podcasts.",
+      "evidenceIds": [
+        "ev-andreessen-8"
+      ],
+      "outcome": "Disputed. Sam Altman called it a 'conspiracy theory', and former officials Bruce Reed and Ben Buchanan said in Politico that the account is not what happened.",
+      "outcomeEvidenceIds": [
+        "ev-out-whitehouse-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a contested account of a private meeting and a counterfactual. It cannot be adjudicated from public evidence.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-andreessen-7",
+      "thinkerId": "marc-andreessen",
+      "date": "2024-11-01",
+      "claim": "Action: with Ben Horowitz, co-signed a joint AI policy statement with Microsoft's Satya Nadella and Brad Smith. It calls for regulation only where benefits exceed costs, support for both open-source and proprietary models, and 'Open Data Commons'.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "governance",
+      "layers": [
+        "models",
+        "data",
+        "society"
+      ],
+      "topics": [
+        "open-weights",
+        "data"
+      ],
+      "assumptions": [
+        "Light-touch, use-focused regulation favors startups ('Little Tech')"
+      ],
+      "predictedOutcome": "US policy moves toward cost-benefit and use-based regulation that protects open source.",
+      "horizon": "near-term policy",
+      "horizonDate": "2026",
+      "contextAtTime": "After the veto of SB 1047 (September 2024), which a16z had campaigned against. Days before the 2024 election.",
+      "evidenceIds": [
+        "ev-andreessen-7"
+      ],
+      "outcome": "Federal US policy in 2025–26 moved strongly in this direction (Action Plan, executive-order revocation, pushback on state laws). California passed the narrower SB 53.",
+      "outcomeEvidenceIds": [
+        "ev-out-regulation-1"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "Judged as an advocacy bet on policy direction, it largely prevailed. Influence here also shapes the outcome, so it is not pure foresight.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "a16z continued with recommendations for the National AI Action Plan (March 2025) and a 'Little Tech Agenda for AI' (2025)."
+    },
+    {
+      "id": "as-andreessen-8",
+      "thinkerId": "marc-andreessen",
+      "date": "2025-01-26",
+      "claim": "DeepSeek-R1 is AI's Sputnik moment",
+      "claimIsQuote": true,
+      "kind": "opinion",
+      "category": "market",
+      "layers": [
+        "models",
+        "training"
+      ],
+      "topics": [
+        "open-weights",
+        "commoditization",
+        "reasoning"
+      ],
+      "assumptions": [
+        "China can reach near-frontier capability at far lower cost despite export controls"
+      ],
+      "predictedOutcome": "A US strategic wake-up call and intensified US–China AI competition, especially in open models.",
+      "horizon": "near-term",
+      "horizonDate": "2026",
+      "contextAtTime": "DeepSeek-R1 (January 20, 2025) matched o1-level reasoning benchmarks with open weights. Nvidia lost about $590B of market cap on January 27.",
+      "evidenceIds": [
+        "ev-andreessen-10"
+      ],
+      "outcome": "Chinese open-weight models (DeepSeek, Qwen and others) became the leading open models by late 2025, with rising download share. US policy and labs (e.g. OpenAI's open-weight release in August 2025) responded. US closed frontier labs still led at the frontier.",
+      "outcomeEvidenceIds": [
+        "ev-out-openmodels-1"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "The framing, that DeepSeek marked China's arrival as a serious competitor especially in open models, was borne out by 2025–26 developments.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Led into his 2025 push for US leadership in open-source AI."
+    },
+    {
+      "id": "as-andreessen-9",
+      "thinkerId": "marc-andreessen",
+      "date": "2026-04",
+      "claim": "AI job-loss narratives are 'fake'. AI will drive a productivity- and demand-led employment boom, and companies citing AI for layoffs are using it as cover.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "economics",
+        "society"
+      ],
+      "topics": [
+        "labor"
+      ],
+      "assumptions": [
+        "Productivity gains translate into demand and new job categories quickly",
+        "Observed layoffs are not principally AI-driven"
+      ],
+      "predictedOutcome": "Employment rises rather than falls as AI adoption grows.",
+      "horizon": "near-to-medium term (unspecified)",
+      "horizonDate": null,
+      "contextAtTime": "March 2026 unemployment was 4.3% with rising long-term unemployment. Several firms attributed layoffs to AI. Amodei and Khosla were warning of large displacement.",
+      "evidenceIds": [
+        "ev-andreessen-13"
+      ],
+      "outcome": "As of the cutoff, no clear verdict: aggregate unemployment was not dramatically higher, while early-career weakness in exposed occupations was documented. July–October 2026 labor data could not be retrieved.",
+      "outcomeEvidenceIds": [
+        "ev-out-labor-1",
+        "ev-out-labor-2"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "The horizon is unspecified and has not elapsed.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Consistent with his 2023 claim. The October 2025 version added the institutional-friction argument (licensing, unions)."
+    },
+    {
+      "id": "as-khosla-1",
+      "thinkerId": "vinod-khosla",
+      "date": "2012-01-10",
+      "claim": "Eventually, we won't need the average doctor and will have much better and cheaper care for 90–99% of our medical needs.",
+      "claimIsQuote": true,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "society"
+      ],
+      "topics": [
+        "labor",
+        "agents"
+      ],
+      "assumptions": [
+        "Diagnosis and treatment are largely data/pattern problems",
+        "Regulators and patients accept algorithmic care"
+      ],
+      "predictedOutcome": "Algorithmic 'Doctor Algorithm' systems take over most routine diagnosis and treatment, sharply reducing need for average physicians.",
+      "horizon": "'eventually' (long run)",
+      "horizonDate": null,
+      "contextAtTime": "Pre-AlexNet (January 2012). IBM Watson had just won Jeopardy! (2011) and was being pitched for medicine. Deep learning was not yet practical.",
+      "evidenceIds": [
+        "ev-khosla-1"
+      ],
+      "outcome": "By 2026, LLMs and medical AI reached strong benchmark performance on medical exams and some diagnostic tasks, but physicians were not displaced. AI was deployed mainly as assistive tools (scribes, triage), and physician employment kept growing.",
+      "outcomeEvidenceIds": [
+        "ev-out-physicians-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "The 'eventually' form is not falsified. Capability trends moved toward his direction, but realized substitution has not occurred. See as-khosla-2 for the dated version.",
+      "confidence": "high",
+      "originality": 5,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Generalized in 2024–26 into economy-wide '80% of 80% of jobs' claims and near-free AI doctors for everyone."
+    },
+    {
+      "id": "as-khosla-2",
+      "thinkerId": "vinod-khosla",
+      "date": "2012",
+      "claim": "By 2025, automated health care will displace up to 80 percent of physicians' diagnostic and prescription work (machines will replace about 80% of what doctors do).",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "society"
+      ],
+      "topics": [
+        "labor"
+      ],
+      "assumptions": [
+        "Rapid regulatory acceptance",
+        "Health-system workflows and payment adapt quickly"
+      ],
+      "predictedOutcome": "By 2025 most diagnostic and prescribing work is done by machines rather than physicians.",
+      "horizon": "by 2025",
+      "horizonDate": "2025",
+      "contextAtTime": "2012 Health Innovation Summit keynote and related writing. Clinical AI was essentially nonexistent outside rules-based decision support.",
+      "evidenceIds": [
+        "ev-khosla-2",
+        "ev-khosla-3",
+        "ev-khosla-4"
+      ],
+      "outcome": "By end of 2025 physicians still performed the vast majority of diagnosis and prescribing. Clinical AI adoption was assistive (ambient documentation, imaging triage), and physician employment grew.",
+      "outcomeEvidenceIds": [
+        "ev-out-physicians-1"
+      ],
+      "verdict": "incorrect",
+      "timing": "premature",
+      "verdictRationale": "The dated quantitative target was missed by a wide margin. Capability progress (LLMs passing medical exams) came, but institutional, regulatory and liability adoption barriers were underweighted.",
+      "confidence": "medium",
+      "originality": 5,
+      "causal": 2,
+      "specificity": 4,
+      "evolution": "No explicit retraction found. In 2024–26 the 80% figure reappears as a general labor-capability claim with a ~2030 horizon."
+    },
+    {
+      "id": "as-khosla-3",
+      "thinkerId": "vinod-khosla",
+      "date": "2019",
+      "claim": "Action: Khosla Ventures wrote a $50M check to OpenAI in 2019, as its first venture investor and the largest initial bet Khosla had made in 40 years, despite governance that made it 'almost impossible to diligence'.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "scaling",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "OpenAI's capped-profit structure could produce venture-scale returns",
+        "Scaling general models would be commercially valuable"
+      ],
+      "predictedOutcome": "Implied bet that OpenAI would become an extremely valuable company.",
+      "horizon": "venture horizon (~10 years)",
+      "horizonDate": null,
+      "contextAtTime": "OpenAI had just created its capped-profit LP (March 2019). GPT-2 had been released, and GPT-3 did not yet exist. Few VCs invested.",
+      "evidenceIds": [
+        "ev-khosla-5",
+        "ev-khosla-6"
+      ],
+      "outcome": "OpenAI became one of the most valuable private companies, with valuations in the hundreds of billions by 2025–26. Khosla Ventures added more exposure via a $405M SPV in 2024.",
+      "outcomeEvidenceIds": [
+        "ev-out-labs-revenue-1"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "Judged as a bet, it was strongly vindicated on paper. Per Atlas rules, this is not proof of a specific personal technical belief.",
+      "confidence": "high",
+      "originality": 5,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "Doubled down: backed Altman in November 2023 and raised further OpenAI capital in 2024."
+    },
+    {
+      "id": "as-khosla-4",
+      "thinkerId": "vinod-khosla",
+      "date": "2024-03-04",
+      "claim": "Frontier AI is a strategic race (a 'war') with China and should not be open-sourced: 'Would you open source the Manhattan Project?'",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "models",
+        "society"
+      ],
+      "topics": [
+        "open-weights",
+        "safety"
+      ],
+      "assumptions": [
+        "Open frontier weights materially help Chinese labs",
+        "Closed US labs can keep a lead"
+      ],
+      "predictedOutcome": "Open-sourcing frontier models would erode the US advantage over China.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Musk had sued OpenAI (February 2024). Meta was releasing Llama openly. Andreessen and LeCun championed open source.",
+      "evidenceIds": [
+        "ev-khosla-7"
+      ],
+      "outcome": "Chinese labs reached near-frontier and led open-weight models by 2025 (DeepSeek, Qwen), largely through their own work, with distillation allegations against some. US closed labs kept a frontier lead, and the US also embraced open models in policy.",
+      "outcomeEvidenceIds": [
+        "ev-out-openmodels-1"
+      ],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "He was right that China would be a fierce competitor. The mechanism, that US open-sourcing is what would help China, is not clearly supported, since Chinese open models outpaced US open models.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 2,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-khosla-5",
+      "thinkerId": "vinod-khosla",
+      "date": "2024-09-24",
+      "claim": "80% of 80% of all jobs, maybe more, can be done by an AI. Dystopian outcomes are societal choices, and UBI-style redistribution may be needed.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "economics",
+        "society",
+        "agents"
+      ],
+      "topics": [
+        "labor"
+      ],
+      "assumptions": [
+        "Capability continues on current trend",
+        "Robotics follows for physical work"
+      ],
+      "predictedOutcome": "A large majority of the work in most jobs becomes automatable, pressuring wages and requiring redistribution.",
+      "horizon": "next ~25 years (essay); later tightened to ~5 years",
+      "horizonDate": null,
+      "contextAtTime": "After GPT-4o and o1-preview (September 2024). Agentic AI was emerging. Labor-market impact was still minimal.",
+      "evidenceIds": [
+        "ev-khosla-8",
+        "ev-khosla-9"
+      ],
+      "outcome": "By October 2026, AI agents handle meaningful shares of tasks in coding and support, but no economy-wide 80%-of-work automation has occurred.",
+      "outcomeEvidenceIds": [
+        "ev-out-labor-2",
+        "ev-out-labor-3"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a capability ('can be done') claim with a horizon that has not elapsed.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Given a 5-year horizon in 2025 and restated as 'starting in about 2030' in March 2026."
+    },
+    {
+      "id": "as-khosla-6",
+      "thinkerId": "vinod-khosla",
+      "date": "2024-09",
+      "claim": "AI will make expertise nearly free: an AI tutor for every child on the planet and physician-level expertise for everyone, at near-zero cost, extending to oncologists, structural engineers and software engineers.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "society",
+        "economics"
+      ],
+      "topics": [
+        "labor",
+        "commoditization"
+      ],
+      "assumptions": [
+        "Inference cost keeps falling",
+        "Distribution reaches low-income populations",
+        "Regulators permit AI expert services"
+      ],
+      "predictedOutcome": "Free or near-free AI tutors and doctors broadly available globally.",
+      "horizon": "long run (essay frames the next ~25 years)",
+      "horizonDate": null,
+      "contextAtTime": "Khan Academy's Khanmigo and early medical LLMs existed. Inference costs were falling fast.",
+      "evidenceIds": [
+        "ev-khosla-9"
+      ],
+      "outcome": "Free general-purpose assistants (ChatGPT, Gemini, etc.) with tutoring and health-information features were available to hundreds of millions by 2026. Regulated 'AI physician' services were not.",
+      "outcomeEvidenceIds": [
+        "ev-out-tokens-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a long-horizon claim. Partial progress on access, but not expert-equivalent regulated care.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Continuous with his 2012 'Doctor Algorithm' thesis."
+    },
+    {
+      "id": "as-khosla-7",
+      "thinkerId": "vinod-khosla",
+      "date": "2025-07-01",
+      "claim": "Within the next five years, any economically valuable job humans can do, AI will be able to do 80% of it",
+      "claimIsQuote": true,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "agents",
+        "economics"
+      ],
+      "topics": [
+        "labor",
+        "agents",
+        "agi-timelines"
+      ],
+      "assumptions": [
+        "Agent and robotics capability scales quickly",
+        "'Able to do' refers to capability, not deployment"
+      ],
+      "predictedOutcome": "By about 2030, AI capable of performing 80% of the work in any economically valuable job.",
+      "horizon": "within 5 years of mid-2025 (~2030)",
+      "horizonDate": "2030",
+      "contextAtTime": "Reasoning models and coding agents were advancing rapidly. Amodei warned of white-collar job losses (May 2025).",
+      "evidenceIds": [
+        "ev-khosla-10",
+        "ev-khosla-11"
+      ],
+      "outcome": "Deadline not reached as of 2026-10-11.",
+      "outcomeEvidenceIds": [
+        "ev-out-oecd-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "The horizon (about 2030) has not elapsed.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": null,
+      "specificity": 4,
+      "evolution": "Restated in March 2026 as 'starting in about 2030'."
+    },
+    {
+      "id": "as-gurley-1",
+      "thinkerId": "bill-gurley",
+      "date": "2023-09",
+      "claim": "Calls by incumbents, including leading AI firms, for licensing and new regulators are a classic regulatory-capture play that would pull up the ladder on startups and open source. Silicon Valley must engage Washington to prevent it ('2,851 Miles').",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "models",
+        "society"
+      ],
+      "topics": [
+        "open-weights",
+        "safety"
+      ],
+      "assumptions": [
+        "Incumbents' safety arguments are at least partly self-interested",
+        "Licensing regimes favor large firms"
+      ],
+      "predictedOutcome": "If adopted, AI licensing would entrench incumbents and suppress open-source and startup competition.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Months after Altman's May 2023 Senate testimony proposing a licensing agency, and amid EU AI Act negotiations.",
+      "evidenceIds": [
+        "ev-gurley-1"
+      ],
+      "outcome": "The US did not adopt AI licensing. Open-weight models proliferated. The policy debate shifted toward Gurley's side after 2024.",
+      "outcomeEvidenceIds": [
+        "ev-out-regulation-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "The conditional (licensing entrenches incumbents) was never tested because licensing was not adopted. The opinion was influential, but its counterfactual cannot be checked.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision found (corpus not searched this session)."
+    },
+    {
+      "id": "as-gurley-2",
+      "thinkerId": "bill-gurley",
+      "date": "2023-09",
+      "claim": "Open-source AI is an essential competitive and innovation counterweight to a few closed incumbents and should not be restricted.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "market",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "open-weights",
+        "commoditization"
+      ],
+      "assumptions": [
+        "Open models can stay near the frontier"
+      ],
+      "predictedOutcome": "Open-weight models remain competitive and pressure prices.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Llama 2 had just been released (July 2023). Closed GPT-4 led clearly.",
+      "evidenceIds": [
+        "ev-gurley-1"
+      ],
+      "outcome": "Open-weight models (Llama, DeepSeek, Qwen, gpt-oss) stayed within months of the frontier and drove large price declines in 2024–26.",
+      "outcomeEvidenceIds": [
+        "ev-out-tokens-1",
+        "ev-out-openmodels-1"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "Open models did remain competitive and exerted price pressure. Low confidence in exact claim wording.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 1,
+      "evolution": "No revision found (corpus not searched this session)."
+    },
+    {
+      "id": "as-hoffman-1",
+      "thinkerId": "reid-hoffman",
+      "date": "2015-12-11",
+      "claim": "Action: among the founding funders of the non-profit OpenAI's initial pledge.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "governance",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "agi-timelines",
+        "safety"
+      ],
+      "assumptions": [
+        "Advanced AI is coming and should be shaped by a mission-driven lab"
+      ],
+      "predictedOutcome": "OpenAI becomes a leading AI lab.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "DeepMind was dominant after its Google acquisition. Deep learning was succeeding in vision and speech. AGI talk was fringe.",
+      "evidenceIds": [
+        "ev-hoffman-1"
+      ],
+      "outcome": "OpenAI became the defining frontier lab (ChatGPT, 2022) and converted to a for-profit structure in 2025.",
+      "outcomeEvidenceIds": [
+        "ev-out-labs-revenue-1"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "This early support anticipated OpenAI's importance. It is a donation, not proof of a specific forecast.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 3,
+      "specificity": 1,
+      "evolution": "Joined OpenAI's board, then left in March 2023 over conflicts."
+    },
+    {
+      "id": "as-hoffman-2",
+      "thinkerId": "reid-hoffman",
+      "date": "2022-03",
+      "claim": "Action: co-founded Inflection AI with Mustafa Suleyman and Karén Simonyan to build personal AI (Pi). It raised $1.3B in 2023.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "models",
+        "apps"
+      ],
+      "topics": [
+        "app-moats",
+        "scaling"
+      ],
+      "assumptions": [
+        "An independent lab could train competitive models and win consumers with an emotionally intelligent personal assistant"
+      ],
+      "predictedOutcome": "Implied: Inflection becomes a major independent personal-AI company.",
+      "horizon": "venture horizon",
+      "horizonDate": "2024",
+      "contextAtTime": "Before ChatGPT. Large-model training costs were rising but frontier competition was still open.",
+      "evidenceIds": [
+        "ev-hoffman-3",
+        "ev-hoffman-5"
+      ],
+      "outcome": "In March 2024 Microsoft hired the co-founders and most staff and licensed the models (about $650M reported). Inflection pivoted to enterprise, and Pi lost its frontier ambition.",
+      "outcomeEvidenceIds": [
+        "ev-out-inflection-1"
+      ],
+      "verdict": "incorrect",
+      "timing": "n/a",
+      "verdictRationale": "The implied thesis that an independent consumer personal-AI lab could compete failed within two years, as compute and distribution concentrated. Hoffman may hold other personal beliefs; this verdict covers the action's implied bet.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 2,
+      "specificity": 2,
+      "evolution": "See reversal 2024-03. Personal-AI ideas continued at Microsoft (Copilot) under Suleyman."
+    },
+    {
+      "id": "as-hoffman-3",
+      "thinkerId": "reid-hoffman",
+      "date": "2023-03",
+      "claim": "LLMs like GPT-4 will amplify rather than replace humans, acting as a copilot across professions (education, business, creativity, journalism).",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "society"
+      ],
+      "topics": [
+        "labor",
+        "agents"
+      ],
+      "assumptions": [
+        "Humans remain in the loop",
+        "Productivity gains are broadly shared"
+      ],
+      "predictedOutcome": "Widespread copilot-style adoption in knowledge work without mass displacement.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Written with GPT-4 before its public launch. Hoffman was then on OpenAI's and Microsoft's boards, so there is a conflict of interest.",
+      "evidenceIds": [
+        "ev-hoffman-2"
+      ],
+      "outcome": "Copilot-style tools (Microsoft 365 Copilot, GitHub Copilot, ChatGPT Enterprise, Claude Code) were widely adopted by 2026. Labor effects so far are concentrated among early-career workers, without mass displacement.",
+      "outcomeEvidenceIds": [
+        "ev-out-labor-2",
+        "ev-out-labor-3"
+      ],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "Copilot adoption happened, but the 2025–26 shift toward autonomous agents and early-career displacement complicate the 'amplify, not replace' framing.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 1,
+      "evolution": "Extended in 'Superagency' (2025)."
+    },
+    {
+      "id": "as-hoffman-4",
+      "thinkerId": "reid-hoffman",
+      "date": "2025-01-28",
+      "claim": "Iterative deployment with broad public participation, not precautionary regulation, is the best path to safe and beneficial AI. AI will give individuals 'superagency' (the 'Bloomer' stance).",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "society",
+        "apps"
+      ],
+      "topics": [
+        "safety",
+        "labor"
+      ],
+      "assumptions": [
+        "Feedback from mass use surfaces and corrects harms faster than ex-ante rules"
+      ],
+      "predictedOutcome": "Broad deployment yields net benefits and manageable harms.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Published the week of DeepSeek-R1 and days after the Biden AI executive order was revoked.",
+      "evidenceIds": [
+        "ev-hoffman-6"
+      ],
+      "outcome": "US policy embraced deployment-first approaches in 2025–26. The net-benefit claim is not yet testable.",
+      "outcomeEvidenceIds": [
+        "ev-out-regulation-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a normative and long-run claim.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "Continuous with 'Impromptu' (2023)."
+    },
+    {
+      "id": "as-hoffman-5",
+      "thinkerId": "reid-hoffman",
+      "date": "2025-01",
+      "claim": "Action: co-founded Manas AI with Siddhartha Mukherjee to use AI to accelerate cancer drug discovery.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "technical",
+      "layers": [
+        "apps",
+        "models"
+      ],
+      "topics": [
+        "agents"
+      ],
+      "assumptions": [
+        "AI can materially compress drug discovery timelines"
+      ],
+      "predictedOutcome": "Implied: faster drug candidate discovery.",
+      "horizon": "multi-year",
+      "horizonDate": null,
+      "contextAtTime": "AlphaFold's Nobel Prize (October 2024). Many AI drug-discovery startups, with few approved AI-discovered drugs.",
+      "evidenceIds": [
+        "ev-hoffman-7"
+      ],
+      "outcome": "No public evidence of clinical outcomes by the cutoff was retrieved.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Drug development horizons extend well beyond 2026.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-gil-1",
+      "thinkerId": "elad-gil",
+      "date": "2024-02",
+      "claim": "Unlike most markets, generative AI was getting less clear over time. A central open question was whether foundation models become an oligopoly aligned with the big cloud providers, and what role open source plays.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "market",
+      "layers": [
+        "models",
+        "cloud",
+        "economics"
+      ],
+      "topics": [
+        "commoditization",
+        "hyperscalers",
+        "open-weights",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "Training costs keep rising, favoring capital-rich players tied to clouds"
+      ],
+      "predictedOutcome": "The model layer consolidates into a few lab–cloud pairs (e.g. OpenAI–Microsoft, Anthropic–Amazon/Google, Google), with open source as wildcard.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Gemini 1.0 and Mixtral had been released, and Claude 3 was imminent. Many well-funded model startups existed (Inflection, Adept, Character).",
+      "evidenceIds": [
+        "ev-gil-1"
+      ],
+      "outcome": "By 2026 the frontier was dominated by a handful of labs tied to hyperscalers (OpenAI, Anthropic, Google, plus xAI and Meta), with Chinese open-weight labs as the main other force. Several 2023-era model startups were acqui-hired (Inflection, Adept, Character).",
+      "outcomeEvidenceIds": [
+        "ev-out-labs-revenue-1",
+        "ev-out-inflection-1",
+        "ev-out-openmodels-1"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "The oligopoly-plus-open-source structure he flagged largely materialized. He posed it partly as a question, which lowers specificity.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Later posts reportedly describe markets 'clarifying' (not verified this session)."
+    },
+    {
+      "id": "as-gil-2",
+      "thinkerId": "elad-gil",
+      "date": "2023-12",
+      "claim": "Action: reportedly co-led Harvey's Series B, a bet that vertical application-layer AI companies can build durable value on top of foundation models.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "apps"
+      ],
+      "topics": [
+        "app-moats",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "Domain workflow, data and distribution create moats above the model layer"
+      ],
+      "predictedOutcome": "Implied: Harvey becomes a leading legal-AI company.",
+      "horizon": "venture horizon",
+      "horizonDate": null,
+      "contextAtTime": "Debate over whether 'GPT wrappers' could survive model improvements.",
+      "evidenceIds": [
+        "ev-gil-2"
+      ],
+      "outcome": "Harvey became one of the most highly valued legal-AI companies by 2025 (recalled, not re-verified).",
+      "outcomeEvidenceIds": [],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "On paper the bet was vindicated, but evidence is recalled only and an investment is not a personal forecast.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "No revision found."
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-1",
+      "from": "marc-andreessen",
+      "to": "vinod-khosla",
+      "type": "challenges",
+      "date": "2024-03",
+      "note": "Public X dispute: Andreessen accused Khosla of 'lobbying to ban open source' and mocked his Manhattan Project analogy by saying OpenAI 'must be immediately nationalized'.",
+      "evidenceIds": [
+        "ev-khosla-7"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-2",
+      "from": "vinod-khosla",
+      "to": "marc-andreessen",
+      "type": "contradicts",
+      "date": "2024-03",
+      "note": "Khosla argued frontier AI should not be open-sourced because of the China race ('Would you open source the Manhattan Project?'), directly opposing Andreessen's pro-open-source position.",
+      "evidenceIds": [
+        "ev-khosla-7"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-3",
+      "from": "yann-lecun",
+      "to": "vinod-khosla",
+      "type": "challenges",
+      "date": "2024-03",
+      "note": "LeCun replied to Khosla's claim that the US is in an economic war with China that requires closed AI, defending open source.",
+      "evidenceIds": [
+        "ev-khosla-7"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-4",
+      "from": "marc-andreessen",
+      "to": "satya-nadella",
+      "type": "agrees_with",
+      "date": "2024-11",
+      "note": "Co-signed a joint AI policy statement with Nadella and Brad Smith supporting cost-benefit regulation and both open and proprietary models.",
+      "evidenceIds": [
+        "ev-andreessen-7"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-5",
+      "from": "sam-altman",
+      "to": "marc-andreessen",
+      "type": "challenges",
+      "date": "2024-12",
+      "note": "Altman called Andreessen's account of Biden-administration AI meetings a 'conspiracy theory' (Bari Weiss podcast).",
+      "evidenceIds": [
+        "ev-out-whitehouse-1"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-6",
+      "from": "marc-andreessen",
+      "to": "tech:AI existential-risk arguments and precautionary regulation",
+      "type": "challenges",
+      "date": "2023-06",
+      "note": "'Why AI Will Save the World' dismisses AI x-risk fears as moral panic and calls safety-regulation advocates 'Baptists and bootleggers', implicitly opposing Hinton, Bengio and the May 2023 CAIS statement signatories (Altman, Amodei, Hassabis).",
+      "evidenceIds": [
+        "ev-andreessen-1",
+        "ev-andreessen-2"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-7",
+      "from": "marc-andreessen",
+      "to": "yann-lecun",
+      "type": "agrees_with",
+      "date": "2023",
+      "note": "Both publicly argue AI x-risk is overblown and open-source AI should be unrestricted. Parallel positions, not a documented joint statement.",
+      "evidenceIds": [
+        "ev-andreessen-1",
+        "ev-khosla-7"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-8",
+      "from": "vinod-khosla",
+      "to": "org:OpenAI",
+      "type": "invested_in",
+      "date": "2019",
+      "note": "Khosla Ventures' $50M investment, OpenAI's first venture investment. Further $405M SPV in 2024.",
+      "evidenceIds": [
+        "ev-khosla-5",
+        "ev-khosla-6"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-9",
+      "from": "vinod-khosla",
+      "to": "sam-altman",
+      "type": "agrees_with",
+      "date": "2023-11",
+      "note": "Khosla publicly backed Altman during the November 2023 board crisis and defended OpenAI against Musk's 2024 lawsuit.",
+      "evidenceIds": [
+        "ev-khosla-5",
+        "ev-khosla-7"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-10",
+      "from": "vinod-khosla",
+      "to": "dario-amodei",
+      "type": "agrees_with",
+      "date": "2025",
+      "note": "Both forecast large-scale white-collar job displacement by AI within about five years (Amodei, May 2025; Khosla, 2025–26). Parallel positions, not a documented exchange.",
+      "evidenceIds": [
+        "ev-khosla-10"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-11",
+      "from": "marc-andreessen",
+      "to": "vinod-khosla",
+      "type": "contradicts",
+      "date": "2026",
+      "note": "Opposing labor forecasts: Andreessen calls AI job-loss fears 'fake' (April 2026), while Khosla predicts AI capable of most work in most jobs from about 2030 (March 2026). No direct exchange found.",
+      "evidenceIds": [
+        "ev-andreessen-13",
+        "ev-khosla-11"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-12",
+      "from": "reid-hoffman",
+      "to": "org:Inflection AI",
+      "type": "built",
+      "date": "2022",
+      "note": "Co-founded with Mustafa Suleyman and Karén Simonyan, incubated at Greylock.",
+      "evidenceIds": [
+        "ev-hoffman-3"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-13",
+      "from": "reid-hoffman",
+      "to": "mustafa-suleyman",
+      "type": "agrees_with",
+      "date": "2022",
+      "note": "Co-founders of Inflection AI around a personal-AI thesis. Suleyman moved to Microsoft, where Hoffman is a board member, in March 2024.",
+      "evidenceIds": [
+        "ev-hoffman-3",
+        "ev-hoffman-5"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-14",
+      "from": "reid-hoffman",
+      "to": "org:OpenAI",
+      "type": "invested_in",
+      "date": "2015",
+      "note": "Founding donor to the non-profit OpenAI (philanthropic, not equity). Board member until March 2023.",
+      "evidenceIds": [
+        "ev-hoffman-1",
+        "ev-hoffman-4"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-15",
+      "from": "reid-hoffman",
+      "to": "sam-altman",
+      "type": "agrees_with",
+      "date": "2025-01",
+      "note": "'Superagency' endorses OpenAI-style iterative deployment as the safest path to beneficial AI (recalled).",
+      "evidenceIds": [
+        "ev-hoffman-6"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-16",
+      "from": "bill-gurley",
+      "to": "sam-altman",
+      "type": "challenges",
+      "date": "2023-09",
+      "note": "The '2,851 Miles' talk framed frontier-lab calls for AI licensing, associated with Altman's May 2023 testimony, as regulatory capture. Whether Altman was named explicitly is not verified.",
+      "evidenceIds": [
+        "ev-gurley-1"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-17",
+      "from": "bill-gurley",
+      "to": "marc-andreessen",
+      "type": "agrees_with",
+      "date": "2023",
+      "note": "Both argue AI regulation risks regulatory capture by incumbents and defend open source ('2,851 Miles'; 'Why AI Will Save the World').",
+      "evidenceIds": [
+        "ev-gurley-1",
+        "ev-andreessen-1"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-18",
+      "from": "elad-gil",
+      "to": "org:Harvey",
+      "type": "invested_in",
+      "date": "2023-12",
+      "note": "Reported co-lead of Series B (recalled, medium-low confidence).",
+      "evidenceIds": [
+        "ev-gil-2"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-19",
+      "from": "marc-andreessen",
+      "to": "liang-wenfeng",
+      "type": "influenced_by",
+      "date": "2025-01",
+      "note": "DeepSeek-R1 (Liang Wenfeng's lab) prompted Andreessen's 'Sputnik moment' framing and his subsequent push for US leadership in open-source AI.",
+      "evidenceIds": [
+        "ev-andreessen-10"
+      ],
+      "inferred": true
+    }
+  ],
+  "gaps": [
+    "TOOLING LIMITS: every WebFetch failed (proxy DNS-blocked a16z.com, techcrunch.com, fortune.com, latent.space, blog.eladgil.com, senate.gov, wikipedia.org), so no primary page was opened. The shared WebSearch budget (200 per turn across all agents) ran out after about 25 searches, before any Gurley, Hoffman or Gil searches. Andreessen and Khosla evidence rests on search snippets; all Gurley, Hoffman and Gil evidence is 'recalled' and unverified this session, mostly with empty URLs.",
+    "Bill Gurley: only the September 2023 '2,851 Miles' talk is included (2 assertions, low confidence). His 2024–26 views on AI capex, bubbles, Nvidia and circular financing (e.g. BG2 podcast with Brad Gerstner) could not be dated or quoted and were left out rather than padded. Needs a follow-up pass.",
+    "Elad Gil: only 2 assertions. Known themes not included because dates and wording could not be verified: 2025 essays on AI markets 'clarifying' (coding, legal, medical scribing, customer support), AI-enabled services roll-ups, and model-layer vs application-layer value. Needs a follow-up pass with blog access.",
+    "Reid Hoffman: 5 assertions, all recalled. No dated numeric predictions were verified. Possible statements about medical assistants on every phone within a few years, and his response to Amodei's 2025 job-loss warning, were omitted as unverified.",
+    "Andreessen: the TBPN interview urging US leadership in open-source AI (Business Insider) was found but its date could not be confirmed, so it is not cited as evidence. The '2026 LP meeting: moat is not the model' item is from a low-quality secondary newsletter. Manifesto wording ('deceleration of AI will cost lives... a form of murder') is recalled, not re-seen. The Politico rebuttal by Reed and Buchanan is only known via an AI Weekly summary, and its date is unconfirmed.",
+    "Khosla: the exact 2012 wording varies across sources ('80% of doctors' vs '80% of what doctors do' vs 'up to 80 percent of physicians' diagnostic and prescription work by 2025'). The 'by 2025' version comes via Robert Wachter's excerpt. The 'AI: Dystopia or Utopia?' essay is dated September 2024 by inference from Fortune's coverage, while the KV deck is May 2025. His 2025 IT-services/BPO and China/DeepSeek remarks could not be searched.",
+    "Outcome data for July–October 2026 (labor statistics, AI startup revenues, valuations, realized capex) could not be retrieved. Outcome entries rely on early-2026 snippets (4.3% unemployment in March 2026; Morgan Stanley capex forecast) and recalled 2025 studies (Stanford 'Canaries', Yale Budget Lab). Frontier-lab revenue and valuation figures are intentionally left unquantified.",
+    "DATE PRECISION: some evidence and assertion dates are year-only (e.g. ev-khosla-2/3 = 2012, as-khosla-3 = 2019, several 2025/2026 outcome entries) because the month could not be verified. They are left as YYYY rather than guessing a month."
+  ]
+}

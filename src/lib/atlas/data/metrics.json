@@ -1,0 +1,645 @@
+[
+ {
+  "id": "m-nvidia-dc-revenue",
+  "label": "NVIDIA Data Center revenue (fiscal year)",
+  "unit": "USD bn",
+  "layer": "semis",
+  "points": [
+   {
+    "date": "2016-01",
+    "value": 0.339,
+    "evidenceId": "ev-ctx-10",
+    "note": "FY2016 (ended Jan 2016); recalled, not re-confirmed"
+   },
+   {
+    "date": "2017-01",
+    "value": 0.83,
+    "evidenceId": "ev-ctx-9",
+    "note": "FY2017; up ~145% per 10-K"
+   },
+   {
+    "date": "2018-01",
+    "value": 1.93,
+    "evidenceId": "ev-ctx-7",
+    "note": "FY2018; up 133%"
+   },
+   {
+    "date": "2019-01",
+    "value": 2.93,
+    "evidenceId": "ev-ctx-6",
+    "note": "FY2019; up 52%"
+   },
+   {
+    "date": "2020-01",
+    "value": 2.983,
+    "evidenceId": "ev-ctx-5",
+    "note": "FY2020"
+   },
+   {
+    "date": "2021-01",
+    "value": 6.7,
+    "evidenceId": "ev-ctx-4",
+    "note": "FY2021; up 124%, includes Mellanox from Apr 2020"
+   },
+   {
+    "date": "2022-01",
+    "value": 10.61,
+    "evidenceId": "ev-ctx-3",
+    "note": "FY2022; up 58%"
+   },
+   {
+    "date": "2023-01",
+    "value": 15.01,
+    "evidenceId": "ev-ctx-2",
+    "note": "FY2023; up 41%, surpassed Gaming"
+   },
+   {
+    "date": "2024",
+    "value": 47.5,
+    "evidenceId": "ev-ctx2-79",
+    "note": "FY2024 ended Jan 2024 (recalled)"
+   },
+   {
+    "date": "2024-01",
+    "value": 47.5,
+    "evidenceId": "ev-ctx-1",
+    "note": "FY2024 (ended 28 Jan 2024); up 217%"
+   },
+   {
+    "date": "2025",
+    "value": 115.2,
+    "evidenceId": "ev-ctx2-79",
+    "note": "FY2025 ended Jan 2025 (recalled)"
+   },
+   {
+    "date": "2026",
+    "value": 193.7,
+    "evidenceId": "ev-ctx2-3",
+    "note": "FY2026 ended Jan 25, 2026; sum of quarters: Q4 $62.3B (snippet) + Q1-Q3 $39.1B/$41.1B/$51.2B (recalled, ev nvda_fy)"
+   }
+  ],
+  "caveat": "NVIDIA fiscal years end in late January, so FY(N) mostly covers calendar N-1; dates are given as the FY end month. Segment definitions changed over time (pre-FY2018 'Datacenter' = Tesla/GRID/DGX; from FY2021 includes Mellanox networking). FY2013-FY2015 not separately sourced. NVIDIA fiscal years end in late January (FY2026 = Feb 2025-Jan 2026). FY2026 total is computed from quarterly figures, not directly quoted. FY2027 is partial (see quarterly series). From Q1 FY2027 NVIDIA reports Data Center and Edge Computing platforms, which may slightly change segment definitions."
+ },
+ {
+  "id": "m-hyperscaler-capex",
+  "label": "Hyperscale technology company capital expenditures (Vanguard series)",
+  "unit": "USD bn",
+  "layer": "cloud",
+  "points": [
+   {
+    "date": "2020",
+    "value": 97,
+    "evidenceId": "ev-ctx-11"
+   },
+   {
+    "date": "2021",
+    "value": 131,
+    "evidenceId": "ev-ctx-11"
+   },
+   {
+    "date": "2022",
+    "value": 159,
+    "evidenceId": "ev-ctx-11"
+   },
+   {
+    "date": "2023",
+    "value": 154,
+    "evidenceId": "ev-ctx-11"
+   },
+   {
+    "date": "2025",
+    "value": 410,
+    "evidenceId": "ev-ctx2-5",
+    "note": "Approximate actual, as cited in 2026 reporting ('roughly $410B')"
+   },
+   {
+    "date": "2026",
+    "value": 725,
+    "evidenceId": "ev-ctx2-5",
+    "note": "Guidance after Q1 2026 earnings (aggregator sum; ~$700B per Yahoo Finance)"
+   }
+  ],
+  "caveat": "Vanguard chart labels the group 'hyperscale technology companies' without naming members in the snippet seen, so it is not confirmed to be exactly MSFT+GOOGL+AMZN+META. Platformonomics gives $155B for Amazon+Google+Meta+Microsoft in 2023 including finance leases (ev-ctx-12); Silicon Analysts puts the four at roughly $36B per quarter in 2022 (ev-ctx-13). Pre-2020 combined values for the four were not verified during research. Company-level figures mix calendar and fiscal years (Microsoft FY ends June) and include finance leases inconsistently. 2026 is guidance, partly inflated by component prices (~$25B of Microsoft's per its own comment). 2024 combined total was not re-sourced during research (gap). Analysts (Evercore, BofA) project >$1T for 2027."
+ },
+ {
+  "id": "m-frontier-training-compute",
+  "label": "Training compute of milestone/largest models",
+  "unit": "FLOP",
+  "layer": "training",
+  "points": [
+   {
+    "date": "2012-09",
+    "value": 4.7e+17,
+    "evidenceId": "ev-ctx-31",
+    "note": "AlexNet; value recalled from Epoch database (not re-confirmed); Epoch states ~8 orders of magnitude from AlexNet to GPT-4"
+   },
+   {
+    "date": "2017-10",
+    "value": 3.4e+23,
+    "evidenceId": "ev-ctx-29",
+    "note": "AlphaGo Zero; largest training run until Aug 2021 per Epoch-based analysis; FLOP value recalled"
+   },
+   {
+    "date": "2020-05",
+    "value": 3.14e+23,
+    "evidenceId": "ev-ctx-33",
+    "note": "GPT-3 175B; value recalled from paper; not larger than AlphaGo Zero"
+   },
+   {
+    "date": "2022-04",
+    "value": 2.56e+24,
+    "evidenceId": "ev-ctx-88",
+    "note": "PaLM 540B; recalled from paper"
+   },
+   {
+    "date": "2023-03",
+    "value": 2e+25,
+    "evidenceId": "ev-ctx-30",
+    "note": "GPT-4; Epoch estimate, uncertain by ~5x"
+   }
+  ],
+  "caveat": "Only GPT-4 (2e25) and the 'nearly 8 orders of magnitude AlexNet to GPT-4' relation were seen in sources during research; other values are recalled Epoch/paper figures. Points are milestones, not a complete annual max series. Epoch estimates are uncertain by ~2x (disclosed) to ~5x (undisclosed models). OpenAI (2018) estimated a 3.4-month doubling 2012-2018; Epoch later estimated ~5.7 months for 2012-2022."
+ },
+ {
+  "id": "m-ai-private-investment",
+  "label": "Global private investment in AI (Stanford AI Index)",
+  "unit": "USD bn",
+  "layer": "economics",
+  "points": [
+   {
+    "date": "2021",
+    "value": 125.4,
+    "evidenceId": "ev-ctx-15",
+    "note": "AI Index 2023 vintage; the 2022 edition had reported $93.5B (ev-ctx-19)"
+   },
+   {
+    "date": "2022",
+    "value": 91.9,
+    "evidenceId": "ev-ctx-15",
+    "note": "AI Index 2023 vintage; first decline in a decade (-26.7%)"
+   },
+   {
+    "date": "2023",
+    "value": 95.99,
+    "evidenceId": "ev-ctx-17",
+    "note": "AI Index 2024 vintage (data provider changes may make it not directly comparable with the 2023-vintage 2022 value)"
+   }
+  ],
+  "caveat": "AI Index revises history between editions (data vendor changes), so values from different editions are not strictly comparable. 2013-2020 annual totals were not verified during research; the 2023 edition states 2022 was 18x the 2013 level (ev-ctx-16)."
+ },
+ {
+  "id": "m-genai-private-investment",
+  "label": "Private investment in generative AI (Stanford AI Index)",
+  "unit": "USD bn",
+  "layer": "economics",
+  "points": [
+   {
+    "date": "2019",
+    "value": 0.84,
+    "evidenceId": "ev-ctx-21",
+    "note": "medium confidence: attribution of source within coverage unclear"
+   },
+   {
+    "date": "2022",
+    "value": 2.85,
+    "evidenceId": "ev-ctx-21",
+    "note": "medium confidence; Stanford rounds to ~$3B"
+   },
+   {
+    "date": "2023",
+    "value": 25.2,
+    "evidenceId": "ev-ctx-18",
+    "note": "nearly 8x 2022"
+   }
+  ],
+  "caveat": "Generative-AI category as defined by AI Index 2024; earlier-year values seen only in secondary coverage."
+ },
+ {
+  "id": "m-ai-corporate-investment",
+  "label": "Global corporate investment in AI (AI Index, incl. M&A, minority stakes, private and public offerings)",
+  "unit": "USD bn",
+  "layer": "economics",
+  "points": [
+   {
+    "date": "2013",
+    "value": 14.57,
+    "evidenceId": "ev-ctx-20"
+   },
+   {
+    "date": "2023",
+    "value": 189.2,
+    "evidenceId": "ev-ctx-20",
+    "note": "down ~20% vs 2022 as M&A fell; 2021 was the peak"
+   }
+  ],
+  "caveat": "Broader than private investment; only endpoints sourced during research."
+ },
+ {
+  "id": "m-token-price-gpt3-class",
+  "label": "OpenAI API price, GPT-3/3.5-class model (input)",
+  "unit": "USD per 1M tokens",
+  "layer": "inference",
+  "points": [
+   {
+    "date": "2022-08",
+    "value": 60,
+    "evidenceId": "ev-ctx-23",
+    "note": "davinci $0.06/1K before the cut; same price for prompt and completion"
+   },
+   {
+    "date": "2022-09",
+    "value": 20,
+    "evidenceId": "ev-ctx-23",
+    "note": "davinci cut to $0.02/1K effective 2022-09-01"
+   },
+   {
+    "date": "2023-03",
+    "value": 2,
+    "evidenceId": "ev-ctx-24",
+    "note": "gpt-3.5-turbo at $0.002/1K (10x below prior GPT-3.5 models)"
+   },
+   {
+    "date": "2023-11",
+    "value": 1,
+    "evidenceId": "ev-ctx-27",
+    "note": "gpt-3.5-turbo-1106 input $0.001/1K; recalled"
+   }
+  ],
+  "caveat": "Model lineage changes (davinci -> text-davinci-003 -> gpt-3.5-turbo) so this tracks a capability tier, not one model. Date of first $0.06 pricing (2020-21) not re-confirmed; shown only as the pre-cut level."
+ },
+ {
+  "id": "m-token-price-gpt4-class",
+  "label": "OpenAI API price, GPT-4-class model (input)",
+  "unit": "USD per 1M tokens",
+  "layer": "inference",
+  "points": [
+   {
+    "date": "2023-03",
+    "value": 30,
+    "evidenceId": "ev-ctx-26",
+    "note": "GPT-4 8K: $30 input / $60 output"
+   },
+   {
+    "date": "2023-11",
+    "value": 10,
+    "evidenceId": "ev-ctx-27",
+    "note": "GPT-4 Turbo: $10 input / $30 output; recalled"
+   },
+   {
+    "date": "2024-05",
+    "value": 5,
+    "evidenceId": "ev-ctx2-80",
+    "note": "GPT-4o input; output $15 (recalled)"
+   },
+   {
+    "date": "2024-07",
+    "value": 0.15,
+    "evidenceId": "ev-ctx2-80",
+    "note": "GPT-4o mini input; output $0.60 (recalled)"
+   }
+  ],
+  "caveat": "Input-token prices only; output prices were 2-3x higher. GPT-4 Turbo is a different model version with a 128K context. Single-vendor list prices; 'GPT-4-class' is approximate (MMLU-level). For cross-vendor constant-capability trends see a16z LLMflation (~10x/yr) and Epoch (9-900x/yr; ~40x/yr at GPT-4-level GPQA)."
+ },
+ {
+  "id": "m-imagenet-top5-error",
+  "label": "ImageNet (ILSVRC) winning top-5 classification error",
+  "unit": "%",
+  "layer": "architecture",
+  "points": [
+   {
+    "date": "2012",
+    "value": 15.3,
+    "evidenceId": "ev-ctx-36",
+    "note": "AlexNet; runner-up 26.2%"
+   },
+   {
+    "date": "2014",
+    "value": 6.66,
+    "evidenceId": "ev-ctx-36",
+    "note": "GoogLeNet"
+   },
+   {
+    "date": "2015",
+    "value": 3.57,
+    "evidenceId": "ev-ctx-36",
+    "note": "ResNet"
+   },
+   {
+    "date": "2016",
+    "value": 2.99,
+    "evidenceId": "ev-ctx-36",
+    "note": "year attribution recalled"
+   },
+   {
+    "date": "2017",
+    "value": 2.25,
+    "evidenceId": "ev-ctx-36",
+    "note": "SENet; year attribution recalled; final ILSVRC"
+   }
+  ],
+  "caveat": "Competition winners on the ILSVRC test set; 2013 winner (~11.7%, Clarifai/ZFNet) and 2010-2011 values (~28% and ~26%) recalled but not added. A commonly cited human estimate is ~5.1% (Karpathy), not re-confirmed."
+ },
+ {
+  "id": "m-nvidia-dc-revenue-quarterly",
+  "label": "NVIDIA Data Center revenue (quarterly)",
+  "unit": "USD bn",
+  "layer": "semis",
+  "points": [
+   {
+    "date": "2025-01",
+    "value": 35.6,
+    "evidenceId": "ev-ctx2-79",
+    "note": "Q4 FY2025 (recalled)"
+   },
+   {
+    "date": "2025-04",
+    "value": 39.1,
+    "evidenceId": "ev-ctx2-79",
+    "note": "Q1 FY2026 (recalled)"
+   },
+   {
+    "date": "2025-07",
+    "value": 41.1,
+    "evidenceId": "ev-ctx2-79",
+    "note": "Q2 FY2026 (recalled)"
+   },
+   {
+    "date": "2025-10",
+    "value": 51.2,
+    "evidenceId": "ev-ctx2-79",
+    "note": "Q3 FY2026 (recalled)"
+   },
+   {
+    "date": "2026-01",
+    "value": 62.3,
+    "evidenceId": "ev-ctx2-3",
+    "note": "Q4 FY2026, +75% y/y"
+   },
+   {
+    "date": "2026-04",
+    "value": 75.2,
+    "evidenceId": "ev-ctx2-4",
+    "note": "Q1 FY2027, +92% y/y"
+   },
+   {
+    "date": "2026-07",
+    "value": 89.0,
+    "evidenceId": "ev-ctx2-1",
+    "note": "Q2 FY2027, +117% y/y; Q3 FY2027 total-revenue guide $108B"
+   }
+  ],
+  "caveat": "Dates are quarter-end months. Recalled FY2026 quarters are consistent with the y/y growth rates reported in 2026 sources. Excludes China data center compute from guidance only, not from reported results."
+ },
+ {
+  "id": "m-openai-revenue",
+  "label": "OpenAI revenue milestones (annualized run-rate unless noted)",
+  "unit": "USD bn",
+  "layer": "economics",
+  "points": [
+   {
+    "date": "2024",
+    "value": 3.7,
+    "evidenceId": "ev-ctx2-9",
+    "note": "Full-year 2024 revenue (not run-rate)"
+   },
+   {
+    "date": "2025-06",
+    "value": 10,
+    "evidenceId": "ev-ctx2-77",
+    "note": "~$10B ARR (recalled)"
+   },
+   {
+    "date": "2025-12",
+    "value": 21.4,
+    "evidenceId": "ev-ctx2-8",
+    "note": "Annualized revenue end-2025"
+   },
+   {
+    "date": "2026-02",
+    "value": 25,
+    "evidenceId": "ev-ctx2-8",
+    "note": "Topped $25B end-Feb 2026 (The Information via Techloy)"
+   },
+   {
+    "date": "2026-09",
+    "value": 70,
+    "evidenceId": "ev-ctx2-10",
+    "note": "'Nearing $70B' (Axios via Digg); single aggregator relay"
+   }
+  ],
+  "caveat": "Run-rate = recent month(s) annualized; mixes definitions with full-year revenue. Not audited. The Sept 2026 figure implies extraordinary growth and should be treated as provisional."
+ },
+ {
+  "id": "m-anthropic-run-rate",
+  "label": "Anthropic annualized revenue run-rate",
+  "unit": "USD bn",
+  "layer": "economics",
+  "points": [
+   {
+    "date": "2025-01",
+    "value": 1,
+    "evidenceId": "ev-ctx2-78",
+    "note": "~$1B at start of 2025 (recalled, company statement)"
+   },
+   {
+    "date": "2025-08",
+    "value": 5,
+    "evidenceId": "ev-ctx2-78",
+    "note": ">$5B (recalled, company statement at Series F)"
+   },
+   {
+    "date": "2025-12",
+    "value": 9,
+    "evidenceId": "ev-ctx2-14",
+    "note": "~$9B end of 2025 (press)"
+   },
+   {
+    "date": "2026-03",
+    "value": 19,
+    "evidenceId": "ev-ctx2-8",
+    "note": "~$19B (The Information via Techloy; month approximate)"
+   },
+   {
+    "date": "2026-04",
+    "value": 30,
+    "evidenceId": "ev-ctx2-15",
+    "note": "~$30B (press, around Apr 2026)"
+   },
+   {
+    "date": "2026-05",
+    "value": 47,
+    "evidenceId": "ev-ctx2-13",
+    "note": ">$47B, company-stated at Series H"
+   },
+   {
+    "date": "2026-07",
+    "value": 65,
+    "evidenceId": "ev-ctx2-14",
+    "note": ">$65B end-July (Bloomberg/Reuters via press; not company-confirmed)"
+   }
+  ],
+  "caveat": "Run-rate, not booked revenue; Anthropic does not publish audited figures. Some points press-reported. FT reported investor expectations of $100-120B by end-2026 (expectation, not data)."
+ },
+ {
+  "id": "m-token-price-frontier",
+  "label": "Frontier flagship list price (input tokens)",
+  "unit": "USD per 1M tokens",
+  "layer": "inference",
+  "points": [
+   {
+    "date": "2023-03",
+    "value": 30,
+    "evidenceId": "ev-ctx2-80",
+    "note": "GPT-4 (recalled)"
+   },
+   {
+    "date": "2024-08",
+    "value": 2.5,
+    "evidenceId": "ev-ctx2-80",
+    "note": "GPT-4o after Aug 2024 cut (recalled)"
+   },
+   {
+    "date": "2025-08",
+    "value": 1.25,
+    "evidenceId": "ev-ctx2-72",
+    "note": "GPT-5; output $10 (recalled)"
+   },
+   {
+    "date": "2025-11",
+    "value": 5,
+    "evidenceId": "ev-ctx2-81",
+    "note": "Claude Opus 4.5; output $25 (recalled)"
+   },
+   {
+    "date": "2026-07",
+    "value": 5,
+    "evidenceId": "ev-ctx2-20",
+    "note": "Claude Opus 5; output $25"
+   },
+   {
+    "date": "2026-09",
+    "value": 10,
+    "evidenceId": "ev-ctx2-19",
+    "note": "GPT-6 Astra; output $50 (reported via Techmeme/The Verge)"
+   },
+   {
+    "date": "2026-09",
+    "value": 4,
+    "evidenceId": "ev-ctx2-21",
+    "note": "Claude Opus 5.5; output $20"
+   }
+  ],
+  "caveat": "Mixed vendors; frontier list prices did not follow constant-capability declines and rose again for the newest tier (GPT-6). Excludes reasoning-token volume, which raises effective cost per task."
+ },
+ {
+  "id": "m-inference-price-decline",
+  "label": "Annual decline in price for fixed capability",
+  "unit": "x per year",
+  "layer": "inference",
+  "points": [
+   {
+    "date": "2024-11",
+    "value": 10,
+    "evidenceId": "ev-ctx2-39",
+    "note": "a16z LLMflation, MMLU-based"
+   },
+   {
+    "date": "2025-03",
+    "value": 40,
+    "evidenceId": "ev-ctx2-40",
+    "note": "Epoch: GPT-4-level on GPQA; overall range 9-900x/yr"
+   }
+  ],
+  "caveat": "Different benchmarks and methods; not a time series of the same quantity."
+ },
+ {
+  "id": "m-open-closed-gap",
+  "label": "Open-weight lag behind frontier closed models",
+  "unit": "months",
+  "layer": "models",
+  "points": [
+   {
+    "date": "2025-10",
+    "value": 3,
+    "evidenceId": "ev-ctx2-42",
+    "note": "Epoch average lag"
+   },
+   {
+    "date": "2026-05",
+    "value": 4,
+    "evidenceId": "ev-ctx2-41",
+    "note": "Epoch ECI average lag since Jan 2026 (~8 ECI points)"
+   }
+  ],
+  "caveat": "Earlier Epoch report (2024) found 5-22 months on individual benchmarks and ~15 months on training compute; methods differ. Epoch notes sparse evaluations of new open models may overstate the 2026 gap."
+ },
+ {
+  "id": "m-largest-ai-dc-power",
+  "label": "Estimated operating power of flagship frontier AI campus (Stargate Abilene)",
+  "unit": "GW",
+  "layer": "energy",
+  "points": [
+   {
+    "date": "2026-04",
+    "value": 0.3,
+    "evidenceId": "ev-ctx2-31",
+    "note": "Epoch estimate, ~4 of 8 buildings; projected 1.2 GW by Q4 2026"
+   }
+  ],
+  "caveat": "Only one sourced point; comparable operating figures for xAI Colossus 1/2, Meta Prometheus and Hyperion were not confirmed during research. Planned capacities (1-5 GW) are not operating capacity."
+ },
+ {
+  "id": "m-us-dc-electricity-share",
+  "label": "US data centers' share of total electricity consumption",
+  "unit": "%",
+  "layer": "energy",
+  "points": [
+   {
+    "date": "2023",
+    "value": 4.4,
+    "evidenceId": "ev-ctx2-34",
+    "note": "176 TWh (LBNL 2024 report)"
+   },
+   {
+    "date": "2024",
+    "value": 4.7,
+    "evidenceId": "ev-ctx2-36",
+    "note": "192 TWh (secondary relay of LBNL 2025 update; EPRI: 177-192 TWh)"
+   },
+   {
+    "date": "2030",
+    "value": 11.8,
+    "evidenceId": "ev-ctx2-35",
+    "note": "Projection, central; range 9.5-15.3%"
+   }
+  ],
+  "caveat": "2030 is a projection, not an observation. Includes all data centers, not only AI. The 2024 report projected 6.7-12% for 2028."
+ },
+ {
+  "id": "m-metr-time-horizon",
+  "label": "METR 50% task-completion time horizon (frontier model)",
+  "unit": "minutes",
+  "layer": "agents",
+  "points": [
+   {
+    "date": "2025-02",
+    "value": 50,
+    "evidenceId": "ev-ctx2-37",
+    "note": "Claude 3.7 Sonnet (~50 min)"
+   },
+   {
+    "date": "2025-04",
+    "value": 110,
+    "evidenceId": "ev-ctx2-37",
+    "note": "o3 (~110 min), later paper version"
+   },
+   {
+    "date": "2025-11",
+    "value": 289,
+    "evidenceId": "ev-ctx2-38",
+    "note": "Claude Opus 4.5 ~4h49m (CI 1h49m-20h25m), via secondary page quoting METR"
+   }
+  ],
+  "caveat": "Dates are model release months. Doubling time ~7 months (2019-2025, METR paper); METR TH1.1 reportedly ~131 days post-2023 (secondary). Wide confidence intervals; METR reportedly flags measurements above ~16h as unreliable with its task suite. 2026 model horizons not confirmed during research."
+ }
+]

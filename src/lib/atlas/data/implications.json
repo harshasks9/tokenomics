@@ -1,0 +1,298 @@
+[
+ {
+  "id": "t1",
+  "lens": "technology",
+  "question": "Which layers are likely to become commodities?",
+  "answer": "Fixed-capability model inference (prices falling ~10x/yr), mid-tier models (open weights months behind), and agent frameworks/orchestration code. Commoditization follows the capability frontier down: last year's frontier is this year's commodity.",
+  "strength": "strong",
+  "supporters": [
+   "liang-wenfeng",
+   "marc-andreessen",
+   "sam-altman",
+   "gary-marcus"
+  ],
+  "dissenters": [
+   "dario-amodei"
+  ],
+  "basis": "Price series and open-closed gap data 2023–26; the models-commoditize thesis is validated on price.",
+  "thesisIds": [
+   "models-commoditize",
+   "open-closes-gap"
+  ]
+ },
+ {
+  "id": "t2",
+  "lens": "technology",
+  "question": "Which layers have durable technical barriers?",
+  "answer": "Leading-edge semiconductors and packaging, power-ready data-center capacity, and frontier training (capital + talent + RL environments). These are physical or capital barriers, not algorithmic ones — algorithms diffuse in months.",
+  "strength": "strong",
+  "supporters": [
+   "jensen-huang",
+   "leopold-aschenbrenner",
+   "mark-zuckerberg"
+  ],
+  "dissenters": [
+   "liang-wenfeng"
+  ],
+  "basis": "Infra-supercycle and power-binding theses validated; DeepSeek shows algorithmic leads are short-lived.",
+  "thesisIds": [
+   "infra-supercycle",
+   "power-binding"
+  ]
+ },
+ {
+  "id": "t3",
+  "lens": "technology",
+  "question": "Where are the next architectural discontinuities likely?",
+  "answer": "Memory and continual learning, RL from experience, and world models for physical tasks — the ingredients that LLM skeptics and DeepMind researchers have named for a decade. Expect them as additions to transformer systems before replacements.",
+  "strength": "moderate",
+  "supporters": [
+   "demis-hassabis",
+   "david-silver",
+   "yann-lecun",
+   "ilya-sutskever",
+   "fei-fei-li"
+  ],
+  "dissenters": [
+   "sam-altman"
+  ],
+  "basis": "Historically, skeptics correctly identified missing pieces (reasoning, search) that were then added to LLMs, not substituted.",
+  "thesisIds": [
+   "beyond-llms",
+   "rl-experience"
+  ]
+ },
+ {
+  "id": "e1",
+  "lens": "economics",
+  "question": "Where is value created vs captured?",
+  "answer": "Value is created in applications and end-user productivity but, through 2026, captured mainly by chips (Nvidia), clouds and two-to-three frontier labs. Capture has migrated up the stack slowly and in sequence.",
+  "strength": "strong",
+  "supporters": [
+   "jensen-huang",
+   "david-cahn"
+  ],
+  "dissenters": [
+   "cathie-wood"
+  ],
+  "basis": "Nvidia data-center revenue vs lab run-rates vs app-layer revenue, 2023–26.",
+  "thesisIds": [
+   "infra-supercycle",
+   "app-layer-value"
+  ]
+ },
+ {
+  "id": "e2",
+  "lens": "economics",
+  "question": "Where could overinvestment compress margins?",
+  "answer": "GPU leasing and neocloud capacity financed with debt, and any capacity built ahead of power and demand. Short GPU economic lives make overbuild costly; the 2027–29 window decides it.",
+  "strength": "moderate",
+  "supporters": [
+   "david-cahn",
+   "gary-marcus",
+   "sundar-pichai"
+  ],
+  "dissenters": [
+   "mark-zuckerberg",
+   "masayoshi-son",
+   "jensen-huang"
+  ],
+  "basis": "Capex-payback thesis unresolved; credit stress signals in late 2025.",
+  "thesisIds": [
+   "capex-pays-back"
+  ]
+ },
+ {
+  "id": "e3",
+  "lens": "economics",
+  "question": "Which parts of the stack have attractive long-term economics?",
+  "answer": "Scarce physical inputs (advanced chips, power), distribution owners, and agent platforms that own outcomes and memory. Commodity inference and thin applications look least attractive.",
+  "strength": "moderate",
+  "supporters": [
+   "jensen-huang",
+   "satya-nadella",
+   "andrej-karpathy"
+  ],
+  "dissenters": [
+   "cathie-wood"
+  ],
+  "basis": "Consistent with which theses validated (infra, power, consolidation) vs which are contested (app moats).",
+  "thesisIds": [
+   "power-binding",
+   "frontier-consolidates"
+  ]
+ },
+ {
+  "id": "p1",
+  "lens": "platforms",
+  "question": "Will hyperscalers become more powerful or less differentiated?",
+  "answer": "More powerful through 2026: they control capital, power and distribution, and absorbed independent labs. Their risk is that frontier labs become platforms themselves and multi-source compute.",
+  "strength": "strong",
+  "supporters": [
+   "satya-nadella",
+   "mustafa-suleyman",
+   "sundar-pichai"
+  ],
+  "dissenters": [
+   "liang-wenfeng"
+  ],
+  "basis": "Frontier-consolidates validated; license-and-hire deals; OpenAI's multi-cloud deals in 2025.",
+  "thesisIds": [
+   "frontier-consolidates",
+   "incumbents-hold"
+  ]
+ },
+ {
+  "id": "p2",
+  "lens": "platforms",
+  "question": "Will model providers retain durable pricing power?",
+  "answer": "At the frontier tier, yes so far (rapid revenue growth despite collapsing unit prices); below it, no. Pricing power is temporary and must be re-earned each model generation.",
+  "strength": "moderate",
+  "supporters": [
+   "sam-altman",
+   "dario-amodei"
+  ],
+  "dissenters": [
+   "marc-andreessen",
+   "liang-wenfeng",
+   "gary-marcus"
+  ],
+  "basis": "Two-tier pricing observed 2024–26.",
+  "thesisIds": [
+   "models-commoditize"
+  ]
+ },
+ {
+  "id": "p3",
+  "lens": "platforms",
+  "question": "How do foundation models, agents and enterprise platforms relate?",
+  "answer": "Models become components; the agent layer (memory, tools, permissions) is where platform control is contested between labs, hyperscalers and SaaS incumbents.",
+  "strength": "moderate",
+  "supporters": [
+   "andrej-karpathy",
+   "satya-nadella"
+  ],
+  "dissenters": [],
+  "basis": "LLM-OS framing plus 2025–26 lab moves into agents and IDEs.",
+  "thesisIds": [
+   "app-layer-value",
+   "agents-soon"
+  ]
+ },
+ {
+  "id": "x1",
+  "lens": "enterprise",
+  "question": "What will enterprises pay for once capability is widely available?",
+  "answer": "Outcomes and reliability: completed tasks, auditability, security, integration with systems of record, and liability — not raw model access.",
+  "strength": "moderate",
+  "supporters": [
+   "reid-hoffman",
+   "satya-nadella",
+   "andrej-karpathy"
+  ],
+  "dissenters": [],
+  "basis": "Coding agents (outcome-shaped) are the clearest 2025–26 revenue success; generic pilots underperformed.",
+  "thesisIds": [
+   "productivity-roi",
+   "coding-first"
+  ]
+ },
+ {
+  "id": "x2",
+  "lens": "enterprise",
+  "question": "Which capabilities create measurable ROI?",
+  "answer": "Software engineering first; then customer operations and document-heavy back-office work where outputs are verifiable. Open-ended knowledge work ROI remains hard to measure.",
+  "strength": "strong",
+  "supporters": [
+   "andrej-karpathy",
+   "jensen-huang",
+   "dario-amodei"
+  ],
+  "dissenters": [
+   "gary-marcus"
+  ],
+  "basis": "Coding-first thesis validated; MIT NANDA pilot-failure findings for generic use.",
+  "thesisIds": [
+   "coding-first",
+   "productivity-roi"
+  ]
+ },
+ {
+  "id": "x3",
+  "lens": "enterprise",
+  "question": "What shifts buying from models to platforms, workflows, agents or outcomes?",
+  "answer": "Model interchangeability (open weights, routing) plus agents that act on systems of record: once any model is 'good enough', buyers optimize for integration, governance and price per outcome.",
+  "strength": "moderate",
+  "supporters": [
+   "satya-nadella",
+   "marc-andreessen"
+  ],
+  "dissenters": [
+   "sam-altman"
+  ],
+  "basis": "Commoditization of fixed capability; rise of multi-model routing.",
+  "thesisIds": [
+   "models-commoditize",
+   "app-layer-value"
+  ]
+ },
+ {
+  "id": "i1",
+  "lens": "investing",
+  "question": "Which economic assumptions are most vulnerable?",
+  "answer": "That AI revenue will close a ~$600B+ annual gap fast enough to service capex and debt; that GPUs keep multi-year economic lives; and that frontier pricing power survives open competition.",
+  "strength": "moderate",
+  "supporters": [
+   "david-cahn",
+   "gary-marcus"
+  ],
+  "dissenters": [
+   "jensen-huang",
+   "masayoshi-son"
+  ],
+  "basis": "Capex-payback thesis unresolved; depreciation and credit concerns 2025–26.",
+  "thesisIds": [
+   "capex-pays-back"
+  ]
+ },
+ {
+  "id": "i2",
+  "lens": "investing",
+  "question": "Which historical investment theses have held up?",
+  "answer": "Picks-and-shovels (Nvidia, 2023–26); backing frontier labs early (Microsoft/Khosla in OpenAI 2019); the power/data-center build-out (Cahn's 'shovel ready'). Independent consumer-AI and sub-scale frontier labs (Inflection, 01.AI) did not.",
+  "strength": "strong",
+  "supporters": [
+   "satya-nadella",
+   "vinod-khosla",
+   "david-cahn",
+   "jensen-huang"
+  ],
+  "dissenters": [
+   "cathie-wood",
+   "masayoshi-son"
+  ],
+  "basis": "Outcomes of strategic actions in the courtroom.",
+  "thesisIds": [
+   "infra-supercycle",
+   "frontier-consolidates"
+  ]
+ },
+ {
+  "id": "i3",
+  "lens": "investing",
+  "question": "What leading indicators should investors track?",
+  "answer": "Lab revenue run-rates vs capex guidance; open-weight lag (months); fixed-capability price decline; METR task horizons; power interconnect queues; GPU rental prices and utilization; credit spreads of AI infrastructure borrowers.",
+  "strength": "strong",
+  "supporters": [
+   "david-cahn",
+   "leopold-aschenbrenner"
+  ],
+  "dissenters": [],
+  "basis": "These indicators would have flagged each major 2022–26 turn.",
+  "thesisIds": [
+   "capex-pays-back",
+   "agents-soon",
+   "open-closes-gap"
+  ]
+ }
+]

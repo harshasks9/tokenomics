@@ -1,0 +1,3398 @@
+{
+  "agent": "builders-1",
+  "thinkers": [
+    {
+      "id": "jensen-huang",
+      "name": "Jensen Huang",
+      "cohort": "builders",
+      "roles": [
+        {
+          "org": "NVIDIA",
+          "title": "Co-founder, President & CEO",
+          "from": "1993",
+          "to": null
+        }
+      ],
+      "bio": "Co-founder and CEO of NVIDIA, whose GPUs and CUDA software stack became the dominant hardware platform for training and running deep learning models after 2012. He has been the leading public advocate of 'accelerated computing', 'AI factories' and 'sovereign AI'.",
+      "selection": {
+        "influence": [
+          4,
+          "Framed the industry's infrastructure narrative (accelerated computing, AI factories, sovereign AI) adopted by governments and hyperscalers."
+        ],
+        "foresight": [
+          4,
+          "Early, sustained bet on GPUs for AI and correct calls on compute demand after DeepSeek; some calls (AGI-by-tests, $3-4T) unresolved."
+        ],
+        "allocation": [
+          5,
+          "Controls the scarcest input of the AI boom; allocation of GPU supply shapes which labs and countries can scale."
+        ],
+        "contribution": [
+          5,
+          "CUDA, DGX systems and data-center GPUs are the core commercial substrate of modern AI."
+        ],
+        "corpus": [
+          4,
+          "Many keynotes, earnings calls and interviews, but heavily promotional and rarely falsifiable."
+        ],
+        "future": [
+          5,
+          "Roadmap (Blackwell, Rubin) and China/export policy positions directly shape 2026-2030 compute supply."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "After AlexNet showed GPUs could train deep nets, Huang repositioned NVIDIA around deep learning; in 2016 he hand-delivered the first DGX-1 to OpenAI. GPUs were framed as the engine of a new AI computing model.",
+          "evidenceIds": []
+        },
+        {
+          "period": "p2017",
+          "summary": "Argued that AI would 'eat software' and that the end of CPU scaling made accelerated (GPU) computing the successor architecture; deep learning was still concentrated in a few internet companies.",
+          "evidenceIds": [
+            "ev-huang-1"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Framed generative AI as a platform shift and data centers as factories producing intelligence; demand for accelerated computing reached a 'tipping point'.",
+          "evidenceIds": [
+            "ev-huang-2"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Pushed 'sovereign AI' (every nation should own its AI infrastructure), claimed the ~$1T installed data-center base would shift to accelerated computing within a few years, gave a conditional five-year AGI-by-tests forecast, and said AI would make programming unnecessary for most people.",
+          "evidenceIds": [
+            "ev-huang-3",
+            "ev-huang-4",
+            "ev-huang-5",
+            "ev-huang-6"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Treated reasoning/inference scaling as a multiplier on compute demand (100x for reasoning models) and dismissed DeepSeek-driven fears; called export controls a failure that accelerated Chinese rivals; forecast $3-4T AI infrastructure spend by 2030 and cited $500B Blackwell+Rubin visibility through 2026.",
+          "evidenceIds": [
+            "ev-huang-7",
+            "ev-huang-8",
+            "ev-huang-9",
+            "ev-huang-10",
+            "ev-huang-11"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Raised Blackwell+Rubin expectations to ~$1T through 2027 and argued China's market would open 'over time', while Nvidia guided to zero China data-center compute revenue.",
+          "evidenceIds": [
+            "ev-huang-13",
+            "ev-huang-14"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2025-11",
+          "from": "'China is going to win the AI race' (FT summit)",
+          "to": "'China is nanoseconds behind America in AI' — America must race ahead and win developers",
+          "trigger": "Immediate backlash to the FT remark in Washington; same-day clarification on X.",
+          "evidenceIds": [
+            "ev-huang-11",
+            "ev-huang-12"
+          ]
+        },
+        {
+          "date": "2025-03",
+          "from": "Useful quantum computers 15-30 years away (CES, Jan 2025)",
+          "to": "Publicly said he had been wrong; hosted Quantum Day at GTC",
+          "trigger": "Market reaction and pushback from quantum-computing firms.",
+          "evidenceIds": [
+            "ev-huang-17"
+          ]
+        }
+      ],
+      "corpusNotes": "Rich corpus (GTC keynotes, quarterly calls, interviews) but statements are mostly promotional for NVIDIA's products and rarely carry explicit dated targets. Transcripts and nvidianews were unreachable this session; quotes come from search snippets of press coverage."
+    },
+    {
+      "id": "satya-nadella",
+      "name": "Satya Nadella",
+      "cohort": "builders",
+      "roles": [
+        {
+          "org": "Microsoft",
+          "title": "EVP Cloud & Enterprise",
+          "from": "2011",
+          "to": "2014"
+        },
+        {
+          "org": "Microsoft",
+          "title": "CEO",
+          "from": "2014-02",
+          "to": null
+        },
+        {
+          "org": "Microsoft",
+          "title": "Chairman",
+          "from": "2021-06",
+          "to": null
+        }
+      ],
+      "bio": "CEO of Microsoft since 2014; made the 2019 bet on OpenAI that put GPT models on Azure and into Microsoft products (Bing, GitHub Copilot, Microsoft 365 Copilot).",
+      "selection": {
+        "influence": [
+          4,
+          "Shaped the enterprise framing of AI (copilots, agents, Jevons paradox, GDP as the AGI test)."
+        ],
+        "foresight": [
+          3,
+          "Early on conversational interfaces and OpenAI; overestimated Bing's search disruption and early Copilot uptake."
+        ],
+        "allocation": [
+          5,
+          "Directs one of the largest AI capex budgets and was OpenAI's main financier."
+        ],
+        "contribution": [
+          4,
+          "Commercialized frontier models at enterprise scale via Azure and Copilot."
+        ],
+        "corpus": [
+          4,
+          "Earnings calls, long-form podcasts (Dwarkesh, BG2), essays and keynotes."
+        ],
+        "future": [
+          5,
+          "Azure capacity, OpenAI stake (~27%) and Copilot distribution make Microsoft pivotal through 2030."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Saw 'conversation as a platform': bots as the new apps and human language as the new UI, alongside a human-AI partnership ethic (2016 Slate essay).",
+          "evidenceIds": [
+            "ev-nadella-1",
+            "ev-nadella-2"
+          ]
+        },
+        {
+          "period": "p2017",
+          "summary": "Bet that large-scale models trained on Azure supercomputers would be a platform shift, investing $1B in OpenAI (2019) as its exclusive cloud.",
+          "evidenceIds": [
+            "ev-nadella-9"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Moved fast to productize GPT-4: AI-powered Bing to challenge Google ('made them dance'), copilots across Office, and backed Altman during the Nov 2023 OpenAI crisis.",
+          "evidenceIds": [
+            "ev-nadella-3",
+            "ev-nadella-4",
+            "ev-nadella-11"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Hedged OpenAI dependence by hiring Suleyman to build Microsoft AI; argued agents would collapse SaaS business logic into an 'AI tier'.",
+          "evidenceIds": [
+            "ev-nadella-10",
+            "ev-nadella-5"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Argued efficiency gains (DeepSeek) would raise total demand (Jevons paradox); dismissed self-declared AGI milestones in favor of GDP growth as the real test; renegotiated the OpenAI deal; identified power, not chips, as the binding constraint.",
+          "evidenceIds": [
+            "ev-nadella-6",
+            "ev-nadella-7",
+            "ev-nadella-8",
+            "ev-out-msft-3"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Azure passed $100B annual revenue and Copilot reached ~30M paid seats while capex kept rising.",
+          "evidenceIds": [
+            "ev-out-msft-1",
+            "ev-out-msft-2"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2025-10",
+          "from": "Exclusive compute provider to OpenAI with AGI determination left to OpenAI's board (2019-2023 structure)",
+          "to": "Non-exclusive relationship, AGI claims verified by an independent expert panel, Microsoft free to pursue AGI on its own",
+          "trigger": "OpenAI's compute needs and restructuring into a PBC; Nadella's stated skepticism of self-declared AGI milestones.",
+          "evidenceIds": [
+            "ev-out-msft-3",
+            "ev-nadella-7"
+          ]
+        }
+      ],
+      "corpusNotes": "Good long-form corpus, but most statements are framed as strategy rather than dated forecasts. Several 2025 quotes reached only via secondary coverage; the power-constraint quote's original venue unconfirmed."
+    },
+    {
+      "id": "sundar-pichai",
+      "name": "Sundar Pichai",
+      "cohort": "builders",
+      "roles": [
+        {
+          "org": "Google",
+          "title": "CEO",
+          "from": "2015-10",
+          "to": null
+        },
+        {
+          "org": "Alphabet",
+          "title": "CEO",
+          "from": "2019-12",
+          "to": null
+        }
+      ],
+      "bio": "CEO of Google since 2015 and Alphabet since 2019; declared Google 'AI-first' in 2016 and oversaw Google Brain/DeepMind, the Gemini models, TPUs and the integration of generative AI into Search.",
+      "selection": {
+        "influence": [
+          3,
+          "Agenda-setting slogans (AI-first, 'more profound than fire') more than technical ideas."
+        ],
+        "foresight": [
+          3,
+          "AI-first call was early; 'low-hanging fruit is gone' underestimated 2025 progress; AGI timing unresolved."
+        ],
+        "allocation": [
+          5,
+          "Controls one of the largest AI capex budgets plus TPUs, DeepMind and Search distribution."
+        ],
+        "contribution": [
+          4,
+          "Google invented the transformer and built Gemini/TPUs, though productization lagged OpenAI in 2022-23."
+        ],
+        "corpus": [
+          3,
+          "Founders' letters, earnings calls and some long interviews; mostly measured corporate language."
+        ],
+        "future": [
+          5,
+          "Owns a full stack (chips, cloud, models, Search, Android, YouTube) that shapes AI distribution."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Declared a shift from mobile-first to AI-first; the computer would become an intelligent assistant (2016).",
+          "evidenceIds": [
+            "ev-pichai-1"
+          ]
+        },
+        {
+          "period": "p2017",
+          "summary": "Called AI more profound than electricity or fire while stressing its risks must be managed.",
+          "evidenceIds": [
+            "ev-pichai-2"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "After ChatGPT, moved from cautious release of LaMDA to launching Bard and AI in Search (Feb 2023) and merging Brain with DeepMind.",
+          "evidenceIds": [
+            "ev-pichai-7"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Argued under-investing in AI was a bigger risk than over-investing; reported that over a quarter of new Google code was AI-generated; predicted progress would get harder in 2025.",
+          "evidenceIds": [
+            "ev-pichai-3",
+            "ev-pichai-8",
+            "ev-pichai-4"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Described current systems as 'AJI' and placed AGI a bit after 2030; warned of 'elements of irrationality' in the boom and that no company would be immune to a correction.",
+          "evidenceIds": [
+            "ev-pichai-5",
+            "ev-pichai-6"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Kept raising capex (2026 guidance roughly double 2025) while Gemini gained share against Microsoft's Copilot.",
+          "evidenceIds": [
+            "ev-out-goog-1",
+            "ev-out-search-1"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2023-02",
+          "from": "Cautious, 'responsible' slow release of conversational models (LaMDA withheld 2021-22)",
+          "to": "Rapid public launch of Bard and generative AI in Search",
+          "trigger": "ChatGPT's launch (Nov 2022) and Microsoft's Bing+OpenAI challenge.",
+          "evidenceIds": [
+            "ev-pichai-7",
+            "ev-nadella-3"
+          ]
+        }
+      ],
+      "corpusNotes": "Pichai rarely makes dated, falsifiable forecasts; claims are mostly framing and capex justifications. Alphabet 2026 outcomes were not verifiable by search this session (search budget exhausted)."
+    },
+    {
+      "id": "mark-zuckerberg",
+      "name": "Mark Zuckerberg",
+      "cohort": "builders",
+      "roles": [
+        {
+          "org": "Facebook / Meta Platforms",
+          "title": "Founder, Chairman & CEO",
+          "from": "2004",
+          "to": null
+        }
+      ],
+      "bio": "Founder and CEO of Meta; created FAIR (2013), championed open-weight Llama models (2023-24), pivoted capital from the metaverse to AI, and in 2025 launched Meta Superintelligence Labs.",
+      "selection": {
+        "influence": [
+          4,
+          "Made open-weight frontier models a mainstream strategy (Llama) and popularized 'personal superintelligence'."
+        ],
+        "foresight": [
+          2,
+          "Metaverse bet and 'Llama will be most advanced by 2025' did not pan out; energy-constraint call was early and correct."
+        ],
+        "allocation": [
+          5,
+          "Sole control of Meta's ~$100B+/yr capex and talent spending."
+        ],
+        "contribution": [
+          4,
+          "FAIR, PyTorch and Llama shaped the open AI ecosystem."
+        ],
+        "corpus": [
+          3,
+          "Earnings calls, letters and podcasts, but evidence this session is recalled, not re-verified."
+        ],
+        "future": [
+          4,
+          "Massive capex and distribution to 3B+ users, but uncertain model leadership."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2012",
+          "summary": "Saw AI research as core to Facebook's future and created FAIR under Yann LeCun (2013).",
+          "evidenceIds": [
+            "ev-zuck-1"
+          ]
+        },
+        {
+          "period": "p2017",
+          "summary": "Strongly optimistic about near-term AI benefits; called AI doomsday talk irresponsible.",
+          "evidenceIds": [
+            "ev-zuck-2"
+          ]
+        },
+        {
+          "period": "p2020",
+          "summary": "Bet the company's next platform on the metaverse, renaming Facebook to Meta (Oct 2021) and forecasting a billion metaverse users within a decade.",
+          "evidenceIds": [
+            "ev-zuck-3"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Declared a 'year of efficiency' and pivoted priority to generative AI, releasing LLaMA and open-licensed Llama 2.",
+          "evidenceIds": [
+            "ev-zuck-4"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Set a goal of building general intelligence and open-sourcing it responsibly; argued open source would become the industry standard like Linux and that energy, not chips, would bound scaling.",
+          "evidenceIds": [
+            "ev-zuck-5",
+            "ev-zuck-6",
+            "ev-zuck-7"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "After Llama 4 disappointed, reorganized around Meta Superintelligence Labs, invested in Scale AI, declared superintelligence 'in sight', and signaled more selective open-sourcing; argued the risk of under-spending exceeded misspending hundreds of billions.",
+          "evidenceIds": [
+            "ev-zuck-8",
+            "ev-zuck-9",
+            "ev-zuck-10",
+            "ev-zuck-11",
+            "ev-out-meta-1"
+          ]
+        },
+        {
+          "period": "p2026",
+          "summary": "Capex guidance rose to roughly $115-135B while metaverse budgets were trimmed (recalled, not re-verified).",
+          "evidenceIds": [
+            "ev-out-meta-3",
+            "ev-out-meta-4"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2023-02",
+          "from": "Metaverse as Meta's primary next platform and investment priority",
+          "to": "AI as the top priority (metaverse folded into AI-enabled wearables)",
+          "trigger": "2022 stock collapse, ChatGPT, and investor pressure ('year of efficiency').",
+          "evidenceIds": [
+            "ev-zuck-4",
+            "ev-out-meta-4"
+          ]
+        },
+        {
+          "date": "2025-07",
+          "from": "Open source AI is the path forward; Llama to be released openly as the industry standard",
+          "to": "Need to be careful about what Meta chooses to open source; frontier work centralized in a superintelligence lab",
+          "trigger": "Llama 4's weak reception, Chinese open models overtaking Llama, and safety/competitive concerns about superintelligence-level models.",
+          "evidenceIds": [
+            "ev-zuck-7",
+            "ev-zuck-9",
+            "ev-out-meta-1"
+          ]
+        }
+      ],
+      "corpusNotes": "Search budget was exhausted and Meta domains were blocked before Zuckerberg could be searched, so ALL Zuckerberg evidence is recalled from background knowledge (verification 'recalled'); dates and figures should be re-verified before publication."
+    },
+    {
+      "id": "liang-wenfeng",
+      "name": "Liang Wenfeng",
+      "cohort": "builders",
+      "roles": [
+        {
+          "org": "High-Flyer (Huanfang) Quant",
+          "title": "Co-founder",
+          "from": "2015",
+          "to": null
+        },
+        {
+          "org": "DeepSeek",
+          "title": "Founder & CEO",
+          "from": "2023-07",
+          "to": null
+        }
+      ],
+      "bio": "Co-founder of quant fund High-Flyer and founder of DeepSeek, whose open-weight V3 and R1 models (Dec 2024 - Jan 2025) showed near-frontier performance at much lower reported training cost and shook AI markets.",
+      "selection": {
+        "influence": [
+          4,
+          "DeepSeek R1 reset assumptions about cost, open weights and China's position."
+        ],
+        "foresight": [
+          4,
+          "Early compute stockpile and the claim that closed-source moats are temporary were borne out (provisional)."
+        ],
+        "allocation": [
+          3,
+          "Self-funded lab via High-Flyer; limited by export controls."
+        ],
+        "contribution": [
+          5,
+          "MLA/MoE efficiency, GRPO-based RL reasoning and MIT-licensed releases."
+        ],
+        "corpus": [
+          2,
+          "Only a handful of interviews (2023, 2024); very few public statements."
+        ],
+        "future": [
+          4,
+          "Central to China's open-model ecosystem and domestic-chip adoption."
+        ]
+      },
+      "mentalModel": [
+        {
+          "period": "p2020",
+          "summary": "Used High-Flyer's quant profits to build GPU clusters (Fire-Flyer), accumulating ~10,000 A100s before US export controls, betting that compute would be strategic.",
+          "evidenceIds": [
+            "ev-liang-1"
+          ]
+        },
+        {
+          "period": "p2022",
+          "summary": "Founded DeepSeek (2023) explicitly to pursue AGI through fundamental research rather than near-term applications or outside financing.",
+          "evidenceIds": [
+            "ev-liang-1"
+          ]
+        },
+        {
+          "period": "p2024",
+          "summary": "Held that closed-source moats are temporary, that team and culture are the real moat, that China must become an original innovator rather than a follower, and that chip embargoes, not money, were the binding constraint; priced DeepSeek-V2 near cost.",
+          "evidenceIds": [
+            "ev-liang-2",
+            "ev-liang-6",
+            "ev-liang-3"
+          ]
+        },
+        {
+          "period": "p2025",
+          "summary": "Released R1 openly (MIT license); became a nationally recognized figure, attending symposia with Premier Li Qiang and Xi Jinping; made almost no public statements thereafter.",
+          "evidenceIds": [
+            "ev-liang-4",
+            "ev-liang-5"
+          ]
+        }
+      ],
+      "reversals": [
+        {
+          "date": "2023-04",
+          "from": "Applying machine learning to quantitative trading at High-Flyer",
+          "to": "Building a dedicated AGI research lab (DeepSeek)",
+          "trigger": "ChatGPT/LLM breakthrough and existing GPU cluster capacity.",
+          "evidenceIds": [
+            "ev-liang-1"
+          ]
+        }
+      ],
+      "corpusNotes": "Very thin corpus: essentially two long Chinese-language interviews (May 2023, July 2024) plus DeepSeek papers. All Liang evidence is recalled (search budget exhausted before searching him), and translations vary. No reliable 2026 statements located."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-huang-1",
+      "url": "https://cacmb4.acm.org/opinion/interviews/217185-nvidia-ceo-software-is-eating-the-world-but-ai-is-going-to-eat-software",
+      "title": "Nvidia CEO: Software Is Eating the World, but AI Is Going to Eat Software",
+      "publisher": "Communications of the ACM (republication of MIT Technology Review interview)",
+      "date": "2017-05",
+      "speaker": "jensen-huang",
+      "type": "interview",
+      "primary": true,
+      "passage": "Software is eating the world, but AI is going to eat software.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Interview given around Nvidia's GTC conference in San Jose, May 2017. In the same interview he noted very few lines of enterprise code used AI and that the machine-learning revolution was just starting. One blog misdates the line to GTC 2020; the 2017 MIT Technology Review coverage is the stronger dating."
+    },
+    {
+      "id": "ev-huang-2",
+      "url": "https://fortune.com/2024/02/22/billionaire-jensen-huang-nvidia-ai-tipping-point-whole-new-industry",
+      "title": "Billionaire Jensen Huang: Nvidia AI tipping point, whole new industry",
+      "publisher": "Fortune",
+      "date": "2024-02-21",
+      "speaker": "jensen-huang",
+      "type": "earnings",
+      "primary": false,
+      "passage": "On the Q4 FY2024 call Huang said accelerated computing and generative AI had hit a tipping point and described a new type of data center devoted to AI generation, an 'AI-generation factory'.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Paraphrase from search-result summaries of call coverage; exact transcript not reachable."
+    },
+    {
+      "id": "ev-huang-3",
+      "url": "https://benzinga.com/markets/equities/24/08/40617133/nvidia-ceo-jensen-huang-identifies-1-trillion-opportunity-amid-generative-ai-shift-data-centers-",
+      "title": "Nvidia CEO Jensen Huang identifies $1 trillion opportunity amid generative AI shift in data centers",
+      "publisher": "Benzinga",
+      "date": "2024-08-28",
+      "speaker": "jensen-huang",
+      "type": "earnings",
+      "primary": true,
+      "passage": "The world builds about $1 trillion worth of data centers ... In a few years, $1 trillion worth of data centers will be all accelerated computing.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Q2 FY2025 earnings call (Aug 28, 2024). Quote fragments as shown in search results; ellipsis marks omitted text."
+    },
+    {
+      "id": "ev-huang-4",
+      "url": "https://www.worldgovernmentssummit.org/media-hub/news/detail/omar-al-olama-interviews-founder-of-nvidia--who-will-shape-the-future-of-ai",
+      "title": "Omar Al Olama interviews founder of NVIDIA: Who will shape the future of AI?",
+      "publisher": "World Governments Summit (with Reuters coverage)",
+      "date": "2024-02-12",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": true,
+      "passage": "It codifies your culture, your society's intelligence, your common sense, your history - you own your own data",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "On-stage conversation with UAE AI minister Omar Al Olama in Dubai. Reuters paraphrased him as saying every country needs its own AI infrastructure. The verbatim line was carried in wire coverage; the organizer page summarizes the session. Also a sales pitch for Nvidia, as some coverage noted."
+    },
+    {
+      "id": "ev-huang-5",
+      "url": "https://tomshardware.com/tech-industry/artificial-intelligence/jensen-huang-advises-against-learning-to-code-leave-it-up-to-ai",
+      "title": "Jensen Huang says kids shouldn't learn to code — they should leave it up to AI",
+      "publisher": "Tom's Hardware",
+      "date": "2024-02",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": false,
+      "passage": "Huang said it is the job of computing technology to make it so nobody has to program, that 'the programming language is human', and that people should instead gain domain expertise (biology, education, manufacturing, farming).",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "World Government Summit, Dubai, Feb 2024. Headlines overstated it; he also said it is vital to upskill everyone."
+    },
+    {
+      "id": "ev-huang-6",
+      "url": "https://www.itnews.asia/news/nvidia-ceo-says-ai-could-pass-human-tests-in-five-years-605736",
+      "title": "Nvidia CEO says AI could pass human tests in five years",
+      "publisher": "iTnews Asia (Reuters)",
+      "date": "2024-03-01",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": false,
+      "passage": "If AGI is defined as passing every test you can imagine, Huang predicted AI would do well on every one within five years; under other definitions AGI may be much further off because scientists disagree on how minds work.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Stanford economic forum; Reuters timing points to Friday March 1, 2024 (one outlet says March 4). Explicitly conditional on definition."
+    },
+    {
+      "id": "ev-huang-7",
+      "url": "https://www.benzinga.com/markets/equities/25/02/43995515/jensen-huang-says-deepseek-was-fantastic-next-gen-models-demand-100x-more-compute-as-nvidia-smashes-earnings-records",
+      "title": "Jensen Huang says 'DeepSeek was fantastic': next-gen models demand 100x more compute",
+      "publisher": "Benzinga",
+      "date": "2025-02-26",
+      "speaker": "jensen-huang",
+      "type": "earnings",
+      "primary": true,
+      "passage": "Reasoning models can consume 100 times more compute, and future reasoning models will consume much more compute.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Q4 FY2025 call. He also called DeepSeek R1 'an excellent innovation' that open-sourced a world-class reasoning model. Framed against the January 2025 DeepSeek-driven selloff."
+    },
+    {
+      "id": "ev-huang-8",
+      "url": "https://www.nbcbayarea.com/news/business/money-report/jensen-huang-says-u-s-chip-restrictions-have-cut-nvidias-china-market-share-nearly-in-half/3874094/",
+      "title": "Jensen Huang says U.S. chip restrictions have cut Nvidia's China market share nearly in half",
+      "publisher": "CNBC via NBC Bay Area",
+      "date": "2025-05-21",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": true,
+      "passage": "I think, all in all, the export control was a failure, the facts would suggest it",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Computex Taipei press remarks. He said share fell from ~95% to ~50% and that restrictions motivated and accelerated Chinese competitors. Nvidia took a $5.5B H20-related charge."
+    },
+    {
+      "id": "ev-huang-9",
+      "url": "https://www.tipranks.com/news/nvidia-ceo-jensen-huang-says-ai-race-is-just-starting-sees-4-trillion-market-ahead",
+      "title": "Nvidia CEO Jensen Huang says AI race is just starting, sees $4 trillion market ahead",
+      "publisher": "TipRanks (Reuters-based)",
+      "date": "2025-08-27",
+      "speaker": "jensen-huang",
+      "type": "earnings",
+      "primary": false,
+      "passage": "Huang said AI infrastructure spending would reach $3 trillion to $4 trillion by the end of the decade, partly based on expected ~$600B of data center capex by major cloud customers in 2025.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Said on Q2 FY2026 results day, to counter fears that AI chip demand was peaking."
+    },
+    {
+      "id": "ev-huang-10",
+      "url": "https://www.trendforce.com/news/2025/10/29/news-nvidia-dismisses-ai-bubble-concerns-reportedly-projects-500b-in-gpu-sales-from-blackwell-and-rubin/",
+      "title": "Nvidia dismisses AI bubble concerns, reportedly projects $500B in GPU sales from Blackwell and Rubin",
+      "publisher": "TrendForce",
+      "date": "2025-10-28",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": false,
+      "passage": "At GTC Washington DC Huang cited roughly $500 billion of cumulative Blackwell and Rubin demand/visibility through calendar 2026 (about 20 million GPUs, ~6 million already shipped) and dismissed AI-bubble concerns.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Not formal guidance; Motley Fool estimated the trued-up remaining backlog closer to $307B (see ev-out-nvda-5)."
+    },
+    {
+      "id": "ev-huang-11",
+      "url": "https://www.axios.com/2025/11/05/ai-nvidia-china-race",
+      "title": "Nvidia CEO says China on track \"to win the AI race\"",
+      "publisher": "Axios (reporting FT Future of AI Summit)",
+      "date": "2025-11-05",
+      "speaker": "jensen-huang",
+      "type": "interview",
+      "primary": true,
+      "passage": "China is going to win the AI race.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Said to the Financial Times; tied to China's cheap energy and lighter regulation and his frustration with US regulation and export policy."
+    },
+    {
+      "id": "ev-huang-12",
+      "url": "https://www.foxbusiness.com/fox-news-tech/nvidia-ceo-jensen-huang-warns-china-going-win-ai-race-against-america-report",
+      "title": "Nvidia CEO warns 'China is going to win the AI race': report",
+      "publisher": "Fox Business",
+      "date": "2025-11-05",
+      "speaker": "jensen-huang",
+      "type": "social",
+      "primary": true,
+      "passage": "China is nanoseconds behind America in AI.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Same-day clarification posted on X after the FT remark; he added it is vital that America wins by racing ahead and winning developers worldwide. Search summary did not pin which outlet first printed this line."
+    },
+    {
+      "id": "ev-huang-13",
+      "url": "https://www.khaleejtimes.com/business/tech/china-market-for-nvidia-ai-chips-to-open-over-time-says-ceo-huang",
+      "title": "China market for Nvidia AI chips to open 'over time', says CEO Huang",
+      "publisher": "Khaleej Times (Reuters)",
+      "date": "2026-05",
+      "speaker": "jensen-huang",
+      "type": "interview",
+      "primary": false,
+      "passage": "Huang said the Chinese government must decide how much of its local market to protect and that he believes the market will open over time.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Mid-May 2026, around a Trump visit to China; he said he did not discuss H200 sales directly with Chinese officials."
+    },
+    {
+      "id": "ev-huang-14",
+      "url": "https://global.techradar.com/es-mx/pro/prevemos-unos-ingresos-de-al-menos-1-billon-de-dolares-el-ceo-de-nvidia-predice-enormes-ganancias-con-los-chips-rubin-y-blackwell",
+      "title": "\"Prevemos unos ingresos de al menos 1 billón de dólares\": el CEO de Nvidia predice enormes ganancias con los chips Rubin y Blackwell",
+      "publisher": "TechRadar (Spanish edition)",
+      "date": "2026-03",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": false,
+      "passage": "At the GTC 2026 keynote Huang said he expected at least $1 trillion of Blackwell and Rubin revenue through 2027.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Month inferred from GTC's usual March timing; seen only in a search summary."
+    },
+    {
+      "id": "ev-huang-15",
+      "url": "",
+      "title": "Huang comments on Dario Amodei at VivaTech Paris",
+      "publisher": "press coverage (not re-located this session)",
+      "date": "2025-06",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": true,
+      "passage": "Huang said he disagreed with almost everything Anthropic CEO Dario Amodei says, rejecting Amodei's warning that AI could wipe out a large share of entry-level white-collar jobs and the idea that only a few should develop AI.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-huang-16",
+      "url": "",
+      "title": "Huang remarks on Nvidia China market share at Citadel Securities event",
+      "publisher": "press coverage (not re-located this session)",
+      "date": "2025-10",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": true,
+      "passage": "Huang said Nvidia had gone from about 95% share of China's AI accelerator market to effectively zero.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-huang-17",
+      "url": "",
+      "title": "Huang on quantum computing timelines (CES 2025) and GTC 2025 Quantum Day",
+      "publisher": "press coverage (not re-located this session)",
+      "date": "2025-01",
+      "speaker": "jensen-huang",
+      "type": "talk",
+      "primary": true,
+      "passage": "In January 2025 Huang said very useful quantum computers were 15-30 years away (quantum stocks fell); by GTC in March 2025 he hosted a Quantum Day and said he had been wrong about the timeline.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-nadella-1",
+      "url": "https://www.theregister.com/2016/04/01/conversations_as_platforms_or_clippy/",
+      "title": "Conversations as platforms – or Clippy Mark 2?",
+      "publisher": "The Register",
+      "date": "2016-03-30",
+      "speaker": "satya-nadella",
+      "type": "talk",
+      "primary": true,
+      "passage": "Bots are the new apps",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Build 2016 keynote; he also said 'Human language is the new UI' and launched the Bot Framework with Cortana/Skype demos. The Register framed it skeptically."
+    },
+    {
+      "id": "ev-nadella-2",
+      "url": "https://geekwire.com/2016/microsoft-ceo-satya-nadella-10-laws-ai",
+      "title": "Microsoft CEO Satya Nadella's 10 laws of AI",
+      "publisher": "GeekWire (summarizing Slate Future Tense essay)",
+      "date": "2016-06-28",
+      "speaker": "satya-nadella",
+      "type": "essay",
+      "primary": false,
+      "passage": "In 'The Partnership of the Future' Nadella argued humans and AI should work together rather than compete, listed principles such as AI must be designed to assist humanity, and called for greater coordination on AI.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary summary of the Slate essay; original not fetched."
+    },
+    {
+      "id": "ev-nadella-3",
+      "url": "https://fortune.com/2023/02/10/microsoft-ai-search-bing-compete-google-satya-nadella-made-them-dance",
+      "title": "Microsoft's Satya Nadella on AI search: 'made them dance'",
+      "publisher": "Fortune (quoting The Verge interview)",
+      "date": "2023-02",
+      "speaker": "satya-nadella",
+      "type": "interview",
+      "primary": true,
+      "passage": "I want people to know that we made them dance.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Verge interview at the launch of the new OpenAI-powered Bing. He called Google 'the 800-pound gorilla' and expressed admiration for Google."
+    },
+    {
+      "id": "ev-nadella-4",
+      "url": "https://blogs.microsoft.com/blog/2023/11/21/a-statement-from-microsoft-chairman-and-ceo-satya-nadella/",
+      "title": "A statement from Microsoft Chairman and CEO Satya Nadella",
+      "publisher": "Microsoft Official Blog",
+      "date": "2023-11-21",
+      "speaker": "satya-nadella",
+      "type": "announcement",
+      "primary": true,
+      "passage": "a first essential step on a path to more stable, well-informed, and effective governance",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "On OpenAI's board changes after Altman's firing; earlier (Nov 19-20) he said Altman and Brockman would join Microsoft and Microsoft remained committed to the partnership."
+    },
+    {
+      "id": "ev-nadella-5",
+      "url": "https://www.cxtoday.com/data-analytics/microsoft-ceo-ai-agents-will-transform-saas-as-we-know-it/",
+      "title": "Microsoft CEO: AI Agents Will Transform SaaS as We Know It",
+      "publisher": "CX Today (on BG2 podcast)",
+      "date": "2024-12",
+      "speaker": "satya-nadella",
+      "type": "interview",
+      "primary": false,
+      "passage": "Nadella described business applications as essentially CRUD databases with business logic, said that logic will migrate to AI agents operating across apps (an 'AI tier'), and that business apps as known would collapse in the agent era.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "BG2 podcast with Bill Gurley and Brad Gerstner, December 2024. The 'will all collapse' wording appears in transcript-based reporting; full transcript not seen."
+    },
+    {
+      "id": "ev-nadella-6",
+      "url": "https://www.geekwire.com/2025/microsoft-ceo-says-ai-use-will-skyrocket-with-more-efficiency-amid-craze-over-deepseek/",
+      "title": "Microsoft CEO says AI use will skyrocket with more efficiency amid craze over DeepSeek",
+      "publisher": "GeekWire",
+      "date": "2025-01",
+      "speaker": "satya-nadella",
+      "type": "social",
+      "primary": true,
+      "passage": "Jevons paradox strikes again!",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Posted on X/LinkedIn late Jan 26 / Jan 27, 2025 after DeepSeek R1; he added that as AI gets more efficient and accessible its use will skyrocket, turning it into a commodity we just can't get enough of."
+    },
+    {
+      "id": "ev-nadella-7",
+      "url": "https://www.theregister.com/2025/02/26/microsofts_nadella_wants_to_see/",
+      "title": "Satya Nadella says AI is yet to find a killer app that matches the combined impact of email and Excel",
+      "publisher": "The Register (on Dwarkesh Podcast)",
+      "date": "2025-02",
+      "speaker": "satya-nadella",
+      "type": "interview",
+      "primary": false,
+      "passage": "Nadella called self-declared AGI milestones 'nonsensical benchmark hacking' and said the real benchmark is the world economy growing ~10% (some reports: 10% world / 7% developed world).",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Dwarkesh Patel podcast released Feb 2025. Exact framing of the growth figure varies across reports."
+    },
+    {
+      "id": "ev-nadella-8",
+      "url": "https://texxr.com/handle/dollarcostavg",
+      "title": "Social post quoting Nadella on power constraints",
+      "publisher": "texxr (social repost; also reported by Tom's Hardware)",
+      "date": "2025-11",
+      "speaker": "satya-nadella",
+      "type": "interview",
+      "primary": false,
+      "passage": "Nadella said Microsoft's binding constraint was power and ready data-center shells rather than chip supply, warning of chips 'sitting in inventory that I can't plug in'.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary/social; original interview venue not confirmed (reportedly a late Oct/early Nov 2025 interview, possibly the BG2 conversation with Sam Altman)."
+    },
+    {
+      "id": "ev-nadella-9",
+      "url": "",
+      "title": "OpenAI forms exclusive computing partnership with Microsoft ($1B investment)",
+      "publisher": "Microsoft / OpenAI announcement",
+      "date": "2019-07-22",
+      "speaker": "satya-nadella",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Microsoft invested $1 billion in OpenAI and became its exclusive cloud provider, jointly building Azure AI supercomputers to pursue AGI.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-nadella-10",
+      "url": "",
+      "title": "Mustafa Suleyman joins Microsoft to lead Microsoft AI",
+      "publisher": "Microsoft announcement",
+      "date": "2024-03-19",
+      "speaker": "satya-nadella",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Nadella hired Mustafa Suleyman and Karén Simonyan (Inflection AI) to form a new Microsoft AI organization for consumer Copilot.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-nadella-11",
+      "url": "",
+      "title": "Microsoft 365 Copilot pricing announcement (Inspire 2023)",
+      "publisher": "Microsoft announcement",
+      "date": "2023-07",
+      "speaker": "satya-nadella",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Microsoft priced Microsoft 365 Copilot at $30 per user per month for commercial customers; general availability for enterprises followed on Nov 1, 2023.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-pichai-1",
+      "url": "https://fortune.com/2016/04/29/google-ceo-sundar-pichai-letter",
+      "title": "Google CEO Sundar Pichai's letter",
+      "publisher": "Fortune (on 2016 Founders' Letter)",
+      "date": "2016-04-28",
+      "speaker": "sundar-pichai",
+      "type": "letter",
+      "primary": true,
+      "passage": "Over time, the computer itself—whatever its form factor—will be an intelligent assistant helping you through your day. We will move from mobile first to an AI first world.",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "First Alphabet founders' letter written by Pichai; hyphenation of 'mobile first'/'AI first' varies across outlets. Cited AlphaGo's win as 'game changing'."
+    },
+    {
+      "id": "ev-pichai-2",
+      "url": "https://gizmodo.com/google-ceo-says-ai-is-more-profound-than-i-dunno-elec-1822635900",
+      "title": "Google CEO says AI is more profound than, I dunno, electricity",
+      "publisher": "Gizmodo",
+      "date": "2018-01",
+      "speaker": "sundar-pichai",
+      "type": "talk",
+      "primary": true,
+      "passage": "more profound than, I dunno, electricity or fire",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Recode/MSNBC town hall in San Francisco (Kara Swisher). He added that fire 'kills people, too' and AI needs its downsides overcome. Repeated the comparison on 60 Minutes in 2023."
+    },
+    {
+      "id": "ev-pichai-3",
+      "url": "https://www.axios.com/2024/07/24/charted-google-s-ai-tab-closer",
+      "title": "Charted: Google's AI tab",
+      "publisher": "Axios",
+      "date": "2024-07-23",
+      "speaker": "sundar-pichai",
+      "type": "earnings",
+      "primary": true,
+      "passage": "the risk of underinvesting is dramatically greater than the risk of overinvesting",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "Q2 2024 call, answering an analyst on ROI of AI capex; he added that even if over-invested, the infrastructure is widely useful to Google. Hyphenation may differ from transcript."
+    },
+    {
+      "id": "ev-pichai-4",
+      "url": "https://nbcnewyork.com/news/business/money-report/google-ceo-ai-development-is-finally-slowing-down-the-low-hanging-fruit-is-gone/6050425",
+      "title": "Google CEO: AI development is finally slowing down — 'the low-hanging fruit is gone'",
+      "publisher": "CNBC via NBC New York",
+      "date": "2024-12-04",
+      "speaker": "sundar-pichai",
+      "type": "talk",
+      "primary": true,
+      "passage": "I think the progress is going to get harder. When I look at [2025], the low-hanging fruit is gone",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "NYT DealBook Summit; added 'The hill is steeper'. He said he saw no definitive wall and expected deeper breakthroughs would be needed."
+    },
+    {
+      "id": "ev-pichai-5",
+      "url": "https://www.businessinsider.nl/ai-leaders-have-a-new-term-for-the-fact-that-their-models-are-not-always-so-intelligent/",
+      "title": "AI leaders have a new term for the fact that their models are not always so intelligent",
+      "publisher": "Business Insider (on Lex Fridman Podcast)",
+      "date": "2025-06",
+      "speaker": "sundar-pichai",
+      "type": "interview",
+      "primary": false,
+      "passage": "Pichai called the current phase 'AJI' (artificial jagged intelligence), credited the 'jagged' framing to Andrej Karpathy, expected dramatic progress by 2030 but full AGI likely somewhat after 2030, noting DeepMind's 2010 ~20-year AGI estimate.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Exact 'a little after 2030' wording not confirmed; paraphrase."
+    },
+    {
+      "id": "ev-pichai-6",
+      "url": "https://www.the-star.co.ke/news/world/2025-11-18-google-boss-warns-no-company-is-going-to-be-immune-if-ai-bubble-bursts",
+      "title": "Google boss warns no company is going to be immune if AI bubble bursts",
+      "publisher": "The Star (Kenya), reporting BBC interview",
+      "date": "2025-11-18",
+      "speaker": "sundar-pichai",
+      "type": "interview",
+      "primary": true,
+      "passage": "I think no company is going to be immune, including us",
+      "verbatim": true,
+      "verification": "snippet",
+      "note": "BBC interview. He also said the boom is 'both rational and there are elements of irrationality', compared it to dot-com excess, and argued Alphabet's full stack (chips to YouTube) positions it well."
+    },
+    {
+      "id": "ev-pichai-7",
+      "url": "https://blog.google/technology/ai/bard-google-ai-search-updates/",
+      "title": "An important next step on our AI journey",
+      "publisher": "Google Blog (The Keyword)",
+      "date": "2023-02-06",
+      "speaker": "sundar-pichai",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Pichai announced Bard, an experimental conversational AI service based on LaMDA, and AI features coming to Search.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; URL believed correct but not re-confirmed this session. Followed reports of a Google 'code red' after ChatGPT (Dec 2022)."
+    },
+    {
+      "id": "ev-pichai-8",
+      "url": "",
+      "title": "Alphabet Q3 2024 earnings call remarks on AI-generated code",
+      "publisher": "Alphabet earnings call",
+      "date": "2024-10-29",
+      "speaker": "sundar-pichai",
+      "type": "earnings",
+      "primary": true,
+      "passage": "Pichai said more than a quarter of all new code at Google was generated by AI, then reviewed and accepted by engineers.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-1",
+      "url": "",
+      "title": "Facebook hires Yann LeCun to lead new AI lab (FAIR)",
+      "publisher": "Facebook announcement / press",
+      "date": "2013-12",
+      "speaker": "mark-zuckerberg",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Zuckerberg announced at NeurIPS 2013 that Facebook was creating an AI research lab led by Yann LeCun.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-2",
+      "url": "",
+      "title": "Zuckerberg Facebook Live Q&A on AI (Musk 'doomsday' comments)",
+      "publisher": "Facebook Live",
+      "date": "2017-07",
+      "speaker": "mark-zuckerberg",
+      "type": "social",
+      "primary": true,
+      "passage": "Asked about Elon Musk's AI warnings, Zuckerberg called doomsday scenarios 'pretty irresponsible' and said AI would deliver large quality-of-life improvements over the next 5-10 years (e.g. safer cars, disease diagnosis). Musk replied that Zuckerberg's understanding of the subject was limited.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-3",
+      "url": "https://about.fb.com/news/2021/10/founders-letter/",
+      "title": "Founder's Letter, 2021",
+      "publisher": "Meta Newsroom",
+      "date": "2021-10-28",
+      "speaker": "mark-zuckerberg",
+      "type": "letter",
+      "primary": true,
+      "passage": "Zuckerberg wrote that he hoped within the next decade the metaverse would reach a billion people, host hundreds of billions of dollars of digital commerce and support jobs for millions of creators and developers.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Published with the Facebook-to-Meta rename at Connect 2021. URL believed correct but not re-confirmed this session (domain blocked by proxy)."
+    },
+    {
+      "id": "ev-zuck-4",
+      "url": "",
+      "title": "Meta Q4 2022 earnings call ('year of efficiency')",
+      "publisher": "Meta earnings call",
+      "date": "2023-02-01",
+      "speaker": "mark-zuckerberg",
+      "type": "earnings",
+      "primary": true,
+      "passage": "Zuckerberg declared 2023 the 'year of efficiency', cut costs and headcount, and over 2023 shifted the company's top investment priority toward AI (LLaMA released Feb 2023, Llama 2 open-licensed July 2023).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-5",
+      "url": "",
+      "title": "Zuckerberg Instagram/Threads video on AGI goal and compute",
+      "publisher": "Instagram / Threads; The Verge interview",
+      "date": "2024-01-18",
+      "speaker": "mark-zuckerberg",
+      "type": "social",
+      "primary": true,
+      "passage": "Zuckerberg said Meta's long-term vision was to build general intelligence and open source it responsibly, and that Meta would have ~350,000 H100s by end of 2024 (~600,000 H100-equivalents of compute).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-6",
+      "url": "",
+      "title": "Mark Zuckerberg - Llama 3, open sourcing $10b models, & Caesar Augustus",
+      "publisher": "Dwarkesh Podcast",
+      "date": "2024-04-18",
+      "speaker": "mark-zuckerberg",
+      "type": "interview",
+      "primary": true,
+      "passage": "Zuckerberg argued energy, not chips, would become the binding constraint on AI scaling (gigawatt-scale data centers need years of permitting and power build-out), and said Meta might stop open-sourcing if model capabilities changed qualitatively.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-7",
+      "url": "https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/",
+      "title": "Open Source AI Is the Path Forward",
+      "publisher": "Meta Newsroom",
+      "date": "2024-07-23",
+      "speaker": "mark-zuckerberg",
+      "type": "essay",
+      "primary": true,
+      "passage": "Published with Llama 3.1 405B. Compared open AI to Linux; said Llama 3 was competitive with the most advanced models and that starting the next year Meta expected future Llama models to become the most advanced in the industry.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "URL believed correct but not re-confirmed this session (domain blocked by proxy). Passage is a paraphrase; do not treat as verbatim."
+    },
+    {
+      "id": "ev-zuck-8",
+      "url": "",
+      "title": "Joe Rogan Experience #2255 - Mark Zuckerberg",
+      "publisher": "The Joe Rogan Experience",
+      "date": "2025-01",
+      "speaker": "mark-zuckerberg",
+      "type": "interview",
+      "primary": true,
+      "passage": "Zuckerberg said that in 2025 Meta and other companies would have an AI that can effectively be a sort of mid-level engineer writing code.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-9",
+      "url": "https://www.meta.com/superintelligence/",
+      "title": "Personal Superintelligence",
+      "publisher": "Meta",
+      "date": "2025-07-30",
+      "speaker": "mark-zuckerberg",
+      "type": "essay",
+      "primary": true,
+      "passage": "Zuckerberg wrote that developing superintelligence is now in sight, framed Meta's goal as 'personal superintelligence' for everyone (delivered via devices like glasses), and said Meta would need to be careful about what it chooses to open source.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "URL believed correct but not re-confirmed this session (domain blocked by proxy)."
+    },
+    {
+      "id": "ev-zuck-10",
+      "url": "",
+      "title": "Meta Superintelligence Labs memo; Scale AI investment",
+      "publisher": "internal memo reported by press; Meta/Scale announcements",
+      "date": "2025-06",
+      "speaker": "mark-zuckerberg",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Meta invested ~$14.3B for a 49% stake in Scale AI, hired Alexandr Wang as Chief AI Officer and formed Meta Superintelligence Labs (memo June 30, 2025), recruiting researchers from OpenAI, Google and Apple with very large pay packages.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-zuck-11",
+      "url": "",
+      "title": "Zuckerberg interview on AI capex risk (Access podcast)",
+      "publisher": "Access podcast (Alex Heath)",
+      "date": "2025-09",
+      "speaker": "mark-zuckerberg",
+      "type": "interview",
+      "primary": true,
+      "passage": "Zuckerberg said misspending a couple of hundred billion dollars would be unfortunate, but the bigger risk was being out of position if superintelligence arrived sooner than expected.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-liang-1",
+      "url": "",
+      "title": "High-Flyer's crazy bet: an invisible AI giant's road to large models (An Yong / Waves, 36Kr)",
+      "publisher": "An Yong (Waves) / 36Kr",
+      "date": "2023-05",
+      "speaker": "liang-wenfeng",
+      "type": "interview",
+      "primary": true,
+      "passage": "Liang said the new company (DeepSeek) would pursue AGI as a research effort rather than near-term applications, and recounted that High-Flyer had acquired ~10,000 Nvidia A100 GPUs (by 2021) for its Fire-Flyer clusters before US export controls.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Chinese-language interview; from background knowledge, not re-confirmed this session."
+    },
+    {
+      "id": "ev-liang-2",
+      "url": "",
+      "title": "Unveiling DeepSeek: a more extreme story of Chinese technological idealism (An Yong / Waves)",
+      "publisher": "An Yong (Waves) / 36Kr; English translation by ChinaTalk",
+      "date": "2024-07",
+      "speaker": "liang-wenfeng",
+      "type": "interview",
+      "primary": true,
+      "passage": "Liang said that in the face of disruptive technologies, moats created by closed source are temporary (even OpenAI's cannot stop others catching up); that DeepSeek's moat is its team and culture; that China's AI must move from follower/free-rider to contributor of original innovation; that their problem was never money but the embargo on high-end chips; and that DeepSeek-V2's low price followed its costs rather than an intent to start a price war.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session. Translation wording varies."
+    },
+    {
+      "id": "ev-liang-3",
+      "url": "https://arxiv.org/abs/2412.19437",
+      "title": "DeepSeek-V3 Technical Report",
+      "publisher": "arXiv (DeepSeek-AI)",
+      "date": "2024-12-27",
+      "speaker": "DeepSeek-AI",
+      "type": "paper",
+      "primary": true,
+      "passage": "DeepSeek reported that the full training of V3 required 2.788M H800 GPU-hours, about $5.576M at an assumed $2/GPU-hour, excluding prior research and ablation costs.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Corporate paper, not Liang personally; figures from background knowledge, not re-confirmed this session."
+    },
+    {
+      "id": "ev-liang-4",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "publisher": "arXiv (DeepSeek-AI)",
+      "date": "2025-01-22",
+      "speaker": "DeepSeek-AI",
+      "type": "paper",
+      "primary": true,
+      "passage": "DeepSeek released R1 under an MIT license, reporting reasoning performance comparable to OpenAI o1 using large-scale RL (GRPO), plus distilled smaller models.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "Model released Jan 20, 2025; peer-reviewed version later published in Nature (Sept 2025). From background knowledge."
+    },
+    {
+      "id": "ev-liang-5",
+      "url": "",
+      "title": "Liang Wenfeng attends Premier Li Qiang's symposium; later Xi Jinping's private-enterprise symposium",
+      "publisher": "Xinhua / Chinese state media",
+      "date": "2025-01-20",
+      "speaker": "liang-wenfeng",
+      "type": "news",
+      "primary": false,
+      "passage": "Liang was the AI representative at Premier Li Qiang's expert symposium (Jan 20, 2025) and attended Xi Jinping's symposium with private entrepreneurs (Feb 17, 2025).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-liang-6",
+      "url": "",
+      "title": "DeepSeek-V2 release and pricing",
+      "publisher": "DeepSeek announcement / press",
+      "date": "2024-05",
+      "speaker": "DeepSeek-AI",
+      "type": "announcement",
+      "primary": true,
+      "passage": "DeepSeek released V2 (MoE with multi-head latent attention) at API prices far below Chinese and US rivals, after which ByteDance, Alibaba, Baidu and others cut prices.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-nvda-1",
+      "url": "https://www.iphoneincanada.ca/2026/08/27/nvidia-blows-past-expectations-with-96-2-billion-revenue-in-q2-2027/",
+      "title": "Nvidia Blows Past Expectations with $96.2 Billion Revenue in Q2 2027",
+      "publisher": "iPhone in Canada",
+      "date": "2026-08-27",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Nvidia fiscal Q2 2027 (quarter ended July 26, 2026) revenue was $96.2B, up 106% year over year; Q3 guidance $108B ±2% assuming no China data center compute revenue.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Figures consistent across several outlets in search results."
+    },
+    {
+      "id": "ev-out-nvda-2",
+      "url": "https://www.storagenewsletter.com/2026/08/27/nvidia-fiscal-2q27-financial-results/",
+      "title": "Nvidia fiscal 2Q27 financial results",
+      "publisher": "StorageNewsletter",
+      "date": "2026-08-27",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "Data center revenue $89.0B, up 117% year over year and 18% sequentially; Vera Rubin ramping into full production with racks at CoreWeave, Google Cloud, Azure, OCI and Nebius.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": ""
+    },
+    {
+      "id": "ev-out-nvda-3",
+      "url": "https://news.bloombergtax.com/international-trade/nvidia-steps-back-into-china-market-with-first-h200-chip-sales",
+      "title": "Nvidia Steps Back Into China Market With First H200 Chip Sales",
+      "publisher": "Bloomberg (Bloomberg Tax)",
+      "date": "2026-08",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Nvidia sold a small number of H200s to Chinese customers in the quarter ended July 26, 2026, under 1% of data center revenue, short of the volume the US government had permitted.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Blackwell and Rubin remain banned for sale to China."
+    },
+    {
+      "id": "ev-out-nvda-4",
+      "url": "https://www.caixinglobal.com/2026-05-22/nvidia-still-not-sure-it-can-sell-h200-chips-in-china-102446713.html",
+      "title": "Nvidia still not sure it can sell H200 chips in China",
+      "publisher": "Caixin Global",
+      "date": "2026-05-22",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "By late May 2026 Nvidia held US licenses for H200 sales to ~10 Chinese firms but lacked Chinese government approval; Chinese buyers were reluctant amid guidance favoring domestic chip suppliers.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Search summary combined Caixin and Reuters-syndicated reporting."
+    },
+    {
+      "id": "ev-out-nvda-5",
+      "url": "https://www.fool.com/investing/2025/11/16/500-billion-reasons-to-buy-nvidia-stock-like-there/?.tsrc=rss",
+      "title": "500 billion reasons to buy Nvidia stock like there's no tomorrow",
+      "publisher": "The Motley Fool",
+      "date": "2025-11-16",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Analysis noting the $500B figure was not formal guidance, ~30% related to already-shipped chips, and reports put the remaining backlog closer to $307B.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Secondary analysis."
+    },
+    {
+      "id": "ev-out-nvda-6",
+      "url": "https://techcrunch.com/2025/02/26/nvidia-ceo-jensen-huang-shrugs-off-deepseek-as-sales-soar",
+      "title": "Nvidia CEO Jensen Huang shrugs off DeepSeek as sales soar",
+      "publisher": "TechCrunch",
+      "date": "2025-02-26",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Coverage noted Nvidia's ~17% one-day stock drop in late January 2025 tied to fears that DeepSeek's low training costs would cut demand for AI infrastructure.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "The 17% figure appeared in search-result summaries of call coverage; exact outlet attribution uncertain."
+    },
+    {
+      "id": "ev-out-nvda-7",
+      "url": "https://www.fortune.com/2025/11/19/nvidia-blows-past-revenue-targets-and-forecasts-continued-strong-demand-for-ai-chips",
+      "title": "Nvidia blows past revenue targets and forecasts continued strong demand for AI chips",
+      "publisher": "Fortune",
+      "date": "2025-11-19",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Nvidia beat revenue targets for Q3 FY2026 and executives reiterated trillions of dollars of AI infrastructure spending by end of decade.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": ""
+    },
+    {
+      "id": "ev-out-msft-1",
+      "url": "https://www.outlookbusiness.com/corporate/microsoft-reports-strong-q4-as-azure-crosses-100-billion-revenue-rises-18",
+      "title": "Microsoft reports strong Q4 as Azure crosses $100 billion, revenue rises 18%",
+      "publisher": "Outlook Business",
+      "date": "2026-07-29",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Microsoft fiscal Q4 2026 revenue was $90.0B (+18%); Azure's full-year FY2026 revenue surpassed $100B for the first time.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Check against Microsoft IR for exact figures."
+    },
+    {
+      "id": "ev-out-msft-2",
+      "url": "https://www.kucoin.com/blog/microsoft-q4-earnings-azure-growth-hits-43-percent-as-annual-cloud-revenue-tops-100-billion",
+      "title": "Microsoft Q4 Earnings: Azure Growth Hits 43% as Annual Cloud Revenue Tops $100 Billion",
+      "publisher": "KuCoin blog",
+      "date": "2026-07",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Microsoft 365 Copilot reached over 30 million paid seats (from 20M+ a quarter earlier); quarterly capex incl. finance leases ~$41B (+~70%); Azure growth ~43%.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Low-reliability outlet; several search results were copies of this article."
+    },
+    {
+      "id": "ev-out-msft-3",
+      "url": "https://openai.com/index/next-chapter-of-microsoft-openai-partnership/",
+      "title": "The next chapter of the Microsoft–OpenAI partnership",
+      "publisher": "OpenAI",
+      "date": "2025-10-28",
+      "speaker": "OpenAI and Microsoft",
+      "type": "announcement",
+      "primary": true,
+      "passage": "Any OpenAI AGI declaration must now be verified by an independent expert panel; Microsoft's ~27% stake valued ~$135B; OpenAI committed an incremental $250B of Azure purchases; Microsoft lost its right of first refusal as compute provider and may pursue AGI independently.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Joint announcement; details from search summaries."
+    },
+    {
+      "id": "ev-out-search-1",
+      "url": "https://windowslatest.com/2026/05/25/microsoft-said-its-ai-made-google-dance-in-2023-three-years-later-gemini-is-beating-copilot",
+      "title": "Microsoft said its AI made Google dance in 2023; three years later Gemini is beating Copilot",
+      "publisher": "Windows Latest",
+      "date": "2026-05-25",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Three years after Nadella's 'made them dance' remark, Google's Gemini was outpacing Microsoft's consumer Copilot.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Only title/summary seen."
+    },
+    {
+      "id": "ev-out-saas-1",
+      "url": "https://stocks.observer-reporter.com/observerreporter/article/marketminute-2026-2-17-software-stocks-under-siege-by-new-ai-tools-the-saaspocalypse-of-2026",
+      "title": "Software stocks under siege by new AI tools: the SaaSpocalypse of 2026",
+      "publisher": "MarketMinute (Observer-Reporter)",
+      "date": "2026-02-17",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "February 2026 selloff in software stocks driven by fears that AI agents (e.g., Anthropic's Claude Cowork, OpenAI Frontier) would erode per-seat SaaS revenue.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Low-profile outlet; loss estimates across sources ranged ~$1T-$2T."
+    },
+    {
+      "id": "ev-out-saas-2",
+      "url": "https://www.longangle.com/alts-education/software-ai",
+      "title": "Software vs. AI Q1 2026: SaaSpocalypse Examined",
+      "publisher": "Long Angle",
+      "date": "2026-03",
+      "speaker": "outcome",
+      "type": "data",
+      "primary": false,
+      "passage": "SEG SaaS Index was down 25.7% year-to-date as of March 31, 2026, despite projected acceleration in software earnings growth; later 2026 coverage described a partial recovery.",
+      "verbatim": false,
+      "verification": "snippet",
+      "note": "Data as of 2026-03-31; article publication date not confirmed."
+    },
+    {
+      "id": "ev-out-goog-1",
+      "url": "",
+      "title": "Alphabet 2026 capital expenditure guidance",
+      "publisher": "Alphabet Q4 2025 earnings",
+      "date": "2026-02",
+      "speaker": "outcome",
+      "type": "earnings",
+      "primary": false,
+      "passage": "Alphabet guided 2026 capex to roughly $175-185B, after ~$91B in 2025.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session. Treat as approximate."
+    },
+    {
+      "id": "ev-out-progress-1",
+      "url": "",
+      "title": "2025 frontier progress via reasoning/RL (IMO gold, Gemini 3)",
+      "publisher": "Google DeepMind / OpenAI announcements",
+      "date": "2025-07",
+      "speaker": "outcome",
+      "type": "announcement",
+      "primary": false,
+      "passage": "In July 2025 Google DeepMind (Gemini Deep Think) and OpenAI reported gold-medal-level IMO performance; Gemini 3 (Nov 2025) led many public leaderboards.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-meta-1",
+      "url": "",
+      "title": "Llama 4 release and reception",
+      "publisher": "Meta announcement / press",
+      "date": "2025-04",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Llama 4 (Scout, Maverick) launched April 2025 to a lukewarm reception and controversy over an LMArena-tuned variant; the largest model (Behemoth) was not released; leading open-weight models in 2025 came largely from Chinese labs (DeepSeek, Qwen).",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-meta-2",
+      "url": "",
+      "title": "Yann LeCun leaves Meta to found a world-models startup",
+      "publisher": "press",
+      "date": "2025-11",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "LeCun announced he would leave Meta to start a company focused on advanced machine intelligence/world models, after Meta reorganized AI under Meta Superintelligence Labs.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-meta-3",
+      "url": "",
+      "title": "Meta 2026 capex guidance",
+      "publisher": "Meta Q4 2025 earnings",
+      "date": "2026-01",
+      "speaker": "outcome",
+      "type": "earnings",
+      "primary": false,
+      "passage": "Meta guided 2026 capital expenditures to roughly $115-135B, up from ~$72B in 2025.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session. Treat as approximate."
+    },
+    {
+      "id": "ev-out-meta-4",
+      "url": "",
+      "title": "Meta trims metaverse/Reality Labs budget",
+      "publisher": "Bloomberg (reported)",
+      "date": "2025-12",
+      "speaker": "outcome",
+      "type": "news",
+      "primary": false,
+      "passage": "Reports said Meta planned cuts of up to ~30% to metaverse budgets after Reality Labs' cumulative operating losses exceeded $70B, shifting resources to AI and wearables.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-ds-1",
+      "url": "",
+      "title": "OpenAI releases gpt-oss open-weight models",
+      "publisher": "OpenAI announcement",
+      "date": "2025-08",
+      "speaker": "outcome",
+      "type": "announcement",
+      "primary": false,
+      "passage": "OpenAI released its first open-weight language models since GPT-2 (gpt-oss-120b and gpt-oss-20b) under Apache 2.0.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-ds-2",
+      "url": "https://darioamodei.com/on-deepseek-and-export-controls",
+      "title": "On DeepSeek and Export Controls",
+      "publisher": "Dario Amodei (personal site)",
+      "date": "2025-01",
+      "speaker": "dario-amodei",
+      "type": "essay",
+      "primary": true,
+      "passage": "Amodei argued DeepSeek's cost reductions were broadly in line with expected efficiency trends rather than a unique breakthrough, and that strong US export controls on chips to China remained essential.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "URL believed correct but not re-confirmed this session."
+    },
+    {
+      "id": "ev-out-ds-3",
+      "url": "",
+      "title": "US export controls on advanced AI chips to China (Oct 2022 and later)",
+      "publisher": "US Commerce Department (BIS)",
+      "date": "2022-10",
+      "speaker": "outcome",
+      "type": "filing",
+      "primary": false,
+      "passage": "October 2022 rules barred sale of Nvidia A100/H100-class chips to China; later rules (2023, 2025) also covered A800/H800 and H20.",
+      "verbatim": false,
+      "verification": "recalled",
+      "note": "From background knowledge; not re-confirmed this session."
+    }
+  ],
+  "assertions": [
+    {
+      "id": "as-huang-1",
+      "thinkerId": "jensen-huang",
+      "date": "2017-05",
+      "claim": "Software is eating the world, but AI is going to eat software.",
+      "claimIsQuote": true,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "apps",
+        "platforms",
+        "models"
+      ],
+      "topics": [
+        "app-moats",
+        "commoditization",
+        "coding"
+      ],
+      "assumptions": [
+        "Deep learning generalizes beyond internet companies to enterprise software",
+        "Learned models can replace hand-written code for many functions"
+      ],
+      "predictedOutcome": "AI-generated or AI-driven functionality progressively displaces conventional hand-coded software across industries.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "In 2017 deep learning was used at scale mainly by a few internet companies; transformers had just been proposed; few enterprises used ML in production.",
+      "evidenceIds": [
+        "ev-huang-1"
+      ],
+      "outcome": "By 2026 AI coding agents and LLM features were pervasive, and fears that AI agents would displace per-seat SaaS triggered a large software-stock selloff in early 2026, though incumbent software revenues kept growing.",
+      "outcomeEvidenceIds": [
+        "ev-out-saas-1",
+        "ev-out-saas-2"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "The directional claim, made when AI was marginal in enterprise software, has largely materialized: AI is reshaping how software is built and priced. It was metaphorical rather than precisely testable, so credit is directional.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Repeated through 2026 in the same form; no revision found."
+    },
+    {
+      "id": "as-huang-2",
+      "thinkerId": "jensen-huang",
+      "date": "2024-02-21",
+      "claim": "Accelerated computing and generative AI hit a tipping point; the ~$1 trillion installed base of data centers will in a few years be all accelerated computing, as data centers become 'AI factories'.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "semis",
+        "cloud",
+        "economics"
+      ],
+      "topics": [
+        "infra-cycle",
+        "hyperscalers"
+      ],
+      "assumptions": [
+        "Generative AI demand persists beyond a hype cycle",
+        "CPU performance scaling stays slow",
+        "Customers can monetize AI to justify spend"
+      ],
+      "predictedOutcome": "Data-center spending shifts decisively from general-purpose CPUs to GPU/accelerated systems over the following few years, with sustained surging demand for NVIDIA.",
+      "horizon": "'in a few years' from 2024",
+      "horizonDate": "2027",
+      "contextAtTime": "NVIDIA data-center revenue had just jumped after ChatGPT; many analysts expected a digestion phase or double-ordering correction in 2024-25.",
+      "evidenceIds": [
+        "ev-huang-2",
+        "ev-huang-3"
+      ],
+      "outcome": "Demand kept surging: NVIDIA data-center revenue reached $89.0B in the quarter ended July 2026 (+117% y/y), and hyperscaler capex rose sharply into 2026. CPU servers still exist, so the literal 'all accelerated' has not happened.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-1",
+        "ev-out-nvda-2",
+        "ev-out-msft-2"
+      ],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "The demand-surge and AI-factory build-out components proved right through mid-2026, against widespread expectations of a correction; the literal claim that the whole installed base becomes accelerated is not yet testable or met.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "Scaled up in 2025 to a $3-4T AI infrastructure forecast by 2030 (see as-huang-8)."
+    },
+    {
+      "id": "as-huang-3",
+      "thinkerId": "jensen-huang",
+      "date": "2024-02-12",
+      "claim": "Every country needs to own its own AI infrastructure ('sovereign AI'), because AI codifies a nation's culture, intelligence and history; leaders should build the infrastructure as fast as they can.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "cloud",
+        "data",
+        "models"
+      ],
+      "topics": [
+        "infra-cycle",
+        "hyperscalers"
+      ],
+      "assumptions": [
+        "Governments see AI as strategic national infrastructure",
+        "Nations will spend public money on domestic compute rather than rely on US hyperscalers"
+      ],
+      "predictedOutcome": "Governments and state-linked entities become a major new class of AI-infrastructure buyers.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Sovereign compute was a niche idea in early 2024; most AI compute was bought by US hyperscalers and labs.",
+      "evidenceIds": [
+        "ev-huang-4"
+      ],
+      "outcome": "Through 2025-26 numerous national and Gulf state AI build-outs and 'AI clouds' emerged (recalled; e.g. Saudi, UAE, European initiatives), and NVIDIA's 'AI clouds/industrial/enterprise' customers accounted for a large share of data-center revenue in 2026. Independent quantification of sovereign spend not verified this session.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-2"
+      ],
+      "verdict": "partial",
+      "timing": "early",
+      "verdictRationale": "The sovereign-AI category clearly materialized as a buyer segment, but its scale relative to hyperscalers could not be independently verified this session; also partly a sales pitch.",
+      "confidence": "low",
+      "originality": 4,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "Became a standing theme in NVIDIA keynotes through 2026; no revision found."
+    },
+    {
+      "id": "as-huang-4",
+      "thinkerId": "jensen-huang",
+      "date": "2024-03-01",
+      "claim": "If AGI is defined as passing every human test you can imagine, AI will do well on every one within five years; under other definitions AGI may be much further away.",
+      "claimIsQuote": false,
+      "kind": "conditional",
+      "category": "technical",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "agi-timelines",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Benchmark/test performance continues to scale with compute and data",
+        "Test-passing is an adequate operationalization"
+      ],
+      "predictedOutcome": "By ~2029 frontier AI passes essentially all human professional and academic exams, including specialized medical boards.",
+      "horizon": "within 5 years of March 2024",
+      "horizonDate": "2029",
+      "contextAtTime": "GPT-4 passed the bar exam but struggled with some specialized medical exams; reasoning models did not yet exist.",
+      "evidenceIds": [
+        "ev-huang-6"
+      ],
+      "outcome": "By 2025-26 reasoning models reached gold-medal level on the IMO and high scores on many professional exams, but harder benchmarks remained unsaturated; the horizon has not passed.",
+      "outcomeEvidenceIds": [
+        "ev-out-progress-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Deadline (2029) not reached; progress is on track for the narrow test-passing definition he explicitly conditioned on.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-huang-5",
+      "thinkerId": "jensen-huang",
+      "date": "2024-02",
+      "claim": "It is the job of computing technology to make it so nobody has to program; the programming language is human, so children should focus on domain expertise rather than learning to code.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "agents"
+      ],
+      "topics": [
+        "coding",
+        "labor"
+      ],
+      "assumptions": [
+        "LLMs become reliable enough to translate natural language into working software",
+        "Domain expertise becomes the scarce skill"
+      ],
+      "predictedOutcome": "Natural-language programming becomes mainstream and reduces the need for most people to learn conventional programming.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "GitHub Copilot autocompletion was common, but autonomous coding agents were not yet usable; most experts still advised learning to code.",
+      "evidenceIds": [
+        "ev-huang-5"
+      ],
+      "outcome": "By 2025-26 natural-language 'vibe coding' and coding agents were mainstream (e.g. over a quarter of new Google code AI-generated by late 2024; agent tools triggering a 2026 SaaS selloff), but professional programming did not disappear.",
+      "outcomeEvidenceIds": [
+        "ev-pichai-8",
+        "ev-out-saas-1"
+      ],
+      "verdict": "partial",
+      "timing": "early",
+      "verdictRationale": "Direction (natural language as the programming interface) proved right faster than most expected; the stronger implication that people need not learn programming is not established.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-huang-6",
+      "thinkerId": "jensen-huang",
+      "date": "2025-02-26",
+      "claim": "Reasoning models can consume 100 times more compute, and future reasoning models will consume much more compute; DeepSeek R1 is an excellent innovation that increases, not decreases, demand.",
+      "claimIsQuote": true,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "inference",
+        "semis"
+      ],
+      "topics": [
+        "reasoning",
+        "infra-cycle",
+        "scaling"
+      ],
+      "assumptions": [
+        "Test-time compute scaling keeps improving model quality",
+        "Cheaper reasoning expands usage faster than per-query efficiency falls"
+      ],
+      "predictedOutcome": "Despite efficiency gains like DeepSeek's, aggregate demand for NVIDIA compute keeps rising strongly.",
+      "horizon": "2025-2026",
+      "horizonDate": "2026",
+      "contextAtTime": "DeepSeek's low reported training costs had just triggered a ~17% one-day NVIDIA selloff and fears of a compute glut.",
+      "evidenceIds": [
+        "ev-huang-7"
+      ],
+      "outcome": "NVIDIA revenue more than doubled year over year to $96.2B in the quarter ended July 2026, with data-center revenue up 117%; hyperscalers raised capex sharply.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-1",
+        "ev-out-nvda-2",
+        "ev-out-nvda-6"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "Made against the prevailing market fear, the claim that reasoning and efficiency would expand compute demand was borne out by 2026 demand data. Interested party, but the outcome is independent.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "Reinforced at GTC 2025/2026; no revision found."
+    },
+    {
+      "id": "as-huang-7",
+      "thinkerId": "jensen-huang",
+      "date": "2025-05-21",
+      "claim": "US export controls on AI chips to China were a failure: they cut NVIDIA's China share from ~95% to ~50% and motivated and accelerated Chinese competitors; later, 'China is going to win the AI race' (walked back to 'nanoseconds behind').",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "semis",
+        "models"
+      ],
+      "topics": [
+        "infra-cycle",
+        "open-weights"
+      ],
+      "assumptions": [
+        "Chinese domestic chips (e.g. Huawei Ascend) can substitute adequately",
+        "Beijing will favor domestic suppliers when US chips are restricted"
+      ],
+      "predictedOutcome": "Continued controls would cost NVIDIA the Chinese market and strengthen Chinese chip and AI ecosystems rather than slow them.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "H20 sales had just been restricted ($5.5B charge); DeepSeek had shown Chinese labs could compete on constrained hardware. Anthropic and others argued for tighter controls.",
+      "evidenceIds": [
+        "ev-huang-8",
+        "ev-huang-11",
+        "ev-huang-12",
+        "ev-huang-16"
+      ],
+      "outcome": "By 2026 NVIDIA's China data-center sales were near zero: even after the US licensed H200 sales, Beijing withheld approval to foster domestic suppliers, sales were under 1% of data-center revenue, and NVIDIA guided to no China data-center revenue.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-3",
+        "ev-out-nvda-4",
+        "ev-out-nvda-1"
+      ],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "His prediction that NVIDIA would lose China and that China would push domestic substitutes was borne out; whether controls 'failed' at slowing Chinese AI, and whether China 'wins', remain contested and unresolved.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 3,
+      "evolution": "Shifted from '95% to 50%' (May 2025) to '95% to zero' (Oct 2025) to 'China will win' then 'nanoseconds behind' (Nov 2025), and in May 2026 'the market will open over time'."
+    },
+    {
+      "id": "as-huang-8",
+      "thinkerId": "jensen-huang",
+      "date": "2025-08-27",
+      "claim": "AI infrastructure spending will reach $3 trillion to $4 trillion by the end of the decade.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "cloud",
+        "semis",
+        "energy",
+        "economics"
+      ],
+      "topics": [
+        "infra-cycle",
+        "hyperscalers",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "AI revenues grow enough to justify capex",
+        "Power and supply-chain constraints are overcome",
+        "No sharp financing pullback"
+      ],
+      "predictedOutcome": "Annual AI infrastructure spend of roughly $3-4T by ~2030.",
+      "horizon": "by end of decade",
+      "horizonDate": "2030",
+      "contextAtTime": "Huang cited ~$600B in 2025 hyperscaler data-center capex; bubble concerns were widespread.",
+      "evidenceIds": [
+        "ev-huang-9"
+      ],
+      "outcome": "Spending kept climbing into 2026 (e.g. Microsoft quarterly capex ~$41B, Alphabet and Meta guiding roughly to doubled 2026 capex), but the 2030 target is years away.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-2",
+        "ev-out-goog-1",
+        "ev-out-meta-3",
+        "ev-out-nvda-7"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Deadline not reached; 2026 capex is on an upward trajectory consistent with but far from proving the forecast.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 4,
+      "evolution": "Reiterated after the Nov 2025 earnings; no revision found."
+    },
+    {
+      "id": "as-huang-9",
+      "thinkerId": "jensen-huang",
+      "date": "2025-10-28",
+      "claim": "NVIDIA has roughly $500 billion of Blackwell and Rubin demand visibility through calendar 2026 (raised at GTC 2026 to ~$1 trillion through 2027); there is no AI bubble.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "semis",
+        "cloud"
+      ],
+      "topics": [
+        "infra-cycle",
+        "hyperscalers"
+      ],
+      "assumptions": [
+        "Customer commitments convert to shipments",
+        "Financing for AI labs and neoclouds holds up"
+      ],
+      "predictedOutcome": "Blackwell+Rubin revenue of ~$500B over 2025-2026.",
+      "horizon": "through calendar 2026 (and 2027 for the raised figure)",
+      "horizonDate": "2026",
+      "contextAtTime": "Analysts questioned the figure (part already shipped; trued-up backlog ~$307B); AI-bubble talk peaked in late 2025.",
+      "evidenceIds": [
+        "ev-huang-10",
+        "ev-huang-14"
+      ],
+      "outcome": "By the quarter ended July 2026 NVIDIA was reporting $96.2B quarterly revenue and guiding $108B for the next quarter, consistent with the trajectory; calendar 2026 is not complete.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-1",
+        "ev-out-nvda-5"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "The window (end-2026) has not closed; run-rate through mid-2026 is consistent with the claim, but the total cannot yet be checked.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 5,
+      "evolution": "Raised to ~$1T through 2027 at GTC 2026."
+    },
+    {
+      "id": "as-nadella-1",
+      "thinkerId": "satya-nadella",
+      "date": "2016-03-30",
+      "claim": "Bots are the new apps; human language is the new UI ('conversation as a platform').",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "platforms",
+        "agents"
+      ],
+      "topics": [
+        "agents",
+        "app-moats"
+      ],
+      "assumptions": [
+        "NLP becomes good enough for open-ended conversation",
+        "Users prefer conversational interfaces to apps for many tasks"
+      ],
+      "predictedOutcome": "Conversational agents replace a large share of app interactions.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Pre-transformer NLP; the 2016 chatbot wave (Messenger bots, Cortana, Microsoft's Tay failing the same week) was brittle.",
+      "evidenceIds": [
+        "ev-nadella-1"
+      ],
+      "outcome": "The 2016 bot wave fizzled, but LLM-based chat (ChatGPT, Copilot, Gemini) made conversation a mass-market interface from 2023, with agents spreading in 2025-26.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-2",
+        "ev-out-search-1"
+      ],
+      "verdict": "partial",
+      "timing": "premature",
+      "verdictRationale": "The thesis was right but the 2016 technology could not deliver it; it came true only after LLMs, roughly seven years later.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "Revived in 2023 as 'copilots' and in 2024-25 as agents (see as-nadella-5)."
+    },
+    {
+      "id": "as-nadella-2",
+      "thinkerId": "satya-nadella",
+      "date": "2019-07-22",
+      "claim": "Invest $1B in OpenAI and become its exclusive cloud, jointly building Azure AI supercomputers aimed at AGI (followed by ~$10B in 2023).",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "economic",
+      "layers": [
+        "cloud",
+        "models",
+        "training"
+      ],
+      "topics": [
+        "scaling",
+        "hyperscalers",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "Scaling large models on massive compute will produce commercially valuable capabilities",
+        "Exclusive cloud access confers platform advantage"
+      ],
+      "predictedOutcome": "OpenAI models become a major driver of Azure and Microsoft product revenue.",
+      "horizon": "multi-year",
+      "horizonDate": null,
+      "contextAtTime": "GPT-2 had just been released; scaling laws were not yet published; most of big tech did not back an outside lab at this scale.",
+      "evidenceIds": [
+        "ev-nadella-9"
+      ],
+      "outcome": "Microsoft's stake in OpenAI Group PBC was valued at ~$135B (~27%) in Oct 2025, OpenAI committed an incremental $250B to Azure, and Azure passed $100B annual revenue in FY2026.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-3",
+        "ev-out-msft-1"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "A contrarian bet made before scaling laws were established, it generated large strategic and financial returns by 2025-26.",
+      "confidence": "high",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "Hedged in 2024 (Suleyman's Microsoft AI) and restructured in Oct 2025 (non-exclusive compute, expert-panel AGI test)."
+    },
+    {
+      "id": "as-nadella-3",
+      "thinkerId": "satya-nadella",
+      "date": "2023-02",
+      "claim": "With the AI-powered Bing, Microsoft would challenge Google, 'the 800-pound gorilla' in search: 'I want people to know that we made them dance.'",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "apps",
+        "distribution"
+      ],
+      "topics": [
+        "app-moats",
+        "hyperscalers"
+      ],
+      "assumptions": [
+        "Chat-based answers erode Google's search advantage",
+        "Early access to GPT-4 confers a lasting product lead"
+      ],
+      "predictedOutcome": "Bing gains meaningful search/AI-assistant share from Google.",
+      "horizon": "near-term",
+      "horizonDate": "2025",
+      "contextAtTime": "ChatGPT had reached ~100M users; Google appeared caught flat-footed and Bard's demo had a factual error.",
+      "evidenceIds": [
+        "ev-nadella-3"
+      ],
+      "outcome": "Google did respond (Bard, AI Overviews, Gemini), but by 2026 Gemini was outpacing Microsoft's consumer Copilot and Google's search franchise remained dominant.",
+      "outcomeEvidenceIds": [
+        "ev-out-search-1"
+      ],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "The literal claim (forcing Google to react) came true, but the implied market-share shift in search did not occur.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 2,
+      "specificity": 2,
+      "evolution": "No public revision found; Microsoft's consumer focus shifted to Copilot under Suleyman."
+    },
+    {
+      "id": "as-nadella-4",
+      "thinkerId": "satya-nadella",
+      "date": "2023-07",
+      "claim": "Copilots will be the new UI for knowledge work; Microsoft 365 Copilot priced at $30 per user per month for enterprises.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "distribution"
+      ],
+      "topics": [
+        "enterprise-roi",
+        "agents"
+      ],
+      "assumptions": [
+        "Enterprises see enough productivity ROI to pay a large per-seat premium",
+        "Model quality sufficient for everyday Office tasks"
+      ],
+      "predictedOutcome": "Rapid, broad paid adoption of Microsoft 365 Copilot across the commercial seat base.",
+      "horizon": "2024-2026",
+      "horizonDate": "2026",
+      "contextAtTime": "Generative AI enthusiasm was peaking; ROI evidence for enterprise copilots did not yet exist.",
+      "evidenceIds": [
+        "ev-nadella-11"
+      ],
+      "outcome": "Microsoft 365 Copilot reached ~30M paid seats by mid-2026 (per a low-reliability report), a small fraction of Microsoft's several-hundred-million commercial Office seats, after a slow 2024 ramp.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-2"
+      ],
+      "verdict": "partial",
+      "timing": "late",
+      "verdictRationale": "Adoption became material by 2026 but far slower and narrower than the 'every knowledge worker' framing implied.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 3,
+      "evolution": "Messaging shifted in 2024-25 from copilots to agents."
+    },
+    {
+      "id": "as-nadella-5",
+      "thinkerId": "satya-nadella",
+      "date": "2024-12",
+      "claim": "Business applications are essentially CRUD databases with business logic; in the agent era that logic will migrate to AI agents and SaaS business apps as we know them will collapse.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "apps",
+        "agents",
+        "platforms"
+      ],
+      "topics": [
+        "agents",
+        "app-moats",
+        "commoditization"
+      ],
+      "assumptions": [
+        "Agents become reliable enough to operate across systems of record",
+        "Value shifts to an 'AI tier' above databases"
+      ],
+      "predictedOutcome": "Per-seat SaaS business apps lose value to agent layers; vendors restructure around agents.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Agents were early and unreliable; SaaS revenues were growing normally.",
+      "evidenceIds": [
+        "ev-nadella-5"
+      ],
+      "outcome": "In Feb-Mar 2026 software stocks sold off sharply on exactly this fear (SEG SaaS Index -25.7% YTD at March 31), though software earnings were still growing and some recovery followed.",
+      "outcomeEvidenceIds": [
+        "ev-out-saas-1",
+        "ev-out-saas-2"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Markets priced the thesis in 2026, but no actual collapse of SaaS revenues had occurred by October 2026; open-ended.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-nadella-6",
+      "thinkerId": "satya-nadella",
+      "date": "2025-01-27",
+      "claim": "Jevons paradox strikes again: as AI gets more efficient and accessible, its use will skyrocket, turning it into a commodity we just can't get enough of.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "inference",
+        "cloud",
+        "economics"
+      ],
+      "topics": [
+        "commoditization",
+        "infra-cycle"
+      ],
+      "assumptions": [
+        "Demand for AI is highly price-elastic",
+        "Efficiency gains (e.g. DeepSeek) lower prices rather than just margins"
+      ],
+      "predictedOutcome": "Cheaper AI increases total compute and cloud demand rather than shrinking it.",
+      "horizon": "2025-2026",
+      "horizonDate": "2026",
+      "contextAtTime": "DeepSeek R1 had just triggered fears that cheaper models would shrink demand for GPUs and data centers.",
+      "evidenceIds": [
+        "ev-nadella-6"
+      ],
+      "outcome": "Azure grew ~40%+ into 2026 and passed $100B annual revenue; NVIDIA data-center revenue more than doubled y/y; hyperscaler capex rose.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-1",
+        "ev-out-nvda-2"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "Made in the middle of a market panic, the claim that efficiency would expand demand was borne out by 2026 usage and capex data.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "Microsoft briefly slowed some data-center leases in early 2025, then resumed heavy capex; no revision of the view found."
+    },
+    {
+      "id": "as-nadella-7",
+      "thinkerId": "satya-nadella",
+      "date": "2025-02",
+      "claim": "Self-claiming some AGI milestone is nonsensical benchmark hacking; the real benchmark is whether the world economy grows at ~10% (developed world ~7%).",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "economic",
+      "layers": [
+        "economics",
+        "society"
+      ],
+      "topics": [
+        "agi-timelines",
+        "enterprise-roi"
+      ],
+      "assumptions": [
+        "Transformative AI would show up in productivity and GDP statistics"
+      ],
+      "predictedOutcome": "AGI should not be declared until macro growth visibly accelerates.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "OpenAI's contract with Microsoft let OpenAI's board declare AGI, which would cut off Microsoft's IP rights; labs were touting benchmark wins.",
+      "evidenceIds": [
+        "ev-nadella-7"
+      ],
+      "outcome": "No acceleration of global growth toward 10% was evident by 2026; in Oct 2025 the renegotiated deal required any AGI declaration to be verified by an independent expert panel.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-3"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "This is a criterion rather than a forecast; it was reflected in the 2025 contract, but whether AI eventually drives such growth is unresolved.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Became part of the Oct 2025 contract (expert-panel AGI verification)."
+    },
+    {
+      "id": "as-nadella-8",
+      "thinkerId": "satya-nadella",
+      "date": "2025-11",
+      "claim": "The binding constraint on AI build-out is no longer chip supply but power and ready data-center shells; otherwise chips end up 'sitting in inventory that I can't plug in'.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "economic",
+      "layers": [
+        "energy",
+        "cloud"
+      ],
+      "topics": [
+        "infra-cycle",
+        "hyperscalers"
+      ],
+      "assumptions": [
+        "Grid interconnection and construction lag GPU supply"
+      ],
+      "predictedOutcome": "Power availability, not GPUs, limits hyperscaler AI capacity growth in 2026.",
+      "horizon": "2026",
+      "horizonDate": "2026",
+      "contextAtTime": "GPU supply had loosened relative to 2023-24; utilities and grid queues were becoming the bottleneck; Zuckerberg had made a similar argument in 2024.",
+      "evidenceIds": [
+        "ev-nadella-8"
+      ],
+      "outcome": "Microsoft kept capex at record levels into 2026 (~$41B in the June 2026 quarter); no independent 2026 source on power-limited deployments was gathered this session.",
+      "outcomeEvidenceIds": [
+        "ev-out-msft-2"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Plausible and widely echoed, but not independently verified with 2026 outcome data in this session.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-pichai-1",
+      "thinkerId": "sundar-pichai",
+      "date": "2016-04-28",
+      "claim": "Over time, the computer itself, whatever its form factor, will be an intelligent assistant helping you through your day; we will move from mobile first to an AI first world.",
+      "claimIsQuote": true,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "apps",
+        "platforms",
+        "models"
+      ],
+      "topics": [
+        "agents",
+        "app-moats"
+      ],
+      "assumptions": [
+        "Machine learning keeps improving across speech, vision and language",
+        "Assistants become the primary interface"
+      ],
+      "predictedOutcome": "AI assistants become a primary computing interface and Google reorients around AI.",
+      "horizon": "open-ended ('over time')",
+      "horizonDate": null,
+      "contextAtTime": "Weeks after AlphaGo beat Lee Sedol; voice assistants were narrow; transformers did not yet exist.",
+      "evidenceIds": [
+        "ev-pichai-1"
+      ],
+      "outcome": "By 2025-26 general AI assistants (Gemini, ChatGPT, Copilot) were mass-market, and Gemini was gaining against Copilot; Google's whole stack had reoriented around AI.",
+      "outcomeEvidenceIds": [
+        "ev-out-search-1"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "An early, clear strategic forecast that materialized, though Google was not first to deliver the breakthrough assistant (OpenAI was).",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "Reaffirmed repeatedly; no revision found."
+    },
+    {
+      "id": "as-pichai-2",
+      "thinkerId": "sundar-pichai",
+      "date": "2018-01",
+      "claim": "AI is one of the most important things humanity is working on; more profound than, I dunno, electricity or fire — but like fire, its downsides must be overcome.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "economic",
+      "layers": [
+        "society"
+      ],
+      "topics": [
+        "safety",
+        "agi-timelines"
+      ],
+      "assumptions": [
+        "AI becomes a general-purpose technology with economy-wide effects"
+      ],
+      "predictedOutcome": "AI's long-run impact exceeds that of electricity.",
+      "horizon": "long-run",
+      "horizonDate": null,
+      "contextAtTime": "Before transformers were widely used; AI mainly in recommendation, search and perception.",
+      "evidenceIds": [
+        "ev-pichai-2"
+      ],
+      "outcome": "AI became the dominant technology investment theme of 2023-26, but its civilizational significance relative to electricity is not yet assessable.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Not falsifiable on a 2026 horizon.",
+      "confidence": "high",
+      "originality": 3,
+      "causal": null,
+      "specificity": 1,
+      "evolution": "Repeated on 60 Minutes in 2023; no revision found."
+    },
+    {
+      "id": "as-pichai-3",
+      "thinkerId": "sundar-pichai",
+      "date": "2023-02-06",
+      "claim": "Launch Bard and bring generative AI into Google Search, ending Google's cautious slow-release posture.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "apps",
+        "distribution",
+        "models"
+      ],
+      "topics": [
+        "app-moats",
+        "hyperscalers"
+      ],
+      "assumptions": [
+        "Search's moat survives the shift to AI answers if Google integrates them itself",
+        "Google's models can catch up to OpenAI"
+      ],
+      "predictedOutcome": "Google defends search leadership by integrating generative AI rather than being displaced by chatbots.",
+      "horizon": "multi-year",
+      "horizonDate": "2026",
+      "contextAtTime": "ChatGPT's success and Microsoft's Bing launch led many to predict the decline of Google search; Google reportedly declared a 'code red'.",
+      "evidenceIds": [
+        "ev-pichai-7"
+      ],
+      "outcome": "Google shipped AI Overviews (2024), AI Mode and Gemini; by 2026 Gemini was outpacing Microsoft's Copilot and Google remained the dominant search provider, while publishers reported traffic losses.",
+      "outcomeEvidenceIds": [
+        "ev-out-search-1"
+      ],
+      "verdict": "correct",
+      "timing": "late",
+      "verdictRationale": "The defensive integration strategy succeeded in preserving Google's position through 2026, though it came after OpenAI had seized first-mover advantage.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 2,
+      "evolution": "Accelerated with Gemini (Dec 2023) and AI Overviews (May 2024)."
+    },
+    {
+      "id": "as-pichai-4",
+      "thinkerId": "sundar-pichai",
+      "date": "2024-07-23",
+      "claim": "The risk of underinvesting is dramatically greater than the risk of overinvesting in AI infrastructure; even if over-invested, the infrastructure is widely useful to Google.",
+      "claimIsQuote": false,
+      "kind": "conditional",
+      "category": "economic",
+      "layers": [
+        "cloud",
+        "semis",
+        "economics"
+      ],
+      "topics": [
+        "infra-cycle",
+        "hyperscalers",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "AI is a platform shift where losing position is costlier than excess capacity",
+        "Excess capacity can be redeployed internally"
+      ],
+      "predictedOutcome": "Alphabet keeps raising AI capex despite ROI questions.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Analysts were beginning to question AI capex returns (e.g. Sequoia's '$600B question', summer 2024).",
+      "evidenceIds": [
+        "ev-pichai-3"
+      ],
+      "outcome": "Alphabet capex rose to ~$91B in 2025 and was guided to roughly $175-185B for 2026 (recalled); Pichai himself warned of 'elements of irrationality' in Nov 2025. Whether the spend earns adequate returns is not yet known.",
+      "outcomeEvidenceIds": [
+        "ev-out-goog-1"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "A risk judgement whose payoff depends on long-run AI returns that cannot yet be measured.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Paired in Nov 2025 with an acknowledgment of bubble-like irrationality (see as-pichai-7)."
+    },
+    {
+      "id": "as-pichai-5",
+      "thinkerId": "sundar-pichai",
+      "date": "2024-12-04",
+      "claim": "I think the progress is going to get harder. When I look at 2025, the low-hanging fruit is gone; the hill is steeper (though there is no definitive wall).",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models",
+        "training"
+      ],
+      "topics": [
+        "scaling",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Pretraining scaling returns are diminishing",
+        "New breakthroughs needed for further gains"
+      ],
+      "predictedOutcome": "Visible AI capability gains in 2025 slow relative to 2023-24.",
+      "horizon": "2025",
+      "horizonDate": "2025",
+      "contextAtTime": "Reports that OpenAI's next model showed smaller gains; Altman said 'there is no wall'; o1-style reasoning had just appeared.",
+      "evidenceIds": [
+        "ev-pichai-4"
+      ],
+      "outcome": "Pretraining-only gains did slow, but 2025 brought large capability jumps via reasoning/RL and test-time compute (e.g. IMO gold-level results, Gemini 2.5 and Gemini 3) and surging compute demand.",
+      "outcomeEvidenceIds": [
+        "ev-out-progress-1",
+        "ev-out-nvda-1"
+      ],
+      "verdict": "partial",
+      "timing": "n/a",
+      "verdictRationale": "Right that easy pretraining gains were exhausted, but wrong if read as a slowdown in overall 2025 progress, which accelerated via new techniques, including at Google.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": 3,
+      "specificity": 3,
+      "evolution": "By mid-2025 he described current systems as 'AJI' with rapid progress expected through 2030."
+    },
+    {
+      "id": "as-pichai-6",
+      "thinkerId": "sundar-pichai",
+      "date": "2025-06",
+      "claim": "We are in an era of 'artificial jagged intelligence' (AJI); AI will make dramatic progress by 2030 but full AGI will likely arrive somewhat after 2030.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "technical",
+      "layers": [
+        "models"
+      ],
+      "topics": [
+        "agi-timelines",
+        "reasoning"
+      ],
+      "assumptions": [
+        "Uneven capabilities persist and require further breakthroughs to fix"
+      ],
+      "predictedOutcome": "No broadly accepted AGI before ~2030; large capability advances before then.",
+      "horizon": "around/after 2030",
+      "horizonDate": "2030",
+      "contextAtTime": "Peers (Altman, Amodei) were giving 2026-2028 timelines; Hassabis said 5-10 years.",
+      "evidenceIds": [
+        "ev-pichai-5"
+      ],
+      "outcome": "No consensus AGI by October 2026.",
+      "outcomeEvidenceIds": [],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Horizon not reached.",
+      "confidence": "medium",
+      "originality": 2,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-pichai-7",
+      "thinkerId": "sundar-pichai",
+      "date": "2025-11-18",
+      "claim": "The AI investment boom is both rational and has elements of irrationality; if the bubble bursts, no company is going to be immune, including Google.",
+      "claimIsQuote": false,
+      "kind": "conditional",
+      "category": "market",
+      "layers": [
+        "economics",
+        "cloud"
+      ],
+      "topics": [
+        "infra-cycle",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "Investment is outpacing near-term revenue",
+        "A correction would propagate across the ecosystem"
+      ],
+      "predictedOutcome": "A possible correction in AI investment that would hit all players, while long-run impact remains profound.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Late-2025 bubble debate after circular deals among OpenAI, NVIDIA, Oracle and AMD.",
+      "evidenceIds": [
+        "ev-pichai-6"
+      ],
+      "outcome": "Through Oct 2026 no broad AI investment collapse occurred; capex and NVIDIA revenue kept rising, while AI-exposed software stocks did see a sharp 2026 selloff.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-1",
+        "ev-out-saas-2"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "A conditional warning whose condition (a burst) had not occurred by the cutoff.",
+      "confidence": "high",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Coexists with his 2024 'underinvesting is the bigger risk' stance."
+    },
+    {
+      "id": "as-zuck-1",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2013-12",
+      "claim": "Create a dedicated fundamental AI research lab (FAIR) led by Yann LeCun.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "technical",
+      "layers": [
+        "models",
+        "architecture"
+      ],
+      "topics": [
+        "architecture",
+        "open-weights"
+      ],
+      "assumptions": [
+        "Deep learning will be core to Facebook's products",
+        "Open research attracts top talent"
+      ],
+      "predictedOutcome": "Facebook becomes a leading AI research organization.",
+      "horizon": "multi-year",
+      "horizonDate": null,
+      "contextAtTime": "One year after AlexNet; Google had acquired DNNresearch (Hinton); deep learning was not yet mainstream in industry.",
+      "evidenceIds": [
+        "ev-zuck-1"
+      ],
+      "outcome": "FAIR produced PyTorch and the Llama models, but its influence waned after 2025 reorganization into Meta Superintelligence Labs and LeCun's departure in Nov 2025.",
+      "outcomeEvidenceIds": [
+        "ev-out-meta-2"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "An early bet on deep learning that produced foundational tools (PyTorch) and the Llama line.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "FAIR deprioritized relative to MSL in 2025."
+    },
+    {
+      "id": "as-zuck-2",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2021-10-28",
+      "claim": "Within the next decade, the metaverse will reach a billion people, host hundreds of billions of dollars of digital commerce and support jobs for millions of creators and developers.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "platforms",
+        "apps"
+      ],
+      "topics": [
+        "app-moats"
+      ],
+      "assumptions": [
+        "VR/AR hardware becomes mass-market",
+        "Social presence in 3D drives engagement"
+      ],
+      "predictedOutcome": "~1B metaverse users by ~2031.",
+      "horizon": "within a decade of 2021",
+      "horizonDate": "2031",
+      "contextAtTime": "Pandemic-era enthusiasm for virtual worlds; generative AI was not yet mainstream.",
+      "evidenceIds": [
+        "ev-zuck-3"
+      ],
+      "outcome": "Reality Labs accumulated >$70B in operating losses; metaverse budgets were reportedly cut by up to ~30% in late 2025 as resources moved to AI and AI glasses (recalled).",
+      "outcomeEvidenceIds": [
+        "ev-out-meta-4"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Deadline (2031) not reached, though the trend through 2026 is strongly against the forecast.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": null,
+      "specificity": 4,
+      "evolution": "De-emphasized from 2023 in favor of AI (see reversal)."
+    },
+    {
+      "id": "as-zuck-3",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2024-01-18",
+      "claim": "Meta's long-term vision is to build general intelligence and open source it responsibly; Meta will have ~350,000 H100s (~600,000 H100-equivalents) by end of 2024.",
+      "claimIsQuote": false,
+      "kind": "aspiration",
+      "category": "technical",
+      "layers": [
+        "semis",
+        "training",
+        "models"
+      ],
+      "topics": [
+        "agi-timelines",
+        "open-weights",
+        "scaling"
+      ],
+      "assumptions": [
+        "Scaling compute yields general intelligence",
+        "Open release is compatible with safety and Meta's business"
+      ],
+      "predictedOutcome": "Meta becomes a frontier lab releasing open models toward AGI.",
+      "horizon": "long-term",
+      "horizonDate": null,
+      "contextAtTime": "Llama 2 was the leading open model; Meta had pivoted from the metaverse a year earlier.",
+      "evidenceIds": [
+        "ev-zuck-5"
+      ],
+      "outcome": "Meta built the compute, but its open frontier strategy faltered after Llama 4 (2025); it reorganized under Meta Superintelligence Labs and signaled more selective open-sourcing.",
+      "outcomeEvidenceIds": [
+        "ev-out-meta-1",
+        "ev-zuck-9"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "An aspiration; AGI not reached and the open-source component was partly abandoned.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 3,
+      "evolution": "Recast in 2025 as 'personal superintelligence' with selective open-sourcing."
+    },
+    {
+      "id": "as-zuck-4",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2024-04-18",
+      "claim": "Energy, not chips, will become the binding constraint on scaling AI: gigawatt-scale data centers take years of permitting and power build-out.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "economic",
+      "layers": [
+        "energy",
+        "cloud"
+      ],
+      "topics": [
+        "infra-cycle",
+        "scaling"
+      ],
+      "assumptions": [
+        "Demand for training/inference compute keeps growing exponentially",
+        "Grid expansion is slow and regulated"
+      ],
+      "predictedOutcome": "Power availability becomes the main bottleneck for AI data centers within a few years.",
+      "horizon": "a few years from 2024",
+      "horizonDate": "2026",
+      "contextAtTime": "In early 2024 GPU supply was still the widely cited bottleneck.",
+      "evidenceIds": [
+        "ev-zuck-6"
+      ],
+      "outcome": "By late 2025 Microsoft's CEO said its constraint was power and data-center shells rather than chips, and gigawatt-scale campuses became the norm.",
+      "outcomeEvidenceIds": [
+        "ev-nadella-8"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "He identified power as the next bottleneck when chips were the consensus constraint; an independent peer confirmed it by late 2025. Outcome evidence is a single interested party, so confidence is moderate.",
+      "confidence": "low",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "Meta later announced gigawatt-scale campuses (Prometheus, Hyperion) consistent with this view (recalled)."
+    },
+    {
+      "id": "as-zuck-5",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2024-07-23",
+      "claim": "Open source AI is the path forward: like Linux, open models will become the industry standard, and starting next year Meta expects future Llama models to become the most advanced in the industry.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "models",
+        "platforms"
+      ],
+      "topics": [
+        "open-weights",
+        "commoditization"
+      ],
+      "assumptions": [
+        "Open ecosystems out-iterate closed labs",
+        "Meta can sustain frontier training and still release weights"
+      ],
+      "predictedOutcome": "Llama models lead the industry from 2025 and open models become the standard.",
+      "horizon": "2025",
+      "horizonDate": "2025",
+      "contextAtTime": "Llama 3.1 405B had just closed much of the gap with GPT-4o; DeepSeek and Qwen were rising but less visible in the West.",
+      "evidenceIds": [
+        "ev-zuck-7"
+      ],
+      "outcome": "Llama 4 (April 2025) did not lead and drew criticism; the strongest open-weight models of 2025 came from Chinese labs; Meta formed MSL and signaled it would be careful about open-sourcing frontier models. Open weights did spread (even OpenAI released gpt-oss).",
+      "outcomeEvidenceIds": [
+        "ev-out-meta-1",
+        "ev-zuck-9",
+        "ev-out-ds-1"
+      ],
+      "verdict": "incorrect",
+      "timing": "n/a",
+      "verdictRationale": "The specific, dated forecast that Llama would be the most advanced in 2025 failed; the broader open-weights trend was partly right but led by others.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 2,
+      "specificity": 4,
+      "evolution": "Walked back in the July 2025 'Personal Superintelligence' letter (selective open-sourcing)."
+    },
+    {
+      "id": "as-zuck-6",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2025-01",
+      "claim": "In 2025, Meta and other companies will have an AI that can effectively be a sort of mid-level engineer writing code.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "adoption",
+      "layers": [
+        "agents",
+        "apps"
+      ],
+      "topics": [
+        "coding",
+        "agents",
+        "labor"
+      ],
+      "assumptions": [
+        "Coding agents become reliable on real codebases within a year"
+      ],
+      "predictedOutcome": "During 2025 AI agents do substantial mid-level engineering work at Meta.",
+      "horizon": "2025",
+      "horizonDate": "2025",
+      "contextAtTime": "Coding assistants were strong at autocomplete; autonomous agents (Devin etc.) were unreliable.",
+      "evidenceIds": [
+        "ev-zuck-8"
+      ],
+      "outcome": "Coding agents improved dramatically in 2025 and drove a 2026 SaaS selloff, but no public evidence was found that Meta's agents functioned as mid-level engineers in 2025.",
+      "outcomeEvidenceIds": [
+        "ev-out-saas-1"
+      ],
+      "verdict": "partial",
+      "timing": "premature",
+      "verdictRationale": "Capability trend was right in direction, but the specific claim of mid-level-engineer equivalence in 2025 was not demonstrated.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": 3,
+      "specificity": 3,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-zuck-7",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2025-06",
+      "claim": "Form Meta Superintelligence Labs, invest ~$14.3B in Scale AI and hire top researchers at extreme pay because developing superintelligence is now in sight; aim for 'personal superintelligence' while being careful about what to open source.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "technical",
+      "layers": [
+        "models",
+        "training",
+        "agents"
+      ],
+      "topics": [
+        "agi-timelines",
+        "open-weights",
+        "safety"
+      ],
+      "assumptions": [
+        "Superintelligence is achievable within a few years with sufficient talent and compute",
+        "Talent concentration can close Meta's frontier gap"
+      ],
+      "predictedOutcome": "Meta returns to the frontier with superintelligence-class models within a few years.",
+      "horizon": "few years",
+      "horizonDate": null,
+      "contextAtTime": "Llama 4 had disappointed; OpenAI, Google and Anthropic led; peers gave 2026-2030 AGI timelines.",
+      "evidenceIds": [
+        "ev-zuck-9",
+        "ev-zuck-10"
+      ],
+      "outcome": "Meta continued heavy spending (2026 capex guided ~$115-135B, recalled); LeCun left in Nov 2025. Status of MSL frontier models by Oct 2026 could not be verified this session.",
+      "outcomeEvidenceIds": [
+        "ev-out-meta-3",
+        "ev-out-meta-2"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "Outcome of the superintelligence push is not yet assessable.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Marks a reversal from the 2024 open-source stance."
+    },
+    {
+      "id": "as-zuck-8",
+      "thinkerId": "mark-zuckerberg",
+      "date": "2025-09",
+      "claim": "If Meta ends up misspending a couple of hundred billion dollars that would be unfortunate, but the risk is higher on the other side: being out of position if superintelligence arrives sooner.",
+      "claimIsQuote": false,
+      "kind": "conditional",
+      "category": "economic",
+      "layers": [
+        "cloud",
+        "economics"
+      ],
+      "topics": [
+        "infra-cycle",
+        "agi-timelines",
+        "value-accrual"
+      ],
+      "assumptions": [
+        "The payoff from leading in superintelligence dwarfs capex losses",
+        "Meta's ad cash flows can absorb overspending"
+      ],
+      "predictedOutcome": "Meta keeps escalating capex despite bubble risk.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Late-2025 AI bubble debate; Meta raising capex and taking on off-balance-sheet data-center financing.",
+      "evidenceIds": [
+        "ev-zuck-11"
+      ],
+      "outcome": "Meta guided 2026 capex to roughly $115-135B (recalled); returns not yet assessable.",
+      "outcomeEvidenceIds": [
+        "ev-out-meta-3"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "A risk judgment whose outcome depends on future AI returns.",
+      "confidence": "low",
+      "originality": 2,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "Consistent with Pichai's 2024 underinvestment argument; no revision found."
+    },
+    {
+      "id": "as-liang-1",
+      "thinkerId": "liang-wenfeng",
+      "date": "2023-05",
+      "claim": "High-Flyer acquired ~10,000 Nvidia A100 GPUs (by 2021) for its Fire-Flyer clusters before US export controls, a compute base later used for DeepSeek.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "technical",
+      "layers": [
+        "semis",
+        "training"
+      ],
+      "topics": [
+        "scaling",
+        "infra-cycle"
+      ],
+      "assumptions": [
+        "Large-scale compute would be strategically valuable and scarce"
+      ],
+      "predictedOutcome": "Owning a large GPU cluster becomes a decisive advantage for Chinese AI work.",
+      "horizon": "multi-year",
+      "horizonDate": null,
+      "contextAtTime": "In 2021 few Chinese firms outside big tech bought GPUs at this scale; export controls on A100s came in Oct 2022.",
+      "evidenceIds": [
+        "ev-liang-1"
+      ],
+      "outcome": "US controls (Oct 2022 onward) cut off A100/H100-class sales; DeepSeek used its stockpile and H800s to train V3/R1, becoming China's leading open model lab.",
+      "outcomeEvidenceIds": [
+        "ev-out-ds-3",
+        "ev-liang-3"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "The pre-control stockpile proved strategically decisive; however the action was made for quant trading, so the 'belief' about LLMs is partly retrospective.",
+      "confidence": "low",
+      "originality": 4,
+      "causal": 3,
+      "specificity": 3,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-liang-2",
+      "thinkerId": "liang-wenfeng",
+      "date": "2023-05",
+      "claim": "DeepSeek will pursue AGI through fundamental research rather than near-term applications or commercialization, without seeking outside financing.",
+      "claimIsQuote": false,
+      "kind": "aspiration",
+      "category": "technical",
+      "layers": [
+        "models",
+        "architecture"
+      ],
+      "topics": [
+        "agi-timelines",
+        "architecture"
+      ],
+      "assumptions": [
+        "High-Flyer profits can fund frontier research",
+        "A small, young, research-driven team can compete with big tech"
+      ],
+      "predictedOutcome": "DeepSeek becomes a research-first frontier lab rather than an application company.",
+      "horizon": "long-term",
+      "horizonDate": null,
+      "contextAtTime": "Chinese 'hundred-model war' after ChatGPT; most startups raised VC and chased applications.",
+      "evidenceIds": [
+        "ev-liang-1"
+      ],
+      "outcome": "DeepSeek released V2, V3 and R1 as research-led open models with novel efficiency techniques and remained largely focused on models rather than consumer monetization; AGI not achieved.",
+      "outcomeEvidenceIds": [
+        "ev-liang-3",
+        "ev-liang-4"
+      ],
+      "verdict": "unresolved",
+      "timing": "n/a",
+      "verdictRationale": "The organizational aspiration was carried out, but its stated goal (AGI) is unresolved.",
+      "confidence": "low",
+      "originality": 3,
+      "causal": null,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-liang-3",
+      "thinkerId": "liang-wenfeng",
+      "date": "2024-07",
+      "claim": "In the face of disruptive technologies, moats created by closed source are temporary; even OpenAI's closed-source approach cannot prevent others from catching up. A team's culture and talent are the real moat.",
+      "claimIsQuote": false,
+      "kind": "prediction",
+      "category": "market",
+      "layers": [
+        "models",
+        "platforms"
+      ],
+      "topics": [
+        "open-weights",
+        "commoditization",
+        "app-moats"
+      ],
+      "assumptions": [
+        "Algorithmic efficiency and open publication diffuse capabilities quickly",
+        "Compute gaps can be partly offset by efficiency"
+      ],
+      "predictedOutcome": "Open models (including DeepSeek's) catch up to closed frontier models, eroding closed-source advantages.",
+      "horizon": "near-to-medium term",
+      "horizonDate": "2025",
+      "contextAtTime": "OpenAI's GPT-4o led; Llama 3 was the leading open model; DeepSeek was known mainly for cheap V2 pricing.",
+      "evidenceIds": [
+        "ev-liang-2"
+      ],
+      "outcome": "DeepSeek-V3 (reported ~$5.6M final training run) and R1 (MIT license) approached o1-level reasoning, triggering a ~17% NVIDIA one-day drop; OpenAI later released open-weight gpt-oss models and its Microsoft deal was revised to allow open weights.",
+      "outcomeEvidenceIds": [
+        "ev-liang-3",
+        "ev-liang-4",
+        "ev-out-nvda-6",
+        "ev-out-ds-1",
+        "ev-out-msft-3"
+      ],
+      "verdict": "correct",
+      "timing": "on-time",
+      "verdictRationale": "Within six months DeepSeek itself demonstrated that closed leads were narrow, and closed labs moved toward open weights; frontier leadership nonetheless stayed with closed US labs.",
+      "confidence": "medium",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-liang-4",
+      "thinkerId": "liang-wenfeng",
+      "date": "2024-07",
+      "claim": "China's AI cannot remain a follower; Chinese firms must contribute original innovation rather than free-ride. Money is not DeepSeek's problem; the embargo on high-end chips is.",
+      "claimIsQuote": false,
+      "kind": "opinion",
+      "category": "governance",
+      "layers": [
+        "models",
+        "semis"
+      ],
+      "topics": [
+        "open-weights",
+        "architecture"
+      ],
+      "assumptions": [
+        "Chinese researchers can produce frontier-level original work",
+        "Compute restrictions are the binding constraint"
+      ],
+      "predictedOutcome": "Chinese labs move from imitation to original contributions while chip access limits scale.",
+      "horizon": "open-ended",
+      "horizonDate": null,
+      "contextAtTime": "Western consensus held that Chinese labs lagged 1-2 years and mostly followed US innovations.",
+      "evidenceIds": [
+        "ev-liang-2"
+      ],
+      "outcome": "DeepSeek's MLA/MoE efficiency methods and GRPO-based reasoning were widely adopted; Chinese labs led open-weight models in 2025. Huang called China 'nanoseconds behind'. Chip constraints persisted: NVIDIA's China sales stayed near zero in 2026 amid US and Chinese restrictions.",
+      "outcomeEvidenceIds": [
+        "ev-liang-4",
+        "ev-huang-12",
+        "ev-out-nvda-3"
+      ],
+      "verdict": "partial",
+      "timing": "on-time",
+      "verdictRationale": "Chinese original innovation and the chip bottleneck were both borne out, though overall frontier leadership remained with US labs.",
+      "confidence": "medium",
+      "originality": 3,
+      "causal": 4,
+      "specificity": 2,
+      "evolution": "No revision found."
+    },
+    {
+      "id": "as-liang-5",
+      "thinkerId": "liang-wenfeng",
+      "date": "2024-05",
+      "claim": "Price DeepSeek-V2's API near cost (far below rivals), reflecting architecture-driven cost reductions rather than a deliberate price war.",
+      "claimIsQuote": false,
+      "kind": "action",
+      "category": "market",
+      "layers": [
+        "inference",
+        "economics"
+      ],
+      "topics": [
+        "commoditization",
+        "architecture"
+      ],
+      "assumptions": [
+        "MoE + latent-attention efficiency sharply lowers serving cost",
+        "Cheap access grows the user/developer base"
+      ],
+      "predictedOutcome": "Inference prices collapse and efficiency becomes a competitive axis.",
+      "horizon": "near-term",
+      "horizonDate": "2025",
+      "contextAtTime": "Chinese LLM APIs were priced near Western levels; efficiency was not the main competitive narrative.",
+      "evidenceIds": [
+        "ev-liang-6",
+        "ev-liang-2"
+      ],
+      "outcome": "Major Chinese providers (ByteDance, Alibaba, Baidu) cut prices within weeks (recalled), and DeepSeek's efficiency later reset global expectations about training and inference costs.",
+      "outcomeEvidenceIds": [
+        "ev-out-nvda-6",
+        "ev-liang-3"
+      ],
+      "verdict": "correct",
+      "timing": "early",
+      "verdictRationale": "The pricing move precipitated a price war and showcased efficiency gains that reshaped the market in 2025.",
+      "confidence": "low",
+      "originality": 4,
+      "causal": 4,
+      "specificity": 3,
+      "evolution": "No revision found."
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-1",
+      "from": "jensen-huang",
+      "to": "dario-amodei",
+      "type": "challenges",
+      "date": "2025-06",
+      "note": "Huang said he disagreed with almost everything Amodei says, rejecting his warnings of mass entry-level white-collar job loss and the idea that only a few should build AI.",
+      "evidenceIds": [
+        "ev-huang-15"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-2",
+      "from": "jensen-huang",
+      "to": "dario-amodei",
+      "type": "contradicts",
+      "date": "2025-05",
+      "note": "Amodei argued (Jan 2025) for strong US chip export controls on China; Huang called export controls a failure that strengthened Chinese competitors. Positions documented separately; no direct exchange cited here.",
+      "evidenceIds": [
+        "ev-out-ds-2",
+        "ev-huang-8"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-3",
+      "from": "jensen-huang",
+      "to": "tech:DeepSeek-R1",
+      "type": "agrees_with",
+      "date": "2025-02",
+      "note": "Huang called DeepSeek R1 an excellent innovation and praised its open-sourcing, while arguing it increases compute demand.",
+      "evidenceIds": [
+        "ev-huang-7"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-4",
+      "from": "satya-nadella",
+      "to": "jensen-huang",
+      "type": "agrees_with",
+      "date": "2025-01",
+      "note": "Both argued that DeepSeek-style efficiency gains would expand rather than shrink AI compute demand (Nadella's 'Jevons paradox' post; Huang's '100x compute' for reasoning).",
+      "evidenceIds": [
+        "ev-nadella-6",
+        "ev-huang-7"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-5",
+      "from": "satya-nadella",
+      "to": "org:OpenAI",
+      "type": "invested_in",
+      "date": "2019-07",
+      "note": "$1B investment and exclusive Azure partnership (2019), followed by multi-billion investments; ~27% stake valued ~$135B in Oct 2025.",
+      "evidenceIds": [
+        "ev-nadella-9",
+        "ev-out-msft-3"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-6",
+      "from": "satya-nadella",
+      "to": "sam-altman",
+      "type": "agrees_with",
+      "date": "2023-11",
+      "note": "Backed Altman during the Nov 2023 OpenAI board crisis, offering to hire him and Brockman, then welcomed the board changes.",
+      "evidenceIds": [
+        "ev-nadella-4"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-7",
+      "from": "satya-nadella",
+      "to": "sam-altman",
+      "type": "challenges",
+      "date": "2025-02",
+      "note": "Nadella dismissed self-declared AGI milestones as 'benchmark hacking', implicitly pushing back on AGI claims tied to the OpenAI contract; Altman not named.",
+      "evidenceIds": [
+        "ev-nadella-7"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-8",
+      "from": "satya-nadella",
+      "to": "sundar-pichai",
+      "type": "challenges",
+      "date": "2023-02",
+      "note": "Nadella said the OpenAI-powered Bing would make Google 'dance'; Pichai later replied that one shouldn't play to someone else's dance music.",
+      "evidenceIds": [
+        "ev-nadella-3"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-9",
+      "from": "satya-nadella",
+      "to": "mustafa-suleyman",
+      "type": "influenced_by",
+      "date": "2024-03",
+      "note": "Nadella hired Suleyman to lead the new Microsoft AI organization, building in-house models to reduce dependence on OpenAI.",
+      "evidenceIds": [
+        "ev-nadella-10"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-10",
+      "from": "sundar-pichai",
+      "to": "andrej-karpathy",
+      "type": "influenced_by",
+      "date": "2025-06",
+      "note": "Pichai's 'AJI' (artificial jagged intelligence) framing was reported as crediting Karpathy's 'jagged intelligence' term.",
+      "evidenceIds": [
+        "ev-pichai-5"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-11",
+      "from": "mark-zuckerberg",
+      "to": "elon-musk",
+      "type": "challenges",
+      "date": "2017-07",
+      "note": "Zuckerberg called AI doomsday warnings 'pretty irresponsible'; Musk replied that Zuckerberg's understanding of the subject was limited.",
+      "evidenceIds": [
+        "ev-zuck-2"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-12",
+      "from": "mark-zuckerberg",
+      "to": "yann-lecun",
+      "type": "agrees_with",
+      "date": "2024-07",
+      "note": "Zuckerberg and LeCun (Meta's chief AI scientist) both championed open-weight AI as safer and better for innovation; LeCun founded FAIR under Zuckerberg in 2013.",
+      "evidenceIds": [
+        "ev-zuck-1",
+        "ev-zuck-7"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-13",
+      "from": "yann-lecun",
+      "to": "mark-zuckerberg",
+      "type": "challenges",
+      "date": "2025-11",
+      "note": "LeCun left Meta after the reorganization around LLM-centric Meta Superintelligence Labs to pursue world-model research, a path he had argued was necessary beyond LLMs.",
+      "evidenceIds": [
+        "ev-out-meta-2"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-14",
+      "from": "mark-zuckerberg",
+      "to": "tech:open-weights",
+      "type": "changed_position",
+      "date": "2025-07",
+      "note": "From 'Open Source AI Is the Path Forward' (July 2024) to being 'careful about what we choose to open source' for superintelligence-class models (July 2025).",
+      "evidenceIds": [
+        "ev-zuck-7",
+        "ev-zuck-9"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-15",
+      "from": "mark-zuckerberg",
+      "to": "tech:metaverse",
+      "type": "changed_position",
+      "date": "2023-02",
+      "note": "Shifted priority from the metaverse (company renamed Meta in 2021) to AI, starting with the 'year of efficiency'.",
+      "evidenceIds": [
+        "ev-zuck-3",
+        "ev-zuck-4"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-16",
+      "from": "mark-zuckerberg",
+      "to": "sundar-pichai",
+      "type": "agrees_with",
+      "date": "2025-09",
+      "note": "Both argued the risk of under-investing in AI infrastructure exceeds the risk of over-investing.",
+      "evidenceIds": [
+        "ev-zuck-11",
+        "ev-pichai-3"
+      ],
+      "inferred": true
+    },
+    {
+      "id": "rel-17",
+      "from": "liang-wenfeng",
+      "to": "org:OpenAI",
+      "type": "challenges",
+      "date": "2024-07",
+      "note": "Liang argued closed-source moats like OpenAI's are temporary and cannot stop others catching up.",
+      "evidenceIds": [
+        "ev-liang-2"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-18",
+      "from": "dario-amodei",
+      "to": "liang-wenfeng",
+      "type": "challenges",
+      "date": "2025-01",
+      "note": "Amodei argued DeepSeek's cost reductions were on the expected efficiency trend rather than a unique breakthrough and that export controls should be maintained.",
+      "evidenceIds": [
+        "ev-out-ds-2"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-19",
+      "from": "liang-wenfeng",
+      "to": "tech:open-weights",
+      "type": "built",
+      "date": "2025-01",
+      "note": "Released DeepSeek-R1 reasoning model weights under the MIT license.",
+      "evidenceIds": [
+        "ev-liang-4"
+      ],
+      "inferred": false
+    },
+    {
+      "id": "rel-20",
+      "from": "jensen-huang",
+      "to": "geoffrey-hinton",
+      "type": "influenced_by",
+      "date": "2012",
+      "note": "AlexNet (Krizhevsky, Sutskever, Hinton, 2012) trained on NVIDIA GPUs catalyzed NVIDIA's pivot to deep learning; Huang has cited this moment often. Not re-documented this session.",
+      "evidenceIds": [],
+      "inferred": true
+    }
+  ],
+  "gaps": [
+    "The shared WebSearch budget (200 calls per turn across all agents) ran out partway through this batch, and the proxy blocked every WebFetch/curl target tried (about.fb.com, meta.com, chinatalk.media, techcrunch.com, lexfridman.com; nvidianews, sec.gov and wikipedia showed as blocked in proxy logs). No page was opened directly; all 'snippet' evidence comes from search-result summaries.",
+    "Mark Zuckerberg: the budget ran out before any Zuckerberg search, so all 11 claim-evidence items and the Meta outcome items are 'recalled' (not re-verified this session). Dates, dollar figures (e.g. Scale AI ~$14.3B, 2026 capex ~$115-135B, Reality Labs losses) and paraphrases should be checked before publication. URLs are given only for the two Meta newsroom pages and meta.com/superintelligence, which I am confident exist.",
+    "Liang Wenfeng: the corpus is very thin (two Chinese-language An Yong/36Kr interviews from May 2023 and July 2024, plus DeepSeek papers). All Liang evidence is recalled. Translation wording varies, so no quotes are marked verbatim. He may also have given an AGI timeline (possibly '2, 5 or 10 years, within our lifetime'), but I could not confirm it, so it is left out. I found no reliable 2026 statements and could not verify 2026 DeepSeek releases (e.g. V4).",
+    "Sundar Pichai: Alphabet's 2026 outcomes (Q2 2026 earnings, search revenue, AI Mode adoption, 2026 capex guidance of ~$175-185B) could not be searched because the budget ran out. They are recalled or inferred from the Windows Latest May 2026 piece. The date of Pichai's 'someone else's dance music' reply could not be verified, so that reply has no separate evidence item.",
+    "Jensen Huang: the quotes come through press coverage (Benzinga, Axios, CNBC/NBC, Reuters syndication), not NVIDIA transcripts. The '95% to zero' China share remark (Oct 2025), the Amodei disagreement (VivaTech, June 2025) and the quantum-timeline reversal are recalled. The GTC 2026 '$1T through 2027' figure comes from a single Spanish-language TechRadar summary.",
+    "Satya Nadella: the venue of the Nov 2025 power-constraint quote is unconfirmed; it may come from the BG2 conversation with Altman. The Copilot 30M paid seats and ~$41B quarterly capex figures come from a low-reliability KuCoin blog that is copied across several sites. I found no source for the phrase 'below them, above them, around them' (Nov 2023), so it is excluded.",
+    "Several 2026 outcome sources are low-profile outlets (MarketMinute, KuCoin, iPhone in Canada). The NVIDIA Q2 FY2027 figures were consistent across 5+ outlets; the Microsoft FY26 Q4 figures were consistent across 2-3.",
+    "Under the schema, 'primary' is set to true when the passage gives the person's own quoted words, even if they reached me through press coverage. Paraphrase-only reporting is set to primary=false."
+  ]
+}

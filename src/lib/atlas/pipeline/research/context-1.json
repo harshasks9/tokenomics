@@ -1,0 +1,3908 @@
+{
+ "agent": "context-1 (historical context 2012-2023)",
+ "events": [
+  {
+   "id": "evt-2012-alexnet",
+   "date": "2012-09",
+   "title": "AlexNet wins ImageNet (ILSVRC 2012)",
+   "kind": "research",
+   "layers": [
+    "architecture",
+    "training",
+    "semis",
+    "data"
+   ],
+   "summary": "A GPU-trained deep convolutional network from Hinton's Toronto lab won ILSVRC 2012 with 15.3% top-5 error versus 26.2% for the runner-up.",
+   "significance": "Interpretation: Converted the field to deep learning on GPUs almost overnight and tied AI progress to commodity NVIDIA hardware plus large labeled datasets.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-40",
+    "ev-ctx-36"
+   ]
+  },
+  {
+   "id": "evt-2013-word2vec",
+   "date": "2013-01",
+   "title": "word2vec dense word embeddings",
+   "kind": "research",
+   "layers": [
+    "architecture",
+    "data"
+   ],
+   "summary": "Mikolov et al. at Google released word2vec, efficiently learning vector word representations from large unlabeled corpora.",
+   "significance": "Interpretation: Made 'learn representations from raw text' the default in NLP, a precursor of self-supervised pretraining.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-42"
+   ]
+  },
+  {
+   "id": "evt-2013-dqn",
+   "date": "2013-12",
+   "title": "DeepMind DQN learns Atari from pixels",
+   "kind": "research",
+   "layers": [
+    "agents",
+    "training"
+   ],
+   "summary": "DeepMind's Deep Q-Network learned many Atari games from raw pixels using one architecture.",
+   "significance": "Interpretation: Made deep reinforcement learning the leading candidate path to general agents for the rest of the decade.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-44"
+   ]
+  },
+  {
+   "id": "evt-2014-deepmind-acquisition",
+   "date": "2014-01",
+   "title": "Google acquires DeepMind",
+   "kind": "capital",
+   "layers": [
+    "economics",
+    "agents"
+   ],
+   "summary": "Google agreed to acquire London-based DeepMind; the price was not disclosed and press reports ranged roughly $400-650M. It followed Google's 2013 purchase of Hinton's DNNresearch and Facebook's creation of FAIR under LeCun (Dec 2013).",
+   "significance": "Interpretation: First large bet on an explicitly AGI-oriented lab; set the pattern of hyperscalers owning or funding frontier labs.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-46",
+    "ev-ctx-43",
+    "ev-ctx-45"
+   ]
+  },
+  {
+   "id": "evt-2014-gans",
+   "date": "2014-06",
+   "title": "Generative adversarial networks",
+   "kind": "research",
+   "layers": [
+    "architecture",
+    "apps"
+   ],
+   "summary": "Goodfellow et al. introduced GANs, training a generator against a discriminator.",
+   "significance": "Interpretation: Opened modern generative modeling of images; the generative lineage later passed to diffusion models in 2021-22.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-47"
+   ]
+  },
+  {
+   "id": "evt-2014-superintelligence",
+   "date": "2014-07",
+   "title": "Bostrom's 'Superintelligence' frames AI existential risk",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "Nick Bostrom published Superintelligence, arguing advanced AI could pose an existential risk.",
+   "significance": "Interpretation: Gave a then-fringe risk concern an academic vocabulary that influenced OpenAI's founders and, later, the 2023 statements on extinction risk.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-50"
+   ]
+  },
+  {
+   "id": "evt-2014-seq2seq-attention",
+   "date": "2014-09",
+   "title": "Sequence-to-sequence learning and attention",
+   "kind": "research",
+   "layers": [
+    "architecture"
+   ],
+   "summary": "Sutskever, Vinyals and Le published LSTM encoder-decoder translation; Bahdanau, Cho and Bengio introduced attention the same month.",
+   "significance": "Interpretation: Established end-to-end neural language generation; attention became the core of the Transformer three years later.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-48",
+    "ev-ctx-49"
+   ]
+  },
+  {
+   "id": "evt-2015-tensorflow",
+   "date": "2015-11",
+   "title": "Google open-sources TensorFlow",
+   "kind": "product",
+   "layers": [
+    "platforms"
+   ],
+   "summary": "Google released TensorFlow as open source on 9 November 2015.",
+   "significance": "Interpretation: Treated frameworks as strategic distribution for cloud and talent; frameworks then commoditized (PyTorch overtook TensorFlow in research).",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-51"
+   ]
+  },
+  {
+   "id": "evt-2015-resnet",
+   "date": "2015-12",
+   "title": "ResNet surpasses estimated human ImageNet error",
+   "kind": "research",
+   "layers": [
+    "architecture",
+    "training"
+   ],
+   "summary": "Microsoft Research's 152-layer residual networks won ILSVRC 2015 with 3.57% top-5 error.",
+   "significance": "Interpretation: Residual connections made very deep networks trainable and became a component of the Transformer; vision benchmarks began to saturate.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-52",
+    "ev-ctx-36"
+   ]
+  },
+  {
+   "id": "evt-2015-openai-founded",
+   "date": "2015-12",
+   "title": "OpenAI founded as non-profit with $1B pledged",
+   "kind": "org",
+   "layers": [
+    "economics",
+    "society",
+    "models"
+   ],
+   "summary": "OpenAI launched as a non-profit research company with $1 billion in total commitments from Altman, Musk, Brockman, Thiel, Hoffman, AWS, Infosys and others.",
+   "significance": "Interpretation: Created a lab explicitly aimed at AGI outside big tech; its later scaling bet and capital structure reshaped the industry.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-53"
+   ]
+  },
+  {
+   "id": "evt-2016-alphago",
+   "date": "2016-03",
+   "title": "AlphaGo defeats Lee Sedol 4-1",
+   "kind": "research",
+   "layers": [
+    "agents",
+    "training",
+    "society"
+   ],
+   "summary": "DeepMind's AlphaGo beat Lee Sedol 4-1 in Seoul in March 2016, years before many experts expected Go to fall.",
+   "significance": "Interpretation: A public 'Sputnik moment', especially in China and Korea, that raised AI to a national-strategy priority.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-54"
+   ]
+  },
+  {
+   "id": "evt-2016-pascal-dgx1",
+   "date": "2016-04",
+   "title": "NVIDIA Pascal P100 and DGX-1; first DGX-1 to OpenAI",
+   "kind": "infra",
+   "layers": [
+    "semis",
+    "cloud"
+   ],
+   "summary": "NVIDIA launched the P100 and DGX-1 system for deep learning; Jensen Huang delivered the first DGX-1 to OpenAI in August 2016.",
+   "significance": "Interpretation: NVIDIA repositioned from gaming to deep-learning systems; its FY2017 filing attributed 145% datacenter growth to deep learning training.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-55",
+    "ev-ctx-8"
+   ]
+  },
+  {
+   "id": "evt-2016-tpu",
+   "date": "2016-05",
+   "title": "Google discloses the TPU",
+   "kind": "infra",
+   "layers": [
+    "semis",
+    "inference",
+    "cloud"
+   ],
+   "summary": "Google revealed it had used custom Tensor Processing Units for inference in its data centers for over a year.",
+   "significance": "Interpretation: First evidence that hyperscalers would design their own AI silicon; the TPU line later trained PaLM and Gemini.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-56"
+   ]
+  },
+  {
+   "id": "evt-2016-deepmind-cooling",
+   "date": "2016-07",
+   "title": "DeepMind ML cuts Google data-center cooling energy by up to 40%",
+   "kind": "infra",
+   "layers": [
+    "energy",
+    "cloud"
+   ],
+   "summary": "DeepMind reported its system reduced energy used for cooling in Google data centers by up to 40%.",
+   "significance": "Interpretation: Energy entered the AI story as an application area, not yet as a binding constraint on AI itself.",
+   "magnitude": 2,
+   "evidenceIds": [
+    "ev-ctx-57"
+   ]
+  },
+  {
+   "id": "evt-2017-volta-v100",
+   "date": "2017-05",
+   "title": "NVIDIA Volta V100 with Tensor Cores",
+   "kind": "infra",
+   "layers": [
+    "semis"
+   ],
+   "summary": "NVIDIA introduced the Volta V100 with Tensor Cores; it began shipping in the first half of NVIDIA fiscal 2018 and drove datacenter revenue to $1.93B, up 133%.",
+   "significance": "Interpretation: Dedicated matrix-math units made GPUs AI-specific accelerators, widening NVIDIA's lead over CPUs.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-7"
+   ]
+  },
+  {
+   "id": "evt-2017-ai-first",
+   "date": "2017-05",
+   "title": "Google declares an 'AI-first' strategy at I/O",
+   "kind": "market",
+   "layers": [
+    "distribution",
+    "apps",
+    "cloud"
+   ],
+   "summary": "Sundar Pichai described Google's shift from mobile-first to AI-first and announced Cloud TPUs.",
+   "significance": "Interpretation: Defined the period's belief that incumbents with users and data would capture AI value by embedding it in existing products.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-60"
+   ]
+  },
+  {
+   "id": "evt-2017-transformer",
+   "date": "2017-06",
+   "title": "'Attention Is All You Need': the Transformer",
+   "kind": "research",
+   "layers": [
+    "architecture",
+    "training"
+   ],
+   "summary": "Google researchers introduced the Transformer, built entirely on attention.",
+   "significance": "Interpretation: Its parallelizable architecture made scaling on GPUs/TPUs efficient and became the substrate of every later foundation model.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-59"
+   ]
+  },
+  {
+   "id": "evt-2017-china-aidp",
+   "date": "2017-07",
+   "title": "China's New Generation AI Development Plan",
+   "kind": "policy",
+   "layers": [
+    "society",
+    "economics"
+   ],
+   "summary": "China's State Council set a goal of world leadership in AI by 2030 with a core industry over 1 trillion yuan.",
+   "significance": "Interpretation: Turned AI into an explicit US-China strategic competition, foreshadowing chip export controls.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-61"
+   ]
+  },
+  {
+   "id": "evt-2017-alphago-zero",
+   "date": "2017-10",
+   "title": "AlphaGo Zero and AlphaZero: superhuman play from self-play",
+   "kind": "research",
+   "layers": [
+    "agents",
+    "training"
+   ],
+   "summary": "AlphaGo Zero (Oct 2017) learned Go without human data; AlphaZero (Dec 2017) generalized to chess and shogi. AlphaGo Zero remained the largest training run by compute until August 2021 (Epoch).",
+   "significance": "Interpretation: Reinforced the belief that RL plus search, not language modeling, was the frontier path; RL returned in 2024-25 inside LLM reasoning.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-62",
+    "ev-ctx-63",
+    "ev-ctx-29"
+   ]
+  },
+  {
+   "id": "evt-2018-ai-and-compute",
+   "date": "2018-05",
+   "title": "OpenAI 'AI and Compute': 3.4-month doubling",
+   "kind": "research",
+   "layers": [
+    "cloud",
+    "training",
+    "economics"
+   ],
+   "summary": "OpenAI estimated compute in the largest training runs had grown more than 300,000x since 2012, doubling every 3.4 months.",
+   "significance": "Interpretation: Reframed AI progress as a compute-supply story, the intellectual basis for OpenAI's capital-raising strategy.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-28"
+   ]
+  },
+  {
+   "id": "evt-2018-elmo-gpt1-bert",
+   "date": "2018-10",
+   "title": "Pretrain-then-fine-tune: ELMo, GPT-1, BERT",
+   "kind": "research",
+   "layers": [
+    "architecture",
+    "training",
+    "models"
+   ],
+   "summary": "ELMo (Feb 2018), OpenAI's GPT-1 (Jun 2018) and Google's BERT (Oct 2018) showed self-supervised pretraining on unlabeled text transfers to many tasks.",
+   "significance": "Interpretation: Made language-model pretraining the NLP default; BERT was the consensus winner, while GPT's generative decoder approach was the minority that later dominated.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-64",
+    "ev-ctx-65",
+    "ev-ctx-66"
+   ]
+  },
+  {
+   "id": "evt-2019-gpt2",
+   "date": "2019-02",
+   "title": "GPT-2 and staged release",
+   "kind": "model",
+   "layers": [
+    "models",
+    "society"
+   ],
+   "summary": "OpenAI announced the 1.5B-parameter GPT-2 and initially withheld the full weights over misuse concerns, releasing it in stages through November 2019.",
+   "significance": "Interpretation: First time a lab treated a language model's capability as a release-policy question; previewed later open vs closed debates.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-67"
+   ]
+  },
+  {
+   "id": "evt-2019-openai-lp",
+   "date": "2019-03",
+   "title": "OpenAI LP 'capped-profit' structure",
+   "kind": "capital",
+   "layers": [
+    "economics",
+    "society"
+   ],
+   "summary": "OpenAI created a capped-profit company governed by its non-profit, capping first-round returns at 100x.",
+   "significance": "Interpretation: Acknowledged that frontier AI needs billions in capital; the hybrid governance later produced the November 2023 board crisis.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-68"
+   ]
+  },
+  {
+   "id": "evt-2019-mellanox",
+   "date": "2019-03",
+   "title": "NVIDIA agrees to buy Mellanox for $6.9B",
+   "kind": "infra",
+   "layers": [
+    "semis",
+    "cloud"
+   ],
+   "summary": "NVIDIA agreed to acquire interconnect maker Mellanox; it closed in April 2020 and contributed 10% of NVIDIA revenue in FY2021.",
+   "significance": "Interpretation: Extended NVIDIA from chips to data-center systems; networking became part of its moat in the cluster era.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-71",
+    "ev-ctx-4"
+   ]
+  },
+  {
+   "id": "evt-2019-bitter-lesson",
+   "date": "2019-03",
+   "title": "Sutton's 'The Bitter Lesson'",
+   "kind": "research",
+   "layers": [
+    "training",
+    "architecture"
+   ],
+   "summary": "Richard Sutton argued that general methods leveraging computation ultimately beat human-knowledge-based approaches.",
+   "significance": "Interpretation: Became the canonical statement of the scaling worldview, still a minority position in academia at the time.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-69"
+   ]
+  },
+  {
+   "id": "evt-2019-huawei-entity-list",
+   "date": "2019-05",
+   "title": "US adds Huawei to the Entity List",
+   "kind": "policy",
+   "layers": [
+    "semis",
+    "society"
+   ],
+   "summary": "The US Commerce Department restricted Huawei's access to US-origin technology.",
+   "significance": "Interpretation: Started using semiconductor supply chains as a geopolitical weapon, the template for the 2022 AI chip controls.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-72"
+   ]
+  },
+  {
+   "id": "evt-2019-strubell-energy",
+   "date": "2019-06",
+   "title": "Strubell et al. quantify energy cost of NLP training",
+   "kind": "research",
+   "layers": [
+    "energy",
+    "society"
+   ],
+   "summary": "An ACL 2019 paper estimated the energy and carbon costs of training large NLP models.",
+   "significance": "Interpretation: First widely cited warning that AI's energy footprint mattered, though at 2019 scale it was framed as an environmental concern, not a capacity constraint.",
+   "magnitude": 2,
+   "evidenceIds": [
+    "ev-ctx-121"
+   ]
+  },
+  {
+   "id": "evt-2019-microsoft-openai-1b",
+   "date": "2019-07",
+   "title": "Microsoft invests $1B in OpenAI",
+   "kind": "capital",
+   "layers": [
+    "cloud",
+    "economics"
+   ],
+   "summary": "Microsoft invested $1B in OpenAI, with Azure as exclusive cloud provider.",
+   "significance": "Interpretation: Created the hyperscaler-lab coupling (compute for equity and exclusivity) that defined frontier AI economics afterwards.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-73"
+   ]
+  },
+  {
+   "id": "evt-2020-scaling-laws",
+   "date": "2020-01",
+   "title": "Kaplan et al. 'Scaling Laws for Neural Language Models'",
+   "kind": "research",
+   "layers": [
+    "training",
+    "economics"
+   ],
+   "summary": "OpenAI showed language-model loss falls as a smooth power law in parameters, data and compute over more than seven orders of magnitude.",
+   "significance": "Interpretation: Made capability gains predictable enough to justify large capital commitments; its parameter-heavy recipe was revised by Chinchilla in 2022.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-34"
+   ]
+  },
+  {
+   "id": "evt-2020-azure-supercomputer",
+   "date": "2020-05",
+   "title": "Microsoft's Azure supercomputer for OpenAI",
+   "kind": "infra",
+   "layers": [
+    "cloud",
+    "semis"
+   ],
+   "summary": "Microsoft said it built for OpenAI one of the world's top five supercomputers with 285,000+ CPU cores and 10,000 GPUs. The same month NVIDIA launched the A100.",
+   "significance": "Interpretation: Bespoke hyperscaler clusters for one lab became the unit of frontier competition.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-131",
+    "ev-ctx-75"
+   ]
+  },
+  {
+   "id": "evt-2020-gpt3",
+   "date": "2020-05",
+   "title": "GPT-3 and the OpenAI API",
+   "kind": "model",
+   "layers": [
+    "models",
+    "platforms",
+    "inference"
+   ],
+   "summary": "OpenAI published GPT-3 (175B parameters, ~3.14e23 FLOP) showing few-shot in-context learning, and opened a commercial API in June 2020. Microsoft took an exclusive license to GPT-3 in September 2020.",
+   "significance": "Interpretation: Demonstrated that one general model could be prompted for many tasks, and introduced model-as-API as a business.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-33",
+    "ev-ctx-74",
+    "ev-ctx-76"
+   ]
+  },
+  {
+   "id": "evt-2020-alphafold2",
+   "date": "2020-11",
+   "title": "AlphaFold 2 at CASP14",
+   "kind": "research",
+   "layers": [
+    "apps",
+    "society"
+   ],
+   "summary": "DeepMind's AlphaFold 2 reached a median GDT of ~92.4 at CASP14, competitive with experimental structure determination for many proteins.",
+   "significance": "Interpretation: Strongest evidence yet of AI producing scientific value; recognized with the 2024 Nobel Prize in Chemistry (hindsight).",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-77"
+   ]
+  },
+  {
+   "id": "evt-2021-chip-shortage",
+   "date": "2021-02",
+   "title": "Global semiconductor shortage",
+   "kind": "market",
+   "layers": [
+    "semis"
+   ],
+   "summary": "Pandemic demand shifts and supply disruptions produced a chip shortage that cut auto production through 2021.",
+   "significance": "Interpretation: Made semiconductor supply chains a political issue, feeding the CHIPS Act; AI-specific supply limits (CoWoS, HBM) arrived later.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-86"
+   ]
+  },
+  {
+   "id": "evt-2021-eu-ai-act-proposal",
+   "date": "2021-04",
+   "title": "European Commission proposes the AI Act",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "The Commission proposed a risk-based regulation for AI systems.",
+   "significance": "Interpretation: Its pre-LLM, use-case-based design had to be retrofitted for general-purpose models in 2023.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-80"
+   ]
+  },
+  {
+   "id": "evt-2021-anthropic",
+   "date": "2021-05",
+   "title": "Anthropic founded ($124M Series A)",
+   "kind": "org",
+   "layers": [
+    "models",
+    "society",
+    "economics"
+   ],
+   "summary": "Former OpenAI researchers including Dario and Daniela Amodei announced Anthropic with a $124M Series A.",
+   "significance": "Interpretation: Institutionalized 'safety-focused scaling' and created a third frontier lab later backed by Amazon and Google.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-81"
+   ]
+  },
+  {
+   "id": "evt-2021-copilot-preview",
+   "date": "2021-06",
+   "title": "GitHub Copilot technical preview",
+   "kind": "product",
+   "layers": [
+    "apps",
+    "distribution"
+   ],
+   "summary": "GitHub launched a Copilot preview powered by OpenAI Codex; general availability followed June 2022 at $10/month.",
+   "significance": "Interpretation: First mass-market paid LLM product, showing coding as the first high-value use case and incumbents' distribution advantage.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-82"
+   ]
+  },
+  {
+   "id": "evt-2021-foundation-models",
+   "date": "2021-08",
+   "title": "'On the Opportunities and Risks of Foundation Models'",
+   "kind": "research",
+   "layers": [
+    "models",
+    "society"
+   ],
+   "summary": "Stanford CRFM coined 'foundation models' for broadly trained models adaptable to many tasks.",
+   "significance": "Interpretation: Gave academia and policymakers a shared frame; the term later entered the EU AI Act and US EO.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-83"
+   ]
+  },
+  {
+   "id": "evt-2022-chain-of-thought",
+   "date": "2022-01",
+   "title": "Chain-of-thought prompting",
+   "kind": "research",
+   "layers": [
+    "agents",
+    "inference"
+   ],
+   "summary": "Wei et al. showed prompting large models with intermediate reasoning steps sharply improved reasoning performance.",
+   "significance": "Interpretation: First evidence that spending more inference tokens on reasoning raises capability, the seed of 2024-25 reasoning models.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-115"
+   ]
+  },
+  {
+   "id": "evt-2022-h100",
+   "date": "2022-03",
+   "title": "NVIDIA announces H100 (Hopper)",
+   "kind": "infra",
+   "layers": [
+    "semis"
+   ],
+   "summary": "NVIDIA announced the H100 with a Transformer Engine supporting FP8.",
+   "significance": "Interpretation: The chip of the generative-AI boom; demand for it in 2023 far exceeded supply.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-87"
+   ]
+  },
+  {
+   "id": "evt-2022-instructgpt",
+   "date": "2022-03",
+   "title": "InstructGPT: RLHF makes small models preferred over GPT-3",
+   "kind": "research",
+   "layers": [
+    "training",
+    "models"
+   ],
+   "summary": "OpenAI showed outputs of a 1.3B RLHF-tuned model were preferred over 175B GPT-3.",
+   "significance": "Interpretation: Post-training, not only pretraining scale, became a key lever for usefulness.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-116"
+   ]
+  },
+  {
+   "id": "evt-2022-chinchilla",
+   "date": "2022-03",
+   "title": "Chinchilla compute-optimal scaling",
+   "kind": "research",
+   "layers": [
+    "training",
+    "data",
+    "inference"
+   ],
+   "summary": "DeepMind's 70B Chinchilla, trained on 1.4T tokens with Gopher's compute, outperformed Gopher (280B) and GPT-3.",
+   "significance": "Interpretation: Shifted the bottleneck from parameters to training data and made smaller, cheaper-to-serve models the target.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-35"
+   ]
+  },
+  {
+   "id": "evt-2022-palm",
+   "date": "2022-04",
+   "title": "PaLM 540B on Pathways/TPU v4",
+   "kind": "model",
+   "layers": [
+    "models",
+    "semis",
+    "cloud"
+   ],
+   "summary": "Google trained the 540B dense PaLM on 6,144 TPU v4 chips (~2.56e24 FLOP).",
+   "significance": "Interpretation: Showed Google's vertically integrated TPU stack was competitive at the frontier.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-88"
+   ]
+  },
+  {
+   "id": "evt-2022-image-diffusion",
+   "date": "2022-08",
+   "title": "Diffusion image generation goes public: DALL-E 2, Midjourney, Stable Diffusion",
+   "kind": "product",
+   "layers": [
+    "apps",
+    "models",
+    "data"
+   ],
+   "summary": "DALL-E 2 (April), Midjourney's open beta (July) and the openly licensed Stable Diffusion weights (22 Aug 2022) brought text-to-image generation to the public. They built on CLIP/DALL-E (Jan 2021) and open datasets such as LAION-5B.",
+   "significance": "Interpretation: First consumer generative-AI wave and first proof open weights could spread a capability overnight; 'generative AI' became an investment category before ChatGPT.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-89",
+    "ev-ctx-90",
+    "ev-ctx-91",
+    "ev-ctx-78",
+    "ev-ctx-129"
+   ]
+  },
+  {
+   "id": "evt-2022-chips-act",
+   "date": "2022-08",
+   "title": "CHIPS and Science Act",
+   "kind": "policy",
+   "layers": [
+    "semis",
+    "society"
+   ],
+   "summary": "The US enacted roughly $52.7B in semiconductor support including ~$39B in manufacturing incentives.",
+   "significance": "Interpretation: Industrial policy aimed at physical supply-chain resilience, a precursor to treating AI infrastructure as national infrastructure.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-92"
+   ]
+  },
+  {
+   "id": "evt-2022-export-controls",
+   "date": "2022-10",
+   "title": "US export controls on advanced AI chips to China",
+   "kind": "policy",
+   "layers": [
+    "semis",
+    "society"
+   ],
+   "summary": "BIS restricted exports to China of A100/H100-class AI chips and advanced chipmaking equipment.",
+   "significance": "Interpretation: Made compute access an instrument of state power and split the AI hardware market geographically.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-93"
+   ]
+  },
+  {
+   "id": "evt-2022-chatgpt",
+   "date": "2022-11",
+   "title": "ChatGPT launches",
+   "kind": "product",
+   "layers": [
+    "apps",
+    "distribution",
+    "models",
+    "economics"
+   ],
+   "summary": "OpenAI released ChatGPT, fine-tuned from GPT-3.5 with RLHF, as a free research preview on 30 Nov 2022; UBS estimated 100M monthly users by January 2023.",
+   "significance": "Interpretation: Turned LLMs from a developer API into a mass consumer product and triggered the capital and policy response of 2023.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-94",
+    "ev-ctx-95"
+   ]
+  },
+  {
+   "id": "evt-2023-microsoft-openai-10b",
+   "date": "2023-01",
+   "title": "Microsoft's multibillion investment in OpenAI",
+   "kind": "capital",
+   "layers": [
+    "economics",
+    "cloud"
+   ],
+   "summary": "Microsoft announced a multiyear, multibillion-dollar investment in OpenAI, widely reported as $10B.",
+   "significance": "Interpretation: Set the template of hyperscaler capital in exchange for compute consumption and model rights.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-96"
+   ]
+  },
+  {
+   "id": "evt-2023-bing-chat",
+   "date": "2023-02",
+   "title": "Microsoft launches GPT-powered Bing",
+   "kind": "product",
+   "layers": [
+    "distribution",
+    "apps"
+   ],
+   "summary": "Microsoft launched Bing chat on a next-generation OpenAI model (later confirmed as GPT-4).",
+   "significance": "Interpretation: Opened the incumbent-distribution battle over search; Google's search share proved more resilient than expected (hindsight).",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-114"
+   ]
+  },
+  {
+   "id": "evt-2023-llama",
+   "date": "2023-02",
+   "title": "Meta LLaMA released and weights leak",
+   "kind": "model",
+   "layers": [
+    "models",
+    "platforms"
+   ],
+   "summary": "Meta released LLaMA (7B-65B) under a research license; LLaMA-13B outperformed GPT-3 on most benchmarks; weights leaked publicly in early March.",
+   "significance": "Interpretation: Launched the open-weight ecosystem; capability at a given size became reproducible and commoditizing.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-97"
+   ]
+  },
+  {
+   "id": "evt-2023-gpt4",
+   "date": "2023-03",
+   "title": "GPT-4",
+   "kind": "model",
+   "layers": [
+    "models",
+    "apps"
+   ],
+   "summary": "OpenAI announced GPT-4 on 14 March 2023, with near-human results on many professional exams and no disclosure of size, compute or data; Epoch estimates ~2e25 FLOP.",
+   "significance": "Interpretation: Set the frontier benchmark that competitors took most of 2023 to approach; ended routine disclosure of training details.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-98",
+    "ev-ctx-30"
+   ]
+  },
+  {
+   "id": "evt-2023-cais-statement",
+   "date": "2023-05",
+   "title": "CAIS one-sentence statement on extinction risk",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "Hundreds of researchers and lab leaders signed a statement that mitigating AI extinction risk should be a global priority alongside pandemics and nuclear war. It followed the FLI 'pause' letter (22 Mar 2023) and Geoffrey Hinton's departure from Google to speak about AI risk (1 May 2023).",
+   "significance": "Interpretation: Lab CEOs publicly endorsing extinction-risk framing helped set up the Bletchley summit and the EO.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-101",
+    "ev-ctx-99",
+    "ev-ctx-100"
+   ]
+  },
+  {
+   "id": "evt-2023-llama2",
+   "date": "2023-07",
+   "title": "Llama 2 open weights for commercial use",
+   "kind": "model",
+   "layers": [
+    "models",
+    "platforms",
+    "distribution"
+   ],
+   "summary": "Meta released Llama 2 (7B-70B) with chat variants, free for most commercial use, with Microsoft as preferred partner.",
+   "significance": "Interpretation: Legitimized open weights as a corporate strategy (commoditize the complement).",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-103"
+   ]
+  },
+  {
+   "id": "evt-2023-nvidia-q2fy24",
+   "date": "2023-08",
+   "title": "NVIDIA data-center revenue doubles in a quarter amid H100 shortage",
+   "kind": "market",
+   "layers": [
+    "semis",
+    "cloud",
+    "economics"
+   ],
+   "summary": "NVIDIA reported $10.32B quarterly data-center revenue, more than double the prior quarter, with H100 supply constrained; FY2024 data-center revenue reached $47.5B, up 217%. NVIDIA had briefly passed a $1T market value on 30 May 2023.",
+   "significance": "Interpretation: The ChatGPT demand shock showed up first and most clearly in GPU revenue.",
+   "magnitude": 5,
+   "evidenceIds": [
+    "ev-ctx-105",
+    "ev-ctx-1",
+    "ev-ctx-102"
+   ]
+  },
+  {
+   "id": "evt-2023-amazon-anthropic",
+   "date": "2023-09",
+   "title": "Amazon to invest up to $4B in Anthropic",
+   "kind": "capital",
+   "layers": [
+    "economics",
+    "cloud",
+    "semis"
+   ],
+   "summary": "Amazon agreed to invest up to $4B in Anthropic, with AWS as primary cloud and use of Trainium/Inferentia chips.",
+   "significance": "Interpretation: Every hyperscaler now had a frontier-lab partner; custom silicon was part of the deal.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-106"
+   ]
+  },
+  {
+   "id": "evt-2023-biden-eo",
+   "date": "2023-10",
+   "title": "US Executive Order 14110 on AI",
+   "kind": "policy",
+   "layers": [
+    "society",
+    "training"
+   ],
+   "summary": "The order required developers of models trained above 1e26 operations to report training and red-teaming to the government.",
+   "significance": "Interpretation: First US rule keyed to training compute, treating FLOP as a regulatory proxy for risk; revoked in January 2025 (hindsight).",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-107"
+   ]
+  },
+  {
+   "id": "evt-2023-bletchley",
+   "date": "2023-11",
+   "title": "Bletchley Park AI Safety Summit",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "28 countries plus the EU, including the US and China, signed the Bletchley Declaration on frontier AI risks on 1-2 Nov 2023.",
+   "significance": "Interpretation: First intergovernmental agreement on frontier AI risk; spawned national AI safety institutes.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-108"
+   ]
+  },
+  {
+   "id": "evt-2023-devday-gpt4-turbo",
+   "date": "2023-11",
+   "title": "OpenAI DevDay: GPT-4 Turbo price cut, GPTs, Assistants API",
+   "kind": "product",
+   "layers": [
+    "inference",
+    "platforms",
+    "agents"
+   ],
+   "summary": "OpenAI launched GPT-4 Turbo at $10/$30 per 1M input/output tokens (a third and a half of GPT-4's launch prices) plus custom GPTs and an Assistants API.",
+   "significance": "Interpretation: Price per capability began falling fast; OpenAI tried to become a platform rather than only a model vendor.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-27",
+    "ev-ctx-26"
+   ]
+  },
+  {
+   "id": "evt-2023-openai-board-crisis",
+   "date": "2023-11",
+   "title": "OpenAI board fires and reinstates Sam Altman",
+   "kind": "org",
+   "layers": [
+    "society",
+    "economics"
+   ],
+   "summary": "OpenAI's non-profit board removed Altman on 17 Nov 2023; after a staff revolt and Microsoft's offer to hire them, he returned with a new board on 21-22 Nov.",
+   "significance": "Interpretation: Showed that capital, compute partners and talent outweighed non-profit governance at frontier labs.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-109"
+   ]
+  },
+  {
+   "id": "evt-2023-gemini",
+   "date": "2023-12",
+   "title": "Google launches Gemini 1.0",
+   "kind": "model",
+   "layers": [
+    "models",
+    "semis",
+    "distribution"
+   ],
+   "summary": "Google DeepMind announced Gemini 1.0 (Ultra, Pro, Nano), natively multimodal and trained on TPUs.",
+   "significance": "Interpretation: Google's first credible GPT-4-class response; signalled the frontier would be a multi-player race.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-110"
+   ]
+  },
+  {
+   "id": "evt-2023-eu-ai-act-deal",
+   "date": "2023-12",
+   "title": "EU AI Act political agreement",
+   "kind": "policy",
+   "layers": [
+    "society"
+   ],
+   "summary": "EU co-legislators reached a provisional agreement on the AI Act, adding obligations for general-purpose AI models.",
+   "significance": "Interpretation: First comprehensive binding AI law, retrofitted for foundation models.",
+   "magnitude": 4,
+   "evidenceIds": [
+    "ev-ctx-111"
+   ]
+  },
+  {
+   "id": "evt-2023-mixtral",
+   "date": "2023-12",
+   "title": "Mistral's Mixtral 8x7B open sparse MoE",
+   "kind": "model",
+   "layers": [
+    "architecture",
+    "models",
+    "inference"
+   ],
+   "summary": "Mistral released Mixtral 8x7B under Apache 2.0, a sparse mixture-of-experts using ~13B of ~47B parameters per token, matching or beating GPT-3.5 on many benchmarks.",
+   "significance": "Interpretation: Brought MoE into the open-weight mainstream and showed GPT-3.5-class quality had become cheap and widely available.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-112",
+    "ev-ctx-79"
+   ]
+  },
+  {
+   "id": "evt-2023-nyt-lawsuit",
+   "date": "2023-12",
+   "title": "New York Times sues OpenAI and Microsoft",
+   "kind": "policy",
+   "layers": [
+    "data",
+    "society"
+   ],
+   "summary": "The NYT filed a copyright suit alleging unlicensed use of its articles for model training.",
+   "significance": "Interpretation: Turned training-data provenance into a legal and commercial bottleneck, pushing labs toward data licensing.",
+   "magnitude": 3,
+   "evidenceIds": [
+    "ev-ctx-113"
+   ]
+  }
+ ],
+ "periods": [
+  {
+   "id": "p2012",
+   "label": "Deep learning becomes practical",
+   "range": [
+    "2012-01",
+    "2016-12"
+   ],
+   "boundaryRationale": "Starts with the 2012 demonstrations that scale works: Google's unsupervised 'cat' network (June 2012) and AlexNet's ILSVRC win (results autumn 2012, 15.3% vs 26.2% top-5 error). Ends before the Transformer (June 2017). Proposed revision: the substantive boundary is 2017-06 (Transformer) rather than 2016-12; Jan-May 2017 (PyTorch release, V100 announcement, Google's 'AI-first' I/O) still belongs to the vision/RL-centric, supervised-learning worldview. Keeping 2016-12 is acceptable for charting by calendar year.",
+   "consensus": "Deep neural networks trained on GPUs with large labeled datasets had overtaken hand-engineered features in vision and speech, and ImageNet-style supervised learning was the paradigm. Big tech treated deep learning as a capability to embed in existing products (search, ads, photos, speech, translation) and competed mainly for scarce researchers through acqui-hires. Deep reinforcement learning on games (DQN, AlphaGo) was widely seen as the path toward more general agents; talk of AGI was confined to DeepMind, the newly founded OpenAI and a small community.",
+   "minorityViews": [
+    {
+     "view": "Scaling hypothesis: simply training much larger networks on much more data would keep producing qualitatively better results; AGI timelines driven by compute growth.",
+     "heldBy": "Ilya Sutskever (NeurIPS 2014 seq2seq talk framing), Shane Legg (~2028 AGI forecasts), DeepMind/OpenAI founders",
+     "laterImportance": "Hindsight: became the operating thesis of OpenAI (2018-2020) and the basis for scaling-law-driven investment; largest-run compute grew ~300,000x 2012-2018."
+    },
+    {
+     "view": "Unsupervised/predictive (self-supervised) learning, not labeled supervision or RL, is where most learning should come from ('the cake').",
+     "heldBy": "Yann LeCun (NeurIPS 2016), Mikolov et al. via word2vec",
+     "laterImportance": "Hindsight: self-supervised next-token pretraining became the core of all foundation models; RL ended up as the 'cherry' in RLHF and later reasoning training."
+    },
+    {
+     "view": "Advanced AI poses existential risk and control must be solved in advance.",
+     "heldBy": "Nick Bostrom, Eliezer Yudkowsky, Stuart Russell, Elon Musk; Amodei et al. framed practical ML safety problems (2016)",
+     "laterImportance": "Hindsight: mainstreamed in 2023 (CAIS statement, Bletchley, EO 14110) and shaped OpenAI's and Anthropic's founding."
+    }
+   ],
+   "technologies": [
+    "CUDA/cuDNN on NVIDIA GPUs (Kepler, Maxwell, Pascal P100)",
+    "Google TPU v1 (inference)",
+    "TensorFlow (open-sourced Nov 2015), Theano, Caffe, Torch",
+    "ImageNet and large labeled datasets",
+    "word2vec embeddings",
+    "Deep reinforcement learning with Monte Carlo tree search (AlphaGo)"
+   ],
+   "architectures": [
+    "Convolutional neural networks (AlexNet, VGG, GoogLeNet, ResNet)",
+    "LSTM/RNN encoder-decoders with attention (seq2seq, GNMT)",
+    "GANs and VAEs for generation",
+    "Deep Q-networks and policy/value networks"
+   ],
+   "bottlenecks": [
+    {
+     "item": "Labeled training data",
+     "kind": "technical",
+     "note": "Supervised learning required costly human labels; ImageNet-scale labeling was the template."
+    },
+    {
+     "item": "Scarce deep-learning talent",
+     "kind": "commercial",
+     "note": "A few dozen experts; firms acquired whole labs (DNNresearch 2013, DeepMind 2014)."
+    },
+    {
+     "item": "GPU memory and single-node training",
+     "kind": "physical",
+     "note": "AlexNet was split across two GPUs; distributed training was immature."
+    },
+    {
+     "item": "Language understanding",
+     "kind": "technical",
+     "note": "NLP systems remained task-specific; no general text model existed."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Hiring and acqui-hiring top researchers",
+    "Proprietary user data from consumer platforms (data network effects)",
+    "Owning the dominant open-source framework (TensorFlow) to steer developers to one's cloud",
+    "Game-playing RL as a demonstration of general intelligence"
+   ],
+   "actualAdvantage": [
+    "Interpretation (hindsight 2026): NVIDIA's GPU-plus-CUDA position; its FY2017 filing already attributed 145% datacenter growth to deep learning training (ev-ctx-8), and datacenter revenue grew from about $0.83B (FY2017) to $47.5B (FY2024).",
+    "Interpretation: in-house research culture and custom silicon at Google (Transformer, TPU) created the technical base for the next decade, though much of the early commercial value from the Transformer was captured by OpenAI and Microsoft.",
+    "Interpretation: frameworks commoditized (PyTorch overtook TensorFlow in research), so 'owning the framework' proved not to be a durable moat."
+   ],
+   "investment": "Global corporate AI investment (AI Index, broad definition incl. M&A) was $14.57B in 2013 (ev-ctx-20). NVIDIA's datacenter segment was small: about $0.34B in FY2016 (recalled) rising to $0.83B in FY2017 (ev-ctx-9). Capital went mainly to talent acquisitions (DeepMind, reported ~$400-650M) and to in-house labs at Google, Facebook, Microsoft and Baidu. OpenAI launched with $1B pledged (Dec 2015).",
+   "layers": {
+    "energy": {
+     "state": "Not a constraint; energy appeared only as an application (DeepMind cut Google data-center cooling energy by up to 40%).",
+     "heat": 0
+    },
+    "semis": {
+     "state": "Gaming GPUs repurposed for deep learning; NVIDIA launched P100/DGX-1 and Google disclosed the TPU.",
+     "heat": 2
+    },
+    "cloud": {
+     "state": "Training on single servers or small in-house clusters; cloud GPU instances were nascent.",
+     "heat": 1
+    },
+    "data": {
+     "state": "Labeled datasets (ImageNet) were the key input; web text was used only for embeddings.",
+     "heat": 2
+    },
+    "architecture": {
+     "state": "CNNs dominated vision; LSTMs with attention dominated sequences; ResNet enabled very deep networks.",
+     "heat": 3
+    },
+    "training": {
+     "state": "Supervised learning with backprop on GPUs; deep RL with self-play and search for games.",
+     "heat": 3
+    },
+    "inference": {
+     "state": "Served inside products (photo tagging, speech, translation) at low marginal cost; TPU v1 built for inference.",
+     "heat": 1
+    },
+    "models": {
+     "state": "Task-specific models; no general-purpose foundation models.",
+     "heat": 1
+    },
+    "platforms": {
+     "state": "Frameworks (Theano, Caffe, Torch, TensorFlow) became the developer layer.",
+     "heat": 2
+    },
+    "agents": {
+     "state": "Game-playing RL agents (DQN, AlphaGo) were the showcase of agency.",
+     "heat": 2
+    },
+    "apps": {
+     "state": "Features in existing products: image search, speech recognition, translation, recommendations.",
+     "heat": 2
+    },
+    "distribution": {
+     "state": "AI shipped invisibly through incumbent consumer platforms.",
+     "heat": 1
+    },
+    "economics": {
+     "state": "Talent acqui-hires and in-house labs; little standalone AI revenue.",
+     "heat": 2
+    },
+    "society": {
+     "state": "Concern limited to existential-risk writers and early fairness/privacy critics; AlphaGo raised national attention in Asia.",
+     "heat": 1
+    }
+   },
+   "commoditized": [
+    "Image classification (benchmark saturated after ResNet)",
+    "Deep learning frameworks",
+    "Word embeddings"
+   ],
+   "underestimated": [
+    "Speed of progress once compute scaled (AlphaGo beat Lee Sedol years before many forecasts)",
+    "Language as the main frontier, versus vision and RL",
+    "NVIDIA's datacenter business"
+   ],
+   "evidenceIds": [
+    "ev-ctx-40",
+    "ev-ctx-41",
+    "ev-ctx-42",
+    "ev-ctx-43",
+    "ev-ctx-44",
+    "ev-ctx-45",
+    "ev-ctx-46",
+    "ev-ctx-47",
+    "ev-ctx-48",
+    "ev-ctx-49",
+    "ev-ctx-50",
+    "ev-ctx-51",
+    "ev-ctx-52",
+    "ev-ctx-53",
+    "ev-ctx-54",
+    "ev-ctx-55",
+    "ev-ctx-56",
+    "ev-ctx-57",
+    "ev-ctx-58",
+    "ev-ctx-8",
+    "ev-ctx-9",
+    "ev-ctx-10",
+    "ev-ctx-20",
+    "ev-ctx-36",
+    "ev-ctx-120",
+    "ev-ctx-133",
+    "ev-ctx-134"
+   ]
+  },
+  {
+   "id": "p2017",
+   "label": "Transformers and pretraining",
+   "range": [
+    "2017-01",
+    "2019-12"
+   ],
+   "boundaryRationale": "Opens with the Transformer (June 2017), the architecture that ended the CNN/RNN era; ends just before the January 2020 scaling-laws paper converted the scaling bet into a quantitative recipe. Reference range kept; if p2012 is extended to 2017-06, this period would start 2017-06.",
+   "consensus": "Self-supervised pretraining followed by task fine-tuning (ELMo, GPT-1, BERT) became the NLP default, with BERT-style encoders seen as the practical winner. Leading firms declared 'AI-first' strategies and governments (China 2017) adopted national AI plans. Self-play RL (AlphaGo Zero/AlphaZero) was still widely viewed as the frontier toward general intelligence. Compute for the largest runs was growing extraordinarily fast (3.4-month doubling per OpenAI), and frontier work started to need billions of dollars, prompting OpenAI's capped-profit restructuring and Microsoft's $1B investment.",
+   "minorityViews": [
+    {
+     "view": "The Bitter Lesson: general methods that leverage computation beat human-knowledge-based approaches; scale the simple thing.",
+     "heldBy": "Richard Sutton; OpenAI leadership (Sutskever, Amodei, Brockman)",
+     "laterImportance": "Hindsight: the canonical justification for scaling investments 2020-2025."
+    },
+    {
+     "view": "Learning reward functions from human preferences can align powerful models.",
+     "heldBy": "Paul Christiano, Dario Amodei, Jan Leike, Shane Legg (2017)",
+     "laterImportance": "Hindsight: became RLHF, the post-training step that made InstructGPT and ChatGPT useful."
+    },
+    {
+     "view": "Deep learning is data-hungry, shallow and brittle and cannot reach robust reasoning without symbolic components.",
+     "heldBy": "Gary Marcus (2018)",
+     "laterImportance": "Hindsight: reliability, hallucination and reasoning remained real limitations through 2023, but the critique underestimated how far pure scaling plus post-training would go."
+    },
+    {
+     "view": "Training large NLP models has significant energy and carbon costs that should be measured.",
+     "heldBy": "Emma Strubell, Ananya Ganesh, Andrew McCallum (2019)",
+     "laterImportance": "Hindsight: energy shifted from an ethical footnote to the binding physical constraint on AI buildout by 2024-26."
+    },
+    {
+     "view": "Generative decoder-only language models (GPT) are a better path than bidirectional encoders (BERT).",
+     "heldBy": "OpenAI (Radford et al.)",
+     "laterImportance": "Hindsight: decoder-only generative models became the dominant architecture of every frontier model."
+    }
+   ],
+   "technologies": [
+    "Transformer",
+    "NVIDIA V100 with Tensor Cores; DGX systems",
+    "Google Cloud TPU v2/v3",
+    "PyTorch (2017) and TensorFlow",
+    "Pretrained language models (ELMo, GPT-1, BERT, GPT-2)",
+    "Self-play RL (AlphaZero)"
+   ],
+   "architectures": [
+    "Transformer encoder (BERT) and decoder (GPT)",
+    "Bidirectional LSTMs (ELMo)",
+    "CNNs (still dominant in vision)",
+    "Policy/value networks plus MCTS"
+   ],
+   "bottlenecks": [
+    {
+     "item": "Compute cost of the largest runs",
+     "kind": "commercial",
+     "note": "OpenAI's 2018 analysis showed ~300,000x growth since 2012; non-profit funding was insufficient, prompting OpenAI LP (2019)."
+    },
+    {
+     "item": "Labeled fine-tuning data per task",
+     "kind": "technical",
+     "note": "Pretraining reduced but did not remove the need for task-specific labels."
+    },
+    {
+     "item": "Release norms and misuse",
+     "kind": "regulatory",
+     "note": "GPT-2's staged release made publication policy a governance question."
+    },
+    {
+     "item": "Technology export restrictions",
+     "kind": "regulatory",
+     "note": "Huawei's Entity List designation (2019) began the use of chip supply chains as policy levers."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Proprietary data and 'data network effects' in vertical applications",
+    "AI talent concentration in Google, Facebook, Microsoft, Baidu",
+    "Autonomous driving and other vertical AI applications",
+    "Framework and cloud-platform ecosystems"
+   ],
+   "actualAdvantage": [
+    "Interpretation (hindsight): GPU supply. NVIDIA datacenter revenue rose from $0.83B (FY2017) to $1.93B (FY2018, Volta) and $2.93B (FY2019) (ev-ctx-7, ev-ctx-6), and NVIDIA moved into systems networking via Mellanox.",
+    "Interpretation: Microsoft's 2019 $1B OpenAI bet, coupling cloud capacity to a frontier lab, gave it the strongest AI distribution position of 2023.",
+    "Interpretation: Google invented the Transformer and BERT but did not capture the generative-model franchise first; publication spread the advantage to others."
+   ],
+   "investment": "NVIDIA datacenter revenue: $1.93B FY2018, $2.93B FY2019 (ev-ctx-7, ev-ctx-6). Microsoft invested $1B in OpenAI (July 2019); NVIDIA agreed to buy Mellanox for $6.9B (March 2019). Year-by-year AI Index private-investment totals for 2017-2019 were not verified in this session; generative-AI private investment was only about $0.84B in 2019 (ev-ctx-21, medium confidence).",
+   "layers": {
+    "energy": {
+     "state": "Still not a constraint; first papers quantified training energy and carbon (Strubell 2019).",
+     "heat": 1
+    },
+    "semis": {
+     "state": "V100 Tensor Cores made GPUs AI-specific; TPU v2/v3 offered on Google Cloud; US-China chip tensions began.",
+     "heat": 2
+    },
+    "cloud": {
+     "state": "Large training runs moved to dedicated cloud clusters; Microsoft-OpenAI Azure exclusivity (2019).",
+     "heat": 2
+    },
+    "data": {
+     "state": "Unlabeled web text became the main pretraining input; GDPR (2018) raised data-protection obligations.",
+     "heat": 2
+    },
+    "architecture": {
+     "state": "Transformer replaced RNNs in NLP within two years.",
+     "heat": 3
+    },
+    "training": {
+     "state": "Pretrain-then-fine-tune established; self-play RL at its peak (AlphaZero).",
+     "heat": 3
+    },
+    "inference": {
+     "state": "BERT-sized models served in search and ads; inference cost not yet a strategic issue.",
+     "heat": 1
+    },
+    "models": {
+     "state": "Pretrained language models (BERT, GPT-2) became reusable backbones but not products.",
+     "heat": 2
+    },
+    "platforms": {
+     "state": "PyTorch and TensorFlow competed; model hubs and pretrained checkpoints spread.",
+     "heat": 2
+    },
+    "agents": {
+     "state": "RL agents for games (AlphaZero) were the agency frontier.",
+     "heat": 2
+    },
+    "apps": {
+     "state": "Smart replies, search ranking, translation, voice assistants; autonomous driving drew heavy investment.",
+     "heat": 2
+    },
+    "distribution": {
+     "state": "Incumbents embedded AI ('AI-first') inside existing products.",
+     "heat": 1
+    },
+    "economics": {
+     "state": "Capital needs of frontier labs exceeded non-profit funding; first hyperscaler-lab deal.",
+     "heat": 2
+    },
+    "society": {
+     "state": "National AI strategies (China 2017), GPT-2 release debate, ethics principles proliferated.",
+     "heat": 2
+    }
+   },
+   "commoditized": [
+    "BERT-style encoders and fine-tuned task models",
+    "Deep learning frameworks",
+    "Smart-speaker voice assistants as a strategic category"
+   ],
+   "underestimated": [
+    "Generative decoder-only models and in-context learning",
+    "How quickly scale alone would improve language models",
+    "Capital intensity of frontier AI"
+   ],
+   "evidenceIds": [
+    "ev-ctx-59",
+    "ev-ctx-60",
+    "ev-ctx-61",
+    "ev-ctx-62",
+    "ev-ctx-63",
+    "ev-ctx-64",
+    "ev-ctx-65",
+    "ev-ctx-66",
+    "ev-ctx-67",
+    "ev-ctx-68",
+    "ev-ctx-69",
+    "ev-ctx-70",
+    "ev-ctx-71",
+    "ev-ctx-72",
+    "ev-ctx-73",
+    "ev-ctx-7",
+    "ev-ctx-6",
+    "ev-ctx-28",
+    "ev-ctx-29",
+    "ev-ctx-118",
+    "ev-ctx-119",
+    "ev-ctx-121",
+    "ev-ctx-130",
+    "ev-ctx-132",
+    "ev-ctx-21"
+   ]
+  },
+  {
+   "id": "p2020",
+   "label": "Scaling laws and foundation models",
+   "range": [
+    "2020-01",
+    "2021-12"
+   ],
+   "boundaryRationale": "Starts with Kaplan et al.'s scaling laws (23 Jan 2020), which made capability a predictable function of compute, quickly followed by GPT-3 (May 2020). Ends before Chinchilla, InstructGPT and diffusion (March-August 2022) changed the recipe and the public face of AI. Proposed revision: the technical turn arguably comes at 2022-03 (Chinchilla/InstructGPT), so a 2020-01 to 2022-02 range would be equally defensible.",
+   "consensus": "Larger language models predictably get better (scaling laws), and GPT-3 showed a single model could perform many tasks via prompting (few-shot in-context learning). Stanford's 'foundation models' framing (Aug 2021) captured the view that a few broad models would be adapted to many uses. Commercial uses were limited to APIs, copywriting startups and the Copilot preview; most enterprises viewed LLMs as experimental. The pandemic accelerated digitization and a broad chip shortage made supply chains a political issue.",
+   "minorityViews": [
+    {
+     "view": "Scaling hypothesis in its strong form: simply scaling GPT-style models will yield increasingly general intelligence.",
+     "heldBy": "Gwern Branwen (2020), OpenAI and Anthropic founders",
+     "laterImportance": "Hindsight: largely borne out through GPT-4 (2023), driving the capex cycle; later qualified by data limits and the shift to inference-time scaling."
+    },
+    {
+     "view": "Ever-larger LMs carry environmental, bias and data-documentation costs and produce fluent text without understanding ('stochastic parrots').",
+     "heldBy": "Emily Bender, Timnit Gebru, Angelina McMillan-Major, Margaret Mitchell (2021)",
+     "laterImportance": "Hindsight: data provenance and hallucination became central legal and product issues (e.g., the NYT lawsuit, 2023)."
+    },
+    {
+     "view": "Data-centric AI: improve data quality systematically rather than models.",
+     "heldBy": "Andrew Ng (2021)",
+     "laterImportance": "Hindsight: data curation, synthetic data and post-training data became key differentiators once architectures converged."
+    },
+    {
+     "view": "Ideas win partly because they fit available hardware (the 'hardware lottery').",
+     "heldBy": "Sara Hooker (2020)",
+     "laterImportance": "Hindsight: Transformer-GPU co-evolution entrenched NVIDIA and shaped which architectures were explored."
+    },
+    {
+     "view": "Transformative AI timelines can be estimated from compute 'biological anchors' (median around 2050 in the 2020 draft).",
+     "heldBy": "Ajeya Cotra (Open Philanthropy)",
+     "laterImportance": "Hindsight: compute-based forecasting became standard (e.g., Epoch AI), and the author later shortened her timelines."
+    },
+    {
+     "view": "Sparse mixture-of-experts can decouple parameters from per-token compute.",
+     "heldBy": "Google (Fedus, Zoph, Shazeer, 2021)",
+     "laterImportance": "Hindsight: MoE became the dominant frontier and open-weight architecture from late 2023."
+    }
+   ],
+   "technologies": [
+    "NVIDIA A100 and DGX A100; InfiniBand via Mellanox",
+    "Bespoke cloud supercomputers (Azure for OpenAI, 10,000 GPUs)",
+    "TPU v3/v4 pods",
+    "Model-as-API (OpenAI API, June 2020)",
+    "Megatron/DeepSpeed model-parallel training",
+    "CLIP and DALL-E",
+    "AlphaFold 2"
+   ],
+   "architectures": [
+    "Dense decoder-only Transformers (GPT-3 175B, Megatron-Turing 530B, Gopher 280B)",
+    "Sparse MoE Transformers (Switch)",
+    "Contrastive vision-language models (CLIP)",
+    "Attention-based structure prediction (AlphaFold 2)"
+   ],
+   "bottlenecks": [
+    {
+     "item": "GPU and chip supply",
+     "kind": "physical",
+     "note": "A global semiconductor shortage in 2020-21 constrained supply; frontier labs depended on a single hyperscaler partner for clusters."
+    },
+    {
+     "item": "Training cost of 100B+ parameter models",
+     "kind": "commercial",
+     "note": "Only a handful of firms could train GPT-3-class models (~3.14e23 FLOP)."
+    },
+    {
+     "item": "Reliability and alignment of raw pretrained models",
+     "kind": "technical",
+     "note": "Base models were hard to steer; RLHF at scale arrived only in 2022."
+    },
+    {
+     "item": "Emerging regulation",
+     "kind": "regulatory",
+     "note": "EU AI Act proposed April 2021 with a use-case risk design that predated general-purpose LLMs."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Parameter count and model size (the 175B-530B race)",
+    "Exclusive access to frontier models (Microsoft's exclusive GPT-3 license)",
+    "Proprietary training corpora",
+    "AI-for-science breakthroughs as prestige"
+   ],
+   "actualAdvantage": [
+    "Interpretation (hindsight): compute supply and networking. NVIDIA datacenter revenue rose from $2.98B (FY2020) to $6.70B (FY2021) and $10.61B (FY2022); Mellanox contributed 10% of FY2021 company revenue (ev-ctx-4, ev-ctx-5, ev-ctx-3).",
+    "Interpretation: Chinchilla (2022) showed the parameter race was compute-inefficient, so model size per se was not the advantage; data and training recipe were.",
+    "Interpretation: early distribution plus a developer API (OpenAI, GitHub Copilot via Microsoft) positioned those firms for 2023."
+   ],
+   "investment": "AI Index: private AI investment 'substantially increased' in 2020 despite COVID, with drug discovery AI over $13.8B (ev-ctx-22). 2021 global private AI investment was reported as $93.5B in the 2022 edition (ev-ctx-19) and revised to $125.4B in the 2023 edition (ev-ctx-15), the peak year. Hyperscale tech capex (Vanguard series): $97B in 2020 and $131B in 2021 (ev-ctx-11). Anthropic launched with a $124M Series A (May 2021).",
+   "layers": {
+    "energy": {
+     "state": "Not yet binding; energy discussed mainly as carbon footprint of training.",
+     "heat": 1
+    },
+    "semis": {
+     "state": "A100 era; NVIDIA datacenter overtook expectations; global chip shortage politicized supply chains.",
+     "heat": 2
+    },
+    "cloud": {
+     "state": "Hyperscalers built dedicated AI supercomputers for partner labs (Azure-OpenAI).",
+     "heat": 3
+    },
+    "data": {
+     "state": "Web-scale text corpora (Common Crawl, The Pile) became the main input; data quality debates began.",
+     "heat": 2
+    },
+    "architecture": {
+     "state": "Dense decoder-only Transformers scaled up; MoE explored at Google.",
+     "heat": 2
+    },
+    "training": {
+     "state": "Scaling laws guided compute allocation; parameter-heavy recipes dominated.",
+     "heat": 3
+    },
+    "inference": {
+     "state": "API serving of large models was expensive; davinci-class pricing set at $0.06 per 1K tokens.",
+     "heat": 1
+    },
+    "models": {
+     "state": "Foundation models emerged as a category (GPT-3, CLIP, Gopher, MT-NLG).",
+     "heat": 3
+    },
+    "platforms": {
+     "state": "Model-as-API launched; Hugging Face hub and open replications (EleutherAI) spread.",
+     "heat": 2
+    },
+    "agents": {
+     "state": "Agents remained RL/game-focused; LLM agents not yet practical.",
+     "heat": 1
+    },
+    "apps": {
+     "state": "Copywriting startups on GPT-3, GitHub Copilot preview, AlphaFold for science.",
+     "heat": 2
+    },
+    "distribution": {
+     "state": "Microsoft secured exclusive GPT-3 license; distribution still via developers.",
+     "heat": 1
+    },
+    "economics": {
+     "state": "Private AI investment peaked in 2021; frontier labs relied on hyperscaler partners.",
+     "heat": 2
+    },
+    "society": {
+     "state": "EU AI Act proposed; 'stochastic parrots' and AI-ethics disputes at Google; foundation-model framing.",
+     "heat": 2
+    }
+   },
+   "commoditized": [
+    "GPT-3-class language capability (matched by open models within ~3 years)",
+    "Parameter count as a headline metric",
+    "Copywriting 'GPT wrapper' startups"
+   ],
+   "underestimated": [
+    "The importance of post-training/RLHF for usability",
+    "Data (tokens) as the binding scaling input (Chinchilla)",
+    "Consumer demand for conversational AI",
+    "Inference cost as the main economic driver"
+   ],
+   "evidenceIds": [
+    "ev-ctx-34",
+    "ev-ctx-33",
+    "ev-ctx-74",
+    "ev-ctx-75",
+    "ev-ctx-76",
+    "ev-ctx-77",
+    "ev-ctx-78",
+    "ev-ctx-79",
+    "ev-ctx-80",
+    "ev-ctx-81",
+    "ev-ctx-82",
+    "ev-ctx-83",
+    "ev-ctx-84",
+    "ev-ctx-85",
+    "ev-ctx-86",
+    "ev-ctx-131",
+    "ev-ctx-4",
+    "ev-ctx-5",
+    "ev-ctx-3",
+    "ev-ctx-11",
+    "ev-ctx-15",
+    "ev-ctx-19",
+    "ev-ctx-22",
+    "ev-ctx-122",
+    "ev-ctx-123",
+    "ev-ctx-124",
+    "ev-ctx-125",
+    "ev-ctx-126",
+    "ev-ctx-128"
+   ]
+  },
+  {
+   "id": "p2022",
+   "label": "Generative AI goes mainstream",
+   "range": [
+    "2022-01",
+    "2023-12"
+   ],
+   "boundaryRationale": "Reference start 2022-01 is supported: the technical and infrastructure pivots (chain-of-thought Jan 2022, Chinchilla and InstructGPT Mar 2022, H100 Mar 2022, diffusion image models Apr-Aug 2022, US chip export controls Oct 2022) all precede ChatGPT. ChatGPT (30 Nov 2022) is the true boundary for public adoption, capital and policy: Microsoft's $10B (Jan 2023), generative-AI private investment rising ~8-9x to $25.2B in 2023, NVIDIA's datacenter jump (FY2024 +217%) and the 2023 governance wave all follow it. Proposed revision: keep p2022 at 2022-01 to 2023-12 but mark 2022-11-30 as an intra-period boundary (sub-phases 'generative capability' 2022-01..2022-11 and 'mass adoption' 2022-12..2023-12); for capital-flow charts, use 2022-11 as the break. The end at 2023-12 is well supported by Gemini (Dec 6), the EU AI Act deal (Dec 8), Mixtral (Dec 11) and the NYT lawsuit (Dec 27).",
+   "consensus": "Generative AI became a mass-market product category: ChatGPT reached an estimated 100M monthly users within two months and GPT-4 set a new capability bar. Chinchilla shifted scaling toward more data per parameter, and RLHF post-training was recognized as essential for usable assistants. The industry believed a small number of well-capitalized frontier labs paired with hyperscalers would dominate, with GPU supply (H100) the key constraint. By late 2023 governments moved from voluntary commitments to binding measures (US EO 14110, EU AI Act deal) and extinction-risk concerns were voiced by lab leaders themselves.",
+   "minorityViews": [
+    {
+     "view": "Open-weight models will close the gap and proprietary labs have no durable moat.",
+     "heldBy": "Leaked Google memo (May 2023), Meta (Llama 2 strategy), Mistral",
+     "laterImportance": "Hindsight: GPT-3.5-class capability became cheap and open by Dec 2023 (Mixtral); token prices for a given capability fell sharply, supporting model-layer commoditization."
+    },
+    {
+     "view": "Existential-risk fears are overblown; LLMs lack world models and planning.",
+     "heldBy": "Yann LeCun, Andrew Ng, Gary Marcus (different reasons)",
+     "laterImportance": "Hindsight: governance attention shifted from extinction risk toward competitiveness by 2025 (EO 14110 revoked Jan 2025), while capability progress continued."
+    },
+    {
+     "view": "Spending more inference-time compute on reasoning (chain-of-thought) raises capability.",
+     "heldBy": "Jason Wei, Denny Zhou et al. (Google, 2022)",
+     "laterImportance": "Hindsight: became the basis of 2024-25 reasoning models and inference scaling."
+    },
+    {
+     "view": "Training-data copyright and provenance will become a binding constraint.",
+     "heldBy": "Rights holders (NYT, Getty), Bender/Gebru line of critique",
+     "laterImportance": "Hindsight: drove data-licensing deals and litigation through 2024-26."
+    }
+   ],
+   "technologies": [
+    "NVIDIA H100 (Hopper) and A100 clusters; TPU v4/v5",
+    "RLHF and instruction tuning",
+    "Diffusion models (DALL-E 2, Midjourney, Stable Diffusion)",
+    "Chat interfaces and chat-completions APIs",
+    "Open-weight LLMs (LLaMA, Llama 2, Mixtral)",
+    "Retrieval-augmented generation and vector databases",
+    "Early LLM agents (Auto-GPT, Assistants API)"
+   ],
+   "architectures": [
+    "Dense decoder-only Transformers trained compute-optimally (Chinchilla, PaLM, LLaMA)",
+    "Multimodal Transformers (GPT-4, Gemini)",
+    "Latent diffusion models with CLIP text encoders",
+    "Sparse mixture-of-experts (Mixtral 8x7B)"
+   ],
+   "bottlenecks": [
+    {
+     "item": "H100 supply",
+     "kind": "physical",
+     "note": "Demand far exceeded supply in 2023; NVIDIA's quarterly datacenter revenue more than doubled in Q2 FY2024 to $10.32B."
+    },
+    {
+     "item": "Export controls on AI chips",
+     "kind": "regulatory",
+     "note": "US controls from Oct 2022 cut China's access to A100/H100-class chips."
+    },
+    {
+     "item": "Inference cost per user",
+     "kind": "commercial",
+     "note": "OpenAI cut gpt-3.5-turbo pricing to $0.002 per 1K tokens (10x below prior GPT-3.5 models) after reducing ChatGPT serving cost 90%."
+    },
+    {
+     "item": "Hallucination and reliability",
+     "kind": "technical",
+     "note": "Limited enterprise deployment in high-stakes settings."
+    },
+    {
+     "item": "Copyright and training-data rights",
+     "kind": "regulatory",
+     "note": "Lawsuits by Getty (2023) and the NYT (Dec 2023)."
+    }
+   ],
+   "perceivedAdvantage": [
+    "Having the best frontier model (GPT-4's lead)",
+    "First-mover consumer distribution (ChatGPT)",
+    "Hyperscaler-lab partnerships and exclusive compute",
+    "Proprietary data"
+   ],
+   "actualAdvantage": [
+    "Interpretation (hindsight): compute supply captured the first profits; NVIDIA datacenter revenue went from $15.01B (FY2023) to $47.5B (FY2024, +217%) (ev-ctx-2, ev-ctx-1).",
+    "Interpretation: model capability at a given tier commoditized quickly; GPT-3-class pricing fell from $60 to $20 per 1M tokens (Sept 2022) and to $2 for gpt-3.5-turbo (March 2023), and GPT-4-class input pricing from $30 to $10 per 1M tokens within eight months (ev-ctx-23, ev-ctx-24, ev-ctx-26, ev-ctx-27).",
+    "Interpretation: incumbents with distribution and cloud (Microsoft, Google, Amazon) monetized through cloud consumption and equity in labs rather than model sales alone."
+   ],
+   "investment": "AI Index: global private AI investment $91.9B in 2022 (down 26.7% from $125.4B in 2021) (ev-ctx-15) and $95.99B in 2023 (ev-ctx-17); generative AI private investment rose from about $2.85-3B in 2022 to $25.2B in 2023 (ev-ctx-18, ev-ctx-21); US private AI investment $67.2B in 2023. Broader corporate AI investment was $189B in 2023, down ~20% as M&A fell (ev-ctx-20). Hyperscale tech capex (Vanguard series) $159B in 2022 and $154B in 2023 (ev-ctx-11); Platformonomics puts Amazon+Google+Meta+Microsoft at $155B in 2023 including finance leases (ev-ctx-12). Note: capex was flat in 2023 and surged in 2024; the AI capex wave lagged ChatGPT by about a year.",
+   "layers": {
+    "energy": {
+     "state": "Not yet a headline constraint; data-center power planning for AI began but GPUs and packaging were the binding limits.",
+     "heat": 1
+    },
+    "semis": {
+     "state": "H100 shortage, NVIDIA passed $1T market value, export controls and the CHIPS Act made chips the center of AI strategy.",
+     "heat": 3
+    },
+    "cloud": {
+     "state": "Hyperscalers partnered with labs (Microsoft-OpenAI, Amazon-Anthropic, Google-Anthropic) and rationed GPU capacity.",
+     "heat": 3
+    },
+    "data": {
+     "state": "Compute-optimal scaling made data volume binding; copyright litigation began.",
+     "heat": 2
+    },
+    "architecture": {
+     "state": "Dense Transformers dominant; MoE reached open weights with Mixtral; multimodality (GPT-4V, Gemini).",
+     "heat": 2
+    },
+    "training": {
+     "state": "Chinchilla-optimal pretraining plus RLHF/instruction tuning became the standard recipe.",
+     "heat": 2
+    },
+    "inference": {
+     "state": "Serving cost became the key economic issue; rapid price cuts for each model tier.",
+     "heat": 3
+    },
+    "models": {
+     "state": "GPT-4 frontier; Claude, PaLM 2, Gemini and open Llama/Mixtral formed a multi-player market.",
+     "heat": 3
+    },
+    "platforms": {
+     "state": "Chat-completions APIs, LangChain-style frameworks, vector databases and Hugging Face hub; OpenAI launched GPTs/Assistants.",
+     "heat": 3
+    },
+    "agents": {
+     "state": "Chain-of-thought and tool use emerged; Auto-GPT showed demand but agents were unreliable.",
+     "heat": 2
+    },
+    "apps": {
+     "state": "ChatGPT, image generators, coding assistants and thousands of LLM startups.",
+     "heat": 3
+    },
+    "distribution": {
+     "state": "ChatGPT's consumer reach plus Microsoft (Bing, Office Copilot) and Google embedding AI in incumbent products.",
+     "heat": 3
+    },
+    "economics": {
+     "state": "Generative-AI funding ~8-9x in 2023 while total private AI investment stayed below the 2021 peak; profits accrued mainly to NVIDIA.",
+     "heat": 3
+    },
+    "society": {
+     "state": "Extinction-risk statements, Bletchley Declaration, US EO 14110, EU AI Act deal, labor and copyright disputes, OpenAI governance crisis.",
+     "heat": 3
+    }
+   },
+   "commoditized": [
+    "GPT-3.5-class language capability (open Mixtral, $1-2 per 1M tokens)",
+    "Text-to-image generation",
+    "Thin 'wrapper' apps on foundation-model APIs",
+    "Basic chatbots and embeddings"
+   ],
+   "underestimated": [
+    "Speed of consumer adoption (100M users in about two months)",
+    "Power and data-center capacity as the next constraint after GPUs",
+    "How quickly open weights would catch up",
+    "Inference-time reasoning as a scaling axis"
+   ],
+   "evidenceIds": [
+    "ev-ctx-16",
+    "ev-ctx-115",
+    "ev-ctx-87",
+    "ev-ctx-116",
+    "ev-ctx-35",
+    "ev-ctx-129",
+    "ev-ctx-88",
+    "ev-ctx-89",
+    "ev-ctx-90",
+    "ev-ctx-91",
+    "ev-ctx-92",
+    "ev-ctx-93",
+    "ev-ctx-94",
+    "ev-ctx-95",
+    "ev-ctx-96",
+    "ev-ctx-114",
+    "ev-ctx-97",
+    "ev-ctx-98",
+    "ev-ctx-30",
+    "ev-ctx-99",
+    "ev-ctx-117",
+    "ev-ctx-100",
+    "ev-ctx-127",
+    "ev-ctx-101",
+    "ev-ctx-102",
+    "ev-ctx-103",
+    "ev-ctx-104",
+    "ev-ctx-105",
+    "ev-ctx-106",
+    "ev-ctx-107",
+    "ev-ctx-108",
+    "ev-ctx-27",
+    "ev-ctx-109",
+    "ev-ctx-110",
+    "ev-ctx-111",
+    "ev-ctx-112",
+    "ev-ctx-113",
+    "ev-ctx-1",
+    "ev-ctx-2",
+    "ev-ctx-11",
+    "ev-ctx-12",
+    "ev-ctx-13",
+    "ev-ctx-15",
+    "ev-ctx-17",
+    "ev-ctx-18",
+    "ev-ctx-20",
+    "ev-ctx-21",
+    "ev-ctx-23",
+    "ev-ctx-24",
+    "ev-ctx-25",
+    "ev-ctx-26"
+   ]
+  }
+ ],
+ "metrics": [
+  {
+   "id": "m-nvidia-dc-revenue",
+   "label": "NVIDIA Data Center revenue (fiscal year)",
+   "unit": "USD bn",
+   "layer": "semis",
+   "points": [
+    {
+     "date": "2016-01",
+     "value": 0.339,
+     "evidenceId": "ev-ctx-10",
+     "note": "FY2016 (ended Jan 2016); recalled, not re-confirmed"
+    },
+    {
+     "date": "2017-01",
+     "value": 0.83,
+     "evidenceId": "ev-ctx-9",
+     "note": "FY2017; up ~145% per 10-K"
+    },
+    {
+     "date": "2018-01",
+     "value": 1.93,
+     "evidenceId": "ev-ctx-7",
+     "note": "FY2018; up 133%"
+    },
+    {
+     "date": "2019-01",
+     "value": 2.93,
+     "evidenceId": "ev-ctx-6",
+     "note": "FY2019; up 52%"
+    },
+    {
+     "date": "2020-01",
+     "value": 2.983,
+     "evidenceId": "ev-ctx-5",
+     "note": "FY2020"
+    },
+    {
+     "date": "2021-01",
+     "value": 6.7,
+     "evidenceId": "ev-ctx-4",
+     "note": "FY2021; up 124%, includes Mellanox from Apr 2020"
+    },
+    {
+     "date": "2022-01",
+     "value": 10.61,
+     "evidenceId": "ev-ctx-3",
+     "note": "FY2022; up 58%"
+    },
+    {
+     "date": "2023-01",
+     "value": 15.01,
+     "evidenceId": "ev-ctx-2",
+     "note": "FY2023; up 41%, surpassed Gaming"
+    },
+    {
+     "date": "2024-01",
+     "value": 47.5,
+     "evidenceId": "ev-ctx-1",
+     "note": "FY2024 (ended 28 Jan 2024); up 217%"
+    }
+   ],
+   "caveat": "NVIDIA fiscal years end in late January, so FY(N) mostly covers calendar N-1; dates are given as the FY end month. Segment definitions changed over time (pre-FY2018 'Datacenter' = Tesla/GRID/DGX; from FY2021 includes Mellanox networking). FY2013-FY2015 not separately sourced."
+  },
+  {
+   "id": "m-hyperscaler-capex",
+   "label": "Hyperscale technology company capital expenditures (Vanguard series)",
+   "unit": "USD bn",
+   "layer": "cloud",
+   "points": [
+    {
+     "date": "2020",
+     "value": 97,
+     "evidenceId": "ev-ctx-11"
+    },
+    {
+     "date": "2021",
+     "value": 131,
+     "evidenceId": "ev-ctx-11"
+    },
+    {
+     "date": "2022",
+     "value": 159,
+     "evidenceId": "ev-ctx-11"
+    },
+    {
+     "date": "2023",
+     "value": 154,
+     "evidenceId": "ev-ctx-11"
+    }
+   ],
+   "caveat": "Vanguard chart labels the group 'hyperscale technology companies' without naming members in the snippet seen, so it is not confirmed to be exactly MSFT+GOOGL+AMZN+META. Platformonomics gives $155B for Amazon+Google+Meta+Microsoft in 2023 including finance leases (ev-ctx-12); Silicon Analysts puts the four at roughly $36B per quarter in 2022 (ev-ctx-13). Pre-2020 combined values for the four were not verified this session."
+  },
+  {
+   "id": "m-frontier-training-compute",
+   "label": "Training compute of milestone/largest models",
+   "unit": "FLOP",
+   "layer": "training",
+   "points": [
+    {
+     "date": "2012-09",
+     "value": 4.7e+17,
+     "evidenceId": "ev-ctx-31",
+     "note": "AlexNet; value recalled from Epoch database (not re-confirmed); Epoch states ~8 orders of magnitude from AlexNet to GPT-4"
+    },
+    {
+     "date": "2017-10",
+     "value": 3.4e+23,
+     "evidenceId": "ev-ctx-29",
+     "note": "AlphaGo Zero; largest training run until Aug 2021 per Epoch-based analysis; FLOP value recalled"
+    },
+    {
+     "date": "2020-05",
+     "value": 3.14e+23,
+     "evidenceId": "ev-ctx-33",
+     "note": "GPT-3 175B; value recalled from paper; not larger than AlphaGo Zero"
+    },
+    {
+     "date": "2022-04",
+     "value": 2.56e+24,
+     "evidenceId": "ev-ctx-88",
+     "note": "PaLM 540B; recalled from paper"
+    },
+    {
+     "date": "2023-03",
+     "value": 2e+25,
+     "evidenceId": "ev-ctx-30",
+     "note": "GPT-4; Epoch estimate, uncertain by ~5x"
+    }
+   ],
+   "caveat": "Only GPT-4 (2e25) and the 'nearly 8 orders of magnitude AlexNet to GPT-4' relation were seen in sources this session; other values are recalled Epoch/paper figures. Points are milestones, not a complete annual max series. Epoch estimates are uncertain by ~2x (disclosed) to ~5x (undisclosed models). OpenAI (2018) estimated a 3.4-month doubling 2012-2018; Epoch later estimated ~5.7 months for 2012-2022."
+  },
+  {
+   "id": "m-ai-private-investment",
+   "label": "Global private investment in AI (Stanford AI Index)",
+   "unit": "USD bn",
+   "layer": "economics",
+   "points": [
+    {
+     "date": "2021",
+     "value": 125.4,
+     "evidenceId": "ev-ctx-15",
+     "note": "AI Index 2023 vintage; the 2022 edition had reported $93.5B (ev-ctx-19)"
+    },
+    {
+     "date": "2022",
+     "value": 91.9,
+     "evidenceId": "ev-ctx-15",
+     "note": "AI Index 2023 vintage; first decline in a decade (-26.7%)"
+    },
+    {
+     "date": "2023",
+     "value": 95.99,
+     "evidenceId": "ev-ctx-17",
+     "note": "AI Index 2024 vintage (data provider changes may make it not directly comparable with the 2023-vintage 2022 value)"
+    }
+   ],
+   "caveat": "AI Index revises history between editions (data vendor changes), so values from different editions are not strictly comparable. 2013-2020 annual totals were not verified this session; the 2023 edition states 2022 was 18x the 2013 level (ev-ctx-16)."
+  },
+  {
+   "id": "m-genai-private-investment",
+   "label": "Private investment in generative AI (Stanford AI Index)",
+   "unit": "USD bn",
+   "layer": "economics",
+   "points": [
+    {
+     "date": "2019",
+     "value": 0.84,
+     "evidenceId": "ev-ctx-21",
+     "note": "medium confidence: attribution of source within coverage unclear"
+    },
+    {
+     "date": "2022",
+     "value": 2.85,
+     "evidenceId": "ev-ctx-21",
+     "note": "medium confidence; Stanford rounds to ~$3B"
+    },
+    {
+     "date": "2023",
+     "value": 25.2,
+     "evidenceId": "ev-ctx-18",
+     "note": "nearly 8x 2022"
+    }
+   ],
+   "caveat": "Generative-AI category as defined by AI Index 2024; earlier-year values seen only in secondary coverage."
+  },
+  {
+   "id": "m-ai-corporate-investment",
+   "label": "Global corporate investment in AI (AI Index, incl. M&A, minority stakes, private and public offerings)",
+   "unit": "USD bn",
+   "layer": "economics",
+   "points": [
+    {
+     "date": "2013",
+     "value": 14.57,
+     "evidenceId": "ev-ctx-20"
+    },
+    {
+     "date": "2023",
+     "value": 189.2,
+     "evidenceId": "ev-ctx-20",
+     "note": "down ~20% vs 2022 as M&A fell; 2021 was the peak"
+    }
+   ],
+   "caveat": "Broader than private investment; only endpoints sourced this session."
+  },
+  {
+   "id": "m-token-price-gpt3-class",
+   "label": "OpenAI API price, GPT-3/3.5-class model (input)",
+   "unit": "USD per 1M tokens",
+   "layer": "inference",
+   "points": [
+    {
+     "date": "2022-08",
+     "value": 60,
+     "evidenceId": "ev-ctx-23",
+     "note": "davinci $0.06/1K before the cut; same price for prompt and completion"
+    },
+    {
+     "date": "2022-09",
+     "value": 20,
+     "evidenceId": "ev-ctx-23",
+     "note": "davinci cut to $0.02/1K effective 2022-09-01"
+    },
+    {
+     "date": "2023-03",
+     "value": 2,
+     "evidenceId": "ev-ctx-24",
+     "note": "gpt-3.5-turbo at $0.002/1K (10x below prior GPT-3.5 models)"
+    },
+    {
+     "date": "2023-11",
+     "value": 1,
+     "evidenceId": "ev-ctx-27",
+     "note": "gpt-3.5-turbo-1106 input $0.001/1K; recalled"
+    }
+   ],
+   "caveat": "Model lineage changes (davinci -> text-davinci-003 -> gpt-3.5-turbo) so this tracks a capability tier, not one model. Date of first $0.06 pricing (2020-21) not re-confirmed; shown only as the pre-cut level."
+  },
+  {
+   "id": "m-token-price-gpt4-class",
+   "label": "OpenAI API price, GPT-4-class model (input)",
+   "unit": "USD per 1M tokens",
+   "layer": "inference",
+   "points": [
+    {
+     "date": "2023-03",
+     "value": 30,
+     "evidenceId": "ev-ctx-26",
+     "note": "GPT-4 8K: $30 input / $60 output"
+    },
+    {
+     "date": "2023-11",
+     "value": 10,
+     "evidenceId": "ev-ctx-27",
+     "note": "GPT-4 Turbo: $10 input / $30 output; recalled"
+    }
+   ],
+   "caveat": "Input-token prices only; output prices were 2-3x higher. GPT-4 Turbo is a different model version with a 128K context."
+  },
+  {
+   "id": "m-imagenet-top5-error",
+   "label": "ImageNet (ILSVRC) winning top-5 classification error",
+   "unit": "%",
+   "layer": "architecture",
+   "points": [
+    {
+     "date": "2012",
+     "value": 15.3,
+     "evidenceId": "ev-ctx-36",
+     "note": "AlexNet; runner-up 26.2%"
+    },
+    {
+     "date": "2014",
+     "value": 6.66,
+     "evidenceId": "ev-ctx-36",
+     "note": "GoogLeNet"
+    },
+    {
+     "date": "2015",
+     "value": 3.57,
+     "evidenceId": "ev-ctx-36",
+     "note": "ResNet"
+    },
+    {
+     "date": "2016",
+     "value": 2.99,
+     "evidenceId": "ev-ctx-36",
+     "note": "year attribution recalled"
+    },
+    {
+     "date": "2017",
+     "value": 2.25,
+     "evidenceId": "ev-ctx-36",
+     "note": "SENet; year attribution recalled; final ILSVRC"
+    }
+   ],
+   "caveat": "Competition winners on the ILSVRC test set; 2013 winner (~11.7%, Clarifai/ZFNet) and 2010-2011 values (~28% and ~26%) recalled but not added. A commonly cited human estimate is ~5.1% (Karpathy), not re-confirmed."
+  }
+ ],
+ "evidence": [
+  {
+   "id": "ev-ctx-1",
+   "url": "https://investor.nvidia.com/news/press-release-details/2024/NVIDIA-Announces-Financial-Results-for-Fourth-Quarter-and-Fiscal-2024/",
+   "title": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2024",
+   "publisher": "NVIDIA",
+   "date": "2024-02-21",
+   "speaker": "NVIDIA",
+   "type": "earnings",
+   "primary": true,
+   "passage": "Full-year fiscal 2024 Data Center revenue rose 217% to a record $47.5 billion; Q4 Data Center revenue was $18.4 billion, up 409% from a year ago; total FY2024 revenue $60.9 billion, up 126%.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Fiscal 2024 ended 2024-01-28, so it largely corresponds to calendar 2023."
+  },
+  {
+   "id": "ev-ctx-2",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581023000017/nvda-20230129.htm",
+   "title": "NVIDIA Form 10-K, fiscal year 2023",
+   "publisher": "NVIDIA / SEC EDGAR",
+   "date": "2023-02",
+   "speaker": "NVIDIA",
+   "type": "filing",
+   "primary": true,
+   "passage": "Data Center revenue for fiscal year 2023 was $15.01 billion, up 41% from fiscal 2022; secondary coverage notes it surpassed Gaming for the first time.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "FY2023 ended 2023-01-29. Filing month recalled (10-K filed Feb 2023)."
+  },
+  {
+   "id": "ev-ctx-3",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581022000008/q4fy22pr.htm",
+   "title": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2022 (8-K exhibit)",
+   "publisher": "NVIDIA / SEC EDGAR",
+   "date": "2022-02",
+   "speaker": "NVIDIA",
+   "type": "earnings",
+   "primary": true,
+   "passage": "Fiscal 2022 Data Center revenue rose 58% to a record $10.61 billion; total revenue a record $26.91 billion, up 61%; growth attributed to Ampere-architecture GPUs for cloud and AI.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "FY2022 ended Jan 2022."
+  },
+  {
+   "id": "ev-ctx-4",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581021000007/q4fy21pr.htm",
+   "title": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2021 (8-K exhibit)",
+   "publisher": "NVIDIA / SEC EDGAR",
+   "date": "2021-02",
+   "speaker": "NVIDIA",
+   "type": "earnings",
+   "primary": true,
+   "passage": "Fiscal 2021 Data Center revenue was a record $6.70 billion, up 124%; the 10-K attributes growth to the Mellanox acquisition and the Ampere ramp, with Mellanox contributing 10% of total company revenue.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "FY2021 ended Jan 2021; includes Mellanox from April 2020."
+  },
+  {
+   "id": "ev-ctx-5",
+   "url": "https://www.anandtech.com/show/16510",
+   "title": "NVIDIA Closes Out Q4 & FY2021 With Another Round of Record Earnings",
+   "publisher": "AnandTech",
+   "date": "2021-02",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Segment table lists Data Center at $6,696 million for FY2021 versus $2,983 million for FY2020; ex-Mellanox compute data center growth almost 70%.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Used for the FY2020 data point."
+  },
+  {
+   "id": "ev-ctx-6",
+   "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581019000023/nvda-2019x10k.htm",
+   "title": "NVIDIA Form 10-K, fiscal year 2019",
+   "publisher": "NVIDIA / SEC EDGAR",
+   "date": "2019-02",
+   "speaker": "NVIDIA",
+   "type": "filing",
+   "primary": true,
+   "passage": "Datacenter revenue was $2.93 billion, up 52%, led by Volta-architecture products including Tesla V100 and DGX systems.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "FY2019 ended Jan 2019."
+  },
+  {
+   "id": "ev-ctx-7",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581018000010/nvda-2018x10k.htm",
+   "title": "NVIDIA Form 10-K, fiscal year 2018",
+   "publisher": "NVIDIA / SEC EDGAR",
+   "date": "2018-02",
+   "speaker": "NVIDIA",
+   "type": "filing",
+   "primary": true,
+   "passage": "Datacenter revenue (Tesla, GRID, DGX) reached $1.93 billion, up 133%, led by Volta V100 GPU accelerators which began shipping in the first half of fiscal 2018.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "FY2018 ended Jan 2018. V100 announced May 2017."
+  },
+  {
+   "id": "ev-ctx-8",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581017000027/nvda-2017x10k.htm",
+   "title": "NVIDIA Form 10-K, fiscal year 2017",
+   "publisher": "NVIDIA / SEC EDGAR",
+   "date": "2017-03",
+   "speaker": "NVIDIA",
+   "type": "filing",
+   "primary": true,
+   "passage": "Datacenter revenue increased 145%, reflecting strong demand for deep learning training for AI, cloud, accelerated and virtualized computing, and initial DGX-1 sales.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "FY2017 ended Jan 2017. Filing month recalled."
+  },
+  {
+   "id": "ev-ctx-9",
+   "url": "https://www.fool.com/investing/2017/03/06/how-nvidias-4-segments-fared-in-2016.aspx",
+   "title": "How NVIDIA's 4 segments fared in 2016",
+   "publisher": "The Motley Fool",
+   "date": "2017-03-06",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Data center revenue rose about 144% to $830 million in fiscal 2017.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Secondary; NVIDIA's own filing states 145%."
+  },
+  {
+   "id": "ev-ctx-10",
+   "url": "",
+   "title": "NVIDIA fiscal 2016 Datacenter (Tesla/GRID) revenue",
+   "publisher": "NVIDIA",
+   "date": "2016-02",
+   "speaker": "NVIDIA",
+   "type": "earnings",
+   "primary": true,
+   "passage": "Fiscal 2016 datacenter revenue of about $339 million (consistent with the $830M FY2017 figure growing ~145%).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Not directly re-confirmed; implied by ev-ctx-8/9 arithmetic only."
+  },
+  {
+   "id": "ev-ctx-11",
+   "url": "https://corporate.vanguard.com/etc.clientlibs/corporatesite/clientlibs/clientlib-site/resources/dwcharts/2dC6s-2.htm",
+   "title": "Hyperscaler capital expenditures (actual and consensus)",
+   "publisher": "Vanguard",
+   "date": "2026-01",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "Actual capex of hyperscale technology companies: $97B in 2020, $131B in 2021, $159B in 2022, $154B in 2023, $241B in 2024.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Chart is undated (it contains 2026 consensus values); date field approximate. Company membership not named in the snippet."
+  },
+  {
+   "id": "ev-ctx-12",
+   "url": "https://platformonomics.com/2025/02/follow-the-capex-cloud-table-stakes-2024-retrospective/",
+   "title": "Follow the CAPEX: Cloud Table Stakes 2024 Retrospective",
+   "publisher": "Platformonomics",
+   "date": "2025-02",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "Combined company-wide capex of Amazon, Google, Meta and Microsoft was over $251B in 2024, up 62% from 2023's $155B; figures include finance leases for Amazon, Meta and Microsoft.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-13",
+   "url": "https://siliconanalysts.com/market-data/hyperscaler-ai-capex",
+   "title": "Hyperscaler AI Capex by Company - Historical Time Series Data",
+   "publisher": "Silicon Analysts",
+   "date": "2026-05",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "Combined Microsoft/Alphabet/Amazon/Meta purchases of property and equipment ran at roughly $36B per quarter in 2022.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Publication date approximate (latest data point Q1 2026)."
+  },
+  {
+   "id": "ev-ctx-15",
+   "url": "https://www.computing.co.uk/news/4111737/ai-investment-falls-decade",
+   "title": "AI investment falls for first time in a decade",
+   "publisher": "Computing",
+   "date": "2023-04",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Stanford HAI reported global private AI investment of $91.9 billion in 2022, down 26.7% from 2021's $125.4 billion, the first year-over-year decline in a decade.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Reports AI Index 2023 figures (2021 value revised up vs the 2022 edition)."
+  },
+  {
+   "id": "ev-ctx-16",
+   "url": "https://hai.stanford.edu/ai-index/2023-ai-index-report/the-economy",
+   "title": "The Economy | The 2023 AI Index Report",
+   "publisher": "Stanford HAI",
+   "date": "2023-04",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "US private AI investment $47.4B in 2022, about 3.5x China's $13.4B; 2022 private investment was 18 times its 2013 level.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-17",
+   "url": "https://www.hpcwire.com/2024/04/15/exciting-updates-from-stanford-hais-seventh-annual-ai-index-report/",
+   "title": "Exciting Updates From Stanford HAI's Seventh Annual AI Index Report",
+   "publisher": "HPCwire",
+   "date": "2024-04-15",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Global private AI investment in 2023 dropped to $95.99 billion compared with 2022.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Snippet wording of the size of the decline was garbled; only the $95.99B level is relied on."
+  },
+  {
+   "id": "ev-ctx-18",
+   "url": "https://hai.stanford.edu/news/inside-new-ai-index-expensive-new-models-targeted-investments-and-more",
+   "title": "Inside the New AI Index: Expensive New Models, Targeted Investments and More",
+   "publisher": "Stanford HAI",
+   "date": "2024-04",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "US private AI investment reached $67.2B in 2023, nearly 8.7-9x China; generative AI funding nearly octupled from 2022 to $25.2B.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-19",
+   "url": "https://www.techbrew.com/stories/2022/04/04/report-ai-investment-more-than-doubled-to-usd93-5-billion-in-2021",
+   "title": "Report: AI investment more than doubled to $93.5 billion in 2021",
+   "publisher": "Tech Brew",
+   "date": "2022-04-04",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "AI Index 2022: private AI investment about $93.5B in 2021, more than double 2020; US $52.9B, China $17.2B.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Earlier vintage; AI Index 2023 later revised 2021 to $125.4B."
+  },
+  {
+   "id": "ev-ctx-20",
+   "url": "https://www.wisdomtree.com/investments/blog/2024/04/30/evaluating-the-ai-megatrend-in-2023",
+   "title": "Evaluating the AI megatrend in 2023",
+   "publisher": "WisdomTree",
+   "date": "2024-04-30",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Summarizing AI Index 2024: global corporate investment in AI grew from $14.57B in 2013 to $189B in 2023; 2021 was the peak; corporate AI investment fell ~20% in 2023 as M&A dropped.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Corporate investment (M&A, minority stakes, private, public offerings) is broader than private investment."
+  },
+  {
+   "id": "ev-ctx-21",
+   "url": "https://aibusiness.com/verticals/generative-ai-funding-hits-25-2-billion-in-2023-report-reveals",
+   "title": "Generative AI funding hits $25.2 billion in 2023, report reveals",
+   "publisher": "AI Business",
+   "date": "2024-04",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Generative AI private funding reached $25.2B in 2023; coverage gives about $2.85B in 2022 and about $840M in 2019.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "The search summary attributed the 2019/2022 values to coverage of AI Index 2024 without making clear whether this article or New Electronics carried them; treat 2019/2022 values as medium confidence. Month approximate."
+  },
+  {
+   "id": "ev-ctx-22",
+   "url": "https://hai.stanford.edu/news/2021-ai-index-major-growth-despite-pandemic",
+   "title": "The 2021 AI Index: Major Growth Despite the Pandemic",
+   "publisher": "Stanford HAI",
+   "date": "2021-03",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "Private investment in AI substantially increased in 2020 despite COVID; drug/molecular/drug-discovery AI received over $13.8B, 4.5x 2019; newly funded AI companies fell for the third year.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-23",
+   "url": "https://community.openai.com/t/the-openai-api-is-now-more-affordable/20432",
+   "title": "The OpenAI API is now more affordable",
+   "publisher": "OpenAI Developer Community",
+   "date": "2022-08",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Davinci price lowered from $0.06 to $0.02 per 1K tokens effective 00:00 UTC 1 September 2022, attributed to progress making models more efficient to run.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Voicebot covered the cut on 2022-08-25."
+  },
+  {
+   "id": "ev-ctx-24",
+   "url": "https://spectrum.ieee.org/chatgpt-2659513223",
+   "title": "ChatGPT API launch coverage",
+   "publisher": "IEEE Spectrum",
+   "date": "2023-03",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "ChatGPT API (gpt-3.5-turbo) launched 1 March 2023 at $0.002 per 1,000 tokens, roughly 750 English words.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-25",
+   "url": "https://synthedia.substack.com/p/the-chatgpt-api-has-arrived-and-the",
+   "title": "The ChatGPT API Has Arrived and the Simultaneous Whisper API Launch is No Accident",
+   "publisher": "Synthedia",
+   "date": "2023-03",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Quotes OpenAI: gpt-3.5-turbo priced at $0.002 per 1k tokens, 10x cheaper than existing GPT-3.5 models; OpenAI says it reduced ChatGPT operating cost by 90% since 30 Nov 2022.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-26",
+   "url": "https://developers.openai.com/api/docs/models/gpt-4",
+   "title": "GPT-4 model page",
+   "publisher": "OpenAI",
+   "date": "2023-03",
+   "speaker": "OpenAI",
+   "type": "data",
+   "primary": true,
+   "passage": "GPT-4 (8,192 context) priced at $30.00 input and $60.00 output per 1M tokens.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Current docs page; that these were the March 2023 launch rates ($0.03/$0.06 per 1K) is recalled. Date = model launch month."
+  },
+  {
+   "id": "ev-ctx-27",
+   "url": "",
+   "title": "OpenAI DevDay: GPT-4 Turbo and new developer products",
+   "publisher": "OpenAI",
+   "date": "2023-11-06",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "GPT-4 Turbo (128K context) priced at $0.01 per 1K input and $0.03 per 1K output tokens; gpt-3.5-turbo-1106 at $0.001/$0.002; custom GPTs and Assistants API announced.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Prices recalled, not re-confirmed this session."
+  },
+  {
+   "id": "ev-ctx-28",
+   "url": "https://openai.com/index/ai-and-compute",
+   "title": "AI and Compute",
+   "publisher": "OpenAI",
+   "date": "2018-05-16",
+   "speaker": "OpenAI (Amodei, Hernandez)",
+   "type": "essay",
+   "primary": true,
+   "passage": "Since 2012 compute in the largest AI training runs grew exponentially with a 3.4-month doubling time, more than 300,000x, versus ~7x under a two-year Moore's-law doubling.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-29",
+   "url": "https://www.lesswrong.com/posts/sDiGGhpw7Evw7zdR4",
+   "title": "Compute Trends Across Three Eras of Machine Learning (summary)",
+   "publisher": "LessWrong / Epoch",
+   "date": "2022-02",
+   "speaker": "Epoch",
+   "type": "paper",
+   "primary": false,
+   "passage": "Epoch analysis suggests ~5.7-month doubling of training compute 2012-2022 and identifies a separate large-scale trend; AlphaGo Zero (Oct 2017) remained the largest model by training compute until August 2021.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Post date approximate (Epoch paper Feb 2022)."
+  },
+  {
+   "id": "ev-ctx-30",
+   "url": "https://epoch.ai/data-insights/models-over-1e25-flop",
+   "title": "Over 30 AI models have been trained at the scale of GPT-4",
+   "publisher": "Epoch AI",
+   "date": "2025-06",
+   "speaker": "Epoch",
+   "type": "data",
+   "primary": false,
+   "passage": "Epoch estimates GPT-4's final training run at ~2e25 FLOP, the first model at that scale; estimates for undisclosed models like GPT-4 are uncertain within a factor of ~5.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "The 2e25 figure appeared in a snippet quoting Epoch (alignmentforum AXRP transcript) and in this page's framing."
+  },
+  {
+   "id": "ev-ctx-31",
+   "url": "https://epoch.ai/blog/announcing-updated-pcd-database",
+   "title": "Announcing Epoch AI's updated parameter, compute and data trends database",
+   "publisher": "Epoch AI",
+   "date": "2023-10",
+   "speaker": "Epoch",
+   "type": "data",
+   "primary": false,
+   "passage": "Database of 700+ notable ML models; training compute increased by nearly 8 orders of magnitude from 2012's AlexNet to 2023's GPT-4.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-33",
+   "url": "https://arxiv.org/abs/2005.14165",
+   "title": "Language Models are Few-Shot Learners",
+   "publisher": "arXiv (OpenAI)",
+   "date": "2020-05-28",
+   "speaker": "OpenAI (Brown et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "GPT-3: 175 billion parameters, 10x more than any previous non-sparse language model, applied without gradient updates via few-shot demonstrations in text; training compute reported as ~3.14e23 FLOP.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Parameter claims seen in snippet; the 3.14e23 FLOP figure is recalled from the paper's compute table (not re-confirmed)."
+  },
+  {
+   "id": "ev-ctx-34",
+   "url": "https://arxiv.org/abs/2001.08361",
+   "title": "Scaling Laws for Neural Language Models",
+   "publisher": "arXiv (OpenAI/JHU)",
+   "date": "2020-01-23",
+   "speaker": "OpenAI (Kaplan, McCandlish et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "Cross-entropy loss falls as a power law in model size, dataset size and training compute across more than seven orders of magnitude; for fixed compute, train very large models on modest data and stop before convergence.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-35",
+   "url": "https://proceedings.nips.cc/paper_files/paper/2022/file/c1e2faff6f588870935f114ebe04a3e5-Paper-Conference.pdf",
+   "title": "Training Compute-Optimal Large Language Models (Chinchilla)",
+   "publisher": "NeurIPS 2022 / DeepMind",
+   "date": "2022-03",
+   "speaker": "DeepMind (Hoffmann et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "Chinchilla (70B) uses the same compute as Gopher (280B) with ~4x more data (1.4T tokens) and outperforms Gopher and GPT-3; parameters and tokens should scale roughly equally.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "arXiv 2203.15556 posted March 2022 (month recalled)."
+  },
+  {
+   "id": "ev-ctx-36",
+   "url": "https://aiimpacts.org/time-for-ai-to-cross-the-human-performance-range-in-imagenet-image-classification/",
+   "title": "Time for AI to cross the human performance range in ImageNet image classification",
+   "publisher": "AI Impacts",
+   "date": "2020-10",
+   "speaker": "outcome",
+   "type": "data",
+   "primary": false,
+   "passage": "AlexNet's ILSVRC-2012 top-5 error was 15.3%, over 10.8 points below the runner-up (26.2%); winning top-5 error series includes 6.66% (GoogLeNet, 2014), 3.57% (ResNet, 2015), then 2.99% and 2.25%.",
+   "verbatim": false,
+   "verification": "snippet",
+   "note": "Article date recalled/approximate. Year attribution of 2.99% (2016) and 2.25% (2017, SENet) is recalled; snippet did not label them."
+  },
+  {
+   "id": "ev-ctx-40",
+   "url": "",
+   "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+   "publisher": "NeurIPS 2012",
+   "date": "2012-12",
+   "speaker": "Krizhevsky, Sutskever, Hinton",
+   "type": "paper",
+   "primary": true,
+   "passage": "A deep CNN trained on two GPUs won ILSVRC-2012 with 15.3% top-5 error versus 26.2% for the second-best entry.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Competition results announced ~Sept/Oct 2012; error figures confirmed separately via ev-ctx-36."
+  },
+  {
+   "id": "ev-ctx-41",
+   "url": "https://arxiv.org/abs/1112.6209",
+   "title": "Building High-level Features Using Large Scale Unsupervised Learning",
+   "publisher": "arXiv / ICML 2012 (Google)",
+   "date": "2012-06",
+   "speaker": "Le, Ng, Dean et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "A 1-billion-connection network trained on 16,000 CPU cores over YouTube frames learned a cat-face detector without labels (Google 'cat paper').",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "arXiv posting Dec 2011; ICML/NYT coverage June 2012."
+  },
+  {
+   "id": "ev-ctx-42",
+   "url": "https://arxiv.org/abs/1301.3781",
+   "title": "Efficient Estimation of Word Representations in Vector Space",
+   "publisher": "arXiv (Google)",
+   "date": "2013-01",
+   "speaker": "Mikolov et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Introduced word2vec (CBOW and skip-gram) dense word embeddings trained efficiently on large corpora.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-43",
+   "url": "",
+   "title": "Google acquires DNNresearch (Hinton, Krizhevsky, Sutskever)",
+   "publisher": "Google / press",
+   "date": "2013-03",
+   "speaker": "Google",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Google acquired the University of Toronto startup DNNresearch after a competitive auction (reported by Cade Metz as $44M).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Price from Metz, Genius Makers (2021); recalled."
+  },
+  {
+   "id": "ev-ctx-44",
+   "url": "https://arxiv.org/abs/1312.5602",
+   "title": "Playing Atari with Deep Reinforcement Learning",
+   "publisher": "arXiv (DeepMind)",
+   "date": "2013-12",
+   "speaker": "Mnih et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Deep Q-Network learned to play Atari games from raw pixels with a single architecture.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-45",
+   "url": "",
+   "title": "Facebook creates AI research lab (FAIR) led by Yann LeCun",
+   "publisher": "Facebook / press",
+   "date": "2013-12",
+   "speaker": "Facebook",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Facebook hired Yann LeCun to lead a new AI research lab announced at NeurIPS in December 2013.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-46",
+   "url": "",
+   "title": "Google acquires DeepMind",
+   "publisher": "press (Re/code, Guardian)",
+   "date": "2014-01",
+   "speaker": "Google",
+   "type": "news",
+   "primary": false,
+   "passage": "Google agreed to acquire London-based DeepMind in January 2014; reported price roughly $400-650M (sources differ).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Exact price never officially disclosed."
+  },
+  {
+   "id": "ev-ctx-47",
+   "url": "https://arxiv.org/abs/1406.2661",
+   "title": "Generative Adversarial Networks",
+   "publisher": "arXiv",
+   "date": "2014-06",
+   "speaker": "Goodfellow et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Introduced GANs: a generator and discriminator trained adversarially.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-48",
+   "url": "https://arxiv.org/abs/1409.3215",
+   "title": "Sequence to Sequence Learning with Neural Networks",
+   "publisher": "arXiv (Google)",
+   "date": "2014-09",
+   "speaker": "Sutskever, Vinyals, Le",
+   "type": "paper",
+   "primary": true,
+   "passage": "LSTM encoder-decoder for machine translation; Sutskever's accompanying NeurIPS 2014 talk argued that a large network trained on a large dataset would succeed.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Talk framing recalled."
+  },
+  {
+   "id": "ev-ctx-49",
+   "url": "https://arxiv.org/abs/1409.0473",
+   "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+   "publisher": "arXiv",
+   "date": "2014-09",
+   "speaker": "Bahdanau, Cho, Bengio",
+   "type": "paper",
+   "primary": true,
+   "passage": "Introduced the attention mechanism for neural machine translation.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-50",
+   "url": "",
+   "title": "Superintelligence: Paths, Dangers, Strategies",
+   "publisher": "Oxford University Press",
+   "date": "2014-07",
+   "speaker": "Nick Bostrom",
+   "type": "book",
+   "primary": true,
+   "passage": "Argued that machine superintelligence could pose an existential risk and that control must be solved in advance.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-51",
+   "url": "",
+   "title": "TensorFlow open-sourced",
+   "publisher": "Google",
+   "date": "2015-11",
+   "speaker": "Google",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Google released its TensorFlow machine-learning library as open source on 9 November 2015.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-52",
+   "url": "https://arxiv.org/abs/1512.03385",
+   "title": "Deep Residual Learning for Image Recognition",
+   "publisher": "arXiv (Microsoft Research)",
+   "date": "2015-12",
+   "speaker": "He, Zhang, Ren, Sun",
+   "type": "paper",
+   "primary": true,
+   "passage": "Residual networks up to 152 layers won ILSVRC 2015 classification with 3.57% top-5 error.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "3.57% confirmed via ev-ctx-36."
+  },
+  {
+   "id": "ev-ctx-53",
+   "url": "",
+   "title": "Introducing OpenAI",
+   "publisher": "OpenAI",
+   "date": "2015-12-11",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI launched as a non-profit research company; backers (Altman, Musk, Brockman, Thiel, Hoffman, Livingston, AWS, Infosys, YC Research) committed $1 billion in total.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-54",
+   "url": "",
+   "title": "AlphaGo defeats Lee Sedol 4-1",
+   "publisher": "DeepMind / press",
+   "date": "2016-03",
+   "speaker": "DeepMind",
+   "type": "news",
+   "primary": false,
+   "passage": "AlphaGo beat 18-time world champion Lee Sedol 4-1 in Seoul, 9-15 March 2016.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-55",
+   "url": "",
+   "title": "NVIDIA Pascal P100 and DGX-1 launched at GTC 2016",
+   "publisher": "NVIDIA",
+   "date": "2016-04",
+   "speaker": "NVIDIA",
+   "type": "announcement",
+   "primary": true,
+   "passage": "NVIDIA announced the Tesla P100 and the DGX-1 'AI supercomputer in a box'; Jensen Huang delivered the first DGX-1 to OpenAI in August 2016.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-56",
+   "url": "",
+   "title": "Google supercharges machine learning tasks with TPU custom chip",
+   "publisher": "Google Cloud blog",
+   "date": "2016-05",
+   "speaker": "Google",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Google disclosed at I/O 2016 that it had run Tensor Processing Units in its data centers for over a year; a 2017 ISCA paper reported 15-30x higher performance and 30-80x better performance/watt than contemporary CPUs/GPUs on inference.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-57",
+   "url": "",
+   "title": "DeepMind AI reduces Google data centre cooling bill by 40%",
+   "publisher": "DeepMind blog",
+   "date": "2016-07",
+   "speaker": "DeepMind",
+   "type": "announcement",
+   "primary": true,
+   "passage": "DeepMind reported its ML system cut energy used for cooling Google data centers by up to 40%.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-58",
+   "url": "https://arxiv.org/abs/1609.08144",
+   "title": "Google's Neural Machine Translation System",
+   "publisher": "arXiv (Google)",
+   "date": "2016-09",
+   "speaker": "Wu et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Google moved Translate to an LSTM-with-attention neural system, reporting large error reductions vs phrase-based translation.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-59",
+   "url": "https://arxiv.org/abs/1706.03762",
+   "title": "Attention Is All You Need",
+   "publisher": "arXiv (Google)",
+   "date": "2017-06",
+   "speaker": "Vaswani et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Introduced the Transformer, dispensing with recurrence and convolution entirely in favor of attention.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-60",
+   "url": "",
+   "title": "Google I/O 2017 keynote: from mobile-first to AI-first",
+   "publisher": "Google",
+   "date": "2017-05",
+   "speaker": "Sundar Pichai",
+   "type": "talk",
+   "primary": true,
+   "passage": "Pichai described Google's shift from a mobile-first to an AI-first world and announced second-generation Cloud TPUs.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Pichai first used 'AI-first' framing in 2016."
+  },
+  {
+   "id": "ev-ctx-61",
+   "url": "",
+   "title": "New Generation Artificial Intelligence Development Plan",
+   "publisher": "State Council of the PRC",
+   "date": "2017-07",
+   "speaker": "State Council of China",
+   "type": "filing",
+   "primary": true,
+   "passage": "China set a goal to become the world's primary AI innovation center by 2030, with a core AI industry exceeding 1 trillion yuan.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-62",
+   "url": "",
+   "title": "Mastering the game of Go without human knowledge (AlphaGo Zero)",
+   "publisher": "Nature",
+   "date": "2017-10",
+   "speaker": "DeepMind (Silver et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "AlphaGo Zero learned Go purely from self-play without human game data and surpassed prior AlphaGo versions.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-63",
+   "url": "https://arxiv.org/abs/1712.01815",
+   "title": "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm",
+   "publisher": "arXiv (DeepMind)",
+   "date": "2017-12",
+   "speaker": "DeepMind (Silver et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "AlphaZero generalized self-play RL to chess, shogi and Go.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-64",
+   "url": "https://arxiv.org/abs/1802.05365",
+   "title": "Deep contextualized word representations (ELMo)",
+   "publisher": "arXiv (AllenAI/UW)",
+   "date": "2018-02",
+   "speaker": "Peters et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Contextual embeddings from a pretrained bidirectional LSTM language model improved many NLP tasks.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-65",
+   "url": "",
+   "title": "Improving Language Understanding by Generative Pre-Training (GPT-1)",
+   "publisher": "OpenAI",
+   "date": "2018-06",
+   "speaker": "OpenAI (Radford et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "Generative pretraining of a Transformer decoder on unlabeled text followed by task fine-tuning.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-66",
+   "url": "https://arxiv.org/abs/1810.04805",
+   "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+   "publisher": "arXiv (Google)",
+   "date": "2018-10",
+   "speaker": "Devlin et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Masked-language-model pretraining of a bidirectional Transformer set state of the art on 11 NLP tasks.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-67",
+   "url": "",
+   "title": "Better Language Models and Their Implications (GPT-2)",
+   "publisher": "OpenAI",
+   "date": "2019-02-14",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI announced the 1.5B-parameter GPT-2 but initially withheld the full model citing misuse concerns (staged release; full model November 2019).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-68",
+   "url": "",
+   "title": "OpenAI LP",
+   "publisher": "OpenAI",
+   "date": "2019-03-11",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI created a 'capped-profit' company governed by the non-profit, with first-round investor returns capped at 100x.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-69",
+   "url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+   "title": "The Bitter Lesson",
+   "publisher": "incompleteideas.net",
+   "date": "2019-03-13",
+   "speaker": "Richard Sutton",
+   "type": "essay",
+   "primary": true,
+   "passage": "General methods that leverage computation (search and learning) ultimately beat approaches built on human domain knowledge, by a large margin.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-70",
+   "url": "",
+   "title": "Fathers of the Deep Learning Revolution Receive ACM A.M. Turing Award",
+   "publisher": "ACM",
+   "date": "2019-03-27",
+   "speaker": "ACM",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Bengio, Hinton and LeCun received the 2018 Turing Award for deep learning.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-71",
+   "url": "",
+   "title": "NVIDIA to acquire Mellanox for $6.9 billion",
+   "publisher": "NVIDIA",
+   "date": "2019-03-11",
+   "speaker": "NVIDIA",
+   "type": "announcement",
+   "primary": true,
+   "passage": "NVIDIA agreed to acquire Mellanox (InfiniBand/Ethernet interconnect) for $6.9B; closed April 2020.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-72",
+   "url": "",
+   "title": "US Commerce Department adds Huawei to Entity List",
+   "publisher": "US Department of Commerce",
+   "date": "2019-05",
+   "speaker": "US Department of Commerce",
+   "type": "filing",
+   "primary": true,
+   "passage": "Huawei was added to the Entity List, restricting its access to US-origin technology.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-73",
+   "url": "",
+   "title": "Microsoft invests $1 billion in OpenAI",
+   "publisher": "Microsoft / OpenAI",
+   "date": "2019-07-22",
+   "speaker": "Microsoft",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Microsoft invested $1B in OpenAI; Azure became OpenAI's exclusive cloud provider, with the goal of building AGI supercomputing technologies.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-74",
+   "url": "",
+   "title": "OpenAI API",
+   "publisher": "OpenAI",
+   "date": "2020-06-11",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI launched a commercial API (private beta) giving access to GPT-3 models.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-75",
+   "url": "",
+   "title": "NVIDIA A100 / Ampere launch",
+   "publisher": "NVIDIA",
+   "date": "2020-05-14",
+   "speaker": "NVIDIA",
+   "type": "announcement",
+   "primary": true,
+   "passage": "NVIDIA launched the Ampere-architecture A100 data-center GPU and DGX A100.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-76",
+   "url": "",
+   "title": "Microsoft teams up with OpenAI to exclusively license GPT-3",
+   "publisher": "Microsoft",
+   "date": "2020-09-22",
+   "speaker": "Microsoft",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Microsoft obtained an exclusive license to GPT-3's underlying technology.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-77",
+   "url": "",
+   "title": "AlphaFold: a solution to a 50-year-old grand challenge in biology",
+   "publisher": "DeepMind",
+   "date": "2020-11-30",
+   "speaker": "DeepMind",
+   "type": "announcement",
+   "primary": true,
+   "passage": "AlphaFold 2 achieved a median GDT score of ~92.4 at CASP14, reaching accuracy competitive with experimental methods for many proteins.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-78",
+   "url": "",
+   "title": "DALL-E and CLIP",
+   "publisher": "OpenAI",
+   "date": "2021-01-05",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI announced DALL-E (text-to-image) and CLIP (contrastive image-text pretraining).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-79",
+   "url": "https://arxiv.org/abs/2101.03961",
+   "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+   "publisher": "arXiv (Google)",
+   "date": "2021-01",
+   "speaker": "Fedus, Zoph, Shazeer",
+   "type": "paper",
+   "primary": true,
+   "passage": "Sparse mixture-of-experts routing scaled Transformers to over a trillion parameters at constant per-token compute.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-80",
+   "url": "",
+   "title": "Proposal for a Regulation laying down harmonised rules on artificial intelligence (AI Act)",
+   "publisher": "European Commission",
+   "date": "2021-04-21",
+   "speaker": "European Commission",
+   "type": "filing",
+   "primary": true,
+   "passage": "The Commission proposed a risk-based AI regulation.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-81",
+   "url": "",
+   "title": "Anthropic raises $124 million Series A",
+   "publisher": "Anthropic",
+   "date": "2021-05-28",
+   "speaker": "Anthropic",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Anthropic, founded by former OpenAI researchers including Dario and Daniela Amodei, announced a $124M Series A to build reliable, interpretable, steerable AI systems.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-82",
+   "url": "",
+   "title": "Introducing GitHub Copilot: your AI pair programmer",
+   "publisher": "GitHub",
+   "date": "2021-06-29",
+   "speaker": "GitHub",
+   "type": "announcement",
+   "primary": true,
+   "passage": "GitHub launched a technical preview of Copilot, powered by OpenAI Codex; general availability followed in June 2022 at $10/month.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-83",
+   "url": "https://arxiv.org/abs/2108.07258",
+   "title": "On the Opportunities and Risks of Foundation Models",
+   "publisher": "arXiv (Stanford CRFM)",
+   "date": "2021-08",
+   "speaker": "Bommasani et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Coined 'foundation models' for models trained on broad data at scale and adaptable to many downstream tasks; emphasized homogenization and emergence.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-84",
+   "url": "",
+   "title": "Megatron-Turing NLG 530B",
+   "publisher": "Microsoft / NVIDIA",
+   "date": "2021-10",
+   "speaker": "Microsoft & NVIDIA",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Microsoft and NVIDIA announced a 530B-parameter dense language model trained on NVIDIA's Selene supercomputer.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-85",
+   "url": "https://arxiv.org/abs/2112.11446",
+   "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+   "publisher": "arXiv (DeepMind)",
+   "date": "2021-12",
+   "speaker": "Rae et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "DeepMind's 280B-parameter Gopher with analysis of gains from scale across 152 tasks.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-86",
+   "url": "",
+   "title": "Global semiconductor shortage 2020-2021",
+   "publisher": "press",
+   "date": "2021-02",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Pandemic demand shifts and supply disruptions caused a global chip shortage that cut automobile production and constrained electronics through 2021.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Month approximate (early-2021 auto production cuts); general recalled context."
+  },
+  {
+   "id": "ev-ctx-87",
+   "url": "",
+   "title": "NVIDIA announces H100 (Hopper) at GTC 2022",
+   "publisher": "NVIDIA",
+   "date": "2022-03-22",
+   "speaker": "NVIDIA",
+   "type": "announcement",
+   "primary": true,
+   "passage": "NVIDIA announced the Hopper H100 with a Transformer Engine (FP8).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-88",
+   "url": "https://arxiv.org/abs/2204.02311",
+   "title": "PaLM: Scaling Language Modeling with Pathways",
+   "publisher": "arXiv (Google)",
+   "date": "2022-04",
+   "speaker": "Chowdhery et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "540B-parameter dense model trained on 6,144 TPU v4 chips using Pathways; reported ~2.56e24 FLOP training compute and breakthrough few-shot reasoning results.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-89",
+   "url": "",
+   "title": "DALL-E 2",
+   "publisher": "OpenAI",
+   "date": "2022-04-06",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI announced DALL-E 2, a diffusion-based text-to-image system.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-90",
+   "url": "",
+   "title": "Midjourney open beta",
+   "publisher": "Midjourney",
+   "date": "2022-07",
+   "speaker": "Midjourney",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Midjourney opened its Discord-based image generator to the public in July 2022.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-91",
+   "url": "",
+   "title": "Stable Diffusion public release",
+   "publisher": "Stability AI",
+   "date": "2022-08-22",
+   "speaker": "Stability AI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Stability AI, with CompVis and Runway, released Stable Diffusion weights publicly under an open license.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-92",
+   "url": "",
+   "title": "CHIPS and Science Act signed",
+   "publisher": "The White House",
+   "date": "2022-08-09",
+   "speaker": "US Government",
+   "type": "filing",
+   "primary": true,
+   "passage": "The Act provided roughly $52.7B for US semiconductor manufacturing, R&D and workforce, including ~$39B in manufacturing incentives.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-93",
+   "url": "",
+   "title": "Commerce implements new export controls on advanced computing and semiconductor manufacturing items to the PRC",
+   "publisher": "US Bureau of Industry and Security",
+   "date": "2022-10-07",
+   "speaker": "US Department of Commerce",
+   "type": "filing",
+   "primary": true,
+   "passage": "BIS restricted exports to China of advanced AI chips (A100/H100 class) and chipmaking equipment.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-94",
+   "url": "https://openai.com/blog/chatgpt",
+   "title": "Introducing ChatGPT",
+   "publisher": "OpenAI",
+   "date": "2022-11-30",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI released ChatGPT, a conversational model fine-tuned from the GPT-3.5 series with RLHF, as a free research preview.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-95",
+   "url": "",
+   "title": "ChatGPT sets record for fastest-growing user base - analyst note",
+   "publisher": "Reuters (citing UBS)",
+   "date": "2023-02",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "UBS estimated ChatGPT reached 100 million monthly active users in January 2023, two months after launch.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-96",
+   "url": "",
+   "title": "Microsoft and OpenAI extend partnership",
+   "publisher": "Microsoft",
+   "date": "2023-01-23",
+   "speaker": "Microsoft",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Microsoft announced a 'multiyear, multibillion dollar' investment in OpenAI, widely reported as $10B.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-97",
+   "url": "https://arxiv.org/abs/2302.13971",
+   "title": "LLaMA: Open and Efficient Foundation Language Models",
+   "publisher": "arXiv (Meta)",
+   "date": "2023-02",
+   "speaker": "Touvron et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Meta released 7B-65B models trained on public data under a research license; LLaMA-13B outperformed GPT-3 on most benchmarks. Weights leaked publicly in early March 2023.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-98",
+   "url": "https://arxiv.org/abs/2303.08774",
+   "title": "GPT-4 Technical Report",
+   "publisher": "arXiv (OpenAI)",
+   "date": "2023-03",
+   "speaker": "OpenAI",
+   "type": "paper",
+   "primary": true,
+   "passage": "GPT-4 (announced 14 March 2023) is a multimodal model with human-level performance on many professional exams; the report withheld architecture, size, compute and data details citing competition and safety.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-99",
+   "url": "",
+   "title": "Pause Giant AI Experiments: An Open Letter",
+   "publisher": "Future of Life Institute",
+   "date": "2023-03-22",
+   "speaker": "Future of Life Institute",
+   "type": "letter",
+   "primary": true,
+   "passage": "Called for a 6-month pause on training systems more powerful than GPT-4.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-100",
+   "url": "",
+   "title": "Geoffrey Hinton leaves Google to speak about AI risks",
+   "publisher": "New York Times",
+   "date": "2023-05-01",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "Hinton quit Google so he could speak freely about AI dangers.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-101",
+   "url": "https://www.safe.ai/statement-on-ai-risk",
+   "title": "Statement on AI Risk",
+   "publisher": "Center for AI Safety",
+   "date": "2023-05-30",
+   "speaker": "Center for AI Safety",
+   "type": "letter",
+   "primary": true,
+   "passage": "One-sentence statement that mitigating the risk of extinction from AI should be a global priority alongside pandemics and nuclear war; signed by Hinton, Bengio, Altman, Hassabis, Amodei and others.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Paraphrased; not re-fetched."
+  },
+  {
+   "id": "ev-ctx-102",
+   "url": "",
+   "title": "NVIDIA briefly tops $1 trillion market value",
+   "publisher": "press",
+   "date": "2023-05-30",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "NVIDIA became the first chipmaker to reach a $1T market capitalization after guiding to ~$11B quarterly revenue on AI demand (24 May 2023).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-103",
+   "url": "https://arxiv.org/abs/2307.09288",
+   "title": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+   "publisher": "arXiv (Meta)",
+   "date": "2023-07",
+   "speaker": "Touvron et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Meta released Llama 2 (7B-70B) with chat variants, free for most commercial use, with Microsoft as preferred partner (announced 18 July 2023).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-104",
+   "url": "",
+   "title": "Biden-Harris Administration secures voluntary commitments from leading AI companies",
+   "publisher": "The White House",
+   "date": "2023-07-21",
+   "speaker": "US Government",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Seven companies (Amazon, Anthropic, Google, Inflection, Meta, Microsoft, OpenAI) made voluntary safety, security and trust commitments.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-105",
+   "url": "",
+   "title": "NVIDIA Announces Financial Results for Second Quarter Fiscal 2024",
+   "publisher": "NVIDIA",
+   "date": "2023-08-23",
+   "speaker": "NVIDIA",
+   "type": "earnings",
+   "primary": true,
+   "passage": "Quarterly Data Center revenue of $10.32B, more than double the prior quarter, on H100 demand amid supply shortages.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-106",
+   "url": "",
+   "title": "Amazon to invest up to $4 billion in Anthropic",
+   "publisher": "Amazon",
+   "date": "2023-09-25",
+   "speaker": "Amazon",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Amazon agreed to invest up to $4B in Anthropic; AWS became Anthropic's primary cloud provider and Anthropic committed to use Trainium/Inferentia chips.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-107",
+   "url": "",
+   "title": "Executive Order 14110 on Safe, Secure, and Trustworthy AI",
+   "publisher": "The White House",
+   "date": "2023-10-30",
+   "speaker": "US Government",
+   "type": "filing",
+   "primary": true,
+   "passage": "Required developers of dual-use foundation models above a 1e26-operation training threshold to report training and red-team results to the government.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-108",
+   "url": "",
+   "title": "The Bletchley Declaration",
+   "publisher": "UK Government",
+   "date": "2023-11-01",
+   "speaker": "AI Safety Summit participants",
+   "type": "letter",
+   "primary": true,
+   "passage": "28 countries plus the EU agreed a declaration on frontier AI risks at the AI Safety Summit, Bletchley Park, 1-2 November 2023.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-109",
+   "url": "",
+   "title": "OpenAI announces leadership transition / Sam Altman returns",
+   "publisher": "OpenAI",
+   "date": "2023-11-17",
+   "speaker": "OpenAI",
+   "type": "announcement",
+   "primary": true,
+   "passage": "OpenAI's non-profit board removed CEO Sam Altman on 17 November 2023; after most staff threatened to leave and Microsoft offered to hire them, Altman's return with a new board was agreed on 21-22 November.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-110",
+   "url": "",
+   "title": "Introducing Gemini",
+   "publisher": "Google",
+   "date": "2023-12-06",
+   "speaker": "Google DeepMind",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Google announced Gemini 1.0 (Ultra, Pro, Nano), natively multimodal, trained on TPUs; Gemini Pro shipped in Bard immediately.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-111",
+   "url": "",
+   "title": "Artificial Intelligence Act: deal on comprehensive rules for trustworthy AI",
+   "publisher": "European Parliament",
+   "date": "2023-12-08",
+   "speaker": "European Parliament / Council",
+   "type": "announcement",
+   "primary": true,
+   "passage": "EU co-legislators reached a provisional political agreement on the AI Act, including obligations for general-purpose AI models.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-112",
+   "url": "https://arxiv.org/abs/2401.04088",
+   "title": "Mixtral of Experts",
+   "publisher": "arXiv (Mistral AI)",
+   "date": "2024-01",
+   "speaker": "Mistral AI (Jiang et al.)",
+   "type": "paper",
+   "primary": true,
+   "passage": "Mixtral 8x7B, a sparse mixture-of-experts model (announced 11 Dec 2023, Apache 2.0), uses ~13B active of ~47B total parameters per token and matched or beat GPT-3.5 on many benchmarks.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Paper posted Jan 2024; model announced Dec 2023."
+  },
+  {
+   "id": "ev-ctx-113",
+   "url": "",
+   "title": "The New York Times sues OpenAI and Microsoft over copyright",
+   "publisher": "New York Times",
+   "date": "2023-12-27",
+   "speaker": "outcome",
+   "type": "news",
+   "primary": false,
+   "passage": "NYT filed a copyright suit alleging its articles were used to train models without permission.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-114",
+   "url": "",
+   "title": "Microsoft reimagines search with a new AI-powered Bing and Edge",
+   "publisher": "Microsoft",
+   "date": "2023-02-07",
+   "speaker": "Microsoft",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Microsoft launched Bing chat powered by a next-generation OpenAI model (later confirmed as GPT-4).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-115",
+   "url": "https://arxiv.org/abs/2201.11903",
+   "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+   "publisher": "arXiv (Google)",
+   "date": "2022-01",
+   "speaker": "Wei et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Prompting with intermediate reasoning steps substantially improved large-model reasoning; benefit emerged mainly at large scale.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-116",
+   "url": "https://arxiv.org/abs/2203.02155",
+   "title": "Training language models to follow instructions with human feedback (InstructGPT)",
+   "publisher": "arXiv (OpenAI)",
+   "date": "2022-03",
+   "speaker": "Ouyang et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "RLHF-tuned 1.3B InstructGPT outputs were preferred by labelers over 175B GPT-3 outputs.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-117",
+   "url": "https://github.com/Significant-Gravitas/AutoGPT",
+   "title": "Auto-GPT repository",
+   "publisher": "GitHub",
+   "date": "2023-03",
+   "speaker": "Significant Gravitas (Toran Bruce Richards)",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Open-source autonomous GPT-4 agent loop that went viral in April 2023.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-118",
+   "url": "https://arxiv.org/abs/1706.03741",
+   "title": "Deep reinforcement learning from human preferences",
+   "publisher": "arXiv (OpenAI/DeepMind)",
+   "date": "2017-06",
+   "speaker": "Christiano, Leike, Brown, Martic, Legg, Amodei",
+   "type": "paper",
+   "primary": true,
+   "passage": "Learned reward models from human comparisons to train RL agents.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Basis of later RLHF."
+  },
+  {
+   "id": "ev-ctx-119",
+   "url": "https://arxiv.org/abs/1801.00631",
+   "title": "Deep Learning: A Critical Appraisal",
+   "publisher": "arXiv",
+   "date": "2018-01",
+   "speaker": "Gary Marcus",
+   "type": "paper",
+   "primary": true,
+   "passage": "Argued deep learning is data-hungry, shallow, struggles with abstraction, reasoning and generalization, and should be complemented by symbolic methods.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-120",
+   "url": "",
+   "title": "Yann LeCun NeurIPS 2016 keynote ('cake' analogy)",
+   "publisher": "NeurIPS 2016",
+   "date": "2016-12",
+   "speaker": "Yann LeCun",
+   "type": "talk",
+   "primary": true,
+   "passage": "Predictive/unsupervised learning is the bulk of the cake; supervised learning the icing and RL the cherry.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-121",
+   "url": "https://arxiv.org/abs/1906.02243",
+   "title": "Energy and Policy Considerations for Deep Learning in NLP",
+   "publisher": "arXiv / ACL 2019",
+   "date": "2019-06",
+   "speaker": "Strubell, Ganesh, McCallum",
+   "type": "paper",
+   "primary": true,
+   "passage": "Quantified energy and carbon costs of training large NLP models, arguing for efficiency and equitable compute access.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-122",
+   "url": "https://dl.acm.org/doi/10.1145/3442188.3445922",
+   "title": "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?",
+   "publisher": "FAccT 2021",
+   "date": "2021-03",
+   "speaker": "Bender, Gebru, McMillan-Major, Mitchell",
+   "type": "paper",
+   "primary": true,
+   "passage": "Warned of environmental, data-documentation and bias costs of ever-larger LMs and of mistaking fluent text for understanding.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-123",
+   "url": "",
+   "title": "Andrew Ng: 'A chat with Andrew on MLOps: From model-centric to data-centric AI'",
+   "publisher": "DeepLearning.AI",
+   "date": "2021-03",
+   "speaker": "Andrew Ng",
+   "type": "talk",
+   "primary": true,
+   "passage": "Argued practitioners should hold the model fixed and systematically improve data quality.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-124",
+   "url": "https://arxiv.org/abs/2009.06489",
+   "title": "The Hardware Lottery",
+   "publisher": "arXiv",
+   "date": "2020-09",
+   "speaker": "Sara Hooker",
+   "type": "paper",
+   "primary": true,
+   "passage": "Research ideas win partly because they suit available hardware and software, not because they are universally superior.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-125",
+   "url": "",
+   "title": "Forecasting TAI with biological anchors (draft report)",
+   "publisher": "Open Philanthropy",
+   "date": "2020-09",
+   "speaker": "Ajeya Cotra",
+   "type": "essay",
+   "primary": true,
+   "passage": "Compute-based model gave a median around 2050 for transformative AI (later shortened by the author).",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-126",
+   "url": "https://gwern.net/scaling-hypothesis",
+   "title": "The Scaling Hypothesis",
+   "publisher": "gwern.net",
+   "date": "2020-05",
+   "speaker": "Gwern Branwen",
+   "type": "essay",
+   "primary": true,
+   "passage": "After GPT-3, argued that scaling simple neural architectures with more compute and data would keep yielding more general intelligence.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-127",
+   "url": "",
+   "title": "Google 'We Have No Moat, And Neither Does OpenAI' (leaked memo)",
+   "publisher": "SemiAnalysis",
+   "date": "2023-05",
+   "speaker": "Anonymous Google researcher",
+   "type": "essay",
+   "primary": false,
+   "passage": "Leaked internal memo argued open-source models were rapidly closing the gap and proprietary models had no durable moat.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Authenticity reported but author anonymous."
+  },
+  {
+   "id": "ev-ctx-128",
+   "url": "https://arxiv.org/abs/2101.00027",
+   "title": "The Pile: An 800GB Dataset of Diverse Text for Language Modeling",
+   "publisher": "arXiv (EleutherAI)",
+   "date": "2020-12",
+   "speaker": "Gao et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "Open 825 GiB curated text corpus for training large language models.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-129",
+   "url": "https://arxiv.org/abs/2210.08402",
+   "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+   "publisher": "arXiv (LAION)",
+   "date": "2022-10",
+   "speaker": "Schuhmann et al.",
+   "type": "paper",
+   "primary": true,
+   "passage": "5.85B CLIP-filtered image-text pairs (dataset released March 2022) used to train open image models such as Stable Diffusion.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-130",
+   "url": "",
+   "title": "GDPR becomes applicable",
+   "publisher": "European Union",
+   "date": "2018-05-25",
+   "speaker": "European Union",
+   "type": "filing",
+   "primary": true,
+   "passage": "The EU General Data Protection Regulation applied from 25 May 2018.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-131",
+   "url": "",
+   "title": "Azure supercomputer for OpenAI (Microsoft Build 2020)",
+   "publisher": "Microsoft",
+   "date": "2020-05",
+   "speaker": "Microsoft",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Microsoft said it built for OpenAI one of the top five supercomputers in the world, with 285,000+ CPU cores and 10,000 GPUs.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-132",
+   "url": "",
+   "title": "PyTorch public release",
+   "publisher": "Facebook AI Research",
+   "date": "2017-01",
+   "speaker": "Facebook",
+   "type": "announcement",
+   "primary": true,
+   "passage": "Facebook released PyTorch, a define-by-run Python deep learning framework; PyTorch 1.0 followed in December 2018.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-133",
+   "url": "https://arxiv.org/abs/1606.06565",
+   "title": "Concrete Problems in AI Safety",
+   "publisher": "arXiv (Google Brain/OpenAI/Stanford/Berkeley)",
+   "date": "2016-06",
+   "speaker": "Amodei, Olah, Steinhardt, Christiano, Schulman, Mane",
+   "type": "paper",
+   "primary": true,
+   "passage": "Framed practical ML safety problems: reward hacking, safe exploration, robustness to distributional shift, scalable oversight.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": ""
+  },
+  {
+   "id": "ev-ctx-134",
+   "url": "",
+   "title": "Shane Legg AGI timeline predictions (vetta.org blog)",
+   "publisher": "vetta.org",
+   "date": "2011-12",
+   "speaker": "Shane Legg",
+   "type": "social",
+   "primary": true,
+   "passage": "DeepMind co-founder repeatedly gave ~50% probability of human-level AGI by around 2028, premised on compute growth.",
+   "verbatim": false,
+   "verification": "recalled",
+   "note": "Pre-period evidence for scaling/compute-driven timelines."
+  }
+ ],
+ "gaps": [
+  "Web search budget (shared across agents) was exhausted after ~25 queries and direct page fetches were blocked by the proxy (arxiv.org, epoch.ai, openai.com, hai.stanford.edu, sec.gov, wikipedia all unreachable); most event evidence (ev-ctx-40 to ev-ctx-134) is therefore verification 'recalled', with URLs given only for canonical arXiv IDs and a few well-known pages, otherwise url empty.",
+  "Event dates/details recalled and not re-confirmed this session include: DeepMind price (reported ~$400-650M), DNNresearch price ($44M per Metz), OpenAI LP 100x cap, Microsoft $1B (2019) and $10B (2023, reported), Amazon $4B in Anthropic, Anthropic $124M Series A, EO 14110 1e26 threshold, Bletchley 28 countries, ChatGPT 100M MAU (UBS), NVIDIA Q2 FY24 $10.32B, NVIDIA $1T (30 May 2023), CHIPS Act $52.7B, AlphaFold 2 GDT ~92.4, Mixtral parameter counts, GPT-4 Turbo and gpt-3.5-turbo-1106 pricing, Getty v. Stability (2023).",
+  "Hyperscaler capex: no clean, verified MSFT+GOOGL+AMZN+META annual series for 2012-2019 was found; the metric uses Vanguard's unnamed 'hyperscale technology companies' series for 2020-2023 only. Per-company 10-K 'purchases of property and equipment' should be pulled to complete it.",
+  "AI Index private investment: only 2021-2023 values verified; 2013-2020 totals missing; vintages differ between editions (2021 = $93.5B in the 2022 edition vs $125.4B in the 2023 edition).",
+  "Training-compute metric: only GPT-4 ~2e25 FLOP (Epoch) seen in a source; AlexNet 4.7e17, AlphaGo Zero 3.4e23, GPT-3 3.14e23 and PaLM 2.56e24 are recalled values; Gemini Ultra (~5e25 per Epoch, recalled) omitted.",
+  "NVIDIA datacenter FY2016 ($0.339B) recalled; FY2013-FY2015 not sourced (segment reported as Tesla/GRID earlier).",
+  "Evidence dates marked approximate: ev-ctx-11 (Vanguard chart undated), ev-ctx-13, ev-ctx-29, ev-ctx-36, ev-ctx-21 month.",
+  "ImageNet 2016 (2.99%) and 2017 (2.25%) values were seen in a snippet without year labels; year attribution is recalled.",
+  "Minority-view attributions to Sutskever's 2014 talk, LeCun's 2016 'cake', Legg's timelines, Ng's data-centric campaign and the 'no moat' memo are recalled and not re-verified.",
+  "Events list trimmed to 62 for balance; dropped lower-magnitude candidates (FAIR, Google cat paper, PyTorch, GDPR, Turing Award, The Pile, MT-NLG, Gopher, LAION-5B, FLI pause letter, Hinton leaving Google, Auto-GPT, etc.) are still referenced as evidence in period snapshots."
+ ]
+}

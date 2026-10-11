@@ -1,0 +1,1546 @@
+[
+ {
+  "id": "builders-1-rel-1",
+  "from": "jensen-huang",
+  "to": "dario-amodei",
+  "type": "challenges",
+  "date": "2025-06",
+  "note": "Huang said he disagreed with almost everything Amodei says, rejecting his warnings of mass entry-level white-collar job loss and the idea that only a few should build AI.",
+  "evidenceIds": [
+   "ev-huang-15"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-2",
+  "from": "jensen-huang",
+  "to": "dario-amodei",
+  "type": "contradicts",
+  "date": "2025-05",
+  "note": "Amodei argued (Jan 2025) for strong US chip export controls on China; Huang called export controls a failure that strengthened Chinese competitors. Positions documented separately; no direct exchange cited here.",
+  "evidenceIds": [
+   "ev-out-ds-2",
+   "ev-huang-8"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-3",
+  "from": "jensen-huang",
+  "to": "tech:DeepSeek-R1",
+  "type": "agrees_with",
+  "date": "2025-02",
+  "note": "Huang called DeepSeek R1 an excellent innovation and praised its open-sourcing, while arguing it increases compute demand.",
+  "evidenceIds": [
+   "ev-huang-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-4",
+  "from": "satya-nadella",
+  "to": "jensen-huang",
+  "type": "agrees_with",
+  "date": "2025-01",
+  "note": "Both argued that DeepSeek-style efficiency gains would expand rather than shrink AI compute demand (Nadella's 'Jevons paradox' post; Huang's '100x compute' for reasoning).",
+  "evidenceIds": [
+   "ev-nadella-6",
+   "ev-huang-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-5",
+  "from": "satya-nadella",
+  "to": "org:OpenAI",
+  "type": "invested_in",
+  "date": "2019-07",
+  "note": "$1B investment and exclusive Azure partnership (2019), followed by multi-billion investments; ~27% stake valued ~$135B in Oct 2025.",
+  "evidenceIds": [
+   "ev-nadella-9",
+   "ev-out-msft-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-6",
+  "from": "satya-nadella",
+  "to": "sam-altman",
+  "type": "agrees_with",
+  "date": "2023-11",
+  "note": "Backed Altman during the Nov 2023 OpenAI board crisis, offering to hire him and Brockman, then welcomed the board changes.",
+  "evidenceIds": [
+   "ev-nadella-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-7",
+  "from": "satya-nadella",
+  "to": "sam-altman",
+  "type": "challenges",
+  "date": "2025-02",
+  "note": "Nadella dismissed self-declared AGI milestones as 'benchmark hacking', implicitly pushing back on AGI claims tied to the OpenAI contract; Altman not named.",
+  "evidenceIds": [
+   "ev-nadella-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-8",
+  "from": "satya-nadella",
+  "to": "sundar-pichai",
+  "type": "challenges",
+  "date": "2023-02",
+  "note": "Nadella said the OpenAI-powered Bing would make Google 'dance'; Pichai later replied that one shouldn't play to someone else's dance music.",
+  "evidenceIds": [
+   "ev-nadella-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-9",
+  "from": "satya-nadella",
+  "to": "mustafa-suleyman",
+  "type": "influenced_by",
+  "date": "2024-03",
+  "note": "Nadella hired Suleyman to lead the new Microsoft AI organization, building in-house models to reduce dependence on OpenAI.",
+  "evidenceIds": [
+   "ev-nadella-10"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-10",
+  "from": "sundar-pichai",
+  "to": "andrej-karpathy",
+  "type": "influenced_by",
+  "date": "2025-06",
+  "note": "Pichai's 'AJI' (artificial jagged intelligence) framing was reported as crediting Karpathy's 'jagged intelligence' term.",
+  "evidenceIds": [
+   "ev-pichai-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-11",
+  "from": "mark-zuckerberg",
+  "to": "elon-musk",
+  "type": "challenges",
+  "date": "2017-07",
+  "note": "Zuckerberg called AI doomsday warnings 'pretty irresponsible'; Musk replied that Zuckerberg's understanding of the subject was limited.",
+  "evidenceIds": [
+   "ev-zuck-2"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-12",
+  "from": "mark-zuckerberg",
+  "to": "yann-lecun",
+  "type": "agrees_with",
+  "date": "2024-07",
+  "note": "Zuckerberg and LeCun (Meta's chief AI scientist) both championed open-weight AI as safer and better for innovation; LeCun founded FAIR under Zuckerberg in 2013.",
+  "evidenceIds": [
+   "ev-zuck-1",
+   "ev-zuck-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-13",
+  "from": "yann-lecun",
+  "to": "mark-zuckerberg",
+  "type": "challenges",
+  "date": "2025-11",
+  "note": "LeCun left Meta after the reorganization around LLM-centric Meta Superintelligence Labs to pursue world-model research, a path he had argued was necessary beyond LLMs.",
+  "evidenceIds": [
+   "ev-out-meta-2"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-14",
+  "from": "mark-zuckerberg",
+  "to": "tech:open-weights",
+  "type": "changed_position",
+  "date": "2025-07",
+  "note": "From 'Open Source AI Is the Path Forward' (July 2024) to being 'careful about what we choose to open source' for superintelligence-class models (July 2025).",
+  "evidenceIds": [
+   "ev-zuck-7",
+   "ev-zuck-9"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-15",
+  "from": "mark-zuckerberg",
+  "to": "tech:metaverse",
+  "type": "changed_position",
+  "date": "2023-02",
+  "note": "Shifted priority from the metaverse (company renamed Meta in 2021) to AI, starting with the 'year of efficiency'.",
+  "evidenceIds": [
+   "ev-zuck-3",
+   "ev-zuck-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-16",
+  "from": "mark-zuckerberg",
+  "to": "sundar-pichai",
+  "type": "agrees_with",
+  "date": "2025-09",
+  "note": "Both argued the risk of under-investing in AI infrastructure exceeds the risk of over-investing.",
+  "evidenceIds": [
+   "ev-zuck-11",
+   "ev-pichai-3"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-1-rel-17",
+  "from": "liang-wenfeng",
+  "to": "org:OpenAI",
+  "type": "challenges",
+  "date": "2024-07",
+  "note": "Liang argued closed-source moats like OpenAI's are temporary and cannot stop others catching up.",
+  "evidenceIds": [
+   "ev-liang-2"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-18",
+  "from": "dario-amodei",
+  "to": "liang-wenfeng",
+  "type": "challenges",
+  "date": "2025-01",
+  "note": "Amodei argued DeepSeek's cost reductions were on the expected efficiency trend rather than a unique breakthrough and that export controls should be maintained.",
+  "evidenceIds": [
+   "ev-out-ds-2"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-19",
+  "from": "liang-wenfeng",
+  "to": "tech:open-weights",
+  "type": "built",
+  "date": "2025-01",
+  "note": "Released DeepSeek-R1 reasoning model weights under the MIT license.",
+  "evidenceIds": [
+   "ev-liang-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-1-rel-20",
+  "from": "jensen-huang",
+  "to": "geoffrey-hinton",
+  "type": "influenced_by",
+  "date": "2012",
+  "note": "AlexNet (Krizhevsky, Sutskever, Hinton, 2012) trained on NVIDIA GPUs catalyzed NVIDIA's pivot to deep learning; Huang has cited this moment often. Not re-documented during research.",
+  "evidenceIds": [],
+  "inferred": true
+ },
+ {
+  "id": "builders-2-rel-1",
+  "from": "elon-musk",
+  "to": "sam-altman",
+  "type": "challenges",
+  "date": "2024-02",
+  "note": "Musk sued OpenAI and Altman, alleging betrayal of the nonprofit and open founding mission. In Feb 2025 he led a $97.4B bid for control, which Altman rejected.",
+  "evidenceIds": [
+   "ev-musk-7",
+   "ev-musk-12"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-2",
+  "from": "elon-musk",
+  "to": "org:OpenAI",
+  "type": "changed_position",
+  "date": "2024-02",
+  "note": "Went from co-founder, co-chair and main early donor (2015 to 2018) to litigant and would-be acquirer.",
+  "evidenceIds": [
+   "ev-musk-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-3",
+  "from": "sam-altman",
+  "to": "liang-wenfeng",
+  "type": "influenced_by",
+  "date": "2025-01",
+  "note": "Altman tied his 'wrong side of history' admission on open source to DeepSeek narrowing OpenAI's lead, and OpenAI then released gpt-oss.",
+  "evidenceIds": [
+   "ev-altman-7",
+   "ev-altman-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-4",
+  "from": "sam-altman",
+  "to": "gary-marcus",
+  "type": "agrees_with",
+  "date": "2023-05",
+  "note": "At the May 16, 2023 Senate hearing, both Altman and Marcus backed licensing-style oversight of powerful AI models, despite Marcus's broader criticism of OpenAI.",
+  "evidenceIds": [
+   "ev-altman-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-5",
+  "from": "sam-altman",
+  "to": "yoshua-bengio",
+  "type": "agrees_with",
+  "date": "2023-05",
+  "note": "Both signed the CAIS statement that AI extinction risk should be a global priority.",
+  "evidenceIds": [
+   "ev-altman-14"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-6",
+  "from": "dario-amodei",
+  "to": "geoffrey-hinton",
+  "type": "agrees_with",
+  "date": "2023-05",
+  "note": "Both signed the CAIS extinction-risk statement.",
+  "evidenceIds": [
+   "ev-altman-14"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-7",
+  "from": "demis-hassabis",
+  "to": "geoffrey-hinton",
+  "type": "agrees_with",
+  "date": "2023-05",
+  "note": "Both signed the CAIS extinction-risk statement. Hassabis also called for IPCC-like oversight.",
+  "evidenceIds": [
+   "ev-altman-14",
+   "ev-hassabis-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-8",
+  "from": "sam-altman",
+  "to": "masayoshi-son",
+  "type": "built",
+  "date": "2025-01",
+  "note": "OpenAI and SoftBank (Son) co-launched the up-to-$500B Stargate infrastructure venture.",
+  "evidenceIds": [
+   "ev-altman-15"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-9",
+  "from": "ilya-sutskever",
+  "to": "sam-altman",
+  "type": "challenges",
+  "date": "2023-11",
+  "note": "Sutskever, as a board member, voted to remove Altman as CEO, then publicly regretted it. Altman returned within days and Sutskever left OpenAI in 2024.",
+  "evidenceIds": [
+   "ev-altman-16"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-10",
+  "from": "jensen-huang",
+  "to": "dario-amodei",
+  "type": "contradicts",
+  "date": "2025-06",
+  "note": "Huang said he disagreed with almost everything Amodei says on AI job losses and rejected the idea that only a few firms should build AI. They also disagree on China export controls.",
+  "evidenceIds": [
+   "ev-amodei-11",
+   "ev-amodei-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-11",
+  "from": "dario-amodei",
+  "to": "liang-wenfeng",
+  "type": "challenges",
+  "date": "2025-01",
+  "note": "Amodei's essay argued DeepSeek's cost efficiency was on trend rather than a breakthrough and used it to argue for stricter export controls on China.",
+  "evidenceIds": [
+   "ev-amodei-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-12",
+  "from": "dario-amodei",
+  "to": "org:Anthropic",
+  "type": "built",
+  "date": "2021",
+  "note": "Co-founded Anthropic after leaving OpenAI.",
+  "evidenceIds": [
+   "ev-amodei-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-13",
+  "from": "andrej-karpathy",
+  "to": "dario-amodei",
+  "type": "contradicts",
+  "date": "2025-10",
+  "note": "Karpathy's 'decade of agents, not year of agents' view implicitly disputes near-term agent and coding-automation forecasts such as Amodei's 90%-of-code claim. Not a direct exchange.",
+  "evidenceIds": [
+   "ev-ctx-karpathy-1",
+   "ev-amodei-5"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-2-rel-14",
+  "from": "demis-hassabis",
+  "to": "yann-lecun",
+  "type": "challenges",
+  "date": "2025-12",
+  "note": "Hassabis publicly rebutted LeCun's claim that 'general intelligence' is a misnomer (recalled, low confidence).",
+  "evidenceIds": [
+   "ev-hassabis-11"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-15",
+  "from": "demis-hassabis",
+  "to": "david-silver",
+  "type": "built",
+  "date": "2016",
+  "note": "Silver led AlphaGo under Hassabis at DeepMind; they co-authored the Nature paper.",
+  "evidenceIds": [
+   "ev-hassabis-2"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-16",
+  "from": "demis-hassabis",
+  "to": "org:Google DeepMind",
+  "type": "built",
+  "date": "2023-04",
+  "note": "Leads the merged Google DeepMind created by Sundar Pichai from Brain and DeepMind.",
+  "evidenceIds": [
+   "ev-hassabis-10"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-17",
+  "from": "mustafa-suleyman",
+  "to": "org:DeepMind",
+  "type": "built",
+  "date": "2010",
+  "note": "Co-founded DeepMind with Demis Hassabis and Shane Legg.",
+  "evidenceIds": [
+   "ev-suleyman-10"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-18",
+  "from": "mustafa-suleyman",
+  "to": "reid-hoffman",
+  "type": "built",
+  "date": "2022",
+  "note": "Co-founded Inflection AI with Reid Hoffman (and Karén Simonyan). Hoffman was also an investor.",
+  "evidenceIds": [
+   "ev-suleyman-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-19",
+  "from": "mustafa-suleyman",
+  "to": "satya-nadella",
+  "type": "agrees_with",
+  "date": "2024-03",
+  "note": "Nadella hired Suleyman to lead Microsoft AI. Suleyman's 'AI companion' and later 'humanist superintelligence' strategy operates within Nadella's Copilot vision; the alignment is inferred from the role.",
+  "evidenceIds": [
+   "ev-suleyman-5",
+   "ev-suleyman-8"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-2-rel-20",
+  "from": "mustafa-suleyman",
+  "to": "dario-amodei",
+  "type": "challenges",
+  "date": "2025-08",
+  "note": "Suleyman's SCAI essay called AI model-welfare research premature and dangerous, a direct contrast with Anthropic's 2025 model-welfare program. Whether he named Anthropic is not verified.",
+  "evidenceIds": [
+   "ev-suleyman-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "builders-2-rel-21",
+  "from": "elon-musk",
+  "to": "yoshua-bengio",
+  "type": "agrees_with",
+  "date": "2023-03",
+  "note": "Both signed the FLI open letter calling for a six-month pause on training systems beyond GPT-4 (Gary Marcus also signed).",
+  "evidenceIds": [
+   "ev-musk-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-22",
+  "from": "elon-musk",
+  "to": "gary-marcus",
+  "type": "agrees_with",
+  "date": "2023-03",
+  "note": "Co-signatories of the FLI pause letter.",
+  "evidenceIds": [
+   "ev-musk-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-23",
+  "from": "elon-musk",
+  "to": "andrej-karpathy",
+  "type": "built",
+  "date": "2017",
+  "note": "Musk hired Karpathy as Tesla's Director of AI (2017 to 2022) to lead the vision-based Autopilot and FSD effort (recalled).",
+  "evidenceIds": [],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-24",
+  "from": "sam-altman",
+  "to": "tech:open-weights",
+  "type": "changed_position",
+  "date": "2025-08",
+  "note": "From no open-weight LLM releases after GPT-2 to the 'wrong side of history' admission (Jan 2025) and the gpt-oss release (Aug 2025).",
+  "evidenceIds": [
+   "ev-altman-7",
+   "ev-altman-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-25",
+  "from": "elon-musk",
+  "to": "tech:open-weights",
+  "type": "built",
+  "date": "2024-03",
+  "note": "Released Grok-1 weights under Apache 2.0 shortly after suing OpenAI over its closedness.",
+  "evidenceIds": [
+   "ev-musk-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-26",
+  "from": "dario-amodei",
+  "to": "tech:scaling-laws",
+  "type": "built",
+  "date": "2020-01",
+  "note": "Senior author of 'Scaling Laws for Neural Language Models' (Kaplan et al.).",
+  "evidenceIds": [
+   "ev-amodei-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "builders-2-rel-27",
+  "from": "satya-nadella",
+  "to": "dario-amodei",
+  "type": "contradicts",
+  "date": "2025-04",
+  "note": "Nadella's figure of 20 to 30% AI-written code at Microsoft (Apr 2025) is a data point against the pace of Amodei's 90%-in-3-to-6-months forecast. This is a juxtaposition, not a direct exchange.",
+  "evidenceIds": [
+   "ev-out-code-2",
+   "ev-amodei-5"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-1-rel-1",
+  "from": "ilya-sutskever",
+  "to": "geoffrey-hinton",
+  "type": "influenced_by",
+  "date": "2012",
+  "note": "Sutskever was Hinton's PhD student and co-authored AlexNet with him and Krizhevsky.",
+  "evidenceIds": [
+   "ev-hinton-9"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-2",
+  "from": "yann-lecun",
+  "to": "geoffrey-hinton",
+  "type": "challenges",
+  "date": "2023",
+  "note": "LeCun publicly dismissed the existential-risk concerns Hinton raised after leaving Google, calling AI doom fears 'preposterous'; later headlines report LeCun 'rejects Hinton' while calling LLMs a dead end.",
+  "evidenceIds": [
+   "ev-lecun-3",
+   "ev-lecun-4",
+   "ev-lecun-15"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-3",
+  "from": "yann-lecun",
+  "to": "yoshua-bengio",
+  "type": "challenges",
+  "date": "2023",
+  "note": "LeCun disputed Bengio's catastrophic-risk arguments and calls for regulation; in Oct 2023 criticized 'Turing awardees' backing restrictions (AI Business headline).",
+  "evidenceIds": [
+   "ev-lecun-10"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-4",
+  "from": "yoshua-bengio",
+  "to": "geoffrey-hinton",
+  "type": "agrees_with",
+  "date": "2023-05",
+  "note": "Both revised AI timelines in May 2023 and signed the CAIS extinction-risk statement.",
+  "evidenceIds": [
+   "ev-hinton-10",
+   "ev-bengio-3",
+   "ev-hinton-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-5",
+  "from": "yann-lecun",
+  "to": "sam-altman",
+  "type": "challenges",
+  "date": "2023-10",
+  "note": "LeCun accused Altman (with Hassabis and Amodei) of attempting regulatory capture.",
+  "evidenceIds": [
+   "ev-lecun-10"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-6",
+  "from": "yann-lecun",
+  "to": "dario-amodei",
+  "type": "challenges",
+  "date": "2023-10",
+  "note": "LeCun accused Amodei/Anthropic of lobbying to restrict open source (regulatory capture).",
+  "evidenceIds": [
+   "ev-lecun-10"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-7",
+  "from": "yann-lecun",
+  "to": "demis-hassabis",
+  "type": "challenges",
+  "date": "2023-10",
+  "note": "Named alongside Altman and Amodei in LeCun's regulatory-capture accusation.",
+  "evidenceIds": [
+   "ev-lecun-10"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-8",
+  "from": "yann-lecun",
+  "to": "mark-zuckerberg",
+  "type": "agrees_with",
+  "date": "2023",
+  "note": "As Meta's chief AI scientist LeCun championed the open-weights Llama strategy that Zuckerberg endorsed; they diverged in 2025 when Meta reorganised around Superintelligence Labs and LeCun left.",
+  "evidenceIds": [
+   "ev-lecun-10",
+   "ev-lecun-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-1-rel-9",
+  "from": "yann-lecun",
+  "to": "tech:world-models",
+  "type": "built",
+  "date": "2022-06",
+  "note": "Proposed H-JEPA world models (2022) and founded AMI Labs (2025-26) to build them.",
+  "evidenceIds": [
+   "ev-lecun-9",
+   "ev-lecun-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-10",
+  "from": "ilya-sutskever",
+  "to": "sam-altman",
+  "type": "contradicts",
+  "date": "2023-11",
+  "note": "Sutskever voted with the OpenAI board to remove Altman as CEO, then said he regretted it.",
+  "evidenceIds": [
+   "ev-sutskever-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-11",
+  "from": "ilya-sutskever",
+  "to": "org:Safe Superintelligence Inc.",
+  "type": "built",
+  "date": "2024-06",
+  "note": "Co-founded SSI with Daniel Gross and Daniel Levy; CEO since July 2025.",
+  "evidenceIds": [
+   "ev-sutskever-6",
+   "ev-out-ssi-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-12",
+  "from": "ilya-sutskever",
+  "to": "tech:scaling",
+  "type": "changed_position",
+  "date": "2024-12",
+  "note": "Moved from 'big network + big data = guaranteed success' (2014) to 'pretraining will end' (2024) and 'age of research' (2025).",
+  "evidenceIds": [
+   "ev-sutskever-2",
+   "ev-sutskever-7",
+   "ev-sutskever-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-13",
+  "from": "gary-marcus",
+  "to": "sam-altman",
+  "type": "challenges",
+  "date": "2023-05",
+  "note": "Testified alongside Altman at the May 2023 Senate hearing and has since been a persistent critic of OpenAI and Altman.",
+  "evidenceIds": [
+   "ev-marcus-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-14",
+  "from": "gary-marcus",
+  "to": "yann-lecun",
+  "type": "challenges",
+  "date": "2022",
+  "note": "Long-running public dispute: Marcus argues LeCun dismissed his critiques of deep learning and later adopted similar conclusions about LLM limits; they agree LLMs are insufficient for human-level AI but disagree on remedies (neurosymbolic vs JEPA) and on AI risk/regulation.",
+  "evidenceIds": [
+   "ev-marcus-2",
+   "ev-lecun-6"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-1-rel-15",
+  "from": "gary-marcus",
+  "to": "elon-musk",
+  "type": "challenges",
+  "date": "2022-05",
+  "note": "Offered Musk a bet that AGI would not arrive by 2029.",
+  "evidenceIds": [
+   "ev-marcus-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-16",
+  "from": "gary-marcus",
+  "to": "ilya-sutskever",
+  "type": "challenges",
+  "date": "2024-12",
+  "note": "Marcus's 'diminishing returns' and 'wall' claims are the opposite of Sutskever's earlier scaling conviction; after Sutskever's NeurIPS 2024 'peak data' talk and Nov 2025 'age of research' remarks, the two converge on the view that pure scaling is insufficient.",
+  "evidenceIds": [
+   "ev-marcus-7",
+   "ev-sutskever-7",
+   "ev-sutskever-8"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-1-rel-17",
+  "from": "geoffrey-hinton",
+  "to": "tech:backpropagation",
+  "type": "changed_position",
+  "date": "2023-05",
+  "note": "From 'throw it all away and start again' (2017) to viewing backprop-trained digital nets as potentially superior to brains (2023).",
+  "evidenceIds": [
+   "ev-hinton-7",
+   "ev-hinton-12"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-18",
+  "from": "yoshua-bengio",
+  "to": "org:LawZero",
+  "type": "built",
+  "date": "2025-06",
+  "note": "Founded LawZero to build non-agentic Scientist AI.",
+  "evidenceIds": [
+   "ev-bengio-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-19",
+  "from": "gary-marcus",
+  "to": "yoshua-bengio",
+  "type": "agrees_with",
+  "date": "2023-03",
+  "note": "Both signed the FLI pause letter (recalled).",
+  "evidenceIds": [
+   "ev-bengio-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-1-rel-20",
+  "from": "yoshua-bengio",
+  "to": "dario-amodei",
+  "type": "agrees_with",
+  "date": "2023-07",
+  "note": "Testified together at the July 2023 Senate hearing in favour of AI regulation (recalled).",
+  "evidenceIds": [
+   "ev-bengio-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-1",
+  "from": "andrej-karpathy",
+  "to": "tech:ai-agents",
+  "type": "changed_position",
+  "date": "2026-01",
+  "note": "In Oct 2025 he said agents 'just don't work' and called this the decade of agents. In Jan 2026 he said coding agents crossed a 'threshold of coherence' in Dec 2025 and moved to ~80% agent coding.",
+  "evidenceIds": [
+   "ev-karpathy-6",
+   "ev-karpathy-18",
+   "ev-karpathy-9"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-2",
+  "from": "andrej-karpathy",
+  "to": "elon-musk",
+  "type": "agrees_with",
+  "date": "2019-04",
+  "note": "At Tesla Autonomy Day Karpathy argued vision is sufficient without lidar, alongside Musk's 'fool's errand' remark. He reiterated it at CVPR 2021.",
+  "evidenceIds": [
+   "ev-karpathy-15",
+   "ev-karpathy-14"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-3",
+  "from": "andrej-karpathy",
+  "to": "elon-musk",
+  "type": "challenges",
+  "date": "2025-06",
+  "note": "Around Tesla's robotaxi launch Karpathy warned against believing self-driving is 'solved', and later described a long 'march of nines'. Electrek reads this as contradicting Musk, though Karpathy did not name Tesla.",
+  "evidenceIds": [
+   "ev-karpathy-12",
+   "ev-karpathy-13"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-2-rel-4",
+  "from": "andrej-karpathy",
+  "to": "richard-sutton",
+  "type": "challenges",
+  "date": "2025-10",
+  "note": "Responding to Sutton's Dwarkesh interview, Karpathy argued LLMs are 'ghosts' bootstrapped from human data rather than 'animals' learning from experience. He accepted part of the critique but defended pretraining as a practical path.",
+  "evidenceIds": [
+   "ev-karpathy-19"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-5",
+  "from": "andrej-karpathy",
+  "to": "org:Eureka Labs",
+  "type": "built",
+  "date": "2024-07",
+  "note": "Founded AI-native education company.",
+  "evidenceIds": [
+   "ev-karpathy-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-6",
+  "from": "andrej-karpathy",
+  "to": "tech:vibe-coding",
+  "type": "built",
+  "date": "2025-02",
+  "note": "Coined the term 'vibe coding'.",
+  "evidenceIds": [
+   "ev-karpathy-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-7",
+  "from": "fei-fei-li",
+  "to": "yoshua-bengio",
+  "type": "contradicts",
+  "date": "2024-08",
+  "note": "Li's Fortune op-ed opposed California SB 1047. Bengio published a direct Fortune rebuttal nine days later supporting the bill.",
+  "evidenceIds": [
+   "ev-li-5",
+   "ev-li-6"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-8",
+  "from": "marc-andreessen",
+  "to": "org:World Labs",
+  "type": "invested_in",
+  "date": "2024-09",
+  "note": "Andreessen Horowitz (firm, not a personal investment) co-led World Labs' $230M launch financing. a16z also led opposition to SB 1047, which Li also opposed.",
+  "evidenceIds": [
+   "ev-li-7",
+   "ev-li-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-9",
+  "from": "fei-fei-li",
+  "to": "org:World Labs",
+  "type": "built",
+  "date": "2024-09",
+  "note": "Co-founded and led World Labs. AMD agreed to acquire it in Sept 2026.",
+  "evidenceIds": [
+   "ev-li-7",
+   "ev-li-13"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-10",
+  "from": "geoffrey-hinton",
+  "to": "fei-fei-li",
+  "type": "influenced_by",
+  "date": "2012",
+  "note": "Hinton's group (Krizhevsky, Sutskever, Hinton) used Li's ImageNet/ILSVRC to demonstrate AlexNet, launching the deep-learning era. The dependency is on ImageNet as infrastructure, not a stated intellectual debt.",
+  "evidenceIds": [
+   "ev-li-2",
+   "ev-out-alexnet-1"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-2-rel-11",
+  "from": "richard-sutton",
+  "to": "tech:llm-scaling",
+  "type": "challenges",
+  "date": "2025-09",
+  "note": "Argued LLMs are a dead end because they imitate human data rather than learn from experience. He reads the Bitter Lesson as ultimately favoring experiential learners over LLMs, unlike scaling advocates who cite it in favor of LLMs.",
+  "evidenceIds": [
+   "ev-sutton-3",
+   "ev-sutton-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-12",
+  "from": "richard-sutton",
+  "to": "yann-lecun",
+  "type": "agrees_with",
+  "date": "2025",
+  "note": "Both argue LLMs lack grounded world models and will not by themselves yield human-level intelligence. Their preferred remedies differ (RL from experience vs. self-supervised world models/JEPA).",
+  "evidenceIds": [
+   "ev-sutton-3"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-2-rel-13",
+  "from": "richard-sutton",
+  "to": "geoffrey-hinton",
+  "type": "contradicts",
+  "date": "2023",
+  "note": "Sutton framed succession to AI as inevitable and positive, opposing the existential-risk alarm raised by Hinton (and Bengio) in 2023.",
+  "evidenceIds": [
+   "ev-sutton-4"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-2-rel-14",
+  "from": "david-silver",
+  "to": "richard-sutton",
+  "type": "agrees_with",
+  "date": "2025-04",
+  "note": "Co-authored 'Reward is enough' (2021) and 'Welcome to the Era of Experience' (2025).",
+  "evidenceIds": [
+   "ev-silver-4",
+   "ev-silver-6"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-15",
+  "from": "david-silver",
+  "to": "richard-sutton",
+  "type": "influenced_by",
+  "date": "2009",
+  "note": "Silver did his PhD at the University of Alberta in Sutton's RL group (recalled; not re-verified).",
+  "evidenceIds": [],
+  "inferred": true
+ },
+ {
+  "id": "researchers-2-rel-16",
+  "from": "david-silver",
+  "to": "tech:AlphaGo",
+  "type": "built",
+  "date": "2016-01",
+  "note": "Lead researcher on AlphaGo, AlphaGo Zero and AlphaZero at DeepMind (under Demis Hassabis).",
+  "evidenceIds": [
+   "ev-silver-1",
+   "ev-silver-2",
+   "ev-silver-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-17",
+  "from": "francois-chollet",
+  "to": "org:OpenAI",
+  "type": "challenges",
+  "date": "2024-06",
+  "note": "Said OpenAI set back AGI progress by roughly 5–10 years by closing research and focusing the field on LLMs.",
+  "evidenceIds": [
+   "ev-chollet-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-18",
+  "from": "francois-chollet",
+  "to": "tech:llm-reasoning",
+  "type": "changed_position",
+  "date": "2024-12",
+  "note": "After o3's ARC-AGI-1 score, Chollet called it a genuine breakthrough in test-time adaptation (while maintaining it was not AGI), updating from his view that LLMs could not adapt to novelty.",
+  "evidenceIds": [
+   "ev-chollet-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-19",
+  "from": "francois-chollet",
+  "to": "gary-marcus",
+  "type": "agrees_with",
+  "date": "2024",
+  "note": "Both argue LLMs rely on memorization/pattern-matching and lack robust generalization, and both favor hybrid/symbolic-like components (program synthesis for Chollet). Chollet is more open to deep learning as a component.",
+  "evidenceIds": [
+   "ev-chollet-4"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "researchers-2-rel-20",
+  "from": "francois-chollet",
+  "to": "tech:ARC-AGI",
+  "type": "built",
+  "date": "2019-11",
+  "note": "Created ARC (2019), co-founded the ARC Prize (2024), and released ARC-AGI-2 (2025) and ARC-AGI-3.",
+  "evidenceIds": [
+   "ev-chollet-3",
+   "ev-chollet-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-21",
+  "from": "francois-chollet",
+  "to": "org:Ndea",
+  "type": "built",
+  "date": "2025-01",
+  "note": "Co-founded program-synthesis AGI lab with Mike Knoop.",
+  "evidenceIds": [
+   "ev-chollet-6"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-22",
+  "from": "francois-chollet",
+  "to": "tech:llm-scaling",
+  "type": "challenges",
+  "date": "2019-11",
+  "note": "Argued task-skill benchmarks can be 'bought' with data and scale, so scaling does not measure or produce general intelligence. This set him against the scaling camp (e.g., Sutskever, Altman, Amodei).",
+  "evidenceIds": [
+   "ev-chollet-3",
+   "ev-chollet-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "researchers-2-rel-23",
+  "from": "andrej-karpathy",
+  "to": "org:Anthropic",
+  "type": "agrees_with",
+  "date": "2026-05",
+  "note": "Joined Anthropic's pretraining team (under Nick Joseph) to use Claude to accelerate pretraining research. This is an employment move, recorded as alignment with Anthropic's AI-accelerated-research approach.",
+  "evidenceIds": [
+   "ev-karpathy-11"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-1",
+  "from": "marc-andreessen",
+  "to": "vinod-khosla",
+  "type": "challenges",
+  "date": "2024-03",
+  "note": "Public X dispute: Andreessen accused Khosla of 'lobbying to ban open source' and mocked his Manhattan Project analogy by saying OpenAI 'must be immediately nationalized'.",
+  "evidenceIds": [
+   "ev-khosla-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-2",
+  "from": "vinod-khosla",
+  "to": "marc-andreessen",
+  "type": "contradicts",
+  "date": "2024-03",
+  "note": "Khosla argued frontier AI should not be open-sourced because of the China race ('Would you open source the Manhattan Project?'), directly opposing Andreessen's pro-open-source position.",
+  "evidenceIds": [
+   "ev-khosla-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-3",
+  "from": "yann-lecun",
+  "to": "vinod-khosla",
+  "type": "challenges",
+  "date": "2024-03",
+  "note": "LeCun replied to Khosla's claim that the US is in an economic war with China that requires closed AI, defending open source.",
+  "evidenceIds": [
+   "ev-khosla-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-4",
+  "from": "marc-andreessen",
+  "to": "satya-nadella",
+  "type": "agrees_with",
+  "date": "2024-11",
+  "note": "Co-signed a joint AI policy statement with Nadella and Brad Smith supporting cost-benefit regulation and both open and proprietary models.",
+  "evidenceIds": [
+   "ev-andreessen-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-5",
+  "from": "sam-altman",
+  "to": "marc-andreessen",
+  "type": "challenges",
+  "date": "2024-12",
+  "note": "Altman called Andreessen's account of Biden-administration AI meetings a 'conspiracy theory' (Bari Weiss podcast).",
+  "evidenceIds": [
+   "ev-out-whitehouse-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-6",
+  "from": "marc-andreessen",
+  "to": "tech:AI existential-risk arguments and precautionary regulation",
+  "type": "challenges",
+  "date": "2023-06",
+  "note": "'Why AI Will Save the World' dismisses AI x-risk fears as moral panic and calls safety-regulation advocates 'Baptists and bootleggers', implicitly opposing Hinton, Bengio and the May 2023 CAIS statement signatories (Altman, Amodei, Hassabis).",
+  "evidenceIds": [
+   "ev-andreessen-1",
+   "ev-andreessen-2"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-7",
+  "from": "marc-andreessen",
+  "to": "yann-lecun",
+  "type": "agrees_with",
+  "date": "2023",
+  "note": "Both publicly argue AI x-risk is overblown and open-source AI should be unrestricted. Parallel positions, not a documented joint statement.",
+  "evidenceIds": [
+   "ev-andreessen-1",
+   "ev-khosla-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-8",
+  "from": "vinod-khosla",
+  "to": "org:OpenAI",
+  "type": "invested_in",
+  "date": "2019",
+  "note": "Khosla Ventures' $50M investment, OpenAI's first venture investment. Further $405M SPV in 2024.",
+  "evidenceIds": [
+   "ev-khosla-5",
+   "ev-khosla-6"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-9",
+  "from": "vinod-khosla",
+  "to": "sam-altman",
+  "type": "agrees_with",
+  "date": "2023-11",
+  "note": "Khosla publicly backed Altman during the November 2023 board crisis and defended OpenAI against Musk's 2024 lawsuit.",
+  "evidenceIds": [
+   "ev-khosla-5",
+   "ev-khosla-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-10",
+  "from": "vinod-khosla",
+  "to": "dario-amodei",
+  "type": "agrees_with",
+  "date": "2025",
+  "note": "Both forecast large-scale white-collar job displacement by AI within about five years (Amodei, May 2025; Khosla, 2025–26). Parallel positions, not a documented exchange.",
+  "evidenceIds": [
+   "ev-khosla-10"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-11",
+  "from": "marc-andreessen",
+  "to": "vinod-khosla",
+  "type": "contradicts",
+  "date": "2026",
+  "note": "Opposing labor forecasts: Andreessen calls AI job-loss fears 'fake' (April 2026), while Khosla predicts AI capable of most work in most jobs from about 2030 (March 2026). No direct exchange found.",
+  "evidenceIds": [
+   "ev-andreessen-13",
+   "ev-khosla-11"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-12",
+  "from": "reid-hoffman",
+  "to": "org:Inflection AI",
+  "type": "built",
+  "date": "2022",
+  "note": "Co-founded with Mustafa Suleyman and Karén Simonyan, incubated at Greylock.",
+  "evidenceIds": [
+   "ev-hoffman-3"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-13",
+  "from": "reid-hoffman",
+  "to": "mustafa-suleyman",
+  "type": "agrees_with",
+  "date": "2022",
+  "note": "Co-founders of Inflection AI around a personal-AI thesis. Suleyman moved to Microsoft, where Hoffman is a board member, in March 2024.",
+  "evidenceIds": [
+   "ev-hoffman-3",
+   "ev-hoffman-5"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-14",
+  "from": "reid-hoffman",
+  "to": "org:OpenAI",
+  "type": "invested_in",
+  "date": "2015",
+  "note": "Founding donor to the non-profit OpenAI (philanthropic, not equity). Board member until March 2023.",
+  "evidenceIds": [
+   "ev-hoffman-1",
+   "ev-hoffman-4"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-15",
+  "from": "reid-hoffman",
+  "to": "sam-altman",
+  "type": "agrees_with",
+  "date": "2025-01",
+  "note": "'Superagency' endorses OpenAI-style iterative deployment as the safest path to beneficial AI (recalled).",
+  "evidenceIds": [
+   "ev-hoffman-6"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-16",
+  "from": "bill-gurley",
+  "to": "sam-altman",
+  "type": "challenges",
+  "date": "2023-09",
+  "note": "The '2,851 Miles' talk framed frontier-lab calls for AI licensing, associated with Altman's May 2023 testimony, as regulatory capture. Whether Altman was named explicitly is not verified.",
+  "evidenceIds": [
+   "ev-gurley-1"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-17",
+  "from": "bill-gurley",
+  "to": "marc-andreessen",
+  "type": "agrees_with",
+  "date": "2023",
+  "note": "Both argue AI regulation risks regulatory capture by incumbents and defend open source ('2,851 Miles'; 'Why AI Will Save the World').",
+  "evidenceIds": [
+   "ev-gurley-1",
+   "ev-andreessen-1"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-1-rel-18",
+  "from": "elad-gil",
+  "to": "org:Harvey",
+  "type": "invested_in",
+  "date": "2023-12",
+  "note": "Reported co-lead of Series B (recalled, medium-low confidence).",
+  "evidenceIds": [
+   "ev-gil-2"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-1-rel-19",
+  "from": "marc-andreessen",
+  "to": "liang-wenfeng",
+  "type": "influenced_by",
+  "date": "2025-01",
+  "note": "DeepSeek-R1 (Liang Wenfeng's lab) prompted Andreessen's 'Sputnik moment' framing and his subsequent push for US leadership in open-source AI.",
+  "evidenceIds": [
+   "ev-andreessen-10"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-2-rel-1",
+  "from": "masayoshi-son",
+  "to": "org:OpenAI",
+  "type": "invested_in",
+  "date": "2025-03",
+  "note": "SoftBank committed up to $40B (Mar 2025), invested $22.5B (Dec 2025) and completed a further $30B (Oct 2026), for $64.6B total and ~13%.",
+  "evidenceIds": [
+   "ev-son-13",
+   "ev-out-softbank-openai-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-2",
+  "from": "masayoshi-son",
+  "to": "org:Stargate",
+  "type": "built",
+  "date": "2025-01",
+  "note": "Chairman of Stargate; SoftBank holds financial responsibility.",
+  "evidenceIds": [
+   "ev-son-10",
+   "ev-son-11"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-3",
+  "from": "elon-musk",
+  "to": "masayoshi-son",
+  "type": "challenges",
+  "date": "2025-01",
+  "note": "Musk publicly said Stargate's backers 'don't actually have the money', singling out SoftBank's financing.",
+  "evidenceIds": [
+   "ev-son-18"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-4",
+  "from": "masayoshi-son",
+  "to": "sam-altman",
+  "type": "agrees_with",
+  "date": "2025-02",
+  "note": "Joint Tokyo event launching SB OpenAI Japan, where Son said AGI would come 'much earlier' than he had thought. This is a business partnership and shared short-timeline rhetoric, not a documented intellectual exchange.",
+  "evidenceIds": [
+   "ev-son-8",
+   "ev-son-9"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-5",
+  "from": "masayoshi-son",
+  "to": "org:Nvidia",
+  "type": "changed_position",
+  "date": "2025-11",
+  "note": "SoftBank's Vision Fund exited Nvidia in Jan 2019, later rebuilt a stake, and sold it entirely (~$5.83B) in Oct 2025 to fund OpenAI.",
+  "evidenceIds": [
+   "ev-son-12",
+   "ev-son-13"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-6",
+  "from": "cathie-wood",
+  "to": "org:Nvidia",
+  "type": "changed_position",
+  "date": "2025-04",
+  "note": "ARKK exited Nvidia by Jan 2023 ('priced ahead of the curve') and bought again in April 2025.",
+  "evidenceIds": [
+   "ev-wood-5",
+   "ev-wood-7",
+   "ev-wood-8"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-7",
+  "from": "cathie-wood",
+  "to": "david-cahn",
+  "type": "contradicts",
+  "date": "2023",
+  "note": "Wood's claim that software would earn $8 for every $1 of Nvidia hardware runs directly against Cahn's 2023–24 revenue-gap arithmetic. No direct exchange between them was found.",
+  "evidenceIds": [
+   "ev-wood-6",
+   "ev-cahn-3",
+   "ev-cahn-1"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-2-rel-8",
+  "from": "david-cahn",
+  "to": "leopold-aschenbrenner",
+  "type": "contradicts",
+  "date": "2024-06",
+  "note": "In the same month, Cahn argued AI capex faced a ~$500B revenue gap, while Aschenbrenner projected investment scaling toward trillion-dollar clusters on AGI expectations. These are opposing theses with no documented direct exchange.",
+  "evidenceIds": [
+   "ev-cahn-1",
+   "ev-asch-2"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-2-rel-9",
+  "from": "leopold-aschenbrenner",
+  "to": "ilya-sutskever",
+  "type": "influenced_by",
+  "date": "2024-06",
+  "note": "Situational Awareness is dedicated to Ilya Sutskever, his former Superalignment co-lead.",
+  "evidenceIds": [
+   "ev-asch-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-10",
+  "from": "gary-marcus",
+  "to": "leopold-aschenbrenner",
+  "type": "challenges",
+  "date": "2024-06",
+  "note": "Marcus criticised the essay's straight-line extrapolation to AGI by 2027 (recalled, unverified during research).",
+  "evidenceIds": [
+   "ev-marcus-asch-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-11",
+  "from": "kai-fu-lee",
+  "to": "org:01.AI",
+  "type": "built",
+  "date": "2023",
+  "note": "Founded 01.AI (Yi models). It pivoted away from frontier pretraining in 2025.",
+  "evidenceIds": [
+   "ev-lee-6",
+   "ev-lee-7"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-12",
+  "from": "kai-fu-lee",
+  "to": "liang-wenfeng",
+  "type": "agrees_with",
+  "date": "2025-03",
+  "note": "After DeepSeek's success, Lee shifted 01.AI to build on DeepSeek models and named DeepSeek among the likely winners in China. This endorses Liang's efficient open-weight approach (recalled).",
+  "evidenceIds": [
+   "ev-lee-7"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-2-rel-13",
+  "from": "kai-fu-lee",
+  "to": "elon-musk",
+  "type": "challenges",
+  "date": "2017-06",
+  "note": "Lee argued that superintelligence and existential-risk concerns, popularised by figures such as Musk, distract from the real threat of job loss and inequality. The exact attribution to Musk is from book-level recall.",
+  "evidenceIds": [
+   "ev-lee-1",
+   "ev-lee-4"
+  ],
+  "inferred": true
+ },
+ {
+  "id": "investors-2-rel-14",
+  "from": "leopold-aschenbrenner",
+  "to": "tech:scaling-laws",
+  "type": "influenced_by",
+  "date": "2024-06",
+  "note": "His core method ('counting the OOMs') extrapolates compute and algorithmic-efficiency scaling trends.",
+  "evidenceIds": [
+   "ev-asch-1"
+  ],
+  "inferred": false
+ },
+ {
+  "id": "investors-2-rel-15",
+  "from": "cathie-wood",
+  "to": "tech:wrights-law",
+  "type": "influenced_by",
+  "date": "2023-01",
+  "note": "ARK's AI cost forecasts are explicitly built on Wright's Law.",
+  "evidenceIds": [
+   "ev-wood-1",
+   "ev-wood-4"
+  ],
+  "inferred": false
+ }
+]
