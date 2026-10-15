@@ -28,12 +28,13 @@ import {
   departments,
   faq,
   footprint,
+  googleStory,
   gratitude,
   heroStats,
   jointRisks,
   koreanSummary,
   notProposing,
-  proofPoints,
+  references,
   site,
   tradeReset,
   whyGoogle,
@@ -52,6 +53,8 @@ const navItems: [string, string][] = [
   ["#departments", "By function"],
   ["#opportunity", "Opportunities"],
   ["#model", "The model"],
+  ["#google", "Google Cloud"],
+  ["#references", "References"],
   ["#2029", "2029"],
   ["#plan", "The plan"],
   ["#questions", "Questions"],
@@ -526,31 +529,110 @@ export default function SaeAMicrosite() {
             </div>
           </div>
 
-          <div>
-            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em]" style={{ color: RED }}>
-              한국 시장 사례 · From the Korean market
+          <div className="rounded-2xl border border-slate-200 bg-white p-7">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: BLUE }}>
+              {googleStory.dataHandling.title}
             </p>
-            <h2 className="text-3xl font-black leading-tight tracking-tight text-slate-950">
-              A comparable decision, made two weeks ago
-            </h2>
-            <div className="mt-8 space-y-4">
-              {proofPoints.map((proof) => (
-                <div key={proof.title} className="rounded-2xl border border-slate-200 bg-white p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-[17px] font-black leading-tight tracking-tight text-slate-950">{proof.title}</h3>
-                    <ClaimTag level={proof.claim} />
-                  </div>
-                  <p className="mt-3 text-[14px] leading-6 text-slate-600">{proof.detail}</p>
-                  <div className="mt-4 rounded-xl bg-[#f1f5fd] p-4">
-                    <p className="text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: BLUE }}>
-                      Why we mention it
-                    </p>
-                    <p className="mt-1.5 text-[13px] leading-6 text-slate-700">{proof.relevance}</p>
-                  </div>
+            <ul className="mt-5 space-y-3">
+              {googleStory.dataHandling.points.map((point) => (
+                <li key={point} className="flex gap-2.5 text-[14px] leading-6 text-slate-700">
+                  <ShieldCheck size={16} className="mt-0.5 shrink-0" style={{ color: BLUE }} />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-7 rounded-xl bg-[#f1f5fd] p-5">
+              <p className="text-[11px] font-black uppercase tracking-[0.16em]" style={{ color: BLUE }}>
+                {googleStory.openness.title}
+              </p>
+              <p className="mt-2 text-[14px] leading-6 text-slate-700">{googleStory.openness.detail}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------ google story */}
+      <section id="google" className="bg-[#070d18] text-white">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+          <SectionHead
+            label={googleStory.label}
+            title={googleStory.headline}
+            lede={googleStory.standfirst}
+            dark
+          />
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/12 bg-white/12 lg:grid-cols-4">
+            {googleStory.layers.map((layer) => (
+              <motion.article key={layer.n} {...reveal} className="flex flex-col bg-[#0b1424] p-7">
+                <span className="text-3xl font-black tabular-nums text-white/20">{layer.n}</span>
+                <p className="mt-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#8ab4f8]">{layer.layer}</p>
+                <h3 className="mt-1.5 text-xl font-black leading-tight tracking-tight">{layer.name}</h3>
+                <p className="mt-3 flex-1 text-[13px] leading-6 text-white/60">{layer.detail}</p>
+                <div className="mt-5 border-t border-white/10 pt-4">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/35">Why it matters to you</p>
+                  <p className="mt-1.5 text-[13px] leading-6 text-white/78">{layer.soWhat}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <h3 className="text-xl font-black tracking-tight">{googleStory.touches.title}</h3>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {googleStory.touches.items.map((item) => (
+                <div key={item.phase} className="rounded-2xl border border-white/12 bg-white/[0.04] p-6">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: "#f28b82" }}>
+                    {item.phase}
+                  </p>
+                  <p className="mt-2 text-[16px] font-black leading-tight tracking-tight">{item.what}</p>
+                  <p className="mt-2.5 text-[13px] leading-6 text-white/65">{item.detail}</p>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* -------------------------------------------------------- references */}
+      <section id="references" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+        <SectionHead label={references.label} title={references.headline} lede={references.standfirst} />
+        <div className="mt-10 space-y-4">
+          {references.items.map((ref) => (
+            <motion.article
+              key={ref.customer}
+              {...reveal}
+              className="grid gap-6 rounded-2xl border border-slate-200 bg-white p-7 lg:grid-cols-[minmax(0,.42fr)_minmax(0,.58fr)]"
+            >
+              <div>
+                <span className="inline-block h-1.5 w-14 rounded-full" style={{ backgroundColor: ref.accent }} />
+                <h3 className="mt-4 text-2xl font-black leading-tight tracking-tight text-slate-950">{ref.customer}</h3>
+                <p className="mt-1 text-sm font-semibold text-slate-500">
+                  {ref.geography} · {ref.date}
+                </p>
+                <p className="mt-5 text-[17px] font-black leading-6" style={{ color: ref.accent }}>
+                  {ref.headline}
+                </p>
+                <p className="mt-4 text-[14px] leading-6 text-slate-600">{ref.detail}</p>
+              </div>
+              <div>
+                <div className="rounded-xl p-5" style={{ backgroundColor: `${ref.accent}0f` }}>
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em]" style={{ color: ref.accent }}>
+                    Reported outcome
+                  </p>
+                  <p className="mt-1.5 text-[16px] font-black leading-6 text-slate-900">{ref.outcome}</p>
+                </div>
+                <div className="mt-4 border-l-4 pl-5" style={{ borderColor: ref.accent }}>
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">
+                    Why we chose this one for you
+                  </p>
+                  <p className="mt-1.5 text-[14px] leading-6 text-slate-700">{ref.answers}</p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+        <div className="mt-8 rounded-2xl border-l-4 border-slate-400 bg-white p-6">
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">On reading these</p>
+          <p className="mt-2 text-[15px] leading-7 text-slate-700">{references.caveat}</p>
         </div>
       </section>
 
