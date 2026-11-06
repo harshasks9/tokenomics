@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, ArrowRight, Factory, Inbox, Play, Search, Sparkles } from "lucide-react";
+import { AlertTriangle, ArrowRight, Factory, FileCode2, GitBranch, Inbox, Play, Search, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { journeyContext, journeyProgress, JOURNEY } from "@/lib/asset-factory/journey";
 import type { WorkspaceView } from "@/lib/asset-factory/views";
@@ -46,7 +46,7 @@ function WorkspaceRow({ w }: { w: WorkspaceView }) {
 }
 
 export default function Home() {
-  const { view, persona, setTab, setQuery, events, openAsset } = useFactory();
+  const { view, persona, setTab, setQuery, events, openAsset, navigate } = useFactory();
   const [q, setQ] = useState("");
   const progress = useMemo(() => journeyProgress(journeyContext(events)), [events]);
   if (!view) return null;
@@ -96,6 +96,24 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      <div className="af-section">
+        <SectionHead title="Start from real packages" sub="Every asset is a versioned package you can read, run and inherit" />
+        <div className="af-grid c3">
+          <button type="button" className="af-action" onClick={() => navigate({ page: "asset", slug: "google/exception-classification", tab: "files", path: "SKILL.md" })}>
+            <span className="af-action-icon" data-k="read"><FileCode2 size={18} /></span>
+            <span><b>Read a SKILL.md</b><span className="af-muted">The instructions, guardrails, parameters and output schema the agent actually executes.</span><code className="af-ic">google/exception-classification</code></span>
+          </button>
+          <button type="button" className="af-action" onClick={() => navigate({ page: "asset", slug: "google/exception-classification", tab: "run" })}>
+            <span className="af-action-icon" data-k="run"><Play size={18} /></span>
+            <span><b>Run it on an exception</b><span className="af-muted">Send real input, watch the trace, check the output against its schema.</span><code className="af-ic">Try it</code></span>
+          </button>
+          <button type="button" className="af-action" onClick={() => navigate({ page: "inherit", slug: persona === "partner" ? "google/supply-chain-exception-resolution-agent" : "google/exception-classification" })}>
+            <span className="af-action-icon" data-k="inherit"><GitBranch size={18} /></span>
+            <span><b>Inherit and customize</b><span className="af-muted">Extend a verified skill with your own instructions and parameters — keep upgrades from the parent.</span><code className="af-ic">extends: …@version</code></span>
+          </button>
+        </div>
+      </div>
 
       <div className="af-section">
         <SectionHead title={persona === "customer" ? "Your outcomes" : persona === "google" ? "Your deployment scorecard" : "Your practice scorecard"} sub="Modeled from synthetic engagement data" />

@@ -48,8 +48,10 @@ export const DEFAULT_CONFIG: Config = {
 
 const d = (s: string) => s; // ISO date helper for readability
 
-function asset(a: Omit<Asset, "sharedWorkspaceIds" | "reviews" | "forks" | "attribution"> & Partial<Pick<Asset, "sharedWorkspaceIds" | "reviews" | "forks" | "attribution">>): Asset {
-  return { sharedWorkspaceIds: [], reviews: [], forks: 0, attribution: "named", ...a };
+export const kebabName = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+
+function asset(a: Omit<Asset, "slug" | "sharedWorkspaceIds" | "reviews" | "forks" | "attribution"> & Partial<Pick<Asset, "sharedWorkspaceIds" | "reviews" | "forks" | "attribution">>): Asset {
+  return { slug: `${a.ownerOrgId}/${kebabName(a.name)}`, sharedWorkspaceIds: [], reviews: [], forks: 0, attribution: "named", ...a };
 }
 
 export const SCER_BLUEPRINT = "a-scer-blueprint";

@@ -5,6 +5,8 @@
 import { COLLECTIONS, ECON, ORGS, PERSONA_USER, SEED_DAYS_TO_ACTIVATE, SEED_WORKSPACES, USERS } from "./data";
 import { economics, evaluate, readiness, stageOf, workspaceAssetIds, type Economics, type EvalResult, type ReadinessCheck } from "./model";
 import { canSeeWorkspace, canViewAsset, isGoogle, orgById, userById } from "./policy";
+import { chainFor, contributionFiles, fileOf, filesFor, instructionPath, lineageFor, refOf, resolveFor, schemaFor, type LineageNode } from "./packages";
+import { kebab } from "./skillmd";
 import type {
   ActivityItem, Asset, AssetType, AssetVersion, Config, ContributionStatus, OrgKind, PersonaId, Responsibility, Sprint, TrustTier, User, Visibility, Workspace, World,
 } from "./types";
@@ -14,6 +16,9 @@ export interface PersonRef { id: string; name: string; title: string; initials: 
 
 export interface AssetView {
   id: string;
+  slug: string;
+  /** slug@version — what you pin in `extends:` or an agent manifest. */
+  ref: string;
   name: string;
   type: AssetType;
   summary: string;
@@ -47,6 +52,10 @@ export interface AssetView {
   sharedInto: { id: string; name: string }[];
   sensitive: boolean;
   isNew: boolean;
+  extends: { id: string; ref: string; name: string } | null;
+  children: number;
+  files: string[];
+  runnable: boolean;
 }
 
 export interface WorkspaceView {
@@ -86,6 +95,8 @@ export interface ContributionView {
   customerApprovedBy: string | null;
   reviewedBy: string | null;
   publishedAssetId: string | null;
+  /** The exact files that would be published, and agent.yaml's diff against the base package. */
+  preview: { files: { path: string; content: string }[]; baseManifest: string };
   canApproveCustomer: boolean;
   canReview: boolean;
   canPublish: boolean;
@@ -136,8 +147,10 @@ function projectAsset(a: Asset, viewer: User, world: World): AssetView {
   const sum = a.ratingSeed.sum + a.reviews.reduce((s, r) => s + r.rating, 0);
   const count = a.ratingSeed.count + a.reviews.length;
   const forked = a.forkedFromId ? world.assets.find((x) => x.id === a.forkedFromId) : undefined;
+  const parent = a.extendsRef ? world.assets.find((x) => x.id === a.extendsRef!.assetId) : undefined;
+  const paths = filesFor(a).map((f) => f.path);
   return {
-    id: a.id, name: a.name, type: a.type, summary: a.summary, description: a.description,
+    id: a.id, slug: a.slug, ref: refOf(a), name: a.name, type: a.type, summary: a.summary, description: a.description,
     industries: a.industries, outcomes: a.outcomes, visibility: a.visibility, trust: a.trust,
     version: a.versions.at(-1)?.version ?? "0.1", versions: a.versions, reviews,
     rating: count ? Math.round((sum / count) * 10) / 10 : 0, ratingCount: count,
@@ -161,6 +174,10 @@ function projectAsset(a: Asset, viewer: User, world: World): AssetView {
       .map((w) => ({ id: w.id, name: w.name })),
     sensitive: Boolean(a.sensitive),
     isNew: a.id.startsWith("a-ct") || a.id.startsWith("a-u"),
+    extends: parent && canViewAsset(viewer, parent, world) ? { id: parent.id, ref: `${parent.slug}@${a.extendsRef!.version}`, name: parent.name } : null,
+    children: world.assets.filter((c) => (c.extendsRef?.assetId === a.id || c.forkedFromId === a.id) && canViewAsset(viewer, c, world)).length,
+    files: paths,
+    runnable: paths.includes("examples/sample-input.json") || (a.type === "skill" && paths.includes("SKILL.md")),
   };
 }
 
@@ -311,6 +328,14 @@ export function buildView(world: World, persona: PersonaId): PlatformView {
         canApproveCustomer: c.status === "proposed" && isOwner,
         canReview: c.status === "customer-approved" && isGoogle(viewer) && c.proposedBy !== viewer.id,
         canPublish: c.status === "reviewed" && c.proposedBy === viewer.id,
+        preview: {
+          files: contributionFiles({
+            base, slug: `${userById.get(c.proposedBy)!.orgId}/${kebab(c.title)}`, title: c.title, summary: c.summary, changes: c.changes,
+            components: workspaceAssetIds(ws).filter((id) => id !== base.id && map.get(id)?.visibility === "public").map((id) => map.get(id)!),
+            config: ws.config, author: userById.get(c.proposedBy)!,
+          }),
+          baseManifest: fileOf(base, "agent.yaml") ?? "",
+        },
       };
     });
 
@@ -356,4 +381,43 @@ export function buildView(world: World, persona: PersonaId): PlatformView {
     };
   }
   return view;
+}
+
+
+// ── Asset detail (fetched on demand when an asset page opens) ─────────────
+
+export interface AssetDetail {
+  asset: AssetView;
+  files: { path: string; content: string }[];
+  mainFile: string | null;
+  resolved: { md: string; chain: string[]; provenance: { heading: string; from: string[] }[]; overriddenParams: { key: string; from: string; to: string; by: string }[] } | null;
+  schema: string | null;
+  lineage: { ancestors: { id: string; slug: string; version: string; name: string }[]; tree: LineageNode };
+  history: { version: string; at: string; author: string; note: string; path: string; before: string; after: string }[];
+  install: string;
+  /** Owner org may commit to this package. */
+  canEdit: boolean;
+  /** Sample input for "Try it" — own, else inherited from the nearest ancestor that has one. */
+  sampleInput: string | null;
+}
+
+/** Returns null when the asset doesn't exist or the persona may not see it (indistinguishable on purpose). */
+export function buildAssetDetail(world: World, persona: PersonaId, idOrSlug: string): AssetDetail | null {
+  const viewer = userById.get(PERSONA_USER[persona])!;
+  const a = world.assets.find((x) => x.id === idOrSlug || x.slug === idOrSlug);
+  if (!a || !canViewAsset(viewer, a, world)) return null;
+  const resolved = resolveFor(a, world, viewer);
+  const verb = a.type === "skill" ? "skills add" : a.type === "blueprint" ? "agents init --from" : a.type === "connector" ? "connectors add" : a.type === "workflow" ? "workflows add" : "evals add";
+  return {
+    asset: projectAsset(a, viewer, world),
+    files: filesFor(a).map((f) => ({ path: f.path, content: f.content })),
+    mainFile: instructionPath(a) ?? null,
+    resolved,
+    schema: schemaFor(a, world, viewer) ?? null,
+    lineage: lineageFor(a, world, viewer),
+    history: [...(a.history ?? [])].reverse().map((h) => ({ version: h.version, at: h.at, author: userById.get(h.actorId)?.name ?? "", note: h.note, path: h.path, before: h.before, after: h.after })),
+    install: `g10 ${verb} ${refOf(a)}`,
+    canEdit: a.ownerOrgId === viewer.orgId,
+    sampleInput: [...chainFor(a, world, viewer)].reverse().map((x) => fileOf(x, "examples/sample-input.json")).find(Boolean) ?? null,
+  };
 }

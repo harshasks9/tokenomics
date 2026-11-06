@@ -12,6 +12,8 @@ import {
   canSeeWorkspace, canViewAsset, deny, hasResponsibility, isGoogle, memberOf, orgById, scanForPublication,
   userById, visibleToAllMembers, PolicyError,
 } from "./policy";
+import { contributionFiles, fileOf, filesFor, inheritedFiles, refOf, starterFiles, versionOf } from "./packages";
+import { bumpVersion, kebab, parseSkill } from "./skillmd";
 import type { Action, Asset, Contribution, Event, User, Workspace, World } from "./types";
 
 export const MAX_EVENTS = 400;
@@ -54,6 +56,20 @@ function log(ws: Workspace, world: World, actor: User, text: string, kind: Works
   ws.activity.push({ seq: world.seq, actorId: actor.id, text, kind });
 }
 
+function uniqueSlug(world: World, orgId: string, name: string): string {
+  const base = `${orgId}/${kebab(name) || "asset"}`;
+  let slug = base;
+  for (let i = 2; world.assets.some((a) => a.slug === slug); i++) slug = `${base}-${i}`;
+  return slug;
+}
+
+const MAX_FILE = 40_000;
+
+function scanOrDeny(text: string, orgId: string) {
+  const failed = scanForPublication(text, orgId).filter((s) => !s.passed);
+  if (failed.length) deny(`Publication scan failed — ${failed.map((f) => f.label).join("; ")}.`);
+}
+
 function addComponentChecked(world: World, ws: Workspace, asset: Asset) {
   if (asset.visibility === "internal" && ws.members.some((m) => m.orgId !== "google")) {
     deny(`"${asset.name}" is Google Internal and cannot be used in a workspace with external collaborators.`);
@@ -90,7 +106,10 @@ function apply(world: World, actor: User, action: Action): void {
       const fork: Asset = {
         ...structuredClone(a),
         id: `a-u${world.seq}`,
+        slug: uniqueSlug(world, actor.orgId, a.name),
         name: `${a.name} (fork)`,
+        files: structuredClone(filesFor(a)),
+        history: [],
         ownerOrgId: actor.orgId,
         contributorId: actor.id,
         visibility: a.visibility === "internal" ? "internal" : "org",
@@ -117,9 +136,11 @@ function apply(world: World, actor: User, action: Action): void {
         if (a.sensitive) deny("This asset is marked confidential (customer data or GTM material) and can never be published publicly.");
         if (a.visibility === "workspace") deny("Workspace assets reach the marketplace only through a contribution, with customer permission and review.");
         if (a.visibility === "internal" && !isGoogle(actor)) deny("Only Google can release an internal asset.");
-        const scan = scanForPublication(`${a.name}\n${a.summary}\n${a.description}`, actor.orgId);
-        const failed = scan.filter((s) => !s.passed);
-        if (failed.length) deny(`Publication scan failed — ${failed.map((f) => f.label).join("; ")}.`);
+        scanOrDeny([a.name, a.summary, a.description, ...filesFor(a).map((f) => f.content)].join("\n"), actor.orgId);
+        if (a.extendsRef) {
+          const parent = world.assets.find((x) => x.id === a.extendsRef!.assetId);
+          if (parent && parent.visibility !== "public") deny(`It inherits from “${parent.name}”, which isn't public — a child can't be more visible than its parent.`);
+        }
       } else if (action.visibility === "internal" && !isGoogle(actor)) {
         deny("Only Google employees can classify assets as Google Internal.");
       } else if (action.visibility === "workspace") {
@@ -155,15 +176,87 @@ function apply(world: World, actor: User, action: Action): void {
         const failed = scanForPublication(`${name}\n${summary}`, actor.orgId).filter((s) => !s.passed);
         if (failed.length) deny(`Publication scan failed — ${failed.map((f) => f.label).join("; ")}.`);
       }
-      world.assets.push({
-        id: `a-u${world.seq}`, name, type: action.assetType, summary, description: summary,
+      const created: Asset = {
+        id: `a-u${world.seq}`, slug: uniqueSlug(world, actor.orgId, name), name, type: action.assetType, summary, description: summary,
         industries: (action.industries ?? []).slice(0, 4).map(String), outcomes: [],
         ownerOrgId: actor.orgId, contributorId: actor.id, visibility: action.visibility, sharedWorkspaceIds: shared,
         trust: "community", versions: [{ version: "0.1", at: "2026-11-06", note: "First contribution" }], reviews: [],
         ratingSeed: { sum: 0, count: 0 }, forks: 0, deployments: 0, prerequisites: [], security: [],
-        costPer1k: 100, minutesSaved: 3, tags: [], attribution: "named", updatedAt: "2026-11-06",
-      });
+        costPer1k: 100, minutesSaved: 3, tags: [], attribution: "named", updatedAt: "2026-11-06", history: [],
+      };
+      created.files = starterFiles(created, actor);
+      world.assets.push(created);
       if (shared[0]) log(world.workspaces.find((w) => w.id === shared[0])!, world, actor, `Contributed “${name}” to this workspace`, "contribute");
+      return;
+    }
+
+    case "asset.inherit": {
+      const base = viewableAsset(world, actor, action.baseId);
+      if (!["skill", "blueprint"].includes(base.type)) deny("Only skills and blueprints can be inherited. Fork other assets instead.");
+      if (base.sensitive && base.ownerOrgId !== actor.orgId) deny("Confidential assets can't be inherited outside their owner.");
+      const name = String(action.name ?? "").trim().slice(0, 90);
+      if (name.length < 3) deny("Name your skill.");
+      const md = String(action.skillMd ?? "");
+      if (md.length > MAX_FILE) deny("SKILL.md is too large.");
+      const fm = parseSkill(md).frontmatter;
+      if (!fm.extends) deny("The SKILL.md frontmatter must declare `extends:`.");
+      const pinned = String(fm.extends);
+      if (pinned !== refOf(base)) deny(`\`extends: ${pinned}\` doesn't match the asset you're inheriting (${refOf(base)}).`);
+      let shared: string[] = [];
+      if (action.visibility === "internal" && !isGoogle(actor)) deny("Only Google employees can create Google Internal assets.");
+      if (action.visibility === "public") {
+        if (base.visibility !== "public") deny("A child can't be more visible than its parent — the parent isn't public.");
+        scanOrDeny(`${name}\n${md}`, actor.orgId);
+      }
+      if (action.visibility === "workspace") {
+        if (!action.workspaceId) deny("Choose a workspace.");
+        shared = [memberWorkspace(world, actor, action.workspaceId).id];
+      }
+      const child: Asset = {
+        ...structuredClone(base),
+        id: `a-u${world.seq}`,
+        slug: uniqueSlug(world, actor.orgId, String(fm.name ?? name)),
+        name,
+        summary: String(fm.description ?? base.summary).slice(0, 300),
+        description: `Inherits ${refOf(base)} and adds ${orgById.get(actor.orgId)?.name}'s own instructions and parameters.`,
+        ownerOrgId: actor.orgId, contributorId: actor.id, visibility: action.visibility, sharedWorkspaceIds: shared,
+        trust: "community", forkedFromId: base.id, extendsRef: { assetId: base.id, version: versionOf(base) },
+        versions: [{ version: "0.1.0", at: "2026-11-06", note: `Inherits ${refOf(base)}` }],
+        reviews: [], ratingSeed: { sum: 0, count: 0 }, forks: 0, deployments: 0, attribution: "named",
+        includes: base.type === "blueprint" ? base.includes : undefined,
+        files: inheritedFiles(base, md, actor), history: [], sensitive: false, updatedAt: "2026-11-06",
+      };
+      base.forks += 1;
+      world.assets.push(child);
+      return;
+    }
+
+    case "asset.edit": {
+      const a = viewableAsset(world, actor, action.assetId);
+      if (a.ownerOrgId !== actor.orgId) deny(`Only ${orgById.get(a.ownerOrgId)?.name ?? "the owner"} can commit to this package. Fork or inherit it to make your own version.`);
+      const path = String(action.path ?? "");
+      const content = String(action.content ?? "");
+      const note = String(action.note ?? "").trim().slice(0, 160) || `Update ${path}`;
+      if (!/^[\w./-]{1,120}$/.test(path) || path.includes("..")) deny("Invalid file path.");
+      if (content.length > MAX_FILE) deny("File is too large.");
+      const before = fileOf(a, path);
+      if (before === undefined) deny("File not found in this package.");
+      if (before === content) deny("No changes to commit.");
+      if (path.endsWith(".json")) {
+        try { JSON.parse(content); } catch { deny(`${path} isn't valid JSON.`); }
+      }
+      if (path === "SKILL.md") {
+        const fm = parseSkill(content).frontmatter;
+        const wasExtends = parseSkill(before).frontmatter.extends;
+        if (String(fm.extends ?? "") !== String(wasExtends ?? "")) deny("Changing `extends:` re-parents the package — inherit the new parent instead.");
+      }
+      if (a.visibility === "public") scanOrDeny(content, actor.orgId);
+      const files = structuredClone(filesFor(a)).map((f) => (f.path === path ? { ...f, content } : f));
+      const version = bumpVersion(versionOf(a), "patch");
+      a.files = files;
+      a.versions.push({ version, at: "2026-11-06", note });
+      (a.history ??= []).push({ version, at: "2026-11-06", actorId: actor.id, note, path, before, after: content });
+      a.updatedAt = "2026-11-06";
       return;
     }
 
@@ -374,9 +467,15 @@ function apply(world: World, actor: User, action: Action): void {
       const base = findAsset(world, c.baseAssetId);
       const includes = workspaceAssetIds(ws).filter((id) => id !== base.id && findAsset(world, id).visibility === "public");
       const id = `a-ct${world.seq}`;
+      const slug = uniqueSlug(world, actor.orgId, c.title);
       world.assets.push({
         ...structuredClone(base),
-        id, name: c.title, summary: c.summary || base.summary,
+        id, slug, name: c.title, summary: c.summary || base.summary,
+        extendsRef: { assetId: base.id, version: versionOf(base) }, history: [],
+        files: contributionFiles({
+          base, slug, title: c.title, summary: c.summary, changes: c.changes,
+          components: includes.map((x) => findAsset(world, x)), config: ws.config, author: actor,
+        }),
         description: `${c.summary} Built and validated in a Gemini 10 engagement and contributed with the customer's permission. Changes: ${c.changes.join("; ")}.`,
         ownerOrgId: actor.orgId, contributorId: actor.id, visibility: "public", sharedWorkspaceIds: [], trust: "community",
         forkedFromId: base.id, includes, versions: [{ version: "1.0", at: "2026-11-06", note: "Published from a production engagement" }],

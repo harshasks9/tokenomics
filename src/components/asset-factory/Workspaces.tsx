@@ -6,6 +6,8 @@ import { SPRINT_PLAN } from "@/lib/asset-factory/journey";
 import type { Responsibility } from "@/lib/asset-factory/types";
 import type { WorkspaceView } from "@/lib/asset-factory/views";
 import { useFactory } from "./state";
+import { CodeView } from "./md";
+import { manifestYaml } from "./PackagePeek";
 import Lifecycle from "./Lifecycle";
 import { AssetIcon, Avatar, EvalList, OrgName, ReadinessList, TrustTag, VisibilityTag, kindToPersona, num, usd } from "./ui";
 
@@ -138,6 +140,13 @@ function Detail({ ws }: { ws: WorkspaceView }) {
           {shared.length > 0 && <p className="af-muted" style={{ fontSize: 12.5, marginTop: 8 }}>Private assets explicitly shared into this workspace: {shared.map((s) => `${s.name} (${s.ownerLabel})`).join(", ")}.</p>}
         </div>
       </div>
+
+      {ws.blueprintId && (
+        <div className="af-card" style={{ padding: 0, overflow: "hidden" }}>
+          <div className="af-file-head"><b className="af-mono">agent.yaml</b><span className="af-muted">what this workspace deploys — every component pinned by version</span></div>
+          <CodeView code={manifestYaml(ws.name, byId.get(ws.blueprintId), ws.componentIds.map((id) => byId.get(id)).filter((x): x is NonNullable<typeof x> => Boolean(x)), ws.config)} lang="yaml" maxHeight={340} />
+        </div>
+      )}
 
       <div className="af-split even">
         <div className="af-card">

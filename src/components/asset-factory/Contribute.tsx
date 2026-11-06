@@ -5,6 +5,8 @@ import { useState } from "react";
 import type { AssetType, Visibility } from "@/lib/asset-factory/types";
 import type { ContributionView } from "@/lib/asset-factory/views";
 import { useFactory } from "./state";
+import { CodeView, DiffView, langOf } from "./md";
+import { diffLines } from "@/lib/asset-factory/skillmd";
 import { AssetCard, SectionHead, TYPE_LABEL, VIS } from "./ui";
 
 const COPY = {
@@ -21,8 +23,26 @@ const STATUS: Record<ContributionView["status"], string> = {
   rejected: "Rejected in review",
 };
 
+export function PackagePreview({ c }: { c: ContributionView }) {
+  const [file, setFile] = useState<string>("diff");
+  const current = c.preview.files.find((f) => f.path === file);
+  const manifest = c.preview.files.find((f) => f.path === "agent.yaml")?.content ?? "";
+  return (
+    <div className="af-card" style={{ padding: 0, overflow: "hidden", marginTop: 10, boxShadow: "none" }}>
+      <div className="af-file-head">
+        <div className="af-chips">
+          <button type="button" className="af-chip" aria-pressed={file === "diff"} onClick={() => setFile("diff")}>agent.yaml vs base</button>
+          {c.preview.files.map((f) => <button key={f.path} type="button" className="af-chip af-mono" style={{ fontSize: 11.5 }} aria-pressed={file === f.path} onClick={() => setFile(f.path)}>{f.path}</button>)}
+        </div>
+      </div>
+      {file === "diff" ? <DiffView lines={diffLines(c.preview.baseManifest, manifest)} maxHeight={360} /> : current && <CodeView code={current.content} lang={langOf(current.path)} maxHeight={360} />}
+    </div>
+  );
+}
+
 function ContributionCard({ c }: { c: ContributionView }) {
   const { act, openAsset } = useFactory();
+  const [open, setOpen] = useState(c.canApproveCustomer || c.canReview);
   return (
     <div className="af-card">
       <div className="af-card-head">
@@ -34,6 +54,8 @@ function ContributionCard({ c }: { c: ContributionView }) {
       <ul className="af-list" style={{ marginTop: 8 }}>
         {c.scan.map((s) => <li key={s.id}>{s.passed ? <CircleCheck size={15} color="var(--ok)" /> : <CircleX size={15} color="var(--bad)" />}<span style={{ fontSize: 13 }}>{s.label}</span></li>)}
       </ul>
+      <button type="button" className="af-btn sm ghost" style={{ marginTop: 6 }} onClick={() => setOpen(!open)}>{open ? "Hide" : "Inspect"} the package ({c.preview.files.length} files)</button>
+      {open && <PackagePreview c={c} />}
       <div className="af-row" style={{ marginTop: 10 }}>
         {c.canApproveCustomer && <button type="button" className="af-btn primary" data-p="customer" onClick={() => window.confirm("Allow this improvement to leave your workspace? The scan shows no customer data or identifiers.") && act({ type: "contribution.approveCustomer", contributionId: c.id }, { success: "Permission granted" })}>Permit reuse</button>}
         {c.canReview && <>

@@ -54,8 +54,25 @@ export interface AssetVersion {
   note: string;
 }
 
+export interface AssetFile {
+  path: string;
+  content: string;
+}
+
+export interface FileChange {
+  version: string;
+  at: string;
+  actorId: string;
+  note: string;
+  path: string;
+  before: string;
+  after: string;
+}
+
 export interface Asset {
   id: string;
+  /** namespace/name — the package address, e.g. google/exception-classification. */
+  slug: string;
   name: string;
   type: AssetType;
   summary: string;
@@ -90,6 +107,12 @@ export interface Asset {
   attribution: "named" | "org" | "anonymous";
   /** Components a blueprint brings with it when selected. */
   includes?: string[];
+  /** Files for assets created on the platform; seed assets read theirs from content.ts. */
+  files?: AssetFile[];
+  /** Inheritance: this package `extends` another at a pinned version. */
+  extendsRef?: { assetId: string; version: string };
+  /** Commits made on the platform (edits to files). */
+  history?: FileChange[];
   updatedAt: string;
 }
 
@@ -195,6 +218,8 @@ export type Action =
   | { type: "asset.fork"; assetId: string }
   | { type: "asset.publish"; assetId: string; visibility: Visibility }
   | { type: "asset.shareToWorkspace"; assetId: string; workspaceId: string }
+  | { type: "asset.inherit"; baseId: string; name: string; visibility: Visibility; skillMd: string; workspaceId?: string }
+  | { type: "asset.edit"; assetId: string; path: string; content: string; note: string }
   | { type: "asset.create"; name: string; assetType: AssetType; summary: string; visibility: Visibility; workspaceId?: string; industries: string[] }
   | { type: "workspace.create"; name: string; problem: string }
   | { type: "workspace.invite"; workspaceId: string; userId: string; responsibilities: Responsibility[] }

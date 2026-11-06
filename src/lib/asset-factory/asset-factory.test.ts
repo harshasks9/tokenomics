@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { attempt, replay } from "./engine";
 import { JOURNEY, journeyContext, journeyProgress, nextTask } from "./journey";
 import { PERSONA_USER } from "./data";
-import { buildView } from "./views";
+import { buildAssetDetail, buildView } from "./views";
+import { runAsset } from "./run";
 import type { Action, Event, PersonaId } from "./types";
 
 /** Run the whole executive journey through the authorizing engine. */
@@ -171,11 +172,98 @@ describe("client bundle boundary", () => {
     const files = [
       ...fs.readdirSync(root).filter((f) => /\.tsx?$/.test(f)).map((f) => path.join(root, f)),
       path.resolve(__dirname, "journey.ts"),
+      path.resolve(__dirname, "skillmd.ts"),
     ];
-    const forbidden = /^\s*import\s+(?!type\b)[^;]*from\s+["'](?:@\/lib\/asset-factory\/|\.\/)(data|policy|engine|model|views)["']/m;
+    const forbidden = /^\s*import\s+(?!type\b)[^;]*from\s+["'](?:@\/lib\/asset-factory\/|\.\/)(data|policy|engine|model|views|packages|run|server|content)["']/m;
     for (const f of files) {
       const src = fs.readFileSync(f, "utf8");
       expect(forbidden.test(src), `${path.basename(f)} imports a server-only module`).toBe(false);
     }
+  });
+});
+
+describe("packages: real files, inheritance and edits", () => {
+  it("ships real files for every seed asset", async () => {
+    const { SEED_FILES } = await import("./content");
+    const { ASSETS } = await import("./data");
+    for (const a of ASSETS) {
+      expect(SEED_FILES[a.id]?.length, a.id).toBeGreaterThan(0);
+      if (a.type === "skill") expect(SEED_FILES[a.id].some((f) => f.path === "SKILL.md"), a.id).toBe(true);
+    }
+  });
+
+  it("only returns files to personas allowed to see the asset", () => {
+    const w = replay([]).world;
+    expect(buildAssetDetail(w, "partner", "a-tier2-signals")?.files.length).toBeGreaterThan(0);
+    expect(buildAssetDetail(w, "customer", "a-tier2-signals")).toBeNull();
+    expect(buildAssetDetail(w, "customer", "google/manufacturing-consumption-expansion-playbook")).toBeNull();
+    expect(buildAssetDetail(w, "google", "google/manufacturing-consumption-expansion-playbook")).not.toBeNull();
+  });
+
+  const parent = () => buildAssetDetail(replay([]).world, "customer", "a-exception-classify")!;
+  const childMd = (ref: string, extra = "") => `---\nname: kestrel-exception-classification\nnamespace: kestrel\nversion: 0.1.0\nextends: ${ref}\ndescription: Kestrel tuning\n---\n\n# Kestrel exception classification\n\n## Additional instructions\n\n1. Treat plant P300 quality holds as blocking.${extra}\n\n## Parameters\n\n\`\`\`yaml\nconfidence_floor: 0.91\n\`\`\`\n`;
+
+  it("inherits a skill and resolves the parent's instructions plus the child's", () => {
+    const ref = parent().asset.ref;
+    const ev = as("customer", { type: "asset.inherit", baseId: "a-exception-classify", name: "Kestrel Exception Classification", visibility: "org", skillMd: childMd(ref) });
+    const r = attempt(replay([]).world, ev);
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const child = r.world.assets.at(-1)!;
+    expect(child.extendsRef?.assetId).toBe("a-exception-classify");
+    const d = buildAssetDetail(r.world, "customer", child.id)!;
+    expect(d.resolved?.chain).toEqual([ref, `${child.slug}@0.1.0`]);
+    expect(d.resolved?.md).toContain("Treat plant P300 quality holds as blocking.");
+    // Parent instructions survive in the resolved document.
+    const parentInstr = parent().files.find((f: { path: string }) => f.path === "SKILL.md")!.content.split("## Instructions")[1].split("\n").find((l) => /^1\./.test(l.trim()))!;
+    expect(d.resolved?.md).toContain(parentInstr.trim());
+    expect(d.schema).toBeTruthy();
+    // The child is private to Kestrel.
+    expect(buildAssetDetail(r.world, "partner", child.id)).toBeNull();
+  });
+
+  it("rejects a wrong extends pin, a public child of a private parent, and leaking names", () => {
+    const w = replay([]).world;
+    expect(attempt(w, as("customer", { type: "asset.inherit", baseId: "a-exception-classify", name: "X skill", visibility: "org", skillMd: childMd("google/exception-classification@0.0.1") })).ok).toBe(false);
+    const tier2 = buildAssetDetail(w, "partner", "a-tier2-signals")!.asset.ref;
+    expect(attempt(w, as("partner", { type: "asset.inherit", baseId: "a-tier2-signals", name: "Public tier2", visibility: "public", skillMd: childMd(tier2) })).ok).toBe(false);
+    const leak = attempt(w, as("partner", { type: "asset.inherit", baseId: "a-exception-classify", name: "Leaky skill", visibility: "public", skillMd: childMd(parent().asset.ref, " Built for Kestrel Industrial.") }));
+    expect(leak.ok).toBe(false);
+  });
+
+  it("lets only the owner commit edits, and records a versioned diff", () => {
+    const w = replay([]).world;
+    const md = buildAssetDetail(w, "partner", "a-supplier-risk")!.files.find((f) => f.path === "SKILL.md")!.content;
+    expect(attempt(w, as("customer", { type: "asset.edit", assetId: "a-supplier-risk", path: "SKILL.md", content: md + "\n", note: "x" })).ok).toBe(false);
+    const r = attempt(w, as("partner", { type: "asset.edit", assetId: "a-supplier-risk", path: "SKILL.md", content: md + "\n<!-- tuned -->\n", note: "Tune" }));
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const d = buildAssetDetail(r.world, "customer", "a-supplier-risk")!;
+    expect(d.history[0].note).toBe("Tune");
+    expect(d.asset.version).not.toBe(buildAssetDetail(w, "customer", "a-supplier-risk")!.asset.version);
+    expect(attempt(w, as("partner", { type: "asset.edit", assetId: "a-supplier-risk", path: "schema/output.json", content: "{not json", note: "bad" })).ok).toBe(false);
+  });
+
+  it("runs a skill (recorded when no API key) with an authorized trace", async () => {
+    const key = process.env.GEMINI_API_KEY;
+    delete process.env.GEMINI_API_KEY;
+    delete process.env.GOOGLE_API_KEY;
+    const w = replay([]).world;
+    const r = await runAsset(w, "customer", "a-exception-classify", "{}");
+    expect(r?.mode).toBe("recorded");
+    expect(r?.output).toBeTruthy();
+    expect(r?.validation?.valid).toBe(true);
+    expect(await runAsset(w, "customer", "a-tier2-signals", "{}")).toBeNull();
+    if (key) process.env.GEMINI_API_KEY = key;
+  });
+
+  it("publishes the journey contribution as a package that extends the base blueprint", () => {
+    const events = runJourney();
+    const w = replay(events).world;
+    const published = w.assets.find((a) => a.id.startsWith("a-ct"))!;
+    const d = buildAssetDetail(w, "customer", published.id)!;
+    expect(d.files.map((f) => f.path)).toContain("agent.yaml");
+    expect(d.files.find((f) => f.path === "agent.yaml")!.content).toContain("extends: google/supply-chain-exception-resolution-agent@");
+    expect(d.files.map((f) => f.content).join("\n")).not.toMatch(/Kestrel/);
   });
 });

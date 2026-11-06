@@ -8,6 +8,8 @@ import type { WorkspaceView } from "@/lib/asset-factory/views";
 import { useFactory } from "./state";
 import Lifecycle from "./Lifecycle";
 import { SprintTimeline } from "./Workspaces";
+import PackagePeek from "./PackagePeek";
+import { PackagePreview } from "./Contribute";
 import { AssetCard, AssetIcon, Avatar, EvalList, OrgName, PERSONA_NAME, PersonaTag, ReadinessList, TrustTag, VisibilityTag, num, usd } from "./ui";
 
 const CAST: { p: PersonaId; name: string; org: string; initials: string }[] = [
@@ -79,17 +81,20 @@ function Focus({ step, ws, config, setConfig }: { step: JourneyStep; ws: Workspa
     case "asset": {
       const a = byId.get("a-scer-blueprint");
       return a ? (
-        <div className="af-grid c2">
-          <AssetCard a={a} />
-          <div className="af-card flat">
-            <div className="af-h3">What Dana sees before talking to anyone</div>
-            <ul className="af-bullets">
-              <li>{a.deployments} production deployments · {a.rating}★ from {a.ratingCount} ratings</li>
-              <li>Prerequisites: {a.prerequisites.slice(0, 2).join("; ")}…</li>
-              <li>Security: {a.security[0]}</li>
-              <li>Modeled run cost: ${a.costPerExecution.toFixed(2)} per exception resolved</li>
-            </ul>
+        <div className="af-stack">
+          <div className="af-grid c2">
+            <AssetCard a={a} />
+            <div className="af-card flat">
+              <div className="af-h3">What Dana sees before talking to anyone</div>
+              <ul className="af-bullets">
+                <li>{a.deployments} production deployments · {a.rating}★ from {a.ratingCount} ratings</li>
+                <li>Prerequisites: {a.prerequisites.slice(0, 2).join("; ")}…</li>
+                <li>Security: {a.security[0]}</li>
+                <li>Modeled run cost: ${a.costPerExecution.toFixed(2)} per exception resolved</li>
+              </ul>
+            </div>
           </div>
+          <PackagePeek assetId="a-scer-blueprint" path="agent.yaml" title="the real manifest — open it, read it, run it" />
         </div>
       ) : null;
     }
@@ -114,6 +119,7 @@ function Focus({ step, ws, config, setConfig }: { step: JourneyStep; ws: Workspa
       if (!ws) return noWs;
       return (
         <div className="af-stack">
+          {step.id === "partner" && <PackagePeek assetId="a-supplier-risk" path="SKILL.md" lines={28} title="Lattice's skill, exactly as the agent executes it" />}
           {step.id === "assemble" && (
             <div className="af-card flat">
               <div className="af-h3" style={{ marginBottom: 8 }}>Kestrel&apos;s thresholds <span className="af-muted" style={{ fontWeight: 400, fontSize: 12 }}>(applied by the “Apply” task)</span></div>
@@ -223,6 +229,8 @@ function Focus({ step, ws, config, setConfig }: { step: JourneyStep; ws: Workspa
               <ul className="af-list">{keys.map((k) => <li key={k.label}>{k.done ? <CircleCheck size={15} color="var(--ok)" /> : <span className="af-step-n" style={{ width: 15, height: 15 }} />}<span style={{ flex: 1, fontSize: 13 }}>{k.label} <span className="af-muted">· {k.who}</span></span>{k.by && <span className="af-muted" style={{ fontSize: 12 }}>{k.by}</span>}</li>)}</ul>
             </div>
           </div>
+          {!published && <div><div className="af-eyebrow" style={{ marginBottom: 4 }}>The exact package under review</div><PackagePreview c={c} /></div>}
+          {published && <PackagePeek assetId={published.id} path="agent.yaml" lines={30} title="the published package — it extends the reference blueprint" />}
           {published && (
             <div className="af-banner ok"><Sparkles size={15} /><div style={{ flex: 1 }}><b>Live in the shared marketplace</b> as a <TrustTag t={published.trust} /> asset credited to Lattice — visible to every persona, and clearly not a Google certification.</div><button type="button" className="af-btn sm" onClick={() => openAsset(published.id)}>View listing</button><button type="button" className="af-btn sm" onClick={() => setTab("market")}>Marketplace <ArrowRight size={12} /></button></div>
           )}

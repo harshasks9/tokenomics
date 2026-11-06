@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  BadgeCheck, Boxes, Building2, CircleCheck, CircleDot, FlaskConical, Globe, Lock, Plug, ShieldCheck, Sparkles, Star, Users, Workflow, X,
+  BadgeCheck, Boxes, Building2, CircleCheck, CircleDot, FileCode2, FlaskConical, GitBranch, Globe, Lock, Plug, ShieldCheck, Sparkles, Star, Users, Workflow, X,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import type { AssetType, OrgKind, PersonaId, TrustTier, Visibility } from "@/lib/asset-factory/types";
@@ -72,13 +72,14 @@ export function Stars({ rating, count }: { rating: number; count: number }) {
 
 export function AssetCard({ a, extra }: { a: AssetView; extra?: ReactNode }) {
   const { openAsset } = useFactory();
+  const [ns, name] = a.slug.split("/");
   return (
     <button type="button" className="af-asset" onClick={() => openAsset(a.id)}>
       <div className="af-asset-top">
         <AssetIcon type={a.type} />
         <div style={{ minWidth: 0, flex: 1 }}>
           <div className="af-asset-name">{a.name}</div>
-          <div className="af-asset-owner"><OrgName org={a.owner} label={a.ownerLabel} /></div>
+          <div className="af-asset-slug" title={a.ref}><span>{ns}/</span><b style={{ color: "var(--ink-2)", fontWeight: 600 }}>{name}</b></div>
         </div>
         {a.isNew && <span className="af-tag new">New</span>}
       </div>
@@ -86,12 +87,14 @@ export function AssetCard({ a, extra }: { a: AssetView; extra?: ReactNode }) {
       <div className="af-row" style={{ gap: 6 }}>
         <TrustTag t={a.trust} />
         {a.visibility !== "public" && <VisibilityTag v={a.visibility} />}
-        <span className="af-tag type">{a.type}</span>
+        {a.extends && <span className="af-tag v-workspace" title={`extends ${a.extends.ref}`}><GitBranch size={11} />extends</span>}
       </div>
       <div className="af-asset-foot">
+        <span className="af-mono">v{a.version}</span>
         <Stars rating={a.rating} count={a.ratingCount} />
-        <span title="Production deployments"><CircleDot size={12} /> {a.deployments} deployed</span>
-        <span>v{a.version}</span>
+        <span title="Production deployments"><CircleDot size={12} /> {a.deployments}</span>
+        {a.forks > 0 && <span title="Inherited or forked"><GitBranch size={12} /> {a.forks}</span>}
+        <span title={a.files.join("\n")}><FileCode2 size={12} /> {a.files.includes("SKILL.md") ? "SKILL.md" : `${a.files.length} files`}</span>
         {extra}
       </div>
     </button>
