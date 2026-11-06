@@ -31,6 +31,30 @@ All organizations, people, assets and figures are synthetic and modeled.
 Trust tiers: Community (verified contributor, not certified), Field validated
 (≥2 FDE-led production engagements), Google verified (official).
 
+## Packages
+
+Every asset is a versioned package addressed as `namespace/name@version`
+(anonymous contributions publish under `community/`). Seed files live in
+`src/lib/asset-factory/content.ts` (server-only); assets created on the
+platform carry their own files.
+
+- **Files** — `SKILL.md` (frontmatter + Instructions / Guardrails / Examples /
+  Parameters), `schema/output.json`, `examples/`, `evals/`, manifests
+  (`agent.yaml`, `connector.yaml`, `workflow.yaml`, `suite.yaml`).
+- **Inherit** — `asset.inherit` creates a child whose SKILL.md `extends:` the
+  parent at a pinned version. `skillmd.ts` resolves the chain: frontmatter
+  child-wins, Instructions/Guardrails/Examples append, Parameters merge key by
+  key, schema inherited. A child can't be more visible than its parent.
+- **Edit** — `asset.edit` commits a file as a new patch version (owner org
+  only, JSON validated, `extends:` immutable, scanned when public); history
+  keeps full diffs.
+- **Try it** — `POST /api/asset-factory/run` runs the resolved instructions
+  with Gemini (`GEMINI_API_KEY`; model `ASSET_FACTORY_GEMINI_MODEL`, default
+  gemini-3.5-flash) and validates against the output schema. Without a key it
+  returns the package's recorded `examples/sample-output.json`, labeled.
+- `POST /api/asset-factory/asset` returns one package's files, resolved
+  SKILL.md, lineage and history — 404 when missing *or* not visible.
+
 ## Executive demo
 
 `journey.ts` scripts the ten steps (Kestrel Industrial · Priya at Google ·

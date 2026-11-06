@@ -188,7 +188,8 @@ export function Markdown({ source, frontmatter = "table" }: { source: string; fr
     if (end > 0) {
       const fm = lines.slice(1, end);
       if (frontmatter === "table") {
-        const rows = fm.map((l) => /^([\w-]+):\s*(.*)$/.exec(l)).filter((m): m is RegExpExecArray => Boolean(m && m[2]));
+        const rows = fm.map((l) => /^([\w-]+):\s*(.*)$/.exec(l)).filter((m): m is RegExpExecArray => Boolean(m && m[2]))
+          .map((m) => { m[2] = m[2].replace(/\s+#.*$/, "").replace(/^["'](.*)["']$/, "$1"); return m; });
         blocks.push(
           <table key="fm" className="af-fm">
             <tbody>{rows.map((r) => <tr key={r[1]}><th>{r[1]}</th><td>{r[1] === "extends" ? <code className="af-ic ref">{r[2]}</code> : inline(r[2], r[1])}</td></tr>)}</tbody>

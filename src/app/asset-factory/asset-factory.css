@@ -569,3 +569,10 @@
 .af-action-icon[data-k="read"] { background: #e8f0fe; color: #1a73e8; }
 .af-action-icon[data-k="run"] { background: #e6f4ea; color: #137333; }
 .af-action-icon[data-k="inherit"] { background: var(--v-workspace-soft); color: var(--v-workspace); }
+
+/* Tailwind preflight resets — restore inside the Asset Factory. */
+.af-root svg { display: inline-block; vertical-align: -0.15em; flex: none; }
+.af-md ul { list-style: disc; }
+.af-md ol { list-style: decimal; }
+.af-md li::marker { color: var(--ink-3); }
+.af-bullets { list-style: disc; }

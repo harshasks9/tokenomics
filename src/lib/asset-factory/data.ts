@@ -51,7 +51,9 @@ const d = (s: string) => s; // ISO date helper for readability
 export const kebabName = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
 function asset(a: Omit<Asset, "slug" | "sharedWorkspaceIds" | "reviews" | "forks" | "attribution"> & Partial<Pick<Asset, "sharedWorkspaceIds" | "reviews" | "forks" | "attribution">>): Asset {
-  return { slug: `${a.ownerOrgId}/${kebabName(a.name)}`, sharedWorkspaceIds: [], reviews: [], forks: 0, attribution: "named", ...a };
+  // Anonymous contributions publish under "community/" so the address can't reveal who wrote them.
+  const ns = a.attribution === "anonymous" ? "community" : a.ownerOrgId;
+  return { slug: `${ns}/${kebabName(a.name)}`, sharedWorkspaceIds: [], reviews: [], forks: 0, attribution: "named", ...a };
 }
 
 export const SCER_BLUEPRINT = "a-scer-blueprint";

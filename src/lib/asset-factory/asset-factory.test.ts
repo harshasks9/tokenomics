@@ -66,6 +66,8 @@ describe("visibility", () => {
     expect(a.owner).toBeNull();
     expect(a.contributor).toBeNull();
     expect(a.ownerLabel).toMatch(/Verified customer/);
+    expect(a.slug.startsWith("community/")).toBe(true);
+    expect(JSON.stringify(a)).not.toMatch(/halvorsen/i);
   });
 });
 
