@@ -153,6 +153,16 @@
         }
       ],
       "destination": "/atlas/:path*"
+    },
+    {
+      "source": "/:path((?!api/|_next/).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "assets.aitokenomics.app"
+        }
+      ],
+      "destination": "/asset-factory/:path"
     }
   ]
 }
