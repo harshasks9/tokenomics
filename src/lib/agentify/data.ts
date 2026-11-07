@@ -122,6 +122,40 @@ export const USECASES: UseCaseMeta[] = [
   { id: "uc-monthend", slug: "meridian/month-end-close-chaser", title: "Month-end Close Chaser", owner: "Meridian Advisory", ownerKind: "partner", version: "0.8", summary: "Chases close inputs by email, reconciles what arrives in Sheets and assembles the close pack.", surfaces: ["Gmail", "Sheets", "Docs"] },
 ];
 
+/** Before/after of the partner's and Google's own way of working. */
+export const PERSONA_SHIFT: Record<"partner" | "google", { title: string; before: string[]; after: string[] }> = {
+  partner: {
+    title: "Your practice, before and after Agentify your Day",
+    before: [
+      "Bespoke 4–6 week adoption engagements, scoped from scratch each time",
+      "Success measured by training attendance",
+      "A handful of customers a quarter per consultant",
+      "Follow-up depends on who remembers",
+    ],
+    after: [
+      "One repeatable half-day format with a fixed kit and labs",
+      "Success measured by the median user's agentic tasks at week 4",
+      "5 customers a week per partner team",
+      "Week-1 and week-4 check-ins built into the cadence",
+    ],
+  },
+  google: {
+    title: "The Workspace motion, before and after",
+    before: [
+      "Gemini usage reported as an average — idle majorities hidden",
+      "Activation left to each customer",
+      "One-off workshops with no shared definition of 'activated'",
+      "Expansion conversations start without usage evidence",
+    ],
+    after: [
+      "Median-user telemetry per account decides where we go",
+      "Partners run Agentify your Day weekly at scale",
+      "One stage model: agentified → using → expanding",
+      "Every expansion conversation starts from proven usage",
+    ],
+  },
+};
+
 /** Program constants (Q1 FY27). */
 export const PROGRAM = {
   pocCreditPool: 50_000,

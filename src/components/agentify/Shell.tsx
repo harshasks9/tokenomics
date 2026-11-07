@@ -1,57 +1,66 @@
 "use client";
 
 import {
-  BarChart3, BookOpen, CircleCheck, ClipboardList, Compass, Gauge, House, KanbanSquare, Layers, LoaderCircle, Lock, RotateCcw, ShieldAlert,
-  Sparkles, Target, Users, Workflow, X,
+  ArrowLeft, BarChart3, BookOpen, CalendarCheck, CircleCheck, ClipboardList, Compass, Gauge, House, KanbanSquare, Layers, LayoutGrid, LoaderCircle, Lock,
+  Play, RotateCcw, ShieldAlert, Sparkles, Target, Users, Workflow, X,
 } from "lucide-react";
 import type { PersonaId } from "@/lib/agentify/types";
-import { AgentifyProvider, useAgentify, type Page } from "./state";
+import { AgentifyProvider, useAgentify, type Page, type Route } from "./state";
 import { Avatar } from "./ui";
 import { CustomerHome, CustomerUsage, Workshop } from "./CustomerPages";
 import { Board, Kit } from "./PartnerPages";
 import { Execution, Plan, Qualify, Scorecard, Squad } from "./GooglePages";
 import { UseCaseLibrary, UseCasePage } from "./UseCases";
 import AccountPage from "./AccountPage";
+import AgentDay from "./AgentDay";
+import { CollectionPage, CollectionsIndex } from "./Collections";
 
-type Item = { page: Page; label: string; icon: typeof House; internal?: boolean };
+type NavPage = Page | "day";
+type Item = { page: NavPage; label: string; icon: typeof House; internal?: boolean };
 
 const NAV: Record<PersonaId, { group: string; items: Item[] }[]> = {
   customer: [
-    { group: "", items: [{ page: "home", label: "Your agent day", icon: House }, { page: "usage", label: "Who's using it", icon: BarChart3 }] },
-    { group: "Get going", items: [{ page: "usecases", label: "Long-running agents", icon: Workflow }, { page: "workshop", label: "Agentify your Day", icon: Sparkles }] },
+    { group: "", items: [{ page: "day", label: "Agent in a Day", icon: Play }, { page: "collections", label: "Collections", icon: LayoutGrid }, { page: "usecases", label: "All use cases", icon: Workflow }] },
+    { group: "Your Workspace", items: [{ page: "home", label: "What you own", icon: House }, { page: "usage", label: "Your usage", icon: BarChart3 }, { page: "workshop", label: "Book Agentify your Day", icon: CalendarCheck }] },
   ],
   partner: [
     { group: "", items: [{ page: "board", label: "This week", icon: KanbanSquare }, { page: "accounts", label: "My accounts", icon: Users }] },
-    { group: "Deliver", items: [{ page: "kit", label: "Workshop kit", icon: BookOpen }, { page: "usecases", label: "Use-case packs", icon: Workflow }] },
+    { group: "Deliver", items: [{ page: "kit", label: "Workshop kit", icon: BookOpen }, { page: "day", label: "Agent in a Day", icon: Play }, { page: "collections", label: "Collections", icon: LayoutGrid }, { page: "usecases", label: "Use-case packs", icon: Workflow }] },
   ],
   google: [
     { group: "Q1 FY27", items: [{ page: "plan", label: "Workstream plan", icon: Target, internal: true }, { page: "execution", label: "Execution model", icon: Layers, internal: true }, { page: "squad", label: "Squad & accountability", icon: ClipboardList, internal: true }] },
     { group: "Run it", items: [{ page: "qualify", label: "Account qualification", icon: Compass }, { page: "scorecard", label: "Weekly scorecard", icon: Gauge }] },
-    { group: "Kit", items: [{ page: "usecases", label: "Use-case packs", icon: Workflow }, { page: "kit", label: "Workshop kit", icon: BookOpen }] },
+    { group: "Kit", items: [{ page: "day", label: "Agent in a Day", icon: Play }, { page: "collections", label: "Collections", icon: LayoutGrid }, { page: "usecases", label: "Use-case packs", icon: Workflow }, { page: "kit", label: "Workshop kit", icon: BookOpen }] },
   ],
 };
 
-const HOME: Record<PersonaId, Page> = { customer: "home", partner: "board", google: "plan" };
+const HOME: Record<PersonaId, Route> = { customer: { page: "day" }, partner: { page: "board" }, google: { page: "plan" } };
 const ACCENT: Record<PersonaId, string> = { customer: "var(--p-customer)", partner: "var(--p-partner)", google: "var(--p-google)" };
-const LABEL: Record<PersonaId, string> = { customer: "Customer", partner: "Partner", google: "Google" };
 
 function Top() {
   const { view, persona, signIn, busy, navigate } = useAgentify();
   return (
     <header className="ag-top">
-      <button type="button" className="ag-brand" onClick={() => navigate({ page: HOME[persona] })}>
+      <button type="button" className="ag-brand" onClick={() => navigate(HOME[persona])}>
         <span className="ag-brand-mark"><Sparkles size={16} /></span>
         <span className="ag-brand-name">Agentify your Day</span>
-        <span className="ag-brand-tag">Workspace · AWT 2.0</span>
+        <span className="ag-brand-tag">Google Workspace</span>
       </button>
       <span className="ag-spacer" />
-      <div className="ag-switch" role="group" aria-label="View as">
-        {(["customer", "partner", "google"] as PersonaId[]).map((p) => (
-          <button key={p} type="button" data-p={p} aria-pressed={persona === p} disabled={busy && persona !== p} onClick={() => persona !== p && signIn(p)}>
-            <span className="ag-dot" data-p={p} />{LABEL[p]}
-          </button>
-        ))}
-      </div>
+      {persona === "customer" ? (
+        <nav className="ag-viewlinks" aria-label="Other views">
+          <button type="button" disabled={busy} onClick={() => signIn("google")}>Google view</button>
+          <span aria-hidden>·</span>
+          <button type="button" disabled={busy} onClick={() => signIn("partner")}>Partner view</button>
+        </nav>
+      ) : (
+        <nav className="ag-viewlinks" aria-label="Other views">
+          <span className={`ag-tag ${persona === "google" ? "p-google" : "p-partner"}`}>{persona === "google" ? "Google view" : "Partner view"}</span>
+          <button type="button" disabled={busy} onClick={() => signIn("customer")}><ArrowLeft size={13} /> Customer view</button>
+          <span aria-hidden>·</span>
+          <button type="button" disabled={busy} onClick={() => signIn(persona === "google" ? "partner" : "google")}>{persona === "google" ? "Partner view" : "Google view"}</button>
+        </nav>
+      )}
       {view && (
         <div className="ag-who">
           <Avatar initials={view.person.initials} kind={persona} />
@@ -63,9 +72,17 @@ function Top() {
   );
 }
 
+function activeKey(route: Route, persona: PersonaId): NavPage {
+  if (route.page === "start") return HOME[persona].page as NavPage;
+  if (route.page === "usecase") return "usecases";
+  if (route.page === "collection") return "collections";
+  if (route.page === "account") return persona === "partner" ? "accounts" : "qualify";
+  return route.page as NavPage;
+}
+
 function Side() {
   const { persona, route, navigate, reset } = useAgentify();
-  const active = route.page === "usecase" ? "usecases" : route.page === "account" ? (persona === "partner" ? "accounts" : "qualify") : route.page;
+  const active = activeKey(route, persona);
   return (
     <nav className="ag-side" aria-label="Sections" style={{ ["--side-accent" as string]: ACCENT[persona] }}>
       {NAV[persona].map((g, i) => (
@@ -74,7 +91,7 @@ function Side() {
           {g.items.map((it) => {
             const Icon = it.icon;
             return (
-              <button key={it.page} type="button" className="ag-side-item" aria-current={active === it.page ? "page" : undefined} onClick={() => navigate({ page: it.page })}>
+              <button key={it.page} type="button" className="ag-side-item" aria-current={active === it.page ? "page" : undefined} onClick={() => navigate(it.page === "day" ? { page: "day" } : { page: it.page })}>
                 <Icon size={16} /><span>{it.label}</span>{it.internal && <Lock size={12} aria-label="Internal" />}
               </button>
             );
@@ -83,7 +100,7 @@ function Side() {
       ))}
       <div className="ag-side-foot">
         <button type="button" className="ag-side-item" onClick={() => { if (window.confirm("Reset the demo?")) void reset(); }}><RotateCcw size={15} /><span>Reset demo</span></button>
-        <p>Internal concept · synthetic accounts and telemetry. Each persona receives only what the server allows.</p>
+        <p>Synthetic people, companies and telemetry. Each view receives only what the server allows.</p>
       </div>
     </nav>
   );
@@ -91,16 +108,20 @@ function Side() {
 
 function Body() {
   const { view, persona, route } = useAgentify();
-  if (!view) return <main className="ag-main"><div className="ag-skel" style={{ height: 220 }} /><div className="ag-skel" style={{ height: 160, marginTop: 14 }} /></main>;
-  const pages = NAV[persona].flatMap((g) => g.items.map((i) => i.page));
-  const page = route.page === "usecase" || route.page === "account" ? route.page : pages.includes(route.page) ? route.page : HOME[persona];
+  if (!view) return <main className="ag-main"><div className="ag-skel" style={{ height: 260 }} /><div className="ag-skel" style={{ height: 160, marginTop: 14 }} /></main>;
+  const allowed = new Set<string>(NAV[persona].flatMap((g) => g.items.map((i) => i.page)));
+  const r: Route = route.page === "start" ? HOME[persona] : route;
+  const page = ["usecase", "account", "collection"].includes(r.page) || allowed.has(r.page) ? r.page : HOME[persona].page;
   return (
     <main className="ag-main">
+      {page === "day" && <AgentDay key={r.page === "day" ? r.fn ?? "fpa" : "fpa"} />}
+      {page === "collections" && <CollectionsIndex />}
+      {page === "collection" && r.page === "collection" && <CollectionPage id={r.id} />}
       {page === "home" && <CustomerHome />}
       {page === "usage" && <CustomerUsage />}
       {page === "workshop" && <Workshop />}
       {page === "usecases" && <UseCaseLibrary />}
-      {page === "usecase" && route.page === "usecase" && <UseCasePage key={route.slug} slug={route.slug} tab={route.tab} path={route.path} />}
+      {page === "usecase" && r.page === "usecase" && <UseCasePage key={r.slug} slug={r.slug} tab={r.tab} path={r.path} />}
       {page === "board" && <Board />}
       {page === "accounts" && <Qualify mine />}
       {page === "kit" && <Kit />}
@@ -109,7 +130,7 @@ function Body() {
       {page === "squad" && <Squad />}
       {page === "qualify" && <Qualify />}
       {page === "scorecard" && <Scorecard />}
-      {page === "account" && route.page === "account" && <AccountPage key={route.id} id={route.id} />}
+      {page === "account" && r.page === "account" && <AccountPage key={r.id} id={r.id} />}
     </main>
   );
 }

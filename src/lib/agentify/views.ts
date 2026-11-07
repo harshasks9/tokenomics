@@ -3,8 +3,10 @@
  * the use-case library — never targeting scores, internal notes or the plan.
  * Partners get their book and the kit — never revenue or accountability.
  */
-import { USECASE_FILES } from "./content";
-import { EDITIONS, PARTNERS, PERSONA, PROGRAM, SUB_REGIONS, USECASES } from "./data";
+import { ALL_FILES as USECASE_FILES, ALL_USECASES, FUNCTION_OF } from "./catalog";
+import { DAYS, FUNCTIONS } from "./functions";
+import type { FunctionCollection, FunctionId, PersonaDay } from "./functions-types";
+import { EDITIONS, PARTNERS, PERSONA, PERSONA_SHIFT, PROGRAM, SUB_REGIONS } from "./data";
 import { canSee, PARTNER_CREDIT_CAP } from "./engine";
 import { earnedStage, PLAY_LABEL, qualify, STAGES, stats, type Play, type UsageStats } from "./model";
 import { COPY, EXECUTION, PRINCIPLES, QUALIFY, RACI, SHORTLIST, SQUAD, THESIS } from "./plan";
@@ -15,6 +17,7 @@ export interface UseCaseView {
   id: string; slug: string; ref: string; title: string; owner: string; ownerKind: "google" | "partner"; version: string;
   summary: string; surfaces: string[]; costPerRun: number; runsPerWeek: number; monthlyPerUser: number; approval: string;
   files: string[];
+  functionId: FunctionId | null;
 }
 
 export interface AccountView {
@@ -41,6 +44,11 @@ export interface View {
   credits: { pool: number; used: number; remaining: number; months: number; partnerCap: number } | null;
   partners: { id: string; name: string; subRegion: string; lead: string; accounts: number }[];
   log: { seq: number; text: string; actor: PersonaId }[];
+  /** Customer-facing: functional collections and the before/after day per function persona. */
+  functions: FunctionCollection[];
+  days: PersonaDay[];
+  /** Before/after of this persona's own motion (partner and Google views). */
+  shift: { title: string; before: string[]; after: string[] } | null;
   /** Google only. */
   plan?: {
     thesis: typeof THESIS; principles: typeof PRINCIPLES; shortlist: typeof SHORTLIST; execution: typeof EXECUTION;
@@ -49,7 +57,7 @@ export interface View {
 }
 
 export function listUseCases(): UseCaseView[] {
-  return USECASES.map((u) => {
+  return ALL_USECASES.map((u) => {
     const files = USECASE_FILES[u.id] ?? [];
     const fm = parseSkill(files.find((f) => f.path === "SKILL.md")?.content ?? "").frontmatter;
     const costPerRun = Number(fm.entitlement_cost_per_run_usd ?? 0) || 0;
@@ -57,13 +65,13 @@ export function listUseCases(): UseCaseView[] {
     return {
       id: u.id, slug: u.slug, ref: `${u.slug}@${u.version}`, title: u.title, owner: u.owner, ownerKind: u.ownerKind, version: u.version,
       summary: u.summary, surfaces: u.surfaces, costPerRun, runsPerWeek, monthlyPerUser: Math.round(costPerRun * runsPerWeek * 4.3 * 100) / 100,
-      approval: String(fm.approval ?? ""), files: files.map((f) => f.path),
+      approval: String(fm.approval ?? ""), files: files.map((f) => f.path), functionId: FUNCTION_OF.get(u.id) ?? null,
     };
   });
 }
 
 export function buildView(w: World, persona: PersonaId): View {
-  const ucTitle = new Map(USECASES.map((u) => [u.id, u.title]));
+  const ucTitle = new Map(ALL_USECASES.map((u) => [u.id, u.title]));
   const accounts: AccountView[] = w.accounts.filter((a) => canSee(persona, a)).map((a) => {
     const s = stats(a);
     const q = qualify(a, s);
@@ -95,6 +103,9 @@ export function buildView(w: World, persona: PersonaId): View {
     credits: persona === "customer" ? null : { pool: PROGRAM.pocCreditPool, used: w.creditsUsed, remaining: PROGRAM.pocCreditPool - w.creditsUsed, months: PROGRAM.pocMonths, partnerCap: PARTNER_CREDIT_CAP },
     partners: (persona === "google" ? PARTNERS : PARTNERS.filter((p) => accounts.some((a) => a.partner?.id === p.id)))
       .map((p) => ({ id: p.id, name: p.name, subRegion: p.subRegion, lead: p.lead, accounts: w.accounts.filter((a) => a.partnerId === p.id).length })),
+    functions: FUNCTIONS,
+    days: DAYS,
+    shift: persona === "customer" ? null : PERSONA_SHIFT[persona],
     log: w.log.filter((l) => !l.accountId || visibleIds.has(l.accountId)).slice(-40).reverse().map((l) => ({ seq: l.seq, text: l.text, actor: l.actor })),
   };
   if (persona === "google") {

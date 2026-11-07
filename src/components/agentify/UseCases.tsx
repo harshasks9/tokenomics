@@ -23,7 +23,19 @@ export function UseCaseLibrary() {
     <div>
       <Head eyebrow={persona === "customer" ? "Long-running agents" : "Use-case packs"} title="Agents that keep working after you close the tab"
         lede="Each one is a real package — a SKILL.md the agent follows, an output schema, a sample run and the workshop lab that teaches it. All of them run on the Gemini agent capacity already in Workspace plans." />
-      <div className="ag-grid c3">{view.useCases.map(card)}</div>
+      <div className="ag-section">
+        <div className="ag-section-head"><h2 className="ag-h2">Everyday Workspace agents</h2><span className="ag-muted" style={{ fontSize: 13 }}>for anyone with an inbox and a calendar</span></div>
+        <div className="ag-grid c3">{view.useCases.filter((u) => !u.functionId).map(card)}</div>
+      </div>
+      {view.functions.map((f) => (
+        <div key={f.id} className="ag-section">
+          <div className="ag-section-head">
+            <h2 className="ag-h2">{f.name}</h2><span className="ag-muted" style={{ fontSize: 13 }}>{f.tagline}</span>
+            <span className="ag-spacer" /><button type="button" className="ag-btn sm" onClick={() => navigate({ page: "collection", id: f.id })}>Collection</button>
+          </div>
+          <div className="ag-grid c3">{view.useCases.filter((u) => u.functionId === f.id).map(card)}</div>
+        </div>
+      ))}
     </div>
   );
 }

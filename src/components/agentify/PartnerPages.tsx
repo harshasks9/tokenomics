@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { Stage } from "@/lib/agentify/types";
 import { useAgentify } from "./state";
 import { weekDate } from "./CustomerPages";
-import { Head, Metric, PlayTag, SectionHead, STAGE_LABEL, StageTag, num, usd } from "./ui";
+import { Head, Metric, PlayTag, SectionHead, ShiftCard, STAGE_LABEL, StageTag, num, usd } from "./ui";
 
 const THIS_WEEK = 2;
 
@@ -20,6 +20,7 @@ export function Board() {
   return (
     <div>
       <Head eyebrow={`${view.person.org} · week ${THIS_WEEK} of Q1 (from ${weekDate(THIS_WEEK)})`} title="This week: five customers, one Agentify your Day each" lede="Book from your qualified accounts — highest-value first. Mark each session done with the agents the champions built; stages after that move only when the median-usage telemetry supports them." />
+      <ShiftCard shift={view.shift} />
       <div className="ag-grid c4">
         <Metric label="Booked this week" value={`${thisWeek.length} / 5`} sub="target: 5 customers per partner per week" />
         <Metric label="Accounts in my book" value={mine.length} sub={`${mine.filter((a) => ["agentified", "using", "expanding"].includes(a.stage)).length} agentified or beyond`} />
