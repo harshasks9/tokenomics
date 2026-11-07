@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 /* ============================================================
    GEMINI 10 ASSET FACTORY — design system (prefix: af-)
    Calm product chrome; color carries meaning only:
@@ -6,6 +8,8 @@
 
 .af-root {
   color-scheme: light;
+  --font-inter: "Inter";
+  --font-mono: "JetBrains Mono";
   --ink: #16191d;
   --ink-2: #464d57;
   --ink-3: #737b86;
