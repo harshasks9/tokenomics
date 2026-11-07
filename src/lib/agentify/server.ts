@@ -17,7 +17,7 @@ export async function readRequest(request: Request) {
   let body: Body;
   try { body = JSON.parse(raw || "{}"); } catch { return { ok: false as const, response: Response.json({ ok: false, reason: "Invalid JSON." }, { status: 400, headers: noStore }) }; }
   const fromCookie = jar.get(PERSONA_COOKIE)?.value as PersonaId | undefined;
-  let persona: PersonaId = fromCookie && PERSONAS.includes(fromCookie) ? fromCookie : "google";
+  let persona: PersonaId = fromCookie && PERSONAS.includes(fromCookie) ? fromCookie : "customer";
   if (typeof body.signInAs === "string") {
     if (!PERSONAS.includes(body.signInAs as PersonaId)) return { ok: false as const, response: Response.json({ ok: false, reason: "Unknown persona." }, { status: 400, headers: noStore }) };
     persona = body.signInAs as PersonaId;

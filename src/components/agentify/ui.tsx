@@ -124,3 +124,18 @@ export function Bars({ rows, max, format = (v: number) => String(v), threshold }
     </div>
   );
 }
+
+/** Before/after of a persona's own way of working (partner and Google views). */
+export function ShiftCard({ shift }: { shift: { title: string; before: string[]; after: string[] } | null }) {
+  if (!shift) return null;
+  return (
+    <div className="ag-card pad-lg" style={{ marginBottom: 16 }}>
+      <div className="ag-h3" style={{ marginBottom: 10 }}>{shift.title}</div>
+      <div className="ag-beforeafter compact">
+        <div className="ag-ba before"><div className="ag-eyebrow">Before</div><ul className="ag-bullets">{shift.before.map((b) => <li key={b}>{b}</li>)}</ul></div>
+        <span className="ag-ba-arrow" aria-hidden>→</span>
+        <div className="ag-ba after"><div className="ag-eyebrow">After</div><ul className="ag-bullets">{shift.after.map((b) => <li key={b}>{b}</li>)}</ul></div>
+      </div>
+    </div>
+  );
+}

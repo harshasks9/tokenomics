@@ -2,17 +2,25 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { Action, Event, PersonaId } from "@/lib/agentify/types";
+import type { FunctionId } from "@/lib/agentify/functions-types";
 import type { UseCaseDetail, View } from "@/lib/agentify/views";
 import type { RunResult } from "@/lib/agentify/run";
 
 export type Page =
-  | "home" | "usecases" | "usage" | "workshop"
+  | "start" | "home" | "usecases" | "usage" | "workshop" | "collections"
   | "board" | "accounts" | "kit"
   | "plan" | "execution" | "squad" | "qualify" | "scorecard";
 
-export type Route = { page: Page } | { page: "usecase"; slug: string; tab: "overview" | "files" | "run" | "lab"; path?: string } | { page: "account"; id: string };
+export type Route =
+  | { page: Page }
+  | { page: "day"; fn?: FunctionId }
+  | { page: "collection"; id: FunctionId }
+  | { page: "usecase"; slug: string; tab: "overview" | "files" | "run" | "lab"; path?: string }
+  | { page: "account"; id: string };
 
-const PAGES: Page[] = ["home", "usecases", "usage", "workshop", "board", "accounts", "kit", "plan", "execution", "squad", "qualify", "scorecard"];
+const FNS: FunctionId[] = ["fpa", "devops", "secops", "revops"];
+
+const PAGES: Page[] = ["home", "usecases", "usage", "workshop", "collections", "board", "accounts", "kit", "plan", "execution", "squad", "qualify", "scorecard"];
 
 export function parseHash(h: string): Route {
   const p = h.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
@@ -21,14 +29,18 @@ export function parseHash(h: string): Route {
     return { page: "usecase", slug: `${p[1]}/${p[2]}`, tab, path: tab === "files" && p.length > 4 ? p.slice(4).join("/") : undefined };
   }
   if (p[0] === "account" && p[1]) return { page: "account", id: p[1] };
+  if (p[0] === "day") return { page: "day", fn: FNS.includes(p[1] as FunctionId) ? (p[1] as FunctionId) : undefined };
+  if (p[0] === "c" && FNS.includes(p[1] as FunctionId)) return { page: "collection", id: p[1] as FunctionId };
   if (PAGES.includes(p[0] as Page)) return { page: p[0] as Page };
-  return { page: "home" };
+  return { page: "start" };
 }
 
 export function formatRoute(r: Route): string {
   if (r.page === "usecase") return `#/u/${r.slug}${r.tab !== "overview" ? `/${r.tab}` : ""}${r.path ? `/${r.path}` : ""}`;
   if (r.page === "account") return `#/account/${r.id}`;
-  return r.page === "home" ? "#/" : `#/${r.page}`;
+  if (r.page === "day") return `#/day${r.fn ? `/${r.fn}` : ""}`;
+  if (r.page === "collection") return `#/c/${r.id}`;
+  return r.page === "start" ? "#/" : `#/${r.page}`;
 }
 
 interface Toast { kind: "ok" | "deny"; text: string }
@@ -64,7 +76,7 @@ function loadEvents(): Event[] {
 export function AgentifyProvider({ children }: { children: ReactNode }) {
   const [view, setView] = useState<View | null>(null);
   const [busy, setBusy] = useState(false);
-  const [route, setRoute] = useState<Route>({ page: "home" });
+  const [route, setRoute] = useState<Route>({ page: "start" });
   const [toast, setToast] = useState<Toast | null>(null);
   const events = useRef<Event[]>([]);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -118,8 +130,7 @@ export function AgentifyProvider({ children }: { children: ReactNode }) {
 
   const signIn = useCallback(async (p: PersonaId) => {
     await call({ signInAs: p });
-    const first: Record<PersonaId, Page> = { customer: "home", partner: "board", google: "plan" };
-    navigate({ page: first[p] });
+    navigate({ page: "start" });
   }, [call, navigate]);
 
   const act = useCallback<State["act"]>(async (a, opts) => {

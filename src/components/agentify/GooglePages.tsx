@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import type { AccountView } from "@/lib/agentify/views";
 import type { Play } from "@/lib/agentify/model";
 import { useAgentify } from "./state";
-import { Bars, Head, Metric, PlayTag, SectionHead, StageTag, StatusTag, STAGE_LABEL, num, pct, usd } from "./ui";
+import { Bars, Head, Metric, PlayTag, SectionHead, ShiftCard, StageTag, StatusTag, STAGE_LABEL, num, pct, usd } from "./ui";
 
 function InternalBanner() {
   return <div className="ag-banner internal" style={{ marginBottom: 16 }}><ShieldCheck size={15} /><div><b>Google internal.</b> Plan, revenue and accountability content is returned by the server only to the Google persona — the customer and partner views never receive it.</div></div>;
@@ -24,6 +24,7 @@ export function Plan() {
         <p>{p.thesis.oneLiner}</p>
       </section>
 
+      <div className="ag-section"><ShiftCard shift={view.shift} /></div>
       <div className="ag-section ag-grid c3">
         <Metric label="Revenue mix target" value={pct(p.thesis.revenueTarget)} sub="of revenue from Google Workspace" tone="internal" />
         <Metric label="POC credits" value={usd(p.program.pocCreditPool)} sub={`buys new users — ${p.program.pocMonths}-month POC seats`} tone="internal" />

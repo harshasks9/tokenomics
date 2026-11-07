@@ -4,8 +4,7 @@
  * otherwise the package's recorded examples/sample-output.json, labeled.
  */
 import { GoogleGenAI } from "@google/genai";
-import { USECASE_FILES } from "./content";
-import { USECASES } from "./data";
+import { ALL_FILES as USECASE_FILES, ALL_USECASES as USECASES } from "./catalog";
 
 export const RUN_MODEL = process.env.AGENTIFY_GEMINI_MODEL ?? process.env.BRIEF_GEMINI_MODEL ?? "gemini-3.5-flash";
 const MAX_INPUT = 6000;

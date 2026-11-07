@@ -143,3 +143,48 @@ describe("client bundle boundary", () => {
     }
   });
 });
+
+describe("functional collections and Agent in a Day", () => {
+  it("ships four collections of four packaged use cases", async () => {
+    const { FUNCTIONS, FUNCTION_USECASES } = await import("./functions");
+    const { FUNCTION_USECASE_FILES } = await import("./content-functions");
+    expect(FUNCTIONS.map((f) => f.id).sort()).toEqual(["devops", "fpa", "revops", "secops"]);
+    for (const f of FUNCTIONS) {
+      expect(f.useCaseIds).toHaveLength(4);
+      for (const id of f.useCaseIds) {
+        expect(FUNCTION_USECASES.some((u) => u.id === id), id).toBe(true);
+        const paths = (FUNCTION_USECASE_FILES[id] ?? []).map((x) => x.path);
+        for (const p of ["SKILL.md", "schema/output.json", "examples/sample-input.json", "examples/sample-output.json", "workshop/lab.md", "CHANGELOG.md"]) expect(paths, `${id} ${p}`).toContain(p);
+      }
+    }
+  });
+
+  it("gives every function persona a consistent before/after day", async () => {
+    const { DAYS, FUNCTIONS } = await import("./functions");
+    const toMin = (t: string) => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+    expect(DAYS).toHaveLength(4);
+    for (const d of DAYS) {
+      const own = new Set(FUNCTIONS.find((f) => f.id === d.functionId)!.useCaseIds);
+      expect(d.after.moments.every((m) => own.has(m.useCaseId)), d.functionId).toBe(true);
+      expect(d.after.moments.filter((m) => m.kind === "approval").length).toBe(d.after.stats.approvals);
+      expect(d.after.moments.some((m) => m.kind === "overnight")).toBe(true);
+      const spend = d.after.moments.reduce((s, m) => s + m.entitlementUsd, 0);
+      expect(Math.abs(spend - d.after.stats.entitlementUsed)).toBeLessThan(0.011);
+      expect(d.after.stats.entitlementUsed).toBeLessThan(6 / 21);
+      expect(toMin(d.after.stats.endOfDay)).toBeLessThan(toMin(d.before.stats.endOfDay));
+      const times = d.after.moments.map((m) => toMin(m.time));
+      expect([...times].sort((a, b) => a - b)).toEqual(times);
+    }
+  });
+
+  it("serves collections and days to every persona, but the internal before/after only to partner and Google", () => {
+    const w = seed();
+    const c = buildView(w, "customer");
+    expect(c.functions).toHaveLength(4);
+    expect(c.days).toHaveLength(4);
+    expect(c.shift).toBeNull();
+    expect(buildView(w, "partner").shift?.after.length).toBeGreaterThan(0);
+    expect(buildView(w, "google").shift?.before.join(" ")).toMatch(/median|average/i);
+    expect(c.useCases.filter((u) => u.functionId).length).toBe(16);
+  });
+});

@@ -2,7 +2,8 @@
  * Event engine: the world is the seed plus an ordered log; every event is
  * re-authorized on replay. Handlers check first, then mutate.
  */
-import { ACCOUNTS, CUSTOMER_ACCOUNT, PARTNER_PERSONA_ID, PARTNERS, PROGRAM, USECASES } from "./data";
+import { ACCOUNTS, CUSTOMER_ACCOUNT, PARTNER_PERSONA_ID, PARTNERS, PROGRAM } from "./data";
+import { ALL_USECASES as USECASES } from "./catalog";
 import { creditsFor, earnedStage, STAGES, stats } from "./model";
 import type { Account, Event, PersonaId, Stage, World } from "./types";
 
