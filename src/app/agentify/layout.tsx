@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./agentify.css";
 
 export const metadata: Metadata = {
-  title: "Agentify your Day — Workspace activation (AWT 2.0)",
-  description: "Internal: the Q1 FY27 Workspace activation workstream — Gemini agent entitlements, partner-led Agentify your Day workshops, median-usage qualification and accountability.",
+  title: "Agentify your Day — Google Workspace",
+  description: "See one working day twice — before and after long-running agents in Gmail, Docs, Sheets, Chat and Meet — for FP&A, DevOps, SecOps and RevOps teams, on the Workspace plan you already have.",
   robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
 };
 

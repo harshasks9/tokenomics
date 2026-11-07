@@ -164,7 +164,7 @@ export function AgentifyProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<State>(() => ({
-    view, persona: view?.persona ?? "google", busy, route, navigate, signIn, act, reset, toast, dismiss: () => setToast(null), fetchUseCase, runUseCase,
+    view, persona: view?.persona ?? "customer", busy, route, navigate, signIn, act, reset, toast, dismiss: () => setToast(null), fetchUseCase, runUseCase,
   }), [view, busy, route, navigate, signIn, act, reset, toast, fetchUseCase, runUseCase]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
