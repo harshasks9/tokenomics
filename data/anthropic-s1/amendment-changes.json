@@ -1,0 +1,553 @@
+{
+ "_meta": {
+  "description": "Material differences between the S-1 (Oct 26, 2026) and S-1/A No. 1 (Nov 2, 2026). Built from a sentence-level diff (scripts/anthropic-s1/diff_filings.py) of ~711 changed passages, filtered to material items.",
+  "categories": [
+   "Financial revelation",
+   "Business-model revelation",
+   "Strategic revelation",
+   "Risk clarification",
+   "Accounting update",
+   "Administrative change"
+  ],
+  "stats": {
+   "changedPassages": 711,
+   "riskFactorsAddedOrDeleted": 0,
+   "riskFactorParagraphsChanged": 92,
+   "substantiveRiskFactorChanges": 20
+  }
+ },
+ "changes": [
+  {
+   "id": "period-rollforward",
+   "category": "Accounting update",
+   "tag": "financial",
+   "section": "Whole document",
+   "title": "The S-1 was a Q2 document; the amendment is the first with Q3 financial statements",
+   "original": "Financial statements through the six months ended June 30, 2026 (EDGAR description: 'S-1 (Q2)'); many headline figures left blank ('$').",
+   "amended": "Financial statements through the nine months ended September 30, 2026; quarterly table gains a Q3 2026 column; subsequent events evaluated through Nov 2, 2026.",
+   "delta": "+1 quarter of audited-comparable data; ~190 MD&A edits are period roll-forwards.",
+   "whyItMatters": "Every Q3 conclusion in circulation — the operating loss, the $5.0B short-term compute, the price-cut drag — exists only because of this amendment.",
+   "interpretation": "A standard pre-roadshow update: the October filing could not include unaudited Q3 statements, so it carried Q3 operating KPIs (customer counts, NRR) alongside Q2 financials.",
+   "competitiveImplication": "Readers who analysed the Oct 26 filing were benchmarking a Q2 P&L against Q3 KPIs. Re-run any model built on the original.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "cover; F-pages",
+    "s1aPage": "cover; F-pages"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "q3-revenue",
+   "category": "Financial revelation",
+   "tag": "financial",
+   "section": "Summary / MD&A",
+   "title": "Q3 revenue disclosed: $16.96B, +46.7% QoQ — sequential growth more than halved",
+   "original": "Overview: 'revenue growing from $0 ... to $ for the three months ended ...' (blank). Latest quarter shown: Q2 2026 $11,555M.",
+   "amended": "'to $17.0 billion for the three months ended September 30, 2026'; Q3 column $16,956M.",
+   "delta": "Q2 → Q3 sequential growth 144.2% → 46.7%; absolute addition $6.82B → $5.40B.",
+   "whyItMatters": "First quarter in the series where the dollar increase shrank. The growth curve, not just the growth rate, bent.",
+   "interpretation": "Mix of ~$600M price cuts, enforcement against policy violators (Aug–Sep), compute constraints (short-term buying), and base effects; the filing does not apportion them.",
+   "competitiveImplication": "The 'law of large numbers' explanation is insufficient on its own: dollar adds fell. Competitors should watch Q4 for whether Q3 was a pause or a new slope.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "5 (blank)",
+    "s1aPage": "5, 134, 160"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "yoy-growth",
+   "category": "Financial revelation",
+   "tag": "financial",
+   "section": "Summary — Strengths of Our Financial Model",
+   "title": "Headline efficiency comparison re-based: revenue growth 1,368% → 1,127%; compute growth 300% → 382%",
+   "original": "'revenue that grew 1,368% year over year for the three months ended June 30, 2026, compared to compute and infrastructure expenses that grew 300%'",
+   "amended": "'revenue that grew 1,127% year over year for the three months ended September 30, 2026, compared to compute and infrastructure expenses that grew 382%'",
+   "delta": "Revenue/compute growth multiple narrowed from 4.6× to 3.0×.",
+   "whyItMatters": "Management's own 'compute efficiency' proof point weakened by a third in one quarter.",
+   "interpretation": "Compute deliveries (including expensive short-term capacity) caught up with revenue.",
+   "competitiveImplication": "The efficiency gap is real but not monotonic — compute arrives in steps. Price-performance attackers should time pressure to Anthropic's capacity-step quarters.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "10",
+    "s1aPage": "10"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "q3-opl",
+   "category": "Financial revelation",
+   "tag": "financial",
+   "section": "MD&A — Overview / Quarterly Trends",
+   "title": "New: Q3 swung to a $567M operating loss from $974M operating income in Q2",
+   "original": "Not disclosed (Q2 was the latest quarter: operating income $974M).",
+   "amended": "'Our operating loss was $567 million for the three months ended September 30, 2026 ... primarily driven by $5.0 billion of compute under short-term commitments ... and $2.0 billion of non-cash charges related to our donation matching program.'",
+   "delta": "−$1,541M swing in GAAP operating income; adjusted operating margin 19% → 15%.",
+   "whyItMatters": "GAAP profitability lasted one quarter. Adjusted operating income still rose ($2.24B → $2.46B).",
+   "interpretation": "Two drivers: one economic (expensive short-term compute) and one accounting/discretionary (equity-linked donation match). The $2.0B charge had been flagged as a subsequent event in the Oct 26 filing.",
+   "competitiveImplication": "Frontier-lab margins are hostage to capacity timing. A rival with owned, already-amortizing capacity has a structural cost advantage in demand spikes.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "F-64 (charge flagged as subsequent event)",
+    "s1aPage": "138, 162–163"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "short-term-compute",
+   "category": "Business-model revelation",
+   "tag": "compute",
+   "section": "MD&A — Compute Efficiency; Components",
+   "title": "New: $5.0B of Q3 compute (and $6.5B year-to-date) bought on short-term commitments at a premium",
+   "original": "Short-term compute 'typically carries a higher cost per unit of compute'; 'We expect our use of short-term compute to increase in the near term'. No dollar amount.",
+   "amended": "'$5.0 billion of compute under short-term commitments, which currently costs significantly more than comparable compute procured under our multi-year commitments. This reduced revenue per dollar of compute compared to the preceding quarter.' Use expected 'to continue to increase'.",
+   "delta": "$5.0B = 51% of Q3 compute expense; 9M short-term $6.5B (implies ≤$1.5B in H1).",
+   "whyItMatters": "Demand (or research needs) outran the 12–18-month procurement plan, and the spot premium consumed the quarter's margin.",
+   "interpretation": "Consistent with demand exceeding contracted supply, but also with front-loaded research runs. The filing allows both ('customer demand or research needs').",
+   "competitiveImplication": "Short-term capacity sellers (neoclouds, SpaceXAI, CSP on-demand) hold pricing power over frontier labs in surge quarters. Hyperscalers with spare capacity can monetize it at a premium.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "134",
+    "s1aPage": "135, 137, 151, 161"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "price-cuts",
+   "category": "Business-model revelation",
+   "tag": "financial",
+   "section": "MD&A — Quarterly Trends",
+   "title": "New: ~$600M of Q3 revenue lost to price reductions in new model versions and contractual discounts",
+   "original": "'Growth in customers generating meaningful revenue contributed across the periods' — no price-effect quantification.",
+   "amended": "'... partially offset by a decrease of approximately $600 million from price reductions introduced as part of new model versions and contractual discounts' (Q3); ~$70M in Q4 2025; 'Price changes did not have a material impact on the other quarterly revenue trends presented.'",
+   "delta": "Price drag = 3.5% of Q3 revenue; ≈11% of the Q3 sequential addition.",
+   "whyItMatters": "First quantified evidence that Anthropic is passing efficiency gains to customers. Opus 5.5 launched at $4/$20 vs Opus 5 at $5/$25.",
+   "interpretation": "Deliberate elasticity play (cost per task −40% with Opus 5.5) and competitive response (GPT-6.1 Sol at $2/$10).",
+   "competitiveImplication": "Price is now an active lever at the frontier. Attackers should assume Anthropic will cut again rather than cede share.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "—",
+    "s1aPage": "161"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "commitments-895",
+   "category": "Financial revelation",
+   "tag": "compute",
+   "section": "Summary / MD&A / Risk Factors",
+   "title": "Commitment total filled in: ~$895.4B, $447.5B before 2031, $69.8B in the next 12 months",
+   "original": "'aggregate committed spend of more than $' (blank); before-2031 and 12-month figures blank; contractual obligations table blank.",
+   "amended": "'approximately $895.4 billion ... approximately $447.5 billion expected to be incurred before December 31, 2030 ... Approximately $69.8 billion ... due in the 12 months following September 30, 2026.' Table: $319,993M.",
+   "delta": "From blank to $895.4B; table shows $320.0B with year-by-year schedule.",
+   "whyItMatters": "The single largest disclosed number in the filing first appeared in the amendment.",
+   "interpretation": "Figures were likely still being finalized as October contracts closed (Google and Microsoft agreements were amended through October).",
+   "competitiveImplication": "Sizes the capacity race: $447.5B due before 2031 averages roughly $105B a year from Q4 2026 — about half of what Alphabet (2026 capex guide $195–205B) or Amazon (~$220B) spend in a year, carried by a company with $131.8B of cash and investments and no hyperscaler cash engine.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "6, 32 (blank)",
+    "s1aPage": "6, 32, 139, 173"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "contingent-213",
+   "category": "Risk clarification",
+   "tag": "compute",
+   "section": "MD&A — Contractual Obligations",
+   "title": "New: ~$213.8B of obligations carry termination rights or contingent conditions",
+   "original": "Not present.",
+   "amended": "'Approximately $213.8 billion of the aggregate total of our contractual obligations relates to arrangements that are subject to either exercisable termination rights or contingent conditions prior to commencement, such as the counterparty’s ability to secure financing, facilities, or regulatory approvals'; plus general right to terminate if counterparties miss delivery dates; $4.3B of the next-12-month amount is contingent.",
+   "delta": "24% of the aggregate is conditional; ≈ $681.6B is not.",
+   "whyItMatters": "Reframes the headline: almost a quarter of the 'commitments' depend on suppliers' financing and permits, not just on Anthropic.",
+   "interpretation": "Likely responsive to investor/SEC focus on whether $895B is a hard liability.",
+   "competitiveImplication": "The binding constraint on the AI build-out is partly supplier financing. Neoclouds' cost of capital is now a frontier-lab risk factor.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "—",
+    "s1aPage": "173–174"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "excluded-150",
+   "category": "Financial revelation",
+   "tag": "compute",
+   "section": "MD&A — Contractual Obligations fn. 5",
+   "title": "Estimate for non-fixed arrangements filled in: $150–175B excluded from the $895.4B",
+   "original": "'we currently estimate such payments to be approximately $ to $' (blank).",
+   "amended": "'approximately $150 billion to $175 billion ... payable over time after the capacity is delivered.' (Includes the $125–150B additional Google TPU estimate and AMD > $20B.)",
+   "delta": "Potential total including excluded estimates ≈ $1.05–1.07 trillion.",
+   "whyItMatters": "Brings total potential infrastructure exposure past $1 trillion.",
+   "interpretation": "Not liabilities until capacity is delivered; amounts depend on delivery method, pricing and financing.",
+   "competitiveImplication": "Google's TPU franchise is the single largest beneficiary of Anthropic's forward compute plan.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "170 (blank)",
+    "s1aPage": "174"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "google-commit",
+   "category": "Strategic revelation",
+   "tag": "compute",
+   "section": "MD&A — Infrastructure Service Arrangements",
+   "title": "Google CSP minimum raised $114.5B → $121.3B; additional TPU path now includes direct purchase with five-year financing",
+   "original": "'committed to spend at least approximately $114.5 billion' (amended May–Aug 2026); additional TPU compute 'from TPU providers, including Google'.",
+   "amended": "'committed to spend at least approximately $121.3 billion' (amended May–Oct 2026); additional TPU via 'a CSP hosting agreement with Google, direct purchase from Google with five-year financing, or direct purchase and/or lease from a third-party TPU provider with five-year financing'.",
+   "delta": "+$6.8B Google minimum; new delivery-method options.",
+   "whyItMatters": "Google deepened its Anthropic commitment between filings, and TPUs are moving toward direct ownership/financing.",
+   "interpretation": "Consistent with Anthropic Direct: separating chips from hosting; Google selling TPUs, not just renting them.",
+   "competitiveImplication": "For Google Cloud: Anthropic is converting from a cloud tenant to a TPU buyer — higher revenue certainty for TPU, lower cloud-margin capture.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "170",
+    "s1aPage": "174"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "partner-financing-risk",
+   "category": "Risk clarification",
+   "tag": "risk",
+   "section": "Risk Factors (RF2)",
+   "title": "New risk language: suppliers' own financing can delay, reprice or cancel contracted capacity",
+   "original": "Not present.",
+   "amended": "'certain of our compute providers and infrastructure partners depend on third-party financing or credit support to acquire chips and develop capacity, and if such financing or support becomes unavailable or more costly, contracted capacity may be delayed, repriced, reduced, or not delivered.'",
+   "delta": "New sentence.",
+   "whyItMatters": "Explains the contingent $213.8B and Nscale/Lambda financing conditions.",
+   "interpretation": "Rising concern over neocloud credit; Broadcom assigned lease portions to financing SPVs.",
+   "competitiveImplication": "Credit spreads of neoclouds are now an input to frontier-model capacity — and a lever for well-capitalized hyperscalers.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "—",
+    "s1aPage": "31"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "broadcom-assign",
+   "category": "Strategic revelation",
+   "tag": "compute",
+   "section": "MD&A / Risk Factors",
+   "title": "Broadcom has now assigned part of the 2026 TPU lease to a special-purpose financing entity",
+   "original": "Broadcom 'intends to assign' rights to a financial partner.",
+   "amended": "'In October 2026, Broadcom assigned to a newly formed special purpose financing entity its rights and obligations with respect to a portion of the equipment under the 2026 Lease Arrangement. These assignments did not increase our aggregate rent payments.'",
+   "delta": "Intent → executed.",
+   "whyItMatters": "TPU capacity is being financed off Broadcom's balance sheet through SPVs.",
+   "interpretation": "Typical asset-backed structure; transfers lessor risk to financiers.",
+   "competitiveImplication": "AI accelerator leasing is becoming an asset-backed-finance market; whoever controls the financing stack shapes who gets capacity.",
+   "confidence": "Medium",
+   "evidence": {
+    "s1Page": "57",
+    "s1aPage": "57, 176"
+   },
+   "materiality": "Medium"
+  },
+  {
+   "id": "liquidity",
+   "category": "Financial revelation",
+   "tag": "financial",
+   "section": "MD&A — Compute Investments / Liquidity",
+   "title": "Liquidity quantified at $146.6B; revolver upsized to $15.0B",
+   "original": "'we had $ of liquidity, comprised of $ ...' (blank); June 30: cash $112.4B, short-term investments $19.3B, $3.2B revolver available.",
+   "amended": "$146.6B = $95.6B cash + $36.3B short-term investments + $14.8B revolver availability; partner financing capacity up to $77.0B; AMD equity up to $5.0B.",
+   "delta": "+$11.6B available revolver; cash+STI flat at ~$131.8B over Q3.",
+   "whyItMatters": "Cash plus investments did not decline in Q3 despite the build-out: operations funded ~$2.7B and investing outflows were largely treasury purchases.",
+   "interpretation": "—",
+   "competitiveImplication": "Liquidity covers ~2.1× the next 12 months of obligations ($69.8B) before IPO proceeds.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "137 (blank)",
+    "s1aPage": "139, 164"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "ocf",
+   "category": "Financial revelation",
+   "tag": "financial",
+   "section": "MD&A — Liquidity",
+   "title": "New: positive operating cash flow of $6.6B for nine months",
+   "original": "Six months: operating cash flow $3.9B.",
+   "amended": "'We generated positive cash flows from operating activities of $6.6 billion for the nine months ended September 30, 2026.'",
+   "delta": "Q3 operating cash flow ≈ $2.6B (derived).",
+   "whyItMatters": "Even in the GAAP-loss quarter, the business generated operating cash.",
+   "interpretation": "Non-cash charges (donation match, SBC, fair-value) and the fact that CSP compute is paid as delivered.",
+   "competitiveImplication": "Do not equate the $104B net loss with cash burn; the cash engine is positive before infrastructure prepayments and capex.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "170",
+    "s1aPage": "164, 172"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "channel-mix",
+   "category": "Business-model revelation",
+   "tag": "strategy",
+   "section": "MD&A — Quarterly Trends; Note 1",
+   "title": "Marketplace share falling: 48% (H1) → 44% (9M); S&M fell from 22% to 14% of revenue on channel mix and renegotiated terms",
+   "original": "H1 2026 CSP-marketplace revenue ≈48%; marketplace receivables 58%.",
+   "amended": "9M 2026 ≈44%; receivables 52%. New: S&M % of revenue 'decreased from 22% ... to 14% ... primarily driven by a decrease in revenue generated from sales through channel partners as a percentage of total revenue and changes in the terms of our channel partner distribution arrangements.'",
+   "delta": "Implied Q3 marketplace share ≈ 40% (range 38.7–41.6%).",
+   "whyItMatters": "Anthropic is shifting revenue toward direct billing and has improved its channel terms — a direct transfer from CSP partners.",
+   "interpretation": "As scale grew, bargaining power moved toward Anthropic; direct relationships (already contractual) are increasingly billed directly.",
+   "competitiveImplication": "For AWS/Google/Microsoft, the Anthropic marketplace take-rate is under pressure. Hyperscalers should expect lower fee capture per Anthropic dollar going forward.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "57, F-16",
+    "s1aPage": "57, 162, F-16"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "customer-c",
+   "category": "Financial revelation",
+   "tag": "customers",
+   "section": "Note 1 — Significant Customers",
+   "title": "Largest customer drops below 10% of revenue for the nine months",
+   "original": "'Customer C' = 11% of H1 2026 revenue (and 43% of FY2023); receivables: Customer A 13%, Customer C 10%.",
+   "amended": "No customer ≥10% of 9M 2026 revenue; receivables: Customer E 13%.",
+   "delta": "Customer C share fell from 11% (H1) to <10% (9M) → implies <9.5% of Q3.",
+   "whyItMatters": "Concentration is diluting quickly; a new counterparty (E) now dominates receivables.",
+   "interpretation": "Broad-based growth plus top-5 share falling from ~36% (Q1) to ~21% (Q3).",
+   "competitiveImplication": "Anthropic's revenue is less hostage to one AI-native customer than in 2023–2025 — but top-five still ≈25% of 9M revenue.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "F-15",
+    "s1aPage": "F-15"
+   },
+   "materiality": "Medium"
+  },
+  {
+   "id": "rsp-imminent",
+   "category": "Risk clarification",
+   "tag": "risk",
+   "section": "Risk Factors (RF1)",
+   "title": "New: Anthropic 'may imminently meet' its RSP definition of 'dramatically accelerated progress attributable to AI'",
+   "original": "Not present; 'we may not identify' acceleration.",
+   "amended": "'our internal estimates and our expectations regarding future models, rather than our current models, indicate that we may imminently meet our Responsible Scaling Policy’s definition of “dramatically accelerated progress attributable to AI.”' Also: 'have in the past not identified, and may in the future not identify'.",
+   "delta": "New disclosure.",
+   "whyItMatters": "A safety trigger tied to AI-driven R&D acceleration could change release cadence, internal processes and cost.",
+   "interpretation": "Consistent with 'closing the loop' (>90% of code written by Claude) — the same dynamic sold as an advantage is disclosed as a governance trigger.",
+   "competitiveImplication": "Competitors without equivalent self-imposed thresholds may move faster; Anthropic's safety posture becomes both a trust asset and a potential velocity tax.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "—",
+    "s1aPage": "29"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "rsp-capabilities",
+   "category": "Risk clarification",
+   "tag": "risk",
+   "section": "Risk Factors (RF13, RF15)",
+   "title": "Capability language strengthened; human review of R&D decisions under consideration",
+   "original": "'could advance' at a rate that initiates enhanced measures.",
+   "amended": "'may have already advanced, and may continue to advance, at a rate that initiates the implementation of enhanced safety and testing measures'; 'considering ... updates to our Responsible Scaling Policy, to require human review and approval of certain decisions in our research and development processes as our models perform an increasing share of that work.'",
+   "delta": "Conditional → possibly already occurred; new governance measure contemplated.",
+   "whyItMatters": "Signals that model-driven research is large enough to warrant human gating.",
+   "interpretation": "Pre-IPO de-risking of disclosure around frontier capability thresholds.",
+   "competitiveImplication": "Rivals should expect Anthropic's release decisions to be more visibly gated — and enterprises to value that predictability.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "48, 51",
+    "s1aPage": "49, 52"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "gov-revenue",
+   "category": "Risk clarification",
+   "tag": "risk",
+   "section": "Risk Factors (RF30)",
+   "title": "Government revenue ceiling loosened: 'approximately 1%' → 'less than 2%'",
+   "original": "'approximately 1% of our revenue in each of the periods presented'",
+   "amended": "'less than 2% of our revenue in each of the periods presented'",
+   "delta": "Ceiling roughly doubled; exact figure undisclosed.",
+   "whyItMatters": "Despite the February 2026 supply-chain-risk designation and the D.C. Circuit's 2-1 ruling, public-sector exposure is immaterial to revenue.",
+   "interpretation": "Could reflect rounding with a larger nine-month base or Q3 public-sector revenue outside the Department of War.",
+   "competitiveImplication": "The government dispute is a strategic and reputational issue more than a revenue one.",
+   "confidence": "Medium",
+   "evidence": {
+    "s1Page": "70",
+    "s1aPage": "72"
+   },
+   "materiality": "Medium"
+  },
+  {
+   "id": "donation",
+   "category": "Accounting update",
+   "tag": "financial",
+   "section": "MD&A — Public Benefit",
+   "title": "Donation-matching cost now a top-three driver of reported operating results",
+   "original": "'have not historically been significant ... For the year ended December 31, 2025 ... $541 million, representing approximately 4%'",
+   "amended": "'were not significant before the three months ended September 30, 2026. For the nine months ended September 30, 2026 ... $2.1 billion, representing approximately 6%'",
+   "delta": "Q3 non-cash charge $1,960M (11.6% of Q3 revenue).",
+   "whyItMatters": "A discretionary, equity-linked program swung the Q3 GAAP result; it scales with the share price.",
+   "interpretation": "Excluded from Adjusted Operating Income as 'non-cash', but it is real dilution.",
+   "competitiveImplication": "Anthropic's public-benefit commitments create P&L volatility that peers do not carry; investors will need to normalize it.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "144",
+    "s1aPage": "145, 163"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "sbc-unrecognized",
+   "category": "Accounting update",
+   "tag": "financial",
+   "section": "MD&A — Critical Accounting Estimates; Note 17",
+   "title": "IPO-day stock-comp catch-up grows: $2.9B → $8.2B of service-satisfied RSUs",
+   "original": "Unrecognized RSU expense ~$26.6B, of which $2.9B service-satisfied; ~91M RSUs ($5.8B) granted after June 30 with performance conditions.",
+   "amended": "~$32.3B unrecognized, of which $8.2B service-satisfied; ~47M RSUs granted after Sep 30 now vest on service only.",
+   "delta": "+$5.3B catch-up; new grants no longer IPO-contingent.",
+   "whyItMatters": "The IPO quarter will carry a large non-cash GAAP charge.",
+   "interpretation": "Grants after the registration shift to service-only vesting (normal post-IPO design).",
+   "competitiveImplication": "Talent retention costs are rising with valuation; rivals competing for researchers face the same equity math.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "173",
+    "s1aPage": "178"
+   },
+   "materiality": "Medium"
+  },
+  {
+   "id": "retail",
+   "category": "Strategic revelation",
+   "tag": "other",
+   "section": "Underwriting",
+   "title": "New: direct retail allocation through Schwab, Fidelity, Robinhood, SoFi and E*TRADE platforms",
+   "original": "Not present.",
+   "amended": "'we anticipate that a portion of the shares ... will, at our request, be offered to retail investors through Charles Schwab & Co., Inc., Fidelity ..., Robinhood Financial, LLC, Trade-PMR, Inc., SoFi Securities LLC, and E*TRADE from Morgan Stanley'",
+   "delta": "New section.",
+   "whyItMatters": "Broad retail distribution for a consumer-recognized brand.",
+   "interpretation": "Brand and prosumer funnel extend to the shareholder base.",
+   "competitiveImplication": "Claude's consumer brand is now also an investor-relations asset.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "—",
+    "s1aPage": "330"
+   },
+   "materiality": "Low"
+  },
+  {
+   "id": "runrate-blank",
+   "category": "Administrative change",
+   "tag": "financial",
+   "section": "Business — Significant Revenue Growth",
+   "title": "Unchanged: Run-Rate Revenue 'as of October 31, 2026' is still blank",
+   "original": "'Additionally, our Run-Rate Revenue was $ as of October 31, 2026.'",
+   "amended": "'Additionally, our Run-Rate Revenue was $ as of October 31, 2026.' (identical)",
+   "delta": "No October performance data disclosed in either filing.",
+   "whyItMatters": "Any 'October run-rate' figure circulating in the press is not from the filing.",
+   "interpretation": "Likely to be filled in a later amendment with the price range.",
+   "competitiveImplication": "Do not anchor on unofficial run-rate numbers; the next amendment is the data point to watch.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "194",
+    "s1aPage": "198"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "violations-unchanged",
+   "category": "Administrative change",
+   "tag": "risk",
+   "section": "MD&A — Components of Results",
+   "title": "Unchanged: 5–7% of nine-month revenue from customers later found violating policy or terms",
+   "original": "Identical paragraph (already measured for the nine months ended Sep 30, 2026).",
+   "amended": "Identical paragraph.",
+   "delta": "No change.",
+   "whyItMatters": "Not a new revelation of the amendment — but the most consequential revenue-quality disclosure in both filings.",
+   "interpretation": "Measured on a nine-month basis even in the Q2 filing.",
+   "competitiveImplication": "Revenue-quality haircuts should be applied to both filings' growth narratives.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "145",
+    "s1aPage": "146"
+   },
+   "materiality": "High"
+  },
+  {
+   "id": "kpis-unchanged",
+   "category": "Administrative change",
+   "tag": "customers",
+   "section": "Summary / MD&A",
+   "title": "Unchanged: ~900% NRR, 11,900 / 1,900 / 250 customer tiers, top-five ≈25% (9M) — all already as of Sep 30 in the original",
+   "original": "Same Sep 30, 2026 operating metrics.",
+   "amended": "Same.",
+   "delta": "No change.",
+   "whyItMatters": "The October filing already contained Q3 operating metrics; only the financial statements lagged.",
+   "interpretation": "—",
+   "competitiveImplication": "Don't treat these KPIs as 'new' amendment information.",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "8–10, 133–143",
+    "s1aPage": "8–10, 135–144"
+   },
+   "materiality": "Medium"
+  },
+  {
+   "id": "rate-sensitivity",
+   "category": "Accounting update",
+   "tag": "financial",
+   "section": "MD&A — Market Risk",
+   "title": "Interest-rate sensitivity quantified: ±100bp ≈ $310M",
+   "original": "'would not have had a material effect on the fair value of our investment portfolio'",
+   "amended": "'would have resulted in a decrease or increase, respectively, of $310 million in the market value of our cash equivalents and short-term investments'",
+   "delta": "Qualitative → quantified.",
+   "whyItMatters": "Reflects the larger short-term investment book ($36.3B).",
+   "interpretation": "—",
+   "competitiveImplication": "—",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "172",
+    "s1aPage": "176"
+   },
+   "materiality": "Low"
+  },
+  {
+   "id": "split-removed",
+   "category": "Administrative change",
+   "tag": "other",
+   "section": "Prospectus Summary",
+   "title": "Stock-split assumptions removed from the summary (10-for-1 split already effected Sep 17, 2026)",
+   "original": "Bullet: '10-for-one forward split ... effected on September 17, 2026 ...; one-for-1,000 reverse split of our Class T common stock'",
+   "amended": "Removed (now reflected in the Sep 30 balance sheet).",
+   "delta": "—",
+   "whyItMatters": "Housekeeping.",
+   "interpretation": "—",
+   "competitiveImplication": "—",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "21",
+    "s1aPage": "—"
+   },
+   "materiality": "Low"
+  },
+  {
+   "id": "class-e",
+   "category": "Administrative change",
+   "tag": "other",
+   "section": "Cover / Governance",
+   "title": "Class E timing tightened: authorized 'Immediately prior to' rather than 'Upon' completion",
+   "original": "'Upon the completion of this offering, we will also authorize ... Class E common stock'",
+   "amended": "'Immediately prior to the completion of this offering ...'",
+   "delta": "Wording.",
+   "whyItMatters": "Governance mechanics, no economic effect.",
+   "interpretation": "—",
+   "competitiveImplication": "—",
+   "confidence": "High",
+   "evidence": {
+    "s1Page": "cover",
+    "s1aPage": "cover"
+   },
+   "materiality": "Low"
+  }
+ ]
+}

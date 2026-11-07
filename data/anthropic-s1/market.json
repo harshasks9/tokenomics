@@ -1,0 +1,774 @@
+{
+ "_meta": {
+  "description": "External market facts used for context. All from web sources as of Nov 7, 2026; many pages were read via search extracts, so confidence is graded. Not used for any Anthropic financial figure.",
+  "researchCutoff": "2026-11-07"
+ },
+ "items": [
+  {
+   "id": "goog-cloud-q3",
+   "entity": "Google",
+   "metric": "Google Cloud revenue",
+   "value": "$30.7B, +103% YoY; operating income $11.1B (~36% margin, derived)",
+   "period": "Q3 2026",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000080/googexhibit991q32026.htm",
+   "date": "2026-10-28",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "google",
+    "cloud"
+   ]
+  },
+  {
+   "id": "goog-backlog",
+   "entity": "Google",
+   "metric": "Google Cloud backlog",
+   "value": "$561B (Q2: $514B)",
+   "period": "Sep 30, 2026",
+   "url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Oct/28/2026_Q3_Earnings_Transcript.pdf",
+   "date": "2026-10-28",
+   "basis": "Company-reported (earnings call)",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "cloud"
+   ]
+  },
+  {
+   "id": "goog-capex",
+   "entity": "Google",
+   "metric": "Alphabet 2026 capex guidance",
+   "value": "$195–205B (unchanged); 2027 to 'increase significantly'",
+   "period": "FY2026",
+   "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
+   "date": "2026-10-28",
+   "basis": "Company-reported",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "capex"
+   ]
+  },
+  {
+   "id": "goog-tokens",
+   "entity": "Google",
+   "metric": "First-party API tokens processed",
+   "value": "~32B tokens/minute (+40% QoQ)",
+   "period": "Q3 2026",
+   "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
+   "date": "2026-10-28",
+   "basis": "Company-reported",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "usage"
+   ]
+  },
+  {
+   "id": "goog-gemini-mau",
+   "entity": "Google",
+   "metric": "Gemini app monthly active users",
+   "value": "1B+",
+   "period": "Q3 2026",
+   "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/",
+   "date": "2026-10-28",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "google",
+    "consumer"
+   ]
+  },
+  {
+   "id": "goog-tpu-anthropic",
+   "entity": "Google",
+   "metric": "TPU external customers",
+   "value": "Anthropic named first among TPU customers, served 'both directly and via Broadcom'; TPU sales a 'meaningful contributor' (no $)",
+   "period": "Q3 2026",
+   "url": "https://www.crnasia.com/news-network/2026/google-cloud-sales-explode-103-percent-as-ceo-touts-tpu-extraordinary-demand",
+   "date": "2026-10-29",
+   "basis": "Company-reported (call, via press)",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "tpu"
+   ]
+  },
+  {
+   "id": "goog-argon",
+   "entity": "Google",
+   "metric": "Gemini 4 Argon list price",
+   "value": "$2/$10 per 1M tokens (intro) → $4/$20 from Dec 1, 2026",
+   "period": "Oct 2026",
+   "url": "https://ai.google.dev/gemini-api/docs/latest-model",
+   "date": "2026-10",
+   "basis": "List price",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "pricing"
+   ]
+  },
+  {
+   "id": "goog-flash",
+   "entity": "Google",
+   "metric": "Gemini 3.8 Flash list price",
+   "value": "$0.75/$3.75 intro; $1.50/$7.50 from Jan 2027",
+   "period": "Sep 2026",
+   "url": "https://fourweekmba.com/ai-gemini-38-flash-ga-price-flat-tier-deflation/",
+   "date": "2026-09",
+   "basis": "List price (aggregator)",
+   "confidence": "Low",
+   "tags": [
+    "google",
+    "pricing"
+   ]
+  },
+  {
+   "id": "goog-antigravity",
+   "entity": "Google",
+   "metric": "Coding tools",
+   "value": "Gemini CLI folded into Antigravity CLI (consumer Gemini CLI stopped Jun 18, 2026)",
+   "period": "2026",
+   "url": "https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/",
+   "date": "2026-05-19",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "google",
+    "coding"
+   ]
+  },
+  {
+   "id": "goog-anthropic-invest",
+   "entity": "Google",
+   "metric": "Investment in Anthropic",
+   "value": "Up to $40B: $10B at a $350B valuation + $30B performance-linked",
+   "period": "Apr 2026",
+   "url": "https://news.bloomberglaw.com/antitrust/google-plans-to-invest-up-to-40-billion-in-anthropic",
+   "date": "2026-04-24",
+   "basis": "Press-reported (Bloomberg)",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "anthropic"
+   ]
+  },
+  {
+   "id": "goog-broadcom-gw",
+   "entity": "Google/Broadcom",
+   "metric": "TPU capacity for Anthropic",
+   "value": "~3.5 GW via Broadcom from 2027; consumption 'dependent on Anthropic's continued commercial success'",
+   "period": "Apr 2026",
+   "url": "https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm",
+   "date": "2026-04-07",
+   "basis": "Company-reported (Broadcom 8-K)",
+   "confidence": "High",
+   "tags": [
+    "google",
+    "tpu",
+    "broadcom"
+   ]
+  },
+  {
+   "id": "msft-azure",
+   "entity": "Microsoft",
+   "metric": "Azure growth",
+   "value": "+48% (≈$33.2B); next quarter guided +49–50%",
+   "period": "FY27 Q1 (Sep qtr 2026)",
+   "url": "https://www.zacks.com/stock/news/3018768/microsoft-q1-earnings-beat-estimates-as-cloud-accelerates",
+   "date": "2026-10-28",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "microsoft",
+    "cloud"
+   ]
+  },
+  {
+   "id": "msft-rpo",
+   "entity": "Microsoft",
+   "metric": "Commercial RPO",
+   "value": "$677B, +73% YoY (OpenAI share not disclosed this quarter; ~45% in Dec 2025)",
+   "period": "Sep 30, 2026",
+   "url": "https://the-decoder.com/nearly-half-of-microsofts-commercial-contract-backlog-is-tied-to-openai/",
+   "date": "2026-10-28",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "microsoft",
+    "cloud"
+   ]
+  },
+  {
+   "id": "msft-foundry",
+   "entity": "Microsoft",
+   "metric": "Foundry",
+   "value": ">120,000 customers; revenue >3× YoY",
+   "period": "FY27 Q1",
+   "url": "https://www.roic.ai/quote/MSFT/transcripts/2027-year/1-quarter",
+   "date": "2026-10-28",
+   "basis": "Company-reported (call)",
+   "confidence": "Medium",
+   "tags": [
+    "microsoft",
+    "platform"
+   ]
+  },
+  {
+   "id": "msft-cowork",
+   "entity": "Microsoft",
+   "metric": "Copilot Cowork",
+   "value": "Built on Anthropic's Claude Cowork harness and models; M365 E7 at $99/user/month",
+   "period": "Mar 2026",
+   "url": "https://fortune.com/2026/03/09/microsoft-copilot-cowork-ai-agents-anthropic-e7-m365-saas/",
+   "date": "2026-03-09",
+   "basis": "Company-reported (via press)",
+   "confidence": "Medium",
+   "tags": [
+    "microsoft",
+    "anthropic",
+    "distribution"
+   ]
+  },
+  {
+   "id": "msft-copilot-users",
+   "entity": "Microsoft",
+   "metric": "GitHub Copilot",
+   "value": "4.7M paid subscribers (Jan 2026); ~50M total users (Jul 2026)",
+   "period": "2026",
+   "url": "https://www.secondtalent.com/resources/github-copilot-statistics/",
+   "date": "2026-07",
+   "basis": "Company-reported (earnings)",
+   "confidence": "Medium",
+   "tags": [
+    "microsoft",
+    "coding"
+   ]
+  },
+  {
+   "id": "msft-fusion",
+   "entity": "Microsoft",
+   "metric": "GitHub Copilot Fusion",
+   "value": "GA Oct 28, 2026: per-step multi-model routing; GitHub claims within 2 pts of Claude Code on Opus 5.5 at −50% cost",
+   "period": "Oct 2026",
+   "url": "https://thenewstack.io/github-copilot-fusion/",
+   "date": "2026-10-28",
+   "basis": "Vendor claim",
+   "confidence": "Medium",
+   "tags": [
+    "microsoft",
+    "coding",
+    "routing"
+   ]
+  },
+  {
+   "id": "msft-anthropic-deal",
+   "entity": "Microsoft/NVIDIA",
+   "metric": "Anthropic partnership",
+   "value": "$30B Azure commitment (Nov 2025); NVIDIA up to $10B and Microsoft up to $5B equity",
+   "period": "Nov 2025",
+   "url": "https://pureai.com/articles/2025/11/18/microsoft-and-nvidia-deepen-ties-with-anthropic.aspx",
+   "date": "2025-11-18",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "microsoft",
+    "anthropic"
+   ]
+  },
+  {
+   "id": "amzn-aws",
+   "entity": "Amazon",
+   "metric": "AWS revenue",
+   "value": "$46.0B, +39.3%; operating margin ~38.7%; backlog $578B",
+   "period": "Q3 2026",
+   "url": "https://aboutamazon.com/news/company-news/amazon-earnings-q3-2026-report",
+   "date": "2026-10-29",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "amazon",
+    "cloud"
+   ]
+  },
+  {
+   "id": "amzn-capex",
+   "entity": "Amazon",
+   "metric": "2026 capex",
+   "value": "~$220B; higher in 2027",
+   "period": "FY2026",
+   "url": "https://www.datastudios.org/post/amazon-q3-2026-results-aws-39-percent-growth-46-billion-220-billion-capex",
+   "date": "2026-10-29",
+   "basis": "Company-reported (via press)",
+   "confidence": "Medium",
+   "tags": [
+    "amazon",
+    "capex"
+   ]
+  },
+  {
+   "id": "amzn-trainium",
+   "entity": "Amazon",
+   "metric": "Trainium",
+   "value": "Trainium revenue commitments up >20× YoY; most of Bedrock runs on Trainium; external Trainium sales from late 2027",
+   "period": "Q3 2026",
+   "url": "https://www.thestack.technology/from-bedrock-to-duckdb-to-leo-7-key-takeaways-from-amazons-earnings/",
+   "date": "2026-10-30",
+   "basis": "Company-reported (call, via press)",
+   "confidence": "Medium",
+   "tags": [
+    "amazon",
+    "chips"
+   ]
+  },
+  {
+   "id": "amzn-bedrock",
+   "entity": "Amazon",
+   "metric": "Bedrock",
+   "value": "'Fastest-growing multi-billion-dollar service in AWS history'; token volume ~17× YoY",
+   "period": "Q3 2026",
+   "url": "https://www.thestack.technology/from-bedrock-to-duckdb-to-leo-7-key-takeaways-from-amazons-earnings/",
+   "date": "2026-10-30",
+   "basis": "Company-reported (call, via press)",
+   "confidence": "Medium",
+   "tags": [
+    "amazon",
+    "platform"
+   ]
+  },
+  {
+   "id": "amzn-stake",
+   "entity": "Amazon",
+   "metric": "Anthropic investments carried on Amazon's balance sheet",
+   "value": "Convertible notes ~$146.2B fair value + nonvoting preferred ~$92.5B ≈ $238.7B vs ~$18B invested",
+   "period": "Sep 30, 2026",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001018724/000101872426000040/amzn-20260930.htm",
+   "date": "2026-10-30",
+   "basis": "Company-reported (10-Q, via press; not opened)",
+   "confidence": "Medium",
+   "tags": [
+    "amazon",
+    "anthropic"
+   ]
+  },
+  {
+   "id": "amzn-anthropic-deal",
+   "entity": "Amazon",
+   "metric": "Anthropic compute agreement",
+   "value": "Up to 5 GW; Anthropic commits >$100B to AWS over 10 years; Amazon invests $5B + up to $20B on milestones",
+   "period": "Apr 2026",
+   "url": "https://www.anthropic.com/news/anthropic-amazon-compute",
+   "date": "2026-04-20",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "amazon",
+    "anthropic"
+   ]
+  },
+  {
+   "id": "oai-runrate",
+   "entity": "OpenAI",
+   "metric": "Annualized revenue run-rate",
+   "value": "~$50B (late Sep 2026); year-end target ≥$70B",
+   "period": "Sep 2026",
+   "url": "https://www.bloomberg.com/news/articles/2026-10-08/openai-s-annualized-revenue-nears-50-billion-ft-says",
+   "date": "2026-10-08",
+   "basis": "Press-reported",
+   "confidence": "Medium",
+   "tags": [
+    "openai"
+   ]
+  },
+  {
+   "id": "oai-burn",
+   "entity": "OpenAI",
+   "metric": "Projected cumulative free cash flow",
+   "value": "≈ −$278B over 2026–2030; ~$750B compute plan through 2030",
+   "period": "2026–2030",
+   "url": "https://gvwire.com/2026/09/19/openai-forecasts-cash-burn-near-280-billion-by-2030-ft-reports/",
+   "date": "2026-09-19",
+   "basis": "Press-reported (FT)",
+   "confidence": "Medium",
+   "tags": [
+    "openai",
+    "compute"
+   ]
+  },
+  {
+   "id": "oai-funding",
+   "entity": "OpenAI",
+   "metric": "Latest funding",
+   "value": "$122B at $852B post-money (closed Mar 31, 2026)",
+   "period": "Mar 2026",
+   "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+   "date": "2026-03-31",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "openai"
+   ]
+  },
+  {
+   "id": "oai-prices",
+   "entity": "OpenAI",
+   "metric": "GPT-6.1 Sol / Terra / Luna list prices",
+   "value": "Sol $2/$10; Terra $1/$5; GPT-6 Luna $0.10/$0.50 per 1M tokens",
+   "period": "Sep–Oct 2026",
+   "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+   "date": "2026-09-29",
+   "basis": "List price",
+   "confidence": "High",
+   "tags": [
+    "openai",
+    "pricing"
+   ]
+  },
+  {
+   "id": "oai-codex",
+   "entity": "OpenAI",
+   "metric": "Codex usage",
+   "value": "8M weekly users (Jul 14); ~40M Codex + ChatGPT Work 'active users' (Oct; period unstated)",
+   "period": "2026",
+   "url": "https://www.developersdigest.tech/blog/codex-8m-users-developer-guide-2026",
+   "date": "2026-07",
+   "basis": "Company-reported (via press)",
+   "confidence": "Medium",
+   "tags": [
+    "openai",
+    "coding"
+   ]
+  },
+  {
+   "id": "oai-sol-cut",
+   "entity": "OpenAI",
+   "metric": "Flagship price change",
+   "value": "Sol tier $5/$30 (Jul) → $2/$10 (Sep): −60% input, −67% output in ~10 weeks",
+   "period": "Jul–Sep 2026",
+   "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+   "date": "2026-09-29",
+   "basis": "Derived from list prices",
+   "confidence": "Medium",
+   "tags": [
+    "openai",
+    "pricing"
+   ]
+  },
+  {
+   "id": "ant-prices",
+   "entity": "Anthropic",
+   "metric": "Claude list prices",
+   "value": "Opus 5.5 $4/$20 (Opus 5: $5/$25); Sonnet 5.5 $2/$10; Haiku 5.5 $0.10/$0.50 (≤100K prompt); Mythos/Fable 5.1 $10/$50 (Mythos invite-only)",
+   "period": "Nov 2026",
+   "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+   "date": "2026-09-22",
+   "basis": "List price",
+   "confidence": "High",
+   "tags": [
+    "anthropic",
+    "pricing"
+   ]
+  },
+  {
+   "id": "ant-runrate-public",
+   "entity": "Anthropic",
+   "metric": "Public run-rate statements",
+   "value": ">$30B (Apr 2026); >$47B (May 2026); >$65B end-Jul (press source)",
+   "period": "2026",
+   "url": "https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth",
+   "date": "2026-04-06",
+   "basis": "Company-reported / press",
+   "confidence": "Medium",
+   "tags": [
+    "anthropic"
+   ]
+  },
+  {
+   "id": "ant-spacex",
+   "entity": "Anthropic",
+   "metric": "SpaceX/SpaceXAI compute",
+   "value": "All of Colossus 1 (>300 MW, >220K NVIDIA GPUs) to raise Pro/Max limits; expanded to Colossus 2 GB200 capacity",
+   "period": "May 2026",
+   "url": "https://www.anthropic.com/news/higher-limits-spacex",
+   "date": "2026-05-06",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "anthropic",
+    "compute",
+    "spacex"
+   ]
+  },
+  {
+   "id": "ant-amd",
+   "entity": "Anthropic",
+   "metric": "AMD partnership",
+   "value": "Up to 2 GW of MI450 (Helios); first GW from 1H 2027; AMD up to $5B equity",
+   "period": "Jul 2026",
+   "url": "https://newsroom.amd.com/news/amd-anthropic-strategic-partnership/",
+   "date": "2026-07-22",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "anthropic",
+    "compute",
+    "amd"
+   ]
+  },
+  {
+   "id": "ant-japan",
+   "entity": "Anthropic",
+   "metric": "Japan one-year briefing",
+   "value": "Japan staff 3 → 50+; adopting organizations >10×; usage ~1.9× other-country average; partners NEC, Hitachi, Fujitsu; NRI first authorized reseller",
+   "period": "Oct 2026",
+   "url": "https://www.watch.impress.co.jp/docs/news/2147983.html",
+   "date": "2026-10-14",
+   "basis": "Company briefing (via press)",
+   "confidence": "Medium",
+   "tags": [
+    "anthropic",
+    "japan"
+   ]
+  },
+  {
+   "id": "ant-japan-ipo",
+   "entity": "Anthropic",
+   "metric": "IPO Japan tranche",
+   "value": "Up to ¥552.9B (~$3.5B) offered to Japanese investors",
+   "period": "Nov 2026",
+   "url": "https://www.khaleejtimes.com/business/anthropic-plans-to-sell-35-billion-of-shares-to-japan-investors-in-ipo-filing-shows",
+   "date": "2026-11-02",
+   "basis": "Press-reported (filing)",
+   "confidence": "Medium",
+   "tags": [
+    "anthropic",
+    "japan"
+   ]
+  },
+  {
+   "id": "hitachi",
+   "entity": "Hitachi",
+   "metric": "Claude deployment",
+   "value": "Claude across ~290,000 employees; 100,000 to be trained as AI specialists",
+   "period": "May 2026",
+   "url": "https://www.hitachi.com/en/press/articles/2026/05/0519b/",
+   "date": "2026-05-19",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "japan",
+    "enterprise"
+   ]
+  },
+  {
+   "id": "nec",
+   "entity": "NEC",
+   "metric": "Claude deployment",
+   "value": "~30,000 group employees standardizing on Claude; first Japan-based global partner",
+   "period": "Apr 2026",
+   "url": "https://www.anthropic.com/news/anthropic-nec",
+   "date": "2026-04-24",
+   "basis": "Company-reported",
+   "confidence": "High",
+   "tags": [
+    "japan",
+    "enterprise"
+   ]
+  },
+  {
+   "id": "japan-sovereign",
+   "entity": "Japan government",
+   "metric": "Sovereign model program",
+   "value": "Up to ¥1T (~$6.1B) over five years for a domestic model consortium",
+   "period": "Jul 2026",
+   "url": "https://www.japantimes.co.jp/news/2026/07/01/japan/japan-ai-plans/",
+   "date": "2026-07-01",
+   "basis": "Press-reported",
+   "confidence": "Medium",
+   "tags": [
+    "japan",
+    "sovereign"
+   ]
+  },
+  {
+   "id": "japan-adoption",
+   "entity": "Japan enterprises",
+   "metric": "Generative-AI adoption",
+   "value": "34.5% of 10,312 firms (63.6% at >1,000 employees) — Teikoku Databank",
+   "period": "Mar 2026",
+   "url": "https://japantoday.com/category/tech/over-60-of-japanese-firms-with-more-than-1-000-workers-use-generative-ai",
+   "date": "2026-03",
+   "basis": "Survey",
+   "confidence": "Medium",
+   "tags": [
+    "japan",
+    "adoption"
+   ]
+  },
+  {
+   "id": "cursor-spacex",
+   "entity": "Cursor",
+   "metric": "Ownership",
+   "value": "Acquired by SpaceX for $60B in stock (closed Aug 14, 2026); folded into SpaceXAI",
+   "period": "Aug 2026",
+   "url": "https://channelinsider.com/ai/news-spacex-cursor-60-billion-acquisition",
+   "date": "2026-08-14",
+   "basis": "Press-reported (filing)",
+   "confidence": "Medium",
+   "tags": [
+    "coding",
+    "cursor",
+    "spacex"
+   ]
+  },
+  {
+   "id": "cursor-arr",
+   "entity": "Cursor",
+   "metric": "ARR",
+   "value": "~$4B (Jun 2026); Composer 2 in-house model built on Moonshot's open-weight Kimi K2.5",
+   "period": "2026",
+   "url": "https://dealroom.co/news/134107-cursor-tops-4b-annualized-revenue/",
+   "date": "2026-06",
+   "basis": "Press-reported",
+   "confidence": "Medium",
+   "tags": [
+    "coding",
+    "cursor",
+    "open-weight"
+   ]
+  },
+  {
+   "id": "menlo-share",
+   "entity": "Menlo Ventures",
+   "metric": "Enterprise LLM API spend share",
+   "value": "Anthropic 55% (from 40%), OpenAI 31%, Google 9% (from 21%); enterprise AI spend $177B",
+   "period": "2026",
+   "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
+   "date": "2026-11-03",
+   "basis": "Survey estimate (Menlo is an Anthropic investor)",
+   "confidence": "Medium",
+   "tags": [
+    "market-share"
+   ]
+  },
+  {
+   "id": "menlo-coding",
+   "entity": "Menlo Ventures",
+   "metric": "AI coding market",
+   "value": "$34B; Claude Code + Codex ≈ $24B (70%); open-weight ≈ 19% of enterprise tokens but ~4% of spend",
+   "period": "2026",
+   "url": "https://menlovc.com/wp-content/uploads/2026/11/menlo_ventures_enterprise_ai_report-2026-110326.pdf",
+   "date": "2026-11-03",
+   "basis": "Survey estimate",
+   "confidence": "Medium",
+   "tags": [
+    "coding",
+    "market-share",
+    "open-weight"
+   ]
+  },
+  {
+   "id": "ramp",
+   "entity": "Ramp",
+   "metric": "Business adoption (Ramp AI Index)",
+   "value": "43.8% of US businesses pay Anthropic vs 40.6% OpenAI (Sep data); OpenAI gaining faster; adoption may be near ceiling",
+   "period": "Sep 2026",
+   "url": "https://ramp.com/data/ai-index-oct-2026",
+   "date": "2026-10",
+   "basis": "Transaction data (Ramp customers)",
+   "confidence": "High",
+   "tags": [
+    "market-share"
+   ]
+  },
+  {
+   "id": "epoch-price",
+   "entity": "Epoch AI",
+   "metric": "Price of fixed capability",
+   "value": "Falls ~47% per quarter (~13×/yr); ~66%/qtr at the frontier slowing to ~32%/qtr two years later",
+   "period": "2023–2026",
+   "url": "https://epoch.ai/publications/the-plunging-price-of-thought",
+   "date": "2026-09-22",
+   "basis": "Independent research",
+   "confidence": "High",
+   "tags": [
+    "pricing",
+    "research"
+   ]
+  },
+  {
+   "id": "metr",
+   "entity": "METR",
+   "metric": "Task time horizon",
+   "value": "50% horizon ≥16h for Claude Mythos Preview; doubling ~4.3 months; suite saturating",
+   "period": "2026",
+   "url": "https://metr.org/time-horizons/",
+   "date": "2026",
+   "basis": "Independent evaluation",
+   "confidence": "High",
+   "tags": [
+    "agents",
+    "research"
+   ]
+  },
+  {
+   "id": "kimi",
+   "entity": "Moonshot (open-weight)",
+   "metric": "Kimi K3.1 Pro",
+   "value": "Top open-weight model on Artificial Analysis v5 (46, #9 overall); weights released Nov 4 with a commercial-licence trigger above $20M revenue",
+   "period": "Oct–Nov 2026",
+   "url": "https://technode.com/2026/11/05/moonshot-ai-releases-kimi-k3-1-pro-model-weights/",
+   "date": "2026-11-05",
+   "basis": "Independent benchmark / reported",
+   "confidence": "Medium",
+   "tags": [
+    "open-weight"
+   ]
+  },
+  {
+   "id": "deepseek",
+   "entity": "DeepSeek (open-weight)",
+   "metric": "DeepSeek V4.1-Flash price",
+   "value": "$0.15/$0.60 per 1M tokens",
+   "period": "Sep 2026",
+   "url": "https://www.techrepublic.com/article/news-deepseek-v4-1-flash/",
+   "date": "2026-09-10",
+   "basis": "List price",
+   "confidence": "Medium",
+   "tags": [
+    "open-weight",
+    "pricing"
+   ]
+  },
+  {
+   "id": "openrouter",
+   "entity": "OpenRouter",
+   "metric": "Open-weight token share",
+   "value": "Open-weight models >50% of OpenRouter tokens since Apr 2026; Chinese labs ~69% in one week",
+   "period": "2026",
+   "url": "https://openrouter.ai/ko-KR/data/newsletter/the-token-state-of-play",
+   "date": "2026-07",
+   "basis": "Platform data (developer-skewed)",
+   "confidence": "Low",
+   "tags": [
+    "open-weight"
+   ]
+  },
+  {
+   "id": "meta-closed",
+   "entity": "Meta",
+   "metric": "Model strategy",
+   "value": "Moved to closed Muse models (Muse Spark, Apr 2026); no new open Llama flagship in 2026",
+   "period": "2026",
+   "url": "https://www.axios.com/2026/04/08/meta-muse-alexandr-wang",
+   "date": "2026-04-08",
+   "basis": "Reported",
+   "confidence": "High",
+   "tags": [
+    "open-weight",
+    "meta"
+   ]
+  }
+ ]
+}
