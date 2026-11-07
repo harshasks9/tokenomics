@@ -1,21 +1,36 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+// Fonts are self-hosted from src/fonts (see build-fonts.py there) so builds never
+// download from Google Fonts. Same fonts, weights and CSS variables as before.
+// next/font/local names each family after its const, so consts carry a site prefix
+// to stay unique across sites (and distinct from the global Google "Inter").
+import localFont from "next/font/local";
 import "./llm-landscape.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const llmLandscapeInter = localFont({
+  src: [
+    { path: "../../fonts/inter.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "700", style: "normal" },
+    // Up to 900: the global Inter (globals.css) shared this family name on Google Fonts.
+    { path: "../../fonts/inter.woff2", weight: "800", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "900", style: "normal" },
+  ],
   variable: "--font-inter",
   display: "swap",
 });
 
 // Judgment voice: analyst opinion wears serif, evidence wears sans.
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  style: ["normal", "italic"],
+const llmLandscapeSourceSerif = localFont({
+  src: [
+    { path: "../../fonts/source-serif-4.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/source-serif-4.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/source-serif-4-italic.woff2", weight: "400", style: "italic" },
+    { path: "../../fonts/source-serif-4-italic.woff2", weight: "600", style: "italic" },
+  ],
   variable: "--font-serif",
   display: "swap",
+  adjustFontFallback: "Times New Roman",
 });
 
 export const metadata: Metadata = {
@@ -48,7 +63,7 @@ export const viewport: Viewport = {
 
 export default function LlmLandscapeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${inter.variable} ${serif.variable} lls-root`}>
+    <div className={`${llmLandscapeInter.variable} ${llmLandscapeSourceSerif.variable} lls-root`}>
       {/* meta.json paints the landing; the full universe streams behind it. */}
       <link rel="preload" href="/llm-landscape/meta.json" as="fetch" crossOrigin="anonymous" />
       <link rel="preload" href="/llm-landscape/models.json" as="fetch" crossOrigin="anonymous" />
