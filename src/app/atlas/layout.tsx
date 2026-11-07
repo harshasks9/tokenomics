@@ -12,6 +12,9 @@ const atlasInter = localFont({
     { path: "../../fonts/inter.woff2", weight: "500", style: "normal" },
     { path: "../../fonts/inter.woff2", weight: "600", style: "normal" },
     { path: "../../fonts/inter.woff2", weight: "700", style: "normal" },
+    // Up to 900: the global Inter (globals.css) shared this family name on Google Fonts.
+    { path: "../../fonts/inter.woff2", weight: "800", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "900", style: "normal" },
   ],
   variable: "--font-inter",
   display: "swap",

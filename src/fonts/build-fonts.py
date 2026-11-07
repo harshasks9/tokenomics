@@ -14,7 +14,8 @@ exactly how each file was made:
      (e.g. Fraunces defaults to opsz=9, Source Serif 4 to opsz=20).
   3. Subset to the union of the `unicode-range`s Google Fonts serves for the
      family's latin, latin-ext and greek subsets (whichever the family has),
-     keeping all OpenType layout features and dropping hinting (Google
+     keeping only the OpenType layout features Google keeps in the files it
+     serves (it strips cvXX/ssXX etc.) and dropping hinting (Google
      serves unhinted files to the browsers next/font targets). One file per
      family/style, because next/font/local cannot attach a different
      unicode-range to each file. Cyrillic and Vietnamese are left out: no
@@ -117,6 +118,26 @@ def unicodes_from_css(css):
     return cps
 
 
+def features_from_served_files(css):
+    """OpenType layout features present in the files Google Fonts serves.
+
+    Google strips optional features (cvXX, ssXX, case, zero, ...) from served
+    files, so CSS like `font-feature-settings: "cv11"` was a no-op on these
+    sites. Keeping only Google's set keeps the self-hosted rendering identical.
+    """
+    tags = set()
+    blocks = re.findall(r"/\* ([\w-]+) \*/\s*@font-face \{([^}]*)\}", css)
+    for name, body in blocks:
+        if name not in SUBSETS:
+            continue
+        served = TTFont(io.BytesIO(fetch(re.search(r"url\((https://[^)]+)\)", body).group(1))))
+        for table in ("GSUB", "GPOS"):
+            if table in served and served[table].table.FeatureList:
+                tags.update(r.FeatureTag for r in served[table].table.FeatureList.FeatureRecord)
+    assert tags, "no layout features found in served files"
+    return sorted(tags)
+
+
 def build(out, repo_path, query):
     font = TTFont(io.BytesIO(fetch(f"{GF_REPO}/{repo_path}")))
     if "fvar" in font:
@@ -128,7 +149,7 @@ def build(out, repo_path, query):
             font = TTFont(io.BytesIO(buf.getvalue()), lazy=False)
     css = fetch(CSS_API.format(query), UA).decode()
     opts = subset.Options()
-    opts.layout_features = ["*"]
+    opts.layout_features = features_from_served_files(css)
     opts.name_IDs = ["*"]
     opts.notdef_outline = True
     opts.hinting = False
