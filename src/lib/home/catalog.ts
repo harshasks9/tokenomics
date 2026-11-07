@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 /** Homepage last reorganized/audited — bump when the portfolio changes. */
-export const PORTFOLIO_UPDATED = "Oct 11, 2026";
+export const PORTFOLIO_UPDATED = "Nov 7, 2026";
 
 export type Section = "industries" | "intelligence" | "playbooks";
 
@@ -173,6 +173,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "mdes", name: "MDES Commitment Planner", href: "/mdes", icon: GraduationCap, section: "playbooks", audience: "account",
     gradient: "linear-gradient(135deg, #0b3d91 0%, #1a73e8 100%)",
     blurb: "Gemini Enterprise for EDU — $10.8M commitment ramp, GCP allocation and timeline planner", keywords: ["mdes", "thailand", "human intelligence", "gemini enterprise", "commitment", "ramp", "calculator", "edu"] },
+  { id: "under-the-hood", name: "Anthropic: Under the Hood", short: "Under the Hood", href: "/under-the-hood", icon: FileText, section: "intelligence", audience: "public",
+    gradient: "linear-gradient(135deg, #183b63 0%, #2a78d6 100%)",
+    blurb: "S-1 teardown — what Anthropic's IPO filing reveals about AI economics", keywords: ["anthropic", "s-1", "ipo", "teardown", "claude", "compute", "commitments", "nrr", "filing", "competitive intelligence"] },
 ];
 
 export const ARCHIVE_LINKS = [

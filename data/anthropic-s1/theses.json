@@ -1,0 +1,234 @@
+{
+ "_meta": {
+  "description": "Ten industry theses tested against the filing. Predictions are falsifiable analyst judgments, not forecasts."
+ },
+ "items": [
+  {
+   "id": "utility",
+   "title": "Intelligence is becoming a utility",
+   "support": [
+    "~$600M of Q3 revenue lost to price cuts; Haiku 5.5 list −90%; Epoch: fixed-capability price falls ~47%/quarter.",
+    "Copilot Fusion routes per step across models; open-weight models ≈19% of enterprise tokens (Menlo)."
+   ],
+   "contra": [
+    ">80% of Q3 revenue from models <6 months old: customers pay for the frontier, not commodity tokens.",
+    "Anthropic holds a 2× list-price premium over GPT-6.1 Sol while gaining share (Menlo 55%)."
+   ],
+   "industry": "The bottom of the curve commoditizes; the frontier does not — yet. Value migrates to whoever controls routing.",
+   "anthropic": "Defend by owning the harness (Claude Code/Cowork) where per-task quality is visible, not by token price.",
+   "players": {
+    "Google": "Gemini Flash/Argon price aggression is effective at the bottom; less so at the frontier.",
+    "Microsoft": "Fusion-style routing is the most direct threat to model loyalty.",
+    "AWS": "Bedrock benefits from commoditization (choice) but Anthropic is its anchor tenant.",
+    "OpenAI": "Half-price flagship hasn't bought share; capability parity matters more."
+   },
+   "confidence": "Medium",
+   "prediction": "By Q4 2027, the price gap between the top two closed flagships narrows below 1.5× while frontier-tier revenue share stays above 60% for Anthropic's newest models.",
+   "verdict": "Partly true: utility at the bottom, premium at the frontier."
+  },
+  {
+   "id": "efficiency",
+   "title": "Inference efficiency will determine the winners",
+   "support": [
+    "Implied 85% gross margin on serving (functional cost of revenue).",
+    "Ex short-term, Q3 compute ~29% of revenue; revenue/compute up from $0.40 (Q1 2025) to $1.72–2.08."
+   ],
+   "contra": [
+    "Most compute (≥74%) is research/model development, not serving.",
+    "Efficiency gains were passed on (−40% cost per task; ~$600M price cuts)."
+   ],
+   "industry": "Serving efficiency is table stakes; research efficiency (compute multipliers per capability) decides margins.",
+   "anthropic": "'Closing the loop' (Claude-written research code) is the strategic bet; RSP thresholds may tax it.",
+   "players": {
+    "Google": "TPU cost advantage helps both Gemini and (via TPU sales) Anthropic.",
+    "Microsoft": "Must rely on partners' efficiency; MAI models still catching up.",
+    "AWS": "Trainium economics matter most if Bedrock wins volume.",
+    "OpenAI": "Larger burn (≈−$278B cumulative FCF 2026–30 reported) makes efficiency existential."
+   },
+   "confidence": "Medium",
+   "prediction": "Cost of revenue stays below 20% of revenue through 2027 while R&D compute exceeds 50% of revenue.",
+   "verdict": "Partly true: serving efficiency is passed to customers; research efficiency is the moat."
+  },
+  {
+   "id": "agentic-scurve",
+   "title": "Agentic workloads create a new consumption S-curve",
+   "support": [
+    "Top 5% Claude Code enterprise users spend ~20× non-Code users.",
+    "Opus 4.5's lower cost per task preceded acceleration from 48% to 132% QoQ.",
+    "METR time horizons ≥16h for frontier models."
+   ],
+   "contra": [
+    "Q3 sequential dollar additions fell; Ramp suggests business adoption near a ceiling.",
+    "Cost per task falls 25–40% per model generation."
+   ],
+   "industry": "Consumption per user rises with autonomy, but per-task cost falls; net revenue depends on new task categories opening faster than costs fall.",
+   "anthropic": "Cowork must replicate Claude Code's intensity for knowledge work to sustain the curve.",
+   "players": {
+    "Google": "Workspace agents can capture the same tasks inside a bundle.",
+    "Microsoft": "Copilot Cowork (built on Claude) captures interface value; Anthropic still earns tokens.",
+    "AWS": "Long-running agents need sandboxes, storage, identity — AWS primitives.",
+    "OpenAI": "Codex + ChatGPT Work ~40M users; same S-curve, more consumer-led."
+   },
+   "confidence": "Medium",
+   "prediction": "At least one non-coding Claude product discloses usage intensity within 2× of Claude Code's top-5% cohort by end-2027.",
+   "verdict": "Supported for coding; unproven elsewhere."
+  },
+  {
+   "id": "coding-first",
+   "title": "Coding is the first scalable agentic monetization category",
+   "support": [
+    ">90% of Anthropic's code is written by Claude; Claude Code is 'becoming the default' in enterprise engineering orgs.",
+    "Coding market $34B in 2026; Claude Code + Codex ≈70% (Menlo)."
+   ],
+   "contra": [
+    "Coding has unusually verifiable outputs and tolerant users; finance, legal, healthcare face liability and accuracy constraints."
+   ],
+   "industry": "Coding sets the template (harness + sandbox + connectors + consumption pricing); regulated functions will adopt more slowly and through partners.",
+   "anthropic": "Vertical solutions (7 launched) and Cowork are the bridge; SIs and Ode with Anthropic carry the regulated work.",
+   "players": {
+    "Google": "Antigravity + Gemini 4 must win developers before workflows lock in.",
+    "Microsoft": "GitHub is the control point for code; Fusion threatens model loyalty.",
+    "AWS": "Kiro and Bedrock agents depend on Anthropic models today.",
+    "OpenAI": "Codex is the closest competitor at scale."
+   },
+   "confidence": "High",
+   "prediction": "Coding remains >40% of enterprise agentic spend through 2027 (Menlo-type surveys).",
+   "verdict": "Confirmed."
+  },
+  {
+   "id": "distribution",
+   "title": "Distribution matters more than model intelligence",
+   "support": [
+    "CSP marketplaces sold 44% of 9M revenue; Microsoft's Copilot Cowork is built on Claude.",
+    "Fortune 500 penetration is wide but <0.1% of expenses — incumbents own the workflow."
+   ],
+   "contra": [
+    "Anthropic grew mostly 'self-service and organic'; it reduced channel share and renegotiated terms as it scaled.",
+    "Menlo: Anthropic 55% of enterprise API spend vs Google 9% despite Google's distribution."
+   ],
+   "industry": "Distribution amplifies a frontier model but has not substituted for one; owning the interface without the best model has not won the API market.",
+   "anthropic": "Anthropic should keep multi-cloud distribution while building direct relationships through applications.",
+   "players": {
+    "Google": "Workspace and Vertex reach haven't translated into API share; must close the coding gap.",
+    "Microsoft": "Strongest distribution, but partially resells Claude.",
+    "AWS": "Bedrock distribution is real but model-agnostic.",
+    "OpenAI": "Consumer distribution (≈1B ChatGPT users) is a different moat."
+   },
+   "confidence": "Medium",
+   "prediction": "Anthropic's CSP-marketplace share stays below 45% in 2027 while total revenue grows >2×.",
+   "verdict": "Not supported at the frontier — distribution is a multiplier, not a substitute."
+  },
+  {
+   "id": "compute-moat",
+   "title": "Compute scarcity has become a competitive moat",
+   "support": [
+    "$895.4B committed; ~$150–175B more excluded; compute-constrained 'demand exceeds supply' language.",
+    "Q3 short-term buying shows scarcity is real in the near term."
+   ],
+   "contra": [
+    "$213.8B is contingent; SpaceXAI capacity cancelable on 90 days' notice after early 2027.",
+    "If prices fall faster than usage grows, committed capacity becomes a fixed-cost liability."
+   ],
+   "industry": "Secured capacity is an advantage only while demand outruns supply; the same contracts become a liability if the curve flattens.",
+   "anthropic": "The commitment schedule implies ~24% quarterly growth for another year at Q3 cost ratios.",
+   "players": {
+    "Google": "Wins on TPU sales either way.",
+    "Microsoft": "Azure contracts with Anthropic diversify away from OpenAI concentration.",
+    "AWS": "$110B Anthropic minimum underwrites Trainium scale.",
+    "OpenAI": "~$750B compute plan through 2030 (reported) — same bet, larger."
+   },
+   "confidence": "Medium",
+   "prediction": "At least one major frontier lab renegotiates, delays or resells >10% of committed capacity by end-2028.",
+   "verdict": "True in 2026; a liability test arrives 2028–2030."
+  },
+  {
+   "id": "open-weight",
+   "title": "Open-weight models will compress frontier margins",
+   "support": [
+    "Open-weight >50% of OpenRouter tokens; Cursor's Composer 2 built on Kimi K2.5.",
+    "Kimi K3.1 Pro within a few points of the closed frontier on AA v4."
+   ],
+   "contra": [
+    "Open-weight ≈19% of enterprise tokens but ~4% of spend (Menlo).",
+    "Anthropic's newest models produce >80% of revenue; enterprises pay for the frontier."
+   ],
+   "industry": "Open weights cap prices for high-volume, tolerant workloads (classification, extraction, sub-agents) and shape the cost floor; frontier agentic work remains differentiated.",
+   "anthropic": "Haiku 5.5 at $0.10/$0.50 is a defensive move at the bottom.",
+   "players": {
+    "Google": "Gemma and Flash compete at the floor.",
+    "Microsoft": "Foundry open-model revenue up 10× — benefits from both.",
+    "AWS": "Bedrock hosts open weights; neutral.",
+    "OpenAI": "No 2026 open-weight model found."
+   },
+   "confidence": "Medium",
+   "prediction": "Open-weight share of enterprise LLM spend stays below 10% through 2027.",
+   "verdict": "True at the floor, not yet at the frontier."
+  },
+  {
+   "id": "safety-differentiator",
+   "title": "Safety and governance are strategic product differentiators",
+   "support": [
+    "Enterprise Frontier Safeguards developed with >100 customers; >50% of the Fortune 500 at ≥$100K.",
+    "Gated Mythos release; RSP disclosures."
+   ],
+   "contra": [
+    "5–7% of revenue from violating customers; export restrictions disabled two flagship models in June 2026; U.S. supply-chain-risk designation."
+   ],
+   "industry": "Trust is an enterprise purchasing criterion; safety posture also creates availability risk and government friction.",
+   "anthropic": "Safety brand helps in regulated industries and with CISOs; restrictions cede some demand to looser competitors.",
+   "players": {
+    "Google": "Can match governance with enterprise controls.",
+    "Microsoft": "Compliance tooling is its home turf.",
+    "AWS": "Bedrock guardrails commoditize part of the safety stack.",
+    "OpenAI": "Cyber-first gated releases mirror Anthropic's approach (GPT-6 Astra)."
+   },
+   "confidence": "Medium",
+   "prediction": "Gated frontier releases become standard across the top three labs by 2027.",
+   "verdict": "True for enterprise trust; costly for availability."
+  },
+  {
+   "id": "vertical",
+   "title": "The AI industry is becoming vertically integrated",
+   "support": [
+    "Anthropic Direct: leasing chips and hosting in dedicated facilities; $451.2B leases not commenced.",
+    "Anthropic builds models, platform, and applications (Code, Cowork, Design, Security, Science)."
+   ],
+   "contra": [
+    "Still buys from three hyperscalers, a competitor (SpaceXAI) and neoclouds; sells 44% through CSP marketplaces."
+   ],
+   "industry": "Integration is happening from both ends — labs moving down into infrastructure, clouds moving up into agents — with frenemy contracts in between.",
+   "anthropic": "Anthropic is integrating where it captures margin (applications, compute procurement) and partnering where reach matters (distribution).",
+   "players": {
+    "Google": "The most vertically integrated stack (TPU → Gemini → Workspace).",
+    "Microsoft": "Integrated in distribution; dependent in models.",
+    "AWS": "Integrated in chips and cloud; dependent in frontier models.",
+    "OpenAI": "Pursuing similar integration (Stargate, devices)."
+   },
+   "confidence": "Medium",
+   "prediction": "Anthropic discloses owned or directly leased capacity exceeding CSP-hosted capacity by 2028.",
+   "verdict": "Directionally true."
+  },
+  {
+   "id": "capital-phase",
+   "title": "The industry is entering a more capital-intensive phase",
+   "support": [
+    "Purchase commitments 5.8× in nine months; $141.1B raised; partner financing $77.0B; Broadcom PIK notes.",
+    "Hyperscaler capex 2026: Alphabet $195–205B, Amazon ~$220B, Microsoft FY27 ~$170B."
+   ],
+   "contra": [
+    "Anthropic generated +$6.6B operating cash flow in 9M 2026; adjusted operating margin 12%."
+   ],
+   "industry": "Independent frontier labs can exist only with access to public markets and partner balance sheets; the IPO is a financing necessity, not just liquidity.",
+   "anthropic": "Positive operating cash flow buys time, but commitments require continued external capital or sustained hyper-growth.",
+   "players": {
+    "Google": "Self-funded; can outlast.",
+    "Microsoft": "Self-funded; partnership portfolio.",
+    "AWS": "Self-funded; equity stakes in both Anthropic and OpenAI.",
+    "OpenAI": "Larger projected burn; IPO reportedly 2027."
+   },
+   "confidence": "High",
+   "prediction": "Both Anthropic and OpenAI raise >$50B of additional external capital (equity, debt or partner financing) by end-2027.",
+   "verdict": "Confirmed."
+  }
+ ]
+}

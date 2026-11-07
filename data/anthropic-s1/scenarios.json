@@ -1,0 +1,62 @@
+{
+ "_meta": {
+  "description": "Illustrative scenario presets for the Scenario Lab. These are ASSUMPTIONS, not forecasts or management guidance. Base quarter = Q3 2026 actuals. Model: revenue path from QoQ growth with decay; usage = revenue ÷ price index; required compute = serving × usage ÷ efficiency + research compute growing at its own rate; committed compute follows an illustrative obligation profile calibrated to disclosed anchors ($69.8B next 12 months; $447.5B before 2031; $895.4B total); shortfall bought at a premium; cash margin = 1 − compute/revenue − other cash opex %.",
+  "base": {
+   "quarter": "Q3 2026",
+   "revenue": 16956,
+   "compute": 9863,
+   "shortTerm": 5000,
+   "liquidity": 146600,
+   "partnerFinancing": 77000,
+   "contingentShare": 0.239,
+   "otherCashOpexPct9m": 0.311
+  }
+ },
+ "presets": {
+  "bull": {
+   "label": "Bull",
+   "g0": 0.26,
+   "decay": 0.9,
+   "priceChange": -0.2,
+   "efficiency": 0.45,
+   "researchGrowth": 0.4,
+   "servingShare": 0.3,
+   "premium": 1.4,
+   "otherOpex": 0.26,
+   "exitContingent": false,
+   "partnerFinancing": false,
+   "ipoProceeds": 0,
+   "narrative": "Frontier leadership holds; agents scale beyond coding; committed capacity is absorbed by 2028 and Anthropic Direct lowers unit costs."
+  },
+  "base": {
+   "label": "Base",
+   "g0": 0.2,
+   "decay": 0.89,
+   "priceChange": -0.25,
+   "efficiency": 0.4,
+   "researchGrowth": 0.5,
+   "servingShare": 0.3,
+   "premium": 1.6,
+   "otherOpex": 0.3,
+   "exitContingent": false,
+   "partnerFinancing": false,
+   "ipoProceeds": 0,
+   "narrative": "Growth normalizes (≈+115% in 2027, ≈+20% by 2030); prices fall ~25%/yr; committed capacity front-runs demand in 2027–28, compressing margins before recovering."
+  },
+  "bear": {
+   "label": "Bear",
+   "g0": 0.08,
+   "decay": 0.8,
+   "priceChange": -0.35,
+   "efficiency": 0.35,
+   "researchGrowth": 0.6,
+   "servingShare": 0.3,
+   "premium": 1.8,
+   "otherOpex": 0.33,
+   "exitContingent": false,
+   "partnerFinancing": false,
+   "ipoProceeds": 0,
+   "narrative": "Differentiation compresses, routing layers commoditize models, prices fall faster than usage grows; fixed commitments drive losses and require new capital or renegotiation."
+  }
+ }
+}

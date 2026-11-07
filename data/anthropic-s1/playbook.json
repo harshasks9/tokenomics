@@ -1,0 +1,494 @@
+{
+ "_meta": {
+  "description": "Competitor playbook. Recommendations are analytical judgments grounded in the evidence fields."
+ },
+ "domains": [
+  {
+   "domain": "Model strategy",
+   "opportunity": "Reach frontier parity where it is monetized (agentic coding, long-horizon tasks); be 'good enough' and cheap everywhere else.",
+   "evidence": ">80% of Anthropic's Q3 revenue came from models <6 months old; coding users spend ~20×.",
+   "target": "Developers and engineering orgs; agentic platforms",
+   "capabilities": "Frontier coding model + long-context agent training; fast release cadence",
+   "action": "Ship a coding-specialized frontier tier on a 3–4-month cadence; publish per-task cost vs Opus 5.5 on public harnesses.",
+   "horizon": "0–12 months",
+   "benefit": "Contest the highest-value workloads where switching happens every release.",
+   "risk": "Parity is costly; a near-miss buys nothing.",
+   "metric": "Share of SWE agent workloads on own model (SWE-bench Pro, internal routing logs)."
+  },
+  {
+   "domain": "Pricing strategy",
+   "opportunity": "Price per completed task, not per token; attack where Anthropic's surge costs are highest.",
+   "evidence": "~$600M of Q3 price cuts; 2× list-price premium over GPT-6.1 Sol held share; Q3 surge premium $5.0B.",
+   "target": "High-volume agent pipelines; cost-sensitive enterprise workloads",
+   "capabilities": "Effort controls, caching, routing; verifiable task-level benchmarks",
+   "action": "Offer outcome-based or per-task guarantees on reference workloads; bundle capacity guarantees in surge periods.",
+   "horizon": "0–6 months",
+   "benefit": "Turns Anthropic's capacity timing risk into a customer-facing reliability advantage.",
+   "risk": "Margin dilution if price elasticity is low.",
+   "metric": "Win rate on price-sensitive RFPs; cost per task vs Claude."
+  },
+  {
+   "domain": "Coding",
+   "opportunity": "Own the developer loop (repo, CI, review) and make the model swappable inside it.",
+   "evidence": "GitHub agents start ~40% of PRs (Octoverse); Copilot Fusion routing; Claude Code 'default' in many enterprises.",
+   "target": "Engineering leaders; platform teams",
+   "capabilities": "Agent harness, sandboxes, repo context, review tooling",
+   "action": "Integrate deeply with source control and CI; offer enterprise policy, audit and cost controls for multi-model agents.",
+   "horizon": "0–12 months",
+   "benefit": "Shifts loyalty from model to platform.",
+   "risk": "Developers prefer best model; routing perceived as downgrade.",
+   "metric": "Agent-authored PRs on own platform; seats with consumption add-ons."
+  },
+  {
+   "domain": "Agents",
+   "opportunity": "Differentiate on the agent runtime: identity, permissions, memory, long-running sandboxes and governance.",
+   "evidence": "Anthropic sells Managed Agents, Agent SDK, MCP; Enterprise Frontier Safeguards built with >100 customers.",
+   "target": "Regulated enterprises; CISOs",
+   "capabilities": "Identity/permissions, data residency, audit, persistent compute",
+   "action": "Offer a governed agent runtime that runs any frontier model, with customer-held keys and residency.",
+   "horizon": "6–18 months",
+   "benefit": "Captures value regardless of which model wins a release cycle.",
+   "risk": "Anthropic's own runtime is already enterprise-grade.",
+   "metric": "Agents in production per customer; hours of autonomous work governed."
+  },
+  {
+   "domain": "Distribution",
+   "opportunity": "Use productivity suites and marketplaces to embed agents where work happens, but don't count on resale fees.",
+   "evidence": "CSP-marketplace share fell to ≈40% in Q3; channel terms renegotiated; Copilot Cowork built on Claude.",
+   "target": "Fortune 500 knowledge workers",
+   "capabilities": "Suite integration; consumption billing inside bundles",
+   "action": "Bundle agent consumption into suite agreements with pooled credits; make first-party models the default with frictionless BYO-model.",
+   "horizon": "0–12 months",
+   "benefit": "Monetizes the <0.1% wallet-share gap Anthropic cites.",
+   "risk": "Customers demand Claude inside the suite.",
+   "metric": "Agent consumption per suite seat."
+  },
+  {
+   "domain": "Compute economics",
+   "opportunity": "Convert infrastructure advantage into customer-level cost and capacity guarantees.",
+   "evidence": "Anthropic paid a premium for $5.0B of surge compute; $213.8B of its commitments depend on suppliers' financing.",
+   "target": "Frontier labs and large AI-native customers",
+   "capabilities": "Spare capacity, investment-grade financing, chip roadmaps",
+   "action": "Sell reserved surge capacity and chip-financing packages; price capacity insurance for demand spikes.",
+   "horizon": "0–24 months",
+   "benefit": "Earns rent from rivals' growth regardless of model share.",
+   "risk": "Arming a competitor.",
+   "metric": "Third-party lab compute revenue; utilization."
+  },
+  {
+   "domain": "GTM execution",
+   "opportunity": "Go where Anthropic is thin: regulated industries outside software, mid-market, and regions needing sovereignty.",
+   "evidence": "Ode with Anthropic targets mid-market; international 29% of revenue; seven vertical solutions only.",
+   "target": "Banks, insurers, manufacturers, public sector, APAC enterprises",
+   "capabilities": "FDE teams, SI alliances, in-region capacity",
+   "action": "Stand up industry FDE pods with SIs; offer in-country inference and data residency by default.",
+   "horizon": "6–24 months",
+   "benefit": "Captures depth before standardization locks in.",
+   "risk": "Long sales cycles; SIs also partner with Anthropic.",
+   "metric": "Production deployments per vertical; regional revenue."
+  }
+ ],
+ "google": {
+  "title": "The Google lens: Anthropic is Google Cloud's best customer and Gemini's toughest competitor",
+  "points": [
+   {
+    "layer": "Infrastructure (TPU & Cloud)",
+    "view": "Anthropic is the anchor external TPU customer: ≈$121.3B CSP minimum + ≈$161.2B Broadcom-financed TPU leases + $125–150B additional TPU estimate. Google Cloud grew 103% to $30.7B in Q3 with a $561B backlog.",
+    "incentive": "Maximize Anthropic's TPU consumption; TPU sales win regardless of model share.",
+    "tension": "Every Anthropic token served on TPU strengthens a Gemini rival."
+   },
+   {
+    "layer": "Equity",
+    "view": "Google 2026 NPA (up to $20B, reduced by up to $10B if Google buys IPO-concurrent shares); ownership cap 14.99%; reported up-to-$40B investment plan.",
+    "incentive": "Financial upside from Anthropic's success.",
+    "tension": "Investor upside vs first-party model share."
+   },
+   {
+    "layer": "Distribution (Vertex AI)",
+    "view": "Claude sold on Vertex AI; Anthropic is shrinking marketplace share (≈40% Q3) and renegotiated channel terms.",
+    "incentive": "Marketplace fees and committed-spend drawdown.",
+    "tension": "Fee capture per Anthropic dollar is falling."
+   },
+   {
+    "layer": "Models (Gemini)",
+    "view": "Menlo: Google 9% of enterprise LLM API spend (from 21%) vs Anthropic 55%. Gemini 4 Argon at $2/$10 intro rising to $4/$20.",
+    "incentive": "Win frontier share and Workspace attach.",
+    "tension": "Price parity at the frontier hasn't moved share; capability in coding is the gap."
+   },
+   {
+    "layer": "Applications (Workspace, Gemini Enterprise, Antigravity)",
+    "view": "Workspace distribution + Gemini app 1B MAU; Antigravity replaced Gemini CLI.",
+    "incentive": "Own the knowledge-work interface where Cowork competes.",
+    "tension": "Cowork and Claude for Microsoft 365 target the same users."
+   }
+  ],
+  "actions": [
+   "Separate scorecards: Google Cloud should be measured on total Anthropic-related compute + TPU revenue; Gemini on first-party API and Workspace agent share — avoid letting one suppress the other.",
+   "Offer Anthropic reserved surge TPU capacity at a premium (Q3 shows willingness to pay) while prioritizing Gemini for internal frontier runs.",
+   "Close the coding gap first: make Antigravity + Gemini competitive on long-horizon agentic coding, the category that drives ~20× user intensity.",
+   "Use Workspace as the agent runtime for knowledge work with pooled consumption credits — compete with Cowork where Google owns the documents.",
+   "In APAC/Japan, pair in-region TPU capacity and data residency with SI-led (NEC/Fujitsu/NRI-style) delivery before Claude standardizes in large accounts."
+  ]
+ },
+ "apac": {
+  "title": "APAC and Japan: hypotheses to validate, not market-share estimates",
+  "context": [
+   "Anthropic's international revenue is 29.4% of 9M 2026 (billing address); no country split is disclosed.",
+   "Anthropic Japan reports staff 3 → 50+, adopting organizations >10×, usage ~1.9× other countries (Oct 2026 briefing, via press).",
+   "Hitachi (~290,000 employees) and NEC (~30,000) are deploying Claude; NRI is the first authorized reseller; the IPO earmarks up to ~$3.5B for Japanese investors.",
+   "Japan's government plans up to ¥1T for a sovereign model; Teikoku Databank finds 34.5% of firms use gen AI (63.6% of large firms)."
+  ],
+  "segments": [
+   {
+    "segment": "AI-native digital businesses",
+    "hypothesis": "Fastest adopters of consumption-priced coding agents; most price-sensitive and most open-weight-tolerant.",
+    "validate": "Win/loss on coding-agent pilots; token mix by model class."
+   },
+   {
+    "segment": "Large traditional enterprises",
+    "hypothesis": "Adopt through SIs (NEC, Hitachi, Fujitsu, NRI) and standardize on one primary model per workflow; legacy modernization is the entry point.",
+    "validate": "SI pipeline by model vendor; modernization project counts."
+   },
+   {
+    "segment": "Financial services",
+    "hypothesis": "Data residency and auditability decide; in-region inference is a gating requirement.",
+    "validate": "RFP requirements on inference residency; regulator guidance."
+   },
+   {
+    "segment": "Manufacturing & automotive",
+    "hypothesis": "Agentic engineering (code, CAD, documentation) before shop-floor; physical-AI standards (MCP-style) matter later.",
+    "validate": "Engineering-org pilots; OT integration requests."
+   },
+   {
+    "segment": "Retail & CPG",
+    "hypothesis": "Customer-service and content workloads route to cheaper tiers (Haiku/Flash/open-weight).",
+    "validate": "Cost-per-interaction benchmarks."
+   },
+   {
+    "segment": "Telecom",
+    "hypothesis": "Network-ops agents and sovereign hosting; telcos as resellers of in-country capacity.",
+    "validate": "Telco partnership announcements; sovereign cloud RFPs."
+   },
+   {
+    "segment": "Technology & developer-heavy orgs",
+    "hypothesis": "Claude Code adoption mirrors US pattern with a lag; Japanese-language tooling and support matter.",
+    "validate": "Developer surveys; Claude Code seats in region."
+   }
+  ],
+  "risks": [
+   "Sovereignty programs and domestic models can mandate local stacks for public sector.",
+   "Open-weight models (often Chinese-origin) carry procurement and security concerns that may cut both ways.",
+   "Price sensitivity favors routing to cheaper tiers; FDE capacity in-region is scarce."
+  ]
+ },
+ "matrix": {
+  "functions": [
+   "Software engineering",
+   "Customer operations",
+   "Finance & accounting",
+   "Legal & compliance",
+   "Sales & marketing",
+   "R&D / science",
+   "IT & security operations"
+  ],
+  "industries": [
+   "Technology",
+   "Financial services",
+   "Healthcare & life sciences",
+   "Manufacturing",
+   "Retail & CPG",
+   "Public sector",
+   "Telecom"
+  ],
+  "note": "Analytical judgment on a 1–3 scale for adoption potential (A), competitive intensity (C) and usage economics (E, consumption per user). Not measured data.",
+  "cells": {
+   "Software engineering|Technology": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 3
+   },
+   "Software engineering|Financial services": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 3
+   },
+   "Software engineering|Healthcare & life sciences": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 3
+   },
+   "Software engineering|Manufacturing": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 3
+   },
+   "Software engineering|Retail & CPG": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 2
+   },
+   "Software engineering|Public sector": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 2
+   },
+   "Software engineering|Telecom": {
+    "adoption": 3,
+    "intensity": 2,
+    "economics": 3
+   },
+   "Customer operations|Technology": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Customer operations|Financial services": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Customer operations|Healthcare & life sciences": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Customer operations|Manufacturing": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Customer operations|Retail & CPG": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Customer operations|Public sector": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Customer operations|Telecom": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Finance & accounting|Technology": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 2
+   },
+   "Finance & accounting|Financial services": {
+    "adoption": 3,
+    "intensity": 3,
+    "economics": 3
+   },
+   "Finance & accounting|Healthcare & life sciences": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 2
+   },
+   "Finance & accounting|Manufacturing": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 2
+   },
+   "Finance & accounting|Retail & CPG": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Finance & accounting|Public sector": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 1
+   },
+   "Finance & accounting|Telecom": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 2
+   },
+   "Legal & compliance|Technology": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 2
+   },
+   "Legal & compliance|Financial services": {
+    "adoption": 3,
+    "intensity": 2,
+    "economics": 2
+   },
+   "Legal & compliance|Healthcare & life sciences": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 2
+   },
+   "Legal & compliance|Manufacturing": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 2
+   },
+   "Legal & compliance|Retail & CPG": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Legal & compliance|Public sector": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 1
+   },
+   "Legal & compliance|Telecom": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 2
+   },
+   "Sales & marketing|Technology": {
+    "adoption": 2,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Sales & marketing|Financial services": {
+    "adoption": 2,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Sales & marketing|Healthcare & life sciences": {
+    "adoption": 1,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Sales & marketing|Manufacturing": {
+    "adoption": 1,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Sales & marketing|Retail & CPG": {
+    "adoption": 2,
+    "intensity": 3,
+    "economics": 1
+   },
+   "Sales & marketing|Public sector": {
+    "adoption": 1,
+    "intensity": 2,
+    "economics": 1
+   },
+   "Sales & marketing|Telecom": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 1
+   },
+   "R&D / science|Technology": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 3
+   },
+   "R&D / science|Financial services": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 3
+   },
+   "R&D / science|Healthcare & life sciences": {
+    "adoption": 3,
+    "intensity": 2,
+    "economics": 3
+   },
+   "R&D / science|Manufacturing": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 2
+   },
+   "R&D / science|Retail & CPG": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 2
+   },
+   "R&D / science|Public sector": {
+    "adoption": 1,
+    "intensity": 1,
+    "economics": 2
+   },
+   "R&D / science|Telecom": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 3
+   },
+   "IT & security operations|Technology": {
+    "adoption": 3,
+    "intensity": 2,
+    "economics": 2
+   },
+   "IT & security operations|Financial services": {
+    "adoption": 3,
+    "intensity": 2,
+    "economics": 2
+   },
+   "IT & security operations|Healthcare & life sciences": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 2
+   },
+   "IT & security operations|Manufacturing": {
+    "adoption": 2,
+    "intensity": 1,
+    "economics": 2
+   },
+   "IT & security operations|Retail & CPG": {
+    "adoption": 3,
+    "intensity": 2,
+    "economics": 1
+   },
+   "IT & security operations|Public sector": {
+    "adoption": 2,
+    "intensity": 2,
+    "economics": 2
+   },
+   "IT & security operations|Telecom": {
+    "adoption": 3,
+    "intensity": 1,
+    "economics": 2
+   }
+  }
+ },
+ "signposts": [
+  {
+   "signal": "Q4 2026 sequential revenue addition",
+   "threshold": "< $5.4B confirms deceleration in dollars",
+   "why": "Tests whether Q3 was a pause or a new slope."
+  },
+  {
+   "signal": "Short-term compute dollars",
+   "threshold": "> $5.0B/quarter",
+   "why": "Margin pressure and supplier pricing power."
+  },
+  {
+   "signal": "October 31 Run-Rate Revenue (next amendment)",
+   "threshold": "vs $67.8B (Q3 × 4)",
+   "why": "Only post-Q3 operating datapoint promised."
+  },
+  {
+   "signal": "CSP-marketplace share",
+   "threshold": "< 40% for FY2026",
+   "why": "Distribution economics shifting from hyperscalers."
+  },
+  {
+   "signal": "Policy-violating revenue %",
+   "threshold": "< 5% in FY2026",
+   "why": "Revenue quality and enforcement impact."
+  },
+  {
+   "signal": "Contingent commitments ($213.8B)",
+   "threshold": "Any terminations or renegotiations",
+   "why": "Release valve if growth slows."
+  },
+  {
+   "signal": "SpaceXAI arrangement after Mar 2027",
+   "threshold": "Extended vs cancelled",
+   "why": "Competitor-supplied capacity."
+  },
+  {
+   "signal": "RSP threshold events",
+   "threshold": "Release delays or human-review mandates",
+   "why": "Velocity tax on closing the loop."
+  }
+ ]
+}

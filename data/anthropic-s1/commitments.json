@@ -1,0 +1,308 @@
+{
+ "_meta": {
+  "description": "Infrastructure obligations reconstructed from the S-1/A (Nov 2, 2026), MD&A — Contractual Obligations (pp. 173–176) and Notes 7, 13, 16, 17. $ millions.",
+  "asOf": "2026-09-30 (plus commitments entered into through Nov 2, 2026)",
+  "sourceId": "s1a",
+  "doubleCountingRule": "The five 'buckets' sum to the $895.4B aggregate and do not overlap. Named counterparty arrangements are a different cut of the same money: their fixed/minimum amounts sit inside the buckets (the filing does not map agreement-to-bucket), so they must never be added to the bucket total. Arrangements without fixed dollar amounts are explicitly excluded from the aggregate."
+ },
+ "aggregate": {
+  "total": 895400,
+  "before2031": 447500,
+  "from2031to2045": 447900,
+  "next12Months": 69800,
+  "next12MonthsContingent": 4300,
+  "contingentOrTerminable": 213800,
+  "excludedEstimateLow": 150000,
+  "excludedEstimateHigh": 175000,
+  "page": "139, 173–174"
+ },
+ "buckets": [
+  {
+   "id": "table",
+   "label": "Contractual obligations table (non-cancelable, term > 1 year)",
+   "amount": 319993,
+   "page": "173",
+   "detail": "Operating leases $4,224M; finance leases $1,950M; purchase commitments (mainly CSP hosting) $313,819M"
+  },
+  {
+   "id": "shortterm",
+   "label": "Short-term commitments (cancelable within a year or term ≤ 1 year)",
+   "amount": 17400,
+   "page": "174",
+   "detail": "Minimum payments as of Sep 30, 2026"
+  },
+  {
+   "id": "leases-not-commenced",
+   "label": "Leases executed, not yet commenced",
+   "amount": 451200,
+   "page": "174",
+   "detail": "Commence 2026–2028; terms < 1 to 20 years; weighted-average ≈ 10 years. Includes most of the ~$161.2B Broadcom TPU equipment leases and data-center leases (inference: the commenced finance-lease balance is only $1.95B)."
+  },
+  {
+   "id": "post-q3",
+   "label": "Commitments entered into after Sep 30, 2026",
+   "amount": 100200,
+   "page": "174",
+   "detail": "Primarily data-center leases and CSP hosting / third-party infrastructure; some subject to contingent conditions"
+  },
+  {
+   "id": "post-q3-short",
+   "label": "Short-term agreements entered into after Sep 30, 2026",
+   "amount": 6600,
+   "page": "174",
+   "detail": "Minimum payments"
+  }
+ ],
+ "tableByYear": {
+  "columns": [
+   "2026 (Q4)",
+   "2027",
+   "2028",
+   "2029",
+   "2030",
+   "Thereafter"
+  ],
+  "operatingLeases": [
+   57,
+   303,
+   462,
+   445,
+   466,
+   2491
+  ],
+  "financeLeases": [
+   121,
+   438,
+   422,
+   406,
+   390,
+   173
+  ],
+  "purchaseCommitments": [
+   5053,
+   28424,
+   43473,
+   46901,
+   44214,
+   145754
+  ],
+  "total": [
+   5231,
+   29165,
+   44357,
+   47752,
+   45070,
+   148418
+  ],
+  "page": "173"
+ },
+ "history": [
+  {
+   "asOf": "Dec 31, 2025",
+   "label": "Non-cancelable purchase commitments",
+   "amount": 54559,
+   "sourceId": "s1a",
+   "page": "F-59"
+  },
+  {
+   "asOf": "Jan 1 – Jun 1, 2026",
+   "label": "New / amended lease & commercial agreements (minimum payments)",
+   "amount": 417000,
+   "sourceId": "s1a",
+   "page": "F-64"
+  },
+  {
+   "asOf": "Sep 30, 2026",
+   "label": "Purchase commitments (same caption as Dec 2025)",
+   "amount": 313819,
+   "sourceId": "s1a",
+   "page": "173"
+  },
+  {
+   "asOf": "Nov 2, 2026",
+   "label": "Aggregate committed spend (all buckets)",
+   "amount": 895400,
+   "sourceId": "s1a",
+   "page": "139"
+  }
+ ],
+ "counterparties": [
+  {
+   "id": "broadcom",
+   "name": "Broadcom (and assigned financing SPVs)",
+   "type": "Equipment finance leases (TPU-based capacity), 5-year",
+   "amount": 161200,
+   "amountBasis": "Aggregate rent excl. interest (2026 Lease Arrangement alone ≈ $125.2B)",
+   "period": "Five-year terms; capacity online from 2026, more from 2027",
+   "chip": "Google TPU",
+   "cancelability": "Non-cancelable by either party except lessor on default; cross-default and acceleration provisions",
+   "financing": "Up to $42.0B Infrastructure Partner 2026 NPA may fund quarterly rent (9% PIK; 13% if revenue conditions missed); restricted-cash deposits for Broadcom's benefit",
+   "inAggregate": "Yes — mostly within 'leases not yet commenced' (inference)",
+   "page": "170, 176",
+   "dependency": "Broadcom/Google TPU supply; data-center operators; lessor financing partners"
+  },
+  {
+   "id": "google",
+   "name": "Google (Cloud)",
+   "type": "CSP hosting agreement with true-up",
+   "amount": 121300,
+   "amountBasis": "Minimum spend 'regardless of actual usage' (was $114.5B in the Oct 26 S-1)",
+   "period": "Apr 2026 – Jul 2033",
+   "chip": "TPU (Google Cloud)",
+   "cancelability": "Non-cancelable except Google's uncured material breach",
+   "financing": "Google 2026 NPA: up to $20.0B ($10.0B less if Google buys IPO-concurrent shares)",
+   "inAggregate": "Yes (fixed minimum)",
+   "page": "174",
+   "dependency": "Google is investor (cap 14.99%), supplier, distributor (Vertex AI) and competitor (Gemini)"
+  },
+  {
+   "id": "google-tpu-addl",
+   "name": "Google / third-party TPU providers — additional TPU compute",
+   "type": "Procurement without fixed dollar amount",
+   "amount": 137500,
+   "amountLow": 125000,
+   "amountHigh": 150000,
+   "amountBasis": "Company estimate of aggregate future payments",
+   "period": "Delivery 2028–2031",
+   "chip": "Google TPU",
+   "cancelability": "Delivery-method dependent (CSP hosting, direct purchase with 5-year financing, or third-party lease)",
+   "financing": "Five-year financing options described",
+   "inAggregate": "No — explicitly excluded",
+   "page": "174–175",
+   "dependency": "Google TPU roadmap; financing availability"
+  },
+  {
+   "id": "amazon",
+   "name": "Amazon (AWS)",
+   "type": "Spend commitment with true-up",
+   "amount": 110000,
+   "amountBasis": "Minimum spend 'regardless of actual usage'",
+   "period": "May 2026 – Apr 2036",
+   "chip": "Not specified in this agreement description (multi-chip incl. Trainium per filing)",
+   "cancelability": "Non-cancelable except Amazon's uncured material breach",
+   "financing": "Amazon 2026 NPA: up to $15.0B in $5.0B tranches on compute-capacity milestones; $6.2B Amazon notes outstanding (share-settled)",
+   "inAggregate": "Yes (fixed minimum)",
+   "page": "175",
+   "dependency": "Amazon is investor (cap 12%), supplier, distributor (Bedrock) and competitor"
+  },
+  {
+   "id": "spacexai",
+   "name": "SpaceXAI (formerly X.AI LLC; SpaceX subsidiary)",
+   "type": "GPU compute services (NVIDIA)",
+   "amount": 120500,
+   "amountBasis": "'Up to' — ≈ $3.1B per month once all capacity delivered (expected Dec 2026)",
+   "period": "Terms extending into 2029",
+   "chip": "NVIDIA GPU",
+   "cancelability": "After non-cancelable periods ending Jan and Mar 2027, either party may cancel on 90 days' notice",
+   "financing": "—",
+   "inAggregate": "Minimum portion only (filing does not quantify)",
+   "page": "175",
+   "dependency": "A direct frontier-model competitor (Grok) is a top-three compute supplier by headline value"
+  },
+  {
+   "id": "microsoft",
+   "name": "Microsoft (Azure)",
+   "type": "Spend commitment",
+   "amount": 44900,
+   "amountBasis": "Minimum spend 'regardless of actual usage'",
+   "period": "Nov 2026 – Jun 2033",
+   "chip": "Not specified",
+   "cancelability": "Non-cancelable except Microsoft's uncured breach or, per tranche, undelivered tranches",
+   "financing": "—",
+   "inAggregate": "Yes (fixed minimum)",
+   "page": "174",
+   "dependency": "Microsoft is investor, distributor (Foundry / Copilot) and competitor (MAI, OpenAI partner)"
+  },
+  {
+   "id": "nscale",
+   "name": "Nscale",
+   "type": "GPU services (NVIDIA)",
+   "amount": 44600,
+   "amountBasis": "'Up to'; fees accrue only as capacity is delivered and accepted",
+   "period": "Into 2033",
+   "chip": "NVIDIA GPU",
+   "cancelability": "Non-cancelable except delivery/availability failures or breach",
+   "financing": "Nscale must use best efforts to obtain qualifying financing",
+   "inAggregate": "Likely within contingent amounts (financing condition)",
+   "page": "175",
+   "dependency": "Neocloud balance sheet and financing markets"
+  },
+  {
+   "id": "lambda",
+   "name": "Lambda",
+   "type": "GPU services (NVIDIA)",
+   "amount": 41300,
+   "amountBasis": "Aggregate; fees accrue as capacity is delivered and accepted",
+   "period": "Into 2034",
+   "chip": "NVIDIA GPU",
+   "cancelability": "Aug 2026 agreement (~$34.9B) terminable if Lambda does not timely secure the facility lease",
+   "financing": "—",
+   "inAggregate": "Yes; ~$34.9B tied to a facility-lease condition",
+   "page": "175",
+   "dependency": "Neocloud facility leasing and financing"
+  },
+  {
+   "id": "amd",
+   "name": "AMD",
+   "type": "Hardware supply framework (Helios racks, MI450)",
+   "amount": 20000,
+   "amountBasis": "Expected to exceed $20.0B if full initial capacity procured; up to ~2× with optional capacity",
+   "period": "Initial tranche in 2027; no fixed term",
+   "chip": "AMD GPU",
+   "cancelability": "Non-cancelable except AMD breach; conditions on deployment proposals may be waived by Anthropic",
+   "financing": "AMD commitment to buy up to $5.0B Class N stock on delivery milestones (first expected 2027)",
+   "inAggregate": "No — explicitly excluded (no fixed dollar commitment)",
+   "page": "166, 175",
+   "dependency": "AMD MI450 ramp; approved manufacturers"
+  }
+ ],
+ "financing": [
+  {
+   "id": "cash",
+   "label": "Cash and cash equivalents",
+   "amount": 95600,
+   "page": "139"
+  },
+  {
+   "id": "sti",
+   "label": "Short-term investments",
+   "amount": 36300,
+   "page": "139"
+  },
+  {
+   "id": "revolver",
+   "label": "A&R Credit Facility availability ($15.0B facility; $205M letters of credit)",
+   "amount": 14800,
+   "page": "139, 166",
+   "note": "Matures Sep 2031; $5.0B minimum-liquidity covenant from Q4 2026"
+  },
+  {
+   "id": "npa-google",
+   "label": "Google 2026 NPA (conditional)",
+   "amount": 20000,
+   "page": "168",
+   "note": "Draw period through Dec 2030; linked to third-party compute and TTM revenue conditions; reduced by up to $10B if Google buys IPO-concurrent shares"
+  },
+  {
+   "id": "npa-amazon",
+   "label": "Amazon 2026 NPA (conditional)",
+   "amount": 15000,
+   "page": "168",
+   "note": "$5.0B increments on compute-capacity milestones; settles in Class N shares post-IPO"
+  },
+  {
+   "id": "npa-broadcom",
+   "label": "Infrastructure Partner 2026 NPA — Broadcom (conditional, rent-only)",
+   "amount": 42000,
+   "page": "168–170",
+   "note": "Only to fund rent on the 2026 Lease Arrangement; 9% PIK (13% if revenue conditions missed); convertible at 90% (85%) of 30-day VWAP"
+  },
+  {
+   "id": "amd-equity",
+   "label": "AMD equity commitment (conditional)",
+   "amount": 5000,
+   "page": "166–167",
+   "note": "Drawable after GPU delivery milestones; first expected 2027"
+  }
+ ]
+}
