@@ -44,7 +44,6 @@ interface State {
   reset: () => Promise<void>;
   toast: Toast | null;
   dismiss: () => void;
-  locked: boolean;
   fetchUseCase: (id: string) => Promise<UseCaseDetail | null>;
   runUseCase: (id: string, input: string) => Promise<{ ok: true; result: RunResult } | { ok: false; reason: string }>;
 }
@@ -67,7 +66,6 @@ export function AgentifyProvider({ children }: { children: ReactNode }) {
   const [busy, setBusy] = useState(false);
   const [route, setRoute] = useState<Route>({ page: "home" });
   const [toast, setToast] = useState<Toast | null>(null);
-  const [locked, setLocked] = useState(false);
   const events = useRef<Event[]>([]);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -95,7 +93,6 @@ export function AgentifyProvider({ children }: { children: ReactNode }) {
     setBusy(true);
     try {
       const res = await fetch("/api/agentify", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin", body: JSON.stringify({ events: body.events ?? events.current, signInAs: body.signInAs, action: body.action }) });
-      if (res.status === 401) { setLocked(true); return null; }
       const data = (await res.json()) as { ok: boolean; reason?: string; events?: Event[]; view?: View; rejected?: { reason: string } };
       if (data.view) setView(data.view);
       if (Array.isArray(data.events)) {
@@ -156,8 +153,8 @@ export function AgentifyProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<State>(() => ({
-    view, persona: view?.persona ?? "google", busy, route, navigate, signIn, act, reset, toast, dismiss: () => setToast(null), locked, fetchUseCase, runUseCase,
-  }), [view, busy, route, navigate, signIn, act, reset, toast, locked, fetchUseCase, runUseCase]);
+    view, persona: view?.persona ?? "google", busy, route, navigate, signIn, act, reset, toast, dismiss: () => setToast(null), fetchUseCase, runUseCase,
+  }), [view, busy, route, navigate, signIn, act, reset, toast, fetchUseCase, runUseCase]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

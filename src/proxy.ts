@@ -206,35 +206,15 @@ async function handleKoreaFy27Request(request: NextRequest, hostname: string) {
 }
 
 /**
- * Agentify your Day (agentify.aitokenomics.app · /agentify) — internal Q1 FY27
- * workstream site, behind the Deal Check gate like MDES. Its API routes check
- * the same session themselves (the matcher excludes /api).
+ * Agentify your Day (agentify.aitokenomics.app · /agentify) — host rewrite,
+ * noindex. Not passcode-gated.
  */
-async function handleAgentifyRequest(request: NextRequest, hostname: string) {
-  const path = request.nextUrl.pathname;
+function handleAgentifyRequest(request: NextRequest, hostname: string) {
   const targetUrl = request.nextUrl.clone();
-  targetUrl.pathname = toAgentifyAppPath(hostname, path);
-
-  const noindex = (response: NextResponse) => {
-    response.headers.set("X-Robots-Tag", "noindex, nofollow");
-    response.headers.set("Content-Language", "en");
-    response.headers.set("Vary", "Host");
-    return response;
-  };
-
-  const authenticated = await isDealCheckSessionValid(
-    request.cookies.get(DEALCHECK_SESSION_COOKIE)?.value,
-  );
-
-  if (!authenticated) {
-    const gateUrl = request.nextUrl.clone();
-    gateUrl.pathname = "/deal-check/gate";
-    gateUrl.search = "";
-    gateUrl.searchParams.set("next", `${path}${request.nextUrl.search}`);
-    return noindex(NextResponse.redirect(gateUrl));
-  }
-
-  return noindex(NextResponse.rewrite(targetUrl));
+  targetUrl.pathname = toAgentifyAppPath(hostname, request.nextUrl.pathname);
+  const response = rewriteWithLanguage(targetUrl);
+  response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return response;
 }
 
 export async function proxy(request: NextRequest) {

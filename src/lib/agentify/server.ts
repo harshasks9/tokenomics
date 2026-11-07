@@ -1,10 +1,5 @@
-/**
- * Server-only request helper. The proxy gates the pages, but /api is outside
- * the proxy matcher, so every Agentify API route checks the Deal Check
- * session itself — the internal plan never leaves the server without it.
- */
+/** Server-only request helper: persona cookie, body parsing and event replay. */
 import { cookies } from "next/headers";
-import { DEALCHECK_SESSION_COOKIE, isSessionValid } from "@/lib/deal-check/auth";
 import { replay } from "./engine";
 import type { Event, PersonaId } from "./types";
 
@@ -17,9 +12,6 @@ export type Body = { events?: unknown; signInAs?: unknown; action?: unknown; use
 
 export async function readRequest(request: Request) {
   const jar = await cookies();
-  if (!(await isSessionValid(jar.get(DEALCHECK_SESSION_COOKIE)?.value))) {
-    return { ok: false as const, response: Response.json({ ok: false, reason: "Locked — enter the passcode first." }, { status: 401, headers: noStore }) };
-  }
   const raw = await request.text();
   if (raw.length > MAX_BODY) return { ok: false as const, response: Response.json({ ok: false, reason: "Request too large." }, { status: 413, headers: noStore }) };
   let body: Body;

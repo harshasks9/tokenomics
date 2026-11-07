@@ -1,7 +1,4 @@
-/**
- * Agentify your Day (agentify.aitokenomics.app · /agentify) — internal, behind
- * the Deal Check passcode gate like the MDES and Korea FY27 plans.
- */
+/** Agentify your Day (agentify.aitokenomics.app · /agentify) — host-aware routing. */
 export const AGENTIFY_HOST = "agentify.aitokenomics.app";
 export const AGENTIFY_PREFIX = "/agentify";
 

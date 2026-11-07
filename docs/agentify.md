@@ -1,8 +1,8 @@
-# Agentify your Day (`/agentify`, agentify.aitokenomics.app) — internal
+# Agentify your Day (`/agentify`, agentify.aitokenomics.app)
 
 Fork of the Asset Factory for the Q1 FY27 Workspace activation workstream
-(AWT 2.0). Behind the Deal Check passcode gate, like MDES and the Korea FY27
-plan. Synthetic accounts, partners and telemetry.
+(AWT 2.0). Not passcode-gated (noindex; search-only on the homepage).
+Synthetic accounts, partners and telemetry.
 
 ## Personas (server-projected)
 
@@ -16,12 +16,6 @@ plan. Synthetic accounts, partners and telemetry.
 only serialized for Google. A test fails if client components hard-code
 internal plan wording or import server-only modules, and the production
 bundle contains none of it.
-
-## Gate
-
-`src/proxy.ts` redirects locked visitors to `/deal-check/gate`. `/api` is
-outside the proxy matcher, so `src/lib/agentify/server.ts` checks the same
-Deal Check session on every API call (401 otherwise).
 
 ## Model
 

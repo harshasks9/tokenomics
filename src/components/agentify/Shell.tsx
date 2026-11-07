@@ -90,8 +90,7 @@ function Side() {
 }
 
 function Body() {
-  const { view, persona, route, locked } = useAgentify();
-  if (locked) return <main className="ag-main"><div className="ag-empty"><Lock size={18} /> Locked. <a href={`/deal-check/gate?next=${encodeURIComponent("/agentify")}`}>Enter the passcode</a> to continue.</div></main>;
+  const { view, persona, route } = useAgentify();
   if (!view) return <main className="ag-main"><div className="ag-skel" style={{ height: 220 }} /><div className="ag-skel" style={{ height: 160, marginTop: 14 }} /></main>;
   const pages = NAV[persona].flatMap((g) => g.items.map((i) => i.page));
   const page = route.page === "usecase" || route.page === "account" ? route.page : pages.includes(route.page) ? route.page : HOME[persona];

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
 
-// Behind the Deal Check passcode gate (src/proxy.ts). Fonts load at runtime from the stylesheet.
+// Fonts load at runtime from the stylesheet (no build-time Google Fonts downloads).
 export default function AgentifyLayout({ children }: { children: React.ReactNode }) {
   return <div className="ag-root">{children}</div>;
 }
