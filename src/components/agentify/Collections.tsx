@@ -44,6 +44,7 @@ export function CollectionPage({ id }: { id: FunctionId }) {
   const hero = ucs[0];
   const Icon = FUNCTION_ICON[f.id];
   const monthly = ucs.reduce((s, u) => s + u.monthlyPerUser, 0);
+  const ent = view.accounts[0]?.edition.entitlement ?? 6;
   return (
     <div>
       <button type="button" className="ag-link" style={{ marginBottom: 12 }} onClick={() => navigate({ page: "collections" })}><ArrowLeft size={13} /> Collections</button>
@@ -70,7 +71,7 @@ export function CollectionPage({ id }: { id: FunctionId }) {
 
       <div className="ag-section ag-split">
         <div>
-          <div className="ag-section-head"><h2 className="ag-h2">The agents</h2><span className="ag-muted" style={{ fontSize: 13 }}>≈ {usd(monthly)}/user/month of entitlement if one person runs all four</span></div>
+          <div className="ag-section-head"><h2 className="ag-h2">The agents</h2><span className="ag-muted" style={{ fontSize: 13 }}>≈ {usd(monthly)}/user/month if one person runs all four{monthly <= ent ? " — inside the agent entitlement your plan already includes" : ""}</span></div>
           <div className="ag-grid c2">
             {ucs.map((u) => (
               <button key={u.id} type="button" className="ag-asset" onClick={() => navigate({ page: "usecase", slug: u.slug, tab: "overview" })}>

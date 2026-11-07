@@ -4,6 +4,34 @@ Fork of the Asset Factory for the Q1 FY27 Workspace activation workstream
 (AWT 2.0). Not passcode-gated (noindex; search-only on the homepage).
 Synthetic accounts, partners and telemetry.
 
+## Customer-first experience: collections and Agent in a Day
+
+The site opens in the **customer** view. The top bar links to the Google and
+Partner views, and each of those links back to the customer view.
+
+- **Agent in a Day** (`#/day/<fpa|devops|secops|revops>`). One persona per
+  team (Maya, Jordan, Nadia, Marcus), shown in four ways:
+  - the same working day twice on one 06:00–20:00 clock;
+  - before/after comparison cards;
+  - a "You stay in control" strip;
+  - a walkthrough that toggles between two modes. *Without agents* lists
+    the manual blocks with their pain points. *With agents* is a player that
+    steps through rendered Gmail, Docs, Sheets, Chat, Calendar and Meet
+    moments, with an agent / you / approved note on each.
+  
+  The page ends with a closing call to action. Each day has at least one
+  overnight moment and at least two approvals, and uses under 6/21 of the
+  daily per-user entitlement. Tests enforce all three.
+- **Collections** (`#/collections`, `#/c/<id>`). Four collections of four
+  use-case packages each, with full SKILL.md files. The data lives in
+  `functions.ts` and `content-functions.ts`; `catalog.ts` merges them with
+  the everyday packages.
+- **Pre vs post for every persona.** Customers get the day walkthrough. The
+  Partner board and the Google plan open with a before/after "shift" card,
+  `PERSONA_SHIFT` in `data.ts`, which is projected only to those personas.
+- `docs/agentify-review.md` is the executive review of this flow and lists
+  the fixes it drove.
+
 ## Personas (server-projected)
 
 | Persona | Gets | Never gets |

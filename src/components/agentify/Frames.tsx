@@ -69,7 +69,7 @@ export function SurfaceFrame({ surface, frame }: { surface: Surface; frame: Fram
             <div className="ag-f-sheettitle">{frame.title}</div>
             <div className="ag-table-wrap">
               <table>
-                <thead><tr><th aria-hidden /> {frame.columns.map((c) => <th key={c}>{c}</th>)}</tr></thead>
+                <thead><tr><th aria-hidden />{frame.columns.map((c) => <th key={c}>{c}</th>)}</tr></thead>
                 <tbody>{frame.rows.map((r, i) => <tr key={i} className={frame.highlightRows?.includes(i) ? "hl" : ""}><td className="rn">{i + 2}</td>{r.map((c, j) => <td key={j} className={typeof c === "number" ? "n" : ""}>{typeof c === "number" ? c.toLocaleString("en-US") : c}</td>)}</tr>)}</tbody>
               </table>
             </div>

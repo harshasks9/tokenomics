@@ -624,6 +624,8 @@
 .ag-viewlinks button:hover { color: var(--accent-ink); text-decoration: underline; }
 .ag-btn.ghost-light { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35); color: #fff; }
 .ag-btn.ghost-light:hover:not(:disabled) { background: rgba(255,255,255,.22); }
+.ag-btn.solid-light { background: #fff; border-color: #fff; color: #0b3d2e; font-weight: 640; }
+.ag-btn.solid-light:hover:not(:disabled) { background: #e9f5ee; }
 
 /* ── Agent in a Day: hero ───────────────────────────────── */
 .ag-dayhero {
@@ -844,4 +846,19 @@
 @media (prefers-reduced-motion: reduce) {
   .ag-moment, .ag-total { animation: none; }
   .ag-fnpick button, .ag-fncard, .ag-track-dot { transition: none; }
+}
+
+/* ── Review pass: trust strip, before→after handoff, closing CTA ── */
+.ag-trustbar { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px 22px; margin-top: 14px; padding: 14px 18px; border-radius: 14px; background: #eef7f1; border: 1px solid #cfe8d8; }
+.ag-trustbar-k { display: inline-flex; align-items: center; gap: 6px; font-weight: 650; font-size: 13.5px; color: #0b5d34; flex: none; }
+.ag-trustbar-i { display: inline-flex; gap: 6px; align-items: flex-start; font-size: 13px; color: var(--ink-2); flex: 1 1 220px; min-width: 0; }
+.ag-trustbar-i svg { flex: none; margin-top: 2px; color: var(--ok); }
+.ag-before-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-2); }
+.ag-cta-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+.ag-cta-band > div:first-child { flex: 1 1 360px; min-width: 0; }
+.ag-cta-band p { margin-top: 6px; font-size: 14px; color: var(--ink-2); max-width: 62ch; }
+@media (max-width: 640px) {
+  .ag-who { display: none; }
+  .ag-cta-band { padding: 18px; }
+  .ag-cta-band .ag-btn { white-space: normal; }
 }

@@ -51,7 +51,7 @@ function Tracks({ d }: { d: PersonaDay }) {
         </div>
       </div>
       <div className="ag-track-axis">{hours.map((h) => <span key={h} style={{ left: pos(`${h}:00`) }}>{h}</span>)}</div>
-      <div className="ag-track-tip" aria-live="polite">{tip ?? "Hover the day to see what happens when."}</div>
+      <div className="ag-track-tip" aria-live="polite">{tip ?? "Point at, tap or tab to any block to see what happens when."}</div>
     </div>
   );
 }
@@ -59,7 +59,7 @@ function Tracks({ d }: { d: PersonaDay }) {
 function Compare({ d }: { d: PersonaDay }) {
   const rows = [
     { label: "Hours on busywork", before: `${d.before.stats.hoursOnBusywork} h`, after: `${Math.max(0, Math.round((d.before.stats.hoursOnBusywork - d.after.stats.hoursReturned) * 10) / 10)} h`, note: `${d.after.stats.hoursReturned} h back` },
-    { label: "Context switches", before: String(d.before.stats.contextSwitches), after: String(Math.max(4, Math.round(d.before.stats.contextSwitches * 0.35))), note: "agents batch the chasing" },
+    { label: "Context switches", before: String(d.before.stats.contextSwitches), after: String(d.after.moments.length), note: "one review per agent moment" },
     { label: "Things that slipped", before: String(d.before.stats.slipped), after: "0", note: `${d.after.stats.approvals} approvals instead` },
     { label: "Day ends", before: d.before.stats.endOfDay, after: d.after.stats.endOfDay, note: "same work done" },
   ];
@@ -76,7 +76,7 @@ function Compare({ d }: { d: PersonaDay }) {
   );
 }
 
-function BeforeDay({ d }: { d: PersonaDay }) {
+function BeforeDay({ d, onSwitch }: { d: PersonaDay; onSwitch: () => void }) {
   const max = Math.max(...d.before.blocks.map((b) => toMin(b.end) - toMin(b.start)));
   return (
     <div className="ag-before">
@@ -98,6 +98,10 @@ function BeforeDay({ d }: { d: PersonaDay }) {
           );
         })}
       </ol>
+      <div className="ag-before-foot">
+        <span><b>{d.before.stats.hoursOnBusywork} h</b> of busywork · <b>{d.before.stats.slipped}</b> things slipped · day ends <b>{d.before.stats.endOfDay}</b></span>
+        <button type="button" className="ag-btn primary" onClick={onSwitch}><Sparkles size={14} />Now the same day with agents <ArrowRight size={14} /></button>
+      </div>
     </div>
   );
 }
@@ -157,11 +161,11 @@ function AfterDay({ d, fnName }: { d: PersonaDay; fnName: string }) {
                 <div><b>{d.after.stats.hoursReturned} h</b><span>returned</span></div>
                 <div><b>{d.after.stats.approvals}</b><span>approvals given</span></div>
                 <div><b>{d.after.stats.tasksCompleted}</b><span>tasks completed</span></div>
-                <div><b>${d.after.stats.entitlementUsed.toFixed(2)}</b><span>of ~${dailyOwned.toFixed(2)}/day owned</span></div>
+                <div><b>${d.after.stats.entitlementUsed.toFixed(2)}</b><span>used of ~${dailyOwned.toFixed(2)}/day already in your plan</span></div>
               </div>
               <p>Done at {d.after.stats.endOfDay} instead of {d.before.stats.endOfDay}. Every send, booking and change was approved by {d.persona.name.split(" ")[0]}.</p>
               <div className="ag-row" style={{ marginTop: 14 }}>
-                <button type="button" className="ag-btn lg" onClick={() => navigate({ page: "collection", id: d.functionId })}>See the {fnName} collection <ArrowRight size={14} /></button>
+                <button type="button" className="ag-btn lg solid-light" onClick={() => navigate({ page: "collection", id: d.functionId })}>See the {fnName} collection <ArrowRight size={14} /></button>
                 <button type="button" className="ag-btn lg ghost-light" onClick={() => navigate({ page: "workshop" })}><CalendarCheck size={14} />Book Agentify your Day</button>
               </div>
             </div>
@@ -182,7 +186,7 @@ function AfterDay({ d, fnName }: { d: PersonaDay; fnName: string }) {
               </div>
               <div className="ag-row" style={{ marginTop: 10 }}>
                 <span className="ag-chip-stat"><Timer size={12} />{m.minutesSaved} min saved</span>
-                <span className="ag-chip-stat"><Zap size={12} />${m.entitlementUsd.toFixed(2)} of entitlement</span>
+                <span className="ag-chip-stat"><Zap size={12} />${m.entitlementUsd.toFixed(2)} of included entitlement</span>
                 {uc && <button type="button" className="ag-link" onClick={() => navigate({ page: "usecase", slug: uc.slug, tab: "overview" })}>{uc.title} <ArrowRight size={12} /></button>}
               </div>
             </div>
@@ -243,6 +247,10 @@ export default function AgentDay() {
         <div className="ag-section-head"><h2 className="ag-h2">Before and after, on one clock</h2><span className="ag-muted" style={{ fontSize: 13 }}>{d.persona.name.split(" ")[0]}&apos;s day, 06:00–20:00</span></div>
         <div className="ag-card pad-lg"><Tracks d={d} /></div>
         <div style={{ marginTop: 14 }}><Compare d={d} /></div>
+        <div className="ag-trustbar" aria-label="You stay in control">
+          <span className="ag-trustbar-k"><ShieldCheck size={15} />You stay in control</span>
+          {col.trust.slice(0, 3).map((t) => <span key={t} className="ag-trustbar-i"><CheckCheck size={14} />{t}</span>)}
+        </div>
       </section>
 
       <section className="ag-section">
@@ -254,10 +262,21 @@ export default function AgentDay() {
             <button type="button" role="tab" aria-selected={mode === "after"} onClick={() => setMode("after")}><Sparkles size={13} />With agents</button>
           </div>
         </div>
-        {mode === "before" ? <div className="ag-card pad-lg"><BeforeDay d={d} /></div> : <AfterDay key={fn} d={d} fnName={col.name} />}
+        {mode === "before" ? <div className="ag-card pad-lg"><BeforeDay d={d} onSwitch={() => setMode("after")} /></div> : <AfterDay key={fn} d={d} fnName={col.name} />}
       </section>
 
-      <p className="ag-muted" style={{ fontSize: 12, marginTop: 14 }}><Timer size={11} /> A modeled day with synthetic people and data. Times saved are estimates from the use-case packages; entitlement figures are per user.</p>
+      <section className="ag-section ag-cta-band">
+        <div>
+          <h2 className="ag-h2">Run {d.persona.name.split(" ")[0]}&apos;s day on your team&apos;s real Workspace</h2>
+          <p>A half-day Agentify your Day session with your partner sets up these {col.name} agents on your own inboxes, docs and sheets — on the plan you already have.</p>
+        </div>
+        <div className="ag-row">
+          <button type="button" className="ag-btn lg primary" onClick={() => navigate({ page: "workshop" })}><CalendarCheck size={15} />Book Agentify your Day</button>
+          <button type="button" className="ag-btn lg" onClick={() => navigate({ page: "collection", id: fn })}>See the {col.name} collection <ArrowRight size={14} /></button>
+        </div>
+      </section>
+
+      <p className="ag-muted" style={{ fontSize: 12, marginTop: 14 }}><Timer size={11} /> A modeled day with synthetic people and data. Times saved are estimates from the use-case packages; entitlement figures are per user and come out of the agent entitlement included in your Workspace plan.</p>
     </div>
   );
 }
