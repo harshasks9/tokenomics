@@ -26,6 +26,7 @@ import {
   isKoreaFy27Path,
   toAppPath as toKoreaFy27AppPath,
 } from "@/lib/korea-fy27/routes";
+import { isAgentifyPath, toAppPath as toAgentifyAppPath } from "@/lib/agentify/routes";
 
 function rewriteWithLanguage(url: URL) {
   return NextResponse.rewrite(url, {
@@ -204,6 +205,18 @@ async function handleKoreaFy27Request(request: NextRequest, hostname: string) {
   return noindex(NextResponse.rewrite(targetUrl));
 }
 
+/**
+ * Agentify your Day (agentify.aitokenomics.app · /agentify) — host rewrite,
+ * noindex. Not passcode-gated.
+ */
+function handleAgentifyRequest(request: NextRequest, hostname: string) {
+  const targetUrl = request.nextUrl.clone();
+  targetUrl.pathname = toAgentifyAppPath(hostname, request.nextUrl.pathname);
+  const response = rewriteWithLanguage(targetUrl);
+  response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return response;
+}
+
 export async function proxy(request: NextRequest) {
   const forwardedHost = request.headers.get("x-forwarded-host");
   const host = forwardedHost ?? request.headers.get("host") ?? request.nextUrl.hostname;
@@ -226,6 +239,10 @@ export async function proxy(request: NextRequest) {
   // of the Korea host block below, which keeps serving the Sae-A site at /korea.
   if (isKoreaFy27Path(hostname, path)) {
     return handleKoreaFy27Request(request, hostname);
+  }
+
+  if (isAgentifyPath(hostname, path)) {
+    return handleAgentifyRequest(request, hostname);
   }
 
   if (hostname === "options.aitokenomics.app" || path.startsWith("/options")) {
