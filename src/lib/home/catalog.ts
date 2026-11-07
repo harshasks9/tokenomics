@@ -3,7 +3,7 @@ import {
   TrendingUp, ShoppingBag, Heart, Landmark, Factory, Wifi, FlaskConical, Layers, Scale,
   Activity, LineChart, Cpu, ShieldCheck, Banknote, Building2, ShoppingCart, Zap, Globe,
   MapPin, Umbrella, Mic, GraduationCap, School, Rocket, Plane, FileText, Network, Newspaper,
-  ArrowRightLeft, Store, Route, Coins, Orbit,
+  ArrowRightLeft, Store, Route, Coins, Orbit, Boxes,
 } from "lucide-react";
 
 /** Homepage last reorganized/audited — bump when the portfolio changes. */
@@ -106,6 +106,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "atlas", name: "AI Intelligence Atlas", short: "Atlas", href: "/atlas", icon: Orbit, section: "intelligence", audience: "public",
     gradient: "linear-gradient(135deg, #0d1424 0%, #4a3aa7 100%)",
     blurb: "30 AI minds, 221 dated predictions, scored against what happened", keywords: ["atlas", "knowledge graph", "predictions", "foresight", "thinkers", "agi", "scaling", "debates", "scenarios", "hinton", "altman", "lecun"] },
+  { id: "asset-factory", name: "Gemini 10 Asset Factory", short: "Asset Factory", href: "/asset-factory", icon: Boxes, section: "intelligence", audience: "public",
+    gradient: "linear-gradient(135deg, #4285f4 0%, #9b72cb 55%, #d96570 100%)",
+    blurb: "One agent-asset marketplace for customers, Google FDEs and partner FDEs", keywords: ["asset factory", "marketplace", "agents", "blueprints", "skills", "connectors", "fde", "partners", "gemini 10", "reuse"] },
 
   // Playbooks (segment-level, not a named customer)
   { id: "router", name: "Routing Policy", href: "/router", icon: Route, section: "playbooks", audience: "public",

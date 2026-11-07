@@ -563,6 +563,19 @@ export async function proxy(request: NextRequest) {
     return response;
   }
 
+  // GEMINI 10 ASSET FACTORY — multi-audience agent asset marketplace (concept demo).
+  if (hostname === "assets.aitokenomics.app") {
+    const assetsUrl = request.nextUrl.clone();
+    if (assetsUrl.pathname === "/") {
+      assetsUrl.pathname = "/asset-factory";
+    } else if (!assetsUrl.pathname.startsWith("/asset-factory") && !assetsUrl.pathname.startsWith("/api/")) {
+      assetsUrl.pathname = `/asset-factory${assetsUrl.pathname}`;
+    }
+    const response = rewriteWithLanguage(assetsUrl);
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   const japanese = isJapaneseSite(host, request.nextUrl.search);
   const response = NextResponse.next();
   const english = `https://aitokenomics.app${path}`;

@@ -1,0 +1,293 @@
+"use client";
+
+import { ArrowRight, Download, FolderPlus, Minus, Plus, Search, Settings2 } from "lucide-react";
+import { useMemo, useState } from "react";
+import type { AssetType, Config } from "@/lib/asset-factory/types";
+import type { AssetView, WorkspaceView } from "@/lib/asset-factory/views";
+import { useFactory } from "./state";
+import { CodeView } from "./md";
+import { manifestYaml } from "./PackagePeek";
+import { AssetIcon, EvalList, OrgName, ReadinessList, TrustTag, TYPE_LABEL, VisibilityTag, usd, num } from "./ui";
+
+const PICK_TYPES: AssetType[] = ["skill", "connector", "workflow", "evaluation"];
+
+function download(name: string, text: string) {
+  const blob = new Blob([text], { type: "text/yaml" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.agent.yaml`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function Flow({ blueprint, parts }: { blueprint?: AssetView; parts: AssetView[] }) {
+  const sources = parts.filter((p) => p.type === "connector" && p.provides.some((x) => ["erp", "edi", "data", "erp-template", "calendar"].includes(x)));
+  const skills = parts.filter((p) => p.type === "skill");
+  const flows = parts.filter((p) => p.type === "workflow");
+  const notify = parts.filter((p) => p.provides.includes("notify") || p.provides.includes("ticketing"));
+  const evals = parts.filter((p) => p.type === "evaluation");
+  const node = (title: string, items: AssetView[], empty: string) => (
+    <div className="af-flow-node">
+      <b>{title}</b>
+      {items.length ? items.map((i) => <div key={i.id}>{i.name}</div>) : <span className="af-muted">{empty}</span>}
+    </div>
+  );
+  const arrow = <span className="af-flow-arrow"><ArrowRight size={14} /></span>;
+  return (
+    <div className="af-flow" aria-label="Assembled workflow">
+      {node("Signals in", sources, "Add a data connector")}{arrow}
+      {node("Agent planner", blueprint ? [blueprint] : [], "Pick a blueprint")}{arrow}
+      {node("Skills", skills, "No skills yet")}{arrow}
+      {node("Guardrails", flows, "No approval workflow")}{arrow}
+      {node("Act & notify", notify, "No action channel")}
+      {evals.length > 0 && <>{arrow}{node("Evaluated by", evals, "")}</>}
+    </div>
+  );
+}
+
+function ConfigPanel({ ws }: { ws: WorkspaceView }) {
+  const { act } = useFactory();
+  const [c, setC] = useState<Config>(ws.config);
+  const can = ws.myResponsibilities.some((r) => ["owner", "architecture", "integration"].includes(r)) && !ws.activated;
+  return (
+    <div className="af-card">
+      <div className="af-card-head"><Settings2 size={16} /><h3 className="af-h3">Customize the workflow</h3></div>
+      <div className="af-field">
+        <label className="af-label" htmlFor="cf-limit">Auto-resolve limit: ${c.autoResolveLimit.toLocaleString("en-US")} <span className="af-muted" style={{ fontWeight: 400 }}>— above this a person approves</span></label>
+        <input id="cf-limit" className="af-range" type="range" min={0} max={8000} step={250} value={c.autoResolveLimit} disabled={!can} onChange={(e) => setC({ ...c, autoResolveLimit: Number(e.target.value) })} />
+      </div>
+      <div className="af-grid c2">
+        <div className="af-field">
+          <label className="af-label" htmlFor="cf-plants">Plants</label>
+          <input id="cf-plants" className="af-input" type="number" min={1} max={12} value={c.plants} disabled={!can} onChange={(e) => setC({ ...c, plants: Number(e.target.value) })} />
+        </div>
+        <div className="af-field">
+          <label className="af-label" htmlFor="cf-vol">Exceptions / month</label>
+          <input id="cf-vol" className="af-input" type="number" min={100} step={100} value={c.exceptionsPerMonth} disabled={!can} onChange={(e) => setC({ ...c, exceptionsPerMonth: Number(e.target.value) })} />
+        </div>
+      </div>
+      <div className="af-field">
+        <label className="af-label" htmlFor="cf-ch">Approval channel</label>
+        <select id="cf-ch" className="af-select" value={c.approvalChannel} disabled={!can} onChange={(e) => setC({ ...c, approvalChannel: e.target.value as Config["approvalChannel"] })}>
+          <option>Google Chat</option><option>Microsoft Teams</option><option>Email</option>
+        </select>
+      </div>
+      <button type="button" className="af-btn primary sm" disabled={!can} onClick={() => act({ type: "workspace.configure", workspaceId: ws.id, config: c }, { success: "Configuration applied — evaluations re-run, sign-offs reset" })}>Apply & re-run evals</button>
+      {!can && <p className="af-muted" style={{ fontSize: 12, marginTop: 6 }}>{ws.activated ? "Live agents are locked." : "Your responsibilities in this workspace don't include configuration."}</p>}
+    </div>
+  );
+}
+
+export default function Studio() {
+  const { view, persona, draft, setDraft, studioTarget, setStudioTarget, act, openAsset } = useFactory();
+  const [pickType, setPickType] = useState<AssetType>("skill");
+  const [q, setQ] = useState("");
+  const [name, setName] = useState("My exception agent");
+
+  const byId = useMemo(() => new Map((view?.assets ?? []).map((a) => [a.id, a])), [view]);
+  if (!view) return null;
+
+  const ws = studioTarget === "draft" ? undefined : view.workspaces.find((w) => w.id === studioTarget);
+  const blueprintId = ws ? ws.blueprintId : draft.blueprintId;
+  const componentIds = ws ? ws.componentIds : draft.componentIds;
+  const blueprint = blueprintId ? byId.get(blueprintId) : undefined;
+  const parts = componentIds.map((id) => byId.get(id)).filter((a): a is AssetView => Boolean(a));
+  const canBuild = !ws || (!ws.activated && ws.myResponsibilities.some((r) => ["owner", "architecture", "integration"].includes(r)));
+
+  const provided = new Set(parts.flatMap((p) => p.provides));
+  const missing = [...new Set([blueprint, ...parts].flatMap((a) => a?.requires ?? []))].filter((r) => !provided.has(r));
+  const costPerExec = [blueprint, ...parts].reduce((s, a) => s + (a?.costPerExecution ?? 0), 0);
+  const minutes = [blueprint, ...parts].reduce((s, a) => s + (a?.minutesSaved ?? 0), 0);
+
+  const add = (a: AssetView) => {
+    if (ws) {
+      void act(a.type === "blueprint" ? { type: "workspace.selectBlueprint", workspaceId: ws.id, assetId: a.id } : { type: "workspace.addComponent", workspaceId: ws.id, assetId: a.id }, { success: `Added ${a.name}` });
+    } else if (a.type === "blueprint") {
+      setDraft({ blueprintId: a.id, componentIds: [...new Set([...draft.componentIds, ...a.includes])] });
+    } else if (!draft.componentIds.includes(a.id)) {
+      setDraft({ ...draft, componentIds: [...draft.componentIds, a.id] });
+    }
+  };
+  const remove = (id: string) => {
+    if (ws) void act({ type: "workspace.removeComponent", workspaceId: ws.id, assetId: id }, { success: "Removed" });
+    else setDraft({ ...draft, componentIds: draft.componentIds.filter((x) => x !== id) });
+  };
+
+  const saveAsWorkspace = async () => {
+    // Ids are assigned by the server from the event sequence, so the next id is predictable.
+    const id = `ws-j${view.seq + 1}`;
+    const bp = draft.blueprintId ? byId.get(draft.blueprintId) : undefined;
+    if (!(await act({ type: "workspace.create", name: name.trim(), problem: bp?.summary ?? "" }, { quiet: true }))) return;
+    if (bp && !(await act({ type: "workspace.selectBlueprint", workspaceId: id, assetId: bp.id }, { quiet: true }))) return;
+    for (const c of draft.componentIds.filter((c) => !(bp?.includes ?? []).includes(c))) {
+      if (!(await act({ type: "workspace.addComponent", workspaceId: id, assetId: c }, { quiet: true }))) return;
+    }
+    setStudioTarget(id);
+    setDraft({ blueprintId: null, componentIds: [] });
+  };
+
+  const tokens = q.toLowerCase();
+  const candidates = view.assets
+    .filter((a) => (pickType === "blueprint" ? a.type === "blueprint" : a.type === pickType))
+    .filter((a) => !componentIds.includes(a.id) && a.id !== blueprintId)
+    .filter((a) => !tokens || `${a.name} ${a.summary} ${a.tags.join(" ")}`.toLowerCase().includes(tokens))
+    .sort((a, b) => b.deployments - a.deployments)
+    .slice(0, 8);
+
+  return (
+    <div>
+      <div className="af-page-head">
+        <div style={{ flex: 1, minWidth: 260 }}>
+          <div className="af-eyebrow">{persona === "customer" ? "Build" : "Assembly Studio"}</div>
+          <h1 className="af-h1">Assemble skills and connectors into an agent workflow</h1>
+          <p className="af-lede">Start from a blueprint, add reusable parts, and see dependencies, prerequisites, security notes and modeled run cost update as you go. Inside a workspace, every change is an authorized, logged action that your collaborators see.</p>
+        </div>
+        <div style={{ minWidth: 260 }}>
+          <label className="af-label" htmlFor="af-target">Working on</label>
+          <select id="af-target" className="af-select" value={studioTarget} onChange={(e) => setStudioTarget(e.target.value)}>
+            <option value="draft">Personal draft (not shared)</option>
+            {view.workspaces.map((w) => <option key={w.id} value={w.id}>{w.name} — {w.customer?.name ?? w.owner.name}{w.activated ? " (live)" : ""}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <div className="af-split">
+        <div className="af-stack">
+          <div className="af-card">
+            <div className="af-card-head"><h3 className="af-h3">Workflow</h3>{ws && <span className="af-tag v-workspace">Shared workspace</span>}{!ws && <span className="af-tag">Draft</span>}</div>
+            <Flow blueprint={blueprint} parts={parts} />
+          </div>
+
+          {blueprint && (
+            <div className="af-card" style={{ padding: 0, overflow: "hidden" }}>
+              <div className="af-file-head"><b className="af-mono">agent.yaml</b><span className="af-muted">live manifest · every component pinned by version</span></div>
+              <CodeView code={manifestYaml(ws?.name ?? name, blueprint, parts, ws?.config)} lang="yaml" maxHeight={360} />
+            </div>
+          )}
+
+          <div className="af-card">
+            <div className="af-card-head"><h3 className="af-h3">Components</h3><span className="af-muted" style={{ fontSize: 12 }}>{parts.length + (blueprint ? 1 : 0)} assets</span></div>
+            <ul className="af-list">
+              {blueprint ? (
+                <li>
+                  <AssetIcon type="blueprint" size={28} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <button type="button" className="af-btn ghost" style={{ padding: 0, fontWeight: 620 }} onClick={() => openAsset(blueprint.id)}>{blueprint.name}</button>
+                    <div className="af-muted" style={{ fontSize: 12 }}><OrgName org={blueprint.owner} label={blueprint.ownerLabel} /> · blueprint</div>
+                  </div>
+                  <TrustTag t={blueprint.trust} />
+                </li>
+              ) : <li><span className="af-muted">No blueprint yet — pick one below.</span></li>}
+              {parts.map((p) => (
+                <li key={p.id}>
+                  <AssetIcon type={p.type} size={28} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <button type="button" className="af-btn ghost" style={{ padding: 0, fontWeight: 580 }} onClick={() => openAsset(p.id)}>{p.name}</button>
+                    <div className="af-muted" style={{ fontSize: 12 }}><OrgName org={p.owner} label={p.ownerLabel} /> · {TYPE_LABEL[p.type].toLowerCase()}</div>
+                  </div>
+                  <div className="af-row" style={{ gap: 4 }}>
+                    {p.visibility !== "public" && <VisibilityTag v={p.visibility} compact />}
+                    <TrustTag t={p.trust} />
+                    {canBuild && <button type="button" className="af-btn ghost sm" onClick={() => remove(p.id)} aria-label={`Remove ${p.name}`}><Minus size={14} /></button>}
+                  </div>
+                </li>
+              ))}
+              {componentIds.length > parts.length && <li className="af-muted" style={{ fontSize: 12.5 }}>{componentIds.length - parts.length} component(s) you can&apos;t see are hidden.</li>}
+            </ul>
+          </div>
+
+          {canBuild && (
+            <div className="af-card">
+              <div className="af-card-head"><Plus size={16} /><h3 className="af-h3">Add from the marketplace</h3></div>
+              <div className="af-row" style={{ marginBottom: 10 }}>
+                <div className="af-chips">
+                  {(["blueprint", ...PICK_TYPES] as AssetType[]).map((t) => <button key={t} type="button" className="af-chip" aria-pressed={pickType === t} onClick={() => setPickType(t)}>{TYPE_LABEL[t]}s</button>)}
+                </div>
+                <label className="af-search" style={{ minWidth: 180 }}>
+                  <span className="af-sr">Filter</span><Search size={14} />
+                  <input className="af-input" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filter…" style={{ padding: "6px 10px 6px 32px" }} />
+                </label>
+              </div>
+              <ul className="af-list">
+                {candidates.map((c) => {
+                  const fills = c.provides.filter((x) => missing.includes(x));
+                  return (
+                    <li key={c.id}>
+                      <AssetIcon type={c.type} size={28} />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <button type="button" className="af-btn ghost" style={{ padding: 0, fontWeight: 580 }} onClick={() => openAsset(c.id)}>{c.name}</button>
+                        <div className="af-muted" style={{ fontSize: 12 }}>{c.summary}</div>
+                        {fills.length > 0 && <span className="af-tag ok" style={{ marginTop: 4 }}>Fills missing: {fills.join(", ")}</span>}
+                      </div>
+                      <div className="af-row" style={{ gap: 4 }}>
+                        {c.visibility !== "public" && <VisibilityTag v={c.visibility} compact />}
+                        <TrustTag t={c.trust} />
+                        <button type="button" className="af-btn sm" onClick={() => add(c)}><Plus size={13} />{c.type === "blueprint" ? "Use" : "Add"}</button>
+                      </div>
+                    </li>
+                  );
+                })}
+                {!candidates.length && <li className="af-muted">Nothing else to add here.</li>}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div className="af-stack">
+          {ws ? (
+            <>
+              <div className="af-card">
+                <div className="af-card-head"><h3 className="af-h3">Deployment readiness</h3><span className={`af-tag ${ws.readiness.every((r) => r.pass) ? "ok" : "warn"}`}>{ws.readiness.filter((r) => r.pass).length}/{ws.readiness.length}</span></div>
+                <ReadinessList checks={ws.readiness} />
+              </div>
+              <div className="af-card">
+                <div className="af-card-head"><h3 className="af-h3">Evaluation results</h3><span className="af-muted" style={{ fontSize: 12 }}>vs acceptance thresholds</span></div>
+                <EvalList evals={ws.evals} />
+              </div>
+              <ConfigPanel key={`${ws.id}-${JSON.stringify(ws.config)}`} ws={ws} />
+            </>
+          ) : (
+            <div className="af-card">
+              <div className="af-card-head"><h3 className="af-h3">Draft checks</h3></div>
+              <ul className="af-list">
+                <li>{blueprint ? "✓" : "○"} <span>Blueprint selected</span></li>
+                <li>{missing.length === 0 && blueprint ? "✓" : "○"} <span>{missing.length ? `Missing system: ${missing.join(", ")}` : "All required systems connected"}</span></li>
+                <li>{parts.some((p) => p.type === "workflow") ? "✓" : "○"} <span>Human approval workflow</span></li>
+              </ul>
+              <p className="af-muted" style={{ fontSize: 12.5, marginTop: 8 }}>Evaluations and readiness sign-off run inside a workspace, where collaborators can review them.</p>
+              <hr className="af-divider" />
+              <label className="af-label" htmlFor="af-ws-name">Workspace name</label>
+              <input id="af-ws-name" className="af-input" value={name} onChange={(e) => setName(e.target.value)} />
+              <button type="button" className="af-btn primary" style={{ marginTop: 10 }} disabled={!blueprint || name.trim().length < 3} onClick={saveAsWorkspace}><FolderPlus size={14} />Save as a private workspace</button>
+            </div>
+          )}
+
+          <div className="af-card">
+            <div className="af-card-head"><h3 className="af-h3">Modeled run cost</h3></div>
+            {ws ? (
+              <dl className="af-kv">
+                <dt>Executions</dt><dd className="af-num">{num(ws.economics.executionsPerMonth)}/mo</dd>
+                <dt>Per execution</dt><dd className="af-num">${ws.economics.costPerExecution.toFixed(2)}</dd>
+                <dt>Consumption</dt><dd className="af-num">{usd(ws.economics.consumptionPerMonth)}/mo incl. monitoring</dd>
+                <dt>Value</dt><dd className="af-num">{usd(ws.economics.valuePerMonth)}/mo · {ws.economics.roi.toFixed(1)}× ROI</dd>
+              </dl>
+            ) : (
+              <dl className="af-kv">
+                <dt>Per execution</dt><dd className="af-num">${costPerExec.toFixed(2)}</dd>
+                <dt>At 1,000 runs/mo</dt><dd className="af-num">{usd(costPerExec * 1000)}</dd>
+                <dt>Analyst time saved</dt><dd>{minutes} min per run</dd>
+              </dl>
+            )}
+          </div>
+
+          <div className="af-card">
+            <div className="af-card-head"><h3 className="af-h3">Deployment starter package</h3></div>
+            <p className="af-muted" style={{ fontSize: 13 }}>Agent manifest with versions, prerequisites, security notes and secret references — never credentials.</p>
+            <button type="button" className="af-btn" style={{ marginTop: 10 }} disabled={!blueprint} onClick={() => download(ws?.name ?? name, manifestYaml(ws?.name ?? name, blueprint, parts, ws?.config))}><Download size={14} />Download .agent.yaml</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
