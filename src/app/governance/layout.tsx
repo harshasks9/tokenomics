@@ -1,22 +1,37 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+// Fonts are self-hosted from src/fonts (see build-fonts.py there) so builds never
+// download from Google Fonts. Same fonts, weights and CSS variables as before.
+// next/font/local names each family after its const, so consts carry a site prefix
+// to stay unique across sites (and distinct from the global Google "Inter").
+import localFont from "next/font/local";
 import { SiteChrome } from "@/components/governance/SiteChrome";
 import "./governance.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const governanceInter = localFont({
+  src: [
+    { path: "../../fonts/inter.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "700", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "800", style: "normal" },
+  ],
   variable: "--font-inter",
   display: "swap",
 });
 
 // Editorial voice: the framework's judgment lines wear serif, evidence wears sans.
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
+const governanceSourceSerif = localFont({
+  src: [
+    { path: "../../fonts/source-serif-4.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/source-serif-4.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/source-serif-4.woff2", weight: "700", style: "normal" },
+    { path: "../../fonts/source-serif-4-italic.woff2", weight: "400", style: "italic" },
+    { path: "../../fonts/source-serif-4-italic.woff2", weight: "600", style: "italic" },
+    { path: "../../fonts/source-serif-4-italic.woff2", weight: "700", style: "italic" },
+  ],
   variable: "--font-serif",
   display: "swap",
+  adjustFontFallback: "Times New Roman",
 });
 
 export const metadata: Metadata = {
@@ -52,7 +67,7 @@ export const viewport: Viewport = {
 
 export default function GovernanceLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${inter.variable} ${serif.variable} gov-root`}>
+    <div className={`${governanceInter.variable} ${governanceSourceSerif.variable} gov-root`}>
       <SiteChrome>{children}</SiteChrome>
     </div>
   );
