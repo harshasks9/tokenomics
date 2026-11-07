@@ -1,10 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+// Fonts are self-hosted from src/fonts (see build-fonts.py there) so builds never
+// download from Google Fonts. Same fonts, weights and CSS variables as before.
+// next/font/local names each family after its const, so consts carry a site prefix
+// to stay unique across sites (and distinct from the global Google "Inter").
+import localFont from "next/font/local";
 import "./korea-fy27.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const koreaFy27Inter = localFont({
+  src: [
+    { path: "../../fonts/inter.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "700", style: "normal" },
+    { path: "../../fonts/inter.woff2", weight: "800", style: "normal" },
+  ],
   variable: "--font-k27",
   display: "swap",
 });
@@ -30,7 +39,7 @@ export default function KoreaFy27Layout({ children }: Readonly<{ children: React
   // data-ja-mirror-control opts the whole plan out of the Japanese mirror's
   // machine translation, so internal text is never sent to /api/translate.
   return (
-    <div className={`k-root ${inter.variable}`} data-ja-mirror-control translate="no">
+    <div className={`k-root ${koreaFy27Inter.variable}`} data-ja-mirror-control translate="no">
       {children}
     </div>
   );
