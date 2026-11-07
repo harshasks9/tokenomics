@@ -3,7 +3,7 @@ import {
   TrendingUp, ShoppingBag, Heart, Landmark, Factory, Wifi, FlaskConical, Layers, Scale,
   Activity, LineChart, Cpu, ShieldCheck, Banknote, Building2, ShoppingCart, Zap, Globe,
   MapPin, Umbrella, Mic, GraduationCap, School, Rocket, Plane, FileText, Network, Newspaper,
-  ArrowRightLeft, Store, Route, Coins, Orbit, Sparkles,
+  ArrowRightLeft, Store, Route, Coins, Orbit,
 } from "lucide-react";
 
 /** Homepage last reorganized/audited — bump when the portfolio changes. */
@@ -134,7 +134,7 @@ export const CATALOG: CatalogItem[] = [
   { id: "iras", name: "IRAS", href: "/iras", icon: Landmark, section: "playbooks", audience: "account",
     gradient: "linear-gradient(135deg, #0B1F3A 0%, #1A73E8 100%)",
     blurb: "AI for the modern tax authority", keywords: ["tax", "singapore", "revenue authority"] },
-  { id: "agentify", name: "Agentify your Day", href: "/agentify", icon: Sparkles, section: "playbooks", audience: "account",
+  { id: "agentify", name: "Agentify your Day", href: "/agentify", icon: Rocket, section: "playbooks", audience: "account",
     gradient: "linear-gradient(135deg, #0b3d91 0%, #1a73e8 55%, #34a853 100%)",
     blurb: "Q1 FY27 Workspace activation workstream (internal)", keywords: ["workspace", "gws", "awt", "activation", "agentify", "gemini agent", "entitlement", "partners", "fde", "fy27"] },
   { id: "mizubank", name: "MizuBank", href: "/mizubank", icon: Banknote, section: "playbooks", audience: "account",
