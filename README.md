@@ -165,7 +165,11 @@ Passcode-gated GenAI commercial scenario model at `offers.aitokenomics.app`
 (also `/offers`). Math spec, lever table, test vectors, passcode-rotation and
 deployment steps: [`docs/offers.md`](docs/offers.md).
 
-## Anthropic: Under the Hood — S-1 teardown (`/under-the-hood`)
+## Anthropic: Under the Hood — S-1 teardown (`/under-the-hood` · ants1.aitokenomics.app)
+
+Also served at the root of **ants1.aitokenomics.app** (and ants1.aitokenomics.com if that
+domain is ever pointed here) via `src/lib/under-the-hood/routes.ts` + one block in
+`src/proxy.ts`: `/` → teardown, `/google-cloud-gtm` → companion page.
 
 An independent, evidence-led teardown of Anthropic, PBC's Form S-1 (Oct 26, 2026)
 and S-1/A Amendment No. 1 (Nov 2, 2026), research cutoff Nov 7, 2026. Sixteen

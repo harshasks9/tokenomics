@@ -27,6 +27,7 @@ import {
   toAppPath as toKoreaFy27AppPath,
 } from "@/lib/korea-fy27/routes";
 import { isAgentifyPath, toAppPath as toAgentifyAppPath } from "@/lib/agentify/routes";
+import { isUnderTheHoodHost, toAppPath as toUnderTheHoodAppPath } from "@/lib/under-the-hood/routes";
 
 function rewriteWithLanguage(url: URL) {
   return NextResponse.rewrite(url, {
@@ -578,6 +579,13 @@ export async function proxy(request: NextRequest) {
     const response = rewriteWithLanguage(atlasUrl);
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
     return response;
+  }
+
+  // ANTHROPIC: UNDER THE HOOD — S-1 teardown + Google Cloud AI GTM companion page.
+  if (isUnderTheHoodHost(hostname)) {
+    const underTheHoodUrl = request.nextUrl.clone();
+    underTheHoodUrl.pathname = toUnderTheHoodAppPath(underTheHoodUrl.pathname);
+    return rewriteWithLanguage(underTheHoodUrl);
   }
 
   const japanese = isJapaneseSite(host, request.nextUrl.search);

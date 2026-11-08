@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { runChecks } from "./validate";
 import { computeSim, COMPUTE_SIM_DEFAULTS, impliedQuarterlyGrowth, nrr, nrrCohortBounds, profitabilityBridge, quarterly, runScenario } from "./calc";
 import { SCENARIOS } from "./data";
+import { isUnderTheHoodHost, toAppPath } from "./routes";
 
 describe("data integrity checks", () => {
   const checks = runChecks();
@@ -48,5 +49,21 @@ describe("calculations", () => {
     expect(bull.years[3].revenue).toBeGreaterThan(base.years[3].revenue);
     expect(base.years[3].revenue).toBeGreaterThan(bear.years[3].revenue);
     expect(base.quarters[0].label).toBe("Q4 2026");
+  });
+});
+
+describe("ants1 subdomain routing", () => {
+  it("recognises both ants1 hosts, case-insensitively, and nothing else", () => {
+    expect(isUnderTheHoodHost("ants1.aitokenomics.app")).toBe(true);
+    expect(isUnderTheHoodHost("ANTS1.aitokenomics.com")).toBe(true);
+    expect(isUnderTheHoodHost("aitokenomics.app")).toBe(false);
+    expect(isUnderTheHoodHost("atlas.aitokenomics.app")).toBe(false);
+  });
+  it("maps browser paths onto the /under-the-hood routes", () => {
+    expect(toAppPath("/")).toBe("/under-the-hood");
+    expect(toAppPath("/google-cloud-gtm")).toBe("/under-the-hood/google-cloud-gtm");
+    expect(toAppPath("/under-the-hood")).toBe("/under-the-hood");
+    expect(toAppPath("/under-the-hood/google-cloud-gtm")).toBe("/under-the-hood/google-cloud-gtm");
+    expect(toAppPath("/api/x")).toBe("/api/x");
   });
 });
