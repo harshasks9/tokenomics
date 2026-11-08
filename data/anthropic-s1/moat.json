@@ -1,0 +1,202 @@
+{
+ "_meta": {
+  "description": "Analytical 1–5 scores (assessment, not measurement). 5 = clear leadership with durable evidence; 3 = competitive parity; 1 = structural disadvantage. 'Microsoft' scores its own models and distribution; OpenAI is scored separately. 'Open-weight' is the ecosystem (Qwen, DeepSeek, GLM, Kimi, Mistral).",
+  "rubric": {
+   "5": "Clear leadership; evidence in filings or independent data",
+   "4": "Strong; near the top with some contest",
+   "3": "Parity",
+   "2": "Behind; dependent on partners",
+   "1": "Structural disadvantage"
+  },
+  "players": [
+   "Anthropic",
+   "Google",
+   "Microsoft",
+   "AWS",
+   "OpenAI",
+   "Open-weight"
+  ]
+ },
+ "dimensions": [
+  {
+   "id": "frontier",
+   "dimension": "Frontier model intelligence",
+   "scores": {
+    "Anthropic": 5,
+    "Google": 4,
+    "Microsoft": 2,
+    "AWS": 2,
+    "OpenAI": 4,
+    "Open-weight": 3
+   },
+   "anthropicEvidence": "Opus 5.5 SWE-bench Pro 89.9% (vendor); #1 AA v4 snapshot (58); Mythos gated for capability.",
+   "counterargument": "GPT-6 Astra leads some agentic benchmarks; Gemini 4 Carbon claims; Kimi K3.1 Pro within points on AA v4.",
+   "durability": "Months",
+   "confidence": "High",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "A rival leapfrog for two consecutive release cycles."
+  },
+  {
+   "id": "coding",
+   "dimension": "Coding and agentic performance",
+   "scores": {
+    "Anthropic": 5,
+    "Google": 3,
+    "Microsoft": 4,
+    "AWS": 2,
+    "OpenAI": 4,
+    "Open-weight": 3
+   },
+   "anthropicEvidence": "Claude Code 'default' in enterprise eng orgs; top-5% users ≈20× spend; Claude Code + Codex ≈70% of coding spend.",
+   "counterargument": "Copilot Fusion claims parity within 2 pts at −50% cost; Codex ~40M combined users; Cursor/Composer on open weights.",
+   "durability": "Quarters",
+   "confidence": "Medium",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "Routing layers that make the model invisible to developers."
+  },
+  {
+   "id": "research",
+   "dimension": "Research productivity",
+   "scores": {
+    "Anthropic": 5,
+    "Google": 4,
+    "Microsoft": 2,
+    "AWS": 2,
+    "OpenAI": 4,
+    "Open-weight": 3
+   },
+   "anthropicEvidence": ">90% of code by Claude; 250 launches in 9M; ExploitBench 40%→91% in ~4 months.",
+   "counterargument": "RSP thresholds may add human review; OpenAI and Google DeepMind research depth.",
+   "durability": "Years",
+   "confidence": "High",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "Safety gating or talent loss."
+  },
+  {
+   "id": "inference",
+   "dimension": "Inference efficiency",
+   "scores": {
+    "Anthropic": 4,
+    "Google": 5,
+    "Microsoft": 3,
+    "AWS": 4,
+    "OpenAI": 3,
+    "Open-weight": 4
+   },
+   "anthropicEvidence": "Implied ~85% gross margin on serving; ex short-term compute ~29% of revenue.",
+   "counterargument": "Google's vertically integrated TPU serving; open-weight serving at ~$0.13/M tokens.",
+   "durability": "Quarters",
+   "confidence": "Medium",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "Price cuts that pass gains to customers."
+  },
+  {
+   "id": "training",
+   "dimension": "Training efficiency",
+   "scores": {
+    "Anthropic": 4,
+    "Google": 4,
+    "Microsoft": 2,
+    "AWS": 3,
+    "OpenAI": 3,
+    "Open-weight": 4
+   },
+   "anthropicEvidence": "Revenue +1,127% vs compute +382% YoY; compute multipliers.",
+   "counterargument": "≥74% of compute goes to research/development; no disclosure of training cost per model.",
+   "durability": "Unclear",
+   "confidence": "Medium",
+   "replicationDifficulty": "Low",
+   "whatErodes": "Rivals' algorithmic advances diffusing via papers and distillation."
+  },
+  {
+   "id": "compute",
+   "dimension": "Compute supply and hardware portability",
+   "scores": {
+    "Anthropic": 4,
+    "Google": 5,
+    "Microsoft": 3,
+    "AWS": 5,
+    "OpenAI": 3,
+    "Open-weight": 1
+   },
+   "anthropicEvidence": "Four chip families natively; $895.4B committed; multi-supplier leverage.",
+   "counterargument": "TPU-heavy commitments; Q3 surge premium; $213.8B contingent on suppliers.",
+   "durability": "Years",
+   "confidence": "Medium",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "Supplier financing failures or demand shortfall."
+  },
+  {
+   "id": "distribution",
+   "dimension": "Enterprise distribution",
+   "scores": {
+    "Anthropic": 3,
+    "Google": 4,
+    "Microsoft": 5,
+    "AWS": 5,
+    "OpenAI": 3,
+    "Open-weight": 2
+   },
+   "anthropicEvidence": ">50% of F500 at ≥$100K; all three clouds; SIs; 150,000 certified practitioners.",
+   "counterargument": "Incumbents own workflows (M365, Workspace); <0.1% of F500 expenses.",
+   "durability": "Years",
+   "confidence": "Low",
+   "replicationDifficulty": "High",
+   "whatErodes": "Bundled agents inside productivity suites."
+  },
+  {
+   "id": "developers",
+   "dimension": "Developer ecosystem and loyalty",
+   "scores": {
+    "Anthropic": 5,
+    "Google": 3,
+    "Microsoft": 4,
+    "AWS": 3,
+    "OpenAI": 4,
+    "Open-weight": 4
+   },
+   "anthropicEvidence": "MCP standard; Agent SDK; Claude Code adoption; developer-led entry pattern.",
+   "counterargument": "MCP donated to Linux Foundation (open); developers switch models fast (>80% revenue from <6-month-old models).",
+   "durability": "Quarters",
+   "confidence": "Medium",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "Harness commoditization; GitHub control of the dev loop."
+  },
+  {
+   "id": "trust",
+   "dimension": "Trust, safety and governance",
+   "scores": {
+    "Anthropic": 4,
+    "Google": 4,
+    "Microsoft": 5,
+    "AWS": 4,
+    "OpenAI": 3,
+    "Open-weight": 2
+   },
+   "anthropicEvidence": "Enterprise Frontier Safeguards; gated releases; PBC/LTBT governance.",
+   "counterargument": "5–7% violating revenue; U.S. supply-chain-risk designation; export restrictions disabled flagship models.",
+   "durability": "Years",
+   "confidence": "Medium",
+   "replicationDifficulty": "Medium",
+   "whatErodes": "A major safety incident or prolonged government dispute."
+  },
+  {
+   "id": "capital",
+   "dimension": "Capital access and financial resilience",
+   "scores": {
+    "Anthropic": 3,
+    "Google": 5,
+    "Microsoft": 5,
+    "AWS": 5,
+    "OpenAI": 3,
+    "Open-weight": 2
+   },
+   "anthropicEvidence": "$146.6B liquidity; +$6.6B operating cash flow; $77B partner financing; IPO.",
+   "counterargument": "≈$105B/yr of obligations through 2030; covenants; dependence on partner capital.",
+   "durability": "Years",
+   "confidence": "Low",
+   "replicationDifficulty": "High",
+   "whatErodes": "Revenue slowdown before capacity is absorbed."
+  }
+ ]
+}
