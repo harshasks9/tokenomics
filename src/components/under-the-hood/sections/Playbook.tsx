@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MARKET, PLAYBOOK } from "@/lib/under-the-hood/data";
+import { GTM, MARKET, PLAYBOOK } from "@/lib/under-the-hood/data";
 import { ClassBadge, Ext, Section, Seg } from "../ui";
 
 const heat = (v: number) => ["", "#e3eefb", "#86b6ef", "#1c5cab"][v];
@@ -50,6 +50,7 @@ export default function Playbook() {
         <h4 className="uth-h4" style={{ marginTop: 16 }}>Recommended moves</h4>
         <ol style={{ margin: 0, paddingLeft: 20, display: "grid", gap: 6, color: "var(--ink-2)", fontSize: 14.5 }}>{g.actions.map((x) => <li key={x}>{x}</li>)}</ol>
         <p className="uth-xs" style={{ marginTop: 10 }}>Context: Google Cloud Q3 2026 revenue $30.7B (+103%), backlog $561B; Menlo estimates Google’s enterprise LLM API share at 9% vs Anthropic 55% (survey; Menlo is an Anthropic investor). <Ext href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/">Alphabet Q3</Ext> · <Ext href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/">Menlo</Ext> <ClassBadge kind="inference" /></p>
+        <p className="uth-small" style={{ margin: "12px 0 0" }}><a href="/under-the-hood/google-cloud-gtm"><strong>Full ranked brief: What it means for Google Cloud AI GTM →</strong></a> {GTM.items.length} statistics ranked High / Medium / Low, each with the play, owner and leading metric.</p>
       </div>
 
       <div className="uth-block uth-split">

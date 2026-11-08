@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Render research/s1-amendment-diff.md and research/top-20-insights.md from
-the structured datasets so the prose and the microsite never drift apart.
+"""Render research/s1-amendment-diff.md, research/top-20-insights.md and
+research/google-cloud-ai-gtm.md from the structured datasets so the prose and
+the microsite never drift apart.
 
 Usage (from repo root): python3 -I scripts/anthropic-s1/render_research.py
 """
@@ -108,8 +109,68 @@ def insights_md():
         f.write("\n".join(out) + "\n")
 
 
+def gtm_md():
+    g = load("google-cloud-gtm.json")
+    ev = {e["id"]: e for e in load("evidence.json")["items"]}
+    mk = {m["id"]: m for m in load("market.json")["items"]}
+    areas = {a["id"]: a["label"] for a in g["areas"]}
+    ranks = ["High", "Medium", "Low"]
+    items = {i["id"]: i for i in g["items"]}
+
+    def refs(ids):
+        out = []
+        for r in ids:
+            e = ev[r]
+            out.append(f"{e['metric']} ({'S-1/A' if e['sourceId'] == 's1a' else 'S-1'} p. {e['page']})")
+        return "; ".join(out)
+
+    def ctx(ids):
+        return "; ".join(f"[{mk[m]['entity']}: {mk[m]['metric']}]({mk[m]['url']}) ({mk[m]['basis']}, {mk[m]['confidence']})" for m in ids)
+
+    m, ex = g["_meta"], g["example"]
+    out = [f"# {m['title']}", "", m["subtitle"], "",
+           f"Companion to the microsite page `/under-the-hood/google-cloud-gtm`. Research cutoff {m['asOf']}. Sources: [Form S-1]({S1}) · [Form S-1/A]({S1A}).", "",
+           f"**Method.** {m['method']}", "", "**Rubric**", ""]
+    out += [f"- **{r}** — {m['rubric'][r]}" for r in ranks]
+    out += ["", f"_{m['disclaimer']}_", "", "## The example, checked", "",
+            f"> {ex['claim']}", "", f"**Verdict: {ex['verdict']}.** {ex['says']}", "", "What it does not say:", ""]
+    out += [f"- {d}" for d in ex["doesNotSay"]]
+    out += ["", f"**So what.** {ex['soWhat']}", "", f"Sources: {refs(ex['evidenceIds'])}. Context: {ctx(ex['marketIds'])}.", "",
+            "## Six moves", ""]
+    for n, mv in enumerate(g["moves"], 1):
+        out.append(f"{n}. **{mv['title']}.** {mv['body']} _(Based on: {', '.join(items[r]['title'] + ' [' + items[r]['rank'] + ']' for r in mv['refs'])}.)_")
+    out += ["", "## Where Anthropic's growth pays Google vs costs Google", "", "Do not sum these rows: they mix minimums, estimates and amounts outside the $895.4B aggregate.", "",
+            "| Pays Google | Source |", "|---|---|"]
+    out += [f"| {r['item']} | {refs(r['evidenceIds'])} |" for r in g["ledger"]["pays"]]
+    out += ["", "| Costs Google | Source |", "|---|---|"]
+    out += [f"| {r['item']} | {refs(r['evidenceIds'])}{'; ' + ctx(r['marketIds']) if r.get('marketIds') else ''} |" for r in g["ledger"]["costs"]]
+    out += ["", "## Summary", "", "| Rank | # | Implication | Area | Owner | Horizon |", "|---|---|---|---|---|---|"]
+    n = 0
+    for r in ranks:
+        for it in [i for i in g["items"] if i["rank"] == r]:
+            n += 1
+            out.append(f"| {r} | {n} | {it['title']} | {areas[it['area']]} | {it['owner']} | {it['horizon']} |")
+    n = 0
+    for r in ranks:
+        out += ["", f"## {r} implications", "", f"_{m['rubric'][r]}_", ""]
+        for it in [i for i in g["items"] if i["rank"] == r]:
+            n += 1
+            out += [f"### {n}. {it['title']}", "",
+                    f"- **Statistic ({it['statKind']}):** {it['stat']}",
+                    f"- **Read it precisely:** {it['reading']}",
+                    f"- **What it means for Google Cloud:** {it['implication']}",
+                    f"- **The play:** {it['play']}",
+                    f"- **Owner:** {it['owner']} · **Leading metric:** {it['metric']} · **Horizon:** {it['horizon']}",
+                    f"- **Why {r}:** {it['rankWhy']}",
+                    f"- **Sources:** {refs(it['evidenceIds'])}" + (f". Context: {ctx(it['marketIds'])}" if it["marketIds"] else ""),
+                    f"- **Deep dive:** `/under-the-hood#{it['deepDive']}`", ""]
+    with open(os.path.join(R, "google-cloud-ai-gtm.md"), "w", encoding="utf-8") as f:
+        f.write("\n".join(out) + "\n")
+
+
 if __name__ == "__main__":
     os.makedirs(R, exist_ok=True)
     diff_md()
     insights_md()
-    print("rendered research/s1-amendment-diff.md and research/top-20-insights.md")
+    gtm_md()
+    print("rendered research/s1-amendment-diff.md, research/top-20-insights.md and research/google-cloud-ai-gtm.md")

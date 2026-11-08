@@ -19,6 +19,7 @@ import moatFile from "../../../data/anthropic-s1/moat.json";
 import playbookFile from "../../../data/anthropic-s1/playbook.json";
 import scenariosFile from "../../../data/anthropic-s1/scenarios.json";
 import narrativeFile from "../../../data/anthropic-s1/narrative.json";
+import gtmFile from "../../../data/anthropic-s1/google-cloud-gtm.json";
 
 export type Classification = "reported" | "calculated" | "inference" | "assumption" | "hypothesis";
 
@@ -211,3 +212,22 @@ export const section = (id: string) => {
   if (!s) throw new Error(`unknown section ${id}`);
   return s;
 };
+
+/* ------------------------------------------------------------------ Google Cloud AI GTM page */
+export type GtmRank = "High" | "Medium" | "Low";
+export interface GtmItem {
+  id: string; rank: GtmRank; area: string; title: string; stat: string; statKind: Classification;
+  reading: string; implication: string; play: string; owner: string; metric: string; horizon: string; rankWhy: string;
+  evidenceIds: string[]; marketIds: string[]; deepDive: string;
+}
+export interface GtmLedgerRow { item: string; evidenceIds: string[]; marketIds?: string[] }
+export const GTM = gtmFile as unknown as {
+  _meta: { title: string; subtitle: string; asOf: string; method: string; rubric: Record<GtmRank, string>; disclaimer: string };
+  example: { claim: string; verdict: string; says: string; doesNotSay: string[]; soWhat: string; evidenceIds: string[]; marketIds: string[]; deepDive: string };
+  areas: { id: string; label: string }[];
+  moves: { title: string; body: string; refs: string[] }[];
+  ledger: { pays: GtmLedgerRow[]; costs: GtmLedgerRow[] };
+  items: GtmItem[];
+};
+export const GTM_RANKS: GtmRank[] = ["High", "Medium", "Low"];
+export const marketById = (id: string) => MARKET.find((m) => m.id === id);

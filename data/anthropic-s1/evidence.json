@@ -1797,6 +1797,503 @@
    ],
    "extracted": "2026-11-07",
    "quoteVerified": true
+  },
+  {
+   "id": "google-csp",
+   "metric": "Google Cloud CSP hosting minimum spend",
+   "value": "$121.3B",
+   "unit": "minimum",
+   "period": "Apr 2026 – Jul 2033",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Infrastructure Service Arrangements",
+   "page": "174",
+   "quote": "In March 2026, we entered into a CSP hosting agreement with Google, which was subsequently amended between May and October 2026, pursuant to which we committed to spend at least approximately $121.3 billion between April 2026 and July 2033, regardless of actual usage.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "Was $114.5B in the Oct 26 S-1.",
+   "tags": [
+    "google",
+    "compute"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "google-tpu-addl",
+   "metric": "Additional TPU compute (excluded from aggregate)",
+   "value": "$125–150B",
+   "unit": "estimate",
+   "period": "Delivery 2028–2031",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Infrastructure Service Arrangements",
+   "page": "174",
+   "quote": "we also committed to procure additional TPU compute, without a fixed dollar commitment, via one of various delivery methods, including either a CSP hosting agreement with Google, direct purchase from Google with five-year financing, or direct purchase and/or lease from a third-party TPU provider with five-year financing",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "google",
+    "tpu"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "broadcom-leases",
+   "metric": "Broadcom TPU equipment leases (rent excl. interest)",
+   "value": "$161.2B",
+   "unit": "aggregate",
+   "period": "Five-year terms",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Infrastructure Equipment Leases",
+   "page": "176",
+   "quote": "Our rent payments over the life of these leases are equal to an aggregate of approximately $161.2 billion excluding interest",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "tpu",
+    "compute"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "google-npa",
+   "metric": "Google 2026 NPA and IPO-concurrent option",
+   "value": "Up to $20.0B; option up to $10.0B; cap 14.99%",
+   "unit": "",
+   "period": "Through Dec 2030",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Convertible Notes — Google",
+   "page": "171",
+   "quote": "In connection with the Google 2026 NPA, we granted Google an option to purchase up to $10.0 billion of our Class N common stock in a private placement concurrent with this offering at the initial public offering price",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "google",
+    "financing"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "anthropic-direct",
+   "metric": "Anthropic Direct (leasing chips, dedicated facilities)",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Compute Investments",
+   "page": "139",
+   "quote": "We refer to this additional source of compute as Anthropic Direct, which helps to address our scaling compute requirements and we believe will provide long-term economic advantages.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "compute"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "cowork-adoption",
+   "metric": "Claude Cowork adoption vs Claude Code at the same stage",
+   "value": "Outpaced",
+   "unit": "",
+   "period": "As of Sep 30, 2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Prospectus Summary",
+   "page": "8",
+   "quote": "As of September 30, 2026, adoption of Claude Cowork, which we made available as a research preview in January 2026, outpaced the adoption Claude Code achieved at the equivalent point following its research preview release in February 2025.",
+   "formula": "",
+   "confidence": "Medium",
+   "caveat": "Adoption metric not defined.",
+   "tags": [
+    "products",
+    "knowledge-work"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "cowork-merge",
+   "metric": "Claude Cowork merged into Claude.ai",
+   "value": "Sep 2026",
+   "unit": "",
+   "period": "Sep 2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Prospectus Summary",
+   "page": "8",
+   "quote": "In September 2026, we began merging Claude Cowork and Claude.ai, bringing agentic and conversational work into a unified application.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "products",
+    "knowledge-work"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "embedded-m365",
+   "metric": "Claude embedded in Microsoft 365 and Chrome",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Business",
+   "page": "196",
+   "quote": "Claude for Microsoft 365 and Claude in Chrome are embedded into the software that knowledge workers use every day.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "No Google Workspace integration is named in the filing.",
+   "tags": [
+    "distribution",
+    "knowledge-work"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "both-channels",
+   "metric": "Customers buying direct and via CSP marketplaces",
+   "value": "Many use both",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — How We Generate Revenue",
+   "page": "139",
+   "quote": "We establish a direct contractual relationship with the customer and offer customers the flexibility to purchase directly from us or through CSP marketplaces, and many customers utilize both channels.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "distribution",
+    "csp"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "csp-field-teams",
+   "metric": "CSP field teams sell Claude",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Our Approach to Claude Diffusion",
+   "page": "141",
+   "quote": "These CSPs extend our reach through their large combined field teams that are empowered to sell our platform and applications, accelerating market adoption at a scale we believe would be difficult for any single organization to directly replicate.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "distribution",
+    "csp"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "direct-teams-late",
+   "metric": "Claude often in use before direct sales engage",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Our Approach to Claude Diffusion",
+   "page": "141",
+   "quote": "By the time our direct teams engage a customer, Claude is often already in use.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "gtm"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "self-serve-growth",
+   "metric": "Growth mostly self-service and organic",
+   "value": "—",
+   "unit": "",
+   "period": "To date",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Key Factors",
+   "page": "143",
+   "quote": "A large portion of our growth to date has been self-service and organic.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "gtm"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "prosumer-funnel",
+   "metric": "Prosumers as top-of-funnel for enterprise",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Our Customers",
+   "page": "140",
+   "quote": "These users provide strategic value as a top-of-funnel engine for our enterprise business— individuals who utilize Claude for their personal work and then champion it inside their organizations.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "gtm",
+    "customers"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "sub-to-consumption",
+   "metric": "Subscription-to-consumption bridge",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — How We Generate Revenue",
+   "page": "140",
+   "quote": "For example, when subscribers approach or exhaust the usage capacity included in their tier, they may utilize a higher subscription tier or purchase more intelligence directly, creating a seamless bridge from subscription to incremental pay-for-intelligence revenue.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "pricing",
+    "revenue-mix"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "committed-contracts",
+   "metric": "Enterprise commitments with committed price lists",
+   "value": "Growing number",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — How We Generate Revenue",
+   "page": "140",
+   "quote": "A growing number of enterprise customers agree to non-cancelable annual or multi-year contracts with minimum spend commitments in exchange for a committed price list.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "pricing",
+    "revenue-quality"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "model-routing",
+   "metric": "Customers route tasks across Claude model classes",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — How We Generate Revenue",
+   "page": "139",
+   "quote": "Customers also frequently adopt our full range of models, routing individual tasks to the models that are most optimized to meet their needs along the capability-cost-speed curve.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "models",
+    "routing"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "latest-models",
+   "metric": "Enterprises adopt the newest models immediately",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Prospectus Summary",
+   "page": "9",
+   "quote": "enterprises consistently utilize our latest and most capable models as soon as they are released, gravitating to the most advanced option for their highest- value work.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "models"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "partner-network",
+   "metric": "Claude Partner Network",
+   "value": "$100M; >150,000 practitioners; >4,000 orgs",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Business — Ecosystem Partnerships",
+   "page": "197",
+   "quote": "in March 2026, we launched the Claude Partner Network, committing an initial $100 million in 2026 to fund partner training, technical certification, and joint market development with the firms that bring Claude into enterprise environments. As of September 30, 2026, this network comprised over 150,000 practitioners across over 4,000 organizations",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "partners"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "frontier-academy",
+   "metric": "Claude Frontier Academy",
+   "value": "$100M; 10,000 engineers by end-2027",
+   "unit": "",
+   "period": "Oct 2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Business — Ecosystem Partnerships",
+   "page": "198",
+   "quote": "In October 2026, we launched the Claude Frontier Academy (the “Academy”), backed by a $100 million commitment",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "partners"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "fortune-verticals",
+   "metric": "Fortune 500 vertical penetration",
+   "value": "Every Fortune 10; 10 largest banks; 9 of 10 largest pharma",
+   "unit": "",
+   "period": "Sep 30, 2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Business",
+   "page": "198",
+   "quote": "Within the Fortune 500, these customers included the 10 largest software and IT services companies, the 10 largest internet companies, nine of the 10 largest pharmaceutical companies, the 10 largest banks, nine of the 10 largest semiconductor companies, and eight of the 10 largest healthcare companies.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "customers",
+    "verticals"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "frontier-safeguards",
+   "metric": "Enterprise Frontier Safeguards — monitoring data in customer cloud",
+   "value": "—",
+   "unit": "",
+   "period": "Sep 2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Business — Claude Enterprise",
+   "page": "206",
+   "quote": "The activity data we use for automated safety monitoring is stored in the customer’s own cloud account, under the customer’s encryption keys and access controls.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "safety",
+    "governance"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "named-competitors",
+   "metric": "Primary named competitors",
+   "value": "Google and OpenAI",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Risk Factors",
+   "page": "41",
+   "quote": "Our primary competitors in this category include Alphabet Inc. (together with its affiliates, “Google”) and OpenAI Group PBC (“OpenAI”).",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "competition",
+    "google"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "csp-compete",
+   "metric": "CSPs offer competing models",
+   "value": "Amazon, Google, Microsoft",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "Risk Factors",
+   "page": "75",
+   "quote": "Amazon, Google, and Microsoft each offer AI services and develop and deploy competing AI models through their respective cloud platforms.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "competition",
+    "csp"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
+  },
+  {
+   "id": "intl-driver",
+   "metric": "International expansion expected to drive growth",
+   "value": "—",
+   "unit": "",
+   "period": "2026",
+   "classification": "reported",
+   "sourceId": "s1a",
+   "section": "MD&A — Key Factors",
+   "page": "144",
+   "quote": "we expect international expansion to be a meaningful driver of revenue growth as global demand for AI accelerates.",
+   "formula": "",
+   "confidence": "High",
+   "caveat": "",
+   "tags": [
+    "geography"
+   ],
+   "extracted": "2026-11-08",
+   "quoteVerified": true
   }
  ]
 }
