@@ -1,0 +1,103 @@
+{
+ "_meta": {
+  "description": "What the filing does not tell us. Absence of disclosure is not evidence of weakness."
+ },
+ "items": [
+  {
+   "id": "product-revenue",
+   "title": "Revenue by product (API vs Claude Code vs Cowork vs Claude.ai)",
+   "status": "Not disclosed. Only consumption (79%) vs subscription (21%) and the Claude Code spend-intensity comparison.",
+   "whyItMatters": "Determines whether Anthropic is an API utility or an application company — and how exposed it is to routing layers like Copilot Fusion.",
+   "whatWeCanBound": "Consumption revenue is 'primarily generated from customers building applications incorporating Claude or utilizing our first-party applications' — the two are mixed.",
+   "disclosureNeeded": "Product-line revenue or Claude Code users/ARR."
+  },
+  {
+   "id": "model-profitability",
+   "title": "Model-by-model profitability",
+   "status": "Not disclosed; one segment.",
+   "whyItMatters": "Mythos/Fable list at 2.5× Opus; margins by class drive the mix risk as customers route to cheaper models.",
+   "whatWeCanBound": "None beyond the 40% / 25% cost-per-task claims.",
+   "disclosureNeeded": "Gross margin by model class or price realization."
+  },
+  {
+   "id": "training-vs-inference",
+   "title": "Training vs inference compute",
+   "status": "Not disclosed. Functional split gives cost of revenue $4.8B vs R&D $19.2B (9M 2026).",
+   "whyItMatters": "Separates the cost of serving (falling) from the cost of staying at the frontier (rising).",
+   "whatWeCanBound": "Upper bound: ≤25.6% of compute expense is customer-serving (cost of revenue ÷ compute).",
+   "disclosureNeeded": "Compute by workload (research, training, serving, internal use)."
+  },
+  {
+   "id": "utilization",
+   "title": "True accelerator utilization",
+   "status": "Not disclosed.",
+   "whyItMatters": "Idle committed capacity is the core downside of a $895B commitment stack.",
+   "whatWeCanBound": "Q3 short-term buying suggests high utilization of committed capacity in Q3.",
+   "disclosureNeeded": "Utilization or capacity (GW) online vs committed."
+  },
+  {
+   "id": "gross-retention",
+   "title": "Gross retention and mature-cohort expansion",
+   "status": "Not disclosed; only ~900% NRR.",
+   "whyItMatters": "Separates durable expansion from churned experiments.",
+   "whatWeCanBound": "None — NRR is dollar-weighted and nets churn.",
+   "disclosureNeeded": "Gross dollar retention; NRR for customers ≥$100K at base."
+  },
+  {
+   "id": "customer-concentration",
+   "title": "Identity and share of top customers",
+   "status": "Customers are anonymized (A–E). Top five ≈25% of 9M revenue; no customer ≥10%.",
+   "whyItMatters": "AI-native platforms embedding Claude can switch providers quickly.",
+   "whatWeCanBound": "Customer C was 43% of 2023 revenue and 11% of H1 2026.",
+   "disclosureNeeded": "Named customers above 10% or by category (AI-native vs enterprise)."
+  },
+  {
+   "id": "industry-mix",
+   "title": "Revenue by industry and by function",
+   "status": "Not disclosed.",
+   "whyItMatters": "Tests whether adoption is spreading beyond software.",
+   "whatWeCanBound": "Case studies span finance, retail, pharma, telecom, insurance.",
+   "disclosureNeeded": "Industry or function revenue mix."
+  },
+  {
+   "id": "direct-vs-marketplace",
+   "title": "Direct vs marketplace economics (fee rates by CSP)",
+   "status": "Partially disclosed: marketplace share 44% (9M); channel fees +$4.8B; terms changed.",
+   "whyItMatters": "Determines how much of each Anthropic dollar hyperscalers capture.",
+   "whatWeCanBound": "Channel fees ≈14% of total revenue; take rate on marketplace revenue cannot be isolated because fees may apply beyond marketplace billing.",
+   "disclosureNeeded": "Fee rates or channel revenue by CSP."
+  },
+  {
+   "id": "cost-per-task",
+   "title": "Fully loaded cost per agentic task",
+   "status": "Not disclosed; only relative claims (−40% Opus 5.5, −25% Fable 5.1).",
+   "whyItMatters": "The real unit of competition for agents.",
+   "whatWeCanBound": "None.",
+   "disclosureNeeded": "Absolute cost per task for reference workloads."
+  },
+  {
+   "id": "runrate-oct",
+   "title": "October 31 Run-Rate Revenue",
+   "status": "Blank in both filings.",
+   "whyItMatters": "The only post-Q3 operating datapoint promised by the document.",
+   "whatWeCanBound": "Q3 × 4 = $67.8B (annualized recognized revenue, not run-rate).",
+   "disclosureNeeded": "Next amendment."
+  },
+  {
+   "id": "violation-type",
+   "title": "Nature and geography of policy-violating revenue",
+   "status": "5–7% quantified; type not disclosed.",
+   "whyItMatters": "Indicates whether the leakage is distillation, resale, sanctioned access or fraud — each with different competitive implications.",
+   "whatWeCanBound": "Distillation, geo-restrictions and fraud are discussed separately in risk factors.",
+   "disclosureNeeded": "Breakdown by violation category and region."
+  },
+  {
+   "id": "geography",
+   "title": "Revenue by country / APAC / Japan",
+   "status": "Only US vs international by billing address (70.6% / 29.4%).",
+   "whyItMatters": "Billing address understates international usage via US-billed multinationals and CSP marketplaces.",
+   "whatWeCanBound": "International share rose from 26.7% (FY2025) to 29.4% (9M 2026); APAC/Japan not separated.",
+   "disclosureNeeded": "Revenue by region."
+  }
+ ]
+}

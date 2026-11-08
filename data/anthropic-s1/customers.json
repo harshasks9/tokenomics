@@ -1,0 +1,254 @@
+{
+ "_meta": {
+  "description": "Customer cohort disclosures. Counts are 'more than' / 'approximately' as stated.",
+  "source": "s1a / s1"
+ },
+ "cohort100k": [
+  {
+   "asOf": "2023-12-31",
+   "label": "Dec 2023",
+   "count": 20,
+   "qualifier": "approximately",
+   "revenue": 37,
+   "revenuePeriod": "FY2023",
+   "shareOfRevenue": 90,
+   "sourceId": "s1a",
+   "page": "144"
+  },
+  {
+   "asOf": "2024-12-31",
+   "label": "Dec 2024",
+   "count": 200,
+   "qualifier": "approximately",
+   "revenue": 220,
+   "revenuePeriod": "FY2024",
+   "shareOfRevenue": 57,
+   "sourceId": "s1a",
+   "page": "144"
+  },
+  {
+   "asOf": "2025-03-31",
+   "label": "Mar 2025",
+   "count": 400,
+   "qualifier": "approximately",
+   "revenue": null,
+   "revenuePeriod": null,
+   "shareOfRevenue": null,
+   "sourceId": "s1a",
+   "page": "161"
+  },
+  {
+   "asOf": "2025-06-30",
+   "label": "Jun 2025",
+   "count": 600,
+   "qualifier": "more than",
+   "revenue": null,
+   "revenuePeriod": null,
+   "shareOfRevenue": null,
+   "sourceId": "s1",
+   "page": "148"
+  },
+  {
+   "asOf": "2025-09-30",
+   "label": "Sep 2025",
+   "count": 950,
+   "qualifier": "more than",
+   "revenue": null,
+   "revenuePeriod": null,
+   "shareOfRevenue": null,
+   "sourceId": "s1a",
+   "page": "135"
+  },
+  {
+   "asOf": "2025-12-31",
+   "label": "Dec 2025",
+   "count": 1500,
+   "qualifier": "approximately",
+   "revenue": 3500,
+   "revenuePeriod": "FY2025",
+   "shareOfRevenue": 76,
+   "sourceId": "s1a",
+   "page": "144"
+  },
+  {
+   "asOf": "2026-06-30",
+   "label": "Jun 2026",
+   "count": 6000,
+   "qualifier": "more than",
+   "revenue": 12000,
+   "revenuePeriod": "6M 2026",
+   "shareOfRevenue": 74,
+   "sourceId": "s1",
+   "page": "148"
+  },
+  {
+   "asOf": "2026-09-30",
+   "label": "Sep 2026",
+   "count": 11900,
+   "qualifier": "more than",
+   "revenue": 26100,
+   "revenuePeriod": "TTM Sep 2026",
+   "shareOfRevenue": 74,
+   "sourceId": "s1a",
+   "page": "144"
+  }
+ ],
+ "tiers": [
+  {
+   "id": "10m",
+   "label": "≥ $10M TTM",
+   "count": 250,
+   "qualifier": "approximately",
+   "floorRevenue": 2500,
+   "note": "Floor = 250 × $10M. Top five customers alone produced ~21% of Q3 2026 revenue (~$3.6B in the quarter).",
+   "sourceId": "s1a",
+   "page": "9"
+  },
+  {
+   "id": "1m",
+   "label": "≥ $1M TTM",
+   "count": 1900,
+   "qualifier": "more than",
+   "floorRevenue": 1900,
+   "note": "Includes the ≥$10M tier.",
+   "sourceId": "s1a",
+   "page": "9"
+  },
+  {
+   "id": "100k",
+   "label": "≥ $100K TTM",
+   "count": 11900,
+   "qualifier": "more than",
+   "revenue": 26100,
+   "note": "74% of TTM revenue; average ≈ $2.2M per customer (upper bound because count is 'more than').",
+   "sourceId": "s1a",
+   "page": "144"
+  },
+  {
+   "id": "tail",
+   "label": "< $100K TTM",
+   "count": 40000000,
+   "qualifier": "approximately",
+   "revenue": 9182,
+   "note": "26% of TTM revenue across ~40M customers — average ≈ $230/year; includes prosumer subscriptions and self-serve API.",
+   "sourceId": "s1a",
+   "page": "144"
+  }
+ ],
+ "concentration": [
+  {
+   "period": "FY2023",
+   "metric": "Largest customer (Customer C)",
+   "value": 43,
+   "sourceId": "s1a",
+   "page": "F-15"
+  },
+  {
+   "period": "FY2023",
+   "metric": "Customer D",
+   "value": 11,
+   "sourceId": "s1a",
+   "page": "F-15"
+  },
+  {
+   "period": "FY2025",
+   "metric": "Customer A",
+   "value": 12,
+   "sourceId": "s1a",
+   "page": "F-15"
+  },
+  {
+   "period": "FY2025",
+   "metric": "Customer B",
+   "value": 12,
+   "sourceId": "s1a",
+   "page": "F-15"
+  },
+  {
+   "period": "6M 2025",
+   "metric": "Customer B",
+   "value": 18,
+   "sourceId": "s1",
+   "page": "F-15"
+  },
+  {
+   "period": "6M 2026",
+   "metric": "Customer C",
+   "value": 11,
+   "sourceId": "s1",
+   "page": "F-15"
+  },
+  {
+   "period": "9M 2025",
+   "metric": "Customer B",
+   "value": 14,
+   "sourceId": "s1a",
+   "page": "F-15"
+  },
+  {
+   "period": "9M 2025",
+   "metric": "Customer A",
+   "value": 11,
+   "sourceId": "s1a",
+   "page": "F-15"
+  },
+  {
+   "period": "9M 2026",
+   "metric": "Any single customer",
+   "value": null,
+   "note": "No customer ≥10%",
+   "sourceId": "s1a",
+   "page": "F-15"
+  }
+ ],
+ "top5Share": [
+  {
+   "period": "Q1 2026",
+   "top5": 36,
+   "sourceId": "s1a",
+   "page": "144",
+   "basis": "100% − ~64% outside top five"
+  },
+  {
+   "period": "Q3 2026",
+   "top5": 21,
+   "sourceId": "s1a",
+   "page": "144",
+   "basis": "100% − ~79% outside top five"
+  }
+ ],
+ "marketplaceShare": [
+  {
+   "period": "FY2023",
+   "value": 11,
+   "sourceId": "s1a"
+  },
+  {
+   "period": "FY2024",
+   "value": 32,
+   "sourceId": "s1a"
+  },
+  {
+   "period": "FY2025",
+   "value": 47,
+   "sourceId": "s1a"
+  },
+  {
+   "period": "6M 2026",
+   "value": 48,
+   "sourceId": "s1"
+  },
+  {
+   "period": "9M 2026",
+   "value": 44,
+   "sourceId": "s1a"
+  },
+  {
+   "period": "Q3 2026 (implied)",
+   "value": 40.2,
+   "low": 38.7,
+   "high": 41.6,
+   "derived": true
+  }
+ ]
+}

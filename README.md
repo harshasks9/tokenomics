@@ -164,3 +164,57 @@ Deployed to Vercel. Pushes to `main` auto-deploy.
 Passcode-gated GenAI commercial scenario model at `offers.aitokenomics.app`
 (also `/offers`). Math spec, lever table, test vectors, passcode-rotation and
 deployment steps: [`docs/offers.md`](docs/offers.md).
+
+## Anthropic: Under the Hood — S-1 teardown (`/under-the-hood` · ants1.aitokenomics.app)
+
+Also served at the root of **ants1.aitokenomics.app** (and ants1.aitokenomics.com if that
+domain is ever pointed here) via `src/lib/under-the-hood/routes.ts` + one block in
+`src/proxy.ts`: `/` → teardown, `/google-cloud-gtm` → companion page.
+
+An independent, evidence-led teardown of Anthropic, PBC's Form S-1 (Oct 26, 2026)
+and S-1/A Amendment No. 1 (Nov 2, 2026), research cutoff Nov 7, 2026. Sixteen
+sections: executive verdict, KPI dashboard, S-1 change explorer, growth engine,
+economics of intelligence (profitability bridge + compute simulator),
+infrastructure commitments ledger, enterprise adoption and NRR explainer, Claude
+Code and agentic monetization, distribution web, moat matrix, surprises,
+confirmations, disclosure gaps, scenario lab, competitor's playbook (incl. Google
+and APAC/Japan lenses), and sources/methodology.
+
+Companion page **`/under-the-hood/google-cloud-gtm`** — "What it means for Google
+Cloud AI GTM": every GTM-relevant statistic in the filings ranked High / Medium /
+Low, each with a verbatim-quote citation, the play, owner, leading metric and a
+deep-dive link into the main teardown. Content lives in
+`data/anthropic-s1/google-cloud-gtm.json` (rendered to
+`research/google-cloud-ai-gtm.md`).
+
+| Path | What it holds |
+|------|---------------|
+| `src/app/under-the-hood/` | Routes (static): `/under-the-hood` and `/under-the-hood/google-cloud-gtm`; scoped stylesheet `uth.css` |
+| `src/components/under-the-hood/` | `Site.tsx`, `GtmPage.tsx`, shared `ui.tsx`, one file per section in `sections/` |
+| `src/lib/under-the-hood/` | `data.ts` (typed loaders), `calc.ts` (all derived metrics, simulators, scenario model), `validate.ts` (integrity checks rendered in Section 16), tests |
+| `data/anthropic-s1/` | Source-backed datasets: parsed filing tables, evidence library (verbatim quotes + pages), customers, commitments, amendment changes, market facts, insights, theses, moat scores, playbook, scenarios, narrative, Google Cloud GTM implications |
+| `research/` | `anthropic-s1-research.md`, `s1-amendment-diff.md`, `competitive-intelligence.md`, `top-20-insights.md`, `google-cloud-ai-gtm.md`, `assumptions-and-limitations.md` |
+| `scripts/anthropic-s1/` | Filing download, text extraction, diff, table extraction, quote verification and research rendering |
+
+### Refreshing the data
+
+```bash
+bash scripts/anthropic-s1/fetch_filings.sh /path/to/workdir      # downloads both filings from EDGAR (needs www.sec.gov)
+python3 -I scripts/anthropic-s1/extract_text.py WORK/s1.htm WORK/s1.txt
+python3 -I scripts/anthropic-s1/extract_text.py WORK/s1a.htm WORK/s1a.txt
+python3 -I scripts/anthropic-s1/extract_financials.py WORK/s1.txt WORK/s1a.txt data/anthropic-s1/extracted-tables.json
+python3 -I scripts/anthropic-s1/verify_evidence.py WORK/s1.txt WORK/s1a.txt data/anthropic-s1/evidence.json
+python3 -I scripts/anthropic-s1/diff_filings.py WORK/s1.txt WORK/s1a.txt WORK/sentence_diff.md
+python3 -I scripts/anthropic-s1/render_research.py
+```
+
+`verify_evidence.py` fails if any "reported" quote no longer appears verbatim in
+its filing, and re-derives page numbers. For a new amendment, add its URL to
+`fetch_filings.sh`, re-run the pipeline against it and review the diff.
+
+### Validation
+
+`npx vitest run src/lib/under-the-hood` runs the integrity checks (quarterly sums,
+non-GAAP reconciliations, stated growth rates, commitment buckets vs the $895.4B
+aggregate, liquidity, quote verification, insight references, GTM-page
+references, ranks and links) plus calculation tests. The same checks render live in Section 16.
