@@ -3,7 +3,7 @@
  * a reported total with the sum of its reported parts, or a stated ratio with
  * our recomputation. The Sources & Methodology section renders the results.
  */
-import { CHANGES, COMMITMENTS, CUSTOMERS, EVIDENCE, INSIGHTS, MOAT, TABLES } from "./data";
+import { CHANGES, COMMITMENTS, CUSTOMERS, EVIDENCE, GTM, GTM_RANKS, INSIGHTS, MARKET, MOAT, NARRATIVE, TABLES } from "./data";
 import { annual, commitmentBucketsTotal, obligationProfile, quarterly, sum, TTM_REVENUE_SEP26 } from "./calc";
 
 export interface Check { id: string; group: string; label: string; pass: boolean; detail: string }
@@ -86,5 +86,19 @@ export function runChecks(): Check[] {
   add("Evidence", "calc-formulas", "Every 'calculated' evidence item states its formula or inputs", EVIDENCE.filter((e) => e.classification === "calculated").every((e) => e.formula.length > 0 || e.quote.length > 0), "");
   add("Evidence", "changes-pages", "Every amendment change cites S-1 and S-1/A locations", CHANGES.every((ch) => ch.evidence.s1Page && ch.evidence.s1aPage), `${CHANGES.length} changes`);
   add("Assessments", "moat-range", "Moat scores are on the 1–5 rubric", MOAT.dimensions.every((d) => Object.values(d.scores).every((v) => v >= 1 && v <= 5)), `${MOAT.dimensions.length} dimensions`);
+
+  // Google Cloud AI GTM page
+  const mk = new Set(MARKET.map((m) => m.id));
+  const sections = new Set(NARRATIVE.sections.map((s) => s.id));
+  const areas = new Set(GTM.areas.map((a) => a.id));
+  const gtmIds = new Set(GTM.items.map((i) => i.id));
+  const ledgerRows = [...GTM.ledger.pays, ...GTM.ledger.costs];
+  const gtmEvidence = [...GTM.items.flatMap((i) => i.evidenceIds), ...GTM.example.evidenceIds, ...ledgerRows.flatMap((r) => r.evidenceIds)];
+  const gtmMarket = [...GTM.items.flatMap((i) => i.marketIds), ...GTM.example.marketIds, ...ledgerRows.flatMap((r) => r.marketIds ?? [])];
+  const gtmMissing = [...gtmEvidence.filter((id) => !ids.has(id)), ...gtmMarket.filter((id) => !mk.has(id))];
+  add("GTM page", "gtm-refs", "Every GTM implication cites filing evidence and market facts that exist", gtmMissing.length === 0 && GTM.items.every((i) => i.evidenceIds.length > 0), gtmMissing.length ? gtmMissing.join(", ") : `${gtmEvidence.length} filing refs, ${gtmMarket.length} market refs`);
+  add("GTM page", "gtm-ranks", "Every GTM implication has a High/Medium/Low rank and a known area", GTM.items.every((i) => GTM_RANKS.includes(i.rank) && areas.has(i.area)), GTM_RANKS.map((r) => `${r} ${GTM.items.filter((i) => i.rank === r).length}`).join(" · "));
+  add("GTM page", "gtm-links", "Every GTM deep-dive link and top-move reference resolves", GTM.items.every((i) => sections.has(i.deepDive)) && sections.has(GTM.example.deepDive) && GTM.moves.every((m) => m.refs.every((r) => gtmIds.has(r))), `${GTM.items.length} items, ${GTM.moves.length} moves`);
+  add("GTM page", "gtm-unique", "GTM implication ids are unique", gtmIds.size === GTM.items.length, `${gtmIds.size}`);
   return out;
 }

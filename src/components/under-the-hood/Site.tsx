@@ -72,6 +72,7 @@ export default function Site() {
               <span>Built from the Oct 26 S-1 and Nov 2 S-1/A, verified line by line</span>
               <span>Not investment advice — an analysis of industry economics</span>
             </div>
+            <a className="uth-gtm-callout" href="/under-the-hood/google-cloud-gtm">Companion brief: What it means for Google Cloud AI GTM →</a>
           </div>
         </div>
       </header>

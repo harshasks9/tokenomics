@@ -176,13 +176,20 @@ Code and agentic monetization, distribution web, moat matrix, surprises,
 confirmations, disclosure gaps, scenario lab, competitor's playbook (incl. Google
 and APAC/Japan lenses), and sources/methodology.
 
+Companion page **`/under-the-hood/google-cloud-gtm`** — "What it means for Google
+Cloud AI GTM": every GTM-relevant statistic in the filings ranked High / Medium /
+Low, each with a verbatim-quote citation, the play, owner, leading metric and a
+deep-dive link into the main teardown. Content lives in
+`data/anthropic-s1/google-cloud-gtm.json` (rendered to
+`research/google-cloud-ai-gtm.md`).
+
 | Path | What it holds |
 |------|---------------|
-| `src/app/under-the-hood/` | Route (static), scoped stylesheet `uth.css` |
-| `src/components/under-the-hood/` | `Site.tsx`, shared `ui.tsx`, one file per section in `sections/` |
+| `src/app/under-the-hood/` | Routes (static): `/under-the-hood` and `/under-the-hood/google-cloud-gtm`; scoped stylesheet `uth.css` |
+| `src/components/under-the-hood/` | `Site.tsx`, `GtmPage.tsx`, shared `ui.tsx`, one file per section in `sections/` |
 | `src/lib/under-the-hood/` | `data.ts` (typed loaders), `calc.ts` (all derived metrics, simulators, scenario model), `validate.ts` (integrity checks rendered in Section 16), tests |
-| `data/anthropic-s1/` | Source-backed datasets: parsed filing tables, evidence library (verbatim quotes + pages), customers, commitments, amendment changes, market facts, insights, theses, moat scores, playbook, scenarios, narrative |
-| `research/` | `anthropic-s1-research.md`, `s1-amendment-diff.md`, `competitive-intelligence.md`, `top-20-insights.md`, `assumptions-and-limitations.md` |
+| `data/anthropic-s1/` | Source-backed datasets: parsed filing tables, evidence library (verbatim quotes + pages), customers, commitments, amendment changes, market facts, insights, theses, moat scores, playbook, scenarios, narrative, Google Cloud GTM implications |
+| `research/` | `anthropic-s1-research.md`, `s1-amendment-diff.md`, `competitive-intelligence.md`, `top-20-insights.md`, `google-cloud-ai-gtm.md`, `assumptions-and-limitations.md` |
 | `scripts/anthropic-s1/` | Filing download, text extraction, diff, table extraction, quote verification and research rendering |
 
 ### Refreshing the data
@@ -205,5 +212,5 @@ its filing, and re-derives page numbers. For a new amendment, add its URL to
 
 `npx vitest run src/lib/under-the-hood` runs the integrity checks (quarterly sums,
 non-GAAP reconciliations, stated growth rates, commitment buckets vs the $895.4B
-aggregate, liquidity, quote verification, insight references) plus calculation
-tests. The same checks render live in Section 16.
+aggregate, liquidity, quote verification, insight references, GTM-page
+references, ranks and links) plus calculation tests. The same checks render live in Section 16.

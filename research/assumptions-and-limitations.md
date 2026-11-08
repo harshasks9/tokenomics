@@ -56,6 +56,8 @@ One quarter forward from Q3 2026. Defaults reproduce Q3 exactly. Non-compute cos
 - **Positioning map, monetization-unit framework and industry × function matrix** are analytical judgments on stated scales.
 - **APAC/Japan segment views** are hypotheses with validation methods; no regional market shares are estimated.
 
+- **Google Cloud AI GTM page (High / Medium / Low).** Ranks, implications, plays, owners and metrics are judgments for a Google Cloud go-to-market reader, using the rubric stated on the page. The statistics they rest on are verified filing quotes. Google-side context (Gemini Enterprise seats and usage, Google Cloud backlog, list prices) comes from company statements read through search extracts and is graded Medium or Low. The Q3 2026 Gemini Enterprise "Fortune 100" line is graded Low because secondary sources attribute it to different quarters. The filing's ">50% of ≥$100K customers used Claude Platform and ≥1 first-party app" is a breadth-of-adoption measure, not a token or revenue share by surface.
+
 ## 8. Guardrails applied
 
 - Annualized or run-rate revenue is never mixed with recognized GAAP revenue (Q3 × 4 is labelled as such; Run-Rate Revenue is defined by the filing and blank for Oct 31).
@@ -76,7 +78,7 @@ Revenue by product; model-level profitability; training vs inference compute; ac
 
 | Class | Confidence | Why |
 |---|---|---|
-| Reported filing figures and quotes | High | Verified verbatim against the EDGAR text; financial tables parsed by script and reconciled (66 automated checks) |
+| Reported filing figures and quotes | High | Verified verbatim against the EDGAR text; financial tables parsed by script and reconciled (70 automated checks) |
 | Calculated metrics | High (arithmetic) / Medium (interpretation) | Formulas shown; interpretations depend on management allocations |
 | Amendment change log | High | Two independent diff passes; every item checked in both filings |
 | Competitor facts | Medium overall | Mixed primary/press; many read via search extracts |

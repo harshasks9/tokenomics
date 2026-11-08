@@ -769,6 +769,54 @@
     "open-weight",
     "meta"
    ]
+  },
+  {
+   "id": "goog-ge-seats",
+   "entity": "Google",
+   "metric": "Gemini Enterprise paid seats",
+   "value": ">8M paid seats sold to >2,800 companies (in the four months after launch)",
+   "period": "Q4 2025 call",
+   "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q4-2025/",
+   "date": "2026-02",
+   "basis": "Company-reported (read via search extract)",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "gemini-enterprise",
+    "gtm"
+   ]
+  },
+  {
+   "id": "goog-ge-mau",
+   "entity": "Google",
+   "metric": "Gemini Enterprise paid monthly active users",
+   "value": "+40% quarter over quarter",
+   "period": "Q1 2026 call",
+   "url": "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/",
+   "date": "2026-04",
+   "basis": "Company-reported (read via search extract)",
+   "confidence": "Medium",
+   "tags": [
+    "google",
+    "gemini-enterprise",
+    "gtm"
+   ]
+  },
+  {
+   "id": "goog-ge-f100",
+   "entity": "Google",
+   "metric": "Gemini Enterprise reach and spend",
+   "value": "'Nearly 90% of the Fortune 100' use Gemini Enterprise; platform spend 'more than quadrupled' YoY",
+   "period": "Q3 2026 call (period attribution disputed)",
+   "url": "https://futurumgroup.com/?p=97317",
+   "date": "2026-10",
+   "basis": "Analyst summary; another outlet attributes the same lines to Q3 2025",
+   "confidence": "Low",
+   "tags": [
+    "google",
+    "gemini-enterprise",
+    "gtm"
+   ]
   }
  ]
 }
