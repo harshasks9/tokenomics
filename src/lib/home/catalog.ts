@@ -176,6 +176,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "under-the-hood", name: "Anthropic: Under the Hood", short: "Under the Hood", href: "/under-the-hood", icon: FileText, section: "intelligence", audience: "public",
     gradient: "linear-gradient(135deg, #183b63 0%, #2a78d6 100%)",
     blurb: "S-1 teardown — what Anthropic's IPO filing reveals about AI economics", keywords: ["anthropic", "s-1", "ipo", "teardown", "claude", "compute", "commitments", "nrr", "filing", "competitive intelligence"] },
+  { id: "clicks-to-delegation", name: "From Clicks to Delegation", short: "Clicks to Delegation", href: "/clicks-to-delegation", icon: Newspaper, section: "intelligence", audience: "account",
+    gradient: "linear-gradient(135deg, #14213d 0%, #2a78d6 60%, #eb6834 100%)",
+    blurb: "What 30 years of e-commerce reveal about agentic commerce", keywords: ["agentic commerce", "e-commerce", "history", "retail", "agents", "delegation", "ucp", "acp", "ap2", "research"] },
 ];
 
 export const ARCHIVE_LINKS = [
