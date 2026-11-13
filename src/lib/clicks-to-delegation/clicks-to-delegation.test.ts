@@ -131,3 +131,14 @@ describe("adoption scenario model", () => {
     expect(c2).toBeCloseTo(c1 / 2, 9);
   });
 });
+
+describe("breakout companion", () => {
+  it("resolves every slide citation and fits the 20-minute slot", async () => {
+    const { SLIDES, AGENDA } = await import("./breakout");
+    const ids = collectIds(SLIDES);
+    expect(ids.filter((id) => !SOURCE_BY_ID[id])).toEqual([]);
+    expect(SLIDES.reduce((s, x) => s + x.minutes, 0)).toBe(20);
+    expect(AGENDA.reduce((s, x) => s + x.minutes, 0)).toBe(90);
+    expect(AGENDA.filter((a) => a.mine)).toHaveLength(1);
+  });
+});
