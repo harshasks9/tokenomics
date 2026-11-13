@@ -70,7 +70,7 @@ export default function Breakout() {
             {SLIDES.map((s, i) => (
               <button key={s.id} type="button" className="ctd-bo-thumb" onClick={() => setPresenting(i)} aria-label={`Present slide ${i + 1}: ${s.title}`}>
                 <Scaled className="ctd-bo-thumb-inner"><SlideFrame slide={s} index={i} /></Scaled>
-                <span className="ctd-mono">{i + 1}</span> {s.title}
+                <span><span className="ctd-mono">{i + 1}</span> · {s.title}</span>
               </button>
             ))}
           </div>
