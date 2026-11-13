@@ -141,4 +141,15 @@ describe("breakout companion", () => {
     expect(AGENDA.reduce((s, x) => s + x.minutes, 0)).toBe(90);
     expect(AGENDA.filter((a) => a.mine)).toHaveLength(1);
   });
+
+  it("cites every claim in the agent gateway section and keeps it out of the timed plan", async () => {
+    const G = await import("./gateway");
+    const ids = collectIds([G.WALMART_PIECES, G.WALMART_CONTEXT, G.GATEWAY_MAP, G.GATEWAY_SLIDE]);
+    expect(ids.length).toBeGreaterThan(20);
+    expect(ids.filter((id) => !SOURCE_BY_ID[id])).toEqual([]);
+    for (const row of [...G.WALMART_PIECES, ...G.WALMART_CONTEXT, ...G.GATEWAY_MAP]) expect(row.sourceIds.length).toBeGreaterThan(0);
+    expect(G.GATEWAY_SLIDE.minutes).toBe(0);
+    // The caveat that Walmart has not disclosed its stack must stay in the section.
+    expect(G.GATEWAY_CAVEATS.some((c) => /not disclosed/i.test(c))).toBe(true);
+  });
 });

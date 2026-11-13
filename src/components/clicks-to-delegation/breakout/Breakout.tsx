@@ -4,9 +4,14 @@ import { ArrowRight, ChevronLeft, ChevronRight, Clock, Maximize2, MessageSquare,
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AGENDA, DISCUSSION, NEXT_STEPS, SESSION, SLIDES } from "@/lib/clicks-to-delegation/breakout";
 import type { Slide, SlideBody } from "@/lib/clicks-to-delegation/breakout-types";
+import { GATEWAY_SLIDE } from "@/lib/clicks-to-delegation/gateway";
+import Gateway from "./Gateway";
+
+/** The 20-minute talk plus backup slides (0 planned minutes). */
+const DECK: Slide[] = [...SLIDES, GATEWAY_SLIDE];
 import { Cite, CitationLayer, Ev } from "../ui";
 
-type Tab = "narrative" | "present" | "discussion";
+type Tab = "narrative" | "present" | "gateway" | "discussion";
 
 export default function Breakout() {
   const [tab, setTab] = useState<Tab>("narrative");
@@ -41,7 +46,7 @@ export default function Breakout() {
         </section>
 
         <div className="ctd-seg ctd-bo-tabs" role="tablist" aria-label="View">
-          {([["narrative", "Talk track"], ["present", "Slides"], ["discussion", "Discussion & next steps"]] as [Tab, string][]).map(([id, l]) => (
+          {([["narrative", "Talk track"], ["present", "Slides"], ["gateway", "Agent gateway pattern"], ["discussion", "Discussion & next steps"]] as [Tab, string][]).map(([id, l]) => (
             <button key={id} type="button" role="tab" aria-selected={tab === id} onClick={() => setTab(id)}>{l}</button>
           ))}
         </div>
@@ -67,14 +72,16 @@ export default function Breakout() {
 
         {tab === "present" && (
           <div className="ctd-bo-thumbs">
-            {SLIDES.map((s, i) => (
+            {DECK.map((s, i) => (
               <button key={s.id} type="button" className="ctd-bo-thumb" onClick={() => setPresenting(i)} aria-label={`Present slide ${i + 1}: ${s.title}`}>
                 <Scaled className="ctd-bo-thumb-inner"><SlideFrame slide={s} index={i} /></Scaled>
-                <span><span className="ctd-mono">{i + 1}</span> · {s.title}</span>
+                <span><span className="ctd-mono">{s.minutes ? i + 1 : "B"}</span> · {s.title}</span>
               </button>
             ))}
           </div>
         )}
+
+        {tab === "gateway" && <Gateway onPresent={() => setPresenting(DECK.length - 1)} />}
 
         {tab === "discussion" && (
           <div className="ctd-bo-disc">
@@ -107,7 +114,7 @@ function Presenter({ start, onClose }: { start: number; onClose: () => void }) {
   const [t0] = useState(() => Date.now());
   const [now, setNow] = useState(() => Date.now());
   const ref = useRef<HTMLDivElement>(null);
-  const n = SLIDES.length;
+  const n = DECK.length;
   const go = useCallback((d: number) => setI((x) => Math.max(0, Math.min(n - 1, x + d))), [n]);
 
   useEffect(() => {
@@ -126,9 +133,9 @@ function Presenter({ start, onClose }: { start: number; onClose: () => void }) {
     return () => { window.removeEventListener("keydown", onKey); clearInterval(tick); document.body.style.overflow = ""; };
   }, [go, n, onClose]);
 
-  const s = SLIDES[i];
+  const s = DECK[i];
   const elapsed = Math.floor((now - t0) / 1000);
-  const planned = SLIDES.slice(0, i).reduce((a, x) => a + x.minutes, 0) * 60;
+  const planned = DECK.slice(0, i).reduce((a, x) => a + x.minutes, 0) * 60;
   const mmss = (v: number) => `${Math.floor(v / 60)}:${String(v % 60).padStart(2, "0")}`;
   const drift = elapsed - planned;
 
@@ -136,7 +143,7 @@ function Presenter({ start, onClose }: { start: number; onClose: () => void }) {
     <div ref={ref} className="ctd-bo-present ctd-root" role="dialog" aria-label="Presentation">
       <div className="ctd-bo-stage">
         <Scaled className="ctd-bo-slide-wrap"><SlideFrame slide={s} index={i} /></Scaled>
-        {notes && <aside className="ctd-bo-pnotes"><b>Speaker notes · {s.minute} ({s.minutes} min)</b>{s.notes.map((x, k) => <p key={k}>{x}</p>)}</aside>}
+        {notes && <aside className="ctd-bo-pnotes"><b>Speaker notes · {s.minute}{s.minutes ? ` (${s.minutes} min)` : ""}</b>{s.notes.map((x, k) => <p key={k}>{x}</p>)}</aside>}
       </div>
       <div className="ctd-bo-bar">
         <button type="button" onClick={() => go(-1)} aria-label="Previous slide" disabled={i === 0}><ChevronLeft size={18} /></button>
@@ -173,7 +180,7 @@ function SlideFrame({ slide, index }: { slide: Slide; index: number }) {
     <article className={`ctd-bo-slide ${isTitle ? "title" : ""}`}>
       {!isTitle && (
         <header className="ctd-bo-slide-head">
-          <span className="ctd-mono">{String(index + 1).padStart(2, "0")} · {slide.title}</span>
+          <span className="ctd-mono">{slide.minutes ? `${String(index + 1).padStart(2, "0")} · ` : ""}{slide.title}</span>
           <h2>{slide.headline}</h2>
         </header>
       )}
