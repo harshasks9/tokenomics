@@ -862,8 +862,9 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
             </button>
           )}
           {picks.map((e) => (
-            <button key={e.id} type="button" className="gai-chip" aria-pressed={date === e.date} title={e.title} onClick={() => pick(e.date)}>
-              {fmtDate(e.date, e.precision)} · {clip(e.title, 30)}
+            // A landmark later than the chosen date is offered as a bare date: naming it would leak the future into this view.
+            <button key={e.id} type="button" className="gai-chip" aria-pressed={date === e.date} title={e.date <= date ? e.title : undefined} onClick={() => pick(e.date)}>
+              {fmtDate(e.date, e.precision)}{e.date <= date ? ` · ${clip(e.title, 30)}` : ""}
             </button>
           ))}
         </div>
@@ -989,7 +990,7 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
                     {(c) => (
                       <li key={c.before.id + c.after.id}>
                         <span>
-                          <EntityLink id={c.entityId}>{nameOn(c.entityId, diff.to)}</EntityLink> {c.meter.replace(/-/g, " ")} · {surfaceLabel(c.surface)}: <b>{usd(c.before.price)} → {usd(c.after.price)}</b>{" "}
+                          <EntityLink id={c.entityId}>{nameOn(c.entityId, diff.to)}</EntityLink> {c.meter.replace(/-/g, " ")} · {surfaceLabel(c.surface, diff.to)}: <b>{usd(c.before.price)} → {usd(c.after.price)}</b>{" "}
                           <span className="gai-muted">{UNIT[c.unit] ?? c.unit}</span>
                           {c.pct != null ? ` (${c.pct > 0 ? "+" : "−"}${Math.abs(c.pct * 100).toFixed(Math.abs(c.pct) < 0.1 ? 1 : 0)}%)` : ""}
                           {c.condition ? ` — ${c.condition}` : ""}
@@ -1080,7 +1081,7 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
                         <td><StageThen status={status} /></td>
                         <td className="num">{rec ? priceText(price.input) : "—"}</td>
                         <td className="num">{rec ? priceText(price.output) : "—"}</td>
-                        <td>{rec && price.surface ? surfaceLabel(price.surface) : <span className="gai-muted">no list price recorded for this date</span>}</td>
+                        <td>{rec && price.surface ? surfaceLabel(price.surface, date) : <span className="gai-muted">no list price recorded for this date</span>}</td>
                         <td>
                           {rec ? (
                             <span className="gai-claim-meta">
@@ -1143,7 +1144,7 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
                     {({ next, current, known }) => (
                       <li key={next.id}>
                         <span>
-                          <b>{fmtDate(next.effectiveFrom)}</b> · <EntityLink id={next.entityId}>{nameOn(next.entityId, date)}</EntityLink> {next.meter.replace(/-/g, " ")} · {surfaceLabel(next.surface)}: {current ? `${usd(current.price)} → ` : ""}
+                          <b>{fmtDate(next.effectiveFrom)}</b> · <EntityLink id={next.entityId}>{nameOn(next.entityId, date)}</EntityLink> {next.meter.replace(/-/g, " ")} · {surfaceLabel(next.surface, date)}: {current ? `${usd(current.price)} → ` : ""}
                           {usd(next.price)} <span className="gai-muted">{UNIT[next.unit] ?? next.unit}</span>
                           {next.tier !== "standard" ? ` (${next.tier})` : ""}
                           {next.region === "regional" ? " (regional)" : ""}

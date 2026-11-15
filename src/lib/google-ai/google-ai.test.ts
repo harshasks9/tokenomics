@@ -454,6 +454,15 @@ describe("F · an enterprise decision: a secure voice agent", () => {
     expect(AGENT_FLOW).toHaveLength(8);
   });
 
+  it("says it does not know when a question is off topic, instead of returning loosely related items", () => {
+    const a = answer("Who won the 1998 World Cup?", TODAY);
+    expect(a.facts).toEqual([]);
+    expect(a.developments).toEqual([]);
+    expect(a.gaps.join(" ")).toMatch(/Nothing in the knowledge base/);
+    // A general "what is new" question still gets the latest developments.
+    expect(answer("What changed in Google AI this month?", TODAY).developments.length).toBeGreaterThan(0);
+  });
+
   it("finds the stack for the question through the analyst, with sources", () => {
     const a = answer("What is Model Armor and how does it relate to the Agent Gateway?", TODAY);
     expect(a.entities.map((e) => e.id)).toContain("model-armor");

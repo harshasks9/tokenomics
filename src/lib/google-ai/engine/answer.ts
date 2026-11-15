@@ -9,14 +9,14 @@
  * never a source.
  */
 import { addDays, fmtDate } from "../dates";
-import { ANNOUNCEMENTS, ENTITY_BY_ID, LIFECYCLE_BY_ENTITY, PRICES_BY_ENTITY, RESULTS_BY_MODEL, BENCHMARK_BY_ID, providerName } from "../kb";
+import { ANNOUNCEMENTS, TIMELINE, ENTITY_BY_ID, LIFECYCLE_BY_ENTITY, PRICES_BY_ENTITY, RESULTS_BY_MODEL, BENCHMARK_BY_ID, providerName } from "../kb";
 import { resolveEntities } from "../ingest/classify";
 import type { Claim, Entity, EvidenceLabel } from "../types";
 import { existedAt, effectiveOn, nameAt, statusAt } from "./asof";
 import { deadlines } from "./brief";
 import { neighbors } from "./graph";
 import { headline, upcomingChanges } from "./pricing";
-import { search } from "./search";
+import { norm, search } from "./search";
 
 export interface AnswerFact {
   text: string;
@@ -106,8 +106,9 @@ export function answer(question: string, today: string): Answer {
     const st = statusAt(e, asOf);
     const renamed = name !== e.name ? ` On ${fmtDate(asOf)} it was called ${name}.` : "";
     facts.push({ text: `${e.name} (${providerName(e.providerId)}): ${e.summary}${renamed}`, label: e.verification === "verified" ? "verified-fact" : "provider-claim", sourceIds: e.sourceIds, entityId: e.id });
+    const lead = lines.length;
     lines.push(`${name}: ${e.summary}`);
-    if (st.evidenced && st.status !== "not-yet") facts.push({ text: `Stage on ${fmtDate(asOf)}: ${st.status}${st.since ? ` (since ${fmtDate(st.since)})` : ""}.`, label: "verified-fact", sourceIds: e.sourceIds, entityId: e.id });
+    if (st.evidenced && st.status !== "not-yet") facts.push({ text: `Stage on ${fmtDate(asOf)}: ${STAGE_WORDS[st.status] ?? st.status}${st.since ? ` (since ${fmtDate(st.since)})` : ""}.`, label: "verified-fact", sourceIds: e.sourceIds, entityId: e.id });
 
     if (intents.includes("name") || e.formerNames?.length) {
       for (const f of e.formerNames ?? []) facts.push({ text: `${e.name} was previously called ${f.name}${f.to ? ` until ${fmtDate(f.to)}` : ""}.`, label: "verified-fact", sourceIds: f.sourceIds, entityId: e.id });
@@ -121,9 +122,13 @@ export function answer(question: string, today: string): Answer {
         const h = headline(e.id, asOf, s);
         if (h.input && h.output) {
           any = true;
-          const t = `${name} list price on ${fmtDate(asOf)} (${surfaceLabel(s)}, standard tier): $${h.input.price} input and $${h.output.price} output per 1M tokens${h.input.condition ? ` — ${h.input.condition}` : ""}.`;
+          const t = `${name} list price on ${fmtDate(asOf)} (${surfaceLabel(s, asOf)}, standard tier): $${h.input.price} input and $${h.output.price} output per 1M tokens${h.input.condition ? ` — ${h.input.condition}` : ""}.`;
           facts.push({ text: t, label: h.input.label, sourceIds: [...new Set([...h.input.sourceIds, ...h.output.sourceIds])], entityId: e.id });
-          if (intents.includes("price")) lines.push(t);
+          if (intents.includes("price")) {
+            // A price question is answered with the price first; the description stays in the facts below.
+            if (lines[lead]?.startsWith(`${name}: `)) lines.splice(lead, 1);
+            lines.push(t);
+          }
         }
         const seat = rows.find((r) => r.surface === s && r.meter === "seat-month" && r.effectiveFrom <= asOf && (!r.effectiveTo || r.effectiveTo >= asOf));
         if (seat) {
@@ -139,7 +144,10 @@ export function answer(question: string, today: string): Answer {
       if (!any && intents.includes("price")) gaps.push(`No price record for ${name} in effect on ${fmtDate(asOf)}.`);
     }
 
-    if (intents.includes("when") || intents.includes("deadline")) {
+    // "What changed for X?" when no development in the feed mentions X: fall back to its dated lifecycle records.
+    const noFeed = intents.includes("recent") && !ANNOUNCEMENTS.some((a) => a.date <= asOf && a.entityIds.includes(e.id));
+    if (noFeed) gaps.push(`No development in the feed mentions ${name}; its dated lifecycle records are shown instead.`);
+    if (intents.includes("when") || intents.includes("deadline") || noFeed) {
       const lc = (LIFECYCLE_BY_ENTITY[e.id] ?? []).filter((l) => l.date <= asOf).sort((a, b) => effectiveOn(a).localeCompare(effectiveOn(b)));
       for (const l of lc.slice(-5)) facts.push({ text: `${fmtDate(effectiveOn(l))}: ${l.detail}`, label: l.label, sourceIds: l.sourceIds, entityId: e.id });
       if (!lc.length && e.introducedAt) facts.push({ text: `${e.name} was first introduced on ${fmtDate(e.introducedAt)}.`, label: "verified-fact", sourceIds: e.sourceIds, entityId: e.id });
@@ -160,17 +168,48 @@ export function answer(question: string, today: string): Answer {
     if (!intents.length || intents.includes("compare")) facts.push(...claimFacts(e, ["differentiators", "limitations", "howItWorks"], 3));
   }
 
-  // Developments: about the entities, or matching the question's words.
+  // Developments: about the entities, or sharing enough of the question's content words to be on topic.
   const pool = ANNOUNCEMENTS.filter((a) => a.date <= asOf);
   let devs = ents.length ? pool.filter((a) => a.entityIds.some((id) => ids.includes(id))) : [];
   if (!devs.length || intents.includes("recent")) {
-    const hits = search(question, { kinds: ["announcement"], asOf, limit: 6 }).map((h) => h.id);
-    const extra = pool.filter((a) => hits.includes(a.id) && !devs.includes(a));
-    devs = [...devs, ...extra];
+    const words = contentWords(question);
+    const need = Math.min(2, words.length);
+    const scored = pool
+      .map((a) => {
+        const hay = ` ${norm(a.title + " " + a.summary.map((c) => c.text).join(" "))} `;
+        return { a, n: words.filter((w) => hay.includes(` ${w} `) || hay.includes(` ${w}s `)).length };
+      })
+      .filter((x) => need > 0 && x.n >= need && !devs.includes(x.a))
+      .sort((x, y) => y.n - x.n || y.a.date.localeCompare(x.a.date));
+    devs = [...devs, ...scored.slice(0, 6).map((x) => x.a)];
   }
-  if (intents.includes("recent") && !ents.length && !devs.length) devs = pool.slice(0, 6);
-  devs = devs.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
-  if (intents.includes("recent") || !ents.length) {
+  // "What is new?" with no subject: the most recent developments are the answer.
+  if (intents.includes("recent") && !ents.length && !devs.length && isGeneralNews(question)) devs = pool.slice(0, 6);
+  let windowed = false;
+  // "What changed this week / this month?" — answer with the window's developments, weightiest first.
+  if (intents.includes("recent") && ents.every((e) => e.kind === "provider")) {
+    const days = /\b(today|24 hours|yesterday)\b/i.test(question) ? 1 : /\bweek\b/i.test(question) ? 7 : /\b(quarter|90 days)\b/i.test(question) ? 90 : /\byear\b/i.test(question) ? 365 : 30;
+    const from = addDays(asOf, -days);
+    const providers = ents.map((e) => e.id);
+    const inWin = pool.filter((a) => a.date > from && (!providers.length || providers.includes(a.providerId)));
+    const ranked = inWin.slice().sort((a, b) => b.importance - a.importance || b.date.localeCompare(a.date));
+    const span = days === 1 ? "24 hours" : `${days} days`;
+    lines.length = 0;
+    lines.push(ranked.length ? `${inWin.length} ${inWin.length === 1 ? "development" : "developments"} recorded in the ${span} to ${fmtDate(asOf)}. Highest editorial weight: ${ranked.slice(0, 3).map((a) => `${a.title} (${fmtDate(a.date)})`).join("; ")}.` : `No development is recorded in the ${span} to ${fmtDate(asOf)}.`);
+    devs = ranked.slice(0, 6);
+    facts.length = 0;
+    for (const a of devs.slice(0, 5)) {
+      const c = a.summary[0];
+      if (c) facts.push({ text: `${fmtDate(a.date)} — ${a.title}: ${c.text}`, label: c.label, sourceIds: c.sourceIds });
+    }
+    // Rivals are tracked as dated timeline events rather than full developments: include those in the window.
+    const events = providers.length ? TIMELINE.filter((t) => t.date > from && t.date <= asOf && providers.includes(t.providerId)).sort((a, b) => b.significance - a.significance || b.date.localeCompare(a.date)) : [];
+    for (const t of events.slice(0, 5)) facts.push({ text: `${fmtDate(t.date)} — ${t.title}: ${t.detail}`, label: t.label, sourceIds: t.sourceIds });
+    if (!ranked.length && events.length) lines.splice(0, lines.length, `${events.length} dated ${events.length === 1 ? "event" : "events"} recorded in the ${span} to ${fmtDate(asOf)}: ${events.slice(0, 3).map((t) => `${t.title} (${fmtDate(t.date)})`).join("; ")}.`);
+    windowed = true;
+    if (!ranked.length && !events.length) gaps.push(`Nothing is recorded in that window. The knowledge base was last verified on a fixed date; see the freshness line at the top of the page.`);
+  } else devs = devs.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
+  if (!windowed && (intents.includes("recent") || !ents.length)) {
     for (const a of devs.slice(0, 4)) {
       const c = a.summary[0];
       if (c) facts.push({ text: `${fmtDate(a.date)} — ${a.title}: ${c.text}`, label: c.label, sourceIds: c.sourceIds });
@@ -179,9 +218,18 @@ export function answer(question: string, today: string): Answer {
   }
 
   if (intents.includes("deadline") && !historical) {
-    const dl = deadlines(today).filter((d) => !ents.length || ids.includes(d.event.entityId)).slice(0, 5);
-    for (const d of dl) facts.push({ text: `${d.name}: ${d.event.detail} Takes effect ${fmtDate(d.on)} (${d.days} days from today).`, label: d.event.label, sourceIds: d.event.sourceIds, entityId: d.event.entityId });
-    if (!dl.length) gaps.push("No upcoming deadline is recorded for this.");
+    // A question about a family ("which Gemini models…") covers the members of that family.
+    const scope = new Set(ids);
+    for (const f of ents.filter((e) => e.kind === "model-family")) {
+      const family = norm(f.name);
+      for (const m of Object.values(ENTITY_BY_ID)) if (m.kind === "model" && m.providerId === f.providerId && (m.parentId === f.id || ` ${norm(m.name)} `.includes(` ${family} `))) scope.add(m.id);
+    }
+    const dl = deadlines(today)
+      .filter((d) => ["deprecated", "retirement-scheduled", "retired"].includes(d.event.type) && (!ents.length || scope.has(d.event.entityId)))
+      .slice(0, 8);
+    for (const d of dl) facts.push({ text: `${d.name}: ${d.event.detail} Takes effect ${fmtDate(d.on)} (${d.days} ${d.days === 1 ? "day" : "days"} from today).`, label: d.event.label, sourceIds: d.event.sourceIds, entityId: d.event.entityId });
+    if (dl.length) lines.push(`${dl.length} scheduled ${dl.length === 1 ? "retirement" : "retirements"} on record: ${dl.slice(0, 4).map((d) => `${d.name} on ${fmtDate(d.on)}`).join("; ")}${dl.length > 4 ? "; and more below" : ""}.`);
+    else gaps.push("No upcoming retirement is recorded for this.");
   }
 
   if (!ents.length && !devs.length) gaps.push("Nothing in the knowledge base matches this question. The analyst does not answer from general model knowledge.");
@@ -202,6 +250,28 @@ export function answer(question: string, today: string): Answer {
   };
 }
 
-export function surfaceLabel(s: string): string {
+const STAGE_WORDS: Record<string, string> = { ga: "generally available", preview: "preview", experimental: "experimental", announced: "announced, not yet available", research: "research", deprecated: "deprecated", retired: "retired" };
+
+const FILLER = new Set("what whats which when where who whom whose why how does did do is are was were will would can could should the a an of in on at to for from with about and or by as it its this that these those there their they has have had been being be than then now today latest recent recently new news changed change changes update updates happened google gemini model models much many cost costs price prices any all some tell me show give list".split(" "));
+
+/** Words that carry the topic of a question. Brand and question words are dropped: nearly every record contains them. */
+export function contentWords(q: string): string[] {
+  return [...new Set(norm(q).split(" ").filter((w) => w.length > 2 && !FILLER.has(w)))];
+}
+
+function isGeneralNews(q: string): boolean {
+  return contentWords(q).length === 0;
+}
+
+/**
+ * Display name of a price surface. With a date, Google Cloud's platform is named as it was on that date
+ * (Vertex AI before the 2026 rename), so as-of views and historical answers never use a later name.
+ */
+export function surfaceLabel(s: string, asOf?: string): string {
+  if (s === "agent-platform" && asOf) {
+    const platform = ENTITY_BY_ID["gemini-enterprise-agent-platform"];
+    const then = platform ? nameAt(platform, asOf) : undefined;
+    if (then && then !== platform.name) return `Google Cloud ${then}`;
+  }
   return ({ "gemini-api": "Gemini Developer API", "agent-platform": "Google Cloud Agent Platform", "first-party-api": "provider's own API", "third-party-host": "third-party host", subscription: "subscription", infrastructure: "infrastructure" } as Record<string, string>)[s] ?? s;
 }

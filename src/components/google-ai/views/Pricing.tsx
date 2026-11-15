@@ -262,7 +262,11 @@ export default function Pricing() {
         </div>
       )}
 
-      {upcoming.length > 0 && (
+      <div className="gai-pr-tabs">
+        <Seg value={tab} onChange={setTab} options={TABS} label="Pricing sections" />
+      </div>
+
+      {tab === "prices" && upcoming.length > 0 && (
         <Sec
           id="upcoming"
           title="Upcoming price changes"
@@ -286,10 +290,6 @@ export default function Pricing() {
           )}
         </Sec>
       )}
-
-      <div className="gai-pr-tabs">
-        <Seg value={tab} onChange={setTab} options={TABS} label="Pricing sections" />
-      </div>
 
       <div className="gai-pr-panel">
         {tab === "prices" && <PricesTab date={date} setDate={setDate} today={today} maxDate={maxDate} />}
