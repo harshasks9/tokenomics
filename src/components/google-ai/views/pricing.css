@@ -19,6 +19,8 @@
 .gai-pr-field .gai-input, .gai-pr-field .gai-select { width: 100%; }
 .gai-pr-field small { font-size: 11.5px; color: var(--ink-3); }
 .gai-pr-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px 14px; }
+.gai-pr-form .gai-pr-field { grid-template-rows: 1fr auto auto; }
+.gai-pr-form .gai-pr-field > label { align-self: end; }
 .gai-pr-slots { display: grid; gap: 10px; }
 .gai-pr-slot { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 8px; align-items: end; }
 .gai-pr-banner { margin-bottom: 12px; }
@@ -28,6 +30,10 @@
 .gai-pr-price { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
 .gai-pr-cond { display: block; font-size: 11.5px; line-height: 1.35; color: var(--ink-3); max-width: 24ch; white-space: normal; margin-top: 2px; }
 .gai-table td.num .gai-pr-cond { margin-left: auto; }
+.gai-pr-notetext { max-width: 34ch; }
+.gai-claims .gai-pr-cond { max-width: 72ch; }
+.gai-pr-surface { min-width: 130px; }
+.gai-pr-notetext button { font-size: inherit; }
 .gai-pr-evcell { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; min-width: 150px; }
 .gai-pr-model { min-width: 150px; }
 .gai-pr-details { margin-top: 14px; }

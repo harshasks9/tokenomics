@@ -22,7 +22,7 @@
 /* charts: scroll inside the card on narrow screens so labels stay readable */
 .gai-mc-scroll { overflow-x: auto; overflow-y: hidden; }
 .gai-mc-plot { position: relative; min-width: 700px; }
-.gai-mc-plot.gai-mc-narrow { min-width: 600px; }
+.gai-mc-plot.gai-mc-narrow { min-width: 600px; max-width: 900px; margin: 0 auto; }
 .gai-chart .gai-mc-nlabel { fill: var(--ink-2); }
 .gai-chart .gai-mc-axis-title { fill: var(--ink-2); font-weight: 500; }
 .gai-mc-node { cursor: pointer; }

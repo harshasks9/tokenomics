@@ -11512,6 +11512,882 @@
   "note": "Non-global (regional) endpoint. The page states non-global pricing for GA Gemini 3 and later took effect 2026-07-01; before that the global price applied. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
  },
  {
+  "id": "pr-claude-fable-5-2-ap-standard-input-global-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 8,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-standard-output-global-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 40,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-batch-input-global-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-batch-output-global-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-standard-cache-write-global-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "region": "global",
+  "condition": "5-minute cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-standard-cache-write-global-20261115-2",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 16,
+  "tier": "standard",
+  "region": "global",
+  "condition": "1-hour cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-standard-cache-read-global-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Cache hit",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-standard-input-regional-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 8.8,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-fable-5-2-ap-standard-output-regional-20261115",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 44,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-input-global-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-output-global-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-batch-input-global-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-batch-output-global-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 12.5,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-cache-write-global-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "region": "global",
+  "condition": "5-minute cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-cache-write-global-20261115-2",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 8,
+  "tier": "standard",
+  "region": "global",
+  "condition": "1-hour cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-cache-read-global-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Cache hit",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-input-regional-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.4,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-opus-5-5-ap-standard-output-regional-20261115",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 22,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The global table lists batch input/output at $2.50/$12.50 (the US multi-region table lists $2.20/$11.00), which is not half of the standard rate; recorded as published. Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-input-global-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-output-global-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-batch-input-global-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-batch-output-global-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-cache-write-global-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "standard",
+  "region": "global",
+  "condition": "5-minute cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-cache-write-global-20261115-2",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "region": "global",
+  "condition": "1-hour cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-cache-read-global-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Cache hit",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-input-regional-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.2,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-sonnet-5-5-ap-standard-output-regional-20261115",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 11,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-input-global-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Prompts under 100K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-output-global-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Prompts under 100K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-input-global-gt100k-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "region": "global",
+  "aboveContextTokens": 100000,
+  "condition": "Prompts of 100K input tokens or more",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-output-global-gt100k-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "standard",
+  "region": "global",
+  "aboveContextTokens": 100000,
+  "condition": "Prompts of 100K input tokens or more",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-batch-input-global-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.05,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-batch-output-global-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.25,
+  "tier": "batch",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-cache-write-global-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.125,
+  "tier": "standard",
+  "region": "global",
+  "condition": "5-minute cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-cache-write-global-20261115-2",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "region": "global",
+  "condition": "1-hour cache write",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-cache-read-global-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.01,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Cache hit",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-input-regional-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.11,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint; prompts under 100K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-claude-haiku-5-5-ap-standard-output-regional-20261115",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.55,
+  "tier": "standard",
+  "region": "regional",
+  "condition": "US multi-region endpoint; prompts under 100K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-grok-4-7-ap-standard-input-20261115",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "condition": "Prompts up to 200K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-grok-4-7-ap-standard-output-20261115",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 6,
+  "tier": "standard",
+  "condition": "Prompts up to 200K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-grok-4-7-ap-standard-cache-read-20261115",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "condition": "Cache hit; prompts up to 200K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-grok-4-7-ap-standard-input-gt200k-20261115",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "condition": "Prompts over 200K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-grok-4-7-ap-standard-output-gt200k-20261115",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 12,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "condition": "Prompts over 200K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-grok-4-7-ap-standard-cache-read-gt200k-20261115",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "condition": "Cache hit; prompts over 200K input tokens",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-muse-spark-1-3-ap-standard-input-global-20261115",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.25,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-muse-spark-1-3-ap-standard-output-global-20261115",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.25,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
+  "id": "pr-muse-spark-1-3-ap-standard-cache-read-global-20261115",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.15,
+  "tier": "standard",
+  "region": "global",
+  "condition": "Cache hit",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Start date not confirmed; effectiveFrom is the date the price was observed on the official page."
+ },
+ {
   "id": "pr-gemini-4-argon-gapi-standard-input-20261013",
   "entityId": "gemini-4-argon",
   "providerId": "google",
@@ -12641,5 +13517,3987 @@
   ],
   "lastCheckedAt": "2026-11-15",
   "note": "Recalled from Google's announcement; not re-read during this research cycle."
+ },
+ {
+  "id": "pr-s-ge-business-seat",
+  "entityId": "gemini-enterprise-business",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 21,
+  "tier": "standard",
+  "condition": "per seat per month; annual commitment per third-party guides",
+  "publishedAt": "2025-10-09",
+  "effectiveFrom": "2025-10-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-tc-ge-launch",
+   "s-x-dupple-ge-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Reported by press at launch and by a third-party guide as still current in October 2026; Google's own pricing page was not reachable."
+ },
+ {
+  "id": "pr-s-ge-standard-seat-launch",
+  "entityId": "gemini-enterprise-standard",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 30,
+  "tier": "standard",
+  "condition": "launch price as reported by press",
+  "publishedAt": "2025-10-09",
+  "effectiveFrom": "2025-10-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-tc-ge-launch"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "A January 2026 UK reseller filing lists Standard at $35 per user per month; current list price unconfirmed."
+ },
+ {
+  "id": "pr-s-ge-plus-seat-launch",
+  "entityId": "gemini-enterprise-plus",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 30,
+  "tier": "standard",
+  "condition": "launch price as reported by press",
+  "publishedAt": "2025-10-09",
+  "effectiveFrom": "2025-10-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-tc-ge-launch"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "No current public price for Plus was found."
+ },
+ {
+  "id": "pr-s-ws-starter-annual",
+  "entityId": "google-workspace-business-starter",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 7,
+  "tier": "standard",
+  "condition": "annual plan, per user per month",
+  "effectiveFrom": "2025-01-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Read via search extract of Google's help page; one third-party source reports different figures. Effective date is the January 2025 repricing for new customers."
+ },
+ {
+  "id": "pr-s-ws-starter-monthly",
+  "entityId": "google-workspace-business-starter",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 8.4,
+  "tier": "standard",
+  "condition": "monthly (flexible) billing, per user per month",
+  "effectiveFrom": "2025-01-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Read via search extract of Google's help page."
+ },
+ {
+  "id": "pr-s-ws-standard-annual",
+  "entityId": "google-workspace-business-standard",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 14,
+  "tier": "standard",
+  "condition": "annual plan, per user per month",
+  "effectiveFrom": "2025-01-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Read via search extract of Google's help page; one third-party source reports different figures. Effective date is the January 2025 repricing for new customers."
+ },
+ {
+  "id": "pr-s-ws-standard-monthly",
+  "entityId": "google-workspace-business-standard",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 16.8,
+  "tier": "standard",
+  "condition": "monthly (flexible) billing, per user per month",
+  "effectiveFrom": "2025-01-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Read via search extract of Google's help page."
+ },
+ {
+  "id": "pr-s-ws-plus-annual",
+  "entityId": "google-workspace-business-plus",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 22,
+  "tier": "standard",
+  "condition": "annual plan, per user per month",
+  "effectiveFrom": "2025-01-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Read via search extract of Google's help page; one third-party source reports different figures. Effective date is the January 2025 repricing for new customers."
+ },
+ {
+  "id": "pr-s-ws-plus-monthly",
+  "entityId": "google-workspace-business-plus",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 26.4,
+  "tier": "standard",
+  "condition": "monthly (flexible) billing, per user per month",
+  "effectiveFrom": "2025-01-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Read via search extract of Google's help page."
+ },
+ {
+  "id": "pr-s-ai-plus",
+  "entityId": "google-ai-plus",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 7.99,
+  "tier": "standard",
+  "condition": "US monthly price as reported at I/O 2026",
+  "effectiveFrom": "2026-05-19",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-decoder-ai-plans",
+   "s-x-da-ai-plans"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The date AI Plus first reached the US at this price was not confirmed."
+ },
+ {
+  "id": "pr-s-ai-pro",
+  "entityId": "google-ai-pro",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 19.99,
+  "tier": "standard",
+  "condition": "US monthly price; third-party tracker confirmed it live on 2026-05-23",
+  "publishedAt": "2025-05-20",
+  "effectiveFrom": "2025-05-20",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-9to5-ai-plans-2025",
+   "s-x-da-ai-plans"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-s-ai-ultra-2025",
+  "entityId": "google-ai-ultra",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 249.99,
+  "tier": "standard",
+  "condition": "US monthly price at launch; coverage read this cycle gives $249 or $250, the $249.99 list figure is from prior knowledge",
+  "publishedAt": "2025-05-20",
+  "effectiveFrom": "2025-05-20",
+  "effectiveTo": "2026-05-18",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-9to5-ai-plans-2025",
+   "s-x-engadget-ultra"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-s-ai-ultra-2026-top",
+  "entityId": "google-ai-ultra",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 199.99,
+  "tier": "standard",
+  "condition": "higher Ultra tier after the I/O 2026 change (sources give $199.99 or $200)",
+  "publishedAt": "2026-05-19",
+  "effectiveFrom": "2026-05-19",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-engadget-ultra",
+   "s-x-decoder-ai-plans"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-s-ai-ultra-2026-entry",
+  "entityId": "google-ai-ultra",
+  "providerId": "google",
+  "surface": "subscription",
+  "meter": "seat-month",
+  "unit": "usd-per-user-month",
+  "price": 99.99,
+  "tier": "standard",
+  "condition": "new entry Ultra tier introduced at I/O 2026 (sources give $99.99 or $100)",
+  "publishedAt": "2026-05-19",
+  "effectiveFrom": "2026-05-19",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-engadget-ultra",
+   "s-x-decoder-ai-plans"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-s-agent-compute",
+  "entityId": "agent-runtime",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "compute-hour",
+  "unit": "usd-per-hour",
+  "price": 0.085,
+  "tier": "standard",
+  "condition": "Agent Compute, per vCPU-hour",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-agent-compute-fsp1",
+  "entityId": "agent-runtime",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "compute-hour",
+  "unit": "usd-per-hour",
+  "price": 0.0765,
+  "tier": "standard",
+  "condition": "Agent Compute per vCPU-hour with 1-year Gemini Enterprise Flexible Savings Plan",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-agent-compute-fsp3",
+  "entityId": "agent-runtime",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "compute-hour",
+  "unit": "usd-per-hour",
+  "price": 0.068,
+  "tier": "standard",
+  "condition": "Agent Compute per vCPU-hour with 3-year Gemini Enterprise Flexible Savings Plan",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-agent-memory-ram",
+  "entityId": "agent-runtime",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-hour",
+  "price": 0.009,
+  "tier": "standard",
+  "condition": "Agent Memory (RAM), per GiB-hour",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-memory-bank-storage",
+  "entityId": "agent-memory-bank",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-other",
+  "price": 0.3,
+  "tier": "standard",
+  "condition": "Agent Storage, per GiB-month",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Memory Bank billing on this structure began 1 September 2026."
+ },
+ {
+  "id": "pr-s-sessions-storage",
+  "entityId": "agent-sessions",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-other",
+  "price": 0.3,
+  "tier": "standard",
+  "condition": "Agent Storage, per GiB-month",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Sessions billing on this structure began 1 September 2026."
+ },
+ {
+  "id": "pr-s-agent-gateway-calls",
+  "entityId": "agent-gateway",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-other",
+  "price": 0.085,
+  "tier": "standard",
+  "condition": "per 15,000 API calls or authorisation requests (one Agent Compute vCPU-hour)",
+  "effectiveFrom": "2026-07-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Agent Gateway (Agent-to-Anywhere) billing effective 13 July 2026."
+ },
+ {
+  "id": "pr-s-model-armor-tokens",
+  "entityId": "model-armor",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "condition": "per additional 1 million tokens beyond the free 2 million tokens per month",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-modelarmor-page"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-grounding-search",
+  "entityId": "grounding-with-google-search",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "grounding-1k",
+  "unit": "usd-per-1k-requests",
+  "price": 14,
+  "tier": "standard",
+  "condition": "per 1,000 grounding queries beyond 5,000 free per month, Gemini 3 and Gemini 4 models",
+  "effectiveFrom": "2026-01-05",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The page states query-based billing started 5 January 2026."
+ },
+ {
+  "id": "pr-s-grounding-maps",
+  "entityId": "grounding-with-google-maps",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "grounding-1k",
+  "unit": "usd-per-1k-requests",
+  "price": 14,
+  "tier": "standard",
+  "condition": "per 1,000 Maps queries beyond 5,000 free per month, Gemini 3 and Gemini 4 models",
+  "effectiveFrom": "2026-01-05",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-s-grounding-your-data",
+  "entityId": "agent-search",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "grounding-1k",
+  "unit": "usd-per-1k-requests",
+  "price": 2.5,
+  "tier": "standard",
+  "condition": "Grounding with your data, per 1,000 prompts",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-agent-search-queries",
+  "entityId": "agent-search",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-1k-requests",
+  "price": 4,
+  "tier": "standard",
+  "condition": "approximate price per 1,000 standard semantic or keyword search queries, as stated in Google's FAQ",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-platform-page"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-pt-gsu-1w",
+  "entityId": "provisioned-throughput",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-hour",
+  "price": 7.14,
+  "tier": "provisioned",
+  "region": "global",
+  "condition": "per GSU per hour, 1-week commitment",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-pt-gsu-1m",
+  "entityId": "provisioned-throughput",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-hour",
+  "price": 3.698630137,
+  "tier": "provisioned",
+  "region": "global",
+  "condition": "per GSU per hour, 1-month commitment",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-pt-gsu-3m",
+  "entityId": "provisioned-throughput",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-hour",
+  "price": 3.287671233,
+  "tier": "provisioned",
+  "region": "global",
+  "condition": "per GSU per hour, 3-month commitment",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-s-pt-gsu-1y",
+  "entityId": "provisioned-throughput",
+  "providerId": "google",
+  "surface": "agent-platform",
+  "meter": "other",
+  "unit": "usd-per-hour",
+  "price": 2.739726027,
+  "tier": "provisioned",
+  "region": "global",
+  "condition": "per GSU per hour, 1-year commitment",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Observed on the pricing page on 2026-11-15; the date this rate first applied is not stated."
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-input-standard-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 8,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Full 1M context at standard rates. US-only inference (inference_geo) adds 10%."
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-output-standard-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 40,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-cache-read-standard-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-cache-write-standard-2026-11-09-5m",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "condition": "5-minute cache write (1.25x input)",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-cache-write-standard-2026-11-09-1h",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 16,
+  "tier": "standard",
+  "condition": "1-hour cache write (2x input)",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-input-batch-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "batch",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-output-batch-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "batch",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-input-priority-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 16,
+  "tier": "priority",
+  "condition": "Fast mode (up to 2.5x output speed); not available with Batch",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Anthropic's 'fast mode' is mapped to the priority tier here; it is a speed option, not a capacity guarantee."
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-api-output-priority-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 80,
+  "tier": "priority",
+  "condition": "Fast mode (up to 2.5x output speed); not available with Batch",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-input-standard-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-output-standard-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-cache-read-standard-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-cache-write-standard-2026-09-22-5m",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "condition": "5-minute cache write (1.25x input)",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-cache-write-standard-2026-09-22-1h",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 8,
+  "tier": "standard",
+  "condition": "1-hour cache write (2x input)",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-input-batch-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "batch",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-output-batch-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "batch",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-input-priority-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 8,
+  "tier": "priority",
+  "condition": "Fast mode (up to 2.5x output speed)",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-api-output-priority-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 40,
+  "tier": "priority",
+  "condition": "Fast mode (up to 2.5x output speed)",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-input-standard-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-output-standard-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-cache-write-standard-2026-09-28-5m",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "standard",
+  "condition": "5-minute cache write (1.25x input)",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-cache-write-standard-2026-09-28-1h",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "condition": "1-hour cache write (2x input)",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-input-batch-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "batch",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-output-batch-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "batch",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-cache-read-standard-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-28",
+  "effectiveTo": "2026-10-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-release-notes",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Launch cache-read price, as stated in the 2026-10-07 release note announcing the cut."
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-api-cache-read-standard-2026-10-07",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "publishedAt": "2026-10-07",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-input-standard-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Applies to requests whose prompt is up to 100,000 tokens."
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-output-standard-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-cache-read-standard-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.01,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-cache-write-standard-2026-10-07-5m",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.125,
+  "tier": "standard",
+  "condition": "5-minute cache write (1.25x input)",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-cache-write-standard-2026-10-07-1h",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "condition": "1-hour cache write (2x input)",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-input-batch-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.05,
+  "tier": "batch",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-output-batch-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.25,
+  "tier": "batch",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-input-standard-2026-10-07-gt100k",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "aboveContextTokens": 100000,
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "A request whose prompt exceeds 100,000 tokens is billed entirely at these rates."
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-output-standard-2026-10-07-gt100k",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "standard",
+  "aboveContextTokens": 100000,
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-cache-read-standard-2026-10-07-gt100k",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.05,
+  "tier": "standard",
+  "aboveContextTokens": 100000,
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-cache-write-standard-2026-10-07-gt100k-5m",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.625,
+  "tier": "standard",
+  "aboveContextTokens": 100000,
+  "condition": "5-minute cache write (1.25x input)",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-cache-write-standard-2026-10-07-gt100k-1h",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "aboveContextTokens": 100000,
+  "condition": "1-hour cache write (2x input)",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-input-batch-2026-10-07-gt100k",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.25,
+  "tier": "batch",
+  "aboveContextTokens": 100000,
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-api-output-batch-2026-10-07-gt100k",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.25,
+  "tier": "batch",
+  "aboveContextTokens": 100000,
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-1-api-input-standard-2026-09-01",
+  "entityId": "claude-fable-5-1",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-1"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-1-api-output-standard-2026-09-01",
+  "entityId": "claude-fable-5-1",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 50,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-1"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-1-api-cache-read-standard-2026-09-01",
+  "entityId": "claude-fable-5-1",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.25,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-1"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-1-api-input-batch-2026-09-01",
+  "entityId": "claude-fable-5-1",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "batch",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-1"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-1-api-output-batch-2026-09-01",
+  "entityId": "claude-fable-5-1",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 25,
+  "tier": "batch",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-fable-5-1"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-api-input-standard-2026-06-09",
+  "entityId": "claude-fable-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-api-output-standard-2026-06-09",
+  "entityId": "claude-fable-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 50,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-api-cache-read-standard-2026-06-09",
+  "entityId": "claude-fable-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-api-input-batch-2026-06-09",
+  "entityId": "claude-fable-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "batch",
+  "effectiveFrom": "2026-06-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-api-output-batch-2026-06-09",
+  "entityId": "claude-fable-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 25,
+  "tier": "batch",
+  "effectiveFrom": "2026-06-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-api-input-standard-2026-07-24",
+  "entityId": "claude-opus-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-api-output-standard-2026-07-24",
+  "entityId": "claude-opus-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 25,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-api-cache-read-standard-2026-07-24",
+  "entityId": "claude-opus-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-api-input-batch-2026-07-24",
+  "entityId": "claude-opus-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "batch",
+  "effectiveFrom": "2026-07-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-5-api-output-batch-2026-07-24",
+  "entityId": "claude-opus-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 12.5,
+  "tier": "batch",
+  "effectiveFrom": "2026-07-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-api-input-standard-2026-06-30",
+  "entityId": "claude-sonnet-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Launched as introductory pricing with an increase to $3/$15 scheduled for 2026-09-01; Anthropic made $2/$10 the standard price on 2026-08-10."
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-api-output-standard-2026-06-30",
+  "entityId": "claude-sonnet-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-api-cache-read-standard-2026-06-30",
+  "entityId": "claude-sonnet-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-api-input-batch-2026-06-30",
+  "entityId": "claude-sonnet-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "batch",
+  "effectiveFrom": "2026-06-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-api-output-batch-2026-06-30",
+  "entityId": "claude-sonnet-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "batch",
+  "effectiveFrom": "2026-06-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-5",
+   "c-anthropic-release-notes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-4-5-api-input-standard-2025-10-15",
+  "entityId": "claude-haiku-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "effectiveFrom": "2025-10-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-4-5-api-output-standard-2025-10-15",
+  "entityId": "claude-haiku-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "effectiveFrom": "2025-10-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-4-5-api-cache-read-standard-2025-10-15",
+  "entityId": "claude-haiku-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2025-10-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-4-5-api-input-batch-2025-10-15",
+  "entityId": "claude-haiku-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "batch",
+  "effectiveFrom": "2025-10-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-haiku-4-5-api-output-batch-2025-10-15",
+  "entityId": "claude-haiku-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "batch",
+  "effectiveFrom": "2025-10-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-haiku-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-4-5-api-input-standard-2025-11-24",
+  "entityId": "claude-opus-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "effectiveFrom": "2025-11-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "The Opus price cut: previous Opus models listed at $15/$75."
+ },
+ {
+  "id": "pr-c-claude-opus-4-5-api-output-standard-2025-11-24",
+  "entityId": "claude-opus-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 25,
+  "tier": "standard",
+  "effectiveFrom": "2025-11-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-4-5-api-cache-read-standard-2025-11-24",
+  "entityId": "claude-opus-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2025-11-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-opus-4-5"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-4-5-api-input-standard-2025-09-29",
+  "entityId": "claude-sonnet-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 3,
+  "tier": "standard",
+  "effectiveFrom": "2025-09-29",
+  "effectiveTo": "2026-11-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-4-5",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-4-5-api-output-standard-2025-09-29",
+  "entityId": "claude-sonnet-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 15,
+  "tier": "standard",
+  "effectiveFrom": "2025-09-29",
+  "effectiveTo": "2026-11-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-4-5",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-sonnet-4-5-api-cache-read-standard-2025-09-29",
+  "entityId": "claude-sonnet-4-5",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.3,
+  "tier": "standard",
+  "effectiveFrom": "2025-09-29",
+  "effectiveTo": "2026-11-30",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-sonnet-4-5",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-4-api-input-standard-2025-05-22",
+  "entityId": "claude-opus-4",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 15,
+  "tier": "standard",
+  "effectiveFrom": "2025-05-22",
+  "effectiveTo": "2026-06-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-claude-4",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-4-api-output-standard-2025-05-22",
+  "entityId": "claude-opus-4",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 75,
+  "tier": "standard",
+  "effectiveFrom": "2025-05-22",
+  "effectiveTo": "2026-06-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-claude-4",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-opus-4-api-cache-read-standard-2025-05-22",
+  "entityId": "claude-opus-4",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.5,
+  "tier": "standard",
+  "effectiveFrom": "2025-05-22",
+  "effectiveTo": "2026-06-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-claude-4",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-3-opus-api-input-standard-2024-03-04",
+  "entityId": "claude-3-opus",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 15,
+  "tier": "standard",
+  "effectiveFrom": "2024-03-04",
+  "effectiveTo": "2026-01-05",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-3",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-3-opus-api-output-standard-2024-03-04",
+  "entityId": "claude-3-opus",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 75,
+  "tier": "standard",
+  "effectiveFrom": "2024-03-04",
+  "effectiveTo": "2026-01-05",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-3",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-3-5-sonnet-api-input-standard-2024-06-20",
+  "entityId": "claude-3-5-sonnet",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 3,
+  "tier": "standard",
+  "effectiveFrom": "2024-06-20",
+  "effectiveTo": "2025-10-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-3-5-sonnet",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-3-5-sonnet-api-output-standard-2024-06-20",
+  "entityId": "claude-3-5-sonnet",
+  "providerId": "anthropic",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 15,
+  "tier": "standard",
+  "effectiveFrom": "2024-06-20",
+  "effectiveTo": "2025-10-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-3-5-sonnet",
+   "c-anthropic-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-gcp-input-standard-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 8,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google-managed Claude on Agent Platform, global endpoint; regional and multi-region endpoints carry a 10% premium. Effective date set to the model's launch date; Google's page does not state one.",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-claude-fable-5-2-gcp-output-standard-2026-11-09",
+  "entityId": "claude-fable-5-2",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 40,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-gcp-input-standard-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google-managed Claude on Agent Platform, global endpoint; regional and multi-region endpoints carry a 10% premium. Effective date set to the model's launch date; Google's page does not state one.",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-claude-opus-5-5-gcp-output-standard-2026-09-22",
+  "entityId": "claude-opus-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-gcp-input-standard-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google-managed Claude on Agent Platform, global endpoint; regional and multi-region endpoints carry a 10% premium. Effective date set to the model's launch date; Google's page does not state one.",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-claude-sonnet-5-5-gcp-output-standard-2026-09-28",
+  "entityId": "claude-sonnet-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-gcp-input-standard-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google-managed Claude on Agent Platform, global endpoint; regional and multi-region endpoints carry a 10% premium. Effective date set to the model's launch date; Google's page does not state one. Prompts of 100K tokens or more bill at $0.50/$2.50."
+ },
+ {
+  "id": "pr-c-claude-haiku-5-5-gcp-output-standard-2026-10-07",
+  "entityId": "claude-haiku-5-5",
+  "providerId": "anthropic",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "region": "global",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-gpt-6-astra-api-input-standard-2026-09-03",
+  "entityId": "gpt-6-astra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-03",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6",
+   "c-x-benchlm-openai-pricing",
+   "c-x-eesel-astra-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers. One aggregator lists $5/$25, which conflicts with the rest."
+ },
+ {
+  "id": "pr-c-gpt-6-astra-api-output-standard-2026-09-03",
+  "entityId": "gpt-6-astra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 50,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-03",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6",
+   "c-x-benchlm-openai-pricing",
+   "c-x-eesel-astra-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-astra-api-cache-read-standard-2026-09-03",
+  "entityId": "gpt-6-astra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-03",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6",
+   "c-x-benchlm-openai-pricing",
+   "c-x-eesel-astra-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-astra-api-cache-write-standard-2026-09-03",
+  "entityId": "gpt-6-astra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "cache-write",
+  "unit": "usd-per-1m-tokens",
+  "price": 12.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-03",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-eesel-astra-pricing",
+   "c-x-cloudzero-gpt6"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-1-sol-api-input-standard-2026-09-29",
+  "entityId": "gpt-6-1-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-29",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-history",
+   "c-x-benchlm-openai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-1-sol-api-output-standard-2026-09-29",
+  "entityId": "gpt-6-1-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-29",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-history",
+   "c-x-benchlm-openai-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-1-sol-api-cache-read-standard-2026-09-29",
+  "entityId": "gpt-6-1-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-29",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-history"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-1-terra-api-input-standard-2026-10-26",
+  "entityId": "gpt-6-1-terra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-26",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ppt-terra",
+   "c-x-aimagazine-terra"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers. Batch and Flex are reported at 50% off and Fast mode at 2x."
+ },
+ {
+  "id": "pr-c-gpt-6-1-terra-api-output-standard-2026-10-26",
+  "entityId": "gpt-6-1-terra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-26",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ppt-terra",
+   "c-x-aimagazine-terra"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-1-terra-api-cache-read-standard-2026-10-26",
+  "entityId": "gpt-6-1-terra",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.05,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-26",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ppt-terra",
+   "c-x-aimagazine-terra"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-luna-api-input-standard-2026-09-22",
+  "entityId": "gpt-6-luna",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ppt-luna",
+   "c-x-cloudzero-gpt6"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers. Tracker page says verified 2026-10-10."
+ },
+ {
+  "id": "pr-c-gpt-6-luna-api-output-standard-2026-09-22",
+  "entityId": "gpt-6-luna",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ppt-luna",
+   "c-x-cloudzero-gpt6"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-luna-api-cache-read-standard-2026-09-22",
+  "entityId": "gpt-6-luna",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.01,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ppt-luna"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-sol-api-input-standard-2026-09-22",
+  "entityId": "gpt-6-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6",
+   "c-x-taskade-models"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-sol-api-output-standard-2026-09-22",
+  "entityId": "gpt-6-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6",
+   "c-x-taskade-models"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-6-sol-api-cache-read-standard-2026-09-22",
+  "entityId": "gpt-6-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-5-6-sol-api-input-standard-2026-07-09",
+  "entityId": "gpt-5-6-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "condition": "Tracker-reported; described as promotional pricing through at least 2026-11-21",
+  "effectiveFrom": "2026-07-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-gradually-gpt-versions"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers. Disputed: an earlier internal catalog recorded $5/$30 for this model."
+ },
+ {
+  "id": "pr-c-gpt-5-6-sol-api-output-standard-2026-07-09",
+  "entityId": "gpt-5-6-sol",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "standard",
+  "condition": "Tracker-reported; described as promotional pricing through at least 2026-11-21",
+  "effectiveFrom": "2026-07-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-gradually-gpt-versions"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-5-5-api-input-standard-2026-04-24",
+  "entityId": "gpt-5-5",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "effectiveFrom": "2026-04-24",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-models",
+   "c-x-wikipedia-gpt-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers. API access opened the day after the 2026-04-23 launch."
+ },
+ {
+  "id": "pr-c-gpt-5-5-api-output-standard-2026-04-24",
+  "entityId": "gpt-5-5",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 30,
+  "tier": "standard",
+  "effectiveFrom": "2026-04-24",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-models",
+   "c-x-wikipedia-gpt-5-5"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-5-api-input-standard-2025-08-07",
+  "entityId": "gpt-5",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.25,
+  "tier": "standard",
+  "effectiveFrom": "2025-08-07",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-models",
+   "c-x-sim-openai"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-5-api-output-standard-2025-08-07",
+  "entityId": "gpt-5",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2025-08-07",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-taskade-models",
+   "c-x-sim-openai"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "OpenAI's pricing page was unreachable; list price as reported by third-party trackers."
+ },
+ {
+  "id": "pr-c-gpt-4o-api-input-standard-2024-05-13",
+  "entityId": "gpt-4o",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 5,
+  "tier": "standard",
+  "effectiveFrom": "2024-05-13",
+  "effectiveTo": "2024-08-05",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4o",
+   "c-pk-openai-pricing-history"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-gpt-4o-api-output-standard-2024-05-13",
+  "entityId": "gpt-4o",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 15,
+  "tier": "standard",
+  "effectiveFrom": "2024-05-13",
+  "effectiveTo": "2024-08-05",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4o",
+   "c-pk-openai-pricing-history"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-gpt-4o-api-input-standard-2024-08-06",
+  "entityId": "gpt-4o",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "standard",
+  "effectiveFrom": "2024-08-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-openai-pricing-history",
+   "c-x-taskade-models"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge). Introduced with the gpt-4o-2024-08-06 snapshot."
+ },
+ {
+  "id": "pr-c-gpt-4o-api-output-standard-2024-08-06",
+  "entityId": "gpt-4o",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 10,
+  "tier": "standard",
+  "effectiveFrom": "2024-08-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-openai-pricing-history",
+   "c-x-taskade-models"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-gpt-4-api-input-standard-2023-03-14",
+  "entityId": "gpt-4",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 30,
+  "tier": "standard",
+  "condition": "8K-context model",
+  "effectiveFrom": "2023-03-14",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4",
+   "c-pk-openai-pricing-history"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-gpt-4-api-output-standard-2023-03-14",
+  "entityId": "gpt-4",
+  "providerId": "openai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 60,
+  "tier": "standard",
+  "condition": "8K-context model",
+  "effectiveFrom": "2023-03-14",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4",
+   "c-pk-openai-pricing-history"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-grok-4-7-api-input-standard-2026-09-21",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-21",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-benchlm-xai-pricing",
+   "c-x-anotherwrapper-grok47"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "xAI's docs were unreachable; list price as reported by third-party trackers. Release date from a single source."
+ },
+ {
+  "id": "pr-c-grok-4-7-api-output-standard-2026-09-21",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 6,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-21",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-benchlm-xai-pricing",
+   "c-x-anotherwrapper-grok47"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "xAI's docs were unreachable; list price as reported by third-party trackers. Release date from a single source."
+ },
+ {
+  "id": "pr-c-grok-4-7-api-cache-read-standard-2026-09-21",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-21",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-benchlm-xai-pricing",
+   "c-x-anotherwrapper-grok47"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "xAI's docs were unreachable; list price as reported by third-party trackers. Release date from a single source."
+ },
+ {
+  "id": "pr-c-grok-4-7-gcp-input-standard-2026-09-21",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-7-gcp-output-standard-2026-09-21",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 6,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-7-gcp-cache-read-standard-2026-09-21",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-7-gcp-input-standard-2026-09-21-gt200k",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "effectiveFrom": "2026-09-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-7-gcp-output-standard-2026-09-21-gt200k",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 12,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "effectiveFrom": "2026-09-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-7-gcp-cache-read-standard-2026-09-21-gt200k",
+  "entityId": "grok-4-7",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "effectiveFrom": "2026-09-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-6-gcp-input-standard-2026-11-15",
+  "entityId": "grok-4-6",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-6-gcp-output-standard-2026-11-15",
+  "entityId": "grok-4-6",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 6,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-3-gcp-input-standard-2026-11-15",
+  "entityId": "grok-4-3",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.25,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used. Above 200K input tokens: $2.50/$5.00."
+ },
+ {
+  "id": "pr-c-grok-4-3-gcp-output-standard-2026-11-15",
+  "entityId": "grok-4-3",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-3-gcp-cache-read-standard-2026-11-15",
+  "entityId": "grok-4-3",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-1-fast-gcp-input-standard-2026-11-15",
+  "entityId": "grok-4-1-fast",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used. Same price for the reasoning and non-reasoning variants."
+ },
+ {
+  "id": "pr-c-grok-4-1-fast-gcp-output-standard-2026-11-15",
+  "entityId": "grok-4-1-fast",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-grok-4-1-fast-gcp-cache-read-standard-2026-11-15",
+  "entityId": "grok-4-1-fast",
+  "providerId": "xai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.05,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-wonder-1-0-api-input-standard-2026-10-12",
+  "entityId": "muse-wonder-1-0",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-12",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-betanews-wonder",
+   "c-x-fpj-wonder"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-muse-wonder-1-0-api-output-standard-2026-10-12",
+  "entityId": "muse-wonder-1-0",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-12",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-betanews-wonder",
+   "c-x-fpj-wonder"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-muse-wonder-1-0-api-cache-read-standard-2026-10-12",
+  "entityId": "muse-wonder-1-0",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-12",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-betanews-wonder",
+   "c-x-fpj-wonder"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-api-input-standard-2026-11-09",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-technobezz-ember",
+   "c-x-vktr-ember"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers. Rates are higher above 200K input tokens."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-api-output-standard-2026-11-09",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-technobezz-ember",
+   "c-x-vktr-ember"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-api-cache-read-standard-2026-11-09",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.004,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-technobezz-ember",
+   "c-x-vktr-ember"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-muse-spark-1-3-api-input-standard-2026-07-09",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.25,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-qz-muse-spark",
+   "c-x-cnbc-muse-spark"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers. Price published with Muse Spark 1.1 and the Meta Model API preview on 2026-07-09; version 1.3 is listed at the same price on Google Cloud."
+ },
+ {
+  "id": "pr-c-muse-spark-1-3-api-output-standard-2026-07-09",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.25,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-09",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-qz-muse-spark",
+   "c-x-cnbc-muse-spark"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Meta's developer pages were unreachable; first-party list price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-muse-wonder-1-0-gcp-input-standard-2026-10-12",
+  "entityId": "muse-wonder-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 4,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-12",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-wonder-1-0-gcp-output-standard-2026-10-12",
+  "entityId": "muse-wonder-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 20,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-12",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-wonder-1-0-gcp-cache-read-standard-2026-10-12",
+  "entityId": "muse-wonder-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-12",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-spark-1-3-gcp-input-standard-2026-09-02",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.25,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-02",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used.",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-muse-spark-1-3-gcp-output-standard-2026-09-02",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.25,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-02",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used.",
+  "effectiveTo": "2026-11-14"
+ },
+ {
+  "id": "pr-c-muse-spark-1-3-gcp-cache-read-standard-2026-09-02",
+  "entityId": "muse-spark-1-3",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.15,
+  "tier": "standard",
+  "effectiveFrom": "2026-09-02",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-gcp-input-standard-2026-11-09",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-gcp-output-standard-2026-11-09",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-gcp-cache-read-standard-2026-11-09",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.004,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-gcp-input-standard-2026-11-09-gt200k",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.3,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-gcp-output-standard-2026-11-09-gt200k",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.5,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-muse-ember-1-0-gcp-cache-read-standard-2026-11-09-gt200k",
+  "entityId": "muse-ember-1-0",
+  "providerId": "meta",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.012,
+  "tier": "standard",
+  "aboveContextTokens": 200000,
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-llama-4-maverick-host-input-standard-2026-11-15",
+  "entityId": "llama-4-maverick",
+  "providerId": "meta",
+  "surface": "third-party-host",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.35,
+  "tier": "standard",
+  "condition": "Google Cloud Agent Platform",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "No first-party Meta API. Host: Google Cloud Agent Platform (Model Garden managed API), list price read 2026-11-15; effective date not stated, read date used."
+ },
+ {
+  "id": "pr-c-llama-4-maverick-host-output-standard-2026-11-15",
+  "entityId": "llama-4-maverick",
+  "providerId": "meta",
+  "surface": "third-party-host",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.15,
+  "tier": "standard",
+  "condition": "Google Cloud Agent Platform",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "No first-party Meta API. Host: Google Cloud Agent Platform (Model Garden managed API), list price read 2026-11-15; effective date not stated, read date used."
+ },
+ {
+  "id": "pr-c-llama-4-maverick-host-input-batch-2026-11-15",
+  "entityId": "llama-4-maverick",
+  "providerId": "meta",
+  "surface": "third-party-host",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.175,
+  "tier": "batch",
+  "condition": "Google Cloud Agent Platform",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "No first-party Meta API. Host: Google Cloud Agent Platform (Model Garden managed API), list price read 2026-11-15; effective date not stated, read date used."
+ },
+ {
+  "id": "pr-c-llama-4-maverick-host-output-batch-2026-11-15",
+  "entityId": "llama-4-maverick",
+  "providerId": "meta",
+  "surface": "third-party-host",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.575,
+  "tier": "batch",
+  "condition": "Google Cloud Agent Platform",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "No first-party Meta API. Host: Google Cloud Agent Platform (Model Garden managed API), list price read 2026-11-15; effective date not stated, read date used."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-input-standard-2026-04-24-list",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.74,
+  "tier": "standard",
+  "condition": "Published list price at the V4 Preview launch, before promotional discount",
+  "effectiveFrom": "2026-04-24",
+  "effectiveTo": "2026-08-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decrypt-deepseek-v4"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-output-standard-2026-04-24-list",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 3.48,
+  "tier": "standard",
+  "condition": "Published list price at the V4 Preview launch, before promotional discount",
+  "effectiveFrom": "2026-04-24",
+  "effectiveTo": "2026-08-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decrypt-deepseek-v4"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-input-standard-2026-04-24-promo",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.435,
+  "tier": "standard",
+  "condition": "75% promotional rate, reported as made permanent in May 2026. Its exact start date was not confirmed, so the model's launch date is used.",
+  "effectiveFrom": "2026-04-24",
+  "effectiveTo": "2026-08-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-infoworld-deepseek"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-output-standard-2026-04-24-promo",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.87,
+  "tier": "standard",
+  "condition": "75% promotional rate, reported as made permanent in May 2026. Its exact start date was not confirmed, so the model's launch date is used.",
+  "effectiveFrom": "2026-04-24",
+  "effectiveTo": "2026-08-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-infoworld-deepseek"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-cache-read-standard-2026-04-24-promo",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.003625,
+  "tier": "standard",
+  "condition": "75% promotional rate, reported as made permanent in May 2026. Its exact start date was not confirmed, so the model's launch date is used.",
+  "effectiveFrom": "2026-04-24",
+  "effectiveTo": "2026-08-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-infoworld-deepseek"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-input-standard-2026-08-16-offpeak",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.66,
+  "tier": "standard",
+  "condition": "Off-peak rate",
+  "publishedAt": "2026-08-13",
+  "effectiveFrom": "2026-08-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-aipricecompare-deepseek",
+   "c-x-deepseek-news-0813"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers. Peak/off-peak schedule took effect 16:00 UTC on 2026-08-16 per DeepSeek's notice."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-output-standard-2026-08-16-offpeak",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.98,
+  "tier": "standard",
+  "condition": "Off-peak rate",
+  "publishedAt": "2026-08-13",
+  "effectiveFrom": "2026-08-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-aipricecompare-deepseek",
+   "c-x-deepseek-news-0813"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-input-standard-2026-08-16-peak",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.32,
+  "tier": "standard",
+  "condition": "Peak rate",
+  "publishedAt": "2026-08-13",
+  "effectiveFrom": "2026-08-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-aipricecompare-deepseek",
+   "c-x-deepseek-news-0813"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Peak rate. Derived, not read directly: DeepSeek's notice says off-peak rates are 50% lower than peak, and the off-peak rate was read from a tracker."
+ },
+ {
+  "id": "pr-c-deepseek-v4-pro-api-output-standard-2026-08-16-peak",
+  "entityId": "deepseek-v4-pro",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 3.96,
+  "tier": "standard",
+  "condition": "Peak rate",
+  "publishedAt": "2026-08-13",
+  "effectiveFrom": "2026-08-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-aipricecompare-deepseek",
+   "c-x-deepseek-news-0813"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Peak rate. Derived, not read directly: DeepSeek's notice says off-peak rates are 50% lower than peak, and the off-peak rate was read from a tracker."
+ },
+ {
+  "id": "pr-c-deepseek-v4-1-flash-api-input-standard-2026-09-10-offpeak",
+  "entityId": "deepseek-v4-1-flash",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.15,
+  "tier": "standard",
+  "condition": "Off-peak rate",
+  "effectiveFrom": "2026-09-10",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-aipricecompare-deepseek"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers. Peak hours are reported at twice this rate."
+ },
+ {
+  "id": "pr-c-deepseek-v4-1-flash-api-output-standard-2026-09-10-offpeak",
+  "entityId": "deepseek-v4-1-flash",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.6,
+  "tier": "standard",
+  "condition": "Off-peak rate",
+  "effectiveFrom": "2026-09-10",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-aipricecompare-deepseek"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "DeepSeek's pricing page was unreachable; price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-deepseek-v4-1-flash-gcp-input-standard-2026-10-17",
+  "entityId": "deepseek-v4-1-flash",
+  "providerId": "deepseek",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.3,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price. The page says the model was available at no charge until 2026-10-16, so 2026-10-17 is used as the first billed day."
+ },
+ {
+  "id": "pr-c-deepseek-v4-1-flash-gcp-output-standard-2026-10-17",
+  "entityId": "deepseek-v4-1-flash",
+  "providerId": "deepseek",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-deepseek-v4-1-flash-gcp-cache-read-standard-2026-10-17",
+  "entityId": "deepseek-v4-1-flash",
+  "providerId": "deepseek",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.03,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-deepseek-r1-api-input-standard-2025-01-20",
+  "entityId": "deepseek-r1",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.55,
+  "tier": "standard",
+  "condition": "Cache-miss input",
+  "effectiveFrom": "2025-01-20",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-deepseek-r1"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-deepseek-r1-api-output-standard-2025-01-20",
+  "entityId": "deepseek-r1",
+  "providerId": "deepseek",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 2.19,
+  "tier": "standard",
+  "effectiveFrom": "2025-01-20",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-deepseek-r1"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Well-known historical list price; not re-read this cycle (source access: prior knowledge)."
+ },
+ {
+  "id": "pr-c-qwen3-8-max-api-input-standard-2026-08-03",
+  "entityId": "qwen3-8-max",
+  "providerId": "alibaba",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 2,
+  "tier": "standard",
+  "effectiveFrom": "2026-08-03",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-devdigest-qwen38"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Alibaba Cloud Model Studio price as relayed by trackers citing alibabacloud.com; regional price lists may differ."
+ },
+ {
+  "id": "pr-c-qwen3-8-max-api-output-standard-2026-08-03",
+  "entityId": "qwen3-8-max",
+  "providerId": "alibaba",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 6,
+  "tier": "standard",
+  "effectiveFrom": "2026-08-03",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-devdigest-qwen38"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "pr-c-glm-5-2-api-input-standard-2026-06-16",
+  "entityId": "glm-5-2",
+  "providerId": "zai",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.4,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-venturebeat-glm52",
+   "c-x-datanorth-glm52"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Z.ai first-party API price as reported by press and trackers; the API opened broadly on 2026-06-16 after a 2026-06-13 release to Coding Plan users."
+ },
+ {
+  "id": "pr-c-glm-5-2-api-output-standard-2026-06-16",
+  "entityId": "glm-5-2",
+  "providerId": "zai",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.4,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-venturebeat-glm52",
+   "c-x-datanorth-glm52"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Z.ai first-party API price as reported by press and trackers; the API opened broadly on 2026-06-16 after a 2026-06-13 release to Coding Plan users."
+ },
+ {
+  "id": "pr-c-glm-5-2-api-cache-read-standard-2026-06-16",
+  "entityId": "glm-5-2",
+  "providerId": "zai",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.26,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-venturebeat-glm52"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Z.ai first-party API price as reported by press and trackers; the API opened broadly on 2026-06-16 after a 2026-06-13 release to Coding Plan users. Google Cloud lists cached input at $0.14."
+ },
+ {
+  "id": "pr-c-glm-5-2-gcp-input-standard-2026-06-16",
+  "entityId": "glm-5-2",
+  "providerId": "zai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.4,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-glm-5-2-gcp-output-standard-2026-06-16",
+  "entityId": "glm-5-2",
+  "providerId": "zai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.4,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-glm-5-2-gcp-cache-read-standard-2026-06-16",
+  "entityId": "glm-5-2",
+  "providerId": "zai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.14,
+  "tier": "standard",
+  "effectiveFrom": "2026-06-16",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-glm-5-gcp-input-standard-2026-11-15",
+  "entityId": "glm-5",
+  "providerId": "zai",
+  "surface": "agent-platform",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-glm-5-gcp-output-standard-2026-11-15",
+  "entityId": "glm-5",
+  "providerId": "zai",
+  "surface": "agent-platform",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 3.2,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-glm-5-gcp-cache-read-standard-2026-11-15",
+  "entityId": "glm-5",
+  "providerId": "zai",
+  "surface": "agent-platform",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.1,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Google Cloud list price read on 2026-11-15; the page gives no effective date, so the model's launch date (or, where unknown, the read date) is used."
+ },
+ {
+  "id": "pr-c-kimi-k3-api-input-standard-2026-07-16",
+  "entityId": "kimi-k3",
+  "providerId": "moonshot",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 3,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decoder-kimi-k3",
+   "c-x-benchlm-kimi-k3"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Moonshot first-party API price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-kimi-k3-api-output-standard-2026-07-16",
+  "entityId": "kimi-k3",
+  "providerId": "moonshot",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 15,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decoder-kimi-k3",
+   "c-x-benchlm-kimi-k3"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Moonshot first-party API price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-kimi-k3-api-cache-read-standard-2026-07-16",
+  "entityId": "kimi-k3",
+  "providerId": "moonshot",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.3,
+  "tier": "standard",
+  "effectiveFrom": "2026-07-16",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decoder-kimi-k3",
+   "c-x-benchlm-kimi-k3"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Moonshot first-party API price as reported by press and trackers."
+ },
+ {
+  "id": "pr-c-mistral-large-4-api-input-standard-2026-10-06",
+  "entityId": "mistral-large-4",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.36,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-06",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-eweek-large4",
+   "c-x-usagepricing-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Standard preview price as reported by press and trackers; a two-week launch promotion halved these rates ($0.68/$2.09/$0.07) and has ended."
+ },
+ {
+  "id": "pr-c-mistral-large-4-api-output-standard-2026-10-06",
+  "entityId": "mistral-large-4",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 4.18,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-06",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-eweek-large4",
+   "c-x-usagepricing-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Standard preview price as reported by press and trackers; a two-week launch promotion halved these rates ($0.68/$2.09/$0.07) and has ended."
+ },
+ {
+  "id": "pr-c-mistral-large-4-api-cache-read-standard-2026-10-06",
+  "entityId": "mistral-large-4",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.14,
+  "tier": "standard",
+  "effectiveFrom": "2026-10-06",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-eweek-large4",
+   "c-x-usagepricing-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Standard preview price as reported by press and trackers; a two-week launch promotion halved these rates ($0.68/$2.09/$0.07) and has ended."
+ },
+ {
+  "id": "pr-c-mistral-large-3-api-input-standard-2026-11-15",
+  "entityId": "mistral-large-3",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-usagepricing-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Tracker-reported list price as of 2026-11-15; the date this price took effect was not confirmed, so the read date is used."
+ },
+ {
+  "id": "pr-c-mistral-large-3-api-output-standard-2026-11-15",
+  "entityId": "mistral-large-3",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 1.5,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-usagepricing-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Tracker-reported list price as of 2026-11-15; the date this price took effect was not confirmed, so the read date is used."
+ },
+ {
+  "id": "pr-c-mistral-large-3-api-cache-read-standard-2026-11-15",
+  "entityId": "mistral-large-3",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "cache-read",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.05,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-usagepricing-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Tracker-reported list price as of 2026-11-15; the date this price took effect was not confirmed, so the read date is used."
+ },
+ {
+  "id": "pr-c-mistral-small-4-api-input-standard-2026-11-15",
+  "entityId": "mistral-small-4",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "input",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.15,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-usagepricing-mistral",
+   "c-x-modelcompare-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Tracker-reported list price as of 2026-11-15; the date this price took effect was not confirmed, so the read date is used. One tracker says this price dates from a July 2026 increase."
+ },
+ {
+  "id": "pr-c-mistral-small-4-api-output-standard-2026-11-15",
+  "entityId": "mistral-small-4",
+  "providerId": "mistral",
+  "surface": "first-party-api",
+  "meter": "output",
+  "unit": "usd-per-1m-tokens",
+  "price": 0.6,
+  "tier": "standard",
+  "effectiveFrom": "2026-11-15",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-usagepricing-mistral",
+   "c-x-modelcompare-mistral"
+  ],
+  "lastCheckedAt": "2026-11-15",
+  "note": "Tracker-reported list price as of 2026-11-15; the date this price took effect was not confirmed, so the read date is used."
  }
 ]

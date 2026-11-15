@@ -1,1 +1,1164 @@
-[]
+[
+ {
+  "id": "frontier-models",
+  "name": "Frontier models",
+  "question": "Who has the most capable general-purpose model right now, and how long does any lead last?",
+  "google": [
+   {
+    "text": "Gemini 4 Carbon scores 60 at high thinking on Artificial Analysis Intelligence Index v5, second to Claude Fable 5.2 (65) and ahead of Claude Opus 5.5, in a table dated 13 November 2026.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-benchlm-aa",
+     "c-x-aiproductivity-benchmarks"
+    ],
+    "asOf": "2026-11-13",
+    "confidence": "medium"
+   },
+   {
+    "text": "Gemini 4 Carbon (High) led LMArena's Text Arena at 1526 (±9, preliminary) in a 7 November 2026 snapshot, with Gemini 4 Argon second at 1523.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-devdigest-lmarena"
+    ],
+    "asOf": "2026-11-07",
+    "confidence": "medium"
+   },
+   {
+    "text": "In Anthropic's own comparison table Gemini 4 Carbon leads Claude Fable 5.2 on AutomationBench (53.9% vs 51.4%) but trails it on FrontierCode 2.0 (41.1% at medium effort vs 49.1% at xhigh) and FrontierSWE v2 (61.2% vs 69.9%).",
+    "label": "provider-claim",
+    "sourceIds": [
+     "c-anthropic-fable-5-2"
+    ],
+    "asOf": "2026-11-09",
+    "confidence": "high"
+   },
+   {
+    "text": "Gemini 4 Hydrogen, the fast tier released 12 November 2026, is reported at 51 on the same index at its default setting and 54 at xhigh.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-agentspulse-hydrogen",
+     "c-x-benchlm-aa"
+    ],
+    "asOf": "2026-11-13",
+    "confidence": "low"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Claude Fable 5.2, launched 9 November 2026, holds the highest Artificial Analysis Intelligence Index score (65, max effort).",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-aa-index-eval",
+       "c-x-benchlm-aa"
+      ],
+      "asOf": "2026-11-13",
+      "confidence": "medium"
+     },
+     {
+      "text": "Anthropic recommends Claude Opus 5.5 ($4/$20) as the default and positions Fable 5.2 ($8/$40) above it for the hardest work.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-models",
+       "c-anthropic-pricing"
+      ],
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "GPT-6 Astra scored 57 at max effort when index v5 launched on 27 October 2026, one point behind Claude Opus 5.5.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-aa-index-v5",
+       "c-x-cellcog-aa-v5"
+      ],
+      "asOf": "2026-10-27",
+      "confidence": "medium"
+     },
+     {
+      "text": "A tracker lists GPT-6 Astra first on ARC-AGI-3's standard harness at 62.71% as of 23 October 2026.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-llmlearner-arc3"
+      ],
+      "asOf": "2026-10-23",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "meta",
+    "position": [
+     {
+      "text": "Muse Wonder placed third on LMArena Text (1513) in the 7 November 2026 snapshot; the stronger Muse Wonder Full has no public API.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-devdigest-lmarena",
+       "c-x-betanews-wonder"
+      ],
+      "asOf": "2026-11-07",
+      "confidence": "low"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini",
+   "gemini-4-carbon",
+   "gemini-4-argon",
+   "gemini-4-hydrogen"
+  ],
+  "assessment": "Google is in the leading group but not clearly first. Mid-November independent data puts Gemini 4 Carbon behind Claude Fable 5.2 on Artificial Analysis's composite and ahead on human-preference voting, where its rating is still preliminary and Fable 5.2 is not yet listed. First place on the index changed hands twice in the two weeks after v5 launched, and the one coding comparison available, published by a competitor, has Google trailing.",
+  "watch": [
+   "Whether Gemini 4 Carbon keeps its LMArena lead once the rating is no longer preliminary and Claude Fable 5.2 is listed.",
+   "Cost-per-task rankings after Carbon's promotional price ends on 30 November 2026.",
+   "Alibaba's Qwen4-Max after its preview closes on 25 November 2026, and any OpenAI answer to Fable 5.2."
+  ]
+ },
+ {
+  "id": "price-performance",
+  "name": "Price-performance",
+  "question": "Who delivers the most capability per dollar at each tier, and in which direction are list prices moving?",
+  "google": [
+   {
+    "text": "Gemini 4 Hydrogen lists at $1.50 input and $7.50 output per million tokens on the global endpoint, with cache reads at $0.075.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Gemini 4 Carbon and Argon are effectively $2/$10 through 30 November 2026 (50% credits back) and $4/$20 from 1 December 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Gemini 3.8, 3.7 and 3.6 Flash carry introductory pricing of $0.75/$3.75 through 31 December 2026; standard pricing of $1.50/$7.50 applies from 1 January 2027.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's lowest-priced current text tiers on the page are Gemini 3.5 Flash-Lite at $0.30/$2.50 and Gemini 3.1 Flash-Lite at $0.25 input.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Claude Haiku 5.5 lists at $0.10/$0.50 for prompts up to 100,000 tokens, with cache reads at $0.01.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-pricing"
+      ],
+      "asOf": "2026-11-15",
+      "confidence": "high"
+     },
+     {
+      "text": "Anthropic cut Opus-class pricing with Opus 5.5 ($4/$20, cache reads $0.20) and halved Sonnet 5.5 cache reads to $0.10 two weeks after launch.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-pricing",
+       "c-anthropic-release-notes"
+      ],
+      "asOf": "2026-10-07",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "Trackers list GPT-6 Luna at $0.10/$0.50 and GPT-6.1 Terra at $1/$5 per million tokens.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-ppt-luna",
+       "c-x-ppt-terra"
+      ],
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "meta",
+    "position": [
+     {
+      "text": "Muse Ember 1.0 lists at $0.10/$0.50 with cached input at $0.004 on Google Cloud's own partner price list.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-gcloud-partner-pricing"
+      ],
+      "asOf": "2026-11-15",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "deepseek",
+    "position": [
+     {
+      "text": "DeepSeek moved to peak/off-peak pricing on 16 August 2026, which reporting describes as a rise of roughly 57% to more than 1,100% depending on model and token type; V4 Pro is listed at $0.66/$1.98 off-peak.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-deepseek-news-0813",
+       "c-x-channelinsider-deepseek",
+       "c-x-aipricecompare-deepseek"
+      ],
+      "asOf": "2026-11-02",
+      "confidence": "medium"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini",
+   "gemini-4-hydrogen",
+   "gemini-4-carbon",
+   "gemini-3-8-flash"
+  ],
+  "assessment": "Google is no longer the low-price leader on list prices: three rivals sell a light model at $0.10/$0.50, below Google's Flash-Lite output price, and both price changes Google has scheduled go up. Its mid tier is competitive, with Hydrogen priced between GPT-6.1 Terra and Claude Sonnet 5.5. List prices do not capture cost per finished task, which depends on token efficiency and caching and is where Anthropic and OpenAI now concentrate their claims.",
+  "watch": [
+   "Gemini 4 Carbon and Argon moving to $4/$20 on 1 December 2026.",
+   "Gemini Flash moving to $1.50/$7.50 on 1 January 2027, and Gemini 4 Hydrogen cache-write pricing starting 12 January 2027.",
+   "Whether Google answers the $0.10/$0.50 tier set by Haiku 5.5, GPT-6 Luna and Muse Ember."
+  ]
+ },
+ {
+  "id": "coding-agents",
+  "name": "Coding agents",
+  "question": "Whose models and tools do developers actually use for agentic software work?",
+  "google": [
+   {
+    "text": "Anthropic's FrontierCode 2.0 table puts Gemini 4 Carbon at 41.1% (medium effort), behind Claude Fable 5.2 (49.1%), Claude Opus 5.5 (45.5%) and GPT-6 Astra (42.8%).",
+    "label": "provider-claim",
+    "sourceIds": [
+     "c-anthropic-fable-5-2"
+    ],
+    "asOf": "2026-11-09",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's price list bills CodeMender at the same introductory rates as the Gemini Flash models it runs on.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "In a JetBrains survey of more than 15,000 professional developers (May to July 2026), as relayed by secondary trackers, the most-used tools at work were Claude Code (39%), GitHub Copilot (21%), Codex (16%) and Cursor (12%); no Google tool appears among the figures relayed.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-presenc-claude-code"
+    ],
+    "asOf": "2026-07-31",
+    "confidence": "low"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Anthropic says more than 90% of the changes merged into its core codebase are now written by Claude with human guidance.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-anthropic-fable-5-2"
+      ],
+      "asOf": "2026-11-09",
+      "confidence": "high"
+     },
+     {
+      "text": "Secondary trackers report Anthropic saying on 12 February 2026 that Claude Code's run-rate revenue had passed $2.5 billion.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-presenc-claude-code"
+      ],
+      "asOf": "2026-02-12",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "OpenAI reported more than 5 million weekly Codex users on 2 June 2026, per secondary trackers; GPT-6.1 Sol is the default Codex model.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-presenc-coding-market",
+       "c-x-releasebot-openai"
+      ],
+      "asOf": "2026-06-02",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "xai",
+    "position": [
+     {
+      "text": "SpaceX closed a $60 billion all-stock acquisition of Cursor's maker Anysphere on 14 August 2026 and placed it inside SpaceXAI.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-vktr-cursor",
+       "c-x-9to5mac-cursor"
+      ],
+      "asOf": "2026-08-14",
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "microsoft",
+    "position": [
+     {
+      "text": "Microsoft committed in November 2025 to keep Claude available in GitHub Copilot; GitHub was a named early tester of Claude Opus 5.5 in Copilot CLI and VS Code.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-ms-nvidia",
+       "c-anthropic-opus-5-5"
+      ],
+      "asOf": "2026-09-22",
+      "confidence": "high"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini-cli",
+   "google-antigravity",
+   "gemini"
+  ],
+  "assessment": "Coding is where Google trails most visibly. The usage and revenue figures that surfaced this cycle all belong to Claude Code, Codex, Copilot and Cursor, and the only head-to-head coding benchmark that includes Gemini 4 Carbon, published by a competitor, places it behind both Anthropic models. No independent coding results for Gemini 4 and no usage figures for Gemini CLI or Antigravity were found.",
+  "watch": [
+   "Independent Terminal-Bench or SWE-bench Pro results for Gemini 4 models.",
+   "Model defaults in Cursor now that it belongs to SpaceXAI.",
+   "Any usage disclosure for Gemini CLI or Antigravity."
+  ]
+ },
+ {
+  "id": "enterprise-agent-platforms",
+  "name": "Enterprise agent platforms",
+  "question": "Where do enterprises build, run and govern agents, and how open is each platform to other vendors' models?",
+  "google": [
+   {
+    "text": "Google markets Agent Platform's Model Garden as offering more than 200 Google and third-party models, naming Gemini 4 Argon, Anthropic's Claude family and Gemma.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "c-gcloud-agent-platform"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's partner price list includes Claude Fable 5.2, Grok 4.7, Meta's Muse models, GLM-5.2 and DeepSeek V4.1 Flash as managed APIs.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-partner-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Gemini Enterprise is sold as one agent across email, documents, code and business apps with over 100 integrations; Google states that third-party model choice and background tasks are still in early access.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-gemini-enterprise"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "OpenAI launched its Frontier enterprise agent platform in early February 2026 with custom pricing, after introducing AgentKit at DevDay on 6 October 2025.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-flywheel-agent-platforms",
+       "c-x-ibl-agent-platforms",
+       "c-x-intuitionlabs-devday-2025"
+      ],
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "microsoft",
+    "position": [
+     {
+      "text": "Secondary comparisons date Foundry Agent Service general availability to May 2025 and the Agent 365 governance layer to November 2025.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-linesncircles-agent-platforms",
+       "c-x-flywheel-agent-platforms"
+      ],
+      "confidence": "low"
+     },
+     {
+      "text": "Claude has been available in Microsoft Foundry since 18 November 2025.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-release-notes"
+      ],
+      "asOf": "2025-11-18",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "aws",
+    "position": [
+     {
+      "text": "Bedrock AgentCore reached general availability in October 2025 and expanded to AWS GovCloud (US-West) in May 2026, per secondary comparisons.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-ibl-agent-platforms",
+       "c-x-flywheel-agent-platforms"
+      ],
+      "confidence": "low"
+     },
+     {
+      "text": "Anthropic launched Claude Platform on AWS, its own managed API billed through AWS, on 11 May 2026.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-release-notes"
+      ],
+      "asOf": "2026-05-11",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Claude Managed Agents has been in beta since 8 April 2026, billed at token rates plus $0.08 per session-hour.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-release-notes",
+       "c-anthropic-pricing"
+      ],
+      "asOf": "2026-11-15",
+      "confidence": "high"
+     },
+     {
+      "text": "The two agent standards Anthropic created, MCP and Agent Skills, now sit in the Linux Foundation's Agentic AI Foundation; Anthropic says more than 70 agent platforms have integrated Agent Skills.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-anthropic-mcp-aaif",
+       "c-anthropic-skills-aaif"
+      ],
+      "asOf": "2026-10-22",
+      "confidence": "high"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini-enterprise-agent-platform",
+   "gemini-enterprise",
+   "gemini"
+  ],
+  "assessment": "No vendor has published adoption figures that would support a ranking, so position has to be judged on breadth and maturity. Google's platform resells most rival labs' models, though not OpenAI's closed ones, while Microsoft and AWS reached general availability with agent runtimes about a year earlier and parts of the Gemini Enterprise pitch are still early access. The agent standards most platforms implement came from Anthropic rather than Google.",
+  "watch": [
+   "General availability of third-party model choice in Gemini Enterprise.",
+   "Any published customer or usage counts for Frontier, AgentCore, Agent 365 or Agent Platform.",
+   "Whether OpenAI's closed models reach Google Cloud now that Microsoft's licence is non-exclusive."
+  ]
+ },
+ {
+  "id": "productivity-suites",
+  "name": "Productivity suites",
+  "question": "Who captures paid AI seats inside the tools where office work already happens?",
+  "google": [
+   {
+    "text": "Gemini Enterprise connects to both Google Workspace (Docs, Gmail, Drive) and Microsoft 365 (Outlook, Teams, OneDrive), with access following each user's existing permissions.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-gemini-enterprise"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google says Gemini Enterprise runs on Gemini models today with additional models coming, and offers a 30-day no-cost trial of the Gemini Enterprise Plus edition.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-gemini-enterprise"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "microsoft",
+    "position": [
+     {
+      "text": "Microsoft reported more than 30 million paid Microsoft 365 Copilot seats for the quarter ended June 2026, up from more than 20 million a quarter earlier, with net seat additions more than doubling.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-msft-fy26q4"
+      ],
+      "asOf": "2026-06-30",
+      "confidence": "medium"
+     },
+     {
+      "text": "Microsoft said Copilot pricing is moving from a fee per seat to a fee per seat plus a usage charge.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-msft-fy26q4"
+      ],
+      "asOf": "2026-06-30",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Anthropic positions Claude Sonnet 5.5 for producing polished documents, slides and spreadsheets, and has shipped Claude in Excel and Chrome since the Opus 4.5 release.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-anthropic-sonnet-5-5",
+       "c-anthropic-opus-4-5"
+      ],
+      "asOf": "2026-09-28",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "Release-note aggregators show GPT-6.1 Terra rolling out to a 'ChatGPT Work' surface as well as the API and Codex.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-releasebot-openai"
+      ],
+      "confidence": "low"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini-in-workspace",
+   "gemini-enterprise",
+   "gemini-app"
+  ],
+  "assessment": "Microsoft is the only vendor here with a disclosed paid-seat count, and it is growing quickly; no comparable figure for Gemini in Workspace was found, so on the evidence available Google has to be treated as trailing. Google's distinctive move is to sell an agent that works across Microsoft 365 as well as Workspace rather than defending the suite boundary. Model labs are approaching from the other side by generating documents, spreadsheets and slides directly.",
+  "watch": [
+   "A paid-seat or usage disclosure for Gemini in Workspace in Alphabet's results.",
+   "Microsoft's shift to per-seat plus usage pricing for Copilot.",
+   "Whether Gemini Enterprise's Microsoft 365 integration goes beyond search to taking actions."
+  ]
+ },
+ {
+  "id": "consumer-assistants",
+  "name": "Consumer assistants",
+  "question": "Which assistant do people actually open, and how wide is the gap?",
+  "google": [
+   {
+    "text": "Google reported more than 1 billion monthly active Gemini app users on 11 August 2026 and repeated the figure with Alphabet's third-quarter results on 28 October 2026, per secondary reports.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "c-x-abc45-users",
+     "c-x-fatjoe-gemini"
+    ],
+    "asOf": "2026-10-28",
+    "confidence": "medium"
+   },
+   {
+    "text": "Third-party app tracking is much lower: Sensor Tower's app-only estimate is cited at 472 million monthly active users.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-fatjoe-gemini"
+    ],
+    "confidence": "low"
+   },
+   {
+    "text": "Similarweb's October 2026 data, as relayed by trackers, gives Gemini 24.2% of AI chatbot web traffic against ChatGPT's 55.7%.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-airefs-chatgpt"
+    ],
+    "asOf": "2026-10-31",
+    "confidence": "low"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "OpenAI showed 1.2 billion weekly ChatGPT users at DevDay on 29 September 2026, per secondary trackers.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-whizi-chatgpt",
+       "c-x-abc45-users"
+      ],
+      "asOf": "2026-09-29",
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "A Sensor Tower estimate from May 2026 put the global audience split at 46.4% ChatGPT, 27.7% Gemini and 10.3% Claude.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-airefs-chatgpt"
+      ],
+      "asOf": "2026-05-31",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "meta",
+    "position": [
+     {
+      "text": "Meta replaced Llama with Muse Spark as the model behind the assistants in its apps; no current Meta AI user figure was found.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-wikipedia-llama",
+       "c-x-wikipedia-msl"
+      ],
+      "confidence": "low"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini-app",
+   "gemini"
+  ],
+  "assessment": "ChatGPT remains clearly larger: its weekly user count exceeds Gemini's monthly one and third-party traffic data shows a gap of more than two to one. Gemini is the clear number two and the only assistant distributed through an operating system, a browser and a search engine at once. Company figures use different definitions (weekly against monthly, app against embedded experiences), so the size of the gap cannot be stated precisely.",
+  "watch": [
+   "A weekly-active figure for the Gemini app that can be compared with ChatGPT's.",
+   "Meta AI user figures now that it runs on Muse models.",
+   "How third-party app-only estimates move against Google's reported one billion."
+  ]
+ },
+ {
+  "id": "search-answer-engines",
+  "name": "Search and answer engines",
+  "question": "Is conversational search taking queries from Google, or is Google absorbing the shift inside Search?",
+  "google": [
+   {
+    "text": "Google said at I/O in May 2026 that AI Mode had passed 1 billion monthly users, with queries more than doubling every quarter since launch, per secondary reports.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "c-x-techinsider-ai-mode"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "StatCounter is cited as putting Google at 91.05% of worldwide search share in October 2026, though another tracker reports it dipping below 90% for the first time.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-livesov-search"
+    ],
+    "asOf": "2026-10-31",
+    "confidence": "low"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "OpenAI's consumer product lead is reported to have said ChatGPT's search-type queries run at roughly one-fifth of Google's; no public dataset confirms it.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-livesov-search"
+      ],
+      "confidence": "low"
+     },
+     {
+      "text": "StatCounter is cited as attributing about 75% of chatbot-referred page views in the United States to ChatGPT in September 2026.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-livesov-search"
+      ],
+      "asOf": "2026-09-30",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Anthropic sells web search as an API tool at $10 per 1,000 searches plus token costs, the same per-search price Google Cloud lists for Claude's web search on its platform.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-pricing",
+       "c-gcloud-partner-pricing"
+      ],
+      "asOf": "2026-11-15",
+      "confidence": "high"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "ai-mode",
+   "gemini-app",
+   "gemini"
+  ],
+  "assessment": "On the evidence found, Google has so far absorbed the answer-engine shift inside its own product: classic search share is roughly where it was and AI Mode reached a billion monthly users about a year after launch. The exposure is economic rather than share-based, because AI answers change click and advertising behaviour, and ChatGPT is the only rival whose query volume registers. All usage figures here are secondary relays of company statements or third-party trackers.",
+  "watch": [
+   "Search revenue and paid-click trends in Alphabet's results as AI Mode grows.",
+   "A first-party ChatGPT search-volume disclosure.",
+   "Whether Google's worldwide search share settles below 90% in more than one tracker."
+  ]
+ },
+ {
+  "id": "multimodal-generation",
+  "name": "Multimodal understanding and generation",
+  "question": "Who leads in native audio, image and video input and in image and video generation?",
+  "google": [
+   {
+    "text": "Gemini 4 models are priced with one input rate covering text, image, video and audio.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google Cloud's price list includes four Nano Banana image models (Gemini Nano Banana 2.1, Gemini 3.1 Flash Image, 3.1 Flash-Lite Image and 3 Pro Image).",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Secondary write-ups had Google's Gemini Omni Flash first on Artificial Analysis's text-to-video and image-to-video arenas in July and August 2026; October write-ups put Alibaba's Wan 3.0 first, ahead of ByteDance's Seedance 2.5.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-techsy-video",
+     "c-x-exemplary-video"
+    ],
+    "asOf": "2026-10-31",
+    "confidence": "low"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "OpenAI launched Sora 2 with API access in autumn 2025; October 2026 write-ups say the Sora API has been shut down.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-intuitionlabs-devday-2025",
+       "c-x-capitalcompute-video"
+      ],
+      "asOf": "2026-10-31",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "alibaba",
+    "position": [
+     {
+      "text": "Alibaba's Wan 3.0 is described as first on Artificial Analysis's text-to-video board in October 2026, with 30-second clips and native audio through an API-only offer.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-exemplary-video"
+      ],
+      "asOf": "2026-10-31",
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "All current Claude models take text and image input and produce text only.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-models"
+      ],
+      "asOf": "2026-11-15",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "meta",
+    "position": [
+     {
+      "text": "Muse Ember 1.0 is reported to accept text, image, audio and video input and return text.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-technobezz-ember"
+      ],
+      "asOf": "2026-11-09",
+      "confidence": "low"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemini",
+   "gemini-4-carbon",
+   "veo",
+   "nano-banana"
+  ],
+  "assessment": "This is Google's broadest capability advantage over the US labs: native audio and video input at text prices plus first-party image and video generation, where Anthropic offers neither and OpenAI is reported to have withdrawn its video API. The live contest in video generation is with Chinese labs, and arena leadership has changed hands within months. Leaderboard positions here come from secondary write-ups rather than from the arenas themselves.",
+  "watch": [
+   "Artificial Analysis video-arena standings for Gemini Omni against Wan 3.0 and Seedance 2.5.",
+   "Whether OpenAI returns to video generation in the API.",
+   "Audio and video input reaching more rival models after Muse Ember."
+  ]
+ },
+ {
+  "id": "custom-silicon-compute",
+  "name": "Custom silicon and compute",
+  "question": "Who controls the compute frontier models are trained and served on, and at what cost?",
+  "google": [
+   {
+    "text": "Google introduced TPU 8t for training and TPU 8i for inference at Cloud Next 2026 and has since added TPU 8tx and TPU 8i Max, four TPU systems in one year.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-tpu"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google claims TPU 8i gives an 80% performance-per-dollar improvement over previous generations for low-latency inference, and that TPUs scale to as many as one million chips in a single cluster.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "c-gcloud-tpu"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Anthropic signed with Google and Broadcom for multiple gigawatts of next-generation TPU capacity expected online from 2027.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-anthropic-google-broadcom"
+    ],
+    "asOf": "2026-04-06",
+    "confidence": "high"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "nvidia",
+    "position": [
+     {
+      "text": "NVIDIA unveiled the Vera Rubin platform in January 2026, with customer availability reported from the end of September 2026; a secondary source citing Reuters puts NVIDIA at about 85% of the 2026 AI chip market.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-wikipedia-rubin",
+       "c-x-techinsider-rubin-tpu",
+       "c-x-introl-chips"
+      ],
+      "confidence": "low"
+     },
+     {
+      "text": "Anthropic's November 2025 commitment covers up to one gigawatt on NVIDIA Grace Blackwell and Vera Rubin systems.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-ms-nvidia"
+      ],
+      "asOf": "2025-11-18",
+      "confidence": "high"
+     }
+    ]
+   },
+   {
+    "providerId": "aws",
+    "position": [
+     {
+      "text": "Trainium 3 is reported to have begun shipping in early 2026; coverage of Anthropic's S-1 describes a commitment of more than $100 billion over ten years to AWS for up to 5 gigawatts.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-spheron-chips",
+       "c-x-blockspace-anthropic-s1"
+      ],
+      "confidence": "low"
+     }
+    ]
+   },
+   {
+    "providerId": "microsoft",
+    "position": [
+     {
+      "text": "Anthropic committed to buy $30 billion of Azure compute in November 2025; Microsoft's own Maia 200 chip is described as mostly internal with no public VM offering.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-anthropic-ms-nvidia",
+       "c-x-spheron-chips"
+      ],
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "Trackers put Stargate's flagship Abilene site at about 618 MW online by September 2026, against roughly 7 gigawatts planned.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-stargate-tracker",
+       "c-x-epoch-stargate"
+      ],
+      "asOf": "2026-10-18",
+      "confidence": "low"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "tpu",
+   "gemini"
+  ],
+  "assessment": "Google is the only frontier-model developer that designs its own accelerators, trains its own models on them and also sells the same chips to a direct rival at multi-gigawatt scale. NVIDIA still supplies the large majority of the market and every other lab, and Anthropic deliberately spreads its compute across Google, Amazon, Microsoft and NVIDIA, so the TPU agreement is diversification rather than a switch. Performance-per-dollar claims on all sides are vendor statements with no independent measurement in this dataset.",
+  "watch": [
+   "When the Anthropic TPU capacity actually comes online in 2027.",
+   "Independent cost or throughput comparisons between TPU 8 systems and NVIDIA Vera Rubin.",
+   "How much of Stargate's planned capacity is energised by the end of 2026."
+  ]
+ },
+ {
+  "id": "open-weight-models",
+  "name": "Open-weight models",
+  "question": "Who sets the pace in downloadable models, and what does Google offer against them?",
+  "google": [
+   {
+    "text": "Google Cloud's price list includes Gemma 4 (a 26B model) alongside Gemma 3 sizes from 1B to 27B and MedGemma.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google Cloud also hosts rivals' open-weight models as managed APIs, including Llama 4, Qwen3, DeepSeek, Kimi K2, GLM-5.2 and OpenAI's gpt-oss.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-partner-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "moonshot",
+    "position": [
+     {
+      "text": "Moonshot published full weights for the 2.8-trillion-parameter Kimi K3 on 27 July 2026, eleven days after launching it as a hosted service.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-standard-kimi-k3",
+       "c-x-decoder-kimi-k3"
+      ],
+      "asOf": "2026-07-27",
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "deepseek",
+    "position": [
+     {
+      "text": "DeepSeek's notice of 24 April 2026 describes V4 Preview as open-sourced, with V4-Pro at 1.6T total and 49B active parameters and V4-Flash at 284B and 13B.",
+      "label": "provider-claim",
+      "sourceIds": [
+       "c-x-deepseek-news-0424"
+      ],
+      "asOf": "2026-04-24",
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "zai",
+    "position": [
+     {
+      "text": "Z.ai released GLM-5.2's weights under an MIT licence in June 2026.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-venturebeat-glm52",
+       "c-x-datanorth-glm52"
+      ],
+      "asOf": "2026-06-16",
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "meta",
+    "position": [
+     {
+      "text": "Meta has released no Llama model since April 2025; its current Muse line is closed-weight, with an open variant said to be in development.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-wikipedia-llama",
+       "c-x-cnbc-muse-spark"
+      ],
+      "asOf": "2026-07-09",
+      "confidence": "medium"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "gemma",
+   "gemini-enterprise-agent-platform"
+  ],
+  "assessment": "Google competes in a different weight class from the leaders here: Gemma is a family of small models, while Chinese labs now publish trillion-parameter flagships under permissive or custom licences. With Meta's flagship line closed, the largest open releases come from China, although models of that size are impractical for most teams to self-host. Google hedges through its platform by hosting those open models itself.",
+  "watch": [
+   "Whether Mistral Large 4, Kimi K3.1 Pro and Qwen3.8-Max weights actually ship, and under what licences.",
+   "A Meta open-weight Muse variant.",
+   "Any larger Gemma release."
+  ]
+ },
+ {
+  "id": "agentic-commerce",
+  "name": "Agentic commerce",
+  "question": "Whose protocols and surfaces will agents use to buy things, and is anyone transacting at scale?",
+  "google": [
+   {
+    "text": "Google and Shopify announced the Universal Commerce Protocol on 11 January 2026; its project site is reported to list Amazon, Microsoft, Meta, Salesforce and Stripe as co-developers and Visa, Mastercard, Adyen and PayPal as endorsers.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-digitalapplied-commerce",
+     "c-x-toomanysecrets-commerce"
+    ],
+    "asOf": "2026-09-30",
+    "confidence": "medium"
+   },
+   {
+    "text": "Google handed the Agent Payments Protocol (AP2) to the FIDO Alliance on 28 April 2026, per secondary reports.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-digitalapplied-commerce",
+     "c-x-toomanysecrets-commerce"
+    ],
+    "asOf": "2026-04-28",
+    "confidence": "medium"
+   },
+   {
+    "text": "UCP checkout is reported to be launching first in the United States through Google's Universal Cart.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-digitalapplied-commerce"
+    ],
+    "confidence": "low"
+   }
+  ],
+  "rivals": [
+   {
+    "providerId": "openai",
+    "position": [
+     {
+      "text": "OpenAI and Stripe released the Agentic Commerce Protocol in September 2025 to power in-chat checkout, then scaled Instant Checkout back in March 2026 so that merchants use their own checkout and ChatGPT focuses on discovery.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-digitalapplied-commerce",
+       "c-x-toomanysecrets-commerce"
+      ],
+      "asOf": "2026-03-31",
+      "confidence": "medium"
+     },
+     {
+      "text": "Forrester describes US consumer adoption of Instant Checkout as low and stagnant from debut to discontinuation.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-forrester-commerce"
+      ],
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "anthropic",
+    "position": [
+     {
+      "text": "Anthropic has published a marketplace experiment (Project Deal, April 2026) in which Claude bought, sold and negotiated for employees, but offers no checkout protocol of its own.",
+      "label": "verified-fact",
+      "sourceIds": [
+       "c-anthropic-news-index"
+      ],
+      "asOf": "2026-04-21",
+      "confidence": "medium"
+     }
+    ]
+   },
+   {
+    "providerId": "aws",
+    "position": [
+     {
+      "text": "Amazon is listed among UCP's co-developers while running its own agent shopping features such as Buy for Me, per secondary reports.",
+      "label": "independent-measurement",
+      "sourceIds": [
+       "c-x-digitalapplied-commerce",
+       "c-x-forrester-commerce"
+      ],
+      "confidence": "low"
+     }
+    ]
+   }
+  ],
+  "entityIds": [
+   "universal-commerce-protocol",
+   "ap2-protocol",
+   "ai-mode",
+   "gemini-app"
+  ],
+  "assessment": "On protocols Google currently holds the stronger hand: OpenAI's in-chat checkout was scaled back within about six months, while UCP attracted rivals and card networks as backers and AP2 moved to a neutral standards body. Endorsement is not transaction volume, and no source found this cycle reports meaningful agent-completed purchase volumes for anyone. Large retailers keeping checkout on their own sites limits what any assistant can capture.",
+  "watch": [
+   "Agent-completed purchase volumes over the 2026 holiday season.",
+   "Whether OpenAI adopts UCP or revives ACP checkout.",
+   "Merchant counts live on Google's Universal Cart."
+  ]
+ }
+]

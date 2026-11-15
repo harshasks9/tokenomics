@@ -82,8 +82,6 @@ export function layersFor(areas: RadarArea[], fallback: LayerId[]): LayerId[] {
 interface AliasEntry {
   id: string;
   phrase: string;
-  /** Short or ambiguous phrases need the provider context to count. */
-  weak: boolean;
 }
 
 let ALIASES: AliasEntry[] | null = null;
@@ -91,11 +89,14 @@ function aliasTable(): AliasEntry[] {
   if (ALIASES) return ALIASES;
   const rows: AliasEntry[] = [];
   for (const e of ENTITIES) {
-    const names = [e.name, ...e.aliases, ...(e.formerNames ?? []).map((f) => f.name), ...(e.model?.apiIds ?? [])];
-    for (const n of names) {
+    // Names, former names and model ids always count. A bare one-word alias ("Search", "Argon", "Flow")
+    // is too ambiguous to resolve from free text, so aliases need a second word, a digit or a separator.
+    const strong = [e.name, ...(e.formerNames ?? []).map((f) => f.name), ...(e.model?.apiIds ?? [])];
+    const aliases = e.aliases.filter((a) => /[\s\d.\-/]/.test(a.trim()));
+    for (const n of [...strong, ...aliases]) {
       const phrase = norm(n);
       if (phrase.length < 3) continue;
-      rows.push({ id: e.id, phrase, weak: phrase.length < 5 || !phrase.includes(" ") });
+      rows.push({ id: e.id, phrase });
     }
   }
   // Longest phrases first so "gemini enterprise agent platform" wins over "gemini enterprise".

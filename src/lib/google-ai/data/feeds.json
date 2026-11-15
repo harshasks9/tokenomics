@@ -1,1 +1,779 @@
-[]
+[
+ {
+  "key": "gc-whats-new",
+  "name": "What's new with Google Cloud (weekly running list)",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/topics/inside-google-cloud/whats-new-google-cloud",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "platform",
+   "infrastructure",
+   "enterprise",
+   "ecosystem"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15 (HTTP 200). One page with dated week headings back to January; the best single source for third-party model availability in Model Garden. Diff by week heading."
+ },
+ {
+  "key": "gc-ai-monthly",
+  "name": "What Google Cloud announced in AI this month",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "models",
+   "platform",
+   "agents",
+   "enterprise"
+  ],
+  "cadence": "monthly (early in the following month)",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. Running page: newest month on top, earlier months appended below, each item linked to its own post."
+ },
+ {
+  "key": "gc-ai-infra-monthly",
+  "name": "What's new in AI infrastructure this month",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "infrastructure"
+  ],
+  "cadence": "monthly",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. TPU, GKE, AI Hypercomputer and open-source serving updates."
+ },
+ {
+  "key": "gc-blog-ai-ml",
+  "name": "Google Cloud Blog: AI & Machine Learning",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/products/ai-machine-learning",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "models",
+   "platform",
+   "agents",
+   "enterprise"
+  ],
+  "cadence": "several posts per week",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. Listing renders about 14 recent posts in HTML; article pages carry a JSON-LD datePublished field. /blog/rss returns an HTML page here, not a feed."
+ },
+ {
+  "key": "gc-blog-ai-infrastructure",
+  "name": "Google Cloud Blog: Compute / AI infrastructure",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/products/compute",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "infrastructure"
+  ],
+  "cadence": "several posts per week",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. Links to /blog/topics/ai-infrastructure/ posts (TPUs, Agent Compute Engine, NVIDIA)."
+ },
+ {
+  "key": "gc-blog-security",
+  "name": "Google Cloud Blog: Security & Identity",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/products/identity-security",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "agents",
+   "platform",
+   "enterprise"
+  ],
+  "cadence": "several posts per week",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. CodeMender, Model Armor, Agent Identity, Wiz and Cloud CISO Perspectives."
+ },
+ {
+  "key": "gc-blog-next",
+  "name": "Google Cloud Blog: Google Cloud Next & Events",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/topics/google-cloud-next",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "infrastructure",
+   "research",
+   "models",
+   "platform",
+   "agents",
+   "enterprise",
+   "consumer",
+   "ecosystem"
+  ],
+  "cadence": "event-driven",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. Watch for Next 2027 dates and recap posts."
+ },
+ {
+  "key": "gc-blog-inside",
+  "name": "Google Cloud Blog: Inside Google Cloud",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/blog/topics/inside-google-cloud",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "enterprise",
+   "ecosystem"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. Includes investor-conference summaries (for example the Goldman Sachs keynote)."
+ },
+ {
+  "key": "gc-transform",
+  "name": "Transform with Google Cloud",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/transform",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "enterprise"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15. Executive thought leadership and customer stories; low signal for product facts."
+ },
+ {
+  "key": "gc-agent-platform-pricing",
+  "name": "Agent Platform pricing (generative AI models)",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+  "format": "html",
+  "category": "pricing-page",
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "cadence": "changes with each model launch",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15 (redirects to https://cloud.google.com/model-garden/pricing, about 2.7 MB). Carries dated footnotes for introductory prices and scheduled changes; hash the text of each model table."
+ },
+ {
+  "key": "gc-tpu-pricing",
+  "name": "TPU pricing",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/tpu/pricing",
+  "format": "html",
+  "category": "pricing-page",
+  "layers": [
+   "infrastructure"
+  ],
+  "cadence": "infrequent",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15 (HTTP 200, title \"TPU Pricing\")."
+ },
+ {
+  "key": "gc-tpu-product",
+  "name": "Tensor Processing Units product page",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/tpu",
+  "format": "html",
+  "category": "docs",
+  "layers": [
+   "infrastructure"
+  ],
+  "cadence": "infrequent",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15."
+ },
+ {
+  "key": "gc-gemini-platform-page",
+  "name": "Gemini platform product page (formerly Gemini Enterprise Agent Platform / Vertex AI)",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/products/gemini-enterprise-agent-platform",
+  "format": "html",
+  "category": "docs",
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "cadence": "infrequent",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15; page title is now \"Gemini platform\". Useful for detecting naming changes."
+ },
+ {
+  "key": "gc-gemini-enterprise-page",
+  "name": "Gemini for enterprise product page",
+  "publisher": "Google Cloud",
+  "url": "https://cloud.google.com/gemini-enterprise",
+  "format": "html",
+  "category": "docs",
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "cadence": "infrequent",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15; title \"Gemini for enterprise: The universal work agent\". /gemini-enterprise/pricing returned a 404 page; the edition pricing URL was not found."
+ },
+ {
+  "key": "gc-agent-platform-release-notes",
+  "name": "Gemini Enterprise Agent Platform release notes",
+  "publisher": "Google Cloud Documentation",
+  "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/release-notes",
+  "format": "html",
+  "category": "release-notes",
+  "layers": [
+   "platform",
+   "models",
+   "agents"
+  ],
+  "cadence": "several entries per week",
+  "verifiedReachable": false,
+  "note": "URL confirmed by search results; docs.cloud.google.com is blocked from this sandbox. The page links its own XML feed; the legacy https://cloud.google.com/feeds/vertex-ai-release-notes.xml was observed redirecting to docs.cloud.google.com/feeds/, but the feed name after the rename was not confirmed."
+ },
+ {
+  "key": "gc-agent-platform-model-lifecycle",
+  "name": "Model versions and lifecycle (retirement dates)",
+  "publisher": "Google Cloud Documentation",
+  "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+  "format": "html",
+  "category": "docs",
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "cadence": "changes with each model launch",
+  "verifiedReachable": false,
+  "note": "URL confirmed by search results; not fetched. Authoritative table of release and retirement dates; search excerpts of it conflicted with third-party trackers."
+ },
+ {
+  "key": "gc-all-release-notes-feed",
+  "name": "Google Cloud release notes (all products) feed",
+  "publisher": "Google Cloud Documentation",
+  "url": "https://cloud.google.com/feeds/gcp-release-notes.xml",
+  "format": "atom",
+  "category": "release-notes",
+  "layers": [
+   "platform",
+   "infrastructure"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Request redirected to docs.cloud.google.com/feeds/gcp-release-notes.xml, which is blocked here; content not verified."
+ },
+ {
+  "key": "gc-gemini-enterprise-release-notes",
+  "name": "Gemini Enterprise release notes",
+  "publisher": "Google Cloud Documentation",
+  "url": "https://docs.cloud.google.com/gemini/enterprise/docs/release-notes",
+  "format": "html",
+  "category": "release-notes",
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "URL is the redirect target observed from cloud.google.com/gemini-enterprise/docs/release-notes; not fetched."
+ },
+ {
+  "key": "gc-press-corner",
+  "name": "Google Cloud Press Corner",
+  "publisher": "Google Cloud",
+  "url": "https://www.googlecloudpresscorner.com/latest-news",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "enterprise",
+   "ecosystem"
+  ],
+  "cadence": "several per week",
+  "verifiedReachable": false,
+  "note": "Blocked here. Press releases carry the date in the URL; good for partnership and customer announcements."
+ },
+ {
+  "key": "google-keyword-ai-rss",
+  "name": "The Keyword (blog.google) RSS",
+  "publisher": "Google",
+  "url": "https://blog.google/rss/",
+  "format": "rss",
+  "category": "official-blog",
+  "layers": [
+   "infrastructure",
+   "research",
+   "models",
+   "platform",
+   "agents",
+   "enterprise",
+   "consumer",
+   "ecosystem"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed URL from prior knowledge, verify on first run. The site moved AI posts under /innovation-and-ai/ in 2026."
+ },
+ {
+  "key": "google-ai-monthly-roundup",
+  "name": "The latest AI news we announced in <month> (monthly roundup)",
+  "publisher": "Google",
+  "url": "https://blog.google/innovation-and-ai/technology/ai/",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "infrastructure",
+   "research",
+   "models",
+   "platform",
+   "agents",
+   "enterprise",
+   "consumer",
+   "ecosystem"
+  ],
+  "cadence": "monthly (first days of the following month)",
+  "verifiedReachable": false,
+  "note": "Roundup slugs seen in search: google-ai-updates-october-2026, google-ai-updates-september-2026, google-ai-updates-august-2026 (the August one sits under /innovation-and-ai/technology/)."
+ },
+ {
+  "key": "google-gemini-models-blog",
+  "name": "The Keyword: Gemini models",
+  "publisher": "Google",
+  "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "models"
+  ],
+  "cadence": "per launch",
+  "verifiedReachable": false,
+  "note": "Path taken from the Gemini 4 Argon and Carbon post URLs; listing page itself not verified."
+ },
+ {
+  "key": "google-deepmind-blog",
+  "name": "Google DeepMind blog",
+  "publisher": "Google DeepMind",
+  "url": "https://deepmind.google/blog/rss.xml",
+  "format": "rss",
+  "category": "research",
+  "layers": [
+   "research",
+   "models"
+  ],
+  "cadence": "several per week",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed URL from prior knowledge. Also watch deepmind.google/models/ for model cards."
+ },
+ {
+  "key": "google-research-blog",
+  "name": "Google Research blog",
+  "publisher": "Google Research",
+  "url": "https://research.google/blog/rss/",
+  "format": "rss",
+  "category": "research",
+  "layers": [
+   "research"
+  ],
+  "cadence": "several per week",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed URL from prior knowledge."
+ },
+ {
+  "key": "google-developers-blog",
+  "name": "Google for Developers blog",
+  "publisher": "Google",
+  "url": "https://developers.googleblog.com/feeds/posts/default",
+  "format": "atom",
+  "category": "official-blog",
+  "layers": [
+   "platform",
+   "agents",
+   "ecosystem"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed path from prior knowledge and may have changed with the site redesign."
+ },
+ {
+  "key": "google-open-source-blog",
+  "name": "Google Open Source blog",
+  "publisher": "Google",
+  "url": "https://opensource.googleblog.com/feeds/posts/default",
+  "format": "atom",
+  "category": "official-blog",
+  "layers": [
+   "ecosystem",
+   "agents"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Not fetched. Source of the A2A / AP2 / ADK \"A2Family\" post seen in search."
+ },
+ {
+  "key": "google-workspace-updates",
+  "name": "Google Workspace Updates",
+  "publisher": "Google Workspace",
+  "url": "https://workspaceupdates.googleblog.com/feeds/posts/default",
+  "format": "atom",
+  "category": "release-notes",
+  "layers": [
+   "enterprise",
+   "consumer"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Blocked here; monthly archives exist at /YYYY/MM/. Filter on the Gemini label."
+ },
+ {
+  "key": "google-workspace-blog",
+  "name": "Google Workspace blog",
+  "publisher": "Google Workspace",
+  "url": "https://workspace.google.com/blog",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "enterprise"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Blocked here. Monthly \"Workspace Drop\" posts."
+ },
+ {
+  "key": "gemini-api-changelog",
+  "name": "Gemini API release notes",
+  "publisher": "Google AI for Developers",
+  "url": "https://ai.google.dev/gemini-api/docs/changelog",
+  "format": "html",
+  "category": "changelog",
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "cadence": "several entries per week",
+  "verifiedReachable": false,
+  "note": "Blocked here; URL confirmed by search results. Dated entries include model launches and deprecations."
+ },
+ {
+  "key": "gemini-api-deprecations",
+  "name": "Gemini API deprecations",
+  "publisher": "Google AI for Developers",
+  "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+  "format": "html",
+  "category": "docs",
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "cadence": "changes with each model launch",
+  "verifiedReachable": false,
+  "note": "Blocked here; URL confirmed by search results. Table of release and earliest shutdown dates."
+ },
+ {
+  "key": "gemini-api-pricing",
+  "name": "Gemini Developer API pricing",
+  "publisher": "Google AI for Developers",
+  "url": "https://ai.google.dev/gemini-api/docs/pricing",
+  "format": "html",
+  "category": "pricing-page",
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "cadence": "changes with each model launch",
+  "verifiedReachable": false,
+  "note": "Blocked here; URL from prior knowledge."
+ },
+ {
+  "key": "gemini-app-release-notes",
+  "name": "Gemini app release notes",
+  "publisher": "Google",
+  "url": "https://gemini.google/release-notes/",
+  "format": "html",
+  "category": "release-notes",
+  "layers": [
+   "consumer"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Blocked here; URL from prior knowledge. Monthly Gemini Drops are at gemini.google/gemini-drops/."
+ },
+ {
+  "key": "antigravity-blog",
+  "name": "Google Antigravity blog",
+  "publisher": "Google",
+  "url": "https://antigravity.google/blog",
+  "format": "html",
+  "category": "official-blog",
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Blocked here; domain taken from a link in the Google Cloud monthly recap."
+ },
+ {
+  "key": "alphabet-investor-relations",
+  "name": "Alphabet Investor Relations",
+  "publisher": "Alphabet",
+  "url": "https://abc.xyz/investor/",
+  "format": "html",
+  "category": "filing",
+  "layers": [
+   "infrastructure",
+   "enterprise",
+   "consumer"
+  ],
+  "cadence": "quarterly",
+  "verifiedReachable": false,
+  "note": "Blocked here. Earnings transcripts are hosted on s206.q4cdn.com (Q3 2026 transcript URL seen in search)."
+ },
+ {
+  "key": "alphabet-sec-edgar",
+  "name": "Alphabet SEC filings (EDGAR JSON)",
+  "publisher": "US SEC",
+  "url": "https://data.sec.gov/submissions/CIK0001652044.json",
+  "format": "json",
+  "category": "filing",
+  "layers": [
+   "infrastructure",
+   "enterprise"
+  ],
+  "cadence": "quarterly plus 8-Ks",
+  "verifiedReachable": false,
+  "note": "Not fetched; CIK from prior knowledge. SEC requires a descriptive User-Agent."
+ },
+ {
+  "key": "eu-dma-news",
+  "name": "European Commission Digital Markets Act news",
+  "publisher": "European Commission",
+  "url": "https://digital-markets-act.ec.europa.eu/latest-news_en",
+  "format": "html",
+  "category": "filing",
+  "layers": [
+   "consumer",
+   "ecosystem"
+  ],
+  "cadence": "irregular",
+  "verifiedReachable": false,
+  "note": "Not fetched; domain confirmed by search results for the Jan 27 and Jul 16, 2026 Google decisions."
+ },
+ {
+  "key": "anthropic-news",
+  "name": "Anthropic Newsroom",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/news",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models",
+   "agents"
+  ],
+  "cadence": "several per week",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15 (HTTP 200). No RSS: /rss.xml and /news/rss.xml returned 404."
+ },
+ {
+  "key": "anthropic-engineering",
+  "name": "Anthropic Engineering blog",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/engineering",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "agents",
+   "platform"
+  ],
+  "cadence": "monthly",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15 (HTTP 200)."
+ },
+ {
+  "key": "anthropic-pricing",
+  "name": "Claude plans and pricing",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/pricing",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models"
+  ],
+  "cadence": "changes with each model launch",
+  "verifiedReachable": true,
+  "note": "Fetched 2026-11-15; redirects to https://claude.com/pricing."
+ },
+ {
+  "key": "openai-news-rss",
+  "name": "OpenAI News RSS",
+  "publisher": "OpenAI",
+  "url": "https://openai.com/news/rss.xml",
+  "format": "rss",
+  "category": "competitor",
+  "layers": [
+   "models",
+   "agents",
+   "consumer"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed URL from prior knowledge."
+ },
+ {
+  "key": "openai-api-changelog",
+  "name": "OpenAI API changelog",
+  "publisher": "OpenAI",
+  "url": "https://platform.openai.com/docs/changelog",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Not fetched; URL from prior knowledge."
+ },
+ {
+  "key": "xai-news",
+  "name": "xAI news",
+  "publisher": "xAI",
+  "url": "https://x.ai/news",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Blocked here."
+ },
+ {
+  "key": "meta-ai-blog",
+  "name": "Meta AI blog",
+  "publisher": "Meta",
+  "url": "https://ai.meta.com/blog/",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models",
+   "research"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Blocked here."
+ },
+ {
+  "key": "mistral-news",
+  "name": "Mistral AI news",
+  "publisher": "Mistral AI",
+  "url": "https://mistral.ai/news",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Blocked here."
+ },
+ {
+  "key": "deepseek-updates",
+  "name": "DeepSeek API updates",
+  "publisher": "DeepSeek",
+  "url": "https://api-docs.deepseek.com/updates",
+  "format": "html",
+  "category": "competitor",
+  "layers": [
+   "models"
+  ],
+  "cadence": "irregular",
+  "verifiedReachable": false,
+  "note": "Blocked here; URL from prior knowledge."
+ },
+ {
+  "key": "aws-ml-blog",
+  "name": "AWS Machine Learning blog",
+  "publisher": "Amazon Web Services",
+  "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+  "format": "rss",
+  "category": "competitor",
+  "layers": [
+   "platform",
+   "infrastructure"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed URL from prior knowledge. Pair with the AWS What's New feed for Bedrock launches."
+ },
+ {
+  "key": "azure-blog",
+  "name": "Microsoft Azure blog",
+  "publisher": "Microsoft",
+  "url": "https://azure.microsoft.com/en-us/blog/feed/",
+  "format": "rss",
+  "category": "competitor",
+  "layers": [
+   "platform",
+   "infrastructure"
+  ],
+  "cadence": "daily",
+  "verifiedReachable": false,
+  "note": "Blocked here; feed URL from prior knowledge. Filter on AI / Foundry categories."
+ },
+ {
+  "key": "artificial-analysis",
+  "name": "Artificial Analysis",
+  "publisher": "Artificial Analysis",
+  "url": "https://artificialanalysis.ai/",
+  "format": "html",
+  "category": "benchmark",
+  "layers": [
+   "models"
+  ],
+  "cadence": "continuous",
+  "verifiedReachable": false,
+  "note": "Blocked here. Terms were not read this session: confirm attribution and reuse conditions (and API terms) before storing or displaying their scores."
+ },
+ {
+  "key": "lmarena",
+  "name": "LMArena leaderboard",
+  "publisher": "LMArena",
+  "url": "https://lmarena.ai/leaderboard",
+  "format": "html",
+  "category": "benchmark",
+  "layers": [
+   "models"
+  ],
+  "cadence": "continuous",
+  "verifiedReachable": false,
+  "note": "Blocked here. Terms were not read this session: confirm whether leaderboard data may be redistributed; link out rather than bulk-copy."
+ },
+ {
+  "key": "vals-ai",
+  "name": "Vals AI (Vals Index)",
+  "publisher": "Vals AI",
+  "url": "https://www.vals.ai/",
+  "format": "html",
+  "category": "benchmark",
+  "layers": [
+   "models"
+  ],
+  "cadence": "per model release",
+  "verifiedReachable": false,
+  "note": "Not fetched. Cited by Google for Gemini 4 Argon; licence terms not checked."
+ },
+ {
+  "key": "epoch-ai-benchmarks",
+  "name": "Epoch AI Benchmarking Hub",
+  "publisher": "Epoch AI",
+  "url": "https://epoch.ai/benchmarks",
+  "format": "html",
+  "category": "benchmark",
+  "layers": [
+   "models"
+  ],
+  "cadence": "weekly",
+  "verifiedReachable": false,
+  "note": "Not fetched; licence terms not checked this session."
+ }
+]

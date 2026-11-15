@@ -136,11 +136,13 @@ export function groupUpcoming(changes: UpcomingChange[], today: string): Upcomin
       ...g,
       items: g.items.sort(
         (a, b) =>
+          // Soonest first; within a date, the headline rates lead: standard tier, global endpoint, base context, input then output.
           a.next.effectiveFrom.localeCompare(b.next.effectiveFrom) ||
-          a.next.surface.localeCompare(b.next.surface) ||
           TIER_ORDER.indexOf(a.next.tier) - TIER_ORDER.indexOf(b.next.tier) ||
+          (a.next.region === "regional" ? 1 : 0) - (b.next.region === "regional" ? 1 : 0) ||
+          (a.next.aboveContextTokens ?? 0) - (b.next.aboveContextTokens ?? 0) ||
           meterRank(a.next.meter) - meterRank(b.next.meter) ||
-          (a.next.aboveContextTokens ?? 0) - (b.next.aboveContextTokens ?? 0),
+          TOKEN_SURFACES.indexOf(a.next.surface) - TOKEN_SURFACES.indexOf(b.next.surface),
       ),
     }))
     .sort((a, b) => a.first.localeCompare(b.first) || byName(a.entityId, b.entityId));
@@ -291,13 +293,19 @@ export function batchDiscount(entityId: string, date: string, surface: PriceSurf
   return out.input == null && out.output == null ? undefined : out;
 }
 
-export type SortKey = "name" | "provider" | "input" | "output" | "cache" | "since";
+/** "default" lists Google first, then other providers by name, models by name within each. */
+export type SortKey = "default" | "name" | "provider" | "input" | "output" | "cache" | "since";
 
 export function sortPriceRows(rows: PriceRow[], key: SortKey, dir: "asc" | "desc"): PriceRow[] {
   const num = (r: PriceRow): number | undefined => (key === "input" ? r.input?.price : key === "output" ? r.output?.price : key === "cache" ? r.cacheRead?.price : undefined);
   const sign = dir === "asc" ? 1 : -1;
   const tie = (a: PriceRow, b: PriceRow) => a.name.localeCompare(b.name) || TOKEN_SURFACES.indexOf(a.surface) - TOKEN_SURFACES.indexOf(b.surface);
   return rows.slice().sort((a, b) => {
+    if (key === "default") {
+      const ga = a.providerId === "google" ? 0 : 1;
+      const gb = b.providerId === "google" ? 0 : 1;
+      return ga - gb || providerName(a.providerId).localeCompare(providerName(b.providerId)) || tie(a, b);
+    }
     if (key === "name") return sign * tie(a, b);
     if (key === "provider") return sign * providerName(a.providerId).localeCompare(providerName(b.providerId)) || tie(a, b);
     if (key === "since") {

@@ -16,7 +16,7 @@
  {
   "id": "av-m-gemini-4-argon-agent-platform-ga",
   "entityId": "gemini-4-argon",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "Enterprise developers; model id gemini-4-argon",
   "effectiveFrom": "2026-10-13",
@@ -102,7 +102,7 @@
  {
   "id": "av-m-gemini-4-carbon-agent-platform-ga",
   "entityId": "gemini-4-carbon",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "Verified enterprise customers",
   "regions": "Select regions",
@@ -115,7 +115,7 @@
  {
   "id": "av-m-gemini-4-carbon-cyber-permissive-agent-platform-preview",
   "entityId": "gemini-4-carbon-cyber-permissive",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "audience": "Fairwind Program allowlist",
   "regions": "global and US",
@@ -153,7 +153,7 @@
  {
   "id": "av-m-gemini-4-hydrogen-agent-platform-ga",
   "entityId": "gemini-4-hydrogen",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-11-12",
   "label": "verified-fact",
@@ -200,7 +200,7 @@
  {
   "id": "av-m-gemini-3-8-flash-agent-platform-ga",
   "entityId": "gemini-3-8-flash",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-09-02",
   "label": "verified-fact",
@@ -225,7 +225,7 @@
  {
   "id": "av-m-gemini-3-7-flash-agent-platform-ga",
   "entityId": "gemini-3-7-flash",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-08-13",
   "effectiveTo": "2027-01-28",
@@ -250,7 +250,7 @@
  {
   "id": "av-m-gemini-3-6-flash-agent-platform-ga",
   "entityId": "gemini-3-6-flash",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-07-21",
   "effectiveTo": "2026-11-19",
@@ -262,7 +262,7 @@
  {
   "id": "av-m-gemini-3-5-flash-agent-platform-ga",
   "entityId": "gemini-3-5-flash",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-05-19",
   "label": "verified-fact",
@@ -322,7 +322,7 @@
  {
   "id": "av-m-gemini-3-5-flash-lite-agent-platform-ga",
   "entityId": "gemini-3-5-flash-lite",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-07-21",
   "label": "verified-fact",
@@ -334,7 +334,7 @@
  {
   "id": "av-m-gemini-3-1-flash-lite-agent-platform-preview",
   "entityId": "gemini-3-1-flash-lite",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "effectiveFrom": "2026-03-03",
   "effectiveTo": "2026-05-06",
@@ -360,7 +360,7 @@
  {
   "id": "av-m-gemini-3-1-flash-lite-agent-platform-ga",
   "entityId": "gemini-3-1-flash-lite",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-05-07",
   "label": "verified-fact",
@@ -371,7 +371,7 @@
  {
   "id": "av-m-gemini-3-1-pro-agent-platform-preview",
   "entityId": "gemini-3-1-pro",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "regions": "Global endpoint only",
   "effectiveFrom": "2026-02-19",
@@ -419,7 +419,7 @@
  {
   "id": "av-m-gemini-3-flash-agent-platform-preview",
   "entityId": "gemini-3-flash",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "regions": "Global endpoint only",
   "effectiveFrom": "2025-12-17",
@@ -432,7 +432,7 @@
  {
   "id": "av-m-gemini-3-pro-agent-platform-preview",
   "entityId": "gemini-3-pro",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "effectiveFrom": "2025-11-19",
   "effectiveTo": "2026-03-09",
@@ -457,7 +457,7 @@
  {
   "id": "av-m-gemini-3-1-flash-image-agent-platform-preview",
   "entityId": "gemini-3-1-flash-image",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "effectiveFrom": "2026-02-27",
   "effectiveTo": "2026-05-27",
@@ -469,7 +469,7 @@
  {
   "id": "av-m-gemini-3-1-flash-image-agent-platform-ga",
   "entityId": "gemini-3-1-flash-image",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "1K and 2K output GA; 4K output in preview",
   "effectiveFrom": "2026-05-28",
@@ -481,7 +481,7 @@
  {
   "id": "av-m-gemini-3-pro-image-agent-platform-ga",
   "entityId": "gemini-3-pro-image",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "1K and 2K output GA; 4K output in preview",
   "effectiveFrom": "2026-05-28",
@@ -493,7 +493,7 @@
  {
   "id": "av-m-nano-banana-2-1-agent-platform-ga",
   "entityId": "nano-banana-2-1",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2026-10-06",
   "label": "independent-measurement",
@@ -505,7 +505,7 @@
  {
   "id": "av-m-gemini-omni-1-2-flash-agent-platform-ga",
   "entityId": "gemini-omni-1-2-flash",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "Provisioned Throughput available",
   "effectiveFrom": "2026-11-06",
@@ -551,7 +551,7 @@
  {
   "id": "av-m-veo-3-1-agent-platform-ga",
   "entityId": "veo-3-1",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "effectiveFrom": "2025-11-17",
   "label": "verified-fact",
@@ -562,7 +562,7 @@
  {
   "id": "av-m-veo-3-1-lite-agent-platform-preview",
   "entityId": "veo-3-1-lite",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "audience": "Vertex AI API and Media Studio",
   "effectiveFrom": "2026-04-03",
@@ -585,7 +585,7 @@
  {
   "id": "av-m-gemini-3-8-live-agent-platform-ga",
   "entityId": "gemini-3-8-live",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "With Live Avatar; custom avatars by allowlist; Extended Thinking variant in private preview",
   "regions": "US and EU endpoints",
@@ -609,7 +609,7 @@
  {
   "id": "av-m-gemini-3-8-flash-tts-agent-platform-preview",
   "entityId": "gemini-3-8-flash-tts",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "effectiveFrom": "2026-09-28",
   "label": "verified-fact",
@@ -643,7 +643,7 @@
  {
   "id": "av-m-gemini-3-1-flash-tts-agent-platform-preview",
   "entityId": "gemini-3-1-flash-tts",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "effectiveFrom": "2026-04-15",
   "effectiveTo": "2026-11-17",
@@ -689,7 +689,7 @@
  {
   "id": "av-m-gemini-robotics-er-2-agent-platform-preview",
   "entityId": "gemini-robotics-er-2",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "audience": "Public preview via Model Garden",
   "effectiveFrom": "2026-10-27",
@@ -737,7 +737,7 @@
  {
   "id": "av-m-gemini-deep-research-agent-platform-preview",
   "entityId": "gemini-deep-research",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "preview",
   "audience": "Priced on the Agent Platform list; start date not confirmed",
   "effectiveFrom": "2026-11-15",
@@ -762,7 +762,7 @@
  {
   "id": "av-m-gemma-4-agent-platform-ga",
   "entityId": "gemma-4",
-  "surface": "agent-platform",
+  "surface": "gemini-enterprise-agent-platform",
   "stage": "ga",
   "audience": "Gemma 4 26B as a managed API; start date not confirmed",
   "effectiveFrom": "2026-11-15",
@@ -786,13 +786,359 @@
  {
   "id": "av-m-genie-3-project-genie-experimental",
   "entityId": "genie-3",
-  "surface": "genie-3",
+  "surface": "project-genie",
   "stage": "experimental",
   "audience": "Google AI Ultra subscribers in the US, as reported by one outlet; date not confirmed by Google",
   "effectiveFrom": "2026-06-23",
   "label": "independent-measurement",
   "sourceIds": [
    "m-pr-genie"
+  ]
+ },
+ {
+  "id": "av-s-agent-runtime-ga",
+  "entityId": "agent-runtime",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-memory-bank-ga",
+  "entityId": "agent-memory-bank",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-identity-ga",
+  "entityId": "agent-identity",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-gateway-ga",
+  "entityId": "agent-gateway",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-registry-ga",
+  "entityId": "agent-registry",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-evaluation-ga",
+  "entityId": "agent-evaluation",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-observability-ga",
+  "entityId": "agent-observability",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-29",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "av-s-agent-sandbox-ga",
+  "entityId": "agent-sandbox",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "av-s-skill-registry-preview",
+  "entityId": "agent-registry",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "preview",
+  "audience": "Skill Registry, public preview",
+  "effectiveFrom": "2026-05-20",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-io26"
+  ]
+ },
+ {
+  "id": "av-s-gefs-preview",
+  "entityId": "gemini-for-financial-services",
+  "surface": "gemini-enterprise",
+  "stage": "preview",
+  "effectiveFrom": "2026-08-25",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-gefs"
+  ]
+ },
+ {
+  "id": "av-s-legal-preview",
+  "entityId": "gemini-for-legal",
+  "surface": "gemini-enterprise",
+  "stage": "preview",
+  "effectiveFrom": "2026-08-25",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-legal"
+  ]
+ },
+ {
+  "id": "av-s-gov-preview",
+  "entityId": "gemini-for-government-services",
+  "surface": "gemini-enterprise",
+  "stage": "preview",
+  "effectiveFrom": "2026-10-20",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-gov"
+  ]
+ },
+ {
+  "id": "av-s-healthcare-preview",
+  "entityId": "gemini-for-healthcare",
+  "surface": "gemini-enterprise",
+  "stage": "preview",
+  "effectiveFrom": "2026-11-10",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-healthcare"
+  ]
+ },
+ {
+  "id": "av-s-ge-paygo-preview",
+  "entityId": "gemini-enterprise-paygo",
+  "surface": "gemini-enterprise",
+  "stage": "preview",
+  "audience": "select customers",
+  "effectiveFrom": "2026-08-26",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-finops"
+  ]
+ },
+ {
+  "id": "av-s-openai-models-preview",
+  "entityId": "partner-openai",
+  "surface": "model-garden",
+  "stage": "preview",
+  "audience": "private preview for select enterprise customers",
+  "effectiveFrom": "2026-10-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-openai"
+  ]
+ },
+ {
+  "id": "av-s-claude-anthropic-managed-ga",
+  "entityId": "partner-anthropic",
+  "surface": "gemini-enterprise-agent-platform",
+  "stage": "ga",
+  "audience": "Anthropic-managed deployment option",
+  "effectiveFrom": "2026-10-23",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-claude"
+  ]
+ },
+ {
+  "id": "av-s-antigravity-ge-ga",
+  "entityId": "google-antigravity",
+  "surface": "gemini-enterprise",
+  "stage": "ga",
+  "audience": "eligible Standard, Plus and Standard Emerging Market licences",
+  "effectiveFrom": "2026-08-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-antigravity-ent"
+  ]
+ },
+ {
+  "id": "av-s-spend-caps-preview",
+  "entityId": "ai-spend-caps",
+  "surface": "Cloud Billing",
+  "stage": "preview",
+  "audience": "private preview",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "av-s-torchtpu-preview",
+  "entityId": "torchtpu",
+  "surface": "tpu",
+  "stage": "preview",
+  "audience": "select customers",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "av-s-trillium-ga",
+  "entityId": "tpu-trillium",
+  "surface": "google",
+  "stage": "ga",
+  "effectiveFrom": "2024-12-11",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-trillium-ga"
+  ]
+ },
+ {
+  "id": "av-s-tpu-8t-announced",
+  "entityId": "tpu-8t",
+  "surface": "google",
+  "stage": "announced",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-next26-wrap",
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "av-s-tpu-8i-announced",
+  "entityId": "tpu-8i",
+  "surface": "google",
+  "stage": "announced",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-next26-wrap",
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "av-s-tpu-8tx-announced",
+  "entityId": "tpu-8tx",
+  "surface": "google",
+  "stage": "announced",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-tpu8",
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "av-s-tpu-8i-max-announced",
+  "entityId": "tpu-8i-max",
+  "surface": "google",
+  "stage": "announced",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-tpu8",
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "av-s-a5x-ga",
+  "entityId": "nvidia-gpus-on-google-cloud",
+  "surface": "Compute Engine A5X (NVIDIA Vera Rubin NVL72)",
+  "stage": "ga",
+  "effectiveFrom": "2026-11-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-nvidia"
+  ]
+ },
+ {
+  "id": "av-s-axion-n4a-preview",
+  "entityId": "google-axion",
+  "surface": "Compute Engine N4A",
+  "stage": "preview",
+  "effectiveFrom": "2025-11-06",
+  "effectiveTo": "2026-04-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-ironwood-ga"
+  ]
+ },
+ {
+  "id": "av-s-axion-n4a-ga",
+  "entityId": "google-axion",
+  "surface": "Compute Engine N4A",
+  "stage": "ga",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "av-s-ace-announced",
+  "entityId": "agent-compute-engine",
+  "surface": "google",
+  "stage": "announced",
+  "effectiveFrom": "2026-10-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "s-b-ace"
+  ]
+ },
+ {
+  "id": "av-s-chrome-autobrowse-preview",
+  "entityId": "gemini-in-chrome",
+  "surface": "gemini-in-chrome",
+  "stage": "preview",
+  "audience": "Google AI Pro and Ultra subscribers",
+  "regions": "US",
+  "effectiveFrom": "2026-01-28",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-9to5-autobrowse"
+  ]
+ },
+ {
+  "id": "av-s-gemini-home-early-access",
+  "entityId": "gemini-for-home",
+  "surface": "Google Home",
+  "stage": "preview",
+  "audience": "early access",
+  "regions": "US at launch; more countries from April 2026",
+  "effectiveFrom": "2025-10-28",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "s-x-9to5-home-2025"
   ]
  }
 ]

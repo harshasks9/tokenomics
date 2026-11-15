@@ -298,7 +298,7 @@ function Catalog({ rows, providerIds, initialQuery }: { rows: ModelRow[]; provid
                       )}
                     </td>
                     <td><Status status={r.status} short /></td>
-                    <td><Cites ids={e.sourceIds} align="right" /></td>
+                    <td className="gai-mc-nowrap"><Cites ids={e.sourceIds} align="right" /></td>
                   </tr>
                 );
               })}
@@ -317,11 +317,13 @@ function Catalog({ rows, providerIds, initialQuery }: { rows: ModelRow[]; provid
 
 const W = 960;
 const LEFT = 150;
-const RIGHT = 130;
+/** Inner margins of the time axis, so a label centred over the first or last model stays inside the plot. */
+const INSET = 56;
+const RIGHT = 64;
 const TOP = 30;
 const BOTTOM = 26;
-const SUB = 24;
-const PAD = 10;
+const SUB = 36;
+const PAD = 6;
 const MAX_ROWS = 5;
 const MAX_CH = 22;
 const VIEWS = [
@@ -345,7 +347,7 @@ function layoutTree(tree: FamilyTree, today: string) {
   const ts = tree.lanes.flatMap((l) => l.nodes.map((n) => n.t));
   const t0 = Math.floor(Math.min(now, ...ts));
   const t1 = Math.max(t0 + 1, Math.ceil(Math.max(now, ...ts)));
-  const x = (t: number) => LEFT + ((t - t0) / (t1 - t0)) * (W - LEFT - RIGHT);
+  const x = (t: number) => LEFT + INSET + ((t - t0) / (t1 - t0)) * (W - LEFT - INSET - RIGHT);
   const span = t1 - t0;
   const step = span <= 10 ? 1 : span <= 24 ? 2 : 5;
   const years: number[] = [];
@@ -358,8 +360,9 @@ function layoutTree(tree: FamilyTree, today: string) {
     const ends: number[] = [];
     for (const node of lane.nodes) {
       const px = x(node.t);
-      const width = Math.min(node.e.name.length, MAX_CH) * 6.3 + 14;
-      let row = ends.findIndex((end) => end <= px - 10);
+      // The name sits centred above its marker, so succession lines along the row never run through it.
+      const half = (Math.min(node.e.name.length, MAX_CH) * 6.3) / 2 + 5;
+      let row = ends.findIndex((end) => end <= px - half);
       let labelled = true;
       if (row < 0) {
         if (ends.length < MAX_ROWS) row = ends.push(0) - 1;
@@ -368,8 +371,8 @@ function layoutTree(tree: FamilyTree, today: string) {
           labelled = false;
         }
       }
-      ends[row] = labelled ? px + 10 + width : Math.max(ends[row], px + 10);
-      placed[node.e.id] = { node, lane, x: px, y: top + PAD + row * SUB + SUB / 2, labelled };
+      ends[row] = labelled ? px + half : Math.max(ends[row], px + 10);
+      placed[node.e.id] = { node, lane, x: px, y: top + PAD + row * SUB + 25, labelled };
     }
     const height = PAD * 2 + Math.max(1, ends.length) * SUB;
     bands.push({ lane, top, height });
@@ -468,7 +471,7 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                         <circle className="gai-mc-ring" r={11} />
                         <NodeMark bucket={p.node.bucket} color={color} r={on ? 7 : 6} />
                       </g>
-                      {(p.labelled || on) && <text className={on ? "lbl" : "gai-mc-nlabel"} x={p.x + 10} y={p.y + 4}>{clip(e.name, MAX_CH)}</text>}
+                      {(p.labelled || on) && <text className={on ? "lbl" : "gai-mc-nlabel"} x={p.x} y={p.y - 11} textAnchor="middle">{clip(e.name, MAX_CH)}</text>}
                     </a>
                   );
                 })}
@@ -479,7 +482,7 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                   style={{
                     left: `${(tip.x / W) * 100}%`,
                     top: `${(tip.y / lay.H) * 100}%`,
-                    transform: `translate(${tip.x > W * 0.75 ? "-100%" : tip.x < W * 0.25 ? "0" : "-50%"}, ${tip.y < 90 ? "14px" : "calc(-100% - 12px)"})`,
+                    transform: `translate(${tip.x > W * 0.75 ? "-100%" : tip.x < W * 0.25 ? "0" : "-50%"}, ${tip.y < 100 ? "14px" : "calc(-100% - 26px)"})`,
                   }}
                 >
                   <b>{tip.node.e.name}</b>
