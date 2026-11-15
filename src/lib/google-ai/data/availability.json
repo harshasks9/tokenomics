@@ -1,1 +1,798 @@
-[]
+[
+ {
+  "id": "av-m-gemini-4-argon-fairwind-program-preview",
+  "entityId": "gemini-4-argon",
+  "surface": "fairwind-program",
+  "stage": "preview",
+  "audience": "Vetted cyber defenders in Google's Fairwind Program (first access at announcement)",
+  "effectiveFrom": "2026-09-30",
+  "effectiveTo": "2026-10-12",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-argon",
+   "m-bg-g4argon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-agent-platform-ga",
+  "entityId": "gemini-4-argon",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "Enterprise developers; model id gemini-4-argon",
+  "effectiveFrom": "2026-10-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g4argon",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-gemini-enterprise-ga",
+  "entityId": "gemini-4-argon",
+  "surface": "gemini-enterprise",
+  "stage": "ga",
+  "audience": "Gemini for business users on web, desktop and mobile",
+  "effectiveFrom": "2026-10-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-google-ai-studio-ga",
+  "entityId": "gemini-4-argon",
+  "surface": "google-ai-studio",
+  "stage": "ga",
+  "effectiveFrom": "2026-10-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-google-antigravity-ga",
+  "entityId": "gemini-4-argon",
+  "surface": "google-antigravity",
+  "stage": "ga",
+  "audience": "Google AI Ultra subscribers and Google Cloud customers",
+  "effectiveFrom": "2026-10-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g4argon",
+   "m-bg-g4argon-ga"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-gemini-api-ga",
+  "entityId": "gemini-4-argon",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "audience": "Paid tier only (no free tier)",
+  "effectiveFrom": "2026-10-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-bg-g4argon-ga",
+   "m-gapi-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-gemini-app-ga",
+  "entityId": "gemini-4-argon",
+  "surface": "gemini-app",
+  "stage": "ga",
+  "audience": "Google AI Pro and Ultra subscribers; also AI Mode in Search",
+  "effectiveFrom": "2026-10-13",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-bg-g4argon-ga"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-carbon-fairwind-program-preview",
+  "entityId": "gemini-4-carbon",
+  "surface": "fairwind-program",
+  "stage": "preview",
+  "audience": "Vetted cyber defenders in Google's Fairwind Program",
+  "effectiveFrom": "2026-10-28",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-carbon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-carbon-agent-platform-ga",
+  "entityId": "gemini-4-carbon",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "Verified enterprise customers",
+  "regions": "Select regions",
+  "effectiveFrom": "2026-11-10",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-carbon-cyber-permissive-agent-platform-preview",
+  "entityId": "gemini-4-carbon-cyber-permissive",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "audience": "Fairwind Program allowlist",
+  "regions": "global and US",
+  "effectiveFrom": "2026-11-10",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-argon-cyber-permissive-fairwind-program-preview",
+  "entityId": "gemini-4-argon-cyber-permissive",
+  "surface": "fairwind-program",
+  "stage": "preview",
+  "audience": "Government, critical infrastructure and cybersecurity partners vetted through the Fairwind Program",
+  "effectiveFrom": "2026-10-13",
+  "label": "provider-claim",
+  "sourceIds": [
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-hydrogen-gemini-api-ga",
+  "entityId": "gemini-4-hydrogen",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "audience": "Paid tier; a rate-limited free tier is reported by third parties",
+  "effectiveFrom": "2026-11-12",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-hydrogen",
+   "m-bg-g4hydrogen"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-hydrogen-agent-platform-ga",
+  "entityId": "gemini-4-hydrogen",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-11-12",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-g4hydrogen",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-hydrogen-gemini-app-ga",
+  "entityId": "gemini-4-hydrogen",
+  "surface": "gemini-app",
+  "stage": "ga",
+  "audience": "All users including free, through automatic model selection",
+  "effectiveFrom": "2026-11-12",
+  "label": "provider-claim",
+  "sourceIds": [
+   "m-bg-g4hydrogen"
+  ]
+ },
+ {
+  "id": "av-m-gemini-4-hydrogen-google-antigravity-ga",
+  "entityId": "gemini-4-hydrogen",
+  "surface": "google-antigravity",
+  "stage": "ga",
+  "audience": "Paid Antigravity subscribers",
+  "effectiveFrom": "2026-11-12",
+  "label": "provider-claim",
+  "sourceIds": [
+   "m-bg-g4hydrogen"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-flash-gemini-api-ga",
+  "entityId": "gemini-3-8-flash",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "effectiveFrom": "2026-09-02",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-flash-agent-platform-ga",
+  "entityId": "gemini-3-8-flash",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-09-02",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-7-flash-gemini-api-ga",
+  "entityId": "gemini-3-7-flash",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "audience": "After 2026-10-08 requests are routed to gemini-3.8-flash",
+  "effectiveFrom": "2026-08-13",
+  "effectiveTo": "2026-10-08",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-7-flash-agent-platform-ga",
+  "entityId": "gemini-3-7-flash",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-08-13",
+  "effectiveTo": "2027-01-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-6-flash-gemini-api-ga",
+  "entityId": "gemini-3-6-flash",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "audience": "Free and paid tiers",
+  "effectiveFrom": "2026-07-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-6-flash-agent-platform-ga",
+  "entityId": "gemini-3-6-flash",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-21",
+  "effectiveTo": "2026-11-19",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-flash-agent-platform-ga",
+  "entityId": "gemini-3-5-flash",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-05-19",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-io26",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-flash-gemini-api-ga",
+  "entityId": "gemini-3-5-flash",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "audience": "Now deprecated; requests are routed to gemini-3.6-flash",
+  "effectiveFrom": "2026-05-19",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-flash-gemini-enterprise-ga",
+  "entityId": "gemini-3-5-flash",
+  "surface": "gemini-enterprise",
+  "stage": "ga",
+  "audience": "Gemini Enterprise app users",
+  "effectiveFrom": "2026-05-20",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-flash-google-antigravity-ga",
+  "entityId": "gemini-3-5-flash",
+  "surface": "google-antigravity",
+  "stage": "ga",
+  "effectiveFrom": "2026-05-20",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-flash-lite-gemini-api-ga",
+  "entityId": "gemini-3-5-flash-lite",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "audience": "Free and paid tiers",
+  "effectiveFrom": "2026-07-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-flash-lite-agent-platform-ga",
+  "entityId": "gemini-3-5-flash-lite",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-07-21",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-migrate"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-lite-agent-platform-preview",
+  "entityId": "gemini-3-1-flash-lite",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "effectiveFrom": "2026-03-03",
+  "effectiveTo": "2026-05-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-whatsnew",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-lite-gemini-api-preview",
+  "entityId": "gemini-3-1-flash-lite",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "effectiveFrom": "2026-03-03",
+  "effectiveTo": "2026-05-25",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-whatsnew",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-lite-agent-platform-ga",
+  "entityId": "gemini-3-1-flash-lite",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-05-07",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-pro-agent-platform-preview",
+  "entityId": "gemini-3-1-pro",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "regions": "Global endpoint only",
+  "effectiveFrom": "2026-02-19",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g31pro",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-pro-gemini-enterprise-preview",
+  "entityId": "gemini-3-1-pro",
+  "surface": "gemini-enterprise",
+  "stage": "preview",
+  "effectiveFrom": "2026-02-19",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g31pro"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-pro-gemini-api-preview",
+  "entityId": "gemini-3-1-pro",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "audience": "Paid tier; also AI Studio, Android Studio, Antigravity and Gemini CLI",
+  "effectiveFrom": "2026-02-19",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g31pro",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-flash-gemini-api-preview",
+  "entityId": "gemini-3-flash",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "effectiveFrom": "2025-12-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-flash-agent-platform-preview",
+  "entityId": "gemini-3-flash",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "regions": "Global endpoint only",
+  "effectiveFrom": "2025-12-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-pro-agent-platform-preview",
+  "entityId": "gemini-3-pro",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "effectiveFrom": "2025-11-19",
+  "effectiveTo": "2026-03-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g3ent"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-pro-gemini-api-preview",
+  "entityId": "gemini-3-pro",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "effectiveFrom": "2025-11-19",
+  "effectiveTo": "2026-03-09",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g3ent",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-image-agent-platform-preview",
+  "entityId": "gemini-3-1-flash-image",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "effectiveFrom": "2026-02-27",
+  "effectiveTo": "2026-05-27",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-nb2"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-image-agent-platform-ga",
+  "entityId": "gemini-3-1-flash-image",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "1K and 2K output GA; 4K output in preview",
+  "effectiveFrom": "2026-05-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-nbga"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-pro-image-agent-platform-ga",
+  "entityId": "gemini-3-pro-image",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "1K and 2K output GA; 4K output in preview",
+  "effectiveFrom": "2026-05-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-nbga"
+  ]
+ },
+ {
+  "id": "av-m-nano-banana-2-1-agent-platform-ga",
+  "entityId": "nano-banana-2-1",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2026-10-06",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-nb21",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-omni-1-2-flash-agent-platform-ga",
+  "entityId": "gemini-omni-1-2-flash",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "Provisioned Throughput available",
+  "effectiveFrom": "2026-11-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "av-m-gemini-omni-1-2-flash-google-vids-ga",
+  "entityId": "gemini-omni-1-2-flash",
+  "surface": "google-vids",
+  "stage": "ga",
+  "effectiveFrom": "2026-11-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "av-m-gemini-omni-1-2-flash-gemini-enterprise-announced",
+  "entityId": "gemini-omni-1-2-flash",
+  "surface": "gemini-enterprise",
+  "stage": "announced",
+  "audience": "'Coming soon' to Gemini for business",
+  "effectiveFrom": "2026-11-06",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "av-m-gemini-omni-flash-gemini-api-preview",
+  "entityId": "gemini-omni-flash",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "effectiveFrom": "2026-06-30",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-nb2lite"
+  ]
+ },
+ {
+  "id": "av-m-veo-3-1-agent-platform-ga",
+  "entityId": "veo-3-1",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "effectiveFrom": "2025-11-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-veo31"
+  ]
+ },
+ {
+  "id": "av-m-veo-3-1-lite-agent-platform-preview",
+  "entityId": "veo-3-1-lite",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "audience": "Vertex AI API and Media Studio",
+  "effectiveFrom": "2026-04-03",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-veo31lite"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-live-gemini-api-ga",
+  "entityId": "gemini-3-8-live",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "effectiveFrom": "2026-09-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-live-agent-platform-ga",
+  "entityId": "gemini-3-8-live",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "With Live Avatar; custom avatars by allowlist; Extended Thinking variant in private preview",
+  "regions": "US and EU endpoints",
+  "effectiveFrom": "2026-09-24",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-live38"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-flash-tts-gemini-api-ga",
+  "entityId": "gemini-3-8-flash-tts",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-flash-tts-agent-platform-preview",
+  "entityId": "gemini-3-8-flash-tts",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-relnotes",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-8-flash-lite-tts-gemini-api-ga",
+  "entityId": "gemini-3-8-flash-lite-tts",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-5-transcribe-gemini-api-ga",
+  "entityId": "gemini-3-5-transcribe",
+  "surface": "gemini-api",
+  "stage": "ga",
+  "effectiveFrom": "2026-08-26",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-tts-agent-platform-preview",
+  "entityId": "gemini-3-1-flash-tts",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "effectiveFrom": "2026-04-15",
+  "effectiveTo": "2026-11-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-tts31"
+  ]
+ },
+ {
+  "id": "av-m-gemini-3-1-flash-tts-google-ai-studio-preview",
+  "entityId": "gemini-3-1-flash-tts",
+  "surface": "google-ai-studio",
+  "stage": "preview",
+  "effectiveFrom": "2026-04-15",
+  "effectiveTo": "2026-11-17",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-tts31"
+  ]
+ },
+ {
+  "id": "av-m-lyria-3-pro-gemini-api-preview",
+  "entityId": "lyria-3-pro",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "effectiveFrom": "2026-03-25",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-lyria-3-gemini-api-preview",
+  "entityId": "lyria-3",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "effectiveFrom": "2026-03-25",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "av-m-gemini-robotics-er-2-agent-platform-preview",
+  "entityId": "gemini-robotics-er-2",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "audience": "Public preview via Model Garden",
+  "effectiveFrom": "2026-10-27",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-er2"
+  ]
+ },
+ {
+  "id": "av-m-gemini-robotics-er-2-google-ai-studio-preview",
+  "entityId": "gemini-robotics-er-2",
+  "surface": "google-ai-studio",
+  "stage": "preview",
+  "effectiveFrom": "2026-07-30",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-robotics2"
+  ]
+ },
+ {
+  "id": "av-m-gemini-robotics-2-early-access-partners-preview",
+  "entityId": "gemini-robotics-2",
+  "surface": "early-access-partners",
+  "stage": "preview",
+  "audience": "Early-access robotics partners",
+  "effectiveFrom": "2026-07-30",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-robotics2"
+  ]
+ },
+ {
+  "id": "av-m-gemini-deep-research-gemini-api-preview",
+  "entityId": "gemini-deep-research",
+  "surface": "gemini-api",
+  "stage": "preview",
+  "audience": "Interactions API, model id deep-research-preview-04-2026",
+  "effectiveFrom": "2026-04-22",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-deepresearch",
+   "m-gapi-deep-research"
+  ]
+ },
+ {
+  "id": "av-m-gemini-deep-research-agent-platform-preview",
+  "entityId": "gemini-deep-research",
+  "surface": "agent-platform",
+  "stage": "preview",
+  "audience": "Priced on the Agent Platform list; start date not confirmed",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-gemma-4-open-weights-ga",
+  "entityId": "gemma-4",
+  "surface": "open-weights",
+  "stage": "ga",
+  "audience": "Hugging Face, Kaggle and Ollama; Apache 2.0",
+  "effectiveFrom": "2026-04-02",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-gemma4",
+   "m-bg-gemma4"
+  ]
+ },
+ {
+  "id": "av-m-gemma-4-agent-platform-ga",
+  "entityId": "gemma-4",
+  "surface": "agent-platform",
+  "stage": "ga",
+  "audience": "Gemma 4 26B as a managed API; start date not confirmed",
+  "effectiveFrom": "2026-11-15",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "av-m-medgemma-1-5-open-weights-ga",
+  "entityId": "medgemma-1-5",
+  "surface": "open-weights",
+  "stage": "ga",
+  "audience": "Hugging Face",
+  "effectiveFrom": "2026-01-13",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-gr-medgemma"
+  ]
+ },
+ {
+  "id": "av-m-genie-3-project-genie-experimental",
+  "entityId": "genie-3",
+  "surface": "genie-3",
+  "stage": "experimental",
+  "audience": "Google AI Ultra subscribers in the US, as reported by one outlet; date not confirmed by Google",
+  "effectiveFrom": "2026-06-23",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-genie"
+  ]
+ }
+]

@@ -1,1 +1,1020 @@
-[]
+[
+ {
+  "id": "lc-m-gemini-4-argon-announced-20260930",
+  "entityId": "gemini-4-argon",
+  "type": "announced",
+  "date": "2026-09-30",
+  "detail": "Google announced Gemini 4 Argon as its next frontier model, with first access for vetted cyber defenders through the Fairwind Program.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-bg-g4argon",
+   "m-pr-argon"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-argon-ga-20261013",
+  "entityId": "gemini-4-argon",
+  "type": "ga",
+  "date": "2026-10-13",
+  "detail": "Made available to developers and enterprises on Google Cloud (model id gemini-4-argon), the Gemini API, AI Studio, Antigravity and Gemini for business.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g4argon",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-argon-price-change-20261013",
+  "entityId": "gemini-4-argon",
+  "type": "price-change",
+  "date": "2026-10-13",
+  "effectiveDate": "2026-12-01",
+  "detail": "Introductory $2 / $10 per million tokens ends 30 November 2026; standard $4 / $20 applies from 1 December 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g4argon",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-argon-retirement-scheduled-20261013",
+  "entityId": "gemini-4-argon",
+  "type": "retirement-scheduled",
+  "date": "2026-10-13",
+  "effectiveDate": "2027-10-13",
+  "detail": "Agent Platform lifecycle table: retirement no earlier than 13 October 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-carbon-announced-20261028",
+  "entityId": "gemini-4-carbon",
+  "type": "announced",
+  "date": "2026-10-28",
+  "detail": "Google introduced Gemini 4 Carbon, rolling out first to cyber defenders in the Fairwind Program.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-carbon"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-carbon-ga-20261110",
+  "entityId": "gemini-4-carbon",
+  "type": "ga",
+  "date": "2026-11-10",
+  "detail": "Agent Platform documentation lists Gemini 4 Carbon as GA, limited to verified enterprise customers in select regions.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-carbon-price-change-20261115",
+  "entityId": "gemini-4-carbon",
+  "type": "price-change",
+  "date": "2026-11-15",
+  "effectiveDate": "2026-12-01",
+  "detail": "Promotional $2 / $10 per million tokens ends 30 November 2026; standard $4 / $20 applies from 1 December 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-hydrogen-ga-20261112",
+  "entityId": "gemini-4-hydrogen",
+  "type": "ga",
+  "date": "2026-11-12",
+  "detail": "Gemini 4 Hydrogen released at $1.50 / $7.50 per million tokens across the Gemini API, Agent Platform and the Gemini app.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-bg-g4hydrogen",
+   "m-gcd-g4hydrogen",
+   "m-pr-hydrogen"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-hydrogen-price-change-20261115",
+  "entityId": "gemini-4-hydrogen",
+  "type": "price-change",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-01-12",
+  "detail": "Cache-write pricing ($1.875 per million tokens, global standard) takes effect 12 January 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-4-hydrogen-updated-20261113",
+  "entityId": "gemini-4-hydrogen",
+  "type": "updated",
+  "date": "2026-11-13",
+  "detail": "From this date Gemini 4 completions longer than 32K tokens are billed for retrievable tokens even when the request times out.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-pro-preview-20251119",
+  "entityId": "gemini-3-pro",
+  "type": "preview",
+  "date": "2025-11-19",
+  "detail": "Gemini 3 Pro made available in preview in Gemini Enterprise and Vertex AI (date of Google Cloud's post).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-g3ent"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-pro-retired-20260309",
+  "entityId": "gemini-3-pro",
+  "type": "retired",
+  "date": "2026-03-09",
+  "detail": "gemini-3-pro-preview shut down on the Gemini API; replacement gemini-3.1-pro-preview.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-pro-preview-20260219",
+  "entityId": "gemini-3-1-pro",
+  "type": "preview",
+  "date": "2026-02-19",
+  "detail": "Gemini 3.1 Pro released in preview on the Gemini API, Vertex AI and Gemini Enterprise.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-deprecations",
+   "m-cb-g31pro"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-pro-announced-20260520",
+  "entityId": "gemini-3-5-pro",
+  "type": "announced",
+  "date": "2026-05-20",
+  "detail": "Google said Gemini 3.5 Pro was in testing and would arrive 'next month'. No release followed.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-flash-preview-20251217",
+  "entityId": "gemini-3-flash",
+  "type": "preview",
+  "date": "2025-12-17",
+  "detail": "gemini-3-flash-preview released.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-lite-preview-20260303",
+  "entityId": "gemini-3-1-flash-lite",
+  "type": "preview",
+  "date": "2026-03-03",
+  "detail": "Gemini 3.1 Flash-Lite rolled out in preview on Vertex AI and the Gemini API.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-whatsnew",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-lite-ga-20260507",
+  "entityId": "gemini-3-1-flash-lite",
+  "type": "ga",
+  "date": "2026-05-07",
+  "detail": "gemini-3.1-flash-lite released as a stable model; Agent Platform retirement no earlier than 7 May 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-lite-retired-20260525",
+  "entityId": "gemini-3-1-flash-lite",
+  "type": "retired",
+  "date": "2026-05-25",
+  "detail": "Preview id gemini-3.1-flash-lite-preview shut down on the Gemini API (earliest listed date).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-flash-ga-20260519",
+  "entityId": "gemini-3-5-flash",
+  "type": "ga",
+  "date": "2026-05-19",
+  "detail": "Gemini 3.5 Flash released at Google I/O 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-flash-deprecated-20261115",
+  "entityId": "gemini-3-5-flash",
+  "type": "deprecated",
+  "date": "2026-11-15",
+  "detail": "Gemini API changelog marks gemini-3.5-flash deprecated with requests routed to gemini-3.6-flash (date of the notice not captured; recorded on the date checked).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-flash-retirement-scheduled-20261115",
+  "entityId": "gemini-3-5-flash",
+  "type": "retirement-scheduled",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-05-19",
+  "detail": "Agent Platform lifecycle table: retirement no earlier than 19 May 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-flash-lite-ga-20260721",
+  "entityId": "gemini-3-5-flash-lite",
+  "type": "ga",
+  "date": "2026-07-21",
+  "detail": "Gemini 3.5 Flash-Lite released alongside Gemini 3.6 Flash.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-6-flash-ga-20260721",
+  "entityId": "gemini-3-6-flash",
+  "type": "ga",
+  "date": "2026-07-21",
+  "detail": "Gemini 3.6 Flash released.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-6-flash-retirement-scheduled-20261115",
+  "entityId": "gemini-3-6-flash",
+  "type": "retirement-scheduled",
+  "date": "2026-11-15",
+  "effectiveDate": "2026-11-19",
+  "detail": "Agent Platform lifecycle table lists retirement on 19 November 2026, replacement gemini-3.8-flash.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-7-flash-ga-20260813",
+  "entityId": "gemini-3-7-flash",
+  "type": "ga",
+  "date": "2026-08-13",
+  "detail": "Gemini 3.7 Flash released.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-7-flash-deprecated-20261008",
+  "entityId": "gemini-3-7-flash",
+  "type": "deprecated",
+  "date": "2026-10-08",
+  "detail": "Deprecated on the Gemini API; requests routed to gemini-3.8-flash and the model removed from AI Studio's picker.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-7-flash-retirement-scheduled-20261115",
+  "entityId": "gemini-3-7-flash",
+  "type": "retirement-scheduled",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-01-28",
+  "detail": "Agent Platform lifecycle table lists retirement on 28 January 2027, replacement gemini-3.8-flash.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-flash-ga-20260902",
+  "entityId": "gemini-3-8-flash",
+  "type": "ga",
+  "date": "2026-09-02",
+  "detail": "Gemini 3.8 Flash released at an introductory $0.75 / $3.75 per million tokens.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-flash-price-change-20260902",
+  "entityId": "gemini-3-8-flash",
+  "type": "price-change",
+  "date": "2026-09-02",
+  "effectiveDate": "2027-01-01",
+  "detail": "Introductory pricing for Gemini 3.8, 3.7 and 3.6 Flash ends 31 December 2026; $1.50 / $7.50 applies from 1 January 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-flash-retirement-scheduled-20261115",
+  "entityId": "gemini-3-8-flash",
+  "type": "retirement-scheduled",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-09-02",
+  "detail": "Agent Platform lifecycle table: retirement no earlier than 2 September 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-flash-cyber-announced-20260721",
+  "entityId": "gemini-3-5-flash-cyber",
+  "type": "announced",
+  "date": "2026-07-21",
+  "detail": "Google DeepMind announced Gemini 3.5 Flash Cyber with access limited to governments and trusted partners via CodeMender.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-dm-flash-cyber",
+   "m-pr-flashcyber"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-pro-preview-20250325",
+  "entityId": "gemini-2-5-pro",
+  "type": "preview",
+  "date": "2025-03-25",
+  "detail": "Gemini 2.5 Pro introduced as an experimental model.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g25"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-pro-ga-20250617",
+  "entityId": "gemini-2-5-pro",
+  "type": "ga",
+  "date": "2025-06-17",
+  "detail": "Gemini 2.5 Pro and 2.5 Flash became generally available.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g25-ga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-pro-retirement-scheduled-20260402",
+  "entityId": "gemini-2-5-pro",
+  "type": "retirement-scheduled",
+  "date": "2026-04-02",
+  "effectiveDate": "2026-10-20",
+  "detail": "A release note moved the retirement of Gemini 2.5 Pro, Flash and Flash-Lite to 16 October 2026; model pages later showed 20 October 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-relnotes",
+   "m-gcd-g25pro"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-flash-preview-20250417",
+  "entityId": "gemini-2-5-flash",
+  "type": "preview",
+  "date": "2025-04-17",
+  "detail": "Gemini 2.5 Flash released in preview with separate thinking and non-thinking output prices.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g25flash"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-flash-ga-20250617",
+  "entityId": "gemini-2-5-flash",
+  "type": "ga",
+  "date": "2025-06-17",
+  "detail": "Gemini 2.5 Flash became generally available.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g25-ga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-flash-price-change-20250617",
+  "entityId": "gemini-2-5-flash",
+  "type": "price-change",
+  "date": "2025-06-17",
+  "detail": "Repriced at GA to a single $0.30 input / $2.50 output rate (from $0.15 input and $0.60 or $3.50 output in preview).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g25-ga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-flash-retirement-scheduled-20260402",
+  "entityId": "gemini-2-5-flash",
+  "type": "retirement-scheduled",
+  "date": "2026-04-02",
+  "effectiveDate": "2026-10-20",
+  "detail": "Agent Platform retirement scheduled for October 2026 (model page: 20 October 2026).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-relnotes",
+   "m-gcd-g25pro"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-flash-lite-preview-20250617",
+  "entityId": "gemini-2-5-flash-lite",
+  "type": "preview",
+  "date": "2025-06-17",
+  "detail": "Gemini 2.5 Flash-Lite introduced in preview.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g25-ga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-5-flash-lite-retirement-scheduled-20260402",
+  "entityId": "gemini-2-5-flash-lite",
+  "type": "retirement-scheduled",
+  "date": "2026-04-02",
+  "effectiveDate": "2026-10-16",
+  "detail": "Release note set the retirement date to 16 October 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-0-flash-preview-20241211",
+  "entityId": "gemini-2-0-flash",
+  "type": "preview",
+  "date": "2024-12-11",
+  "detail": "Gemini 2.0 Flash introduced as an experimental model.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g20"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-0-flash-ga-20250205",
+  "entityId": "gemini-2-0-flash",
+  "type": "ga",
+  "date": "2025-02-05",
+  "detail": "Gemini 2.0 Flash became generally available.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g20-ga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-0-flash-retired-20260601",
+  "entityId": "gemini-2-0-flash",
+  "type": "retired",
+  "date": "2026-06-01",
+  "detail": "Gemini 2.0 Flash and 2.0 Flash-Lite discontinued on Agent Platform; Google recommends 3.1 Flash-Lite, Gemma 4 or newer Gemini releases.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-2-0-flash-lite-retired-20260601",
+  "entityId": "gemini-2-0-flash-lite",
+  "type": "retired",
+  "date": "2026-06-01",
+  "detail": "Discontinued on Agent Platform together with Gemini 2.0 Flash.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-1-5-pro-announced-20240215",
+  "entityId": "gemini-1-5-pro",
+  "type": "announced",
+  "date": "2024-02-15",
+  "detail": "Gemini 1.5 Pro announced with a 1 million token context window.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g15"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-1-5-pro-price-change-20240924",
+  "entityId": "gemini-1-5-pro",
+  "type": "price-change",
+  "date": "2024-09-24",
+  "effectiveDate": "2024-10-01",
+  "detail": "Input price cut 64% and output 52% for prompts under 128K tokens ($3.50 / $10.50 to $1.25 / $5.00).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g15pro-cut"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-1-5-flash-ga-20240514",
+  "entityId": "gemini-1-5-flash",
+  "type": "ga",
+  "date": "2024-05-14",
+  "detail": "Gemini 1.5 Flash introduced at Google I/O 2024.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g15-io"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-1-5-flash-price-change-20240808",
+  "entityId": "gemini-1-5-flash",
+  "type": "price-change",
+  "date": "2024-08-08",
+  "effectiveDate": "2024-08-12",
+  "detail": "Input price cut 78% and output 71% for prompts under 128K tokens ($0.35 / $1.05 to $0.075 / $0.30).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g15flash-cut"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-1-0-pro-announced-20231206",
+  "entityId": "gemini-1-0-pro",
+  "type": "announced",
+  "date": "2023-12-06",
+  "detail": "Gemini 1.0 announced in Ultra, Pro and Nano sizes.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-g10"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-image-preview-20260227",
+  "entityId": "gemini-3-1-flash-image",
+  "type": "preview",
+  "date": "2026-02-27",
+  "detail": "Nano Banana 2 (Gemini 3.1 Flash Image) available in preview through the Gemini API in Vertex AI.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-nb2"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-image-ga-20260528",
+  "entityId": "gemini-3-1-flash-image",
+  "type": "ga",
+  "date": "2026-05-28",
+  "detail": "Nano Banana 2 generally available on Agent Platform; video input added in preview.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-nbga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-image-retired-20260625",
+  "entityId": "gemini-3-1-flash-image",
+  "type": "retired",
+  "date": "2026-06-25",
+  "detail": "Preview ids gemini-3.1-flash-image-preview and gemini-3-pro-image-preview shut down on the Gemini API (notice dated 28 May 2026).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-pro-image-ga-20260528",
+  "entityId": "gemini-3-pro-image",
+  "type": "ga",
+  "date": "2026-05-28",
+  "detail": "Nano Banana Pro (Gemini 3 Pro Image) generally available on Agent Platform.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-nbga"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-lite-image-preview-20260630",
+  "entityId": "gemini-3-1-flash-lite-image",
+  "type": "preview",
+  "date": "2026-06-30",
+  "detail": "Nano Banana 2 Lite released, as reported by press.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-nb2lite"
+  ]
+ },
+ {
+  "id": "lc-m-nano-banana-2-1-ga-20261006",
+  "entityId": "nano-banana-2-1",
+  "type": "ga",
+  "date": "2026-10-06",
+  "detail": "Nano Banana 2.1 released; press reports GA status in Google Cloud documentation.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-nb21"
+  ]
+ },
+ {
+  "id": "lc-m-imagen-4-ga-20250814",
+  "entityId": "imagen-4",
+  "type": "ga",
+  "date": "2025-08-14",
+  "detail": "imagen-4.0-generate-001 released (Agent Platform lifecycle table).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-imagen-4-retired-20260630",
+  "entityId": "imagen-4",
+  "type": "retired",
+  "date": "2026-06-30",
+  "detail": "Lifecycle table lists imagen-4.0-generate-001 as retired, with gemini-2.5-flash-image as the recommended upgrade.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-imagen-4-retired-20260817",
+  "entityId": "imagen-4",
+  "type": "retired",
+  "date": "2026-08-17",
+  "detail": "Imagen 4 generate, ultra and fast models shut down on the Gemini API.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-veo-3-1-ga-20251117",
+  "entityId": "veo-3-1",
+  "type": "ga",
+  "date": "2025-11-17",
+  "detail": "veo-3.1-generate-001 released on Agent Platform.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-veo31"
+  ]
+ },
+ {
+  "id": "lc-m-veo-3-1-retirement-scheduled-20261115",
+  "entityId": "veo-3-1",
+  "type": "retirement-scheduled",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-05-04",
+  "detail": "Lifecycle table: retirement no earlier than 4 May 2027; recommended replacement gemini-omni-1.2-flash.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-veo31",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-veo-3-1-lite-preview-20260403",
+  "entityId": "veo-3-1-lite",
+  "type": "preview",
+  "date": "2026-04-03",
+  "detail": "Veo 3.1 Lite rolled out on Vertex AI alongside a standalone Veo upscaling capability in private preview.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-veo31lite"
+  ]
+ },
+ {
+  "id": "lc-m-veo-3-ga-20250729",
+  "entityId": "veo-3",
+  "type": "ga",
+  "date": "2025-07-29",
+  "detail": "veo-3.0-generate-001 released.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-veo-3-retired-20260630",
+  "entityId": "veo-3",
+  "type": "retired",
+  "date": "2026-06-30",
+  "detail": "Lifecycle table retirement date for veo-3.0-generate-001 (a March 2026 release note already lists it as discontinued).",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-veo-2-ga-20250527",
+  "entityId": "veo-2",
+  "type": "ga",
+  "date": "2025-05-27",
+  "detail": "veo-2.0-generate-001 released.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-veo-2-retired-20260630",
+  "entityId": "veo-2",
+  "type": "retired",
+  "date": "2026-06-30",
+  "detail": "veo-2.0-generate-001 retired; recommended upgrade veo-3.1-generate-001.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-omni-flash-announced-20260520",
+  "entityId": "gemini-omni-flash",
+  "type": "announced",
+  "date": "2026-05-20",
+  "detail": "Gemini Omni announced at Google I/O; Omni Flash to roll out 'in the coming weeks'.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-omni-flash-preview-20260630",
+  "entityId": "gemini-omni-flash",
+  "type": "preview",
+  "date": "2026-06-30",
+  "detail": "gemini-omni-flash-preview opened to developers on the Gemini API, as reported by press.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-nb2lite"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-omni-1-2-flash-ga-20261106",
+  "entityId": "gemini-omni-1-2-flash",
+  "type": "ga",
+  "date": "2026-11-06",
+  "detail": "Gemini Omni 1.2 Flash generally available on Google Cloud at $0.07 per second of 720p video.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-live-ga-20260915",
+  "entityId": "gemini-3-8-live",
+  "type": "ga",
+  "date": "2026-09-15",
+  "detail": "gemini-3.8-live generally available on the Gemini API, with an Extended Thinking variant.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-live-ga-20260924",
+  "entityId": "gemini-3-8-live",
+  "type": "ga",
+  "date": "2026-09-24",
+  "detail": "Gemini 3.8 Live with Live Avatar generally available for Google Cloud customers on US and EU endpoints.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-live38"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-flash-tts-ga-20260922",
+  "entityId": "gemini-3-8-flash-tts",
+  "type": "ga",
+  "date": "2026-09-22",
+  "detail": "gemini-3.8-flash-tts and gemini-3.8-flash-lite-tts generally available on the Gemini API.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-flash-tts-price-change-20261115",
+  "entityId": "gemini-3-8-flash-tts",
+  "type": "price-change",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-01-01",
+  "detail": "Introductory text-to-speech pricing ends 31 December 2026; rates double on 1 January 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-8-flash-lite-tts-ga-20260922",
+  "entityId": "gemini-3-8-flash-lite-tts",
+  "type": "ga",
+  "date": "2026-09-22",
+  "detail": "gemini-3.8-flash-lite-tts generally available on the Gemini API.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-tts-preview-20260415",
+  "entityId": "gemini-3-1-flash-tts",
+  "type": "preview",
+  "date": "2026-04-15",
+  "detail": "Gemini 3.1 Flash TTS available in public preview on AI Studio and Vertex AI.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-tts31"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-1-flash-tts-retirement-scheduled-20261115",
+  "entityId": "gemini-3-1-flash-tts",
+  "type": "retirement-scheduled",
+  "date": "2026-11-15",
+  "effectiveDate": "2026-11-17",
+  "detail": "gemini-3.1-flash-tts-preview listed for shutdown on 17 November 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-3-5-transcribe-ga-20260826",
+  "entityId": "gemini-3-5-transcribe",
+  "type": "ga",
+  "date": "2026-08-26",
+  "detail": "gemini-3.5-transcribe generally available on the Gemini API.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-lyria-3-pro-preview-20260325",
+  "entityId": "lyria-3-pro",
+  "type": "preview",
+  "date": "2026-03-25",
+  "detail": "Lyria 3 launched in preview: lyria-3-pro-preview for full songs and lyria-3-clip-preview for 30-second clips.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-lyria-3-preview-20260325",
+  "entityId": "lyria-3",
+  "type": "preview",
+  "date": "2026-03-25",
+  "detail": "lyria-3-clip-preview launched in preview.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-embedding-2-ga-20260422",
+  "entityId": "gemini-embedding-2",
+  "type": "ga",
+  "date": "2026-04-22",
+  "detail": "Gemini Embedding 2 reported generally available (third-party sources; one gives 20 May 2026). Google's GA post was seen only as a search result.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-emb2",
+   "m-bg-emb2-ga"
+  ]
+ },
+ {
+  "id": "lc-m-gemma-4-ga-20260402",
+  "entityId": "gemma-4",
+  "type": "ga",
+  "date": "2026-04-02",
+  "detail": "Gemma 4 released in four sizes under Apache 2.0.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-bg-gemma4",
+   "m-pr-gemma4"
+  ]
+ },
+ {
+  "id": "lc-m-gemma-3-ga-20250312",
+  "entityId": "gemma-3",
+  "type": "ga",
+  "date": "2025-03-12",
+  "detail": "Gemma 3 released.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-pk-gemma3"
+  ]
+ },
+ {
+  "id": "lc-m-medgemma-1-5-ga-20260113",
+  "entityId": "medgemma-1-5",
+  "type": "ga",
+  "date": "2026-01-13",
+  "detail": "MedGemma 1.5 released with the MedASR speech-to-text model.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gr-medgemma"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-robotics-er-2-announced-20260730",
+  "entityId": "gemini-robotics-er-2",
+  "type": "announced",
+  "date": "2026-07-30",
+  "detail": "Gemini Robotics 2 announced, including the Gemini Robotics ER 2 embodied reasoning model.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-robotics2"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-robotics-er-2-preview-20261027",
+  "entityId": "gemini-robotics-er-2",
+  "type": "preview",
+  "date": "2026-10-27",
+  "detail": "Gemini Robotics ER 2 available in public preview on Google Cloud via Model Garden.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-cb-er2"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-robotics-er-2-price-change-20261115",
+  "entityId": "gemini-robotics-er-2",
+  "type": "price-change",
+  "date": "2026-11-15",
+  "effectiveDate": "2027-01-01",
+  "detail": "Promotional $1 / $5 per million tokens ends 31 December 2026; $2 / $10 applies from 1 January 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-robotics-2-announced-20260730",
+  "entityId": "gemini-robotics-2",
+  "type": "announced",
+  "date": "2026-07-30",
+  "detail": "Google DeepMind announced Gemini Robotics 2 with whole-body control; rollout to early-access partners.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-robotics2"
+  ]
+ },
+ {
+  "id": "lc-m-gemini-deep-research-preview-20260422",
+  "entityId": "gemini-deep-research",
+  "type": "preview",
+  "date": "2026-04-22",
+  "detail": "Deep Research and Deep Research Max agents launched, as reported by press.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "m-pr-deepresearch"
+  ]
+ },
+ {
+  "id": "lc-m-alphafold-3-price-change-20261115",
+  "entityId": "alphafold-3",
+  "type": "price-change",
+  "date": "2026-11-15",
+  "effectiveDate": "2026-11-16",
+  "detail": "Billing of the per-GPU-hour model access price for AlphaFold 3 ($2) and AlphaGenome ($15) starts 16 November 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "lc-m-alphagenome-price-change-20261115",
+  "entityId": "alphagenome",
+  "type": "price-change",
+  "date": "2026-11-15",
+  "effectiveDate": "2026-11-16",
+  "detail": "Billing of the $15 per GPU-hour model access price starts 16 November 2026.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ }
+]

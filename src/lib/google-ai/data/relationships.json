@@ -1,1 +1,1262 @@
-[]
+[
+ {
+  "id": "rel-m-gemini-4-argon-part-of-gemini",
+  "from": "gemini-4-argon",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-argon-cyber-permissive-part-of-gemini",
+  "from": "gemini-4-argon-cyber-permissive",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-part-of-gemini",
+  "from": "gemini-4-carbon",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-cyber-permissive-part-of-gemini",
+  "from": "gemini-4-carbon-cyber-permissive",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-hydrogen-part-of-gemini",
+  "from": "gemini-4-hydrogen",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-g4hydrogen"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-pro-part-of-gemini",
+  "from": "gemini-3-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-g3ent",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-pro-part-of-gemini",
+  "from": "gemini-3-1-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g31pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-pro-part-of-gemini",
+  "from": "gemini-3-5-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-io26",
+   "m-pr-g35pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-flash-part-of-gemini-flash",
+  "from": "gemini-3-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-lite-part-of-gemini-flash",
+  "from": "gemini-3-1-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-whatsnew"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-part-of-gemini-flash",
+  "from": "gemini-3-5-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-lite-part-of-gemini-flash",
+  "from": "gemini-3-5-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-6-flash-part-of-gemini-flash",
+  "from": "gemini-3-6-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-7-flash-part-of-gemini-flash",
+  "from": "gemini-3-7-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-part-of-gemini-flash",
+  "from": "gemini-3-8-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-g38"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-cyber-part-of-gemini-flash",
+  "from": "gemini-3-8-flash-cyber",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-cyber-part-of-gemini-flash",
+  "from": "gemini-3-5-flash-cyber",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-dm-flash-cyber",
+   "m-pr-flashcyber"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-pro-part-of-gemini",
+  "from": "gemini-2-5-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g25pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-part-of-gemini-flash",
+  "from": "gemini-2-5-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g25pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-lite-part-of-gemini-flash",
+  "from": "gemini-2-5-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-image-part-of-nano-banana",
+  "from": "gemini-2-5-flash-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-live-part-of-gemini-live",
+  "from": "gemini-2-5-flash-live",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-computer-use-part-of-gemini",
+  "from": "gemini-2-5-computer-use",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-computeruse"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-0-flash-part-of-gemini-flash",
+  "from": "gemini-2-0-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-0-flash-lite-part-of-gemini-flash",
+  "from": "gemini-2-0-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-5-pro-part-of-gemini",
+  "from": "gemini-1-5-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g15"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-5-flash-part-of-gemini-flash",
+  "from": "gemini-1-5-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g15-io"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-0-pro-part-of-gemini",
+  "from": "gemini-1-0-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g10"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-pro-image-part-of-nano-banana",
+  "from": "gemini-3-pro-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nbga"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-image-part-of-nano-banana",
+  "from": "gemini-3-1-flash-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nb2"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-lite-image-part-of-nano-banana",
+  "from": "gemini-3-1-flash-lite-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-nb2lite"
+  ]
+ },
+ {
+  "id": "rel-m-nano-banana-2-1-part-of-nano-banana",
+  "from": "nano-banana-2-1",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-nb21"
+  ]
+ },
+ {
+  "id": "rel-m-imagen-4-part-of-imagen",
+  "from": "imagen-4",
+  "to": "imagen",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-imagen-3-part-of-imagen",
+  "from": "imagen-3",
+  "to": "imagen",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-part-of-veo",
+  "from": "veo-3-1",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-veo31"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-fast-part-of-veo",
+  "from": "veo-3-1-fast",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-lite-part-of-veo",
+  "from": "veo-3-1-lite",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-part-of-veo",
+  "from": "veo-3",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-fast-part-of-veo",
+  "from": "veo-3-fast",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-veo-2-part-of-veo",
+  "from": "veo-2",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-flash-part-of-gemini-omni",
+  "from": "gemini-omni-flash",
+  "to": "gemini-omni",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-1-flash-part-of-gemini-omni",
+  "from": "gemini-omni-1-1-flash",
+  "to": "gemini-omni",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-2-flash-part-of-gemini-omni",
+  "from": "gemini-omni-1-2-flash",
+  "to": "gemini-omni",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-live-part-of-gemini-live",
+  "from": "gemini-3-8-live",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-live38"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-live-part-of-gemini-live",
+  "from": "gemini-3-1-flash-live",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-tts-part-of-gemini-live",
+  "from": "gemini-3-8-flash-tts",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-lite-tts-part-of-gemini-live",
+  "from": "gemini-3-8-flash-lite-tts",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-tts-part-of-gemini-live",
+  "from": "gemini-3-1-flash-tts",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-tts31",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-transcribe-part-of-gemini-live",
+  "from": "gemini-3-5-transcribe",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-live-translate-part-of-gemini-live",
+  "from": "gemini-3-5-live-translate",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-3-pro-part-of-lyria",
+  "from": "lyria-3-pro",
+  "to": "lyria",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-3-part-of-lyria",
+  "from": "lyria-3",
+  "to": "lyria",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-2-part-of-lyria",
+  "from": "lyria-2",
+  "to": "lyria",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-embedding-001-part-of-gemini-embedding",
+  "from": "gemini-embedding-001",
+  "to": "gemini-embedding",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-embedding-2-part-of-gemini-embedding",
+  "from": "gemini-embedding-2",
+  "to": "gemini-embedding",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemma-4-part-of-gemma",
+  "from": "gemma-4",
+  "to": "gemma",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-gemma4"
+  ]
+ },
+ {
+  "id": "rel-m-gemma-3-part-of-gemma",
+  "from": "gemma-3",
+  "to": "gemma",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-gemma3"
+  ]
+ },
+ {
+  "id": "rel-m-medgemma-1-5-part-of-gemma",
+  "from": "medgemma-1-5",
+  "to": "gemma",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gr-medgemma",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-robotics-er-2-part-of-gemini-robotics",
+  "from": "gemini-robotics-er-2",
+  "to": "gemini-robotics",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-er2"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-robotics-2-part-of-gemini-robotics",
+  "from": "gemini-robotics-2",
+  "to": "gemini-robotics",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pr-robotics2",
+   "m-cb-er2"
+  ]
+ },
+ {
+  "id": "rel-m-genie-3-part-of-genie",
+  "from": "genie-3",
+  "to": "genie",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pr-genie"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-deep-think-part-of-gemini",
+  "from": "gemini-3-deep-think",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pr-deepthink"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-succeeds-gemini-4-argon",
+  "from": "gemini-4-carbon",
+  "to": "gemini-4-argon",
+  "type": "succeeds",
+  "note": "Press coverage describes Carbon as built on Argon and announced four weeks later; both remain on sale at the same price.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-argon-succeeds-gemini-3-1-pro",
+  "from": "gemini-4-argon",
+  "to": "gemini-3-1-pro",
+  "type": "succeeds",
+  "note": "Agent Platform's migration guide points Gemini 3.1 Pro users to Gemini 4 Argon or Carbon.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-migrate",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-succeeds-gemini-3-1-pro",
+  "from": "gemini-4-carbon",
+  "to": "gemini-3-1-pro",
+  "type": "succeeds",
+  "note": "Agent Platform's migration guide points Gemini 3.1 Pro users to Gemini 4 Carbon or Argon.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-migrate"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-pro-succeeds-gemini-3-pro",
+  "from": "gemini-3-1-pro",
+  "to": "gemini-3-pro",
+  "type": "succeeds",
+  "note": "gemini-3.1-pro-preview is the listed replacement for gemini-3-pro-preview.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-pro-succeeds-gemini-2-5-pro",
+  "from": "gemini-3-pro",
+  "to": "gemini-2-5-pro",
+  "type": "succeeds",
+  "note": "Gemini 3 Pro replaced 2.5 Pro as Google's flagship in November 2025.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-g3ent"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-pro-succeeds-gemini-1-5-pro",
+  "from": "gemini-2-5-pro",
+  "to": "gemini-1-5-pro",
+  "type": "succeeds",
+  "note": "Successive Pro flagships (2.0 Pro was experimental only).",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g25"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-5-pro-succeeds-gemini-1-0-pro",
+  "from": "gemini-1-5-pro",
+  "to": "gemini-1-0-pro",
+  "type": "succeeds",
+  "note": "Gemini 1.5 Pro followed 1.0 Pro in 2024.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pk-g15"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-hydrogen-succeeds-gemini-3-8-flash",
+  "from": "gemini-4-hydrogen",
+  "to": "gemini-3-8-flash",
+  "type": "succeeds",
+  "note": "Google's Hydrogen migration guide is written against Gemini 3.8 Flash, and Hydrogen carries the Flash list price.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-g4hydrogen",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-succeeds-gemini-3-7-flash",
+  "from": "gemini-3-8-flash",
+  "to": "gemini-3-7-flash",
+  "type": "succeeds",
+  "note": "gemini-3.8-flash is the listed replacement; Gemini API requests to 3.7 Flash are routed to it.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-7-flash-succeeds-gemini-3-6-flash",
+  "from": "gemini-3-7-flash",
+  "to": "gemini-3-6-flash",
+  "type": "succeeds",
+  "note": "Consecutive Flash releases (July and August 2026).",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-6-flash-succeeds-gemini-3-5-flash",
+  "from": "gemini-3-6-flash",
+  "to": "gemini-3-5-flash",
+  "type": "succeeds",
+  "note": "Gemini API requests to gemini-3.5-flash are routed to gemini-3.6-flash.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-succeeds-gemini-3-flash",
+  "from": "gemini-3-5-flash",
+  "to": "gemini-3-flash",
+  "type": "succeeds",
+  "note": "Gemini 3.5 Flash opened the 3.5 series in May 2026.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-flash-succeeds-gemini-2-5-flash",
+  "from": "gemini-3-flash",
+  "to": "gemini-2-5-flash",
+  "type": "succeeds",
+  "note": "Successive Flash generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-succeeds-gemini-2-0-flash",
+  "from": "gemini-2-5-flash",
+  "to": "gemini-2-0-flash",
+  "type": "succeeds",
+  "note": "Successive Flash generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g25flash"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-0-flash-succeeds-gemini-1-5-flash",
+  "from": "gemini-2-0-flash",
+  "to": "gemini-1-5-flash",
+  "type": "succeeds",
+  "note": "Successive Flash generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g20"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-lite-succeeds-gemini-3-1-flash-lite",
+  "from": "gemini-3-5-flash-lite",
+  "to": "gemini-3-1-flash-lite",
+  "type": "succeeds",
+  "note": "Successive Flash-Lite releases.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-lite-succeeds-gemini-2-5-flash-lite",
+  "from": "gemini-3-1-flash-lite",
+  "to": "gemini-2-5-flash-lite",
+  "type": "succeeds",
+  "note": "gemini-3.1-flash-lite is a listed replacement for retiring Gemini 2.5 Flash models.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-lite-succeeds-gemini-2-0-flash-lite",
+  "from": "gemini-2-5-flash-lite",
+  "to": "gemini-2-0-flash-lite",
+  "type": "succeeds",
+  "note": "Successive Flash-Lite generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g25-ga"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-cyber-succeeds-gemini-3-5-flash-cyber",
+  "from": "gemini-3-8-flash-cyber",
+  "to": "gemini-3-5-flash-cyber",
+  "type": "succeeds",
+  "note": "Inferred from naming: the price list carries 3.8 Flash Cyber where 3.5 Flash Cyber was announced in July 2026.",
+  "label": "analyst-interpretation",
+  "confidence": "low",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-dm-flash-cyber"
+  ]
+ },
+ {
+  "id": "rel-m-nano-banana-2-1-succeeds-gemini-3-1-flash-image",
+  "from": "nano-banana-2-1",
+  "to": "gemini-3-1-flash-image",
+  "type": "succeeds",
+  "note": "Press reports Google names Nano Banana 2.1 as the replacement for Gemini 3.1 Flash Image.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-nb21"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-image-succeeds-gemini-2-5-flash-image",
+  "from": "gemini-3-1-flash-image",
+  "to": "gemini-2-5-flash-image",
+  "type": "succeeds",
+  "note": "Nano Banana 2 followed the original Nano Banana.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-nb2"
+  ]
+ },
+ {
+  "id": "rel-m-imagen-4-succeeds-imagen-3",
+  "from": "imagen-4",
+  "to": "imagen-3",
+  "type": "succeeds",
+  "note": "Successive Imagen generations.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-succeeds-veo-3",
+  "from": "veo-3-1",
+  "to": "veo-3",
+  "type": "succeeds",
+  "note": "veo-3.1 is the listed replacement for veo-3.0-generate-001.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-succeeds-veo-2",
+  "from": "veo-3",
+  "to": "veo-2",
+  "type": "succeeds",
+  "note": "Successive Veo generations.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-2-flash-succeeds-gemini-omni-1-1-flash",
+  "from": "gemini-omni-1-2-flash",
+  "to": "gemini-omni-1-1-flash",
+  "type": "succeeds",
+  "note": "Omni 1.2 Flash is priced 30% below Omni 1.1 Flash and replaces it as the GA model.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-1-flash-succeeds-gemini-omni-flash",
+  "from": "gemini-omni-1-1-flash",
+  "to": "gemini-omni-flash",
+  "type": "succeeds",
+  "note": "Consecutive Omni Flash releases listed together on the price list.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-2-flash-succeeds-veo-3-1",
+  "from": "gemini-omni-1-2-flash",
+  "to": "veo-3-1",
+  "type": "succeeds",
+  "note": "Agent Platform's lifecycle table names gemini-omni-1.2-flash as the recommended replacement for veo-3.1-generate-001.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-live-succeeds-gemini-3-1-flash-live",
+  "from": "gemini-3-8-live",
+  "to": "gemini-3-1-flash-live",
+  "type": "succeeds",
+  "note": "Successive Live API models.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-cb-live38",
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-live-succeeds-gemini-2-5-flash-live",
+  "from": "gemini-3-1-flash-live",
+  "to": "gemini-2-5-flash-live",
+  "type": "succeeds",
+  "note": "Successive Live API models.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-tts-succeeds-gemini-3-1-flash-tts",
+  "from": "gemini-3-8-flash-tts",
+  "to": "gemini-3-1-flash-tts",
+  "type": "succeeds",
+  "note": "Successive Gemini text-to-speech models.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-3-succeeds-lyria-2",
+  "from": "lyria-3",
+  "to": "lyria-2",
+  "type": "succeeds",
+  "note": "Successive Lyria generations.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-embedding-2-succeeds-gemini-embedding-001",
+  "from": "gemini-embedding-2",
+  "to": "gemini-embedding-001",
+  "type": "succeeds",
+  "note": "Embedding 2 adds multimodal input to the text-only Gemini Embedding.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemma-4-succeeds-gemma-3",
+  "from": "gemma-4",
+  "to": "gemma-3",
+  "type": "succeeds",
+  "note": "Successive Gemma generations.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-bg-gemma4"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-argon-cyber-permissive-depends-on-gemini-4-argon",
+  "from": "gemini-4-argon-cyber-permissive",
+  "to": "gemini-4-argon",
+  "type": "depends-on",
+  "note": "Same model released without cyber guardrails to vetted defenders.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-g4argon",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-cyber-permissive-depends-on-gemini-4-carbon",
+  "from": "gemini-4-carbon-cyber-permissive",
+  "to": "gemini-4-carbon",
+  "type": "depends-on",
+  "note": "Defensive-cybersecurity variant of Gemini 4 Carbon behind the Fairwind allowlist.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-cyber-depends-on-gemini-3-5-flash",
+  "from": "gemini-3-5-flash-cyber",
+  "to": "gemini-3-5-flash",
+  "type": "depends-on",
+  "note": "Reported as built on Gemini 3.5 Flash and tuned for vulnerability work.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-flashcyber"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-deep-research-depends-on-gemini-3-1-pro",
+  "from": "gemini-deep-research",
+  "to": "gemini-3-1-pro",
+  "type": "depends-on",
+  "note": "Press reports the Deep Research agents are built on Gemini 3.1 Pro.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-deepresearch"
+  ]
+ },
+ {
+  "id": "rel-m-medgemma-1-5-depends-on-gemma-3",
+  "from": "medgemma-1-5",
+  "to": "gemma-3",
+  "type": "depends-on",
+  "note": "MedGemma is a Gemma-family derivative; the exact base model was not confirmed.",
+  "label": "analyst-interpretation",
+  "confidence": "low",
+  "sourceIds": [
+   "m-gr-medgemma"
+  ]
+ }
+]

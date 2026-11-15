@@ -1,0 +1,110 @@
+/* Pricing and AI economics — view-local styles. Every class is prefixed gai-pr-; colours come from the hub tokens only. */
+
+.gai-pr {
+  /* One hue family for the four cost lines: input, its cached share, output, and reasoning billed as output. */
+  --gai-pr-in: var(--s1);
+  --gai-pr-cached: color-mix(in srgb, var(--s1) 42%, var(--surface));
+  --gai-pr-out: color-mix(in srgb, var(--s1) 62%, var(--ink));
+  --gai-pr-reason: color-mix(in srgb, var(--s1) 26%, var(--surface));
+}
+
+.gai-pr-tabs { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.gai-pr-panel { margin-top: 16px; }
+.gai-pr-panel > .gai-sec:first-child { margin-top: 0; }
+
+/* controls */
+.gai-pr-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 18px; margin-bottom: 12px; }
+.gai-pr-field { display: grid; gap: 4px; min-width: 0; }
+.gai-pr-field > label, .gai-pr-field > .gai-pr-lab { font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+.gai-pr-field .gai-input, .gai-pr-field .gai-select { width: 100%; }
+.gai-pr-field small { font-size: 11.5px; color: var(--ink-3); }
+.gai-pr-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px 14px; }
+.gai-pr-slots { display: grid; gap: 10px; }
+.gai-pr-slot { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 8px; align-items: end; }
+.gai-pr-banner { margin-bottom: 12px; }
+.gai-pr-caption { margin-top: 8px; }
+
+/* price cells */
+.gai-pr-price { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.gai-pr-cond { display: block; font-size: 11.5px; line-height: 1.35; color: var(--ink-3); max-width: 24ch; white-space: normal; margin-top: 2px; }
+.gai-table td.num .gai-pr-cond { margin-left: auto; }
+.gai-pr-evcell { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; min-width: 150px; }
+.gai-pr-model { min-width: 150px; }
+.gai-pr-details { margin-top: 14px; }
+.gai-pr-details > summary { cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--accent); margin-bottom: 8px; }
+
+/* upcoming changes */
+.gai-pr-change { font-size: 15px; font-variant-numeric: tabular-nums; }
+.gai-pr-change b { font-weight: 700; }
+.gai-pr-when { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; font-size: 11.5px; font-weight: 600; background: var(--warn-bg); color: var(--warn); white-space: nowrap; }
+
+/* calculator results */
+.gai-pr-figs { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); gap: 10px 14px; margin: 10px 0 14px; }
+.gai-pr-fig { display: grid; gap: 1px; min-width: 0; }
+.gai-pr-fig .v { font-family: var(--font-d); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; font-size: 18px; overflow-wrap: anywhere; }
+.gai-pr-fig.main .v { font-size: 30px; }
+.gai-pr-fig .l { font-size: 12px; color: var(--ink-2); }
+.gai-pr-notes { margin-top: 12px; }
+.gai-pr-notes ul { list-style: disc; padding-left: 18px; margin-top: 4px; }
+.gai-pr-notes li + li { margin-top: 2px; }
+.gai-pr-card-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 10px; }
+
+/* cost-mix bar */
+.gai-pr-mix { position: relative; }
+.gai-pr-seglabels { position: relative; height: 30px; }
+.gai-pr-seglabels span { position: absolute; bottom: 4px; font-size: 11.5px; line-height: 1.2; color: var(--ink-2); white-space: nowrap; }
+.gai-pr-seglabels b { display: block; color: var(--ink); font-weight: 600; }
+.gai-chart.gai-pr-stack { height: 24px; }
+.gai-pr-stack > rect { stroke: var(--surface); stroke-width: 2px; }
+.gai-pr-stack > rect:hover, .gai-pr-stack > rect:focus-visible { opacity: 0.82; outline: none; }
+.gai-pr-k-input { fill: var(--gai-pr-in); }
+.gai-pr-k-cached { fill: var(--gai-pr-cached); }
+.gai-pr-k-output { fill: var(--gai-pr-out); }
+.gai-pr-hatch-bg { fill: var(--gai-pr-reason); }
+.gai-pr-hatch-line { stroke: var(--gai-pr-out); stroke-width: 2px; }
+.gai-pr-key { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; font-size: 12.5px; color: var(--ink-2); }
+.gai-pr-key b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.gai-pr-sw { width: 10px; height: 10px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+.gai-pr-sw.input { background: var(--gai-pr-in); }
+.gai-pr-sw.cached { background: var(--gai-pr-cached); }
+.gai-pr-sw.output { background: var(--gai-pr-out); }
+.gai-pr-sw.reasoning { background: repeating-linear-gradient(45deg, var(--gai-pr-out) 0 2px, var(--gai-pr-reason) 2px 5px); }
+
+/* price-history chart */
+.gai-pr-chartbox { position: relative; min-width: 0; }
+.gai-pr-line { fill: none; stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round; }
+.gai-pr-line.sched { stroke-dasharray: 5 4; stroke-linecap: butt; }
+.gai-pr-today { stroke: var(--ink-2); stroke-width: 1px; }
+.gai-pr-future { fill: var(--surface-2); opacity: 0.7; }
+.gai-pr-cross { stroke: var(--ink-3); stroke-width: 1px; }
+.gai-pr-leader { stroke: var(--line-2); stroke-width: 1px; fill: none; }
+.gai-pr-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.gai-pr-tip { top: 8px; white-space: nowrap; max-width: min(320px, 86vw); }
+.gai-pr-tiprow { display: flex; align-items: baseline; gap: 6px; margin-top: 3px; white-space: normal; }
+.gai-pr-tiprow i { width: 12px; height: 3px; border-radius: 2px; flex: none; align-self: center; }
+.gai-pr-tiprow b { font-variant-numeric: tabular-nums; }
+.gai-pr-tiprow span { opacity: 0.85; }
+.gai-pr-picked { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 4px 0 10px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--surface); font-size: 12.5px; font-weight: 500; max-width: 100%; }
+.gai-pr-picked i { width: 14px; height: 3px; border-radius: 2px; flex: none; }
+.gai-pr-picked span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gai-pr-picked button { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; color: var(--ink-3); flex: none; }
+.gai-pr-picked button:hover { background: var(--surface-2); color: var(--ink); }
+.gai-pr-linekey { display: inline-block; width: 22px; height: 0; border-top: 2px solid var(--ink-2); vertical-align: middle; margin-right: 6px; }
+.gai-pr-linekey.sched { border-top-style: dashed; }
+
+/* reading guide */
+.gai-pr-read { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 22px; }
+.gai-pr-read dt { font-weight: 600; font-size: 14px; }
+.gai-pr-read dd { color: var(--ink-2); font-size: 13.5px; margin-top: 2px; }
+
+@media (max-width: 980px) {
+  .gai-pr-read { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .gai-pr-read { grid-template-columns: minmax(0, 1fr); }
+  .gai-pr-figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gai-pr-fig.main { grid-column: 1 / -1; }
+  .gai-pr-slot { grid-template-columns: minmax(0, 1fr) auto; }
+  .gai-pr-slot > :first-child { grid-column: 1 / -1; }
+  .gai-pr-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

@@ -1,1 +1,3901 @@
-[]
+[
+ {
+  "id": "gemini",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemini",
+  "aliases": [],
+  "layer": "models",
+  "group": "Gemini",
+  "summary": "Google's main family of multimodal foundation models. In November 2026 the current generation is Gemini 4 (Argon, Carbon, Hydrogen), with Gemini 3.1 Pro still offered in preview.",
+  "status": "ga",
+  "introducedAt": "2023-12-06",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon",
+   "m-pk-g10"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-flash",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemini Flash and Flash-Lite",
+  "aliases": [
+   "Gemini Flash",
+   "Flash-Lite"
+  ],
+  "layer": "models",
+  "group": "Gemini",
+  "summary": "The faster, lower-priced Gemini lines. Flash moved through 3.5, 3.6, 3.7 and 3.8 during 2026; Flash-Lite is the cheapest high-volume tier.",
+  "status": "ga",
+  "introducedAt": "2024-05-14",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog",
+   "m-pk-g15-io"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "nano-banana",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Nano Banana (Gemini image models)",
+  "aliases": [
+   "Gemini Image",
+   "Nano Banana"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "summary": "Gemini models that generate and edit images natively; 'Nano Banana' is the product name Google uses on its price list.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nbga",
+   "m-cb-nb2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-omni",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemini Omni",
+  "aliases": [],
+  "layer": "models",
+  "group": "Video",
+  "summary": "Any-to-any Gemini models that start with video generation and editing from text, image, video and audio inputs.",
+  "status": "ga",
+  "introducedAt": "2026-05-20",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26",
+   "m-cb-omni12"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-live",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemini Live and audio models",
+  "aliases": [
+   "Live API",
+   "native audio"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "summary": "Speech models served through the Live API and related endpoints: native speech-to-speech, text-to-speech, transcription and live translation.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-live38"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "imagen",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Imagen",
+  "aliases": [],
+  "layer": "models",
+  "group": "Image",
+  "summary": "Google's dedicated text-to-image model line on Google Cloud, priced per image.",
+  "status": "ga",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Veo",
+  "aliases": [],
+  "layer": "models",
+  "group": "Video",
+  "summary": "Google's dedicated video generation model line, priced per second of generated video.",
+  "status": "ga",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite",
+   "m-gcd-veo31"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "lyria",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Lyria",
+  "aliases": [],
+  "layer": "models",
+  "group": "Audio and Live",
+  "summary": "Google's music generation model line.",
+  "status": "ga",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-embedding",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemini Embedding",
+  "aliases": [],
+  "layer": "models",
+  "group": "Embeddings",
+  "summary": "Embedding models for retrieval and classification.",
+  "status": "ga",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-aimonth"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemma",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemma",
+  "aliases": [],
+  "layer": "models",
+  "group": "Open models",
+  "summary": "Google's open-weight model family, built from Gemini research and released for self-hosting.",
+  "status": "ga",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-gemma4",
+   "m-pk-gemma3"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-robotics",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Gemini Robotics",
+  "aliases": [],
+  "layer": "models",
+  "group": "Robotics and world models",
+  "summary": "Gemini-based models for robots: an embodied-reasoning model that plans and calls tools, and vision-language-action models that control hardware.",
+  "status": "ga",
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-er2",
+   "m-pr-robotics2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "genie",
+  "kind": "model-family",
+  "providerId": "google",
+  "name": "Genie",
+  "aliases": [],
+  "layer": "models",
+  "group": "Robotics and world models",
+  "summary": "Google DeepMind's interactive world models, which generate explorable environments.",
+  "status": "experimental",
+  "verification": "unverified",
+  "sourceIds": [
+   "m-pr-genie"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-4-argon",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 4 Argon",
+  "aliases": [
+   "Argon",
+   "gemini-4-argon"
+  ],
+  "layer": "models",
+  "group": "Gemini 4",
+  "parentId": "gemini",
+  "summary": "The first Gemini 4 model and Google's broadly available frontier model: built for long multi-step work in software engineering, finance, legal and cyber defence.",
+  "status": "ga",
+  "introducedAt": "2026-09-30",
+  "dossier": {
+   "howItWorks": [
+    {
+     "text": "Input, thinking and output tokens share one 1,048,576-token context window; if input plus the output limit would exceed it, the API caps output to the remaining space.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-g4argon"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Thinking cannot be switched off: the documented levels are low, medium (default) and high, and requesting a thinking budget or a 'minimal' level returns a validation error.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-g4argon",
+      "m-gcd-g4argon"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "inputsOutputs": [
+    {
+     "text": "Priced for text, image, video and audio input and text output including reasoning tokens.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    },
+    {
+     "text": "A normal request returns up to 65,536 output tokens; a background 'long decode' mode can produce up to about 1 million.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-g4argon",
+      "m-gcp-pricing"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "useCases": [
+    {
+     "text": "Google positions Argon for long-running coding, multi-document analysis, quantitative finance, legal research and automated vulnerability remediation through CodeMender.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-g4argon"
+     ]
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Google says Argon leads the Vals Index and Harvey's legal agent benchmark and ties for first on CWE-Bench v1 with 68%.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-g4argon"
+     ],
+     "asOf": "2026-10-13"
+    },
+    {
+     "text": "Google says Argon is its most resistant model to indirect prompt injection, cutting attack success to 0.7% over 15 adaptive attempts on a Gray Swan benchmark.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-g4argon"
+     ],
+     "asOf": "2026-10-13"
+    }
+   ],
+   "limitations": [
+    {
+     "text": "Explicit context caching (cachedContents) is not supported on Gemini 4 Argon; only implicit caching applies.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-g4argon"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "No free tier on the Gemini Developer API.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-pricing"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Offensive security tasks such as penetration testing are blocked in the standard model; an unrestricted variant is limited to vetted defenders in the Fairwind Program.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-g4argon"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-4-argon"
+   ],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536,
+   "reasoning": "always",
+   "knowledgeCutoff": "2026-03",
+   "unverified": [
+    "Tool-use and structured-output support were not read from a primary page.",
+    "Sources disagree on the non-streaming output cap (32,768 vs 65,536 tokens)."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon",
+   "m-gapi-g4argon",
+   "m-gcd-g4argon",
+   "m-dm-card-g4argon",
+   "m-bg-g4argon"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-4-argon-cyber-permissive",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 4 Argon Cyber Permissive",
+  "aliases": [
+   "Argon Cyber Permissive"
+  ],
+  "layer": "models",
+  "group": "Gemini 4",
+  "parentId": "gemini",
+  "summary": "Variant of Gemini 4 Argon without cyber guardrails, released to a vetted set of defenders through Google's Fairwind Program.",
+  "status": "preview",
+  "introducedAt": "2026-10-13",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Promotional pricing does not apply to the Cyber Permissive variant.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id not confirmed.",
+    "Launch stage and exact first-access date not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-4-carbon",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 4 Carbon",
+  "aliases": [
+   "Carbon"
+  ],
+  "layer": "models",
+  "group": "Gemini 4",
+  "parentId": "gemini",
+  "summary": "The second Gemini 4 frontier model, announced a month after Argon and reported to be built on it with tuning for cybersecurity and long-horizon agentic work. Priced the same as Argon.",
+  "status": "ga",
+  "introducedAt": "2026-10-28",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "CodeMender supports Gemini 4 Carbon as a model backend in preview.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-codemender",
+      "m-gcp-pricing"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Press coverage of the launch says Google reports Carbon is more than twice as likely as Argon to generate secure code on internal benchmarks.",
+     "label": "independent-measurement",
+     "sourceIds": [
+      "m-pr-carbon"
+     ],
+     "asOf": "2026-10-28",
+     "confidence": "low"
+    }
+   ],
+   "limitations": [
+    {
+     "text": "Agent Platform documentation lists Carbon as GA from 10 November 2026 but limited to verified enterprise customers in select regions.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g4carbon"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "knowledgeCutoff": "2026-03",
+   "unverified": [
+    "Base API id not seen in a source (only gemini-4-carbon-cyber-permissive was confirmed).",
+    "Context window and output limits not confirmed.",
+    "Google's own announcement post was not read; the announcement date and 'built on Argon' come from press."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g4carbon",
+   "m-pr-carbon"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-4-carbon-cyber-permissive",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 4 Carbon Cyber Permissive",
+  "aliases": [
+   "gemini-4-carbon-cyber-permissive",
+   "Carbon Cyber Permissive"
+  ],
+  "layer": "models",
+  "group": "Gemini 4",
+  "parentId": "gemini",
+  "summary": "Defensive-cybersecurity variant of Gemini 4 Carbon, available only behind the Fairwind Program allowlist.",
+  "status": "preview",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Access requires applying through the Fairwind Program; access to earlier Gemini cyber models does not carry over. Listed regions are global and US.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g4carbon"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Promotional pricing does not apply to the Cyber Permissive variant.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-4-carbon-cyber-permissive"
+   ],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Launch stage not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g4carbon"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-4-hydrogen",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 4 Hydrogen",
+  "aliases": [
+   "Hydrogen",
+   "gemini-4-hydrogen"
+  ],
+  "layer": "models",
+  "group": "Gemini 4",
+  "parentId": "gemini",
+  "summary": "The fast, lower-priced Gemini 4 model, launched 12 November 2026 at $1.50 / $7.50 per million tokens — the same list price as the Flash line it follows.",
+  "status": "ga",
+  "introducedAt": "2026-11-12",
+  "dossier": {
+   "howItWorks": [
+    {
+     "text": "Uses one unified 1,048,576-token limit covering input, thinking and output, replacing the separate input and output limits of Gemini 3.8 Flash.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g4hydrogen"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Offers four thinking levels: low, medium, high (default) and a new 'xhigh'.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-bg-g4hydrogen",
+      "m-gcd-g4hydrogen"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "inputsOutputs": [
+    {
+     "text": "A foreground request returns up to 65,536 output tokens; background long decodes can use the full window.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g4hydrogen"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Google states Hydrogen scores 54 on the Artificial Analysis Intelligence Index at 'xhigh' thinking and 51 at the default 'high'.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-bg-g4hydrogen"
+     ],
+     "asOf": "2026-11-12",
+     "confidence": "medium"
+    },
+    {
+     "text": "Pricing is flat across the 1M context at $1.50 input and $7.50 output per million tokens.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-bg-g4hydrogen",
+      "m-gcp-pricing"
+     ]
+    }
+   ],
+   "limitations": [
+    {
+     "text": "Explicit context caching is not supported; implicit caching is on by default with a 4,096-token minimum, and cache-write (TTL) pricing begins 12 January 2027.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g4hydrogen",
+      "m-gcp-pricing"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-4-hydrogen"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536,
+   "knowledgeCutoff": "2026-03",
+   "unverified": [
+    "Whether thinking can be disabled.",
+    "Launch date comes from third-party reports of the changelog."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-g4hydrogen",
+   "m-gcd-g4hydrogen",
+   "m-dm-card-g4hydrogen",
+   "m-pr-hydrogen"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3 Pro",
+  "aliases": [
+   "gemini-3-pro-preview",
+   "Gemini 3 Pro Preview"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini",
+  "summary": "The first Gemini 3 flagship, released in preview in November 2025 and shut down in March 2026 in favour of Gemini 3.1 Pro.",
+  "status": "retired",
+  "introducedAt": "2025-11-19",
+  "retiredAt": "2026-03-09",
+  "dossier": {
+   "differentiators": [
+    {
+     "text": "At launch Google said Gemini 3 Pro topped the LMArena leaderboard with a score of 1501 Elo.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-g3ent"
+     ],
+     "asOf": "2025-11-19"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3-pro-preview"
+   ],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Exact launch day: Google Cloud's post is dated 2025-11-19, and the same blog dated Gemini 3.1 Pro one day after its API release date.",
+    "Context window and output limit not re-confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-cb-g3ent",
+   "m-gapi-deprecations",
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-1-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.1 Pro",
+  "aliases": [
+   "gemini-3.1-pro-preview",
+   "Gemini 3.1 Pro Preview"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini",
+  "summary": "Google's Pro-tier Gemini 3 model. Released in preview in February 2026 and still labelled Preview nine months later; Google's migration guide now points its users to Gemini 4.",
+  "status": "preview",
+  "introducedAt": "2026-02-19",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "The Gemini API model page lists a 1,048,576-token input limit and a 65,536-token output limit, with thinking, caching, function calling and search grounding supported and the Live API not supported.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-g31pro"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "useCases": [
+    {
+     "text": "Google positioned 3.1 Pro as a step up in core reasoning for complex problem-solving.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-g31pro"
+     ],
+     "asOf": "2026-02-20"
+    }
+   ],
+   "limitations": [
+    {
+     "text": "Prompts over 200K input tokens are billed at a higher long-context rate for all tokens ($4 input / $18 output per million on Google Cloud).",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    },
+    {
+     "text": "No free tier on the Gemini Developer API.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-pricing"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Listed only on the global endpoint in Google Cloud's price list, and still in Preview with no GA or retirement date.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing",
+      "m-gcd-migrate"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.1-pro-preview"
+   ],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536,
+   "toolUse": true,
+   "knowledgeCutoff": "2025-01",
+   "unverified": [
+    "Whether thinking can be disabled.",
+    "A reported September 2026 price rise to $2.50 / $15 could not be confirmed: both official price lists show $2 / $12."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g31pro",
+   "m-gapi-g31pro",
+   "m-gapi-deprecations",
+   "m-gcd-migrate"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-5-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.5 Pro",
+  "aliases": [],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini",
+  "summary": "A Pro model Google said in May 2026 was in testing and due the following month. It has not shipped and has no price or model id; reports that it was cancelled are not confirmed by Google.",
+  "status": "announced",
+  "introducedAt": "2026-05-20",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "On 20 May 2026 Google said Gemini 3.5 Pro was in testing and 'coming next month'; it does not appear on Google's price lists as of 15 November 2026.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-io26",
+      "m-gcp-pricing"
+     ],
+     "asOf": "2026-11-15"
+    },
+    {
+     "text": "Third-party reports say the model was quietly cancelled; Google has not confirmed this in a document read for this research.",
+     "label": "independent-measurement",
+     "sourceIds": [
+      "m-pr-g35pro"
+     ],
+     "confidence": "low"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [],
+   "modalitiesOut": [],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Never released; all specifications unknown.",
+    "Cancellation is reported by third parties only."
+   ]
+  },
+  "verification": "disputed",
+  "sourceIds": [
+   "m-cb-io26",
+   "m-pr-g35pro"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3 Flash",
+  "aliases": [
+   "gemini-3-flash-preview",
+   "Gemini 3 Flash Preview"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "The first Gemini 3 Flash model, released in preview in December 2025 and still listed in preview.",
+  "status": "preview",
+  "introducedAt": "2025-12-17",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "The Gemini API deprecations page lists no shutdown date and names gemini-3.6-flash as the replacement.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-deprecations"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3-flash-preview"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Context window and output limit not confirmed this cycle."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations",
+   "m-pr-g3flash-price"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-1-flash-lite",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.1 Flash-Lite",
+  "aliases": [
+   "gemini-3.1-flash-lite",
+   "gemini-3.1-flash-lite-preview"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "Low-cost Gemini 3 model for high-volume work such as translation and moderation; preview in March 2026, GA in May 2026.",
+  "status": "ga",
+  "introducedAt": "2026-03-03",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "Google describes it as built for high-volume developer workloads where cost is the priority, such as translation and content moderation.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-whatsnew"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.1-flash-lite",
+    "gemini-3.1-flash-lite-preview"
+   ],
+   "category": "text",
+   "tier": "light",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Context window and output limit not confirmed this cycle."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-whatsnew",
+   "m-gcd-versions",
+   "m-gapi-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-5-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.5 Flash",
+  "aliases": [
+   "gemini-3.5-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "The first Gemini 3.5 model, launched at Google I/O in May 2026 as Google's strongest agentic and coding model at the time.",
+  "status": "ga",
+  "introducedAt": "2026-05-19",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "Computer use was added as a built-in tool for 3.5 Flash in June 2026, according to press coverage.",
+     "label": "independent-measurement",
+     "sourceIds": [
+      "m-pr-computeruse"
+     ],
+     "confidence": "low"
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Google said 3.5 Flash outperformed Gemini 3.1 Pro on Terminal-Bench 2.1 (76.2%), GDPval-AA (1656 Elo) and MCP Atlas (83.6%).",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-io26"
+     ],
+     "asOf": "2026-05-20"
+    }
+   ],
+   "limitations": [
+    {
+     "text": "On the Gemini Developer API the model is deprecated and requests are routed to gemini-3.6-flash, while Agent Platform still lists it with retirement no earlier than 19 May 2027.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-changelog",
+      "m-gapi-deprecations",
+      "m-gcd-versions"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "At $1.50 / $9.00 per million tokens it costs more than the newer 3.8 Flash.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.5-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "toolUse": true,
+   "unverified": [
+    "Context window and output limit not confirmed this cycle."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26",
+   "m-gapi-changelog",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-5-flash-lite",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.5 Flash-Lite",
+  "aliases": [
+   "gemini-3.5-flash-lite"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "Low-latency, low-cost Gemini 3.5 model aimed at sub-agents and high-volume automation.",
+  "status": "ga",
+  "introducedAt": "2026-07-21",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "The Gemini API changelog describes it as a cost-effective sub-agent option for high-volume automation.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-gapi-changelog"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Has a free tier on the Gemini Developer API.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-pricing"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.5-flash-lite"
+   ],
+   "category": "text",
+   "tier": "light",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog",
+   "m-gcd-migrate",
+   "m-gapi-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-6-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.6 Flash",
+  "aliases": [
+   "gemini-3.6-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "Flash release of July 2026, shipped with Gemini 3.5 Flash-Lite and Gemini 3.5 Flash Cyber. Now a previous-generation model with a November 2026 retirement date on Agent Platform.",
+  "status": "deprecated",
+  "introducedAt": "2026-07-21",
+  "retiredAt": "2026-11-19",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Agent Platform's lifecycle table lists retirement on 19 November 2026 with gemini-3.8-flash as the replacement, although the price list still shows a 2027 price for the model.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-versions",
+      "m-gcp-pricing"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.6-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Context window and output limit not confirmed this cycle.",
+    "The Gemini API has no announced shutdown date; 2026-11-19 is the Agent Platform retirement date."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog",
+   "m-gapi-g36",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-7-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.7 Flash",
+  "aliases": [
+   "gemini-3.7-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "Flash release of August 2026, superseded three weeks later by 3.8 Flash.",
+  "status": "deprecated",
+  "introducedAt": "2026-08-13",
+  "retiredAt": "2027-01-28",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Deprecated on the Gemini Developer API on 8 October 2026: requests are routed to gemini-3.8-flash and the model is no longer selectable in AI Studio. Agent Platform retires it on 28 January 2027.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-changelog",
+      "m-gcd-versions"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.7-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Context window and output limit not confirmed this cycle."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-8-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.8 Flash",
+  "aliases": [
+   "gemini-3.8-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "The current Gemini 3 Flash model (GA 2 September 2026), sold at an introductory $0.75 / $3.75 per million tokens until the end of 2026.",
+  "status": "ga",
+  "introducedAt": "2026-09-02",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "CodeMender uses Gemini 3.8 Flash as its default model.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-codemender"
+     ],
+     "confidence": "medium"
+    }
+   ],
+   "limitations": [
+    {
+     "text": "The list price doubles to $1.50 / $7.50 per million tokens on 1 January 2027 when the introductory credit ends.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.8-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536,
+   "unverified": [
+    "Knowledge cutoff and thinking controls not confirmed."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-g38",
+   "m-gapi-changelog",
+   "m-gcd-versions",
+   "m-gcd-migrate"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-8-flash-cyber",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.8 Flash Cyber",
+  "aliases": [],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "Security-tuned variant of Gemini 3.8 Flash that appears on Google Cloud's price list and as a CodeMender option; priced at the standard (non-introductory) Flash rate.",
+  "status": "preview",
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id, release date, launch stage and access conditions not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-5-flash-cyber",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.5 Flash Cyber",
+  "aliases": [],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini-flash",
+  "summary": "Security-tuned model built on Gemini 3.5 Flash for finding, validating and patching vulnerabilities; announced July 2026 and restricted to governments and trusted partners through CodeMender.",
+  "status": "preview",
+  "introducedAt": "2026-07-21",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Access at launch was gated to governments and trusted partners, piloted through CodeMender.",
+     "label": "independent-measurement",
+     "sourceIds": [
+      "m-pr-flashcyber"
+     ],
+     "asOf": "2026-07-21",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "No public API id or token price was found.",
+    "Current status after the 3.8 Flash Cyber listing is unknown."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-dm-flash-cyber",
+   "m-pr-flashcyber",
+   "m-cb-codemender"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-5-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.5 Pro",
+  "aliases": [
+   "gemini-2.5-pro"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini",
+  "summary": "Google's 2025 flagship thinking model. Scheduled for retirement on Agent Platform on 20 October 2026.",
+  "status": "deprecated",
+  "introducedAt": "2025-03-25",
+  "retiredAt": "2026-10-20",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Agent Platform's model page says the model is retired on 20 October 2026, with gemini-3.8-flash or gemini-3.5-flash as replacements; an April 2026 release note had given 16 October.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g25pro",
+      "m-gcd-relnotes"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "On the Gemini Developer API a Google staff reply says there is no formal shutdown date but only existing customers may use 2.x models; new users report 'no longer available' errors.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-gapi-forum-25"
+     ],
+     "confidence": "low"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-2.5-pro"
+   ],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536,
+   "reasoning": "always",
+   "unverified": [
+    "Whether the 2026-10-20 Agent Platform retirement took effect as scheduled (prices were still listed on 2026-11-15).",
+    "Context and output limits are recalled, not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g25pro",
+   "m-gcd-relnotes",
+   "m-gapi-forum-25",
+   "m-pk-g25",
+   "m-pk-g25-ga"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-5-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.5 Flash",
+  "aliases": [
+   "gemini-2.5-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini-flash",
+  "summary": "The 2025 Flash thinking model, repriced to a single $0.30 / $2.50 rate at GA. Scheduled for retirement on Agent Platform on 20 October 2026.",
+  "status": "deprecated",
+  "introducedAt": "2025-04-17",
+  "retiredAt": "2026-10-20",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Agent Platform lists retirement on 20 October 2026 with gemini-3.8-flash, gemini-3.5-flash-lite or gemini-3.1-flash-lite as replacements.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-g25pro",
+      "m-gcd-versions"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-2.5-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 65536,
+   "reasoning": "optional",
+   "unverified": [
+    "Whether the 2026-10-20 retirement took effect as scheduled.",
+    "Context and output limits are recalled, not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g25pro",
+   "m-gcd-versions",
+   "m-pk-g25flash",
+   "m-pk-g25-ga"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-5-flash-lite",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.5 Flash-Lite",
+  "aliases": [
+   "gemini-2.5-flash-lite"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini-flash",
+  "summary": "The lowest-cost Gemini 2.5 model, scheduled for retirement in October 2026 with the rest of the 2.5 generation.",
+  "status": "deprecated",
+  "introducedAt": "2025-06-17",
+  "model": {
+   "apiIds": [
+    "gemini-2.5-flash-lite"
+   ],
+   "category": "text",
+   "tier": "light",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Exact retirement date (a 2 April 2026 release note says 16 October 2026; later model pages for Pro and Flash say 20 October)."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes",
+   "m-pk-g25-ga"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-5-flash-image",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.5 Flash Image",
+  "aliases": [
+   "Nano Banana",
+   "gemini-2.5-flash-image"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "nano-banana",
+  "summary": "The original 'Nano Banana' image generation and editing model, priced at about $0.039 per 1024x1024 image.",
+  "status": "ga",
+  "model": {
+   "apiIds": [
+    "gemini-2.5-flash-image"
+   ],
+   "category": "image",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text",
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Release date and current lifecycle status not confirmed this cycle (still on the price list).",
+    "API id is from the lifecycle table's upgrade column, read via search."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-5-flash-live",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.5 Flash Live API",
+  "aliases": [
+   "Gemini 2.5 Flash Native Audio"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Gemini 2.5 Flash served through the Live API for real-time voice and video sessions.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "audio",
+   "modalitiesIn": [
+    "text",
+    "audio",
+    "video",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API ids and current lifecycle status not confirmed this cycle (still on the price list)."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-5-computer-use",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.5 Computer Use",
+  "aliases": [
+   "Gemini 2.5 Pro Computer Use-Preview",
+   "Computer Use"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini",
+  "summary": "Preview model that operates user interfaces through the Computer Use tool; billed on the Gemini 2.5 Pro SKU.",
+  "status": "preview",
+  "dossier": {
+   "howItWorks": [
+    {
+     "text": "Computer Use is billed on input and output tokens at the rate of the underlying model; from Gemini 3.5, function declarations count as input tokens.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text",
+    "action"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "toolUse": true,
+   "unverified": [
+    "API id and release date not confirmed this cycle."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-computeruse"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-0-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.0 Flash",
+  "aliases": [
+   "gemini-2.0-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini-flash",
+  "summary": "The 2025 workhorse Flash model. Discontinued on Agent Platform on 1 June 2026.",
+  "status": "retired",
+  "introducedAt": "2024-12-11",
+  "retiredAt": "2026-06-01",
+  "model": {
+   "apiIds": [
+    "gemini-2.0-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 8192,
+   "reasoning": "none",
+   "unverified": [
+    "Context and output limits are recalled, not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes",
+   "m-pk-g20",
+   "m-pk-g20-ga"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-2-0-flash-lite",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 2.0 Flash-Lite",
+  "aliases": [
+   "gemini-2.0-flash-lite"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini-flash",
+  "summary": "Lowest-cost Gemini 2.0 model. Discontinued on Agent Platform on 1 June 2026.",
+  "status": "retired",
+  "introducedAt": "2025-02-05",
+  "retiredAt": "2026-06-01",
+  "model": {
+   "apiIds": [
+    "gemini-2.0-flash-lite"
+   ],
+   "category": "text",
+   "tier": "light",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "reasoning": "none",
+   "unverified": [
+    "Context and output limits not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes",
+   "m-pk-g20-ga"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-1-5-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 1.5 Pro",
+  "aliases": [
+   "gemini-1.5-pro"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini",
+  "summary": "The 2024 flagship that introduced the long context window (1 million tokens, later 2 million).",
+  "status": "retired",
+  "introducedAt": "2024-02-15",
+  "model": {
+   "apiIds": [
+    "gemini-1.5-pro"
+   ],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 2097152,
+   "maxOutputTokens": 8192,
+   "reasoning": "none",
+   "unverified": [
+    "Retirement date not re-confirmed this cycle (the model still appears on the price list with legacy per-character rates).",
+    "Limits are recalled, not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g15",
+   "m-pk-g15-io",
+   "m-pk-g15pro-cut"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-1-5-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 1.5 Flash",
+  "aliases": [
+   "gemini-1.5-flash"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini-flash",
+  "summary": "The first Flash model (May 2024), whose price was cut by up to 78% three months after launch.",
+  "status": "retired",
+  "introducedAt": "2024-05-14",
+  "model": {
+   "apiIds": [
+    "gemini-1.5-flash"
+   ],
+   "category": "text",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 1048576,
+   "maxOutputTokens": 8192,
+   "reasoning": "none",
+   "unverified": [
+    "Retirement date not re-confirmed this cycle.",
+    "Limits are recalled, not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g15-io",
+   "m-pk-g15flash-cut"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-1-0-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 1.0 Pro",
+  "aliases": [
+   "gemini-1.0-pro",
+   "gemini-pro"
+  ],
+  "layer": "models",
+  "group": "Gemini 2.x and earlier",
+  "parentId": "gemini",
+  "summary": "The first generally available Gemini model (December 2023), limited to a 32K context window.",
+  "status": "retired",
+  "introducedAt": "2023-12-06",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Google's price list notes that Gemini 1.0 Pro supports only up to a 32K context window.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-1.0-pro"
+   ],
+   "category": "text",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": 32000,
+   "maxOutputTokens": null,
+   "reasoning": "none",
+   "unverified": [
+    "Retirement date not re-confirmed this cycle."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g10"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-pro-image",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3 Pro Image (Nano Banana Pro)",
+  "aliases": [
+   "Nano Banana Pro",
+   "gemini-3-pro-image-preview"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "nano-banana",
+  "summary": "The higher-fidelity Gemini image model, with output up to 4K; generally available on Agent Platform since May 2026.",
+  "status": "ga",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Charges 560 tokens per input image; an output image costs about $0.134 at 1K or 2K and $0.24 at 4K.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    },
+    {
+     "text": "1K and 2K output were GA at the May 2026 launch while 4K remained in preview.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-nbga"
+     ],
+     "asOf": "2026-05-28"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3-pro-image-preview"
+   ],
+   "category": "image",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text",
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "GA API id not confirmed (the preview id gemini-3-pro-image-preview was scheduled for shutdown on 2026-06-25).",
+    "Original preview release date not confirmed this cycle."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nbga",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-1-flash-image",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.1 Flash Image (Nano Banana 2)",
+  "aliases": [
+   "Nano Banana 2",
+   "gemini-3.1-flash-image-preview"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "nano-banana",
+  "summary": "Flash-speed image generation and editing with web-search grounding and text rendering; preview February 2026, GA May 2026.",
+  "status": "ga",
+  "introducedAt": "2026-02-27",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Charges 1,120 tokens per input image; an output image costs about $0.045 at 512px, $0.067 at 1K, $0.101 at 2K and $0.15 at 4K.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    },
+    {
+     "text": "Since May 2026 it also accepts video files as a prompt input (preview).",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-nbga"
+     ],
+     "asOf": "2026-05-28"
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Google says it keeps up to five characters and up to 14 objects consistent across generations.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-nb2"
+     ],
+     "asOf": "2026-02-27"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.1-flash-image-preview"
+   ],
+   "category": "image",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "pdf"
+   ],
+   "modalitiesOut": [
+    "text",
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "GA API id not confirmed (the preview id was scheduled for shutdown on 2026-06-25).",
+    "Press reports that the Gemini API lists an earliest shutdown of 2026-10-29 for this model; not confirmed on an official page."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nb2",
+   "m-cb-nbga",
+   "m-gapi-changelog",
+   "m-pr-nb21"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-1-flash-lite-image",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.1 Flash-Lite Image (Nano Banana 2 Lite)",
+  "aliases": [
+   "Nano Banana 2 Lite"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "nano-banana",
+  "summary": "The cheapest Gemini image model, producing 1K images at about $0.034 each.",
+  "status": "ga",
+  "introducedAt": "2026-06-30",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Charges 1,120 tokens per input image and 1,120 tokens (about $0.034) per 1K output image.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "image",
+   "tier": "light",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video"
+   ],
+   "modalitiesOut": [
+    "text",
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id and launch stage not confirmed.",
+    "Launch date is from press coverage."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-nb2lite"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "nano-banana-2-1",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Nano Banana 2.1",
+  "aliases": [
+   "Nano Banana 2.1",
+   "gemini-nano-banana-2.1"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "nano-banana",
+  "summary": "October 2026 image model that replaces Nano Banana 2 at roughly half the per-image price and adds 4K output at $0.113.",
+  "status": "ga",
+  "introducedAt": "2026-10-06",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Charges 1,120 tokens per input image; an output image costs about $0.034 at 1K, $0.05 at 2K and $0.113 at 4K.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ],
+   "limitations": [
+    {
+     "text": "Does not support the Flex tier.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-nano-banana-2.1"
+   ],
+   "category": "image",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video"
+   ],
+   "modalitiesOut": [
+    "text",
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id and launch date come from press reports of Google's documentation.",
+    "Sources disagree on whether it is based on Gemini 3.1 Flash Image or Gemini 3.6 Flash."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-nb21"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "imagen-4",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Imagen 4",
+  "aliases": [
+   "Imagen 4 Ultra",
+   "Imagen 4 Fast",
+   "imagen-4.0-generate-001"
+  ],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "imagen",
+  "summary": "Google's dedicated text-to-image model in standard, Ultra and Fast variants, priced per image. Lifecycle documentation lists it as retired in mid-2026 in favour of Gemini image models.",
+  "status": "retired",
+  "introducedAt": "2025-08-14",
+  "retiredAt": "2026-06-30",
+  "model": {
+   "apiIds": [
+    "imagen-4.0-generate-001"
+   ],
+   "category": "image",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Ultra and Fast API ids not confirmed.",
+    "The Gemini API lists a later shutdown (2026-08-17) than Agent Platform (2026-06-30); prices were still on the Agent Platform price list on 2026-11-15."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "imagen-3",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Imagen 3",
+  "aliases": [],
+  "layer": "models",
+  "group": "Image",
+  "parentId": "imagen",
+  "summary": "Previous-generation Imagen model with generate, edit and customize features.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "image",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "image"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API ids, release date and retirement status not confirmed this cycle."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo-3-1",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Veo 3.1",
+  "aliases": [
+   "veo-3.1-generate-001"
+  ],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "veo",
+  "summary": "Google's highest-fidelity video model with native audio, up to 4K output.",
+  "status": "ga",
+  "introducedAt": "2025-11-17",
+  "dossier": {
+   "limitations": [
+    {
+     "text": "Agent Platform lists retirement no earlier than 4 May 2027 and names gemini-omni-1.2-flash as the recommended replacement.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcd-veo31",
+      "m-gcd-versions"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "veo-3.1-generate-001"
+   ],
+   "category": "video",
+   "tier": "flagship",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Introduced date is the documented release of veo-3.1-generate-001; an earlier preview date was not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-veo31",
+   "m-gcd-versions",
+   "m-cb-veo31lite"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo-3-1-fast",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Veo 3.1 Fast",
+  "aliases": [],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "veo",
+  "summary": "Faster Veo 3.1 tier for standard production workflows.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "video",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id (a preview id veo-3.1-fast-generate-preview appears in Gemini API docs), release date and stage."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo-3-1-lite",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Veo 3.1 Lite",
+  "aliases": [
+   "veo-3.1-lite-generate-preview"
+  ],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "veo",
+  "summary": "The lowest-cost Veo 3.1 tier, launched on Vertex AI in April 2026 for high-volume video applications.",
+  "status": "preview",
+  "introducedAt": "2026-04-03",
+  "dossier": {
+   "differentiators": [
+    {
+     "text": "Google says Veo 3.1 Lite costs less than half of Veo 3.1 Fast at the same speed.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-aimonth"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "veo-3.1-lite-generate-preview"
+   ],
+   "category": "video",
+   "tier": "light",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Current launch stage on Agent Platform.",
+    "Google's monthly recap files the launch under March 2026; the Vertex AI post is dated 2026-04-03."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite",
+   "m-cb-aimonth"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo-3",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Veo 3",
+  "aliases": [
+   "veo-3.0-generate-001"
+  ],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "veo",
+  "summary": "First Veo model with synchronized audio; retired on Agent Platform in mid-2026.",
+  "status": "retired",
+  "introducedAt": "2025-07-29",
+  "retiredAt": "2026-06-30",
+  "model": {
+   "apiIds": [
+    "veo-3.0-generate-001"
+   ],
+   "category": "video",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "A March 2026 release note already lists the model as discontinued; exact retirement date uncertain."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo-3-fast",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Veo 3 Fast",
+  "aliases": [],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "veo",
+  "summary": "Faster tier of Veo 3.",
+  "status": "retired",
+  "model": {
+   "apiIds": [],
+   "category": "video",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id and lifecycle dates not confirmed."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "veo-2",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Veo 2",
+  "aliases": [
+   "veo-2.0-generate-001"
+  ],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "veo",
+  "summary": "2025 video model without audio; retired on Agent Platform on 30 June 2026.",
+  "status": "retired",
+  "introducedAt": "2025-05-27",
+  "retiredAt": "2026-06-30",
+  "model": {
+   "apiIds": [
+    "veo-2.0-generate-001"
+   ],
+   "category": "video",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-omni-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Omni Flash",
+  "aliases": [
+   "gemini-omni-flash-preview"
+  ],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "gemini-omni",
+  "summary": "First Gemini Omni model: generates and edits video from text, image, video and audio inputs. Announced at I/O 2026, public preview from 30 June 2026.",
+  "status": "preview",
+  "introducedAt": "2026-05-20",
+  "model": {
+   "apiIds": [
+    "gemini-omni-flash-preview"
+   ],
+   "category": "video",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio",
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Preview date and API id come from press coverage.",
+    "Current stage after the 1.1 and 1.2 releases."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26",
+   "m-pr-nb2lite"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-omni-1-1-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Omni 1.1 Flash",
+  "aliases": [],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "gemini-omni",
+  "summary": "Intermediate Gemini Omni release, priced the same as the original Omni Flash.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "video",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio",
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id, release date and launch stage not confirmed."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-omni12"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-omni-1-2-flash",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Omni 1.2 Flash",
+  "aliases": [
+   "gemini-omni-1.2-flash"
+  ],
+  "layer": "models",
+  "group": "Video",
+  "parentId": "gemini-omni",
+  "summary": "Generally available video generation and editing model: clips up to 15 seconds, drafts at 360p or 720p with upscaling to 1080p or 4K, at $0.07 per second of 720p video.",
+  "status": "ga",
+  "introducedAt": "2026-11-06",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Generates and edits videos of up to 15 seconds (up from 10) and accepts image, video and audio references; audio references require allowlisting.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-omni12"
+     ],
+     "asOf": "2026-11-06"
+    },
+    {
+     "text": "Inputs are charged at 1,120 tokens per image, 32 tokens per audio second and up to 5,792 tokens per video second.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ],
+   "useCases": [
+    {
+     "text": "Google positions it for product videos, virtual try-on and ads produced in volume; it is also used inside Google Vids.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-omni12"
+     ]
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Priced 30% below Omni 1.1 Flash: $12 against $17.50 per million video output tokens.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-omni12",
+      "m-gcp-pricing"
+     ]
+    }
+   ],
+   "limitations": [
+    {
+     "text": "All outputs carry a SynthID watermark.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-omni12"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-omni-1.2-flash"
+   ],
+   "category": "video",
+   "tier": "mid",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "video",
+    "audio",
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id is taken from the lifecycle table's replacement column, read via search."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-omni12",
+   "m-gcd-versions"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-8-live",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.8 Live",
+  "aliases": [
+   "gemini-3.8-live",
+   "Gemini 3.8 Live API",
+   "Live Avatar"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Native speech-to-speech model for the Live API, with background tool calling, live camera and screen understanding, 97 languages and optional Live Avatar video output.",
+  "status": "ga",
+  "introducedAt": "2026-09-15",
+  "dossier": {
+   "howItWorks": [
+    {
+     "text": "Sessions are billed per turn on every token in the session context window, so earlier turns are re-billed each turn; audio counts as 25 tokens per second.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    },
+    {
+     "text": "Tools and API calls run in the background while the model keeps talking.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-live38"
+     ]
+    }
+   ],
+   "inputsOutputs": [
+    {
+     "text": "Understands and speaks 97 languages with automatic language detection, and can process live camera feeds and screen shares alongside audio.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-live38"
+     ],
+     "asOf": "2026-09-24"
+    },
+    {
+     "text": "Live Avatar video output is billed at 6,192 tokens per second, only while the avatar is speaking.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ],
+   "limitations": [
+    {
+     "text": "Custom avatars are available by allowlist only, and the Extended Thinking variant was still in private preview on 24 September 2026.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-live38"
+     ],
+     "asOf": "2026-09-24"
+    },
+    {
+     "text": "Priced only for non-global endpoints on Google Cloud's price list.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.8-live"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "text",
+    "audio",
+    "video",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text",
+    "audio",
+    "video"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "toolUse": true,
+   "unverified": [
+    "Context window not confirmed."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-live38",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-1-flash-live",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.1 Flash Live",
+  "aliases": [],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Spring 2026 Live API model that improved reliability of voice agents and multi-step function calling.",
+  "status": "ga",
+  "dossier": {
+   "differentiators": [
+    {
+     "text": "Google reported a score of 90.8% on ComplexFuncBench Audio.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-aimonth"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "audio",
+   "modalitiesIn": [
+    "text",
+    "audio",
+    "video"
+   ],
+   "modalitiesOut": [
+    "text",
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id, exact release date and current status not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-8-flash-tts",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.8 Flash TTS",
+  "aliases": [
+   "gemini-3.8-flash-tts"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Expressive text-to-speech model with single- and multi-speaker output, line-by-line style direction, voice design and voice replication.",
+  "status": "ga",
+  "introducedAt": "2026-09-22",
+  "model": {
+   "apiIds": [
+    "gemini-3.8-flash-tts"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Google Cloud's price list still labels the model Preview while release notes are reported to show GA on 2026-10-26."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog",
+   "m-gcd-relnotes"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-8-flash-lite-tts",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.8 Flash-Lite TTS",
+  "aliases": [
+   "gemini-3.8-flash-lite-tts"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Low-latency text-to-speech model for real-time and high-volume workloads.",
+  "status": "ga",
+  "introducedAt": "2026-09-22",
+  "model": {
+   "apiIds": [
+    "gemini-3.8-flash-lite-tts"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Listed as Preview on Google Cloud's price list."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-1-flash-tts",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.1 Flash TTS",
+  "aliases": [
+   "gemini-3.1-flash-tts-preview"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "April 2026 text-to-speech preview that introduced more than 200 inline audio tags across 70+ languages.",
+  "status": "deprecated",
+  "introducedAt": "2026-04-15",
+  "retiredAt": "2026-11-17",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Offers 30 prebuilt voices and more than 70 languages; delivery is steered with inline tags such as [whispers].",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-tts31"
+     ],
+     "asOf": "2026-04-15"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.1-flash-tts-preview"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-cb-tts31",
+   "m-gapi-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-5-transcribe",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.5 Transcribe",
+  "aliases": [
+   "gemini-3.5-transcribe",
+   "gemini-3.5-transcribe-live",
+   "Gemini 3.5 Transcribe Live"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Speech-to-text model in two forms: synchronous file transcription and a streaming 'Transcribe Live' variant on the Live API.",
+  "status": "ga",
+  "introducedAt": "2026-08-26",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "The synchronous model handles files up to 60 minutes; the streaming model bills only final committed tokens.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    },
+    {
+     "text": "Google's estimated blended cost is $0.0051 per audio minute synchronous and $0.008925 per minute streaming.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-3.5-transcribe",
+    "gemini-3.5-transcribe-live"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-5-live-translate",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3.5 Live Translate",
+  "aliases": [
+   "gemini-3.5-live-translate-preview"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "gemini-live",
+  "summary": "Low-latency speech-to-speech translation model supporting more than 70 languages.",
+  "status": "preview",
+  "model": {
+   "apiIds": [
+    "gemini-3.5-live-translate-preview"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "audio"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Exact release date (June 2026 per the deprecations page) and current stage."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "lyria-3-pro",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Lyria 3 Pro",
+  "aliases": [
+   "lyria-3-pro-preview"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "lyria",
+  "summary": "Generates full-length songs from text or image prompts.",
+  "status": "preview",
+  "introducedAt": "2026-03-25",
+  "model": {
+   "apiIds": [
+    "lyria-3-pro-preview"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Current launch stage."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "lyria-3",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Lyria 3",
+  "aliases": [
+   "lyria-3-clip-preview"
+  ],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "lyria",
+  "summary": "Generates 30-second music clips from text or image prompts.",
+  "status": "preview",
+  "introducedAt": "2026-03-25",
+  "model": {
+   "apiIds": [
+    "lyria-3-clip-preview"
+   ],
+   "category": "audio",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Current launch stage."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "lyria-2",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Lyria 2",
+  "aliases": [],
+  "layer": "models",
+  "group": "Audio and Live",
+  "parentId": "lyria",
+  "summary": "Previous-generation text-to-music model.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "audio",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "audio"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id, release date and retirement status not confirmed this cycle."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-embedding-001",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Embedding",
+  "aliases": [
+   "gemini-embedding-001"
+  ],
+  "layer": "models",
+  "group": "Embeddings",
+  "parentId": "gemini-embedding",
+  "summary": "Text embedding model, priced at $0.15 per million input tokens on Google Cloud.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "embedding",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "embedding"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "API id (gemini-embedding-001) and release date are recalled, not re-read this cycle."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-embedding-2",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Embedding 2",
+  "aliases": [
+   "gemini-embedding-2",
+   "gemini-embedding-2-preview"
+  ],
+  "layer": "models",
+  "group": "Embeddings",
+  "parentId": "gemini-embedding",
+  "summary": "Google's first natively multimodal embedding model: maps text, images, video, audio and documents into one embedding space.",
+  "status": "ga",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "Entered public preview in March 2026 as a single embedding space for text, images, video, audio and documents.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-aimonth"
+     ]
+    },
+    {
+     "text": "Priced per million input tokens by modality on Google Cloud: $0.20 text, $0.45 image, $6.50 audio, $12 video; batch is half price.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "gemini-embedding-2"
+   ],
+   "category": "embedding",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio",
+    "pdf"
+   ],
+   "modalitiesOut": [
+    "embedding"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "GA date: third-party sources give 2026-04-22 and 2026-05-20.",
+    "Google Cloud's price list still labels it Preview."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-aimonth",
+   "m-bg-emb2-ga",
+   "m-pr-emb2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemma-4",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemma 4",
+  "aliases": [
+   "Gemma 4 26B",
+   "Gemma 4 31B",
+   "Gemma 4 E2B",
+   "Gemma 4 E4B"
+  ],
+  "layer": "models",
+  "group": "Open models",
+  "parentId": "gemma",
+  "summary": "Open-weight model family released April 2026 under Apache 2.0 in four sizes: E2B, E4B, a 26B mixture-of-experts and a 31B dense model.",
+  "status": "ga",
+  "introducedAt": "2026-04-02",
+  "dossier": {
+   "inputsOutputs": [
+    {
+     "text": "All four sizes process images and video natively; weights are distributed on Hugging Face, Kaggle and Ollama.",
+     "label": "independent-measurement",
+     "sourceIds": [
+      "m-pr-gemma4"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Google Cloud sells Gemma 4 26B as a managed API at $0.15 input and $0.60 output per million tokens.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Gemma 4 moved from Google's custom Gemma licence to Apache 2.0.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-bg-gemma4",
+      "m-pr-gemma4"
+     ],
+     "confidence": "medium"
+    },
+    {
+     "text": "Google reports the 31B model ranked third and the 26B model sixth among open models on the Arena text leaderboard at launch.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-bg-gemma4"
+     ],
+     "asOf": "2026-04-02",
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "open-weight",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "openWeights": true,
+   "license": "Apache-2.0",
+   "unverified": [
+    "Context window not found.",
+    "Audio input is reported by one source only.",
+    "Managed API ids not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-gemma4",
+   "m-pr-gemma4"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemma-3",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemma 3",
+  "aliases": [],
+  "layer": "models",
+  "group": "Open models",
+  "parentId": "gemma",
+  "summary": "2025 open-weight family in 1B, 4B, 12B and 27B sizes under Google's Gemma licence; still tunable on Agent Platform.",
+  "status": "ga",
+  "introducedAt": "2025-03-12",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "Agent Platform lists supervised fine-tuning prices for Gemma 3 1B, 4B, 12B and 27B.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "open-weight",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "openWeights": true,
+   "license": "Gemma Terms of Use",
+   "unverified": [
+    "Release date and licence are recalled, not re-read."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-gemma3"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "medgemma-1-5",
+  "kind": "model",
+  "providerId": "google",
+  "name": "MedGemma 1.5",
+  "aliases": [
+   "Medgemma 1.5 4B IT"
+  ],
+  "layer": "models",
+  "group": "Open models",
+  "parentId": "gemma",
+  "summary": "Open medical model in the Gemma family that interprets medical images including 3D CT and MRI; released January 2026 alongside the MedASR speech model.",
+  "status": "ga",
+  "introducedAt": "2026-01-13",
+  "dossier": {
+   "useCases": [
+    {
+     "text": "Agent Platform lists supervised fine-tuning for MedGemma 1.5 4B IT.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gcp-pricing"
+     ]
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "open-weight",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "openWeights": true,
+   "unverified": [
+    "Licence terms and exact repository ids not confirmed."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gr-medgemma",
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-robotics-er-2",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Robotics ER 2",
+  "aliases": [
+   "Gemini Robotics Embodied Reasoning 2",
+   "Gemini ER 2.0",
+   "ER 2"
+  ],
+  "layer": "models",
+  "group": "Robotics and world models",
+  "parentId": "gemini-robotics",
+  "summary": "Embodied-reasoning Gemini model that acts as a robot's high-level planner: reasons over video, plans long tasks and calls low-level controllers as tools. Public preview on Google Cloud since 27 October 2026.",
+  "status": "preview",
+  "introducedAt": "2026-07-30",
+  "dossier": {
+   "howItWorks": [
+    {
+     "text": "Developers declare vision-language-action models, navigation APIs or custom functions as tools and stream video, audio or text into the model, which orchestrates them.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-cb-er2"
+     ],
+     "asOf": "2026-10-27"
+    }
+   ],
+   "useCases": [
+    {
+     "text": "Named early users include Boston Dynamics (Spot inspection), DeepReach, Arm and Singapore's A*STAR IMRE.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-er2"
+     ],
+     "asOf": "2026-10-27"
+    }
+   ],
+   "differentiators": [
+    {
+     "text": "Google says the model pinpoints the video frame of a critical event with 91.3% accuracy and reads more than ten categories of instruments from images.",
+     "label": "provider-claim",
+     "sourceIds": [
+      "m-cb-er2"
+     ],
+     "asOf": "2026-10-27"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [],
+   "category": "robotics",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video",
+    "audio"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "toolUse": true,
+   "unverified": [
+    "API id not found.",
+    "Announcement date (2026-07-30) is from press coverage of Gemini Robotics 2."
+   ]
+  },
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-er2",
+   "m-pr-robotics2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-robotics-2",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Robotics 2",
+  "aliases": [
+   "Gemini Robotics On-Device 2"
+  ],
+  "layer": "models",
+  "group": "Robotics and world models",
+  "parentId": "gemini-robotics",
+  "summary": "Google DeepMind's July 2026 robotics model suite with whole-body humanoid control and multi-robot collaboration; the action and on-device models are limited to early-access partners.",
+  "status": "preview",
+  "introducedAt": "2026-07-30",
+  "model": {
+   "apiIds": [],
+   "category": "robotics",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image",
+    "video"
+   ],
+   "modalitiesOut": [
+    "action"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Not a publicly served model; details are from press coverage only."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-pr-robotics2",
+   "m-cb-er2"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "genie-3",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Genie 3",
+  "aliases": [
+   "Project Genie"
+  ],
+  "layer": "models",
+  "group": "Robotics and world models",
+  "parentId": "genie",
+  "summary": "Google DeepMind world model that generates interactive environments; reaches users through the Project Genie experiment for Google AI Ultra subscribers.",
+  "status": "experimental",
+  "model": {
+   "apiIds": [],
+   "category": "world-model",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "video"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Announcement date, access terms and any API availability were not confirmed from a Google source.",
+    "A reported 'Genie 4' is unconfirmed."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-pr-genie"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-deep-research",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini Deep Research Agent",
+  "aliases": [
+   "Deep Research",
+   "Deep Research Max",
+   "deep-research-preview-04-2026"
+  ],
+  "layer": "models",
+  "group": "Agents served as models",
+  "summary": "Autonomous research agent served through the Interactions API, reported to be built on Gemini 3.1 Pro; priced per token on Google Cloud with a half-price deferred mode.",
+  "status": "preview",
+  "introducedAt": "2026-04-22",
+  "dossier": {
+   "howItWorks": [
+    {
+     "text": "Runs only in background execution with streaming, via the Interactions API.",
+     "label": "verified-fact",
+     "sourceIds": [
+      "m-gapi-deep-research"
+     ],
+     "confidence": "medium"
+    }
+   ]
+  },
+  "model": {
+   "apiIds": [
+    "deep-research-preview-04-2026"
+   ],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "toolUse": true,
+   "unverified": [
+    "Launch date and the Gemini 3.1 Pro base are from press coverage.",
+    "Deep Research Max pricing not found."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deep-research",
+   "m-pr-deepresearch"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "gemini-3-deep-think",
+  "kind": "model",
+  "providerId": "google",
+  "name": "Gemini 3 Deep Think",
+  "aliases": [
+   "Deep Think"
+  ],
+  "layer": "models",
+  "group": "Gemini 3",
+  "parentId": "gemini",
+  "summary": "Extended-reasoning mode of Gemini 3 aimed at science, research and engineering problems; an upgraded version was released in February 2026.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [
+    "text",
+    "image"
+   ],
+   "modalitiesOut": [
+    "text"
+   ],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "reasoning": "always",
+   "unverified": [
+    "Access terms, API availability and whether a Gemini 4 Deep Think exists were not confirmed."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-pr-deepthink"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "alphafold-3",
+  "kind": "model",
+  "providerId": "google",
+  "name": "AlphaFold 3",
+  "aliases": [],
+  "layer": "models",
+  "group": "Specialized and science",
+  "summary": "Biomolecular structure prediction model offered on Google Cloud with a per-GPU-hour model access price.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [],
+   "modalitiesOut": [],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Launch stage and deployment details on Agent Platform."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "alphagenome",
+  "kind": "model",
+  "providerId": "google",
+  "name": "AlphaGenome",
+  "aliases": [],
+  "layer": "models",
+  "group": "Specialized and science",
+  "summary": "DNA sequence model offered on Google Cloud with a per-GPU-hour model access price.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [],
+   "modalitiesOut": [],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Launch stage and deployment details on Agent Platform."
+   ]
+  },
+  "verification": "partially-verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "timesfm-2-5",
+  "kind": "model",
+  "providerId": "google",
+  "name": "TimesFM 2.5",
+  "aliases": [],
+  "layer": "models",
+  "group": "Specialized and science",
+  "summary": "Google Research's time-series forecasting foundation model (about 200 million parameters, 16K context) with open checkpoints.",
+  "status": "ga",
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [],
+   "modalitiesOut": [],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "openWeights": true,
+   "unverified": [
+    "Release date, licence and Google Cloud availability not confirmed from a Google source."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-pr-timesfm"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "weathernext-2",
+  "kind": "model",
+  "providerId": "google",
+  "name": "WeatherNext 2",
+  "aliases": [],
+  "layer": "models",
+  "group": "Specialized and science",
+  "summary": "Google DeepMind and Google Research weather forecasting model; forecast data is reported to be available in Earth Engine and BigQuery with early access on Vertex AI.",
+  "status": "preview",
+  "model": {
+   "apiIds": [],
+   "category": "specialized",
+   "tier": "specialized",
+   "modalitiesIn": [],
+   "modalitiesOut": [],
+   "contextTokens": null,
+   "maxOutputTokens": null,
+   "unverified": [
+    "Announcement date and current availability not confirmed from a Google source."
+   ]
+  },
+  "verification": "unverified",
+  "sourceIds": [
+   "m-pr-weathernext"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "grounding-with-google-search",
+  "kind": "component",
+  "providerId": "google",
+  "name": "Grounding with Google Search",
+  "aliases": [],
+  "layer": "platform",
+  "group": "Model platform features",
+  "summary": "Lets Gemini answer with live Google Search results; billed per search query for Gemini 3 and 4 and per grounded prompt for Gemini 2.x.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "grounding-with-google-maps",
+  "kind": "component",
+  "providerId": "google",
+  "name": "Grounding with Google Maps",
+  "aliases": [],
+  "layer": "platform",
+  "group": "Model platform features",
+  "summary": "Lets Gemini ground answers in Google Maps data; billed per query after a monthly free allowance.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "web-grounding-for-enterprise",
+  "kind": "component",
+  "providerId": "google",
+  "name": "Web Grounding for Enterprise",
+  "aliases": [],
+  "layer": "platform",
+  "group": "Model platform features",
+  "summary": "Enterprise variant of web grounding; for Gemini 3 and 4 it shares the $14 per 1,000 queries rate with Search grounding.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "grounding-with-your-data",
+  "kind": "component",
+  "providerId": "google",
+  "name": "Grounding with your data",
+  "aliases": [],
+  "layer": "platform",
+  "group": "Model platform features",
+  "summary": "Grounds Gemini answers in a customer's own data stores, at $2.50 per 1,000 prompts.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "provisioned-throughput",
+  "kind": "component",
+  "providerId": "google",
+  "name": "Provisioned Throughput",
+  "aliases": [],
+  "layer": "platform",
+  "group": "Model platform features",
+  "summary": "Reserved model capacity on Agent Platform bought in generative AI scale units (GSUs) with one-week to one-year commitments.",
+  "status": "ga",
+  "verification": "verified",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ],
+  "lastCheckedAt": "2026-11-15"
+ }
+]
