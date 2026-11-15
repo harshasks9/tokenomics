@@ -1,0 +1,172 @@
+[
+ {
+  "id": "aa-index",
+  "name": "Artificial Analysis Intelligence Index (v5)",
+  "measures": "A composite of independently run evaluations covering reasoning, knowledge, coding and agentic work, reported per model and reasoning-effort setting.",
+  "unit": "index points (0-100)",
+  "higherBetter": true,
+  "maintainer": "Artificial Analysis",
+  "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+  "limitations": "Version matters: v5 (27 October 2026) replaced v4.x and scores are not comparable across versions. Results depend heavily on the effort setting and on fallback behaviour when safety filters intervene. A composite hides large differences between component tasks, and third-party mirrors sometimes show slightly different decimals than the source."
+ },
+ {
+  "id": "lmarena-text",
+  "name": "LMArena Text Arena (overall)",
+  "measures": "Human preference between anonymous model answers in blind head-to-head chats, expressed as an Elo-style rating.",
+  "unit": "Elo-style rating",
+  "higherBetter": true,
+  "maintainer": "LMArena (Arena)",
+  "url": "https://lmarena.ai/leaderboard/text",
+  "limitations": "Measures which answer people prefer, not whether it is correct; style, length and formatting sway votes. New models carry wide confidence intervals and are marked preliminary. Gaps of a few points are within noise, and third-party mirrors disagree on snapshots."
+ },
+ {
+  "id": "lmarena-webdev",
+  "name": "LMArena WebDev Arena",
+  "measures": "Human preference between web apps generated from the same prompt by two anonymous models.",
+  "unit": "Elo-style rating",
+  "higherBetter": true,
+  "maintainer": "LMArena (Arena)",
+  "url": "https://lmarena.ai/leaderboard/webdev",
+  "limitations": "Rewards visual polish in small single-prompt apps; says little about work in large existing codebases. No current scores were captured this cycle."
+ },
+ {
+  "id": "swe-bench-verified",
+  "name": "SWE-bench Verified",
+  "measures": "Share of 500 human-validated GitHub issues in Python repositories that a model resolves so that hidden tests pass.",
+  "unit": "% resolved",
+  "higherBetter": true,
+  "maintainer": "SWE-bench team (Princeton) with OpenAI's verified subset",
+  "url": "https://www.swebench.com/",
+  "limitations": "Largely saturated and widely believed to be contaminated by training data; leading labs stopped headlining it for 2026 models in favour of SWE-bench Pro and newer agentic suites. Scores depend on scaffold, thinking budget and number of trials. No scores for current models were captured this cycle."
+ },
+ {
+  "id": "swe-bench-pro",
+  "name": "SWE-bench Pro",
+  "measures": "Share of longer, multi-file software-engineering tasks from public and commercial repositories that an agent completes.",
+  "unit": "% resolved",
+  "higherBetter": true,
+  "maintainer": "Scale AI",
+  "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+  "limitations": "Several incompatible variants circulate (vendor-reported runs, Scale's standardised public set, a commercial set, V2 and V2-Hard); percentages must not be compared across them. The figures recorded here are vendor-reported as relayed by an aggregator."
+ },
+ {
+  "id": "terminal-bench",
+  "name": "Terminal-Bench",
+  "measures": "Success rate of an agent completing multi-step professional tasks inside a command-line environment.",
+  "unit": "% tasks solved",
+  "higherBetter": true,
+  "maintainer": "Terminal-Bench team (Stanford / Laude Institute)",
+  "url": "https://www.tbench.ai/",
+  "limitations": "Version (2.0 vs 4.0), harness (Claude Code, Codex CLI, Terminus), effort level and trials per task all move the score; standard errors of 2-3 points are typical. Labs usually report their own best configuration."
+ },
+ {
+  "id": "gpqa-diamond",
+  "name": "GPQA Diamond",
+  "measures": "Accuracy on 198 graduate-level multiple-choice science questions written to be hard for non-experts.",
+  "unit": "% correct",
+  "higherBetter": true,
+  "maintainer": "NYU (Rein et al.)",
+  "url": "https://github.com/idavidrein/gpqa",
+  "limitations": "Near saturation above 90%, so differences between top models are within noise; multiple choice with four options; small question set. No results with a clearly identified evaluator were captured this cycle."
+ },
+ {
+  "id": "arc-agi-2",
+  "name": "ARC-AGI-2",
+  "measures": "Accuracy on abstract visual puzzles that require inferring a novel rule from a few examples.",
+  "unit": "% tasks solved",
+  "higherBetter": true,
+  "maintainer": "ARC Prize Foundation",
+  "url": "https://arcprize.org/arc-agi/2/",
+  "limitations": "Superseded as the headline ARC benchmark by ARC-AGI-3 during 2026; scores vary with cost per task and harness. No current scores were captured this cycle."
+ },
+ {
+  "id": "arc-agi-3",
+  "name": "ARC-AGI-3",
+  "measures": "Performance of an agent on interactive, game-like environments that require learning novel rules by exploration.",
+  "unit": "% score",
+  "higherBetter": true,
+  "maintainer": "ARC Prize Foundation",
+  "url": "https://arcprize.org/arc-agi/3/",
+  "limitations": "Two harnesses give very different numbers: ARC Prize's standard harness and a provider-adapter harness on which scores approach 100%. Results here are standard-harness figures relayed by third-party trackers, not read on arcprize.org."
+ },
+ {
+  "id": "humanitys-last-exam",
+  "name": "Humanity's Last Exam (HLE)",
+  "measures": "Accuracy on expert-written, closed-ended questions across many academic fields, with or without search and code tools.",
+  "unit": "% correct",
+  "higherBetter": true,
+  "maintainer": "Center for AI Safety and Scale AI",
+  "url": "https://lastexam.ai/",
+  "limitations": "With-tools and no-tools scores differ by many points and are often mixed in leaderboards; a verified 'Diamond' subset is scored separately. Some questions have disputed answers. Always check which setting a number refers to."
+ },
+ {
+  "id": "osworld-verified",
+  "name": "OSWorld (Verified / 2.x)",
+  "measures": "Success of an agent operating a real desktop to finish multi-step computer tasks.",
+  "unit": "% success",
+  "higherBetter": true,
+  "maintainer": "XLANG Lab (University of Hong Kong) and collaborators",
+  "url": "https://os-world.github.io/",
+  "limitations": "Versions are not comparable (OSWorld-Verified, 2.0, 2.1; strict vs partial credit; full vs offline subset). The 2.1 figures recorded here are partial-credit scores on an offline subset run by Anthropic, including for other labs' models."
+ },
+ {
+  "id": "gdpval-aa",
+  "name": "GDPval-AA",
+  "measures": "Relative quality of agent work products on real professional tasks across 44 occupations, as an Elo-style rating from pairwise grading.",
+  "unit": "Elo-style rating",
+  "higherBetter": true,
+  "maintainer": "Artificial Analysis (based on OpenAI's GDPval)",
+  "url": "https://artificialanalysis.ai/evaluations/gdpval-aa",
+  "limitations": "Pairwise graded, so ratings shift as new models enter; version 2 and 2.1 are not interchangeable. Figures recorded here were read in Anthropic's launch posts rather than on Artificial Analysis."
+ },
+ {
+  "id": "automationbench",
+  "name": "AutomationBench",
+  "measures": "Pass rate on end-to-end business workflow tasks across common SaaS tools.",
+  "unit": "% tasks passed",
+  "higherBetter": true,
+  "maintainer": "Zapier",
+  "url": "https://zapier.com/",
+  "limitations": "Safeguard interventions count as failures when no fallback model is configured, which depresses scores for models with strict safety filters. A separately named Artificial Analysis variant reports much higher percentages and must not be mixed with these."
+ },
+ {
+  "id": "videomme",
+  "name": "Video-MME",
+  "measures": "Accuracy on multiple-choice questions about short, medium and long videos, with and without subtitles.",
+  "unit": "% correct",
+  "higherBetter": true,
+  "maintainer": "Video-MME team",
+  "url": "https://video-mme.github.io/",
+  "limitations": "Multiple-choice video QA; frame-sampling policy changes results, and few rival labs accept native video input. No current scores were captured this cycle."
+ },
+ {
+  "id": "mteb",
+  "name": "MTEB (Massive Text Embedding Benchmark)",
+  "measures": "Average performance of embedding models across retrieval, classification, clustering and similarity tasks.",
+  "unit": "mean task score",
+  "higherBetter": true,
+  "maintainer": "MTEB maintainers (Hugging Face community)",
+  "url": "https://huggingface.co/spaces/mteb/leaderboard",
+  "limitations": "Self-submitted scores; the multilingual and English boards differ; averages hide retrieval-specific differences. No current scores were captured this cycle."
+ },
+ {
+  "id": "aa-speed-tps",
+  "name": "Artificial Analysis output speed",
+  "measures": "Median output tokens per second measured on the provider's API after the first token.",
+  "unit": "tokens per second",
+  "higherBetter": true,
+  "maintainer": "Artificial Analysis",
+  "url": "https://artificialanalysis.ai/leaderboards/models",
+  "limitations": "Varies by hour, region, prompt length and reasoning setting; fast-mode or priority tiers are measured separately. Artificial Analysis is reported to be moving its headline speed measure to time per task. No scores with a clear source were captured this cycle."
+ },
+ {
+  "id": "metr-time-horizon",
+  "name": "METR 50% time horizon",
+  "measures": "Length of software and research tasks, in human expert time, that a model completes with 50% reliability.",
+  "unit": "hours",
+  "higherBetter": true,
+  "maintainer": "METR",
+  "url": "https://metr.org/time-horizons/",
+  "limitations": "Wide confidence intervals (often several-fold); the task suite tops out below the horizons of the newest models, and METR has not published horizon figures for the late-2026 releases covered here."
+ }
+]

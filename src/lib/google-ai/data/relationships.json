@@ -1,0 +1,4178 @@
+[
+ {
+  "id": "rel-m-gemini-4-argon-part-of-gemini",
+  "from": "gemini-4-argon",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-argon-cyber-permissive-part-of-gemini",
+  "from": "gemini-4-argon-cyber-permissive",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-part-of-gemini",
+  "from": "gemini-4-carbon",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-cyber-permissive-part-of-gemini",
+  "from": "gemini-4-carbon-cyber-permissive",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-hydrogen-part-of-gemini",
+  "from": "gemini-4-hydrogen",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-g4hydrogen"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-pro-part-of-gemini",
+  "from": "gemini-3-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-g3ent",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-pro-part-of-gemini",
+  "from": "gemini-3-1-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g31pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-pro-part-of-gemini",
+  "from": "gemini-3-5-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-io26",
+   "m-pr-g35pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-flash-part-of-gemini-flash",
+  "from": "gemini-3-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-lite-part-of-gemini-flash",
+  "from": "gemini-3-1-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-whatsnew"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-part-of-gemini-flash",
+  "from": "gemini-3-5-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-lite-part-of-gemini-flash",
+  "from": "gemini-3-5-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-6-flash-part-of-gemini-flash",
+  "from": "gemini-3-6-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-7-flash-part-of-gemini-flash",
+  "from": "gemini-3-7-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-part-of-gemini-flash",
+  "from": "gemini-3-8-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-g38"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-cyber-part-of-gemini-flash",
+  "from": "gemini-3-8-flash-cyber",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-cyber-part-of-gemini-flash",
+  "from": "gemini-3-5-flash-cyber",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-dm-flash-cyber",
+   "m-pr-flashcyber"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-pro-part-of-gemini",
+  "from": "gemini-2-5-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g25pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-part-of-gemini-flash",
+  "from": "gemini-2-5-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-g25pro"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-lite-part-of-gemini-flash",
+  "from": "gemini-2-5-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-image-part-of-nano-banana",
+  "from": "gemini-2-5-flash-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-live-part-of-gemini-live",
+  "from": "gemini-2-5-flash-live",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-computer-use-part-of-gemini",
+  "from": "gemini-2-5-computer-use",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-computeruse"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-0-flash-part-of-gemini-flash",
+  "from": "gemini-2-0-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-0-flash-lite-part-of-gemini-flash",
+  "from": "gemini-2-0-flash-lite",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-relnotes"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-5-pro-part-of-gemini",
+  "from": "gemini-1-5-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g15"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-5-flash-part-of-gemini-flash",
+  "from": "gemini-1-5-flash",
+  "to": "gemini-flash",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g15-io"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-0-pro-part-of-gemini",
+  "from": "gemini-1-0-pro",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-g10"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-pro-image-part-of-nano-banana",
+  "from": "gemini-3-pro-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nbga"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-image-part-of-nano-banana",
+  "from": "gemini-3-1-flash-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-nb2"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-lite-image-part-of-nano-banana",
+  "from": "gemini-3-1-flash-lite-image",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-nb2lite"
+  ]
+ },
+ {
+  "id": "rel-m-nano-banana-2-1-part-of-nano-banana",
+  "from": "nano-banana-2-1",
+  "to": "nano-banana",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pr-nb21"
+  ]
+ },
+ {
+  "id": "rel-m-imagen-4-part-of-imagen",
+  "from": "imagen-4",
+  "to": "imagen",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-imagen-3-part-of-imagen",
+  "from": "imagen-3",
+  "to": "imagen",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-part-of-veo",
+  "from": "veo-3-1",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-veo31"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-fast-part-of-veo",
+  "from": "veo-3-1-fast",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-lite-part-of-veo",
+  "from": "veo-3-1-lite",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-veo31lite"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-part-of-veo",
+  "from": "veo-3",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-fast-part-of-veo",
+  "from": "veo-3-fast",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-veo-2-part-of-veo",
+  "from": "veo-2",
+  "to": "veo",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-flash-part-of-gemini-omni",
+  "from": "gemini-omni-flash",
+  "to": "gemini-omni",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-1-flash-part-of-gemini-omni",
+  "from": "gemini-omni-1-1-flash",
+  "to": "gemini-omni",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-2-flash-part-of-gemini-omni",
+  "from": "gemini-omni-1-2-flash",
+  "to": "gemini-omni",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-live-part-of-gemini-live",
+  "from": "gemini-3-8-live",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-live38"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-live-part-of-gemini-live",
+  "from": "gemini-3-1-flash-live",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-tts-part-of-gemini-live",
+  "from": "gemini-3-8-flash-tts",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-lite-tts-part-of-gemini-live",
+  "from": "gemini-3-8-flash-lite-tts",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-tts-part-of-gemini-live",
+  "from": "gemini-3-1-flash-tts",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-tts31",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-transcribe-part-of-gemini-live",
+  "from": "gemini-3-5-transcribe",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-live-translate-part-of-gemini-live",
+  "from": "gemini-3-5-live-translate",
+  "to": "gemini-live",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-3-pro-part-of-lyria",
+  "from": "lyria-3-pro",
+  "to": "lyria",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-3-part-of-lyria",
+  "from": "lyria-3",
+  "to": "lyria",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-2-part-of-lyria",
+  "from": "lyria-2",
+  "to": "lyria",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-embedding-001-part-of-gemini-embedding",
+  "from": "gemini-embedding-001",
+  "to": "gemini-embedding",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-embedding-2-part-of-gemini-embedding",
+  "from": "gemini-embedding-2",
+  "to": "gemini-embedding",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemma-4-part-of-gemma",
+  "from": "gemma-4",
+  "to": "gemma",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-bg-gemma4"
+  ]
+ },
+ {
+  "id": "rel-m-gemma-3-part-of-gemma",
+  "from": "gemma-3",
+  "to": "gemma",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-pk-gemma3"
+  ]
+ },
+ {
+  "id": "rel-m-medgemma-1-5-part-of-gemma",
+  "from": "medgemma-1-5",
+  "to": "gemma",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gr-medgemma",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-robotics-er-2-part-of-gemini-robotics",
+  "from": "gemini-robotics-er-2",
+  "to": "gemini-robotics",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-er2"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-robotics-2-part-of-gemini-robotics",
+  "from": "gemini-robotics-2",
+  "to": "gemini-robotics",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pr-robotics2",
+   "m-cb-er2"
+  ]
+ },
+ {
+  "id": "rel-m-genie-3-part-of-genie",
+  "from": "genie-3",
+  "to": "genie",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pr-genie"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-deep-think-part-of-gemini",
+  "from": "gemini-3-deep-think",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Family membership as named by Google.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pr-deepthink"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-succeeds-gemini-4-argon",
+  "from": "gemini-4-carbon",
+  "to": "gemini-4-argon",
+  "type": "succeeds",
+  "note": "Press coverage describes Carbon as built on Argon and announced four weeks later; both remain on sale at the same price.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-argon-succeeds-gemini-3-1-pro",
+  "from": "gemini-4-argon",
+  "to": "gemini-3-1-pro",
+  "type": "succeeds",
+  "note": "Agent Platform's migration guide points Gemini 3.1 Pro users to Gemini 4 Argon or Carbon.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-migrate",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-succeeds-gemini-3-1-pro",
+  "from": "gemini-4-carbon",
+  "to": "gemini-3-1-pro",
+  "type": "succeeds",
+  "note": "Agent Platform's migration guide points Gemini 3.1 Pro users to Gemini 4 Carbon or Argon.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-migrate"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-pro-succeeds-gemini-3-pro",
+  "from": "gemini-3-1-pro",
+  "to": "gemini-3-pro",
+  "type": "succeeds",
+  "note": "gemini-3.1-pro-preview is the listed replacement for gemini-3-pro-preview.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-pro-succeeds-gemini-2-5-pro",
+  "from": "gemini-3-pro",
+  "to": "gemini-2-5-pro",
+  "type": "succeeds",
+  "note": "Gemini 3 Pro replaced 2.5 Pro as Google's flagship in November 2025.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-g3ent"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-pro-succeeds-gemini-1-5-pro",
+  "from": "gemini-2-5-pro",
+  "to": "gemini-1-5-pro",
+  "type": "succeeds",
+  "note": "Successive Pro flagships (2.0 Pro was experimental only).",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g25"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-1-5-pro-succeeds-gemini-1-0-pro",
+  "from": "gemini-1-5-pro",
+  "to": "gemini-1-0-pro",
+  "type": "succeeds",
+  "note": "Gemini 1.5 Pro followed 1.0 Pro in 2024.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-pk-g15"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-hydrogen-succeeds-gemini-3-8-flash",
+  "from": "gemini-4-hydrogen",
+  "to": "gemini-3-8-flash",
+  "type": "succeeds",
+  "note": "Google's Hydrogen migration guide is written against Gemini 3.8 Flash, and Hydrogen carries the Flash list price.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-g4hydrogen",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-succeeds-gemini-3-7-flash",
+  "from": "gemini-3-8-flash",
+  "to": "gemini-3-7-flash",
+  "type": "succeeds",
+  "note": "gemini-3.8-flash is the listed replacement; Gemini API requests to 3.7 Flash are routed to it.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions",
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-7-flash-succeeds-gemini-3-6-flash",
+  "from": "gemini-3-7-flash",
+  "to": "gemini-3-6-flash",
+  "type": "succeeds",
+  "note": "Consecutive Flash releases (July and August 2026).",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-6-flash-succeeds-gemini-3-5-flash",
+  "from": "gemini-3-6-flash",
+  "to": "gemini-3-5-flash",
+  "type": "succeeds",
+  "note": "Gemini API requests to gemini-3.5-flash are routed to gemini-3.6-flash.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-succeeds-gemini-3-flash",
+  "from": "gemini-3-5-flash",
+  "to": "gemini-3-flash",
+  "type": "succeeds",
+  "note": "Gemini 3.5 Flash opened the 3.5 series in May 2026.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-io26"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-flash-succeeds-gemini-2-5-flash",
+  "from": "gemini-3-flash",
+  "to": "gemini-2-5-flash",
+  "type": "succeeds",
+  "note": "Successive Flash generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-succeeds-gemini-2-0-flash",
+  "from": "gemini-2-5-flash",
+  "to": "gemini-2-0-flash",
+  "type": "succeeds",
+  "note": "Successive Flash generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g25flash"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-0-flash-succeeds-gemini-1-5-flash",
+  "from": "gemini-2-0-flash",
+  "to": "gemini-1-5-flash",
+  "type": "succeeds",
+  "note": "Successive Flash generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g20"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-lite-succeeds-gemini-3-1-flash-lite",
+  "from": "gemini-3-5-flash-lite",
+  "to": "gemini-3-1-flash-lite",
+  "type": "succeeds",
+  "note": "Successive Flash-Lite releases.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gapi-changelog"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-lite-succeeds-gemini-2-5-flash-lite",
+  "from": "gemini-3-1-flash-lite",
+  "to": "gemini-2-5-flash-lite",
+  "type": "succeeds",
+  "note": "gemini-3.1-flash-lite is a listed replacement for retiring Gemini 2.5 Flash models.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-2-5-flash-lite-succeeds-gemini-2-0-flash-lite",
+  "from": "gemini-2-5-flash-lite",
+  "to": "gemini-2-0-flash-lite",
+  "type": "succeeds",
+  "note": "Successive Flash-Lite generations.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pk-g25-ga"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-cyber-succeeds-gemini-3-5-flash-cyber",
+  "from": "gemini-3-8-flash-cyber",
+  "to": "gemini-3-5-flash-cyber",
+  "type": "succeeds",
+  "note": "Inferred from naming: the price list carries 3.8 Flash Cyber where 3.5 Flash Cyber was announced in July 2026.",
+  "label": "analyst-interpretation",
+  "confidence": "low",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-dm-flash-cyber"
+  ]
+ },
+ {
+  "id": "rel-m-nano-banana-2-1-succeeds-gemini-3-1-flash-image",
+  "from": "nano-banana-2-1",
+  "to": "gemini-3-1-flash-image",
+  "type": "succeeds",
+  "note": "Press reports Google names Nano Banana 2.1 as the replacement for Gemini 3.1 Flash Image.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-nb21"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-image-succeeds-gemini-2-5-flash-image",
+  "from": "gemini-3-1-flash-image",
+  "to": "gemini-2-5-flash-image",
+  "type": "succeeds",
+  "note": "Nano Banana 2 followed the original Nano Banana.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-nb2"
+  ]
+ },
+ {
+  "id": "rel-m-imagen-4-succeeds-imagen-3",
+  "from": "imagen-4",
+  "to": "imagen-3",
+  "type": "succeeds",
+  "note": "Successive Imagen generations.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-1-succeeds-veo-3",
+  "from": "veo-3-1",
+  "to": "veo-3",
+  "type": "succeeds",
+  "note": "veo-3.1 is the listed replacement for veo-3.0-generate-001.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-veo-3-succeeds-veo-2",
+  "from": "veo-3",
+  "to": "veo-2",
+  "type": "succeeds",
+  "note": "Successive Veo generations.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-2-flash-succeeds-gemini-omni-1-1-flash",
+  "from": "gemini-omni-1-2-flash",
+  "to": "gemini-omni-1-1-flash",
+  "type": "succeeds",
+  "note": "Omni 1.2 Flash is priced 30% below Omni 1.1 Flash and replaces it as the GA model.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-omni12"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-1-flash-succeeds-gemini-omni-flash",
+  "from": "gemini-omni-1-1-flash",
+  "to": "gemini-omni-flash",
+  "type": "succeeds",
+  "note": "Consecutive Omni Flash releases listed together on the price list.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-omni-1-2-flash-succeeds-veo-3-1",
+  "from": "gemini-omni-1-2-flash",
+  "to": "veo-3-1",
+  "type": "succeeds",
+  "note": "Agent Platform's lifecycle table names gemini-omni-1.2-flash as the recommended replacement for veo-3.1-generate-001.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-versions"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-live-succeeds-gemini-3-1-flash-live",
+  "from": "gemini-3-8-live",
+  "to": "gemini-3-1-flash-live",
+  "type": "succeeds",
+  "note": "Successive Live API models.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-cb-live38",
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-1-flash-live-succeeds-gemini-2-5-flash-live",
+  "from": "gemini-3-1-flash-live",
+  "to": "gemini-2-5-flash-live",
+  "type": "succeeds",
+  "note": "Successive Live API models.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-8-flash-tts-succeeds-gemini-3-1-flash-tts",
+  "from": "gemini-3-8-flash-tts",
+  "to": "gemini-3-1-flash-tts",
+  "type": "succeeds",
+  "note": "Successive Gemini text-to-speech models.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gapi-changelog",
+   "m-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "rel-m-lyria-3-succeeds-lyria-2",
+  "from": "lyria-3",
+  "to": "lyria-2",
+  "type": "succeeds",
+  "note": "Successive Lyria generations.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-embedding-2-succeeds-gemini-embedding-001",
+  "from": "gemini-embedding-2",
+  "to": "gemini-embedding-001",
+  "type": "succeeds",
+  "note": "Embedding 2 adds multimodal input to the text-only Gemini Embedding.",
+  "label": "analyst-interpretation",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-aimonth"
+  ]
+ },
+ {
+  "id": "rel-m-gemma-4-succeeds-gemma-3",
+  "from": "gemma-4",
+  "to": "gemma-3",
+  "type": "succeeds",
+  "note": "Successive Gemma generations.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-bg-gemma4"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-argon-cyber-permissive-depends-on-gemini-4-argon",
+  "from": "gemini-4-argon-cyber-permissive",
+  "to": "gemini-4-argon",
+  "type": "depends-on",
+  "note": "Same model released without cyber guardrails to vetted defenders.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "m-cb-g4argon",
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-4-carbon-cyber-permissive-depends-on-gemini-4-carbon",
+  "from": "gemini-4-carbon-cyber-permissive",
+  "to": "gemini-4-carbon",
+  "type": "depends-on",
+  "note": "Defensive-cybersecurity variant of Gemini 4 Carbon behind the Fairwind allowlist.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-gcd-g4carbon"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-3-5-flash-cyber-depends-on-gemini-3-5-flash",
+  "from": "gemini-3-5-flash-cyber",
+  "to": "gemini-3-5-flash",
+  "type": "depends-on",
+  "note": "Reported as built on Gemini 3.5 Flash and tuned for vulnerability work.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-flashcyber"
+  ]
+ },
+ {
+  "id": "rel-m-gemini-deep-research-depends-on-gemini-3-1-pro",
+  "from": "gemini-deep-research",
+  "to": "gemini-3-1-pro",
+  "type": "depends-on",
+  "note": "Press reports the Deep Research agents are built on Gemini 3.1 Pro.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "m-pr-deepresearch"
+  ]
+ },
+ {
+  "id": "rel-m-medgemma-1-5-depends-on-gemma-3",
+  "from": "medgemma-1-5",
+  "to": "gemma-3",
+  "type": "depends-on",
+  "note": "MedGemma is a Gemma-family derivative; the exact base model was not confirmed.",
+  "label": "analyst-interpretation",
+  "confidence": "low",
+  "sourceIds": [
+   "m-gr-medgemma"
+  ]
+ },
+ {
+  "id": "rel-s-001-part-of-model-garden",
+  "from": "model-garden",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelgarden-page"
+  ]
+ },
+ {
+  "id": "rel-s-002-part-of-agent-studio",
+  "from": "agent-studio",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-003-part-of-agent-runtime",
+  "from": "agent-runtime",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-004-part-of-agent-memory-bank",
+  "from": "agent-memory-bank",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-005-part-of-agent-sessions",
+  "from": "agent-sessions",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-006-part-of-agent-identity",
+  "from": "agent-identity",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-007-part-of-agent-registry",
+  "from": "agent-registry",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-008-part-of-agent-gateway",
+  "from": "agent-gateway",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-009-part-of-agent-evaluation",
+  "from": "agent-evaluation",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-010-part-of-agent-simulation",
+  "from": "agent-simulation",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-011-part-of-agent-observability",
+  "from": "agent-observability",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-012-part-of-agent-optimizer",
+  "from": "agent-optimizer",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-013-part-of-agent-sandbox",
+  "from": "agent-sandbox",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-014-part-of-agent-security",
+  "from": "agent-security",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-015-part-of-agent-garden",
+  "from": "agent-garden",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-016-part-of-agent-search",
+  "from": "agent-search",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-agentsearch-page"
+  ]
+ },
+ {
+  "id": "rel-s-017-part-of-vector-search",
+  "from": "vector-search",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-018-part-of-managed-agents-api",
+  "from": "managed-agents-api",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-io26"
+  ]
+ },
+ {
+  "id": "rel-s-019-part-of-codemender",
+  "from": "codemender",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-020-part-of-provisioned-throughput",
+  "from": "provisioned-throughput",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-021-part-of-agent-platform-paygo-tiers",
+  "from": "agent-platform-paygo-tiers",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-platform-page"
+  ]
+ },
+ {
+  "id": "rel-s-022-part-of-gen-ai-evaluation-service",
+  "from": "gen-ai-evaluation-service",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-platform-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-023-part-of-grounding-with-google-search",
+  "from": "grounding-with-google-search",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-024-part-of-grounding-with-google-maps",
+  "from": "grounding-with-google-maps",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-genai-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-025-part-of-agent-development-kit",
+  "from": "agent-development-kit",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-026-part-of-gemini-enterprise-agent-plat",
+  "from": "gemini-enterprise-agent-platform",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "note": "Since Next '26 'Gemini Enterprise' names the whole portfolio: the Agent Platform, the Gemini Enterprise app and the partner ecosystem.",
+  "effectiveFrom": "2026-04-22",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-ge-new"
+  ]
+ },
+ {
+  "id": "rel-s-027-depends-on-gemini-enterprise",
+  "from": "gemini-enterprise",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "depends-on",
+  "note": "The Gemini Enterprise app is built on the Agent Platform; governance, security and identity come from it.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-ge-new",
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-028-depends-on-gemini-for-customer-experien",
+  "from": "gemini-for-customer-experience",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "depends-on",
+  "note": "Listed by Google as one of the delivery surfaces for agents built on the Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-029-part-of-gemini-enterprise-business",
+  "from": "gemini-enterprise-business",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-030-part-of-gemini-enterprise-standard",
+  "from": "gemini-enterprise-standard",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-031-part-of-gemini-enterprise-plus",
+  "from": "gemini-enterprise-plus",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-032-part-of-gemini-enterprise-frontline",
+  "from": "gemini-enterprise-frontline",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-033-part-of-gemini-enterprise-paygo",
+  "from": "gemini-enterprise-paygo",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-finops"
+  ]
+ },
+ {
+  "id": "rel-s-034-part-of-gemini-for-financial-service",
+  "from": "gemini-for-financial-services",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gefs"
+  ]
+ },
+ {
+  "id": "rel-s-035-part-of-gemini-for-legal",
+  "from": "gemini-for-legal",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-legal"
+  ]
+ },
+ {
+  "id": "rel-s-036-part-of-gemini-for-government-servic",
+  "from": "gemini-for-government-services",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gov"
+  ]
+ },
+ {
+  "id": "rel-s-037-part-of-gemini-for-healthcare",
+  "from": "gemini-for-healthcare",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-healthcare"
+  ]
+ },
+ {
+  "id": "rel-s-038-part-of-gemini-notebook-enterprise",
+  "from": "gemini-notebook-enterprise",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-agents"
+  ]
+ },
+ {
+  "id": "rel-s-039-part-of-agent-designer",
+  "from": "agent-designer",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-040-part-of-gemini-enterprise-connectors",
+  "from": "gemini-enterprise-connectors",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-page"
+  ]
+ },
+ {
+  "id": "rel-s-041-integrates-agent-marketplace",
+  "from": "agent-marketplace",
+  "to": "gemini-enterprise",
+  "type": "integrates",
+  "note": "Partner agents from the marketplace surface in the Agent Gallery inside the app.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-partner-agents"
+  ]
+ },
+ {
+  "id": "rel-s-042-part-of-agent-marketplace",
+  "from": "agent-marketplace",
+  "to": "google-cloud-marketplace",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-partner-agents"
+  ]
+ },
+ {
+  "id": "rel-s-043-part-of-cx-agent-studio",
+  "from": "cx-agent-studio",
+  "to": "gemini-for-customer-experience",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-cxas-page"
+  ]
+ },
+ {
+  "id": "rel-s-044-part-of-ai-commerce-search",
+  "from": "ai-commerce-search",
+  "to": "gemini-for-customer-experience",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-cx-page"
+  ]
+ },
+ {
+  "id": "rel-s-045-part-of-gemini-cloud-assist",
+  "from": "gemini-cloud-assist",
+  "to": "gemini-for-google-cloud",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-gemini-overview"
+  ]
+ },
+ {
+  "id": "rel-s-046-part-of-gemini-in-bigquery",
+  "from": "gemini-in-bigquery",
+  "to": "gemini-for-google-cloud",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-gemini-overview"
+  ]
+ },
+ {
+  "id": "rel-s-047-part-of-gemini-in-looker",
+  "from": "gemini-in-looker",
+  "to": "gemini-for-google-cloud",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-gemini-overview"
+  ]
+ },
+ {
+  "id": "rel-s-048-integrates-gemini-in-bigquery",
+  "from": "gemini-in-bigquery",
+  "to": "gemini-enterprise",
+  "type": "integrates",
+  "note": "Conversational analytics agents can be published into Gemini Enterprise.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-049-integrates-knowledge-catalog",
+  "from": "knowledge-catalog",
+  "to": "gemini-enterprise",
+  "type": "integrates",
+  "note": "The Gemini agent reads business definitions from Knowledge Catalog to ground data answers.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gaw26"
+  ]
+ },
+ {
+  "id": "rel-s-050-part-of-gemini-in-workspace",
+  "from": "gemini-in-workspace",
+  "to": "google-workspace-business-starter",
+  "type": "part-of",
+  "note": "Gemini features are bundled into this plan or add-on.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-051-part-of-gemini-in-workspace",
+  "from": "gemini-in-workspace",
+  "to": "google-workspace-business-standard",
+  "type": "part-of",
+  "note": "Gemini features are bundled into this plan or add-on.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-052-part-of-gemini-in-workspace",
+  "from": "gemini-in-workspace",
+  "to": "google-workspace-business-plus",
+  "type": "part-of",
+  "note": "Gemini features are bundled into this plan or add-on.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-ws-support-pricing"
+  ]
+ },
+ {
+  "id": "rel-s-053-part-of-gemini-in-workspace",
+  "from": "gemini-in-workspace",
+  "to": "workspace-ai-expanded-access",
+  "type": "part-of",
+  "note": "Gemini features are bundled into this plan or add-on.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-wsu-expanded"
+  ]
+ },
+ {
+  "id": "rel-s-054-integrates-gemini-enterprise",
+  "from": "gemini-enterprise",
+  "to": "gemini-in-workspace",
+  "type": "integrates",
+  "note": "The Gemini agent works inline in Workspace apps with the same memory, skills and controls.",
+  "effectiveFrom": "2026-10-08",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gaw26"
+  ]
+ },
+ {
+  "id": "rel-s-055-part-of-gemini-live",
+  "from": "gemini-live",
+  "to": "gemini-app",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-9to5-live-free"
+  ]
+ },
+ {
+  "id": "rel-s-056-part-of-interactions-api",
+  "from": "interactions-api",
+  "to": "gemini-api",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-aidev-interactions"
+  ]
+ },
+ {
+  "id": "rel-s-057-part-of-gemini-live-api",
+  "from": "gemini-live-api",
+  "to": "gemini-api",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-bg-live31"
+  ]
+ },
+ {
+  "id": "rel-s-058-integrates-google-ai-studio",
+  "from": "google-ai-studio",
+  "to": "gemini-api",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-gemini-overview"
+  ]
+ },
+ {
+  "id": "rel-s-059-part-of-tpu-v5e",
+  "from": "tpu-v5e",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-tpu-v5e"
+  ]
+ },
+ {
+  "id": "rel-s-060-part-of-tpu-v5p",
+  "from": "tpu-v5p",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-tpu-v5p"
+  ]
+ },
+ {
+  "id": "rel-s-061-part-of-tpu-trillium",
+  "from": "tpu-trillium",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-062-part-of-tpu-ironwood",
+  "from": "tpu-ironwood",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-063-part-of-tpu-8t",
+  "from": "tpu-8t",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-064-part-of-tpu-8i",
+  "from": "tpu-8i",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-065-part-of-tpu-8tx",
+  "from": "tpu-8tx",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-066-part-of-tpu-8i-max",
+  "from": "tpu-8i-max",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-067-part-of-torchtpu",
+  "from": "torchtpu",
+  "to": "tpu",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-068-part-of-tpu",
+  "from": "tpu",
+  "to": "ai-hypercomputer",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-069-part-of-nvidia-gpus-on-google-cloud",
+  "from": "nvidia-gpus-on-google-cloud",
+  "to": "ai-hypercomputer",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-aiinfra-page"
+  ]
+ },
+ {
+  "id": "rel-s-070-part-of-google-axion",
+  "from": "google-axion",
+  "to": "ai-hypercomputer",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-d1"
+  ]
+ },
+ {
+  "id": "rel-s-071-part-of-virgo-network",
+  "from": "virgo-network",
+  "to": "ai-hypercomputer",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-d1"
+  ]
+ },
+ {
+  "id": "rel-s-072-succeeds-tpu-trillium",
+  "from": "tpu-trillium",
+  "to": "tpu-v5e",
+  "type": "succeeds",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-073-succeeds-tpu-ironwood",
+  "from": "tpu-ironwood",
+  "to": "tpu-trillium",
+  "type": "succeeds",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-074-succeeds-tpu-8t",
+  "from": "tpu-8t",
+  "to": "tpu-ironwood",
+  "type": "succeeds",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-075-succeeds-tpu-8i",
+  "from": "tpu-8i",
+  "to": "tpu-ironwood",
+  "type": "succeeds",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-076-derived-from-tpu-8tx",
+  "from": "tpu-8tx",
+  "to": "tpu-8t",
+  "type": "derived-from",
+  "note": "Same silicon as TPU 8t with confidential computing and the Boardfly network.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-tpu8"
+  ]
+ },
+ {
+  "id": "rel-s-077-derived-from-tpu-8i-max",
+  "from": "tpu-8i-max",
+  "to": "tpu-8i",
+  "type": "derived-from",
+  "note": "Two TPU 8i chips in one package.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-tpu8"
+  ]
+ },
+ {
+  "id": "rel-s-078-powers-google-axion",
+  "from": "google-axion",
+  "to": "tpu-8t",
+  "type": "powers",
+  "note": "Axion CPUs serve as host headers in eighth-generation TPU systems.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-tpu8deep"
+  ]
+ },
+ {
+  "id": "rel-s-079-runs-on-gemini",
+  "from": "gemini",
+  "to": "tpu",
+  "type": "runs-on",
+  "note": "Google says TPUs are the engine behind Gemini training and serving.",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-tpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-080-runs-on-gemini-enterprise-agent-plat",
+  "from": "gemini-enterprise-agent-platform",
+  "to": "ai-hypercomputer",
+  "type": "runs-on",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-aiinfra-page"
+  ]
+ },
+ {
+  "id": "rel-s-081-runs-on-gemini-enterprise",
+  "from": "gemini-enterprise",
+  "to": "agent-compute-engine",
+  "type": "runs-on",
+  "note": "Agent Compute Engine gives each Gemini agent session its own microVM.",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-ace"
+  ]
+ },
+ {
+  "id": "rel-s-082-integrates-agent-compute-engine",
+  "from": "agent-compute-engine",
+  "to": "agent-gateway",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-ace"
+  ]
+ },
+ {
+  "id": "rel-s-083-runs-on-gke-agent-sandbox",
+  "from": "gke-agent-sandbox",
+  "to": "google-axion",
+  "type": "runs-on",
+  "conditions": "GKE Agent Sandbox on Axion N4A instances",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-084-part-of-google-distributed-cloud",
+  "from": "google-distributed-cloud",
+  "to": "google-sovereign-cloud",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-sovereign-page"
+  ]
+ },
+ {
+  "id": "rel-s-085-served-via-gemini",
+  "from": "gemini",
+  "to": "google-distributed-cloud",
+  "type": "served-via",
+  "conditions": "Gemini 3.5 Flash generally available on GDC air-gapped",
+  "effectiveFrom": "2026-10-20",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gdc-new"
+  ]
+ },
+ {
+  "id": "rel-s-086-served-via-gemma",
+  "from": "gemma",
+  "to": "google-distributed-cloud",
+  "type": "served-via",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gdc-new"
+  ]
+ },
+ {
+  "id": "rel-s-087-integrates-tpu",
+  "from": "tpu",
+  "to": "google-deepmind",
+  "type": "integrates",
+  "note": "TPUs are co-designed with Google DeepMind.",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-tpu8"
+  ]
+ },
+ {
+  "id": "rel-s-088-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-enterprise",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-page"
+  ]
+ },
+ {
+  "id": "rel-s-089-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-app",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-090-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-in-workspace",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-091-powers-gemini",
+  "from": "gemini",
+  "to": "google-antigravity",
+  "type": "powers",
+  "note": "Antigravity is co-optimised with the Gemini model family.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-io26"
+  ]
+ },
+ {
+  "id": "rel-s-092-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-cli",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2025"
+  ]
+ },
+ {
+  "id": "rel-s-093-powers-gemini",
+  "from": "gemini",
+  "to": "alphaevolve",
+  "type": "powers",
+  "note": "AlphaEvolve is built on top of Gemini.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-094-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-for-customer-experience",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-cx-page"
+  ]
+ },
+ {
+  "id": "rel-s-095-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-cloud-assist",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-cloudassist-page"
+  ]
+ },
+ {
+  "id": "rel-s-096-powers-gemini",
+  "from": "gemini",
+  "to": "google-security-operations-ai",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-secops-page"
+  ]
+ },
+ {
+  "id": "rel-s-097-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-in-bigquery",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-bigquery-page"
+  ]
+ },
+ {
+  "id": "rel-s-098-powers-gemini",
+  "from": "gemini",
+  "to": "google-ai-studio",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-gemini-overview"
+  ]
+ },
+ {
+  "id": "rel-s-099-powers-gemini",
+  "from": "gemini",
+  "to": "ai-mode",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-q2-2026-ceo"
+  ]
+ },
+ {
+  "id": "rel-s-100-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-in-chrome",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-9to5-autobrowse"
+  ]
+ },
+ {
+  "id": "rel-s-101-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-spark",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-io26-eweek"
+  ]
+ },
+ {
+  "id": "rel-s-102-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-on-android",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-imp-assistant"
+  ]
+ },
+ {
+  "id": "rel-s-103-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-for-home",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-9to5-home"
+  ]
+ },
+ {
+  "id": "rel-s-104-powers-gemini",
+  "from": "gemini",
+  "to": "android-xr",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-digit-samsung"
+  ]
+ },
+ {
+  "id": "rel-s-105-powers-gemini",
+  "from": "gemini",
+  "to": "gemini-notebook",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-wsu-gemini-notebook"
+  ]
+ },
+ {
+  "id": "rel-s-106-powers-genie",
+  "from": "genie",
+  "to": "project-genie",
+  "type": "powers",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-ys-project-genie"
+  ]
+ },
+ {
+  "id": "rel-s-107-served-via-gemma",
+  "from": "gemma",
+  "to": "model-garden",
+  "type": "served-via",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelgarden-page"
+  ]
+ },
+ {
+  "id": "rel-s-108-powers-veo",
+  "from": "veo",
+  "to": "google-flow",
+  "type": "powers",
+  "note": "Veo 3.1 updates were announced as launching in Flow, the Gemini app, YouTube and Google Vids.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-109-implements-agent-development-kit",
+  "from": "agent-development-kit",
+  "to": "a2a-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-ge-new"
+  ]
+ },
+ {
+  "id": "rel-s-110-implements-agent-development-kit",
+  "from": "agent-development-kit",
+  "to": "model-context-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next25-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-111-implements-agent-gateway",
+  "from": "agent-gateway",
+  "to": "a2a-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-xcloud"
+  ]
+ },
+ {
+  "id": "rel-s-112-implements-agent-gateway",
+  "from": "agent-gateway",
+  "to": "model-context-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-xcloud"
+  ]
+ },
+ {
+  "id": "rel-s-113-implements-gemini-enterprise",
+  "from": "gemini-enterprise",
+  "to": "a2a-protocol",
+  "type": "implements",
+  "note": "External agents are integrated into the app through A2A.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-114-implements-gemini-enterprise",
+  "from": "gemini-enterprise",
+  "to": "a2ui-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-115-implements-gemini-enterprise",
+  "from": "gemini-enterprise",
+  "to": "model-context-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gaw26"
+  ]
+ },
+ {
+  "id": "rel-s-116-implements-gemini-enterprise-agent-plat",
+  "from": "gemini-enterprise-agent-platform",
+  "to": "ap2-protocol",
+  "type": "implements",
+  "note": "PayPal describes using AP2 on the Agent Platform.",
+  "label": "provider-claim",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-b-geap-intro"
+  ]
+ },
+ {
+  "id": "rel-s-117-implements-gemini-for-customer-experien",
+  "from": "gemini-for-customer-experience",
+  "to": "universal-commerce-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-cx-page"
+  ]
+ },
+ {
+  "id": "rel-s-118-implements-cx-agent-studio",
+  "from": "cx-agent-studio",
+  "to": "model-context-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-cxas-page"
+  ]
+ },
+ {
+  "id": "rel-s-119-implements-managed-agents-api",
+  "from": "managed-agents-api",
+  "to": "model-context-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-io26"
+  ]
+ },
+ {
+  "id": "rel-s-120-implements-google-managed-mcp-servers",
+  "from": "google-managed-mcp-servers",
+  "to": "model-context-protocol",
+  "type": "implements",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-mcp"
+  ]
+ },
+ {
+  "id": "rel-s-121-depends-on-ap2-protocol",
+  "from": "ap2-protocol",
+  "to": "a2a-protocol",
+  "type": "depends-on",
+  "note": "AP2 can be used as an extension of A2A and MCP.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-ap2"
+  ]
+ },
+ {
+  "id": "rel-s-122-integrates-universal-commerce-protocol",
+  "from": "universal-commerce-protocol",
+  "to": "ap2-protocol",
+  "type": "integrates",
+  "note": "UCP is compatible with A2A, AP2 and MCP.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-123-integrates-model-armor",
+  "from": "model-armor",
+  "to": "agent-gateway",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-124-integrates-model-armor",
+  "from": "model-armor",
+  "to": "agent-runtime",
+  "type": "integrates",
+  "conditions": "preview at Next '26",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-125-integrates-model-armor",
+  "from": "model-armor",
+  "to": "apigee",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelarmor-page"
+  ]
+ },
+ {
+  "id": "rel-s-126-integrates-model-armor",
+  "from": "model-armor",
+  "to": "firebase-ai-logic",
+  "type": "integrates",
+  "conditions": "generally available",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-127-integrates-google-antigravity",
+  "from": "google-antigravity",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "integrates",
+  "note": "Antigravity 2.0 and its CLI can run inference through a customer's Agent Platform project.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-io26"
+  ]
+ },
+ {
+  "id": "rel-s-128-part-of-google-antigravity",
+  "from": "google-antigravity",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "conditions": "included in eligible Standard, Plus and Standard Emerging Market subscriptions",
+  "effectiveFrom": "2026-08-21",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-antigravity-ent"
+  ]
+ },
+ {
+  "id": "rel-s-129-part-of-gemini-code-assist",
+  "from": "gemini-code-assist",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "conditions": "Standard and Plus editions",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-ge-faq"
+  ]
+ },
+ {
+  "id": "rel-s-130-integrates-gemini-spark",
+  "from": "gemini-spark",
+  "to": "gemini-enterprise",
+  "type": "integrates",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-131-part-of-flexible-savings-plans",
+  "from": "flexible-savings-plans",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-finops"
+  ]
+ },
+ {
+  "id": "rel-s-132-part-of-smart-routing",
+  "from": "smart-routing",
+  "to": "gemini-enterprise",
+  "type": "part-of",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-gaw26"
+  ]
+ },
+ {
+  "id": "rel-s-133-integrates-wiz",
+  "from": "wiz",
+  "to": "google-security-operations-ai",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "rel-s-137-succeeds-google-antigravity",
+  "from": "google-antigravity",
+  "to": "gemini-cli",
+  "type": "succeeds",
+  "note": "Gemini CLI is transitioning to the Antigravity CLI.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-gdb-cli-transition"
+  ]
+ },
+ {
+  "id": "rel-s-138-succeeds-google-antigravity",
+  "from": "google-antigravity",
+  "to": "jules",
+  "type": "succeeds",
+  "note": "Reports say Jules' learnings feed into Antigravity.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-tr-jules"
+  ]
+ },
+ {
+  "id": "rel-s-139-succeeds-google-ai-studio",
+  "from": "google-ai-studio",
+  "to": "firebase-studio",
+  "type": "succeeds",
+  "label": "independent-measurement",
+  "confidence": "low",
+  "sourceIds": [
+   "s-x-fb-aistudio"
+  ]
+ },
+ {
+  "id": "rel-s-140-derived-from-alphaevolve",
+  "from": "alphaevolve",
+  "to": "google-deepmind",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-pk-alphaevolve"
+  ]
+ },
+ {
+  "id": "rel-s-141-derived-from-alphafold-3",
+  "from": "alphafold-3",
+  "to": "google-deepmind",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-pk-alphafold3"
+  ]
+ },
+ {
+  "id": "rel-s-142-derived-from-alphafold-3",
+  "from": "alphafold-3",
+  "to": "isomorphic-labs",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-pk-alphafold3"
+  ]
+ },
+ {
+  "id": "rel-s-143-derived-from-alphagenome",
+  "from": "alphagenome",
+  "to": "google-deepmind",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-pk-alphagenome"
+  ]
+ },
+ {
+  "id": "rel-s-144-derived-from-ai-co-scientist",
+  "from": "ai-co-scientist",
+  "to": "google-research",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-pk-coscientist"
+  ]
+ },
+ {
+  "id": "rel-s-145-derived-from-weathernext",
+  "from": "weathernext",
+  "to": "google-deepmind",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-bg-weathernext2"
+  ]
+ },
+ {
+  "id": "rel-s-146-derived-from-sima",
+  "from": "sima",
+  "to": "google-deepmind",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-dm-sima2"
+  ]
+ },
+ {
+  "id": "rel-s-147-derived-from-project-genie",
+  "from": "project-genie",
+  "to": "google-deepmind",
+  "type": "derived-from",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-dm-genie3"
+  ]
+ },
+ {
+  "id": "rel-s-148-derived-from-gemini-live",
+  "from": "gemini-live",
+  "to": "project-astra",
+  "type": "derived-from",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-9to5-live-free"
+  ]
+ },
+ {
+  "id": "rel-s-149-derived-from-computer-use",
+  "from": "computer-use",
+  "to": "project-mariner",
+  "type": "derived-from",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-ah-mariner"
+  ]
+ },
+ {
+  "id": "rel-s-150-part-of-gemini-deep-think",
+  "from": "gemini-deep-think",
+  "to": "gemini",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-aimonth-2025"
+  ]
+ },
+ {
+  "id": "rel-s-151-integrates-agent-evaluation",
+  "from": "agent-evaluation",
+  "to": "google-deepmind",
+  "type": "integrates",
+  "note": "Adaptive rubrics were co-developed with Google DeepMind.",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-geap-whatsnew"
+  ]
+ },
+ {
+  "id": "rel-s-152-partnered-with-google",
+  "from": "google",
+  "to": "partner-anthropic",
+  "type": "partnered-with",
+  "note": "Claude models sold on Google Cloud; Anthropic commitments of up to one million TPUs (2025) and multiple further gigawatts from 2027 (2026).",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-anth-tpu-2025",
+   "s-anth-broadcom-2026",
+   "s-b-claude"
+  ]
+ },
+ {
+  "id": "rel-s-153-runs-on-partner-anthropic",
+  "from": "partner-anthropic",
+  "to": "tpu",
+  "type": "runs-on",
+  "note": "Anthropic trains and runs Claude on Google TPUs alongside AWS Trainium and NVIDIA GPUs.",
+  "label": "provider-claim",
+  "confidence": "high",
+  "sourceIds": [
+   "s-anth-broadcom-2026",
+   "s-b-ironwood-ga"
+  ]
+ },
+ {
+  "id": "rel-s-154-served-via-partner-anthropic",
+  "from": "partner-anthropic",
+  "to": "model-garden",
+  "type": "served-via",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelgarden-page"
+  ]
+ },
+ {
+  "id": "rel-s-155-partnered-with-google",
+  "from": "google",
+  "to": "partner-openai",
+  "type": "partnered-with",
+  "note": "OpenAI models offered in Google Cloud's model garden from October 2026 (private preview).",
+  "effectiveFrom": "2026-10-21",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-openai"
+  ]
+ },
+ {
+  "id": "rel-s-156-served-via-partner-openai",
+  "from": "partner-openai",
+  "to": "model-garden",
+  "type": "served-via",
+  "conditions": "private preview for selected enterprise customers",
+  "effectiveFrom": "2026-10-21",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-openai"
+  ]
+ },
+ {
+  "id": "rel-s-157-partnered-with-google",
+  "from": "google",
+  "to": "partner-meta",
+  "type": "partnered-with",
+  "note": "Cloud and TPU rental deals reported by press, unconfirmed by either company.",
+  "label": "independent-measurement",
+  "confidence": "low",
+  "sourceIds": [
+   "s-x-meta-cloud",
+   "s-x-sa-meta-tpu"
+  ]
+ },
+ {
+  "id": "rel-s-158-served-via-partner-meta",
+  "from": "partner-meta",
+  "to": "model-garden",
+  "type": "served-via",
+  "note": "Llama open models",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelgarden-page"
+  ]
+ },
+ {
+  "id": "rel-s-159-partnered-with-google",
+  "from": "google",
+  "to": "partner-apple",
+  "type": "partnered-with",
+  "note": "Gemini models to underpin next-generation Apple Foundation Models; Google Cloud confidential computing used for Apple's Private Cloud Compute expansion.",
+  "effectiveFrom": "2026-01-12",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-reg-apple",
+   "s-x-ct-apple",
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-s-160-powers-gemini",
+  "from": "gemini",
+  "to": "partner-apple",
+  "type": "powers",
+  "conditions": "announced; shipping status not confirmed",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-reg-apple",
+   "s-x-ct-apple"
+  ]
+ },
+ {
+  "id": "rel-s-161-partnered-with-google",
+  "from": "google",
+  "to": "partner-samsung",
+  "type": "partnered-with",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-tc-s26",
+   "s-x-digit-samsung"
+  ]
+ },
+ {
+  "id": "rel-s-162-integrates-partner-samsung",
+  "from": "partner-samsung",
+  "to": "android-xr",
+  "type": "integrates",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-digit-samsung"
+  ]
+ },
+ {
+  "id": "rel-s-163-partnered-with-google",
+  "from": "google",
+  "to": "partner-oracle",
+  "type": "partnered-with",
+  "note": "Google TPUs to be offered on Oracle Cloud Infrastructure from calendar year 2027.",
+  "effectiveFrom": "2026-10-27",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-oracle-tpu"
+  ]
+ },
+ {
+  "id": "rel-s-164-integrates-partner-oracle",
+  "from": "partner-oracle",
+  "to": "tpu",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-oracle-tpu"
+  ]
+ },
+ {
+  "id": "rel-s-165-partnered-with-google",
+  "from": "google",
+  "to": "partner-nvidia",
+  "type": "partnered-with",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-nvidia"
+  ]
+ },
+ {
+  "id": "rel-s-166-powers-partner-nvidia",
+  "from": "partner-nvidia",
+  "to": "nvidia-gpus-on-google-cloud",
+  "type": "powers",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-gpu-page"
+  ]
+ },
+ {
+  "id": "rel-s-167-partnered-with-google",
+  "from": "google",
+  "to": "partner-mistral",
+  "type": "partnered-with",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelgarden-page",
+   "s-b-gdc-new"
+  ]
+ },
+ {
+  "id": "rel-s-168-served-via-partner-mistral",
+  "from": "partner-mistral",
+  "to": "model-garden",
+  "type": "served-via",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-modelgarden-page"
+  ]
+ },
+ {
+  "id": "rel-s-169-partnered-with-google",
+  "from": "google",
+  "to": "partner-thales-s3ns",
+  "type": "partnered-with",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-sovereign-page"
+  ]
+ },
+ {
+  "id": "rel-s-170-integrates-partner-thales-s3ns",
+  "from": "partner-thales-s3ns",
+  "to": "google-sovereign-cloud",
+  "type": "integrates",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-sovereign-page"
+  ]
+ },
+ {
+  "id": "rel-s-171-partnered-with-google",
+  "from": "google",
+  "to": "google-cloud-partner-ecosystem",
+  "type": "partnered-with",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-partner-eco"
+  ]
+ },
+ {
+  "id": "rel-s-172-part-of-google-deepmind",
+  "from": "google-deepmind",
+  "to": "google",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-pk-deepmind"
+  ]
+ },
+ {
+  "id": "rel-s-173-part-of-google-cloud",
+  "from": "google-cloud",
+  "to": "google",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "s-x-q3-2026-4wk"
+  ]
+ },
+ {
+  "id": "rel-s-174-part-of-wiz",
+  "from": "wiz",
+  "to": "google-cloud",
+  "type": "part-of",
+  "effectiveFrom": "2026-03-11",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-b-wiz"
+  ]
+ },
+ {
+  "id": "rel-c-claude-fable-5-2-succeeds-claude-fable-5-1",
+  "from": "claude-fable-5-2",
+  "to": "claude-fable-5-1",
+  "type": "succeeds",
+  "effectiveFrom": "2026-11-09",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ]
+ },
+ {
+  "id": "rel-c-claude-fable-5-1-succeeds-claude-fable-5",
+  "from": "claude-fable-5-1",
+  "to": "claude-fable-5",
+  "type": "succeeds",
+  "effectiveFrom": "2026-09-01",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "rel-c-claude-opus-5-5-succeeds-claude-opus-5",
+  "from": "claude-opus-5-5",
+  "to": "claude-opus-5",
+  "type": "succeeds",
+  "effectiveFrom": "2026-09-22",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ]
+ },
+ {
+  "id": "rel-c-claude-opus-5-succeeds-claude-opus-4-5",
+  "from": "claude-opus-5",
+  "to": "claude-opus-4-5",
+  "type": "succeeds",
+  "note": "Via Claude Opus 4.6, 4.7 and 4.8 (February to May 2026), which are not modelled as entities here.",
+  "effectiveFrom": "2026-07-24",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-release-notes",
+   "c-anthropic-opus-4-6",
+   "c-anthropic-opus-4-7",
+   "c-anthropic-opus-4-8"
+  ]
+ },
+ {
+  "id": "rel-c-claude-opus-4-5-succeeds-claude-opus-4",
+  "from": "claude-opus-4-5",
+  "to": "claude-opus-4",
+  "type": "succeeds",
+  "note": "Via Claude Opus 4.1 (August 2025).",
+  "effectiveFrom": "2025-11-24",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "rel-c-claude-opus-4-succeeds-claude-3-opus",
+  "from": "claude-opus-4",
+  "to": "claude-3-opus",
+  "type": "succeeds",
+  "effectiveFrom": "2025-05-22",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-claude-4"
+  ]
+ },
+ {
+  "id": "rel-c-claude-sonnet-5-5-succeeds-claude-sonnet-5",
+  "from": "claude-sonnet-5-5",
+  "to": "claude-sonnet-5",
+  "type": "succeeds",
+  "effectiveFrom": "2026-09-28",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-sonnet-5-5"
+  ]
+ },
+ {
+  "id": "rel-c-claude-sonnet-5-succeeds-claude-sonnet-4-5",
+  "from": "claude-sonnet-5",
+  "to": "claude-sonnet-4-5",
+  "type": "succeeds",
+  "note": "Via Claude Sonnet 4.6 (February 2026).",
+  "effectiveFrom": "2026-06-30",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-sonnet-5"
+  ]
+ },
+ {
+  "id": "rel-c-claude-sonnet-4-5-succeeds-claude-3-5-sonnet",
+  "from": "claude-sonnet-4-5",
+  "to": "claude-3-5-sonnet",
+  "type": "succeeds",
+  "note": "Via Claude Sonnet 3.7 and Sonnet 4 (2025).",
+  "effectiveFrom": "2025-09-29",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "rel-c-claude-haiku-5-5-succeeds-claude-haiku-4-5",
+  "from": "claude-haiku-5-5",
+  "to": "claude-haiku-4-5",
+  "type": "succeeds",
+  "effectiveFrom": "2026-10-07",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-1-sol-succeeds-gpt-6-sol",
+  "from": "gpt-6-1-sol",
+  "to": "gpt-6-sol",
+  "type": "succeeds",
+  "effectiveFrom": "2026-09-29",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-sim-openai"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-astra-succeeds-gpt-5-6-sol",
+  "from": "gpt-6-astra",
+  "to": "gpt-5-6-sol",
+  "type": "succeeds",
+  "note": "Flagship position; press is inconsistent about which model Astra formally replaces.",
+  "effectiveFrom": "2026-09-03",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-newstack-astra"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-5-6-sol-succeeds-gpt-5-5",
+  "from": "gpt-5-6-sol",
+  "to": "gpt-5-5",
+  "type": "succeeds",
+  "effectiveFrom": "2026-07-09",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-gradually-gpt-versions"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-5-5-succeeds-gpt-5",
+  "from": "gpt-5-5",
+  "to": "gpt-5",
+  "type": "succeeds",
+  "note": "Via GPT-5.1, 5.2 and 5.4.",
+  "effectiveFrom": "2026-04-23",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-sim-openai"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-5-succeeds-gpt-4o",
+  "from": "gpt-5",
+  "to": "gpt-4o",
+  "type": "succeeds",
+  "effectiveFrom": "2025-08-07",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-sim-openai"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-4o-succeeds-gpt-4",
+  "from": "gpt-4o",
+  "to": "gpt-4",
+  "type": "succeeds",
+  "note": "Via GPT-4 Turbo (November 2023).",
+  "effectiveFrom": "2024-05-13",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-pk-gpt-4o"
+  ]
+ },
+ {
+  "id": "rel-c-grok-4-7-succeeds-grok-4-6",
+  "from": "grok-4-7",
+  "to": "grok-4-6",
+  "type": "succeeds",
+  "effectiveFrom": "2026-09-21",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-benchlm-xai-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-glm-5-2-succeeds-glm-5",
+  "from": "glm-5-2",
+  "to": "glm-5",
+  "type": "succeeds",
+  "effectiveFrom": "2026-06-13",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-datanorth-glm52"
+  ]
+ },
+ {
+  "id": "rel-c-kimi-k3-1-pro-succeeds-kimi-k3",
+  "from": "kimi-k3-1-pro",
+  "to": "kimi-k3",
+  "type": "succeeds",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-fourweekmba-k31"
+  ]
+ },
+ {
+  "id": "rel-c-mistral-large-4-succeeds-mistral-large-3",
+  "from": "mistral-large-4",
+  "to": "mistral-large-3",
+  "type": "succeeds",
+  "effectiveFrom": "2026-10-06",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-eweek-large4"
+  ]
+ },
+ {
+  "id": "rel-c-qwen4-max-succeeds-qwen3-8-max",
+  "from": "qwen4-max",
+  "to": "qwen3-8-max",
+  "type": "succeeds",
+  "note": "Preview only; Qwen3.8-Max remains the generally available flagship.",
+  "effectiveFrom": "2026-11-11",
+  "label": "analyst-interpretation",
+  "confidence": "low",
+  "sourceIds": [
+   "c-x-fourweekmba-qwen4"
+  ]
+ },
+ {
+  "id": "rel-c-claude-fable-5-2-competes-with-gemini-4-carbon",
+  "from": "claude-fable-5-2",
+  "to": "gemini-4-carbon",
+  "type": "competes-with",
+  "note": "Top-tier general models; first and second on Artificial Analysis Intelligence Index v5 in mid-November 2026.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-benchlm-aa",
+   "c-anthropic-fable-5-2"
+  ]
+ },
+ {
+  "id": "rel-c-claude-opus-5-5-competes-with-gemini-4-carbon",
+  "from": "claude-opus-5-5",
+  "to": "gemini-4-carbon",
+  "type": "competes-with",
+  "note": "Same $4/$20 list price from 1 December 2026, when Carbon's promotional $2/$10 ends.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-astra-competes-with-gemini-4-carbon",
+  "from": "gpt-6-astra",
+  "to": "gemini-4-carbon",
+  "type": "competes-with",
+  "note": "Rival labs' flagships; Astra lists at $10/$50 per trackers.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-cloudzero-gpt6",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-muse-wonder-1-0-competes-with-gemini-4-carbon",
+  "from": "muse-wonder-1-0",
+  "to": "gemini-4-carbon",
+  "type": "competes-with",
+  "note": "Same $4/$20 list price band.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-gcloud-partner-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-grok-4-7-competes-with-gemini-4-argon",
+  "from": "grok-4-7",
+  "to": "gemini-4-argon",
+  "type": "competes-with",
+  "note": "Flagship-class models in the $2-$4 input band.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-gcloud-partner-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-sonnet-5-5-competes-with-gemini-4-hydrogen",
+  "from": "claude-sonnet-5-5",
+  "to": "gemini-4-hydrogen",
+  "type": "competes-with",
+  "note": "Mid-tier: $2/$10 versus $1.50/$7.50.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-1-sol-competes-with-gemini-4-hydrogen",
+  "from": "gpt-6-1-sol",
+  "to": "gemini-4-hydrogen",
+  "type": "competes-with",
+  "note": "Mid-tier: $2/$10 (per trackers) versus $1.50/$7.50.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-benchlm-openai-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-1-terra-competes-with-gemini-4-hydrogen",
+  "from": "gpt-6-1-terra",
+  "to": "gemini-4-hydrogen",
+  "type": "competes-with",
+  "note": "Mid-tier: $1/$5 (per trackers) versus $1.50/$7.50.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-ppt-terra",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-haiku-5-5-competes-with-gemini-3-8-flash",
+  "from": "claude-haiku-5-5",
+  "to": "gemini-3-8-flash",
+  "type": "competes-with",
+  "note": "Light tier: $0.10/$0.50 (prompts up to 100K) versus Flash's introductory $0.75/$3.75.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-luna-competes-with-gemini-3-8-flash",
+  "from": "gpt-6-luna",
+  "to": "gemini-3-8-flash",
+  "type": "competes-with",
+  "note": "Light tier: $0.10/$0.50 (per trackers) versus Flash's introductory $0.75/$3.75.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-ppt-luna",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-muse-ember-1-0-competes-with-gemini-3-8-flash",
+  "from": "muse-ember-1-0",
+  "to": "gemini-3-8-flash",
+  "type": "competes-with",
+  "note": "Light tier with multimodal input.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-gcloud-partner-pricing",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-deepseek-v4-pro-competes-with-gemma",
+  "from": "deepseek-v4-pro",
+  "to": "gemma",
+  "type": "competes-with",
+  "note": "Open-weight flagships.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-decoder-deepseek-v4",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-kimi-k3-competes-with-gemma",
+  "from": "kimi-k3",
+  "to": "gemma",
+  "type": "competes-with",
+  "note": "Open-weight models; K3 is far larger than anything in the Gemma line.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-standard-kimi-k3",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-glm-5-2-competes-with-gemma",
+  "from": "glm-5-2",
+  "to": "gemma",
+  "type": "competes-with",
+  "note": "Open-weight models under permissive licences.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-venturebeat-glm52",
+   "c-gcloud-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-code-competes-with-gemini-cli",
+  "from": "claude-code",
+  "to": "gemini-cli",
+  "type": "competes-with",
+  "note": "Terminal coding agents.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-claude-4"
+  ]
+ },
+ {
+  "id": "rel-c-codex-competes-with-gemini-cli",
+  "from": "codex",
+  "to": "gemini-cli",
+  "type": "competes-with",
+  "note": "Terminal and cloud coding agents.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-releasebot-openai"
+  ]
+ },
+ {
+  "id": "rel-c-cursor-competes-with-antigravity",
+  "from": "cursor",
+  "to": "google-antigravity",
+  "type": "competes-with",
+  "note": "Agentic code editors.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-vktr-cursor"
+  ]
+ },
+ {
+  "id": "rel-c-github-copilot-competes-with-antigravity",
+  "from": "github-copilot",
+  "to": "google-antigravity",
+  "type": "competes-with",
+  "note": "IDE-integrated coding assistants.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-ms-nvidia"
+  ]
+ },
+ {
+  "id": "rel-c-chatgpt-competes-with-gemini-app",
+  "from": "chatgpt",
+  "to": "gemini-app",
+  "type": "competes-with",
+  "note": "Consumer assistants.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-abc45-users"
+  ]
+ },
+ {
+  "id": "rel-c-openai-frontier-competes-with-gemini-enterprise",
+  "from": "openai-frontier",
+  "to": "gemini-enterprise",
+  "type": "competes-with",
+  "note": "Enterprise agent products sold to business buyers.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-flywheel-agent-platforms",
+   "c-gcloud-gemini-enterprise"
+  ]
+ },
+ {
+  "id": "rel-c-claude-managed-agents-competes-with-gemini-enterprise-agent-platform",
+  "from": "claude-managed-agents",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "competes-with",
+  "note": "Managed agent runtimes for developers.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-release-notes",
+   "c-gcloud-agent-platform"
+  ]
+ },
+ {
+  "id": "rel-c-amazon-bedrock-agentcore-competes-with-gemini-enterprise-agent-platform",
+  "from": "amazon-bedrock-agentcore",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "competes-with",
+  "note": "Cloud agent runtimes.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-flywheel-agent-platforms",
+   "c-gcloud-agent-platform"
+  ]
+ },
+ {
+  "id": "rel-c-amazon-bedrock-competes-with-gemini-enterprise-agent-platform",
+  "from": "amazon-bedrock",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "competes-with",
+  "note": "Multi-model cloud platforms that both resell Claude.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-microsoft-foundry-competes-with-gemini-enterprise-agent-platform",
+  "from": "microsoft-foundry",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "competes-with",
+  "note": "Cloud model and agent platforms.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-anthropic-release-notes",
+   "c-gcloud-agent-platform"
+  ]
+ },
+ {
+  "id": "rel-c-microsoft-365-copilot-competes-with-google-workspace-gemini",
+  "from": "microsoft-365-copilot",
+  "to": "gemini-in-workspace",
+  "type": "competes-with",
+  "note": "Assistants embedded in the two dominant productivity suites.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-msft-fy26q4"
+  ]
+ },
+ {
+  "id": "rel-c-agentic-commerce-protocol-competes-with-ucp",
+  "from": "agentic-commerce-protocol",
+  "to": "universal-commerce-protocol",
+  "type": "competes-with",
+  "note": "Competing agent-checkout protocols.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-digitalapplied-commerce"
+  ]
+ },
+ {
+  "id": "rel-c-nvidia-vera-rubin-competes-with-tpu",
+  "from": "nvidia-vera-rubin",
+  "to": "tpu",
+  "type": "competes-with",
+  "note": "Accelerator platforms for frontier training and inference.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-techinsider-rubin-tpu",
+   "c-gcloud-tpu"
+  ]
+ },
+ {
+  "id": "rel-c-aws-trainium-competes-with-tpu",
+  "from": "aws-trainium",
+  "to": "tpu",
+  "type": "competes-with",
+  "note": "Hyperscaler custom accelerators.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-spheron-chips",
+   "c-gcloud-tpu"
+  ]
+ },
+ {
+  "id": "rel-c-claude-fable-5-2-served-via-gemini-enterprise-agent-platform",
+  "from": "claude-fable-5-2",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-opus-5-5-served-via-gemini-enterprise-agent-platform",
+  "from": "claude-opus-5-5",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-sonnet-5-5-served-via-gemini-enterprise-agent-platform",
+  "from": "claude-sonnet-5-5",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-haiku-5-5-served-via-gemini-enterprise-agent-platform",
+  "from": "claude-haiku-5-5",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-grok-4-7-served-via-gemini-enterprise-agent-platform",
+  "from": "grok-4-7",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-muse-wonder-1-0-served-via-gemini-enterprise-agent-platform",
+  "from": "muse-wonder-1-0",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-muse-spark-1-3-served-via-gemini-enterprise-agent-platform",
+  "from": "muse-spark-1-3",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-muse-ember-1-0-served-via-gemini-enterprise-agent-platform",
+  "from": "muse-ember-1-0",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-glm-5-2-served-via-gemini-enterprise-agent-platform",
+  "from": "glm-5-2",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-deepseek-v4-1-flash-served-via-gemini-enterprise-agent-platform",
+  "from": "deepseek-v4-1-flash",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-llama-4-maverick-served-via-gemini-enterprise-agent-platform",
+  "from": "llama-4-maverick",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Listed as a managed partner/open model with its own price on Google Cloud's Agent Platform.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-oss-served-via-gemini-enterprise-agent-platform",
+  "from": "gpt-oss",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "gpt-oss-120b and gpt-oss-20b are listed with prices.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "rel-c-claude-fable-5-2-served-via-amazon-bedrock",
+  "from": "claude-fable-5-2",
+  "to": "amazon-bedrock",
+  "type": "served-via",
+  "note": "Bedrock id global.anthropic.claude-fable-5-2.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-models"
+  ]
+ },
+ {
+  "id": "rel-c-claude-fable-5-2-served-via-microsoft-foundry",
+  "from": "claude-fable-5-2",
+  "to": "microsoft-foundry",
+  "type": "served-via",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-models"
+  ]
+ },
+ {
+  "id": "rel-c-gpt-6-1-sol-powers-codex",
+  "from": "gpt-6-1-sol",
+  "to": "codex",
+  "type": "powers",
+  "note": "Default Codex model since Codex release 0.161.0.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-releasebot-openai"
+  ]
+ },
+ {
+  "id": "rel-c-cursor-part-of-xai",
+  "from": "cursor",
+  "to": "xai",
+  "type": "part-of",
+  "note": "Acquired by SpaceX and placed in the SpaceXAI unit.",
+  "effectiveFrom": "2026-08-14",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-vktr-cursor",
+   "c-x-9to5mac-cursor"
+  ]
+ },
+ {
+  "id": "rel-c-anthropic-partnered-with-google",
+  "from": "anthropic",
+  "to": "google",
+  "type": "partnered-with",
+  "note": "Agreement with Google and Broadcom for multiple gigawatts of next-generation TPU capacity expected online from 2027.",
+  "effectiveFrom": "2026-04-06",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-google-broadcom"
+  ]
+ },
+ {
+  "id": "rel-c-anthropic-partnered-with-microsoft",
+  "from": "anthropic",
+  "to": "microsoft",
+  "type": "partnered-with",
+  "note": "Anthropic committed to buy $30 billion of Azure compute; Microsoft committed to invest up to $5 billion.",
+  "effectiveFrom": "2025-11-18",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-ms-nvidia"
+  ]
+ },
+ {
+  "id": "rel-c-anthropic-partnered-with-nvidia",
+  "from": "anthropic",
+  "to": "nvidia",
+  "type": "partnered-with",
+  "note": "Up to one gigawatt on Grace Blackwell and Vera Rubin systems; NVIDIA to invest up to $10 billion.",
+  "effectiveFrom": "2025-11-18",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-ms-nvidia"
+  ]
+ },
+ {
+  "id": "rel-c-anthropic-partnered-with-aws",
+  "from": "anthropic",
+  "to": "aws",
+  "type": "partnered-with",
+  "note": "Amazon investment announced September 2023; Anthropic still describes Amazon as its primary cloud and training partner.",
+  "effectiveFrom": "2023-09-25",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-amazon",
+   "c-anthropic-google-broadcom"
+  ]
+ },
+ {
+  "id": "rel-c-openai-partnered-with-microsoft",
+  "from": "openai",
+  "to": "microsoft",
+  "type": "partnered-with",
+  "note": "Amended on 27 April 2026: Microsoft's licence became non-exclusive, per reporting.",
+  "effectiveFrom": "2023-01-23",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-pk-ms-openai-2023",
+   "c-x-decoder-ms-openai"
+  ]
+ },
+ {
+  "id": "rel-c-openai-partnered-with-aws",
+  "from": "openai",
+  "to": "aws",
+  "type": "partnered-with",
+  "note": "$38 billion AWS capacity deal reported in late 2025.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "c-x-ts2-openai-aws"
+  ]
+ },
+ {
+  "id": "rel-c-model-context-protocol-integrates-agent-skills",
+  "from": "model-context-protocol",
+  "to": "agent-skills",
+  "type": "integrates",
+  "note": "Both standards now sit in the Agentic AI Foundation under the Linux Foundation.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "c-anthropic-skills-aaif"
+  ]
+ },
+ {
+  "id": "rel-parent-agent-platform-tuning",
+  "from": "agent-platform-tuning",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-gc-platform-page",
+   "s-b-aimonth-2026"
+  ]
+ },
+ {
+  "id": "rel-parent-rag-engine",
+  "from": "rag-engine",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-x-cm-rag-migration"
+  ]
+ },
+ {
+  "id": "rel-parent-google-workspace-business-starter",
+  "from": "google-workspace-business-starter",
+  "to": "gemini-in-workspace",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-x-ws-support-pricing",
+   "s-x-9to5-ws-2025"
+  ]
+ },
+ {
+  "id": "rel-parent-google-workspace-business-standard",
+  "from": "google-workspace-business-standard",
+  "to": "gemini-in-workspace",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-x-ws-support-pricing",
+   "s-x-9to5-ws-2025"
+  ]
+ },
+ {
+  "id": "rel-parent-google-workspace-business-plus",
+  "from": "google-workspace-business-plus",
+  "to": "gemini-in-workspace",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-x-ws-support-pricing",
+   "s-x-9to5-ws-2025"
+  ]
+ },
+ {
+  "id": "rel-parent-workspace-ai-expanded-access",
+  "from": "workspace-ai-expanded-access",
+  "to": "gemini-in-workspace",
+  "type": "part-of",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "s-x-wsu-expanded"
+  ]
+ }
+]

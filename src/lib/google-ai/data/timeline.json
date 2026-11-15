@@ -1,0 +1,2572 @@
+[
+ {
+  "id": "tl-2014-01-26-deepmind-acquisition",
+  "date": "2014-01-26",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Google acquires DeepMind",
+  "detail": "Google agreed to buy London-based DeepMind Technologies, the lab that later produced AlphaGo, AlphaFold and much of the Gemini research.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-deepmind"
+  ]
+ },
+ {
+  "id": "tl-2015-11-09-tensorflow-open-sourced",
+  "date": "2015-11-09",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "TensorFlow is open-sourced",
+  "detail": "Google released its internal machine-learning framework as open source, establishing an external developer ecosystem around its ML stack.",
+  "entityIds": [],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-tensorflow"
+  ]
+ },
+ {
+  "id": "tl-2016-03-15-alphago-beats-lee-sedol",
+  "date": "2016-03-15",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "AlphaGo defeats Lee Sedol 4-1",
+  "detail": "DeepMind's AlphaGo completed a five-game match against Go champion Lee Sedol in Seoul, winning four games.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-alphago"
+  ]
+ },
+ {
+  "id": "tl-2016-05-18-first-tpu-revealed",
+  "date": "2016-05-18",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Google reveals the Tensor Processing Unit (TPU v1)",
+  "detail": "At I/O 2016 Google disclosed a custom ASIC for neural-network inference that it had already been running in its data centers.",
+  "entityIds": [
+   "tpu"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-tpu"
+  ]
+ },
+ {
+  "id": "tl-2017-05-17-tpu-v2-cloud-tpu",
+  "date": "2017-05-17",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "TPU v2 announced; TPUs come to Google Cloud",
+  "detail": "The second-generation TPU added training support and was offered to outside customers as Cloud TPU.",
+  "entityIds": [
+   "tpu"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-tpu"
+  ]
+ },
+ {
+  "id": "tl-2017-06-12-transformer-paper",
+  "date": "2017-06-12",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "\"Attention Is All You Need\" introduces the Transformer",
+  "detail": "Google researchers posted the paper describing the Transformer architecture that underlies today's large language models.",
+  "entityIds": [
+   "google-research"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-transformer"
+  ]
+ },
+ {
+  "id": "tl-2018-05-08-tpu-v3",
+  "date": "2018-05-08",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "TPU v3 announced with liquid cooling",
+  "detail": "The third-generation TPU was announced at I/O 2018.",
+  "entityIds": [
+   "tpu"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-tpu"
+  ]
+ },
+ {
+  "id": "tl-2018-10-11-bert-paper",
+  "date": "2018-10-11",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "BERT paper published",
+  "detail": "Google AI Language introduced bidirectional Transformer pre-training, which reset the state of the art across language-understanding benchmarks.",
+  "entityIds": [
+   "google-research"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-bert"
+  ]
+ },
+ {
+  "id": "tl-2019-10-25-bert-in-search",
+  "date": "2019-10-25",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "BERT is applied to Google Search ranking",
+  "detail": "Google began using BERT to interpret search queries, its first large-scale use of Transformer language models in Search.",
+  "entityIds": [],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2020-11-30-alphafold-2-casp14",
+  "date": "2020-11-30",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "AlphaFold 2 results announced at CASP14",
+  "detail": "DeepMind's AlphaFold 2 achieved accuracy competitive with experimental methods in the CASP14 protein-structure assessment.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-alphafold"
+  ]
+ },
+ {
+  "id": "tl-2021-05-01-tpu-v4",
+  "date": "2021-05-01",
+  "precision": "month",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "TPU v4 announced",
+  "detail": "The fourth-generation TPU was announced at I/O 2021 and later made available in Google Cloud.",
+  "entityIds": [
+   "tpu"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-tpu"
+  ]
+ },
+ {
+  "id": "tl-2021-05-18-vertex-ai-launch",
+  "date": "2021-05-18",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Vertex AI launches at Google I/O 2021",
+  "detail": "Google Cloud unified its ML services into Vertex AI, the managed platform that was renamed Gemini Enterprise Agent Platform in April 2026.",
+  "entityIds": [
+   "gemini-enterprise-agent-platform"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2021-07-01-alphafold-open-source-db",
+  "date": "2021-07-01",
+  "precision": "month",
+  "track": "research",
+  "providerId": "google",
+  "title": "AlphaFold 2 paper, code and AlphaFold Protein Structure Database released",
+  "detail": "DeepMind published the AlphaFold 2 method and, with EMBL-EBI, a public database of predicted protein structures.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-alphafold"
+  ]
+ },
+ {
+  "id": "tl-2022-11-30-chatgpt-launch",
+  "date": "2022-11-30",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI releases ChatGPT",
+  "detail": "The public launch of ChatGPT triggered Google's accelerated consumer generative-AI response in 2023.",
+  "entityIds": [
+   "openai"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-chatgpt"
+  ]
+ },
+ {
+  "id": "tl-2023-02-06-bard-announced",
+  "date": "2023-02-06",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Google announces Bard",
+  "detail": "Google announced its conversational AI service Bard, initially for trusted testers.",
+  "entityIds": [
+   "gemini-app"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-gemini-chatbot"
+  ]
+ },
+ {
+  "id": "tl-2023-03-21-bard-opens",
+  "date": "2023-03-21",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Bard opens to the public in the US and UK",
+  "detail": "Access to Bard began rolling out via a waitlist.",
+  "entityIds": [
+   "gemini-app"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-gemini-chatbot"
+  ]
+ },
+ {
+  "id": "tl-2023-04-20-google-deepmind-merger",
+  "date": "2023-04-20",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Google Brain and DeepMind merge into Google DeepMind",
+  "detail": "Alphabet combined its two main AI research groups under Demis Hassabis.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-deepmind"
+  ]
+ },
+ {
+  "id": "tl-2023-05-10-io-2023-palm-2-duet-ai",
+  "date": "2023-05-10",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "I/O 2023: PaLM 2, Duet AI and generative AI in Vertex AI",
+  "detail": "Google announced the PaLM 2 model family, Duet AI assistants for Workspace and Cloud, the Search Generative Experience and generative AI support in Vertex AI.",
+  "entityIds": [
+   "gemini-enterprise-agent-platform"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2023-08-29-cloud-next-2023-duet-ai-ga",
+  "date": "2023-08-29",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Cloud Next '23: Duet AI for Workspace generally available at $30 per user per month",
+  "detail": "Google set enterprise pricing for its Workspace assistant, announced TPU v5e and launched SynthID watermarking for AI-generated images.",
+  "entityIds": [
+   "gemini-in-workspace",
+   "tpu"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2023-12-06-gemini-1-0",
+  "date": "2023-12-06",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 1.0 announced",
+  "detail": "Google DeepMind introduced the natively multimodal Gemini 1.0 family (Ultra, Pro, Nano); TPU v5p and the AI Hypercomputer architecture were announced the same day.",
+  "entityIds": [
+   "gemini",
+   "tpu",
+   "ai-hypercomputer"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-gemini-model"
+  ]
+ },
+ {
+  "id": "tl-2023-12-13-gemini-pro-in-vertex-ai",
+  "date": "2023-12-13",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Gemini Pro becomes available in Vertex AI and Google AI Studio",
+  "detail": "Developers and enterprises gained API access to Gemini one week after the model announcement.",
+  "entityIds": [
+   "gemini-api",
+   "google-ai-studio",
+   "gemini-enterprise-agent-platform"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-gemini-model"
+  ]
+ },
+ {
+  "id": "tl-2024-02-08-bard-renamed-gemini",
+  "date": "2024-02-08",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Bard is renamed Gemini; Gemini Advanced launches",
+  "detail": "Google rebranded Bard as Gemini, released a mobile app and introduced the paid Gemini Advanced tier with Ultra 1.0.",
+  "entityIds": [
+   "gemini-app"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-gemini-chatbot"
+  ]
+ },
+ {
+  "id": "tl-2024-02-15-gemini-1-5-pro",
+  "date": "2024-02-15",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 1.5 Pro announced with a 1-million-token context window",
+  "detail": "Gemini 1.5 Pro introduced long-context processing, first in limited preview.",
+  "entityIds": [
+   "gemini"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-gemini-model"
+  ]
+ },
+ {
+  "id": "tl-2024-02-21-gemma-and-duet-rename",
+  "date": "2024-02-21",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemma open models released; Duet AI for Workspace becomes Gemini for Workspace",
+  "detail": "Google released its first Gemma open-weight models and folded the Duet AI brand in Workspace into Gemini.",
+  "entityIds": [
+   "gemma",
+   "gemini-in-workspace"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2024-04-09-cloud-next-2024",
+  "date": "2024-04-09",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Cloud Next '24: Gemini 1.5 Pro in Vertex AI, Vertex AI Agent Builder, Axion CPU",
+  "detail": "Google Cloud put Gemini 1.5 Pro in public preview on Vertex AI, introduced Agent Builder and announced its Arm-based Axion processors.",
+  "entityIds": [
+   "gemini-enterprise-agent-platform",
+   "gemini",
+   "google-axion"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2024-05-08-alphafold-3",
+  "date": "2024-05-08",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "AlphaFold 3 announced",
+  "detail": "Google DeepMind and Isomorphic Labs extended structure prediction to interactions between proteins, DNA, RNA and ligands.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-alphafold"
+  ]
+ },
+ {
+  "id": "tl-2024-05-14-io-2024-ai-overviews",
+  "date": "2024-05-14",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "I/O 2024: AI Overviews roll out in US Search; Gemini 1.5 Flash, Veo and Trillium announced",
+  "detail": "Generative answers moved into mainstream Search results; Google also introduced the lower-cost 1.5 Flash model, the Veo video model and its sixth-generation TPU, Trillium.",
+  "entityIds": [
+   "ai-overviews",
+   "gemini",
+   "veo",
+   "tpu"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2024-08-01-gemini-1-5-flash-price-cut",
+  "date": "2024-08-01",
+  "precision": "month",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Gemini 1.5 Flash prices cut by more than 70%",
+  "detail": "Google sharply reduced Gemini 1.5 Flash input and output prices, an early marker of the price competition in lightweight models.",
+  "entityIds": [
+   "gemini",
+   "gemini-api"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2024-10-09-nobel-prize-chemistry",
+  "date": "2024-10-09",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "Demis Hassabis and John Jumper share the Nobel Prize in Chemistry",
+  "detail": "The 2024 prize recognised protein-structure prediction with AlphaFold (shared with David Baker for computational protein design).",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-alphafold"
+  ]
+ },
+ {
+  "id": "tl-2024-12-11-gemini-2-0-flash",
+  "date": "2024-12-11",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 2.0 Flash announced; Trillium TPUs generally available",
+  "detail": "Google introduced the first Gemini 2.0 model, framed around agents, alongside Project Mariner and Jules; the sixth-generation Trillium TPU reached general availability in the same week.",
+  "entityIds": [
+   "gemini",
+   "tpu"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2024-12-13-agentspace-announced",
+  "date": "2024-12-13",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Google Agentspace announced",
+  "detail": "Google Cloud introduced Agentspace, an enterprise search and agent hub that was later rebranded into Gemini Enterprise.",
+  "entityIds": [
+   "gemini-enterprise"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-01-15-workspace-gemini-bundled",
+  "date": "2025-01-15",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Gemini AI features bundled into Workspace Business and Enterprise plans",
+  "detail": "Google ended the separate Gemini add-on for most Workspace plans, including the features in the base subscription with a modest price increase.",
+  "entityIds": [
+   "gemini-in-workspace"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-02-05-gemini-2-0-flash-ga",
+  "date": "2025-02-05",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 2.0 Flash generally available",
+  "detail": "Gemini 2.0 Flash became generally available in the Gemini API and Vertex AI, with 2.0 Flash-Lite and an experimental 2.0 Pro.",
+  "entityIds": [
+   "gemini",
+   "gemini-api"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-03-05-ai-mode-labs",
+  "date": "2025-03-05",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "AI Mode introduced in Search Labs",
+  "detail": "Google began testing a conversational, multi-step search experience called AI Mode.",
+  "entityIds": [
+   "ai-mode"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-03-18-wiz-acquisition-announced",
+  "date": "2025-03-18",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Google announces agreement to acquire Wiz for $32 billion",
+  "detail": "The largest acquisition in Google's history, aimed at multicloud security; it closed in March 2026.",
+  "entityIds": [
+   "wiz",
+   "google-cloud"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-03-25-gemini-2-5-pro",
+  "date": "2025-03-25",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 2.5 Pro introduced",
+  "detail": "Google released Gemini 2.5 Pro as an experimental \"thinking\" model.",
+  "entityIds": [
+   "gemini",
+   "gemini-2-5-pro"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-04-09-cloud-next-2025-ironwood-a2a-adk",
+  "date": "2025-04-09",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Cloud Next '25: Ironwood TPU, Agent2Agent protocol and Agent Development Kit",
+  "detail": "Google announced its seventh-generation TPU (Ironwood), the open A2A protocol for agent interoperability and the open-source ADK.",
+  "entityIds": [
+   "tpu-ironwood",
+   "a2a-protocol",
+   "agent-development-kit",
+   "gemini-enterprise-agent-platform"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history",
+   "a-pr-a2a-lf"
+  ]
+ },
+ {
+  "id": "tl-2025-05-20-io-2025-ai-mode-veo-3",
+  "date": "2025-05-20",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "I/O 2025: AI Mode rolls out in the US; Veo 3 and Google AI Ultra launch",
+  "detail": "AI Mode left Labs for all US users, Veo 3 added native audio to video generation, and Google introduced the Google AI Ultra subscription.",
+  "entityIds": [
+   "ai-mode",
+   "veo-3",
+   "gemini-app"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-06-01-a2a-linux-foundation",
+  "date": "2025-06-01",
+  "precision": "month",
+  "track": "platform",
+  "providerId": "google",
+  "title": "A2A protocol donated to the Linux Foundation",
+  "detail": "Google moved the Agent2Agent protocol to vendor-neutral governance, with AWS, Cisco, Microsoft, Salesforce, SAP and ServiceNow among the founding members.",
+  "entityIds": [
+   "a2a-protocol"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-oss-a2family"
+  ]
+ },
+ {
+  "id": "tl-2025-06-17-gemini-2-5-ga",
+  "date": "2025-06-17",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 2.5 Pro and 2.5 Flash generally available",
+  "detail": "The 2.5 family became stable for production use, with 2.5 Flash-Lite in preview.",
+  "entityIds": [
+   "gemini",
+   "gemini-2-5-pro",
+   "gemini-2-5-flash"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-06-25-gemini-cli",
+  "date": "2025-06-25",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Gemini CLI released as open source",
+  "detail": "Google released an open-source terminal agent for Gemini.",
+  "entityIds": [
+   "gemini-cli"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-08-01-nano-banana",
+  "date": "2025-08-01",
+  "precision": "month",
+  "track": "model",
+  "providerId": "google",
+  "title": "Nano Banana (Gemini 2.5 Flash Image) launches",
+  "detail": "Google's image editing model, known as Nano Banana, went viral in the Gemini app and was later made generally available on Vertex AI.",
+  "entityIds": [
+   "nano-banana",
+   "gemini-app"
+  ],
+  "significance": 2,
+  "label": "provider-claim",
+  "sourceIds": [
+   "a-gc-nb-momentum",
+   "a-pk-google-history"
+  ]
+ },
+ {
+  "id": "tl-2025-09-01-ap2-announced",
+  "date": "2025-09-01",
+  "precision": "month",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Agent Payments Protocol (AP2) announced",
+  "detail": "Google introduced AP2, an open protocol extending A2A for agent-initiated payments across cards, bank transfers and stablecoins.",
+  "entityIds": [
+   "ap2-protocol",
+   "a2a-protocol"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-ap2",
+   "a-oss-a2family"
+  ]
+ },
+ {
+  "id": "tl-2025-09-02-search-remedies-ruling",
+  "date": "2025-09-02",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "US court issues search remedies: no Chrome divestiture, exclusive distribution deals barred",
+  "detail": "Judge Amit Mehta declined to order a sale of Chrome or ban default payments, but barred exclusive contracts for Search, Chrome, Google Assistant and the Gemini app and ordered data sharing.",
+  "entityIds": [
+   "gemini-in-chrome",
+   "gemini-app"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-search-remedy",
+   "a-pr-crs-remedy"
+  ]
+ },
+ {
+  "id": "tl-2025-09-22-frontier-safety-framework-v3",
+  "date": "2025-09-22",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "Google DeepMind strengthens its Frontier Safety Framework",
+  "detail": "DeepMind published an updated framework that, among other changes, added a critical capability level for harmful manipulation.",
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-dm-fsf-2025"
+  ]
+ },
+ {
+  "id": "tl-2025-10-01-anthropic-one-million-tpus",
+  "date": "2025-10-01",
+  "precision": "month",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Anthropic agrees to use up to one million Google TPUs",
+  "detail": "Anthropic and Google confirmed an expansion worth tens of billions of dollars, with more than 1 GW of capacity due online in 2026.",
+  "entityIds": [
+   "tpu",
+   "anthropic",
+   "google-cloud"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-anthropic-tpu-2025"
+  ]
+ },
+ {
+  "id": "tl-2025-10-09-gemini-enterprise-launch",
+  "date": "2025-10-09",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Gemini Enterprise launches",
+  "detail": "Google Cloud unified its business AI offerings, including Agentspace, into the Gemini Enterprise subscription for building and running agents.",
+  "entityIds": [
+   "gemini-enterprise"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-ge-2025"
+  ]
+ },
+ {
+  "id": "tl-2025-11-01-ironwood-ga",
+  "date": "2025-11-01",
+  "precision": "month",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Ironwood (seventh-generation TPU) generally available",
+  "detail": "Google Cloud made Ironwood generally available, promising a 10x peak-performance increase over TPU v5p.",
+  "entityIds": [
+   "tpu-ironwood"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-ironwood-ga"
+  ]
+ },
+ {
+  "id": "tl-2025-11-18-gemini-3-pro-and-antigravity",
+  "date": "2025-11-18",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 3 Pro and Google Antigravity launch",
+  "detail": "Google released Gemini 3 Pro in preview and introduced Antigravity, an agent-first development environment.",
+  "entityIds": [
+   "gemini-3-pro",
+   "google-antigravity"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-gemini3",
+   "a-bg-nov25-roundup"
+  ]
+ },
+ {
+  "id": "tl-2025-11-20-nano-banana-pro",
+  "date": "2025-11-20",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Nano Banana Pro (Gemini 3 Pro Image) launches",
+  "detail": "Google followed Gemini 3 Pro with its higher-fidelity image model, rolling out in the Gemini app.",
+  "entityIds": [
+   "gemini-3-pro-image"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-nbpro"
+  ]
+ },
+ {
+  "id": "tl-2025-12-05-search-remedies-final-judgment",
+  "date": "2025-12-05",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Final judgment entered in US search remedies case",
+  "detail": "The court finalised the remedies judgment; Google appealed in January 2026 and the DOJ cross-appealed in February 2026.",
+  "entityIds": [
+   "gemini-app"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-crs-remedy",
+   "a-pr-search-appeal"
+  ]
+ },
+ {
+  "id": "tl-2025-12-17-gemini-3-flash",
+  "date": "2025-12-17",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 3 Flash released in preview",
+  "detail": "The Gemini API deprecations page lists gemini-3-flash-preview with a release date of Dec 17, 2025.",
+  "entityIds": [
+   "gemini-3-flash"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gapi-deprecations"
+  ]
+ },
+ {
+  "id": "tl-2026-01-11-ucp-announced",
+  "date": "2026-01-11",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Universal Commerce Protocol (UCP) announced",
+  "detail": "Google announced an open standard for agentic commerce, compatible with A2A, AP2 and MCP, together with Gemini Enterprise for Customer Experience.",
+  "entityIds": [
+   "universal-commerce-protocol",
+   "ap2-protocol",
+   "a2a-protocol"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-ai-monthly"
+  ]
+ },
+ {
+  "id": "tl-2026-01-27-eu-dma-proceedings-opened",
+  "date": "2026-01-27",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "European Commission opens DMA specification proceedings on Android AI interoperability and search data",
+  "detail": "The Commission opened two proceedings to specify how Google must give rival AI services access to Android features and share Search data.",
+  "entityIds": [
+   "gemini-on-android"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-ec-dma-0127"
+  ]
+ },
+ {
+  "id": "tl-2026-02-20-gemini-3-1-pro",
+  "date": "2026-02-20",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 3.1 Pro launches in preview",
+  "detail": "Google Cloud's post dated Feb 20, 2026 announced Gemini 3.1 Pro in Vertex AI, Gemini Enterprise, the Gemini API, Antigravity and Gemini CLI.",
+  "entityIds": [
+   "gemini-3-1-pro"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-g31pro"
+  ]
+ },
+ {
+  "id": "tl-2026-02-27-nano-banana-2",
+  "date": "2026-02-27",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Nano Banana 2 (Gemini 3.1 Flash Image) launches",
+  "detail": "Pro-level image generation and editing at Flash speed, per Google Cloud's Feb 27 post.",
+  "entityIds": [
+   "gemini-3-1-flash-image"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-nb2"
+  ]
+ },
+ {
+  "id": "tl-2026-03-11-wiz-acquisition-closed",
+  "date": "2026-03-11",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Google completes the Wiz acquisition",
+  "detail": "Wiz joined Google Cloud, keeping its brand and multicloud support.",
+  "entityIds": [
+   "wiz",
+   "google-cloud"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-wiz"
+  ]
+ },
+ {
+  "id": "tl-2026-04-02-gemma-4",
+  "date": "2026-04-02",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemma 4 released under Apache 2.0",
+  "detail": "The first Gemma family under a standard permissive licence, in four sizes.",
+  "entityIds": [
+   "gemma-4"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-gemma4"
+  ]
+ },
+ {
+  "id": "tl-2026-04-06-anthropic-broadcom-tpu-deal",
+  "date": "2026-04-06",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Anthropic commits to about 3.5 GW more TPU capacity via Google and Broadcom",
+  "detail": "Reported capacity begins in 2027, on top of roughly 1 GW supplied in 2026.",
+  "entityIds": [
+   "tpu",
+   "anthropic"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-anthropic-tpu-2026"
+  ]
+ },
+ {
+  "id": "tl-2026-04-22-cloud-next-2026-agent-platform",
+  "date": "2026-04-22",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Cloud Next '26: Vertex AI becomes Gemini Enterprise Agent Platform",
+  "detail": "Google said all Vertex AI services and roadmap would be delivered through the new platform, adding Agent Runtime, Agent Identity, Agent Registry and Agent Gateway.",
+  "entityIds": [
+   "gemini-enterprise-agent-platform"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-agent-platform"
+  ]
+ },
+ {
+  "id": "tl-2026-04-22-tpu-8t-8i",
+  "date": "2026-04-22",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Eighth-generation TPUs announced: TPU 8t (training) and TPU 8i (inference)",
+  "detail": "The first TPU generation split into training-optimised and inference-optimised systems; Virgo Network and A5X instances were announced alongside.",
+  "entityIds": [
+   "tpu-8t",
+   "tpu-8i",
+   "virgo-network"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-next-infra",
+   "a-gc-tpu8-deep"
+  ]
+ },
+ {
+  "id": "tl-2026-05-19-io-2026",
+  "date": "2026-05-19",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "I/O 2026: Gemini 3.5 Flash, Gemini Omni, Gemini Spark and Antigravity 2.0",
+  "detail": "Google launched the first Gemini 3.5 model, an any-to-any media model starting with video, a 24/7 personal agent and a new agent-first Antigravity desktop app; AI Mode moved to Gemini 3.5 Flash.",
+  "entityIds": [
+   "gemini-3-5-flash",
+   "gemini-omni",
+   "gemini-spark",
+   "google-antigravity",
+   "ai-mode"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-io26",
+   "a-pr-io26",
+   "a-bg-io26-100"
+  ]
+ },
+ {
+  "id": "tl-2026-05-27-ai-threat-defense",
+  "date": "2026-05-27",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Google AI Threat Defense introduced",
+  "detail": "An autonomous security platform combining models, Wiz and Mandiant expertise to prioritise and remediate vulnerabilities.",
+  "entityIds": [],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-threat-defense"
+  ]
+ },
+ {
+  "id": "tl-2026-06-10-claude-fable-5-on-google-cloud",
+  "date": "2026-06-10",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Fable 5 generally available on Google Cloud",
+  "detail": "Anthropic's frontier model arrived on Agent Platform, continuing Google's practice of hosting rival flagship models.",
+  "entityIds": [
+   "anthropic",
+   "model-garden"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-fable5"
+  ]
+ },
+ {
+  "id": "tl-2026-06-12-apple-pcc-on-google-cloud",
+  "date": "2026-06-12",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Google Cloud confirmed as a host for Apple's expanded Private Cloud Compute",
+  "detail": "Google said it built a serving platform with Apple based on Confidential Computing and Titanium.",
+  "entityIds": [
+   "google-cloud",
+   "partner-apple"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-pcc"
+  ]
+ },
+ {
+  "id": "tl-2026-07-01-non-global-endpoint-pricing",
+  "date": "2026-07-01",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Non-global endpoint pricing takes effect for GA Gemini 3 and later models",
+  "detail": "Google Cloud's pricing page states that from Jul 1, 2026 regional (non-global) endpoints carry their own higher rates; before then global pricing applied everywhere.",
+  "entityIds": [
+   "gemini-enterprise-agent-platform"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-pricing"
+  ]
+ },
+ {
+  "id": "tl-2026-07-09-alphaevolve-ga",
+  "date": "2026-07-09",
+  "precision": "day",
+  "track": "research",
+  "providerId": "google",
+  "title": "AlphaEvolve generally available on Google Cloud",
+  "detail": "DeepMind's algorithm-discovery agent became a managed Google Cloud product.",
+  "entityIds": [
+   "alphaevolve"
+  ],
+  "significance": 1,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-alphaevolve"
+  ]
+ },
+ {
+  "id": "tl-2026-07-16-eu-dma-android-decision",
+  "date": "2026-07-16",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "EU orders Google to open Android features to rival AI services",
+  "detail": "The European Commission issued binding DMA specification measures; most changes are reported due by Aug 1, 2027.",
+  "entityIds": [
+   "gemini-on-android",
+   "gemini-app"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-ec-dma-0716",
+   "a-pr-dma"
+  ]
+ },
+ {
+  "id": "tl-2026-07-21-gemini-3-6-flash",
+  "date": "2026-07-21",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 3.6 Flash released; CodeMender enters preview",
+  "detail": "A new Flash model shipped while Gemini 3.5 Pro, promised for June, remained unreleased.",
+  "entityIds": [
+   "gemini-3-6-flash",
+   "codemender"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-docs-g36flash",
+   "a-gc-codemender"
+  ]
+ },
+ {
+  "id": "tl-2026-07-22-alphabet-q2-2026",
+  "date": "2026-07-22",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Alphabet Q2 2026: Cloud +82% to $24.8B; capex guide raised to $195-205B",
+  "detail": "Reported Cloud backlog reached $514B and first-party APIs processed about 22 billion tokens per minute.",
+  "entityIds": [
+   "google",
+   "google-cloud"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-q2",
+   "a-pr-q2-call"
+  ]
+ },
+ {
+  "id": "tl-2026-07-29-agent-platform-ga-features",
+  "date": "2026-07-29",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Agent Runtime, Memory Bank and Agent Identity available to all Agent Platform customers",
+  "detail": "Agent Runtime supports agents running continuously for up to seven days.",
+  "entityIds": [
+   "agent-runtime",
+   "agent-identity"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-ap-july"
+  ]
+ },
+ {
+  "id": "tl-2026-08-13-gemini-3-7-flash",
+  "date": "2026-08-13",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Gemini 3.7 Flash launches at $0.75 / $3.75 per 1M tokens",
+  "detail": "An introductory rate at half the 3.6 Flash launch price; the pricing page keeps it through Dec 31, 2026 for the 3.6-3.8 Flash models.",
+  "entityIds": [
+   "gemini-3-7-flash"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-docs-g37flash",
+   "a-gc-pricing",
+   "a-pr-g37flash"
+  ]
+ },
+ {
+  "id": "tl-2026-08-26-finops-for-agents",
+  "date": "2026-08-26",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Pay-as-you-go Gemini Enterprise, Flexible Savings Plans (10-20% off tokens) and hard spend caps",
+  "detail": "Google added consumption billing and commitment discounts for agent workloads and bundled Antigravity into eligible subscriptions.",
+  "entityIds": [
+   "gemini-enterprise",
+   "flexible-savings-plans",
+   "google-antigravity"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-finops",
+   "a-gc-antigravity-ent"
+  ]
+ },
+ {
+  "id": "tl-2026-09-02-gemini-3-8-flash",
+  "date": "2026-09-02",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 3.8 Flash launches",
+  "detail": "The third Flash release in seven weeks, reported at the same introductory price as 3.7 Flash.",
+  "entityIds": [
+   "gemini-3-8-flash"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-g38flash",
+   "a-pr-g38flash-aa"
+  ]
+ },
+ {
+  "id": "tl-2026-09-30-gemini-4-argon-announced",
+  "date": "2026-09-30",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 4 Argon announced",
+  "detail": "The first Gemini 4 model, positioned for software engineering, knowledge work and cyber defence, with initial access limited to vetted cyber defenders.",
+  "entityIds": [
+   "gemini-4-argon"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-bg-argon",
+   "a-gc-ai-monthly"
+  ]
+ },
+ {
+  "id": "tl-2026-10-08-gemini-agent",
+  "date": "2026-10-08",
+  "precision": "day",
+  "track": "platform",
+  "providerId": "google",
+  "title": "Gemini agent introduced at Gemini at Work 2026",
+  "detail": "Google presented a single universal agent for work that routes across models, runs persistently and works inline in Workspace.",
+  "entityIds": [
+   "gemini-enterprise"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-gaw"
+  ]
+ },
+ {
+  "id": "tl-2026-10-13-gemini-4-argon-available",
+  "date": "2026-10-13",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Gemini 4 Argon broadly available at $2 / $10 introductory pricing",
+  "detail": "Model id gemini-4-argon on Google Cloud, AI Studio and Antigravity; standard pricing of $4 / $20 per 1M tokens applies from Dec 1, 2026.",
+  "entityIds": [
+   "gemini-4-argon"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-argon",
+   "a-gc-pricing"
+  ]
+ },
+ {
+  "id": "tl-2026-10-21-openai-models-on-google-cloud",
+  "date": "2026-10-21",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "google",
+  "title": "OpenAI models offered on Google Cloud in private preview",
+  "detail": "GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna entered Model Garden, billed through Google Cloud Marketplace.",
+  "entityIds": [
+   "openai",
+   "model-garden"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-openai"
+  ]
+ },
+ {
+  "id": "tl-2026-10-22-agent-compute-engine",
+  "date": "2026-10-22",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Agent Compute Engine unveiled",
+  "detail": "A microVM sandbox service for agents that already runs the Gemini agent; customer preview promised in the coming months.",
+  "entityIds": [
+   "agent-compute-engine"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-ace"
+  ]
+ },
+ {
+  "id": "tl-2026-10-27-tpus-on-oracle-cloud",
+  "date": "2026-10-27",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Google and Oracle agree to offer TPUs in Oracle Cloud Infrastructure from 2027",
+  "detail": "The first deployment of Google TPUs in another hyperscale cloud.",
+  "entityIds": [
+   "tpu",
+   "partner-oracle"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-oci-tpu"
+  ]
+ },
+ {
+  "id": "tl-2026-10-28-alphabet-q3-2026",
+  "date": "2026-10-28",
+  "precision": "day",
+  "track": "macro",
+  "providerId": "google",
+  "title": "Alphabet Q3 2026: Cloud revenue $30.7B (+103%); Gemini app passes one billion monthly users",
+  "detail": "Reported figures also include nearly 32 billion tokens per minute through first-party APIs and about $51.4B of quarterly capex.",
+  "entityIds": [
+   "google",
+   "google-cloud",
+   "gemini-app"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "a-pr-q3",
+   "a-pr-q3-aiweekly",
+   "a-bg-q3-ceo"
+  ]
+ },
+ {
+  "id": "tl-2026-10-28-gemini-4-carbon-announced",
+  "date": "2026-10-28",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 4 Carbon announced",
+  "detail": "A second Gemini 4 model for long-horizon engineering and cyber defence, first released to cyber defenders.",
+  "entityIds": [
+   "gemini-4-carbon"
+  ],
+  "significance": 2,
+  "label": "provider-claim",
+  "sourceIds": [
+   "a-bg-oct-roundup",
+   "a-pr-carbon-launch"
+  ]
+ },
+ {
+  "id": "tl-2026-11-09-tpu-8tx-8i-max",
+  "date": "2026-11-09",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "TPU 8tx and TPU 8i Max announced",
+  "detail": "Google expanded the eighth generation to four systems, adding confidential-computing and dual-chip high-memory configurations.",
+  "entityIds": [
+   "tpu-8tx",
+   "tpu-8i-max"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-gc-tpu8x"
+  ]
+ },
+ {
+  "id": "tl-2026-11-10-gemini-4-carbon-available",
+  "date": "2026-11-10",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 4 Carbon available to paying developers and enterprises",
+  "detail": "Offered through the Gemini API, AI Studio and Gemini for business at the same introductory price as Argon.",
+  "entityIds": [
+   "gemini-4-carbon"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "a-bg-carbon-available",
+   "a-gc-pricing"
+  ]
+ },
+ {
+  "id": "tl-c-chatgpt-launch",
+  "date": "2022-11-30",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "ChatGPT launches",
+  "detail": "OpenAI releases ChatGPT as a free research preview, starting the consumer assistant race.",
+  "entityIds": [
+   "chatgpt"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-chatgpt"
+  ]
+ },
+ {
+  "id": "tl-c-ms-openai-2023",
+  "date": "2023-01-23",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "microsoft",
+  "title": "Microsoft extends its OpenAI partnership",
+  "detail": "Microsoft announces a multiyear, multibillion-dollar investment in OpenAI and remains its exclusive cloud provider.",
+  "entityIds": [
+   "openai",
+   "microsoft"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-ms-openai-2023"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-4",
+  "date": "2023-03-14",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-4 released",
+  "detail": "OpenAI's GPT-4 arrives in ChatGPT Plus and the API at $30/$60 per million tokens for the 8K model.",
+  "entityIds": [
+   "gpt-4"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4",
+   "c-pk-openai-pricing-history"
+  ]
+ },
+ {
+  "id": "tl-c-claude-intro",
+  "date": "2023-03-14",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Anthropic introduces Claude",
+  "detail": "Anthropic makes Claude available to businesses on the same day GPT-4 ships.",
+  "entityIds": [
+   "anthropic"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-introducing-claude"
+  ]
+ },
+ {
+  "id": "tl-c-llama-2",
+  "date": "2023-07-18",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "meta",
+  "title": "Meta releases Llama 2 as open weights",
+  "detail": "Llama 2 is released for research and commercial use, establishing Meta as the open-weight standard-bearer.",
+  "entityIds": [
+   "meta"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-llama-2"
+  ]
+ },
+ {
+  "id": "tl-c-amazon-anthropic",
+  "date": "2023-09-25",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "aws",
+  "title": "Amazon to invest up to $4 billion in Anthropic",
+  "detail": "Anthropic and Amazon announce an investment and cloud collaboration centred on AWS.",
+  "entityIds": [
+   "anthropic",
+   "aws"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-amazon"
+  ]
+ },
+ {
+  "id": "tl-c-devday-2023",
+  "date": "2023-11-06",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI DevDay: GPT-4 Turbo, GPTs and the Assistants API",
+  "detail": "OpenAI cuts flagship prices with GPT-4 Turbo and launches its first agent-building API.",
+  "entityIds": [
+   "openai"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-devday-2023"
+  ]
+ },
+ {
+  "id": "tl-c-claude-3",
+  "date": "2024-03-04",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude 3 family",
+  "detail": "Anthropic launches Claude 3 Opus, Sonnet and Haiku; Opus lists at $15/$75 per million tokens.",
+  "entityIds": [
+   "claude-3-opus"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-3"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-4o",
+  "date": "2024-05-13",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-4o",
+  "detail": "OpenAI announces its natively multimodal flagship at half GPT-4 Turbo's price.",
+  "entityIds": [
+   "gpt-4o"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4o"
+  ]
+ },
+ {
+  "id": "tl-c-claude-3-5-sonnet",
+  "date": "2024-06-20",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude 3.5 Sonnet",
+  "detail": "Anthropic's mid-tier model launches at $3/$15 and becomes the reference model for coding tools.",
+  "entityIds": [
+   "claude-3-5-sonnet"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-release-notes",
+   "c-anthropic-claude-3-5-sonnet"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-4o-mini",
+  "date": "2024-07-18",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-4o mini resets the price floor",
+  "detail": "OpenAI launches GPT-4o mini at $0.15/$0.60 per million tokens.",
+  "entityIds": [
+   "openai"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-4o-mini"
+  ]
+ },
+ {
+  "id": "tl-c-o1",
+  "date": "2024-09-12",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "o1-preview: reasoning models arrive",
+  "detail": "OpenAI releases its first model that spends hidden reasoning tokens before answering.",
+  "entityIds": [
+   "openai"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-o1"
+  ]
+ },
+ {
+  "id": "tl-c-computer-use",
+  "date": "2024-10-22",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude computer use",
+  "detail": "Anthropic ships an upgraded Claude 3.5 Sonnet with computer-use tools in public beta.",
+  "entityIds": [
+   "anthropic"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-computer-use",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-mcp",
+  "date": "2024-11-25",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Model Context Protocol introduced",
+  "detail": "Anthropic open-sources MCP, a standard for connecting assistants to tools and data that rivals later adopt.",
+  "entityIds": [
+   "model-context-protocol"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-mcp"
+  ]
+ },
+ {
+  "id": "tl-c-deepseek-r1",
+  "date": "2025-01-20",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "deepseek",
+  "title": "DeepSeek-R1",
+  "detail": "DeepSeek releases an open-weight reasoning model at a fraction of Western API prices.",
+  "entityIds": [
+   "deepseek-r1"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-deepseek-r1"
+  ]
+ },
+ {
+  "id": "tl-c-stargate",
+  "date": "2025-01-21",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "Stargate announced",
+  "detail": "OpenAI, SoftBank and Oracle announce a $500 billion US data-centre plan.",
+  "entityIds": [
+   "stargate"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-stargate"
+  ]
+ },
+ {
+  "id": "tl-c-operator",
+  "date": "2025-01-23",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI Operator",
+  "detail": "OpenAI previews a browser-using agent for ChatGPT Pro users.",
+  "entityIds": [
+   "openai"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-operator"
+  ]
+ },
+ {
+  "id": "tl-c-claude-3-7",
+  "date": "2025-02-24",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude 3.7 Sonnet and Claude Code",
+  "detail": "Anthropic launches its first hybrid reasoning model and previews the Claude Code command-line agent.",
+  "entityIds": [
+   "claude-code"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-3-7"
+  ]
+ },
+ {
+  "id": "tl-c-agents-sdk",
+  "date": "2025-03-11",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI Responses API and Agents SDK",
+  "detail": "OpenAI releases new building blocks for agents, replacing the Assistants API over time.",
+  "entityIds": [
+   "openai"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-agents-sdk"
+  ]
+ },
+ {
+  "id": "tl-c-llama-4",
+  "date": "2025-04-05",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "meta",
+  "title": "Llama 4",
+  "detail": "Meta releases Llama 4 Scout and Maverick, its last open-weight flagship release to date.",
+  "entityIds": [
+   "llama-4-maverick"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-llama-4",
+   "c-x-wikipedia-llama"
+  ]
+ },
+ {
+  "id": "tl-c-codex",
+  "date": "2025-05-16",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI Codex agent",
+  "detail": "OpenAI launches Codex as a cloud software-engineering agent in research preview.",
+  "entityIds": [
+   "codex"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-codex"
+  ]
+ },
+ {
+  "id": "tl-c-claude-4",
+  "date": "2025-05-22",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude 4 and Claude Code general availability",
+  "detail": "Anthropic launches Claude Opus 4 and Sonnet 4 and makes Claude Code generally available.",
+  "entityIds": [
+   "claude-opus-4",
+   "claude-code"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-claude-4"
+  ]
+ },
+ {
+  "id": "tl-c-grok-4",
+  "date": "2025-07-09",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "xai",
+  "title": "Grok 4",
+  "detail": "xAI releases Grok 4.",
+  "entityIds": [
+   "xai"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-grok-4"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-oss",
+  "date": "2025-08-01",
+  "precision": "month",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI releases gpt-oss open weights",
+  "detail": "OpenAI publishes its first open-weight models in years, gpt-oss-120b and gpt-oss-20b.",
+  "entityIds": [
+   "gpt-oss"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-pk-gpt-oss",
+   "c-gcloud-partner-pricing"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-5",
+  "date": "2025-08-07",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-5",
+  "detail": "OpenAI launches GPT-5 at $1.25/$10 per million tokens, half GPT-4o's input price.",
+  "entityIds": [
+   "gpt-5"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-sim-openai",
+   "c-x-taskade-models"
+  ]
+ },
+ {
+  "id": "tl-c-acp",
+  "date": "2025-09-01",
+  "precision": "month",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "Agentic Commerce Protocol and Instant Checkout",
+  "detail": "OpenAI and Stripe release ACP to power buying inside ChatGPT.",
+  "entityIds": [
+   "agentic-commerce-protocol"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-digitalapplied-commerce",
+   "c-x-toomanysecrets-commerce"
+  ]
+ },
+ {
+  "id": "tl-c-sonnet-4-5",
+  "date": "2025-09-29",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Sonnet 4.5 and the Claude Agent SDK",
+  "detail": "Anthropic releases Sonnet 4.5 at $3/$15 and opens the infrastructure behind Claude Code as an SDK.",
+  "entityIds": [
+   "claude-sonnet-4-5",
+   "claude-code"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-sonnet-4-5"
+  ]
+ },
+ {
+  "id": "tl-c-agentcore-ga",
+  "date": "2025-10-01",
+  "precision": "month",
+  "track": "competitive",
+  "providerId": "aws",
+  "title": "Amazon Bedrock AgentCore generally available",
+  "detail": "AWS's agent runtime reaches general availability.",
+  "entityIds": [
+   "amazon-bedrock-agentcore"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ibl-agent-platforms",
+   "c-x-flywheel-agent-platforms"
+  ]
+ },
+ {
+  "id": "tl-c-openai-recap",
+  "date": "2025-10-01",
+  "precision": "month",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI completes its recapitalisation",
+  "detail": "The for-profit arm becomes OpenAI Group PBC under the renamed OpenAI Foundation (late October 2025).",
+  "entityIds": [
+   "openai",
+   "microsoft"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-intuitionlabs-devday-2025"
+  ]
+ },
+ {
+  "id": "tl-c-devday-2025",
+  "date": "2025-10-06",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI DevDay 2025: AgentKit and the Apps SDK",
+  "detail": "OpenAI introduces AgentKit for building agents and an Apps SDK for apps inside ChatGPT.",
+  "entityIds": [
+   "agentkit",
+   "chatgpt"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-intuitionlabs-devday-2025"
+  ]
+ },
+ {
+  "id": "tl-c-openai-aws",
+  "date": "2025-11-01",
+  "precision": "year",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI signs a $38 billion AWS capacity deal",
+  "detail": "OpenAI's first large compute contract with AWS, reported in late 2025; the exact date was not confirmed this cycle.",
+  "entityIds": [
+   "openai",
+   "aws"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-ts2-openai-aws"
+  ]
+ },
+ {
+  "id": "tl-c-ms-nvidia-anthropic",
+  "date": "2025-11-18",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Microsoft, NVIDIA and Anthropic partner",
+  "detail": "Anthropic commits $30 billion to Azure compute; NVIDIA and Microsoft commit up to $10 billion and $5 billion of investment; Claude arrives in Microsoft Foundry.",
+  "entityIds": [
+   "anthropic",
+   "microsoft",
+   "nvidia",
+   "microsoft-foundry"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-ms-nvidia",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-opus-4-5",
+  "date": "2025-11-24",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Opus 4.5 cuts Opus pricing by two-thirds",
+  "detail": "Opus list price falls from $15/$75 to $5/$25 per million tokens.",
+  "entityIds": [
+   "claude-opus-4-5"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-opus-4-5",
+   "c-anthropic-pricing"
+  ]
+ },
+ {
+  "id": "tl-c-mcp-aaif",
+  "date": "2025-12-09",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "MCP donated to the Agentic AI Foundation",
+  "detail": "Anthropic, Block and OpenAI co-found the Linux Foundation's Agentic AI Foundation, with support from Google, Microsoft and AWS.",
+  "entityIds": [
+   "model-context-protocol"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-mcp-aaif"
+  ]
+ },
+ {
+  "id": "tl-c-spacex-xai",
+  "date": "2026-02-02",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "xai",
+  "title": "SpaceX absorbs xAI",
+  "detail": "The combined company is valued at about $1.25 trillion and the AI unit is later named SpaceXAI.",
+  "entityIds": [
+   "xai"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-slashgear-spacex-xai"
+  ]
+ },
+ {
+  "id": "tl-c-frontier",
+  "date": "2026-02-05",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI Frontier",
+  "detail": "OpenAI launches an enterprise agent platform (sources give 5 or 6 February).",
+  "entityIds": [
+   "openai-frontier"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-flywheel-agent-platforms",
+   "c-x-ibl-agent-platforms"
+  ]
+ },
+ {
+  "id": "tl-c-instant-checkout-scaled-back",
+  "date": "2026-03-01",
+  "precision": "month",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI scales back Instant Checkout",
+  "detail": "Merchants return to their own checkout and ChatGPT focuses on product discovery.",
+  "entityIds": [
+   "agentic-commerce-protocol",
+   "chatgpt"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-digitalapplied-commerce",
+   "c-x-forrester-commerce"
+  ]
+ },
+ {
+  "id": "tl-c-anthropic-tpu",
+  "date": "2026-04-06",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Anthropic signs multi-gigawatt TPU deal with Google and Broadcom",
+  "detail": "Anthropic also says run-rate revenue has passed $30 billion, up from about $9 billion at the end of 2025.",
+  "entityIds": [
+   "anthropic"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-google-broadcom"
+  ]
+ },
+ {
+  "id": "tl-c-managed-agents",
+  "date": "2026-04-08",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Managed Agents beta",
+  "detail": "Anthropic launches a managed agent harness with sandboxing and built-in tools.",
+  "entityIds": [
+   "claude-managed-agents"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-muse-spark",
+  "date": "2026-04-08",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "meta",
+  "title": "Meta Muse Spark 1.0",
+  "detail": "Meta Superintelligence Labs releases its first proprietary Muse model.",
+  "entityIds": [
+   "meta",
+   "muse-spark-1-3"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-wikipedia-msl",
+   "c-x-cnbc-muse-spark"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-5-5",
+  "date": "2026-04-23",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-5.5",
+  "detail": "OpenAI's flagship moves to $5/$30 per million tokens; API access follows a day later.",
+  "entityIds": [
+   "gpt-5-5"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-wikipedia-gpt-5-5",
+   "c-x-taskade-models"
+  ]
+ },
+ {
+  "id": "tl-c-deepseek-v4",
+  "date": "2026-04-24",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "deepseek",
+  "title": "DeepSeek V4 Preview open-sourced",
+  "detail": "V4-Pro (1.6T parameters) and V4-Flash ship with open weights and a 1M-token context.",
+  "entityIds": [
+   "deepseek-v4-pro"
+  ],
+  "significance": 2,
+  "label": "provider-claim",
+  "sourceIds": [
+   "c-x-deepseek-news-0424",
+   "c-x-decoder-deepseek-v4"
+  ]
+ },
+ {
+  "id": "tl-c-ms-openai-2026",
+  "date": "2026-04-27",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "microsoft",
+  "title": "Microsoft and OpenAI end exclusivity",
+  "detail": "Reporting describes an amended deal making Microsoft's licence non-exclusive through 2032; accounts differ on the AGI clause.",
+  "entityIds": [
+   "openai",
+   "microsoft"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decoder-ms-openai",
+   "c-x-directions-ms-openai"
+  ]
+ },
+ {
+  "id": "tl-c-fable-5",
+  "date": "2026-06-09",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Fable 5 and Mythos 5",
+  "detail": "Anthropic opens a tier above Opus to all customers at $10/$50 per million tokens.",
+  "entityIds": [
+   "claude-fable-5"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-release-notes",
+   "c-anthropic-deprecations"
+  ]
+ },
+ {
+  "id": "tl-c-sonnet-5",
+  "date": "2026-06-30",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Sonnet 5 at $2/$10",
+  "detail": "Anthropic's first Sonnet price cut, introductory at launch and made permanent on 10 August 2026.",
+  "entityIds": [
+   "claude-sonnet-5"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-sonnet-5",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-5-6",
+  "date": "2026-07-09",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-5.6 family generally available",
+  "detail": "OpenAI adopts tier names (Sol, Terra, Luna) after a 26 June preview.",
+  "entityIds": [
+   "gpt-5-6-sol"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-gradually-gpt-versions",
+   "c-x-sim-openai"
+  ]
+ },
+ {
+  "id": "tl-c-meta-model-api",
+  "date": "2026-07-09",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "meta",
+  "title": "Meta opens a paid model API",
+  "detail": "Muse Spark 1.1 launches with the Meta Model API preview at $1.25/$4.25 per million tokens.",
+  "entityIds": [
+   "meta-model-api",
+   "muse-spark-1-3"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-cnbc-muse-spark",
+   "c-x-qz-muse-spark"
+  ]
+ },
+ {
+  "id": "tl-c-kimi-k3",
+  "date": "2026-07-16",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "moonshot",
+  "title": "Kimi K3",
+  "detail": "Moonshot launches a 2.8-trillion-parameter model at $3/$15 and publishes its weights on 27 July.",
+  "entityIds": [
+   "kimi-k3"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-decoder-kimi-k3",
+   "c-x-standard-kimi-k3"
+  ]
+ },
+ {
+  "id": "tl-c-opus-5",
+  "date": "2026-07-24",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Opus 5",
+  "detail": "Launched at $5/$25, the same price as Opus 4.8.",
+  "entityIds": [
+   "claude-opus-5"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-opus-5",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-cursor",
+  "date": "2026-08-14",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "xai",
+  "title": "SpaceX closes $60 billion Cursor acquisition",
+  "detail": "Cursor's maker Anysphere becomes part of SpaceXAI.",
+  "entityIds": [
+   "cursor",
+   "xai"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-vktr-cursor",
+   "c-x-9to5mac-cursor"
+  ]
+ },
+ {
+  "id": "tl-c-deepseek-pricing",
+  "date": "2026-08-16",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "deepseek",
+  "title": "DeepSeek moves to peak/off-peak pricing",
+  "detail": "Off-peak rates are 50% below peak; reporting describes a sharp overall increase.",
+  "entityIds": [
+   "deepseek-v4-pro"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-deepseek-news-0813",
+   "c-x-channelinsider-deepseek"
+  ]
+ },
+ {
+  "id": "tl-c-fable-5-1",
+  "date": "2026-09-01",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Fable 5.1 cuts cache reads by 75%",
+  "detail": "Token prices stay at $10/$50; cache reads fall to $0.25 per million.",
+  "entityIds": [
+   "claude-fable-5-1"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-fable-5-1",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-6-astra",
+  "date": "2026-09-03",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-6 Astra",
+  "detail": "OpenAI's GPT-6 flagship launches at a tracker-listed $10/$50 per million tokens.",
+  "entityIds": [
+   "gpt-6-astra"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-newstack-astra",
+   "c-x-datacamp-astra",
+   "c-x-taskade-models"
+  ]
+ },
+ {
+  "id": "tl-c-opus-5-5",
+  "date": "2026-09-22",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Opus 5.5 at $4/$20",
+  "detail": "First Claude 5.5 model; 20% below Opus 5 with cache reads at $0.20.",
+  "entityIds": [
+   "claude-opus-5-5"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-opus-5-5",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-gpt-6-sol-luna",
+  "date": "2026-09-22",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-6 Sol and Luna",
+  "detail": "Trackers list Sol at $2/$10 and Luna at $0.10/$0.50 per million tokens.",
+  "entityIds": [
+   "gpt-6-sol",
+   "gpt-6-luna"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-github-chatgpt-timeline",
+   "c-x-sim-openai",
+   "c-x-cloudzero-gpt6"
+  ]
+ },
+ {
+  "id": "tl-c-devday-2026",
+  "date": "2026-09-29",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "OpenAI DevDay 2026: GPT-6.1 Sol",
+  "detail": "GPT-6.1 Sol ships with cached input at $0.10; OpenAI shows 1.2 billion weekly ChatGPT users.",
+  "entityIds": [
+   "gpt-6-1-sol",
+   "chatgpt"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-sim-openai",
+   "c-x-taskade-history",
+   "c-x-whizi-chatgpt"
+  ]
+ },
+ {
+  "id": "tl-c-haiku-5-5",
+  "date": "2026-10-07",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Haiku 5.5 at $0.10/$0.50",
+  "detail": "A tenfold cut from Haiku 4.5 for prompts up to 100K tokens; Sonnet 5.5 cache reads halved the same day.",
+  "entityIds": [
+   "claude-haiku-5-5",
+   "claude-sonnet-5-5"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "tl-c-muse-wonder",
+  "date": "2026-10-12",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "meta",
+  "title": "Meta Muse Wonder",
+  "detail": "Meta's frontier API model launches at $4/$20; the stronger Wonder Full is subscription-only.",
+  "entityIds": [
+   "muse-wonder-1-0"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "c-x-betanews-wonder",
+   "c-x-fpj-wonder"
+  ]
+ },
+ {
+  "id": "tl-c-anthropic-s1",
+  "date": "2026-10-26",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Anthropic files for an IPO",
+  "detail": "Anthropic files a Form S-1; its roadshow starts on 10 November 2026.",
+  "entityIds": [
+   "anthropic"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-s1",
+   "c-anthropic-news-index"
+  ]
+ },
+ {
+  "id": "tl-c-fable-5-2",
+  "date": "2026-11-09",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Claude Fable 5.2 at $8/$40",
+  "detail": "Anthropic's top model gets a 20% price cut and takes first place on the Artificial Analysis index.",
+  "entityIds": [
+   "claude-fable-5-2"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "c-anthropic-fable-5-2",
+   "c-anthropic-release-notes"
+  ]
+ }
+]

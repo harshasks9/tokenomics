@@ -1,0 +1,683 @@
+[
+ {
+  "id": "br-aa-claude-fable-5-2",
+  "modelId": "claude-fable-5-2",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5.0.1",
+  "score": 65,
+  "date": "2026-11-13",
+  "reporter": "independent",
+  "reasoningConfig": "Max effort, default fallback",
+  "sourceIds": [
+   "c-x-aa-index-eval",
+   "c-x-benchlm-aa"
+  ],
+  "limitations": "Read through search extracts of Artificial Analysis's page; a mirror dated 2026-11-13 shows 64.6. Exact measurement date not stated."
+ },
+ {
+  "id": "br-aa-gemini-4-carbon",
+  "modelId": "gemini-4-carbon",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5",
+  "score": 60,
+  "date": "2026-11-13",
+  "reporter": "independent",
+  "reasoningConfig": "High thinking (58 at medium, 54 at low)",
+  "sourceIds": [
+   "c-x-aiproductivity-benchmarks",
+   "c-x-eesel-carbon",
+   "c-x-benchlm-aa",
+   "c-x-livedoor-aa-v5"
+  ],
+  "limitations": "Relayed by third-party sites; one report gave 59 at the model's 2026-10-29 release."
+ },
+ {
+  "id": "br-aa-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5",
+  "score": 58,
+  "date": "2026-10-27",
+  "reporter": "independent",
+  "reasoningConfig": "Max effort",
+  "sourceIds": [
+   "c-x-aa-index-v5",
+   "c-x-cellcog-aa-v5"
+  ],
+  "limitations": "Score at the v5 launch; a mirror dated 2026-11-13 shows 59.1."
+ },
+ {
+  "id": "br-aa-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5",
+  "score": 57,
+  "date": "2026-10-27",
+  "reporter": "independent",
+  "reasoningConfig": "Max effort",
+  "sourceIds": [
+   "c-x-aa-index-v5",
+   "c-x-cellcog-aa-v5"
+  ]
+ },
+ {
+  "id": "br-aa-gpt-6-1-sol",
+  "modelId": "gpt-6-1-sol",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5",
+  "score": 55,
+  "date": "2026-10-27",
+  "reporter": "independent",
+  "reasoningConfig": "Max effort",
+  "sourceIds": [
+   "c-x-aa-index-v5",
+   "c-x-cellcog-aa-v5"
+  ]
+ },
+ {
+  "id": "br-aa-gemini-4-hydrogen",
+  "modelId": "gemini-4-hydrogen",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5",
+  "score": 54,
+  "date": "2026-11-13",
+  "reporter": "independent",
+  "reasoningConfig": "xhigh thinking (51 at the default high setting)",
+  "sourceIds": [
+   "c-x-agentspulse-hydrogen",
+   "c-x-benchlm-aa"
+  ],
+  "limitations": "From a third-party guide and a mirror (53.9) published within days of the model's 2026-11-12 release."
+ },
+ {
+  "id": "br-aa-gemini-4-argon",
+  "modelId": "gemini-4-argon",
+  "benchmarkId": "aa-index",
+  "benchmarkVersion": "v5",
+  "score": 50,
+  "date": "2026-10-27",
+  "reporter": "independent",
+  "reasoningConfig": "High thinking",
+  "sourceIds": [
+   "c-x-aa-index-v5",
+   "c-x-benchlm-aa"
+  ],
+  "limitations": "A blog post cites 53 instead; the mirror dated 2026-11-13 shows 50.4."
+ },
+ {
+  "id": "br-lmarena-gemini-4-carbon",
+  "modelId": "gemini-4-carbon",
+  "benchmarkId": "lmarena-text",
+  "score": 1526,
+  "date": "2026-11-07",
+  "reporter": "independent",
+  "reasoningConfig": "High",
+  "sourceIds": [
+   "c-x-devdigest-lmarena",
+   "c-x-benchleader-lmarena"
+  ],
+  "limitations": "Marked preliminary (±9); another mirror showed 1528 on 2026-11-04."
+ },
+ {
+  "id": "br-lmarena-gemini-4-argon",
+  "modelId": "gemini-4-argon",
+  "benchmarkId": "lmarena-text",
+  "score": 1523,
+  "date": "2026-11-07",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-devdigest-lmarena",
+   "c-x-benchleader-lmarena"
+  ],
+  "limitations": "Mirror snapshot (±6); another mirror showed 1520 on 2026-11-04."
+ },
+ {
+  "id": "br-lmarena-muse-wonder",
+  "modelId": "muse-wonder-1-0",
+  "benchmarkId": "lmarena-text",
+  "score": 1513,
+  "date": "2026-11-07",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-devdigest-lmarena"
+  ],
+  "limitations": "Single mirror snapshot."
+ },
+ {
+  "id": "br-lmarena-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "lmarena-text",
+  "score": 1509,
+  "date": "2026-11-04",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-benchleader-lmarena"
+  ],
+  "limitations": "Single mirror snapshot."
+ },
+ {
+  "id": "br-lmarena-claude-fable-5",
+  "modelId": "claude-fable-5",
+  "benchmarkId": "lmarena-text",
+  "score": 1504,
+  "date": "2026-11-07",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-devdigest-lmarena"
+  ],
+  "limitations": "Single mirror snapshot; no Text Arena score for Fable 5.2 was found."
+ },
+ {
+  "id": "br-lmarena-gpt-6-1-sol",
+  "modelId": "gpt-6-1-sol",
+  "benchmarkId": "lmarena-text",
+  "score": 1445,
+  "date": "2026-11-07",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-llmbenchmark-lmarena"
+  ],
+  "limitations": "Single mirror snapshot; mirrors disagree widely on OpenAI's scores."
+ },
+ {
+  "id": "br-lmarena-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "lmarena-text",
+  "score": 1440,
+  "date": "2026-11-07",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-llmbenchmark-lmarena"
+  ],
+  "limitations": "Single mirror snapshot; an earlier internal catalog recorded 1477 in October 2026."
+ },
+ {
+  "id": "br-swepro-claude-fable-5-2",
+  "modelId": "claude-fable-5-2",
+  "benchmarkId": "swe-bench-pro",
+  "score": 93,
+  "date": "2026-11-13",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-x-benchlm-swe-pro"
+  ],
+  "limitations": "Vendor-reported figure as relayed by an aggregator on 2026-11-13; not read in Anthropic's own posts this cycle. Not comparable with Scale's standardised public or commercial sets."
+ },
+ {
+  "id": "br-swepro-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "swe-bench-pro",
+  "score": 89.9,
+  "date": "2026-11-13",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-x-benchlm-swe-pro"
+  ],
+  "limitations": "Vendor-reported figure as relayed by an aggregator on 2026-11-13; not read in Anthropic's own posts this cycle. Not comparable with Scale's standardised public or commercial sets."
+ },
+ {
+  "id": "br-swepro-claude-sonnet-5-5",
+  "modelId": "claude-sonnet-5-5",
+  "benchmarkId": "swe-bench-pro",
+  "score": 81.3,
+  "date": "2026-11-13",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-x-benchlm-swe-pro"
+  ],
+  "limitations": "Vendor-reported figure as relayed by an aggregator on 2026-11-13; not read in Anthropic's own posts this cycle. Not comparable with Scale's standardised public or commercial sets."
+ },
+ {
+  "id": "br-tbench-claude-sonnet-5-5",
+  "modelId": "claude-sonnet-5-5",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 70.6,
+  "date": "2026-09-28",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-sonnet-5-5"
+  ],
+  "limitations": "Anthropic's own run; effort level for this figure not stated in the passage read."
+ },
+ {
+  "id": "br-tbench-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 66.4,
+  "date": "2026-09-22",
+  "reporter": "provider",
+  "reasoningConfig": "xhigh effort (the model's highest score)",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Anthropic's own run; standard error ±2.6 points; production safeguards enabled."
+ },
+ {
+  "id": "br-tbench-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 57.9,
+  "date": "2026-09-22",
+  "reporter": "provider",
+  "reasoningConfig": "High effort",
+  "sourceIds": [
+   "c-anthropic-opus-5-5",
+   "c-x-newstack-astra"
+  ],
+  "limitations": "Reported by OpenAI, as cited in Anthropic's Opus 5.5 post and in press; OpenAI's own page was not read."
+ },
+ {
+  "id": "br-tbench-claude-fable-5-1",
+  "modelId": "claude-fable-5-1",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 55.8,
+  "date": "2026-09-01",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-1"
+  ],
+  "limitations": "With safeguards enabled; the unrestricted Mythos 5.1 scored 60.9."
+ },
+ {
+  "id": "br-tbench-claude-opus-5-anthropic",
+  "modelId": "claude-opus-5",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 52.3,
+  "date": "2026-09-22",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Anthropic's reproduction of the public-leaderboard result."
+ },
+ {
+  "id": "br-tbench-claude-opus-5-leaderboard",
+  "modelId": "claude-opus-5",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 51.8,
+  "date": "2026-09-22",
+  "reporter": "independent",
+  "scaffold": "Claude Code harness, 5 trials per task",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Public leaderboard figure as quoted in Anthropic's post; the leaderboard itself was not read. Date is the date of that post."
+ },
+ {
+  "id": "br-tbench-claude-haiku-5-5",
+  "modelId": "claude-haiku-5-5",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 39.2,
+  "date": "2026-10-07",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ]
+ },
+ {
+  "id": "br-tbench-gpt-5-6-sol",
+  "modelId": "gpt-5-6-sol",
+  "benchmarkId": "terminal-bench",
+  "benchmarkVersion": "4.0",
+  "score": 37.3,
+  "date": "2026-09-01",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-1",
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Reported by OpenAI, as cited in Anthropic's posts."
+ },
+ {
+  "id": "br-hle-claude-fable-5-2-tools",
+  "modelId": "claude-fable-5-2",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "with tools",
+  "score": 74.2,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "reasoningConfig": "Highest available effort",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ]
+ },
+ {
+  "id": "br-hle-claude-opus-5-5-tools",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "with tools",
+  "score": 67.7,
+  "date": "2026-09-22",
+  "reporter": "provider",
+  "reasoningConfig": "Max effort",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ]
+ },
+ {
+  "id": "br-hle-claude-fable-5-1-notools",
+  "modelId": "claude-fable-5-1",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "no tools",
+  "score": 60.9,
+  "date": "2026-09-01",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-1"
+  ],
+  "limitations": "65.0 with tools in the same table."
+ },
+ {
+  "id": "br-hle-claude-sonnet-5-5-notools",
+  "modelId": "claude-sonnet-5-5",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "no tools",
+  "score": 56.9,
+  "date": "2026-10-07",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ],
+  "limitations": "Shown for reference in the Haiku 5.5 post; 64.5 with tools."
+ },
+ {
+  "id": "br-hle-claude-haiku-5-5-notools",
+  "modelId": "claude-haiku-5-5",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "no tools",
+  "score": 45.9,
+  "date": "2026-10-07",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ],
+  "limitations": "57.4 with tools in the same table."
+ },
+ {
+  "id": "br-hle-claude-opus-5-5-indep",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "humanitys-last-exam",
+  "score": 61.4,
+  "date": "2026-11-06",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-modelmenu-hle"
+  ],
+  "limitations": "Aggregator leaderboard; tools setting and evaluator not stated. Date approximate (early November 2026)."
+ },
+ {
+  "id": "br-hle-gemini-4-argon-indep",
+  "modelId": "gemini-4-argon",
+  "benchmarkId": "humanitys-last-exam",
+  "score": 57.1,
+  "date": "2026-11-06",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-ppt-hle",
+   "c-x-modelmenu-hle"
+  ],
+  "limitations": "Aggregator leaderboard; tools setting and evaluator not stated."
+ },
+ {
+  "id": "br-hle-diamond-gemini-4-carbon",
+  "modelId": "gemini-4-carbon",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "HLE-Diamond subset (Artificial Analysis run)",
+  "score": 69.1,
+  "date": "2026-11-06",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-village-hle-diamond"
+  ],
+  "limitations": "Diamond subset, not comparable with full-set HLE scores; read through a third-party snapshot."
+ },
+ {
+  "id": "br-hle-diamond-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "humanitys-last-exam",
+  "benchmarkVersion": "HLE-Diamond subset (Artificial Analysis run)",
+  "score": 63.8,
+  "date": "2026-11-06",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-x-village-hle-diamond"
+  ],
+  "limitations": "Diamond subset, not comparable with full-set HLE scores; read through a third-party snapshot."
+ },
+ {
+  "id": "br-osworld-claude-fable-5-2",
+  "modelId": "claude-fable-5-2",
+  "benchmarkId": "osworld-verified",
+  "benchmarkVersion": "OSWorld 2.1 (offline set, partial credit)",
+  "score": 89.3,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ],
+  "limitations": "Partial-credit score on an offline subset, run and published by Anthropic."
+ },
+ {
+  "id": "br-osworld-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "osworld-verified",
+  "benchmarkVersion": "OSWorld 2.1 (offline set, partial credit)",
+  "score": 87.2,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ],
+  "limitations": "Partial-credit score on an offline subset, run and published by Anthropic. The Opus 5.5 launch post gave 81.8% on a differently defined OSWorld 2.1 run."
+ },
+ {
+  "id": "br-osworld-gemini-4-carbon",
+  "modelId": "gemini-4-carbon",
+  "benchmarkId": "osworld-verified",
+  "benchmarkVersion": "OSWorld 2.1 (offline set, partial credit)",
+  "score": 81.5,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ],
+  "limitations": "Partial-credit score on an offline subset, run and published by Anthropic. The reporting provider is Anthropic, a competitor, not Google."
+ },
+ {
+  "id": "br-osworld-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "osworld-verified",
+  "benchmarkVersion": "OSWorld 2.1 (offline set, partial credit)",
+  "score": 79.5,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ],
+  "limitations": "Partial-credit score on an offline subset, run and published by Anthropic. The reporting provider is Anthropic, a competitor, not OpenAI."
+ },
+ {
+  "id": "br-osworld-claude-haiku-5-5",
+  "modelId": "claude-haiku-5-5",
+  "benchmarkId": "osworld-verified",
+  "benchmarkVersion": "OSWorld 2.1 (offline subset)",
+  "score": 72.4,
+  "date": "2026-10-07",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ],
+  "limitations": "Run and published by Anthropic."
+ },
+ {
+  "id": "br-arc3-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "arc-agi-3",
+  "score": 62.71,
+  "date": "2026-10-23",
+  "reporter": "independent",
+  "scaffold": "ARC Prize standard harness",
+  "sourceIds": [
+   "c-x-llmlearner-arc3"
+  ],
+  "limitations": "Relayed by a third-party tracker (source attribution from search extracts; verify on arcprize.org). On the provider-adapter harness the same model records 99.95%."
+ },
+ {
+  "id": "br-arc3-gemini-4-argon",
+  "modelId": "gemini-4-argon",
+  "benchmarkId": "arc-agi-3",
+  "score": 49.79,
+  "date": "2026-10-23",
+  "reporter": "independent",
+  "scaffold": "ARC Prize standard harness",
+  "sourceIds": [
+   "c-x-llmlearner-arc3"
+  ],
+  "limitations": "Relayed by a third-party tracker (source attribution from search extracts; verify on arcprize.org)."
+ },
+ {
+  "id": "br-arc3-claude-opus-5",
+  "modelId": "claude-opus-5",
+  "benchmarkId": "arc-agi-3",
+  "score": 30.2,
+  "date": "2026-09-01",
+  "reporter": "independent",
+  "reasoningConfig": "High effort",
+  "sourceIds": [
+   "c-x-datalearner-arc3"
+  ],
+  "limitations": "ARC Prize verified leaderboard as of 2026-09-01, relayed by a tracker; later models have since passed it."
+ },
+ {
+  "id": "br-autobench-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "automationbench",
+  "score": 41.4,
+  "date": "2026-09-22",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Zapier public leaderboard figure, as quoted in Anthropic's Opus 5.5 post."
+ },
+ {
+  "id": "br-autobench-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "automationbench",
+  "score": 40,
+  "date": "2026-09-22",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Run and reported by Zapier during early access, without fallback models, so safeguard interventions counted as failures; quoted in Anthropic's post."
+ },
+ {
+  "id": "br-autobench-claude-opus-5",
+  "modelId": "claude-opus-5",
+  "benchmarkId": "automationbench",
+  "score": 26.9,
+  "date": "2026-09-22",
+  "reporter": "independent",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Zapier public leaderboard figure, as quoted in Anthropic's Opus 5.5 post."
+ },
+ {
+  "id": "br-autobench-gemini-4-carbon",
+  "modelId": "gemini-4-carbon",
+  "benchmarkId": "automationbench",
+  "score": 53.9,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ],
+  "limitations": "As published in Anthropic's Fable 5.2 comparison table; who ran the Gemini evaluation is not stated in the passage read. The reporting provider is Anthropic, not Google."
+ },
+ {
+  "id": "br-autobench-claude-fable-5-2",
+  "modelId": "claude-fable-5-2",
+  "benchmarkId": "automationbench",
+  "score": 51.4,
+  "date": "2026-11-09",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-fable-5-2"
+  ],
+  "limitations": "As published in Anthropic's Fable 5.2 comparison table."
+ },
+ {
+  "id": "br-gdpval-claude-opus-5-5",
+  "modelId": "claude-opus-5-5",
+  "benchmarkId": "gdpval-aa",
+  "benchmarkVersion": "v2.1",
+  "score": 1846,
+  "date": "2026-09-22",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Artificial Analysis's evaluation, but the figure was read in Anthropic's launch post, so it is recorded as provider-reported."
+ },
+ {
+  "id": "br-gdpval-claude-sonnet-5-5",
+  "modelId": "claude-sonnet-5-5",
+  "benchmarkId": "gdpval-aa",
+  "benchmarkVersion": "v2.1",
+  "score": 1844,
+  "date": "2026-09-28",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-sonnet-5-5"
+  ],
+  "limitations": "Artificial Analysis's evaluation, but the figure was read in Anthropic's launch post, so it is recorded as provider-reported."
+ },
+ {
+  "id": "br-gdpval-claude-haiku-5-5",
+  "modelId": "claude-haiku-5-5",
+  "benchmarkId": "gdpval-aa",
+  "benchmarkVersion": "v2.1",
+  "score": 1620,
+  "date": "2026-10-07",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ],
+  "limitations": "Artificial Analysis's evaluation, but the figure was read in Anthropic's launch post, so it is recorded as provider-reported."
+ },
+ {
+  "id": "br-gdpval-gpt-6-astra",
+  "modelId": "gpt-6-astra",
+  "benchmarkId": "gdpval-aa",
+  "benchmarkVersion": "v2.1",
+  "score": 1542,
+  "date": "2026-09-22",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-opus-5-5"
+  ],
+  "limitations": "Artificial Analysis's evaluation, but the figure was read in Anthropic's launch post, so it is recorded as provider-reported. The reporting provider is Anthropic, not OpenAI."
+ },
+ {
+  "id": "br-gdpval-gpt-6-luna",
+  "modelId": "gpt-6-luna",
+  "benchmarkId": "gdpval-aa",
+  "benchmarkVersion": "v2.1",
+  "score": 1437,
+  "date": "2026-10-07",
+  "reporter": "provider",
+  "sourceIds": [
+   "c-anthropic-haiku-5-5"
+  ],
+  "limitations": "Artificial Analysis's evaluation, but the figure was read in Anthropic's launch post, so it is recorded as provider-reported. The reporting provider is Anthropic, not OpenAI."
+ }
+]

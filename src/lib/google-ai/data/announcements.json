@@ -1,0 +1,5026 @@
+[
+ {
+  "id": "an-2026-11-12-professional-agentic-architect-certification",
+  "title": "Google Cloud introduces the Professional Agentic Architect certification",
+  "date": "2026-11-12",
+  "providerId": "google",
+  "types": [
+   "product-launch"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "developer-platforms"
+  ],
+  "layers": [
+   "ecosystem",
+   "agents"
+  ],
+  "entityIds": [
+   "google-cloud",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud introduced a Professional Agentic Architect certification with a hybrid format: a proctored multiple-choice exam plus hands-on labs on Google Skills.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-cert"
+    ]
+   },
+   {
+    "text": "Google says the curriculum was first used internally over four months to train thousands of forward deployed engineers and partners, and that nearly one million developers use its GEAR agent-skilling programme.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-cert"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "A formal agent-architecture credential is a channel play: it gives partners and customers a way to staff Gemini agent deployments, which is where enterprise roll-outs usually stall.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-cert"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Exam price, languages and the registration opening date were not captured."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-cert"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-11-gemini-robotics-2-5-and-alphagenome-2",
+  "title": "Google DeepMind debuts a new Gemini Robotics model and AlphaGenome 2",
+  "date": "2026-11-11",
+  "providerId": "google",
+  "types": [
+   "research",
+   "model-launch"
+  ],
+  "areas": [
+   "research",
+   "multimodal"
+  ],
+  "layers": [
+   "research",
+   "models"
+  ],
+  "entityIds": [
+   "google-deepmind",
+   "gemini-robotics"
+  ],
+  "summary": [
+   {
+    "text": "SiliconANGLE reported on Nov 11, 2026 that Google DeepMind debuted its next Gemini Robotics vision-language-action model, which the outlet calls Gemini Robotics 2.5.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-robotics25"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "The same report says DeepMind announced AlphaGenome 2, a model predicting how DNA sequence variation affects human cell types, and that it is not approved for clinical or diagnostic use.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-robotics25"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "No primary Google DeepMind post was read; the model name \"Gemini Robotics 2.5\" comes from secondary coverage only.",
+   "Availability, licensing and benchmark results were not confirmed."
+  ],
+  "importance": 3,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-robotics25"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-11-gemini-factory-partner-program",
+  "title": "Google Cloud details the Gemini factory co-innovation programme for software partners",
+  "date": "2026-11-11",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "product-update"
+  ],
+  "areas": [
+   "enterprise-agents"
+  ],
+  "layers": [
+   "ecosystem",
+   "enterprise"
+  ],
+  "entityIds": [
+   "gemini-enterprise",
+   "model-context-protocol",
+   "a2a-protocol"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud describes the Gemini factory as hands-on workshops in hubs including San Francisco, New York, London, Paris, Tel Aviv and Tokyo that help ISVs build integrations for the unified Gemini experience and list them on Google Cloud Marketplace.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gemini-factory"
+    ]
+   },
+   {
+    "text": "Partners plug into Gemini through four primitives: MCP connectors, skills, plugins and autonomous agents (including A2A runtimes and REST APIs).",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gemini-factory"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Third-party software now appears inside the Gemini agent as connectors and skills rather than as separate top-level agents, which shifts where ISVs compete for user attention.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-gemini-factory"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-gemini-factory"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-10-november-2026-pixel-feature-drop",
+  "title": "November 2026 Pixel Feature Drop adds Gemini and other AI capabilities",
+  "date": "2026-11-10",
+  "providerId": "google",
+  "types": [
+   "product-update"
+  ],
+  "areas": [
+   "search-consumer"
+  ],
+  "layers": [
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-on-android",
+   "gemini-app"
+  ],
+  "summary": [
+   {
+    "text": "9to5Google reported on Nov 10, 2026 that the November Pixel Feature Drop, paired with Android 17 QPR2, is a large update for Gemini and other AI capabilities on Pixel phones.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-pixel-drop-nov"
+    ],
+    "confidence": "low"
+   }
+  ],
+  "uncertainty": [
+   "Only the article summary was seen; the individual features were not captured and no Google post was read."
+  ],
+  "importance": 2,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-pixel-drop-nov"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-10-gemini-in-gmail-workspace-18-plus",
+  "title": "Gemini features in Gmail extend to more Workspace users aged 18 and over",
+  "date": "2026-11-10",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "availability"
+  ],
+  "areas": [
+   "workspace"
+  ],
+  "layers": [
+   "enterprise",
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-in-workspace"
+  ],
+  "summary": [
+   {
+    "text": "Reporting on a Workspace Updates post says some Gemini in Gmail features began extending to Workspace users aged 18 and older on Nov 10, 2026, on by default, with a gradual roll-out of up to 15 days and an admin off-switch.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-gmail-18"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "The original Workspace Updates post was not read; which features and which editions are covered is not confirmed."
+  ],
+  "importance": 2,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-gmail-18"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-10-gemini-for-healthcare-preview",
+  "title": "Google Cloud introduces Gemini for healthcare in preview",
+  "date": "2026-11-10",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "availability"
+  ],
+  "areas": [
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-for-healthcare",
+   "gemini-enterprise"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud announced Gemini for healthcare, an industry solution built on the Gemini agent for providers and for health plans, available in preview from Nov 10, 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-healthcare"
+    ]
+   },
+   {
+    "text": "It packages healthcare skills (records synthesis, pre-visit preparation, coverage and policy review, benefit determination) with connectors to EHR, claims and care-management systems, and Google says it is built to support HIPAA compliance.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-healthcare"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Healthcare is the fourth vertical package in under three months (after financial services, legal and government), a sign Google is selling the Gemini agent by industry workflow rather than as a general assistant.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-healthcare",
+     "a-gc-gov",
+     "a-gc-finserv",
+     "a-gc-legal"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Pricing and a general-availability date were not stated."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-healthcare",
+   "a-gc-gov",
+   "a-gc-finserv",
+   "a-gc-legal"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-10-gemini-4-carbon-available",
+  "title": "Gemini 4 Carbon opens to paying developers and enterprises",
+  "date": "2026-11-10",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "model-launch",
+   "pricing"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms",
+   "search-consumer"
+  ],
+  "layers": [
+   "models",
+   "platform",
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-4-carbon",
+   "gemini-api",
+   "google-ai-studio",
+   "gemini-enterprise",
+   "gemini-app",
+   "ai-mode",
+   "google-antigravity"
+  ],
+  "summary": [
+   {
+    "text": "A Google post dated Nov 10, 2026 says Gemini 4 Carbon is available through the Gemini API in Google AI Studio and in Gemini for business for all paying developers and enterprises.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-bg-carbon-available"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Google positions Carbon as its strongest model for long-horizon agentic work, with Gemini 4 Argon remaining the default choice for most software engineering and knowledge work.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-bg-carbon-available",
+     "a-bg-carbon-dev",
+     "a-pr-carbon-ga"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Search Engine Roundtable quotes Google as saying Carbon is rolling out to all Google AI Ultra subscribers in Google Antigravity, the Gemini app and AI Mode in Search.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-carbon-aimode"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Carbon was limited to vetted cyber defenders after its Oct 28 announcement.",
+   "after": "Paying developers, enterprises and (per press reports) Google AI Ultra subscribers can use it; the free tier is excluded."
+  },
+  "implications": [
+   {
+    "text": "Carbon and Argon share one list price, so the choice between them is about task length and autonomy rather than cost; buyers should budget at the December rate, not the introductory one.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Google Cloud's pricing page lists Gemini 4 Carbon at $2.00 input / $10.00 output per 1M tokens (global endpoint) through Nov 30, 2026, and $4.00 / $20.00 starting Dec 1, 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "The pricing page says the promotional rate is delivered as 50% credits back on net spend and does not apply to the Cyber Permissive variants.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "The model id gemini-4-carbon is reported by secondary sources and was not read on a Google page.",
+   "One outlet dates the availability post Nov 11 rather than Nov 10.",
+   "Context window and output limits for Carbon were not confirmed here."
+  ],
+  "followUps": [
+   {
+    "date": "2026-12-01",
+    "note": "Standard pricing of $4 / $20 per 1M tokens is scheduled to replace the introductory rate.",
+    "sourceIds": [
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-bg-carbon-available",
+   "a-bg-carbon-dev",
+   "a-pr-carbon-ga",
+   "a-pr-carbon-aimode",
+   "a-gc-pricing"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-09-tpu-sync-and-gke-dynamic-slicing",
+  "title": "TPU Sync is open-sourced and GKE dynamic slicing for TPUs reaches general availability",
+  "date": "2026-11-09",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "open-source",
+   "availability"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure",
+   "platform"
+  ],
+  "entityIds": [
+   "tpu",
+   "torchtpu"
+  ],
+  "summary": [
+   {
+    "text": "Google introduced TPU Sync, an open-source C++ library that moves KV caches and model weights between TPU memory, host DRAM, shared storage and the data-center network.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-tpusync"
+    ]
+   },
+   {
+    "text": "GKE dynamic slicing, which forms logical TPU slices on demand using optical circuit switching, is generally available; Cloud Pathways on GKE is also described as generally available.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gke-slicing",
+     "a-gc-tpu8x"
+    ]
+   }
+  ],
+  "technical": [
+   {
+    "text": "Google reports that TPU Sync cuts KV-transfer latency by over 90% and time to first token by about 90% on average for 235B-480B-parameter open-weight MoE models in prefix-caching and disaggregated-serving workloads.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-tpusync"
+    ]
+   },
+   {
+    "text": "Google reports dynamic slicing reduces workload start-up time by up to 5x and recovery time by 4.5x versus static node pools.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-gke-slicing"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "These releases target the practical reasons teams avoid TPUs (PyTorch support, serving stacks, rigid topologies), which matters more for third-party adoption than raw chip performance.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-tpusync",
+     "a-gc-torchtpu"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-tpusync",
+   "a-gc-gke-slicing",
+   "a-gc-tpu8x",
+   "a-gc-torchtpu"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-09-tpu-8tx-and-tpu-8i-max",
+  "title": "Google adds TPU 8tx and TPU 8i Max to its eighth-generation TPU line",
+  "date": "2026-11-09",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "product-launch"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "tpu-8tx",
+   "tpu-8i-max",
+   "tpu-8t",
+   "tpu-8i",
+   "ai-hypercomputer"
+  ],
+  "summary": [
+   {
+    "text": "Google announced two more eighth-generation TPU systems on Nov 9, 2026: TPU 8tx for secure and confidential inference, and TPU 8i Max for very large context windows and the highest compute density per rack.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   },
+   {
+    "text": "Google says this is the first time it has introduced four TPU systems in one year and that TPUs now have nearly 100 customers, including frontier labs, trading firms, retailers and universities.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "The eighth generation had two systems, announced at Cloud Next in April: TPU 8t (training) and TPU 8i (inference).",
+   "after": "Four systems: 8t, 8i, 8tx (confidential computing) and 8i Max (two 8i chips in one package)."
+  },
+  "technical": [
+   {
+    "text": "TPU 8tx uses the same silicon as TPU 8t with 5th Gen AMD EPYC hosts and the Boardfly network, adding hardware-level protection of data and weights in use; Google claims up to 2x lower latency than TPU 8t.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   },
+   {
+    "text": "TPU 8i Max packages two TPU 8i chips together and, per Google, doubles compute, SRAM and HBM bandwidth relative to TPU 8i within the same rack footprint.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   }
+  ],
+  "competitive": [
+   {
+    "text": "Google says its vLLM-TorchTPU stack reached state-of-the-art price-performance on the InferenceX and AgentX benchmarks; no figures are given in the post.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Splitting one silicon generation into four system configurations lets Google answer specific buyer objections (confidential computing, memory-bound agents) without waiting for a ninth-generation chip.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   },
+   {
+    "text": "Customers placing TPUs \"directly into their own data centers\" and the Oracle deal show TPUs becoming a merchant product, not only a Google Cloud service.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-tpu8x",
+     "a-gc-oci-tpu"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The post gives no availability dates, regions or prices for TPU 8tx or TPU 8i Max.",
+   "The benchmark claims are not accompanied by numbers and were not independently checked."
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-tpu8x",
+   "a-gc-oci-tpu"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-09-claude-fable-5-2-and-meta-muse-in-model-garden",
+  "title": "Claude Fable 5.2 reaches GA and Meta's Muse models enter preview in Google Cloud's Model Garden",
+  "date": "2026-11-09",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "model-garden",
+   "gemini-enterprise-agent-platform",
+   "anthropic",
+   "meta"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's weekly update for Nov 9-13, 2026 lists Anthropic's Claude Fable 5.2 as generally available in Model Garden.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   },
+   {
+    "text": "The same entry lists Meta's Muse Spark 1.3, Muse Wonder and Muse Ember as available in public preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Model Garden now carries current flagship models from Anthropic, OpenAI (private preview), Meta and xAI next to Gemini, which makes the platform, not the model, the thing Google is selling to enterprises.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-whatsnew",
+     "a-gc-openai"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The entry sits under the week of Nov 9-13; the exact day of availability is not stated, so the date shown is the start of that week.",
+   "Pricing and regions for the Muse models on Google Cloud were not captured."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-whatsnew",
+   "a-gc-openai"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-06-gemini-omni-1-2-flash-ga",
+  "title": "Gemini Omni 1.2 Flash video model becomes generally available on Google Cloud",
+  "date": "2026-11-06",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "availability",
+   "pricing"
+  ],
+  "areas": [
+   "multimodal",
+   "models"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-omni-1-2-flash",
+   "gemini-omni",
+   "gemini-enterprise"
+  ],
+  "summary": [
+   {
+    "text": "Gemini Omni 1.2 Flash, a video generation and editing model, became generally available on Google Cloud on Nov 6, 2026, usable in Gemini for business, Google Vids and via API.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-omni12"
+    ]
+   },
+   {
+    "text": "It generates and edits clips of up to 15 seconds (previously 10), drafts at 360p or 720p with upscaling to 1080p or 4K, and outputs carry a SynthID watermark.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-omni12"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "Gemini Omni 1.1 Flash: clips up to 10 seconds at a higher per-second price.",
+   "after": "Gemini Omni 1.2 Flash: clips up to 15 seconds at $0.07 per second of 720p video."
+  },
+  "implications": [
+   {
+    "text": "Per-second pricing that falls with each point release makes high-volume product and ad video an operating cost rather than a project cost, which is the segment Google is targeting.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-omni12"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Google lists $0.07 per second of 720p video, which it says is 30% less than Gemini Omni 1.1 Flash, with similar reductions at other resolutions; Provisioned Throughput is offered.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-omni12"
+    ]
+   },
+   {
+    "text": "Audio references are available by allowlist only.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-omni12"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The API model id and regional availability were not captured."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-omni12"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-05-security-summit-codemender-agent-identity",
+  "title": "Security Summit: CodeMender gains sandboxed remediation and Auth Manager for agents reaches GA",
+  "date": "2026-11-05",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "safety-governance",
+   "availability"
+  ],
+  "areas": [
+   "safety-governance",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "agents",
+   "platform"
+  ],
+  "entityIds": [
+   "codemender",
+   "agent-identity",
+   "gemini-4-argon",
+   "wiz",
+   "agent-compute-engine"
+  ],
+  "summary": [
+   {
+    "text": "At the Google Cloud Security Summit, Google said CodeMender (in preview since July) now isolates exploit verification in an OS-level sandbox or isolated VM and can scan a folder, a repository or only changed files.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-security-summit"
+    ]
+   },
+   {
+    "text": "Auth Manager (Agent Identity), a Google-managed credential vault for agents, is generally available; Agent Identity JWT support is in preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-security-summit"
+    ]
+   },
+   {
+    "text": "Google says hundreds of customers have used CodeMender since July, and that Wiz used Gemini 4 Argon with other models to find and help fix core PHP vulnerabilities.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-security-summit"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Google is pairing frontier cyber capability with identity and network controls for agents, which lets it sell the same models to security teams that are being asked to approve agent deployments.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-security-summit"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-security-summit"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-04-malaysia-data-center-investment",
+  "title": "Google reported to commit US$15 billion to new data center campuses in Malaysia",
+  "date": "2026-11-04",
+  "providerId": "google",
+  "types": [
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "ai-hypercomputer",
+   "google"
+  ],
+  "summary": [
+   {
+    "text": "Indonesian business press reported that Google announced on Nov 4, 2026 a US$15 billion investment for 2027-2028 to build data center campuses in Selangor and Negeri Sembilan, Malaysia.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-malaysia"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "No Google announcement was read; the figure and sites come from secondary coverage.",
+   "How much of the capacity is for AI workloads or TPUs is not stated."
+  ],
+  "importance": 3,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-malaysia"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-04-agentic-data-cloud-november-update",
+  "title": "Agentic Data Cloud update: Gemini on the borderless Lakehouse and GA cross-cloud interconnect",
+  "date": "2026-11-04",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "availability"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "enterprise"
+  ],
+  "entityIds": [
+   "knowledge-catalog",
+   "gemini-enterprise"
+  ],
+  "summary": [
+   {
+    "text": "Google announced that Gemini works directly on its Iceberg-based borderless Lakehouse and that cross-cloud interconnect and caching for AWS and Azure are generally available, with no variable egress fees for cross-cloud queries.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-adc"
+    ]
+   },
+   {
+    "text": "Google says Apache Iceberg data under management more than tripled over the past year.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-adc"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Letting the Gemini agent query data that stays in AWS or Azure removes a migration precondition that often blocks agent projects at multi-cloud enterprises.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-adc"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-adc"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-03-google-cloud-developer-plugin-antigravity",
+  "title": "Google Cloud Developer plugin lands in the Antigravity Marketplace",
+  "date": "2026-11-03",
+  "providerId": "google",
+  "types": [
+   "product-launch"
+  ],
+  "areas": [
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "google-antigravity",
+   "model-context-protocol",
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "From Nov 3, 2026 the google-cloud-developer plugin can be installed from the Antigravity Marketplace; it bundles skills, routing rules and a pre-authorized Developer Knowledge MCP server that grounds the agent in live Google Cloud documentation.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-dev-plugin"
+    ]
+   },
+   {
+    "text": "The plugin requires user consent before enabling billable APIs or changing cloud infrastructure.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-dev-plugin"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Marketplace plugins with built-in guardrails are how Google keeps coding agents on current SDK syntax and inside cost controls, a common failure mode for agent-written cloud code.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-dev-plugin"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-dev-plugin"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-30-ai-infrastructure-october-roundup",
+  "title": "October infrastructure roundup: llm-d 1.0, Gemini on air-gapped Google Distributed Cloud, ML Drift",
+  "date": "2026-10-30",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "open-source",
+   "product-update"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "google-distributed-cloud",
+   "ai-hypercomputer"
+  ],
+  "summary": [
+   {
+    "text": "Google's October infrastructure recap lists llm-d 1.0, an open-source Kubernetes-native serving stack co-founded by Google that coordinates LLM inference across mixed TPU and GPU fleets.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-infra-oct"
+    ]
+   },
+   {
+    "text": "The latest Google Distributed Cloud air-gapped release brings Gemini models and multimodal enterprise search into isolated environments and supports NVIDIA HGX B300 systems.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-infra-oct"
+    ]
+   },
+   {
+    "text": "Google also open-sourced ML Drift, an on-device GPU compute engine for LiteRT.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-infra-oct"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Gemini inside air-gapped GDC is aimed at sovereign and defence buyers who cannot use a public endpoint at all, a segment where rivals mostly offer open-weight models.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-infra-oct"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-infra-oct"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-28-gemini-4-carbon-announced",
+  "title": "Google announces Gemini 4 Carbon, initially for cyber defenders",
+  "date": "2026-10-28",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "safety-governance"
+  ],
+  "areas": [
+   "models",
+   "safety-governance"
+  ],
+  "layers": [
+   "models"
+  ],
+  "entityIds": [
+   "gemini-4-carbon",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "Google's October roundup, as excerpted, says Gemini 4 Carbon was announced on Oct 28, 2026 as its strongest model yet for long-horizon engineering and cybersecurity defence.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-bg-oct-roundup"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Press reports say access began with a subset of cyber defenders and was to widen to vetted Fairwind Program partners.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-carbon-launch"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "implications": [
+   {
+    "text": "Releasing the most capable model to defenders first, as with Argon a month earlier, has become Google's standard staging for models it considers cyber-relevant.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-bg-oct-roundup",
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Benchmark results for Carbon were not read from a Google source."
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-10",
+    "note": "Carbon opened to all paying developers and enterprises at the same introductory price as Argon.",
+    "sourceIds": [
+     "a-bg-carbon-available"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-bg-oct-roundup",
+   "a-pr-carbon-launch",
+   "a-gc-argon",
+   "a-bg-carbon-available"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-28-alphabet-q3-2026-earnings",
+  "title": "Alphabet Q3 2026: Google Cloud revenue roughly doubles to $30.7B; capex stays above $50B a quarter",
+  "date": "2026-10-28",
+  "providerId": "google",
+  "types": [
+   "financial"
+  ],
+  "areas": [
+   "infrastructure",
+   "models",
+   "search-consumer"
+  ],
+  "layers": [
+   "infrastructure",
+   "enterprise",
+   "consumer"
+  ],
+  "entityIds": [
+   "google",
+   "google-cloud",
+   "gemini-app",
+   "gemini-api"
+  ],
+  "summary": [
+   {
+    "text": "Press coverage of the Oct 28, 2026 results reports Alphabet revenue of about $127.6B and Google Cloud revenue of $30.7B, up 103% year over year, with a Cloud operating margin of 36.2%.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-q3",
+     "a-pr-q3-aiweekly"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Sundar Pichai's prepared remarks, as excerpted, say first-party model APIs process nearly 32 billion tokens per minute and the Gemini app has more than one billion monthly active users.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-bg-q3-ceo",
+     "a-ir-q3-transcript"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Reported Q3 capital expenditure was about $51.4B. Call coverage says 2026 capex guidance was left at $195-205B and that the CFO expects capex to \"increase significantly in 2027\", with detail deferred to the Q4 call.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-q3-call",
+     "a-pr-q3-aiweekly"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Coverage of the call puts total revenue backlog at $567.7B, of which $560.8B relates to Google Cloud, with just over 55% expected to be recognised within 24 months.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-q3-call",
+     "a-pr-q3-aiweekly"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Q2 2026: Cloud revenue $24.8B (+82%), Cloud backlog $514B, about 22 billion tokens per minute through first-party APIs, capex $44.9B.",
+   "after": "Q3 2026: Cloud revenue $30.7B (+103%), Cloud backlog about $561B, nearly 32 billion tokens per minute, capex about $51.4B."
+  },
+  "implications": [
+   {
+    "text": "Cloud growth above 100% with a mid-30s margin indicates AI demand is being monetised at the infrastructure and platform layers, not only subsidised through consumer products.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-pr-q3",
+     "a-pr-q3-aiweekly"
+    ]
+   },
+   {
+    "text": "Token volume grew roughly 45% in a quarter while list prices for frontier models were introductory; watch whether volume holds after the December and January price steps.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-bg-q3-ceo",
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Figures were read through search excerpts and secondary coverage, not the earnings release itself.",
+   "The $300B figure for 2027 capex that appears in some headlines is described elsewhere as investor speculation, not guidance.",
+   "One analysis says the backlog figure is from the call rather than the earnings release.",
+   "One summary reports diluted EPS of $2.12 and negative free cash flow; these were not cross-checked."
+  ],
+  "importance": 5,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-pr-q3",
+   "a-pr-q3-aiweekly",
+   "a-bg-q3-ceo",
+   "a-ir-q3-transcript",
+   "a-pr-q3-call",
+   "a-gc-pricing"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-27-google-tpus-on-oracle-cloud",
+  "title": "Google and Oracle agree to bring Google TPUs to Oracle Cloud Infrastructure from 2027",
+  "date": "2026-10-27",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "tpu-8t",
+   "tpu-8i",
+   "partner-oracle",
+   "torchtpu"
+  ],
+  "summary": [
+   {
+    "text": "Oracle and Google Cloud announced on Oct 27, 2026 that Google TPUs will be deployed in Oracle Cloud Infrastructure starting in calendar year 2027, which they describe as making OCI the first hyperscaler outside Google to offer TPUs.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-oci-tpu"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "TPUs were available only in Google Cloud regions (and, per Google, in some customers' own data centers).",
+   "after": "A second hyperscale cloud will sell TPU capacity alongside GPUs."
+  },
+  "technical": [
+   {
+    "text": "The post states eighth-generation TPUs deliver up to 12.6 PFLOPS of native FP4 compute per chip and sustain over 97% goodput across thousands of chips on large training runs.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-oci-tpu"
+    ]
+   }
+  ],
+  "competitive": [
+   {
+    "text": "The stated rationale is that global AI compute demand exceeds any single provider's footprint and that enterprises want accelerators next to Oracle databases.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-oci-tpu"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Selling TPUs through a rival cloud turns Google's chip into a merchant alternative to NVIDIA GPUs and widens the software ecosystem that TorchTPU is meant to seed.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-oci-tpu",
+     "a-gc-torchtpu"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "No capacity, TPU generation, regions, pricing or financial terms are disclosed."
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-oci-tpu",
+   "a-gc-torchtpu"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-27-genie-4-research-preview",
+  "title": "Google DeepMind previews Genie 4, a real-time world model with native audio",
+  "date": "2026-10-27",
+  "providerId": "google",
+  "types": [
+   "research",
+   "model-launch"
+  ],
+  "areas": [
+   "research",
+   "multimodal"
+  ],
+  "layers": [
+   "research",
+   "models"
+  ],
+  "entityIds": [
+   "google-deepmind",
+   "gemini-3-8-flash",
+   "gemini-4-argon"
+  ],
+  "summary": [
+   {
+    "text": "Press coverage says Google DeepMind announced Genie 4 on Oct 27, 2026 as a research preview for trusted testers: a real-time interactive world model that generates audio natively and can be modified by text during a session.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-genie4"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Google's October roundup, as excerpted, lists Genie 4 as a real-time interactive world simulation model with native audio.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-bg-oct-roundup"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "Wider availability (reports mention Google AI Ultra via Project Genie and select API developers) has no confirmed date or price.",
+   "DeepMind reportedly lists real-time audio accuracy as an open research problem."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-pr-genie4",
+   "a-bg-oct-roundup"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-27-gemini-robotics-er-2-on-google-cloud",
+  "title": "Gemini Robotics ER 2 enters public preview on Google Cloud",
+  "date": "2026-10-27",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "model-launch"
+  ],
+  "areas": [
+   "models",
+   "multimodal"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-robotics-er-2",
+   "gemini-enterprise-agent-platform",
+   "google-ai-studio",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "Gemini Robotics Embodied Reasoning 2 (ER 2), the high-level reasoning model in Gemini Robotics 2, became available in public preview on Google Cloud on Oct 27, 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-er2"
+    ]
+   },
+   {
+    "text": "Google describes it as working across robot embodiments, combining spatial and temporal video understanding with long-horizon planning, and calling low-level action models or navigation APIs as tools.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-er2"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Offering the robotics reasoning model through the same cloud platform as other Gemini models lets robotics teams reuse enterprise identity, evaluation and orchestration tooling rather than a separate research stack.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-er2"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Pricing for ER 2 was not captured."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-er2"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-23-anthropic-managed-claude-on-google-cloud",
+  "title": "Anthropic-managed deployment option for Claude on Google Cloud reaches general availability",
+  "date": "2026-10-23",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "developer-platforms",
+   "models"
+  ],
+  "layers": [
+   "platform",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "model-garden",
+   "gemini-enterprise-agent-platform",
+   "anthropic"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud announced general availability of an Anthropic-managed way to run Claude models on Google Cloud, alongside the existing Google-managed option, with the same models on day zero, the same pricing and Google Cloud billing.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-claude-deploy"
+    ]
+   },
+   {
+    "text": "In the Anthropic-managed option Anthropic is the data processor under its own commercial terms and Claude Platform features (managed agents, skills, code execution) arrive on day zero; in the Google-managed option Google is the processor and adds VPC Service Controls, CMEK and data residency.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-claude-deploy"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Customers can now trade Google's compliance controls for faster access to Anthropic platform features without leaving Google Cloud billing or commitments, which keeps Claude spend on Google's paper either way.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-claude-deploy"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-claude-deploy"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-22-agent-compute-engine",
+  "title": "Google unveils Agent Compute Engine and open-source Agent Substrate for GKE",
+  "date": "2026-10-22",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "infrastructure",
+   "open-source"
+  ],
+  "areas": [
+   "infrastructure",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "infrastructure",
+   "agents"
+  ],
+  "entityIds": [
+   "agent-compute-engine",
+   "gke-agent-sandbox",
+   "agent-gateway",
+   "agent-registry"
+  ],
+  "summary": [
+   {
+    "text": "At AGNTCon + MCPCon on Oct 22, 2026 Google introduced Agent Compute Engine, a compute service of hardware-isolated microVM sandboxes that it says already runs the Gemini agent; customer preview is promised \"in the coming months\".",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ace"
+    ]
+   },
+   {
+    "text": "Google also described Agent Substrate on GKE, an open-source agent execution runtime, citing a benchmark of 200,000 agents with 500 activations per second and suspend/resume under 500 ms.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-ace"
+    ]
+   }
+  ],
+  "technical": [
+   {
+    "text": "Agent Compute Engine uses copy-on-write memory sharing and checkpoint/restore to pause idle microVMs; each microVM has its own identity, short-lived credentials and a Hyperdisk for persistent workspace state.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ace"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Agent sandboxes are becoming a distinct compute category priced around idle time; Google is positioning its own internal runtime as the product, as it did with Kubernetes.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-ace"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "No preview date or pricing for Agent Compute Engine has been published."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-ace"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-21-openai-models-on-google-cloud",
+  "title": "OpenAI models arrive in Google Cloud Model Garden in private preview",
+  "date": "2026-10-21",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "availability"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "model-garden",
+   "gemini-enterprise-agent-platform",
+   "openai",
+   "google-antigravity"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud announced on Oct 21, 2026 that OpenAI's GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna are rolling out in private preview to select enterprise customers in Model Garden.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-openai"
+    ]
+   },
+   {
+    "text": "Usage is transacted through Google Cloud Marketplace, appears on the Google Cloud invoice, draws down existing commitments and counts toward Flexible Savings Plans.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-openai"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "Google Cloud offered Gemini, Anthropic's Claude and other third-party and open models, but not OpenAI's proprietary models.",
+   "after": "Google says it is the only hyperscale cloud offering all three leading closed-source model families alongside more than 200 other models."
+  },
+  "competitive": [
+   {
+    "text": "Google's claim to be the only hyperscaler with all three leading closed model families is its own characterisation.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-openai"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "For enterprises this removes a reason to keep a second cloud contract for model access; for Google it captures margin on rival models and makes cloud commitments stickier.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-openai"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Zero Data Retention options and Confidential Compute for OpenAI models are described as \"coming soon\", as is availability in Gemini for business and Google Antigravity.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-openai"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Prices for OpenAI models on Google Cloud and a general-availability date are not given.",
+   "The commercial terms between Google and OpenAI are not disclosed."
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-openai"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-21-nvidia-gtc-berlin-a5x-virgo",
+  "title": "Google Cloud and NVIDIA: A5X Vera Rubin instances, Virgo scale-out to 960,000 GPUs",
+  "date": "2026-10-21",
+  "effectiveDate": "2026-11-06",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "partnership",
+   "availability"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "ai-hypercomputer",
+   "nvidia-gpus-on-google-cloud",
+   "virgo-network",
+   "nvidia"
+  ],
+  "summary": [
+   {
+    "text": "At NVIDIA GTC Berlin on Oct 21, 2026 Google Cloud announced updates to A5X bare-metal instances on the NVIDIA Vera Rubin NVL72 platform, including local-region availability for EMEA data residency.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gtc-berlin"
+    ]
+   },
+   {
+    "text": "Google says Virgo Network will let A5X clusters scale to 80,000 Rubin GPUs within one site and up to 960,000 across multi-site deployments.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-gtc-berlin"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Google continues to sell NVIDIA's newest platform at scale while promoting TPUs, so customers can treat accelerator choice as a per-workload decision inside one cloud.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-gtc-berlin"
+    ]
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-06",
+    "note": "A5X instances became generally available, per an update note on the post and the weekly Google Cloud list.",
+    "sourceIds": [
+     "a-gc-gtc-berlin",
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-gtc-berlin",
+   "a-gc-whatsnew"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-20-torchtpu-open-source",
+  "title": "TorchTPU open-sourced: native PyTorch on Google TPUs",
+  "date": "2026-10-20",
+  "providerId": "google",
+  "types": [
+   "open-source",
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure",
+   "developer-platforms"
+  ],
+  "layers": [
+   "infrastructure",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "torchtpu",
+   "tpu-8t",
+   "tpu-8i",
+   "meta"
+  ],
+  "summary": [
+   {
+    "text": "At PyTorch Conference 2026 on Oct 20, Google released TorchTPU, a native PyTorch stack for TPUs co-developed with the PyTorch team at Meta, as open source on GitHub.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-torchtpu"
+    ]
+   },
+   {
+    "text": "Google says Hugging Face Transformers v5 can target TPUs with device_map=\"tpu\" and that vLLM, SGLang, llm-d, Ray and other tools run on the stack.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-torchtpu"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "TPU development centred on JAX and TensorFlow, a barrier for the PyTorch-majority ecosystem.",
+   "after": "PyTorch code and Hugging Face models can run on TPUs with minimal changes, according to Google."
+  },
+  "competitive": [
+   {
+    "text": "Meta's PyTorch engineering director is quoted saying TorchTPU lets Meta deploy PyTorch workloads to Google TPUs.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-torchtpu"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Software portability is the main moat around NVIDIA GPUs; a first-party PyTorch path is a precondition for TPUs being a credible second source for outside labs.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-torchtpu"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-torchtpu"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-20-gemini-for-government-services",
+  "title": "Gemini for government services enters preview at Google Public Sector Summit",
+  "date": "2026-10-20",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "availability"
+  ],
+  "areas": [
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-for-government-services",
+   "gemini-enterprise",
+   "wiz"
+  ],
+  "summary": [
+   {
+    "text": "Google announced Gemini for government services in preview on Oct 20, 2026: the Gemini agent with government skills, connectors to agency systems, partner agents and a governed control plane.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gov",
+     "a-gc-pss"
+    ]
+   },
+   {
+    "text": "A survey Google commissioned found 96.3% of agencies had deployed agents in some form but only 9% had agency-wide adoption.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-pss"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Public-sector packaging, together with air-gapped Gemini on Google Distributed Cloud, addresses the procurement and sovereignty requirements that otherwise exclude hosted frontier models.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-gov",
+     "a-gc-infra-oct"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Authorisation levels (for example FedRAMP scope) and pricing were not captured."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-gov",
+   "a-gc-pss",
+   "a-gc-infra-oct"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-20-claude-5-5-in-antigravity",
+  "title": "Claude Opus 5.5 and Sonnet 5.5 become selectable in Google Antigravity",
+  "date": "2026-10-20",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "google-antigravity",
+   "anthropic",
+   "gemini-4-argon",
+   "gemini-3-8-flash"
+  ],
+  "summary": [
+   {
+    "text": "From Oct 20, 2026 Google Cloud customers can select Claude Opus 5.5 and Claude Sonnet 5.5 in Antigravity 2.0, the Antigravity CLI and the IDE extensions for VS Code, JetBrains IntelliJ and Visual Studio, once an administrator enables them.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-claude-antigravity"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Antigravity is being positioned as a multi-model agent harness under one billing and security boundary, which competes with coding tools tied to a single model vendor.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-claude-antigravity"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-claude-antigravity"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-17-reflection-beam-day-0-support",
+  "title": "Google Cloud offers day-0 serving recipes for Reflection's open-weight Beam model",
+  "date": "2026-10-17",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "availability",
+   "open-source"
+  ],
+  "areas": [
+   "infrastructure",
+   "models"
+  ],
+  "layers": [
+   "infrastructure",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "ai-hypercomputer"
+  ],
+  "summary": [
+   {
+    "text": "On Oct 17, 2026 Google Cloud announced day-0 support and deployment recipes for Reflection's Apache-2.0 open-weight Beam model on AI Hypercomputer, using llm-d with vLLM and NVIDIA Dynamo with SGLang.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-beam"
+    ]
+   },
+   {
+    "text": "Reflection is quoted claiming up to 5x higher performance and 8x lower latency from the optimised stack.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-beam"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Day-0 support for a 500B-parameter-class open model signals that Google wants open-weight inference revenue as well as Gemini API revenue.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-beam"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-beam"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-13-gemini-for-business-and-gemini-platform-naming",
+  "title": "Google Cloud starts calling its enterprise app \"Gemini for business\" and its developer platform the \"Gemini platform\"",
+  "date": "2026-10-13",
+  "providerId": "google",
+  "types": [
+   "rename"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "developer-platforms"
+  ],
+  "layers": [
+   "enterprise",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-enterprise",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "From the Oct 13, 2026 Argon post onward, Google Cloud blog posts refer to \"Gemini for business\" (where users work with the agent) and the \"Gemini platform\" (where developers call models by API), and say Gemini Enterprise \"has evolved\".",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-argon",
+     "a-gc-openai",
+     "a-gc-ace"
+    ]
+   },
+   {
+    "text": "On Nov 15, 2026 the product page at the Gemini Enterprise Agent Platform URL is titled \"Gemini platform\", and the Gemini Enterprise page is titled \"Gemini for enterprise: The universal work agent\" and asks \"What is Gemini for business?\".",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-platform-page",
+     "a-gc-ge-page"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "The pricing page is titled \"Agent Platform Pricing\" and documentation URLs still use gemini-enterprise-agent-platform.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing",
+     "a-ap-release-notes"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "beforeAfter": {
+   "before": "April 2026: Vertex AI became Gemini Enterprise Agent Platform; the end-user product was the Gemini Enterprise app.",
+   "after": "October 2026: marketing surfaces say \"Gemini platform\" and \"Gemini for business\" with the Gemini agent at the centre; older names persist in docs, SKUs and edition names."
+  },
+  "implications": [
+   {
+    "text": "This is the second naming change for the developer platform in six months; buyers should match contracts and SKUs by product id and URL, not by brand name.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-platform-page",
+     "a-gc-agent-platform"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "No formal rename announcement was located; this entry records observed usage on Google Cloud pages.",
+   "Whether \"Gemini Enterprise\" remains the edition and licence name (for example Gemini Enterprise Plus) is not settled by the pages read."
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-gc-argon",
+   "a-gc-openai",
+   "a-gc-ace",
+   "a-gc-platform-page",
+   "a-gc-ge-page",
+   "a-gc-pricing",
+   "a-ap-release-notes",
+   "a-gc-agent-platform"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-13-gemini-4-argon-model-card-frontier-safety",
+  "title": "Gemini 4 Argon model card and the Frontier Safety Framework: reported bio and cyber threshold caveat",
+  "date": "2026-10-13",
+  "providerId": "google",
+  "types": [
+   "safety-governance"
+  ],
+  "areas": [
+   "safety-governance",
+   "models"
+  ],
+  "layers": [
+   "models",
+   "research"
+  ],
+  "entityIds": [
+   "gemini-4-argon",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "One secondary report says Google's Oct 13, 2026 model card for Gemini 4 Argon states that Google cannot rule out that the model reached the biological and cyber critical capability levels defined in its Frontier Safety Framework.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-argon-fsf"
+    ],
+    "confidence": "low"
+   },
+   {
+    "text": "An independent analysis describes version 3.1 of the Frontier Safety Framework as adding Tracked Capability Levels that flag lower-tier risks before a Critical Capability Level is reached, and as having been published without a press release.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-fsf31"
+    ],
+    "confidence": "low"
+   },
+   {
+    "text": "Google itself says Argon ships with cyber mitigations that block offensive tasks, and that an unmitigated version goes only to vetted defenders through the Fairwind Program.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "If the model-card caveat is accurate, staged release to defenders plus deployed mitigations is how Google is operating at or near its own capability thresholds; enterprises in regulated sectors should read the model card rather than rely on summaries.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-pr-argon-fsf",
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Neither the model card nor Frontier Safety Framework v3.1 was read directly; both points rest on single secondary sources.",
+   "The publication date of Frontier Safety Framework v3.1 was not established."
+  ],
+  "importance": 3,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-argon-fsf",
+   "a-pr-fsf31",
+   "a-gc-argon"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-13-gemini-4-argon-available",
+  "title": "Gemini 4 Argon becomes broadly available on Google Cloud, AI Studio and the Gemini app",
+  "date": "2026-10-13",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "availability",
+   "pricing"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "models",
+   "platform",
+   "enterprise"
+  ],
+  "entityIds": [
+   "gemini-4-argon",
+   "gemini-enterprise-agent-platform",
+   "google-ai-studio",
+   "google-antigravity",
+   "gemini-enterprise",
+   "gemini-app",
+   "codemender"
+  ],
+  "summary": [
+   {
+    "text": "On Oct 13, 2026 Google made Gemini 4 Argon available in Gemini for business (web, desktop, mobile) and to developers via API under the model id gemini-4-argon, in Google AI Studio and in Google Antigravity.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   },
+   {
+    "text": "Google describes Argon as trained for long, multi-step tasks in software engineering, finance, legal work and cyber defence, and says it leads the Vals Index and Harvey's Legal Agent Benchmark.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   },
+   {
+    "text": "Press reports say Argon reached Google AI Pro and Ultra subscribers in the Gemini app the same day.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-argon-app"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Argon was announced on Sep 30 with access limited to vetted cyber defenders (and, per reports, some Ultra subscribers).",
+   "after": "Enterprise and developer access through Google Cloud, AI Studio and Antigravity; consumer access on paid Gemini plans."
+  },
+  "technical": [
+   {
+    "text": "The pricing page states Gemini 4 can generate completions up to 1 million tokens long.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "Google reports a 68% score on CWE-Bench v1 (tied for first) and a 0.7% attack success rate over 15 adaptive attempts on the Gray Swan indirect prompt injection benchmark.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "competitive": [
+   {
+    "text": "ServiceNow is quoted reporting roughly 20% better task success than Gemini 3.8 Flash in early access; Harvey reports substantial gains over Gemini 3.1 Pro on its legal agent evaluations.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Argon is Google's first flagship since Gemini 3.1 Pro after a reported miss on Gemini 3.5 Pro; a standard price of $4/$20, well above the $1.50/$7.50 standard rate of the 3.x Flash models, tests whether enterprises will pay for long-horizon reliability.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-argon",
+     "a-pr-g35pro-delay"
+    ]
+   },
+   {
+    "text": "A 1M-token output limit changes what a single request can do, but the Nov 13 billing change for long completions shows the cost and timeout risk is passed to the caller.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Introductory price of $2 per 1M input tokens and $10 per 1M output tokens through Nov 30, 2026, then $4 and $20; cached input is priced at 95% off.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-argon",
+     "a-gc-pricing"
+    ]
+   },
+   {
+    "text": "A version without cyber guardrails is offered only to vetted defenders through the Fairwind Program.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Benchmark leadership claims are Google's own or from named partners; independent leaderboard results were not collected by this researcher.",
+   "A secondary report says the Oct 13 model card could not rule out that Argon reached bio and cyber critical capability levels under the Frontier Safety Framework; the model card itself was not read."
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-13",
+    "note": "For Gemini 4, completions longer than 32K tokens are billed for retrievable tokens even if the request fails on a client or server timeout.",
+    "sourceIds": [
+     "a-gc-pricing"
+    ]
+   },
+   {
+    "date": "2026-12-01",
+    "note": "Standard pricing of $4 / $20 per 1M tokens is scheduled to take effect.",
+    "sourceIds": [
+     "a-gc-argon",
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-argon",
+   "a-pr-argon-app",
+   "a-gc-pricing",
+   "a-pr-g35pro-delay"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-08-gemini-api-3-7-flash-deprecated",
+  "title": "Gemini API deprecates gemini-3.7-flash in favour of gemini-3.8-flash",
+  "date": "2026-10-08",
+  "providerId": "google",
+  "types": [
+   "deprecation"
+  ],
+  "areas": [
+   "developer-platforms",
+   "models"
+  ],
+  "layers": [
+   "platform",
+   "models"
+  ],
+  "entityIds": [
+   "gemini-3-7-flash",
+   "gemini-3-8-flash",
+   "gemini-api"
+  ],
+  "summary": [
+   {
+    "text": "A search excerpt of the Gemini API changelog shows an Oct 8, 2026 entry stating gemini-3.7-flash is deprecated and replaced by gemini-3.8-flash.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gapi-changelog"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "implications": [
+   {
+    "text": "A Flash model deprecated eight weeks after launch means applications pinned to point releases face a migration roughly every quarter; aliasing and regression tests need to be routine.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gapi-changelog",
+     "a-docs-g37flash"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Third-party trackers give a Jan 28, 2027 retirement with requests routed to gemini-3.8-flash, while an excerpt of the official lifecycle page showed no retirement date; the changelog itself was not fetched."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-gapi-changelog",
+   "a-docs-g37flash"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-10-08-gemini-agent-gemini-at-work",
+  "title": "Gemini at Work 2026: Google introduces the Gemini agent, a single universal agent for work",
+  "date": "2026-10-08",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "product-update",
+   "event"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "workspace"
+  ],
+  "layers": [
+   "agents",
+   "enterprise"
+  ],
+  "entityIds": [
+   "gemini-enterprise",
+   "gemini-in-workspace",
+   "agent-gateway",
+   "gemini-4-argon"
+  ],
+  "summary": [
+   {
+    "text": "At Gemini at Work on Oct 8, 2026 Thomas Kurian announced the Gemini agent: one agent and one API for questions, knowledge work, media creation and writing and running code, running persistently in the cloud and reachable from web, mobile, desktop, command line, Workspace, Microsoft 365 and Slack.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   },
+   {
+    "text": "The agent chooses a model per job, orchestrating across Gemini models and Anthropic's Claude models today, and can create sub-agents and persistent \"coworker\" agents with their own identities and Workspace accounts.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   },
+   {
+    "text": "Google says nearly 500 Google Cloud customers each processed more than one trillion tokens in the last year, nearly 80% of customers use its AI products and nearly 90% of the Fortune 100 use Gemini Enterprise.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "Gemini Enterprise was an app for discovering and running many separate agents, with developer tooling and Workspace features as distinct surfaces.",
+   "after": "One Gemini agent spans chat, autonomous tasks and coding, works inline in Workspace apps and is governed by shared identity, sandbox and gateway controls."
+  },
+  "technical": [
+   {
+    "text": "The agent keeps four kinds of memory (session, semantic, procedural, episodic); all agents run in an Agent Sandbox with traffic passing through Agent Gateway.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Collapsing assistants, agents and coding tools into one agent with model routing puts Google in direct competition with single-agent offerings from model vendors, while keeping the model layer swappable.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   },
+   {
+    "text": "Vertical packages (government, healthcare) now extend this one agent instead of shipping as separate products, so the agent and its governance layer become the unit enterprises standardise on.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-gov",
+     "a-gc-healthcare"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "New cost controls include Smart Routing across models and real-time, per-project spend caps set in the Cloud Billing console that pause an agent when triggered.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Pricing and edition changes for the Gemini agent were not stated in the keynote post.",
+   "Which third-party models beyond Claude the agent will route to, and when, is described only as \"in the future\"."
+  ],
+  "followUps": [
+   {
+    "date": "2026-10-13",
+    "note": "Google said Gemini Enterprise \"has evolved\" and made Gemini 4 Argon available as the model behind the agent.",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   },
+   {
+    "date": "2026-10-20",
+    "note": "First industry extension of the agent for the public sector (Gemini for government services).",
+    "sourceIds": [
+     "a-gc-gov"
+    ]
+   },
+   {
+    "date": "2026-11-10",
+    "note": "Gemini for healthcare announced in preview.",
+    "sourceIds": [
+     "a-gc-healthcare"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-gaw",
+   "a-gc-gov",
+   "a-gc-healthcare",
+   "a-gc-argon"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-30-google-cloud-cli-remote-mcp-server",
+  "title": "Google Cloud CLI remote MCP server enters preview",
+  "date": "2026-09-30",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "availability"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "model-context-protocol",
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "On Sep 30, 2026 Google introduced a managed remote MCP server, in preview, that exposes gcloud and bq command-line operations to AI agents from an isolated sandbox on Google Cloud.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-cli-mcp"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Wrapping the CLI in a managed MCP server gives hosted agents (including Gemini Enterprise) broad cloud control without local installs, raising the importance of IAM scoping for agent identities.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-cli-mcp"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-cli-mcp"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-30-gemini-4-argon-announced",
+  "title": "Google announces Gemini 4 Argon, first model of the Gemini 4 family, with limited initial access",
+  "date": "2026-09-30",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "safety-governance"
+  ],
+  "areas": [
+   "models",
+   "safety-governance"
+  ],
+  "layers": [
+   "models"
+  ],
+  "entityIds": [
+   "gemini-4-argon",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "Google announced Gemini 4 Argon on Sep 30, 2026 as its new frontier model for software engineering, enterprise knowledge work and cybersecurity defence.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-bg-argon",
+     "a-gc-ai-monthly"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Press reports say first access went to vetted cyber defenders in Google's Fairwind Program rather than to general customers.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-argon-launch",
+     "a-pr-argon-constellation"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Google's top generally offered reasoning model was Gemini 3.1 Pro (February 2026); the Gemini 3.5 Pro promised at I/O for June did not ship.",
+   "after": "Gemini 4 starts with Argon; Reuters, as relayed in coverage, quoted a spokesperson saying Argon is larger than the previous \"Pro\" line."
+  },
+  "implications": [
+   {
+    "text": "Google moved its naming from Pro/Flash tiers to element names for Gemini 4, so price and capability comparisons with 3.x tiers need to be re-established rather than assumed.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-bg-argon",
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The English-language launch post was seen only through search results.",
+   "Reported benchmark tallies (for example \"12 of 18\" tests) come from secondary coverage of Google's own numbers."
+  ],
+  "followUps": [
+   {
+    "date": "2026-10-13",
+    "note": "Argon became broadly available to enterprises, developers and paid Gemini app plans.",
+    "sourceIds": [
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-bg-argon",
+   "a-gc-ai-monthly",
+   "a-pr-argon-launch",
+   "a-pr-argon-constellation",
+   "a-gc-pricing",
+   "a-gc-argon"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-24-gemini-3-8-live-avatar-ga",
+  "title": "Gemini 3.8 Live with Live Avatar reaches general availability",
+  "date": "2026-09-24",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "model-update"
+  ],
+  "areas": [
+   "multimodal",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-8-live",
+   "gemini-live",
+   "gemini-enterprise"
+  ],
+  "summary": [
+   {
+    "text": "Gemini 3.8 Live with Live Avatar became generally available in Gemini Enterprise on Sep 24, 2026, with US and EU endpoints and Provisioned Throughput; Gemini 3.8 Live Extended Thinking remains in private preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-live-avatar"
+    ]
+   },
+   {
+    "text": "The model is native speech-to-speech, supports background tool calling and, per Google, understands and speaks 97 languages; custom avatars are allowlist-only and audio and video carry SynthID watermarks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-live-avatar"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "GA status with provisioned throughput moves real-time voice and avatar agents from demos to contact-centre and kiosk deployments that need capacity guarantees.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-live-avatar"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-live-avatar"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-21-claude-5-5-models-on-google-cloud",
+  "title": "Claude Opus 5.5 and Sonnet 5.5 become available on Google Cloud",
+  "date": "2026-09-21",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "model-garden",
+   "anthropic",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's weekly list for Sep 21-25, 2026 says Claude Opus 5.5 is available on Google Cloud; the Sep 28-Oct 2 list adds Claude Sonnet 5.5 in Model Garden.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Exact days are not stated; the date shown is the start of the week in which Opus 5.5 was listed."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-whatsnew"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-15-gemini-3-8-live-launch",
+  "title": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking launch",
+  "date": "2026-09-15",
+  "providerId": "google",
+  "types": [
+   "model-launch"
+  ],
+  "areas": [
+   "multimodal",
+   "models"
+  ],
+  "layers": [
+   "models"
+  ],
+  "entityIds": [
+   "gemini-3-8-live",
+   "gemini-live",
+   "gemini-api"
+  ],
+  "summary": [
+   {
+    "text": "Secondary coverage dates the launch of Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking to Sep 15, 2026, exposed as gemini-3.8-live and gemini-3.8-live-extended-thinking.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-g38live"
+    ],
+    "confidence": "low"
+   },
+   {
+    "text": "Google Cloud's Sep 24 post confirms both models were announced the week before.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-live-avatar"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The exact date and the model ids come from one secondary source."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-pr-g38live",
+   "a-gc-live-avatar"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-08-kurian-goldman-sachs-cloud-metrics",
+  "title": "Thomas Kurian at Goldman Sachs conference: 17 product lines above $1B, 300+ customers with $100M+ commitments",
+  "date": "2026-09-08",
+  "providerId": "google",
+  "types": [
+   "financial",
+   "event"
+  ],
+  "areas": [
+   "infrastructure",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "infrastructure"
+  ],
+  "entityIds": [
+   "google-cloud",
+   "google",
+   "tpu",
+   "gemini-enterprise"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's summary of Thomas Kurian's Sep 8, 2026 remarks says it has 17 product lines with more than $1 billion in revenue and more than 300 customers with contractual commitments of $100 million or more.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-goldman"
+    ]
+   },
+   {
+    "text": "It states a two-year AI server payback period, that TPUs have a much faster expected payback than GPUs, and that most AI infrastructure contract value is in committed five-year contracts.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-goldman"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "A faster payback on TPUs than GPUs is the financial argument behind Google's willingness to place TPUs with other clouds and in customer data centers.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-goldman",
+     "a-gc-oci-tpu"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "These are management statements at an investor conference, not audited disclosures."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-goldman",
+   "a-gc-oci-tpu"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-02-mantis-open-source-harness",
+  "title": "Google open-sources Mantis, its bug finding-and-fixing harness",
+  "date": "2026-09-02",
+  "providerId": "google",
+  "types": [
+   "open-source",
+   "safety-governance"
+  ],
+  "areas": [
+   "safety-governance",
+   "developer-platforms"
+  ],
+  "layers": [
+   "agents",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "codemender"
+  ],
+  "summary": [
+   {
+    "text": "Google published a getting-started guide on Sep 2, 2026 for Mantis, an open-source framework on GitHub that automates discovery, triage, sandboxed reproduction and patching of software vulnerabilities.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-mantis"
+    ]
+   },
+   {
+    "text": "Google says a hierarchical security-summary technique cut token overhead by over 85% on large repositories.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-mantis"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Open-sourcing the harness while selling CodeMender as the managed product follows Google's pattern of seeding a standard and monetising the hosted version.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-mantis",
+     "a-gc-codemender"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-mantis",
+   "a-gc-codemender"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-09-02-gemini-3-8-flash-launch",
+  "title": "Gemini 3.8 Flash launches at the same introductory price as 3.7 Flash",
+  "date": "2026-09-02",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "pricing"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-8-flash",
+   "gemini-api",
+   "google-ai-studio",
+   "google-antigravity"
+  ],
+  "summary": [
+   {
+    "text": "Secondary coverage dates the Gemini 3.8 Flash launch (with a Gemini 3.8 Flash Cyber variant) to Sep 2, 2026, available through the Gemini API, AI Studio, Android Studio and Antigravity.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-g38flash",
+     "a-pr-g38flash-aa"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "implications": [
+   {
+    "text": "Three Flash releases in seven weeks at a held introductory price is effectively a price cut per unit of capability, but the January step doubles the bill for workloads that do not move.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-pricing"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Google Cloud's pricing page lists Gemini 3.8 Flash, 3.7 Flash and 3.6 Flash at an introductory $0.75 input / $3.75 output per 1M tokens through Dec 31, 2026, with $1.50 / $7.50 from Jan 1, 2027.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "Context window (reported as about 1.05M input tokens and 65,536 output tokens) and the launch date are from secondary sources."
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-pr-g38flash",
+   "a-pr-g38flash-aa",
+   "a-gc-pricing"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-31-claude-fable-5-1-on-agent-platform",
+  "title": "Claude Fable 5.1 becomes available on Agent Platform",
+  "date": "2026-08-31",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "model-garden",
+   "anthropic",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's weekly list for Aug 31-Sep 4, 2026 says Claude Fable 5.1 is available on Agent Platform.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The exact day is not stated; the date shown is the start of the listed week."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-whatsnew"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-26-finops-flexible-billing-agents",
+  "title": "FinOps for agents: pay-as-you-go Gemini Enterprise, Flexible Savings Plans and hard spend caps",
+  "date": "2026-08-26",
+  "providerId": "google",
+  "types": [
+   "pricing",
+   "product-update"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "developer-platforms"
+  ],
+  "layers": [
+   "enterprise",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-enterprise",
+   "flexible-savings-plans",
+   "google-antigravity",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "On Aug 26, 2026 Google added a pay-as-you-go consumption edition of the Gemini Enterprise app (select customers first), pooled quotas for Antigravity usage, and hard monthly caps on AI spend per project.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-finops"
+    ]
+   },
+   {
+    "text": "Flexible Savings Plans give 10-20% off token costs in exchange for a monthly spend commitment, with no minimum or maximum.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-finops"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "Gemini Enterprise was sold per user seat with quota limits; developer tools were licensed separately.",
+   "after": "Seats can be mixed with consumption billing; Antigravity and Android Studio AI usage is included in eligible subscriptions and pooled."
+  },
+  "implications": [
+   {
+    "text": "Spend caps and pooled quota answer the main procurement objection to agents (unbounded token bills); the commitment discount also deepens lock-in to Google Cloud spend.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-finops"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "A \"deferred execution\" option, coming for select workloads, runs eligible agent jobs off-peak for up to half the inference cost.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-finops"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-finops"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-25-gemini-enterprise-legal",
+  "title": "Gemini Enterprise for Legal launches",
+  "date": "2026-08-25",
+  "providerId": "google",
+  "types": [
+   "product-launch"
+  ],
+  "areas": [
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-for-legal",
+   "gemini-enterprise",
+   "model-context-protocol"
+  ],
+  "summary": [
+   {
+    "text": "Google introduced Gemini Enterprise for Legal on Aug 25, 2026, with legal skills (contract review and redlining, playbooks, regulatory scanning, research, DSAR fulfilment) and MCP connectors that inherit permissions from document-management and research systems.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-legal"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Legal is a segment where specialist vendors built on rival models are established; Google is entering as a platform that those vendors (for example Harvey, quoted at the Argon launch) also build on.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-legal",
+     "a-gc-argon"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Pricing was not stated."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-legal",
+   "a-gc-argon"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-25-gemini-enterprise-financial-services",
+  "title": "Gemini Enterprise for Financial Services launches",
+  "date": "2026-08-25",
+  "providerId": "google",
+  "types": [
+   "product-launch"
+  ],
+  "areas": [
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-for-financial-services",
+   "gemini-enterprise",
+   "model-context-protocol"
+  ],
+  "summary": [
+   {
+    "text": "Google introduced Gemini Enterprise for Financial Services on Aug 25, 2026 for capital markets and corporate banking, combining financial skills, MCP connectors to licensed data sources, and a Google-managed Financial Research agent.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-finserv"
+    ]
+   },
+   {
+    "text": "The Financial Research agent ships with more than 50 foundational skills and exposes confidence scores, methodologies, data snapshots and source citations.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-finserv"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "This is the first of Google's purpose-built industry packages; licensed-data connectors with entitlement pass-through are the differentiator against general assistants.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-finserv"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Pricing was not stated."
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-finserv"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-24-grok-4-6-on-google-cloud",
+  "title": "xAI Grok 4.6 enters preview in Google Cloud Model Garden",
+  "date": "2026-08-24",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "model-garden",
+   "xai",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's weekly list for Aug 24-28, 2026 says Grok 4.6 is available in preview, joining Grok 4.3 and Grok 4.20 in Model Garden, with reasoning, function calling, structured output and text and image input.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The exact day is not stated; the date shown is the start of the listed week."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-whatsnew"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-21-antigravity-in-gemini-enterprise-subscriptions",
+  "title": "Google Antigravity is included in eligible Gemini Enterprise subscriptions; IDE extensions arrive",
+  "date": "2026-08-21",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "pricing",
+   "availability"
+  ],
+  "areas": [
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "google-antigravity",
+   "gemini-enterprise"
+  ],
+  "summary": [
+   {
+    "text": "On Aug 21, 2026 Google made Antigravity available as part of eligible Gemini Enterprise app subscriptions (Standard, Plus and Standard Emerging Market licences), with admin and spend controls.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-antigravity-ent"
+    ]
+   },
+   {
+    "text": "New IDE extensions let developers use Antigravity inside other IDEs, including VS Code.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-antigravity-ent"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Bundling the coding agent into the enterprise seat removes a separate purchase decision and undercuts stand-alone coding-assistant subscriptions.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-antigravity-ent"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Administrators can set project-level monthly budget caps, share pooled token quotas and opt into overages billed at consumption rates.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-antigravity-ent"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-antigravity-ent"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-18-gemini-in-chrome-android-us",
+  "title": "Gemini in Chrome opens to all US Android users; auto browse goes mobile",
+  "date": "2026-08-18",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "product-update"
+  ],
+  "areas": [
+   "search-consumer"
+  ],
+  "layers": [
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-in-chrome",
+   "gemini-on-android"
+  ],
+  "summary": [
+   {
+    "text": "Press coverage says Google opened Gemini in Chrome to all Android users in the United States on Aug 18, 2026 via a server-side roll-out.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-chrome-android"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "The agentic \"auto browse\" feature is reported as limited initially to US adults using English and to Google AI Pro subscribers, with confirmation required before sensitive actions such as purchases.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-chrome-android"
+    ],
+    "confidence": "low"
+   }
+  ],
+  "uncertainty": [
+   "No Google post was read; eligibility details differ between outlets."
+  ],
+  "importance": 3,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-chrome-android"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-13-gemini-3-7-flash-launch",
+  "title": "Gemini 3.7 Flash launches three weeks after 3.6 Flash, at half the launch price",
+  "date": "2026-08-13",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "pricing"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-7-flash",
+   "gemini-api",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's model page, as excerpted, lists Gemini 3.7 Flash with launch stage GA and a release date of Aug 13, 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-docs-g37flash"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Coverage reports an introductory price of $0.75 input / $3.75 output per 1M tokens, half the launch price of Gemini 3.6 Flash, aimed at coding and agent work.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-g37flash"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "implications": [
+   {
+    "text": "Google used the Flash line to hold developer attention while its flagship slipped; the cadence also shortens the useful life of each pinned model version.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-pr-g37flash",
+     "a-pr-g35pro-delay"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "The pricing page confirms the $0.75 / $3.75 introductory rate for Gemini 3.8, 3.7 and 3.6 Flash through Dec 31, 2026 and $1.50 / $7.50 from Jan 1, 2027.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-10-08",
+    "note": "The Gemini API changelog marked gemini-3.7-flash deprecated in favour of gemini-3.8-flash.",
+    "sourceIds": [
+     "a-gapi-changelog"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-docs-g37flash",
+   "a-pr-g37flash",
+   "a-pr-g35pro-delay",
+   "a-gc-pricing",
+   "a-gapi-changelog"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-11-developer-device-platform-preview",
+  "title": "Developer Device Platform enters public preview for agentic mobile app testing",
+  "date": "2026-08-11",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "availability"
+  ],
+  "areas": [
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform"
+  ],
+  "entityIds": [],
+  "summary": [
+   {
+    "text": "On Aug 11, 2026 Google launched the public preview of Developer Device Platform, a managed service giving on-demand access to physical devices and emulators, described as an evolution of Firebase Test Lab built for agentic development.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ddp"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-ddp"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-11-americas-connect-subsea-cables",
+  "title": "Google announces three subsea cables under Americas Connect",
+  "date": "2026-08-11",
+  "providerId": "google",
+  "types": [
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "ai-hypercomputer"
+  ],
+  "summary": [
+   {
+    "text": "On Aug 11, 2026 Google announced the Alisios, Canoa and OlaLuz subsea cable systems and a new Firmina branch, grouped with Curie, Nuvem and Sol as Americas Connect.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-americas"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-americas"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-08-06-mirendil-selects-ai-hypercomputer",
+  "title": "Frontier lab Mirendil selects Google Cloud TPUs and NVIDIA infrastructure",
+  "date": "2026-08-06",
+  "providerId": "google",
+  "types": [
+   "customer",
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "ai-hypercomputer",
+   "tpu"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud announced on Aug 6, 2026 that AI lab Mirendil will use a mix of TPUs and NVIDIA infrastructure on AI Hypercomputer for model pre-training and post-training.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-mirendil"
+    ]
+   },
+   {
+    "text": "Google states that nearly every major AI lab uses Google Cloud infrastructure.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-mirendil"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-mirendil"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-29-agent-platform-july-ga-features",
+  "title": "Agent Platform: Agent Runtime, Memory Bank and Agent Identity become available to everyone",
+  "date": "2026-07-29",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "product-update"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "developer-platforms"
+  ],
+  "layers": [
+   "agents",
+   "platform"
+  ],
+  "entityIds": [
+   "agent-runtime",
+   "agent-memory-bank",
+   "agent-identity",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "On Jul 29, 2026 Google said several Gemini Enterprise Agent Platform capabilities were available to everyone, including Agent Memory Bank, Agent Runtime and Agent Identity.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ap-july"
+    ]
+   },
+   {
+    "text": "Agent Runtime supports agents that run continuously for up to 7 days.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ap-july"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Seven-day runtimes with persistent memory and per-agent identity are the building blocks later exposed to business users as the Gemini agent.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-ap-july",
+     "a-gc-gaw"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-ap-july",
+   "a-gc-gaw"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-27-noaa-selects-google-cloud",
+  "title": "NOAA selects Google Cloud as primary HPC provider for operational weather supercomputing",
+  "date": "2026-07-27",
+  "providerId": "google",
+  "types": [
+   "customer"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure",
+   "enterprise"
+  ],
+  "entityIds": [
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "Google announced on Jul 27, 2026 that it was selected as primary provider of high-performance computing for NOAA's Weather and Climate Operational Supercomputing System, running on H4D VMs.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-noaa"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-noaa"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-22-genesis-mission-40m-commitment",
+  "title": "Google commits $40M in AI tokens and cloud credits to the US Genesis Mission",
+  "date": "2026-07-22",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "research"
+  ],
+  "areas": [
+   "research"
+  ],
+  "layers": [
+   "research",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "At the DOE Genesis Mission Summit on Jul 22, 2026 Google committed $40 million of AI tokens and cloud credits for researchers supporting the Genesis Mission.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-genesis"
+    ]
+   },
+   {
+    "text": "Google says DeepMind runs an early-access programme giving AI-for-science tools to all 17 DOE National Laboratories.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-genesis"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-genesis"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-22-alphabet-q2-2026-earnings",
+  "title": "Alphabet Q2 2026: Cloud revenue up 82% to $24.8B; 2026 capex guide raised to $195-205B",
+  "date": "2026-07-22",
+  "providerId": "google",
+  "types": [
+   "financial"
+  ],
+  "areas": [
+   "infrastructure",
+   "models"
+  ],
+  "layers": [
+   "infrastructure",
+   "enterprise"
+  ],
+  "entityIds": [
+   "google",
+   "google-cloud",
+   "gemini-api"
+  ],
+  "summary": [
+   {
+    "text": "Coverage of the Jul 22, 2026 results reports Alphabet revenue of $119.8B (+24%), Google Cloud revenue of $24.8B (+82%) and Cloud backlog of $514B.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-q2",
+     "a-pr-q2-call"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Full-year 2026 capex guidance was raised to $195-205B from $180-190B, with quarterly capex of $44.9B.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-q2"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "On the call Sundar Pichai said model APIs were processing about 22 billion tokens per minute.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-pr-q2-call"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "Read through secondary coverage, not the earnings release."
+  ],
+  "followUps": [
+   {
+    "date": "2026-10-28",
+    "note": "Q3: Cloud revenue $30.7B (+103%), nearly 32 billion tokens per minute; 2026 capex guidance reported unchanged at $195-205B.",
+    "sourceIds": [
+     "a-pr-q3",
+     "a-bg-q3-ceo",
+     "a-pr-q3-call"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-pr-q2",
+   "a-pr-q2-call",
+   "a-pr-q3",
+   "a-bg-q3-ceo",
+   "a-pr-q3-call"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-21-gemini-3-6-flash-launch",
+  "title": "Gemini 3.6 Flash launches as Gemini 3.5 Pro is reported delayed",
+  "date": "2026-07-21",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "pricing"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-6-flash",
+   "gemini-3-5-flash",
+   "gemini-api"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's model page, as excerpted, gives Gemini 3.6 Flash a release date of Jul 21, 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-docs-g36flash"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Coverage reports launch pricing of $1.50 input / $7.50 output per 1M tokens, and that the release came while Gemini 3.5 Pro, promised for June, had not shipped.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-g36flash",
+     "a-pr-g35pro-delay"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "The pricing page now lists Gemini 3.6 Flash at a temporary $0.75 / $3.75 through Dec 31, 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pricing"
+    ],
+    "asOf": "2026-11-15",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "Whether Gemini 3.5 Pro was cancelled or folded into Gemini 4 is reported by analysts, not confirmed by Google."
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-docs-g36flash",
+   "a-pr-g36flash",
+   "a-pr-g35pro-delay",
+   "a-gc-pricing"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-21-codemender-preview",
+  "title": "CodeMender, Google's code-security agent, enters preview",
+  "date": "2026-07-21",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "availability",
+   "safety-governance"
+  ],
+  "areas": [
+   "safety-governance",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "agents",
+   "platform"
+  ],
+  "entityIds": [
+   "codemender",
+   "gemini-enterprise-agent-platform",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "On Jul 21, 2026 Google made CodeMender's code scanning and remediation available in preview, through Gemini Enterprise Agent Platform or as part of AI Threat Defense.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-codemender"
+    ]
+   },
+   {
+    "text": "CodeMender can use multiple models, verify exploitability with proof-of-concept exploits and propose tested fixes; third-party frontier models are promised later in the year.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-codemender"
+    ]
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-05",
+    "note": "Sandboxed remediation and flexible scanning modes added; hundreds of customers reported.",
+    "sourceIds": [
+     "a-gc-security-summit"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-codemender",
+   "a-gc-security-summit"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-16-notebooklm-renamed-gemini-notebook",
+  "title": "NotebookLM is renamed Gemini Notebook",
+  "date": "2026-07-16",
+  "providerId": "google",
+  "types": [
+   "rename",
+   "product-update"
+  ],
+  "areas": [
+   "search-consumer",
+   "workspace"
+  ],
+  "layers": [
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-notebook",
+   "gemini-app",
+   "ai-mode"
+  ],
+  "summary": [
+   {
+    "text": "Press reports dated Jul 16, 2026 say Google renamed NotebookLM to Gemini Notebook, with notebooks available in the Gemini app and planned for AI Mode in Search.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-notebook-rename"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "No Google post was read; the usage figures quoted in coverage (about 30 million people, 600,000 organisations) are attributed to a Google VP and were not verified."
+  ],
+  "importance": 3,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-notebook-rename"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-16-eu-dma-android-ai-interoperability",
+  "title": "European Commission orders Google to give rival AI services equal access to Android features",
+  "date": "2026-07-16",
+  "effectiveDate": "2027-08-01",
+  "providerId": "google",
+  "types": [
+   "policy-regulatory"
+  ],
+  "areas": [
+   "safety-governance",
+   "search-consumer"
+  ],
+  "layers": [
+   "consumer",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "gemini-on-android",
+   "gemini-app"
+  ],
+  "summary": [
+   {
+    "text": "On Jul 16, 2026 the European Commission issued two sets of binding specification measures to Google under the Digital Markets Act: one on interoperability for AI services on Android and one on sharing Google Search data.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-ec-dma-0716"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Reports say the Android decision covers 11 features, that most changes are due by Aug 1, 2027, and that concurrent hotword detection is deferred to a later Android release with an Aug 1, 2028 deadline.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-dma"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Gemini had privileged access to system features on Android (for example wake word and on-screen context).",
+   "after": "In the EU, competing assistants must get equivalent access on the Commission's timetable."
+  },
+  "implications": [
+   {
+    "text": "Gemini's distribution advantage on Android is being narrowed by regulation in the EU at the same time US remedies restrict exclusive distribution deals; consumer share will depend more on product quality.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-ec-dma-0716",
+     "a-pr-crs-remedy"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The Commission text was seen only through search excerpts.",
+   "Whether Google will challenge the decisions is not covered."
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-ec-dma-0716",
+   "a-pr-dma",
+   "a-pr-crs-remedy"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-07-09-alphaevolve-ga",
+  "title": "AlphaEvolve becomes generally available on Google Cloud",
+  "date": "2026-07-09",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "product-launch"
+  ],
+  "areas": [
+   "research",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "agents",
+   "research"
+  ],
+  "entityIds": [
+   "alphaevolve",
+   "google-deepmind",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "On Jul 9, 2026 AlphaEvolve, a Gemini-based code optimisation and algorithm-discovery agent, became generally available on Google Cloud after a private preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-alphaevolve"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "A DeepMind research system sold as a managed agent shows the research-to-product path Google is using to differentiate beyond base models.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-alphaevolve"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-alphaevolve"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-06-16-brazos-liquid-cooling",
+  "title": "Google makes Brazos liquid-to-air cooling design generally available to industry",
+  "date": "2026-06-16",
+  "providerId": "google",
+  "types": [
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "ai-hypercomputer"
+  ],
+  "summary": [
+   {
+    "text": "On Jun 16, 2026 Google described Brazos, a rack-mounted closed-loop liquid-to-air cooling system for deploying liquid-cooled equipment in air-cooled data centers, as generally available with manufacturing suppliers ready to produce it.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-brazos"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-brazos"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-06-12-open-knowledge-format",
+  "title": "Google introduces the Open Knowledge Format (OKF)",
+  "date": "2026-06-12",
+  "providerId": "google",
+  "types": [
+   "open-source",
+   "product-launch"
+  ],
+  "areas": [
+   "developer-platforms"
+  ],
+  "layers": [
+   "ecosystem",
+   "platform"
+  ],
+  "entityIds": [
+   "open-knowledge-format",
+   "knowledge-catalog"
+  ],
+  "summary": [
+   {
+    "text": "On Jun 12, 2026 Google published OKF v0.1, an open, vendor-neutral specification that represents curated knowledge for AI systems as a directory of markdown files with YAML front matter.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-okf"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-okf"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-06-12-apple-private-cloud-compute-on-google-cloud",
+  "title": "Google Cloud confirms it helps run Apple's expanded Private Cloud Compute",
+  "date": "2026-06-12",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "infrastructure"
+  ],
+  "areas": [
+   "infrastructure",
+   "safety-governance"
+  ],
+  "layers": [
+   "infrastructure",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "google-cloud",
+   "partner-apple"
+  ],
+  "summary": [
+   {
+    "text": "On Jun 12, 2026 Google Cloud said it collaborated with Apple on the expanded Private Cloud Compute systems announced at WWDC 2026, building a serving platform on Google Cloud based on Confidential Computing and its Titanium architecture.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-pcc"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Hosting part of Apple's private AI compute is a marquee validation of Google's confidential-computing stack and a new class of infrastructure customer.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-pcc"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Scale, accelerators used and commercial terms are not disclosed."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-pcc"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-06-10-claude-fable-5-on-google-cloud",
+  "title": "Claude Fable 5 becomes generally available on Google Cloud",
+  "date": "2026-06-10",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "partnership"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "model-garden",
+   "anthropic",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "On Jun 10, 2026 Google Cloud announced general availability of Anthropic's Claude Fable 5 on Agent Platform, alongside Claude Opus 4.8 and Claude Sonnet 4.6.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-fable5"
+    ]
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-08-31",
+    "note": "Claude Fable 5.1 listed on Agent Platform (week of Aug 31).",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   },
+   {
+    "date": "2026-11-09",
+    "note": "Claude Fable 5.2 listed as generally available in Model Garden (week of Nov 9).",
+    "sourceIds": [
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-fable5",
+   "a-gc-whatsnew"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-05-28-nano-banana-2-and-pro-ga",
+  "title": "Nano Banana 2 and Nano Banana Pro reach general availability on Agent Platform",
+  "date": "2026-05-28",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "model-update"
+  ],
+  "areas": [
+   "multimodal",
+   "models"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-1-flash-image",
+   "gemini-3-pro-image",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "On May 28, 2026 Nano Banana 2 (Gemini 3.1 Flash Image) and Nano Banana Pro (Gemini 3 Pro Image) became generally available on Gemini Enterprise Agent Platform; 1K and 2K output are GA while 4K remains in preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-nb-ga"
+    ]
+   },
+   {
+    "text": "Nano Banana 2 gained video-file input in preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-nb-ga"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-nb-ga"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-05-27-google-ai-threat-defense",
+  "title": "Google Cloud introduces AI Threat Defense",
+  "date": "2026-05-27",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "safety-governance"
+  ],
+  "areas": [
+   "safety-governance",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "entityIds": [
+   "codemender",
+   "wiz"
+  ],
+  "summary": [
+   {
+    "text": "On May 27, 2026 Google Cloud introduced Google AI Threat Defense, which it describes as an always-on autonomous security platform that prioritises real-world risks and accelerates remediation.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-threat-defense"
+    ]
+   }
+  ],
+  "competitive": [
+   {
+    "text": "Google contrasts its approach with model providers that \"focus on using AI to find and flag vulnerabilities\", saying it also prioritises and remediates.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-threat-defense"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-threat-defense"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-05-19-io-2026-gemini-omni-spark-antigravity",
+  "title": "Google I/O 2026: Gemini Omni, Gemini Spark, Antigravity 2.0 and Managed Agents API",
+  "date": "2026-05-19",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "model-launch",
+   "event"
+  ],
+  "areas": [
+   "multimodal",
+   "enterprise-agents",
+   "developer-platforms",
+   "workspace"
+  ],
+  "layers": [
+   "models",
+   "agents",
+   "platform",
+   "enterprise"
+  ],
+  "entityIds": [
+   "gemini-omni",
+   "gemini-spark",
+   "google-antigravity",
+   "managed-agents-api",
+   "gemini-in-workspace",
+   "codemender"
+  ],
+  "summary": [
+   {
+    "text": "Google announced Gemini Omni, an any-input-to-any-output model starting with video, with Omni Flash to reach developers and enterprises via the Gemini API and Agent Platform API in the following weeks.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-io26"
+    ]
+   },
+   {
+    "text": "Gemini Spark was introduced as a 24/7 personal agent for Gemini Enterprise and Workspace customers; Antigravity gained integration with Agent Platform; a Managed Agents API lets developers run custom agents in Google-hosted environments.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-io26",
+     "a-gc-ai-monthly"
+    ]
+   },
+   {
+    "text": "Workspace additions included Google Pics for image generation and editing and voice features in Gmail, Docs and Keep.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Consumer plan changes reported at I/O (Google AI Ultra pricing) differ between outlets and are not recorded here."
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-06",
+    "note": "Gemini Omni 1.2 Flash reached general availability on Google Cloud.",
+    "sourceIds": [
+     "a-gc-omni12"
+    ]
+   },
+   {
+    "date": "2026-10-08",
+    "note": "The Gemini agent consolidated Spark-style personal agents, coding and chat into one agent.",
+    "sourceIds": [
+     "a-gc-gaw"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-io26",
+   "a-gc-ai-monthly",
+   "a-gc-omni12",
+   "a-gc-gaw"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-05-19-io-2026-gemini-3-5-flash",
+  "title": "Google I/O 2026: Gemini 3.5 Flash launches; Gemini 3.5 Pro promised for June",
+  "date": "2026-05-19",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "event"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-5-flash",
+   "gemini-3-5-pro",
+   "gemini-enterprise-agent-platform",
+   "google-ai-studio",
+   "google-antigravity"
+  ],
+  "summary": [
+   {
+    "text": "At I/O 2026 Google released Gemini 3.5 Flash on Gemini Enterprise Agent Platform, Google AI Studio, Antigravity and the Gemini Enterprise app, and said Gemini 3.5 Pro was in testing and would come the following month.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-io26"
+    ]
+   },
+   {
+    "text": "Google reports Terminal-Bench 2.1 76.2%, GDPval-AA 1656 Elo, MCP Atlas 83.6% and CharXiv 84.2% for 3.5 Flash, and says it outperforms Gemini 3.1 Pro on key benchmarks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-io26"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "A Flash model beating the previous Pro on agentic benchmarks reset price expectations for agent workloads months before Gemini 4 arrived.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-io26"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The Google Cloud post is dated May 20; press coverage places the keynote on May 19.",
+   "Gemini 3.5 Pro did not ship in June; later reporting describes it as delayed or shelved."
+  ],
+  "followUps": [
+   {
+    "date": "2026-07-21",
+    "note": "Gemini 3.6 Flash released while 3.5 Pro remained unreleased.",
+    "sourceIds": [
+     "a-docs-g36flash",
+     "a-pr-g35pro-delay"
+    ]
+   },
+   {
+    "date": "2026-09-30",
+    "note": "Gemini 4 Argon announced as the next flagship.",
+    "sourceIds": [
+     "a-bg-argon"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-io26",
+   "a-docs-g36flash",
+   "a-pr-g35pro-delay",
+   "a-bg-argon"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-05-19-io-2026-ai-mode-search-box",
+  "title": "Google I/O 2026: new AI Search box; Gemini 3.5 Flash becomes the default model in AI Mode",
+  "date": "2026-05-19",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "event"
+  ],
+  "areas": [
+   "search-consumer"
+  ],
+  "layers": [
+   "consumer"
+  ],
+  "entityIds": [
+   "ai-mode",
+   "gemini-3-5-flash"
+  ],
+  "summary": [
+   {
+    "text": "Google's I/O Search post, as excerpted, describes a new AI-powered Search box as its biggest upgrade in over 25 years and makes Gemini 3.5 Flash the default model in AI Mode globally.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-bg-search-io26"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "The post says \"information agents\" would launch first for Google AI Pro and Ultra subscribers that summer and that agentic booking would expand to more task types.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-bg-search-io26"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "A report dated May 20, 2026 is headlined as Google Search reaching one billion AI Mode users.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-aimode-1b"
+    ],
+    "confidence": "low"
+   }
+  ],
+  "uncertainty": [
+   "Read through search excerpts only; roll-out status of information agents after the summer was not confirmed."
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-bg-search-io26",
+   "a-pr-aimode-1b"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-05-12-android-17-gemini-intelligence",
+  "title": "Android 17 previewed with \"Gemini Intelligence\" agentic features",
+  "date": "2026-05-12",
+  "providerId": "google",
+  "types": [
+   "product-update"
+  ],
+  "areas": [
+   "search-consumer"
+  ],
+  "layers": [
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-on-android",
+   "gemini-app"
+  ],
+  "summary": [
+   {
+    "text": "Press reports say Google previewed Android 17 on May 12, 2026 with Gemini Intelligence, an agent that can carry out multi-step automations using on-screen context.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-android17"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "No Google post was read."
+  ],
+  "importance": 3,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-android17"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-22-cloud-next-26-tpu-8t-8i",
+  "title": "Cloud Next '26: eighth-generation TPUs split into TPU 8t for training and TPU 8i for inference",
+  "date": "2026-04-22",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "product-launch",
+   "event"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "tpu-8t",
+   "tpu-8i",
+   "ai-hypercomputer",
+   "tpu-ironwood"
+  ],
+  "summary": [
+   {
+    "text": "At Cloud Next on Apr 22, 2026 Google announced TPU 8t (training) and TPU 8i (inference) as its eighth-generation TPUs.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-next-infra",
+     "a-gc-tpu8-deep"
+    ]
+   },
+   {
+    "text": "Google says TPU 8t scales to 9,600 TPUs and 2 PB of shared memory in one superpod with 3x the processing power of Ironwood, and that TPU 8i connects 1,152 TPUs per pod and delivers 80% better performance per dollar for inference than the prior generation.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "Seventh-generation Ironwood was a single design used for both training and inference.",
+   "after": "Separate training-optimised and inference-optimised systems within one generation."
+  },
+  "implications": [
+   {
+    "text": "An inference-specific TPU with a claimed 80% price-performance gain is what underwrites Google's aggressive Flash pricing and its pitch to host other labs' inference.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-ai-monthly",
+     "a-gc-gaw"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Availability dates and pricing for the new TPUs were not captured."
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-09",
+    "note": "TPU 8tx and TPU 8i Max added to the generation.",
+    "sourceIds": [
+     "a-gc-tpu8x"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-next-infra",
+   "a-gc-tpu8-deep",
+   "a-gc-ai-monthly",
+   "a-gc-gaw",
+   "a-gc-tpu8x"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-22-cloud-next-26-infrastructure-virgo-a5x",
+  "title": "Cloud Next '26: Virgo Network, A5X on NVIDIA Vera Rubin and Managed Lustre",
+  "date": "2026-04-22",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "event"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure"
+  ],
+  "entityIds": [
+   "virgo-network",
+   "nvidia-gpus-on-google-cloud",
+   "ai-hypercomputer",
+   "google-axion",
+   "nvidia"
+  ],
+  "summary": [
+   {
+    "text": "Alongside the new TPUs, Google announced A5X bare-metal instances on NVIDIA Vera Rubin NVL72, Axion N4A VMs, the Virgo Network data-center fabric for AI workloads and Google Cloud Managed Lustre.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-next-infra"
+    ]
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-11-06",
+    "note": "A5X instances reached general availability.",
+    "sourceIds": [
+     "a-gc-gtc-berlin",
+     "a-gc-whatsnew"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-next-infra",
+   "a-gc-gtc-berlin",
+   "a-gc-whatsnew"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-22-cloud-next-26-gemini-enterprise-app",
+  "title": "Cloud Next '26: Gemini Enterprise app adds Agent Designer, long-running agents, Inbox, Projects and Skills",
+  "date": "2026-04-22",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "event"
+  ],
+  "areas": [
+   "enterprise-agents"
+  ],
+  "layers": [
+   "enterprise",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-enterprise",
+   "agent-designer",
+   "agent-marketplace"
+  ],
+  "summary": [
+   {
+    "text": "Google's recap of Next '26 lists new Gemini Enterprise app capabilities: a no-code Agent Designer, long-running agents in cloud sandboxes, an Inbox for agent activity, Projects, Skills, Canvas, and an Agent Gallery with partner agents from Adobe, Atlassian, Lovable and ServiceNow.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-ai-monthly"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-22-cloud-next-26-gemini-enterprise-agent-platform",
+  "title": "Cloud Next '26: Vertex AI becomes Gemini Enterprise Agent Platform",
+  "date": "2026-04-22",
+  "providerId": "google",
+  "types": [
+   "rename",
+   "product-launch",
+   "event"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-enterprise-agent-platform",
+   "agent-runtime",
+   "agent-registry",
+   "agent-gateway",
+   "agent-identity",
+   "agent-development-kit",
+   "model-garden"
+  ],
+  "summary": [
+   {
+    "text": "On Apr 22, 2026 Google launched Gemini Enterprise Agent Platform as the evolution of Vertex AI, organised around four pillars: build, scale, govern and optimise.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-agent-platform"
+    ]
+   },
+   {
+    "text": "Google states that all Vertex AI services and roadmap items will from now on be delivered exclusively through Agent Platform rather than as a standalone service.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-agent-platform"
+    ]
+   },
+   {
+    "text": "New components named at launch include Agent Studio, an upgraded ADK, a re-engineered Agent Runtime with Memory Bank, and Agent Identity, Agent Registry and Agent Gateway for governance.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-next-day1"
+    ]
+   }
+  ],
+  "beforeAfter": {
+   "before": "Vertex AI: Google Cloud's ML and generative AI development platform (since May 2021).",
+   "after": "Gemini Enterprise Agent Platform: the same model, tuning and Model Garden capabilities plus agent runtime, identity, registry and gateway."
+  },
+  "technical": [
+   {
+    "text": "Model Garden offers more than 200 models, including Gemini 3.1 Pro, Gemini 3.1 Flash Image, Lyria 3, Gemma 4 and Anthropic's Claude family.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-agent-platform"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Rebranding the ML platform around agents signals that Google expects governed agent execution, not model access, to be the durable enterprise product.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-agent-platform"
+    ]
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-07-29",
+    "note": "Agent Runtime, Memory Bank and Agent Identity made available to everyone.",
+    "sourceIds": [
+     "a-gc-ap-july"
+    ]
+   },
+   {
+    "date": "2026-10-13",
+    "note": "Google Cloud pages begin calling it the \"Gemini platform\".",
+    "sourceIds": [
+     "a-gc-argon",
+     "a-gc-platform-page"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-agent-platform",
+   "a-gc-next-day1",
+   "a-gc-ap-july",
+   "a-gc-argon",
+   "a-gc-platform-page"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-06-anthropic-google-broadcom-tpu-deal",
+  "title": "Anthropic expands TPU commitment with Google and Broadcom to multiple gigawatts",
+  "date": "2026-04-06",
+  "providerId": "google",
+  "types": [
+   "partnership",
+   "infrastructure",
+   "customer"
+  ],
+  "areas": [
+   "infrastructure"
+  ],
+  "layers": [
+   "infrastructure",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "tpu",
+   "anthropic",
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "Press reports say that on Apr 6, 2026 Anthropic announced access to about 3.5 gigawatts of Google TPU capacity via Broadcom starting in 2027, on top of roughly 1 gigawatt being supplied in 2026.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-anthropic-tpu-2026"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "October 2025: Anthropic agreed to use up to one million TPUs, with more than 1 GW coming online in 2026.",
+   "after": "April 2026: a further multi-gigawatt commitment beginning in 2027."
+  },
+  "implications": [
+   {
+    "text": "A rival frontier lab committing gigawatts to TPUs is the strongest external evidence for Google's custom-silicon economics, and ties part of Anthropic's cost base to Google's roadmap.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-pr-anthropic-tpu-2026",
+     "a-pr-anthropic-tpu-2025"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "No primary announcement was read; dollar value is not reported."
+  ],
+  "importance": 5,
+  "verification": "unverified",
+  "sourceIds": [
+   "a-pr-anthropic-tpu-2026",
+   "a-pr-anthropic-tpu-2025"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-03-veo-3-1-lite",
+  "title": "Veo 3.1 Lite and standalone Veo upscaling arrive on Vertex AI",
+  "date": "2026-04-03",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "pricing"
+  ],
+  "areas": [
+   "multimodal",
+   "models"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "veo-3-1",
+   "veo-3-1-lite",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "On Apr 3, 2026 Google Cloud introduced Veo 3.1 Lite on Vertex AI as its most cost-effective video model, plus a standalone Veo upscaling capability.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-veo-lite"
+    ]
+   },
+   {
+    "text": "Google says Veo 3.1 Lite costs less than 50% of Veo 3.1 Fast at the same speed.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   }
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-veo-lite",
+   "a-gc-ai-monthly"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-04-02-gemma-4-apache-2",
+  "title": "Gemma 4 open models released under the Apache 2.0 licence",
+  "date": "2026-04-02",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "open-source"
+  ],
+  "areas": [
+   "models",
+   "research"
+  ],
+  "layers": [
+   "models",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "gemma-4",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "Press reports say Google DeepMind released Gemma 4 on Apr 2, 2026 in four sizes (E2B, E4B, a 26B mixture-of-experts and a 31B dense model) under Apache 2.0, the first Gemma family not under Google's custom licence.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "a-pr-gemma4"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "Google Cloud's Next '26 post lists Gemma 4 among the open models in Model Garden.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-agent-platform"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "A permissive licence removes the legal ambiguity that kept some enterprises from shipping Gemma, and supports Google's edge and on-prem positioning.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-pr-gemma4"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-pr-gemma4",
+   "a-gc-agent-platform"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-03-11-wiz-acquisition-completed",
+  "title": "Google completes its acquisition of Wiz",
+  "date": "2026-03-11",
+  "providerId": "google",
+  "types": [
+   "acquisition"
+  ],
+  "areas": [
+   "safety-governance",
+   "infrastructure"
+  ],
+  "layers": [
+   "enterprise",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "wiz",
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "On Mar 11, 2026 Thomas Kurian announced that Google had completed its acquisition of Wiz; the team joins Google Cloud, the Wiz brand is retained and Wiz continues to support multiple clouds.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-wiz"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "Wiz gives Google a security product that sells into AWS and Azure estates, and later became a channel for Gemini-based remediation agents.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-wiz",
+     "a-gc-security-summit"
+    ]
+   }
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-wiz",
+   "a-gc-security-summit"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-02-27-nano-banana-2-launch",
+  "title": "Nano Banana 2 (Gemini 3.1 Flash Image) launches",
+  "date": "2026-02-27",
+  "providerId": "google",
+  "types": [
+   "model-launch"
+  ],
+  "areas": [
+   "multimodal",
+   "models"
+  ],
+  "layers": [
+   "models"
+  ],
+  "entityIds": [
+   "gemini-3-1-flash-image",
+   "gemini-enterprise-agent-platform"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's post dated Feb 27, 2026 introduces Nano Banana 2 as an image generation and editing model with web-search grounding, text rendering and 2K/4K upscaling at Flash speed.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-nb2"
+    ]
+   }
+  ],
+  "followUps": [
+   {
+    "date": "2026-05-28",
+    "note": "Generally available on Agent Platform.",
+    "sourceIds": [
+     "a-gc-nb-ga"
+    ]
+   }
+  ],
+  "importance": 3,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-nb2",
+   "a-gc-nb-ga"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-02-20-gemini-3-1-pro-preview",
+  "title": "Gemini 3.1 Pro launches in preview",
+  "date": "2026-02-20",
+  "providerId": "google",
+  "types": [
+   "model-launch"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-1-pro",
+   "gemini-enterprise-agent-platform",
+   "gemini-enterprise",
+   "gemini-api",
+   "gemini-cli",
+   "google-antigravity"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's post dated Feb 20, 2026 announces Gemini 3.1 Pro in preview in Vertex AI and Gemini Enterprise, and for developers via the Gemini API in AI Studio, Android Studio, Antigravity and Gemini CLI.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-g31pro"
+    ]
+   },
+   {
+    "text": "JetBrains is quoted reporting up to 15% improvement over its best Gemini 3 Pro Preview runs.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "a-gc-g31pro"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The consumer and developer launch may have been a day earlier than the Google Cloud post date."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "a-gc-g31pro"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-01-11-ucp-and-gemini-enterprise-for-cx",
+  "title": "Universal Commerce Protocol and Gemini Enterprise for Customer Experience announced",
+  "date": "2026-01-11",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "open-source",
+   "partnership"
+  ],
+  "areas": [
+   "enterprise-agents",
+   "search-consumer"
+  ],
+  "layers": [
+   "ecosystem",
+   "agents"
+  ],
+  "entityIds": [
+   "universal-commerce-protocol",
+   "ap2-protocol",
+   "a2a-protocol",
+   "model-context-protocol",
+   "gemini-for-customer-experience"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud's January recap says Google announced the Universal Commerce Protocol (UCP), an open standard for agentic commerce covering discovery, purchase and post-purchase support, compatible with A2A, AP2 and MCP.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   },
+   {
+    "text": "The same recap lists Gemini Enterprise for Customer Experience, aimed at agentic retail across search, commerce and service.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   }
+  ],
+  "implications": [
+   {
+    "text": "UCP extends Google's protocol set (A2A, AP2) into checkout, positioning Google as the neutral plumbing between shopping agents, merchants and payment providers.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "a-gc-ai-monthly"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The date is taken from the Google Cloud Press Corner URL linked in the recap (2026-01-11); the press release itself could not be fetched."
+  ],
+  "importance": 4,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "a-gc-ai-monthly"
+  ],
+  "firstSeenAt": "2026-11-15",
+  "lastCheckedAt": "2026-11-15"
+ }
+]
