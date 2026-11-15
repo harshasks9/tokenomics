@@ -69,7 +69,7 @@ type Tab = (typeof TABS)[number]["id"];
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const STORE_KEY = "gai-pricing-scenarios";
 const MAX_CALC_MODELS = 4;
-const UPCOMING_ITEMS = 3;
+const UPCOMING_ITEMS = 2;
 const UPCOMING_GROUPS = 4;
 const MAX_HISTORY_MODELS = 5;
 /** Fixed categorical slots for chart series: a model keeps its colour while it stays selected. */
@@ -858,7 +858,7 @@ function EstimateCard({ est, date }: { est: CostEstimate; date: string }) {
       {est.notes.length > 0 && (
         <div className="gai-warn gai-pr-notes">
           <b>Assumptions and gaps in this estimate</b>
-          <ul>{est.notes.map((n) => <li key={n}>{n}</li>)}</ul>
+          <ul>{est.notes.map((n, i) => <li key={`${i}-${n}`}>{n}</li>)}</ul>
         </div>
       )}
 
@@ -1046,7 +1046,7 @@ function HistoryTab({ today }: { today: string }) {
             )}
           </div>
 
-          <div className="gai-chipset" style={{ marginBottom: 10 }} aria-label="Models on the chart">
+          <div className="gai-chipset" style={{ marginBottom: 10 }} role="group" aria-label="Models on the chart">
             {view.series.map((s) => (
               <span key={s.id} className="gai-pr-picked">
                 <i style={{ background: SLOT_COLOR[s.slot] }} aria-hidden />
@@ -1299,7 +1299,7 @@ function GroupedRecords({ groups }: { groups: EntityRecords[] }) {
 function PlansTab({ date, setDate, today, maxDate }: DateProps) {
   const groups = useMemo(() => recordsByEntity(date, isPlanRecord), [date]);
   return (
-    <Sec id="plans" title="Plans and licences" sub="Subscriptions and per-seat licences with a published price in effect on the chosen date.">
+    <Sec id="plans" title="Plans and licences" sub="Subscriptions and per-seat licences with a price on record for the chosen date. The evidence label on each row says whether the figure comes from the provider or from third-party reporting.">
       <div className="gai-pr-controls">
         <DateField id="gai-pr-plans-date" label="Prices as of" date={date} setDate={setDate} today={today} max={maxDate} />
       </div>

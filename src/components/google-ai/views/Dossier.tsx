@@ -71,7 +71,7 @@ export default function Dossier({ id }: { id: string }) {
             {m.knowledgeCutoff && (<><dt>Knowledge cutoff</dt><dd>{m.knowledgeCutoff}</dd></>)}
           </dl>
         )}
-        {has("inputsOutputs") && <Claims claims={d.inputsOutputs} />}
+        {(has("inputsOutputs") || !m) && <Claims claims={d.inputsOutputs} />}
         {m?.unverified?.length ? <div className="gai-warn"><b>Looked for and not confirmed:</b> {m.unverified.join(" · ")}</div> : null}
       </>
     ) },

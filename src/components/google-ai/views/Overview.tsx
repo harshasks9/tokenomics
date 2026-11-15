@@ -6,7 +6,7 @@ import { addDays, fmtDate } from "@/lib/google-ai/dates";
 import { AREAS, TYPE_LABEL, WINDOWS, deadlines, inWindow, radar, top, type WindowId } from "@/lib/google-ai/engine/brief";
 import { upcomingChanges } from "@/lib/google-ai/engine/pricing";
 import { ANNOUNCEMENTS, ENTITIES, LAYERS, META, entityName } from "@/lib/google-ai/kb";
-import type { Announcement, AnnouncementType } from "@/lib/google-ai/types";
+import type { Announcement, AnnouncementType, PriceRecord } from "@/lib/google-ai/types";
 import type { StatusPayload } from "../Hub";
 import { Cites, Empty, Ev, Imp, Sec, Seg, usd, useHub } from "../ui";
 
@@ -45,18 +45,27 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
 
   // The brief uses the last 30 days; if that holds fewer than five developments it widens, and says so.
   const brief = useMemo(() => {
-    for (const d of [30, 90, 365]) {
-      const rows = top(today, d, 5);
-      if (rows.length >= 5 || d === 365) return { rows, days: d };
-    }
-    return { rows: [] as Announcement[], days: 30 };
+    const days = [30, 90, 365].find((d) => top(today, d, 5).length >= 5) ?? 365;
+    return { rows: top(today, days, 5), days };
   }, [today]);
 
   const windowRows = useMemo(() => inWindow(today, days), [today, days]);
   const last24 = useMemo(() => inWindow(today, 1), [today]);
   const week = useMemo(() => inWindow(today, 7), [today]);
   const dl = useMemo(() => deadlines(today).slice(0, 6), [today]);
-  const priceChanges = useMemo(() => upcomingChanges(today).filter((u) => u.next.meter === "input" || u.next.meter === "output" || u.next.meter === "seat-month").slice(0, 6), [today]);
+  // One line per product and date: headline (standard tier, global, base context) changes only.
+  const priceChanges = useMemo(() => {
+    const groups = new Map<string, { entityId: string; on: string; parts: string[]; sourceIds: string[]; label: PriceRecord["label"] }>();
+    for (const { next, current } of upcomingChanges(today)) {
+      if (!["input", "output", "seat-month"].includes(next.meter) || next.tier !== "standard" || (next.region ?? "global") !== "global" || next.aboveContextTokens != null) continue;
+      const key = `${next.entityId}|${next.effectiveFrom}`;
+      const g = groups.get(key) ?? { entityId: next.entityId, on: next.effectiveFrom, parts: [], sourceIds: [], label: next.label };
+      g.parts.push(`${next.meter.replace("-", " ")} ${current ? `${usd(current.price)} → ` : ""}${usd(next.price)}`);
+      g.sourceIds = [...new Set([...g.sourceIds, ...next.sourceIds])];
+      groups.set(key, g);
+    }
+    return [...groups.values()].sort((a, b) => a.on.localeCompare(b.on)).slice(0, 6);
+  }, [today]);
   const detected = (status?.items ?? []).filter((i) => !i.knownAs && i.providerId === "google").slice(0, 5);
   const latest = ANNOUNCEMENTS[0];
 
@@ -73,7 +82,7 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
       <div className="gai-grid gai-g4 keep2">
         <div className="gai-card gai-stat"><span className="v">{last24.length}</span><span className="l">verified developments in the last 24 hours</span></div>
         <div className="gai-card gai-stat"><span className="v">{week.length}</span><span className="l">in the last 7 days</span></div>
-        <div className="gai-card gai-stat"><span className="v">{dl.length ? dl[0].days : "—"}</span><span className="l">{dl.length ? `days to the next deadline: ${dl[0].name}` : "no upcoming deadline on record"}</span></div>
+        <div className="gai-card gai-stat"><span className="v">{dl.length ? dl[0].days : "—"}</span><span className="l">{dl.length ? `${dl[0].days === 1 ? "day" : "days"} to the next dated change: ${dl[0].name}` : "no upcoming dated change on record"}</span></div>
         <div className="gai-card gai-stat"><span className="v">{latest ? fmtDate(latest.date).replace(/ \d{4}$/, "") : "—"}</span><span className="l">most recent verified development</span></div>
       </div>
       {week.length === 0 && (
@@ -121,6 +130,7 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
                   )}
                   <div className="gai-chipset" style={{ marginTop: 6 }}>
                     {a.types.map((t) => <span key={t} className="gai-tag">{TYPE_LABEL[t]}</span>)}
+                    {a.verification !== "verified" && <span className="gai-pill preview">{a.verification.replace("-", " ")}</span>}
                   </div>
                 </div>
               </li>
@@ -172,7 +182,7 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
             <ul className="gai-claims">
               {dl.map((d) => (
                 <li key={d.event.id}>
-                  <span><b>{fmtDate(d.on)}</b> · in {d.days} days · <Link className="gai-link" href={`/google-ai/entity/${d.event.entityId}`}>{d.name}</Link></span>
+                  <span><b>{fmtDate(d.on)}</b> · in {d.days} {d.days === 1 ? "day" : "days"} · <Link className="gai-link" href={`/google-ai/entity/${d.event.entityId}`}>{d.name}</Link></span>
                   <span className="gai-small">{d.event.detail}</span>
                   <span className="gai-claim-meta"><Ev label={d.event.label} short /><Cites ids={d.event.sourceIds} /></span>
                 </li>
@@ -185,13 +195,12 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
           <p className="gai-small gai-muted" style={{ marginBottom: 8 }}>Prices with a future effective date. Until that date the current price still applies.</p>
           {priceChanges.length === 0 ? <p className="gai-muted gai-small">No scheduled price change is on record.</p> : (
             <ul className="gai-claims">
-              {priceChanges.map(({ next, current }) => (
-                <li key={next.id}>
+              {priceChanges.map((g) => (
+                <li key={g.entityId + g.on}>
                   <span>
-                    <b>{fmtDate(next.effectiveFrom)}</b> · <Link className="gai-link" href={`/google-ai/entity/${next.entityId}`}>{entityName(next.entityId)}</Link> {next.meter.replace("-", " ")}: {current ? `${usd(current.price)} → ` : ""}{usd(next.price)}
-                    {next.region === "regional" ? " (regional)" : ""}
+                    <b>{fmtDate(g.on)}</b> · <Link className="gai-link" href={`/google-ai/entity/${g.entityId}`}>{entityName(g.entityId)}</Link>: {g.parts.join(" · ")} <span className="gai-muted">per 1M tokens, standard tier</span>
                   </span>
-                  <span className="gai-claim-meta"><Ev label={next.label} short /><Cites ids={next.sourceIds} /></span>
+                  <span className="gai-claim-meta"><Ev label={g.label} short /><Cites ids={g.sourceIds} /></span>
                 </li>
               ))}
             </ul>
@@ -254,6 +263,7 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
 function Radar({ today, days }: { today: string; days: number }) {
   const [tip, setTip] = useState<{ x: number; y: number; a: Announcement } | null>(null);
   const size = 440;
+  const PAD = 110;
   const c = size / 2;
   const R = 170;
   const from = addDays(today, -days);
@@ -273,7 +283,7 @@ function Radar({ today, days }: { today: string; days: number }) {
   }, [today, days, from, c]);
   return (
     <div style={{ position: "relative" }}>
-      <svg className="gai-chart" viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`Release radar: ${dots.length} developments in the last ${days} days by area. The table beside it gives the counts.`}>
+      <svg className="gai-chart" viewBox={`${-PAD} 0 ${size + 2 * PAD} ${size}`} role="img" aria-label={`Release radar: ${dots.length} developments in the last ${days} days by area. The table beside it gives the counts.`}>
         {[0.33, 0.66, 1].map((f) => <circle key={f} cx={c} cy={c} r={22 + f * (R - 26)} fill="none" className="grid" />)}
         {AREAS.map((area, i) => {
           const ang = (i / AREAS.length) * Math.PI * 2 - Math.PI / 2;
@@ -294,7 +304,7 @@ function Radar({ today, days }: { today: string; days: number }) {
         ))}
       </svg>
       {tip && (
-        <div className="gai-tip" style={{ left: `${(tip.x / size) * 100}%`, top: `${(tip.y / size) * 100}%`, transform: "translate(-50%, calc(-100% - 10px))" }}>
+        <div className="gai-tip" style={{ left: `${((tip.x + PAD) / (size + 2 * PAD)) * 100}%`, top: `${(tip.y / size) * 100}%`, transform: "translate(-50%, calc(-100% - 10px))" }}>
           <b>{fmtDate(tip.a.date)}</b> · {tip.a.title}
         </div>
       )}

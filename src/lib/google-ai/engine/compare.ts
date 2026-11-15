@@ -10,9 +10,9 @@
 import { yearFrac } from "../dates";
 import { SCENARIOS } from "../editorial";
 import { BATTLEGROUNDS, BENCHMARK_BY_ID, ENTITIES, ENTITY_BY_ID, MODELS, PRICES, RELATIONSHIPS, RESULTS } from "../kb";
-import type { BenchmarkDef, BenchmarkResult, Entity, EntityStatus, ModelSpec, PriceRecord, PriceSurface, Relationship } from "../types";
+import type { BenchmarkDef, BenchmarkResult, Entity, EntityStatus, Modality, ModelSpec, PriceRecord, PriceSurface, Relationship } from "../types";
 import { statusAt } from "./asof";
-import { blended, estimate, headline, type CostEstimate } from "./pricing";
+import { blended, estimate, headline, surfacesFor, type CostEstimate } from "./pricing";
 
 /** Google's provider id. Battlegrounds carry Google's position in a dedicated field, so the id is structural. */
 export const GOOGLE_ID = "google";
@@ -52,9 +52,18 @@ export interface ModelRow {
   blended?: number;
 }
 
+/** Which surface to quote when a model is priced on several: the developer's own API first, a reseller last. */
+const SURFACE_ORDER: PriceSurface[] = ["first-party-api", "gemini-api", "agent-platform", "third-party-host"];
+
+/** The surface whose list price is shown for a model on a date, or undefined when it has no token price. */
+export function quotedSurface(entityId: string, date: string): PriceSurface | undefined {
+  const have = surfacesFor(entityId, date);
+  return SURFACE_ORDER.find((s) => have.includes(s)) ?? have[0];
+}
+
 export function modelRow(e: Entity, today: string): ModelRow {
   const st = stageToday(e, today);
-  const price = headline(e.id, today);
+  const price = headline(e.id, today, quotedSurface(e.id, today));
   return { e, spec: e.model, status: st.status, bucket: st.bucket, price, blended: blended(e.id, today, price.surface) };
 }
 
@@ -177,20 +186,24 @@ export function independentSets(results: BenchmarkResult[] = RESULTS): Independe
 }
 
 export type BenchTopic = "coding" | "multimodal";
-const TOPIC_WORDS: Record<BenchTopic, string[]> = {
-  coding: ["swe", "terminal", "coding", "agent", "osworld", "webarena", "software engineering", "computer use"],
-  multimodal: ["video", "image", "audio", "multimodal", "vision", "speech"],
+/** Matched at the start of a word, so "swe" finds SWE-bench but not "answers". */
+const TOPIC_WORDS: Record<BenchTopic, RegExp> = {
+  coding: /\b(swe|terminal|coding|agent|osworld|webdev|webarena|software.engineering|computer.use)/i,
+  multimodal: /\b(video|image|audio|multimodal|vision|speech)/i,
 };
 
-/** Keyword match on the benchmark id, name and what it measures. */
-export function inTopic(topic: BenchTopic, id: string, def?: BenchmarkDef): boolean {
-  const hay = `${id} ${def?.name ?? ""} ${def?.measures ?? ""}`.toLowerCase();
-  return TOPIC_WORDS[topic].some((w) => hay.includes(w));
+/** Keyword match on the benchmark id, name and what it measures. 2 = named for the topic, 1 = only its description mentions it. */
+export function topicMatch(topic: BenchTopic, id: string, def?: BenchmarkDef): 0 | 1 | 2 {
+  if (TOPIC_WORDS[topic].test(`${id} ${def?.name ?? ""}`)) return 2;
+  return TOPIC_WORDS[topic].test(def?.measures ?? "") ? 1 : 0;
 }
+export const inTopic = (topic: BenchTopic, id: string, def?: BenchmarkDef) => topicMatch(topic, id, def) > 0;
 
 export interface TopicGroup {
   benchmarkId: string;
   def?: BenchmarkDef;
+  /** 2 = the benchmark is named for the topic; 1 = only its description mentions it. */
+  match: 1 | 2;
   independent: BenchmarkResult[];
   provider: BenchmarkResult[];
   /** Distinct versions across both sub-tables ("" = version not stated). */
@@ -208,12 +221,13 @@ export function topicGroups(topic: BenchTopic, results: BenchmarkResult[] = RESU
       return {
         benchmarkId,
         def,
+        match: topicMatch(topic, benchmarkId, def) === 2 ? (2 as const) : (1 as const),
         independent: rows.filter((r) => r.reporter === "independent").sort(order),
         provider: rows.filter((r) => r.reporter === "provider").sort(order),
         versions: [...new Set(rows.map((r) => r.benchmarkVersion ?? ""))],
       };
     })
-    .sort((a, b) => b.independent.length + b.provider.length - (a.independent.length + a.provider.length));
+    .sort((a, b) => b.match - a.match || b.independent.length + b.provider.length - (a.independent.length + a.provider.length));
   const definedWithoutResults = Object.values(BENCHMARK_BY_ID).filter((d) => inTopic(topic, d.id, d) && !ids.includes(d.id));
   return { groups, definedWithoutResults };
 }
@@ -356,33 +370,44 @@ export function familyTree(providerId: string, today: string): FamilyTree {
 // ───────────────────────── workload fit ─────────────────────────
 
 export interface ScenarioFit {
-  /** Models that accept every required input and have a published token price, cheapest monthly cost first. */
-  ranked: { row: ModelRow; est: CostEstimate }[];
+  /** Models with a published token price, cheapest monthly cost first. `missing` lists required inputs the model is not recorded as accepting (empty unless uncovered models were asked for). */
+  ranked: { row: ModelRow; est: CostEstimate; missing: Modality[] }[];
   /** Accept every required input but have no published token price today. */
   unpriced: ModelRow[];
-  /** Recorded input modalities do not cover the scenario. */
+  /** Recorded input modalities do not cover the scenario (and were not asked for). */
   uncovered: ModelRow[];
+  /** How many live models lack each required input in the record. */
+  missingByNeed: { need: Modality; n: number }[];
   /** Deprecated or retired models, left out. */
   retired: number;
 }
 
-export function scenarioFit(s: Scenario, today: string): ScenarioFit {
-  const out: ScenarioFit = { ranked: [], unpriced: [], uncovered: [], retired: 0 };
+/**
+ * Rank models for an example workload. By default only models whose recorded inputs cover
+ * `scenario.needs` are ranked; `includeUncovered` also costs the others and flags what is missing.
+ */
+export function scenarioFit(s: Scenario, today: string, includeUncovered = false): ScenarioFit {
+  const out: ScenarioFit = { ranked: [], unpriced: [], uncovered: [], missingByNeed: [], retired: 0 };
+  const lacking: Record<string, number> = {};
   for (const row of modelRows(today)) {
     if (row.bucket === "retired") {
       out.retired++;
       continue;
     }
     const accepts = row.spec?.modalitiesIn ?? [];
-    if (!s.needs.every((n) => accepts.includes(n))) {
+    const missing: Modality[] = s.needs.filter((n) => !accepts.includes(n));
+    for (const m of missing) lacking[m] = (lacking[m] ?? 0) + 1;
+    if (missing.length && !includeUncovered) {
       out.uncovered.push(row);
       continue;
     }
-    const est = estimate(s, row.e.id, today);
-    if (est.ok) out.ranked.push({ row, est });
+    const est = estimate(s, row.e.id, today, { surface: row.price.surface });
+    if (est.ok) out.ranked.push({ row, est, missing });
+    else if (missing.length) out.uncovered.push(row);
     else out.unpriced.push(row);
   }
   out.ranked.sort((a, b) => a.est.monthly - b.est.monthly);
+  out.missingByNeed = s.needs.flatMap((need) => (lacking[need] ? [{ need: need as Modality, n: lacking[need] }] : []));
   return out;
 }
 

@@ -15,7 +15,7 @@ import { runIngestion } from "./ingest/run";
 import { readState } from "./ingest/store";
 import type { Feed } from "./ingest/types";
 import * as KB from "./kb";
-import { SCENARIOS } from "./editorial";
+import { AGENT_FLOW, LIMITATIONS, REVIEW, SCENARIOS, WORKLOADS } from "./editorial";
 import type { Claim, Entity, LifecycleEvent, PriceRecord, WorkloadScenario } from "./types";
 
 const TODAY = "2026-11-15";
@@ -429,5 +429,44 @@ describe("briefing and radar", () => {
   });
   it("lists only future effective dates as deadlines", () => {
     for (const d of deadlines(TODAY)) expect(d.on > TODAY).toBe(true);
+  });
+});
+
+// ─────────────────────────── F. Enterprise decision ───────────────────────────
+describe("F · an enterprise decision: a secure voice agent", () => {
+  it("offers a voice workload whose whole reference stack resolves to canonical products", () => {
+    const w = WORKLOADS.find((x) => x.architecture === "voice");
+    expect(w).toBeDefined();
+    const missing = w!.stack.filter((s) => !KB.ENTITY_BY_ID[s.entityId]).map((s) => s.entityId);
+    expect(missing).toEqual([]);
+    // Security and governance are part of the answer, not an afterthought.
+    for (const id of ["agent-identity", "agent-gateway", "model-armor"]) expect(w!.stack.map((s) => s.entityId)).toContain(id);
+    for (const k of ["customer", "sales", "technical", "commercial", "competitive", "execution"] as const) expect(w![k].length).toBeGreaterThan(60);
+    expect(w!.risks.length).toBeGreaterThan(0);
+  });
+
+  it("builds every workload and every step of the agent path from products that exist", () => {
+    for (const w of WORKLOADS) {
+      expect(w.stack.filter((s) => !KB.ENTITY_BY_ID[s.entityId]).map((s) => `${w.id}:${s.entityId}`)).toEqual([]);
+      if (w.scenarioId) expect(SCENARIOS.some((s) => s.id === w.scenarioId), w.id).toBe(true);
+    }
+    for (const f of AGENT_FLOW) expect(f.entityIds.filter((id) => !KB.ENTITY_BY_ID[id]).map((id) => `${f.id}:${id}`)).toEqual([]);
+    expect(AGENT_FLOW).toHaveLength(8);
+  });
+
+  it("finds the stack for the question through the analyst, with sources", () => {
+    const a = answer("What is Model Armor and how does it relate to the Agent Gateway?", TODAY);
+    expect(a.entities.map((e) => e.id)).toContain("model-armor");
+    expect(a.facts.length).toBeGreaterThan(0);
+    expect(a.facts.every((f) => f.sourceIds.length > 0)).toBe(true);
+  });
+});
+
+describe("transparency", () => {
+  it("publishes the review from all five roles and a list of limitations", () => {
+    expect(REVIEW).toHaveLength(5);
+    for (const r of REVIEW) expect(r.findings.length).toBeGreaterThanOrEqual(3);
+    expect(REVIEW.flatMap((r) => r.findings).some((f) => f.status !== "fixed")).toBe(true);
+    expect(LIMITATIONS.length).toBeGreaterThanOrEqual(10);
   });
 });

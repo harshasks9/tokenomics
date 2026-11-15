@@ -179,6 +179,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "clicks-to-delegation", name: "From Clicks to Delegation", short: "Clicks to Delegation", href: "/clicks-to-delegation", icon: Newspaper, section: "intelligence", audience: "account",
     gradient: "linear-gradient(135deg, #14213d 0%, #2a78d6 60%, #eb6834 100%)",
     blurb: "What 30 years of e-commerce reveal about agentic commerce", keywords: ["agentic commerce", "e-commerce", "history", "retail", "agents", "delegation", "ucp", "acp", "ap2", "research"] },
+  { id: "google-ai", name: "Google AI Intelligence Hub", short: "Google AI Hub", href: "/google-ai", icon: Network, section: "intelligence", audience: "account",
+    gradient: "linear-gradient(135deg, #10141a 0%, #1f5fc4 55%, #1baf7a 100%)",
+    blurb: "Everything Google is doing in AI — what changed, how it fits together, and why it matters", keywords: ["google", "gemini", "agent platform", "vertex", "tpu", "pricing", "models", "timeline", "competitive intelligence", "deepmind", "workspace", "time machine"] },
 ];
 
 export const ARCHIVE_LINKS = [

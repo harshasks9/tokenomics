@@ -21,9 +21,12 @@
 
 /* charts: scroll inside the card on narrow screens so labels stay readable */
 .gai-mc-scroll { overflow-x: auto; overflow-y: hidden; }
-.gai-mc-plot { position: relative; min-width: 700px; }
+.gai-mc-plot { position: relative; min-width: 860px; }
+.gai-mc-hint { display: none; margin-bottom: 4px; }
 .gai-mc-plot.gai-mc-narrow { min-width: 600px; max-width: 900px; margin: 0 auto; }
 .gai-chart .gai-mc-nlabel { fill: var(--ink-2); }
+/* a surface-coloured halo keeps succession lines from striking through a name */
+.gai-mc-node text { paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round; }
 .gai-chart .gai-mc-axis-title { fill: var(--ink-2); font-weight: 500; }
 .gai-mc-node { cursor: pointer; }
 .gai-mc-node:focus-visible { outline: none; }
@@ -61,6 +64,9 @@
 /* battleground matrix */
 .gai-mc-anchor { scroll-margin-top: 130px; }
 .gai-mc-matrix th.gai-mc-pcol, .gai-mc-matrix td.gai-mc-cell { text-align: center; }
+/* the battleground column stays in view while the provider columns scroll */
+.gai-mc-matrix td:first-child { min-width: 300px; position: sticky; left: 0; z-index: 1; background: var(--surface); }
+.gai-mc-matrix th:first-child { left: 0; z-index: 2; }
 .gai-mc-rowbtn { display: block; width: 100%; text-align: left; font-weight: 600; font-size: 13.5px; }
 .gai-mc-rowbtn:hover { color: var(--accent); }
 .gai-mc-rowbtn small { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-3); margin-top: 1px; }
@@ -75,7 +81,12 @@
 .gai-mc-watch li { padding-left: 14px; position: relative; }
 .gai-mc-watch li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-3); }
 
+@media (max-width: 960px) {
+  .gai-mc-hint { display: block; }
+}
 @media (max-width: 640px) {
+  .gai-mc-matrix td:first-child { min-width: 132px; max-width: 150px; }
+  .gai-mc-rowbtn small { display: none; }
   .gai-mc-filter { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .gai-mc-filter > span:first-child, .gai-mc-filter > label:first-child { padding-top: 4px; }
   .gai-mc-filter + .gai-mc-filter { margin-top: 8px; }

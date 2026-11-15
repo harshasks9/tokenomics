@@ -53,7 +53,13 @@ export function statusAt(e: Entity, date: string, lifecycle: LifecycleEvent[] = 
     if (!on || on > date) continue;
     if (!best || on >= best.on) best = { status: mapped, on };
   }
-  if (best) return { status: best.status, evidenced: true, since: best.on };
+  if (best) {
+    // "Announced" is only trusted as the stage while nothing says it later shipped. If the product is known to have
+    // moved on but no dated preview or GA event is recorded, its stage on this date is unknown — not "announced".
+    const laterStage = lifecycle.some((l) => (l.type === "preview" || l.type === "ga") && effectiveOn(l) > date);
+    if (best.status === "announced" && !laterStage && e.status !== "announced") return { status: "unknown", evidenced: false, since: best.on };
+    return { status: best.status, evidenced: true, since: best.on };
+  }
   if (!e.introducedAt) return { status: "unknown", evidenced: false };
   // Introduced before the date but no dated stage change recorded: we know it existed, not its stage.
   return { status: e.status === "retired" || e.status === "deprecated" ? "unknown" : e.status, evidenced: false, since: e.introducedAt };

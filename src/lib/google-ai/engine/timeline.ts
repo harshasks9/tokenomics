@@ -128,6 +128,32 @@ export function nearSameTitle(a: string, b: string): boolean {
   return union > 0 && shared / union >= 0.75;
 }
 
+/** Shared title words as a share of the shorter title — looser than nearSameTitle, used only alongside other evidence. */
+function titleOverlap(a: string, b: string): number {
+  const ta = new Set(titleKey(a).split(" ").filter((w) => w.length > 2 && !STOP.has(w)));
+  const tb = new Set(titleKey(b).split(" ").filter((w) => w.length > 2 && !STOP.has(w)));
+  let shared = 0;
+  for (const w of ta) if (tb.has(w)) shared++;
+  return Math.min(ta.size, tb.size) ? shared / Math.min(ta.size, tb.size) : 0;
+}
+
+/** Within one day of each other (a blog post is often dated the day after the release). */
+function withinADay(a: string, b: string): boolean {
+  return Math.abs(Date.parse(a) - Date.parse(b)) <= 86400000;
+}
+
+/**
+ * The same development recorded twice: near-identical titles on the same date, or — within a day, for the same
+ * provider — titles that share at least half their words and name the same product.
+ */
+function sameDevelopment(t: UnifiedEvent, a: Announcement, date: string): boolean {
+  if (sameDate(t, date) && nearSameTitle(t.title, a.title)) return true;
+  if (t.precision !== "day" || t.providerId !== a.providerId || !withinADay(t.date, date)) return false;
+  const overlap = titleOverlap(t.title, a.title);
+  const sharesEntity = t.entityIds.some((id) => a.entityIds.includes(id));
+  return overlap >= 0.6 || (overlap >= 0.4 && sharesEntity);
+}
+
 function sameDate(t: { date: string; precision: "day" | "month" | "year" }, date: string): boolean {
   const n = t.precision === "year" ? 4 : t.precision === "month" ? 7 : 10;
   return t.date.slice(0, n) === date.slice(0, n);
@@ -196,7 +222,7 @@ export function buildTimeline(today: string, src: Partial<TimelineSources> = {})
     const significance = significanceOf(a.importance);
     const href = `/google-ai/latest/${a.id}`;
     const scheduled = (effective ?? date) > today;
-    const twin = curated.find((t) => sameDate(t, date) && nearSameTitle(t.title, a.title));
+    const twin = curated.find((t) => sameDevelopment(t, a, date));
     if (twin) {
       twin.alsoIds.push(a.id);
       twin.href = href;
@@ -304,14 +330,29 @@ export function inRange(events: UnifiedEvent[], from: string, to: string): Unifi
   });
 }
 
-/** The n most significant events dated on or before today, newest first within a significance level, one per date. */
+/**
+ * Landmark dates for quick navigation: n events from the highest significance
+ * level(s), dated on or before today, one per date. When a level holds more
+ * candidates than there is room for, they are sampled evenly across time
+ * (always keeping the oldest and the newest) rather than all taken from the
+ * most recent weeks. Returned oldest first.
+ */
 export function landmarkEvents(events: UnifiedEvent[], today: string, n = 6): UnifiedEvent[] {
   const seen = new Set<string>();
-  return events
+  const pool = events
     .filter((e) => e.date <= today && !e.scheduled)
-    .sort((a, b) => b.significance - a.significance || b.date.localeCompare(a.date))
-    .filter((e) => (seen.has(e.date) ? false : (seen.add(e.date), true)))
-    .slice(0, n);
+    .sort((a, b) => b.significance - a.significance || a.date.localeCompare(b.date))
+    .filter((e) => (seen.has(e.date) ? false : (seen.add(e.date), true)));
+  const out: UnifiedEvent[] = [];
+  for (const level of [3, 2, 1] as const) {
+    const room = n - out.length;
+    if (room <= 0) break;
+    const tier = pool.filter((e) => e.significance === level);
+    if (tier.length <= room) out.push(...tier);
+    else if (room === 1) out.push(tier[tier.length - 1]);
+    else for (let i = 0; i < room; i++) out.push(tier[Math.round((i * (tier.length - 1)) / (room - 1))]);
+  }
+  return out.sort((a, b) => a.date.localeCompare(b.date));
 }
 
 // ───────────────────────── chart maths ─────────────────────────
@@ -533,27 +574,47 @@ export function samePriceLine(a: PriceRecord, b: PriceRecord): boolean {
   );
 }
 
+/** How we know a future-dated price had been made public by the as-of date. */
+export type KnownBy =
+  | { basis: "published"; on: string } // the record carries its publication date
+  | { basis: "lifecycle"; on: string } // a dated price-change record for the same entity and effective date
+  | { basis: "source-read"; on: string }; // the source was last read on or before the date and already carried it
+
 export interface Pending {
-  /** Prices published on or before the date that take effect after it, with the price they replace. */
-  prices: { next: PriceRecord; current?: PriceRecord }[];
-  /** Later prices with no publication date: we cannot tell whether they had been announced, so they are only counted. */
+  /** Prices known on or before the date that take effect after it, with the price they replace. */
+  prices: { next: PriceRecord; current?: PriceRecord; known: KnownBy }[];
+  /** Later prices we cannot show were public by the date: no publication date, no dated lifecycle record, source read later. Counted, never listed. */
   undatedPrices: number;
   lifecycle: LifecycleEvent[];
   announcements: Announcement[];
 }
 
-/** What had been announced by a date but was not yet in effect on it. */
+/**
+ * What had been announced by a date but was not yet in effect on it.
+ * `scheduledAt` lets through price records with no publication date; those are
+ * only listed here when something dated shows they were public by then.
+ */
 export function pendingAt(date: string, src: { prices?: PriceRecord[]; lifecycle?: LifecycleEvent[]; announcements?: Announcement[] } = {}): Pending {
   const prices = src.prices ?? PRICES;
+  const lifecycle = src.lifecycle ?? LIFECYCLE;
   const scheduled = scheduledAt(date, prices);
   const current = pricesAt(date, prices);
-  const dated = scheduled.filter((p) => p.publishedAt);
+  const listed: Pending["prices"] = [];
+  for (const next of scheduled) {
+    let known: KnownBy | undefined;
+    if (next.publishedAt) known = { basis: "published", on: next.publishedAt };
+    else {
+      const l = lifecycle.find((x) => x.type === "price-change" && x.entityId === next.entityId && x.date <= date && x.effectiveDate === next.effectiveFrom);
+      if (l) known = { basis: "lifecycle", on: l.date };
+      else if (next.lastCheckedAt && next.lastCheckedAt <= date) known = { basis: "source-read", on: next.lastCheckedAt };
+    }
+    if (known) listed.push({ next, current: current.find((p) => p.id !== next.id && samePriceLine(p, next)), known });
+  }
+  const rank = (p: PriceRecord) => (isHeadlinePrice(p) && (p.meter === "input" || p.meter === "output" || p.meter === "seat-month") ? 0 : 1);
   return {
-    prices: dated
-      .map((next) => ({ next, current: current.find((p) => p.id !== next.id && samePriceLine(p, next)) }))
-      .sort((a, b) => a.next.effectiveFrom.localeCompare(b.next.effectiveFrom)),
-    undatedPrices: scheduled.length - dated.length,
-    lifecycle: (src.lifecycle ?? LIFECYCLE)
+    prices: listed.sort((a, b) => a.next.effectiveFrom.localeCompare(b.next.effectiveFrom) || rank(a.next) - rank(b.next) || a.next.entityId.localeCompare(b.next.entityId)),
+    undatedPrices: scheduled.length - listed.length,
+    lifecycle: lifecycle
       .filter((l) => l.date <= date && !!l.effectiveDate && l.effectiveDate > date)
       .sort((a, b) => (a.effectiveDate ?? "").localeCompare(b.effectiveDate ?? "")),
     announcements: (src.announcements ?? ANNOUNCEMENTS)

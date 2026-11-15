@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { fmtDate, yearFrac } from "@/lib/google-ai/dates";
 import { surfaceLabel } from "@/lib/google-ai/engine/answer";
 import { GOOGLE_ID, STAGE_BUCKETS, familyTree, matchesText, modelRows, priceSourceIds, type FamilyTree, type ModelRow, type StageBucket, type TreeLane, type TreeNode } from "@/lib/google-ai/engine/compare";
@@ -324,7 +324,7 @@ const TOP = 30;
 const BOTTOM = 26;
 const SUB = 36;
 const PAD = 6;
-const MAX_ROWS = 5;
+const MAX_ROWS = 7;
 const MAX_CH = 22;
 const VIEWS = [
   { id: "chart", label: "Chart" },
@@ -332,6 +332,14 @@ const VIEWS = [
 ] as const;
 
 const clip = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
+
+/** A lane name on at most two lines of about `n` characters. */
+function twoLines(name: string, n = 22): string[] {
+  if (name.length <= n) return [name];
+  const cut = name.lastIndexOf(" ", n);
+  const at = cut > 6 ? cut : n;
+  return [name.slice(0, at), clip(name.slice(at).trim(), n)];
+}
 
 interface Placed {
   node: TreeNode;
@@ -390,6 +398,15 @@ function NodeMark({ bucket, color, r = 6 }: { bucket: StageBucket; color: string
   );
 }
 
+function LaneLabel({ name, y, strong }: { name: string; y: number; strong?: boolean }) {
+  const lines = twoLines(name);
+  return (
+    <text className={strong ? "lbl" : undefined} x={6} y={y + 4 - (lines.length - 1) * 7}>
+      {lines.map((l, i) => <tspan key={i} x={6} dy={i ? 14 : 0}>{l}</tspan>)}
+    </text>
+  );
+}
+
 function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]; initial: string; today: string }) {
   const [pid, setPid] = useState(initial);
   const [view, setView] = useState<"chart" | "table">("chart");
@@ -400,6 +417,12 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
   const dated = tree.lanes.reduce((n, l) => n + l.nodes.length, 0);
   const succeeds = (id: string) => tree.edges.filter((x) => x.from === id);
   const tip = hover ? lay.placed[hover] : undefined;
+  // On a narrow screen the chart scrolls sideways; start at the recent end, where most models are.
+  const scroller = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = scroller.current;
+    if (el) el.scrollLeft = el.scrollWidth;
+  }, [pid, view]);
 
   return (
     <>
@@ -422,7 +445,8 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
         </Empty>
       ) : view === "chart" ? (
         <div className="gai-card">
-          <div className="gai-mc-scroll">
+          <p className="gai-small gai-muted gai-mc-hint">Scroll sideways for earlier years.</p>
+          <div className="gai-mc-scroll" ref={scroller}>
             <div className="gai-mc-plot">
               <svg className="gai-chart" viewBox={`0 0 ${W} ${lay.H}`} role="img" aria-label={`Model family timeline for ${providerName(pid)}: ${dated} models in ${tree.lanes.length} lanes, ${lay.t0} to ${lay.t1}, placed by introduction date. The table view lists every model and what it succeeds.`}>
                 {lay.years.map((y) => (
@@ -436,10 +460,10 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                     <line className="grid" x1={0} x2={W} y1={b.top} y2={b.top} />
                     {b.lane.entityId ? (
                       <a href={`/google-ai/entity/${b.lane.entityId}`} aria-label={`${b.lane.name} family dossier`}>
-                        <text className="lbl" x={6} y={b.top + b.height / 2 + 4}>{clip(b.lane.name, 21)}</text>
+                        <LaneLabel name={b.lane.name} y={b.top + b.height / 2} strong />
                       </a>
                     ) : (
-                      <text x={6} y={b.top + b.height / 2 + 4}>{clip(b.lane.name, 21)}</text>
+                      <LaneLabel name={b.lane.name} y={b.top + b.height / 2} />
                     )}
                   </g>
                 ))}
@@ -532,7 +556,7 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                           </span>
                         ))}
                       </td>
-                      <td><Cites ids={n.e.sourceIds} align="right" /></td>
+                      <td className="gai-mc-nowrap"><Cites ids={n.e.sourceIds} align="right" /></td>
                     </tr>
                   );
                 }),

@@ -200,7 +200,7 @@
  {
   "id": "lc-m-gemini-3-1-flash-lite-retired-20260525",
   "entityId": "gemini-3-1-flash-lite",
-  "type": "retired",
+  "type": "updated",
   "date": "2026-05-25",
   "detail": "Preview id gemini-3.1-flash-lite-preview shut down on the Gemini API (earliest listed date).",
   "label": "verified-fact",
@@ -593,7 +593,7 @@
  {
   "id": "lc-m-gemini-3-1-flash-image-retired-20260625",
   "entityId": "gemini-3-1-flash-image",
-  "type": "retired",
+  "type": "updated",
   "date": "2026-06-25",
   "detail": "Preview ids gemini-3.1-flash-image-preview and gemini-3-pro-image-preview shut down on the Gemini API (notice dated 28 May 2026).",
   "label": "verified-fact",
@@ -2270,7 +2270,7 @@
  {
   "id": "lc-c-nova-premier-retired",
   "entityId": "amazon-nova",
-  "type": "retired",
+  "type": "updated",
   "date": "2026-07-28",
   "effectiveDate": "2026-09-14",
   "detail": "Amazon reported to be winding down Nova Premier, Omni, Reel and Canvas; Nova Premier reached end of life on Bedrock on 14 September 2026.",

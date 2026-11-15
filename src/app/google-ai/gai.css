@@ -64,7 +64,7 @@
 :where(.gai-root) input, :where(.gai-root) select, :where(.gai-root) textarea { font: inherit; color: inherit; }
 :where(.gai-root) table { border-collapse: collapse; width: 100%; }
 .gai-root :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-.gai-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gai-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 
 /* ── header ── */
 .gai-top { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
@@ -167,7 +167,7 @@
 .gai-acc.search-excerpt, .gai-acc.secondary { background: var(--ev-claim-bg); color: var(--ev-claim); }
 
 /* tables */
-.gai-tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.gai-tablewrap { position: relative; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
 .gai-table th { text-align: left; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; padding: 9px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; background: var(--surface-2); position: sticky; top: 0; }
 .gai-table td { padding: 9px 12px; border-bottom: 1px solid var(--line); font-size: 13.5px; vertical-align: top; }
 .gai-table tr:last-child td { border-bottom: 0; }
@@ -181,9 +181,9 @@
 .gai-stat .l { font-size: 12.5px; color: var(--ink-2); }
 
 /* feed items */
-.gai-item { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.gai-item { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
 .gai-item:first-child { border-top: 0; }
-.gai-item time { font-family: var(--font-m); font-size: 12px; color: var(--ink-3); padding-top: 2px; }
+.gai-item time { font-family: var(--font-m); font-size: 12px; color: var(--ink-3); padding-top: 2px; white-space: nowrap; }
 .gai-item h3 a:hover { color: var(--accent); }
 .gai-item p { color: var(--ink-2); font-size: 14px; margin-top: 3px; }
 .gai-imp { display: inline-flex; gap: 2px; vertical-align: middle; }

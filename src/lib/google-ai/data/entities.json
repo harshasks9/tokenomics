@@ -2015,7 +2015,8 @@
    "m-cb-nbga",
    "m-gapi-changelog"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-05-28"
  },
  {
   "id": "gemini-3-1-flash-image",
@@ -3289,7 +3290,8 @@
    "m-bg-emb2-ga",
    "m-pr-emb2"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-04-22"
  },
  {
   "id": "gemma-4",
@@ -4821,7 +4823,8 @@
    "s-b-nvidia",
    "s-b-next26-wrap"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-11-06"
  },
  {
   "id": "ai-hypercomputer",
@@ -6851,7 +6854,8 @@
    "s-b-geap-whatsnew",
    "s-gc-platform-pricing"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-07-29"
  },
  {
   "id": "agent-sessions",
@@ -8821,7 +8825,8 @@
    "s-gc-ge-agents",
    "s-b-agentspace-2024"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-12-13"
  },
  {
   "id": "gemini-for-google-cloud",
@@ -9292,7 +9297,8 @@
    "s-x-engadget-ultra",
    "s-x-decoder-ai-plans"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-05-20"
  },
  {
   "id": "ai-mode",
@@ -9397,7 +9403,8 @@
    "s-x-9to5-autobrowse",
    "s-b-next26-wrap"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-01-28"
  },
  {
   "id": "gemini-on-android",
@@ -9444,7 +9451,8 @@
    "s-x-ac-spark",
    "s-x-io26-eweek"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-07-16"
  },
  {
   "id": "gemini-for-home",
@@ -9912,7 +9920,8 @@
    "s-b-ironwood-ga",
    "s-b-gaw26"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-10-23"
  },
  {
   "id": "partner-openai",
@@ -9957,7 +9966,8 @@
    "s-x-openai-tpu",
    "s-x-openai-gcp"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-10-21"
  },
  {
   "id": "partner-meta",
@@ -10056,7 +10066,8 @@
    "s-x-ct-apple",
    "s-b-aimonth-2026"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-01-12"
  },
  {
   "id": "partner-samsung",
@@ -10131,7 +10142,8 @@
    "s-b-oracle-tpu",
    "s-b-next26-wrap"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-10-27"
  },
  {
   "id": "partner-nvidia",

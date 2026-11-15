@@ -8,7 +8,7 @@ import { AREAS, TYPE_LABEL, WINDOWS, inWindow, type WindowId } from "@/lib/googl
 import { ANNOUNCEMENTS, ANNOUNCEMENT_BY_ID, ENTITY_BY_ID, LAYERS, LAYER_BY_ID, LIFECYCLE, PRICES, SOURCE_BY_ID } from "@/lib/google-ai/kb";
 import type { Announcement, AnnouncementType, RadarArea } from "@/lib/google-ai/types";
 import type { StatusPayload } from "../Hub";
-import { ACCESS_LABEL, Cites, Claims, Empty, EntityLink, Ev, Imp, Sec, Seg, usd, useHub } from "../ui";
+import { ACCESS_LABEL, Cites, Claims, Empty, EntityLink, Imp, Sec, Seg, usd, useHub } from "../ui";
 
 const WIN_OPTS = [...WINDOWS.map((w) => ({ id: w.id as string, label: w.label })), { id: "all", label: "All" }];
 const FEEDS = [

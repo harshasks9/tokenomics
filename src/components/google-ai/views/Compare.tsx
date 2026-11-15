@@ -14,6 +14,7 @@ import {
   defaultPicks,
   headToHeadBenchmarks,
   independentSets,
+  isSpeedBenchmark,
   linearScale,
   logScale,
   modelRow,
@@ -27,7 +28,7 @@ import {
   type Scale,
 } from "@/lib/google-ai/engine/compare";
 import { lookup } from "@/lib/google-ai/engine/pricing";
-import { BATTLEGROUNDS, ENTITY_BY_ID, RESULTS, providerName } from "@/lib/google-ai/kb";
+import { BATTLEGROUNDS, BENCHMARKS, ENTITY_BY_ID, RESULTS, providerName } from "@/lib/google-ai/kb";
 import type { BenchmarkDef, BenchmarkResult, PriceRecord } from "@/lib/google-ai/types";
 import { Cites, Claims, Empty, EntityLink, Ev, Sec, Seg, Status, compact, providerColor, usd, useHub } from "../ui";
 import "./models.css";
@@ -52,9 +53,9 @@ const modelName = (id: string) => ENTITY_BY_ID[id]?.name ?? id;
 const reporterLabel = (r: BenchmarkResult) => (r.reporter === "independent" ? "independent-measurement" : "provider-claim") as "independent-measurement" | "provider-claim";
 const setup = (r: BenchmarkResult) => [r.modelVersion, r.reasoningConfig, r.scaffold].filter(Boolean).join(" · ") || "setup not stated";
 
+/** The number as recorded, with a percent sign when the unit is a percentage. The full unit is named once, beside the benchmark. */
 function fmtScore(score: number, def?: BenchmarkDef): string {
-  const u = def?.unit ?? "";
-  return u === "%" ? `${score}%` : u ? `${score} ${u}` : String(score);
+  return (def?.unit ?? "").trim().startsWith("%") ? `${score}%` : String(score);
 }
 
 /** Shareable state: mirror a choice into the query string without a navigation. */
@@ -491,6 +492,7 @@ function Landscape({ kind, today }: { kind: "price" | "speed"; today: string }) 
     ? "Each point is one model: an independent benchmark score against its blended list price today. One benchmark and one version at a time."
     : "Each point is one model: an independent benchmark score against an independently measured output speed. One benchmark and one version on each axis.";
   const providerOnly = RESULTS.filter((r) => r.reporter === "provider").length;
+  const speedDefs = BENCHMARKS.filter((d) => isSpeedBenchmark(d, d.id));
 
   if (!ySet) {
     return (
@@ -505,15 +507,17 @@ function Landscape({ kind, today }: { kind: "price" | "speed"; today: string }) 
     return (
       <Sec title={title} sub={sub}>
         <Empty title="No independent speed measurement recorded">
-          This chart needs a throughput benchmark (for example output tokens per second) with independent results. None is in the knowledge base, so no speed axis is drawn rather than estimating one.
+          {speedDefs.length
+            ? `A speed benchmark is defined (${speedDefs.map((d) => d.name).join(", ")}) but no independent result for it is recorded yet. No speed axis is drawn rather than estimating one.`
+            : "This chart needs a throughput benchmark (for example output tokens per second) with independent results. None is in the knowledge base, so no speed axis is drawn rather than estimating one."}
         </Empty>
       </Sec>
     );
   }
   const yName = benchLabel(ySet.benchmarkId, ySet.version);
   const xName = xSet ? benchLabel(xSet.benchmarkId, xSet.version) : "";
-  const yTitle = `${yName}${ySet.def?.unit ? ` (${ySet.def.unit})` : ""}${ySet.def ? (ySet.def.higherBetter ? " — higher is better" : " — lower is better") : ""}`;
-  const xTitle = kind === "price" ? "Blended list price today, US$ per 1M tokens (3 input : 1 output) — log scale" : `${xName}${xSet?.def?.unit ? ` (${xSet.def.unit})` : ""}`;
+  const yTitle = `${yName}${ySet.def?.unit ? `, ${ySet.def.unit}` : ""}${ySet.def ? (ySet.def.higherBetter ? " — higher is better" : " — lower is better") : ""}`;
+  const xTitle = kind === "price" ? "Blended list price today, US$ per 1M tokens (3 input : 1 output) — log scale" : `${xName}${xSet?.def?.unit ? `, ${xSet.def.unit}` : ""}`;
 
   return (
     <Sec
@@ -590,7 +594,7 @@ function Landscape({ kind, today }: { kind: "price" | "speed"; today: string }) 
                         <td className="gai-mc-nowrap">{fmtDate(xr?.date)}</td>
                       </>
                     )}
-                    <td><Cites ids={uniq([...r.sourceIds, ...(row ? priceSourceIds(row.price) : []), ...(xr?.sourceIds ?? [])])} align="right" /></td>
+                    <td className="gai-mc-nowrap"><Cites ids={uniq([...r.sourceIds, ...(row ? priceSourceIds(row.price) : []), ...(xr?.sourceIds ?? [])])} align="right" /></td>
                   </tr>
                 ))}
               </tbody>
@@ -651,7 +655,7 @@ function ResultTable({ rows, def, reporter, multiVersion }: { rows: BenchmarkRes
                     <td className="num">{fmtScore(r.score, def)}</td>
                     <td className="gai-mc-nowrap">{fmtDate(r.date)}</td>
                     <td className="gai-small">{setup(r)}{r.limitations ? ` — ${r.limitations}` : ""}</td>
-                    <td><Cites ids={r.sourceIds} align="right" /></td>
+                    <td className="gai-mc-nowrap"><Cites ids={r.sourceIds} align="right" /></td>
                   </tr>,
                 ];
               })}
@@ -673,7 +677,7 @@ function TopicTables({ topic }: { topic: BenchTopic }) {
       ) : (
         groups.map((g) => (
           <div key={g.benchmarkId} className="gai-card gai-mc-bench">
-            <h3 className="gai-h3">{g.def?.name ?? g.benchmarkId}</h3>
+            <h3 className="gai-h3">{g.def?.name ?? g.benchmarkId}{g.match === 1 && <span className="gai-tag" style={{ marginLeft: 8 }} title="Listed here because its description mentions this area, not because it is named for it">broader benchmark</span>}</h3>
             {g.def ? (
               <>
                 <p className="gai-small" style={{ marginTop: 3 }}>{g.def.measures}</p>
@@ -769,7 +773,8 @@ const pct = (x: number) => `${Math.round(x * 100)}%`;
 function WorkloadPick({ today, initial }: { today: string; initial: string | null }) {
   const [sid, setSid] = useState(SCENARIOS.find((s) => s.id === initial)?.id ?? SCENARIOS[0]?.id ?? "");
   const s = SCENARIOS.find((x) => x.id === sid) ?? SCENARIOS[0];
-  const fit = useMemo(() => (s ? scenarioFit(s, today) : null), [s, today]);
+  const [loose, setLoose] = useState(false);
+  const fit = useMemo(() => (s ? scenarioFit(s, today, loose) : null), [s, today, loose]);
   if (!s || !fit) {
     return (
       <Sec title="Pick for a workload" sub="Rank models by what an example workload would cost.">
@@ -777,7 +782,7 @@ function WorkloadPick({ today, initial }: { today: string; initial: string | nul
       </Sec>
     );
   }
-  const names = (rows: ModelRow[]) => rows.map((r) => r.e.name).join(", ");
+  const names = (rows: ModelRow[]) => rows.slice(0, 12).map((r) => r.e.name).join(", ") + (rows.length > 12 ? `, and ${rows.length - 12} more` : "");
   return (
     <Sec title="Pick for a workload" sub="Choose an example workload. Models that accept the inputs it needs are ranked by estimated monthly cost at today's list prices.">
       <div className="gai-card gai-stack">
@@ -801,6 +806,12 @@ function WorkloadPick({ today, initial }: { today: string; initial: string | nul
         <p className="gai-small"><Ev label="analyst-interpretation" short /> These numbers are illustrative assumptions set by this site, not measurements. The same assumptions are applied to every model.</p>
       </div>
 
+      <label className="gai-row gai-small" style={{ marginTop: 12 }}>
+        <input type="checkbox" className="gai-mc-check" checked={loose} onChange={(e) => setLoose(e.target.checked)} />
+        Also rank models whose recorded inputs do not cover this workload (flagged in the table)
+        {fit.missingByNeed.length > 0 && <span className="gai-muted">— not recorded as accepting: {fit.missingByNeed.map((m) => `${m.need} (${m.n} ${m.n === 1 ? "model" : "models"})`).join(", ")}</span>}
+      </label>
+
       <div className="gai-warn" style={{ marginTop: 12 }}>
         <b>A lower per-token price does not mean a lower cost per completed task.</b> Models differ in how many attempts a task takes and how many reasoning tokens they spend. Here both are your assumption, held equal across models, so this ranking reflects list prices only.{" "}
         <Link className="gai-link" href={`/google-ai/pricing?scenario=${s.id}`}>Change the assumptions in the pricing calculator →</Link>
@@ -809,7 +820,11 @@ function WorkloadPick({ today, initial }: { today: string; initial: string | nul
       {fit.ranked.length === 0 ? (
         <div style={{ marginTop: 12 }}>
           <Empty title="No model can be costed for this workload">
-            {fit.uncovered.length + fit.unpriced.length === 0 ? "No model is recorded." : `${fit.unpriced.length} ${fit.unpriced.length === 1 ? "model accepts" : "models accept"} the required inputs but ${fit.unpriced.length === 1 ? "has" : "have"} no token list price in effect today; ${fit.uncovered.length} do not list the required inputs.`}
+            {fit.uncovered.length + fit.unpriced.length === 0
+              ? "No model is recorded."
+              : loose
+                ? `None of the ${fit.uncovered.length + fit.unpriced.length} live models has a token list price in effect today.`
+                : `${fit.unpriced.length} ${fit.unpriced.length === 1 ? "model accepts" : "models accept"} the required inputs but ${fit.unpriced.length === 1 ? "has" : "have"} no token list price in effect today; ${fit.uncovered.length} are not recorded as accepting every required input (${s.needs.join(" + ")}). An input that is missing from the record may be supported but unconfirmed; tick the box above to rank those models too.`}
           </Empty>
         </div>
       ) : (
@@ -817,17 +832,20 @@ function WorkloadPick({ today, initial }: { today: string; initial: string | nul
           <table className="gai-table">
             <thead><tr><th className="num">#</th><th>Model</th><th>Priced on</th><th className="num">Per month</th><th className="num">Per completed task</th><th>Notes from the cost engine</th><th>Price evidence</th></tr></thead>
             <tbody>
-              {fit.ranked.map(({ row, est }, i) => {
+              {fit.ranked.map(({ row, est, missing }, i) => {
                 const recs = est.recordIds.flatMap((id) => (PRICE_BY_ID[id] ? [PRICE_BY_ID[id]] : []));
                 return (
                   <tr key={row.e.id}>
                     <td className="num">{i + 1}</td>
-                    <td><ModelLink id={row.e.id} /><span className="gai-mc-sub">{providerName(row.e.providerId)}</span></td>
+                    <td>
+                      <ModelLink id={row.e.id} /><span className="gai-mc-sub">{providerName(row.e.providerId)}</span>
+                      {missing.length > 0 && <span className="gai-mc-meta"><span className="gai-tag" title="The model's recorded inputs do not include this">not recorded as accepting {missing.join(", ")}</span></span>}
+                    </td>
                     <td className="gai-small">{est.surface ? surfaceLabel(est.surface) : "not recorded"}{est.surface === "third-party-host" ? " — not the developer's own price" : ""}</td>
                     <td className="num">{usd(est.monthly, 0)}</td>
                     <td className="num">{usd(est.perTask)}</td>
                     <td>{est.notes.length ? <ul className="gai-mc-notes">{est.notes.map((n) => <li key={n}>{n}</li>)}</ul> : <span className="gai-muted gai-small">no caveat raised</span>}</td>
-                    <td><span className="gai-mc-meta" style={{ marginTop: 0 }}>{recs[0] && <Ev label={recs[0].label} short />}<Cites ids={uniq(recs.flatMap((p) => p.sourceIds))} align="right" /></span></td>
+                    <td className="gai-mc-nowrap"><span className="gai-mc-meta" style={{ marginTop: 0, flexWrap: "nowrap" }}>{recs[0] && <Ev label={recs[0].label} short />}<Cites ids={uniq(recs.flatMap((p) => p.sourceIds))} align="right" /></span></td>
                   </tr>
                 );
               })}
@@ -837,7 +855,7 @@ function WorkloadPick({ today, initial }: { today: string; initial: string | nul
       )}
       <p className="gai-small gai-muted" style={{ marginTop: 8 }}>
         Each estimate is sourced list prices multiplied by the assumptions above; the result is this site&apos;s arithmetic, not a quote. Ranked by monthly cost, lowest first.
-        {fit.uncovered.length > 0 ? ` Left out because their recorded inputs do not cover ${s.needs.join(" + ")} (${fit.uncovered.length}): ${names(fit.uncovered)}.` : ""}
+        {fit.uncovered.length > 0 && fit.ranked.length > 0 ? ` Left out because ${loose ? "they have no token list price in effect today" : `their recorded inputs do not cover ${s.needs.join(" + ")}`} (${fit.uncovered.length}): ${names(fit.uncovered)}.` : ""}
         {fit.unpriced.length > 0 && fit.ranked.length > 0 ? ` Left out because no token list price is in effect today (${fit.unpriced.length}): ${names(fit.unpriced)}.` : ""}
         {fit.retired > 0 ? ` ${fit.retired} deprecated or retired ${fit.retired === 1 ? "model is" : "models are"} not considered.` : ""}
       </p>

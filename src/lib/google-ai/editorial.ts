@@ -50,7 +50,69 @@ export interface ReviewerReport {
 }
 
 /** Independent review, written after the build by five reviewer roles. Filled in below. */
-export const REVIEW: ReviewerReport[] = [];
+export const REVIEW: ReviewerReport[] = [
+  {
+    role: "AI research scientist",
+    lens: "Are model facts and benchmark comparisons technically sound?",
+    verdict: "Comparisons are governed correctly: results are only ranked against each other when the benchmark and its version match, and provider-reported numbers never share a ranking with independent ones. Coverage of benchmarks is thin, and that is stated rather than papered over.",
+    findings: [
+      { severity: "major", finding: "The Artificial Analysis index appeared under two version strings (v5 and v5.0), which split comparable results into two groups that the comparison view treated as not comparable.", resolution: "Version strings are normalised when the dataset is built; the six results now sit in one group.", status: "fixed" },
+      { severity: "major", finding: "Some Gemini 4 Carbon and GPT-6 scores come from a rival's launch tables.", resolution: "They are recorded as provider-reported with a limitation naming who reported them, and are kept out of independent rankings.", status: "accepted-limitation" },
+      { severity: "major", finding: "Flagship / mid / light labels for the Gemini 4 element names are not Google's.", resolution: "Stated in the research notes shown under Limitations; the labels are used only for grouping.", status: "accepted-limitation" },
+      { severity: "minor", finding: "Several defined benchmarks (SWE-bench Verified, GPQA Diamond, ARC-AGI-2, output speed) have no recorded result, so the speed and multimodal comparison modes are empty.", resolution: "The views show an explicit empty state. Filling them needs licensed or directly fetched leaderboard data.", status: "open" },
+      { severity: "minor", finding: "Context windows, output limits and model ids for Google models come from pages that could only be read through search extracts.", resolution: "Sources carry that access level; unconfirmed fields are listed on each model's dossier instead of being filled in.", status: "accepted-limitation" },
+    ],
+  },
+  {
+    role: "Google Cloud enterprise architect",
+    lens: "Would a customer architect trust the product map, stages and names?",
+    verdict: "The product map is accurate to Google Cloud's own pages as of the verification date, including the 2026 renames. Stage data is the weak point for the newest components, and the time machine is only as complete as the dated history behind it.",
+    findings: [
+      { severity: "blocker", finding: "Two products were shown as retired because a record about a preview id being shut down was typed as a retirement of the product.", resolution: "Such records are now stored as updates when the product itself is still listed as live; the stage shown matches the catalogue.", status: "fixed" },
+      { severity: "major", finding: "In the time machine, models with only an 'announced' event were shown as still 'announced' years later.", resolution: "'Announced' is trusted only while nothing shows the product later shipped; otherwise the stage reads 'not recorded'.", status: "fixed" },
+      { severity: "major", finding: "Many Google products had no introduction date and were therefore missing from the time machine.", resolution: "Dates are derived from recorded launch events where they exist, and a separate sourced pass added more. The rest stay out of as-of views, and the view counts them.", status: "accepted-limitation" },
+      { severity: "major", finding: "Google's pages have used 'Gemini platform' and 'Gemini for business' since October 2026 without a formal rename.", resolution: "Canonical names are kept; the newer wording is recorded as aliases, so search finds either, and the drift is listed as a development.", status: "accepted-limitation" },
+      { severity: "minor", finding: "The stage of Agent Compute Engine, the Managed Agents API and Smart Routing is unclear in Google's own material.", resolution: "Recorded at the most conservative stage the sources support; the enterprise view computes readiness from these stages and tells the reader to check each dossier.", status: "open" },
+    ],
+  },
+  {
+    role: "AI economics analyst",
+    lens: "Are prices right, dated correctly and costed honestly?",
+    verdict: "Google Cloud list prices were read from the official price list and re-checked by the monitoring job against the live page. Effective dates are handled correctly, including introductory prices with published end dates. Prices outside Google Cloud rest on weaker access and are labelled so.",
+    findings: [
+      { severity: "blocker", finding: "On its first live run the price watcher raised ten false price-change alerts: it read introductory and scheduled tables for the same model, and meters priced in other units.", resolution: "It now checks Google text models only, reads every table headed by the model's name and passes when any shows the expected price. The re-run matched every price it could find on the page and raised no alert.", status: "fixed" },
+      { severity: "major", finding: "An older internal catalogue lists a Gemini 3.1 Pro rise to $2.50 / $15; Google's price list does not.", resolution: "The knowledge base records $2 / $12 from the price list read directly, and says so under Limitations.", status: "fixed" },
+      { severity: "major", finding: "Overlapping price records for the same meter would make 'the price on a date' ambiguous.", resolution: "Building the dataset closes each record when a later one starts and drops exact duplicates; a test fails if any overlap remains.", status: "fixed" },
+      { severity: "major", finding: "Where the price page gives no start date, a start date had to be assumed.", resolution: "The record's note states the assumption (release date or observation date).", status: "accepted-limitation" },
+      { severity: "major", finding: "Gemini Enterprise seat prices and most competitor API prices could not be read from the vendor's own page.", resolution: "Competitor prices from trackers are labelled independent measurement, not verified fact; conflicting seat prices are flagged as indicative.", status: "accepted-limitation" },
+      { severity: "minor", finding: "The calculator covers text tokens only; audio, image and video meters are recorded but not costed.", resolution: "Stated in the calculator and under Limitations; the voice workload says so explicitly.", status: "open" },
+    ],
+  },
+  {
+    role: "Competitive intelligence analyst",
+    lens: "Is the competitive picture balanced and free of manufactured causation?",
+    verdict: "Battleground assessments are labelled as interpretation, say where Google trails, and rest on cited positions. Rival coverage is deliberately shallower than Google's and is weakest for the Chinese labs.",
+    findings: [
+      { severity: "major", finding: "The same development appeared twice on the timeline when it existed both as a curated milestone and as a feed item with a different headline.", resolution: "Items within a day of each other, from the same company, that share most title words or name the same product are folded into one event.", status: "fixed" },
+      { severity: "major", finding: "Placing Google and rival events side by side invites a causal reading.", resolution: "The comparison is presented as context only, with a standing caveat that closeness in time is not evidence of cause; no view infers a response.", status: "accepted-limitation" },
+      { severity: "minor", finding: "Several rival facts (corporate changes at xAI, unreleased model status at DeepSeek and Alibaba) rest on secondary reporting.", resolution: "Marked with their access level and verification state.", status: "accepted-limitation" },
+      { severity: "minor", finding: "Battlegrounds list positions for two to four rivals each, not the full field.", resolution: "The matrix shows a filled cell only where a sourced position exists and says an empty cell means 'not recorded', not 'absent'.", status: "open" },
+    ],
+  },
+  {
+    role: "Product and editorial quality",
+    lens: "Is it usable, honest about freshness, and consistent?",
+    verdict: "Every page was walked in a browser in light and dark mode at desktop and phone widths with no script errors and no sideways scrolling. Freshness is reported from what the pipeline actually did. The pages are long and data-heavy, and assistive-technology testing has not been done.",
+    findings: [
+      { severity: "blocker", finding: "Compare and Pricing scrolled sideways on phones: visually hidden text inside wide tables escaped its scroll container.", resolution: "Scroll containers now contain their hidden text; all pages measure zero overflow at 390px.", status: "fixed" },
+      { severity: "major", finding: "One-word aliases such as 'Search' or 'Flow' made the pipeline and the analyst link unrelated text to products.", resolution: "Free-text matching now needs the product's name, a former name, a model id or a multi-word alias. Search still accepts short aliases typed by a person.", status: "fixed" },
+      { severity: "major", finding: "The executive brief did not show which items were only partially verified.", resolution: "Brief and feed rows now carry the verification state when it is not 'verified'.", status: "fixed" },
+      { severity: "minor", finding: "Radar labels were clipped, dates wrapped, and scheduled price changes listed one row per tier and region.", resolution: "Chart padding and column widths fixed; scheduled changes are grouped to one line per product and date.", status: "fixed" },
+      { severity: "major", finding: "The whole dataset is sent to the browser (about 1.6 MB before compression).", resolution: "Acceptable at this size; beyond it the data should move behind an API with per-page queries.", status: "open" },
+      { severity: "major", finding: "No screen-reader or keyboard-only test of the charts has been run.", resolution: "Charts have text alternatives and table views, but this has not been verified with assistive technology.", status: "open" },
+    ],
+  },
+];
 
 /** What this product does not do, or does not do yet. */
 export const LIMITATIONS: { area: string; text: string }[] = [

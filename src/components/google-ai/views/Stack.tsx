@@ -93,7 +93,10 @@ function LayerRow({ layer, entities, total, sel, related, onPick }: { layer: Lay
   const groups = useMemo(() => {
     const g: Record<string, Entity[]> = {};
     for (const e of entities) (g[e.group ?? "Other"] ??= []).push(e);
-    return Object.entries(g).sort((a, b) => b[1].length - a[1].length);
+    // Newest first: groups by their most recent member, members by introduction date. Undated items go last.
+    const newest = (list: Entity[]) => list.reduce((m, e) => ((e.introducedAt ?? "") > m ? (e.introducedAt as string) : m), "");
+    for (const list of Object.values(g)) list.sort((a, b) => (b.introducedAt ?? "").localeCompare(a.introducedAt ?? "") || a.name.localeCompare(b.name));
+    return Object.entries(g).sort((a, b) => newest(b[1]).localeCompare(newest(a[1])) || b[1].length - a[1].length);
   }, [entities]);
   const touched = !sel || entities.some((e) => e.id === sel || related.has(e.id));
   return (
@@ -157,9 +160,9 @@ function AgentArchitecture() {
   const s = AGENT_FLOW[step];
   return (
     <Sec title="How an enterprise agent is put together" sub="Follow one request from the person who asks to the systems that act. Each step lists the Google components that do that job; components not yet in the knowledge base are left out rather than assumed.">
-      <div className="gai-chipset" role="tablist" aria-label="Steps of an agent request">
+      <div className="gai-chipset" role="group" aria-label="Steps of an agent request">
         {AGENT_FLOW.map((f, i) => (
-          <button key={f.id} type="button" role="tab" aria-selected={i === step} className="gai-chip" aria-pressed={i === step} onClick={() => setStep(i)}>
+          <button key={f.id} type="button" className="gai-chip" aria-pressed={i === step} onClick={() => setStep(i)}>
             {i + 1}. {f.name}
           </button>
         ))}

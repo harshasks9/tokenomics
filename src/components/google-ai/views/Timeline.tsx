@@ -767,7 +767,11 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
   const items = useMemo(() => snap.entities.filter((x) => x.entity.kind !== "provider"), [snap]);
   const pending = useMemo(() => pendingAt(date), [date]);
   const bins = useMemo(() => density(events, minDate, today, 72), [events, minDate, today]);
-  const picks = useMemo(() => landmarkEvents(events, today, 6).sort((a, b) => a.date.localeCompare(b.date)), [events, today]);
+  const picks = useMemo(() => {
+    // Google's own landmarks first; fall back to every provider only when Google has too few dated events.
+    const own = events.filter((e) => e.providerId === "google");
+    return landmarkEvents(own.length >= 6 ? own : events, today, 6);
+  }, [events, today]);
   const diff = useMemo(() => (vs && vs !== date ? diffSnapshots(snapshotAt(vs, { providerId: "google" }), snap) : null), [vs, date, snap]);
   const coverage = useMemo(
     () => ({
@@ -1131,52 +1135,75 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
           {nothingPending ? (
             <p className="gai-muted gai-small">Nothing on record had been announced by this date with a later effective date.</p>
           ) : (
-            <ul className="gai-claims">
-              {pending.prices.map(({ next, current }) => (
-                <li key={next.id}>
-                  <span>
-                    <b>{fmtDate(next.effectiveFrom)}</b> · <EntityLink id={next.entityId}>{nameOn(next.entityId, date)}</EntityLink> {next.meter.replace(/-/g, " ")} price: {current ? `${usd(current.price)} → ` : ""}
-                    {usd(next.price)} <span className="gai-muted">{UNIT[next.unit] ?? next.unit}</span>
-                    {next.tier !== "standard" ? ` (${next.tier})` : ""}
-                    {next.region === "regional" ? " (regional)" : ""}
-                  </span>
-                  <span className="gai-claim-meta">
-                    <Ev label={next.label} short />
-                    <Cites ids={next.sourceIds} />
-                    <span className="gai-small gai-muted">published {fmtDate(next.publishedAt)}</span>
-                  </span>
-                </li>
-              ))}
-              {pending.lifecycle.map((l) => (
-                <li key={l.id}>
-                  <span>
-                    <b>{fmtDate(l.effectiveDate)}</b> · <EntityLink id={l.entityId}>{nameOn(l.entityId, date)}</EntityLink> — {LIFE_LABEL[l.type].toLowerCase()}
-                  </span>
-                  <span className="gai-small">{l.detail}</span>
-                  <span className="gai-claim-meta">
-                    <Ev label={l.label} short />
-                    <Cites ids={l.sourceIds} />
-                    <span className="gai-small gai-muted">announced {fmtDate(l.date)}</span>
-                  </span>
-                </li>
-              ))}
-              {pending.announcements.map((a) => (
-                <li key={a.id}>
-                  <span>
-                    <b>{fmtDate(a.effectiveDate)}</b> · <Link className="gai-link" href={`/google-ai/latest/${a.id}`}>{a.title}</Link>
-                  </span>
-                  <span className="gai-claim-meta">
-                    {a.summary[0] && <Ev label={a.summary[0].label} short />}
-                    <Cites ids={a.summary[0]?.sourceIds ?? a.sourceIds} />
-                    <span className="gai-small gai-muted">announced {fmtDate(a.date)}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="gai-stack">
+              {pending.prices.length > 0 && (
+                <div>
+                  <h3 className="gai-group-name">Prices ({pending.prices.length})</h3>
+                  <Capped rows={pending.prices} cap={5}>
+                    {({ next, current, known }) => (
+                      <li key={next.id}>
+                        <span>
+                          <b>{fmtDate(next.effectiveFrom)}</b> · <EntityLink id={next.entityId}>{nameOn(next.entityId, date)}</EntityLink> {next.meter.replace(/-/g, " ")} · {surfaceLabel(next.surface)}: {current ? `${usd(current.price)} → ` : ""}
+                          {usd(next.price)} <span className="gai-muted">{UNIT[next.unit] ?? next.unit}</span>
+                          {next.tier !== "standard" ? ` (${next.tier})` : ""}
+                          {next.region === "regional" ? " (regional)" : ""}
+                        </span>
+                        <span className="gai-claim-meta">
+                          <Ev label={next.label} short />
+                          <Cites ids={next.sourceIds} />
+                          <span className="gai-small gai-muted">
+                            {known.basis === "published" ? `published ${fmtDate(known.on)}` : known.basis === "lifecycle" ? `change announced ${fmtDate(known.on)}` : `on the source when read ${fmtDate(known.on)}`}
+                          </span>
+                        </span>
+                      </li>
+                    )}
+                  </Capped>
+                </div>
+              )}
+              {pending.lifecycle.length > 0 && (
+                <div>
+                  <h3 className="gai-group-name">Retirements and other dated changes ({pending.lifecycle.length})</h3>
+                  <Capped rows={pending.lifecycle} cap={5}>
+                    {(l) => (
+                      <li key={l.id}>
+                        <span>
+                          <b>{fmtDate(l.effectiveDate)}</b> · <EntityLink id={l.entityId}>{nameOn(l.entityId, date)}</EntityLink> — {LIFE_LABEL[l.type].toLowerCase()}
+                        </span>
+                        {l.detail && <span className="gai-small">{l.detail}</span>}
+                        <span className="gai-claim-meta">
+                          <Ev label={l.label} short />
+                          <Cites ids={l.sourceIds} />
+                          <span className="gai-small gai-muted">announced {fmtDate(l.date)}</span>
+                        </span>
+                      </li>
+                    )}
+                  </Capped>
+                </div>
+              )}
+              {pending.announcements.length > 0 && (
+                <div>
+                  <h3 className="gai-group-name">Developments ({pending.announcements.length})</h3>
+                  <Capped rows={pending.announcements} cap={5}>
+                    {(a) => (
+                      <li key={a.id}>
+                        <span>
+                          <b>{fmtDate(a.effectiveDate)}</b> · <Link className="gai-link" href={`/google-ai/latest/${a.id}`}>{a.title}</Link>
+                        </span>
+                        <span className="gai-claim-meta">
+                          {a.summary[0] && <Ev label={a.summary[0].label} short />}
+                          <Cites ids={a.summary[0]?.sourceIds ?? a.sourceIds} />
+                          <span className="gai-small gai-muted">announced {fmtDate(a.date)}</span>
+                        </span>
+                      </li>
+                    )}
+                  </Capped>
+                </div>
+              )}
+            </div>
           )}
           {pending.undatedPrices > 0 && (
             <p className="gai-small gai-muted" style={{ marginTop: 8 }}>
-              {pending.undatedPrices} later price {pending.undatedPrices === 1 ? "record has" : "records have"} no publication date, so it is not known whether {pending.undatedPrices === 1 ? "it" : "they"} had been announced by this date. {pending.undatedPrices === 1 ? "It is" : "They are"} counted here and not listed.
+              {pending.undatedPrices} later price {pending.undatedPrices === 1 ? "record carries" : "records carry"} no publication date and nothing dated shows {pending.undatedPrices === 1 ? "it was" : "they were"} public by {fmtDate(date)}. {pending.undatedPrices === 1 ? "It is" : "They are"} counted here and not listed.
             </p>
           )}
         </section>
