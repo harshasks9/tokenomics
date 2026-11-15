@@ -500,6 +500,10 @@ export interface EnterpriseWorkload {
   competitive: string;
   execution: string;
   risks: string[];
+  /** Editorial rating of business value, 1–5. An analyst judgment, shown as such. */
+  value: 1 | 2 | 3 | 4 | 5;
+  /** Example workload in the pricing calculator that approximates this one. */
+  scenarioId?: string;
   sourceIds: string[];
 }
 

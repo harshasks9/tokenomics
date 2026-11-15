@@ -5,7 +5,7 @@
  * labelled that way wherever it is shown. Product references are canonical
  * entity ids; an id that is not in the knowledge base is simply not rendered.
  */
-import type { WorkloadScenario } from "./types";
+import type { EnterpriseWorkload, WorkloadScenario } from "./types";
 
 /** Example workloads for the pricing calculator. The numbers are illustrative assumptions, not measurements. */
 export const SCENARIOS: (WorkloadScenario & { needs: ("text" | "image" | "audio" | "video" | "pdf")[] })[] = [
@@ -45,3 +45,6 @@ export const REVIEW: ReviewerReport[] = [];
 
 /** What this product does not do, or does not do yet. */
 export const LIMITATIONS: { area: string; text: string }[] = [];
+
+/** Enterprise workload guidance. Analyst interpretation throughout; the stack references canonical entities. */
+export const WORKLOADS: EnterpriseWorkload[] = [];
