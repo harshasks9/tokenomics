@@ -1,0 +1,71 @@
+/* Timeline and time machine. Every class is prefixed gai-tl-; colours come from the gai.css tokens only. */
+
+.gai-tl-controls { display: grid; gap: 10px; margin-top: 12px; }
+.gai-tl-field { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink-2); flex-wrap: wrap; }
+.gai-tl-field .gai-input { height: 32px; }
+.gai-tl-grouplabel { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-right: 2px; }
+.gai-tl-swatch { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; margin-right: 6px; }
+.gai-tl-check { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.gai-tl-check input { width: 16px; height: 16px; accent-color: var(--accent); }
+
+/* chart: a horizontally scrolling box with a sticky lane-name gutter */
+.gai-tl-scroll { margin-top: 12px; position: relative; scrollbar-width: thin; }
+.gai-tl-inner { display: flex; position: relative; }
+.gai-tl-gutter { position: sticky; left: 0; z-index: 2; flex: none; width: 104px; background: var(--surface); border-right: 1px solid var(--line); }
+.gai-tl-gutter > div { display: flex; align-items: flex-start; padding: 7px 8px 0; font-size: 12px; font-weight: 600; color: var(--ink-2); line-height: 1.25; overflow: hidden; }
+.gai-tl-gutter > div[data-alt="1"] { background: var(--surface-2); }
+.gai-tl-short { display: none; }
+.gai-tl-plot { position: relative; flex: none; }
+.gai-tl-svg { width: auto; max-width: none; }
+.gai-tl-svg .gai-tl-lanebg { fill: var(--surface-2); }
+.gai-tl-svg .gai-tl-lead { stroke: var(--line-2); stroke-width: 1; }
+.gai-tl-svg .gai-tl-today { stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.gai-tl-svg .gai-tl-todaylbl { fill: var(--ink); font-weight: 600; }
+.gai-tl-svg .gai-tl-evlabel { fill: var(--ink-2); pointer-events: none; }
+.gai-tl-svg .gai-tl-evlabel.on { fill: var(--ink); font-weight: 600; }
+.gai-tl-dot { cursor: pointer; }
+.gai-root .gai-tl-dot:focus, .gai-root .gai-tl-dot:focus-visible { outline: none; }
+.gai-tl-tip b { display: block; }
+.gai-tl-hint { margin-top: 8px; }
+.gai-tl-legend { margin-top: 8px; align-items: center; }
+.gai-tl-legend svg { vertical-align: -3px; margin-right: 5px; }
+
+/* selected-event card */
+.gai-tl-detail { margin-top: 12px; display: grid; gap: 8px; }
+.gai-tl-detail p { max-width: 80ch; }
+
+/* dated list */
+.gai-tl-year { font-family: var(--font-d); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin: 18px 0 6px; }
+.gai-tl-month { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.gai-tl-month > h4 { font-family: var(--font-m); font-size: 12px; font-weight: 500; color: var(--ink-3); padding-top: 3px; }
+.gai-tl-row { display: grid; gap: 3px; padding: 8px 10px; border-radius: 8px; }
+.gai-tl-row + .gai-tl-row { margin-top: 2px; }
+.gai-tl-row[data-on="1"] { background: var(--accent-soft); }
+.gai-tl-row h5 { font-family: var(--font-d); font-size: 15px; font-weight: 600; line-height: 1.3; margin: 0; }
+.gai-tl-row h5 a:hover { color: var(--accent); }
+.gai-tl-row p { color: var(--ink-2); font-size: 13.5px; max-width: 80ch; }
+.gai-tl-row time { font-family: var(--font-m); font-size: 11.5px; color: var(--ink-3); }
+.gai-root .gai-tl-more { color: var(--accent); font-weight: 600; font-size: 13px; margin-top: 8px; }
+.gai-root .gai-tl-more:hover { text-decoration: underline; }
+
+/* time machine */
+.gai-tl-banner { margin-top: 12px; border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 10px 12px; border-radius: 0 8px 8px 0; font-size: 14px; }
+.gai-tl-scrub { display: grid; gap: 2px; }
+.gai-tl-density { display: block; width: 100%; height: 34px; padding: 0 8px; }
+.gai-tl-density rect { fill: var(--ink-3); }
+.gai-tl-density rect[data-later="1"] { fill: var(--line-2); }
+.gai-tl-range { width: 100%; accent-color: var(--accent); margin: 0; height: 22px; }
+.gai-tl-ends { display: flex; justify-content: space-between; font-family: var(--font-m); font-size: 11.5px; color: var(--ink-3); }
+.gai-tl-layerhead { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.gai-tl-ent { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.gai-tl-statsub { font-size: 11.5px; color: var(--ink-3); }
+
+@media (max-width: 640px) {
+  .gai-tl-gutter { width: 62px; }
+  .gai-tl-gutter > div { font-size: 11px; padding: 7px 6px 0; }
+  .gai-tl-long { display: none; }
+  .gai-tl-short { display: inline; }
+  .gai-tl-month { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .gai-tl-row { padding: 8px 0; }
+  .gai-tl-row[data-on="1"] { padding: 8px; }
+}
