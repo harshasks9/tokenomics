@@ -99,5 +99,6 @@ Environment:
 
 Listed on the site under Research → Limitations (`LIMITATIONS` in `editorial.ts`) together with the five-role
 review report (`REVIEW`). The most important: most non-`cloud.google.com` sources were read through search
-extracts in the research environment; the knowledge base is a curated snapshot, not an auto-updating feed; the
+extracts in the research environment; 21 Google entries still have no sourced introduction date and are left
+out of as-of views; the knowledge base is a curated snapshot, not an auto-updating feed; the
 calculator covers text tokens only; benchmark coverage is deliberately small.

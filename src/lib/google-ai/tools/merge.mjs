@@ -207,6 +207,7 @@ note(`introducedAt derived from lifecycle for ${derived} entities`);
     const e = entities.get(ent(d.id));
     if (!e || e.introducedAt || !iso(d.introducedAt) || !sources.has(d.sourceId) || iso(d.introducedAt) > TODAY) continue;
     e.introducedAt = iso(d.introducedAt);
+    if (d.precision === "month") e.introducedPrecision = "month";
     if (!e.sourceIds.includes(d.sourceId)) e.sourceIds.push(d.sourceId);
     n++;
   }

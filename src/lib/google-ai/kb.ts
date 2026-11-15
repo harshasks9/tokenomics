@@ -14,6 +14,7 @@ import relationshipsJson from "./data/relationships.json";
 import resultsJson from "./data/results.json";
 import sourcesJson from "./data/sources.json";
 import timelineJson from "./data/timeline.json";
+import { fmtDate } from "./dates";
 import type {
   Announcement,
   AvailabilityRecord,
@@ -113,4 +114,9 @@ export function announcementsFor(id: string): Announcement[] {
 export function entityHref(e: Entity | string): string {
   const id = typeof e === "string" ? e : e.id;
   return `/google-ai/entity/${id}`;
+}
+
+/** Introduction date at the precision it is actually known to. */
+export function fmtIntro(e: Pick<Entity, "introducedAt" | "introducedPrecision">): string {
+  return fmtDate(e.introducedAt, e.introducedPrecision ?? "day");
 }

@@ -28,7 +28,7 @@ import {
   type PlacedLabel,
   type UnifiedEvent,
 } from "@/lib/google-ai/engine/timeline";
-import { ENTITIES, ENTITY_BY_ID, LAYERS, MODELS, providerName } from "@/lib/google-ai/kb";
+import { ENTITIES, ENTITY_BY_ID, LAYERS, MODELS, providerName, fmtIntro } from "@/lib/google-ai/kb";
 import type { LifecycleType, PriceRecord, TimelineTrack } from "@/lib/google-ai/types";
 import { Cites, Empty, EntityLink, Ev, Imp, Sec, Seg, Status, providerColor, usd, useHub } from "../ui";
 import "./timeline.css";
@@ -933,7 +933,7 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
                       <li key={x.entity.id}>
                         <span className="gai-tl-ent">
                           <EntityLink id={x.entity.id}>{x.name}</EntityLink>
-                          <span className="gai-small gai-muted">introduced {fmtDate(x.entity.introducedAt)}</span>
+                          <span className="gai-small gai-muted">introduced {fmtIntro(x.entity)}</span>
                           <Cites ids={x.entity.sourceIds} />
                         </span>
                       </li>
@@ -1077,7 +1077,7 @@ function TimeMachine({ events, today, minDate, date, setDate, vs, setVs }: { eve
                         <td>
                           <Link className="gai-link" href={`/google-ai/entity/${m.id}`}>{name}</Link>
                         </td>
-                        <td>{fmtDate(m.introducedAt)}</td>
+                        <td>{fmtIntro(m)}</td>
                         <td><StageThen status={status} /></td>
                         <td className="num">{rec ? priceText(price.input) : "—"}</td>
                         <td className="num">{rec ? priceText(price.output) : "—"}</td>
