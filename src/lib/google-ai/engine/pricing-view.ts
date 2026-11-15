@@ -76,6 +76,9 @@ export function isInfraRecord(p: PriceRecord): boolean {
   return p.surface === "infrastructure";
 }
 
+/** Price records by id (cost lines and history points refer to records by id). */
+export const PRICE_BY_ID: Record<string, PriceRecord> = Object.fromEntries(PRICES.map((p) => [p.id, p]));
+
 function uniq<T>(xs: T[]): T[] {
   return [...new Set(xs)];
 }
@@ -554,6 +557,8 @@ export interface StepSegment {
   recordId: string;
   /** True when the next segment starts exactly where this one ends. */
   joins: boolean;
+  /** True when the price still applies on `to` (the segment stops at today or the horizon, not at a change). */
+  openEnd: boolean;
 }
 
 /**
@@ -561,19 +566,25 @@ export interface StepSegment {
  * A price in effect is drawn to the next change or, when none is published, to today — never into an unpublished future.
  * A scheduled price is drawn to the chart horizon. A recorded end date with no successor leaves a visible gap.
  */
-export function stepSegments(points: PricePoint[], today: string, horizon: string, records: Record<string, PriceRecord>): StepSegment[] {
+export function stepSegments(points: PricePoint[], today: string, horizon: string, records: Record<string, PriceRecord> = PRICE_BY_ID): StepSegment[] {
   const out: StepSegment[] = [];
   points.forEach((p, i) => {
     const next = points[i + 1]?.date;
     const end = records[p.recordId]?.effectiveTo;
     const endNext = end ? addDays(end, 1) : undefined;
     let to = p.scheduled ? horizon : today;
-    if (next && endNext) to = next < endNext ? next : endNext;
-    else if (next) to = next;
-    else if (endNext) to = endNext;
-    if (to > horizon) to = horizon;
+    let openEnd = true;
+    const stop = next && endNext ? (next < endNext ? next : endNext) : next ?? endNext;
+    if (stop) {
+      to = stop;
+      openEnd = false;
+    }
+    if (to > horizon) {
+      to = horizon;
+      openEnd = true;
+    }
     if (to < p.date) to = p.date;
-    out.push({ from: p.date, to, price: p.price, scheduled: p.scheduled, recordId: p.recordId, joins: !!next && to === next });
+    out.push({ from: p.date, to, price: p.price, scheduled: p.scheduled, recordId: p.recordId, joins: !!next && to === next, openEnd });
   });
   return out;
 }
@@ -581,7 +592,7 @@ export function stepSegments(points: PricePoint[], today: string, horizon: strin
 /** The segment covering a date, if any. */
 export function segmentOn(segments: StepSegment[], date: string): StepSegment | undefined {
   let hit: StepSegment | undefined;
-  for (const s of segments) if (s.from <= date && (date < s.to || (date === s.to && !s.joins))) hit = s;
+  for (const s of segments) if (s.from <= date && (date < s.to || (date === s.to && s.openEnd))) hit = s;
   return hit;
 }
 
@@ -609,7 +620,9 @@ export function logTicks(min: number, max: number): number[] {
   while (b - 1 >= 0 && out[b - 1] >= max) b--;
   const ticks = out.slice(a, b + 1);
   // Keep the axis readable: past seven ticks, keep whole decades only.
-  return ticks.length > 7 ? ticks.filter((t) => Number.isInteger(Math.log10(t) + 1e-9) || Math.abs(Math.log10(t) - Math.round(Math.log10(t))) < 1e-9) : ticks;
+  if (ticks.length <= 7) return ticks;
+  const decades = ticks.filter((t) => Math.abs(Math.log10(t) - Math.round(Math.log10(t))) < 1e-9);
+  return decades.length >= 2 ? decades : ticks;
 }
 
 /** Month-start tick dates across a range, thinned to roughly `target` ticks. */
