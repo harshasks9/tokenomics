@@ -7,7 +7,7 @@ import { effectiveOn, statusAt } from "@/lib/google-ai/engine/asof";
 import { surfaceLabel } from "@/lib/google-ai/engine/answer";
 import { TYPE_LABEL } from "@/lib/google-ai/engine/brief";
 import { lineage, neighbors } from "@/lib/google-ai/engine/graph";
-import { AVAILABILITY_BY_ENTITY, BENCHMARK_BY_ID, ENTITY_BY_ID, LAYER_BY_ID, LIFECYCLE_BY_ENTITY, PRICES_BY_ENTITY, RESULTS_BY_MODEL, SOURCE_BY_ID, announcementsFor, providerName } from "@/lib/google-ai/kb";
+import { AVAILABILITY_BY_ENTITY, BENCHMARK_BY_ID, ENTITY_BY_ID, LAYER_BY_ID, LIFECYCLE_BY_ENTITY, PRICES_BY_ENTITY, RESULTS_BY_MODEL, SOURCE_BY_ID, announcementsFor, providerName, fmtIntro } from "@/lib/google-ai/kb";
 import type { DossierKey, PriceRecord } from "@/lib/google-ai/types";
 import { EgoGraph, RelationList } from "../viz";
 import { ACCESS_LABEL, Cites, Claims, Empty, EntityLink, Ev, Status, compact, usd, useHub } from "../ui";
@@ -40,7 +40,9 @@ export default function Dossier({ id }: { id: string }) {
 
   const d = e.dossier ?? {};
   const has = (k: DossierKey) => (d[k]?.length ?? 0) > 0;
-  const st = statusAt(e, today);
+  const dated = statusAt(e, today);
+  // Today's stage: dated lifecycle evidence when there is any, otherwise the stage recorded in the catalogue.
+  const st = dated.evidenced ? dated : { ...dated, status: e.status };
   const m = e.model;
   const technical = mode !== "executive";
   const parts: { n: number; id: string; title: string; filled: boolean; tech?: boolean; body: ReactNode }[] = [
@@ -83,7 +85,7 @@ export default function Dossier({ id }: { id: string }) {
     { n: 9, id: "use-cases", title: "Use cases", filled: has("useCases"), body: <Claims claims={d.useCases} /> },
     { n: 10, id: "availability", title: "Availability", filled: true, body: (
       <>
-        <p className="gai-small">Stage today: <Status status={st.status} /> {st.since ? `since ${fmtDate(st.since)}` : ""}{!st.evidenced ? " — no dated stage change is recorded, so this is the catalogue status" : ""}</p>
+        <p className="gai-small">Stage today: <Status status={st.status} /> {st.since ? `since ${fmtDate(st.since)}` : ""}{!st.evidenced ? " — from the catalogue; no dated stage change is recorded" : ""}</p>
         {data.avail.length > 0 && (
           <div className="gai-tablewrap" style={{ marginTop: 8 }}>
             <table className="gai-table">
@@ -110,7 +112,7 @@ export default function Dossier({ id }: { id: string }) {
         {data.line.length > 0 && <p className="gai-small" style={{ marginBottom: 6 }}>Lineage: <b>{e.name}</b> ← {data.line.map((x, i) => <span key={x.id}>{i ? " ← " : ""}<Link className="gai-link" href={`/google-ai/entity/${x.id}`}>{x.name}</Link></span>)}</p>}
         {data.life.length ? (
           <ul className="gai-claims">{data.life.map((l) => <li key={l.id}><span><span className="gai-mono gai-muted">{fmtDate(effectiveOn(l))}</span> · <b>{l.type.replace(/-/g, " ")}</b>{effectiveOn(l) > today ? " (scheduled)" : ""} — {l.detail}{l.effectiveDate && l.effectiveDate !== l.date ? ` Announced ${fmtDate(l.date)}.` : ""}</span><span className="gai-claim-meta"><Ev label={l.label} short /><Cites ids={l.sourceIds} /></span></li>)}</ul>
-        ) : <p className="gai-muted gai-small">{e.introducedAt ? `First introduced ${fmtDate(e.introducedAt)}. No further dated events recorded.` : "No dated history recorded."}</p>}
+        ) : <p className="gai-muted gai-small">{e.introducedAt ? `First introduced ${fmtIntro(e)}. No further dated events recorded.` : "No dated history recorded."}</p>}
       </>
     ) },
     { n: 13, id: "related", title: `Related ${providerName(e.providerId)} products`, filled: data.related.length > 0, body: <><div className="gai-card" style={{ marginBottom: 10 }}><EgoGraph id={e.id} /></div><RelationList id={e.id} types={["part-of", "powers", "runs-on", "served-via", "integrates", "depends-on", "implements", "derived-from", "partnered-with", "succeeds", "renamed-from"]} /></> },
@@ -158,7 +160,7 @@ export default function Dossier({ id }: { id: string }) {
         <h1 className="gai-h1">{e.name}</h1>
         {e.formerNames?.length ? <p className="gai-muted">Formerly {e.formerNames.map((f) => f.name).join(", ")}</p> : null}
         <div className="gai-row gai-small gai-muted">
-          {e.introducedAt && <span>Introduced {fmtDate(e.introducedAt)}</span>}
+          {e.introducedAt && <span>Introduced {fmtIntro(e)}</span>}
           {e.retiredAt && <span>· {e.retiredAt > today ? "retires" : "retired"} {fmtDate(e.retiredAt)}</span>}
           <span>· last checked {fmtDate(e.lastCheckedAt)}</span>
           <button type="button" className="gai-link" onClick={() => ask(`What changed recently for ${e.name}?`)}>Ask about this</button>

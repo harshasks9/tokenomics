@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { fmtDate, yearFrac } from "@/lib/google-ai/dates";
 import { surfaceLabel } from "@/lib/google-ai/engine/answer";
 import { GOOGLE_ID, STAGE_BUCKETS, familyTree, matchesText, modelRows, priceSourceIds, type FamilyTree, type ModelRow, type StageBucket, type TreeLane, type TreeNode } from "@/lib/google-ai/engine/compare";
-import { ENTITY_BY_ID, MODELS, RESULTS, providerName } from "@/lib/google-ai/kb";
+import { ENTITY_BY_ID, MODELS, RESULTS, providerName, fmtIntro } from "@/lib/google-ai/kb";
 import type { EvidenceLabel, ModelCategory, PriceRecord } from "@/lib/google-ai/types";
 import { Cites, EV_HELP, Empty, EntityLink, Ev, Sec, Seg, Status, compact, providerColor, usd, useHub } from "../ui";
 import "./models.css";
@@ -281,7 +281,7 @@ function Catalog({ rows, providerIds, initialQuery }: { rows: ModelRow[]; provid
                       </span>
                     </td>
                     <td className="gai-mc-nowrap"><i className="gai-mc-swatch" style={{ background: providerColor(e.providerId) }} aria-hidden />{providerName(e.providerId)}</td>
-                    <td className="gai-mc-nowrap">{e.introducedAt ? fmtDate(e.introducedAt) : NR}</td>
+                    <td className="gai-mc-nowrap">{e.introducedAt ? fmtIntro(e) : NR}</td>
                     <td className="num">{spec?.contextTokens ? compact(spec.contextTokens) : NR}</td>
                     <td className="gai-small">{spec?.modalitiesIn.length ? spec.modalitiesIn.join(", ") : "not recorded"} → {spec?.modalitiesOut.length ? spec.modalitiesOut.join(", ") : "not recorded"}</td>
                     <td className="num">{priceText(price.input)}</td>
@@ -485,7 +485,7 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                       key={e.id}
                       className="gai-mc-node"
                       href={`/google-ai/entity/${e.id}`}
-                      aria-label={`${e.name}, introduced ${fmtDate(e.introducedAt)}, ${STAGE_BUCKETS.find((s) => s.id === p.node.bucket)?.label}. Open dossier.`}
+                      aria-label={`${e.name}, introduced ${fmtIntro(e)}, ${STAGE_BUCKETS.find((s) => s.id === p.node.bucket)?.label}. Open dossier.`}
                       onMouseEnter={() => setHover(e.id)}
                       onMouseLeave={() => setHover(null)}
                       onFocus={() => setHover(e.id)}
@@ -510,7 +510,7 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                   }}
                 >
                   <b>{tip.node.e.name}</b>
-                  <span className="gai-mc-tip-line">Introduced {fmtDate(tip.node.e.introducedAt)} · {STAGE_BUCKETS.find((s) => s.id === tip.node.bucket)?.label} today</span>
+                  <span className="gai-mc-tip-line">Introduced {fmtIntro(tip.node.e)} · {STAGE_BUCKETS.find((s) => s.id === tip.node.bucket)?.label} today</span>
                   <span className="gai-mc-tip-line">{tip.lane.name}</span>
                   {succeeds(tip.node.e.id).map((s) => <span key={s.rel.id} className="gai-mc-tip-line">Succeeds {ENTITY_BY_ID[s.to]?.name ?? s.to}</span>)}
                 </div>
@@ -546,7 +546,7 @@ function FamilyTreeView({ providerIds, initial, today }: { providerIds: string[]
                     <tr key={n.e.id}>
                       <td>{lane.entityId ? <Link className="gai-link" href={`/google-ai/entity/${lane.entityId}`}>{lane.name}</Link> : <span className="gai-muted">{lane.name}</span>}</td>
                       <td><Link className="gai-link" href={`/google-ai/entity/${n.e.id}`}>{n.e.name}</Link></td>
-                      <td className="gai-mc-nowrap">{fmtDate(n.e.introducedAt)}</td>
+                      <td className="gai-mc-nowrap">{fmtIntro(n.e)}</td>
                       <td><Status status={n.status} short /></td>
                       <td>
                         {prev.length === 0 ? <span className="gai-muted">no predecessor recorded</span> : prev.map((s) => (

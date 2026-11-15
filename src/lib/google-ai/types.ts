@@ -190,6 +190,8 @@ export interface Entity {
   status: EntityStatus;
   /** ISO date first publicly announced or released. */
   introducedAt?: string;
+  /** Set to "month" when only the month of introduction is known (the day in introducedAt is then a placeholder). */
+  introducedPrecision?: "day" | "month";
   /** ISO date retired / shut down (when it has happened or is scheduled). */
   retiredAt?: string;
   dossier?: Partial<Record<DossierKey, Claim[]>>;

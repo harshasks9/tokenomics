@@ -9,7 +9,7 @@
  * never a source.
  */
 import { addDays, fmtDate } from "../dates";
-import { ANNOUNCEMENTS, TIMELINE, ENTITY_BY_ID, LIFECYCLE_BY_ENTITY, PRICES_BY_ENTITY, RESULTS_BY_MODEL, BENCHMARK_BY_ID, providerName } from "../kb";
+import { ANNOUNCEMENTS, TIMELINE, ENTITY_BY_ID, LIFECYCLE_BY_ENTITY, PRICES_BY_ENTITY, RESULTS_BY_MODEL, BENCHMARK_BY_ID, providerName, fmtIntro } from "../kb";
 import { resolveEntities } from "../ingest/classify";
 import type { Claim, Entity, EvidenceLabel } from "../types";
 import { existedAt, effectiveOn, nameAt, statusAt } from "./asof";
@@ -98,7 +98,7 @@ export function answer(question: string, today: string): Answer {
   for (const e of ents) {
     const name = nameAt(e, asOf);
     if (e.kind !== "provider" && e.introducedAt && !existedAt(e, asOf)) {
-      const msg = asOf < e.introducedAt ? `${e.name} had not been introduced on ${fmtDate(asOf)} (first public date in the knowledge base: ${fmtDate(e.introducedAt)}).` : `${e.name} was retired on ${fmtDate(e.retiredAt)}.`;
+      const msg = asOf < e.introducedAt ? `${e.name} had not been introduced on ${fmtDate(asOf)} (first public date in the knowledge base: ${fmtIntro(e)}).` : `${e.name} was retired on ${fmtDate(e.retiredAt)}.`;
       facts.push({ text: msg, label: "verified-fact", sourceIds: e.sourceIds, entityId: e.id });
       lines.push(msg);
       continue;
@@ -150,7 +150,7 @@ export function answer(question: string, today: string): Answer {
     if (intents.includes("when") || intents.includes("deadline") || noFeed) {
       const lc = (LIFECYCLE_BY_ENTITY[e.id] ?? []).filter((l) => l.date <= asOf).sort((a, b) => effectiveOn(a).localeCompare(effectiveOn(b)));
       for (const l of lc.slice(-5)) facts.push({ text: `${fmtDate(effectiveOn(l))}: ${l.detail}`, label: l.label, sourceIds: l.sourceIds, entityId: e.id });
-      if (!lc.length && e.introducedAt) facts.push({ text: `${e.name} was first introduced on ${fmtDate(e.introducedAt)}.`, label: "verified-fact", sourceIds: e.sourceIds, entityId: e.id });
+      if (!lc.length && e.introducedAt) facts.push({ text: `${e.name} was first introduced on ${fmtIntro(e)}.`, label: "verified-fact", sourceIds: e.sourceIds, entityId: e.id });
     }
 
     if (intents.includes("benchmark") && e.kind === "model") {

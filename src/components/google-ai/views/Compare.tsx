@@ -28,7 +28,7 @@ import {
   type Scale,
 } from "@/lib/google-ai/engine/compare";
 import { lookup } from "@/lib/google-ai/engine/pricing";
-import { BATTLEGROUNDS, BENCHMARKS, ENTITY_BY_ID, RESULTS, providerName } from "@/lib/google-ai/kb";
+import { BATTLEGROUNDS, BENCHMARKS, ENTITY_BY_ID, RESULTS, providerName, fmtIntro } from "@/lib/google-ai/kb";
 import type { BenchmarkDef, BenchmarkResult, PriceRecord } from "@/lib/google-ai/types";
 import { Cites, Claims, Empty, EntityLink, Ev, Sec, Seg, Status, compact, providerColor, usd, useHub } from "../ui";
 import "./models.css";
@@ -174,7 +174,7 @@ function HeadToHead({ today, initial }: { today: string; initial: string[] }) {
       dims: [
         { label: "Provider", cell: (r) => <Provider id={r.e.providerId} /> },
         { label: "Family", cell: (r) => (r.e.parentId ? <EntityLink id={r.e.parentId} /> : NR) },
-        { label: "Introduced", cell: (r) => (r.e.introducedAt ? fmtDate(r.e.introducedAt) : NR) },
+        { label: "Introduced", cell: (r) => (r.e.introducedAt ? fmtIntro(r.e) : NR) },
         { label: "Stage today", cell: (r) => <Status status={r.status} short /> },
         { label: "License", cell: (r) => (r.spec?.openWeights ? `Open weights · ${r.spec.license ?? "license not recorded"}` : r.spec?.license ?? (r.spec?.openWeights === false ? "Proprietary" : NR)) },
         { label: "Sources for the model facts", cell: (r) => <span className="gai-mc-meta" style={{ marginTop: 0 }}><Cites ids={r.e.sourceIds} />{r.e.verification !== "verified" && <span className="gai-tag">{r.e.verification.replace("-", " ")}</span>}</span> },

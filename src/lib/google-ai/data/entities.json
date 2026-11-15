@@ -57,9 +57,11 @@
   "sourceIds": [
    "m-gcp-pricing",
    "m-cb-nbga",
-   "m-cb-nb2"
+   "m-cb-nb2",
+   "d-gc-nano-banana-vertex"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-08-26"
  },
  {
   "id": "gemini-omni",
@@ -97,7 +99,8 @@
   "sourceIds": [
    "m-gcp-pricing",
    "m-cb-live38",
-   "s-x-9to5-live-free"
+   "s-x-9to5-live-free",
+   "d-pk-live-api"
   ],
   "lastCheckedAt": "2026-11-15",
   "dossier": {
@@ -112,7 +115,8 @@
      "confidence": "medium"
     }
    ]
-  }
+  },
+  "introducedAt": "2024-12-11"
  },
  {
   "id": "imagen",
@@ -127,9 +131,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-gcd-versions"
+   "m-gcd-versions",
+   "d-pk-imagen-paper"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2022-05-23"
  },
  {
   "id": "veo",
@@ -145,9 +151,11 @@
   "sourceIds": [
    "m-gcp-pricing",
    "m-cb-veo31lite",
-   "m-gcd-veo31"
+   "m-gcd-veo31",
+   "a-pk-google-history"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-05-14"
  },
  {
   "id": "lyria",
@@ -162,9 +170,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-gapi-changelog"
+   "m-gapi-changelog",
+   "d-pk-lyria"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-11-16"
  },
  {
   "id": "gemini-embedding",
@@ -179,9 +189,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-cb-aimonth"
+   "m-cb-aimonth",
+   "d-gdb-gemini-embedding-exp"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-03-07"
  },
  {
   "id": "gemma",
@@ -197,9 +209,11 @@
   "sourceIds": [
    "m-gcp-pricing",
    "m-bg-gemma4",
-   "m-pk-gemma3"
+   "m-pk-gemma3",
+   "a-pk-google-history"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-02-21"
  },
  {
   "id": "gemini-robotics",
@@ -215,9 +229,11 @@
   "sourceIds": [
    "m-gcp-pricing",
    "m-cb-er2",
-   "m-pr-robotics2"
+   "m-pr-robotics2",
+   "d-dm-gemini-robotics"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-03-12"
  },
  {
   "id": "genie",
@@ -231,9 +247,11 @@
   "status": "experimental",
   "verification": "unverified",
   "sourceIds": [
-   "m-pr-genie"
+   "m-pr-genie",
+   "d-pk-genie-paper"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-02-23"
  },
  {
   "id": "gemini-4-argon",
@@ -1359,9 +1377,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "a-pr-g38flash"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-09-02"
  },
  {
   "id": "gemini-3-5-flash-cyber",
@@ -1626,9 +1646,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "d-gc-nano-banana-vertex"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-08-26"
  },
  {
   "id": "gemini-2-5-flash-live",
@@ -1715,9 +1737,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-pr-computeruse"
+   "m-pr-computeruse",
+   "d-bg-computer-use"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-10-07"
  },
  {
   "id": "gemini-2-0-flash",
@@ -2283,9 +2307,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "d-pk-imagen3"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-05-14"
  },
  {
   "id": "veo-3-1",
@@ -2375,9 +2401,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-cb-veo31lite"
+   "m-cb-veo31lite",
+   "d-gdb-veo31"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-10-15"
  },
  {
   "id": "veo-3-1-lite",
@@ -2504,9 +2532,12 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "d-aa-veo3-fast"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-06-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "veo-2",
@@ -2626,9 +2657,11 @@
   "verification": "unverified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-cb-omni12"
+   "m-cb-omni12",
+   "d-da-omni11"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-08-27"
  },
  {
   "id": "gemini-omni-1-2-flash",
@@ -2863,9 +2896,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "m-cb-aimonth"
+   "m-cb-aimonth",
+   "s-x-bg-live31"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-03-26"
  },
  {
   "id": "gemini-3-8-flash-tts",
@@ -3081,9 +3116,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "m-gapi-deprecations"
+   "m-gapi-deprecations",
+   "d-bg-live-translate"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-06-09"
  },
  {
   "id": "lyria-3-pro",
@@ -3191,9 +3228,11 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "d-dm-lyria2"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-04-24"
  },
  {
   "id": "gemini-embedding-001",
@@ -3225,9 +3264,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "d-gdb-gemini-embedding-exp"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-03-07"
  },
  {
   "id": "gemini-embedding-2",
@@ -3625,9 +3666,11 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "m-pr-genie"
+   "m-pr-genie",
+   "s-x-dm-genie3"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-08-05"
  },
  {
   "id": "gemini-deep-research",
@@ -3717,9 +3760,11 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "m-pr-deepthink"
+   "m-pr-deepthink",
+   "d-9to5-deepthink"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-11-18"
  },
  {
   "id": "alphafold-3",
@@ -3835,9 +3880,11 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "m-pr-timesfm"
+   "m-pr-timesfm",
+   "d-gh-timesfm"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-09-15"
  },
  {
   "id": "weathernext-2",
@@ -3863,9 +3910,11 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "m-pr-weathernext"
+   "m-pr-weathernext",
+   "d-9to5-weathernext2"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-11-17"
  },
  {
   "id": "grounding-with-google-search",
@@ -3883,7 +3932,8 @@
   "verification": "verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "s-gc-genai-pricing"
+   "s-gc-genai-pricing",
+   "d-gc-grounding-2024"
   ],
   "lastCheckedAt": "2026-11-15",
   "dossier": {
@@ -3897,7 +3947,8 @@
      "asOf": "2026-11-15"
     }
    ]
-  }
+  },
+  "introducedAt": "2024-04-09"
  },
  {
   "id": "grounding-with-google-maps",
@@ -3912,7 +3963,8 @@
   "verification": "verified",
   "sourceIds": [
    "m-gcp-pricing",
-   "s-gc-genai-pricing"
+   "s-gc-genai-pricing",
+   "d-gc-agents-next25"
   ],
   "lastCheckedAt": "2026-11-15",
   "dossier": {
@@ -3926,7 +3978,8 @@
      "asOf": "2026-11-15"
     }
    ]
-  }
+  },
+  "introducedAt": "2025-04-09"
  },
  {
   "id": "web-grounding-for-enterprise",
@@ -3956,9 +4009,11 @@
   "status": "ga",
   "verification": "verified",
   "sourceIds": [
-   "m-gcp-pricing"
+   "m-gcp-pricing",
+   "d-gc-next23-vertex"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-08-29"
  },
  {
   "id": "provisioned-throughput",
@@ -4277,9 +4332,11 @@
   "sourceIds": [
    "s-gc-tpu-page",
    "s-b-tpu8",
-   "s-b-oracle-tpu"
+   "s-b-oracle-tpu",
+   "a-pk-tpu"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2016-05-18"
  },
  {
   "id": "tpu-v5e",
@@ -4960,9 +5017,11 @@
   "sourceIds": [
    "s-b-next26-wrap",
    "s-gc-aiinfra-page",
-   "s-b-xcloud"
+   "s-b-xcloud",
+   "d-gc-next23-welcome"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-08-29"
  },
  {
   "id": "google-distributed-cloud",
@@ -5024,9 +5083,11 @@
    "s-b-gdc-next",
    "s-b-gdc-new",
    "s-b-next25-wrap",
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-gc-gdc-2021"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2021-10-12"
  },
  {
   "id": "google-sovereign-cloud",
@@ -5060,9 +5121,12 @@
   },
   "verification": "verified",
   "sourceIds": [
-   "s-gc-sovereign-page"
+   "s-gc-sovereign-page",
+   "d-gc-sovereign-2022"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2021-09-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "agent-compute-engine",
@@ -5377,9 +5441,12 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-bg-weathernext2",
-   "s-x-mittr-science"
+   "s-x-mittr-science",
+   "d-gd-weathernext-models"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-11-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "project-genie",
@@ -5417,9 +5484,11 @@
   "sourceIds": [
    "s-x-dm-genie3",
    "s-x-ys-project-genie",
-   "s-b-tpu8deep"
+   "s-b-tpu8deep",
+   "d-bg-project-genie"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-01-29"
  },
  {
   "id": "sima",
@@ -5619,9 +5688,11 @@
   "sourceIds": [
    "s-gc-gemini-overview",
    "s-x-aidev-interactions",
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "a-pk-gemini-model"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-12-13"
  },
  {
   "id": "google-ai-studio",
@@ -5672,9 +5743,11 @@
    "s-gc-gemini-overview",
    "s-b-next26-wrap",
    "s-x-fb-aistudio",
-   "s-b-argon"
+   "s-b-argon",
+   "d-pk-makersuite"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-03-14"
  },
  {
   "id": "interactions-api",
@@ -5711,9 +5784,12 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-aidev-interactions",
-   "s-b-io26"
+   "s-b-io26",
+   "d-bg-interactions-api"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-12-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "gemini-live-api",
@@ -5754,9 +5830,11 @@
   "sourceIds": [
    "s-x-bg-live31",
    "s-b-aimonth-2026",
-   "s-gc-genai-pricing"
+   "s-gc-genai-pricing",
+   "d-pk-live-api"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-12-11"
  },
  {
   "id": "gemini-enterprise-agent-platform",
@@ -5985,9 +6063,12 @@
   "sourceIds": [
    "s-gc-modelgarden-page",
    "s-b-openai",
-   "s-b-claude"
+   "s-b-claude",
+   "d-gc-model-garden-2023"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-03-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "agent-studio",
@@ -6353,9 +6434,11 @@
    "s-b-antigravity-ent",
    "s-b-aimonth-2025",
    "s-gc-platform-page",
-   "s-b-aimonth-2026"
+   "s-b-aimonth-2026",
+   "a-pr-gemini3"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-11-18"
  },
  {
   "id": "gemini-cli",
@@ -6405,9 +6488,11 @@
    "s-b-ge-intro-2025",
    "s-x-gdb-cli-transition",
    "s-x-reg-cli",
-   "s-gc-cloudassist-page"
+   "s-gc-cloudassist-page",
+   "a-pk-google-history"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-06-25"
  },
  {
   "id": "jules",
@@ -6467,9 +6552,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-aiide-fbstudio",
-   "s-x-fb-aistudio"
+   "s-x-fb-aistudio",
+   "d-pk-project-idx"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-08-08"
  },
  {
   "id": "firebase-ai-logic",
@@ -6495,9 +6582,11 @@
   },
   "verification": "verified",
   "sourceIds": [
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-pk-vertex-ai-firebase"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-05-14"
  },
  {
   "id": "gemini-code-assist",
@@ -6538,9 +6627,11 @@
    "s-gc-ge-faq",
    "s-gc-apigee-page",
    "s-b-aimonth-2025",
-   "s-x-gdb-cli-transition"
+   "s-x-gdb-cli-transition",
+   "d-gc-duet-ai-intro"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-05-10"
  },
  {
   "id": "colab-enterprise",
@@ -6571,9 +6662,11 @@
   "verification": "verified",
   "sourceIds": [
    "s-gc-platform-page",
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-gc-colab-enterprise"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-08-29"
  },
  {
   "id": "agent-development-kit",
@@ -7384,9 +7477,11 @@
   "sourceIds": [
    "s-gc-agentsearch-page",
    "s-gc-platform-page",
-   "s-gc-genai-pricing"
+   "s-gc-genai-pricing",
+   "d-gc-genai-vertex-2023"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-03-14"
  },
  {
   "id": "rag-engine",
@@ -7416,9 +7511,12 @@
   },
   "verification": "unverified",
   "sourceIds": [
-   "s-x-cm-rag-migration"
+   "s-x-cm-rag-migration",
+   "d-li-rag-newsletter"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-05-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "vector-search",
@@ -7450,9 +7548,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-gc-platform-pricing",
-   "s-gc-agentsearch-page"
+   "s-gc-agentsearch-page",
+   "d-gc-matching-engine"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2021-07-21"
  },
  {
   "id": "gemini-enterprise-connectors",
@@ -7534,9 +7634,11 @@
   "sourceIds": [
    "s-b-mcp",
    "s-b-next26-wrap",
-   "s-b-aimonth-2026"
+   "s-b-aimonth-2026",
+   "d-gc-mcp-servers"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-12-10"
  },
  {
   "id": "apigee",
@@ -7770,9 +7872,11 @@
   "sourceIds": [
    "s-b-aimonth-2026",
    "s-gc-cx-page",
-   "s-x-lf-a2a"
+   "s-x-lf-a2a",
+   "a-gc-ai-monthly"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-01-11"
  },
  {
   "id": "a2ui-protocol",
@@ -7800,9 +7904,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-gdb-a2ui"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-12-15"
  },
  {
   "id": "open-knowledge-format",
@@ -7830,9 +7936,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "s-b-aimonth-2026"
+   "s-b-aimonth-2026",
+   "a-gc-okf"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-06-12"
  },
  {
   "id": "computer-use",
@@ -7875,9 +7983,11 @@
    "s-gc-genai-pricing",
    "s-b-geap-intro",
    "s-x-aiwiki-mariner",
-   "s-x-ah-mariner"
+   "s-x-ah-mariner",
+   "d-bg-computer-use"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-10-07"
  },
  {
   "id": "codemender",
@@ -7915,9 +8025,11 @@
   "sourceIds": [
    "s-b-aimonth-2026",
    "s-b-geap-whatsnew",
-   "s-gc-genai-pricing"
+   "s-gc-genai-pricing",
+   "d-sa-codemender"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-10-06"
  },
  {
   "id": "gemini-enterprise",
@@ -8496,9 +8608,11 @@
    "s-gc-cx-page",
    "s-b-aimonth-2026",
    "s-b-next26-wrap",
-   "s-b-next25-wrap"
+   "s-b-next25-wrap",
+   "a-gc-ai-monthly"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-01-11"
  },
  {
   "id": "cx-agent-studio",
@@ -8657,9 +8771,11 @@
    "s-b-gaw26",
    "s-x-9to5-ws-2025",
    "s-x-cr-ws-2025",
-   "s-gc-ge-faq"
+   "s-gc-ge-faq",
+   "d-pk-workspace-genai"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-03-14"
  },
  {
   "id": "google-workspace-business-starter",
@@ -8687,9 +8803,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-ws-support-pricing",
-   "s-x-9to5-ws-2025"
+   "s-x-9to5-ws-2025",
+   "d-pk-workspace-launch"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2020-10-06"
  },
  {
   "id": "google-workspace-business-standard",
@@ -8717,9 +8835,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-ws-support-pricing",
-   "s-x-9to5-ws-2025"
+   "s-x-9to5-ws-2025",
+   "d-pk-workspace-launch"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2020-10-06"
  },
  {
   "id": "google-workspace-business-plus",
@@ -8747,9 +8867,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-ws-support-pricing",
-   "s-x-9to5-ws-2025"
+   "s-x-9to5-ws-2025",
+   "d-pk-workspace-launch"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2020-10-06"
  },
  {
   "id": "workspace-ai-expanded-access",
@@ -8777,9 +8899,11 @@
   },
   "verification": "partially-verified",
   "sourceIds": [
-   "s-x-wsu-expanded"
+   "s-x-wsu-expanded",
+   "d-wsu-ai-expanded"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-02-05"
  },
  {
   "id": "gemini-notebook-enterprise",
@@ -8854,9 +8978,11 @@
   },
   "verification": "verified",
   "sourceIds": [
-   "s-gc-gemini-overview"
+   "s-gc-gemini-overview",
+   "d-gc-duet-ai-intro"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-05-10"
  },
  {
   "id": "gemini-cloud-assist",
@@ -8897,9 +9023,11 @@
   "sourceIds": [
    "s-gc-cloudassist-page",
    "s-gc-gemini-overview",
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-gc-gemini-for-gc"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-04-09"
  },
  {
   "id": "gemini-in-bigquery",
@@ -8934,9 +9062,11 @@
   "sourceIds": [
    "s-gc-bigquery-page",
    "s-gc-gemini-overview",
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-gc-duet-preview-next23"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-08-29"
  },
  {
   "id": "gemini-in-looker",
@@ -8965,9 +9095,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-gc-gemini-overview",
-   "s-b-next26-wrap"
+   "s-b-next26-wrap",
+   "d-gc-data-next23"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2023-08-29"
  },
  {
   "id": "knowledge-catalog",
@@ -9055,9 +9187,11 @@
    "s-gc-secops-page",
    "s-b-next26-wrap",
    "s-b-next26-d1",
-   "s-gc-gemini-overview"
+   "s-gc-gemini-overview",
+   "d-gc-chronicle-secops"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2022-10-11"
  },
  {
   "id": "google-ai-threat-defense",
@@ -9085,9 +9219,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-b-aimonth-2026",
-   "s-gc-secops-page"
+   "s-gc-secops-page",
+   "a-gc-threat-defense"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2026-05-27"
  },
  {
   "id": "wiz",
@@ -9260,9 +9396,12 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-decoder-ai-plans",
-   "s-x-da-ai-plans"
+   "s-x-da-ai-plans",
+   "d-fa-ai-plus"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-09-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "google-ai-pro",
@@ -9277,9 +9416,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-9to5-ai-plans-2025",
-   "s-x-da-ai-plans"
+   "s-x-da-ai-plans",
+   "a-pk-gemini-chatbot"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-02-08"
  },
  {
   "id": "google-ai-ultra",
@@ -9481,9 +9622,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-9to5-home",
-   "s-x-9to5-home-2025"
+   "s-x-9to5-home-2025",
+   "d-bg-gemini-for-home"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-08-20"
  },
  {
   "id": "android-xr",
@@ -9512,9 +9655,11 @@
   "verification": "partially-verified",
   "sourceIds": [
    "s-x-digit-samsung",
-   "s-x-tc-s26"
+   "s-x-tc-s26",
+   "d-pk-android-xr"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2024-12-12"
  },
  {
   "id": "google-flow",
@@ -9556,9 +9701,11 @@
   "sourceIds": [
    "s-x-wsu-whisk",
    "s-x-gz-flow",
-   "s-b-aimonth-2026"
+   "s-b-aimonth-2026",
+   "d-tc-flow"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2025-05-20"
  },
  {
   "id": "google-pics",
@@ -9658,9 +9805,11 @@
   "status": "ga",
   "verification": "unverified",
   "sourceIds": [
-   "s-pk-waymo"
+   "s-pk-waymo",
+   "d-pk-self-driving"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2010-10-09"
  },
  {
   "id": "google-cloud",
@@ -9727,9 +9876,11 @@
    "s-x-q2-2026-tnw",
    "s-x-q1-2026-mb",
    "s-x-q4-2025-fool",
-   "s-b-gaw26"
+   "s-b-gaw26",
+   "d-pk-app-engine"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2008-04-07"
  },
  {
   "id": "google-cloud-marketplace",
@@ -9757,9 +9908,12 @@
   "verification": "verified",
   "sourceIds": [
    "s-gc-marketplace-page",
-   "s-b-openai"
+   "s-b-openai",
+   "d-pk-cloud-launcher"
   ],
-  "lastCheckedAt": "2026-11-15"
+  "lastCheckedAt": "2026-11-15",
+  "introducedAt": "2015-03-01",
+  "introducedPrecision": "month"
  },
  {
   "id": "agent-marketplace",
