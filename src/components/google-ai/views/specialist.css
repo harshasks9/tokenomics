@@ -1,0 +1,130 @@
+/* Specialist views: quiz and connected graph. Every class is prefixed gai-sp- and uses the hub's tokens only. */
+
+/* ── quiz ── */
+.gai-sp-step { display: grid; gap: 22px; max-width: 680px; }
+.gai-sp-field { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 8px; }
+.gai-sp-field > legend { padding: 0; font-size: 13px; font-weight: 500; color: var(--ink-3); margin-bottom: 8px; }
+.gai-sp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.gai-sp-actions .gai-btn { height: 38px; padding: 0 16px; font-size: 15px; }
+.gai-sp-quiet { color: var(--ink-3); font-size: 13px; }
+.gai-sp-textbtn { color: var(--ink-2); font-size: 14px; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; justify-self: start; }
+.gai-sp-textbtn:hover { color: var(--ink); text-decoration-color: var(--ink-2); }
+
+.gai-sp-progress { display: grid; gap: 8px; }
+.gai-sp-count { font-size: 13px; font-weight: 500; color: var(--ink-3); }
+.gai-sp-bar { height: 3px; border-radius: 2px; background: var(--surface-3); overflow: hidden; }
+.gai-sp-bar i { display: block; height: 100%; border-radius: 2px; background: var(--ink-3); transition: width 0.2s ease; }
+.gai-sp-q { font-size: clamp(19px, 2.4vw, 23px); line-height: 1.4; }
+.gai-sp-q:focus { outline: none; }
+.gai-sp-opts { display: grid; gap: 8px; }
+.gai-sp-opt { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 4px 12px; align-items: start; width: 100%; min-height: 54px; padding: 14px 16px; border: 1px solid var(--line-2) !important; border-radius: 8px; background: var(--bg); text-align: left; font-size: 15.5px; line-height: 1.45; }
+.gai-sp-opt[data-state="open"]:hover { background: var(--hover); }
+.gai-sp-opt[aria-disabled="true"] { cursor: default; }
+.gai-sp-key { width: 24px; height: 24px; border-radius: 5px; border: 1px solid var(--line-2); display: grid; place-items: center; font-size: 12.5px; font-weight: 500; color: var(--ink-3); background: var(--bg); }
+.gai-sp-opt-text { padding-top: 1px; overflow-wrap: anywhere; }
+.gai-sp-mark { grid-column: 2; font-size: 13px; font-weight: 600; }
+.gai-sp-opt[data-state="correct"] { background: var(--t-green); color: var(--t-green-ink); border-color: var(--good) !important; }
+.gai-sp-opt[data-state="wrong"] { background: var(--t-red); color: var(--t-red-ink); border-color: var(--bad) !important; }
+.gai-sp-opt[data-state="rest"] { color: var(--ink-3); }
+.gai-sp-opt[data-state="correct"] .gai-sp-key, .gai-sp-opt[data-state="wrong"] .gai-sp-key { color: inherit; border-color: currentColor; background: transparent; }
+.gai-sp-feedback { display: grid; gap: 10px; }
+.gai-sp-feedback:empty { display: none; }
+.gai-sp-verdict { font-weight: 600; font-size: 16px; }
+.gai-sp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 13px; color: var(--ink-3); }
+.gai-sp-meta .gai-link { font-size: 13.5px; }
+@media (hover: none) { .gai-sp-hint { display: none; } }
+
+.gai-sp-score { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.gai-sp-score:focus { outline: none; }
+.gai-sp-missed { display: grid; gap: 6px; }
+.gai-sp-missed li { padding-left: 14px; position: relative; }
+.gai-sp-missed li::before { content: "•"; position: absolute; left: 2px; color: var(--ink-3); }
+.gai-sp-review { display: grid; }
+.gai-sp-review > li { display: grid; gap: 8px; padding: 18px 0; border-top: 1px solid var(--line); }
+.gai-sp-review > li:last-child { border-bottom: 1px solid var(--line); }
+.gai-sp-rq { font-weight: 600; }
+.gai-sp-ans { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 4px 12px; font-size: 14.5px; }
+.gai-sp-ans dt { color: var(--ink-3); }
+.gai-sp-ans dd[data-ok="1"] { color: var(--good); font-weight: 500; }
+.gai-sp-ans dd[data-ok="0"] { color: var(--bad); font-weight: 500; }
+.gai-sp-explain { color: var(--ink-2); font-size: 14.5px; }
+
+/* ── graph ── */
+.gai-sp-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 10px 14px; margin-bottom: 12px; }
+.gai-sp-ctl { display: grid; gap: 3px; font-size: 12.5px; font-weight: 500; color: var(--ink-3); min-width: 0; }
+.gai-sp-ctl .gai-select, .gai-sp-ctl .gai-input { font-weight: 400; color: var(--ink); }
+.gai-sp-find { position: relative; width: min(280px, 100%); }
+.gai-sp-find .gai-input { width: 100%; }
+.gai-sp-pop { position: absolute; top: 58px; left: 0; z-index: 25; width: min(400px, calc(100vw - 32px)); max-height: 320px; overflow: auto; background: var(--bg); border-radius: 6px; box-shadow: var(--shadow); padding: 6px; }
+.gai-sp-pop button { display: flex; align-items: baseline; gap: 10px; width: 100%; text-align: left; padding: 7px 9px; border-radius: 5px; font-weight: 400; color: var(--ink); }
+.gai-sp-pop button[data-on="1"], .gai-sp-pop button:hover { background: var(--hover); }
+.gai-sp-pop .t { font-weight: 500; font-size: 14px; }
+.gai-sp-pop .s { font-size: 12px; color: var(--ink-3); margin-left: auto; white-space: nowrap; }
+.gai-sp-pop .v { font-size: 12px; color: var(--warn); }
+.gai-sp-pathbox { display: grid; gap: 10px; background: var(--callout); border-radius: var(--r); padding: 12px 14px; margin-bottom: 12px; }
+.gai-sp-pathrow { display: flex; flex-wrap: wrap; align-items: end; gap: 10px 14px; }
+.gai-sp-pathrow .gai-select { width: min(260px, 100%); }
+.gai-sp-route { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 14.5px; }
+.gai-sp-route .arrow { color: var(--ink-3); }
+.gai-sp-route .rel { color: var(--ink-2); }
+
+.gai-sp-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 16px; align-items: start; }
+.gai-sp-stage { min-width: 0; display: grid; gap: 8px; }
+.gai-sp-canvas { position: relative; height: clamp(420px, 68vh, 720px); border: 1px solid var(--line); border-radius: var(--r); background: var(--surface-2); overflow: hidden; }
+.gai-sp-wait { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink-3); font-size: 14px; padding: 16px; text-align: center; }
+.gai-chart.gai-sp-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.gai-chart.gai-sp-svg:active { cursor: grabbing; }
+.gai-sp-edge { stroke: var(--line-2); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.gai-sp-edge[data-rival="1"] { stroke-dasharray: 4 3; }
+.gai-sp-edge[data-on="1"] { stroke: var(--ink-2); stroke-width: 1.5px; }
+.gai-sp-edge[data-on="2"] { stroke: var(--accent); stroke-width: 3px; }
+.gai-sp-edge[data-dim="1"] { opacity: 0.22; }
+.gai-sp-node { cursor: pointer; outline: none; }
+.gai-sp-hit { fill: transparent; stroke: none; transform: scale(calc(1 / var(--gai-sp-k, 1))); }
+.gai-sp-dot { fill: var(--s0); stroke: var(--surface-2); stroke-width: 1.5px; vector-effect: non-scaling-stroke; transform: scale(var(--gai-sp-ns, 1)); }
+.gai-sp-node[data-kind="o"] .gai-sp-dot { fill: var(--surface-2); stroke: var(--ink-3); }
+.gai-sp-node[data-kind="c"] .gai-sp-dot { fill: var(--ink); }
+.gai-sp-node[data-dim="1"] { opacity: 0.16; }
+.gai-sp-node:hover .gai-sp-dot { stroke: var(--ink); stroke-width: 2px; }
+.gai-sp-node[data-on="1"] .gai-sp-dot { stroke: var(--ink-2); stroke-width: 2px; }
+.gai-sp-node[data-on="2"] .gai-sp-dot { stroke: var(--ink); stroke-width: 3.5px; }
+.gai-sp-node[data-on="3"] .gai-sp-dot { stroke: var(--accent); stroke-width: 3.5px; }
+.gai-sp-node:focus-visible .gai-sp-dot { stroke: var(--accent); stroke-width: 4px; }
+.gai-chart.gai-sp-svg text.gai-sp-lbl { font-size: 11.5px; fill: var(--ink-2); text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: var(--surface-2); stroke-width: 3px; stroke-linejoin: round; }
+.gai-chart.gai-sp-svg text.gai-sp-lbl[data-on="1"] { fill: var(--ink); }
+.gai-chart.gai-sp-svg text.gai-sp-lbl[data-on="2"] { fill: var(--ink); font-weight: 700; font-size: 12.5px; }
+.gai-chart.gai-sp-svg text.gai-sp-lbl[data-dim="1"] { fill: var(--ink-3); opacity: 0.55; }
+.gai-sp-zoom { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 4px; }
+.gai-sp-zoom .gai-btn { min-width: 34px; height: 34px; justify-content: center; padding: 0 10px; }
+.gai-sp-tip { transform: translate(-50%, -100%); white-space: nowrap; }
+.gai-sp-tip b { display: block; }
+.gai-sp-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--ink-2); }
+.gai-sp-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+.gai-sp-legend i.o { background: var(--surface-2); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+
+.gai-sp-panel { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; max-height: clamp(420px, 68vh, 720px); overflow: auto; display: grid; gap: 12px; align-content: start; }
+.gai-sp-panel h2 { overflow-wrap: anywhere; }
+.gai-sp-sub { font-size: 12.5px; font-weight: 500; color: var(--ink-3); margin-bottom: 4px; }
+.gai-sp-rels { display: grid; gap: 5px; font-size: 14px; }
+.gai-sp-rels .rel { color: var(--ink-3); }
+.gai-sp-hop { text-align: left; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.gai-sp-hop:hover { text-decoration-color: var(--ink-2); }
+.gai-sp-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 20px; font-size: 14.5px; }
+.gai-sp-top li { display: flex; align-items: baseline; gap: 8px; }
+.gai-sp-top .n { color: var(--ink-3); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+
+@media (max-width: 1100px) {
+  .gai-sp-layout { grid-template-columns: minmax(0, 1fr); }
+  .gai-sp-panel { max-height: none; }
+  .gai-sp-top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 820px) {
+  .gai-sp-canvas { height: clamp(320px, 62vh, 440px); }
+  .gai-sp-find { width: 100%; }
+  .gai-sp-pop { width: 100%; }
+  .gai-sp-pathrow .gai-select { width: 100%; }
+  .gai-sp-pathrow .gai-sp-ctl { width: 100%; }
+  .gai-sp-top { grid-template-columns: minmax(0, 1fr); }
+  .gai-sp-ans { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .gai-sp-ans dd { margin-bottom: 6px; }
+}
