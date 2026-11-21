@@ -1,1 +1,2516 @@
-[]
+[
+ {
+  "id": "cs-o-lg-cns",
+  "customer": "LG CNS",
+  "title": "Built a Claude Code 'software factory' to modernise decades-old enterprise systems for clients",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-conglomerate"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic",
+   "aws"
+  ],
+  "products": [
+   "claude-code",
+   "amazon-bedrock",
+   "Claude Opus 4.6"
+  ],
+  "challenge": [
+   {
+    "text": "LG CNS says its customers keep deferring modernisation of 20-year-old systems (10,000-line stored procedures, Oracle Forms, end-of-service MiPlatform screens) because cost, timeline and quality risk are too high and engineers who know the systems are scarce.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-lg-cns"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic's customer story states that LG CNS's 200-engineer Build Center adopted Claude Code as its standard development approach, reaching Claude through Amazon Bedrock so the work stays inside the AWS security set-up its enterprise customers already run.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-claude-story-lg-cns"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "The team wraps Claude Code in a thin orchestration layer (legacy analysis, logic extraction, generation, testing, verification) with tasks defined in YAML and context passed between stages as files; core work runs on Claude Opus 4.6.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-lg-cns"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Anthropic announced on 2026-06-17 that LG CNS is rolling Claude out to thousands of employees and will also deploy it across LG Group.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-seoul-office"
+    ],
+    "asOf": "2026-06-17",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "On a Korean construction company's project-management system, 2,888 of 2,913 APIs (99.1%) were converted and 1,340 screens moved from MiPlatform to React.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-lg-cns"
+    ],
+    "asOf": "2026-06-30",
+    "confidence": "high"
+   },
+   {
+    "text": "LG CNS reports the rebuild ran from November 2025 to June 2026 (about seven months) at roughly half the cost of a conventional rebuild, and went live in June 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-lg-cns"
+    ],
+    "asOf": "2026-06-30",
+    "confidence": "high"
+   }
+  ],
+  "date": "2026-06-17",
+  "takeaway": "A concrete, numbers-backed example of a systems integrator turning agentic coding into a legacy-modernisation service. The model was chosen on task-completion tests, and access through the customer's existing AWS boundary was part of the decision; the figures are vendor-published and come from one project.",
+  "useWhen": "Expect it when a Korean enterprise or SI partner brings up legacy modernisation or asks why not Claude Code on Bedrock. Ask where the legacy estate and its security boundary sit today and how the customer would verify converted code; if they want the same pattern on Google Cloud, discuss it on those terms rather than disputing the result.",
+  "sourceIds": [
+   "co-claude-story-lg-cns",
+   "co-anthropic-seoul-office"
+  ]
+ },
+ {
+  "id": "cs-o-sk-telecom",
+  "customer": "SK Telecom",
+  "title": "Fine-tuned Claude on Amazon Bedrock to assist contact-centre agents during and after calls",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic",
+   "aws"
+  ],
+  "products": [
+   "amazon-bedrock",
+   "Claude (telco fine-tuned model)"
+  ],
+  "challenge": [
+   {
+    "text": "SK Telecom wanted to keep its customer-service standing while call centres run limited hours, agents are overloaded and customers split between phone and chat; brand safety and natural Korean across regional dialects were stated requirements.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-skt"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic's customer story states that SKT selected Claude after evaluating several LLMs and serves a telco fine-tuned Claude model through Amazon Bedrock, combined with SKT's in-house retrieval model; Anthropic's 2025-10-23 Seoul announcement names SKT as having built a custom customer-service model with Claude.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-claude-story-skt",
+     "co-anthropic-seoul-plan"
+    ],
+    "asOf": "2025-10-23",
+    "confidence": "high"
+   },
+   {
+    "text": "Two applications are described: In-Call Assist (real-time document search and suggested answers for agents) and Post-Call Processing (summaries, topic classification, to-do lists and sentiment analysis, with human review).",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-skt"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Human agents' quality ratings of LLM responses in in-call assistance rose 34%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-skt"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Low-quality responses from the telco fine-tuned model fell 68% compared with the base model.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-skt"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Post-call processing quality is reported at about 89% of that of human agents.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-skt"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "date": "2025-10-23",
+  "takeaway": "Shows a telco customising a frontier model (fine-tuning plus its own retrieval) rather than using it off the shelf, with throughput and latency on Bedrock treated as part of the acceptance test. Anthropic describes it as a blueprint for the telco industry; the quality metrics are SKT's own ratings.",
+  "useWhen": "Useful when a telecom customer asks about agent-assist or fine-tuning for a local language. Ask how they score answer quality today and what latency the contact centre needs, then offer an evaluation on their own transcripts; acknowledge that SKT's human-in-the-loop design is a sound pattern.",
+  "sourceIds": [
+   "co-claude-story-skt",
+   "co-anthropic-seoul-plan"
+  ]
+ },
+ {
+  "id": "cs-o-kakao",
+  "customer": "Kakao",
+  "title": "Put ChatGPT inside KakaoTalk as 'ChatGPT for Kakao'",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-media"
+  ],
+  "platform": "other",
+  "providers": [
+   "openai"
+  ],
+  "products": [
+   "chatgpt"
+  ],
+  "challenge": [
+   {
+    "text": "Kakao wanted to bring generative AI to KakaoTalk's roughly 50 million users inside the messenger they already use, rather than through a separate app.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-kakao-chatgpt-launch"
+    ],
+    "asOf": "2025-10-28",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Kakao announced on 2025-10-28 that it was rolling out 'ChatGPT for Kakao', which lets people use ChatGPT directly in KakaoTalk and sign in with an existing OpenAI account.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-kakao-chatgpt-launch"
+    ],
+    "asOf": "2025-10-28",
+    "confidence": "medium"
+   },
+   {
+    "text": "On 2026-06-16 Kakao added a ChatGPT chatbot that can be called with @ChatGPT in one-to-one and group chatrooms; the service was later extended to the KakaoTalk PC app.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-kakao-chatgpt-chatbot"
+    ],
+    "asOf": "2026-06-16",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Kakao's CEO said on the Q1 2026 earnings call that cumulative subscribers to ChatGPT for Kakao had passed 11 million.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-asiae-kakao-q1-2026"
+    ],
+    "asOf": "2026-05-07",
+    "confidence": "medium"
+   },
+   {
+    "text": "On the Q2 2026 call the figure was about 13 million cumulative subscribers. This is a cumulative sign-up count, not active users.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-edaily-kakao-q2-2026"
+    ],
+    "asOf": "2026-08-06",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-10-28",
+  "takeaway": "A distribution deal more than a technology choice: OpenAI's consumer product reaches a national messenger's user base in exchange for Kakao getting a ready-made assistant. Sign-up numbers are large, but the companies have not published active-use figures.",
+  "useWhen": "Comes up with Korean consumer platforms deciding whether to embed a partner's assistant or build their own. Ask which parts they need to own (the user relationship, the data, the model) and how they would measure engagement beyond sign-ups before comparing options.",
+  "sourceIds": [
+   "co-kakao-chatgpt-launch",
+   "co-kakao-chatgpt-chatbot",
+   "co-asiae-kakao-q1-2026",
+   "co-edaily-kakao-q2-2026"
+  ]
+ },
+ {
+  "id": "cs-o-bank-of-korea",
+  "customer": "Bank of Korea",
+  "title": "Runs BOKI, an on-premise generative AI service built with NAVER's HyperCLOVA X",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "other",
+  "providers": [
+   "NAVER"
+  ],
+  "products": [
+   "HyperCLOVA X",
+   "NAVER Cloud on-premise infrastructure"
+  ],
+  "challenge": [
+   {
+    "text": "The central bank wanted generative AI for research and internal work without any data leaving its closed internal network.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-naver-boki-pr",
+     "co-koreatimes-boki"
+    ],
+    "asOf": "2026-01-21",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "The Bank of Korea and NAVER announced BOKI on 2026-01-21: a generative AI service running on on-premise infrastructure inside the bank's internal network, isolated from external networks.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-koreatimes-boki",
+     "co-naver-boki-pr"
+    ],
+    "asOf": "2026-01-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "NAVER supplied the cloud infrastructure and its HyperCLOVA X model; the bank prepared more than 1.4 million internal documents for AI use.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-koreatimes-boki",
+     "co-koreaherald-boki"
+    ],
+    "asOf": "2026-01-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "Reported functions are research assistance, compliance support, document analysis, data analytics and translation.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-koreatimes-boki"
+    ],
+    "asOf": "2026-01-21",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-01-21",
+  "takeaway": "The reference point for 'sovereign AI' in Korean public and financial institutions: a domestic model, on the institution's own premises, on a closed network. No performance results have been published, and earlier reports show the launch slipped from late 2025.",
+  "useWhen": "Raised by Korean regulators, public agencies and banks that must keep data on a closed network. Ask whether the requirement is network isolation, a domestic vendor, or both; where it is isolation, an air-gapped deployment is the comparable conversation, and where it is a domestic vendor, say so plainly.",
+  "sourceIds": [
+   "co-naver-boki-pr",
+   "co-koreatimes-boki",
+   "co-koreaherald-boki"
+  ]
+ },
+ {
+  "id": "cs-o-kt",
+  "customer": "KT Corporation",
+  "title": "Co-developed a Korean model on GPT-4o and a sovereign cloud on Azure with Microsoft",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom"
+  ],
+  "platform": "other",
+  "providers": [
+   "microsoft",
+   "openai",
+   "KT"
+  ],
+  "products": [
+   "SOTA K built on GPT-4o",
+   "gpt-4o",
+   "KT Secure Public Cloud (on Azure)",
+   "microsoft-365-copilot"
+  ],
+  "challenge": [
+   {
+    "text": "KT wanted Korean-specialised AI and cloud services that meet domestic data-control expectations, for its own operations and to resell to Korean enterprises.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-kt-2024"
+    ],
+    "asOf": "2024-09-29",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "KT and Microsoft announced a partnership in September 2024 to develop Korean versions of OpenAI's GPT-4o and Microsoft's Phi models and a secure public cloud.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-kt-2024"
+    ],
+    "asOf": "2024-09-29",
+    "confidence": "medium"
+   },
+   {
+    "text": "KT launched 'SOTA K built on GPT-4o' on 2025-09-29, to be used first in its own consumer services and then offered to partner companies. Microsoft separately reports that KT staff use Copilot to draft and check content.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-asiae-kt-sotak",
+     "co-ms-1000-stories"
+    ],
+    "asOf": "2025-09-29",
+    "confidence": "medium"
+   },
+   {
+    "text": "KT launched its Secure Public Cloud, built on Azure with customer-managed encryption keys, on 2025-11-12, aimed first at financial institutions and manufacturers.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-asiae-kt-spc",
+     "co-koreaherald-kt-spc"
+    ],
+    "asOf": "2025-11-12",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "KT says SOTA K outperformed GPT-4o on Korean-language comprehension, generation and reasoning tests; these are KT's own evaluations.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-asiae-kt-sotak"
+    ],
+    "asOf": "2025-09-29",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-09-29",
+  "takeaway": "A hybrid route to sovereignty: a global frontier model localised and resold by a domestic telco on a hyperscaler's cloud with local key control. It is strong where buyers want a Korean counterparty and a familiar Microsoft estate; the benchmark claims have not been independently checked.",
+  "useWhen": "Appears when Korean enterprises say they are getting 'sovereign' AI through KT. Ask what sovereignty has to mean for them (key custody, operator nationality, data location, model origin) and compare options against that list.",
+  "sourceIds": [
+   "co-ms-kt-2024",
+   "co-asiae-kt-sotak",
+   "co-ms-1000-stories",
+   "co-asiae-kt-spc",
+   "co-koreaherald-kt-spc"
+  ]
+ },
+ {
+  "id": "cs-o-cred",
+  "customer": "CRED",
+  "title": "Adopted Claude and Claude Code across the software development lifecycle",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-fintech"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "claude-code",
+   "Claude Sonnet 4"
+  ],
+  "challenge": [
+   {
+    "text": "CRED, a fintech platform with more than 15 million users, wanted faster development cycles without lowering the quality bar required for financial services.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-cred"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic's customer story states that CRED chose Claude models for programming tasks, first through the API for design automation and then with Claude Code for writing, testing, committing and documenting code.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-claude-story-cred"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "CRED attributes broader and deeper internal adoption to Claude Sonnet 4, citing instruction-following and build-test-fix loops.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-cred"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "CRED reports execution speed for features and fixes roughly doubled.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-cred",
+     "co-anthropic-bengaluru-office"
+    ],
+    "asOf": "2026-02-16",
+    "confidence": "high"
+   },
+   {
+    "text": "CRED reports a 10% increase in test coverage across existing codebases.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-cred",
+     "co-anthropic-bengaluru-office"
+    ],
+    "asOf": "2026-02-16",
+    "confidence": "high"
+   }
+  ],
+  "date": "2026-02-16",
+  "takeaway": "A typical Indian digital-native coding win for Claude Code: chosen on perceived coding quality, with self-reported speed gains. Anthropic says India is its second-largest Claude.ai market and that nearly half of usage there is software work, so expect many similar accounts.",
+  "useWhen": "Use when an Indian fintech or startup says its engineers already prefer Claude Code. Ask how they measure delivery speed and review quality, and what they need around the coding tool (data platform, security review, cost controls); a side-by-side trial on their own repositories is more persuasive than benchmark talk.",
+  "sourceIds": [
+   "co-claude-story-cred",
+   "co-anthropic-bengaluru-office"
+  ]
+ },
+ {
+  "id": "cs-o-air-india",
+  "customer": "Air India",
+  "title": "Runs AI.g, a generative AI virtual agent for customer queries, on Azure OpenAI",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-travel"
+  ],
+  "platform": "other",
+  "providers": [
+   "microsoft",
+   "openai"
+  ],
+  "products": [
+   "microsoft-foundry",
+   "Azure OpenAI Service",
+   "gpt-4"
+  ],
+  "challenge": [
+   {
+    "text": "Air India needed to handle a fast-growing passenger base and higher service expectations without growing contact-centre costs in step.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-airindia-2024"
+    ],
+    "asOf": "2024-11-15",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Microsoft's customer story states that Air India moved workloads to Azure and built AI.g, a virtual assistant on Azure OpenAI Service, primarily GPT-4 with retrieval and function calling for back-end actions.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-airindia-2024",
+     "co-ms-airindia-firstmovers"
+    ],
+    "asOf": "2024-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "A February 2026 Microsoft story describes the assistant as running on Azure OpenAI in Foundry Models.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-airindia-2026"
+    ],
+    "asOf": "2026-02-11",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "By November 2024 AI.g had handled nearly 4 million customer queries, with 97% of sessions fully automated.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-airindia-2024",
+     "co-ms-1000-stories"
+    ],
+    "asOf": "2024-11-15",
+    "confidence": "high"
+   },
+   {
+    "text": "The February 2026 story reports about 40,000 queries a day across more than 1,300 topics and more than 13 million conversations resolved at a 97% success rate; the metric definitions differ between the two stories.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-airindia-2026"
+    ],
+    "asOf": "2026-02-11",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2026-02-11",
+  "takeaway": "A long-running generative AI customer-service deployment, documented in vendor stories from 2024 and 2026. It shows Azure OpenAI's strength where a customer has already moved its estate to Azure; all volume and automation figures are vendor-published and defined differently over time.",
+  "useWhen": "Cited by airlines, travel and other high-volume service businesses in India. Ask what share of contacts they want automated end to end, which back-end systems the assistant must act on, and how they define a resolved conversation, so that any comparison uses the same metric.",
+  "sourceIds": [
+   "co-ms-airindia-2024",
+   "co-ms-airindia-firstmovers",
+   "co-ms-airindia-2026",
+   "co-ms-1000-stories"
+  ]
+ },
+ {
+  "id": "cs-o-physics-wallah",
+  "customer": "Physics Wallah",
+  "title": "Built the Alakh AI tutoring suite and the Gyan Guru study companion on Azure OpenAI",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-edtech"
+  ],
+  "platform": "other",
+  "providers": [
+   "microsoft",
+   "openai"
+  ],
+  "products": [
+   "Azure OpenAI Service",
+   "microsoft-foundry",
+   "gpt-4o",
+   "gpt-4"
+  ],
+  "challenge": [
+   {
+    "text": "About 2 million students use the platform daily, so answering each student's doubts with teachers or subject experts is too costly and operationally heavy.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-physicswallah",
+     "co-msr-physicswallah"
+    ],
+    "asOf": "2025-02-12",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Microsoft states that Physics Wallah built Gyan Guru, a conversational study companion, by indexing its own material (over one million Q&As and ten million solved doubts) into a vector database and using retrieval with Azure OpenAI.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-physicswallah"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Microsoft Research states that the Alakh AI suite (AI Guru, Smart Doubt Engine, AI Grader, Sahayak) uses OpenAI's GPT-4 and GPT-4o through Azure OpenAI Service with retrieval-augmented generation, and that it is working with the company on more reliable step-by-step problem solving.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-msr-physicswallah"
+    ],
+    "asOf": "2025-02-12",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Physics Wallah said Alakh AI reached more than 1.5 million users within two months of launch.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-bt-physicswallah-alakh"
+    ],
+    "asOf": "2024-03-01",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-02-12",
+  "takeaway": "Shows the edtech pattern at Indian scale: the company's own content library is the asset, and the model is reached through a hyperscaler API with retrieval. Microsoft's research involvement on reasoning accuracy is a real differentiator in this account; adoption numbers are company-reported.",
+  "useWhen": "Relevant to edtech and tutoring companies that worry about answer accuracy and cost per student. Ask how they check correctness on maths and science problems and what an answer costs them today, then propose a test on their own question bank.",
+  "sourceIds": [
+   "co-ms-physicswallah",
+   "co-msr-physicswallah",
+   "co-bt-physicswallah-alakh"
+  ]
+ },
+ {
+  "id": "cs-o-pratham",
+  "customer": "Pratham",
+  "title": "Pilots a Claude-powered 'Anytime Testing Machine' for exam practice in low-income communities",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-k12"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "anthropic"
+  ],
+  "challenge": [
+   {
+    "text": "Pratham, one of India's largest education non-profits, wants flexible and credible ways for students, including women who left formal schooling, to practise for exams and gain certification.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-bengaluru-office"
+    ],
+    "asOf": "2026-02-16",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic announced on 2026-02-16 that Pratham chose it as its first strategic AI lab partner and that Pratham's Anytime Testing Machine is powered by Claude.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-bengaluru-office"
+    ],
+    "asOf": "2026-02-16",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The tool was being piloted with 1,500 students across 20 schools, with a stated plan to reach 100 schools by the end of 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-bengaluru-office"
+    ],
+    "asOf": "2026-02-16",
+    "confidence": "high"
+   },
+   {
+    "text": "It was adapted earlier in 2026 for more than 5,000 learners in Pratham's Second Chance programme.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-bengaluru-office"
+    ],
+    "asOf": "2026-02-16",
+    "confidence": "high"
+   }
+  ],
+  "date": "2026-02-16",
+  "takeaway": "An early-stage education pilot rather than a scaled deployment, but it shows Anthropic winning mission-led education partners on a safety and rigour message and backing them with credits and expertise. No learning-outcome data has been published.",
+  "useWhen": "Comes up with education non-profits, foundations and state school programmes in India. Ask what evidence of learning gains they need, which languages matter, and what support (credits, training, engineering help) the programme depends on.",
+  "sourceIds": [
+   "co-anthropic-bengaluru-office"
+  ]
+ },
+ {
+  "id": "cs-o-uidai",
+  "customer": "Unique Identification Authority of India (Aadhaar)",
+  "title": "Deployed Sarvam AI's generative AI stack on-premise for voice services and fraud alerts",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "other",
+  "providers": [
+   "Sarvam AI"
+  ],
+  "products": [
+   "Sarvam AI generative AI stack (on-premise)"
+  ],
+  "challenge": [
+   {
+    "text": "UIDAI wanted voice-based feedback on enrolment and update experiences and real-time fraud alerts during authentication, in Indian languages, without Aadhaar data leaving its own secure environment.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-uidai-sarvam",
+     "co-bs-uidai-sarvam"
+    ],
+    "asOf": "2025-03-24",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "UIDAI announced a partnership with Sarvam AI, effective 2025-03-18 for an initial year, under which a custom generative AI stack is hosted on-premise within UIDAI's air-gapped infrastructure and owned by UIDAI.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-uidai-sarvam",
+     "co-bs-uidai-sarvam"
+    ],
+    "asOf": "2025-03-18",
+    "confidence": "medium"
+   },
+   {
+    "text": "The system supports voice interactions and fraud-detection alerts in ten Indian languages at launch, with more planned.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-uidai-sarvam",
+     "co-bs-uidai-sarvam"
+    ],
+    "asOf": "2025-03-24",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Sarvam's own case-study headline says the Aadhaar voice agents have reached 4 crore (40 million) people; the underlying page was not read and the figure is unverified.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-sarvam-aadhaar-story"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "low"
+   }
+  ],
+  "date": "2025-03-18",
+  "takeaway": "The clearest Indian example of the sovereign pattern: a domestic start-up's models, air-gapped, on government-owned infrastructure, for population-scale identity services. Voice in Indian languages is the core capability being bought.",
+  "useWhen": "Raised by Indian central and state agencies that handle citizen identity or benefits data. Ask whether air-gapped hosting and government ownership of the stack are mandatory, and which languages and channels (voice, WhatsApp) matter most, before proposing anything.",
+  "sourceIds": [
+   "co-uidai-sarvam",
+   "co-bs-uidai-sarvam",
+   "co-sarvam-aadhaar-story"
+  ]
+ },
+ {
+  "id": "cs-o-grab",
+  "customer": "Grab",
+  "title": "Uses Claude for its GrabMerchant AI Assistant and its BriX sales assistant",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-mobility"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "Claude (Claude Platform API)"
+  ],
+  "challenge": [
+   {
+    "text": "Grab wanted to give millions of merchant partners, from small stalls to retail chains, consistent and personalised business advice at any hour across markets and languages, which traditional account management could not cover.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-grab"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic's customer story states that Grab evaluated several models on its merchant-assistant use case and selected Claude to power the GrabMerchant AI Assistant, which runs across Grab's eight markets in multiple regional languages.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-claude-story-grab"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Anthropic announced on 2026-10-14 that Grab also powers BriX, its sales assistant, with Claude.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-singapore-office"
+    ],
+    "asOf": "2026-10-14",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Grab reports a 5.7 percentage-point increase in merchant issue resolution rate and an 8% rise in inbound merchant conversations.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-grab"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Grab reports a 25% reduction in negative merchant sentiment.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-grab"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Anthropic says BriX saves Grab's sales teams about 40,000 hours each quarter.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-singapore-office"
+    ],
+    "asOf": "2026-10-14",
+    "confidence": "high"
+   }
+  ],
+  "date": "2026-10-14",
+  "takeaway": "Grab picked the model through its own evaluation on merchant engagement and tone, and Anthropic stresses joint work on architecture and evaluation. It is a credible regional reference for multilingual, conversational use cases; results are self-reported.",
+  "useWhen": "Expect it from South East Asian super-apps and marketplaces. Ask what their evaluation set measures (resolution, tone, regional languages) and offer to run the same set, since a customer that evaluates by task will respond to results on its own data.",
+  "sourceIds": [
+   "co-claude-story-grab",
+   "co-anthropic-singapore-office"
+  ]
+ },
+ {
+  "id": "cs-o-govtech-singapore",
+  "customer": "Government Technology Agency of Singapore (GovTech)",
+  "title": "More than 1,500 engineers and technical staff adopted Claude Code",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "claude-code"
+  ],
+  "challenge": [
+   {
+    "text": "GovTech builds and maintains national digital services and wants to modernise government systems and speed up software delivery.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-singapore-office"
+    ],
+    "asOf": "2026-10-14",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic announced on 2026-10-14 that more than 1,500 engineers and technical staff at GovTech Singapore have adopted Claude Code.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-singapore-office"
+    ],
+    "asOf": "2026-10-14",
+    "confidence": "high"
+   },
+   {
+    "text": "The same day Anthropic opened a Singapore office and signed a memorandum of understanding with the Ministry of Digital Development and Information covering AI safety, security and model evaluation, adoption research and responsible adoption.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-singapore-office"
+    ],
+    "asOf": "2026-10-14",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-10-14",
+  "takeaway": "A government engineering organisation standardising on a rival coding agent, alongside a formal government relationship and a local office. No productivity figures are published, but the adoption number and the MOU make this a reference other ASEAN agencies will notice.",
+  "useWhen": "Comes up with public-sector engineering teams in Singapore and neighbouring countries. Ask which systems are in scope, what data classification the tool is cleared for, and how they evaluate coding agents; be ready to discuss government-grade controls rather than model rankings.",
+  "sourceIds": [
+   "co-anthropic-singapore-office"
+  ]
+ },
+ {
+  "id": "cs-o-goto-sahabat-ai",
+  "customer": "GoTo Group (with Indosat Ooredoo Hutchison)",
+  "title": "Co-built Sahabat-AI, an open-source LLM family for Bahasa Indonesia and local languages",
+  "country": "Indonesia",
+  "regions": [
+   "sea"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-mobility"
+  ],
+  "platform": "other",
+  "providers": [
+   "GoTo",
+   "Indosat Ooredoo Hutchison"
+  ],
+  "products": [
+   "Sahabat-AI (open-source LLM)"
+  ],
+  "challenge": [
+   {
+    "text": "General-purpose models handle Bahasa Indonesia and regional languages less well, and GoTo's services depend on understanding highly varied local queries.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-goto-sahabat-launch",
+     "co-mwl-sahabat"
+    ],
+    "asOf": "2025-06-02",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "GoTo and Indosat Ooredoo Hutchison launched Sahabat-AI in November 2024 as an open-source LLM ecosystem for Bahasa Indonesia and local languages.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-goto-sahabat-launch"
+    ],
+    "asOf": "2024-11-30",
+    "confidence": "medium"
+   },
+   {
+    "text": "On 2025-06-02 they released a 70-billion-parameter model and a multilingual chat service, available through the GoPay app.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-goto-sahabat-70b"
+    ],
+    "asOf": "2025-06-02",
+    "confidence": "medium"
+   },
+   {
+    "text": "GoTo reports using Sahabat-AI inside its own products, including GoFood search.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-goto-sahabat-70b",
+     "co-mwl-sahabat"
+    ],
+    "asOf": "2025-06-02",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-06-02",
+  "takeaway": "A national-language model effort led by a super-app and a telco rather than by government, positioned as open source and as Indonesian infrastructure. It is strongest as a statement of local-language priority; no usage or quality figures were found, and one report questioned whether the training data would be published.",
+  "useWhen": "Useful with Indonesian digital natives and telcos that want local-language quality and some independence from foreign model providers. Ask which languages and dialects matter in production and how they test them, and whether they want to host open models themselves or consume them as a service.",
+  "sourceIds": [
+   "co-goto-sahabat-launch",
+   "co-mwl-sahabat",
+   "co-goto-sahabat-70b"
+  ]
+ },
+ {
+  "id": "cs-o-singapore-airlines",
+  "customer": "Singapore Airlines",
+  "title": "Partnered directly with OpenAI for its customer virtual assistant, a staff assistant and crew scheduling",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-travel"
+  ],
+  "platform": "other",
+  "providers": [
+   "openai"
+  ],
+  "products": [
+   "OpenAI models (direct agreement)"
+  ],
+  "challenge": [
+   {
+    "text": "Singapore Airlines wants customers to plan, book and manage travel through self-service, and wants staff to spend less time on routine queries and complex planning tasks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-sia-openai"
+    ],
+    "asOf": "2025-04-25",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Singapore Airlines and OpenAI announced a collaboration on 2025-04-25; the first phase upgrades the airline's website virtual assistant.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-sia-openai"
+    ],
+    "asOf": "2025-04-25",
+    "confidence": "medium"
+   },
+   {
+    "text": "Staff are to get an internal assistant for routine queries and operational guidance, and OpenAI models are to be integrated into planning tools such as flight-crew scheduling, taking regulation and crew availability into account.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-sia-openai",
+     "co-fte-sia-openai"
+    ],
+    "asOf": "2025-04-25",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-04-25",
+  "takeaway": "An example of a flagship enterprise contracting with a model provider directly rather than through a cloud platform. The announcement describes plans; no rollout status or results were found, and the airline also signed a separate customer-service agreement with Salesforce in March 2025.",
+  "useWhen": "Appears when a large regional enterprise considers a direct agreement with a model lab. Ask who will integrate with operational systems and run the service day to day, and how a direct model contract fits their cloud, security and procurement set-up.",
+  "sourceIds": [
+   "co-sia-openai",
+   "co-fte-sia-openai"
+  ]
+ },
+ {
+  "id": "cs-o-trust-bank",
+  "customer": "Trust Bank",
+  "title": "Built a generative AI customer-service chatbot on Amazon Bedrock",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-fintech"
+  ],
+  "platform": "other",
+  "providers": [
+   "aws"
+  ],
+  "products": [
+   "amazon-bedrock",
+   "Amazon Bedrock Guardrails",
+   "Amazon Aurora (vector store)"
+  ],
+  "challenge": [
+   {
+    "text": "Trust Bank, a digital bank backed by Standard Chartered and FairPrice Group, wanted to answer more customer queries without adding human agents.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-trust-bank"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "AWS's customer story states that Trust Bank built its chatbot on Amazon Bedrock, chosen because it gives access to several foundation models that the bank tested before picking one; the story excerpts do not name the model.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-aws-trust-bank"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "The agent fetches customer and product data before calling the model, grounds answers with retrieval, and uses Bedrock Guardrails for content filtering, prompt-injection protection and redaction of personal and card data.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-trust-bank"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "Trade press reported that on 2026-09-08 the bank announced Trust AI Ask, which lets customers query their card spending in conversation.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-fintechnews-trust-ai-ask"
+    ],
+    "asOf": "2026-09-08",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "AWS reports that the chatbot resolves more than 52% of all customer queries without human intervention, measured between February and September 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-trust-bank"
+    ],
+    "asOf": "2026-09-30",
+    "confidence": "medium"
+   },
+   {
+    "text": "Trade press reported that the bank halved the chats handled by human agents and saw roughly a 40% drop in complaints after the rollout.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-fintechnews-trust-chatbot"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2026-09-08",
+  "takeaway": "A regulated digital bank using Bedrock as a model-choice layer with guardrails built in. The point for specialists is the buying logic: choice of models and controls for personal data mattered more than any single model.",
+  "useWhen": "Relevant to digital banks and fintechs already running on AWS. Ask which models they tested and why, how they redact personal data, and how they measure a resolved query; compare on governance and evaluation tooling rather than on which model is named.",
+  "sourceIds": [
+   "co-aws-trust-bank",
+   "co-fintechnews-trust-ai-ask",
+   "co-fintechnews-trust-chatbot"
+  ]
+ },
+ {
+  "id": "cs-o-rakuten",
+  "customer": "Rakuten",
+  "title": "Uses Claude Code for autonomous coding and Claude Managed Agents for business teams",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-ecommerce"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "claude-code",
+   "claude-managed-agents"
+  ],
+  "challenge": [
+   {
+    "text": "With more than 70 businesses and thousands of developers, Rakuten wanted to cut time to market while keeping enterprise quality and security; it found most coding tools needed constant guidance and struggled with large multi-language codebases.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-rakuten"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic announced on 2025-10-29 that Rakuten is using Claude for autonomous coding projects.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-tokyo-office"
+    ],
+    "asOf": "2025-10-29",
+    "confidence": "high"
+   },
+   {
+    "text": "Engineers delegate tasks to Claude Code and run several in parallel; Rakuten also deployed Claude Managed Agents for product, sales, marketing and finance teams, connected to Slack and Teams, with each specialist agent set up within about a week.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-rakuten"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Rakuten also builds its own agents and language models, so Claude is one part of a multi-model approach.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-rakuten"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Time to market for new features fell 79%, from 24 days to 5 days.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-rakuten"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Claude Code worked autonomously for seven hours on a complex open-source refactoring task.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-rakuten"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Rakuten reports 99.9% accuracy on complex code modifications.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-rakuten"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "date": "2025-10-29",
+  "takeaway": "The best-known Japanese reference for agentic coding, now extended to managed agents for non-engineering teams. The figures are vendor-published and drawn from selected projects, but the breadth of use across a large group makes it a strong example.",
+  "useWhen": "Comes up whenever a Japanese internet or commerce company discusses coding agents. Ask which development stages they would delegate, how they would measure time to market, and whether agents for business teams are in scope; a trial on their own codebase is the fair comparison.",
+  "sourceIds": [
+   "co-claude-story-rakuten",
+   "co-anthropic-tokyo-office"
+  ]
+ },
+ {
+  "id": "cs-o-nec",
+  "customer": "NEC Corporation",
+  "title": "Making Claude available to about 30,000 group employees and building industry products on it",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-conglomerate"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "claude-code",
+   "Claude Cowork",
+   "Claude Opus 4.7"
+  ],
+  "challenge": [
+   {
+    "text": "NEC wants to build one of Japan's largest AI-native engineering organisations and to offer AI products that meet the safety and quality standards of Japanese companies and public administration.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-nec"
+    ],
+    "asOf": "2026-04-24",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic and NEC announced on 2026-04-24 that Claude will be made available to approximately 30,000 NEC Group employees worldwide and that NEC becomes Anthropic's first Japan-based global partner.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-nec"
+    ],
+    "asOf": "2026-04-24",
+    "confidence": "high"
+   },
+   {
+    "text": "NEC will set up a centre of excellence using Claude Code, expand Claude Cowork internally under its 'Client Zero' approach, and add Claude (including Claude Opus 4.7) and Claude Code to its BluStellar Scenario offerings; it is already integrating Claude into its security operations centre services.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-nec"
+    ],
+    "asOf": "2026-04-24",
+    "confidence": "high"
+   },
+   {
+    "text": "Joint industry products are planned first for finance, manufacturing and local government.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-nec"
+    ],
+    "asOf": "2026-04-24",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-04-24",
+  "takeaway": "A large Japanese integrator adopting a rival model internally and reselling it inside its own solution brand, including to local government. No results yet; its weight is in the channel it opens to NEC's enterprise and public-sector customers.",
+  "useWhen": "Expect it when a Japanese enterprise or municipality buys through NEC. Ask which BluStellar offerings they are considering and what the integrator, rather than the model, is responsible for; work with the partner landscape as it is.",
+  "sourceIds": [
+   "co-anthropic-nec"
+  ]
+ },
+ {
+  "id": "cs-o-softbank",
+  "customer": "SoftBank Group and SoftBank Corp.",
+  "title": "Committed to deploy OpenAI's enterprise agents across the group and sell them in Japan through a joint venture",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom",
+   "ent-conglomerate"
+  ],
+  "platform": "other",
+  "providers": [
+   "openai"
+  ],
+  "products": [
+   "Cristal intelligence",
+   "chatgpt",
+   "openai-frontier"
+  ],
+  "challenge": [
+   {
+    "text": "SoftBank wants to automate a very large number of internal workflows with AI agents and to bring the same capability to major Japanese companies.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-softbank-openai-2025"
+    ],
+    "asOf": "2025-02-03",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "SoftBank Group and OpenAI announced on 2025-02-03 that SoftBank would spend about US$3 billion a year to deploy OpenAI solutions, including 'Cristal intelligence' and ChatGPT, across its group companies, and that a 50-50 joint venture, SB OpenAI Japan, would market them to Japanese enterprises.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-softbank-openai-2025"
+    ],
+    "asOf": "2025-02-03",
+    "confidence": "medium"
+   },
+   {
+    "text": "SoftBank Corp. said it would use Cristal intelligence to automate more than 100 million workflows.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-softbank-openai-2025"
+    ],
+    "asOf": "2025-02-03",
+    "confidence": "medium"
+   },
+   {
+    "text": "On 2026-02-06 SB OAI Japan and SoftBank Corp. said the offering would be built on OpenAI's Frontier enterprise platform with deployment support, targeting rollout within 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-softbank-frontier-2026"
+    ],
+    "asOf": "2026-02-06",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-02-03",
+  "takeaway": "The largest announced enterprise commitment to OpenAI in Japan, combining internal use with a domestic sales channel. It is a statement of intent: no source found confirms the 2026 rollout has started or reports results.",
+  "useWhen": "Raised by large Japanese companies approached by SB OAI Japan. Ask which business processes are proposed for agents, what integration with their own systems involves, and what evidence of working deployments they have seen so far.",
+  "sourceIds": [
+   "co-softbank-openai-2025",
+   "co-softbank-frontier-2026"
+  ]
+ },
+ {
+  "id": "cs-o-japan-digital-agency",
+  "customer": "Digital Agency, Government of Japan",
+  "title": "Runs the government AI platform Gennai, with an OpenAI collaboration and domestic models on trial",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "other",
+  "providers": [
+   "openai",
+   "Digital Agency (in-house platform)"
+  ],
+  "products": [
+   "Gennai government AI platform",
+   "OpenAI models",
+   "PLaMo Translate"
+  ],
+  "challenge": [
+   {
+    "text": "The Digital Agency wants civil servants across ministries to use generative AI for public-sector work on a platform the government controls.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-digital-go-gennai",
+     "co-openai-japan-digital-agency"
+    ],
+    "asOf": "2025-10-02",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "OpenAI and the Digital Agency announced a strategic collaboration on 2025-10-02 under which Gennai, using OpenAI technology, is made available to government employees.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-openai-japan-digital-agency"
+    ],
+    "asOf": "2025-10-02",
+    "confidence": "medium"
+   },
+   {
+    "text": "The Digital Agency released the platform as open-source software on 2026-04-24.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-digital-go-gennai-oss"
+    ],
+    "asOf": "2026-04-24",
+    "confidence": "medium"
+   },
+   {
+    "text": "Agency notices also record the addition of a domestic translation model (PLaMo Translate) and the start of trial use of domestic foundation models on a domestic cloud platform, so the platform is multi-model. Only the notice titles were seen for these two items.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-digital-go-plamo",
+     "co-digital-go-gennai-domestic"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The agency describes a government-wide pilot from May 2026 to March 2027 scoped at roughly 180,000 officials across ministries; an earlier notice cited about 100,000 at launch.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-digital-go-gennai"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-10-02",
+  "takeaway": "Japan's central government built its own AI platform and plugs models into it: OpenAI first, with domestic models on trial and the code released as open source. The government owns the platform layer, so model suppliers compete for a slot inside it.",
+  "useWhen": "Central to any Japanese public-sector conversation. Ask how the agency or ministry plans to use Gennai, which model slots are open and on what evaluation criteria, and whether domestic hosting is required for the workload in question.",
+  "sourceIds": [
+   "co-digital-go-gennai",
+   "co-openai-japan-digital-agency",
+   "co-digital-go-gennai-oss",
+   "co-digital-go-plamo",
+   "co-digital-go-gennai-domestic"
+  ]
+ },
+ {
+  "id": "cs-o-mufg-bank",
+  "customer": "MUFG Bank",
+  "title": "Multi-year partnership with Sakana AI to build bank-specific AI agents, starting with document creation and lending",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-banking"
+  ],
+  "platform": "other",
+  "providers": [
+   "Sakana AI"
+  ],
+  "products": [
+   "Sakana AI agents (AI Lending Expert)",
+   "The AI Scientist"
+  ],
+  "challenge": [
+   {
+    "text": "MUFG wants to automate the creation of internal and external documents that need complex reasoning and specialist banking knowledge.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-mufg-sakana-2025"
+    ],
+    "asOf": "2025-05-19",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "MUFG Bank and Sakana AI announced a technology partnership of more than three years on 2025-05-19, initially applying the expertise behind Sakana's 'The AI Scientist' to banking documents; Sakana's COO became an AI adviser to MUFG.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-mufg-sakana-2025",
+     "co-sakana-mufg"
+    ],
+    "asOf": "2025-05-19",
+    "confidence": "medium"
+   },
+   {
+    "text": "Trade press reports that the jointly built 'AI Lending Expert', which supports staff from analysis and information gathering to drafting loan proposals, has moved into real-world tests with a phased rollout to selected branches and departments.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-startuphub-mufg-lending"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "low"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-05-19",
+  "takeaway": "A major Japanese bank chose a domestic research start-up as a long-term partner for bank-specific agents rather than buying only from a global platform. No accuracy or time-saving figures have been published.",
+  "useWhen": "Comes up with Japanese banks and insurers that favour domestic AI partners for core processes. Ask which processes they see as bank-specific enough to need a bespoke partner and which are general productivity, since the two are often bought separately.",
+  "sourceIds": [
+   "co-mufg-sakana-2025",
+   "co-sakana-mufg",
+   "co-startuphub-mufg-lending"
+  ]
+ },
+ {
+  "id": "cs-o-canva",
+  "customer": "Canva",
+  "title": "Rolled out Claude to employees across teams as part of a deliberately multi-vendor AI toolset",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-saas"
+  ],
+  "platform": "other",
+  "providers": [
+   "anthropic"
+  ],
+  "products": [
+   "Claude Enterprise (Claude for Work)"
+  ],
+  "challenge": [
+   {
+    "text": "From mid-2024 Canva formalised its internal AI tooling and chose to offer staff several AI tools rather than lock in one vendor, expecting different tools to suit different groups.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-canva"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Anthropic's customer story states that Canva gave its teams Claude for Work and that it is used for design prototyping, component building, product visualisation, shared project context and code generation.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-claude-story-canva"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Anthropic names Canva among its enterprise customers in Australia in its 2026-03-10 Sydney office announcement.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-anthropic-sydney-office"
+    ],
+    "asOf": "2026-03-10",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The story headline says 5,000 employees across all teams have access to Claude.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-canva"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "It reports that 65% of employees say they use AI daily for productivity.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-claude-story-canva"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "date": "2026-03-10",
+  "takeaway": "An employee-productivity win driven by user demand inside a company that kept several AI tools on purpose. It shows the pull Claude has with product and engineering staff, and that a preferred tool does not have to be an exclusive one.",
+  "useWhen": "Comes up when an Australian or New Zealand software company says staff are asking for Claude. Ask which tasks drive the preference and whether the company runs a multi-tool policy; then discuss where assistants built into their existing work suite fit alongside it.",
+  "sourceIds": [
+   "co-claude-story-canva",
+   "co-anthropic-sydney-office"
+  ]
+ },
+ {
+  "id": "cs-o-commonwealth-bank",
+  "customer": "Commonwealth Bank of Australia",
+  "title": "Rolling out ChatGPT Enterprise to about 50,000 staff alongside Microsoft 365 Copilot and GitHub Copilot",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-banking"
+  ],
+  "platform": "other",
+  "providers": [
+   "openai",
+   "microsoft",
+   "anthropic"
+  ],
+  "products": [
+   "chatgpt",
+   "microsoft-365-copilot",
+   "github-copilot"
+  ],
+  "challenge": [
+   {
+    "text": "CommBank treats workforce readiness as the limit on AI's value and wants consistent, high-quality AI tools and skills across the whole organisation.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-cba-copilot",
+     "co-openai-cba"
+    ],
+    "asOf": "2025-12-09",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "OpenAI's customer story states that CBA is rolling ChatGPT Enterprise out to nearly 50,000 employees, with plans to move from everyday workflows to agent use cases in customer service and fraud and scam response.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-openai-cba"
+    ],
+    "asOf": "2025-12-09",
+    "confidence": "medium"
+   },
+   {
+    "text": "Microsoft's customer story states that CommBank introduced Microsoft 365 Copilot and GitHub Copilot with a structured 'AI for All' skilling programme and had 10,000 active Copilot users.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-cba-copilot"
+    ],
+    "asOf": "2025-06-23",
+    "confidence": "high"
+   },
+   {
+    "text": "Anthropic also names Commonwealth Bank among its Australian enterprise customers.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-anthropic-sydney-office"
+    ],
+    "asOf": "2026-03-10",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "84% of the 10,000 Microsoft 365 Copilot users said they would not go back to working without it.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-cba-copilot"
+    ],
+    "asOf": "2025-06-23",
+    "confidence": "high"
+   },
+   {
+    "text": "About 30% of GitHub Copilot code suggestions are accepted by CommBank engineers.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-cba-copilot"
+    ],
+    "asOf": "2025-06-23",
+    "confidence": "high"
+   },
+   {
+    "text": "Early Microsoft 365 Copilot adopters reported saving 16% of their time on repetitive tasks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-cba-copilot"
+    ],
+    "asOf": "2025-06-23",
+    "confidence": "high"
+   }
+  ],
+  "date": "2025-12-09",
+  "takeaway": "One of Australia's largest banks buys from several AI vendors at once: an enterprise chat assistant for everyone, a productivity-suite assistant, a coding assistant, and a named relationship with a third model lab. Each vendor publishes it as its own reference, which is the lesson.",
+  "useWhen": "Cited by Australian banks and insurers as proof that a peer has chosen a vendor. Point out, with the sources, that the bank runs several in parallel, and ask which roles and workloads the customer is deciding on now.",
+  "sourceIds": [
+   "co-ms-cba-copilot",
+   "co-openai-cba",
+   "co-anthropic-sydney-office"
+  ]
+ },
+ {
+  "id": "cs-o-telstra",
+  "customer": "Telstra",
+  "title": "Built Ask Telstra and One Sentence Summary on Azure OpenAI and deployed Microsoft 365 Copilot to 21,000 staff",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom"
+  ],
+  "platform": "other",
+  "providers": [
+   "microsoft",
+   "openai"
+  ],
+  "products": [
+   "Azure OpenAI Service",
+   "microsoft-foundry",
+   "microsoft-365-copilot"
+  ],
+  "challenge": [
+   {
+    "text": "Telstra's frontline and contact-centre staff must find answers across a very large technical knowledge base while trying to resolve issues on the first call.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-telstra-aoai"
+    ],
+    "asOf": "2024-02-23",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Microsoft's customer story states that Telstra developed two generative AI tools on Azure OpenAI Service: Ask Telstra, for searching internal knowledge, and One Sentence Summary, which condenses a customer's recent history for the agent.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-telstra-aoai"
+    ],
+    "asOf": "2024-02-23",
+    "confidence": "high"
+   },
+   {
+    "text": "Microsoft reports that Telstra deployed Microsoft 365 Copilot to its 21,000 employees for drafting and for summarising meetings, email and chat.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-1000-stories"
+    ],
+    "asOf": "2025-07-24",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "90% of employees using One Sentence Summary reported time savings and greater effectiveness, with 20% less follow-up contact.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-telstra-aoai"
+    ],
+    "asOf": "2024-02-23",
+    "confidence": "high"
+   },
+   {
+    "text": "84% of customer-service agents using Ask Telstra agreed it had a positive effect on customer interactions.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-telstra-aoai"
+    ],
+    "asOf": "2024-02-23",
+    "confidence": "high"
+   },
+   {
+    "text": "Microsoft 365 Copilot users reported saving one to two hours a week, and 90% said it improved their experience at work.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-1000-stories"
+    ],
+    "asOf": "2025-07-24",
+    "confidence": "high"
+   }
+  ],
+  "date": "2025-07-24",
+  "takeaway": "A long-standing Microsoft account where custom contact-centre tools and a company-wide productivity assistant come from the same vendor relationship. The original story dates from early 2024, so check for newer developments before quoting it; results are survey-based.",
+  "useWhen": "Comes up with telcos and other large Microsoft 365 estates in Australia. Ask what the measured effect has been beyond self-reported time savings and which contact-centre or network use cases remain open.",
+  "sourceIds": [
+   "co-ms-telstra-aoai",
+   "co-ms-1000-stories"
+  ]
+ },
+ {
+  "id": "cs-o-australian-public-service",
+  "customer": "Australian Public Service (Digital Transformation Agency and Department of Finance)",
+  "title": "Trialled Microsoft 365 Copilot across 56 agencies, then began building its own multi-model GovAI Chat",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "other",
+  "providers": [
+   "microsoft",
+   "Australian Government (GovAI)"
+  ],
+  "products": [
+   "microsoft-365-copilot",
+   "GovAI Chat"
+  ],
+  "challenge": [
+   {
+    "text": "The Australian Government wanted evidence on whether generative AI helps public servants, and a secure way to offer it across agencies with onshore processing and government-controlled data.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-dta-copilot-eval",
+     "co-finance-foi-govai"
+    ],
+    "asOf": "2026-04-28",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "The Digital Transformation Agency ran a whole-of-government trial of Microsoft 365 Copilot from January to July 2024, with about 5,765 licences across 56 agencies, and published an evaluation.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-dta-copilot-eval"
+    ],
+    "asOf": "2024-10-31",
+    "confidence": "medium"
+   },
+   {
+    "text": "The Department of Finance is building GovAI Chat, described as a secure assistant for the public service offering multiple AI models with onshore processing; a controlled alpha trial began on 2026-04-28 for up to 5,000 participants, with a beta and wider rollout planned later in 2026. The sources read do not name its model providers or hosting.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-govai-chat",
+     "co-finance-foi-govai",
+     "co-aap-govai"
+    ],
+    "asOf": "2026-04-28",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "In the Copilot trial evaluation, 77% of participants were optimistic about the tool at the end of the trial.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-dta-copilot-eval"
+    ],
+    "asOf": "2024-10-31",
+    "confidence": "medium"
+   },
+   {
+    "text": "About one in three trial participants used Copilot daily; the evaluation notes that productivity gains were largely self-assessed.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-dta-copilot-eval"
+    ],
+    "asOf": "2024-10-31",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2026-04-28",
+  "takeaway": "Two lessons in one account: a government published a candid evaluation of a vendor assistant, with moderate daily use, and then chose to build a government-run, multi-model assistant rather than rely on one supplier. The evaluation is one of the few non-vendor data points on Copilot adoption.",
+  "useWhen": "Useful in any Australian or New Zealand public-sector discussion about assistants. Ask whether the agency will take GovAI Chat, a vendor assistant, or both, and what evidence standard it applies; cite the government's own evaluation rather than vendor numbers.",
+  "sourceIds": [
+   "co-dta-copilot-eval",
+   "co-finance-foi-govai",
+   "co-govai-chat",
+   "co-aap-govai"
+  ]
+ },
+ {
+  "id": "cs-o-shenzhen-futian",
+  "customer": "Futian District Government, Shenzhen",
+  "title": "Deployed 70 DeepSeek-based 'AI employees' across government functions",
+  "country": "China",
+  "regions": [
+   "china"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-local"
+  ],
+  "platform": "other",
+  "providers": [
+   "deepseek"
+  ],
+  "products": [
+   "DeepSeek models (government deployment)"
+  ],
+  "challenge": [
+   {
+    "text": "The district wanted to speed up routine administrative work such as document handling, public-service requests and investment promotion.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-chinadaily-futian-feb",
+     "co-sixthtone-ai-public-servants"
+    ],
+    "asOf": "2025-02-25",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Chinese media reported in February 2025 that Futian district introduced 70 'AI employees' built on DeepSeek, covering 11 functional areas and 240 administrative processes.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-chinadaily-futian-feb",
+     "co-sixthtone-ai-public-servants",
+     "co-scmp-ai-civil-servants"
+    ],
+    "asOf": "2025-02-25",
+    "confidence": "medium"
+   },
+   {
+    "text": "District officials said the systems assist staff rather than decide, that each has a designated human supervisor, and that the district issued rules for AI used in government assistance.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-chinadaily-futian-mar",
+     "co-sixthtone-ai-public-servants"
+    ],
+    "asOf": "2025-03-05",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Officials reported accuracy above 95% for document format correction.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-chinadaily-futian-mar"
+    ],
+    "asOf": "2025-03-05",
+    "confidence": "medium"
+   },
+   {
+    "text": "Officials reported a 90% reduction in review time.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-chinadaily-futian-mar"
+    ],
+    "asOf": "2025-03-05",
+    "confidence": "medium"
+   },
+   {
+    "text": "Officials reported that accuracy in routing public-service requests rose from 70% to 95%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-chinadaily-futian-mar"
+    ],
+    "asOf": "2025-03-05",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-02-25",
+  "takeaway": "The emblematic case of Chinese local governments adopting an open-weight domestic model within weeks of its release. Figures are self-reported by the district through state media and have not been independently assessed; reporting also noted unease among some civil servants.",
+  "useWhen": "Helps explain the mainland China market to customers and colleagues: public bodies deploy domestic open-weight models on local infrastructure. Outside the mainland, use it to ask what an agency would need (human oversight rules, audit, hosting) before automating administrative processes.",
+  "sourceIds": [
+   "co-chinadaily-futian-feb",
+   "co-sixthtone-ai-public-servants",
+   "co-scmp-ai-civil-servants",
+   "co-chinadaily-futian-mar"
+  ]
+ },
+ {
+  "id": "cs-o-bmw-china",
+  "customer": "BMW Group China",
+  "title": "Uses Alibaba's Qwen for the in-car Intelligent Personal Assistant in China-built Neue Klasse models",
+  "country": "China",
+  "regions": [
+   "china"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-manufacturing"
+  ],
+  "platform": "other",
+  "providers": [
+   "alibaba"
+  ],
+  "products": [
+   "alibaba",
+   "Yan AI (Banma)"
+  ],
+  "challenge": [
+   {
+    "text": "BMW wants an in-car assistant for Chinese customers that handles natural conversation and local services, which requires a model and ecosystem that operate in China.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-alibaba-bmw-2025",
+     "co-bmwblog-alibaba-2025"
+    ],
+    "asOf": "2025-03-26",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "BMW and Alibaba announced on 2025-03-26 an expanded partnership to bring Qwen into Neue Klasse vehicles built in China, with a custom engine for BMW's Intelligent Personal Assistant based on Banma's Yan AI cockpit solution.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-alibaba-bmw-2025",
+     "co-bmwblog-alibaba-2025"
+    ],
+    "asOf": "2025-03-26",
+    "confidence": "medium"
+   },
+   {
+    "text": "At the 2026 Beijing auto show BMW presented the new assistant with three Qwen-powered agents (Travel Companion, Car Genius and General Knowledge), debuting in the long-wheelbase iX3 and then the new 7 Series.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-alibaba-bmw-2026"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-03-26",
+  "takeaway": "A global manufacturer choosing a Chinese model for its China products. Multinationals commonly run a separate AI stack in mainland China, so the decision reflects market access and local ecosystem as much as model quality.",
+  "useWhen": "Comes up with multinational manufacturers and automakers planning products for China. Ask how they split their AI architecture between China and the rest of the world, and focus the discussion on the markets where the customer can use the same platform everywhere.",
+  "sourceIds": [
+   "co-alibaba-bmw-2025",
+   "co-bmwblog-alibaba-2025",
+   "co-alibaba-bmw-2026"
+  ]
+ },
+ {
+  "id": "cs-o-tencent",
+  "customer": "Tencent",
+  "title": "Added DeepSeek alongside its own Hunyuan models in Weixin search and the Yuanbao assistant",
+  "country": "China",
+  "regions": [
+   "china"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-media"
+  ],
+  "platform": "other",
+  "providers": [
+   "Tencent",
+   "deepseek"
+  ],
+  "products": [
+   "Hunyuan",
+   "deepseek-r1",
+   "Yuanbao",
+   "Weixin AI Search"
+  ],
+  "challenge": [
+   {
+    "text": "After DeepSeek's rapid rise in early 2025, Tencent moved to offer strong reasoning models to its very large user base quickly, rather than rely only on its in-house models.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-caixin-tencent-deepseek",
+     "co-fortune-tencent-deepseek"
+    ],
+    "asOf": "2025-02-17",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Tencent confirmed in mid-February 2025 that it was beta-testing an 'AI Search' option in the Chinese Weixin app that lets selected users choose DeepSeek-R1, alongside its own Hunyuan model.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-fortune-tencent-deepseek",
+     "co-caixin-tencent-deepseek"
+    ],
+    "asOf": "2025-02-17",
+    "confidence": "medium"
+   },
+   {
+    "text": "Tencent's Yuanbao assistant offers a choice of DeepSeek-R1, DeepSeek-V3 and Tencent's Hunyuan models.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-pandaily-tencent-deepseek"
+    ],
+    "asOf": "2025-02-17",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-02-17",
+  "takeaway": "A platform owner with its own models treating an outside open-weight model as an interchangeable engine because it owns the user relationship. No usage figures specific to the AI features were found.",
+  "useWhen": "A useful illustration for digital natives everywhere: the product team controls distribution and swaps models underneath. Ask customers how easily they can change models today and what evaluation would trigger a switch.",
+  "sourceIds": [
+   "co-caixin-tencent-deepseek",
+   "co-fortune-tencent-deepseek",
+   "co-pandaily-tencent-deepseek"
+  ]
+ },
+ {
+  "id": "cs-o-xian-jiaotong-university",
+  "customer": "Xi'an Jiaotong University",
+  "title": "Integrated DeepSeek-R1 into its campus AI platform, as many Chinese universities did in 2025",
+  "country": "China",
+  "regions": [
+   "china"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-higher"
+  ],
+  "platform": "other",
+  "providers": [
+   "deepseek"
+  ],
+  "products": [
+   "deepseek-r1"
+  ],
+  "challenge": [
+   {
+    "text": "Chinese universities wanted to give students and staff capable AI assistance on infrastructure they control.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-mittr-china-universities",
+     "co-chinadaily-universities"
+    ],
+    "asOf": "2025-07-28",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Xi'an Jiaotong University announced on 2025-02-18 that its AI application platform, Jiaoxiaozhi, had integrated DeepSeek-R1 for academic support to faculty and students.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-xjtu-deepseek"
+    ],
+    "asOf": "2025-02-18",
+    "confidence": "medium"
+   },
+   {
+    "text": "Press reports describe dozens of Chinese universities deploying local versions of DeepSeek on campus servers during 2025.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-mittr-china-universities",
+     "co-chinadaily-universities"
+    ],
+    "asOf": "2025-07-28",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-02-18",
+  "takeaway": "Open weights let universities run a capable reasoning model on campus hardware within weeks of release, with no licence negotiation. It is evidence of adoption speed, not of learning outcomes.",
+  "useWhen": "Relevant when universities anywhere in the region ask about hosting an open model themselves. Ask what they want from self-hosting (cost control, data control, research access) and who will operate and secure it, then compare with managed options on those points.",
+  "sourceIds": [
+   "co-mittr-china-universities",
+   "co-chinadaily-universities",
+   "co-xjtu-deepseek"
+  ]
+ },
+ {
+  "id": "cs-o-hong-kong-government-hkgai",
+  "customer": "Hong Kong SAR Government (with HKGAI)",
+  "title": "Pilots a locally developed, DeepSeek-based model for civil-service document work",
+  "country": "Hong Kong",
+  "regions": [
+   "hk-taiwan"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "other",
+  "providers": [
+   "HKGAI",
+   "deepseek"
+  ],
+  "products": [
+   "HKGAI V1",
+   "HKPilot",
+   "HKChat",
+   "deepseek"
+  ],
+  "challenge": [
+   {
+    "text": "The government wanted a locally developed generative AI tool for document drafting and processing by civil servants, and later a public chatbot that works in Cantonese, English and Mandarin.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-hkgov-hkgai",
+     "co-scmp-hk-deepseek-tool"
+    ],
+    "asOf": "2025-04-02",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Press and government reports state that civil servants have piloted HKGAI's document tool since mid-2024 and that in February 2025 HKGAI's V1 model, built on DeepSeek, was integrated into it.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-scmp-hk-deepseek-tool",
+     "co-hkgov-hkgai"
+    ],
+    "asOf": "2025-04-02",
+    "confidence": "medium"
+   },
+   {
+    "text": "HKGAI planned a public chatbot, HKChat, and later released a V3 model built on a newer DeepSeek model and designed to run on domestic chips.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-scmp-hkgai-v3"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "HKUST staff and students were given access to the V1 model after the civil-service pilot.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-hkust-hkgai"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Reports put the number of government departments that have tried the tool at about 70.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-scmp-hk-deepseek-tool",
+     "co-hkgov-hkgai"
+    ],
+    "asOf": "2025-04-02",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-04-02",
+  "takeaway": "Hong Kong's public sector has a government-backed, locally operated model built on DeepSeek, with Cantonese support and a path to domestic chips. Its strength is policy alignment and local language; published quality evidence is limited to officials' statements.",
+  "useWhen": "Expect it in Hong Kong government and government-funded bodies. Ask whether the locally developed tool is mandated or optional for the workload, and where additional capability is wanted (multimodal work, agents, data analytics) beyond document assistance.",
+  "sourceIds": [
+   "co-hkgov-hkgai",
+   "co-scmp-hk-deepseek-tool",
+   "co-scmp-hkgai-v3",
+   "co-hkust-hkgai"
+  ]
+ },
+ {
+  "id": "cs-o-foxconn",
+  "customer": "Foxconn (Hon Hai Technology Group)",
+  "title": "Built FoxBrain, its own Traditional Chinese LLM based on Meta's Llama 3.1",
+  "country": "Taiwan",
+  "regions": [
+   "hk-taiwan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-manufacturing"
+  ],
+  "platform": "other",
+  "providers": [
+   "Foxconn (Hon Hai Research Institute)",
+   "meta",
+   "nvidia"
+  ],
+  "products": [
+   "FoxBrain",
+   "Llama 3.1"
+  ],
+  "challenge": [
+   {
+    "text": "Foxconn wanted a model tuned for Traditional Chinese and for internal manufacturing work such as data analysis, decision support, document collaboration, reasoning and code generation.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-bs-foxbrain",
+     "co-taipeitimes-foxbrain"
+    ],
+    "asOf": "2025-03-10",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Foxconn announced FoxBrain on 2025-03-10, a model based on Meta's Llama 3.1 architecture, originally designed for internal applications; it said it plans to release the model publicly, without giving a date.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-bs-foxbrain",
+     "co-taipeitimes-foxbrain",
+     "co-scmp-foxbrain"
+    ],
+    "asOf": "2025-03-10",
+    "confidence": "medium"
+   },
+   {
+    "text": "Foxconn said training used 120 NVIDIA H100 GPUs and took about four weeks, with support from NVIDIA's Taipei-1 supercomputer.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-bs-foxbrain",
+     "co-taipeitimes-foxbrain"
+    ],
+    "asOf": "2025-03-10",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Foxconn said FoxBrain outperformed comparable Meta models on Traditional Chinese tasks but still trailed DeepSeek's model.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-bs-foxbrain"
+    ],
+    "asOf": "2025-03-10",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-03-10",
+  "takeaway": "A large manufacturer showing that an open-weight base, rented GPU capacity and about a month of training are enough to produce a usable in-house model for its own language and domain. Foxconn was candid that it does not match the leading models.",
+  "useWhen": "Comes up with Taiwanese manufacturers and electronics groups that are weighing an in-house model. Ask which tasks need a private fine-tuned model and which need frontier capability, and discuss tuning and serving open models as a managed service for the first group.",
+  "sourceIds": [
+   "co-bs-foxbrain",
+   "co-taipeitimes-foxbrain",
+   "co-scmp-foxbrain"
+  ]
+ },
+ {
+  "id": "cs-o-university-of-hong-kong",
+  "customer": "The University of Hong Kong",
+  "title": "Adopted Microsoft 365 Copilot for staff and built a first-year student chatbot with Copilot Studio",
+  "country": "Hong Kong",
+  "regions": [
+   "hk-taiwan"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-higher"
+  ],
+  "platform": "other",
+  "providers": [
+   "microsoft"
+  ],
+  "products": [
+   "microsoft-365-copilot",
+   "Microsoft Copilot Studio"
+  ],
+  "challenge": [
+   {
+    "text": "New students faced a complex onboarding process with information scattered across systems, while more than 9,000 faculty and 4,000 administrative staff carried a growing administrative load.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-ms-hku-copilot"
+    ],
+    "asOf": "2025-01-27",
+    "confidence": "high"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Microsoft's customer story states that HKU became the first university in Hong Kong to adopt Microsoft 365 Copilot, in January 2024, for faculty and staff.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-hku-copilot"
+    ],
+    "asOf": "2025-01-27",
+    "confidence": "high"
+   },
+   {
+    "text": "In August 2024 HKU added Microsoft Copilot Studio and built the 'HKU First-Year UG Copilot', a chatbot answering questions on course selection, degree requirements and scholarships.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ms-hku-copilot"
+    ],
+    "asOf": "2025-01-27",
+    "confidence": "high"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-01-27",
+  "takeaway": "A typical higher-education pattern: the productivity-suite assistant for staff plus a low-code student chatbot from the same vendor. The story gives no usage or time-saving figures, so its weight is the institution's name.",
+  "useWhen": "Useful with universities that already run Microsoft 365. Ask how many staff use the assistant weekly and what the student chatbot has changed, and whether students, researchers and administrators need different tools.",
+  "sourceIds": [
+   "co-ms-hku-copilot"
+  ]
+ },
+ {
+  "id": "cs-o-ryanair",
+  "customer": "Ryanair",
+  "title": "Runs its customer-service assistant on Amazon Bedrock AgentCore with Amazon Nova 2 Lite",
+  "country": "Ireland",
+  "regions": [],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-travel"
+  ],
+  "platform": "other",
+  "providers": [
+   "aws"
+  ],
+  "products": [
+   "amazon-bedrock-agentcore",
+   "amazon-nova",
+   "Amazon Nova 2 Lite",
+   "Amazon Translate"
+  ],
+  "challenge": [
+   {
+    "text": "Ryanair needed a customer-service assistant that answers quickly and accurately at very high volume across several European languages.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-ryanair"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "AWS's customer story states that Ryanair built the assistant on Amazon Bedrock AgentCore with Amazon Nova 2 Lite, working with AWS partner Cation Consulting, and added Amazon Translate for six non-English languages.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-aws-ryanair"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "Trade press reports that Ryanair compared five foundation models on 12,000 real customer questions before choosing Nova 2 Lite.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "co-pymnts-ryanair"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "Ryanair and AWS announced a five-year extension of their agreement on 2026-07-27.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "co-ryanair-aws-extension"
+    ],
+    "asOf": "2026-07-27",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "AWS reports about 120,000 customer interactions a day with a 94% success rate.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-ryanair"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "Response time fell from 18 seconds to 2.9 seconds, an 84% improvement.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-ryanair"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "AWS reports a 25% improvement in accuracy.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "co-aws-ryanair"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2026-07-27",
+  "takeaway": "A reference for AWS's own stack end to end: its agent runtime and its own small model, chosen on latency and cost after a test on real questions. It shows that for high-volume service work a fast, inexpensive model can beat larger ones on the customer's own criteria.",
+  "useWhen": "A global example to use when an AWS-based customer in the region says a lightweight in-house model is good enough. Ask what latency, cost per conversation and accuracy they need, and offer a like-for-like test of a light model on their own questions.",
+  "sourceIds": [
+   "co-aws-ryanair",
+   "co-pymnts-ryanair",
+   "co-ryanair-aws-extension"
+  ]
+ }
+]
