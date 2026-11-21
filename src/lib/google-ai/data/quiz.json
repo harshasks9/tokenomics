@@ -1,1 +1,825 @@
-[]
+[
+ {
+  "id": "q-001",
+  "topic": "models",
+  "question": "Which Gemini 4 model became generally available on Agent Platform on 18 November 2026?",
+  "options": [
+   "Gemini 4 Argon",
+   "Gemini 4 Carbon",
+   "Gemini 4 Neon",
+   "Gemini 4 Hydrogen"
+  ],
+  "answer": 2,
+  "explanation": "Gemini 4 Neon (gemini-4-neon) reached general availability on 18 November 2026, the fourth model in the Gemini 4 line after Argon, Carbon and Hydrogen.",
+  "asOf": "2026-11-18",
+  "announcementId": "an-2026-11-18-gemini-4-neon-launch",
+  "sourceIds": [
+   "u-gcd-ap-release-notes",
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "q-002",
+  "topic": "models",
+  "question": "Where does Google place Gemini 4 Neon in the Gemini 4 line?",
+  "options": [
+   "Below Hydrogen, as the cheapest model for bulk work",
+   "Above Carbon, for the hardest long-running work",
+   "As a cyber-defence variant for vetted customers only",
+   "Between Carbon and Hydrogen"
+  ],
+  "answer": 3,
+  "explanation": "Google describes Neon as sitting between Carbon, for the hardest long-running work, and Hydrogen, for fast everyday work. Its $3 / $15 list price sits between them too.",
+  "asOf": "2026-11-18",
+  "announcementId": "an-2026-11-18-gemini-4-neon-launch",
+  "sourceIds": [
+   "u-bg-neon",
+   "u-pr-9to5-neon"
+  ]
+ },
+ {
+  "id": "q-003",
+  "topic": "models",
+  "question": "According to Google's post of 10 November 2026, who can use Gemini 4 Carbon through the Gemini API and Gemini for business?",
+  "options": [
+   "Only vetted cyber defenders",
+   "All paying developers and enterprises",
+   "Everyone, including the free tier",
+   "Only customers with Provisioned Throughput"
+  ],
+  "answer": 1,
+  "explanation": "Carbon was limited to cyber defenders after its 28 October announcement and opened to all paying developers and enterprises on 10 November. The free tier is excluded.",
+  "asOf": "2026-11-10",
+  "announcementId": "an-2026-11-10-gemini-4-carbon-available",
+  "sourceIds": [
+   "a-bg-carbon-available"
+  ]
+ },
+ {
+  "id": "q-004",
+  "topic": "platform",
+  "question": "The deferred service tier reached general availability on Agent Platform on 16 November 2026. What discount does it give on completed turns?",
+  "options": [
+   "25% off Standard PayGo rates",
+   "40% off Standard PayGo rates",
+   "50% off Standard PayGo rates",
+   "75% off Standard PayGo rates"
+  ],
+  "answer": 2,
+  "explanation": "Completed turns on the deferred tier are billed at 50% off Standard PayGo rates, and the discount stacks with prompt caching. Cancelled, expired or failed turns are not charged.",
+  "asOf": "2026-11-16",
+  "announcementId": "an-2026-11-16-deferred-tier-ga",
+  "sourceIds": [
+   "u-gc-whatsnew"
+  ]
+ },
+ {
+  "id": "q-005",
+  "topic": "agents",
+  "question": "For which of these is the deferred service tier generally available?",
+  "options": [
+   "The Interactions API, Agent Development Kit and Deep Research",
+   "The Gemini Live API and Live Avatar",
+   "Provisioned Throughput reservations",
+   "Model tuning jobs"
+  ],
+  "answer": 0,
+  "explanation": "Google Cloud made the deferred tier generally available for the Interactions API, Agent Development Kit (ADK) and Deep Research, which is where latency-tolerant agent turns run.",
+  "asOf": "2026-11-16",
+  "announcementId": "an-2026-11-16-deferred-tier-ga",
+  "sourceIds": [
+   "u-gc-whatsnew"
+  ]
+ },
+ {
+  "id": "q-006",
+  "topic": "platform",
+  "question": "Which OpenAI models did Google Cloud announce for Model Garden on 21 October 2026?",
+  "options": [
+   "GPT-6.2 Astra and GPT-6.2 Sol",
+   "GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna",
+   "GPT-5.5 and GPT-5.6 Sol",
+   "GPT-6.1 Terra and gpt-oss"
+  ],
+  "answer": 1,
+  "explanation": "The 21 October announcement named GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna. Usage goes through Google Cloud Marketplace and appears on the Google Cloud invoice.",
+  "asOf": "2026-10-21",
+  "announcementId": "an-2026-10-21-openai-models-on-google-cloud",
+  "sourceIds": [
+   "a-gc-openai"
+  ]
+ },
+ {
+  "id": "q-007",
+  "topic": "platform",
+  "question": "What is the availability status of OpenAI models in Google Cloud's Model Garden, as announced on 21 October 2026?",
+  "options": [
+   "Generally available to all customers",
+   "Public preview",
+   "Private preview for select enterprise customers",
+   "Announced, with no customer access yet"
+  ],
+  "answer": 2,
+  "explanation": "The models are rolling out in private preview to select enterprise customers. No prices or general-availability date were given.",
+  "asOf": "2026-10-21",
+  "announcementId": "an-2026-10-21-openai-models-on-google-cloud",
+  "sourceIds": [
+   "a-gc-openai"
+  ]
+ },
+ {
+  "id": "q-008",
+  "topic": "infrastructure",
+  "question": "Under the agreement announced on 27 October 2026, when will Google TPUs start to be deployed in Oracle Cloud Infrastructure?",
+  "options": [
+   "Calendar year 2027",
+   "The fourth quarter of 2026",
+   "Calendar year 2028",
+   "They were available at announcement"
+  ],
+  "answer": 0,
+  "explanation": "Oracle and Google Cloud said TPUs will be deployed in Oracle Cloud Infrastructure starting in calendar year 2027. Capacity, regions and prices were not disclosed.",
+  "asOf": "2026-10-27",
+  "announcementId": "an-2026-10-27-google-tpus-on-oracle-cloud",
+  "sourceIds": [
+   "a-gc-oci-tpu"
+  ]
+ },
+ {
+  "id": "q-009",
+  "topic": "infrastructure",
+  "question": "What is TPU 8tx, announced on 9 November 2026, designed for?",
+  "options": [
+   "Large-scale training",
+   "The highest compute density per rack, with two chips in one package",
+   "Secure and confidential inference",
+   "On-device inference in phones"
+  ],
+  "answer": 2,
+  "explanation": "TPU 8tx is the eighth-generation system for secure and confidential inference. TPU 8i Max, announced the same day, is the one that packages two 8i chips for density.",
+  "asOf": "2026-11-09",
+  "announcementId": "an-2026-11-09-tpu-8tx-and-tpu-8i-max",
+  "sourceIds": [
+   "a-gc-tpu8x"
+  ]
+ },
+ {
+  "id": "q-010",
+  "topic": "infrastructure",
+  "question": "After the 9 November 2026 announcement, how many systems make up Google's eighth-generation TPU line?",
+  "options": [
+   "Two",
+   "Three",
+   "Four",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "There are four: TPU 8t (training) and TPU 8i (inference) from Cloud Next in April, plus TPU 8tx (confidential computing) and TPU 8i Max added in November.",
+  "asOf": "2026-11-09",
+  "announcementId": "an-2026-11-09-tpu-8tx-and-tpu-8i-max",
+  "sourceIds": [
+   "a-gc-tpu8x"
+  ]
+ },
+ {
+  "id": "q-011",
+  "topic": "infrastructure",
+  "question": "TorchTPU, open-sourced on 20 October 2026, was co-developed with the PyTorch team at which company?",
+  "options": [
+   "NVIDIA",
+   "Hugging Face",
+   "Anthropic",
+   "Meta"
+  ],
+  "answer": 3,
+  "explanation": "Google released TorchTPU, a native PyTorch stack for TPUs, as open source at PyTorch Conference 2026; it was co-developed with the PyTorch team at Meta.",
+  "asOf": "2026-10-20",
+  "announcementId": "an-2026-10-20-torchtpu-open-source",
+  "sourceIds": [
+   "a-gc-torchtpu"
+  ]
+ },
+ {
+  "id": "q-012",
+  "topic": "models",
+  "question": "Gemini Omni 1.2 Flash became generally available on Google Cloud on 6 November 2026. What does Google list for 720p video?",
+  "options": [
+   "$0.07 per second",
+   "$0.10 per second",
+   "$0.20 per second",
+   "$0.40 per second"
+  ],
+  "answer": 0,
+  "explanation": "Google lists $0.07 per second of 720p video, which it says is 30% less than Gemini Omni 1.1 Flash. Clips can now run up to 15 seconds.",
+  "asOf": "2026-11-06",
+  "announcementId": "an-2026-11-06-gemini-omni-1-2-flash-ga",
+  "sourceIds": [
+   "a-gc-omni12"
+  ]
+ },
+ {
+  "id": "q-013",
+  "topic": "competitors",
+  "question": "Alongside its IPO, which closed on 20 November 2026, Anthropic sold shares in a private placement to Google and six other companies. About how large was that placement?",
+  "options": [
+   "About $10 billion",
+   "About $26 billion",
+   "About $93.5 billion",
+   "About $119.5 billion"
+  ],
+  "answer": 1,
+  "explanation": "The placement was about $26.0 billion. The IPO itself grossed about $93.5 billion, taking combined gross proceeds to about $119.5 billion.",
+  "asOf": "2026-11-20",
+  "announcementId": "an-2026-11-20-anthropic-ipo-closes-google-in-private-placement",
+  "sourceIds": [
+   "u-an-ipo-close"
+  ]
+ },
+ {
+  "id": "q-014",
+  "topic": "platform",
+  "question": "At the Sovereign AI Summit on 17 November 2026, what did Google say about Gemini on Google Cloud Dedicated, its partner-operated sovereign cloud?",
+  "options": [
+   "Gemini 4 Argon is generally available on it today",
+   "Gemini is in public preview on it in Germany",
+   "Gemini will stay limited to Google Distributed Cloud",
+   "Gemini models are coming to it; no date or model list was given"
+  ],
+  "answer": 3,
+  "explanation": "Google committed to bringing Gemini to Google Cloud Dedicated, which until now offered open models through Model Garden. No timing, model versions or pricing were given.",
+  "asOf": "2026-11-17",
+  "announcementId": "an-2026-11-17-sovereign-ai-europe-gemini-on-cloud-dedicated",
+  "sourceIds": [
+   "u-gc-sovereign-ai"
+  ]
+ },
+ {
+  "id": "q-015",
+  "topic": "consumer",
+  "question": "On 17 November 2026 Google said Tasks in Gemini is now free of charge in how many countries?",
+  "options": [
+   "Three",
+   "Six",
+   "Twelve",
+   "Every country where the Gemini app is offered"
+  ],
+  "answer": 1,
+  "explanation": "Google said six countries. Before this, Tasks in Gemini required a Google AI Pro or Ultra subscription, and it still does elsewhere.",
+  "asOf": "2026-11-17",
+  "announcementId": "an-2026-11-17-tasks-in-gemini-free-six-countries",
+  "sourceIds": [
+   "u-bg-tasks-free"
+  ]
+ },
+ {
+  "id": "q-016",
+  "topic": "platform",
+  "question": "Which Anthropic model did Google Cloud's weekly update for 9-13 November 2026 list as generally available in Model Garden?",
+  "options": [
+   "Claude Opus 5.5",
+   "Claude Haiku 5.5",
+   "Claude Fable 5.2",
+   "Claude Sonnet 4.5"
+  ],
+  "answer": 2,
+  "explanation": "Claude Fable 5.2 was listed as generally available in Model Garden in the week of 9-13 November 2026.",
+  "asOf": "2026-11-09",
+  "announcementId": "an-2026-11-09-claude-fable-5-2-and-meta-muse-in-model-garden",
+  "sourceIds": [
+   "a-gc-whatsnew"
+  ]
+ },
+ {
+  "id": "q-017",
+  "topic": "platform",
+  "question": "In the same weekly update, what status did Meta's Muse Spark 1.3, Muse Wonder and Muse Ember have on Google Cloud?",
+  "options": [
+   "Generally available",
+   "Public preview",
+   "Private preview for select customers",
+   "Announced only"
+  ],
+  "answer": 1,
+  "explanation": "The three Meta Muse models were listed as available in public preview in Model Garden.",
+  "asOf": "2026-11-09",
+  "announcementId": "an-2026-11-09-claude-fable-5-2-and-meta-muse-in-model-garden",
+  "sourceIds": [
+   "a-gc-whatsnew"
+  ]
+ },
+ {
+  "id": "q-018",
+  "topic": "platform",
+  "question": "In the Anthropic-managed option for Claude on Google Cloud, generally available since 23 October 2026, who is the data processor?",
+  "options": [
+   "Google",
+   "The customer's systems integrator",
+   "Anthropic",
+   "Google and Anthropic jointly"
+  ],
+  "answer": 2,
+  "explanation": "In the Anthropic-managed option Anthropic is the data processor under its own commercial terms. In the Google-managed option Google is the processor and adds VPC Service Controls, CMEK and data residency.",
+  "asOf": "2026-10-23",
+  "announcementId": "an-2026-10-23-anthropic-managed-claude-on-google-cloud",
+  "sourceIds": [
+   "a-gc-claude-deploy"
+  ]
+ },
+ {
+  "id": "q-019",
+  "topic": "agents",
+  "question": "What was the status of Agent Compute Engine when Google unveiled it on 22 October 2026?",
+  "options": [
+   "Generally available",
+   "Public preview",
+   "Private preview for select customers",
+   "Announced, with customer preview promised in the coming months"
+  ],
+  "answer": 3,
+  "explanation": "Agent Compute Engine was announced, with customer preview promised 'in the coming months'. No preview date or pricing has been published.",
+  "asOf": "2026-10-22",
+  "announcementId": "an-2026-10-22-agent-compute-engine",
+  "sourceIds": [
+   "a-gc-ace"
+  ]
+ },
+ {
+  "id": "q-020",
+  "topic": "enterprise",
+  "question": "Which industry version of the Gemini agent did Google Cloud put into preview on 10 November 2026?",
+  "options": [
+   "Gemini for healthcare",
+   "Gemini for government services",
+   "Gemini for Financial Services",
+   "Gemini for Legal"
+  ],
+  "answer": 0,
+  "explanation": "Gemini for healthcare entered preview on 10 November 2026, with skills such as records synthesis and coverage review and connectors to EHR and claims systems.",
+  "asOf": "2026-11-10",
+  "announcementId": "an-2026-11-10-gemini-for-healthcare-preview",
+  "sourceIds": [
+   "a-gc-healthcare"
+  ]
+ },
+ {
+  "id": "q-021",
+  "topic": "enterprise",
+  "question": "Since 13 October 2026, what do Google Cloud blog posts call the product where users work with the Gemini agent?",
+  "options": [
+   "Gemini platform",
+   "Gemini for business",
+   "Google Agentspace",
+   "Gemini Workspace"
+  ],
+  "answer": 1,
+  "explanation": "Blog posts say 'Gemini for business' for where users work with the agent and 'Gemini platform' for where developers call models by API. No formal rename announcement was found, and older names persist in documentation and edition names.",
+  "asOf": "2026-11-15",
+  "announcementId": "an-2026-10-13-gemini-for-business-and-gemini-platform-naming",
+  "sourceIds": [
+   "a-gc-argon",
+   "a-gc-openai",
+   "a-gc-ace"
+  ]
+ },
+ {
+  "id": "q-022",
+  "topic": "enterprise",
+  "question": "According to press coverage of Alphabet's results for the third quarter of 2026, about how much revenue did Google Cloud report?",
+  "options": [
+   "$24.8 billion",
+   "$51.4 billion",
+   "$30.7 billion",
+   "$127.6 billion"
+  ],
+  "answer": 2,
+  "explanation": "Press coverage reports Google Cloud revenue of $30.7 billion, up 103% year on year. $24.8 billion was the second quarter, $51.4 billion is reported capital expenditure and $127.6 billion is Alphabet's total revenue.",
+  "asOf": "2026-10-28",
+  "announcementId": "an-2026-10-28-alphabet-q3-2026-earnings",
+  "sourceIds": [
+   "a-pr-q3",
+   "a-pr-q3-aiweekly"
+  ]
+ },
+ {
+  "id": "q-023",
+  "topic": "agents",
+  "question": "At the Google Cloud Security Summit on 5 November 2026, which of these was announced as generally available?",
+  "options": [
+   "CodeMender",
+   "Agent Identity JWT support",
+   "Auth Manager, a Google-managed credential vault for agents",
+   "Agent Compute Engine"
+  ],
+  "answer": 2,
+  "explanation": "Auth Manager (Agent Identity) is generally available. CodeMender has been in preview since July, and Agent Identity JWT support is in preview.",
+  "asOf": "2026-11-05",
+  "announcementId": "an-2026-11-05-security-summit-codemender-agent-identity",
+  "sourceIds": [
+   "a-gc-security-summit"
+  ]
+ },
+ {
+  "id": "q-024",
+  "topic": "models",
+  "question": "What status did Gemini Robotics ER 2 reach on Google Cloud on 27 October 2026?",
+  "options": [
+   "Public preview",
+   "General availability",
+   "Private preview for select customers",
+   "Research preview for trusted testers"
+  ],
+  "answer": 0,
+  "explanation": "Gemini Robotics ER 2, the high-level reasoning model in Gemini Robotics 2, became available in public preview on Google Cloud on 27 October 2026.",
+  "asOf": "2026-10-27",
+  "announcementId": "an-2026-10-27-gemini-robotics-er-2-on-google-cloud",
+  "sourceIds": [
+   "a-gc-er2"
+  ]
+ },
+ {
+  "id": "q-025",
+  "topic": "platform",
+  "question": "Which third-party models became selectable in Google Antigravity for Google Cloud customers on 20 October 2026?",
+  "options": [
+   "GPT-6 Astra and GPT-6.1 Sol",
+   "Muse Spark 1.3 and Muse Wonder",
+   "Claude Fable 5.2 and Claude Haiku 5.5",
+   "Claude Opus 5.5 and Claude Sonnet 5.5"
+  ],
+  "answer": 3,
+  "explanation": "Claude Opus 5.5 and Claude Sonnet 5.5 can be selected in Antigravity 2.0, the Antigravity CLI and the IDE extensions once an administrator enables them.",
+  "asOf": "2026-10-20",
+  "announcementId": "an-2026-10-20-claude-5-5-in-antigravity",
+  "sourceIds": [
+   "a-gc-claude-antigravity"
+  ]
+ },
+ {
+  "id": "q-026",
+  "topic": "pricing",
+  "question": "On 21 November 2026, which Gemini 4 model has the lowest standard list price on Agent Platform?",
+  "options": [
+   "Gemini 4 Argon",
+   "Gemini 4 Hydrogen",
+   "Gemini 4 Neon",
+   "Gemini 4 Carbon"
+  ],
+  "answer": 1,
+  "explanation": "Hydrogen lists at $1.50 input / $7.50 output per million tokens. Argon and Carbon are at a promotional $2 / $10 until 30 November, and Neon is $3 / $15.",
+  "asOf": "2026-11-21",
+  "entityId": "gemini-4-hydrogen",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "q-027",
+  "topic": "pricing",
+  "question": "Gemini 4 Argon lists at an introductory $2 input / $10 output per million tokens. What is its standard price from 1 December 2026?",
+  "options": [
+   "$2.50 / $12.50",
+   "$3 / $15",
+   "$4 / $20",
+   "$5 / $25"
+  ],
+  "answer": 2,
+  "explanation": "The introductory rate ends on 30 November 2026 and $4 / $20 applies from 1 December. Gemini 4 Carbon follows the same schedule.",
+  "asOf": "2026-11-21",
+  "entityId": "gemini-4-argon",
+  "sourceIds": [
+   "m-gcp-pricing",
+   "m-cb-g4argon"
+  ]
+ },
+ {
+  "id": "q-028",
+  "topic": "pricing",
+  "question": "How is the promotional rate for Gemini 4 Carbon delivered on Google Cloud?",
+  "options": [
+   "As a lower unit rate on each invoice line",
+   "As 50% credits back on net spend",
+   "As free tokens up to a monthly cap",
+   "As a rebate after a one-year commitment"
+  ],
+  "answer": 1,
+  "explanation": "Google Cloud's pricing page says the promotional rate is delivered as 50% credits back on net spend, and that it does not apply to the Cyber Permissive variants.",
+  "asOf": "2026-11-21",
+  "announcementId": "an-2026-11-10-gemini-4-carbon-available",
+  "sourceIds": [
+   "a-gc-pricing"
+  ]
+ },
+ {
+  "id": "q-029",
+  "topic": "pricing",
+  "question": "Gemini 3.8 Flash lists at an introductory $0.75 / $3.75 per million tokens. From which date does $1.50 / $7.50 apply?",
+  "options": [
+   "1 December 2026",
+   "12 January 2027",
+   "28 January 2027",
+   "1 January 2027"
+  ],
+  "answer": 3,
+  "explanation": "Introductory pricing for Gemini 3.8, 3.7 and 3.6 Flash ends on 31 December 2026, and $1.50 / $7.50 applies from 1 January 2027.",
+  "asOf": "2026-11-21",
+  "entityId": "gemini-3-8-flash",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "q-030",
+  "topic": "pricing",
+  "question": "Google Cloud's price list shows cache-write pricing for Gemini 4 Neon ($3.75 per million tokens, global standard) starting on which date?",
+  "options": [
+   "12 January 2027",
+   "1 December 2026",
+   "1 January 2027",
+   "18 November 2026"
+  ],
+  "answer": 0,
+  "explanation": "Cache-write pricing for Neon is listed with a start date of 12 January 2027. Until then the price list shows input, cache-read and output rates only.",
+  "asOf": "2026-11-21",
+  "announcementId": "an-2026-11-18-gemini-4-neon-launch",
+  "sourceIds": [
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "q-031",
+  "topic": "pricing",
+  "question": "Gemini Robotics ER 2 lists at a promotional $1 input / $5 output per million tokens. What applies from 1 January 2027?",
+  "options": [
+   "$1.50 / $7.50",
+   "$2 / $10",
+   "$3 / $15",
+   "$4 / $20"
+  ],
+  "answer": 1,
+  "explanation": "The promotional rate ends on 31 December 2026 and $2 / $10 applies from 1 January 2027.",
+  "asOf": "2026-11-21",
+  "entityId": "gemini-robotics-er-2",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "q-032",
+  "topic": "pricing",
+  "question": "What is the Batch price for Gemini 4 Neon on the global endpoint, per million tokens (input / output)?",
+  "options": [
+   "$0.75 / $3.75",
+   "$3 / $15",
+   "$5.40 / $27",
+   "$1.50 / $7.50"
+  ],
+  "answer": 3,
+  "explanation": "Batch is half the Standard rate: $1.50 / $7.50 against $3 / $15. Priority is $5.40 / $27.",
+  "asOf": "2026-11-21",
+  "announcementId": "an-2026-11-18-gemini-4-neon-launch",
+  "sourceIds": [
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "q-033",
+  "topic": "pricing",
+  "question": "Gemini 4 Neon costs $3 / $15 per million tokens on the global endpoint. What does Google Cloud list on non-global endpoints?",
+  "options": [
+   "$3 / $15, the same",
+   "$3.30 / $16.50",
+   "$3.75 / $18.75",
+   "$5.40 / $27"
+  ],
+  "answer": 1,
+  "explanation": "Non-global endpoints are listed at $3.30 input / $16.50 output, 10% above the global rate.",
+  "asOf": "2026-11-21",
+  "announcementId": "an-2026-11-18-gemini-4-neon-launch",
+  "sourceIds": [
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "q-034",
+  "topic": "pricing",
+  "question": "For Gemini 3 and Gemini 4 models on Agent Platform, how is Grounding with Google Search priced?",
+  "options": [
+   "$35 per 1,000 grounded prompts",
+   "$2.50 per 1,000 prompts",
+   "$14 per 1,000 grounding queries beyond 5,000 free a month",
+   "$45 per 1,000 grounded prompts"
+  ],
+  "answer": 2,
+  "explanation": "For Gemini 3 and 4 it is billed per search query: $14 per 1,000 grounding queries after 5,000 free a month. The $35 rate is for Gemini 2.x and $2.50 is for grounding with your own data.",
+  "asOf": "2026-11-21",
+  "entityId": "grounding-with-google-search",
+  "sourceIds": [
+   "m-gcp-pricing"
+  ]
+ },
+ {
+  "id": "q-035",
+  "topic": "pricing",
+  "question": "The Deep Research agent lists at $2 input / $12 output per million tokens on Standard. What is its Deferred price?",
+  "options": [
+   "$0.50 / $3",
+   "$1.50 / $9",
+   "$1.80 / $10.80",
+   "$1 / $6"
+  ],
+  "answer": 3,
+  "explanation": "The price list shows Deep Research at $1 / $6 on Deferred, half the Standard rate.",
+  "asOf": "2026-11-21",
+  "announcementId": "an-2026-11-16-deferred-tier-ga",
+  "sourceIds": [
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "q-036",
+  "topic": "platform",
+  "question": "What was Gemini Enterprise Agent Platform called before Cloud Next '26 in April 2026?",
+  "options": [
+   "Google Agentspace",
+   "Vertex AI",
+   "Firebase Studio",
+   "Gemini Code Assist"
+  ],
+  "answer": 1,
+  "explanation": "Vertex AI was renamed Gemini Enterprise Agent Platform on 22 April 2026. Google Agentspace is the former name of the Gemini Enterprise app, a different product.",
+  "asOf": "2026-11-21",
+  "entityId": "gemini-enterprise-agent-platform",
+  "sourceIds": [
+   "s-b-geap-intro",
+   "s-b-vertex-launch"
+  ]
+ },
+ {
+  "id": "q-037",
+  "topic": "agents",
+  "question": "Which company introduced the Model Context Protocol (MCP), which Google supports across its agent stack?",
+  "options": [
+   "Google",
+   "OpenAI",
+   "Microsoft",
+   "Anthropic"
+  ],
+  "answer": 3,
+  "explanation": "MCP is an open protocol introduced by Anthropic for connecting models and agents to tools and data. Google's own agent-to-agent protocol is A2A.",
+  "asOf": "2026-11-21",
+  "entityId": "model-context-protocol",
+  "sourceIds": [
+   "c-anthropic-mcp",
+   "s-pk-mcp"
+  ]
+ },
+ {
+  "id": "q-038",
+  "topic": "agents",
+  "question": "Agent Runtime, Google Cloud's managed runtime for deploying agents, was formerly known as what?",
+  "options": [
+   "Vertex AI Agent Engine",
+   "Vertex AI Search",
+   "Vertex AI Agent Builder",
+   "Google Agentspace"
+  ],
+  "answer": 0,
+  "explanation": "Agent Runtime is the former Vertex AI Agent Engine. Vertex AI Search became Agent Search.",
+  "asOf": "2026-11-21",
+  "entityId": "agent-runtime",
+  "sourceIds": [
+   "s-b-geap-intro",
+   "s-b-next25-wrap"
+  ]
+ },
+ {
+  "id": "q-039",
+  "topic": "infrastructure",
+  "question": "Which eighth-generation TPU system, announced at Cloud Next '26, is specialised for large-scale training?",
+  "options": [
+   "TPU 8i",
+   "TPU 8tx",
+   "TPU 8t",
+   "TPU 8i Max"
+  ],
+  "answer": 2,
+  "explanation": "TPU 8t is the training system and TPU 8i the inference system; both were announced at Next '26 on 22 April 2026.",
+  "asOf": "2026-11-21",
+  "entityId": "tpu-8t",
+  "sourceIds": [
+   "s-b-tpu8",
+   "s-b-next26-wrap"
+  ]
+ },
+ {
+  "id": "q-040",
+  "topic": "platform",
+  "question": "On what date did Google complete its acquisition of Wiz?",
+  "options": [
+   "9 October 2025",
+   "11 March 2026",
+   "22 April 2026",
+   "5 November 2026"
+  ],
+  "answer": 1,
+  "explanation": "Google completed the acquisition of Wiz on 11 March 2026. Wiz keeps its brand and multicloud support within Google Cloud.",
+  "asOf": "2026-03-11",
+  "announcementId": "an-2026-03-11-wiz-acquisition-completed",
+  "sourceIds": [
+   "a-gc-wiz"
+  ]
+ },
+ {
+  "id": "q-041",
+  "topic": "competitors",
+  "question": "Anthropic launched Claude Fable 5.2 on 9 November 2026. What is its list price per million tokens (input / output)?",
+  "options": [
+   "$4 / $20",
+   "$10 / $50",
+   "$8 / $40",
+   "$2 / $10"
+  ],
+  "answer": 2,
+  "explanation": "Claude Fable 5.2 lists at $8 / $40. Its predecessor Fable 5.1 was $10 / $50; Opus 5.5 is $4 / $20 and Sonnet 5.5 is $2 / $10.",
+  "asOf": "2026-11-21",
+  "entityId": "claude-fable-5-2",
+  "sourceIds": [
+   "c-anthropic-pricing",
+   "c-anthropic-release-notes"
+  ]
+ },
+ {
+  "id": "q-042",
+  "topic": "competitors",
+  "question": "Which Anthropic model lists at $4 input / $20 output per million tokens, the same as Gemini 4 Argon's standard price from 1 December 2026?",
+  "options": [
+   "Claude Opus 5.5",
+   "Claude Fable 5.2",
+   "Claude Sonnet 5.5",
+   "Claude Haiku 5.5"
+  ],
+  "answer": 0,
+  "explanation": "Claude Opus 5.5, Anthropic's recommended default for long-running agentic work, lists at $4 / $20. Fable 5.2 is $8 / $40 and Sonnet 5.5 is $2 / $10.",
+  "asOf": "2026-11-21",
+  "entityId": "claude-opus-5-5",
+  "sourceIds": [
+   "c-anthropic-pricing"
+  ]
+ },
+ {
+  "id": "q-043",
+  "topic": "competitors",
+  "question": "Anthropic deprecated Claude Sonnet 4.5 on 30 September 2026. When is it scheduled to be retired?",
+  "options": [
+   "19 November 2026",
+   "31 December 2026",
+   "28 January 2027",
+   "30 November 2026"
+  ],
+  "answer": 3,
+  "explanation": "Claude Sonnet 4.5 is set to retire on 30 November 2026; Anthropic's recommended replacement is Claude Sonnet 5.5.",
+  "asOf": "2026-11-21",
+  "entityId": "claude-sonnet-4-5",
+  "sourceIds": [
+   "c-anthropic-deprecations"
+  ]
+ },
+ {
+  "id": "q-044",
+  "topic": "competitors",
+  "question": "Which AWS product is its framework-agnostic agent runtime, the counterpart to Google's Agent Runtime?",
+  "options": [
+   "Amazon Bedrock",
+   "Amazon Bedrock AgentCore",
+   "Amazon Nova",
+   "AWS Trainium"
+  ],
+  "answer": 1,
+  "explanation": "Amazon Bedrock AgentCore is AWS's agent runtime. Amazon Bedrock is its multi-model API, Nova is its own model family and Trainium is its custom chip line.",
+  "asOf": "2026-11-21",
+  "entityId": "amazon-bedrock-agentcore",
+  "sourceIds": [
+   "c-x-flywheel-agent-platforms",
+   "c-x-ibl-agent-platforms"
+  ]
+ },
+ {
+  "id": "q-045",
+  "topic": "competitors",
+  "question": "Which Chinese lab is behind the Kimi models, including the open-weight Kimi K3?",
+  "options": [
+   "Alibaba",
+   "DeepSeek",
+   "Moonshot AI",
+   "Z.ai (formerly Zhipu)"
+  ],
+  "answer": 2,
+  "explanation": "Moonshot AI, a Beijing lab, makes the Kimi models. Alibaba makes Qwen, Z.ai makes the GLM models and DeepSeek makes the DeepSeek V4 line.",
+  "asOf": "2026-11-21",
+  "entityId": "moonshot",
+  "sourceIds": [
+   "c-x-decoder-kimi-k3",
+   "c-x-standard-kimi-k3"
+  ]
+ }
+]
