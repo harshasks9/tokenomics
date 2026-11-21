@@ -113,7 +113,7 @@ export default function Hub({ slug, today }: { slug: string[]; today: string }) 
   // Languages of the chosen region first, then the rest.
   const langs = useMemo(() => {
     const pref = region === "all" ? [] : REGION_BY_ID[region].languages;
-    return [...LANGUAGES.filter((l) => pref.includes(l.id)), ...LANGUAGES.filter((l) => !pref.includes(l.id))];
+    return [...pref.map((id) => LANGUAGES.find((l) => l.id === id)!), ...LANGUAGES.filter((l) => !pref.includes(l.id))];
   }, [region]);
 
   return (

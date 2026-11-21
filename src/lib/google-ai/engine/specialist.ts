@@ -30,8 +30,7 @@ function inVerticals(tagged: string[] | undefined, selected: string[] | undefine
 }
 
 /**
- * Developments a specialist should know, newest window first. Ranked: flagged must-know, then editorial weight,
- * then recency. `days` widens automatically (14 → 30 → 60) until at least `min` items are found, and reports the window used.
+ * Developments a specialist should know. Ranked: flagged must-know first, then newest first, then editorial weight. `days` widens automatically (14 → 30 → 60) until at least `min` items are found, and reports the window used.
  */
 export function mustKnow(today: string, scope: Scope = {}, opts: { days?: number; min?: number; limit?: number; onlyFlagged?: boolean } = {}, rows: Announcement[] = ANNOUNCEMENTS, notes: Record<string, SpecialistNote> = NOTE_BY_ANNOUNCEMENT): { items: MustKnow[]; days: number } {
   const windows = opts.days ? [opts.days] : [14, 30, 60];
@@ -42,7 +41,8 @@ export function mustKnow(today: string, scope: Scope = {}, opts: { days?: number
       .map((a) => ({ a, note: notes[a.id] }))
       .filter((x) => inRegion(x.note?.regions, scope.region) && inVerticals(x.note?.subVerticals, scope.subVerticals))
       .filter((x) => (opts.onlyFlagged ? x.note?.mustKnow : x.note?.mustKnow || x.a.importance >= 3))
-      .sort((x, y) => Number(!!y.note?.mustKnow) - Number(!!x.note?.mustKnow) || y.a.importance - x.a.importance || y.a.date.localeCompare(x.a.date));
+      // Flagged items first, newest first: this is news, so recency orders it once the editors have said it matters.
+      .sort((x, y) => Number(!!y.note?.mustKnow) - Number(!!x.note?.mustKnow) || y.a.date.localeCompare(x.a.date) || y.a.importance - x.a.importance);
   };
   let days = windows[0];
   let items = pick(days);

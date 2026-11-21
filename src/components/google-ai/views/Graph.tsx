@@ -433,6 +433,13 @@ export default function Graph() {
 function Panel({ node, nb, onHop, onClear }: { node: GNode; nb: Neighbor[]; onHop: (id: string) => void; onClear: () => void }) {
   const e = node.e;
   const recent = announcementsFor(e.id)[0];
+  // "includes" once, then everything it includes: the same words as the list below, with less repetition.
+  const groups: { phrase: string; rows: Neighbor[] }[] = [];
+  for (const n of nb) {
+    const last = groups[groups.length - 1];
+    if (last && last.phrase === n.phrase) last.rows.push(n);
+    else groups.push({ phrase: n.phrase, rows: [n] });
+  }
   return (
     <>
       <div className="gai-row">
@@ -448,15 +455,19 @@ function Panel({ node, nb, onHop, onClear }: { node: GNode; nb: Neighbor[]; onHo
       </p>
       <div>
         <div className="gai-sp-sub">{count(nb.length, "relationship", "relationships")}</div>
-        {nb.length ? (
-          <ul className="gai-sp-rels">
-            {nb.map((n) => (
-              <li key={n.edge.id}>
-                <span className="rel">{`${n.phrase} `}</span>
-                <button type="button" className="gai-sp-hop" translate="no" onClick={() => onHop(n.other.id)}>{n.other.name}</button>
-              </li>
+        {groups.length ? (
+          <dl className="gai-sp-rels">
+            {groups.map((g) => (
+              <div key={g.phrase}>
+                <dt>{g.phrase}</dt>
+                {g.rows.map((n) => (
+                  <dd key={n.edge.id}>
+                    <button type="button" className="gai-sp-hop" translate="no" onClick={() => onHop(n.other.id)}>{n.other.name}</button>
+                  </dd>
+                ))}
+              </div>
             ))}
-          </ul>
+          </dl>
         ) : (
           <p className="gai-small gai-muted">No relationship recorded.</p>
         )}
@@ -572,28 +583,60 @@ const nodeScale = (k: number) => Math.max(0.7, Math.min(2.4, 1 / Math.sqrt(k)));
 /** How many of the most connected nodes may carry a label at a zoom level. */
 const labelBudget = (k: number) => (k < 0.3 ? 8 : k < 0.5 ? 14 : k < 0.8 ? 26 : k < 1.2 ? 50 : k < 1.8 ? 110 : Infinity);
 
+type LabelSide = "b" | "r" | "l" | "t";
+interface Label {
+  id: string;
+  side: LabelSide;
+}
+
 /**
- * Which nodes get a label: highlighted nodes always; otherwise the most connected first, skipping any label
- * that would sit on top of one already placed. More labels fit as the zoom grows.
+ * Which nodes get a label, and on which side of the circle. The most connected nodes come first and a label is
+ * skipped if it would sit on one already placed, so more appear as the zoom grows. Highlighted nodes go first and
+ * may use any free side; the selected node is always labelled.
  */
-function pickLabels(nodes: GNode[], positions: Positions, k: number, forced: Set<string> | null): string[] {
+function pickLabels(nodes: GNode[], positions: Positions, k: number, forced: Set<string> | null, selected: string | null): Label[] {
   const boxes: [number, number, number, number][] = [];
-  const out: string[] = [];
+  const out: Label[] = [];
   const ns = nodeScale(k);
-  const place = (n: GNode, force: boolean) => {
+  const h = 15 / k;
+  const boxAt = (n: GNode, side: LabelSide): [number, number, number, number] | null => {
     const p = positions[n.id];
-    if (!p) return;
-    const w = (n.label.length * 6.6 + 10) / k;
-    const top = p.y + n.r * ns + 1 / k;
-    const box: [number, number, number, number] = [p.x - w / 2, top, p.x + w / 2, top + 16 / k];
-    if (!force && boxes.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) return;
-    boxes.push(box);
-    out.push(n.id);
+    if (!p) return null;
+    const w = (n.label.length * 6.6 + 8) / k;
+    const r = n.r * ns;
+    if (side === "b") return [p.x - w / 2, p.y + r + 1 / k, p.x + w / 2, p.y + r + 1 / k + h];
+    if (side === "t") return [p.x - w / 2, p.y - r - 3 / k - h, p.x + w / 2, p.y - r - 3 / k];
+    if (side === "r") return [p.x + r + 4 / k, p.y - h / 2, p.x + r + 4 / k + w, p.y + h / 2];
+    return [p.x - r - 4 / k - w, p.y - h / 2, p.x - r - 4 / k, p.y + h / 2];
+  };
+  const place = (n: GNode, sides: LabelSide[], force: boolean) => {
+    for (const side of sides) {
+      const box = boxAt(n, side);
+      if (!box) return;
+      if (boxes.some((b) => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) continue;
+      boxes.push(box);
+      out.push({ id: n.id, side });
+      return;
+    }
+    const box = force ? boxAt(n, sides[0]) : null;
+    if (box) {
+      boxes.push(box);
+      out.push({ id: n.id, side: sides[0] });
+    }
   };
   const ranked = [...nodes].sort((a, b) => b.degree - a.degree || a.id.localeCompare(b.id));
-  if (forced) for (const n of ranked) if (forced.has(n.id)) place(n, true);
+  // Highlighted circles are obstacles too: a neighbour's label must not cover the node next to it.
+  if (forced) {
+    for (const n of ranked) {
+      const p = positions[n.id];
+      if (p && forced.has(n.id)) boxes.push([p.x - n.r * ns, p.y - n.r * ns, p.x + n.r * ns, p.y + n.r * ns]);
+    }
+  }
+  const chosen = selected ? ranked.find((n) => n.id === selected) : undefined;
+  if (chosen) place(chosen, ["b"], true);
+  if (forced) for (const n of ranked) if (forced.has(n.id) && n.id !== selected) place(n, ["b", "r", "l", "t"], false);
   const budget = labelBudget(k);
-  for (const n of budget === Infinity ? ranked : ranked.slice(0, budget)) if (!forced?.has(n.id)) place(n, false);
+  for (const n of budget === Infinity ? ranked : ranked.slice(0, budget)) if (!forced?.has(n.id) && n.id !== selected) place(n, ["b"], false);
   return out;
 }
 
@@ -829,19 +872,19 @@ function Canvas({ nodes, edges, positions, selected, mark, initialFocus, onSelec
   };
 
   // One tab stop for the whole graph: the last node focused, else the selection, else the most connected node.
+  const shown = useMemo(() => new Set(nodes.map((n) => n.id)), [nodes]);
   const tabId = useMemo(() => {
-    const has = (id: string | null) => id != null && nodes.some((n) => n.id === id);
-    if (has(roving)) return roving;
-    if (has(selected)) return selected;
+    if (roving && shown.has(roving)) return roving;
+    if (selected && shown.has(selected)) return selected;
     return nodes.reduce<GNode | null>((best, n) => (!best || n.degree > best.degree ? n : best), null)?.id ?? null;
-  }, [nodes, roving, selected]);
+  }, [nodes, shown, roving, selected]);
 
   // Labels are chosen per zoom step, not per frame, so they do not flicker while panning.
   const zoomStep = view ? Math.round(Math.log(view.k) / Math.log(1.25)) : 0;
-  const labelIds = useMemo(() => pickLabels(nodes, positions, Math.pow(1.25, zoomStep), mark?.nodes ?? null), [nodes, positions, zoomStep, mark]);
+  const labels = useMemo(() => pickLabels(nodes, positions, Math.pow(1.25, zoomStep), mark?.nodes ?? null, selected), [nodes, positions, zoomStep, mark, selected]);
 
   const ns = view ? nodeScale(view.k) : 1;
-  const tipNode = tip ? GRAPH.byId[tip] : undefined;
+  const tipNode = tip && shown.has(tip) ? GRAPH.byId[tip] : undefined;
   const tipAt = tipNode && view && positions[tipNode.id] ? { x: positions[tipNode.id].x * view.k + view.x, y: positions[tipNode.id].y * view.k + view.y - tipNode.r * view.k * ns - 8 } : null;
 
   return (
@@ -871,16 +914,17 @@ function Canvas({ nodes, edges, positions, selected, mark, initialFocus, onSelec
               <Scene nodes={nodes} edges={edges} positions={positions} selected={selected} mark={mark} tabId={tabId} />
             </g>
             <g aria-hidden>
-              {labelIds.map((id) => {
+              {labels.map(({ id, side }) => {
                 const n = GRAPH.byId[id];
                 const p = positions[id];
                 if (!n || !p) return null;
-                const x = p.x * view.k + view.x;
-                const y = p.y * view.k + view.y + n.r * view.k * ns + 13;
-                if (x < -90 || x > size.w + 90 || y < -10 || y > size.h + 20) return null;
+                const r = n.r * view.k * ns;
+                const x = p.x * view.k + view.x + (side === "r" ? r + 5 : side === "l" ? -r - 5 : 0);
+                const y = p.y * view.k + view.y + (side === "b" ? r + 13 : side === "t" ? -r - 5 : 4);
+                if (x < -120 || x > size.w + 120 || y < -10 || y > size.h + 20) return null;
                 const lit = mark ? mark.nodes.has(id) : false;
                 return (
-                  <text key={id} className="gai-sp-lbl" x={Math.round(x * 10) / 10} y={Math.round(y * 10) / 10} data-on={id === selected ? 2 : lit ? 1 : 0} data-dim={mark && !lit ? 1 : 0}>
+                  <text key={id} className="gai-sp-lbl" x={Math.round(x * 10) / 10} y={Math.round(y * 10) / 10} data-side={side} data-on={id === selected ? 2 : lit ? 1 : 0} data-dim={mark && !lit ? 1 : 0}>
                     {n.label}
                   </text>
                 );

@@ -74,10 +74,10 @@
 .gai-sp-wait { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink-3); font-size: 14px; padding: 16px; text-align: center; }
 .gai-chart.gai-sp-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
 .gai-chart.gai-sp-svg:active { cursor: grabbing; }
-.gai-sp-edge { stroke: var(--line-2); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.gai-sp-edge { stroke: var(--ink-3); stroke-opacity: 0.45; stroke-width: 1px; vector-effect: non-scaling-stroke; }
 .gai-sp-edge[data-rival="1"] { stroke-dasharray: 4 3; }
-.gai-sp-edge[data-on="1"] { stroke: var(--ink-2); stroke-width: 1.5px; }
-.gai-sp-edge[data-on="2"] { stroke: var(--accent); stroke-width: 3px; }
+.gai-sp-edge[data-on="1"] { stroke: var(--ink-2); stroke-opacity: 1; stroke-width: 1.5px; }
+.gai-sp-edge[data-on="2"] { stroke: var(--accent); stroke-opacity: 1; stroke-width: 3px; }
 .gai-sp-edge[data-dim="1"] { opacity: 0.22; }
 .gai-sp-node { cursor: pointer; outline: none; }
 .gai-sp-hit { fill: transparent; stroke: none; transform: scale(calc(1 / var(--gai-sp-k, 1))); }
@@ -91,22 +91,25 @@
 .gai-sp-node[data-on="3"] .gai-sp-dot { stroke: var(--accent); stroke-width: 3.5px; }
 .gai-sp-node:focus-visible .gai-sp-dot { stroke: var(--accent); stroke-width: 4px; }
 .gai-chart.gai-sp-svg text.gai-sp-lbl { font-size: 11.5px; fill: var(--ink-2); text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: var(--surface-2); stroke-width: 3px; stroke-linejoin: round; }
+.gai-chart.gai-sp-svg text.gai-sp-lbl[data-side="r"] { text-anchor: start; }
+.gai-chart.gai-sp-svg text.gai-sp-lbl[data-side="l"] { text-anchor: end; }
 .gai-chart.gai-sp-svg text.gai-sp-lbl[data-on="1"] { fill: var(--ink); }
 .gai-chart.gai-sp-svg text.gai-sp-lbl[data-on="2"] { fill: var(--ink); font-weight: 700; font-size: 12.5px; }
 .gai-chart.gai-sp-svg text.gai-sp-lbl[data-dim="1"] { fill: var(--ink-3); opacity: 0.55; }
 .gai-sp-zoom { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 4px; }
 .gai-sp-zoom .gai-btn { min-width: 34px; height: 34px; justify-content: center; padding: 0 10px; }
-.gai-sp-tip { transform: translate(-50%, -100%); white-space: nowrap; }
+.gai-sp-tip { transform: translate(-50%, -100%); width: max-content; max-width: 260px; }
 .gai-sp-tip b { display: block; }
 .gai-sp-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--ink-2); }
 .gai-sp-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: -1px; }
 .gai-sp-legend i.o { background: var(--surface-2); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
 
-.gai-sp-panel { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; max-height: clamp(420px, 68vh, 720px); overflow: auto; display: grid; gap: 12px; align-content: start; }
+.gai-sp-panel { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; font-size: 14.5px; max-height: clamp(420px, 68vh, 720px); overflow: auto; display: grid; gap: 12px; align-content: start; }
 .gai-sp-panel h2 { overflow-wrap: anywhere; }
 .gai-sp-sub { font-size: 12.5px; font-weight: 500; color: var(--ink-3); margin-bottom: 4px; }
-.gai-sp-rels { display: grid; gap: 5px; font-size: 14px; }
-.gai-sp-rels .rel { color: var(--ink-3); }
+.gai-sp-rels { display: grid; gap: 10px; font-size: 14px; }
+.gai-sp-rels dt { color: var(--ink-3); }
+.gai-sp-rels dd { padding: 1px 0 1px 12px; border-left: 2px solid var(--line); }
 .gai-sp-hop { text-align: left; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; overflow-wrap: anywhere; }
 .gai-sp-hop:hover { text-decoration-color: var(--ink-2); }
 .gai-sp-top { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 20px; font-size: 14.5px; }

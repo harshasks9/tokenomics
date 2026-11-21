@@ -15,6 +15,8 @@ import { checkPrices } from "./ingest/pricewatch";
 import { MAX_ITEMS_PER_FEED, recentItems, runIngestion } from "./ingest/run";
 import { readState } from "./ingest/store";
 import type { Feed } from "./ingest/types";
+import { bounds, fitView, layout, zoomAt } from "./engine/graph-layout";
+import * as Quiz from "./engine/quiz";
 import { casesFor, inRegion, mustKnow } from "./engine/specialist";
 import { UI_STRINGS } from "./i18n";
 import * as KB from "./kb";
@@ -641,5 +643,66 @@ describe("specialist layer", () => {
     for (const [lang, dict] of Object.entries(UI_STRINGS)) expect(keys.filter((k) => !dict[k]), lang).toEqual([]);
     expect(Object.keys(UI_STRINGS).sort()).toEqual(LANGUAGES.filter((l) => l.id !== "en").map((l) => l.id).sort());
     for (const r of REGIONS) for (const l of r.languages) expect(LANGUAGES.some((x) => x.id === l), r.id).toBe(true);
+  });
+});
+
+// ─────────────────────────── quiz and graph engines ───────────────────────────
+describe("quiz engine", () => {
+  // A fixed sequence makes the "random" draw repeatable.
+  const seeded = () => {
+    let s = 7;
+    return () => ((s = (s * 16807) % 2147483647) / 2147483647);
+  };
+
+  it("draws without repeats and shuffles options without losing the right answer", () => {
+    const pool = Quiz.usable(KB.QUIZ);
+    expect(pool).toHaveLength(KB.QUIZ.length);
+    const round = Quiz.draw(pool, 10, seeded());
+    expect(round).toHaveLength(10);
+    expect(new Set(round.map((r) => r.q.id)).size).toBe(round.length);
+    for (const r of round) {
+      expect(r.correct).toBe(r.q.options[r.q.answer]);
+      expect([...r.options].sort()).toEqual([...r.q.options].sort());
+      expect(Quiz.isCorrect(r, r.correct)).toBe(true);
+      expect(Quiz.isCorrect(r, r.options.find((o) => o !== r.correct))).toBe(false);
+      expect(Quiz.isCorrect(r, null)).toBe(false);
+    }
+    expect(Quiz.draw(pool, 10, seeded()).map((r) => r.q.id)).toEqual(round.map((r) => r.q.id));
+  });
+
+  it("scores a round and limits 'recent' to the last 45 days", () => {
+    const round = Quiz.draw(KB.QUIZ, 5, seeded());
+    const right = round.map((r) => r.correct);
+    expect(Quiz.score(round, right)).toEqual({ correct: 5, total: 5, pct: 100 });
+    expect(Quiz.score(round, round.map(() => null)).correct).toBe(0);
+    expect(Quiz.missed(round, right)).toEqual([]);
+    expect(Quiz.missed(round, [])).toHaveLength(5);
+    const recent = Quiz.inScope(KB.QUIZ, "recent", TODAY_NOW);
+    expect(recent.length).toBeGreaterThan(0);
+    expect(recent.every((q) => q.asOf <= TODAY_NOW && q.asOf >= addDays(TODAY_NOW, -Quiz.RECENT_DAYS))).toBe(true);
+    expect(Quiz.inScope(KB.QUIZ, "recent", "2020-01-01")).toEqual([]);
+    expect(Quiz.isBetter({ correct: 4, total: 5 }, { correct: 3, total: 5 })).toBe(true);
+    expect(Quiz.isBetter({ correct: 3, total: 5 }, { correct: 4, total: 5 })).toBe(false);
+    expect(Quiz.parseBest("not json")).toEqual({});
+  });
+});
+
+describe("graph layout", () => {
+  const nodes = KB.ENTITIES.filter((e) => KB.RELATIONSHIPS.some((r) => r.from === e.id || r.to === e.id)).map((e) => ({ id: e.id, group: e.providerId }));
+  const ids = new Set(nodes.map((n) => n.id));
+  const edges = KB.RELATIONSHIPS.filter((r) => ids.has(r.from) && ids.has(r.to)).map((r) => ({ from: r.from, to: r.to }));
+
+  it("places every connected entity at a finite position, the same way every time", () => {
+    const a = layout(nodes, edges, { iterations: 40 });
+    const b = layout(nodes, edges, { iterations: 40 });
+    expect(nodes.length).toBeGreaterThan(200);
+    expect(Object.keys(a)).toHaveLength(nodes.length);
+    for (const p of Object.values(a)) expect(Number.isFinite(p.x) && Number.isFinite(p.y)).toBe(true);
+    expect(a).toEqual(b);
+    const box = bounds(a)!;
+    expect(box.maxX - box.minX).toBeGreaterThan(100);
+    const v = fitView(box, 1000, 700);
+    expect(v.k).toBeGreaterThan(0);
+    expect(zoomAt(v, 2, 500, 350, 0.1, 4).k).toBeCloseTo(Math.min(4, v.k * 2));
   });
 });
