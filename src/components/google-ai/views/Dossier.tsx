@@ -85,7 +85,7 @@ export default function Dossier({ id }: { id: string }) {
     { n: 9, id: "use-cases", title: "Use cases", filled: has("useCases"), body: <Claims claims={d.useCases} /> },
     { n: 10, id: "availability", title: "Availability", filled: true, body: (
       <>
-        <p className="gai-small">Stage today: <Status status={st.status} /> {st.since ? `since ${fmtDate(st.since)}` : ""}{!st.evidenced ? " — from the catalogue; no dated stage change is recorded" : ""}</p>
+        <p className="gai-small">Stage today: <Status status={st.status} /> {st.since ? `since ${st.since === e.introducedAt ? fmtIntro(e) : fmtDate(st.since)}` : ""}{!st.evidenced ? " — from the catalogue; no dated stage change is recorded" : ""}</p>
         {data.avail.length > 0 && (
           <div className="gai-tablewrap" style={{ marginTop: 8 }}>
             <table className="gai-table">

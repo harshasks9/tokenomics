@@ -171,7 +171,7 @@ function Freshness({ today, status }: { today: string; status: StatusPayload | n
     <div className="gai-fresh" role="status">
       <span>
         <i className={`dot ${age <= 7 ? "ok" : age <= 30 ? "warn" : "bad"}`} />
-        Knowledge base verified through <b>{fmtDate(META.curatedAt)}</b>
+        Knowledge base updated through <b>{fmtDate(META.curatedAt)}</b>
         {age > 0 ? ` (${age} ${age === 1 ? "day" : "days"} ago)` : " (today)"}
       </span>
       <span>

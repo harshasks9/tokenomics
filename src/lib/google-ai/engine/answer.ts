@@ -207,7 +207,7 @@ export function answer(question: string, today: string): Answer {
     for (const t of events.slice(0, 5)) facts.push({ text: `${fmtDate(t.date)} — ${t.title}: ${t.detail}`, label: t.label, sourceIds: t.sourceIds });
     if (!ranked.length && events.length) lines.splice(0, lines.length, `${events.length} dated ${events.length === 1 ? "event" : "events"} recorded in the ${span} to ${fmtDate(asOf)}: ${events.slice(0, 3).map((t) => `${t.title} (${fmtDate(t.date)})`).join("; ")}.`);
     windowed = true;
-    if (!ranked.length && !events.length) gaps.push(`Nothing is recorded in that window. The knowledge base was last verified on a fixed date; see the freshness line at the top of the page.`);
+    if (!ranked.length && !events.length) gaps.push(`Nothing is recorded in that window. The knowledge base was last updated on a fixed date; see the freshness line at the top of the page.`);
   } else devs = devs.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
   if (!windowed && (intents.includes("recent") || !ents.length)) {
     for (const a of devs.slice(0, 4)) {

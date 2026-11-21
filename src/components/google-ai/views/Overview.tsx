@@ -87,7 +87,7 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
       </div>
       {week.length === 0 && (
         <div className="gai-warn" style={{ marginTop: 12 }}>
-          No verified development is dated in the last 7 days. The knowledge base was last verified on {fmtDate(META.curatedAt)}; anything newer appears below only as an unreviewed detection, if the monitoring pipeline has run.
+          No verified development is dated in the last 7 days. The knowledge base was last updated on {fmtDate(META.curatedAt)}; anything newer appears below only as an unreviewed detection, if the monitoring pipeline has run.
         </div>
       )}
 
