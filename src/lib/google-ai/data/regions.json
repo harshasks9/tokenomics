@@ -1,0 +1,535 @@
+[
+ {
+  "id": "korea",
+  "facts": [
+   {
+    "text": "Google Cloud has one region in South Korea, Seoul (asia-northeast3). Google's products-by-region data lists Gemini Enterprise Agent Platform there, with the note that functionality varies by region.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's sovereign cloud page lists South Korea among the Asia-Pacific countries with a regional data boundary, which keeps data in-region with optional personnel controls.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-sovereign"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Korean press reported in July 2025 that Google Cloud said Gemini 2.5 was live in the Seoul region with the machine-learning processing itself, not only storage, kept in Korea. A trade report dates local data residency for Google Security Operations in Seoul to 22 June 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "sn-pr-asiae-gemini-seoul",
+     "sn-pr-dcn-secops-seoul"
+    ],
+    "asOf": "2026-06-22",
+    "confidence": "medium"
+   },
+   {
+    "text": "Korea's AI Basic Act took effect on 22 January 2026. It requires advance notice when a service relies on high-impact or generative AI and labelling of AI-generated content; the government said it would not impose fines for a grace period of at least a year.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-reuters-kr-ai",
+     "sn-pr-cooley-kr-ai"
+    ],
+    "asOf": "2026-01-27",
+    "confidence": "high"
+   },
+   {
+    "text": "Coverage of the Act reports a penalty ceiling of 30 million won for failures such as not labelling generative AI output, and says large overseas providers must appoint a local representative. Much of the detail comes from coverage of the draft enforcement decree.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-eweek-kr-ai",
+     "sn-pr-cooley-kr-ai"
+    ],
+    "asOf": "2026-01-27",
+    "confidence": "medium"
+   },
+   {
+    "text": "The science ministry picked five teams for its national AI foundation model project in August 2025 (Naver Cloud, Upstage, SK Telecom, NC AI and LG AI Research; Kakao and KT were not selected) and cut Naver Cloud and NC AI in January 2026. A September 2026 report says the government is reviewing whether to hold the final evaluation.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-asiae-kr-teams",
+     "sn-pr-kt-kr-cut",
+     "sn-pr-kt-kr-adrift"
+    ],
+    "asOf": "2026-09-30",
+    "confidence": "medium"
+   },
+   {
+    "text": "The main Korean model families named in coverage of that project are LG's Exaone, Naver's HyperCLOVA X, SK Telecom's A.X, Upstage's Solar and NC AI's Varco, each built for Korean language and context.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-kh-kr-models"
+    ],
+    "confidence": "medium"
+   },
+   {
+    "text": "At a Seoul event on 14 July 2026 Google said it would deepen AI partnerships with Korean companies; coverage names Samsung as a Gemini Enterprise customer.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "sn-pr-kt-google-korea",
+     "sn-pr-dt-kr-ge"
+    ],
+    "asOf": "2026-07-14",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "Korean buyers weigh Google against capable domestic model families and a government that funds them, so the comparison is rarely Gemini against nothing. Be exact about what stays in the Seoul region for the specific model a customer wants, because the AI Basic Act already puts transparency and labelling duties on AI services even while fines are on hold. With large groups that build their own models, a platform that runs several model families under one set of controls is an easier conversation than replacing their model."
+ },
+ {
+  "id": "india",
+  "facts": [
+   {
+    "text": "Google Cloud has two regions in India: Mumbai (asia-south1) and Delhi (asia-south2). Google's products-by-region data lists Gemini Enterprise Agent Platform for Mumbai but not for Delhi.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's sovereign cloud page lists India among the countries with a regional data boundary, and shows Airtel's logo among its sovereign cloud operating partners without describing the arrangement.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-sovereign"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "On 14 October 2025 Google announced a US$15 billion investment over 2026-2030 in an AI hub in Visakhapatnam, including a gigawatt-scale data center campus and a subsea cable gateway, with AdaniConnex as a data center partner. Press reported a foundation ceremony on 28 April 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "sn-bg-in-ai-hub",
+     "sn-pr-tc-in-ai-hub",
+     "sn-pr-bt-vizag",
+     "sn-pr-dh-vizag"
+    ],
+    "asOf": "2026-04-28",
+    "confidence": "medium"
+   },
+   {
+    "text": "India notified the Digital Personal Data Protection Rules in mid-November 2025 with a phased start: some provisions at once, a second set after 12 months and the main obligations after 18 months, which reports place in May 2027.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-ys-in-dpdp",
+     "sn-pr-iapp-in"
+    ],
+    "asOf": "2025-11-14",
+    "confidence": "medium"
+   },
+   {
+    "text": "India's AI Governance Guidelines are principle-based, organised around seven 'sutras', and do not propose a standalone AI law for now; they recommend bodies including an AI Governance Group and an AI Safety Institute. Sources date their release to 5 November 2025.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-iapp-in",
+     "sn-pib-in-ai"
+    ],
+    "asOf": "2026-02-15",
+    "confidence": "medium"
+   },
+   {
+    "text": "The IndiaAI Mission was approved in March 2024 with an outlay of Rs 10,372 crore, and has selected organisations including the IIT Bombay-led BharatGen and Tech Mahindra to build foundational language models.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-pioneer-in-ai",
+     "sn-pib-in-ai"
+    ],
+    "asOf": "2026-02-15",
+    "confidence": "medium"
+   },
+   {
+    "text": "Press lists India among the six countries where Google made Tasks in Gemini free of charge for adults on 17 November 2026.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-bg-tasks-free",
+     "u-pr-techrepublic-tasks"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "India has chosen guidelines over an AI statute, so the binding deadline customers plan around is data protection, with the main DPDP obligations landing in 2027. Location matters in practice: the listing shows Agent Platform in Mumbai and not Delhi, so confirm where a given model is processed before promising in-country AI. The government is funding Indian-built language models, so expect buyers to ask how Google's models sit beside them rather than instead of them."
+ },
+ {
+  "id": "sea",
+  "facts": [
+   {
+    "text": "Google Cloud has three regions in South East Asia: Singapore (asia-southeast1), Jakarta (asia-southeast2) and Bangkok (asia-southeast3), with Kuala Lumpur shown as a future region. Google's products-by-region data lists Gemini Enterprise Agent Platform for Singapore and Jakarta but not Bangkok.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google opened the Bangkok region on 21 January 2026 as part of a US$1 billion investment in Thailand. Its launch post says the region supports keeping data in Thailand and describes a hybrid design in which specialised, large-scale AI resources are reached on Google's global network as needed.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-bangkok"
+    ],
+    "asOf": "2026-01-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google announced plans for a Malaysia cloud region in August 2022; it is still listed as a future region. Business press reported in November 2026 that Google would invest US$15 billion in Malaysian data center campuses in 2027-2028, which no Google announcement read here confirms.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-gc-apac-2022",
+     "sn-gc-locations",
+     "a-pr-malaysia"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "low"
+   },
+   {
+    "text": "Google's sovereign cloud page lists Indonesia and Singapore among the countries with a regional data boundary, and names Singapore's MTCS Tier 3 among the standards it works to.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-sovereign"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Singapore launched its Model AI Governance Framework for Agentic AI on 22 January 2026. Developed by IMDA, it builds on the 2020 framework, asks organisations to bound agent risks up front and keep humans accountable at defined checkpoints, and is described as a living document.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-mddi-sg-agentic",
+     "sn-pr-bm-sg-agentic"
+    ],
+    "asOf": "2026-01-22",
+    "confidence": "medium"
+   },
+   {
+    "text": "Vietnam's Law on Artificial Intelligence (No. 134/2025/QH15) was adopted on 10 December 2025 and took effect on 1 March 2026. It sets three risk tiers, gives most existing systems until 1 March 2027 to comply (1 September 2027 in health, education and finance) and requires foreign suppliers of high-risk systems to keep a legal contact point in Vietnam.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-ag-vn-ai"
+    ],
+    "asOf": "2026-03-30",
+    "confidence": "medium"
+   },
+   {
+    "text": "AI Singapore's SEA-LION v4 is built on Google's open-weight Gemma 3 27B model and covers eleven languages, including Bahasa Indonesia, Thai, Vietnamese, Malay, Tagalog, Burmese, Khmer and Lao. Its Hugging Face collection also lists later variants built on other base models.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-dm-sea-lion",
+     "sn-hf-sea-lion"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "South East Asia is several markets with different rules: Singapore publishes voluntary governance frameworks that large buyers adopt as checklists, while Vietnam now has a binding AI law with local-presence duties. Where the AI actually runs differs by country too, since the listing shows Agent Platform in Singapore and Jakarta but not Bangkok, so in Thailand the honest answer today is local data with AI served from elsewhere on Google's network. Local-language work built on Gemma gives Google an open-model story here, but SEA-LION's newer variants on other bases show that advantage is not exclusive."
+ },
+ {
+  "id": "japan",
+  "facts": [
+   {
+    "text": "Google Cloud has two regions in Japan: Tokyo (asia-northeast1) and Osaka (asia-northeast2). Its products-by-region data lists Gemini Enterprise Agent Platform in both, and notes that Osaka's three zones sit in one or two physical data centers while it expands.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's sovereign cloud page lists Japan among the countries with a regional data boundary, names Japan's ISMAP among the frameworks it works to, and shows KDDI and NTT DATA logos among its sovereign cloud operating partners.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-sovereign"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google Cloud Japan's January 2026 message says strategic partnerships with NTT DATA and KDDI are speeding up environments where customers use Google's AI while their data stays in Japan, and that Google Distributed Cloud is offered in connected and fully disconnected forms.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "sn-gc-jp-newyear"
+    ],
+    "asOf": "2026-01-05",
+    "confidence": "high"
+   },
+   {
+    "text": "The same message says a Google DeepMind research team in Google's Tokyo office contributed substantially to improving the Japanese-language performance of Gemini 3.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "sn-gc-jp-newyear"
+    ],
+    "asOf": "2026-01-05",
+    "confidence": "high"
+   },
+   {
+    "text": "Coverage describes Gemini running on Google Distributed Cloud at KDDI's Osaka Sakai data center, with trial access offered to startups through a programme KDDI runs with Google.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-digwatch-kddi",
+     "sn-pr-atmarkit-jp-sov"
+    ],
+    "asOf": "2026-04-06",
+    "confidence": "medium"
+   },
+   {
+    "text": "NTT DATA announced in June 2026 that it is setting up a Gemini Enterprise practice targeting 5,000 certified experts and plans to build up to 500 AI agents with Google Cloud across industries.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "sn-nttdata-gc"
+    ],
+    "asOf": "2026-06-09",
+    "confidence": "medium"
+   },
+   {
+    "text": "Japan's AI Promotion Act passed on 28 May 2025 and was promulgated on 4 June 2025; it promotes AI development and carries no monetary penalties. The Cabinet adopted the first AI Basic Plan under it on 23 December 2025 and a second on 14 July 2026.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-wc-jp-ai",
+     "sn-pr-hl-jp-ai",
+     "sn-oecd-jp-plan",
+     "sn-cao-jp-plan-2"
+    ],
+    "asOf": "2026-07-14",
+    "confidence": "medium"
+   },
+   {
+    "text": "Domestic models are being evaluated for government use: the Digital Agency is trialling NTT's tsuzumi 2, Fujitsu's Takane 32B and Preferred Networks' PLaMo 2.0 Prime on a domestic cloud to inform procurement from fiscal 2027. SoftBank's SB Intuitions develops the Sarashina models, and Sakana AI offers a model-routing platform called Fugu.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-da-jp-genai",
+     "sn-pr-eweek-jp-llm",
+     "sn-ntt-tsuzumi2",
+     "sn-nv-jp-nemotron"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "Japan regulates AI lightly and buys through trusted integrators, so the route to most large accounts runs through partners such as NTT DATA and KDDI rather than around them. Data staying in Japan is the recurring requirement, and Google has a concrete answer in the two regions plus Gemini on Distributed Cloud in a KDDI facility. The government is testing domestic models for its own procurement, so public-sector buyers will expect a multi-model answer and evidence of Japanese-language quality."
+ },
+ {
+  "id": "aunz",
+  "facts": [
+   {
+    "text": "Google Cloud has two regions in Australia, Sydney (australia-southeast1) and Melbourne (australia-southeast2), and its products-by-region data lists Gemini Enterprise Agent Platform in both.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's region data shows no New Zealand region, live or planned, although Google announced plans for one in August 2022.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations",
+     "sn-gc-apac-2022"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's sovereign cloud page lists Australia among the countries with a regional data boundary and among those with premium options that add in-region support personnel or Access Justifications; it names Australia's IRAP among the frameworks it works to.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-sovereign"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Australia released its National AI Plan on 2 December 2025. The plan set aside the earlier proposal for mandatory guardrails on high-risk AI and relies on existing laws and regulators instead.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-au-ai-plan",
+     "sn-pr-iapp-au",
+     "sn-pr-region-au"
+    ],
+    "asOf": "2025-12-03",
+    "confidence": "high"
+   },
+   {
+    "text": "The Australian government announced an AI Safety Institute on 25 November 2025, with a commitment of about $29.9 million, to monitor, test and share information on AI capabilities and risks.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-gadens-au"
+    ],
+    "asOf": "2025-12-02",
+    "confidence": "medium"
+   },
+   {
+    "text": "Press lists Australia among the six countries where Google made Tasks in Gemini free of charge for adults on 17 November 2026.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-bg-tasks-free",
+     "u-pr-techrepublic-tasks"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "Australia has decided against AI-specific rules for now, so the gatekeepers are existing regulators and, for government work, IRAP assessment rather than an AI act. That shifts the conversation to evidence: where data and processing sit, who can access them and what has been assessed. New Zealand customers have no in-country Google Cloud region to point to, so data location has to be handled through Australian regions and contract terms."
+ },
+ {
+  "id": "china",
+  "facts": [
+   {
+    "text": "Google Cloud's region data lists no region in mainland China; the nearest are Hong Kong (asia-east2) and Taiwan (asia-east1).",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Search extracts of Google's list of countries and territories where Google AI Studio and the Gemini API are available do not show mainland China. The extracts were partial, so this is a reading of the list, not a quoted exclusion.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gapi-regions"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "This knowledge base holds no record of Gemini, Gemini Enterprise or Agent Platform being offered in mainland China, and none of its sources state a China availability date.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "sn-gc-locations",
+     "sn-gapi-regions"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "What the knowledge base does record is Chinese open-weight models sold on Google Cloud to customers elsewhere: the partner price list carries DeepSeek V4.1 Flash at $0.30 / $1.20 and Z.ai's GLM-5.2 at $1.40 / $4.40 per million tokens.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "c-gcloud-partner-pricing",
+     "u-gc-partner-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "China's Interim Measures for the Management of Generative AI Services have applied since 15 August 2023 and are the basis for filing public-facing generative AI services with the Cyberspace Administration; separate rules on labelling AI-generated content took effect on 1 September 2025.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-pk-cn-rules",
+     "sn-pr-dpa-cn-filings"
+    ],
+    "asOf": "2025-09-01",
+    "confidence": "medium"
+   },
+   {
+    "text": "The Cyberspace Administration's registry counted 1,112 national filings and 731 local registrations of generative AI services as of 31 August 2026, up from just over 700 filings at the end of 2025.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-dpa-cn-filings",
+     "sn-pr-cd-cn-700"
+    ],
+    "asOf": "2026-08-31",
+    "confidence": "medium"
+   },
+   {
+    "text": "The Chinese labs this knowledge base tracks are Alibaba (Qwen3.8-Max, with Qwen4-Max released in November 2026), DeepSeek (open-weight V4 models), Z.ai, formerly Zhipu (GLM-5.2, MIT-licensed weights) and Moonshot (Kimi K3, a 2.8-trillion-parameter open-weight model).",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "c-x-technode-qwen38",
+     "u-pr-technode-qwen4",
+     "c-x-deepseek-news-0424",
+     "c-x-venturebeat-glm52",
+     "c-x-decoder-kimi-k3"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   },
+   {
+    "text": "A US congressional commission paper says Qwen has the largest model ecosystem on Hugging Face, with over 100,000 derivatives; separate reporting cautions that independent evidence does not show Chinese models overtaking US ones across the wider enterprise market.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-uscc-cn-open",
+     "sn-pr-eweek-cn-open"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "A Google AI specialist is not selling Gemini into mainland China: there is no Google Cloud region there and nothing in this knowledge base supports an offer of Gemini inside the mainland. The realistic conversations are with Chinese companies expanding abroad, who run on Google Cloud regions outside the mainland, and with multinationals that need a separate, locally filed stack for their China operations. Everywhere else in Asia-Pacific, Chinese open-weight models are the price reference customers bring to the table, and some of them are sold on Google Cloud itself."
+ },
+ {
+  "id": "hk-taiwan",
+  "facts": [
+   {
+    "text": "Google Cloud has a region in Taiwan (asia-east1) and one in Hong Kong (asia-east2); its products-by-region data lists Gemini Enterprise Agent Platform in both, with the note that functionality varies by region.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-locations"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Google's sovereign cloud page lists both Hong Kong and Taiwan among the places with a regional data boundary.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-gc-sovereign"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Caixin reported in March 2026 that Google would open the Gemini web app to all users in Hong Kong, ending an earlier restriction. Whether Google AI Studio and the Gemini API are offered in Hong Kong could not be confirmed from the extracts of Google's region list.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-caixin-hk-gemini",
+     "sn-gapi-regions"
+    ],
+    "asOf": "2026-03-17",
+    "confidence": "low"
+   },
+   {
+    "text": "Taiwan's Legislative Yuan passed the Artificial Intelligence Basic Act on 23 December 2025, and one legal analysis dates its promulgation and entry into force to 14 January 2026. It sets principles, tasks the Ministry of Digital Affairs with a risk classification framework and gives the government 24 months to align other laws.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-mlex-tw-ai",
+     "sn-pr-bm-tw-ai",
+     "sn-pr-fsi-tw-ai"
+    ],
+    "asOf": "2026-01-14",
+    "confidence": "medium"
+   },
+   {
+    "text": "Taiwan's National Science and Technology Council backs TAIDE, a project that has released Traditional Chinese language models for local use.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "sn-pk-tw-taide"
+    ],
+    "asOf": "2025-06-30",
+    "confidence": "low"
+   },
+   {
+    "text": "Hong Kong's locally developed HKGAI V1 model was unveiled in February 2025; reports say it is built on DeepSeek, supports Cantonese, Putonghua and English, and was to be used by more than 70 government departments. Its public chatbot HKChat drew 90,000 users in its first week in November 2025.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "sn-pr-people-hkgai",
+     "sn-pr-scmp-hk-gov",
+     "sn-pr-scmp-hkchat"
+    ],
+    "asOf": "2025-11-28",
+    "confidence": "medium"
+   }
+  ],
+  "angle": "These are two different markets under one label. Taiwan pairs a principles-based AI law with a government-backed Traditional Chinese model, and its buyers sit close to the AI hardware supply chain. In Hong Kong the government's own assistant is built on a mainland-origin model and Gemini's consumer web app was reported to be opening to all users only in 2026, so check availability product by product before a meeting and do not assume what works in Taiwan or Singapore is offered in Hong Kong."
+ }
+]

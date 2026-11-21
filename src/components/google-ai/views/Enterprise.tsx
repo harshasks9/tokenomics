@@ -41,11 +41,11 @@ export default function Enterprise() {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Enterprise</span>
-        <h1 className="gai-h1">From a business need to a Google AI stack you can defend</h1>
-        <p className="gai-lede">Pick an industry, a function and an architecture. You get the reference stack built from products in the knowledge base, how ready each part is today, and what it means for the customer, the seller and the architect. The guidance is this site&apos;s analysis; the product facts behind it are sourced.</p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>🧩</div>
+        <h1 className="gai-h1">Workloads</h1>
+        <p className="gai-lede">Pick a workload to see the stack behind it, how ready each part is today, and what it means for the customer.</p>
+      </header>
 
       <Sec title="Workload navigator" sub="Industry × function × architecture.">
         <div className="gai-card gai-row">

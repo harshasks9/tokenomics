@@ -39,11 +39,11 @@ export default function Research({ status, statusFailed }: { status: StatusPaylo
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Research</span>
-        <h1 className="gai-h1">The science behind the products, and the method behind this site</h1>
-        <p className="gai-lede">Where Google&apos;s research turns into product — and how every statement on this site is sourced, labelled, dated and checked.</p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>🔬</div>
+        <h1 className="gai-h1">Sources and method</h1>
+        <p className="gai-lede">How every statement on this site is sourced, labelled, dated and checked.</p>
+      </header>
       <div className="gai-chipset">
         {[["#lab", "Research to product"], ["#method", "Method"], ["#pipeline", "Pipeline status"], ["#sources", "Source library"], ["#review", "Independent review"], ["#limits", "Limitations"]].map(([h, l]) => <a key={h} className="gai-chip" href={h}>{l}</a>)}
       </div>

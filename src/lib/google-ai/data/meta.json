@@ -1,9 +1,11 @@
 {
- "version": "2026.11.15-1",
- "curatedAt": "2026-11-15",
+ "version": "2026.11.21-1",
+ "curatedAt": "2026-11-21",
  "coverageFrom": "2026-08-15",
- "coverageTo": "2026-11-15",
+ "coverageTo": "2026-11-21",
  "notes": [
+  "Update of 21 Nov 2026: adds developments dated 15–21 Nov and re-reads Google Cloud's price list on 21 Nov (29 Google text-model list prices re-checked, unchanged). Every other record keeps the check date shown beside it, mostly 15 Nov.",
+  "Two retirements scheduled inside that week — Gemini 3.6 Flash (19 Nov) and the Gemini 3.1 Flash TTS preview (17 Nov) — could not be confirmed as carried out. Both stay 'deprecated', with the scheduled date shown.",
   "A Gemini 3.1 Pro price rise to $2.50 / $15 in September 2026, recorded in an older internal catalogue, could not be confirmed: Google Cloud's price list (read directly) and extracts of the Gemini API price page both show $2 / $12. This site records $2 / $12.",
   "Google does not publish a flagship / mid / light label for the Gemini 4 element names. The tier shown for Argon, Carbon and Hydrogen is this site's reading of price and positioning.",
   "Since October 2026 Google Cloud pages use 'Gemini platform' and 'Gemini for business' without a formal rename announcement. The knowledge base keeps 'Gemini Enterprise Agent Platform' and 'Gemini Enterprise' as canonical names and records the newer wording as aliases.",

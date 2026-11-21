@@ -111,13 +111,11 @@ export default function Compare() {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Compare</span>
-        <h1 className="gai-h1">Compare models on the same terms, or not at all</h1>
-        <p className="gai-lede">
-          Scores are placed side by side only when the benchmark and its version match, and independent measurements are kept apart from providers&apos; own numbers. Prices are list prices in effect on {fmtDate(today)}.
-        </p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>⚖️</div>
+        <h1 className="gai-h1">Compare</h1>
+        <p className="gai-lede">Put models side by side. Scores are compared only when the benchmark and its version match, and independent results are kept apart from the provider&apos;s own.</p>
+      </header>
 
       <Seg value={mode} onChange={change} options={MODES} label="Comparison" />
 

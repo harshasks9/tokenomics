@@ -4106,6 +4106,204 @@
   ]
  },
  {
+  "id": "rel-u-gemini-4-neon-part-of-gemini",
+  "from": "gemini-4-neon",
+  "to": "gemini",
+  "type": "part-of",
+  "note": "Listed in the Gemini 4 group of Google Cloud's price list.",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-served-via-agent-platform",
+  "from": "gemini-4-neon",
+  "to": "gemini-enterprise-agent-platform",
+  "type": "served-via",
+  "note": "Generally available as gemini-4-neon; Standard, Priority and Batch prices are listed.",
+  "effectiveFrom": "2026-11-18",
+  "label": "verified-fact",
+  "confidence": "high",
+  "sourceIds": [
+   "u-gc-pricing",
+   "u-gcd-ap-release-notes"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-served-via-gemini-api",
+  "from": "gemini-4-neon",
+  "to": "gemini-api",
+  "type": "served-via",
+  "note": "Reported as rolling out on the paid Gemini API tier and in Google AI Studio.",
+  "effectiveFrom": "2026-11-18",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-9to5-neon",
+   "u-pr-dt-neon"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-powers-gemini-app",
+  "from": "gemini-4-neon",
+  "to": "gemini-app",
+  "type": "powers",
+  "note": "Selectable by Google AI Pro and Ultra subscribers; reported to take Argon's place in the model picker.",
+  "effectiveFrom": "2026-11-18",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-9to5-neon",
+   "u-pr-notebookcheck-neon"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-powers-gemini-enterprise",
+  "from": "gemini-4-neon",
+  "to": "gemini-enterprise",
+  "type": "powers",
+  "note": "Available once an administrator enables it; also offered in Workflow Builder for agent flow nodes and no-code agents.",
+  "effectiveFrom": "2026-11-18",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-gcd-ge-release-notes"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-powers-google-antigravity",
+  "from": "gemini-4-neon",
+  "to": "google-antigravity",
+  "type": "powers",
+  "note": "Reports differ on whether access is limited to paid Antigravity tiers.",
+  "effectiveFrom": "2026-11-18",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-9to5-neon",
+   "u-pr-dt-neon"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-succeeds-gemini-4-argon",
+  "from": "gemini-4-neon",
+  "to": "gemini-4-argon",
+  "type": "succeeds",
+  "note": "In the Gemini app only, per press. Argon remains on sale through the API and Google Cloud.",
+  "effectiveFrom": "2026-11-18",
+  "label": "analyst-interpretation",
+  "confidence": "low",
+  "sourceIds": [
+   "u-pr-notebookcheck-neon",
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-competes-with-gpt-6-2-sol",
+  "from": "gemini-4-neon",
+  "to": "gpt-6-2-sol",
+  "type": "competes-with",
+  "note": "Press reports that Google's model card compares Neon with GPT-6.2 Sol and Claude Opus 5.5.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-dt-neon"
+  ]
+ },
+ {
+  "id": "rel-u-gemini-4-neon-competes-with-claude-opus-5-5",
+  "from": "gemini-4-neon",
+  "to": "claude-opus-5-5",
+  "type": "competes-with",
+  "note": "Press reports that Google's model card compares Neon with Claude Opus 5.5 and GPT-6.2 Sol.",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-dt-neon"
+  ]
+ },
+ {
+  "id": "rel-u-genie-4-part-of-genie",
+  "from": "genie-4",
+  "to": "genie",
+  "type": "part-of",
+  "note": "Named by Google as its new Genie world model.",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-bg-genie4"
+  ]
+ },
+ {
+  "id": "rel-u-genie-4-powers-project-genie",
+  "from": "genie-4",
+  "to": "project-genie",
+  "type": "powers",
+  "note": "New Project Genie experience for eligible Google AI Ultra subscribers.",
+  "effectiveFrom": "2026-11-18",
+  "label": "verified-fact",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-bg-genie4",
+   "u-pr-tnw-genie4"
+  ]
+ },
+ {
+  "id": "rel-u-genie-4-succeeds-genie-3",
+  "from": "genie-4",
+  "to": "genie-3",
+  "type": "succeeds",
+  "note": "Takes over from Genie 3 as the model behind Project Genie for subscribers who have the new experience.",
+  "effectiveFrom": "2026-11-18",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-tnw-genie4"
+  ]
+ },
+ {
+  "id": "rel-u-gpt-6-2-astra-succeeds-gpt-6-astra",
+  "from": "gpt-6-2-astra",
+  "to": "gpt-6-astra",
+  "type": "succeeds",
+  "note": "Press compares its $8 / $40 price with GPT-6 Astra's $10 / $50.",
+  "effectiveFrom": "2026-11-17",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-betanews-gpt62",
+   "u-pr-runtimewire-gpt62"
+  ]
+ },
+ {
+  "id": "rel-u-gpt-6-2-sol-succeeds-gpt-6-1-sol",
+  "from": "gpt-6-2-sol",
+  "to": "gpt-6-1-sol",
+  "type": "succeeds",
+  "note": "Same reported price as GPT-6.1 Sol.",
+  "effectiveFrom": "2026-11-17",
+  "label": "independent-measurement",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-betanews-gpt62"
+  ]
+ },
+ {
+  "id": "rel-u-gpt-6-2-astra-competes-with-gemini-4-carbon",
+  "from": "gpt-6-2-astra",
+  "to": "gemini-4-carbon",
+  "type": "competes-with",
+  "note": "Rival labs' top models: a reported $8 / $40 against Carbon's $4 / $20 standard rate from 1 December 2026.",
+  "label": "analyst-interpretation",
+  "confidence": "medium",
+  "sourceIds": [
+   "u-pr-betanews-gpt62",
+   "u-gc-pricing"
+  ]
+ },
+ {
   "id": "rel-parent-agent-platform-tuning",
   "from": "agent-platform-tuning",
   "to": "gemini-enterprise-agent-platform",

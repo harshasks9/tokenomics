@@ -17,6 +17,7 @@ import { ANNOUNCEMENTS, SOURCE_BY_ID } from "../kb";
 import { deadlines } from "../engine/brief";
 import { AI_SIGNAL, classifyAreas, classifyTypes, layersFor, resolveEntities } from "./classify";
 import { cluster, itemId, jaccard, tokens } from "./cluster";
+import { buildDigest, type DigestGenerator } from "./digest";
 import { checkRobots, httpFetch, type Fetcher } from "./fetch";
 import { canonicalUrl, contentHash, parseFeed, text } from "./parse";
 import { checkPrices } from "./pricewatch";
@@ -30,6 +31,8 @@ export interface RunOptions {
   now?: Date;
   /** Skip persistence (tests, dry runs). */
   dryRun?: boolean;
+  /** Writes the daily digest notes. Defaults to the configured model, or none. */
+  digest?: DigestGenerator;
 }
 
 /** Canonical announcement an item corresponds to, by cited URL or near-identical title. */
@@ -41,6 +44,20 @@ export function matchCanonical(title: string, url: string): string | undefined {
     if (jaccard(tokens(a.title), toks) >= 0.7) return a.id;
   }
   return undefined;
+}
+
+/** Items older than this are history, not news: a feed that publishes its whole archive must not flood the review queue. */
+export const MAX_ITEM_AGE_DAYS = 45;
+/** Most items taken from one feed in one run. */
+export const MAX_ITEMS_PER_FEED = 40;
+
+/** Keep a feed's recent items only, newest first, capped. Undated items are kept (they cannot be judged) and sort last. */
+export function recentItems(items: RawItem[], today: string): RawItem[] {
+  const cutoff = new Date(Date.parse(today + "T00:00:00Z") - MAX_ITEM_AGE_DAYS * 86400000).toISOString().slice(0, 10);
+  return items
+    .filter((i) => !i.published || i.published >= cutoff)
+    .sort((a, b) => (b.published ?? "").localeCompare(a.published ?? ""))
+    .slice(0, MAX_ITEMS_PER_FEED);
 }
 
 function triageScore(d: Pick<DetectedItem, "types" | "entityIds" | "alsoAt" | "providerId">, feed: Feed): number {
@@ -103,6 +120,7 @@ export async function runIngestion(opts: RunOptions = {}): Promise<RunStatus> {
       }
       let items = parseFeed(res.body, feed.key);
       if (feed.aiFilter) items = items.filter((i) => AI_SIGNAL.test(`${i.title} ${i.summary}`));
+      items = recentItems(items, today);
       run.items = items.length;
       raw.push(...items);
     } catch (e) {
@@ -171,8 +189,15 @@ export async function runIngestion(opts: RunOptions = {}): Promise<RunStatus> {
   };
 
   if (!opts.dryRun) {
-    const items = [...known.values()].sort((a, b) => (b.published ?? b.firstSeenAt).localeCompare(a.published ?? a.firstSeenAt));
+    // Stored items older than the window are pruned so the queue stays current.
+    const cutoff = new Date(now.getTime() - MAX_ITEM_AGE_DAYS * 86400000).toISOString().slice(0, 10);
+    const items = [...known.values()]
+      .filter((d) => (d.published ?? d.firstSeenAt.slice(0, 10)) >= cutoff)
+      .sort((a, b) => (b.published ?? b.firstSeenAt).localeCompare(a.published ?? a.firstSeenAt));
+    // The daily digest is rebuilt from the current queue on every successful run; a failed run keeps the last one.
+    const digest = status.ok ? await buildDigest(items, now, opts.digest) : stored.digest;
     await writeStored({
+      digest,
       lastRun: status,
       // Freshness is only advanced by a run that actually read something.
       lastSuccessAt: status.ok ? status.finishedAt : stored.lastSuccessAt,

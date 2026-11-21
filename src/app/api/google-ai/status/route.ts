@@ -18,8 +18,10 @@ export async function GET() {
         lastSuccessAt: state.lastSuccessAt,
         sources: FEEDS.map((f) => ({ key: f.key, name: f.name, publisher: f.publisher, url: f.url, category: f.category, format: f.format })),
       },
-      items: state.items.slice(0, 120),
+      // Google's own items first, so a busy competitor feed cannot crowd them out of the response.
+      items: [...state.items.filter((i) => i.providerId === "google"), ...state.items.filter((i) => i.providerId !== "google")].slice(0, 150),
       alerts: state.alerts.slice(0, 40),
+      digest: state.digest,
     });
   } catch (e) {
     return Response.json({ dataset: META, pipeline: null, items: [], alerts: [], error: e instanceof Error ? e.message : String(e) }, { status: 200 });

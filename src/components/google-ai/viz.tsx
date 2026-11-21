@@ -44,8 +44,8 @@ export function EgoGraph({ id, asOf, onPick, max = 22 }: { id: string; asOf?: st
           const ang = (i / nodes.length) * Math.PI * 2 - Math.PI / 2;
           const rx = 240;
           const ry = 165;
-          const x = cx + Math.cos(ang) * rx;
-          const y = cy + Math.sin(ang) * ry;
+          const x = Math.round((cx + Math.cos(ang) * rx) * 100) / 100;
+          const y = Math.round((cy + Math.sin(ang) * ry) * 100) / 100;
           const on = hover === n.other.id;
           const right = Math.cos(ang) > 0.15;
           const left = Math.cos(ang) < -0.15;

@@ -20,6 +20,34 @@ together and why it matters. Not affiliated with Google.
 Global: search (names, aliases, former names, exact model ids), an analyst that answers only from the knowledge
 base, light/dark mode, and three depths (Executive / Analyst / Technical).
 
+## Specialist edition
+
+The first five pages are written for AI sales specialists in Asia-Pacific; the original nine destinations remain
+as the reference library in the sidebar.
+
+| Page | Route | What it does |
+| --- | --- | --- |
+| Today | `/google-ai` | Must-know developments, each with what happened, what to say and what to watch; upcoming dates; rival moves; unreviewed items from the daily check |
+| Industries | `/google-ai/industries` | Four segments, 27 sub-verticals as checkboxes; news, customer examples and workloads for the selection |
+| Case studies | `/google-ai/cases` | Real customers on Google Cloud and on other platforms, with labelled claims and how to use each example |
+| Quiz | `/google-ai/quiz` | Multiple-choice questions written from knowledge-base records, with explanations and sources |
+| Graph | `/google-ai/graph` | The whole knowledge base as one explorable graph |
+
+- **Sub-region** (sidebar): Korea, India, South East Asia, Japan, Australia and New Zealand, China, Hong Kong and
+  Taiwan. Filters news and case studies by editorial tags and shows a sourced market brief.
+- **Language** (sidebar): English plus Korean, Japanese, Simplified and Traditional Chinese, Indonesian, Thai,
+  Vietnamese and Hindi. Navigation strings are hand-translated (`i18n.ts`); page text is machine-translated in the
+  browser by `LanguageMirror` through `/api/google-ai/translate` (Gemini when a key is set, otherwise the public
+  translate endpoint the repo already uses), cached, and labelled as machine translation. Elements marked
+  `translate="no"` (product names, ids) are left alone. A failed translation shows English and says so.
+- **Daily automatic notes** (`ingest/digest.ts`): after each monitoring run a model writes a headline and a
+  talking point for the newest unreviewed Google posts, from the post's title and excerpt only. Output is validated
+  (known item ids, known taxonomy ids, length caps), stored with the pipeline state and shown on Today as
+  unreviewed. No key → no notes; a failed model call never fails the run.
+- **Data** (`data/cases.json`, `notes.json`, `regions.json`, `quiz.json`): built by the merge tool from
+  `s1-cases-google.json`, `s2-cases-other.json` and `s3-specialist.json`. Customer-reported results can never
+  carry the "verified fact" label; taxonomy ids are checked against `taxonomy.ts`.
+
 ## Architecture
 
 The simplest thing that is correct: a typed, versioned dataset in the repo plus a small monitoring pipeline.
@@ -80,6 +108,19 @@ Environment:
 2. `GAI_RESEARCH_DIR=<folder> node src/lib/google-ai/tools/merge.mjs` — drops and logs anything without a valid
    source or a known entity; closes superseded prices; writes `data/*.json`.
 3. `./node_modules/.bin/vitest run src/lib/google-ai` — must pass.
+
+### Dated updates
+
+A later update is one more file in the research folder, `r5-update.json`, `r6-update.json`, … (applied oldest first),
+with the same collections plus `entityPatches` (confirmed status changes to existing entities) and `checks`.
+Run the merge with `GAI_CURATED=<date>`; that date becomes the "updated through" date shown on every page.
+
+- Records from the base research keep their own check date. An update never re-stamps what it did not re-read.
+- `rechecked.json` lists list prices re-read from the live official page on a date (written from the pipeline's
+  price check); only those price records take the later check date.
+- A retirement date that was still ahead when it was recorded is a schedule. It becomes a retirement only when an
+  update confirms it; otherwise the product stays deprecated and the site says the retirement was scheduled.
+- An update's lifecycle events never set the introduction date of an existing product.
 
 ## Acceptance tests (`src/lib/google-ai/google-ai.test.ts`)
 

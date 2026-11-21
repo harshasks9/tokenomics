@@ -5,6 +5,10 @@
 import announcementsJson from "./data/announcements.json";
 import availabilityJson from "./data/availability.json";
 import battlegroundsJson from "./data/battlegrounds.json";
+import casesJson from "./data/cases.json";
+import notesJson from "./data/notes.json";
+import quizJson from "./data/quiz.json";
+import regionsJson from "./data/regions.json";
 import benchmarksJson from "./data/benchmarks.json";
 import entitiesJson from "./data/entities.json";
 import lifecycleJson from "./data/lifecycle.json";
@@ -21,13 +25,17 @@ import type {
   Battleground,
   BenchmarkDef,
   BenchmarkResult,
+  CaseStudy,
   DatasetMeta,
   Entity,
   LayerId,
   LifecycleEvent,
   PriceRecord,
+  QuizQuestion,
+  RegionBrief,
   Relationship,
   Source,
+  SpecialistNote,
   TimelineEvent,
 } from "./types";
 
@@ -43,6 +51,11 @@ export const LIFECYCLE = lifecycleJson as LifecycleEvent[];
 export const ANNOUNCEMENTS = (announcementsJson as Announcement[]).slice().sort((a, b) => b.date.localeCompare(a.date));
 export const TIMELINE = (timelineJson as TimelineEvent[]).slice().sort((a, b) => a.date.localeCompare(b.date));
 export const BATTLEGROUNDS = battlegroundsJson as Battleground[];
+export const CASES = (casesJson as CaseStudy[]).slice().sort((a, b) => Number(a.dateBasis === "read") - Number(b.dateBasis === "read") || b.date.localeCompare(a.date));
+export const NOTES = notesJson as SpecialistNote[];
+export const REGION_BRIEFS = regionsJson as RegionBrief[];
+export const QUIZ = quizJson as QuizQuestion[];
+export const NOTE_BY_ANNOUNCEMENT: Record<string, SpecialistNote> = Object.fromEntries(NOTES.map((n) => [n.announcementId, n]));
 
 function index<T extends { id: string }>(rows: T[]): Record<string, T> {
   const out: Record<string, T> = {};

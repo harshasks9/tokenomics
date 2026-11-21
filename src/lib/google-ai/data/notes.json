@@ -1,0 +1,684 @@
+[
+ {
+  "announcementId": "an-2026-11-21-google-cloud-price-list-changes",
+  "mustKnow": true,
+  "headline": "Gemini 3.6 Flash leaves the promotion banner; Hydrogen joins CodeMender",
+  "talkTrack": "If you still run Gemini 3.6 Flash, confirm your migration plan now: its retirement was scheduled for 19 November and Google Cloud's price list has dropped it from the introductory-pricing banner. CodeMender can now run on Gemini 4 Hydrogen at $1.50 / $7.50 per million tokens.",
+  "watchOut": "Google has not stated that 3.6 Flash was retired and its token prices are still listed; the day each price-list change was made is not known.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech",
+   "ent-banking"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-20-anthropic-ipo-closes-google-in-private-placement",
+  "mustKnow": true,
+  "headline": "Anthropic is now public; Google bought into a $26B placement",
+  "talkTrack": "Anthropic began trading on Nasdaq as ANT on 19 November at an IPO price of $83, and Google was one of seven buyers in a $26 billion private placement sold alongside it. Claude on Google Cloud therefore comes from a listed partner in which Google holds stock.",
+  "watchOut": "Anthropic did not break the placement down by buyer; Google's roughly $10 billion share and about 14% holding come from press reports of the S-1.",
+  "subVerticals": [],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-20-cloud-storage-object-enrichments-preview",
+  "mustKnow": false,
+  "headline": "Cloud Storage can label images and PDFs automatically (preview)",
+  "talkTrack": "In preview, Cloud Storage can run Google models over stored images and PDFs and write the results, such as detected objects, labels and PDF classes, into each object's metadata. Google quotes $700 to enrich 10 million images or PDFs.",
+  "watchOut": "Preview. The $700 figure and the 75% saving are Google's claims and the pricing page behind them was not read; Gemini-based summarisation and extraction are described as upcoming, by request.",
+  "subVerticals": [
+   "dn-media",
+   "dn-ecommerce",
+   "ent-retail",
+   "ent-media",
+   "ent-insurance"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-19-gemini-api-tool-retrieval-preview",
+  "mustKnow": false,
+  "headline": "Gemini API previews Tool Retrieval for agents with many tools",
+  "talkTrack": "Tool Retrieval, in preview in the Gemini API since 19 November, lets the model look up tool definitions on demand instead of receiving every definition with each request. Google says this lets agents reach hundreds of tools while using fewer tokens.",
+  "watchOut": "Preview only, reported to work through the Interactions API on v1beta; availability on Agent Platform is not confirmed, and each tool search adds a model pass, so savings depend on the workload.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-19-gemini-mac-computer-use",
+  "mustKnow": false,
+  "headline": "Gemini app for Mac can now operate apps for subscribers",
+  "talkTrack": "Google has added computer use to the Gemini app for Mac to handle repetitive tasks. Press reports say it is rolling out in US English to Google AI Plus, Pro and Ultra subscribers, with users choosing which apps it may touch and approving sensitive actions.",
+  "watchOut": "A consumer feature reported as US English only; the model behind it and per-plan limits are not stated.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-19-okf-v0-3",
+  "mustKnow": false,
+  "headline": "Open Knowledge Format v0.3 adds conformance rules and trust tiers",
+  "talkTrack": "Google released Open Knowledge Format v0.3 with formal conformance rules, trust tiers that track agent edits and a versioning policy; existing bundles keep working. The project has moved out of Google Cloud's GitHub organisation into a standalone one.",
+  "watchOut": "Adoption outside Google was not assessed.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "ent-conglomerate",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-18-gemini-4-neon-launch",
+  "mustKnow": true,
+  "headline": "New Gemini 4 Neon model is generally available at $3 / $15",
+  "talkTrack": "Gemini 4 Neon became generally available on Agent Platform on 18 November at $3 input and $15 output per million tokens; Google places it between Carbon for the hardest long-running work and Hydrogen for fast everyday work. Batch is $1.50 / $7.50 and non-global endpoints are $3.30 / $16.50.",
+  "watchOut": "Some outlets say Neon rises to $4 / $20 on 1 December; Google Cloud's price list shows no such note, which looks like confusion with Argon and Carbon. Cache-write charges of $3.75 per million tokens start on 12 January 2027, and in Gemini Enterprise an administrator must enable Neon first.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-gaming",
+   "dn-fintech",
+   "ent-banking",
+   "ent-conglomerate"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-18-genie-4-project-genie-ultra",
+  "mustKnow": false,
+  "headline": "Genie 4 world model opens to eligible Google AI Ultra subscribers",
+  "talkTrack": "Google is rolling out a new Project Genie experience that gives eligible Google AI Ultra subscribers access to its Genie 4 world model, which was a research preview until now.",
+  "watchOut": "A consumer rollout: which Ultra subscribers and regions are eligible, and what session limits apply, were not confirmed.",
+  "subVerticals": [
+   "dn-gaming",
+   "dn-media",
+   "ent-media",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-18-gartner-mq-ai-application-development-platforms",
+  "mustKnow": false,
+  "headline": "Google says Gartner named it a Leader for AI application platforms",
+  "talkTrack": "Google Cloud says Gartner named it a Leader in the 2026 Magic Quadrant for AI Application Development Platforms for the third time running, placed highest on Ability to Execute. It is useful with procurement teams that ask for analyst validation.",
+  "watchOut": "The placement is as described by Google; the Gartner report itself was not read.",
+  "subVerticals": [
+   "ent-banking",
+   "ent-insurance",
+   "ent-conglomerate",
+   "ent-telecom",
+   "ps-central"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-18-gemini-notebook-interactive-sites",
+  "mustKnow": false,
+  "headline": "Gemini Notebook can turn sources into a shareable interactive site",
+  "talkTrack": "Gemini Notebook users can now ask it to 'make me a site' and get an interactive site built from the notebook's sources, which opens in a new tab and can be shared.",
+  "watchOut": "Rollout pace, eligible editions and limits were not confirmed.",
+  "subVerticals": [
+   "edu-higher",
+   "edu-k12",
+   "edu-research",
+   "ent-conglomerate"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-17-sovereign-ai-europe-gemini-on-cloud-dedicated",
+  "mustKnow": true,
+  "headline": "Google commits to bring Gemini to its partner-operated sovereign cloud",
+  "talkTrack": "At its Sovereign AI Summit on 17 November, Google said Gemini models are coming to Google Cloud Dedicated, the sovereign cloud run by a local partner, which until now offered open models through Model Garden. Today, Gemini with sovereignty controls means in-region processing on the public cloud or Google Distributed Cloud.",
+  "watchOut": "No date, model list or price was given, and the announcements are European (France, Germany, Spain); the record names no Asia-Pacific operator for Google Cloud Dedicated.",
+  "subVerticals": [
+   "ps-central",
+   "ps-defence",
+   "ps-local",
+   "ent-banking",
+   "ent-healthcare",
+   "ent-telecom"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-17-tasks-in-gemini-free-six-countries",
+  "mustKnow": false,
+  "headline": "Tasks in Gemini is now free in six countries",
+  "talkTrack": "Google has made Tasks in Gemini free of charge in six countries; press lists them as the US, Japan, South Korea, Canada, Australia and India, for adults. Elsewhere it still needs a paid subscription.",
+  "watchOut": "The country list comes from press, not Google's post; shopping, payments and calls to businesses are reported as US-only for now, and free-tier limits were not confirmed.",
+  "subVerticals": [
+   "dn-ecommerce",
+   "dn-mobility",
+   "dn-media"
+  ],
+  "regions": [
+   "japan",
+   "korea",
+   "aunz",
+   "india"
+  ]
+ },
+ {
+  "announcementId": "an-2026-11-17-gemini-4-hydrogen-robotics-plugin",
+  "mustKnow": false,
+  "headline": "Google pitches Gemini 4 Hydrogen for robots; Antigravity adds Robotics plugin",
+  "talkTrack": "Google now presents Gemini 4 Hydrogen as a fast model with strong spatial and embodied reasoning for general-purpose robotics, and has introduced a Robotics plugin for Antigravity. Coverage says the plugin bundles skills for hardware onboarding, simulation and robot control.",
+  "watchOut": "The benchmark comparison with Gemini Robotics ER 2 (84.8 against 75.5) was reported by one outlet and not seen in Google's own text.",
+  "subVerticals": [
+   "ent-manufacturing",
+   "ent-travel",
+   "dn-ai-native",
+   "edu-research"
+  ],
+  "regions": [
+   "japan",
+   "korea"
+  ]
+ },
+ {
+  "announcementId": "an-2026-11-17-ai-mode-temporary-threads",
+  "mustKnow": false,
+  "headline": "AI Mode in Search adds temporary threads kept out of history",
+  "talkTrack": "AI Mode in Google Search now offers temporary threads that stay out of history and are not used for personalisation. Press reports a global launch in every language AI Mode supports.",
+  "watchOut": "How long Google keeps temporary threads on its servers is not recorded here.",
+  "subVerticals": [
+   "dn-adtech",
+   "dn-media",
+   "dn-ecommerce"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-17-ai-studio-full-stack-android-apps",
+  "mustKnow": false,
+  "headline": "AI Studio builds Android apps with a Firebase backend from prompts",
+  "talkTrack": "Google says AI Studio can now build, test and ship a full-stack Kotlin Android app from a prompt, with Cloud Firestore, Firebase Authentication and Firebase AI Logic set up automatically and publishing to Google Play.",
+  "watchOut": "Documentation extracts say projects are Kotlin and Jetpack Compose only, client-side only, and publish to the Play Console internal testing track.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-gaming",
+   "edu-edtech"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-17-drive-gemini-data-classification-ga",
+  "mustKnow": false,
+  "headline": "Gemini-powered file classification in Google Drive is generally available",
+  "talkTrack": "Workspace administrators can now deploy natural-language classification instructions across Drive at scale and test them first; the feature is generally available after an open beta. Gemini's labels do not overwrite labels set by users or by data loss prevention rules.",
+  "watchOut": "The full list of eligible Workspace editions was not confirmed.",
+  "subVerticals": [
+   "ent-banking",
+   "ent-insurance",
+   "ent-healthcare",
+   "ps-central",
+   "ps-local",
+   "edu-higher"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-16-deferred-tier-ga",
+  "mustKnow": true,
+  "headline": "Deferred tier is generally available: background agent turns at half price",
+  "talkTrack": "For agent work that can wait, the deferred tier on Agent Platform bills completed turns at 50% off Standard pay-as-you-go rates, and the discount stacks with prompt caching. It is generally available for the Interactions API, Agent Development Kit and Deep Research, and cancelled, expired or failed turns are not charged.",
+  "watchOut": "Google's post does not name Gemini 4 Hydrogen or Neon among supported models, and no completion-time commitment for deferred turns was seen.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech",
+   "dn-ecommerce",
+   "ent-banking",
+   "ent-insurance"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-12-professional-agentic-architect-certification",
+  "mustKnow": false,
+  "headline": "New Google Cloud certification: Professional Agentic Architect",
+  "talkTrack": "Google Cloud has introduced a Professional Agentic Architect certification that pairs a proctored multiple-choice exam with hands-on labs on Google Skills. It gives customers and partners a named credential for people who design agent systems.",
+  "watchOut": "Exam price, languages and the registration opening date were not captured.",
+  "subVerticals": [
+   "ent-conglomerate",
+   "dn-saas",
+   "edu-higher",
+   "edu-edtech"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-11-gemini-robotics-2-5-and-alphagenome-2",
+  "mustKnow": false,
+  "headline": "Reported: new Gemini Robotics model and AlphaGenome 2 from DeepMind",
+  "talkTrack": "One outlet reported on 11 November that Google DeepMind debuted its next Gemini Robotics model and AlphaGenome 2, a model that predicts how DNA sequence variation affects human cell types. Treat it as a lead to check, not as an announced product.",
+  "watchOut": "No Google DeepMind post was read; the name 'Gemini Robotics 2.5' comes from secondary coverage only, and AlphaGenome 2 is reported as not approved for clinical or diagnostic use.",
+  "subVerticals": [
+   "ent-healthcare",
+   "ent-manufacturing",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-11-gemini-factory-partner-program",
+  "mustKnow": false,
+  "headline": "Gemini factory workshops help software vendors plug into Gemini",
+  "talkTrack": "Google Cloud runs hands-on 'Gemini factory' workshops, in hubs that include Tokyo, to help software vendors build integrations for Gemini and list them on Google Cloud Marketplace. Partners connect through MCP connectors, skills, plugins and autonomous agents.",
+  "watchOut": "Tokyo is the only Asia-Pacific hub named in the record.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech"
+  ],
+  "regions": [
+   "japan"
+  ]
+ },
+ {
+  "announcementId": "an-2026-11-10-november-2026-pixel-feature-drop",
+  "mustKnow": false,
+  "headline": "November Pixel Feature Drop reported to add Gemini features",
+  "talkTrack": "Press reports say the November Pixel Feature Drop, paired with Android 17 QPR2, is a large update for Gemini and other AI capabilities on Pixel phones.",
+  "watchOut": "Only an article summary was seen; the individual features were not captured and no Google post was read.",
+  "subVerticals": [],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-10-gemini-in-gmail-workspace-18-plus",
+  "mustKnow": false,
+  "headline": "Gemini in Gmail reported to reach more adult Workspace users",
+  "talkTrack": "Reporting on a Workspace Updates post says some Gemini in Gmail features began extending to Workspace users aged 18 and over on 10 November, switched on by default, with an administrator off-switch. Administrators who do not want them should review their settings.",
+  "watchOut": "The original post was not read; which features and which editions are covered is not confirmed.",
+  "subVerticals": [
+   "edu-higher",
+   "edu-k12",
+   "ent-conglomerate",
+   "ps-local"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-10-gemini-for-healthcare-preview",
+  "mustKnow": false,
+  "headline": "Gemini for healthcare launches in preview",
+  "talkTrack": "Gemini for healthcare, in preview since 10 November, packages the Gemini agent with skills such as records synthesis, pre-visit preparation and coverage review, plus connectors to EHR, claims and care-management systems. Google says it is built to support HIPAA compliance.",
+  "watchOut": "Preview, with no price or general-availability date stated; the record mentions HIPAA only and does not cover Asia-Pacific health regulations.",
+  "subVerticals": [
+   "ent-healthcare",
+   "ps-health",
+   "ent-insurance"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-10-gemini-4-carbon-available",
+  "mustKnow": true,
+  "headline": "Gemini 4 Carbon open to paying customers; price doubles 1 December",
+  "talkTrack": "Gemini 4 Carbon, which Google positions as its strongest model for long-horizon agentic work, has been open to all paying developers and enterprises since 10 November. Google Cloud lists it at $2 input / $10 output per million tokens through 30 November and $4 / $20 from 1 December 2026.",
+  "watchOut": "The promotional rate is delivered as 50% credits back on net spend and does not apply to the Cyber Permissive variants; the free tier is excluded, and Carbon's context window and output limits were not confirmed.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech",
+   "ent-banking",
+   "ps-defence"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-09-tpu-sync-and-gke-dynamic-slicing",
+  "mustKnow": false,
+  "headline": "TPU Sync is open source; on-demand TPU slicing on GKE is GA",
+  "talkTrack": "Google open-sourced TPU Sync, a library that moves KV caches and model weights between TPU memory, host memory, shared storage and the network, and made GKE dynamic slicing for TPUs generally available. Google reports about 90% lower time to first token on average for very large open-weight models in prefix-caching and disaggregated-serving workloads.",
+  "watchOut": "The performance figures are Google's own and apply to 235B-480B-parameter open-weight models in specific serving set-ups.",
+  "subVerticals": [
+   "dn-ai-native",
+   "dn-saas",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-09-tpu-8tx-and-tpu-8i-max",
+  "mustKnow": true,
+  "headline": "Two new TPUs: 8tx for confidential inference, 8i Max for density",
+  "talkTrack": "Google added two eighth-generation TPU systems on 9 November: TPU 8tx for secure and confidential inference, and TPU 8i Max, which packages two 8i chips for very large context windows and the highest compute density per rack. The generation now has four systems, with 8t for training and 8i for inference.",
+  "watchOut": "No availability dates, regions or prices were given, and the price-performance claims come without numbers.",
+  "subVerticals": [
+   "dn-ai-native",
+   "ent-banking",
+   "ent-telecom",
+   "ps-defence",
+   "ps-central",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-09-claude-fable-5-2-and-meta-muse-in-model-garden",
+  "mustKnow": true,
+  "headline": "Claude Fable 5.2 is GA on Google Cloud; Meta Muse in preview",
+  "talkTrack": "Google Cloud's Model Garden now lists Anthropic's Claude Fable 5.2 as generally available and Meta's Muse Spark 1.3, Muse Wonder and Muse Ember in public preview, so both are options inside Google Cloud alongside Gemini.",
+  "watchOut": "The update sits under the week of 9-13 November without an exact day, and pricing and regions for the Muse models on Google Cloud were not captured in this record.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech",
+   "ent-banking",
+   "ent-conglomerate"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-06-gemini-omni-1-2-flash-ga",
+  "mustKnow": true,
+  "headline": "Gemini Omni 1.2 Flash video model is generally available, 30% cheaper",
+  "talkTrack": "Gemini Omni 1.2 Flash, Google's video generation and editing model, became generally available on Google Cloud on 6 November at $0.07 per second of 720p video, which Google says is 30% less than Omni 1.1 Flash. Clips now run up to 15 seconds and outputs carry a SynthID watermark.",
+  "watchOut": "Audio references are available by allowlist only; the API model id and regional availability were not captured.",
+  "subVerticals": [
+   "dn-media",
+   "dn-adtech",
+   "dn-gaming",
+   "dn-ecommerce",
+   "ent-media",
+   "ent-retail"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-05-security-summit-codemender-agent-identity",
+  "mustKnow": false,
+  "headline": "CodeMender adds sandboxed fix checks; agent credential vault is GA",
+  "talkTrack": "CodeMender, Google's code-security agent in preview since July, now verifies exploits inside an OS-level sandbox or isolated VM and can scan a folder, a repository or only changed files. Auth Manager, a Google-managed credential vault for agents, is generally available.",
+  "watchOut": "CodeMender itself is still in preview, and Agent Identity JWT support is also in preview.",
+  "subVerticals": [
+   "ent-banking",
+   "ent-insurance",
+   "dn-fintech",
+   "dn-saas",
+   "ps-central",
+   "ps-defence"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-04-malaysia-data-center-investment",
+  "mustKnow": false,
+  "headline": "Reported: Google to invest US$15 billion in Malaysian data centers",
+  "talkTrack": "Business press reports that Google announced a US$15 billion investment for 2027-2028 to build data center campuses in Selangor and Negeri Sembilan. Mention it as reported, not confirmed, when Malaysian customers ask about local capacity.",
+  "watchOut": "No Google announcement was read; the figure and sites come from secondary coverage, and how much of the capacity is for AI is not stated.",
+  "subVerticals": [
+   "ps-central",
+   "ent-banking",
+   "ent-telecom",
+   "dn-ecommerce"
+  ],
+  "regions": [
+   "sea"
+  ]
+ },
+ {
+  "announcementId": "an-2026-11-04-agentic-data-cloud-november-update",
+  "mustKnow": false,
+  "headline": "Gemini works on Google's Iceberg lakehouse; cross-cloud links are GA",
+  "talkTrack": "Google says Gemini now works directly on its Iceberg-based lakehouse, and cross-cloud interconnect and caching for AWS and Azure are generally available with no variable egress fees for cross-cloud queries. That helps customers whose data sits in another cloud.",
+  "subVerticals": [
+   "ent-retail",
+   "ent-banking",
+   "ent-telecom",
+   "dn-ecommerce",
+   "dn-fintech",
+   "ent-conglomerate"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-11-03-google-cloud-developer-plugin-antigravity",
+  "mustKnow": false,
+  "headline": "Antigravity gets a Google Cloud plugin grounded in live documentation",
+  "talkTrack": "Since 3 November developers can install the google-cloud-developer plugin from the Antigravity Marketplace; it bundles skills, routing rules and a pre-authorised MCP server that grounds the agent in live Google Cloud documentation. It asks for consent before enabling billable APIs or changing cloud infrastructure.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-gaming",
+   "dn-fintech"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-30-ai-infrastructure-october-roundup",
+  "mustKnow": false,
+  "headline": "Gemini reaches air-gapped Google Distributed Cloud; llm-d hits 1.0",
+  "talkTrack": "The latest air-gapped release of Google Distributed Cloud brings Gemini models and multimodal enterprise search into isolated environments. Google's October recap also lists llm-d 1.0, an open-source serving stack that coordinates inference across mixed TPU and GPU fleets.",
+  "watchOut": "This record does not say which Gemini versions run air-gapped or in which countries the release is offered.",
+  "subVerticals": [
+   "ps-defence",
+   "ps-central",
+   "ent-banking",
+   "ent-telecom",
+   "dn-ai-native"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-28-gemini-4-carbon-announced",
+  "mustKnow": false,
+  "headline": "Gemini 4 Carbon was first announced for cyber defenders",
+  "talkTrack": "Google announced Gemini 4 Carbon on 28 October as its strongest model yet for long-horizon engineering and cybersecurity defence, with access starting among cyber defenders. It opened to all paying developers and enterprises on 10 November.",
+  "watchOut": "Benchmark results for Carbon were not read from a Google source.",
+  "subVerticals": [
+   "ps-defence",
+   "ent-banking",
+   "dn-saas",
+   "dn-ai-native"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-28-alphabet-q3-2026-earnings",
+  "mustKnow": true,
+  "headline": "Google Cloud revenue reported at $30.7B, up 103% year on year",
+  "talkTrack": "Press coverage of Alphabet's third-quarter results puts Google Cloud revenue at $30.7 billion, up 103% year on year, with quarterly capital expenditure of about $51.4 billion. Sundar Pichai's remarks, as excerpted, say Google's model APIs process nearly 32 billion tokens a minute.",
+  "watchOut": "The figures were read through secondary coverage, not the earnings release; the $300 billion 2027 capex figure in some headlines is described as investor speculation, not guidance.",
+  "subVerticals": [],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-27-google-tpus-on-oracle-cloud",
+  "mustKnow": true,
+  "headline": "Google TPUs will be offered on Oracle Cloud from 2027",
+  "talkTrack": "Oracle and Google Cloud announced on 27 October that Google TPUs will be deployed in Oracle Cloud Infrastructure starting in calendar year 2027, which they describe as the first time a hyperscaler other than Google offers TPUs. The stated aim includes putting accelerators next to Oracle databases.",
+  "watchOut": "No capacity, TPU generation, regions, pricing or financial terms were disclosed.",
+  "subVerticals": [
+   "dn-ai-native",
+   "ent-banking",
+   "ent-telecom",
+   "ent-conglomerate",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-27-genie-4-research-preview",
+  "mustKnow": false,
+  "headline": "DeepMind previews Genie 4, a real-time world model with audio",
+  "talkTrack": "Press coverage says Google DeepMind announced Genie 4 on 27 October as a research preview for trusted testers: a real-time interactive world model that generates audio natively and can be modified by text during a session.",
+  "watchOut": "A research preview: this record has no confirmed date or price for wider availability, and real-time audio accuracy is reportedly listed as an open research problem.",
+  "subVerticals": [
+   "dn-gaming",
+   "dn-media",
+   "ent-media",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-27-gemini-robotics-er-2-on-google-cloud",
+  "mustKnow": false,
+  "headline": "Gemini Robotics ER 2 reasoning model enters public preview on Cloud",
+  "talkTrack": "Gemini Robotics ER 2, the high-level reasoning model in Gemini Robotics 2, has been in public preview on Google Cloud since 27 October. Google describes it as planning over long horizons across robot types and calling low-level action models or navigation APIs as tools.",
+  "watchOut": "Public preview; pricing was not captured in this record.",
+  "subVerticals": [
+   "ent-manufacturing",
+   "ent-travel",
+   "dn-ai-native",
+   "edu-research"
+  ],
+  "regions": [
+   "japan",
+   "korea"
+  ]
+ },
+ {
+  "announcementId": "an-2026-10-23-anthropic-managed-claude-on-google-cloud",
+  "mustKnow": true,
+  "headline": "Claude on Google Cloud gains an Anthropic-managed option (GA)",
+  "talkTrack": "Customers can now choose how Claude runs on Google Cloud: an Anthropic-managed option, where Anthropic is the data processor and Claude Platform features arrive on day zero, or the Google-managed option, where Google is the processor and adds VPC Service Controls, CMEK and data residency. Models, pricing and Google Cloud billing are the same in both.",
+  "watchOut": "Regulated customers should check who the data processor is: data residency, CMEK and VPC Service Controls are listed for the Google-managed option.",
+  "subVerticals": [
+   "ent-banking",
+   "ent-insurance",
+   "ent-healthcare",
+   "ps-central",
+   "dn-saas",
+   "dn-fintech"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-22-agent-compute-engine",
+  "mustKnow": false,
+  "headline": "Google unveils Agent Compute Engine: an isolated microVM per agent",
+  "talkTrack": "Google introduced Agent Compute Engine on 22 October, a compute service of hardware-isolated microVM sandboxes in which each microVM has its own identity and short-lived credentials; Google says it already runs the Gemini agent. It also described Agent Substrate, an open-source agent runtime on GKE.",
+  "watchOut": "Announced only: customer preview is promised 'in the coming months', with no date or pricing published.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech",
+   "ent-banking"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-21-openai-models-on-google-cloud",
+  "mustKnow": true,
+  "headline": "OpenAI models arrive on Google Cloud in private preview",
+  "talkTrack": "Since 21 October, OpenAI's GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna have been rolling out in private preview to select enterprise customers in Model Garden. Usage is bought through Google Cloud Marketplace, appears on the Google Cloud invoice and draws down existing commitments.",
+  "watchOut": "Private preview for select customers, with no prices or general-availability date; Zero Data Retention, Confidential Compute and availability in Gemini for business and Antigravity are described as 'coming soon'.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-fintech",
+   "ent-banking",
+   "ent-conglomerate",
+   "ent-retail"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-21-nvidia-gtc-berlin-a5x-virgo",
+  "mustKnow": false,
+  "headline": "A5X instances on NVIDIA Vera Rubin are generally available",
+  "talkTrack": "Google Cloud's A5X bare-metal instances on NVIDIA's Vera Rubin NVL72 platform became generally available on 6 November. Google says its Virgo network will let A5X clusters scale to 80,000 Rubin GPUs within one site and up to 960,000 across sites.",
+  "watchOut": "The local-region availability announced at GTC Berlin was for EMEA data residency; the record names no Asia-Pacific regions.",
+  "subVerticals": [
+   "dn-ai-native",
+   "edu-research",
+   "ent-manufacturing",
+   "ent-telecom"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-20-torchtpu-open-source",
+  "mustKnow": false,
+  "headline": "TorchTPU is open source: PyTorch runs natively on Google TPUs",
+  "talkTrack": "Google released TorchTPU as open source on 20 October: a native PyTorch stack for TPUs, co-developed with the PyTorch team at Meta. Google says PyTorch code and Hugging Face models can run on TPUs with minimal changes.",
+  "watchOut": "'Minimal changes' is Google's own description, not an independent result.",
+  "subVerticals": [
+   "dn-ai-native",
+   "dn-saas",
+   "edu-research",
+   "edu-higher"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-20-gemini-for-government-services",
+  "mustKnow": false,
+  "headline": "Gemini for government services enters preview",
+  "talkTrack": "Gemini for government services, in preview since 20 October, is the Gemini agent with government skills, connectors to agency systems, partner agents and a governed control plane.",
+  "watchOut": "Preview; authorisation levels and pricing were not captured, and the record does not say in which countries it is offered.",
+  "subVerticals": [
+   "ps-central",
+   "ps-local",
+   "ps-health",
+   "ps-transport"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-20-claude-5-5-in-antigravity",
+  "mustKnow": false,
+  "headline": "Claude Opus 5.5 and Sonnet 5.5 are selectable in Google Antigravity",
+  "talkTrack": "Since 20 October Google Cloud customers can select Claude Opus 5.5 and Claude Sonnet 5.5 in Antigravity 2.0, the Antigravity CLI and the IDE extensions for VS Code, JetBrains IntelliJ and Visual Studio.",
+  "watchOut": "An administrator has to enable the Claude models first.",
+  "subVerticals": [
+   "dn-saas",
+   "dn-ai-native",
+   "dn-gaming",
+   "dn-fintech",
+   "ent-banking"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-17-reflection-beam-day-0-support",
+  "mustKnow": false,
+  "headline": "Google Cloud publishes launch-day recipes for Reflection's open Beam model",
+  "talkTrack": "Google Cloud offered day-0 deployment recipes for Reflection's Apache-2.0 open-weight Beam model on AI Hypercomputer, using llm-d with vLLM and NVIDIA Dynamo with SGLang. It is an example of running a new open-weight model on Google infrastructure from launch day.",
+  "watchOut": "The 5x performance and 8x latency figures are Reflection's own claims.",
+  "subVerticals": [
+   "dn-ai-native",
+   "dn-saas",
+   "edu-research"
+  ],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-13-gemini-for-business-and-gemini-platform-naming",
+  "mustKnow": true,
+  "headline": "New names in use: 'Gemini for business' and 'Gemini platform'",
+  "talkTrack": "Since 13 October Google Cloud's blog posts say 'Gemini for business' for the place where users work with the agent and 'Gemini platform' for the place where developers call models by API. The pricing page, documentation URLs and edition names still carry the older names, so customers will see both.",
+  "watchOut": "No formal rename announcement was found, and whether 'Gemini Enterprise' remains the edition and licence name is not settled.",
+  "subVerticals": [],
+  "regions": []
+ },
+ {
+  "announcementId": "an-2026-10-13-gemini-4-argon-model-card-frontier-safety",
+  "mustKnow": false,
+  "headline": "Reported safety caveat in the Gemini 4 Argon model card",
+  "talkTrack": "One secondary report says Argon's model card states Google cannot rule out that the model reached the biological and cyber critical capability levels in its Frontier Safety Framework. Google itself says Argon ships with cyber mitigations that block offensive tasks, with an unmitigated version going only to vetted defenders.",
+  "watchOut": "Neither the model card nor the framework was read directly; both points rest on single secondary sources.",
+  "subVerticals": [
+   "ps-central",
+   "ps-defence",
+   "ent-banking",
+   "ent-healthcare"
+  ],
+  "regions": []
+ }
+]

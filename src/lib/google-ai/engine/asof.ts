@@ -9,7 +9,7 @@
  *    are returned separately as `undated`.
  */
 import { inEffect } from "../dates";
-import { ANNOUNCEMENTS, ENTITIES, LIFECYCLE_BY_ENTITY, PRICES, TIMELINE } from "../kb";
+import { ANNOUNCEMENTS, ENTITIES, LIFECYCLE_BY_ENTITY, META, PRICES, TIMELINE } from "../kb";
 import type { Announcement, Entity, EntityStatus, LifecycleEvent, PriceRecord, TimelineEvent } from "../types";
 
 /** The name an entity carried on a date. */
@@ -33,32 +33,52 @@ export function effectiveOn(l: LifecycleEvent): string {
   return l.effectiveDate ?? l.date;
 }
 
+/**
+ * True when an entity's retirement date lies after the date the knowledge base was last updated: it was a plan
+ * when recorded, and nothing recorded since confirms it was carried out.
+ */
+export function retirementUnconfirmed(e: Entity, curatedAt: string = META.curatedAt): boolean {
+  return !!e.retiredAt && e.retiredAt > curatedAt;
+}
+
 export interface StatusAt {
   status: EntityStatus | "not-yet" | "unknown";
   /** True when the status comes from dated lifecycle evidence rather than inference. */
   evidenced: boolean;
   since?: string;
+  /** Qualifier the reader needs, e.g. a retirement that was scheduled but is not confirmed as carried out. */
+  note?: string;
 }
 
 export function statusAt(e: Entity, date: string, lifecycle: LifecycleEvent[] = LIFECYCLE_BY_ENTITY[e.id] ?? []): StatusAt {
   if (e.introducedAt && date < e.introducedAt) return { status: "not-yet", evidenced: true };
-  if (e.retiredAt && date >= e.retiredAt) return { status: "retired", evidenced: true, since: e.retiredAt };
+  if (e.retiredAt && date >= e.retiredAt) {
+    if (!retirementUnconfirmed(e)) return { status: "retired", evidenced: true, since: e.retiredAt };
+    return { status: "deprecated", evidenced: true, note: `Retirement was scheduled for ${e.retiredAt}; no confirmation that it was carried out is recorded.` };
+  }
   let best: { status: EntityStatus; on: string } | null = null;
+  let scheduled: string | undefined;
   for (const l of lifecycle) {
-    // A scheduled retirement only becomes "retired" on its effective date.
-    const type = l.type === "retirement-scheduled" ? "retired" : l.type;
-    const mapped = STATUS_FROM_EVENT[type];
+    if (l.type === "retirement-scheduled") {
+      // A schedule is a plan. Once its date has passed it is reported as a note, not as a completed retirement:
+      // only a "retired" record or a retirement date on the entity confirms it happened.
+      if (l.effectiveDate && l.effectiveDate <= date && (!scheduled || l.effectiveDate > scheduled)) scheduled = l.effectiveDate;
+      if (l.date <= date && (!best || l.date >= best.on)) best = { status: "deprecated", on: l.date };
+      continue;
+    }
+    const mapped = STATUS_FROM_EVENT[l.type];
     if (!mapped) continue;
-    const on = l.type === "retirement-scheduled" ? l.effectiveDate : effectiveOn(l);
-    if (!on || on > date) continue;
+    const on = effectiveOn(l);
+    if (on > date) continue;
     if (!best || on >= best.on) best = { status: mapped, on };
   }
+  const note = scheduled && best?.status !== "retired" ? `Retirement was scheduled for ${scheduled}; no confirmation that it was carried out is recorded.` : undefined;
   if (best) {
     // "Announced" is only trusted as the stage while nothing says it later shipped. If the product is known to have
     // moved on but no dated preview or GA event is recorded, its stage on this date is unknown — not "announced".
     const laterStage = lifecycle.some((l) => (l.type === "preview" || l.type === "ga") && effectiveOn(l) > date);
     if (best.status === "announced" && !laterStage && e.status !== "announced") return { status: "unknown", evidenced: false, since: best.on };
-    return { status: best.status, evidenced: true, since: best.on };
+    return { status: best.status, evidenced: true, since: best.on, ...(note ? { note } : {}) };
   }
   if (!e.introducedAt) return { status: "unknown", evidenced: false };
   // Introduced before the date but no dated stage change recorded: we know it existed, not its stage.
@@ -68,7 +88,7 @@ export function statusAt(e: Entity, date: string, lifecycle: LifecycleEvent[] = 
 export function existedAt(e: Entity, date: string): boolean {
   if (!e.introducedAt) return false;
   if (date < e.introducedAt) return false;
-  if (e.retiredAt && date >= e.retiredAt) return false;
+  if (e.retiredAt && date >= e.retiredAt && !retirementUnconfirmed(e)) return false;
   return true;
 }
 

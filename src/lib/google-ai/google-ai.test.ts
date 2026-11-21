@@ -1,24 +1,33 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { addDays } from "./dates";
 import { answer, detectDate } from "./engine/answer";
-import { existedAt, nameAt, pricesAt, snapshotAt, statusAt } from "./engine/asof";
+import { existedAt, nameAt, pricesAt, retirementUnconfirmed, snapshotAt, statusAt } from "./engine/asof";
 import { deadlines, radar, top } from "./engine/brief";
 import { neighbors, path } from "./engine/graph";
 import { estimate, history, lookup, overlaps, upcomingChanges } from "./engine/pricing";
 import { resolveEntity, search, squash } from "./engine/search";
 import { classifyAreas, classifyTypes, resolveEntities } from "./ingest/classify";
 import { cluster, jaccard, tokens } from "./ingest/cluster";
+import { buildDigest, cleanNotes, digestCandidates } from "./ingest/digest";
 import { robotsVerdict, type Fetcher } from "./ingest/fetch";
 import { canonicalUrl, parseFeed, text } from "./ingest/parse";
 import { checkPrices } from "./ingest/pricewatch";
-import { runIngestion } from "./ingest/run";
+import { MAX_ITEMS_PER_FEED, recentItems, runIngestion } from "./ingest/run";
 import { readState } from "./ingest/store";
 import type { Feed } from "./ingest/types";
+import { bounds, fitView, layout, zoomAt } from "./engine/graph-layout";
+import * as Quiz from "./engine/quiz";
+import { casesFor, inRegion, mustKnow } from "./engine/specialist";
+import { UI_STRINGS } from "./i18n";
 import * as KB from "./kb";
+import { LANGUAGES, REGIONS, SEGMENTS, SUB_VERTICALS } from "./taxonomy";
+import { protect, translateBatch } from "./translate";
 import { AGENT_FLOW, LIMITATIONS, REVIEW, SCENARIOS, WORKLOADS } from "./editorial";
 import type { Claim, Entity, LifecycleEvent, PriceRecord, WorkloadScenario } from "./types";
 
 const TODAY = "2026-11-15";
+/** The date the knowledge base was last updated: "now" for tests about recency. */
+const TODAY_NOW = KB.META.curatedAt;
 
 /** Walk any value and collect every Claim-shaped object. */
 function claims(v: unknown, out: Claim[] = []): Claim[] {
@@ -241,12 +250,36 @@ describe("E · the time machine reconstructs a date without leaking the future",
     expect(nameAt(e, "2026-04-22")).toBe("New Name");
   });
 
-  it("uses the stage in force on the date and treats a scheduled retirement as not yet retired", () => {
+  it("uses the stage in force on the date and never treats a scheduled retirement as done without confirmation", () => {
     expect(statusAt(e, "2021-01-01", life).status).toBe("not-yet");
     expect(statusAt(e, "2021-06-01", life).status).toBe("preview");
-    expect(statusAt(e, "2026-11-15", life).status).toBe("ga");
-    expect(statusAt(e, "2027-03-01", life).status).toBe("retired");
+    // Between the announcement of a retirement and its date the product is deprecated, not retired.
+    expect(statusAt(e, "2026-11-15", life).status).toBe("deprecated");
+    expect(statusAt(e, "2026-05-01", life).status).toBe("ga");
+    // After the scheduled date, without a "retired" record, it is still not claimed as retired — the schedule is noted.
+    const after = statusAt(e, "2027-03-01", life);
+    expect(after.status).toBe("deprecated");
+    expect(after.note).toMatch(/scheduled for 2027-03-01/);
+    // A confirmation settles it.
+    expect(statusAt(e, "2027-03-02", [...life, { id: "4", entityId: "x", type: "retired", date: "2027-03-01", detail: "", label: "verified-fact", sourceIds: ["s"] }]).status).toBe("retired");
+    expect(statusAt({ ...e, retiredAt: "2026-06-01" }, "2026-07-01", life).status).toBe("retired");
     expect(existedAt(e, "2021-05-17")).toBe(false);
+  });
+
+  it("does not turn a retirement date into a retirement just because the calendar passed it", () => {
+    // Recorded as a future date when the knowledge base was last updated: still a plan, however much later it is read.
+    const planned = { ...e, retiredAt: "2099-01-01" };
+    expect(retirementUnconfirmed(planned)).toBe(true);
+    const later = statusAt(planned, "2099-06-01", life.slice(0, 2));
+    expect(later.status).toBe("deprecated");
+    expect(later.note).toMatch(/scheduled for 2099-01-01/);
+    expect(existedAt(planned, "2099-06-01")).toBe(true);
+    // A date on or before the knowledge base's own date was verified as done.
+    const done = { ...e, retiredAt: "2024-01-01" };
+    expect(retirementUnconfirmed(done)).toBe(false);
+    expect(statusAt(done, "2025-01-01", life.slice(0, 2)).status).toBe("retired");
+    // No entity in the data claims a retirement the knowledge base could not have confirmed.
+    for (const x of KB.ENTITIES) if (x.status === "retired" && x.retiredAt) expect(x.retiredAt <= KB.META.curatedAt, x.id).toBe(true);
   });
 
   it("never guesses undated entities into the past", () => {
@@ -379,10 +412,62 @@ describe("A · a new announcement is detected, de-duplicated, classified and que
     expect(again.newItems).toBe(0);
   });
 
+  it("takes only recent items from a feed that publishes its whole archive", () => {
+    const mk = (i: number, published?: string) => ({ feedKey: "f", title: `Post ${i}`, url: `https://a.test/${i}`, published, summary: "" });
+    const old = Array.from({ length: 300 }, (_, i) => mk(i, "2025-01-15"));
+    const fresh = Array.from({ length: 60 }, (_, i) => mk(1000 + i, i < 30 ? "2026-11-14" : "2026-11-01"));
+    const kept = recentItems([...old, ...fresh], TODAY);
+    expect(kept).toHaveLength(MAX_ITEMS_PER_FEED);
+    expect(kept.every((k) => (k.published as string) >= "2026-10-01")).toBe(true);
+    expect(kept[0].published).toBe("2026-11-14");
+  });
+
+  it("reads a price table whose heading punctuates the model name differently", () => {
+    const sample = KB.PRICES.find((p) => p.surface === "agent-platform" && p.tier === "standard" && p.meter === "input" && (p.region ?? "global") === "global" && p.aboveContextTokens == null && p.effectiveFrom <= TODAY && (!p.effectiveTo || p.effectiveTo >= TODAY) && KB.entityName(p.entityId).includes("-") && KB.ENTITY_BY_ID[p.entityId].model?.category === "text");
+    if (!sample) return;
+    const spaced = KB.entityName(sample.entityId).split("-").join(" ");
+    expect(checkPrices(`${spaced} Input (text) Global $${sample.price} output $9`, "agent-platform", TODAY, [sample])[0].status).toBe("match");
+  });
+
   it("resolves the longest product name, not a shorter one inside it", () => {
     const long = KB.ENTITIES.filter((e) => KB.ENTITIES.some((o) => o.id !== e.id && e.name.toLowerCase().startsWith(o.name.toLowerCase() + " ")))[0];
     if (!long) return;
     expect(resolveEntities(`News about ${long.name} today`)[0]).toBe(long.id);
+  });
+});
+
+describe("daily digest — the automatic layer", () => {
+  const item = (id: string, over: Record<string, unknown> = {}) => ({ id, title: `Post ${id}`, url: `https://a.test/${id}`, published: "2099-01-02", firstSeenAt: "2099-01-02T05:00:00Z", feedKeys: ["f"], publisher: "Google", providerId: "google", excerpt: "An excerpt.", types: [], areas: [], layers: [], entityIds: [], alsoAt: [], score: 50, review: { itemId: id, state: "detected" as const }, ...over });
+
+  it("only considers new Google items the editors have not covered", () => {
+    const picked = digestCandidates([item("a"), item("b", { knownAs: "an-x" }), item("c", { providerId: "openai" }), item("d", { published: "2020-01-01", firstSeenAt: "2020-01-01T00:00:00Z" })] as never);
+    expect(picked.map((p) => p.id)).toEqual(["a"]);
+  });
+
+  it("keeps only well-formed notes about items that were sent, with known industry and region ids", () => {
+    const notes = cleanNotes(
+      [
+        { itemId: "a", headline: "A headline", talkTrack: "Say this.", subVerticals: ["dn-gaming", "made-up"], regions: ["korea", "mars"] },
+        { itemId: "zzz", headline: "Not ours", talkTrack: "x" },
+        { itemId: "a", headline: "Duplicate", talkTrack: "x" },
+        { itemId: "b", headline: "", talkTrack: "No headline" },
+        "junk",
+      ],
+      new Set(["a", "b"]),
+    );
+    expect(notes).toEqual([{ itemId: "a", headline: "A headline", talkTrack: "Say this.", subVerticals: ["dn-gaming"], regions: ["korea"] }]);
+    expect(cleanNotes({ not: "an array" }, new Set(["a"]))).toEqual([]);
+  });
+
+  it("writes nothing without a generator, and survives a generator that fails", async () => {
+    const items = [item("a")] as never;
+    const now = new Date("2099-01-03T05:17:00Z");
+    expect((await buildDigest(items, now, undefined)).notes).toEqual([]);
+    const failed = await buildDigest(items, now, async () => { throw new Error("model down"); });
+    expect(failed).toMatchObject({ mode: "none", notes: [] });
+    const ok = await buildDigest(items, now, async (sent) => sent.map((s) => ({ itemId: s.id, headline: "H", talkTrack: "T" })));
+    expect(ok.mode).toBe("model");
+    expect(ok.notes).toHaveLength(1);
   });
 });
 
@@ -477,5 +562,147 @@ describe("transparency", () => {
     for (const r of REVIEW) expect(r.findings.length).toBeGreaterThanOrEqual(3);
     expect(REVIEW.flatMap((r) => r.findings).some((f) => f.status !== "fixed")).toBe(true);
     expect(LIMITATIONS.length).toBeGreaterThanOrEqual(10);
+  });
+});
+
+// ─────────────────────────── specialist layer ───────────────────────────
+describe("specialist layer", () => {
+  const subVerticals = new Set(SUB_VERTICALS.map((s) => s.id));
+  const regions = new Set<string>(REGIONS.map((r) => r.id));
+
+  it("cites a resolvable source for every case study, regional fact and quiz answer", () => {
+    const missing = [...new Set(sourceIds([KB.CASES, KB.REGION_BRIEFS, KB.QUIZ]))].filter((id) => !KB.SOURCE_BY_ID[id]);
+    expect(missing).toEqual([]);
+    for (const c of KB.CASES) expect(c.sourceIds.length, c.id).toBeGreaterThan(0);
+  });
+
+  it("never presents a customer-reported result as a verified fact", () => {
+    for (const c of KB.CASES) for (const o of c.outcomes) expect(o.label, c.id).not.toBe("verified-fact");
+  });
+
+  it("uses only known segments, sub-verticals and sub-regions", () => {
+    for (const c of KB.CASES) {
+      expect(SEGMENTS.some((s) => s.id === c.segment), c.id).toBe(true);
+      expect(c.subVerticals.filter((v) => !subVerticals.has(v)), c.id).toEqual([]);
+      expect(c.regions.filter((r) => !regions.has(r)), c.id).toEqual([]);
+    }
+    for (const n of KB.NOTES) {
+      expect(KB.ANNOUNCEMENT_BY_ID[n.announcementId], n.announcementId).toBeDefined();
+      expect(n.subVerticals.filter((v) => !subVerticals.has(v)), n.announcementId).toEqual([]);
+      expect(n.regions.filter((r) => !regions.has(r)), n.announcementId).toEqual([]);
+    }
+  });
+
+  it("covers every segment and every sub-region with case studies from both sides", () => {
+    for (const s of SEGMENTS) expect(KB.CASES.filter((c) => c.segment === s.id).length, s.id).toBeGreaterThan(0);
+    for (const r of REGIONS) expect(KB.CASES.filter((c) => c.regions.includes(r.id)).length, r.id).toBeGreaterThan(0);
+    expect(KB.CASES.some((c) => c.platform === "google-cloud")).toBe(true);
+    expect(KB.CASES.some((c) => c.platform === "other")).toBe(true);
+    expect(KB.REGION_BRIEFS.map((b) => b.id).sort()).toEqual(REGIONS.map((r) => r.id).sort());
+  });
+
+  it("has well-formed quiz questions that point at real records", () => {
+    expect(KB.QUIZ.length).toBeGreaterThanOrEqual(30);
+    expect(new Set(KB.QUIZ.map((q) => q.id)).size).toBe(KB.QUIZ.length);
+    for (const q of KB.QUIZ) {
+      expect(q.options, q.id).toHaveLength(4);
+      expect(new Set(q.options).size, q.id).toBe(4);
+      expect(q.answer >= 0 && q.answer < 4, q.id).toBe(true);
+      if (q.announcementId) expect(KB.ANNOUNCEMENT_BY_ID[q.announcementId], q.id).toBeDefined();
+      if (q.entityId) expect(KB.ENTITY_BY_ID[q.entityId], q.id).toBeDefined();
+    }
+  });
+
+  it("selects must-know items by region and industry, and widens the window when a week is quiet", () => {
+    const all = mustKnow(TODAY_NOW, {}, { limit: 50 });
+    expect(all.items.length).toBeGreaterThan(0);
+    for (let i = 1; i < all.items.length; i++) expect(Number(!!all.items[i - 1].note?.mustKnow)).toBeGreaterThanOrEqual(Number(!!all.items[i].note?.mustKnow));
+    const korea = mustKnow(TODAY_NOW, { region: "korea" }, { limit: 50 });
+    for (const x of korea.items) expect(inRegion(x.note?.regions, "korea")).toBe(true);
+    expect(mustKnow("2020-01-15", {}, {}).items).toEqual([]);
+    expect(mustKnow("2020-01-15", {}, {}).days).toBe(60);
+    const banking = casesFor({ subVerticals: ["ent-banking"] });
+    expect(banking.every((c) => c.subVerticals.includes("ent-banking"))).toBe(true);
+    expect(casesFor({ platform: "other" }).every((c) => c.platform === "other")).toBe(true);
+  });
+
+  it("keeps protected names intact through translation and falls back to English when no translator works", async () => {
+    const p = protect("Gemini Enterprise Agent Platform runs Gemini 4 Neon on Google Cloud.");
+    expect(p.text).not.toMatch(/Gemini|Google Cloud|Neon/);
+    expect(p.restore(p.text)).toBe("Gemini Enterprise Agent Platform runs Gemini 4 Neon on Google Cloud.");
+    const down = await translateBatch(["Pricing unique-" + TODAY_NOW], "ko", [{ name: "gtx", run: async () => { throw new Error("down"); } }]);
+    expect(down).toMatchObject({ translated: false, translations: ["Pricing unique-" + TODAY_NOW] });
+    const up = await translateBatch(["Hello there"], "ja", [{ name: "gtx", run: async (t) => t.map((x) => `ja:${x}`) }]);
+    expect(up.translations).toEqual(["ja:Hello there"]);
+    expect((await translateBatch(["Hello there"], "ja", [])).provider).toBe("cache");
+    expect((await translateBatch(["Same"], "en")).translations).toEqual(["Same"]);
+  });
+
+  it("has every interface string in every language", () => {
+    const keys = Object.keys(UI_STRINGS.ko);
+    for (const [lang, dict] of Object.entries(UI_STRINGS)) expect(keys.filter((k) => !dict[k]), lang).toEqual([]);
+    expect(Object.keys(UI_STRINGS).sort()).toEqual(LANGUAGES.filter((l) => l.id !== "en").map((l) => l.id).sort());
+    for (const r of REGIONS) for (const l of r.languages) expect(LANGUAGES.some((x) => x.id === l), r.id).toBe(true);
+  });
+});
+
+// ─────────────────────────── quiz and graph engines ───────────────────────────
+describe("quiz engine", () => {
+  // A fixed sequence makes the "random" draw repeatable.
+  const seeded = () => {
+    let s = 7;
+    return () => ((s = (s * 16807) % 2147483647) / 2147483647);
+  };
+
+  it("draws without repeats and shuffles options without losing the right answer", () => {
+    const pool = Quiz.usable(KB.QUIZ);
+    expect(pool).toHaveLength(KB.QUIZ.length);
+    const round = Quiz.draw(pool, 10, seeded());
+    expect(round).toHaveLength(10);
+    expect(new Set(round.map((r) => r.q.id)).size).toBe(round.length);
+    for (const r of round) {
+      expect(r.correct).toBe(r.q.options[r.q.answer]);
+      expect([...r.options].sort()).toEqual([...r.q.options].sort());
+      expect(Quiz.isCorrect(r, r.correct)).toBe(true);
+      expect(Quiz.isCorrect(r, r.options.find((o) => o !== r.correct))).toBe(false);
+      expect(Quiz.isCorrect(r, null)).toBe(false);
+    }
+    expect(Quiz.draw(pool, 10, seeded()).map((r) => r.q.id)).toEqual(round.map((r) => r.q.id));
+  });
+
+  it("scores a round and limits 'recent' to the last 45 days", () => {
+    const round = Quiz.draw(KB.QUIZ, 5, seeded());
+    const right = round.map((r) => r.correct);
+    expect(Quiz.score(round, right)).toEqual({ correct: 5, total: 5, pct: 100 });
+    expect(Quiz.score(round, round.map(() => null)).correct).toBe(0);
+    expect(Quiz.missed(round, right)).toEqual([]);
+    expect(Quiz.missed(round, [])).toHaveLength(5);
+    const recent = Quiz.inScope(KB.QUIZ, "recent", TODAY_NOW);
+    expect(recent.length).toBeGreaterThan(0);
+    expect(recent.every((q) => q.asOf <= TODAY_NOW && q.asOf >= addDays(TODAY_NOW, -Quiz.RECENT_DAYS))).toBe(true);
+    expect(Quiz.inScope(KB.QUIZ, "recent", "2020-01-01")).toEqual([]);
+    expect(Quiz.isBetter({ correct: 4, total: 5 }, { correct: 3, total: 5 })).toBe(true);
+    expect(Quiz.isBetter({ correct: 3, total: 5 }, { correct: 4, total: 5 })).toBe(false);
+    expect(Quiz.parseBest("not json")).toEqual({});
+  });
+});
+
+describe("graph layout", () => {
+  const nodes = KB.ENTITIES.filter((e) => KB.RELATIONSHIPS.some((r) => r.from === e.id || r.to === e.id)).map((e) => ({ id: e.id, group: e.providerId }));
+  const ids = new Set(nodes.map((n) => n.id));
+  const edges = KB.RELATIONSHIPS.filter((r) => ids.has(r.from) && ids.has(r.to)).map((r) => ({ from: r.from, to: r.to }));
+
+  it("places every connected entity at a finite position, the same way every time", () => {
+    const a = layout(nodes, edges, { iterations: 40 });
+    const b = layout(nodes, edges, { iterations: 40 });
+    expect(nodes.length).toBeGreaterThan(200);
+    expect(Object.keys(a)).toHaveLength(nodes.length);
+    for (const p of Object.values(a)) expect(Number.isFinite(p.x) && Number.isFinite(p.y)).toBe(true);
+    expect(a).toEqual(b);
+    const box = bounds(a)!;
+    expect(box.maxX - box.minX).toBeGreaterThan(100);
+    const v = fitView(box, 1000, 700);
+    expect(v.k).toBeGreaterThan(0);
+    expect(zoomAt(v, 2, 500, 350, 0.1, 4).k).toBeCloseTo(Math.min(4, v.k * 2));
   });
 });

@@ -14,6 +14,9 @@ import type { PriceCheck } from "./types";
 
 /** Every stretch of text that starts at a model's name and runs to the next model's name (or a fixed length). */
 function sectionsFor(pageText: string, name: string, allNames: string[]): string[] {
+  // The page does not always punctuate a name as the catalogue does ("Flash-Lite" appears as "Flash Lite").
+  const spaced = name.split("-").join(" ");
+  if (spaced !== name && !pageText.includes(name)) return sectionsFor(pageText, spaced, allNames.map((n) => n.split("-").join(" ")));
   const out: string[] = [];
   let from = 0;
   for (;;) {

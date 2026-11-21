@@ -242,13 +242,11 @@ export default function Pricing() {
 
   return (
     <div className="gai-pr">
-      <div className="gai-hero">
-        <span className="gai-kicker">Pricing and AI economics</span>
-        <h1 className="gai-h1">What it costs, and from which date.</h1>
-        <p className="gai-lede">
-          Published list prices for Google&apos;s AI models and the alternatives. Every price carries the date it takes effect, the evidence behind it and the day it was last checked, so a price that is announced is never confused with a price that applies.
-        </p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>💵</div>
+        <h1 className="gai-h1">Pricing</h1>
+        <p className="gai-lede">Published list prices, each with the date it takes effect and the day it was last checked.</p>
+      </header>
 
       <div className="gai-grid gai-g4 keep2">
         <div className="gai-card gai-stat"><span className="v">{facts.total.toLocaleString("en-US")}</span><span className="l">price records{facts.entities ? ` across ${facts.entities} products` : ""}</span></div>

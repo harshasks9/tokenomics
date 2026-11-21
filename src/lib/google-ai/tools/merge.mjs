@@ -6,9 +6,15 @@ import path from "node:path";
 // Usage: GAI_RESEARCH_DIR=<folder with r1-models.json, r2-stack.json, r3-competitors.json, r4-news.json[, fixes.json, dates.json]> node src/lib/google-ai/tools/merge.mjs
 const IN = process.env.GAI_RESEARCH_DIR ?? process.cwd();
 const OUT = path.join(path.dirname(new URL(import.meta.url).pathname), "..", "data");
+// TODAY is the date the base research files (r1–r4) were verified: the default check date for their records.
 const TODAY = "2026-11-15";
+// CURATED is the date of the latest update applied on top (updates carry their own check dates).
+const CURATED = process.env.GAI_CURATED ?? TODAY;
 const load = (f) => (fs.existsSync(path.join(IN, f)) ? JSON.parse(fs.readFileSync(path.join(IN, f), "utf8")) : {});
 const r1 = load("r1-models.json"), r2 = load("r2-stack.json"), r3 = load("r3-competitors.json"), r4 = load("r4-news.json");
+// Dated updates applied on top of the base research, oldest first: r5-update.json, r6-update.json, …
+const updates = fs.readdirSync(IN).filter((f) => /^r\d+-update\.json$/.test(f)).sort((a, b) => parseInt(a.slice(1)) - parseInt(b.slice(1))).map(load);
+const up = (k) => updates.flatMap((u) => u[k] ?? []);
 const fixes = fs.existsSync(path.join(IN, "fixes.json")) ? load("fixes.json") : {};
 const log = [];
 const note = (m) => log.push(m);
@@ -24,7 +30,7 @@ const LABELS = ["verified-fact", "provider-claim", "independent-measurement", "a
 
 // ── sources
 const sources = new Map();
-for (const s of [...(r1.sources ?? []), ...(r2.sources ?? []), ...(r3.sources ?? []), ...(r4.sources ?? []), ...(fixes.sources ?? [])]) {
+for (const s of [...(r1.sources ?? []), ...(r2.sources ?? []), ...(r3.sources ?? []), ...(r4.sources ?? []), ...(fixes.sources ?? []), ...up("sources")]) {
   if (!s?.id || !/^https?:\/\//.test(s.url ?? "")) { note(`source dropped (no id/url): ${s?.id}`); continue; }
   if (sources.has(s.id)) continue;
   sources.set(s.id, { id: s.id, title: s.title ?? s.url, publisher: s.publisher ?? "", url: s.url, published: iso(s.published), kind: s.kind ?? "official-docs", firstParty: !!s.firstParty, access: ["primary", "search-excerpt", "secondary", "prior-knowledge"].includes(s.access) ? s.access : "secondary", lastChecked: iso(s.lastChecked) ?? TODAY });
@@ -88,6 +94,7 @@ for (const e of r1.entities ?? []) addEntity(e, "r1");
 for (const e of r2.entities ?? []) addEntity(e, "r2");
 for (const e of r3.entities ?? []) addEntity(e, "r3");
 for (const e of fixes.entities ?? []) addEntity(e, "fixes");
+for (const e of up("entities")) addEntity(e, "update");
 for (const id of fixes.dropEntity ?? []) entities.delete(id);
 
 // Model families sit in the models layer; Google models inherit it.
@@ -107,7 +114,7 @@ const ent = (id) => { if (!id) return undefined; const r = (fixes.renameEntity ?
 // ── relationships
 const relationships = [];
 const seenRel = new Set();
-for (const r of [...(r1.relationships ?? []), ...(r2.relationships ?? []), ...(r3.relationships ?? []), ...(fixes.relationships ?? [])]) {
+for (const r of [...(r1.relationships ?? []), ...(r2.relationships ?? []), ...(r3.relationships ?? []), ...(fixes.relationships ?? []), ...up("relationships")]) {
   const from = ent(r.from), to = ent(r.to);
   const sourceIds = srcOk(r.sourceIds);
   if (!from || !to || from === to) { note(`relationship dropped (unknown end): ${r.id} ${r.from} → ${r.to}`); continue; }
@@ -122,7 +129,7 @@ for (const e of entities.values()) if (e.parentId && !seenRel.has(`${e.id}|part-
 
 // ── prices
 const prices = [];
-for (const p of [...(r1.prices ?? []), ...(r2.prices ?? []), ...(r3.prices ?? []), ...(fixes.prices ?? [])]) {
+for (const p of [...(r1.prices ?? []), ...(r2.prices ?? []), ...(r3.prices ?? []), ...(fixes.prices ?? []), ...up("prices")]) {
   const entityId = ent(p.entityId);
   const sourceIds = srcOk(p.sourceIds);
   const effectiveFrom = iso(p.effectiveFrom);
@@ -166,13 +173,52 @@ for (const a of [...(r1.availability ?? []), ...(r2.availability ?? [])]) {
 }
 const lifecycle = [];
 const seenLc = new Set();
-for (const l of [...(r1.lifecycle ?? []), ...(r2.lifecycle ?? []), ...(r3.lifecycle ?? []), ...(r4.deadlines ?? []), ...(fixes.lifecycle ?? [])]) {
+for (const l of [...(r1.lifecycle ?? []), ...(r2.lifecycle ?? []), ...(r3.lifecycle ?? []), ...(r4.deadlines ?? []), ...(fixes.lifecycle ?? []), ...up("lifecycle").map((l) => ({ ...l, _update: true }))]) {
   const entityId = ent(l.entityId); const sourceIds = srcOk(l.sourceIds);
   if (!entityId || !sourceIds.length || !iso(l.date)) { note(`lifecycle dropped (${!entityId ? "unknown entity " + l.entityId : "no source/date"}): ${l.id}`); continue; }
   const key = `${entityId}|${l.type}|${iso(l.effectiveDate) ?? iso(l.date)}`;
   if (seenLc.has(key) || seenLc.has(l.id)) continue;
   seenLc.add(key); seenLc.add(l.id);
-  lifecycle.push({ id: l.id, entityId, type: l.type, date: iso(l.date), ...(iso(l.effectiveDate) ? { effectiveDate: iso(l.effectiveDate) } : {}), detail: l.detail ?? "", label: LABELS.includes(l.label) ? l.label : "verified-fact", sourceIds });
+  lifecycle.push({ ...(l._update ? { _update: true } : {}), id: l.id, entityId, type: l.type, date: iso(l.date), ...(iso(l.effectiveDate) ? { effectiveDate: iso(l.effectiveDate) } : {}), detail: l.detail ?? "", label: LABELS.includes(l.label) ? l.label : "verified-fact", sourceIds });
+}
+
+// Confirmed status changes from updates. A patch must cite a source; the entity's check date moves to the update's.
+for (const u of updates) for (const pch of u.entityPatches ?? []) {
+  const e = entities.get(ent(pch.id));
+  const sids = srcOk(pch.sourceIds);
+  if (!e || !sids.length) { note(`entity patch dropped (unknown entity or no source): ${pch.id}`); continue; }
+  if (["ga", "preview", "experimental", "announced", "research", "deprecated", "retired"].includes(pch.status)) e.status = pch.status;
+  if (iso(pch.retiredAt)) e.retiredAt = iso(pch.retiredAt);
+  if (pch.addAliases?.length) e.aliases = [...new Set([...e.aliases, ...pch.addAliases])];
+  e.sourceIds = [...new Set([...e.sourceIds, ...sids])];
+  e.lastCheckedAt = CURATED;
+  note(`entity patched from update: ${e.id}${pch.status ? ` → ${pch.status}` : ""}`);
+}
+// A retirement date that was still ahead when the base research was verified is a schedule, not a fact. Once it
+// falls inside an update window it stays a schedule unless that update confirms it (a "retired" event or a patch).
+{
+  const confirmed = new Set([...updates.flatMap((u) => (u.lifecycle ?? []).filter((l) => l.type === "retired").map((l) => ent(l.entityId))), ...updates.flatMap((u) => (u.entityPatches ?? []).filter((p) => p.retiredAt || p.status === "retired").map((p) => ent(p.id)))]);
+  for (const e of entities.values()) {
+    if (!e.retiredAt || e.retiredAt <= TODAY || e.retiredAt > CURATED || confirmed.has(e.id)) continue;
+    const when = e.retiredAt;
+    if (!lifecycle.some((l) => l.entityId === e.id && l.type === "retirement-scheduled" && l.effectiveDate === when)) {
+      lifecycle.push({ id: `lc-sched-${e.id}`, entityId: e.id, type: "retirement-scheduled", date: TODAY, effectiveDate: when, detail: `Retirement scheduled for ${when}.`, label: "verified-fact", sourceIds: e.sourceIds.slice(0, 2) });
+    }
+    delete e.retiredAt;
+    if (e.status === "retired") e.status = "deprecated";
+    note(`retirement of ${e.id} on ${when} not confirmed by an update: kept as scheduled`);
+  }
+}
+
+// Prices re-read from the live official page on a later date keep their value and take the later check date.
+{
+  const rc = load("rechecked.json");
+  let n = 0;
+  for (const c of rc.checks ?? []) for (const p of prices) {
+    if (p._drop || p.entityId !== c.entityId || p.meter !== c.meter || p.surface !== "agent-platform" || p.tier !== "standard" || (p.region ?? "global") !== "global" || p.aboveContextTokens || p.price !== c.price) continue;
+    if (p.effectiveFrom <= rc.date && (!p.effectiveTo || p.effectiveTo >= rc.date)) { p.lastCheckedAt = rc.date; n++; }
+  }
+  if (rc.date) note(`price records re-checked on ${rc.date}: ${n}`);
 }
 
 // A "retired" event on an entity the catalogue still lists as live (no retirement date, live status) describes a
@@ -185,18 +231,8 @@ for (const l of lifecycle) {
 for (const e of entities.values()) {
   if (e.status !== "retired" || e.retiredAt) continue;
   const d = lifecycle.filter((l) => l.entityId === e.id && (l.type === "retired" || l.type === "retirement-scheduled")).map((l) => l.effectiveDate ?? l.date).sort()[0];
-  if (d && d <= TODAY) e.retiredAt = d;
+  if (d && d <= CURATED) e.retiredAt = d;
 }
-
-// An entity with no introduction date takes it from its earliest dated launch event or first recorded name, when one exists.
-let derived = 0;
-for (const e of entities.values()) {
-  if (e.introducedAt) continue;
-  const dates = lifecycle.filter((l) => l.entityId === e.id && ["announced", "preview", "ga"].includes(l.type)).map((l) => l.date);
-  for (const f of e.formerNames ?? []) if (f.from) dates.push(f.from);
-  if (dates.length) { e.introducedAt = dates.sort()[0]; derived++; }
-}
-note(`introducedAt derived from lifecycle for ${derived} entities`);
 
 // Introduction dates researched separately (dates.json), each with its own source.
 {
@@ -205,7 +241,7 @@ note(`introducedAt derived from lifecycle for ${derived} entities`);
   let n = 0;
   for (const d of patch.dates ?? []) {
     const e = entities.get(ent(d.id));
-    if (!e || e.introducedAt || !iso(d.introducedAt) || !sources.has(d.sourceId) || iso(d.introducedAt) > TODAY) continue;
+    if (!e || e.introducedAt || !iso(d.introducedAt) || !sources.has(d.sourceId) || iso(d.introducedAt) > CURATED) continue;
     e.introducedAt = iso(d.introducedAt);
     if (d.precision === "month") e.introducedPrecision = "month";
     if (!e.sourceIds.includes(d.sourceId)) e.sourceIds.push(d.sourceId);
@@ -214,10 +250,20 @@ note(`introducedAt derived from lifecycle for ${derived} entities`);
   note(`introducedAt taken from dates.json for ${n} entities`);
 }
 
+// An entity with no introduction date takes it from its earliest dated launch event or first recorded name, when one exists.
+let derived = 0;
+for (const e of entities.values()) {
+  if (e.introducedAt) continue;
+  const dates = lifecycle.filter((l) => !l._update && l.entityId === e.id && ["announced", "preview", "ga"].includes(l.type)).map((l) => l.date);
+  for (const f of e.formerNames ?? []) if (f.from) dates.push(f.from);
+  if (dates.length) { e.introducedAt = dates.sort()[0]; derived++; }
+}
+note(`introducedAt derived from lifecycle for ${derived} entities`);
+
 // ── announcements
 const AREAS = ["models", "infrastructure", "developer-platforms", "enterprise-agents", "workspace", "search-consumer", "multimodal", "safety-governance", "research"];
 const announcements = [];
-for (const a of r4.announcements ?? []) {
+for (const a of [...(r4.announcements ?? []), ...up("announcements")]) {
   const sourceIds = srcOk(a.sourceIds);
   const summary = claimList(a.summary, `${a.id}.summary`);
   if (!a.id || !iso(a.date) || !summary.length) { note(`announcement dropped (no date/summary): ${a.id}`); continue; }
@@ -240,7 +286,7 @@ for (const a of r4.announcements ?? []) {
 // ── timeline
 const timeline = [];
 const seenTl = new Set();
-for (const t of [...(r4.timeline ?? []), ...(r3.timeline ?? [])]) {
+for (const t of [...(r4.timeline ?? []), ...(r3.timeline ?? []), ...up("timeline")]) {
   const sourceIds = srcOk(t.sourceIds);
   if (!t.id || !iso(t.date) || !sourceIds.length || seenTl.has(t.id)) { if (!seenTl.has(t.id)) note(`timeline dropped: ${t.id}`); continue; }
   seenTl.add(t.id);
@@ -251,18 +297,68 @@ for (const t of [...(r4.timeline ?? []), ...(r3.timeline ?? [])]) {
 // ── battlegrounds
 const battlegrounds = (r3.battlegrounds ?? []).map((b) => ({ id: b.id, name: b.name, question: b.question, google: claimList(b.google, `${b.id}.google`), rivals: (b.rivals ?? []).map((r) => ({ providerId: r.providerId, position: claimList(r.position, `${b.id}.${r.providerId}`) })).filter((r) => r.position.length && entities.has(r.providerId)), entityIds: [...new Set((b.entityIds ?? []).map(ent).filter(Boolean))], assessment: b.assessment ?? "", watch: b.watch ?? [] }));
 
+// ── specialist layer: case studies, notes on developments, regional briefs, quiz ──
+// Taxonomy ids are read from taxonomy.ts so this tool and the site cannot drift apart.
+const taxonomySrc = fs.readFileSync(path.join(OUT, "..", "taxonomy.ts"), "utf8");
+const SUBVERTICALS = new Set([...taxonomySrc.matchAll(/\{ id: "((?:dn|ent|ps|edu)-[a-z0-9-]+)", segment:/g)].map((m) => m[1]));
+const REGION_IDS = new Set(["korea", "india", "sea", "japan", "aunz", "china", "hk-taiwan"]);
+const SEGMENT_IDS = new Set(["digital-natives", "enterprise", "public-sector", "education"]);
+const s1 = load("s1-cases-google.json"), s2 = load("s2-cases-other.json"), s3 = load("s3-specialist.json");
+for (const s of [...(s1.sources ?? []), ...(s2.sources ?? []), ...(s3.sources ?? [])]) {
+  if (!s?.id || !/^https?:\/\//.test(s.url ?? "") || sources.has(s.id)) continue;
+  sources.set(s.id, { id: s.id, title: s.title ?? s.url, publisher: s.publisher ?? "", url: s.url, published: iso(s.published), kind: s.kind ?? "official-blog", firstParty: !!s.firstParty, access: ["primary", "search-excerpt", "secondary", "prior-knowledge"].includes(s.access) ? s.access : "secondary", lastChecked: iso(s.lastChecked) ?? CURATED });
+}
+// Google Cloud customer-story pages carry no publication date. The researcher dated those cases either to the day a
+// dated Google list first named them ("public by") or, failing that, to the day the page was read. Both are flagged
+// so the site never shows a proxy as a publication date.
+const UNDATED_BY = new Set((s1.cases ?? []).filter((c) => c.date === "2026-04-22").map((c) => c.id));
+const UNDATED_READ = new Set((s1.cases ?? []).filter((c) => c.date === "2026-11-21").map((c) => c.id));
+const cases = [];
+const seenCase = new Set();
+for (const c of [...(s1.cases ?? []), ...(s2.cases ?? [])]) {
+  const sourceIds = srcOk(c.sourceIds);
+  const solution = claimList(c.solution, `${c.id}.solution`);
+  const why = !c?.id || seenCase.has(c.id) ? "duplicate or missing id" : !c.customer || !c.title ? "no customer or title" : !SEGMENT_IDS.has(c.segment) ? `unknown segment ${c.segment}` : !sourceIds.length ? "no source" : !solution.length ? "no sourced description of what was built" : !iso(c.date) ? "no date" : !c.takeaway || !c.useWhen ? "no takeaway" : null;
+  if (why) { note(`case study dropped (${why}): ${c?.id}`); continue; }
+  seenCase.add(c.id);
+  // Reported results are the customer's or vendor's own: they can never be shown as verified facts.
+  const outcomes = claimList(c.outcomes, `${c.id}.outcomes`).map((o) => (o.label === "verified-fact" ? { ...o, label: "provider-claim" } : o));
+  cases.push({
+    id: c.id, customer: c.customer, title: c.title, country: c.country ?? "", regions: (c.regions ?? []).filter((r) => REGION_IDS.has(r)),
+    segment: c.segment, subVerticals: (c.subVerticals ?? []).filter((v) => SUBVERTICALS.has(v)), platform: c.platform === "google-cloud" ? "google-cloud" : "other",
+    providers: (c.providers ?? []).map((p) => ent(p) ?? p), products: [...new Set((c.products ?? []).map((p) => ent(p) ?? p))],
+    challenge: claimList(c.challenge, `${c.id}.challenge`), solution, outcomes, date: iso(c.date), ...(UNDATED_BY.has(c.id) ? { dateBasis: "by" } : UNDATED_READ.has(c.id) ? { dateBasis: "read" } : {}), takeaway: c.takeaway, useWhen: c.useWhen, sourceIds: [...new Set([...sourceIds, ...solution.flatMap((x) => x.sourceIds)])],
+  });
+}
+const annIds = new Set(announcements.map((a) => a.id));
+const notesOut = [];
+for (const n of s3.notes ?? []) {
+  if (!annIds.has(n.announcementId) || !n.headline || !n.talkTrack) { note(`specialist note dropped (unknown development or empty): ${n?.announcementId}`); continue; }
+  notesOut.push({ announcementId: n.announcementId, mustKnow: !!n.mustKnow, headline: n.headline, talkTrack: n.talkTrack, ...(n.watchOut ? { watchOut: n.watchOut } : {}), subVerticals: (n.subVerticals ?? []).filter((v) => SUBVERTICALS.has(v)), regions: (n.regions ?? []).filter((r) => REGION_IDS.has(r)) });
+}
+const regionsOut = (s3.regions ?? []).filter((r) => REGION_IDS.has(r.id) && r.angle).map((r) => ({ id: r.id, facts: claimList(r.facts, `region.${r.id}`), angle: r.angle }));
+const quizOut = [];
+for (const q of s3.quiz ?? []) {
+  const sourceIds = srcOk(q.sourceIds);
+  const ok = q?.id && q.question && Array.isArray(q.options) && q.options.length === 4 && new Set(q.options).size === 4 && Number.isInteger(q.answer) && q.answer >= 0 && q.answer < 4 && q.explanation && iso(q.asOf) && sourceIds.length && (!q.announcementId || annIds.has(q.announcementId)) && (!q.entityId || ent(q.entityId));
+  if (!ok) { note(`quiz question dropped (malformed, unsourced or pointing at an unknown record): ${q?.id}`); continue; }
+  quizOut.push({ id: q.id, topic: q.topic ?? "models", question: q.question, options: q.options, answer: q.answer, explanation: q.explanation, asOf: iso(q.asOf), ...(q.announcementId ? { announcementId: q.announcementId } : {}), ...(q.entityId ? { entityId: ent(q.entityId) } : {}), sourceIds });
+}
+
 // ── used sources only
 const used = new Set();
 const collect = (v) => { if (Array.isArray(v)) v.forEach(collect); else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) { if (k === "sourceIds") x.forEach((i) => used.add(i)); else collect(x); } };
 const ents = [...entities.values()];
-[ents, relationships, pricesOut, results, availability, lifecycle, announcements, timeline, battlegrounds].forEach(collect);
+[ents, relationships, pricesOut, results, availability, lifecycle, announcements, timeline, battlegrounds, cases, regionsOut, quizOut].forEach(collect);
 const sourcesOut = [...sources.values()].filter((s) => used.has(s.id));
 
-const meta = { version: `${TODAY.replace(/-/g, ".")}-1`, curatedAt: TODAY, coverageFrom: "2026-08-15", coverageTo: TODAY, notes: fixes.metaNotes ?? [] };
+const meta = { version: `${CURATED.replace(/-/g, ".")}-1`, curatedAt: CURATED, coverageFrom: "2026-08-15", coverageTo: CURATED, notes: [...up("metaNotes"), ...(fixes.metaNotes ?? [])] };
 const write = (f, v) => fs.writeFileSync(path.join(OUT, f), JSON.stringify(v, null, 1) + "\n");
 write("sources.json", sourcesOut); write("entities.json", ents); write("relationships.json", relationships); write("prices.json", pricesOut);
-write("benchmarks.json", benchmarks); write("results.json", results); write("availability.json", availability); write("lifecycle.json", lifecycle);
+write("benchmarks.json", benchmarks); write("results.json", results); write("availability.json", availability); write("lifecycle.json", lifecycle.map((l) => Object.fromEntries(Object.entries(l).filter(([k]) => k !== "_update"))));
 write("announcements.json", announcements); write("timeline.json", timeline); write("battlegrounds.json", battlegrounds); write("feeds.json", r4.feeds ?? []); write("meta.json", meta);
+write("cases.json", cases); write("notes.json", notesOut); write("regions.json", regionsOut); write("quiz.json", quizOut);
+console.log({ cases: cases.length, casesGoogle: cases.filter((c) => c.platform === "google-cloud").length, notes: notesOut.length, mustKnow: notesOut.filter((n) => n.mustKnow).length, regions: regionsOut.length, quiz: quizOut.length });
 fs.writeFileSync(path.join(IN, "merge.log"), log.join("\n"));
 const byAccess = {}; for (const s of sourcesOut) byAccess[s.access] = (byAccess[s.access] ?? 0) + 1;
 console.log({ sources: sourcesOut.length, byAccess, entities: ents.length, google: ents.filter((e) => e.providerId === "google").length, models: ents.filter((e) => e.kind === "model").length, relationships: relationships.length, prices: pricesOut.length, benchmarks: benchmarks.length, results: results.length, availability: availability.length, lifecycle: lifecycle.length, announcements: announcements.length, timeline: timeline.length, battlegrounds: battlegrounds.length, logLines: log.length });

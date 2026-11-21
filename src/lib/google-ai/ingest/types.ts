@@ -1,4 +1,5 @@
 import type { AnnouncementType, EditorialReview, LayerId, RadarArea, SourceSnapshot } from "../types";
+import type { Digest } from "./digest";
 
 export type FeedFormat = "rss" | "atom" | "html-page";
 export type FeedCategory = "official-blog" | "release-notes" | "pricing-page" | "docs" | "research" | "changelog" | "competitor";
@@ -102,4 +103,6 @@ export interface PipelineState {
   lastSuccessAt: string | null;
   items: DetectedItem[];
   alerts: Alert[];
+  /** Automatic notes on the newest unreviewed items, rebuilt on every run. */
+  digest: Digest;
 }

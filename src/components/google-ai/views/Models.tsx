@@ -56,13 +56,11 @@ export default function Models() {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Models</span>
-        <h1 className="gai-h1">Every tracked model, with what is known and what is not</h1>
-        <p className="gai-lede">
-          Identifiers, limits, modalities and list prices for Google&apos;s models and the competing models they are measured against. Prices are the ones in effect on {fmtDate(today)}; a gap means the fact has not been confirmed, not that it is zero.
-        </p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>🤖</div>
+        <h1 className="gai-h1">Models</h1>
+        <p className="gai-lede">Every model we track, from Google and its rivals, with the list price in effect today. A gap means the fact is not confirmed, not that it is zero.</p>
+      </header>
 
       <div className="gai-grid gai-g4 keep2">
         <div className="gai-card gai-stat"><span className="v">{rows.length}</span><span className="l">models tracked</span></div>

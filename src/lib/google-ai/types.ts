@@ -526,3 +526,88 @@ export interface DatasetMeta {
   coverageTo: string;
   notes: string[];
 }
+
+// ───────────────────────── specialist layer ─────────────────────────
+
+/** The four account segments an AI specialist sells into. */
+export type SegmentId = "digital-natives" | "enterprise" | "public-sector" | "education";
+
+/** Asia-Pacific sub-regions the site can be read from. */
+export type RegionId = "korea" | "india" | "sea" | "japan" | "aunz" | "china" | "hk-taiwan";
+
+/** A real, sourced account of how an organisation uses AI — on Google Cloud or elsewhere. */
+export interface CaseStudy {
+  id: string;
+  customer: string;
+  /** One line: what they did with AI. */
+  title: string;
+  country: string;
+  /** Sub-regions the customer is based in or the deployment serves. Empty = outside the listed sub-regions. */
+  regions: RegionId[];
+  segment: SegmentId;
+  /** Sub-vertical ids from SUB_VERTICALS. */
+  subVerticals: string[];
+  /** Whether the AI described runs on Google Cloud / Google models, or on something else. */
+  platform: "google-cloud" | "other";
+  /** Canonical provider ids involved (google, aws, microsoft, openai, anthropic, …) or a plain name when not in the knowledge base. */
+  providers: string[];
+  /** Products used: canonical entity ids where they exist, plain names otherwise. */
+  products: string[];
+  challenge: Claim[];
+  solution: Claim[];
+  /** Reported results. Customer- or vendor-reported numbers are provider claims, never verified facts. */
+  outcomes: Claim[];
+  /** Publication date of the main source. */
+  date: string;
+  /**
+   * How to read `date` when the source page carries no publication date:
+   * "by" = the story was public no later than this date; "read" = the date we read the page.
+   * Absent = `date` is the publication date.
+   */
+  dateBasis?: "by" | "read";
+  /** Analyst interpretation: what a specialist should take from it. */
+  takeaway: string;
+  /** Analyst interpretation: the customer conversation this example helps in. */
+  useWhen: string;
+  sourceIds: string[];
+}
+
+/** Editorial enrichment of a development for specialists. Analyst interpretation throughout. */
+export interface SpecialistNote {
+  announcementId: string;
+  /** True when a specialist should know this before their next customer meeting. */
+  mustKnow: boolean;
+  /** Plain-language headline, at most 12 words. */
+  headline: string;
+  /** What to say to a customer: one or two sentences. */
+  talkTrack: string;
+  /** A caveat to state honestly (preview status, price change ahead, unconfirmed detail). */
+  watchOut?: string;
+  subVerticals: string[];
+  /** Sub-regions where it matters most. Empty = everywhere. */
+  regions: RegionId[];
+}
+
+export interface RegionBrief {
+  id: RegionId;
+  /** Sourced facts: Google Cloud regions and data residency, local-language support, sovereign or regulatory context, notable local AI players. */
+  facts: Claim[];
+  /** Analyst interpretation: what is different about selling AI here. */
+  angle: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  topic: "models" | "pricing" | "platform" | "agents" | "enterprise" | "consumer" | "infrastructure" | "competitors" | "research";
+  question: string;
+  options: string[];
+  /** Index of the correct option. */
+  answer: number;
+  explanation: string;
+  /** The date the answer is true as of. */
+  asOf: string;
+  /** Canonical record the answer comes from. */
+  announcementId?: string;
+  entityId?: string;
+  sourceIds: string[];
+}
