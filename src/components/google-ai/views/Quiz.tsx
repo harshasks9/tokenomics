@@ -81,11 +81,11 @@ function RecordLinks({ q }: { q: QuizQuestion }) {
 
 function Provenance({ q }: { q: QuizQuestion }) {
   return (
-    <p className="gai-sp-meta">
+    <div className="gai-sp-meta">
       <span>{`True as of ${fmtDate(q.asOf)}`}</span>
       <Cites ids={q.sourceIds} />
       <RecordLinks q={q} />
-    </p>
+    </div>
   );
 }
 

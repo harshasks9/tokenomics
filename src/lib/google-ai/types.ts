@@ -559,6 +559,12 @@ export interface CaseStudy {
   outcomes: Claim[];
   /** Publication date of the main source. */
   date: string;
+  /**
+   * How to read `date` when the source page carries no publication date:
+   * "by" = the story was public no later than this date; "read" = the date we read the page.
+   * Absent = `date` is the publication date.
+   */
+  dateBasis?: "by" | "read";
   /** Analyst interpretation: what a specialist should take from it. */
   takeaway: string;
   /** Analyst interpretation: the customer conversation this example helps in. */

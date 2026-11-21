@@ -51,7 +51,7 @@ export const LIFECYCLE = lifecycleJson as LifecycleEvent[];
 export const ANNOUNCEMENTS = (announcementsJson as Announcement[]).slice().sort((a, b) => b.date.localeCompare(a.date));
 export const TIMELINE = (timelineJson as TimelineEvent[]).slice().sort((a, b) => a.date.localeCompare(b.date));
 export const BATTLEGROUNDS = battlegroundsJson as Battleground[];
-export const CASES = (casesJson as CaseStudy[]).slice().sort((a, b) => b.date.localeCompare(a.date));
+export const CASES = (casesJson as CaseStudy[]).slice().sort((a, b) => Number(a.dateBasis === "read") - Number(b.dateBasis === "read") || b.date.localeCompare(a.date));
 export const NOTES = notesJson as SpecialistNote[];
 export const REGION_BRIEFS = regionsJson as RegionBrief[];
 export const QUIZ = quizJson as QuizQuestion[];

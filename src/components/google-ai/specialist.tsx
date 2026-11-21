@@ -94,7 +94,7 @@ export function CaseRow({ c, open }: { c: CaseStudy; open?: boolean }) {
     <details className="gai-toggle" id={c.id} open={open} style={{ scrollMarginTop: 60 }}>
       <summary>
         <span className="caret" aria-hidden>▶</span>
-        <time dateTime={c.date}>{fmtDate(c.date, "month")}</time>
+        <time dateTime={c.dateBasis ? undefined : c.date}>{c.dateBasis === "read" ? "Undated" : c.dateBasis === "by" ? `By ${fmtDate(c.date, "month")}` : fmtDate(c.date, "month")}</time>
         <span>
           <span className="ttl"><span translate="no">{c.customer}</span> <PlatformTag c={c} /> <span className="gai-tag">{c.country}</span></span>
           <span className="sub">{c.title}</span>
@@ -121,7 +121,9 @@ export function CaseRow({ c, open }: { c: CaseStudy; open?: boolean }) {
           <p style={{ marginTop: 6 }}><b>When it helps: </b>{c.useWhen}</p>
           <p className="gai-small" style={{ marginTop: 4 }}><Ev label="analyst-interpretation" short /></p>
         </Callout>
-        <p className="gai-small gai-muted">Published {fmtDate(c.date)} · <Cites ids={c.sourceIds} /></p>
+        <p className="gai-small gai-muted">
+          {c.dateBasis === "read" ? `The source page carries no date; it was read on ${fmtDate(c.date)}.` : c.dateBasis === "by" ? `The source page carries no date; it was public by ${fmtDate(c.date)} and may describe earlier work.` : `Published ${fmtDate(c.date)}.`} <Cites ids={c.sourceIds} />
+        </p>
       </div>
     </details>
   );

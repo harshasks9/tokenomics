@@ -1,5 +1,2513 @@
 [
  {
+  "id": "cs-g-lg-uplus",
+  "customer": "LG U+",
+  "title": "Put Gemini into its ixi-O call agent to summarise calls, search during a call and suggest next actions",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "gemini-enterprise-agent-platform",
+   "grounding-with-google-search",
+   "gemini-2-5-flash-live",
+   "gemini-enterprise"
+  ],
+  "challenge": [
+   {
+    "text": "LG U+ wanted its AI call agent ixi-O to understand the context of a call more precisely, and to become a service it could take to markets outside Korea.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-korea-2025"
+    ],
+    "asOf": "2025-03-25"
+   },
+   {
+    "text": "When the partnership was announced, press reports said the two companies were aiming for about US$300 million in revenue from it by 2028 — a target, not a result.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-lgu-koreatimes"
+    ],
+    "asOf": "2025-03-06",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Google Cloud Korea said in March 2025 that LG U+ would bring Gemini into ixi-O for call summaries and recommended actions, and use Vertex AI grounding with Google Search so the agent can look up things mentioned during a call.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-korea-2025"
+    ],
+    "asOf": "2025-03-25"
+   },
+   {
+    "text": "In November 2025 LG U+ unveiled an ixi-O AI assistant that Korean press reported was built with Google's Gemini 2.5 Flash Live model and can be asked questions by voice in the middle of a call.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-lgu-asiae"
+    ],
+    "asOf": "2025-11-13",
+    "confidence": "medium"
+   },
+   {
+    "text": "Google's April 2026 customer list says LG U+ also uses Gemini Enterprise Agent Platform to recommend responses during calls; the 2025 announcement additionally covered Agentspace (now Gemini Enterprise) for employee productivity.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101",
+     "cg-korea-2025"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-03-25",
+  "takeaway": "A telco putting Gemini inside a consumer voice product rather than only in the contact centre, followed from announcement (March 2025) to a shipped real-time assistant (November 2025). No usage or revenue results have been published, so use it as a design reference, not as proof of return.",
+  "useWhen": "A telecom or consumer-app customer asks who has put a real-time voice model into a live Korean-language calling product.",
+  "sourceIds": [
+   "cg-korea-2025",
+   "cg-lgu-koreatimes",
+   "cg-lgu-asiae",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-kakao",
+  "customer": "Kakao",
+  "title": "Trained its Kanana language models on Cloud TPUs with JAX to get past GPU cost and capacity limits",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-media",
+   "dn-ai-native"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "tpu",
+   "tpu-v5e",
+   "tpu-trillium",
+   "JAX",
+   "MaxText"
+  ],
+  "challenge": [
+   {
+    "text": "Kakao's engineers wrote that their GPU-based training infrastructure had hit scaling limits, leaving a choice between buying more GPUs and keeping the codebase, or moving to Cloud TPUs with a new toolchain.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kakao-jax"
+    ],
+    "asOf": "2025-08-19"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Kakao chose Cloud TPUs and rebuilt its training stack on JAX and MaxText, training a 2.1-billion-parameter Kanana model from scratch on TPU v5e.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-kakao-jax"
+    ],
+    "asOf": "2025-08-19"
+   },
+   {
+    "text": "An earlier Google Cloud Korea interview says Kakao uses TPUs alongside GPUs for LLM training and had already applied the then-new TPU v6e (Trillium).",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kakao-kanana-ko"
+    ],
+    "asOf": "2025-01-14"
+   },
+   {
+    "text": "In February 2026 Kakao announced a strategic partnership with Google on on-device AI, and press reported its CEO saying talks on a larger TPU cloud deployment were continuing.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kakao-koreatimes"
+    ],
+    "asOf": "2026-02-12",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Kakao reported that its MaxText implementation on TPUs reached performance comparable to its existing GPU pipeline at each training stage; it published no cost figures.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kakao-jax"
+    ],
+    "asOf": "2025-08-19"
+   }
+  ],
+  "date": "2025-08-19",
+  "takeaway": "A model builder outside Google moved training to TPUs for cost-performance and accepted a toolchain change (JAX, MaxText) to do it. They say quality matched their GPU pipeline but give no price comparison, and press reports say Kakao works with OpenAI on consumer AI services — this is an infrastructure relationship, not an exclusive one.",
+  "useWhen": "A platform or AI-native customer that trains its own models asks whether TPUs are realistic for a team with a GPU-first codebase.",
+  "sourceIds": [
+   "cg-kakao-jax",
+   "cg-kakao-kanana-ko",
+   "cg-kakao-koreatimes"
+  ]
+ },
+ {
+  "id": "cs-g-joongang-ilbo",
+  "customer": "JoongAng Ilbo",
+  "title": "Built AI search over 60 years of its own articles and uses Gemini to suggest headlines",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-media"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "agent-search",
+   "gemini",
+   "gemini-enterprise-agent-platform"
+  ],
+  "challenge": [
+   {
+    "text": "The newspaper was looking for realistic newsroom uses of AI other than an 'AI reporter', and wanted readers to be able to query six decades of archive in natural language.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-joongang"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Its AI search, launched in 2024, uses Gemini with function calling to interpret the question, Vertex AI Search (now Agent Search) to retrieve only JoongAng Ilbo articles, and Gemini again to write the answer.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-joongang"
+    ]
+   },
+   {
+    "text": "Gemini is also used in the editing system to suggest headlines and to summarise front-page articles into email newsletters, with editors reviewing the result.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-joongang",
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Google's customer list reports that the suggested headlines are more than 70% similar to the headlines finally published.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "Restricting answers to the publisher's own archive is the design choice that made generative search acceptable to an editorial organisation. The Korea Economic Daily's ALICE service is a second Korean newspaper using the same pattern, which applies to any customer with a large proprietary text archive.",
+  "useWhen": "A media company or any archive-rich organisation worries that generative answers will invent facts under its brand.",
+  "sourceIds": [
+   "cg-joongang",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-mathpresso",
+  "customer": "Mathpresso (QANDA)",
+  "title": "Uses Gemini models in the QANDA learning app and cut answer generation time by more than half",
+  "country": "South Korea",
+  "regions": [
+   "korea"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-edtech"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-1-5-pro",
+   "gemini-2-0-flash",
+   "Cloud SQL"
+  ],
+  "challenge": [
+   {
+    "text": "QANDA recognises photographed problems with its own OCR and serves users who solve about 100 million problems a month, so answer speed and help matched to each student's level are central to the product.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-korea-2025"
+    ],
+    "asOf": "2025-03-25"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Mathpresso uses Gemini 1.5 Pro and Gemini 2.0 Flash for its AI services, including an agent feature that generates explanations adapted to the student's current understanding; Cloud SQL absorbs traffic spikes.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-korea-2025"
+    ],
+    "asOf": "2025-03-25"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "After adopting the newer Gemini models, answer generation time fell from about 8 seconds to about 3 seconds, according to Google Cloud Korea.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-korea-2025"
+    ],
+    "asOf": "2025-03-25"
+   }
+  ],
+  "date": "2025-03-25",
+  "takeaway": "For a consumer learning app the result that mattered was latency, not model quality in the abstract. The models named are now old generations, so treat it as a pattern and check what the company runs today.",
+  "useWhen": "An edtech or consumer-app team is weighing response time and unit cost for a high-volume tutoring feature.",
+  "sourceIds": [
+   "cg-korea-2025"
+  ]
+ },
+ {
+  "id": "cs-g-manipal-hospitals",
+  "customer": "Manipal Hospitals",
+  "title": "Uses Gemini for an ePharmacy ordering app and to draft nurse handoff summaries",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-healthcare"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google",
+   "Deloitte"
+  ],
+  "products": [
+   "gemini-enterprise-agent-platform",
+   "Gemini 1.5",
+   "BigQuery",
+   "apigee",
+   "Cloud Healthcare API"
+  ],
+  "challenge": [
+   {
+    "text": "Patients needed a faster way to get prescribed medicines after a consultation, and nurses were spending about 90 minutes on shift-handoff documentation.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-manipal"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "The ePharmacy app uses Vertex AI and Gemini 1.5 to supply drug information during ordering, with BigQuery analysing the app data.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-manipal"
+    ]
+   },
+   {
+    "text": "A nurse handoff solution generates summaries of patient information, medication changes, lab results and vital signs; the page describes it as still being refined with partners such as Deloitte.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-manipal",
+     "cg-uc101"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Average medicine order time fell from 15 minutes to under five minutes.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-manipal"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Initial findings put nurse handoff time at about 20 minutes per nurse, down from 90.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-manipal"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "Two clinical-adjacent workflows with before-and-after times from a hospital group that serves over seven million patients a year. The nurse-handoff figure is labelled an initial finding from a solution still being refined, so quote it as an early result.",
+  "useWhen": "A hospital group asks for examples of reducing documentation burden from outside the United States.",
+  "sourceIds": [
+   "cg-manipal",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-wipro",
+  "customer": "Wipro",
+  "title": "Rolled out Gemini Code Assist to developers and used AI-driven recommendations to cut its cloud bill",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-conglomerate"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-code-assist",
+   "Recommender"
+  ],
+  "challenge": [
+   {
+    "text": "Wipro wanted to reduce cloud spending to fund transformation work, and to free developers from routine coding tasks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-wipro"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "It used Google Cloud's AI-driven Recommender to find idle resources and projects that could be shut down, and deployed Gemini Code Assist to automate routine coding.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-wipro"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Wipro reports a 30% improvement in coding efficiency with Gemini Code Assist.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-wipro"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "The cost programme delivered what Wipro calls multi-million-dollar savings (no figure given) and cut resource provisioning time from weeks to hours.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-wipro"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "The 30% figure is Wipro's own and is not broken down by task or measured against a control group, so present it as a reported result. It is useful as a coding-assistant deployment at a large Indian services firm; Google also says Infosys is equipping more than 100,000 developers with Gemini Enterprise. Expect the customer to compare with GitHub Copilot and Claude Code.",
+  "useWhen": "An IT services or global capability centre engineering leader asks for developer-productivity evidence from a peer.",
+  "sourceIds": [
+   "cg-wipro",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-honasa-consumer",
+  "customer": "Honasa Consumer (Mamaearth)",
+  "title": "Runs 30+ production agents on Gemini and BigQuery for consumer research, formulation and marketing operations",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-retail"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "BigQuery",
+   "knowledge-catalog",
+   "Cloud Run",
+   "Google Kubernetes Engine"
+  ],
+  "challenge": [
+   {
+    "text": "Spotting unmet consumer needs and ranking formulation options depended on manual work across many unstructured sources, and R&D bench work took months.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-honasa"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Over six to nine months Honasa built an agent layer with Gemini on top of a BigQuery warehouse it had used for six years, with Knowledge Catalog over Cloud Storage.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-honasa"
+    ]
+   },
+   {
+    "text": "Gemini models interpret signals from more than ten platforms — search, marketplaces, inbound calls and social networks — and a conversational tool ranks formulation pathways.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-honasa"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "More than 30 agents run in production across internal operating systems.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-honasa"
+    ],
+    "asOf": "2026-11-21"
+   },
+   {
+    "text": "Hundreds of thousands of consumer conversations are processed each month, and months of R&D bench work have been compressed into weeks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-honasa"
+    ],
+    "asOf": "2026-11-21"
+   }
+  ],
+  "date": "2026-11-21",
+  "dateBasis": "read",
+  "takeaway": "The agents arrived quickly because the data was already in one warehouse: this is as much a data-foundation story as a model story. Good evidence that a mid-size Indian consumer company can run dozens of production agents; the results are operational, with no revenue figure.",
+  "useWhen": "A consumer-goods or direct-to-consumer brand asks what agents can do beyond a customer chatbot.",
+  "sourceIds": [
+   "cg-honasa"
+  ]
+ },
+ {
+  "id": "cs-g-ksn-education",
+  "customer": "KSN Education (NABBLE AI)",
+  "title": "Launched a multimodal AI tutor for exam preparation on a serverless Gemini stack",
+  "country": "India",
+  "regions": [
+   "india"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-edtech"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google",
+   "Pixlware Technologies"
+  ],
+  "products": [
+   "gemini-enterprise-agent-platform",
+   "gemini",
+   "Cloud Run",
+   "Firestore",
+   "Cloud Speech-to-Text",
+   "Cloud Text-to-Speech"
+  ],
+  "challenge": [
+   {
+    "text": "As a new company KSN needed to serve more than 10,000 students from day one without large upfront infrastructure cost, while protecting sensitive student performance data.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ksn"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "With partner Pixlware Technologies it built NABBLE AI on Vertex AI with Gemini models for adaptive explanations and quizzes, Speech-to-Text and Text-to-Speech for voice tutoring, and Cloud Run and Firestore so cost is incurred only per request.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-ksn"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The platform serves over 10,000 students preparing for exams such as NEET, JEE, GRE and GMAT.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ksn"
+    ],
+    "asOf": "2026-11-21"
+   }
+  ],
+  "date": "2026-11-21",
+  "dateBasis": "read",
+  "takeaway": "The small-team edtech pattern: a managed model plus serverless services so cost follows usage. Only reach is reported; there is no learning-outcome data.",
+  "useWhen": "An early-stage edtech founder in India asks how to launch an AI tutor without fixed infrastructure cost.",
+  "sourceIds": [
+   "cg-ksn"
+  ]
+ },
+ {
+  "id": "cs-g-fairprice-group",
+  "customer": "FairPrice Group",
+  "title": "Opened an AI-powered supermarket with in-cart shopping agents and gave staff Gemini agents",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-retail"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "agent-development-kit",
+   "model-context-protocol",
+   "gemini-api",
+   "rag-engine",
+   "grounding-with-google-search",
+   "agent-search",
+   "gemini-enterprise",
+   "agent-designer",
+   "imagen-4",
+   "veo-3",
+   "Chirp 2"
+  ],
+  "challenge": [
+   {
+    "text": "FairPrice Group serves more than one million customers a day across over 570 touchpoints and wanted to personalise shopping in stores as well as online, and to equip employees with better tools.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-fairprice"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Its 'Store of Tomorrow' programme, launched in Q3 2025, put a conversational assistant on cloud-connected shopping carts using Chirp 2 speech recognition and the Gemini API, with agents built on the Agent Development Kit and the Model Context Protocol.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-fairprice"
+    ]
+   },
+   {
+    "text": "A knowledge agent uses RAG Engine and Grounding with Google Search for recipes and pairings, and Agent Search lets customers search the catalogue with local terms.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-fairprice"
+    ]
+   },
+   {
+    "text": "Employees use Gemini with an agent gallery and the no-code Agent Designer, and create promotional ads with Imagen 4 and Veo 3.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-fairprice"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "In-cart recommendations achieved a click rate of up to 18%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-fairprice"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Weekly promotion ads are created about 10 times faster, at a cost FairPrice says is up to 100 times lower.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-fairprice"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "One retailer using most of the stack — ADK agents in store, an enterprise assistant for staff, generative media for promotions — which makes it the fullest South East Asian retail reference. The results are click and production metrics, not sales uplift.",
+  "useWhen": "A grocery or omnichannel retailer in South East Asia asks for a reference that combines customer-facing agents with employee tools.",
+  "sourceIds": [
+   "cg-fairprice"
+  ]
+ },
+ {
+  "id": "cs-g-telkomsel",
+  "customer": "Telkomsel",
+  "title": "Rebuilt search in the MyTelkomsel super app with Gemini and Vertex AI Search",
+  "country": "Indonesia",
+  "regions": [
+   "sea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "agent-search",
+   "gemini",
+   "BigQuery"
+  ],
+  "challenge": [
+   {
+    "text": "Telkomsel needed one search experience across content and services to turn MyTelkomsel, with more than 40 million monthly users, into a super app.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-telkomsel"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "It integrated generative AI into MyTelkomsel search using Gemini and Vertex AI Search (now Agent Search) to return personalised results and recommendations, with BigQuery for data.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-telkomsel"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Telkomsel recorded a 20% increase in purchases and a five-fold increase in revenue attributed to search.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-telkomsel"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Search visitors grew six-fold with 88% more clicks, and customer complaints fell 27%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-telkomsel"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Manual updates to the keyword database were reduced to zero.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-telkomsel"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "Hard commercial numbers from search, the least glamorous generative AI use case. Useful for steering a telco conversation from 'chatbot' to 'discovery inside the app'; the baseline period for the figures is not stated.",
+  "useWhen": "A telco or super-app product owner asks where generative AI has moved revenue rather than cost.",
+  "sourceIds": [
+   "cg-telkomsel"
+  ]
+ },
+ {
+  "id": "cs-g-populix",
+  "customer": "Populix",
+  "title": "Built a Gemini research assistant that drafts surveys, checks response quality and summarises findings",
+  "country": "Indonesia",
+  "regions": [
+   "sea"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-saas"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "gemini-enterprise-agent-platform",
+   "BigQuery",
+   "Looker",
+   "Google Kubernetes Engine"
+  ],
+  "challenge": [
+   {
+    "text": "End-to-end market research — scripting surveys, quality checks, coding open-ended answers and reporting — was manual and slow for a platform with a panel of about one million respondents.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-populix",
+     "cg-uc101"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Populix says it chose Google Cloud mainly for native Gemini support, having already picked Gemini as its foundation model, and built an assistant with Gemini and Vertex AI that drafts questions and summarises responses.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-populix"
+    ]
+   },
+   {
+    "text": "Gemini-based quality control flags fraudulent survey responses, and BigQuery with Looker provides internal business intelligence.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-populix"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "End-to-end research delivery is more than 50% faster.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-populix"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Automation reduced quality-assurance time by 40%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-populix"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A software company that picked its cloud because of the model it had already standardised on — a pattern worth listening for in digital-native accounts, and one that cuts both ways when the preferred model is a rival's.",
+  "useWhen": "A data or insights software company asks how peers embed Gemini in the core product workflow.",
+  "sourceIds": [
+   "cg-populix",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-cimb-niaga",
+  "customer": "CIMB Niaga",
+  "title": "Launched staff-facing AI agents for relationship managers and contact-centre teams",
+  "country": "Indonesia",
+  "regions": [
+   "sea"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-banking"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google",
+   "Artefact"
+  ],
+  "products": [
+   "gemini-enterprise-agent-platform"
+  ],
+  "challenge": [
+   {
+    "text": "The bank wanted staff to give advice and proactive guidance that fits each customer's financial goals and life stage.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "solution": [
+   {
+    "text": "CIMB Niaga's AI Center of Excellence and consultancy Artefact built purpose-built agents on Google Cloud, announced on 14 April 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-uc101",
+     "cg-cimb-press"
+    ],
+    "asOf": "2026-04-14"
+   },
+   {
+    "text": "According to the launch announcement, one agent supports relationship managers and one supports contact-centre teams, backed by a central knowledge system hosted in Google Cloud's Jakarta region to meet data-residency rules.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-cimb-press"
+    ],
+    "asOf": "2026-04-14",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-04-14",
+  "takeaway": "Staff-facing agents first, hosted in-country, built with a consulting partner: the cautious sequence most regulated banks in the region are likely to follow. No performance results have been published.",
+  "useWhen": "An Indonesian or ASEAN bank raises data residency and asks who has agents running in the Jakarta region.",
+  "sourceIds": [
+   "cg-uc101",
+   "cg-cimb-press"
+  ]
+ },
+ {
+  "id": "cs-g-ntu-singapore",
+  "customer": "Nanyang Technological University",
+  "title": "Upgraded its student housing chatbot with Dialogflow CX and Gemini",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-higher"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "cx-agent-studio"
+  ],
+  "challenge": [
+   {
+    "text": "Student housing generates a steady stream of queries, and NTU wanted better query coverage and answer quality than its existing chatbot provided.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ntu"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "NTU rebuilt the 'Lyon' housing chatbot on Dialogflow CX with Gemini models, routing questions it cannot answer to human staff.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-ntu",
+     "cg-uc101"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Housing staff save more than 100 hours a month.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ntu"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "The chatbot handles about 2,500 queries a month and answers more than 80% of them.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ntu"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A small, well-bounded university service desk with clear volumes and a hand-off to people. It is an administrative use, not teaching or research, and the scale is modest.",
+  "useWhen": "A university operations team wants a low-risk first deployment with measurable workload.",
+  "sourceIds": [
+   "cg-ntu",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-singapore-government",
+  "customer": "Government of Singapore (GovTech, CSIT, HTX)",
+  "title": "First in Asia announced to get Gemini on air-gapped Google Distributed Cloud for sensitive workloads",
+  "country": "Singapore",
+  "regions": [
+   "sea"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central",
+   "ps-defence"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "google-distributed-cloud",
+   "gemini",
+   "gemini-2-5-flash",
+   "agent-search"
+  ],
+  "challenge": [
+   {
+    "text": "Agencies that handle sensitive data need generative and agentic AI in environments disconnected from the public internet.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sg-press",
+     "cg-sg-govinsider"
+    ],
+    "asOf": "2025-08-28",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "On 28 August 2025 Google Cloud said CSIT, GovTech Singapore and HTX would be the first in Asia to access Gemini models on Google Distributed Cloud air-gapped.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sg-press"
+    ],
+    "asOf": "2025-08-28",
+    "confidence": "medium"
+   },
+   {
+    "text": "The same announcement said agencies can build on GovTech's commercial cloud platform with Gemini 2.5 Flash and Vertex AI Search for applications at the government's confidential cloud classification.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sg-press"
+    ],
+    "asOf": "2025-08-28",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2025-08-28",
+  "takeaway": "The sovereign pattern in Asia: Gemini delivered on air-gapped hardware inside government facilities. Announced access is not measured use — no adoption or outcome data is public, and the detail here comes from search extracts of the press release.",
+  "useWhen": "A defence, home-affairs or regulatory customer says public-cloud AI is not an option for its data.",
+  "sourceIds": [
+   "cg-sg-press",
+   "cg-sg-govinsider"
+  ]
+ },
+ {
+  "id": "cs-g-malaysia-government",
+  "customer": "Government of Malaysia (Ministry of Digital)",
+  "title": "Extended Google Workspace with Gemini to up to 445,000 public officers under 'AI at Work 2.0'",
+  "country": "Malaysia",
+  "regions": [
+   "sea"
+  ],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-in-workspace"
+  ],
+  "challenge": [
+   {
+    "text": "After a pilot with 270 officers, the Ministry of Digital wanted to bring generative AI tools and training to the wider civil service.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-my-press"
+    ],
+    "asOf": "2025-02-05",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "On 5 February 2025 the Ministry of Digital and Google Cloud announced AI at Work 2.0, making Google Workspace with Gemini available to up to 445,000 public officers with training and consultation.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-my-press"
+    ],
+    "asOf": "2025-02-05",
+    "confidence": "medium"
+   },
+   {
+    "text": "Local press quoted the minister as saying Google would provide the suite at no charge until 2028 and that it is not a mandated tool for the civil service.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "cg-my-lowyat",
+     "cg-my-malaymail"
+    ],
+    "asOf": "2025-02-07",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Malay Mail reported two days after launch that more than 400,000 civil servants had access to the Gemini-powered tools; this is an access figure, not a usage figure.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "cg-my-malaymail"
+    ],
+    "asOf": "2025-02-07",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-02-05",
+  "takeaway": "The largest public-sector Gemini seat count in the region, but reportedly free until 2028 and not mandated — so it shows reach and government comfort with the security model, not willingness to pay or actual use. Ask for current usage data before leaning on it.",
+  "useWhen": "A ministry asks whether any government in the region has offered generative AI to its whole civil service.",
+  "sourceIds": [
+   "cg-my-press",
+   "cg-my-lowyat",
+   "cg-my-malaymail"
+  ]
+ },
+ {
+  "id": "cs-g-sompo-japan",
+  "customer": "Sompo Japan Insurance",
+  "title": "Moved about 20,000 employees from an in-house chatbot to Gemini Enterprise and designed for adoption and governance together",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-insurance"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-enterprise",
+   "gemini-notebook",
+   "BigQuery"
+  ],
+  "challenge": [
+   {
+    "text": "Sompo Japan had offered its own chatbot to about 20,000 employees for roughly a year; its team said the main risk with agents was not outages but the tool going unused or being used incorrectly.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sompo-ja"
+    ],
+    "asOf": "2026-11-09"
+   }
+  ],
+  "solution": [
+   {
+    "text": "In January 2026 it introduced Gemini Enterprise to all employees as a proof of concept, choosing it partly because agents could work with Gemini Notebook over internal documents.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-sompo-ja"
+    ],
+    "asOf": "2026-11-09"
+   },
+   {
+    "text": "Audit logs from the Discovery Engine API are collected in BigQuery to track daily and weekly active rates, use of official notebooks and custom agents, and usage by department; departments build and publish their own agents.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sompo-ja"
+    ],
+    "asOf": "2026-11-09"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Weekly active use reached about 80% within six months, with daily active use above 50%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sompo-ja"
+    ],
+    "asOf": "2026-11-09"
+   },
+   {
+    "text": "At group level, Google said in October 2026 that SOMPO had built over 10,000 custom agents across 34,000 employees.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-gaw26"
+    ],
+    "asOf": "2026-10-08"
+   }
+  ],
+  "date": "2026-11-09",
+  "takeaway": "Adoption was engineered, not assumed: usage telemetry by department, official notebooks, employee-built agents and guardrails designed in from the start. Weekly-active rates are a better signal than seat counts. They replaced an in-house chatbot, and build-versus-buy is the live question in most large Japanese companies.",
+  "useWhen": "A large insurer or bank worries that a company-wide assistant will be licensed but not used.",
+  "sourceIds": [
+   "cg-sompo-ja",
+   "cg-gaw26"
+  ]
+ },
+ {
+  "id": "cs-g-kddi",
+  "customer": "KDDI",
+  "title": "Tuned its consumer RAG app Buffmee for speed and grounding using ADK and the platform's evaluation service",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-telecom"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google",
+   "KDDI iret"
+  ],
+  "products": [
+   "agent-development-kit",
+   "gen-ai-evaluation-service",
+   "gemini-enterprise-agent-platform",
+   "BigQuery Agent Analytics"
+  ],
+  "challenge": [
+   {
+    "text": "Buffmee grounds answers in more than 100 sources such as books, magazines and web media; before launch the team could not hit its response-time target and needed a reliable way to keep answers grounded.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kddi"
+    ],
+    "asOf": "2026-09-08"
+   }
+  ],
+  "solution": [
+   {
+    "text": "KDDI, KDDI iret and Google Cloud Consulting set up a systematic evaluation process with the Gemini Enterprise Agent Platform evaluation service and analysed agent logs with BigQuery Agent Analytics and an ADK log-analysis agent.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-kddi"
+    ],
+    "asOf": "2026-09-08"
+   },
+   {
+    "text": "A system prompt of more than 800 lines was split by function into ADK Skills that load only when needed.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kddi"
+    ],
+    "asOf": "2026-09-08"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Total response latency fell 38% and time to first token improved by nearly 18%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kddi"
+    ],
+    "asOf": "2026-09-08"
+   },
+   {
+    "text": "Groundedness scores improved 25%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kddi"
+    ],
+    "asOf": "2026-09-08"
+   },
+   {
+    "text": "Sampling test cases from a difficulty grid cut evaluation workload by 75%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-kddi"
+    ],
+    "asOf": "2026-09-08"
+   }
+  ],
+  "date": "2026-09-08",
+  "takeaway": "An engineering case, not a business case: evaluation tooling and prompt modularisation, not a model swap, fixed latency and grounding. Strong for technical buyers; it has no user or revenue numbers.",
+  "useWhen": "An engineering team has a RAG or agent prototype that is too slow or not grounded enough to launch.",
+  "sourceIds": [
+   "cg-kddi"
+  ]
+ },
+ {
+  "id": "cs-g-cainz",
+  "customer": "Cainz",
+  "title": "Used AlphaEvolve to find a better demand-forecasting algorithm than three years of manual tuning had",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-retail"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "alphaevolve",
+   "BigQuery",
+   "Vertex AI Forecasting"
+  ],
+  "challenge": [
+   {
+    "text": "Cainz forecasts about 10,000 private-brand SKUs 39 weeks ahead and up to five million store-SKU combinations six weeks ahead across 281 stores; after three years of manual feature design and tuning, accuracy gains had stalled.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-cainz-ja"
+    ],
+    "asOf": "2026-10-30"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Cainz applied AlphaEvolve, then in preview, to its long-term forecasting model and put the resulting algorithm into production, with data in BigQuery.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-cainz-ja"
+    ],
+    "asOf": "2026-10-30"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Forecast error improved by 19%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-cainz-ja"
+    ],
+    "asOf": "2026-10-30"
+   },
+   {
+    "text": "Several models previously split by sales conditions were consolidated into one, which Cainz says simplified operations and reduced cost.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-cainz-ja"
+    ],
+    "asOf": "2026-10-30"
+   }
+  ],
+  "date": "2026-10-30",
+  "takeaway": "An early retail production reference for AlphaEvolve: the system searched for a better algorithm where human tuning had plateaued. It was a preview product at the time, and this kind of result depends on having a clean, automatable evaluation metric.",
+  "useWhen": "A retailer or manufacturer with a mature data-science team says its forecasting or optimisation models have stopped improving.",
+  "sourceIds": [
+   "cg-cainz-ja"
+  ]
+ },
+ {
+  "id": "cs-g-sky",
+  "customer": "Sky Corporation",
+  "title": "Retired its in-house chat tool and gave Gemini to all 5,000 employees at once",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-saas"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "gemini-notebook"
+  ],
+  "challenge": [
+   {
+    "text": "Sky's home-built assistant SKYAI had reached 90% monthly usage, but continuing to maintain it would have tied up the team that builds new AI systems.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sky-ja"
+    ],
+    "asOf": "2026-10-29"
+   }
+  ],
+  "solution": [
+   {
+    "text": "After evaluating cross-source search accuracy, data integration and governance, Sky began using Gemini in January 2026 and rolled it out to all of its roughly 5,000 employees simultaneously, alongside Gemini Notebook.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-sky-ja"
+    ],
+    "asOf": "2026-10-29"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Sky reports a 98% retention rate among users after the initial surge.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sky-ja"
+    ],
+    "asOf": "2026-10-29"
+   },
+   {
+    "text": "Employees have shared close to 2,000 agents.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-sky-ja"
+    ],
+    "asOf": "2026-10-29"
+   }
+  ],
+  "date": "2026-10-29",
+  "takeaway": "A software company that could build its own assistant — and had — chose to buy so that its engineers could work on other things. A clean build-versus-buy story with a retention figure; the article does not name the exact Gemini edition.",
+  "useWhen": "A technically strong customer is maintaining a home-grown chat tool and questions paying for a packaged one.",
+  "sourceIds": [
+   "cg-sky-ja"
+  ]
+ },
+ {
+  "id": "cs-g-nihon-university",
+  "customer": "Nihon University",
+  "title": "Decided to license Google AI Pro for Education for 10,000 users including all full-time faculty and staff",
+  "country": "Japan",
+  "regions": [
+   "japan"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-higher"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "Google AI Pro for Education",
+   "gemini-app",
+   "Google Workspace for Education Plus",
+   "BigQuery",
+   "Looker"
+  ],
+  "challenge": [
+   {
+    "text": "Nihon University, one of Japan's largest, has pursued data-driven education reform since 2022 on a foundation of Google Workspace, BigQuery and Looker, and wanted further efficiency and more advanced teaching and research, in an environment where its data is not used for model training.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-nihon-ja"
+    ],
+    "asOf": "2026-05-18"
+   }
+  ],
+  "solution": [
+   {
+    "text": "For fiscal 2026 the university decided to deploy Google AI Pro for Education, the paid education edition of the Gemini app, to 10,000 users including every full-time member of faculty and staff.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-nihon-ja"
+    ],
+    "asOf": "2026-05-18"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-05-18",
+  "takeaway": "A scale reference for Japanese higher education: 10,000 staff seats added to an existing Workspace for Education estate. It records a purchase decision — no usage results are reported, and the seats are for staff rather than students.",
+  "useWhen": "A university already on Google Workspace for Education asks what peers are licensing for staff.",
+  "sourceIds": [
+   "cg-nihon-ja"
+  ]
+ },
+ {
+  "id": "cs-g-bunnings",
+  "customer": "Bunnings",
+  "title": "Built 'Buddy', a shopping agent for home-improvement projects, on Gemini Enterprise for CX in six weeks",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-retail"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-for-customer-experience",
+   "agent-search"
+  ],
+  "challenge": [
+   {
+    "text": "Bunnings is known for in-store advice, but its online experience was transactional and customers planning complex projects often did not know everything they needed.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-bunnings"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Bunnings built Buddy on Gemini Enterprise for Customer Experience, working with Google engineers and building on earlier work with Agent Search; safety guardrails stop it guiding customers into dangerous jobs.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-bunnings"
+    ]
+   },
+   {
+    "text": "It plans to extend Buddy to New Zealand, to product pages and to trade customers.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-bunnings"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Transactions that involve Buddy convert at more than twice the online rate, with what Bunnings calls a significant lift in average order value.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-bunnings"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Buddy went from start to launch in six weeks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-bunnings"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Separately, Google said in October 2026 that an internal agent at Bunnings had saved staff half a million hours of administrative work.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-gaw26"
+    ],
+    "asOf": "2026-10-08"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "The strongest ANZ agentic-commerce reference: a named conversion result and a six-week build. The conversion figure compares sessions that used Buddy with those that did not, so it is not a controlled test. Parent Wesfarmers is also deploying agents at Kmart and Officeworks.",
+  "useWhen": "A retailer wants evidence that a shopping agent changes conversion rather than only deflecting service contacts.",
+  "sourceIds": [
+   "cg-bunnings",
+   "cg-gaw26"
+  ]
+ },
+ {
+  "id": "cs-g-woolworths-group",
+  "customer": "Woolworths Group",
+  "title": "Rebuilt its Olive assistant as an agentic shopping companion on Gemini Enterprise",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-retail"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-for-customer-experience",
+   "gemini-enterprise"
+  ],
+  "challenge": [
+   {
+    "text": "Olive was a scripted chat and voice bot; Woolworths wanted an assistant that plans meals, finds relevant specials and helps build the basket.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101",
+     "cg-woolworths-itnews"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Trade press reported that Olive had to be reined in earlier in 2026 after going off script in customer chats.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "cg-woolworths-itwire"
+    ],
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "In January 2026 Woolworths was named the first Australian retailer to partner on Google's agentic platform for customer experience.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101",
+     "cg-woolworths-itnews"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "On 29 June 2026 Woolworths announced the upgraded Olive, powered by Gemini Enterprise, for all app customers shopping for pick-up or delivery from July.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-woolworths-newsroom"
+    ],
+    "asOf": "2026-06-29",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-06-29",
+  "takeaway": "A competitive marker more than a results story: no outcome figures have been published, and trade press reports rival Coles runs its AI on Microsoft Azure. The off-script reports are a reminder to talk about guardrails and evaluation before launch.",
+  "useWhen": "An Australian retailer asks which platform its competitors have chosen for customer-facing agents.",
+  "sourceIds": [
+   "cg-uc101",
+   "cg-woolworths-itnews",
+   "cg-woolworths-itwire",
+   "cg-woolworths-newsroom"
+  ]
+ },
+ {
+  "id": "cs-g-atlassian",
+  "customer": "Atlassian",
+  "title": "Moved its Rovo agents to Gemini 3 Flash and published the before-and-after evaluation scores",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-saas"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-3-flash",
+   "ai-hypercomputer",
+   "Google Kubernetes Engine"
+  ],
+  "challenge": [
+   {
+    "text": "Atlassian wanted to upgrade the model behind its Rovo assistant and agent platform without losing task success at scale.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-atlassian"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "It migrated Rovo agents to Gemini 3 Flash, updating tool definitions because the model enforces stricter schemas, and rolled out with an opt-in toggle.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-atlassian"
+    ]
+   },
+   {
+    "text": "At Next '26 the companies announced an expanded partnership under which Atlassian is building a training and inference stack on GKE and Google's AI Hypercomputer.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-atlassian-press"
+    ],
+    "asOf": "2026-04-22",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Offline evaluation pass rates rose from 80% to 85% and online task success from 75% to 80%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-atlassian"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Usage scaled to 200,000 daily invocations.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-atlassian"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Nearly half of customers switched their agents within two weeks of the toggle appearing.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-atlassian"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A software vendor publishing its own evaluation numbers for a model swap is rare. The gains are modest — five points — and came with migration work on tool schemas, which is an honest picture of what switching models costs.",
+  "useWhen": "A software company is deciding whether to move an agent feature to a Flash-tier model.",
+  "sourceIds": [
+   "cg-atlassian",
+   "cg-atlassian-press"
+  ]
+ },
+ {
+  "id": "cs-g-harmoney",
+  "customer": "Harmoney",
+  "title": "Built a back-end agent that reads bank statements and cut loan decisions from a day to 15 minutes",
+  "country": "New Zealand",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-fintech"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "gemini-enterprise-agent-platform"
+  ],
+  "challenge": [
+   {
+    "text": "Responsible-lending rules require Harmoney to assess applicants' bank statements; rule-based code could not handle the variety, so decisions often took more than 24 hours and applicants dropped out.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-harmoney"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Harmoney built 'Bank Bot', a generative agent on Gemini that classifies, extracts and reasons over unstructured bank statements inside its lending platform, with no customer-facing chat.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-harmoney"
+    ]
+   },
+   {
+    "text": "Because security and compliance pipelines already existed on Google Cloud, one developer and one product manager took it to production.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-harmoney"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Average loan decision time fell from 24 hours to 15 minutes.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-harmoney"
+    ],
+    "asOf": "2026-11-21"
+   },
+   {
+    "text": "Applicant drop-off fell by 20% to 30%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-harmoney"
+    ],
+    "asOf": "2026-11-21"
+   },
+   {
+    "text": "The agent reached production in three weeks.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-harmoney"
+    ],
+    "asOf": "2026-11-21"
+   }
+  ],
+  "date": "2026-11-21",
+  "dateBasis": "read",
+  "takeaway": "Document reasoning inside a regulated lending flow, built by two people — a good small-team fintech reference for Australia and New Zealand. The page gives two different monthly document volumes, so do not quote volume.",
+  "useWhen": "A lender or fintech asks about automating income and expense verification from bank statements.",
+  "sourceIds": [
+   "cg-harmoney"
+  ]
+ },
+ {
+  "id": "cs-g-macquarie-bank",
+  "customer": "Macquarie Bank",
+  "title": "Rolled Gemini Enterprise out across the bank and reports hours returned to staff",
+  "country": "Australia",
+  "regions": [
+   "aunz"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-banking"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-enterprise",
+   "BigQuery",
+   "Spanner"
+  ],
+  "challenge": [
+   {
+    "text": "Macquarie set out to have every employee using AI in daily work, and trained nearly all staff in generative AI before the rollout.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-macq-press"
+    ],
+    "asOf": "2025-10-09",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "On 9 October 2025 Macquarie Bank and Google Cloud announced the bank was deploying Gemini Enterprise so employees can find information and build their own agents.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-macq-press"
+    ],
+    "asOf": "2025-10-09",
+    "confidence": "medium"
+   },
+   {
+    "text": "Google says the bank has also unified data on BigQuery and Spanner to protect and personalise banking.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-next26-welcome"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Google said in April 2026 that Macquarie had reclaimed more than 100,000 hours of employees' time with Gemini Enterprise.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-next26-welcome",
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "A Macquarie director told the Next '26 audience the figure was 130,000 productivity hours in about seven months, as reported by iTnews.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-macq-itnews"
+    ],
+    "asOf": "2026-04-29",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2025-10-09",
+  "takeaway": "The reference Australian bank for Gemini Enterprise, with an hours-returned figure the bank states in public. Hours saved are self-reported estimates; ask how they were counted before repeating them to a finance director.",
+  "useWhen": "A bank executive asks who in financial services has given an agent platform to all staff.",
+  "sourceIds": [
+   "cg-macq-press",
+   "cg-next26-welcome",
+   "cg-uc101",
+   "cg-macq-itnews"
+  ]
+ },
+ {
+  "id": "cs-g-hotmob",
+  "customer": "Hotmob",
+  "title": "Built Caterpillar AI, a marketing content generator for its clients, on Vertex AI with Gemini",
+  "country": "Hong Kong",
+  "regions": [
+   "hk-taiwan"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-adtech"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-enterprise-agent-platform",
+   "gemini-1-5-pro",
+   "BigQuery",
+   "Looker Studio"
+  ],
+  "challenge": [
+   {
+    "text": "Hotmob's clients span many industries and channels, so a content tool had to follow each brand's persona, tone and wording rules.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-hotmob"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Hotmob launched Caterpillar AI in April 2024 on Vertex AI with Gemini 1.5 Pro to generate text and images adapted to audience persona, tone and distribution channel.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-hotmob"
+    ]
+   },
+   {
+    "text": "In Hotmob's own comparison test, it says only Gemini correctly followed different brands' content guidelines.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-hotmob"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Clients' marketing teams are 33% more productive on average, with administrative workload down 50%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-hotmob"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Clients increased posting frequency from three to 12 posts a week.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-hotmob"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A Hong Kong marketing-technology company turning Gemini into a product for its own clients. The model named is two generations old and the comparison test was the customer's own, so treat the preference as anecdotal.",
+  "useWhen": "A marketing-technology vendor in Hong Kong or Taiwan asks for a local example of building a product on Gemini.",
+  "sourceIds": [
+   "cg-hotmob"
+  ]
+ },
+ {
+  "id": "cs-g-luxgen",
+  "customer": "LUXGEN",
+  "title": "Built a customer data platform on BigQuery and an AI agent on its LINE account",
+  "country": "Taiwan",
+  "regions": [
+   "hk-taiwan"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-manufacturing"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-enterprise-agent-platform",
+   "BigQuery"
+  ],
+  "challenge": [
+   {
+    "text": "As its electric-vehicle owner base and digital services grew, LUXGEN needed to bring business data into one place and respond faster to enquiries on its LINE account, which serves 160,000 users.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-luxgen"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "LUXGEN built its customer data platform on BigQuery within a week, and in early 2024 decided to develop a chatbot on Vertex AI embedded in its official LINE account.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-luxgen"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The AI agent reduced customer-service workload by 30%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-luxgen"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "The customer data platform costs 80% less than the third-party product it replaced.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-luxgen"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A manufacturer starting with data consolidation and then adding a service agent on the messaging channel customers already use. LINE is the relevant channel in Taiwan, Japan and Thailand, which makes the pattern portable.",
+  "useWhen": "An automotive or durable-goods brand in a LINE market asks how to start with customer-service automation.",
+  "sourceIds": [
+   "cg-luxgen"
+  ]
+ },
+ {
+  "id": "cs-g-trend-micro",
+  "customer": "Trend Micro",
+  "title": "Runs its consumer anti-scam detection product on Gemini Enterprise Agent Platform",
+  "country": "Taiwan",
+  "regions": [
+   "hk-taiwan"
+  ],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-saas"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-enterprise-agent-platform"
+  ],
+  "challenge": [
+   {
+    "text": "A consumer product that detects deepfakes and scams has to handle high call volumes with low latency and controlled cost.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-trendmicro-tw"
+    ],
+    "asOf": "2026-07-09",
+    "confidence": "medium"
+   }
+  ],
+  "solution": [
+   {
+    "text": "At Google Cloud Day Taipei 2026, Google said Trend Micro moved a self-built architecture to native Google Cloud services and runs its AI anti-fraud product on the Gemini Enterprise Agent Platform.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-trendmicro-tw"
+    ],
+    "asOf": "2026-07-09",
+    "confidence": "medium"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The product handles up to 300,000 AI detection calls a month.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-trendmicro-tw"
+    ],
+    "asOf": "2026-07-09",
+    "confidence": "medium"
+   },
+   {
+    "text": "Inference latency fell 35% and monthly infrastructure cost about 30%.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-trendmicro-tw"
+    ],
+    "asOf": "2026-07-09",
+    "confidence": "medium"
+   }
+  ],
+  "date": "2026-07-09",
+  "takeaway": "A security software vendor building a consumer product on the agent platform, presented by Google in Taiwan. It is known here only through search extracts of Google's Taiwan blog, so check the figures against the original post before quoting them.",
+  "useWhen": "A software or security vendor in Taiwan asks for a local production reference on the agent platform.",
+  "sourceIds": [
+   "cg-trendmicro-tw"
+  ]
+ },
+ {
+  "id": "cs-g-transsion",
+  "customer": "Transsion",
+  "title": "Builds the Ella assistant and media-generation agents for its phones in emerging markets on Gemini",
+  "country": "China",
+  "regions": [
+   "china"
+  ],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-manufacturing"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "gemini-1-5-flash",
+   "imagen",
+   "veo",
+   "agent-development-kit",
+   "a2a-protocol",
+   "model-context-protocol",
+   "agent-sessions",
+   "vector-search"
+  ],
+  "challenge": [
+   {
+    "text": "Transsion sells phones to hundreds of millions of users in emerging markets with many languages, and needed multimodal models, agent tooling and global reach from one platform.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-transsion"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Transsion built the Ella voice assistant and several agent products on Gemini models, using the Agent2Agent and Model Context protocols.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-transsion"
+    ]
+   },
+   {
+    "text": "An image and video generator combines Gemini with Imagen and Veo, and a video-generation sub-agent was built with the Agent Development Kit.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-transsion"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Ella returns its first token in 0.23 seconds on Gemini 1.5 Flash.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-transsion"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Google's customer list says the phones support text translation in 136 languages, voice in 44 and photo translation in 51.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "The clearest sourced example of a Chinese-headquartered company building on Gemini for products sold outside mainland China; vivo has a similar Google Cloud story for its overseas AI phones. That is the realistic China conversation: the global business of Chinese companies, not workloads in the mainland.",
+  "useWhen": "A Chinese device maker or app company expanding overseas asks which model platform peers use for international markets.",
+  "sourceIds": [
+   "cg-transsion",
+   "cg-uc101",
+   "cg-vivo"
+  ]
+ },
+ {
+  "id": "cs-g-bethel-china",
+  "customer": "Bethel China",
+  "title": "Generates accessible teaching videos for visually impaired children with Gemini and Imagen",
+  "country": "China",
+  "regions": [
+   "china"
+  ],
+  "segment": "education",
+  "subVerticals": [
+   "edu-k12"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini",
+   "imagen",
+   "Text-to-Speech",
+   "MediaPipe"
+  ],
+  "challenge": [
+   {
+    "text": "Producing teaching videos suited to children with limited vision took the non-profit days per video.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "solution": [
+   {
+    "text": "With Google volunteers, Bethel China built 'VisAid Learn', which uses Gemini models, Imagen, Text-to-Speech and MediaPipe to generate teaching videos optimised for low vision.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Video production time fell from days to about five minutes.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "The plan is to reach more than 2,000 visually impaired children across 15 schools in China and institutions in India, the Philippines and Malaysia — an intention, not yet a result.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A non-profit project built with Google volunteers, not a commercial deployment. Use it to illustrate accessibility and special-education uses, not as evidence of Google Cloud business in mainland China.",
+  "useWhen": "A special-education or accessibility conversation needs a concrete generative-media example.",
+  "sourceIds": [
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-merck",
+  "customer": "Merck",
+  "title": "Runs Gemini Enterprise as an orchestration layer for agents across research, development and commercial work",
+  "country": "United States",
+  "regions": [],
+  "segment": "enterprise",
+  "subVerticals": [
+   "ent-healthcare"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-enterprise"
+  ],
+  "challenge": [
+   {
+    "text": "Merck wanted to improve the probability of success and time to market across its value chain, and to give its 75,000 people more time for invention.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-next26-welcome",
+     "cg-customers-index"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "solution": [
+   {
+    "text": "At Next '26 Google said Merck is deploying a Gemini Enterprise-powered 'agentic engine' from early discovery through clinical development and commercialisation.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-next26-welcome"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Google describes Gemini Enterprise at Merck as the orchestration layer across foundation models, grounded in Merck's own data.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-customers-index"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Google says the system condenses weeks of regulatory filing work into a single afternoon.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "The pharmaceutical reference Google led with at Next '26. Note the positioning: Gemini Enterprise as an orchestration layer across several foundation models, not a single-model bet. The one quantified claim is anecdotal.",
+  "useWhen": "A life-sciences customer asks who runs an agent platform across R&D and regulatory work.",
+  "sourceIds": [
+   "cg-next26-welcome",
+   "cg-customers-index",
+   "cg-uc101"
+  ]
+ },
+ {
+  "id": "cs-g-replit",
+  "customer": "Replit",
+  "title": "Powers Replit Agent with Anthropic's Claude on Vertex AI and deploys users' apps to Cloud Run",
+  "country": "United States",
+  "regions": [],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-ai-native"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google",
+   "anthropic"
+  ],
+  "products": [
+   "claude-3-5-sonnet",
+   "model-garden",
+   "gemini-enterprise-agent-platform",
+   "Cloud Run"
+  ],
+  "challenge": [
+   {
+    "text": "Replit wanted people without programming experience to go from an idea to a deployed application, which needed a model strong at generating and editing code.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-replit"
+    ]
+   }
+  ],
+  "solution": [
+   {
+    "text": "Replit Agent takes a natural-language prompt, sets up the environment, writes and tests code, and deploys to Google Cloud; Replit chose Anthropic's Claude 3.5 Sonnet running on Vertex AI to power it.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-replit"
+    ]
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "Replit says it supports more than 35 million developers and over 100,000 applications through Cloud Run.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-replit"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "A coding-agent company on Google Cloud whose model is Anthropic's, not Gemini. It illustrates the platform argument honestly — Google wins the workload through Model Garden and Cloud Run even when Claude is the model — and is a reminder of how strong Claude is in coding. The model named is an old generation.",
+  "useWhen": "A digital-native customer wants Claude models and is deciding which cloud to run them on.",
+  "sourceIds": [
+   "cg-replit"
+  ]
+ },
+ {
+  "id": "cs-g-anthropic",
+  "customer": "Anthropic",
+  "title": "Committed to up to one million TPUs, then to multiple further gigawatts, to train and serve Claude",
+  "country": "United States",
+  "regions": [],
+  "segment": "digital-natives",
+  "subVerticals": [
+   "dn-ai-native"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google",
+   "Broadcom"
+  ],
+  "products": [
+   "tpu",
+   "tpu-ironwood",
+   "google-cloud"
+  ],
+  "challenge": [
+   {
+    "text": "Anthropic says it needs far more compute to serve rapid growth in its customer base and to keep developing frontier models.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-anthropic-tpu-2026"
+    ],
+    "asOf": "2026-04-06"
+   }
+  ],
+  "solution": [
+   {
+    "text": "On 23 October 2025 Anthropic announced plans to expand its use of Google Cloud, including up to one million TPUs, in a deal it valued at tens of billions of dollars and expected to bring well over a gigawatt of capacity online in 2026.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-anthropic-tpu-2025"
+    ],
+    "asOf": "2025-10-23"
+   },
+   {
+    "text": "On 6 April 2026 it announced a further agreement with Google and Broadcom for multiple gigawatts of next-generation TPU capacity, expected to come online from 2027.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-anthropic-tpu-2026"
+    ],
+    "asOf": "2026-04-06"
+   },
+   {
+    "text": "Anthropic states that it trains and runs Claude on AWS Trainium, Google TPUs and NVIDIA GPUs, and that Amazon remains its primary cloud provider and training partner.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-anthropic-tpu-2026"
+    ],
+    "asOf": "2026-04-06"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-04-06",
+  "takeaway": "The largest public TPU customer commitment and the best evidence that TPUs are a serious option for frontier training and inference. Be precise when citing it: Anthropic is multi-chip and multi-cloud, and names Amazon as its primary cloud and training partner.",
+  "useWhen": "An AI lab or large model builder asks who else relies on TPUs at scale and what capacity lead times look like.",
+  "sourceIds": [
+   "cg-anthropic-tpu-2026",
+   "cg-anthropic-tpu-2025"
+  ]
+ },
+ {
+  "id": "cs-g-us-department-of-war-genai-mil",
+  "customer": "U.S. Department of War (GenAI.mil)",
+  "title": "Selected Gemini for Government as the first enterprise AI on its GenAI.mil platform",
+  "country": "United States",
+  "regions": [],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-defence"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-for-government-services"
+  ],
+  "challenge": [
+   {
+    "text": "The department wanted a secure AI tool for unclassified business processes and administrative tasks, such as summarising policy handbooks and drafting correspondence, across a very large workforce.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ps-accel"
+    ],
+    "asOf": "2026-04-10"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Google Public Sector says the department's Chief Digital and AI Office selected Gemini for Government as the first enterprise AI deployed on GenAI.mil.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-ps-accel"
+    ],
+    "asOf": "2026-04-10"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "The platform makes the tools available to 3 million civilian and military personnel.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ps-accel"
+    ],
+    "asOf": "2026-04-10"
+   }
+  ],
+  "date": "2026-04-10",
+  "takeaway": "The largest single government audience for Gemini. The figure counts people given access, for unclassified work — it is not a usage number — and it rests on US federal accreditation that does not transfer automatically to procurement in Asia-Pacific.",
+  "useWhen": "A defence or central-government buyer asks whether Gemini has been accepted by a major defence organisation.",
+  "sourceIds": [
+   "cg-ps-accel"
+  ]
+ },
+ {
+  "id": "cs-g-us-doe-national-labs",
+  "customer": "U.S. Department of Energy National Laboratories",
+  "title": "Researchers at the 17 national labs use Gemini for Government, Deep Research and an AI co-scientist built on TPUs",
+  "country": "United States",
+  "regions": [],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-central"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-for-government-services",
+   "gemini-deep-research",
+   "ai-co-scientist",
+   "tpu"
+  ],
+  "challenge": [
+   {
+    "text": "The labs are central to the US 'Genesis Mission' goal of doubling scientific productivity within a decade, which requires searching decades of literature and experimental data on a secure, accredited platform.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "solution": [
+   {
+    "text": "Google says researchers use Gemini for Government to ask questions in natural language and get answers grounded in technical reports, code, images, enterprise applications and scientific datasets.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Deep Research is used to traverse scientific literature and databases to find connections between research programmes and flag contradictory findings.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   },
+   {
+    "text": "Google Public Sector also says the labs use an 'AI co-scientist' built on TPUs to generate and validate hypotheses.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-ps-next26"
+    ],
+    "asOf": "2026-04-29"
+   }
+  ],
+  "outcomes": [],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "Scientific-research use inside a national laboratory system: literature synthesis and hypothesis generation on an accredited government platform. No results are reported — the sources describe what researchers can do, not what they have found.",
+  "useWhen": "A national research agency or laboratory asks how peers apply generative AI to scientific discovery under government security rules.",
+  "sourceIds": [
+   "cg-uc101",
+   "cg-ps-next26"
+  ]
+ },
+ {
+  "id": "cs-g-state-of-maryland",
+  "customer": "State of Maryland (Department of Information Technology)",
+  "title": "Gave nearly 43,000 state employees Gemini in Google Workspace and reports active users",
+  "country": "United States",
+  "regions": [],
+  "segment": "public-sector",
+  "subVerticals": [
+   "ps-local"
+  ],
+  "platform": "google-cloud",
+  "providers": [
+   "google"
+  ],
+  "products": [
+   "gemini-in-workspace"
+  ],
+  "challenge": [
+   {
+    "text": "The state wanted employees to draft communications, analyse data and build simple no-code chatbots more easily.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "solution": [
+   {
+    "text": "The Maryland Department of Information Technology gave nearly 43,000 state employees access to Gemini in Google Workspace.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "outcomes": [
+   {
+    "text": "12,500 of those employees were active users as of April 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "cg-uc101"
+    ],
+    "asOf": "2026-04-22"
+   }
+  ],
+  "date": "2026-04-22",
+  "dateBasis": "by",
+  "takeaway": "Unusual in reporting active users next to seats: roughly 29% of those given access were active. That ratio is a realistic planning number for a broad government rollout, and a useful counterweight to headline seat counts.",
+  "useWhen": "A state or city government asks what adoption to expect after giving every employee an AI assistant.",
+  "sourceIds": [
+   "cg-uc101"
+  ]
+ },
+ {
   "id": "cs-o-lg-cns",
   "customer": "LG CNS",
   "title": "Built a Claude Code 'software factory' to modernise decades-old enterprise systems for clients",

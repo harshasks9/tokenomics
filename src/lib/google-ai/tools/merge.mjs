@@ -308,6 +308,11 @@ for (const s of [...(s1.sources ?? []), ...(s2.sources ?? []), ...(s3.sources ??
   if (!s?.id || !/^https?:\/\//.test(s.url ?? "") || sources.has(s.id)) continue;
   sources.set(s.id, { id: s.id, title: s.title ?? s.url, publisher: s.publisher ?? "", url: s.url, published: iso(s.published), kind: s.kind ?? "official-blog", firstParty: !!s.firstParty, access: ["primary", "search-excerpt", "secondary", "prior-knowledge"].includes(s.access) ? s.access : "secondary", lastChecked: iso(s.lastChecked) ?? CURATED });
 }
+// Google Cloud customer-story pages carry no publication date. The researcher dated those cases either to the day a
+// dated Google list first named them ("public by") or, failing that, to the day the page was read. Both are flagged
+// so the site never shows a proxy as a publication date.
+const UNDATED_BY = new Set((s1.cases ?? []).filter((c) => c.date === "2026-04-22").map((c) => c.id));
+const UNDATED_READ = new Set((s1.cases ?? []).filter((c) => c.date === "2026-11-21").map((c) => c.id));
 const cases = [];
 const seenCase = new Set();
 for (const c of [...(s1.cases ?? []), ...(s2.cases ?? [])]) {
@@ -322,7 +327,7 @@ for (const c of [...(s1.cases ?? []), ...(s2.cases ?? [])]) {
     id: c.id, customer: c.customer, title: c.title, country: c.country ?? "", regions: (c.regions ?? []).filter((r) => REGION_IDS.has(r)),
     segment: c.segment, subVerticals: (c.subVerticals ?? []).filter((v) => SUBVERTICALS.has(v)), platform: c.platform === "google-cloud" ? "google-cloud" : "other",
     providers: (c.providers ?? []).map((p) => ent(p) ?? p), products: [...new Set((c.products ?? []).map((p) => ent(p) ?? p))],
-    challenge: claimList(c.challenge, `${c.id}.challenge`), solution, outcomes, date: iso(c.date), takeaway: c.takeaway, useWhen: c.useWhen, sourceIds: [...new Set([...sourceIds, ...solution.flatMap((x) => x.sourceIds)])],
+    challenge: claimList(c.challenge, `${c.id}.challenge`), solution, outcomes, date: iso(c.date), ...(UNDATED_BY.has(c.id) ? { dateBasis: "by" } : UNDATED_READ.has(c.id) ? { dateBasis: "read" } : {}), takeaway: c.takeaway, useWhen: c.useWhen, sourceIds: [...new Set([...sourceIds, ...solution.flatMap((x) => x.sourceIds)])],
   });
 }
 const annIds = new Set(announcements.map((a) => a.id));
