@@ -297,11 +297,54 @@ for (const t of [...(r4.timeline ?? []), ...(r3.timeline ?? []), ...up("timeline
 // ── battlegrounds
 const battlegrounds = (r3.battlegrounds ?? []).map((b) => ({ id: b.id, name: b.name, question: b.question, google: claimList(b.google, `${b.id}.google`), rivals: (b.rivals ?? []).map((r) => ({ providerId: r.providerId, position: claimList(r.position, `${b.id}.${r.providerId}`) })).filter((r) => r.position.length && entities.has(r.providerId)), entityIds: [...new Set((b.entityIds ?? []).map(ent).filter(Boolean))], assessment: b.assessment ?? "", watch: b.watch ?? [] }));
 
+// ── specialist layer: case studies, notes on developments, regional briefs, quiz ──
+// Taxonomy ids are read from taxonomy.ts so this tool and the site cannot drift apart.
+const taxonomySrc = fs.readFileSync(path.join(OUT, "..", "taxonomy.ts"), "utf8");
+const SUBVERTICALS = new Set([...taxonomySrc.matchAll(/\{ id: "((?:dn|ent|ps|edu)-[a-z0-9-]+)", segment:/g)].map((m) => m[1]));
+const REGION_IDS = new Set(["korea", "india", "sea", "japan", "aunz", "china", "hk-taiwan"]);
+const SEGMENT_IDS = new Set(["digital-natives", "enterprise", "public-sector", "education"]);
+const s1 = load("s1-cases-google.json"), s2 = load("s2-cases-other.json"), s3 = load("s3-specialist.json");
+for (const s of [...(s1.sources ?? []), ...(s2.sources ?? []), ...(s3.sources ?? [])]) {
+  if (!s?.id || !/^https?:\/\//.test(s.url ?? "") || sources.has(s.id)) continue;
+  sources.set(s.id, { id: s.id, title: s.title ?? s.url, publisher: s.publisher ?? "", url: s.url, published: iso(s.published), kind: s.kind ?? "official-blog", firstParty: !!s.firstParty, access: ["primary", "search-excerpt", "secondary", "prior-knowledge"].includes(s.access) ? s.access : "secondary", lastChecked: iso(s.lastChecked) ?? CURATED });
+}
+const cases = [];
+const seenCase = new Set();
+for (const c of [...(s1.cases ?? []), ...(s2.cases ?? [])]) {
+  const sourceIds = srcOk(c.sourceIds);
+  const solution = claimList(c.solution, `${c.id}.solution`);
+  const why = !c?.id || seenCase.has(c.id) ? "duplicate or missing id" : !c.customer || !c.title ? "no customer or title" : !SEGMENT_IDS.has(c.segment) ? `unknown segment ${c.segment}` : !sourceIds.length ? "no source" : !solution.length ? "no sourced description of what was built" : !iso(c.date) ? "no date" : !c.takeaway || !c.useWhen ? "no takeaway" : null;
+  if (why) { note(`case study dropped (${why}): ${c?.id}`); continue; }
+  seenCase.add(c.id);
+  // Reported results are the customer's or vendor's own: they can never be shown as verified facts.
+  const outcomes = claimList(c.outcomes, `${c.id}.outcomes`).map((o) => (o.label === "verified-fact" ? { ...o, label: "provider-claim" } : o));
+  cases.push({
+    id: c.id, customer: c.customer, title: c.title, country: c.country ?? "", regions: (c.regions ?? []).filter((r) => REGION_IDS.has(r)),
+    segment: c.segment, subVerticals: (c.subVerticals ?? []).filter((v) => SUBVERTICALS.has(v)), platform: c.platform === "google-cloud" ? "google-cloud" : "other",
+    providers: (c.providers ?? []).map((p) => ent(p) ?? p), products: [...new Set((c.products ?? []).map((p) => ent(p) ?? p))],
+    challenge: claimList(c.challenge, `${c.id}.challenge`), solution, outcomes, date: iso(c.date), takeaway: c.takeaway, useWhen: c.useWhen, sourceIds: [...new Set([...sourceIds, ...solution.flatMap((x) => x.sourceIds)])],
+  });
+}
+const annIds = new Set(announcements.map((a) => a.id));
+const notesOut = [];
+for (const n of s3.notes ?? []) {
+  if (!annIds.has(n.announcementId) || !n.headline || !n.talkTrack) { note(`specialist note dropped (unknown development or empty): ${n?.announcementId}`); continue; }
+  notesOut.push({ announcementId: n.announcementId, mustKnow: !!n.mustKnow, headline: n.headline, talkTrack: n.talkTrack, ...(n.watchOut ? { watchOut: n.watchOut } : {}), subVerticals: (n.subVerticals ?? []).filter((v) => SUBVERTICALS.has(v)), regions: (n.regions ?? []).filter((r) => REGION_IDS.has(r)) });
+}
+const regionsOut = (s3.regions ?? []).filter((r) => REGION_IDS.has(r.id) && r.angle).map((r) => ({ id: r.id, facts: claimList(r.facts, `region.${r.id}`), angle: r.angle }));
+const quizOut = [];
+for (const q of s3.quiz ?? []) {
+  const sourceIds = srcOk(q.sourceIds);
+  const ok = q?.id && q.question && Array.isArray(q.options) && q.options.length === 4 && new Set(q.options).size === 4 && Number.isInteger(q.answer) && q.answer >= 0 && q.answer < 4 && q.explanation && iso(q.asOf) && sourceIds.length && (!q.announcementId || annIds.has(q.announcementId)) && (!q.entityId || ent(q.entityId));
+  if (!ok) { note(`quiz question dropped (malformed, unsourced or pointing at an unknown record): ${q?.id}`); continue; }
+  quizOut.push({ id: q.id, topic: q.topic ?? "models", question: q.question, options: q.options, answer: q.answer, explanation: q.explanation, asOf: iso(q.asOf), ...(q.announcementId ? { announcementId: q.announcementId } : {}), ...(q.entityId ? { entityId: ent(q.entityId) } : {}), sourceIds });
+}
+
 // ── used sources only
 const used = new Set();
 const collect = (v) => { if (Array.isArray(v)) v.forEach(collect); else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) { if (k === "sourceIds") x.forEach((i) => used.add(i)); else collect(x); } };
 const ents = [...entities.values()];
-[ents, relationships, pricesOut, results, availability, lifecycle, announcements, timeline, battlegrounds].forEach(collect);
+[ents, relationships, pricesOut, results, availability, lifecycle, announcements, timeline, battlegrounds, cases, regionsOut, quizOut].forEach(collect);
 const sourcesOut = [...sources.values()].filter((s) => used.has(s.id));
 
 const meta = { version: `${CURATED.replace(/-/g, ".")}-1`, curatedAt: CURATED, coverageFrom: "2026-08-15", coverageTo: CURATED, notes: [...up("metaNotes"), ...(fixes.metaNotes ?? [])] };
@@ -309,6 +352,8 @@ const write = (f, v) => fs.writeFileSync(path.join(OUT, f), JSON.stringify(v, nu
 write("sources.json", sourcesOut); write("entities.json", ents); write("relationships.json", relationships); write("prices.json", pricesOut);
 write("benchmarks.json", benchmarks); write("results.json", results); write("availability.json", availability); write("lifecycle.json", lifecycle.map((l) => Object.fromEntries(Object.entries(l).filter(([k]) => k !== "_update"))));
 write("announcements.json", announcements); write("timeline.json", timeline); write("battlegrounds.json", battlegrounds); write("feeds.json", r4.feeds ?? []); write("meta.json", meta);
+write("cases.json", cases); write("notes.json", notesOut); write("regions.json", regionsOut); write("quiz.json", quizOut);
+console.log({ cases: cases.length, casesGoogle: cases.filter((c) => c.platform === "google-cloud").length, notes: notesOut.length, mustKnow: notesOut.filter((n) => n.mustKnow).length, regions: regionsOut.length, quiz: quizOut.length });
 fs.writeFileSync(path.join(IN, "merge.log"), log.join("\n"));
 const byAccess = {}; for (const s of sourcesOut) byAccess[s.access] = (byAccess[s.access] ?? 0) + 1;
 console.log({ sources: sourcesOut.length, byAccess, entities: ents.length, google: ents.filter((e) => e.providerId === "google").length, models: ents.filter((e) => e.kind === "model").length, relationships: relationships.length, prices: pricesOut.length, benchmarks: benchmarks.length, results: results.length, availability: availability.length, lifecycle: lifecycle.length, announcements: announcements.length, timeline: timeline.length, battlegrounds: battlegrounds.length, logLines: log.length });

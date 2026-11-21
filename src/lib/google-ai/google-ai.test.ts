@@ -15,11 +15,17 @@ import { checkPrices } from "./ingest/pricewatch";
 import { MAX_ITEMS_PER_FEED, recentItems, runIngestion } from "./ingest/run";
 import { readState } from "./ingest/store";
 import type { Feed } from "./ingest/types";
+import { casesFor, inRegion, mustKnow } from "./engine/specialist";
+import { UI_STRINGS } from "./i18n";
 import * as KB from "./kb";
+import { LANGUAGES, REGIONS, SEGMENTS, SUB_VERTICALS } from "./taxonomy";
+import { protect, translateBatch } from "./translate";
 import { AGENT_FLOW, LIMITATIONS, REVIEW, SCENARIOS, WORKLOADS } from "./editorial";
 import type { Claim, Entity, LifecycleEvent, PriceRecord, WorkloadScenario } from "./types";
 
 const TODAY = "2026-11-15";
+/** The date the knowledge base was last updated: "now" for tests about recency. */
+const TODAY_NOW = KB.META.curatedAt;
 
 /** Walk any value and collect every Claim-shaped object. */
 function claims(v: unknown, out: Claim[] = []): Claim[] {
@@ -554,5 +560,86 @@ describe("transparency", () => {
     for (const r of REVIEW) expect(r.findings.length).toBeGreaterThanOrEqual(3);
     expect(REVIEW.flatMap((r) => r.findings).some((f) => f.status !== "fixed")).toBe(true);
     expect(LIMITATIONS.length).toBeGreaterThanOrEqual(10);
+  });
+});
+
+// ─────────────────────────── specialist layer ───────────────────────────
+describe("specialist layer", () => {
+  const subVerticals = new Set(SUB_VERTICALS.map((s) => s.id));
+  const regions = new Set<string>(REGIONS.map((r) => r.id));
+
+  it("cites a resolvable source for every case study, regional fact and quiz answer", () => {
+    const missing = [...new Set(sourceIds([KB.CASES, KB.REGION_BRIEFS, KB.QUIZ]))].filter((id) => !KB.SOURCE_BY_ID[id]);
+    expect(missing).toEqual([]);
+    for (const c of KB.CASES) expect(c.sourceIds.length, c.id).toBeGreaterThan(0);
+  });
+
+  it("never presents a customer-reported result as a verified fact", () => {
+    for (const c of KB.CASES) for (const o of c.outcomes) expect(o.label, c.id).not.toBe("verified-fact");
+  });
+
+  it("uses only known segments, sub-verticals and sub-regions", () => {
+    for (const c of KB.CASES) {
+      expect(SEGMENTS.some((s) => s.id === c.segment), c.id).toBe(true);
+      expect(c.subVerticals.filter((v) => !subVerticals.has(v)), c.id).toEqual([]);
+      expect(c.regions.filter((r) => !regions.has(r)), c.id).toEqual([]);
+    }
+    for (const n of KB.NOTES) {
+      expect(KB.ANNOUNCEMENT_BY_ID[n.announcementId], n.announcementId).toBeDefined();
+      expect(n.subVerticals.filter((v) => !subVerticals.has(v)), n.announcementId).toEqual([]);
+      expect(n.regions.filter((r) => !regions.has(r)), n.announcementId).toEqual([]);
+    }
+  });
+
+  it("covers every segment and every sub-region with case studies from both sides", () => {
+    for (const s of SEGMENTS) expect(KB.CASES.filter((c) => c.segment === s.id).length, s.id).toBeGreaterThan(0);
+    for (const r of REGIONS) expect(KB.CASES.filter((c) => c.regions.includes(r.id)).length, r.id).toBeGreaterThan(0);
+    expect(KB.CASES.some((c) => c.platform === "google-cloud")).toBe(true);
+    expect(KB.CASES.some((c) => c.platform === "other")).toBe(true);
+    expect(KB.REGION_BRIEFS.map((b) => b.id).sort()).toEqual(REGIONS.map((r) => r.id).sort());
+  });
+
+  it("has well-formed quiz questions that point at real records", () => {
+    expect(KB.QUIZ.length).toBeGreaterThanOrEqual(30);
+    expect(new Set(KB.QUIZ.map((q) => q.id)).size).toBe(KB.QUIZ.length);
+    for (const q of KB.QUIZ) {
+      expect(q.options, q.id).toHaveLength(4);
+      expect(new Set(q.options).size, q.id).toBe(4);
+      expect(q.answer >= 0 && q.answer < 4, q.id).toBe(true);
+      if (q.announcementId) expect(KB.ANNOUNCEMENT_BY_ID[q.announcementId], q.id).toBeDefined();
+      if (q.entityId) expect(KB.ENTITY_BY_ID[q.entityId], q.id).toBeDefined();
+    }
+  });
+
+  it("selects must-know items by region and industry, and widens the window when a week is quiet", () => {
+    const all = mustKnow(TODAY_NOW, {}, { limit: 50 });
+    expect(all.items.length).toBeGreaterThan(0);
+    for (let i = 1; i < all.items.length; i++) expect(Number(!!all.items[i - 1].note?.mustKnow)).toBeGreaterThanOrEqual(Number(!!all.items[i].note?.mustKnow));
+    const korea = mustKnow(TODAY_NOW, { region: "korea" }, { limit: 50 });
+    for (const x of korea.items) expect(inRegion(x.note?.regions, "korea")).toBe(true);
+    expect(mustKnow("2020-01-15", {}, {}).items).toEqual([]);
+    expect(mustKnow("2020-01-15", {}, {}).days).toBe(60);
+    const banking = casesFor({ subVerticals: ["ent-banking"] });
+    expect(banking.every((c) => c.subVerticals.includes("ent-banking"))).toBe(true);
+    expect(casesFor({ platform: "other" }).every((c) => c.platform === "other")).toBe(true);
+  });
+
+  it("keeps protected names intact through translation and falls back to English when no translator works", async () => {
+    const p = protect("Gemini Enterprise Agent Platform runs Gemini 4 Neon on Google Cloud.");
+    expect(p.text).not.toMatch(/Gemini|Google Cloud|Neon/);
+    expect(p.restore(p.text)).toBe("Gemini Enterprise Agent Platform runs Gemini 4 Neon on Google Cloud.");
+    const down = await translateBatch(["Pricing unique-" + TODAY_NOW], "ko", [{ name: "gtx", run: async () => { throw new Error("down"); } }]);
+    expect(down).toMatchObject({ translated: false, translations: ["Pricing unique-" + TODAY_NOW] });
+    const up = await translateBatch(["Hello there"], "ja", [{ name: "gtx", run: async (t) => t.map((x) => `ja:${x}`) }]);
+    expect(up.translations).toEqual(["ja:Hello there"]);
+    expect((await translateBatch(["Hello there"], "ja", [])).provider).toBe("cache");
+    expect((await translateBatch(["Same"], "en")).translations).toEqual(["Same"]);
+  });
+
+  it("has every interface string in every language", () => {
+    const keys = Object.keys(UI_STRINGS.ko);
+    for (const [lang, dict] of Object.entries(UI_STRINGS)) expect(keys.filter((k) => !dict[k]), lang).toEqual([]);
+    expect(Object.keys(UI_STRINGS).sort()).toEqual(LANGUAGES.filter((l) => l.id !== "en").map((l) => l.id).sort());
+    for (const r of REGIONS) for (const l of r.languages) expect(LANGUAGES.some((x) => x.id === l), r.id).toBe(true);
   });
 });

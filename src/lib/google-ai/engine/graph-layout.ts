@@ -178,7 +178,7 @@ export function createSimulation(nodes: readonly LayoutNode[], edges: readonly L
         let d2 = dx * dx + dy * dy;
         const real = Math.sqrt(d2);
         if (d2 < minD2) d2 = Math.sqrt(minD2 * d2);
-        const w = (o.charge * push[i] * push[j] * alpha) / d2 / Math.max(real, 0.01);
+        const w = (o.charge * push[i] * push[j] * alpha) / d2;
         // Collision: overlapping circles are pushed apart regardless of how far the simulation has cooled.
         const gap = radius[i] + radius[j] + 4;
         const c = real < gap ? ((gap - real) / Math.max(real, 0.01)) * 0.35 : 0;
