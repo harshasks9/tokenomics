@@ -40,7 +40,7 @@ export interface LayoutOptions {
   aspect?: number;
 }
 
-export const LAYOUT_DEFAULTS: Required<LayoutOptions> = { iterations: 300, linkDistance: 44, charge: 190, gravity: 0.03, cluster: 0.05, aspect: 1.3 };
+export const LAYOUT_DEFAULTS: Required<LayoutOptions> = { iterations: 300, linkDistance: 44, charge: 50, gravity: 0.05, cluster: 0.05, aspect: 1.1 };
 
 /** FNV-1a hash of an id, mapped to [0, 1). The salt gives independent values for the same id. */
 export function hashId(id: string, salt = 0): number {
