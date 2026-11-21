@@ -1,19 +1,37 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
+// Fonts are self-hosted from src/fonts (see build-fonts.py there) so builds never
+// download from Google Fonts. Same fonts, weights and CSS variables as before.
+// next/font/local names each family after its const, so consts carry a site prefix
+// to stay unique across sites (and distinct from the global Google "Inter").
+// The "<Family> Fallback" faces are the ones the Google loader generated; they now
+// live in src/fonts/fallbacks/modelcomp.css (named with inner single quotes: next/font emits
+// the fallback list verbatim, and "Source Serif 4 Fallback" is not valid CSS unquoted).
+import localFont from "next/font/local";
+import "../../fonts/fallbacks/modelcomp.css";
 import "./modelcomp.css";
 
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const modelcompPlexSans = localFont({
+  src: [
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-plex-sans",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["'IBM Plex Sans Fallback'"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+const modelcompSpaceGrotesk = localFont({
+  src: [
+    { path: "../../fonts/space-grotesk.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/space-grotesk.woff2", weight: "600", style: "normal" },
+    { path: "../../fonts/space-grotesk.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-space-grotesk",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["'Space Grotesk Fallback'"],
 });
 
 export const metadata: Metadata = {
@@ -50,6 +68,6 @@ export default function ModelcompLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className={`mc-root ${plexSans.variable} ${spaceGrotesk.variable}`}>{children}</div>
+    <div className={`mc-root ${modelcompPlexSans.variable} ${modelcompSpaceGrotesk.variable}`}>{children}</div>
   );
 }

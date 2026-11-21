@@ -1,19 +1,37 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+// Fonts are self-hosted from src/fonts (see build-fonts.py there) so builds never
+// download from Google Fonts. Same fonts, weights and CSS variables as before.
+// next/font/local names each family after its const, so consts carry a site prefix
+// to stay unique across sites (and distinct from the global Google "Inter").
+// The "<Family> Fallback" faces are the ones the Google loader generated; they now
+// live in src/fonts/fallbacks/offers.css (named with inner single quotes: next/font emits
+// the fallback list verbatim, and "Source Serif 4 Fallback" is not valid CSS unquoted).
+import localFont from "next/font/local";
+import "../../fonts/fallbacks/offers.css";
 import "./offers.css";
 
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+const offersPlexSans = localFont({
+  src: [
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "300", style: "normal" },
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "500", style: "normal" },
+    { path: "../../fonts/ibm-plex-sans.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-plex-sans",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["'IBM Plex Sans Fallback'"],
 });
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const offersPlexMono = localFont({
+  src: [
+    { path: "../../fonts/ibm-plex-mono-400.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/ibm-plex-mono-500.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-plex-mono",
   display: "swap",
+  adjustFontFallback: false,
+  fallback: ["'IBM Plex Mono Fallback'"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +55,7 @@ export default function OffersLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className={`offers-root ${plexSans.variable} ${plexMono.variable}`}>
+    <div className={`offers-root ${offersPlexSans.variable} ${offersPlexMono.variable}`}>
       {children}
     </div>
   );

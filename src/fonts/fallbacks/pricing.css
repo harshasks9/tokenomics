@@ -1,0 +1,31 @@
+/*
+ * Metric-adjusted fallback faces for the self-hosted fonts of /pricing.
+ *
+ * The Google loader of next/font used to emit exactly these rules (one
+ * "<Family> Fallback" face per family, from its bundled per-family metrics).
+ * next/font/local would instead derive them from each font file's default
+ * instance, which gives different numbers. The layout therefore switches that
+ * off (adjustFontFallback: false) and names these faces as its fallback, so
+ * text shown before the web font arrives, and symbols the web font has no
+ * glyph for (arrows, check marks), keep the size and line metrics they had.
+ *
+ * One file per site on purpose: a stylesheet shared by several layouts gets
+ * bundled with whichever site's font CSS the bundler picks, and every site
+ * then preloads that site's fonts.
+ */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+@font-face {
+  font-family: "JetBrains Mono Fallback";
+  src: local("Arial");
+  ascent-override: 75.79%;
+  descent-override: 22.29%;
+  line-gap-override: 0%;
+  size-adjust: 134.59%;
+}
