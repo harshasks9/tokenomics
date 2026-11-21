@@ -4,7 +4,8 @@ import Link from "next/link";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { fmtDate } from "@/lib/google-ai/dates";
 import { ENTITY_BY_ID, SOURCE_BY_ID } from "@/lib/google-ai/kb";
-import type { Claim, EntityStatus, EvidenceLabel, SourceAccess } from "@/lib/google-ai/types";
+import type { LangId } from "@/lib/google-ai/taxonomy";
+import type { Claim, EntityStatus, EvidenceLabel, RegionId, SourceAccess } from "@/lib/google-ai/types";
 
 export type DisplayMode = "executive" | "analyst" | "technical";
 
@@ -14,8 +15,12 @@ export interface HubCtx {
   mode: DisplayMode;
   setMode: (m: DisplayMode) => void;
   ask: (question: string) => void;
+  /** Sub-region the reader works in; "all" shows everything. */
+  region: RegionId | "all";
+  setRegion: (r: RegionId | "all") => void;
+  lang: LangId;
 }
-export const HubContext = createContext<HubCtx>({ today: "2026-11-15", mode: "analyst", setMode: () => {}, ask: () => {} });
+export const HubContext = createContext<HubCtx>({ today: "2026-11-15", mode: "analyst", setMode: () => {}, ask: () => {}, region: "all", setRegion: () => {}, lang: "en" });
 export const useHub = () => useContext(HubContext);
 
 export const EV_LABEL: Record<EvidenceLabel, string> = {
@@ -172,8 +177,29 @@ export function Imp({ n }: { n: number }) {
 /** Link to a canonical entity. Unknown ids render as plain text so nothing links to a dead page. */
 export function EntityLink({ id, children }: { id: string; children?: ReactNode }) {
   const e = ENTITY_BY_ID[id];
-  if (!e) return <span className="gai-tag" title="Not yet in the knowledge base">{children ?? id}</span>;
-  return <Link className="gai-tag" href={`/google-ai/entity/${id}`}>{children ?? e.name}</Link>;
+  if (!e) return <span className="gai-tag" translate="no" title="Not yet in the knowledge base">{children ?? id}</span>;
+  return <Link className="gai-tag" translate="no" href={`/google-ai/entity/${id}`}>{children ?? e.name}</Link>;
+}
+
+/** Page header: an icon, a title and one sentence. Every page starts the same way. */
+export function PageHead({ icon, title, lede, children }: { icon: string; title: string; lede?: ReactNode; children?: ReactNode }) {
+  return (
+    <header className="gai-hero">
+      <div className="gai-page-ico" aria-hidden>{icon}</div>
+      <h1 className="gai-h1">{title}</h1>
+      {lede && <p className="gai-lede">{lede}</p>}
+      {children}
+    </header>
+  );
+}
+
+export function Callout({ icon, children, tone }: { icon: string; children: ReactNode; tone?: "talk" }) {
+  return (
+    <div className={`gai-callout${tone ? ` ${tone}` : ""}`}>
+      <span className="ico" aria-hidden>{icon}</span>
+      <div>{children}</div>
+    </div>
+  );
 }
 
 export function usd(n: number | undefined | null, digits?: number): string {

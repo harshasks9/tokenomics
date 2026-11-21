@@ -6,33 +6,43 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { daysBetween, fmtDate } from "@/lib/google-ai/dates";
 import type { Answer } from "@/lib/google-ai/engine/answer";
 import { search, type Hit } from "@/lib/google-ai/engine/search";
+import type { Digest } from "@/lib/google-ai/ingest/digest";
 import type { PipelineState } from "@/lib/google-ai/ingest/types";
-import { META } from "@/lib/google-ai/kb";
-import { SECTIONS } from "@/lib/google-ai/sections";
-import { Cites, Ev, HubContext, Seg, type DisplayMode } from "./ui";
+import { ANNOUNCEMENT_BY_ID, ENTITY_BY_ID, META } from "@/lib/google-ai/kb";
+import { SECTIONS, SECTION_BY_SLUG } from "@/lib/google-ai/sections";
+import { LANGUAGES, REGIONS, REGION_BY_ID, type LangId } from "@/lib/google-ai/taxonomy";
+import type { RegionId } from "@/lib/google-ai/types";
+import LanguageMirror from "./LanguageMirror";
+import { Cites, Ev, HubContext, type DisplayMode } from "./ui";
+import Cases from "./views/Cases";
 import Compare from "./views/Compare";
 import Dossier from "./views/Dossier";
 import Enterprise from "./views/Enterprise";
+import Graph from "./views/Graph";
+import Industries from "./views/Industries";
 import Latest, { AnnouncementDetail } from "./views/Latest";
 import Models from "./views/Models";
 import Overview from "./views/Overview";
 import Pricing from "./views/Pricing";
+import Quiz from "./views/Quiz";
 import Research from "./views/Research";
 import Stack from "./views/Stack";
 import Timeline from "./views/Timeline";
+import Today from "./views/Today";
 
 export interface StatusPayload {
-  pipeline: (Omit<PipelineState, "items" | "alerts"> & { durable: boolean; configured: boolean; sources: { key: string; name: string; publisher: string; url: string; category: string; format: string }[] }) | null;
+  pipeline: (Omit<PipelineState, "items" | "alerts" | "digest"> & { durable: boolean; configured: boolean; sources: { key: string; name: string; publisher: string; url: string; category: string; format: string }[] }) | null;
   items: PipelineState["items"];
   alerts: PipelineState["alerts"];
+  digest?: Digest;
   error?: string;
 }
 
-const MODES = [
+const MODES: { id: DisplayMode; label: string }[] = [
   { id: "executive", label: "Executive" },
   { id: "analyst", label: "Analyst" },
   { id: "technical", label: "Technical" },
-] as const;
+];
 
 function read(key: string): string | null {
   try {
@@ -52,9 +62,14 @@ function write(key: string, value: string) {
 export default function Hub({ slug, today }: { slug: string[]; today: string }) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mode, setModeState] = useState<DisplayMode>("analyst");
+  const [region, setRegionState] = useState<RegionId | "all">("all");
+  const [lang, setLangState] = useState<LangId>("en");
+  const [trStatus, setTrStatus] = useState<"idle" | "working" | "unavailable">("idle");
   const [status, setStatus] = useState<StatusPayload | null | "error">(null);
   const [askOpen, setAskOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
   const [question, setQuestion] = useState<string | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -62,6 +77,10 @@ export default function Hub({ slug, today }: { slug: string[]; today: string }) 
       setTheme(t === "dark" || t === "light" ? t : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       const m = read("gai-mode");
       if (m === "executive" || m === "analyst" || m === "technical") setModeState(m);
+      const r = read("gai-region");
+      if (r && (r === "all" || REGION_BY_ID[r])) setRegionState(r as RegionId | "all");
+      const l = read("gai-lang");
+      if (l && LANGUAGES.some((x) => x.id === l)) setLangState(l as LangId);
     });
     fetch("/api/google-ai/status", { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
@@ -73,81 +92,141 @@ export default function Hub({ slug, today }: { slug: string[]; today: string }) 
     setModeState(m);
     write("gai-mode", m);
   }, []);
+  const setRegion = useCallback((r: RegionId | "all") => {
+    setRegionState(r);
+    write("gai-region", r);
+  }, []);
+  const setLang = useCallback((l: LangId) => {
+    setLangState(l);
+    write("gai-lang", l);
+  }, []);
   const ask = useCallback((q: string) => {
     setQuestion(q);
     setAskOpen(true);
   }, []);
-  const ctx = useMemo(() => ({ today, mode, setMode, ask }), [today, mode, setMode, ask]);
-  const section = slug[0] === "entity" ? "stack" : slug[0] ?? "";
+  const ctx = useMemo(() => ({ today, mode, setMode, ask, region, setRegion, lang }), [today, mode, setMode, ask, region, setRegion, lang]);
+
+  const first = slug[0] ?? "";
+  const section = first === "entity" ? SECTION_BY_SLUG.stack : SECTION_BY_SLUG[first];
   const payload = status && status !== "error" ? status : null;
+  const leaf = first === "entity" && slug[1] ? ENTITY_BY_ID[slug[1]]?.name : first === "latest" && slug[1] ? ANNOUNCEMENT_BY_ID[slug[1]]?.title : undefined;
+  // Languages of the chosen region first, then the rest.
+  const langs = useMemo(() => {
+    const pref = region === "all" ? [] : REGION_BY_ID[region].languages;
+    return [...LANGUAGES.filter((l) => pref.includes(l.id)), ...LANGUAGES.filter((l) => !pref.includes(l.id))];
+  }, [region]);
 
   return (
     <HubContext.Provider value={ctx}>
-      <div className="gai-root" data-theme={theme} data-mode={mode}>
-        <header className="gai-top">
-          <div className="gai-top-in">
-            <div className="gai-top-row">
-              <Link href="/google-ai" className="gai-brand" aria-label="Google AI Intelligence Hub — overview">
-                <span className="gai-mark" aria-hidden><i /><i /><i /><i /></span>
-                <span>
-                  <b>Google AI Intelligence Hub</b>
-                  <small>Independent analysis · not affiliated with Google</small>
-                </span>
+      <div className="gai-root" ref={rootRef} data-theme={theme} data-mode={mode} data-wide={section?.wide || first === "entity" ? 1 : 0} data-menu={menu ? 1 : 0}>
+        <LanguageMirror lang={lang} root={rootRef} onStatus={setTrStatus} />
+        <div className="gai-scrim" onClick={() => setMenu(false)} aria-hidden />
+        <aside className="gai-side" aria-label="Navigation">
+          <Link href="/google-ai" className="gai-brand" aria-label="Google AI Intelligence Hub — today" translate="no" onClick={() => setMenu(false)}>
+            <span className="gai-mark" aria-hidden><i /><i /><i /><i /></span>
+            <span>
+              <b>Google AI Hub</b>
+              <small>Independent · not affiliated with Google</small>
+            </span>
+          </Link>
+          <SearchBox onAsk={ask} onGo={() => setMenu(false)} />
+          <nav aria-label="Pages">
+            {SECTIONS.filter((s) => s.group === "daily").map((s) => (
+              <Link key={s.slug} className="item" href={s.slug ? `/google-ai/${s.slug}` : "/google-ai"} aria-current={section?.slug === s.slug ? "page" : undefined} onClick={() => setMenu(false)} title={s.blurb}>
+                <span className="ico" aria-hidden>{s.icon}</span>{s.label}
               </Link>
-              <SearchBox onAsk={ask} />
-              <div className="gai-tools">
-                <span className="gai-hide-s"><Seg value={mode} onChange={setMode} options={MODES} label="Depth of detail" /></span>
-                <button type="button" className="gai-btn" onClick={() => setAskOpen(true)}>Ask</button>
-                <button
-                  type="button"
-                  className="gai-icon-btn"
-                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                  onClick={() => {
-                    const next = theme === "dark" ? "light" : "dark";
-                    setTheme(next);
-                    write("gai-theme", next);
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
-                    {theme === "dark" ? <circle cx="8" cy="8" r="3.5" fill="none" stroke="currentColor" strokeWidth="1.6" /> : <path d="M13 9.5A5.5 5.5 0 0 1 6.5 3 5.5 5.5 0 1 0 13 9.5z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />}
-                    {theme === "dark" && <path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />}
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <nav className="gai-nav" aria-label="Sections">
-              {SECTIONS.map((s) => (
-                <Link key={s.slug} href={s.slug ? `/google-ai/${s.slug}` : "/google-ai"} aria-current={section === s.slug ? "page" : undefined}>
-                  {s.label}
-                </Link>
-              ))}
-            </nav>
+            ))}
+            <div className="gai-side-label">Reference</div>
+            {SECTIONS.filter((s) => s.group === "reference").map((s) => (
+              <Link key={s.slug} className="item" href={`/google-ai/${s.slug}`} aria-current={section?.slug === s.slug ? "page" : undefined} onClick={() => setMenu(false)} title={s.blurb}>
+                <span className="ico" aria-hidden>{s.icon}</span>{s.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="gai-side-foot">
+            <label>
+              Region
+              <select value={region} onChange={(e) => setRegion(e.target.value as RegionId | "all")}>
+                <option value="all">All of Asia-Pacific</option>
+                {REGIONS.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}
+              </select>
+            </label>
+            <label>
+              Language
+              <select value={lang} onChange={(e) => setLang(e.target.value as LangId)} translate="no">
+                {langs.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
+              </select>
+            </label>
+            <label>
+              Detail
+              <select value={mode} onChange={(e) => setMode(e.target.value as DisplayMode)}>
+                {MODES.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
+              </select>
+            </label>
           </div>
-        </header>
+        </aside>
 
-        <Freshness today={today} status={status} />
+        <div className="gai-col">
+          <div className="gai-bar">
+            <button type="button" className="gai-icon-btn gai-menu-btn" aria-label="Open navigation" onClick={() => setMenu(true)}>
+              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            </button>
+            <div className="gai-crumbs">
+              <Link href="/google-ai" translate="no">Google AI Hub</Link>
+              {section && section.slug !== "" && (<><span className="sep">/</span><Link href={`/google-ai/${section.slug}`}>{section.label}</Link></>)}
+              {leaf && (<><span className="sep">/</span><span translate="no">{leaf.length > 48 ? leaf.slice(0, 47) + "…" : leaf}</span></>)}
+            </div>
+            <div className="gai-bar-right">
+              <button type="button" className="gai-btn" onClick={() => setAskOpen(true)}>Ask</button>
+              <button
+                type="button"
+                className="gai-icon-btn"
+                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                onClick={() => {
+                  const next = theme === "dark" ? "light" : "dark";
+                  setTheme(next);
+                  write("gai-theme", next);
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+                  {theme === "dark" ? <circle cx="8" cy="8" r="3.5" fill="none" stroke="currentColor" strokeWidth="1.6" /> : <path d="M13 9.5A5.5 5.5 0 0 1 6.5 3 5.5 5.5 0 1 0 13 9.5z" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />}
+                  {theme === "dark" && <path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />}
+                </svg>
+              </button>
+            </div>
+          </div>
 
-        <main className="gai-main">
-          {slug[0] === undefined && <Overview status={payload} />}
-          {slug[0] === "latest" && (slug[1] ? <AnnouncementDetail id={slug[1]} /> : <Latest status={payload} />)}
-          {slug[0] === "stack" && <Stack />}
-          {slug[0] === "entity" && slug[1] && <Dossier id={slug[1]} />}
-          {slug[0] === "models" && <Models />}
-          {slug[0] === "compare" && <Compare />}
-          {slug[0] === "pricing" && <Pricing />}
-          {slug[0] === "enterprise" && <Enterprise />}
-          {slug[0] === "timeline" && <Timeline />}
-          {slug[0] === "research" && <Research status={payload} statusFailed={status === "error"} />}
-        </main>
+          <main className="gai-main">
+            {lang !== "en" && (
+              <p className="gai-small gai-muted" style={{ marginBottom: 10 }}>
+                {trStatus === "unavailable" ? "Translation is unavailable right now, so parts of this page are in English." : "Machine translation. The English text is authoritative."}
+              </p>
+            )}
+            {first === "" && <Today status={payload} />}
+            {first === "industries" && <Industries />}
+            {first === "cases" && <Cases />}
+            {first === "quiz" && <Quiz />}
+            {first === "graph" && <Graph />}
+            {first === "briefing" && <Overview status={payload} />}
+            {first === "latest" && (slug[1] ? <AnnouncementDetail id={slug[1]} /> : <Latest status={payload} />)}
+            {first === "stack" && <Stack />}
+            {first === "entity" && slug[1] && <Dossier id={slug[1]} />}
+            {first === "models" && <Models />}
+            {first === "compare" && <Compare />}
+            {first === "pricing" && <Pricing />}
+            {first === "enterprise" && <Enterprise />}
+            {first === "timeline" && <Timeline />}
+            {first === "research" && <Research status={payload} statusFailed={status === "error"} />}
+            <Freshness today={today} status={status} />
+          </main>
 
-        <footer className="gai-foot">
-          <span>
-            Independent analysis. Not affiliated with, endorsed by or sponsored by Google. Product names are trademarks of their owners and are used only to identify the products discussed.
-          </span>
-          <span>
-            Every statement carries one of four labels — verified fact, provider claim, independent measurement or analyst interpretation — and its sources. <Link className="gai-link" href="/google-ai/research#method">How this site works</Link>
-          </span>
-        </footer>
+          <footer className="gai-foot">
+            <span>Independent analysis. Not affiliated with, endorsed by or sponsored by Google. Product names are trademarks of their owners and are used only to identify the products discussed.</span>
+            <span>
+              Every statement carries a label — verified fact, provider claim, independent measurement or analyst interpretation — and its sources. <Link className="gai-link" href="/google-ai/research#method">How this site works</Link>
+            </span>
+          </footer>
+        </div>
 
         {askOpen && <AskPanel initial={question} onClose={() => setAskOpen(false)} />}
       </div>
@@ -168,7 +247,7 @@ function Freshness({ today, status }: { today: string; status: StatusPayload | n
   else if (!lastRun.ok) live = { cls: "bad", text: `Last monitoring run failed (${fmtDate(lastRun.finishedAt.slice(0, 10))}). ${last ? `Last successful run: ${fmtTime(last)}.` : "No successful run on record."}` };
   else live = { cls: lastRun.failed ? "warn" : "ok", text: `Sources last checked ${fmtTime(last ?? lastRun.finishedAt)} — ${lastRun.fetched} of ${lastRun.feeds.length} reachable${lastRun.failed ? `, ${lastRun.failed} failed` : ""}.` };
   return (
-    <div className="gai-fresh" role="status">
+    <div className="gai-fresh" role="status" style={{ marginTop: 40 }}>
       <span>
         <i className={`dot ${age <= 7 ? "ok" : age <= 30 ? "warn" : "bad"}`} />
         Knowledge base updated through <b>{fmtDate(META.curatedAt)}</b>
@@ -186,7 +265,7 @@ function fmtTime(iso: string): string {
   return `${fmtDate(iso.slice(0, 10))} ${iso.slice(11, 16)} UTC`;
 }
 
-function SearchBox({ onAsk }: { onAsk: (q: string) => void }) {
+function SearchBox({ onAsk, onGo }: { onAsk: (q: string) => void; onGo?: () => void }) {
   const router = useRouter();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
@@ -216,6 +295,7 @@ function SearchBox({ onAsk }: { onAsk: (q: string) => void }) {
 
   const go = (i: number) => {
     setOpen(false);
+    onGo?.();
     if (i < hits.length) router.push(hits[i].href);
     else if (q.trim()) onAsk(q.trim());
     input.current?.blur();
@@ -228,7 +308,7 @@ function SearchBox({ onAsk }: { onAsk: (q: string) => void }) {
         ref={input}
         type="search"
         value={q}
-        placeholder="Search products, models, model IDs, old names…"
+        placeholder="Search"
         aria-label="Search the knowledge base"
         role="combobox"
         aria-expanded={open && q.trim().length >= 2}
@@ -249,7 +329,7 @@ function SearchBox({ onAsk }: { onAsk: (q: string) => void }) {
       {open && q.trim().length >= 2 && (
         <div className="gai-search-pop" id="gai-search-results" role="listbox">
           {hits.map((h, i) => (
-            <Link key={h.kind + h.id} href={h.href} role="option" aria-selected={sel === i} data-on={sel === i ? 1 : 0} onClick={() => setOpen(false)} onMouseEnter={() => setSel(i)}>
+            <Link key={h.kind + h.id} href={h.href} role="option" aria-selected={sel === i} data-on={sel === i ? 1 : 0} onClick={() => { setOpen(false); onGo?.(); }} onMouseEnter={() => setSel(i)}>
               <span className="t">{h.title}</span>
               {h.via && <span className="v">{h.via}</span>}
               <span className="s">{h.subtitle}</span>

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { EMPTY_DIGEST, type Digest } from "./digest";
 import type { Alert, DetectedItem, PipelineState, RunStatus } from "./types";
 
 /**
@@ -21,6 +22,7 @@ interface Stored {
   alerts: Alert[];
   /** feed key → content hash of the last successful fetch */
   hashes: Record<string, string>;
+  digest?: Digest;
 }
 
 const EMPTY: Stored = { lastRun: null, lastSuccessAt: null, items: [], alerts: [], hashes: {} };
@@ -89,7 +91,7 @@ export async function writeStored(next: Stored): Promise<void> {
 
 export async function readState(): Promise<PipelineState> {
   const s = await readStored();
-  return { store: storeMode(), lastRun: s.lastRun, lastSuccessAt: s.lastSuccessAt, items: s.items, alerts: s.alerts };
+  return { store: storeMode(), lastRun: s.lastRun, lastSuccessAt: s.lastSuccessAt, items: s.items, alerts: s.alerts, digest: s.digest ?? EMPTY_DIGEST };
 }
 
 export type { Stored };

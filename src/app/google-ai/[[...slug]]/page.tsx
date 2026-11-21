@@ -13,7 +13,7 @@ type Params = { slug?: string[] };
 function resolve(slug: string[] = []): { title: string } | null {
   const [a, b, c] = slug;
   if (c) return null;
-  if (!a) return { title: "Overview" };
+  if (!a) return { title: "Today" };
   if (a === "entity") return b && ENTITY_BY_ID[b] ? { title: ENTITY_BY_ID[b].name } : null;
   const section = SECTIONS.find((s) => s.slug === a);
   if (!section) return null;

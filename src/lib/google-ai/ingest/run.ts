@@ -17,6 +17,7 @@ import { ANNOUNCEMENTS, SOURCE_BY_ID } from "../kb";
 import { deadlines } from "../engine/brief";
 import { AI_SIGNAL, classifyAreas, classifyTypes, layersFor, resolveEntities } from "./classify";
 import { cluster, itemId, jaccard, tokens } from "./cluster";
+import { buildDigest, type DigestGenerator } from "./digest";
 import { checkRobots, httpFetch, type Fetcher } from "./fetch";
 import { canonicalUrl, contentHash, parseFeed, text } from "./parse";
 import { checkPrices } from "./pricewatch";
@@ -30,6 +31,8 @@ export interface RunOptions {
   now?: Date;
   /** Skip persistence (tests, dry runs). */
   dryRun?: boolean;
+  /** Writes the daily digest notes. Defaults to the configured model, or none. */
+  digest?: DigestGenerator;
 }
 
 /** Canonical announcement an item corresponds to, by cited URL or near-identical title. */
@@ -191,7 +194,10 @@ export async function runIngestion(opts: RunOptions = {}): Promise<RunStatus> {
     const items = [...known.values()]
       .filter((d) => (d.published ?? d.firstSeenAt.slice(0, 10)) >= cutoff)
       .sort((a, b) => (b.published ?? b.firstSeenAt).localeCompare(a.published ?? a.firstSeenAt));
+    // The daily digest is rebuilt from the current queue on every successful run; a failed run keeps the last one.
+    const digest = status.ok ? await buildDigest(items, now, opts.digest) : stored.digest;
     await writeStored({
+      digest,
       lastRun: status,
       // Freshness is only advanced by a run that actually read something.
       lastSuccessAt: status.ok ? status.finishedAt : stored.lastSuccessAt,

@@ -8,6 +8,7 @@ import { estimate, history, lookup, overlaps, upcomingChanges } from "./engine/p
 import { resolveEntity, search, squash } from "./engine/search";
 import { classifyAreas, classifyTypes, resolveEntities } from "./ingest/classify";
 import { cluster, jaccard, tokens } from "./ingest/cluster";
+import { buildDigest, cleanNotes, digestCandidates } from "./ingest/digest";
 import { robotsVerdict, type Fetcher } from "./ingest/fetch";
 import { canonicalUrl, parseFeed, text } from "./ingest/parse";
 import { checkPrices } from "./ingest/pricewatch";
@@ -424,6 +425,41 @@ describe("A · a new announcement is detected, de-duplicated, classified and que
     const long = KB.ENTITIES.filter((e) => KB.ENTITIES.some((o) => o.id !== e.id && e.name.toLowerCase().startsWith(o.name.toLowerCase() + " ")))[0];
     if (!long) return;
     expect(resolveEntities(`News about ${long.name} today`)[0]).toBe(long.id);
+  });
+});
+
+describe("daily digest — the automatic layer", () => {
+  const item = (id: string, over: Record<string, unknown> = {}) => ({ id, title: `Post ${id}`, url: `https://a.test/${id}`, published: "2099-01-02", firstSeenAt: "2099-01-02T05:00:00Z", feedKeys: ["f"], publisher: "Google", providerId: "google", excerpt: "An excerpt.", types: [], areas: [], layers: [], entityIds: [], alsoAt: [], score: 50, review: { itemId: id, state: "detected" as const }, ...over });
+
+  it("only considers new Google items the editors have not covered", () => {
+    const picked = digestCandidates([item("a"), item("b", { knownAs: "an-x" }), item("c", { providerId: "openai" }), item("d", { published: "2020-01-01", firstSeenAt: "2020-01-01T00:00:00Z" })] as never);
+    expect(picked.map((p) => p.id)).toEqual(["a"]);
+  });
+
+  it("keeps only well-formed notes about items that were sent, with known industry and region ids", () => {
+    const notes = cleanNotes(
+      [
+        { itemId: "a", headline: "A headline", talkTrack: "Say this.", subVerticals: ["dn-gaming", "made-up"], regions: ["korea", "mars"] },
+        { itemId: "zzz", headline: "Not ours", talkTrack: "x" },
+        { itemId: "a", headline: "Duplicate", talkTrack: "x" },
+        { itemId: "b", headline: "", talkTrack: "No headline" },
+        "junk",
+      ],
+      new Set(["a", "b"]),
+    );
+    expect(notes).toEqual([{ itemId: "a", headline: "A headline", talkTrack: "Say this.", subVerticals: ["dn-gaming"], regions: ["korea"] }]);
+    expect(cleanNotes({ not: "an array" }, new Set(["a"]))).toEqual([]);
+  });
+
+  it("writes nothing without a generator, and survives a generator that fails", async () => {
+    const items = [item("a")] as never;
+    const now = new Date("2099-01-03T05:17:00Z");
+    expect((await buildDigest(items, now, undefined)).notes).toEqual([]);
+    const failed = await buildDigest(items, now, async () => { throw new Error("model down"); });
+    expect(failed).toMatchObject({ mode: "none", notes: [] });
+    const ok = await buildDigest(items, now, async (sent) => sent.map((s) => ({ itemId: s.id, headline: "H", talkTrack: "T" })));
+    expect(ok.mode).toBe("model");
+    expect(ok.notes).toHaveLength(1);
   });
 });
 
