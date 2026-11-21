@@ -173,13 +173,13 @@ for (const a of [...(r1.availability ?? []), ...(r2.availability ?? [])]) {
 }
 const lifecycle = [];
 const seenLc = new Set();
-for (const l of [...(r1.lifecycle ?? []), ...(r2.lifecycle ?? []), ...(r3.lifecycle ?? []), ...(r4.deadlines ?? []), ...(fixes.lifecycle ?? []), ...up("lifecycle")]) {
+for (const l of [...(r1.lifecycle ?? []), ...(r2.lifecycle ?? []), ...(r3.lifecycle ?? []), ...(r4.deadlines ?? []), ...(fixes.lifecycle ?? []), ...up("lifecycle").map((l) => ({ ...l, _update: true }))]) {
   const entityId = ent(l.entityId); const sourceIds = srcOk(l.sourceIds);
   if (!entityId || !sourceIds.length || !iso(l.date)) { note(`lifecycle dropped (${!entityId ? "unknown entity " + l.entityId : "no source/date"}): ${l.id}`); continue; }
   const key = `${entityId}|${l.type}|${iso(l.effectiveDate) ?? iso(l.date)}`;
   if (seenLc.has(key) || seenLc.has(l.id)) continue;
   seenLc.add(key); seenLc.add(l.id);
-  lifecycle.push({ id: l.id, entityId, type: l.type, date: iso(l.date), ...(iso(l.effectiveDate) ? { effectiveDate: iso(l.effectiveDate) } : {}), detail: l.detail ?? "", label: LABELS.includes(l.label) ? l.label : "verified-fact", sourceIds });
+  lifecycle.push({ ...(l._update ? { _update: true } : {}), id: l.id, entityId, type: l.type, date: iso(l.date), ...(iso(l.effectiveDate) ? { effectiveDate: iso(l.effectiveDate) } : {}), detail: l.detail ?? "", label: LABELS.includes(l.label) ? l.label : "verified-fact", sourceIds });
 }
 
 // Confirmed status changes from updates. A patch must cite a source; the entity's check date moves to the update's.
@@ -194,6 +194,22 @@ for (const u of updates) for (const pch of u.entityPatches ?? []) {
   e.lastCheckedAt = CURATED;
   note(`entity patched from update: ${e.id}${pch.status ? ` → ${pch.status}` : ""}`);
 }
+// A retirement date that was still ahead when the base research was verified is a schedule, not a fact. Once it
+// falls inside an update window it stays a schedule unless that update confirms it (a "retired" event or a patch).
+{
+  const confirmed = new Set([...updates.flatMap((u) => (u.lifecycle ?? []).filter((l) => l.type === "retired").map((l) => ent(l.entityId))), ...updates.flatMap((u) => (u.entityPatches ?? []).filter((p) => p.retiredAt || p.status === "retired").map((p) => ent(p.id)))]);
+  for (const e of entities.values()) {
+    if (!e.retiredAt || e.retiredAt <= TODAY || e.retiredAt > CURATED || confirmed.has(e.id)) continue;
+    const when = e.retiredAt;
+    if (!lifecycle.some((l) => l.entityId === e.id && l.type === "retirement-scheduled" && l.effectiveDate === when)) {
+      lifecycle.push({ id: `lc-sched-${e.id}`, entityId: e.id, type: "retirement-scheduled", date: TODAY, effectiveDate: when, detail: `Retirement scheduled for ${when}.`, label: "verified-fact", sourceIds: e.sourceIds.slice(0, 2) });
+    }
+    delete e.retiredAt;
+    if (e.status === "retired") e.status = "deprecated";
+    note(`retirement of ${e.id} on ${when} not confirmed by an update: kept as scheduled`);
+  }
+}
+
 // Prices re-read from the live official page on a later date keep their value and take the later check date.
 {
   const rc = load("rechecked.json");
@@ -218,16 +234,6 @@ for (const e of entities.values()) {
   if (d && d <= CURATED) e.retiredAt = d;
 }
 
-// An entity with no introduction date takes it from its earliest dated launch event or first recorded name, when one exists.
-let derived = 0;
-for (const e of entities.values()) {
-  if (e.introducedAt) continue;
-  const dates = lifecycle.filter((l) => l.entityId === e.id && ["announced", "preview", "ga"].includes(l.type)).map((l) => l.date);
-  for (const f of e.formerNames ?? []) if (f.from) dates.push(f.from);
-  if (dates.length) { e.introducedAt = dates.sort()[0]; derived++; }
-}
-note(`introducedAt derived from lifecycle for ${derived} entities`);
-
 // Introduction dates researched separately (dates.json), each with its own source.
 {
   const patch = load("dates.json");
@@ -243,6 +249,16 @@ note(`introducedAt derived from lifecycle for ${derived} entities`);
   }
   note(`introducedAt taken from dates.json for ${n} entities`);
 }
+
+// An entity with no introduction date takes it from its earliest dated launch event or first recorded name, when one exists.
+let derived = 0;
+for (const e of entities.values()) {
+  if (e.introducedAt) continue;
+  const dates = lifecycle.filter((l) => !l._update && l.entityId === e.id && ["announced", "preview", "ga"].includes(l.type)).map((l) => l.date);
+  for (const f of e.formerNames ?? []) if (f.from) dates.push(f.from);
+  if (dates.length) { e.introducedAt = dates.sort()[0]; derived++; }
+}
+note(`introducedAt derived from lifecycle for ${derived} entities`);
 
 // ── announcements
 const AREAS = ["models", "infrastructure", "developer-platforms", "enterprise-agents", "workspace", "search-consumer", "multimodal", "safety-governance", "research"];
@@ -291,7 +307,7 @@ const sourcesOut = [...sources.values()].filter((s) => used.has(s.id));
 const meta = { version: `${CURATED.replace(/-/g, ".")}-1`, curatedAt: CURATED, coverageFrom: "2026-08-15", coverageTo: CURATED, notes: [...up("metaNotes"), ...(fixes.metaNotes ?? [])] };
 const write = (f, v) => fs.writeFileSync(path.join(OUT, f), JSON.stringify(v, null, 1) + "\n");
 write("sources.json", sourcesOut); write("entities.json", ents); write("relationships.json", relationships); write("prices.json", pricesOut);
-write("benchmarks.json", benchmarks); write("results.json", results); write("availability.json", availability); write("lifecycle.json", lifecycle);
+write("benchmarks.json", benchmarks); write("results.json", results); write("availability.json", availability); write("lifecycle.json", lifecycle.map((l) => Object.fromEntries(Object.entries(l).filter(([k]) => k !== "_update"))));
 write("announcements.json", announcements); write("timeline.json", timeline); write("battlegrounds.json", battlegrounds); write("feeds.json", r4.feeds ?? []); write("meta.json", meta);
 fs.writeFileSync(path.join(IN, "merge.log"), log.join("\n"));
 const byAccess = {}; for (const s of sourcesOut) byAccess[s.access] = (byAccess[s.access] ?? 0) + 1;

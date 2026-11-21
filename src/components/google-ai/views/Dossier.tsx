@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, type ReactNode } from "react";
 import { fmtDate, inEffect } from "@/lib/google-ai/dates";
-import { effectiveOn, statusAt } from "@/lib/google-ai/engine/asof";
+import { effectiveOn, retirementUnconfirmed, statusAt } from "@/lib/google-ai/engine/asof";
 import { surfaceLabel } from "@/lib/google-ai/engine/answer";
 import { TYPE_LABEL } from "@/lib/google-ai/engine/brief";
 import { lineage, neighbors } from "@/lib/google-ai/engine/graph";
@@ -86,6 +86,7 @@ export default function Dossier({ id }: { id: string }) {
     { n: 10, id: "availability", title: "Availability", filled: true, body: (
       <>
         <p className="gai-small">Stage today: <Status status={st.status} /> {st.since ? `since ${st.since === e.introducedAt ? fmtIntro(e) : fmtDate(st.since)}` : ""}{!st.evidenced ? " — from the catalogue; no dated stage change is recorded" : ""}</p>
+        {st.note && <div className="gai-warn" style={{ marginTop: 8 }}>{st.note.replace(/(\d{4}-\d{2}-\d{2})/, (d) => fmtDate(d))}</div>}
         {data.avail.length > 0 && (
           <div className="gai-tablewrap" style={{ marginTop: 8 }}>
             <table className="gai-table">
@@ -161,7 +162,7 @@ export default function Dossier({ id }: { id: string }) {
         {e.formerNames?.length ? <p className="gai-muted">Formerly {e.formerNames.map((f) => f.name).join(", ")}</p> : null}
         <div className="gai-row gai-small gai-muted">
           {e.introducedAt && <span>Introduced {fmtIntro(e)}</span>}
-          {e.retiredAt && <span>· {e.retiredAt > today ? "retires" : "retired"} {fmtDate(e.retiredAt)}</span>}
+          {e.retiredAt && <span>· {e.retiredAt > today ? "scheduled to retire" : retirementUnconfirmed(e) ? "was scheduled to retire" : "retired"} {fmtDate(e.retiredAt)}</span>}
           <span>· last checked {fmtDate(e.lastCheckedAt)}</span>
           <button type="button" className="gai-link" onClick={() => ask(`What changed recently for ${e.name}?`)}>Ask about this</button>
         </div>

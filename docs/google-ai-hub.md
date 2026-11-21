@@ -81,6 +81,19 @@ Environment:
    source or a known entity; closes superseded prices; writes `data/*.json`.
 3. `./node_modules/.bin/vitest run src/lib/google-ai` — must pass.
 
+### Dated updates
+
+A later update is one more file in the research folder, `r5-update.json`, `r6-update.json`, … (applied oldest first),
+with the same collections plus `entityPatches` (confirmed status changes to existing entities) and `checks`.
+Run the merge with `GAI_CURATED=<date>`; that date becomes the "updated through" date shown on every page.
+
+- Records from the base research keep their own check date. An update never re-stamps what it did not re-read.
+- `rechecked.json` lists list prices re-read from the live official page on a date (written from the pipeline's
+  price check); only those price records take the later check date.
+- A retirement date that was still ahead when it was recorded is a schedule. It becomes a retirement only when an
+  update confirms it; otherwise the product stays deprecated and the site says the retirement was scheduled.
+- An update's lifecycle events never set the introduction date of an existing product.
+
 ## Acceptance tests (`src/lib/google-ai/google-ai.test.ts`)
 
 | Test | What is proven |

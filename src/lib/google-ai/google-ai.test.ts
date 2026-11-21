@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { addDays } from "./dates";
 import { answer, detectDate } from "./engine/answer";
-import { existedAt, nameAt, pricesAt, snapshotAt, statusAt } from "./engine/asof";
+import { existedAt, nameAt, pricesAt, retirementUnconfirmed, snapshotAt, statusAt } from "./engine/asof";
 import { deadlines, radar, top } from "./engine/brief";
 import { neighbors, path } from "./engine/graph";
 import { estimate, history, lookup, overlaps, upcomingChanges } from "./engine/pricing";
@@ -11,7 +11,7 @@ import { cluster, jaccard, tokens } from "./ingest/cluster";
 import { robotsVerdict, type Fetcher } from "./ingest/fetch";
 import { canonicalUrl, parseFeed, text } from "./ingest/parse";
 import { checkPrices } from "./ingest/pricewatch";
-import { runIngestion } from "./ingest/run";
+import { MAX_ITEMS_PER_FEED, recentItems, runIngestion } from "./ingest/run";
 import { readState } from "./ingest/store";
 import type { Feed } from "./ingest/types";
 import * as KB from "./kb";
@@ -241,12 +241,36 @@ describe("E · the time machine reconstructs a date without leaking the future",
     expect(nameAt(e, "2026-04-22")).toBe("New Name");
   });
 
-  it("uses the stage in force on the date and treats a scheduled retirement as not yet retired", () => {
+  it("uses the stage in force on the date and never treats a scheduled retirement as done without confirmation", () => {
     expect(statusAt(e, "2021-01-01", life).status).toBe("not-yet");
     expect(statusAt(e, "2021-06-01", life).status).toBe("preview");
-    expect(statusAt(e, "2026-11-15", life).status).toBe("ga");
-    expect(statusAt(e, "2027-03-01", life).status).toBe("retired");
+    // Between the announcement of a retirement and its date the product is deprecated, not retired.
+    expect(statusAt(e, "2026-11-15", life).status).toBe("deprecated");
+    expect(statusAt(e, "2026-05-01", life).status).toBe("ga");
+    // After the scheduled date, without a "retired" record, it is still not claimed as retired — the schedule is noted.
+    const after = statusAt(e, "2027-03-01", life);
+    expect(after.status).toBe("deprecated");
+    expect(after.note).toMatch(/scheduled for 2027-03-01/);
+    // A confirmation settles it.
+    expect(statusAt(e, "2027-03-02", [...life, { id: "4", entityId: "x", type: "retired", date: "2027-03-01", detail: "", label: "verified-fact", sourceIds: ["s"] }]).status).toBe("retired");
+    expect(statusAt({ ...e, retiredAt: "2026-06-01" }, "2026-07-01", life).status).toBe("retired");
     expect(existedAt(e, "2021-05-17")).toBe(false);
+  });
+
+  it("does not turn a retirement date into a retirement just because the calendar passed it", () => {
+    // Recorded as a future date when the knowledge base was last updated: still a plan, however much later it is read.
+    const planned = { ...e, retiredAt: "2099-01-01" };
+    expect(retirementUnconfirmed(planned)).toBe(true);
+    const later = statusAt(planned, "2099-06-01", life.slice(0, 2));
+    expect(later.status).toBe("deprecated");
+    expect(later.note).toMatch(/scheduled for 2099-01-01/);
+    expect(existedAt(planned, "2099-06-01")).toBe(true);
+    // A date on or before the knowledge base's own date was verified as done.
+    const done = { ...e, retiredAt: "2024-01-01" };
+    expect(retirementUnconfirmed(done)).toBe(false);
+    expect(statusAt(done, "2025-01-01", life.slice(0, 2)).status).toBe("retired");
+    // No entity in the data claims a retirement the knowledge base could not have confirmed.
+    for (const x of KB.ENTITIES) if (x.status === "retired" && x.retiredAt) expect(x.retiredAt <= KB.META.curatedAt, x.id).toBe(true);
   });
 
   it("never guesses undated entities into the past", () => {
@@ -377,6 +401,23 @@ describe("A · a new announcement is detected, de-duplicated, classified and que
     // A second run does not duplicate.
     const again = await runIngestion({ fetcher, feeds: [FEED], now: new Date("2026-11-15T12:00:00Z") });
     expect(again.newItems).toBe(0);
+  });
+
+  it("takes only recent items from a feed that publishes its whole archive", () => {
+    const mk = (i: number, published?: string) => ({ feedKey: "f", title: `Post ${i}`, url: `https://a.test/${i}`, published, summary: "" });
+    const old = Array.from({ length: 300 }, (_, i) => mk(i, "2025-01-15"));
+    const fresh = Array.from({ length: 60 }, (_, i) => mk(1000 + i, i < 30 ? "2026-11-14" : "2026-11-01"));
+    const kept = recentItems([...old, ...fresh], TODAY);
+    expect(kept).toHaveLength(MAX_ITEMS_PER_FEED);
+    expect(kept.every((k) => (k.published as string) >= "2026-10-01")).toBe(true);
+    expect(kept[0].published).toBe("2026-11-14");
+  });
+
+  it("reads a price table whose heading punctuates the model name differently", () => {
+    const sample = KB.PRICES.find((p) => p.surface === "agent-platform" && p.tier === "standard" && p.meter === "input" && (p.region ?? "global") === "global" && p.aboveContextTokens == null && p.effectiveFrom <= TODAY && (!p.effectiveTo || p.effectiveTo >= TODAY) && KB.entityName(p.entityId).includes("-") && KB.ENTITY_BY_ID[p.entityId].model?.category === "text");
+    if (!sample) return;
+    const spaced = KB.entityName(sample.entityId).split("-").join(" ");
+    expect(checkPrices(`${spaced} Input (text) Global $${sample.price} output $9`, "agent-platform", TODAY, [sample])[0].status).toBe("match");
   });
 
   it("resolves the longest product name, not a shorter one inside it", () => {

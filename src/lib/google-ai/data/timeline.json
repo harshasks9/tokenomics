@@ -2568,5 +2568,155 @@
    "c-anthropic-fable-5-2",
    "c-anthropic-release-notes"
   ]
+ },
+ {
+  "id": "tl-u-2026-11-18-gemini-4-neon",
+  "date": "2026-11-18",
+  "precision": "day",
+  "track": "model",
+  "providerId": "google",
+  "title": "Gemini 4 Neon at $3 / $15",
+  "detail": "Fourth Gemini 4 model in seven weeks, priced between Hydrogen and the standard rate of Argon and Carbon.",
+  "entityIds": [
+   "gemini-4-neon"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-pricing",
+   "u-gcd-ap-release-notes"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-16-deferred-tier-ga",
+  "date": "2026-11-16",
+  "precision": "day",
+  "track": "pricing",
+  "providerId": "google",
+  "title": "Deferred tier: half-price agent turns",
+  "detail": "A deferred service tier reaches GA on Agent Platform, giving 50% off Standard PayGo for latency-tolerant agent turns.",
+  "entityIds": [
+   "agent-platform-paygo-tiers",
+   "interactions-api"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-whatsnew",
+   "u-gcd-ap-release-notes"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-17-gemini-on-google-cloud-dedicated",
+  "date": "2026-11-17",
+  "precision": "day",
+  "track": "infrastructure",
+  "providerId": "google",
+  "title": "Gemini promised for partner-operated sovereign cloud",
+  "detail": "Google says Gemini models are coming to Google Cloud Dedicated; S3NS model serving is GA in France and a German deployment with Thales is in preview.",
+  "entityIds": [
+   "google-sovereign-cloud",
+   "partner-thales-s3ns"
+  ],
+  "significance": 2,
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-sovereign-ai"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-17-gpt-6-2-astra-sol",
+  "date": "2026-11-17",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "openai",
+  "title": "GPT-6.2 Astra at a reported $8 / $40",
+  "detail": "OpenAI releases GPT-6.2 Astra and Sol; press reports Astra 20% below GPT-6 Astra and Sol unchanged at $2 / $10.",
+  "entityIds": [
+   "gpt-6-2-astra",
+   "gpt-6-2-sol"
+  ],
+  "significance": 3,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-oa-gpt62",
+   "u-pr-betanews-gpt62",
+   "u-pr-runtimewire-gpt62"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-19-anthropic-nasdaq-debut",
+  "date": "2026-11-19",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "anthropic",
+  "title": "Anthropic lists on Nasdaq",
+  "detail": "Shares priced at $83 begin trading as ANT; the offering and a $26.0B placement to Google and six chip and cloud companies close on 20 November for about $119.5B gross.",
+  "entityIds": [
+   "anthropic",
+   "partner-anthropic"
+  ],
+  "significance": 3,
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-an-ipo-priced",
+   "u-an-ipo-close"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-16-qwen4-max-general-release",
+  "date": "2026-11-16",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "alibaba",
+  "title": "Qwen4-Max at a reported $1.50 / $4.50",
+  "detail": "Alibaba moves Qwen4-Max from preview to general release with a 1M-token context and closed weights, per press.",
+  "entityIds": [
+   "qwen4-max"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-pr-technode-qwen4",
+   "u-pr-dt-qwen4"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-17-microsoft-ignite-mai-models",
+  "date": "2026-11-17",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "microsoft",
+  "title": "Microsoft Ignite: seven MAI models",
+  "detail": "Microsoft announces seven in-house MAI models, with MAI Code 2 and Code 2 Flash added to GitHub Copilot the same day at promotional prices, per press.",
+  "entityIds": [
+   "microsoft",
+   "github-copilot",
+   "microsoft-foundry"
+  ],
+  "significance": 2,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-pr-thurrott-mai",
+   "u-pr-testingcatalog-mai",
+   "u-pr-constellation-ignite"
+  ]
+ },
+ {
+  "id": "tl-u-2026-11-19-meta-muse-privacy-report",
+  "date": "2026-11-19",
+  "precision": "day",
+  "track": "competitive",
+  "providerId": "meta",
+  "title": "Report: Meta's Muse agent mixes up conversations",
+  "detail": "TechCrunch, citing Reuters, reports Meta staff flagged Muse mixing conversations across accounts and possibly exposing private data.",
+  "entityIds": [
+   "meta"
+  ],
+  "significance": 1,
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-pr-techcrunch-muse"
+  ]
  }
 ]

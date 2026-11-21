@@ -1269,6 +1269,7 @@
    "models"
   ],
   "entityIds": [
+   "genie-4",
    "google-deepmind",
    "gemini-3-8-flash",
    "gemini-4-argon"
@@ -5022,5 +5023,1361 @@
   ],
   "firstSeenAt": "2026-11-15",
   "lastCheckedAt": "2026-11-15"
+ },
+ {
+  "id": "an-2026-11-18-gemini-4-neon-launch",
+  "title": "Google launches Gemini 4 Neon at $3 / $15, between Carbon and Hydrogen",
+  "date": "2026-11-18",
+  "providerId": "google",
+  "types": [
+   "model-launch",
+   "pricing",
+   "availability"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms",
+   "search-consumer"
+  ],
+  "layers": [
+   "models",
+   "platform",
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-4-neon",
+   "gemini-4-carbon",
+   "gemini-4-argon",
+   "gemini-4-hydrogen",
+   "gemini-api",
+   "google-ai-studio",
+   "gemini-enterprise-agent-platform",
+   "gemini-enterprise",
+   "gemini-app",
+   "google-antigravity",
+   "google-ai-pro",
+   "google-ai-ultra"
+  ],
+  "summary": [
+   {
+    "text": "Gemini 4 Neon (gemini-4-neon) became generally available on Gemini Enterprise Agent Platform on 18 Nov 2026, the day Google published its launch post; Google Cloud's price list now carries it.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gcd-ap-release-notes",
+     "u-gc-pricing",
+     "u-bg-neon"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "high"
+   },
+   {
+    "text": "Google describes Neon as frontier-level intelligence with fast end-to-end task completion, sitting between Carbon for the hardest long-running work and Hydrogen for fast everyday work.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-bg-neon",
+     "u-pr-9to5-neon"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   },
+   {
+    "text": "Artificial Analysis lists Neon at 61 on its Intelligence Index at the xhigh setting, one point ahead of Gemini 4 Carbon and third overall.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-aa-neon"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "The Gemini 4 line was Argon and Carbon (promotional $2 / $10, rising to $4 / $20 on 1 December) and Hydrogen ($1.50 / $7.50). Paying Gemini app users had Argon in the model picker.",
+   "after": "Neon adds a $3 / $15 option between them. Press reports it takes Argon's place in the Gemini app for Google AI Pro and Ultra subscribers."
+  },
+  "technical": [
+   {
+    "text": "The price list shows Neon accepting text, image, video and audio input, with output billed as response plus reasoning tokens.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Press reports citing Google's documentation give one shared 1,048,576-token window for input, thinking and output, and four thinking levels (low, medium, high, xhigh) with high as default.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-9to5-neon",
+     "u-pr-decoder-neon"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   },
+   {
+    "text": "Extracts of the model card give a March 2026 knowledge cutoff.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-dm-card-neon"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "competitive": [
+   {
+    "text": "Digital Trends reports that Google's model card compares Neon with Claude Opus 5.5 and GPT-6.2 Sol. OpenAI's GPT-6.2 Sol, released a day earlier, is reported at $2 / $10.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-dt-neon",
+     "u-pr-betanews-gpt62"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "implications": [
+   {
+    "text": "From 1 December, when Argon and Carbon move to $4 / $20, Neon at $3 / $15 becomes Google's cheapest near-frontier option. Teams that standardised on Argon during the promotion have a reason to re-test before the price change.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-gc-pricing"
+    ]
+   },
+   {
+    "text": "Four Gemini 4 models in seven weeks gives buyers more price points but a harder selection problem; the element names carry no tier signal, so model choice now needs testing per workload.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-pr-decoder-neon",
+     "u-gc-pricing"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Google Cloud lists Neon at $3.00 input, $0.15 cache read and $15.00 output per 1M tokens on the global endpoint ($3.30 / $0.165 / $16.50 non-global), with Priority at $5.40 / $27.00 and Batch at $1.50 / $7.50.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Cache-write pricing of $3.75 per 1M tokens (global standard) is listed with a start date of 12 January 2027. Neon carries no promotional marker, unlike Argon and Carbon.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Press reports the same $3 / $15 on the paid Gemini API tier, with access in Google AI Studio, Antigravity and, in the Gemini app, for Google AI Pro and Ultra subscribers only.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-9to5-neon",
+     "u-pr-dt-neon",
+     "u-pr-notebookcheck-neon"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   },
+   {
+    "text": "In Gemini Enterprise an administrator has to enable Neon before users see it; it is also offered in Workflow Builder.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gcd-ge-release-notes"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "Google's launch post, model card and model documentation were not read directly.",
+   "Default output limit is reported as both 65,536 and 64,000 tokens.",
+   "Some outlets say Neon's price rises to $4 / $20 on 1 December. Google Cloud's price list shows no such note for Neon; this looks like confusion with Argon and Carbon.",
+   "The 'high' setting score on Artificial Analysis is quoted as 60 and 59.6.",
+   "Reports differ on whether Antigravity access needs a paid tier, and on whether Argon's removal from the Gemini app is permanent."
+  ],
+  "followUps": [
+   {
+    "date": "2027-01-12",
+    "note": "Cache-write pricing for Neon is scheduled to start.",
+    "sourceIds": [
+     "u-gc-pricing"
+    ]
+   }
+  ],
+  "importance": 5,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-gc-pricing",
+   "u-gcd-ap-release-notes",
+   "u-gcd-ge-release-notes",
+   "u-bg-neon",
+   "u-dm-card-neon",
+   "u-pr-9to5-neon",
+   "u-pr-dt-neon",
+   "u-pr-decoder-neon",
+   "u-pr-notebookcheck-neon",
+   "u-aa-neon",
+   "u-pr-betanews-gpt62"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-16-deferred-tier-ga",
+  "title": "Deferred service tier reaches GA on Agent Platform: half-price turns for background agents",
+  "date": "2026-11-16",
+  "providerId": "google",
+  "types": [
+   "pricing",
+   "product-update",
+   "availability"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "agent-platform-paygo-tiers",
+   "gemini-enterprise-agent-platform",
+   "interactions-api",
+   "agent-development-kit",
+   "gemini-deep-research",
+   "gemini-4-argon",
+   "gemini-4-carbon"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud says the deferred service tier is generally available on the Gemini platform for the Interactions API, Agent Development Kit and Deep Research.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-whatsnew"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   },
+   {
+    "text": "Completed turns are billed at 50% off Standard PayGo rates and the discount stacks with prompt caching; cancelled, expired or failed turns are not charged.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-whatsnew"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   },
+   {
+    "text": "Extracts of the Agent Platform release notes date the GA to 16 Nov 2026 and say autonomous agent scheduling now covers ADK agents (google-adk 2.10.0 and later) as well as the Deep Research agent.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gcd-ap-release-notes"
+    ],
+    "asOf": "2026-11-16",
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "A 50% discount needed batch inference, where every prompt sits in a fixed input file up front. That does not fit agents that call tools and decide the next step as they go.",
+   "after": "Latency-tolerant agent turns can be sent with service_tier=\"deferred\" and are queued onto spare capacity at half the standard price, turn by turn."
+  },
+  "technical": [
+   {
+    "text": "The tier is selected with service_tier=\"deferred\" in ADK RunConfig or client.interactions.create(), and is listed for gemini-4-argon, gemini-4-carbon, Gemini 3.x models and gemini-deep-research-1.0.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-whatsnew"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   },
+   {
+    "text": "Google says the platform queues and retries turns server-side during peaks so callers see no 429 errors, and that passing previous_interaction_id keeps prompt caches warm across chained turns.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-whatsnew"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   }
+  ],
+  "implications": [
+   {
+    "text": "Long-running agent work that can wait (research, overnight code maintenance, back-office loops) can now be costed at half the list rate without rebuilding it as a batch job; cost models for such workloads should carry a deferred share.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-gc-whatsnew"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "The price list shows the Deep Research agent at $2 input / $12 output per 1M tokens on Standard and $1 / $6 on Deferred.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "Google's post does not name Gemini 4 Hydrogen or Neon among supported models.",
+   "The 16 Nov date comes from extracts of the release notes; the Google Cloud page read directly lists the change under the week of 16-20 Nov.",
+   "No completion-time commitment for deferred turns was seen.",
+   "Whether the Gemini Developer API offers the same tier was not checked."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "u-gc-whatsnew",
+   "u-gcd-ap-release-notes",
+   "u-gc-pricing"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-17-sovereign-ai-europe-gemini-on-cloud-dedicated",
+  "title": "Sovereign AI Summit: Gemini models to come to partner-operated Google Cloud Dedicated",
+  "date": "2026-11-17",
+  "providerId": "google",
+  "types": [
+   "infrastructure",
+   "availability",
+   "partnership",
+   "policy-regulatory"
+  ],
+  "areas": [
+   "infrastructure",
+   "safety-governance",
+   "models"
+  ],
+  "layers": [
+   "infrastructure",
+   "models",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "google-sovereign-cloud",
+   "partner-thales-s3ns",
+   "google-distributed-cloud",
+   "gemini",
+   "model-garden",
+   "gemma"
+  ],
+  "summary": [
+   {
+    "text": "At the Sovereign AI Summit in Brussels, Google Cloud said Gemini models are coming to Google Cloud Dedicated, its partner-operated sovereign cloud, which until now offered open models through Model Garden.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-sovereign-ai"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "high"
+   },
+   {
+    "text": "S3NS has made managed model serving and inference generally available on PREMI3NS in France, which has achieved SecNumCloud 3.2 qualification; Google and Thales are extending Google Cloud Dedicated to Germany in preview.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-sovereign-ai"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "high"
+   },
+   {
+    "text": "Google also announced Confidential External Key Management in preview, a key-holding partnership with Telefonica in Spain in preview, and Data Boundary compliance frameworks (Switzerland available now, DORA planned).",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-sovereign-ai"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "high"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Gemini was available with in-region processing on Google's public cloud and on Google Distributed Cloud, but not on the locally operated Google Cloud Dedicated tier.",
+   "after": "Google has committed to bringing Gemini to Google Cloud Dedicated; no date or model list was given."
+  },
+  "technical": [
+   {
+    "text": "Google says a Dedicated partner controls the environment, can block software updates in exceptional circumstances and can keep operating for up to 12 months if the connection to Google is cut.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-sovereign-ai"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "high"
+   },
+   {
+    "text": "Confidential External Key Management keeps root keys with the customer or a local partner while key operations run inside a hardware-attested Confidential Computing environment.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-sovereign-ai"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "high"
+   }
+  ],
+  "implications": [
+   {
+    "text": "For European public-sector and regulated buyers the main gap in Google's sovereign offer was frontier models on the partner-operated tier. The commitment narrows it, but procurement should wait for a date and a model list.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-gc-sovereign-ai"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "The Google for Startups Accelerator: Sovereign AI opened for applications: an equity-free, 15-week programme for late-seed to post-Series A startups in Europe and Israel working on regulated workloads.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-sovereign-accelerator"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "No timing, model versions or pricing were given for Gemini on Google Cloud Dedicated.",
+   "The DORA framework is described as planned, without a date."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "u-gc-sovereign-ai",
+   "u-gc-sovereign-accelerator",
+   "u-pr-techzine-sovereign"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-20-anthropic-ipo-closes-google-in-private-placement",
+  "title": "Anthropic closes its IPO; Google buys into a $26B concurrent private placement",
+  "date": "2026-11-20",
+  "providerId": "anthropic",
+  "types": [
+   "financial",
+   "partnership"
+  ],
+  "areas": [
+   "models",
+   "infrastructure"
+  ],
+  "layers": [
+   "ecosystem"
+  ],
+  "entityIds": [
+   "anthropic",
+   "partner-anthropic",
+   "google"
+  ],
+  "summary": [
+   {
+    "text": "Anthropic priced its IPO at $83.00 per share on 18 Nov 2026, began trading on Nasdaq as ANT on 19 Nov and closed the offering on 20 Nov with 1,127,000,000 Class A shares sold, including the full over-allotment.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-an-ipo-priced",
+     "u-an-ipo-close"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   },
+   {
+    "text": "Gross proceeds of the offering were about $93.5 billion, of which about $91.6 billion went to Anthropic.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-an-ipo-close"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   },
+   {
+    "text": "Alongside it, Anthropic sold 313,253,007 Class N shares at the IPO price for about $26.0 billion to AMD, Broadcom, Google LLC, Micron, Microsoft, NVIDIA and TSMC Partners, taking combined gross proceeds to about $119.5 billion.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-an-ipo-close"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Anthropic was private; it filed its S-1 on 26 October and began its roadshow on 10 November.",
+   "after": "Anthropic is a listed company that raised roughly $118 billion gross for itself across the offering and the placement, and Google holds additional Class N stock bought at the IPO price."
+  },
+  "implications": [
+   {
+    "text": "Google is at once Anthropic's shareholder, chip and cloud supplier, distributor through Model Garden, and model competitor. A well-funded listed Anthropic can commit to more compute, some of it on Google TPUs, while competing with Gemini for the same enterprise budgets.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-an-ipo-close"
+    ]
+   }
+  ],
+  "pricingAvailability": [
+   {
+    "text": "Press reports citing Anthropic's amended S-1 put Google's part of the placement at about $10 billion and its holding at roughly 14% of outstanding capital stock after the IPO.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-stocktwits-placement",
+     "u-pr-lds-anthropic-stakes"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "Anthropic's release does not break the placement down by buyer; Google's amount and stake come from press reports of the S-1.",
+   "Press totals of $107.3 billion predate the full exercise of the underwriters' option; Anthropic's closing release gives $119.5 billion.",
+   "First-day closing price is reported inconsistently across outlets and is not recorded here."
+  ],
+  "importance": 4,
+  "verification": "verified",
+  "sourceIds": [
+   "u-an-ipo-priced",
+   "u-an-ipo-close",
+   "u-an-news-index",
+   "u-pr-stocktwits-placement",
+   "u-pr-lds-anthropic-stakes",
+   "u-pr-aljazeera-anthropic"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-18-genie-4-project-genie-ultra",
+  "title": "Genie 4 opens to eligible Google AI Ultra subscribers in a new Project Genie",
+  "date": "2026-11-18",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "model-update",
+   "product-update"
+  ],
+  "areas": [
+   "multimodal",
+   "research",
+   "search-consumer"
+  ],
+  "layers": [
+   "models",
+   "research",
+   "consumer"
+  ],
+  "entityIds": [
+   "genie-4",
+   "genie",
+   "project-genie",
+   "google-ai-ultra",
+   "google-deepmind"
+  ],
+  "summary": [
+   {
+    "text": "Google says it is rolling out a new Project Genie experience to eligible Google AI Ultra subscribers, opening access to its Genie 4 world model. This follows the research preview recorded on 27 October.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-bg-genie4"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   },
+   {
+    "text": "Press coverage says the release adds real-time editing of environments, native audio, a creation agent and a community gallery, for subscribers aged 18 and over, with a waitlist for Google AI Pro.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-tnw-genie4",
+     "u-pr-datastudios-genie4"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Project Genie ran on Genie 3; Genie 4 was a research preview.",
+   "after": "Eligible Ultra subscribers can use Genie 4 in Project Genie."
+  },
+  "implications": [
+   {
+    "text": "World models remain a subscription perk rather than a developer product: there is still no API, so the commercial effect is on Ultra's appeal, not on platform revenue.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-bg-genie4",
+     "u-pr-tnw-genie4"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Google's post was seen only as a feed summary; which Ultra subscribers are 'eligible', the regions covered and session limits were not confirmed.",
+   "Outlets quote different prices for Google AI Ultra."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-bg-genie4",
+   "u-pr-tnw-genie4",
+   "u-pr-datastudios-genie4"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-19-gemini-api-tool-retrieval-preview",
+  "title": "Tool Retrieval enters preview in the Gemini API",
+  "date": "2026-11-19",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "product-update"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "platform",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-api",
+   "interactions-api"
+  ],
+  "summary": [
+   {
+    "text": "Google put Tool Retrieval into preview in the Gemini API on 19 Nov 2026, saying it lets agents reach hundreds of tools while using fewer tokens.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-bg-tool-retrieval"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "medium"
+   },
+   {
+    "text": "Coverage of the documentation says the preview works only through the Interactions API on v1beta, carries no separate charge, and bills tokens at normal model rates.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-toolretrieval"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Every tool definition had to be sent with each request, so large tool catalogues consumed context and tokens.",
+   "after": "The model can look up tool definitions on demand from a larger catalogue."
+  },
+  "implications": [
+   {
+    "text": "This matters most for agents wired to many MCP servers, where tool definitions can dominate the prompt. The saving is Google's claim; no published measurement was seen.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-bg-tool-retrieval",
+     "u-pr-toolretrieval"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Google's post and documentation were not read directly.",
+   "No general-availability date; availability on Agent Platform was not confirmed.",
+   "One report notes each server-side tool search adds a model pass, so net savings depend on the workload."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-bg-tool-retrieval",
+   "u-pr-toolretrieval"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-19-gemini-mac-computer-use",
+  "title": "Gemini app for Mac gains computer use for paying subscribers",
+  "date": "2026-11-19",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "availability"
+  ],
+  "areas": [
+   "search-consumer",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "consumer",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-app",
+   "computer-use",
+   "google-ai-plus",
+   "google-ai-pro",
+   "google-ai-ultra"
+  ],
+  "summary": [
+   {
+    "text": "Google says the Gemini app for Mac now has computer use to handle repetitive tasks.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-bg-mac-computer-use"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "medium"
+   },
+   {
+    "text": "9to5Google reports it is rolling out in US English to Google AI Plus, Pro and Ultra subscribers, is invoked with @Computer use, runs in an isolated background window and lets users choose which apps it may touch and approve sensitive actions.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-9to5-mac"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "medium"
+   }
+  ],
+  "implications": [
+   {
+    "text": "Desktop control moves from a developer tool to a consumer subscription feature, putting Gemini's Mac app in direct comparison with rivals' computer-using agents.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-bg-mac-computer-use",
+     "u-pr-9to5-mac"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Google's post was seen only as a feed summary.",
+   "The model behind the feature and per-plan usage limits are not stated.",
+   "One report says an Apple Silicon Mac is required and that the EEA, UK, Switzerland and Nigeria are excluded."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-bg-mac-computer-use",
+   "u-pr-9to5-mac"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-17-tasks-in-gemini-free-six-countries",
+  "title": "Tasks in Gemini becomes free in six countries, with new US-only abilities",
+  "date": "2026-11-17",
+  "providerId": "google",
+  "types": [
+   "availability",
+   "product-update",
+   "pricing"
+  ],
+  "areas": [
+   "search-consumer",
+   "workspace"
+  ],
+  "layers": [
+   "consumer",
+   "agents"
+  ],
+  "entityIds": [
+   "gemini-app",
+   "gemini-in-workspace"
+  ],
+  "summary": [
+   {
+    "text": "Google says Tasks in Gemini is now free of charge in six countries, with new features starting in the US and deeper Google Workspace integration.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-bg-tasks-free"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   },
+   {
+    "text": "Press lists the countries as the US, Japan, South Korea, Canada, Australia and India, for users aged 18 and over; shopping and payments, calls to businesses and connected accounts are US-only for now.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-techrepublic-tasks",
+     "u-pr-androidcentral-tasks"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Tasks in Gemini required a Google AI Pro or Ultra subscription.",
+   "after": "Adults in six countries can use it without paying; elsewhere a subscription is still required."
+  },
+  "implications": [
+   {
+    "text": "Giving the agentic mode away in large markets trades subscription revenue for usage and habit, and raises serving cost per free user; it also pressures rivals that keep agent features behind paid plans.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-bg-tasks-free",
+     "u-pr-techrepublic-tasks"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "Google's post was seen only as a feed summary; the country list comes from press.",
+   "Free-tier usage limits and the model used were not confirmed (one outlet names Gemini 4 Hydrogen)."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-bg-tasks-free",
+   "u-pr-techrepublic-tasks",
+   "u-pr-androidcentral-tasks"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-17-gemini-4-hydrogen-robotics-plugin",
+  "title": "Google positions Gemini 4 Hydrogen for robotics and adds a Robotics plugin to Antigravity",
+  "date": "2026-11-17",
+  "providerId": "google",
+  "types": [
+   "model-update",
+   "product-launch"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms",
+   "multimodal"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-4-hydrogen",
+   "google-antigravity",
+   "gemini-robotics-er-2",
+   "gemini-robotics"
+  ],
+  "summary": [
+   {
+    "text": "A Google developer post presents Gemini 4 Hydrogen as a fast model with strong spatial and embodied reasoning for general-purpose robotics, and introduces a Robotics plugin for Google Antigravity.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gdb-hydrogen-robotics"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   },
+   {
+    "text": "Coverage says the plugin bundles skills for hardware onboarding, simulation with MuJoCo and robot control, with verified support for several arms including the SO-ARM101.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-lds-hydrogen-robotics"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "competitive": [
+   {
+    "text": "One outlet reports Google's own comparison as 84.8 for Hydrogen against 75.5 for Gemini Robotics ER 2, averaged over 15 embodied-reasoning tests.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-pr-lds-hydrogen-robotics"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "low"
+   }
+  ],
+  "implications": [
+   {
+    "text": "If a general model at $1.50 / $7.50 outscores the dedicated embodied-reasoning model, the case for a separate Robotics ER line weakens; watch whether Google keeps both.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-gdb-hydrogen-robotics",
+     "u-pr-lds-hydrogen-robotics"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The post was seen as a feed summary and through press; its date is given as 17 Nov by search results and first appeared in the site's feed check on 18 Nov (UTC).",
+   "Benchmark figures were not seen in Google's own text."
+  ],
+  "importance": 3,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-gdb-hydrogen-robotics",
+   "u-pr-lds-hydrogen-robotics"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-17-ai-mode-temporary-threads",
+  "title": "AI Mode in Search adds temporary threads",
+  "date": "2026-11-17",
+  "providerId": "google",
+  "types": [
+   "product-update"
+  ],
+  "areas": [
+   "search-consumer",
+   "safety-governance"
+  ],
+  "layers": [
+   "consumer"
+  ],
+  "entityIds": [
+   "ai-mode"
+  ],
+  "summary": [
+   {
+    "text": "Google says temporary threads are now available in AI Mode: they stay out of history and are not used for personalisation.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-bg-temp-threads"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   },
+   {
+    "text": "Press reports a global launch on desktop and mobile browsers in every language AI Mode supports.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-techcrunch-threads"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "How long Google retains temporary threads server-side was reported by one outlet only and is not recorded here."
+  ],
+  "importance": 2,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-bg-temp-threads",
+   "u-pr-techcrunch-threads"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-17-ai-studio-full-stack-android-apps",
+  "title": "Google AI Studio builds full-stack Android apps with Firebase backends",
+  "date": "2026-11-17",
+  "providerId": "google",
+  "types": [
+   "product-update"
+  ],
+  "areas": [
+   "developer-platforms"
+  ],
+  "layers": [
+   "platform"
+  ],
+  "entityIds": [
+   "google-ai-studio",
+   "firebase-ai-logic"
+  ],
+  "summary": [
+   {
+    "text": "Google says AI Studio can now build, test and ship full-stack Kotlin Android apps from a prompt, with Cloud Firestore, Firebase Authentication and Firebase AI Logic set up automatically and publishing to Google Play.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gdb-aistudio-android"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   },
+   {
+    "text": "Extracts of the documentation say projects are Kotlin and Jetpack Compose only, client-side only, and publish to the Play Console internal testing track.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gapi-aistudio-android-docs"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "medium"
+   }
+  ],
+  "beforeAfter": {
+   "before": "Android apps generated in AI Studio were limited to local session storage.",
+   "after": "Generated apps get a provisioned Firebase backend and sign-in."
+  },
+  "uncertainty": [
+   "Post and documentation were seen only as extracts; GitHub export status for Android projects is described inconsistently."
+  ],
+  "importance": 2,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-gdb-aistudio-android",
+   "u-gapi-aistudio-android-docs"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-18-gartner-mq-ai-application-development-platforms",
+  "title": "Google Cloud named a Leader in Gartner's 2026 Magic Quadrant for AI Application Development Platforms",
+  "date": "2026-11-18",
+  "providerId": "google",
+  "types": [
+   "benchmark",
+   "customer"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "platform",
+   "enterprise"
+  ],
+  "entityIds": [
+   "gemini-enterprise-agent-platform",
+   "gemini-enterprise",
+   "model-garden",
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud says Gartner named it a Leader in the 2026 Magic Quadrant for AI Application Development Platforms for the third time running, placed highest on Ability to Execute. The report is dated 3 Nov 2026.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-gartner-mq"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "high"
+   },
+   {
+    "text": "In the same post Google says nearly 500 Google Cloud customers each processed more than one trillion tokens in the last year, and that Model Garden offers over 200 models.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-gartner-mq"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "high"
+   }
+  ],
+  "competitive": [
+   {
+    "text": "Google claims to be the only hyperscale cloud offering the Google, Anthropic and OpenAI frontier model families on one enterprise platform.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-gartner-mq"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "The Gartner report itself was not read; placement is as described by Google. The site's feed dates the post 17 Nov, the page 18 Nov."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "u-gc-gartner-mq"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-17-drive-gemini-data-classification-ga",
+  "title": "Gemini-powered data classification in Google Drive reaches general availability",
+  "date": "2026-11-17",
+  "providerId": "google",
+  "types": [
+   "product-update",
+   "availability"
+  ],
+  "areas": [
+   "workspace",
+   "safety-governance"
+  ],
+  "layers": [
+   "enterprise"
+  ],
+  "entityIds": [
+   "gemini-in-workspace"
+  ],
+  "summary": [
+   {
+    "text": "Workspace Updates says Gemini-powered AI classification in Drive is generally available after an open beta, letting administrators deploy natural-language classification instructions at scale and test them first.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-ws-drive-classification"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   },
+   {
+    "text": "Gemini labels do not overwrite labels that users applied, accepted or changed, or labels set by data loss prevention rules.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-ws-drive-classification"
+    ],
+    "asOf": "2026-11-17",
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "The post was seen through feed and search extracts; the full list of eligible Workspace editions was not confirmed."
+  ],
+  "importance": 2,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-ws-drive-classification"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-18-gemini-notebook-interactive-sites",
+  "title": "Gemini Notebook can turn sources into interactive sites",
+  "date": "2026-11-18",
+  "providerId": "google",
+  "types": [
+   "product-update"
+  ],
+  "areas": [
+   "workspace",
+   "search-consumer"
+  ],
+  "layers": [
+   "enterprise",
+   "consumer"
+  ],
+  "entityIds": [
+   "gemini-notebook"
+  ],
+  "summary": [
+   {
+    "text": "Workspace Updates says Gemini Notebook can now turn a notebook's sources into an interactive site when a user asks it to 'make me a site', which can be opened in a new tab and shared.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-ws-notebook-sites"
+    ],
+    "asOf": "2026-11-18",
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "Seen only as the feed summary of the post; rollout pace, eligible editions and limits were not confirmed."
+  ],
+  "importance": 2,
+  "verification": "partially-verified",
+  "sourceIds": [
+   "u-ws-notebook-sites"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-20-cloud-storage-object-enrichments-preview",
+  "title": "Cloud Storage object enrichments enter preview: model-generated metadata stored with each object",
+  "date": "2026-11-20",
+  "providerId": "google",
+  "types": [
+   "product-launch",
+   "pricing"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents",
+   "infrastructure"
+  ],
+  "layers": [
+   "platform",
+   "infrastructure"
+  ],
+  "entityIds": [
+   "google-cloud"
+  ],
+  "summary": [
+   {
+    "text": "Google Cloud introduced object enrichments in preview: a managed Cloud Storage service that runs Google models over images and PDFs and writes the results into each object's context metadata.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-object-enrichments"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   },
+   {
+    "text": "Google says enriching 10 million images or PDFs costs $700 at published pricing, and claims 75% savings on image annotation against similar services from other clouds.",
+    "label": "provider-claim",
+    "sourceIds": [
+     "u-gc-object-enrichments"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   }
+  ],
+  "technical": [
+   {
+    "text": "Five first-party models cover object detection, face detection, image labelling, explicit-content detection and PDF classification; Gemini-based enrichment for summarisation, extraction and transcription is described as upcoming, by request.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-object-enrichments"
+    ],
+    "asOf": "2026-11-20",
+    "confidence": "high"
+   }
+  ],
+  "implications": [
+   {
+    "text": "Cheap pre-computed metadata lets agents filter storage without sending raw files to a model on every request, which lowers token spend for retrieval over large media estates.",
+    "label": "analyst-interpretation",
+    "sourceIds": [
+     "u-gc-object-enrichments"
+    ]
+   }
+  ],
+  "uncertainty": [
+   "The site's feed dates the post 19 Nov, the page 20 Nov. The pricing page behind the $700 figure was not read."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "u-gc-object-enrichments"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-19-okf-v0-3",
+  "title": "Open Knowledge Format v0.3 released and moved to a standalone GitHub organisation",
+  "date": "2026-11-19",
+  "providerId": "google",
+  "types": [
+   "open-source",
+   "product-update"
+  ],
+  "areas": [
+   "developer-platforms",
+   "enterprise-agents"
+  ],
+  "layers": [
+   "agents",
+   "ecosystem"
+  ],
+  "entityIds": [
+   "open-knowledge-format"
+  ],
+  "summary": [
+   {
+    "text": "Google released OKF v0.3 with formal conformance rules, trust tiers that track agent edits, self-describing bundles with licensing, and a versioning policy; existing bundles keep working.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-okf-v03"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "high"
+   },
+   {
+    "text": "OKF moves out of the Google Cloud Platform GitHub organisation into a standalone one, alongside community use-case guides and two agent skills for reading and writing bundles.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-okf-v03"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "high"
+   }
+  ],
+  "uncertainty": [
+   "The site's feed dates the post 18 Nov, the page 19 Nov. Adoption outside Google was not assessed."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "u-gc-okf-v03"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
+ },
+ {
+  "id": "an-2026-11-21-google-cloud-price-list-changes",
+  "title": "Google Cloud price lists change: Gemini 3.6 Flash leaves the promotion banner, Hydrogen joins CodeMender and AlphaEvolve",
+  "date": "2026-11-21",
+  "providerId": "google",
+  "types": [
+   "pricing",
+   "deprecation"
+  ],
+  "areas": [
+   "models",
+   "developer-platforms"
+  ],
+  "layers": [
+   "models",
+   "platform"
+  ],
+  "entityIds": [
+   "gemini-3-6-flash",
+   "gemini-4-hydrogen",
+   "codemender",
+   "alphaevolve",
+   "gemini-3-8-flash",
+   "agent-platform-tuning",
+   "deepseek-v4-1-flash",
+   "model-garden"
+  ],
+  "summary": [
+   {
+    "text": "Compared with the copy read on 15 Nov, the price list's introductory-pricing banner now names only Gemini 3.8 Flash and 3.7 Flash; Gemini 3.6 Flash has been dropped from it and from the CodeMender table, though its token prices are still listed.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "Gemini 4 Hydrogen now appears in the CodeMender table ($1.50 / $7.50) and the AlphaEvolve table ($3.00 / $15.00 agent price), and Gemini 3.8 Flash supervised fine-tuning is listed at $0.01 per 1,000 count of training tokens.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   },
+   {
+    "text": "The partner price list adds a DeepSeek-V4.1-Flash-1017 row at $0.30 input, $1.20 output and $0.006 cache hit per 1M tokens.",
+    "label": "verified-fact",
+    "sourceIds": [
+     "u-gc-partner-pricing"
+    ],
+    "asOf": "2026-11-21",
+    "confidence": "high"
+   }
+  ],
+  "technical": [
+   {
+    "text": "A third-party tracker of the release notes dates preview support for Gemini 4 Hydrogen in CodeMender to 19 Nov, with Gemini 3.8 Flash remaining the default.",
+    "label": "independent-measurement",
+    "sourceIds": [
+     "u-pr-releasebot-ap"
+    ],
+    "asOf": "2026-11-19",
+    "confidence": "medium"
+   }
+  ],
+  "uncertainty": [
+   "This entry records a comparison of two readings of the pages (15 and 21 Nov); the day each change was made is not stated. The site's monitor flagged the main price list as changed on 17, 19, 20 and 21 Nov.",
+   "Dropping Gemini 3.6 Flash from the banner is consistent with its scheduled 19 Nov retirement but is not a statement that it was retired."
+  ],
+  "importance": 2,
+  "verification": "verified",
+  "sourceIds": [
+   "u-gc-pricing",
+   "u-gc-partner-pricing",
+   "u-pr-releasebot-ap",
+   "u-pipeline-status"
+  ],
+  "firstSeenAt": "2026-11-21",
+  "lastCheckedAt": "2026-11-21"
  }
 ]

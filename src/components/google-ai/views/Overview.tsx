@@ -259,6 +259,9 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
   );
 }
 
+/** Round a chart coordinate: trigonometry can differ in the last digit between server and browser, which breaks hydration. */
+const px = (n: number) => Math.round(n * 100) / 100;
+
 /** AI Release Radar: angle = area, radius = age inside the window, size = editorial weight. */
 function Radar({ today, days }: { today: string; days: number }) {
   const [tip, setTip] = useState<{ x: number; y: number; a: Announcement } | null>(null);
@@ -276,7 +279,7 @@ function Radar({ today, days }: { today: string; days: number }) {
         const spread = ((k % 5) - 2) * 0.07;
         const ang = (i / AREAS.length) * Math.PI * 2 - Math.PI / 2 + spread;
         const rad = 22 + age * (R - 26);
-        out.push({ a, x: c + Math.cos(ang) * rad, y: c + Math.sin(ang) * rad, r: 2.5 + a.importance * 1.3 });
+        out.push({ a, x: px(c + Math.cos(ang) * rad), y: px(c + Math.sin(ang) * rad), r: 2.5 + a.importance * 1.3 });
       });
     });
     return out;
@@ -287,11 +290,11 @@ function Radar({ today, days }: { today: string; days: number }) {
         {[0.33, 0.66, 1].map((f) => <circle key={f} cx={c} cy={c} r={22 + f * (R - 26)} fill="none" className="grid" />)}
         {AREAS.map((area, i) => {
           const ang = (i / AREAS.length) * Math.PI * 2 - Math.PI / 2;
-          const lx = c + Math.cos(ang) * (R + 14);
-          const ly = c + Math.sin(ang) * (R + 14);
+          const lx = px(c + Math.cos(ang) * (R + 14));
+          const ly = px(c + Math.sin(ang) * (R + 14));
           return (
             <g key={area.id}>
-              <line x1={c} y1={c} x2={c + Math.cos(ang) * R} y2={c + Math.sin(ang) * R} className="grid" />
+              <line x1={c} y1={c} x2={px(c + Math.cos(ang) * R)} y2={px(c + Math.sin(ang) * R)} className="grid" />
               <text x={lx} y={ly} textAnchor={Math.abs(Math.cos(ang)) < 0.3 ? "middle" : Math.cos(ang) > 0 ? "start" : "end"} dominantBaseline="middle" className="lbl">{area.label}</text>
             </g>
           );

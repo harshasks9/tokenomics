@@ -2411,5 +2411,171 @@
   "sourceIds": [
    "a-pr-dma"
   ]
+ },
+ {
+  "id": "lc-u-gemini-4-neon-ga-20261118",
+  "entityId": "gemini-4-neon",
+  "type": "ga",
+  "date": "2026-11-18",
+  "detail": "Gemini 4 Neon generally available on Agent Platform as gemini-4-neon at $3 / $15 per million tokens; also reported on the Gemini API and in the Gemini app for paid plans.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gcd-ap-release-notes",
+   "u-gc-pricing",
+   "u-pr-9to5-neon"
+  ]
+ },
+ {
+  "id": "lc-u-gemini-4-neon-price-change-cache-write-20261118",
+  "entityId": "gemini-4-neon",
+  "type": "price-change",
+  "date": "2026-11-18",
+  "effectiveDate": "2027-01-12",
+  "detail": "Cache-write pricing ($3.75 per million tokens, global standard) takes effect 12 January 2027.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "lc-u-agent-platform-paygo-tiers-deferred-ga-20261116",
+  "entityId": "agent-platform-paygo-tiers",
+  "type": "ga",
+  "date": "2026-11-16",
+  "detail": "Deferred service tier generally available for the Interactions API, ADK and Deep Research: 50% off Standard PayGo for completed turns.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-whatsnew",
+   "u-gcd-ap-release-notes"
+  ]
+ },
+ {
+  "id": "lc-u-google-sovereign-cloud-gemini-dedicated-announced-20261117",
+  "entityId": "google-sovereign-cloud",
+  "type": "announced",
+  "date": "2026-11-17",
+  "detail": "Gemini models announced as coming to Google Cloud Dedicated; no date given.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-sovereign-ai"
+  ]
+ },
+ {
+  "id": "lc-u-genie-4-preview-20261118",
+  "entityId": "genie-4",
+  "type": "preview",
+  "date": "2026-11-18",
+  "detail": "Rolling out to eligible Google AI Ultra subscribers through a new Project Genie experience.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-bg-genie4",
+   "u-pr-tnw-genie4"
+  ]
+ },
+ {
+  "id": "lc-u-gemini-api-tool-retrieval-preview-20261119",
+  "entityId": "gemini-api",
+  "type": "preview",
+  "date": "2026-11-19",
+  "detail": "Tool Retrieval in preview, reported as available through the Interactions API on v1beta at no separate charge.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-bg-tool-retrieval",
+   "u-pr-toolretrieval"
+  ]
+ },
+ {
+  "id": "lc-u-gemini-app-mac-computer-use-20261119",
+  "entityId": "gemini-app",
+  "type": "updated",
+  "date": "2026-11-19",
+  "detail": "Computer use added to the Gemini app for Mac, reported as US English for Google AI Plus, Pro and Ultra subscribers.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-bg-mac-computer-use",
+   "u-pr-9to5-mac"
+  ]
+ },
+ {
+  "id": "lc-u-gemini-app-tasks-free-20261117",
+  "entityId": "gemini-app",
+  "type": "updated",
+  "date": "2026-11-17",
+  "detail": "Tasks in Gemini made free of charge in six countries.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-bg-tasks-free",
+   "u-pr-techrepublic-tasks"
+  ]
+ },
+ {
+  "id": "lc-u-gemini-in-workspace-drive-classification-ga-20261117",
+  "entityId": "gemini-in-workspace",
+  "type": "ga",
+  "date": "2026-11-17",
+  "detail": "Gemini-powered data classification in Google Drive generally available.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-ws-drive-classification"
+  ]
+ },
+ {
+  "id": "lc-u-codemender-hydrogen-preview-20261119",
+  "entityId": "codemender",
+  "type": "updated",
+  "date": "2026-11-19",
+  "detail": "Preview support for Gemini 4 Hydrogen in CodeMender per a third-party tracker of the release notes; the price list now shows CodeMender on Hydrogen at $1.50 / $7.50.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-pr-releasebot-ap",
+   "u-gc-pricing"
+  ]
+ },
+ {
+  "id": "lc-u-open-knowledge-format-v0-3-20261119",
+  "entityId": "open-knowledge-format",
+  "type": "updated",
+  "date": "2026-11-19",
+  "detail": "OKF v0.3 released; project moves to a standalone GitHub organisation.",
+  "label": "verified-fact",
+  "sourceIds": [
+   "u-gc-okf-v03"
+  ]
+ },
+ {
+  "id": "lc-u-gpt-6-2-astra-ga-20261117",
+  "entityId": "gpt-6-2-astra",
+  "type": "ga",
+  "date": "2026-11-17",
+  "detail": "Released across ChatGPT Work, Codex and the API, per OpenAI's feed summary; price reported at $8 / $40.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-oa-gpt62",
+   "u-pr-betanews-gpt62"
+  ]
+ },
+ {
+  "id": "lc-u-gpt-6-2-sol-ga-20261117",
+  "entityId": "gpt-6-2-sol",
+  "type": "ga",
+  "date": "2026-11-17",
+  "detail": "Released alongside GPT-6.2 Astra; price reported unchanged at $2 / $10.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-oa-gpt62",
+   "u-pr-betanews-gpt62"
+  ]
+ },
+ {
+  "id": "lc-u-qwen4-max-ga-20261116",
+  "entityId": "qwen4-max",
+  "type": "ga",
+  "date": "2026-11-16",
+  "detail": "General release with per-token pricing reported at $1.50 / $4.50 (international); the Token Plan preview is reported to end after 25 November.",
+  "label": "independent-measurement",
+  "sourceIds": [
+   "u-pr-technode-qwen4",
+   "u-pr-dt-qwen4"
+  ]
  }
 ]
