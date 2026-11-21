@@ -127,13 +127,11 @@ export default function Timeline() {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Timeline</span>
-        <h1 className="gai-h1">What happened when, and what the ecosystem looked like on any date</h1>
-        <p className="gai-lede">
-          Every dated record in the knowledge base on one time axis: curated milestones, verified developments, price changes and retirements. The time machine rebuilds Google&apos;s AI ecosystem as of a date you choose, using nothing dated later.
-        </p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>🕰️</div>
+        <h1 className="gai-h1">Timeline</h1>
+        <p className="gai-lede">Everything dated on one axis, and a time machine that shows the ecosystem as it stood on any past date.</p>
+      </header>
       <Seg value={tab} onChange={setTab} options={TABS} label="View" />
       {tab === "timeline" ? (
         <TimelineTab

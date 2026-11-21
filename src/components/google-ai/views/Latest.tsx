@@ -43,11 +43,11 @@ export default function Latest({ status }: { status: StatusPayload | null }) {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Latest</span>
-        <h1 className="gai-h1">Every development, clustered and classified</h1>
-        <p className="gai-lede">Several posts about the same thing become one canonical development. Each is labelled by kind, mapped to the products it touches, and separated into what is confirmed and what is interpretation.</p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>📰</div>
+        <h1 className="gai-h1">All developments</h1>
+        <p className="gai-lede">Every recorded development, newest first. Several posts about the same thing are merged into one entry.</p>
+      </header>
       <Seg value={feed} onChange={setFeed} options={FEEDS} label="Feed" />
 
       {feed === "verified" ? (

@@ -71,13 +71,11 @@ export default function Overview({ status }: { status: StatusPayload | null }) {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">Living intelligence system</span>
-        <h1 className="gai-h1">Understand everything Google is doing in AI — and why it matters.</h1>
-        <p className="gai-lede">
-          One connected, dated and sourced picture of Google&apos;s AI ecosystem: <b>what</b> changed, <b>how</b> it works and fits together, and <b>so what</b> for buyers, builders and competitors.
-        </p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>📊</div>
+        <h1 className="gai-h1">Briefing</h1>
+        <p className="gai-lede">The executive view: the top developments, where the activity is, and what is already scheduled.</p>
+      </header>
 
       <div className="gai-grid gai-g4 keep2">
         <div className="gai-card gai-stat"><span className="v">{last24.length}</span><span className="l">verified developments in the last 24 hours</span></div>

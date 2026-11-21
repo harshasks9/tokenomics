@@ -47,11 +47,11 @@ export default function Stack() {
 
   return (
     <>
-      <div className="gai-hero">
-        <span className="gai-kicker">AI Stack</span>
-        <h1 className="gai-h1">The full Google AI stack, connected</h1>
-        <p className="gai-lede">Eight layers from silicon to distribution. Pick any component to see what it depends on and what it powers, then open its dossier. The layers are a way of reading the ecosystem, not an org chart: a product is listed once, in its home layer, and its links to other layers are shown as relationships.</p>
-      </div>
+      <header className="gai-hero">
+        <div className="gai-page-ico" aria-hidden>🧱</div>
+        <h1 className="gai-h1">AI stack</h1>
+        <p className="gai-lede">Eight layers from silicon to distribution. Pick a component to see what it depends on and what it powers.</p>
+      </header>
       <Seg value={tab} onChange={setTab} options={TABS} label="View" />
 
       {tab === "stack" && (
