@@ -129,7 +129,11 @@ export const LIMITATIONS: { area: string; text: string }[] = [
   { area: "Enterprise guidance", text: "Workload guidance and the opportunity matrix are this site's analysis. Stack readiness is computed from recorded product stages, which can lag an announcement." },
   { area: "Analyst", text: "The analyst assembles answers from knowledge-base records. Without a configured model key it does not paraphrase or reason across facts; with one, a model rewords the retrieved facts and its output is discarded if its citations do not resolve." },
   { area: "Personalisation and alerts", text: "There are no accounts, saved watchlists or outbound alerts (email, chat). Alerts appear on the pipeline status panel only. Saved pricing scenarios live in the browser." },
-  { area: "Regional and language coverage", text: "Regional availability is recorded where a source states it, and is incomplete. Sources are English-language." },
+  { area: "Regions", text: "Choosing a sub-region filters news and case studies by tags the editors assigned and shows a short market brief. It does not change prices, and regional availability of products is recorded only where a source states it." },
+  { area: "Languages", text: "The navigation is translated by hand. Everything else is machine-translated on demand and can be wrong, especially for technical terms; product and model names are left in English. The English text is authoritative, and sources are English-language." },
+  { area: "Daily automatic notes", text: "Each day the monitoring job writes short notes on new official posts from the post's own title and excerpt. They are not reviewed, are shown as unreviewed beside a link to the source, and never enter the verified knowledge base. Verified content changes only when an editor updates the knowledge base." },
+  { area: "Case studies", text: "Results in case studies are the customer's or the vendor's own figures and are labelled as claims. Coverage is uneven: some sub-regions and segments have few public examples, and examples on other platforms rest more often on press reports than on primary documents." },
+  { area: "Quiz", text: "Quiz questions are written from knowledge-base records as of the date shown on each question. A fact can change after that date; the linked record is the current source of truth." },
 ];
 
 /** Enterprise workload guidance. Analyst interpretation throughout; the stack references canonical entities. */
