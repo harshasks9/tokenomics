@@ -597,6 +597,22 @@
   .pay-steps .s-card b { margin-top: 10px; font-size: clamp(2.4rem, 5.4vw, 4rem); }
   .pay-steps .s-card span:last-child { font-size: 1.05rem; color: var(--ink); font-weight: 560; }
 
+  #price h2 .line:last-child { color: var(--amber); }
+  #price .section-head .lede { color: var(--on-navy-soft); }
+  .ladder { max-width: 880px; margin: 0 auto; text-align: left; }
+  .ladder-unit { font-size: 13px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; color: var(--on-navy-soft); margin-bottom: 18px; }
+  .ladder-rows { display: grid; gap: 16px; }
+  .ladder-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 16px; align-items: center; }
+  .ladder-name { font-size: 15px; font-weight: 650; color: var(--on-navy-soft); }
+  .ladder-track { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .ladder-bar { flex: none; height: 28px; min-width: 4px; border-radius: 0 6px 6px 0; background: #C9D5E8; width: calc((100% - 130px) * var(--f, 0)); }
+  .ladder-row.list .ladder-bar { background: var(--chart-quota); }
+  .ladder-row.effective .ladder-bar { background: var(--amber); }
+  .ladder-val { font-size: 1.15rem; font-weight: 760; color: var(--white); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ladder-row.effective .ladder-name { color: var(--white); font-weight: 760; }
+  .ladder-row.effective .ladder-val { color: var(--amber); font-size: 1.5rem; }
+  .ladder-versus { margin: 40px auto 0; max-width: 34ch; text-align: center; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 720; line-height: 1.2; letter-spacing: -0.02em; color: var(--white); }
+
   /* ---- Mechanics: numbered, collapsed, document-like ---- */
   .mech-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-bottom: 40px; }
   .mech-head .lede { margin-top: 16px; }
@@ -760,6 +776,8 @@
     .hero-actions .btn { width: 100%; }
     .card, .step, .steps.four .step, .task-col, .panel { padding: 22px; }
     .t-line { grid-template-columns: 1fr; gap: 0; }
+    .ladder-row { grid-template-columns: 1fr; gap: 6px; }
+    .ladder-bar { width: calc((100% - 110px) * var(--f, 0)); }
     .banner { padding: 24px 22px; }
     .vs-card { padding: 26px 22px; }
     .s-card { padding: 24px 22px; }
@@ -875,6 +893,23 @@
         <ul class="dots" data-list="simple.offer.includes"></ul>
       </div>
       <p class="fine reveal" data-copy="simple.offer.fine"></p>
+    </div>
+  </section>
+
+  <section class="section on-navy statement" id="price" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-copy="simple.price.eyebrow"></p>
+        <h2 id="price-h" data-copy="simple.price.heading" data-lines></h2>
+        <p class="lede" data-copy="simple.price.sub"></p>
+      </div>
+      <figure class="ladder reveal">
+        <figcaption class="ladder-unit" data-copy="simple.price.unit"></figcaption>
+        <div class="ladder-rows" id="price-ladder" role="img"></div>
+      </figure>
+      <p class="ladder-versus reveal" data-copy="simple.price.versus"></p>
+      <p class="big-rest reveal" data-copy="simple.price.half"></p>
+      <p class="fine reveal" data-copy="simple.price.fine"></p>
     </div>
   </section>
 
@@ -1555,7 +1590,7 @@ benchmarks: [
           { kicker: "At the frontier", value: "{frontiercodeGemini}", label: "on FrontierCode 2.0",
             text: "Within three points of {claudeModel}, and first on the Artificial Analysis Coding Agent Index." },
           { kicker: "A fraction of the cost", value: "{priceVsFable}", label: "of {claudeModel}'s list price", highlight: true,
-            text: "{neonPrice} per million tokens, against {fablePrice}." },
+            text: "{neonPrice} per million tokens at list, against {fablePrice}. In this offer the effective price is {neonEffective}." },
           { kicker: "Higher quality code", value: "{cursorGemini}", label: "on CursorBench 4.1",
             text: "Against {cursorOpus} for {opusModel}, at {priceVsOpus} of its list price." }
         ],
@@ -1563,6 +1598,22 @@ benchmarks: [
         keepText: "Developers stay in Claude Code. {geminiModel} runs behind it through agy, and Claude models stay available.",
         closing: "Significantly lower your spend, with higher quality code.",
         fine: "Scores are from Google DeepMind's model card for {geminiModel} and from Artificial Analysis, {offerMonth}; the {claudeModel} score is Anthropic's own. Tests differ: {opusModel} is about a point ahead of {geminiModel} on FrontierCode 2.0 and Terminal-bench 4.1. The full table is in the mechanics."
+      },
+      price: {
+        eyebrow: "The price per token",
+        heading: "Advertised at {neonPrice}. You pay {neonEffective}.",
+        sub: "Every dollar buys {multipleDefault} its value in quota. So a {geminiModel} token costs {effectiveShare} of its list price when the pool is fully used.",
+        unit: "Per million tokens, input / output",
+        rows: {
+          fable: "{claudeModel}, list price",
+          opus: "{opusModel}, list price",
+          list: "{geminiModel}, list price",
+          effective: "{geminiModel}, in this offer"
+        },
+        versus: "That is {effVsOpus} of {opusModel}'s list price and {effVsFable} of {claudeModel}'s.",
+        half: "Use half the pool and the price is {neonHalf}: still below list.",
+        alt: "{fable} for {claudeModel} at list, {opus} for {opusModel} at list, {list} for {geminiModel} at list, and {effective} for {geminiModel} in this offer.",
+        fine: "The effective price is the year-one minimum spend divided by the quota it buys, applied to {geminiModel}'s list price. It rises if quota goes unused. Claude prices are list prices. {disclaimer}"
       },
       offer: {
         eyebrow: "The offer",
@@ -1691,6 +1742,7 @@ benchmarks: [
       quarterUnit: "a seat, a month",
       terms: [
         "{paySentence}.",
+        "At {multipleDefault} quota for every dollar, the effective price of {geminiModel} is {neonEffective} per million tokens, against {neonPrice} at list, when the pool is fully used. Unused quota raises it.",
         "The minimum spend is {minSpend} in year one, {minMonth} a month on average. At {avgSeatMonth} a seat a month, that lets you assign up to {minSeats} seats.",
         "Discounts apply to the seat price only. Included quota stays at full face value.",
         "Gemini 3.8 Flash draws quota at a {flashRate} promotional rate, so each quota dollar buys {flashMultiple} the compute.",
@@ -1747,6 +1799,7 @@ benchmarks: [
         "Sized to a year-one minimum spend of {spend}:",
         "- Assign up to {seats} seats of {edition}",
         "- {multiple} pooled Gemini quota: {quotaTotal} in year one, shared across the organisation, including access to the latest models",
+        "- An effective {geminiModel} price of {neonEffective} per million tokens when the pool is fully used, against {neonPrice} at list",
         "- {paySentence}",
         "- Unmetered everyday chat that does not draw on the quota (fair-use limits apply)",
         "- Usage beyond the pool is pay-as-you-go at {overage} below list, and only if you switch overages on",
@@ -1770,7 +1823,8 @@ benchmarks: [
       summaryHeading: "Summary",
       summary: "{company} keeps Claude Code and adds {edition}. Developers keep Claude Code as the conductor and hand high-volume execution to Google's Antigravity CLI, drawing on a pooled quota. Everyday chat is unmetered and sits outside the quota. Nothing gets taken away.",
       commercialsHeading: "Year-one commercials",
-      commercials: { spend: "Year-one minimum spend", seats: "Seats you can assign", quota: "Year-one pooled quota", multiple: "Quota per dollar", saving: "Saving against list" },
+      commercials: { spend: "Year-one minimum spend", seats: "Seats you can assign", quota: "Year-one pooled quota", multiple: "Quota per dollar", saving: "Saving against list", effective: "Effective {geminiModel} price, pool fully used" },
+      effectiveValue: "{neonEffective} per million tokens, against {neonPrice} at list",
       scheduleHeading: "Quarterly schedule",
       includesHeading: "What each seat includes",
       editionsHeading: "Editions",
@@ -1978,6 +2032,9 @@ function priceRatio() {
 
 const defaults = yearOne(DEFAULT_SPEND);
 const listPrice = (p) => usdShort(num((p || {}).input, 0)) + " / " + usdShort(num((p || {}).output, 0));
+/* What a dollar of quota really costs: spend divided by the quota it buys. One when there is no multiple. */
+const effectiveShare = (y) => (y && y.multiple ? 1 / y.multiple : 1);
+const scaledPrice = (p, share) => usdShort(num((p || {}).input, 0) * share) + " / " + usdShort(num((p || {}).output, 0) * share);
 /* The larger of the input and output price ratios, so the claim is never flattered. */
 const priceShare = (a, b) => Math.max(num((a || {}).input, 0) / (num((b || {}).input, 0) || 1), num((a || {}).output, 0) / (num((b || {}).output, 0) || 1));
 const fmtScore = (value, unit) => (typeof value !== "number" || !Number.isFinite(value) ? null
@@ -2046,6 +2103,11 @@ const TOKENS = {
   freeMonths: String((payGroups()[0] && payGroups()[0].share === 0 ? payGroups()[0].quarters : 0) * MONTHS_Q),
   paySentence: paySentence(),
   opusModel: CONFIG.models.opus || "",
+  neonEffective: scaledPrice(CONFIG.geminiListPrice, effectiveShare(defaults)),
+  neonHalf: scaledPrice(CONFIG.geminiListPrice, effectiveShare(defaults) * 2),
+  effectiveShare: pct(effectiveShare(defaults)),
+  effVsFable: pct(priceShare(CONFIG.geminiListPrice, CONFIG.claudeListPrice) * effectiveShare(defaults)),
+  effVsOpus: pct(priceShare(CONFIG.geminiListPrice, CONFIG.claudeOpusListPrice) * effectiveShare(defaults)),
   neonPrice: listPrice(CONFIG.geminiListPrice),
   fablePrice: listPrice(CONFIG.claudeListPrice),
   opusPrice: listPrice(CONFIG.claudeOpusListPrice),
@@ -2104,7 +2166,7 @@ function renderNav() {
 
 function renderHero() {
   const headline = $("hero-h");
-  const lines = t(C.hero.headline).match(/[^.]+\./g) || [t(C.hero.headline)];
+  const lines = t(C.hero.headline).match(/.+?\.(?=\s|$)/g) || [t(C.hero.headline)];
   headline.textContent = "";
   lines.forEach((line) => headline.appendChild(el("span", { class: "line", text: line.trim() + " " })));
 }
@@ -2113,7 +2175,7 @@ function renderHero() {
 /* Headings marked data-lines put each sentence on its own line. */
 function renderLines() {
   document.querySelectorAll("[data-lines]").forEach((node) => {
-    const parts = node.textContent.match(/[^.]+\./g);
+    const parts = node.textContent.match(/.+?\.(?=\s|$)/g);
     if (!parts || parts.length < 2) return;
     node.textContent = "";
     parts.forEach((line) => node.appendChild(el("span", { class: "line", text: line.trim() + " " })));
@@ -2138,6 +2200,26 @@ function renderSimple() {
       el("span", { text: payLabel(g, i, all.length) })
     ]));
   });
+
+  const P = C.simple.price, share = effectiveShare(defaults);
+  const prices = [
+    { key: "fable", p: CONFIG.claudeListPrice, text: TOKENS.fablePrice },
+    { key: "opus", p: CONFIG.claudeOpusListPrice, text: TOKENS.opusPrice },
+    { key: "list", p: CONFIG.geminiListPrice, text: TOKENS.neonPrice },
+    { key: "effective", p: { input: num((CONFIG.geminiListPrice || {}).input, 0) * share }, text: TOKENS.neonEffective }
+  ];
+  const top = Math.max(1e-9, ...prices.map((row) => num((row.p || {}).input, 0)));
+  const ladder = $("price-ladder"), spoken = {};
+  prices.forEach((row) => {
+    const bar = el("span", { class: "ladder-bar" });
+    bar.style.setProperty("--f", String(num((row.p || {}).input, 0) / top));
+    spoken[row.key] = row.text;
+    ladder.appendChild(el("div", { class: "ladder-row " + row.key }, [
+      el("span", { class: "ladder-name", text: t(P.rows[row.key]) }),
+      el("div", { class: "ladder-track" }, [bar, el("span", { class: "ladder-val", text: row.text })])
+    ]));
+  });
+  ladder.setAttribute("aria-label", t(P.alt, spoken));
 
   const neon = $("neon-cards");
   C.simple.neon.cards.forEach((card) => neon.appendChild(el("li", { class: "s-card" + (card.highlight ? " highlight" : "") }, [
@@ -2775,7 +2857,8 @@ function proposalBlocks() {
     { type: "heading", text: P.commercialsHeading },
     { type: "table", rows: [
       [P.commercials.spend, s.spend], [P.commercials.seats, s.seatsUpTo], [P.commercials.quota, s.quotaTotal],
-      [P.commercials.multiple, s.multiple], [P.commercials.saving, s.saving]
+      [P.commercials.multiple, s.multiple], [P.commercials.saving, s.saving],
+      [f(P.commercials.effective), fill(P.effectiveValue, Object.assign({}, tokens, { neonEffective: scaledPrice(CONFIG.geminiListPrice, effectiveShare(s.r)) }))]
     ] },
     { type: "small", text: C.disclaimer },
     { type: "heading", text: P.scheduleHeading },
