@@ -613,6 +613,33 @@
   .ladder-row.effective .ladder-val { color: var(--amber); font-size: 1.5rem; }
   .ladder-versus { margin: 40px auto 0; max-width: 34ch; text-align: center; font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 720; line-height: 1.2; letter-spacing: -0.02em; color: var(--white); }
 
+  .harness-label { text-align: center; font-size: 13px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .harness-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 14px 0 32px; }
+  .harness-tab {
+    border: 1px solid #B8C4D6; background: var(--white); color: var(--ink); border-radius: 999px; padding: 11px 22px;
+    font-size: 1rem; font-weight: 720; cursor: pointer; transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .harness-tab:hover { border-color: var(--blue); }
+  .harness-tab[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  .harness-flow .step.ours { background: var(--tint); border-color: #9CBDF2; }
+  .harness-flow .step:first-child { box-shadow: 0 8px 24px rgba(11,31,58,.08); }
+  .harness-span { display: grid; grid-template-columns: calc((100% - 120px) / 4) 1fr; gap: 40px; margin-top: 12px; }
+  .covered { border-top: 3px solid var(--blue); padding-top: 10px; text-align: center; font-size: 13px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .lanes-title { margin: 44px auto 12px; max-width: 880px; text-align: left; font-size: 13px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+  .lanes2 { display: grid; gap: 12px; max-width: 880px; margin: 0 auto; text-align: left; }
+  .lane2 { display: grid; grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr); gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; }
+  .lane2.agy { background: var(--tint); border-color: #9CBDF2; }
+  .lane2-from { font-weight: 650; color: var(--ink); }
+  .lane2-to { font-weight: 760; color: var(--ink); }
+  .lane2.agy .lane2-to { color: var(--blue); }
+  .lane2-arrow { position: relative; height: 2px; background: var(--muted); }
+  .lane2-arrow::after { content: ""; position: absolute; right: 0; top: 50%; width: 9px; height: 9px; border-top: 2px solid var(--muted); border-right: 2px solid var(--muted); transform: translateY(-50%) rotate(45deg); }
+  .lane2.agy .lane2-arrow, .lane2.agy .lane2-arrow::after { background-color: var(--blue); border-color: var(--blue); }
+  .lane2.agy .lane2-arrow::after { background: none; }
+  .harness .demo { margin-top: 44px; }
+  .harness-any { margin: 36px auto 0; max-width: 56ch; text-align: center; font-size: 1.15rem; color: var(--ink); }
+  .harness > .fine { text-align: center; margin: 14px auto 0; max-width: 70ch; }
+
   /* ---- Mechanics: numbered, collapsed, document-like ---- */
   .mech-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-bottom: 40px; }
   .mech-head .lede { margin-top: 16px; }
@@ -722,6 +749,8 @@
     .site-nav .btn { min-height: 46px; }
     .offer-grid { grid-template-columns: 1fr; gap: 40px; }
     .steps.four { grid-template-columns: 1fr; gap: 40px; }
+    .harness-span { grid-template-columns: 1fr; gap: 0; }
+    .harness-span span:first-child { display: none; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero::before { left: 20%; top: 30%; opacity: .7; }
     .orb { width: min(300px, 80%); }
@@ -776,6 +805,10 @@
     .hero-actions .btn { width: 100%; }
     .card, .step, .steps.four .step, .task-col, .panel { padding: 22px; }
     .t-line { grid-template-columns: 1fr; gap: 0; }
+    .lane2 { grid-template-columns: 1fr; gap: 8px; padding: 16px 18px; }
+    .lane2-arrow { width: 2px; height: 18px; margin-left: 8px; }
+    .lane2-arrow::after { right: auto; left: 50%; top: auto; bottom: 0; transform: translateX(-50%) rotate(135deg); }
+    .harness-tab { padding: 10px 16px; font-size: .95rem; }
     .ladder-row { grid-template-columns: 1fr; gap: 6px; }
     .ladder-bar { width: calc((100% - 110px) * var(--f, 0)); }
     .banner { padding: 24px 22px; }
@@ -917,10 +950,23 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow" data-copy="simple.how.eyebrow"></p>
-        <h2 id="how-h" data-copy="simple.how.heading"></h2>
+        <h2 id="how-h" data-copy="simple.how.heading" data-lines></h2>
+        <p class="lede" data-copy="simple.how.sub"></p>
       </div>
-      <ol class="chips reveal" id="s-chips"></ol>
-      <p class="chips-line reveal" data-copy="simple.how.line"></p>
+      <div class="harness reveal">
+        <p class="harness-label" id="harness-label" data-copy="simple.how.tabsLabel"></p>
+        <div class="harness-tabs" id="harness-tabs" role="group" aria-labelledby="harness-label"></div>
+        <ol class="steps four harness-flow" id="harness-flow"></ol>
+        <div class="harness-span" aria-hidden="true"><span></span><span class="covered" data-copy="simple.how.covered"></span></div>
+        <p class="lanes-title" data-copy="simple.how.lanesTitle"></p>
+        <div class="lanes2" id="harness-lanes"></div>
+        <figure class="demo">
+          <div class="terminal" id="harness-terminal"></div>
+          <figcaption class="fine" data-copy="simple.how.transcriptCaption"></figcaption>
+        </figure>
+        <p class="harness-any" data-copy="simple.how.any"></p>
+        <p class="fine" data-copy="simple.how.rule"></p>
+      </div>
     </div>
   </section>
 
@@ -1162,6 +1208,8 @@
           <div class="mech-body">
             <ol class="steps four" id="how-flow"></ol>
             <p class="fine" data-copy="how.note"></p>
+            <p data-copy="simple.how.any"></p>
+            <p class="fine" data-copy="simple.how.rule"></p>
             <figure class="demo">
               <div class="terminal" id="how-terminal"></div>
               <figcaption class="fine" data-copy="how.terminalCaption"></figcaption>
@@ -1637,9 +1685,37 @@ benchmarks: [
       },
       how: {
         eyebrow: "How it works",
-        heading: "Claude conducts. Gemini does the volume.",
-        chips: ["Claude Code", "agy", "{geminiModel}", "The shared pool"],
-        line: "Developers stay in Claude Code. Subtasks go to agy, run on first-party Gemini models, and draw on the pool."
+        heading: "Any harness. One entitlement.",
+        sub: "Work in the tool you already use. It hands subtasks to agy, and agy uses your Gemini Enterprise seat.",
+        tabsLabel: "Choose the tool you work in",
+        harnesses: [
+          { id: "claude", name: "Claude Code", handoff: "Runs agy -p as a sub-agent, a skill or an MCP tool", bill: "your Anthropic bill" },
+          { id: "cursor", name: "Cursor", handoff: "Runs agy -p from its agent terminal, or calls it as an MCP tool", bill: "your Cursor plan" },
+          { id: "copilot", name: "GitHub Copilot", handoff: "Runs agy -p from agent mode's terminal, or calls it as an MCP tool", bill: "your GitHub Copilot plan" }
+        ],
+        nodes: {
+          harness: { tag: "You work here", text: "{handoff}." },
+          agy: { tag: "Signed in once", title: "agy CLI", text: "Signed in with your business account, on your Gemini Enterprise seat." },
+          model: { tag: "Runs the subtask", title: "{geminiModel}", text: "A first-party Gemini model does the work and hands the result back to {harness}." },
+          pool: { tag: "Your entitlement", title: "Pooled Gemini quota", text: "The usage draws on the team's pool, not on a personal limit." }
+        },
+        covered: "Covered by your Gemini Enterprise seat",
+        lanesTitle: "Who pays for what",
+        lanes: {
+          own: { from: "{harness}'s own model usage", to: "Stays on {bill}" },
+          agy: { from: "Work handed to agy", to: "Drawn from your pooled Gemini quota" }
+        },
+        transcript: [
+          { kind: "user", text: "Raise test coverage on the billing module." },
+          { kind: "harness", text: "I will hand the test suite to Gemini." },
+          { kind: "tool", text: "agy -p \"Write unit tests for src/billing and run them\"" },
+          { kind: "result", text: "{geminiModel} writes and runs the tests, then returns a summary to {harness}." },
+          { kind: "result", text: "The usage is drawn from the pooled Gemini quota, through your business account." }
+        ],
+        transcriptLabels: { user: "You", tool: "Runs" },
+        transcriptCaption: "Illustrative session. Exact commands and output depend on your setup.",
+        any: "This works from Claude Code, Cursor or GitHub Copilot. Any harness that can run a terminal command or call an MCP tool can hand work to agy, and that work draws on the pooled quota.",
+        rule: "agy is called as a tool. Using Antigravity credentials as another tool's model endpoint is not supported."
       },
       compare: {
         eyebrow: "Before and after",
@@ -1905,6 +1981,7 @@ benchmarks: [
       heading: "Frequently asked questions",
       items: [
         { q: "Do we have to stop using Claude Code?", a: "No. Nothing is removed." },
+        { q: "Does this only work with Claude Code?", a: "No. Any harness that can run a terminal command or call an MCP tool, such as Cursor or GitHub Copilot, can hand work to agy. That work draws on the pooled quota." },
         { q: "Is there a minimum?", a: "Yes. {minSpend} in year one, which is {minMonth} a month on average. That lets you assign up to {minSeats} seats." },
         { q: "Does the Gemini quota have limits?", a: "Yes. It resets weekly, is pooled across your organisation, and everyday chat does not draw on it." },
         { q: "What does not draw on the pool?", a: "Partner and open-source models chosen inside agy, sign-ins outside your business account such as CI/CD pipelines, and Claude Code's own usage. Those are pay-as-you-go." },
@@ -2171,6 +2248,46 @@ function renderHero() {
   lines.forEach((line) => headline.appendChild(el("span", { class: "line", text: line.trim() + " " })));
 }
 
+/* Any harness, one entitlement: the same hand-off drawn for whichever tool is picked. */
+function buildHarness() {
+  const H = C.simple.how;
+  const tabs = $("harness-tabs"), flow = $("harness-flow"), lanes = $("harness-lanes"), term = $("harness-terminal");
+  const buttons = {};
+  const draw = (h) => {
+    const f = (str) => t(str, { harness: h.name, handoff: h.handoff, bill: h.bill });
+    flow.textContent = "";
+    ["harness", "agy", "model", "pool"].forEach((k, i) => {
+      const node = H.nodes[k];
+      flow.appendChild(el("li", { class: "step" + (i > 0 ? " ours" : "") }, [
+        el("span", { class: "step-label", text: f(node.tag) }),
+        el("h3", { text: k === "harness" ? h.name : f(node.title) }),
+        el("p", { text: f(node.text) })
+      ]));
+    });
+    lanes.textContent = "";
+    ["own", "agy"].forEach((k) => lanes.appendChild(el("div", { class: "lane2 " + k }, [
+      el("span", { class: "lane2-from", text: f(H.lanes[k].from) }),
+      el("span", { class: "lane2-arrow", "aria-hidden": "true" }),
+      el("span", { class: "lane2-to", text: f(H.lanes[k].to) })
+    ])));
+    term.textContent = "";
+    term.appendChild(el("div", { class: "terminal-bar", "aria-hidden": "true" }, [el("i"), el("i"), el("i")]));
+    term.appendChild(el("div", { class: "terminal-body" }, H.transcript.map((line) =>
+      el("div", { class: "t-line t-" + (line.kind === "harness" ? "claude" : line.kind) }, [
+        el("span", { class: "who", text: line.kind === "harness" ? h.name : (H.transcriptLabels[line.kind] || "") }),
+        el("span", { class: "txt", text: (line.kind === "result" ? "# " : "") + f(line.text) })
+      ]))));
+    Object.keys(buttons).forEach((id) => buttons[id].setAttribute("aria-pressed", String(id === h.id)));
+  };
+  H.harnesses.forEach((h) => {
+    const button = el("button", { type: "button", class: "harness-tab", "aria-pressed": "false", text: h.name });
+    button.addEventListener("click", () => draw(h));
+    buttons[h.id] = button;
+    tabs.appendChild(button);
+  });
+  if (H.harnesses.length) draw(H.harnesses[0]);
+}
+
 /* Any element with data-list="path.to.array" gets one <li> per string. */
 /* Headings marked data-lines put each sentence on its own line. */
 function renderLines() {
@@ -2229,8 +2346,6 @@ function renderSimple() {
     el("p", { text: t(card.text) })
   ])));
 
-  const chips = $("s-chips");
-  C.simple.how.chips.forEach((text) => chips.appendChild(el("li", { class: "chip-node", text: t(text) })));
 
   const toggle = $("mech-toggle");
   const items = Array.from(document.querySelectorAll("#mech-list > details"));
@@ -2874,6 +2989,8 @@ function proposalBlocks() {
     { type: "heading", text: P.howHeading },
     { type: "list", ordered: true, items: C.how.nodes.map((node) => f(node.title) + ": " + f(node.text)) },
     { type: "para", text: f(C.how.note) },
+    { type: "para", text: f(C.simple.how.any) },
+    { type: "para", text: f(C.simple.how.rule) },
     { type: "heading", text: P.setupHeading },
     { type: "list", ordered: true, items: C.how.setup.map(f) },
     { type: "heading", text: P.billingHeading },
@@ -3056,6 +3173,7 @@ function init() {
   renderLines();
   renderLists();
   renderSimple();
+  buildHarness();
   renderProblem();
   renderHow();
   renderTasks();
