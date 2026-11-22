@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         source: "/strategy",
         destination: "/strategy/index.html",
       },
+      {
+        source: "/gemini-with-claude",
+        destination: "/gemini-with-claude/index.html",
+      },
     ];
   },
 };
