@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gemini Enterprise go-to-market playbook</title>
+<style>
+  :root {
+    --navy: #0B1F3A; --blue: #1A62D6; --amber: #F9AB00; --grey: #F5F7FA; --white: #fff;
+    --ink: #0B1F3A; --body: #36455C; --muted: #5B6B82; --line: #DDE3EC; --tint: #EEF3FC; --tint-line: #D3E0F7;
+    --green: #137333; --green-bg: #E6F4EA; --red: #A50E0E; --red-bg: #FCE8E6; --soft: #B9C7DD;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: var(--font); color: var(--body); background: var(--white); font-size: 17px; line-height: 1.55; }
+  h1, h2, h3, p, ul, ol, figure, table { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { color: var(--blue); }
+  button { font: inherit; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .review { background: var(--amber); color: #2A1D00; font-size: 13px; font-weight: 700; text-align: center; padding: 7px 16px; }
+  header.top { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+  .top-row { display: flex; align-items: center; gap: 20px; min-height: 58px; }
+  .mark { font-weight: 760; color: var(--ink); font-size: 15px; white-space: nowrap; }
+  .mark span { color: var(--muted); font-weight: 560; }
+  nav.links { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  nav.links::-webkit-scrollbar { display: none; }
+  nav.links a { color: var(--body); text-decoration: none; font-size: 14px; font-weight: 620; padding: 8px 10px; border-radius: 8px; white-space: nowrap; }
+  nav.links a:hover { background: var(--grey); color: var(--ink); }
+
+  .section { padding: 88px 0; }
+  .grey { background: var(--grey); }
+  .on-navy { background: var(--navy); color: var(--soft); }
+  .on-navy h2, .on-navy h3 { color: var(--white); }
+  .eyebrow { font-size: 13px; font-weight: 760; letter-spacing: .11em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+  .on-navy .eyebrow { color: var(--amber); }
+  h1 { font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.02; letter-spacing: -0.035em; color: var(--white); font-weight: 780; }
+  h1 span { display: block; }
+  h1 span:last-child { color: var(--amber); }
+  h2 { font-size: clamp(1.9rem, 4.4vw, 3.1rem); line-height: 1.08; letter-spacing: -0.03em; color: var(--ink); font-weight: 760; max-width: 20ch; }
+  h3 { font-size: 1.15rem; line-height: 1.25; color: var(--ink); font-weight: 740; letter-spacing: -0.01em; }
+  .lede { margin-top: 18px; font-size: clamp(1.05rem, 1.9vw, 1.3rem); max-width: 60ch; }
+  .head { margin-bottom: 44px; }
+  .fine { margin-top: 26px; font-size: 13.5px; color: var(--muted); max-width: 90ch; }
+  .on-navy .fine { color: #93A5C2; }
+
+  .hero { padding: 96px 0 84px; }
+  .hero .lede { color: var(--soft); max-width: 54ch; }
+  .beats { margin-top: 52px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .beat { border: 1px solid rgba(255,255,255,.16); border-radius: 18px; padding: 24px; background: rgba(255,255,255,.04); }
+  .beat .n { font-size: 13px; font-weight: 760; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); }
+  .beat b { display: block; margin-top: 10px; color: var(--white); font-size: 1.45rem; line-height: 1.15; letter-spacing: -0.02em; }
+  .beat p { margin-top: 10px; font-size: 15.5px; }
+
+  .cards { display: grid; gap: 16px; }
+  .c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .card p { margin-top: 10px; font-size: 15.5px; }
+  .card .tag { display: inline-block; font-size: 12px; font-weight: 760; letter-spacing: .09em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .kv { margin-top: 14px; display: grid; gap: 10px; }
+  .kv div { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 12px; font-size: 15px; }
+  .kv dt, .kv .k { font-size: 12px; font-weight: 760; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+
+  .pitch { background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 26px; position: relative; }
+  .pitch blockquote { margin: 12px 0 0; font-size: 1.12rem; line-height: 1.5; color: var(--ink); }
+  .copy { margin-top: 16px; border: 1px solid var(--line); background: var(--white); color: var(--blue); font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; }
+  .copy:hover { background: var(--tint); }
+
+  .scroll { overflow-x: auto; position: relative; border: 1px solid var(--line); border-radius: 16px; background: var(--white); color: var(--body); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 620px; }
+  th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: var(--grey); font-weight: 760; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody th { color: var(--ink); font-weight: 680; }
+  td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.best { color: var(--ink); font-weight: 760; }
+  .sub { display: block; font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 3px; white-space: normal; }
+  .chip { display: inline-block; font-size: 12.5px; font-weight: 740; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+  .chip.lead { background: var(--green-bg); color: var(--green); }
+  .chip.level { background: var(--tint); color: var(--blue); }
+  .chip.trail { background: var(--red-bg); color: var(--red); }
+  .tally { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 20px; }
+  .tally div { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .tally b { display: block; font-size: clamp(2rem, 5vw, 3rem); line-height: 1; color: var(--ink); letter-spacing: -0.03em; }
+  .tally span { display: block; margin-top: 8px; font-size: 14.5px; }
+  .rule { margin-top: 20px; border-left: 4px solid var(--blue); background: var(--tint); padding: 16px 20px; border-radius: 0 12px 12px 0; color: var(--ink); font-weight: 620; }
+
+  .ladder { max-width: 860px; }
+  .ladder-row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 16px; align-items: center; margin-top: 14px; }
+  .ladder-name { font-size: 15px; font-weight: 640; }
+  .ladder-track { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .ladder-bar { flex: none; height: 26px; min-width: 4px; border-radius: 0 6px 6px 0; background: #C9D5E8; width: calc((100% - 130px) * var(--f, 0)); transition: width .2s; }
+  .ladder-row.list .ladder-bar { background: #6FA1F2; }
+  .ladder-row.eff .ladder-bar { background: var(--amber); }
+  .ladder-val { font-weight: 760; color: var(--white); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ladder-row.eff .ladder-name { color: var(--white); font-weight: 760; }
+  .ladder-row.eff .ladder-val { color: var(--amber); font-size: 1.35rem; }
+  .slider { margin-top: 36px; max-width: 860px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.16); border-radius: 16px; padding: 20px 22px; }
+  .slider label { display: flex; justify-content: space-between; gap: 16px; font-weight: 700; color: var(--white); font-size: 15px; }
+  .slider input { width: 100%; margin-top: 14px; accent-color: var(--amber); }
+  .slider p { margin-top: 10px; font-size: 14.5px; }
+  .on-navy .scroll { margin-top: 36px; border-color: rgba(255,255,255,.16); }
+
+  .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; counter-reset: step; }
+  .flow li { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 22px; counter-increment: step; }
+  .flow li::before { content: counter(step); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: var(--white); font-weight: 760; font-size: 14px; margin-bottom: 14px; }
+  .flow li::after { content: ""; position: absolute; right: -22px; top: 50%; width: 12px; height: 12px; border-top: 3px solid var(--blue); border-right: 3px solid var(--blue); transform: translateY(-50%) rotate(45deg); }
+  .flow li:last-child::after { display: none; }
+  .flow p { margin-top: 8px; font-size: 15px; }
+  .surfaces { margin: 28px 0 36px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .surfaces span { border: 1px solid var(--tint-line); background: var(--tint); color: var(--ink); font-weight: 680; font-size: 14.5px; padding: 8px 14px; border-radius: 999px; }
+
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .tabs button { border: 1px solid var(--line); background: var(--white); color: var(--body); font-weight: 700; font-size: 15px; padding: 10px 16px; border-radius: 999px; }
+  .tabs button[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: var(--white); }
+
+  .banner { background: var(--navy); color: var(--soft); border-radius: 22px; padding: 36px; }
+  .banner b { display: block; color: var(--white); font-size: clamp(1.7rem, 4.6vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; }
+  .banner > span { display: block; margin-top: 8px; color: var(--amber); font-size: clamp(1.15rem, 2.4vw, 1.6rem); font-weight: 720; }
+  .pay { margin-top: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .pay li { border: 1px solid var(--line); border-radius: 18px; padding: 22px; background: var(--white); }
+  .pay b { display: block; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; color: var(--ink); letter-spacing: -0.03em; }
+  .pay span { display: block; margin-top: 10px; font-size: 15px; }
+  .ticks { margin-top: 20px; display: grid; gap: 10px; }
+  .ticks li { padding-left: 22px; position: relative; font-size: 15.5px; }
+  .ticks li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+  .pending { display: inline-block; background: var(--amber); color: #2A1D00; font-size: 12px; font-weight: 760; letter-spacing: .07em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+  .block-title { margin: 56px 0 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+
+  .stages { display: grid; gap: 14px; counter-reset: stage; }
+  .stage { display: grid; grid-template-columns: 210px minmax(0, 1fr) minmax(0, 1fr); gap: 24px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; padding: 24px; counter-increment: stage; }
+  .stage h3::before { content: counter(stage) ". "; color: var(--blue); }
+  .stage .when { margin-top: 6px; font-size: 14px; color: var(--muted); }
+  .stage .k { display: block; margin-bottom: 6px; }
+  .stage ul { display: grid; gap: 6px; font-size: 15px; }
+  .stage p { font-size: 15px; }
+  .stage .exit { margin-top: 14px; }
+
+  .qs { display: grid; gap: 10px; counter-reset: q; }
+  .qs li { counter-increment: q; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px 14px 52px; position: relative; color: var(--ink); font-weight: 600; font-size: 15.5px; }
+  .qs li::before { content: counter(q); position: absolute; left: 18px; top: 14px; color: var(--blue); font-weight: 760; }
+  details { background: var(--white); border: 1px solid var(--line); border-radius: 14px; }
+  details + details { margin-top: 10px; }
+  summary { cursor: pointer; padding: 16px 20px; font-weight: 700; color: var(--ink); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--blue); font-weight: 760; }
+  details[open] summary::after { content: "\2212"; }
+  details p { padding: 0 20px 18px; font-size: 15.5px; }
+  .guard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .guard .card.do { border-top: 4px solid var(--green); }
+  .guard .card.dont { border-top: 4px solid var(--red); }
+
+  .plan .card h3 span { display: block; font-size: 12px; font-weight: 760; letter-spacing: .09em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .open { display: grid; gap: 10px; counter-reset: o; }
+  .open li { counter-increment: o; border: 1px solid rgba(255,255,255,.16); border-radius: 14px; padding: 16px 18px 16px 56px; position: relative; font-size: 15.5px; }
+  .open li::before { content: counter(o); position: absolute; left: 18px; top: 16px; color: var(--amber); font-weight: 760; }
+  .open b { color: var(--white); display: block; }
+  footer { padding: 36px 0 56px; font-size: 13.5px; color: var(--muted); }
+  footer p + p { margin-top: 8px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 1320px) { .mark span { display: none; } }
+  @media (max-width: 900px) {
+    .c3, .beats, .flow { grid-template-columns: 1fr; }
+    .flow { gap: 30px; }
+    .flow li::after { right: auto; left: 30px; top: auto; bottom: -22px; transform: rotate(135deg); }
+    .stage { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 700px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .section { padding: 60px 0; }
+    .hero { padding: 64px 0 56px; }
+    .c2, .guard, .pay, .tally { grid-template-columns: 1fr; }
+    .ladder-row { grid-template-columns: 1fr; gap: 6px; }
+    .ladder-bar { width: calc((100% - 110px) * var(--f, 0)); }
+    .banner { padding: 26px; }
+  }
+  @media print {
+    header.top { position: static; }
+    .copy, .slider input { display: none; }
+    .section { padding: 28px 0; }
+    .on-navy { background: var(--white); color: var(--body); }
+    .on-navy h1, .on-navy h2, .on-navy h3, .on-navy b, .ladder-val { color: var(--ink) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="review">Internal go-to-market playbook. Draft for review. Not for customers.</div>
+<header class="top">
+  <div class="wrap top-row">
+    <div class="mark">Google Cloud | Gemini Enterprise <span>&bull; Go-to-market playbook</span></div>
+    <nav class="links" aria-label="Sections">
+      <a href="#pitch">Pitch</a><a href="#proof">Proof</a><a href="#price">Price</a><a href="#access">Access</a>
+      <a href="#targets">Targets</a><a href="#offer">Offer</a><a href="#motion">Motion</a><a href="#talk">Talk track</a>
+      <a href="#launch">Launch</a><a href="#open">Open items</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section on-navy hero" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="eyebrow">The motion on one page &bull; <span data-v="asOf"></span></p>
+      <h1 id="h1"><span>Frontier coding models.</span><span>Through Gemini at work.</span><span>For less.</span></h1>
+      <p class="lede">Google is now at the frontier for a lot of coding work. This playbook sells one thing: access to the latest Gemini models through a <span data-v="product"></span> seat, used in <span data-v="harness"></span>, at a lower price per token than list.</p>
+      <ol class="beats" id="beats"></ol>
+    </div>
+  </section>
+
+  <section class="section grey" id="pitch" aria-labelledby="pitch-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">The pitch</p>
+        <h2 id="pitch-h">Three sentences. In this order.</h2>
+        <p class="lede">Quality first, then the way in, then the price. Leading with price makes Gemini sound like the budget choice. It is the frontier choice that also costs less.</p>
+      </div>
+      <div class="cards c2" id="pitches"></div>
+    </div>
+  </section>
+
+  <section class="section" id="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Proof</p>
+        <h2 id="proof-h">At the frontier. Test by test.</h2>
+        <p class="lede"><span data-v="featuredName"></span> against the two models customers most often compare it with. Show the whole table, including the rows Gemini does not win.</p>
+      </div>
+      <div class="tally" id="tally"></div>
+      <div class="scroll"><table id="bench"><caption class="sr">Benchmark scores by model</caption></table></div>
+      <p class="rule" data-c="proofRule"></p>
+      <div class="cards c2" id="lineup-facts" style="margin-top:20px"></div>
+      <p class="fine" data-c="proofFine"></p>
+    </div>
+  </section>
+
+  <section class="section on-navy" id="price" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Price</p>
+        <h2 id="price-h">Listed at <span data-v="neonList"></span>. <span data-v="neonEffective"></span> in a seat.</h2>
+        <p class="lede">In year one, every dollar of the minimum spend buys <span data-v="multiple"></span> its value in pooled quota. Quota is drawn at list price, so the price per token falls by the same factor when the pool is fully used.</p>
+      </div>
+      <figure class="ladder">
+        <figcaption class="eyebrow">Per million tokens, input / output</figcaption>
+        <div id="ladder" role="img"></div>
+      </figure>
+      <div class="slider">
+        <label for="use"><span>Share of the pool the customer uses</span><span id="use-out"></span></label>
+        <input id="use" type="range" min="30" max="100" step="5" value="100">
+        <p id="use-note"></p>
+      </div>
+      <div class="scroll"><table id="prices"><caption class="sr">List and effective prices by model</caption></table></div>
+      <p class="fine" data-c="priceFine"></p>
+    </div>
+  </section>
+
+  <section class="section grey" id="access" aria-labelledby="access-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Access</p>
+        <h2 id="access-h">One seat. One sign-in. The latest models.</h2>
+        <p class="lede">The seat is the product. <span data-v="harness"></span> is where developers use it. The pool is what they draw on.</p>
+      </div>
+      <ol class="flow" id="flow"></ol>
+      <div class="surfaces" id="surfaces" aria-label="Where developers work"></div>
+      <h3 style="margin-bottom:14px">Three ways to buy the same class of model</h3>
+      <div class="scroll"><table id="ways"><caption class="sr">Ways to buy compared</caption></table></div>
+      <p class="fine" data-c="accessFine"></p>
+    </div>
+  </section>
+
+  <section class="section" id="targets" aria-labelledby="targets-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Targets</p>
+        <h2 id="targets-h">Who to call first.</h2>
+        <p class="lede">Five kinds of account, in priority order. The first two feel the price of tokens today.</p>
+      </div>
+      <div class="cards c2" id="segments"></div>
+      <div class="block-title"><h3>Who is in the room</h3></div>
+      <div class="tabs" role="tablist" aria-label="Buyer" id="persona-tabs"></div>
+      <div class="card" role="tabpanel" id="persona-panel" tabindex="0"></div>
+    </div>
+  </section>
+
+  <section class="section grey" id="offer" aria-labelledby="offer-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">The offer</p>
+        <h2 id="offer-h"><span data-v="multiple"></span> pooled Gemini quota.</h2>
+        <p class="lede">Shared across up to <span data-v="seats"></span> seats, with access to the latest models. Year one, <span data-v="edition"></span>.</p>
+      </div>
+      <div class="banner"><b><span data-v="poolMonth"></span> a month in Gemini quota</b><span>for <span data-v="minMonth"></span> a month</span></div>
+      <ol class="pay" id="pay"></ol>
+      <ul class="ticks" id="offer-terms"></ul>
+      <div class="block-title"><h3>Startup bundles</h3><span class="pending">Proposed. Needs approval.</span></div>
+      <div class="scroll"><table id="startup"><caption class="sr">Startup bundles</caption></table></div>
+      <p class="fine" data-c="offerFine"></p>
+    </div>
+  </section>
+
+  <section class="section" id="motion" aria-labelledby="motion-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">The motion</p>
+        <h2 id="motion-h">Six stages. Each has an exit.</h2>
+        <p class="lede">A deal moves on only when the exit is met. The first three months of the agreement carry no payment, so the proof period sits inside the contract, not before it.</p>
+      </div>
+      <ol class="stages" id="stages"></ol>
+    </div>
+  </section>
+
+  <section class="section grey" id="talk" aria-labelledby="talk-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Talk track</p>
+        <h2 id="talk-h">Ask first. Then answer straight.</h2>
+      </div>
+      <h3 style="margin-bottom:14px">Discovery questions</h3>
+      <ol class="qs" id="questions"></ol>
+      <div class="block-title"><h3>Objections</h3><button class="copy" id="open-all" type="button" style="margin:0">Open all</button></div>
+      <div id="objections"></div>
+      <div class="block-title"><h3>What to say and what not to say</h3></div>
+      <div class="guard" id="guard"></div>
+    </div>
+  </section>
+
+  <section class="section" id="launch" aria-labelledby="launch-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Launch and measure</p>
+        <h2 id="launch-h">The first ninety days.</h2>
+        <p class="lede">Owners and targets are left blank on purpose. They are decisions, not facts.</p>
+      </div>
+      <div class="cards c3 plan" id="plan"></div>
+      <div class="block-title"><h3>What to measure</h3></div>
+      <div class="scroll"><table id="metrics"><caption class="sr">Measures</caption></table></div>
+      <div class="block-title"><h3>Assets that exist today</h3></div>
+      <div class="cards c3" id="assets"></div>
+    </div>
+  </section>
+
+  <section class="section on-navy" id="open" aria-labelledby="open-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Open items</p>
+        <h2 id="open-h">Settle these before a customer sees any of it.</h2>
+      </div>
+      <ol class="open" id="open-list"></ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-c="disclaimer"></p>
+    <p>Prices and model facts as of <span data-v="asOf"></span>. Check them again before use.</p>
+  </div>
+</footer>
+<noscript><p style="padding:24px">This page needs JavaScript to show its figures.</p></noscript>
+
+<script>
+/* Every number on the page comes from here. */
+const CONFIG = {
+  asOf: "22 November 2026",
+  product: "Gemini Enterprise",
+  harness: "Antigravity",
+  cli: "agy",
+  offer: {
+    edition: "Gemini Enterprise Standard",
+    netPerUserMonth: 20,                           // the full seat price in this offer
+    creditCoverageByQuarter: [1.0, 0.5, 0.5, 0],   // share of the seat price NOT paid in each quarter of year one
+    quotaPerUserMonth: 30,                         // pooled quota each seat adds, in dollars at list price
+    minSpendYear: 120000,
+    overageDiscountPct: 20,
+    alsoAvailableTermYears: 3
+  },
+  featured: "neon",
+  models: [
+    { id: "neon", name: "Gemini 4 Neon", role: "Frontier coding and knowledge work, fast end to end", price: { input: 3, output: 15 }, note: "Released 18 November 2026" },
+    { id: "carbon", name: "Gemini 4 Carbon", role: "Long-horizon agentic work and security", price: { input: 2, output: 10 }, next: { input: 4, output: 20, from: "1 December 2026" } },
+    { id: "argon", name: "Gemini 4 Argon", role: "Long multi-step engineering work", price: { input: 2, output: 10 }, next: { input: 4, output: 20, from: "1 December 2026" } },
+    { id: "hydrogen", name: "Gemini 4 Hydrogen", role: "Fast everyday work", price: { input: 1.5, output: 7.5 } },
+    { id: "flash", name: "Gemini 3.8 Flash", role: "High-volume, low-cost work", price: { input: 0.75, output: 3.75 }, next: { input: 1.5, output: 7.5, from: "1 January 2027" } }
+  ],
+  reference: [
+    { id: "opus", name: "Claude Opus 5.5", price: { input: 4, output: 20 } },
+    { id: "fable", name: "Claude Fable 5.2", price: { input: 8, output: 40 } }
+  ],
+  /* Scores for the featured model against the reference models. null means no published figure was found. */
+  benchmarks: [
+    { label: "CursorBench 4.1", what: "Real coding tasks in an editor", unit: "%", coding: true, gemini: 65.4, opus: 58.1, fable: null },
+    { label: "SWE-sweep", what: "Software engineering tasks, shared harness", unit: "%", coding: true, gemini: 12.8, opus: 3.6, fable: null,
+      note: "With each provider's own harness: 39.0% against 10.1%" },
+    { label: "Artificial Analysis Coding Agent Index", what: "Composite of coding agent tests", unit: "", coding: true, gemini: 58.6, opus: null, fable: null, verdict: "lead", verdictText: "Ranked first, as reported" },
+    { label: "Terminal-bench 4.1", what: "Multi-step tasks in a command line", unit: "%", coding: true, gemini: 65.2, opus: 65.8, fable: null },
+    { label: "FrontierCode 2.0", what: "Agentic coding", unit: "%", coding: true, gemini: 46.2, opus: 47.3, fable: 49.1 },
+    { label: "Artificial Analysis Intelligence Index v5", what: "Composite, not coding only", unit: "", coding: false, gemini: 61, opus: 59, fable: 65 }
+  ],
+  levelWithin: 1.0,   // a gap this small or smaller is called level
+  lineupFacts: [
+    { tag: "Gemini 4 Carbon", title: "First on LMArena Text", text: "Rated 1526 on 7 November 2026, ahead of every other model on the board. Marked preliminary." },
+    { tag: "Gemini 4 Carbon", title: "First on AutomationBench", text: "53.9% on end-to-end business workflow tasks, against 51.4% for Claude Fable 5.2, as published in Anthropic's own comparison table." }
+  ],
+  startup: {
+    seatFrom: 9.75, users: 5,
+    bundles: [
+      { name: "Starter", credits: 150, price: 48.75 },
+      { name: "Builder", credits: 300, price: 97.5 },
+      { name: "Scale", credits: 500, price: 162.5 }
+    ]
+  },
+  links: { customerPage: "/gemini-with-claude", hub: "/google-ai" },
+  disclaimer: "Illustrative economic model — final commercial terms subject to formal quote approval."
+};
+
+/* ---------- helpers ---------- */
+const $ = (id) => document.getElementById(id);
+function el(tag, attrs, kids) {
+  const n = document.createElement(tag);
+  Object.entries(attrs || {}).forEach(([k, v]) => { if (k === "text") n.textContent = v; else n.setAttribute(k, v); });
+  [].concat(kids || []).forEach((k) => { if (k != null) n.appendChild(typeof k === "string" ? document.createTextNode(k) : k); });
+  return n;
+}
+const whole = new Intl.NumberFormat("en-US");
+const usd = (n) => { const r = Math.round(n * 100) / 100; return "$" + (Number.isInteger(r) ? whole.format(r) : r.toFixed(2)); };
+const pair = (p, share) => usd(p.input * (share == null ? 1 : share)) + " / " + usd(p.output * (share == null ? 1 : share));
+const pct = (x) => { const r = Math.round(x * 1000) / 10; return (Number.isInteger(r) ? r : r.toFixed(1)) + "%"; };
+const times = (n) => { const r = Math.round(n * 10) / 10; return (Number.isInteger(r) ? r : r.toFixed(1)) + "x"; };
+const score = (v, unit) => (v == null ? "No figure found" : (Number.isInteger(v) ? String(v) : v.toFixed(1)) + unit);
+const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+const word = (n) => words[n] || String(n);
+
+/* ---------- the model ---------- */
+const O = CONFIG.offer, Q_MONTHS = 3;
+const paidShares = O.creditCoverageByQuarter.map((c) => 1 - c);
+const seatYearCost = O.netPerUserMonth * Q_MONTHS * paidShares.reduce((a, b) => a + b, 0);
+const seats = seatYearCost > 0 ? O.minSpendYear / seatYearCost : 0;
+const poolMonth = seats * O.quotaPerUserMonth;
+const poolYear = poolMonth * 12;
+const multiple = O.minSpendYear > 0 ? poolYear / O.minSpendYear : 1;
+const fullShare = 1 / multiple;                       // share of list price paid when the whole pool is used
+const featured = CONFIG.models.find((m) => m.id === CONFIG.featured);
+const ref = Object.fromEntries(CONFIG.reference.map((r) => [r.id, r]));
+const ratio = (a, b) => a.input / b.input;
+
+/* the payment schedule as runs of quarters at the same share */
+const payGroups = [];
+paidShares.forEach((s, i) => {
+  const last = payGroups[payGroups.length - 1];
+  if (last && last.share === s) last.quarters += 1; else payGroups.push({ share: s, quarters: 1, start: i });
+});
+payGroups.forEach((g) => {
+  g.from = g.start * Q_MONTHS + 1; g.to = (g.start + g.quarters) * Q_MONTHS;
+  g.perQuarter = seats * O.netPerUserMonth * Q_MONTHS * g.share;
+});
+const freeMonths = payGroups[0] && payGroups[0].share === 0 ? payGroups[0].quarters * Q_MONTHS : 0;
+
+/* benchmark verdicts for the featured model */
+CONFIG.benchmarks.forEach((b) => {
+  const others = [["opus", b.opus], ["fable", b.fable]].filter((x) => x[1] != null);
+  const best = others.reduce((a, x) => (a == null || x[1] > a[1] ? x : a), null);
+  b.top = Math.max(b.gemini, ...others.map((x) => x[1]));
+  if (b.verdict) return;
+  if (!best || b.gemini > best[1]) { b.verdict = "lead"; b.verdictText = best ? "Leads by " + score(b.gemini - best[1], "") + " points" : "Leads"; }
+  else if (best[1] - b.gemini <= CONFIG.levelWithin) { b.verdict = "level"; b.verdictText = "Level: " + score(best[1] - b.gemini, "") + " behind " + ref[best[0]].name; }
+  else { b.verdict = "trail"; b.verdictText = score(best[1] - b.gemini, "") + " behind " + ref[best[0]].name; }
+});
+const coding = CONFIG.benchmarks.filter((b) => b.coding);
+const count = (v) => coding.filter((b) => b.verdict === v).length;
+
+/* ---------- values used in the copy ---------- */
+const V = {
+  asOf: CONFIG.asOf, product: CONFIG.product, harness: CONFIG.harness, cli: CONFIG.cli, edition: O.edition,
+  featuredName: featured.name, opusName: ref.opus.name, fableName: ref.fable.name,
+  neonList: pair(featured.price), neonEffective: pair(featured.price, fullShare), neonHalf: pair(featured.price, fullShare * 2),
+  opusList: pair(ref.opus.price), fableList: pair(ref.fable.price),
+  neonVsOpus: pct(ratio(featured.price, ref.opus.price)), neonVsFable: pct(ratio(featured.price, ref.fable.price)),
+  effVsOpus: pct(ratio(featured.price, ref.opus.price) * fullShare), effVsFable: pct(ratio(featured.price, ref.fable.price) * fullShare),
+  multiple: times(multiple), breakEven: pct(fullShare), seats: whole.format(seats),
+  minMonth: usd(O.minSpendYear / 12), minYear: usd(O.minSpendYear), poolMonth: usd(poolMonth), poolYear: usd(poolYear),
+  seatPrice: usd(O.netPerUserMonth), seatQuota: usd(O.quotaPerUserMonth), freeMonths: word(freeMonths),
+  overage: O.overageDiscountPct + "%", overagePrice: pair(featured.price, 1 - O.overageDiscountPct / 100), termYears: word(O.alsoAvailableTermYears),
+  leadCount: word(count("lead")), levelCount: word(count("level")), trailCount: word(count("trail")), codingCount: word(coding.length),
+  startupFrom: usd(CONFIG.startup.seatFrom), startupUsers: word(CONFIG.startup.users),
+  modelList: CONFIG.models.map((m) => m.name).join(", ")
+};
+const fill = (s) => String(s).replace(/\{(\w+)\}/g, (m, k) => (k in V ? V[k] : m));
+const Cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/* ---------- the words ---------- */
+const COPY = {
+  disclaimer: CONFIG.disclaimer,
+  beats: [
+    { n: "Frontier", title: "Google is at the frontier of coding.", text: "{featuredName} leads on {leadCount} of the {codingCount} coding tests shown here and is level on {levelCount} more." },
+    { n: "Access", title: "The way in is a {product} seat.", text: "Developers sign in to {harness} with their work account and draw on one pool shared by the team." },
+    { n: "Price", title: "{neonEffective} per million tokens.", text: "Against {neonList} at list. Year one, when the pool is fully used." }
+  ],
+  pitches: [
+    { tag: "Fifteen seconds", text: "Google is now at the frontier for a lot of coding work. A {product} seat gives your developers the latest Gemini models in {harness}. In year one the price per token is about a third of list." },
+    { tag: "One minute", text: "{featuredName} leads on {leadCount} of the {codingCount} coding tests we track and is level on {levelCount} more, at {neonVsOpus} of the list price of {opusName} and {neonVsFable} of {fableName}. Your developers reach it by signing in to {harness} with their work account, in the desktop app, the command line or their editor. Every seat adds {seatQuota} a month to one shared pool, so heavy users draw on what light users leave. {minMonth} a month buys {poolMonth} of quota, with nothing to pay for the first {freeMonths} months. That makes the price of {featuredName} {neonEffective} per million tokens when the pool is fully used, against {neonList} at list." }
+  ],
+  proofRule: "Say “at the frontier for a lot of coding work”. Do not say “the best at coding”. The first is what the table shows.",
+  proofFine: "Coding scores are from Google DeepMind's model card for {featuredName} and from Artificial Analysis, as reported in November 2026. They were read second-hand for this draft. The {fableName} FrontierCode score is Anthropic's own run. “Level” means within one point. Read the originals before any figure goes in front of a customer.",
+  priceFine: "The effective price is the year-one minimum spend divided by the quota it buys, applied to each model's list price. It assumes quota is drawn at list price and that every model in the table can be drawn from the pool; both are on the open items list. Carbon, Argon and 3.8 Flash have published list price changes, shown in the table. Claude prices are list prices. {disclaimer}",
+  accessFine: "An administrator turns each model on in {product}. The pooled quota covers first-party Gemini models only. Work beyond the pool is billed pay-as-you-go at {overage} below list.",
+  offerFine: "The enterprise offer sets year-one pricing only. Startup bundle figures come from the proposed startup deck and are not approved. {disclaimer}",
+  flow: [
+    { title: "Buy seats", text: "{edition}. Each seat adds {seatQuota} a month to the pool." },
+    { title: "Turn the models on", text: "The administrator enables the latest models, {featuredName} included, and sets who can use them." },
+    { title: "Sign in to {harness}", text: "Developers use their work account. No personal keys and no separate bill." },
+    { title: "Draw on the pool", text: "Coding work is drawn from one shared quota. Everyday chat is unmetered." }
+  ],
+  surfaces: ["{harness} desktop app", "{cli} command line", "Editor extensions"],
+  ways: {
+    head: ["", "{product} seat", "Gemini pay-as-you-go", "Another vendor's model, by the token"],
+    rows: [
+      ["Price per million tokens", "{neonEffective} for {featuredName}, pool fully used", "{neonList} for {featuredName}", "{opusList} for {opusName}, {fableList} for {fableName}"],
+      ["How it is paid", "Per seat, with a year-one minimum", "Per token", "Per token"],
+      ["Where the limit sits", "One pool shared by the team", "The budget", "The budget, or each person on a plan"],
+      ["Who is covered", "Every seat: chat for all, {harness} for developers", "Whoever holds a key", "Whoever holds a key or a plan"],
+      ["Best for", "People: developers' own coding and everyday work", "Production applications", "Work that needs that specific model"]
+    ]
+  },
+  segments: [
+    { name: "Teams buying frontier coding models by the token", signal: "A model bill that grows every month. Finance has started asking what a token costs.", open: "You pay list price today. The same class of model costs about a third as much inside a seat.", play: "Lead with the price ladder. Size the pool to the coding work that can move." },
+    { name: "Gemini pay-as-you-go customers", signal: "Already building on Gemini. Developers use the same models for their own coding, on the same bill.", open: "Keep pay-as-you-go for production. Move your people to a pooled seat.", play: "Split the bill: applications stay on the API, developers move to seats." },
+    { name: "Google Workspace and Google Cloud accounts with no coding standard", signal: "Several coding tools in use, bought team by team. No central owner.", open: "One seat gives every employee Gemini at work and gives developers {harness} with the latest models.", play: "Sell the standard: one admin console, one pool, one bill." },
+    { name: "Engineering teams on per-person coding plans", signal: "Heavy users reach their limits while light users leave theirs unused.", open: "A pool is shared. Heavy weeks draw on quiet ones.", play: "Add, do not replace. The customer keeps its current tool and uses Gemini for the volume. The customer page covers this case." },
+    { name: "Startups", signal: "Five to fifty people, most of them building. Cash matters more than terms.", open: "A small bundle with a shared weekly pool, from {startupFrom} a paid seat a month.", play: "Startup bundles. Proposed, not yet approved. Do not quote." }
+  ],
+  personas: [
+    { name: "Engineering leader", cares: "Code quality, time to finish a task, and not disrupting the team.", say: "{featuredName} leads on {leadCount} of the {codingCount} coding tests we show and is level on {levelCount} more. Test it on your own repository in the first weeks.", show: "The proof table and the pilot plan.", avoid: "Claiming it wins every test. It does not, and they will check." },
+    { name: "Technology leader", cares: "One platform, admin control, and fewer vendors to manage.", say: "One seat covers Gemini at work for every employee and {harness} for developers. Your administrator decides which models are on.", show: "The access flow.", avoid: "Promises about models or features that are not released." },
+    { name: "Finance", cares: "A predictable bill, the unit price, and the size of the commitment.", say: "{minMonth} a month buys {poolMonth} of quota. Nothing is paid in the first {freeMonths} months. {featuredName} works out at {neonEffective} per million tokens against {neonList} at list.", show: "The price ladder with the pool-use slider, and the payment schedule.", avoid: "Quoting the effective price without the condition that the pool is fully used." },
+    { name: "Developer", cares: "Whether the model is good, whether it fits their tools, and whether they will hit a wall.", say: "Sign in to {harness} with your work account: the desktop app, the {cli} command line or your editor. You draw on a team pool, not a personal allowance.", show: "A live task in their own repository.", avoid: "Telling them to give up the tool they use today." }
+  ],
+  offerTerms: [
+    "Up to {seats} seats, each adding {seatQuota} a month to the pool: {poolYear} of quota in year one.",
+    "Minimum spend {minYear} in year one, {minMonth} a month on average.",
+    "The pool covers first-party Gemini models: {modelList}.",
+    "Unmetered everyday chat for every seat.",
+    "Work beyond the pool is pay-as-you-go at {overage} below list: {overagePrice} for {featuredName}.",
+    "{TermYears}-year agreements are also available."
+  ],
+  stages: [
+    { name: "Target", when: "Before the first call", do: ["Pick accounts from the first two segments", "Estimate developers and monthly model spend"], assets: "Segment signals on this page", exit: "A named account with a developer count and a spend estimate." },
+    { name: "Open", when: "First conversation", do: ["Give the three-sentence pitch", "Show the proof table, every row", "Ask the discovery questions"], assets: "Pitch, proof table", exit: "A sizing call booked with engineering and finance in the room." },
+    { name: "Size", when: "Sizing call", do: ["Agree how much coding work can move", "Size seats and the pool to it", "Show the effective price at their expected pool use"], assets: "Price ladder, calculator on the customer page", exit: "A proposal sent, with the customer's own numbers in it." },
+    { name: "Prove", when: "Months one to three, inside the agreement", do: ["Start with a first group of developers in {harness}", "Run agreed tasks on the customer's own repository", "Report pool use every two weeks"], assets: "Success criteria, written down before the start", exit: "The criteria the customer set are met." },
+    { name: "Govern", when: "Alongside the proof", do: ["Administrator enables models and sets access", "Set spend alerts for work beyond the pool", "Complete the security review"], assets: "Published {product} terms and admin guides", exit: "Security and administration sign off." },
+    { name: "Expand", when: "From month four", do: ["Roll out to every developer", "Bring in the rest of the company on chat", "Raise the longer agreement"], assets: "Pool-use report", exit: "The pool is in regular use and the next term is under discussion." }
+  ],
+  questions: [
+    "Which models do your developers use for coding today, and who pays for them?",
+    "What did model usage cost last month, and how fast is it growing?",
+    "Is that cost per person, per token, or both?",
+    "Who reaches a usage limit, and how often?",
+    "Who decides which models are allowed?",
+    "Which Google products are already in place: Workspace, Google Cloud, the Gemini API?",
+    "What would you need to see in the first ninety days to roll this out further?"
+  ],
+  objections: [
+    { q: "Is Gemini really as good at coding?", a: "It depends on the test. {featuredName} leads on {leadCount} of the {codingCount} coding tests shown here, is level on {levelCount} and behind on {trailCount}. The honest answer is to test it on their own repository in the first weeks, with criteria they set." },
+    { q: "We already have a coding tool.", a: "Keep it. {harness} runs alongside. This is about where the volume goes and what a token costs, not about replacing a tool. For teams on Claude Code there is a customer page that shows the hand-off." },
+    { q: "Why seats and not the API?", a: "Price and reach. The same model costs {neonEffective} in a fully used pool against {neonList} at list, and every seat also gives that person Gemini at work. The API remains the right choice for production applications." },
+    { q: "What if we do not use the whole pool?", a: "Then the effective price rises. At half use it is {neonHalf}, still below list. Below {breakEven} use, pay-as-you-go would have cost less. Size the pool to work the customer already does." },
+    { q: "Is there a limit?", a: "Yes. The pool is {poolMonth} a month at the minimum spend, shared by the team. Beyond it, work is billed pay-as-you-go at {overage} below list. Everyday chat is unmetered." },
+    { q: "Does the quota cover other vendors' models?", a: "No. It covers first-party Gemini models only." },
+    { q: "What happens after year one?", a: "This offer sets year-one pricing. {TermYears}-year agreements are also available. Do not quote a later price." },
+    { q: "What about our code and data?", a: "Point to the published {product} terms and the Google Cloud data commitments. Do not paraphrase them." }
+  ],
+  say: ["At the frontier for a lot of coding work.", "Leads on these tests, level on this one, behind on that one.", "{neonEffective} per million tokens in year one, when the pool is fully used.", "One pool, shared by the team.", "Unmetered everyday chat.", "Keep your current tools. Add Gemini."],
+  dontSay: ["The best at coding, or better on every test.", "Unlimited, no limits, or no weekly cap.", "That the quota covers third-party models.", "That the token price is discounted. The seat is; quota is drawn at list.", "Anything about another vendor's plans ending or changing.", "Anything about unreleased models, or a price after year one.", "Customer names, quotes or results that are not approved in writing."],
+  plan: [
+    { when: "Days 1 to 30", name: "Ready", items: ["Close the open items on this page", "Read the model card and replace second-hand figures", "Brief the first group of sellers", "Choose the first target accounts"] },
+    { when: "Days 31 to 60", name: "Open", items: ["Run the first sizing calls", "Send the first proposals", "Start the first proofs, criteria in writing", "Collect objections weekly and update this page"] },
+    { when: "Days 61 to 90", name: "Prove", items: ["Review pool use on the first proofs", "Record why deals were won or lost", "Decide on the startup bundles", "Decide whether partners carry the motion"] }
+  ],
+  metrics: {
+    head: ["Measure", "Definition", "Target", "Owner"],
+    rows: [
+      ["Sizing calls", "Calls held with engineering and finance both present"],
+      ["Proposals", "Proposals sent with the customer's own numbers"],
+      ["Proofs started", "Agreements signed with written success criteria"],
+      ["Active developers", "Developers who used {harness} in the past week, per account"],
+      ["Pool use", "Share of the monthly pool drawn, at day 30, 60 and 90"],
+      ["Effective price realised", "Spend divided by quota used, applied to list price"],
+      ["Win and loss reasons", "One recorded reason per closed deal"]
+    ],
+    blank: "To set"
+  },
+  assets: [
+    { tag: "Customer page", title: "Gemini for Claude teams", text: "The offer, the price per token, the hand-off from other harnesses, a calculator, and email and proposal generators.", href: CONFIG.links.customerPage },
+    { tag: "Reference", title: "Google AI hub", text: "Sourced model facts, prices and benchmark results behind this page.", href: CONFIG.links.hub },
+    { tag: "This page", title: "Pitch, proof and price", text: "The three-sentence pitch, the full proof table and the price ladder. Internal until the open items are closed." }
+  ],
+  openItems: [
+    { t: "Which models the pool covers", d: "Confirm in writing that {featuredName} and the rest of the Gemini 4 line can be drawn from {product} pooled quota. The whole motion depends on it." },
+    { t: "How quota is drawn", d: "Confirm that quota is consumed at list price. The effective price of {neonEffective} rests on that." },
+    { t: "Benchmark figures", d: "The coding scores were read second-hand. Read Google DeepMind's model card and Artificial Analysis directly and correct the table." },
+    { t: "The seat price", d: "This page uses {seatPrice} a seat a month so that {minMonth} a month gives exactly {multiple}. The startup deck starts at {startupFrom}. Agree one story." },
+    { t: "Startup bundles", d: "The deck's own questions are still open: whether extra entitlements are permitted, whether all paid-seat credits can be shared, and the weekly reset and expiry rules." },
+    { t: "Wording for chat", d: "The startup deck says unlimited chat. This page says unmetered. Agree which is allowed." },
+    { t: "Other harnesses", d: "The hand-off to {cli} from Cursor and GitHub Copilot is shown on the customer page but has not been tested." },
+    { t: "Dated prices", d: "Carbon and Argon list prices change on 1 December 2026 and 3.8 Flash on 1 January 2027. The price table needs a check on each date." },
+    { t: "Seller rules", d: "Eligibility, discount ceilings, approvals and partner funding are left off this page on purpose, because it would be publicly reachable once deployed. They belong in the internal offer brief." }
+  ]
+};
+V.TermYears = Cap(V.termYears);
+V.disclaimer = CONFIG.disclaimer;
+
+/* ---------- render ---------- */
+document.querySelectorAll("[data-v]").forEach((n) => { n.textContent = V[n.getAttribute("data-v")]; });
+document.querySelectorAll("[data-c]").forEach((n) => { n.textContent = fill(COPY[n.getAttribute("data-c")]); });
+const f = fill;
+const table = (id, head, rows, numFrom) => {
+  const t = $(id);
+  t.appendChild(el("thead", null, el("tr", null, head.map((h) => el("th", { scope: "col" }, h ? f(h) : el("span", { class: "sr", text: "Row" }))))));
+  t.appendChild(el("tbody", null, rows.map((r) => el("tr", null, r.map((c, i) =>
+    i === 0 ? el("th", { scope: "row" }, c) : el("td", numFrom != null && i >= numFrom ? { class: "num" } : null, c))))));
+};
+const withSub = (main, sub) => { const s = el("span", null, f(main)); if (sub) s.appendChild(el("span", { class: "sub", text: f(sub) })); return s; };
+
+COPY.beats.forEach((b) => $("beats").appendChild(el("li", { class: "beat" }, [el("span", { class: "n", text: b.n }), el("b", { text: f(b.title) }), el("p", { text: f(b.text) })])));
+
+COPY.pitches.forEach((p) => {
+  const quote = el("blockquote", { text: f(p.text) });
+  const btn = el("button", { class: "copy", type: "button", text: "Copy" });
+  btn.addEventListener("click", () => {
+    const done = () => { btn.textContent = "Copied"; setTimeout(() => { btn.textContent = "Copy"; }, 1600); };
+    const select = () => { const r = document.createRange(); r.selectNodeContents(quote); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; };
+    try { navigator.clipboard.writeText(quote.textContent).then(done, select); } catch (e) { select(); }
+  });
+  $("pitches").appendChild(el("div", { class: "pitch" }, [el("span", { class: "tag eyebrow", text: p.tag }), quote, btn]));
+});
+
+/* proof */
+[["lead", "leadCount", "coding tests where {featuredName} leads"], ["level", "levelCount", "where it is level, within a point"], ["trail", "trailCount", "where it is behind"]]
+  .forEach(([cls, key, label]) => $("tally").appendChild(el("div", null, [el("b", { text: String(count(cls)) }), el("span", { text: f(label) })])));
+table("bench", ["Test", "{featuredName}", "{opusName}", "{fableName}", "Reading"], CONFIG.benchmarks.map((b) => {
+  const cell = (v) => { const s = el("span", { text: score(v, b.unit) }); return s; };
+  return [withSub(b.label, b.note || b.what), cell(b.gemini), cell(b.opus), cell(b.fable), el("span", { class: "chip " + b.verdict, text: b.verdictText })];
+}), 1);
+document.querySelectorAll("#bench tbody tr").forEach((tr, i) => {
+  const b = CONFIG.benchmarks[i], vals = [b.gemini, b.opus, b.fable];
+  vals.forEach((v, j) => { if (v != null && v === b.top) tr.children[j + 1].classList.add("best"); });
+});
+CONFIG.lineupFacts.forEach((x) => $("lineup-facts").appendChild(el("div", { class: "card" }, [el("span", { class: "tag", text: x.tag }), el("h3", { text: x.title }), el("p", { text: x.text })])));
+
+/* price: ladder, slider, table */
+const ladderRows = [
+  { cls: "ref", name: ref.fable.name + ", list price", p: ref.fable.price },
+  { cls: "ref", name: ref.opus.name + ", list price", p: ref.opus.price },
+  { cls: "list", name: featured.name + ", list price", p: featured.price },
+  { cls: "eff", name: featured.name + ", in a seat", p: featured.price, eff: true }
+];
+const ladderTop = Math.max(...ladderRows.map((r) => r.p.input));
+ladderRows.forEach((r) => {
+  r.bar = el("span", { class: "ladder-bar" }); r.val = el("span", { class: "ladder-val" });
+  $("ladder").appendChild(el("div", { class: "ladder-row " + r.cls }, [el("span", { class: "ladder-name", text: r.name }), el("div", { class: "ladder-track" }, [r.bar, r.val])]));
+});
+const effCells = [];
+table("prices", ["Model", "Used for", "List price", "In a seat"], CONFIG.models.map((m) => {
+  const eff = el("span"); effCells.push({ m, eff });
+  return [m.name, m.role, withSub(pair(m.price), m.next ? "From " + m.next.from + ": " + pair(m.next) : m.note), eff];
+}), 2);
+function drawPrice() {
+  const use = Number($("use").value) / 100, share = fullShare / use;
+  ladderRows.forEach((r) => {
+    const s = r.eff ? share : 1;
+    r.bar.style.setProperty("--f", String((r.p.input * s) / ladderTop));
+    r.val.textContent = pair(r.p, s);
+  });
+  $("ladder").setAttribute("aria-label", ladderRows.map((r) => r.name + ": " + r.val.textContent).join(". "));
+  effCells.forEach(({ m, eff }) => {
+    eff.textContent = pair(m.price, share);
+    if (m.next) eff.appendChild(el("span", { class: "sub", text: "From " + m.next.from + ": " + pair(m.next, share) }));
+  });
+  $("use-out").textContent = pct(use);
+  const vsList = 1 - share;
+  $("use-note").textContent = Math.abs(vsList) < 0.005
+    ? "At this level the seat and pay-as-you-go cost the same."
+    : vsList > 0
+      ? f("{featuredName} costs " + pair(featured.price, share) + " per million tokens, " + pct(vsList) + " below list. Break-even with pay-as-you-go is {breakEven} pool use.")
+      : f("{featuredName} costs " + pair(featured.price, share) + " per million tokens, above its list price. Below {breakEven} pool use, pay-as-you-go costs less.");
+  $("use").setAttribute("aria-valuetext", pct(use) + " of the pool used: " + pair(featured.price, share));
+}
+$("use").addEventListener("input", drawPrice);
+drawPrice();
+
+/* access */
+COPY.flow.forEach((s) => $("flow").appendChild(el("li", null, [el("h3", { text: f(s.title) }), el("p", { text: f(s.text) })])));
+COPY.surfaces.forEach((s) => $("surfaces").appendChild(el("span", { text: f(s) })));
+table("ways", COPY.ways.head, COPY.ways.rows.map((r) => r.map(f)));
+
+/* targets */
+const kv = (pairs) => el("div", { class: "kv" }, pairs.map(([k, v]) => el("div", null, [el("span", { class: "k", text: k }), el("span", { text: f(v) })])));
+COPY.segments.forEach((s, i) => $("segments").appendChild(el("div", { class: "card" }, [
+  el("span", { class: "tag", text: "Priority " + (i + 1) }), el("h3", { text: s.name }), kv([["Signal", s.signal], ["Opener", s.open], ["Play", s.play]])
+])));
+const tabs = COPY.personas.map((p, i) => {
+  const b = el("button", { type: "button", role: "tab", id: "tab-" + i, "aria-controls": "persona-panel", text: p.name });
+  b.addEventListener("click", () => pick(i));
+  b.addEventListener("keydown", (e) => {
+    const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+    if (d) { const n = (i + d + tabs.length) % tabs.length; pick(n); tabs[n].focus(); }
+  });
+  $("persona-tabs").appendChild(b); return b;
+});
+function pick(i) {
+  const p = COPY.personas[i], panel = $("persona-panel");
+  tabs.forEach((b, j) => { b.setAttribute("aria-selected", String(i === j)); b.tabIndex = i === j ? 0 : -1; });
+  panel.setAttribute("aria-labelledby", "tab-" + i);
+  panel.replaceChildren(el("h3", { text: p.name }), kv([["Cares", p.cares], ["Say", p.say], ["Show", p.show], ["Avoid", p.avoid]]));
+}
+pick(0);
+
+/* offer */
+payGroups.forEach((g) => $("pay").appendChild(el("li", null, [
+  el("b", { text: g.share === 0 ? usd(0) : pct(g.share) }),
+  el("span", { text: "Months " + g.from + " to " + g.to + (g.share === 0 ? ": nothing to pay" : ": " + usd(g.perQuarter) + " a quarter") })
+])));
+COPY.offerTerms.forEach((x) => $("offer-terms").appendChild(el("li", { text: f(x) })));
+table("startup", ["Bundle for " + V.startupUsers + " users", "Weekly pooled credits, a month", "Price a month", "Credits per dollar"],
+  CONFIG.startup.bundles.map((b) => [b.name, usd(b.credits), usd(b.price), times(b.credits / b.price)]), 1);
+
+/* motion */
+COPY.stages.forEach((s) => $("stages").appendChild(el("li", { class: "stage" }, [
+  el("div", null, [el("h3", { text: s.name }), el("p", { class: "when", text: s.when })]),
+  el("div", null, [el("span", { class: "k kv-k", text: "Do" }), el("ul", { class: "ticks", style: "margin-top:0" }, s.do.map((d) => el("li", { text: f(d) })))]),
+  el("div", null, [el("span", { class: "k", text: "Use" }), el("p", { text: f(s.assets) }), el("p", { class: "exit" }, [el("span", { class: "k", text: "Exit" }), f(s.exit)])])
+])));
+document.querySelectorAll(".stage .k").forEach((k) => { k.style.cssText = "font-size:12px;font-weight:760;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)"; });
+
+/* talk track */
+COPY.questions.forEach((q) => $("questions").appendChild(el("li", { text: q })));
+COPY.objections.forEach((o) => $("objections").appendChild(el("details", null, [el("summary", { text: f(o.q) }), el("p", { text: f(o.a) })])));
+$("open-all").addEventListener("click", () => {
+  const all = [...document.querySelectorAll("#objections details")], open = all.some((d) => !d.open);
+  all.forEach((d) => { d.open = open; });
+  $("open-all").textContent = open ? "Close all" : "Open all";
+});
+[["do", "Say", COPY.say], ["dont", "Do not say", COPY.dontSay]].forEach(([cls, title, items]) =>
+  $("guard").appendChild(el("div", { class: "card " + cls }, [el("h3", { text: title }), el("ul", { class: "ticks" }, items.map((x) => el("li", { text: f(x) })))])));
+
+/* launch */
+COPY.plan.forEach((p) => $("plan").appendChild(el("div", { class: "card" }, [
+  el("h3", null, [el("span", { text: p.when }), p.name]), el("ul", { class: "ticks" }, p.items.map((x) => el("li", { text: x })))
+])));
+table("metrics", COPY.metrics.head, COPY.metrics.rows.map((r) => [f(r[0]), f(r[1]), COPY.metrics.blank, COPY.metrics.blank]));
+COPY.assets.forEach((a) => $("assets").appendChild(el("div", { class: "card" }, [
+  el("span", { class: "tag", text: a.tag }), el("h3", null, a.href ? el("a", { href: a.href, text: a.title }) : a.title), el("p", { text: a.text })
+])));
+COPY.openItems.forEach((o) => $("open-list").appendChild(el("li", null, [el("b", { text: o.t }), f(o.d)])));
+</script>
+</body>
+</html>
