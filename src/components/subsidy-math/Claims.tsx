@@ -27,7 +27,7 @@ export default function Claims() {
               <span className="sm-tag">{SAY_LABEL[c.say]}</span>
               <span className="sm-tag">Confidence: {c.confidence}</span>
             </div>
-            <q>{c.claim}</q>
+            {c.say === "avoid" ? <p style={{ margin: 0, fontWeight: 650, fontSize: 15.5, lineHeight: 1.4 }}>{c.claim}</p> : <q>{c.claim}</q>}
             <small><b>Evidence:</b> {c.evidence}</small>
             {c.calc && <small><b>Calculation:</b> {c.calc}</small>}
             {c.assumptions && <small><b>Rests on:</b> {c.assumptions}</small>}

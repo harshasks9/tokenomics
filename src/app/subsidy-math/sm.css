@@ -197,7 +197,7 @@ html:has(.sm-root), body:has(.sm-root) { background: #ffffff; color-scheme: ligh
 .sm-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 
 /* ---------- doc pages (memo, email, claims) */
-.sm-doc { font-size: 16.5px; line-height: 1.65; }
+.sm-doc { font-size: 16.5px; line-height: 1.65; min-width: 0; overflow-wrap: anywhere; }
 .sm-doc h2 { font-size: 28px; letter-spacing: -.02em; margin: 44px 0 12px; line-height: 1.15; scroll-margin-top: 60px; }
 .sm-doc h3 { font-size: 21px; margin: 32px 0 10px; scroll-margin-top: 60px; }
 .sm-doc h4 { font-size: 17px; margin: 24px 0 8px; }
@@ -209,7 +209,7 @@ html:has(.sm-root), body:has(.sm-root) { background: #ffffff; color-scheme: ligh
 .sm-doc hr { border: 0; border-top: 1px solid var(--rule); margin: 32px 0; }
 .sm-doc table { font-size: 13.5px; }
 .sm-doc td { min-width: 90px; }
-.sm-doclayout { display: grid; gap: 32px; padding: 32px 0 80px; }
+.sm-doclayout { display: grid; gap: 32px; padding: 32px 0 80px; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1000px) { .sm-doclayout { grid-template-columns: 230px minmax(0, 1fr); } }
 .sm-toc { font-size: 13.5px; display: none; }
 @media (min-width: 1000px) { .sm-toc { display: block; position: sticky; top: 64px; align-self: start; max-height: calc(100vh - 80px); overflow: auto; } }

@@ -34,7 +34,8 @@ export default function OtherSide() {
   const w = waterfall(p, { pct, ...BASE_FUNDING });
   // Agent routes: the provider books the sale. Principal (Azure OpenAI): the provider's revenue is the revenue share.
   const eq = equityUplift(stake, mult, newRev, w.providerRevenue);
-  const couponCost = pct * 100;
+  // Economic cost of the coupon to the cloud in year one (credits at the base cost per credit dollar).
+  const couponCost = waterfall(p, { pct: 0, ...BASE_FUNDING }).cloudContribution - w.cloudContribution;
   const meta = ROUTE_META[route];
 
   return (
@@ -76,7 +77,7 @@ export default function OtherSide() {
           <Slider label="Share of the subsidized usage that is new to the model maker" value={newRev} min={0} max={1} step={0.05} onChange={setNewRev} format={(v) => fmtPct(v)} help="If the customer would have used the model anyway — directly or on another cloud — the stake gains nothing." />
           <p className="sm-caveat" style={{ marginTop: 0 }}>{EQUITY_DEFAULTS[route].note}</p>
           <div className="sm-grid c2">
-            <div className="sm-stat"><span>Coupon cost per $100</span><div className="sm-big" style={{ fontSize: 34 }}>{fmt$(couponCost)}</div></div>
+            <div className="sm-stat"><span>What the coupon costs the cloud, per $100</span><div className="sm-big" style={{ fontSize: 34 }}>{fmt$(couponCost)}</div></div>
             <div className="sm-stat"><span>Stake value created</span><div className="sm-big" style={{ fontSize: 34 }}>{fmt$(eq)}</div></div>
           </div>
           <Explain>

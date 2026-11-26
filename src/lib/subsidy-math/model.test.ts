@@ -128,10 +128,10 @@ describe("parity with the Excel workbook's reference model", () => {
       if (!f) continue;
       const p = baseRoute(id);
       if (f.waterfall) {
-        const w = waterfall(p, { pct: BASE_INCENTIVE.pct, partnerFunded: BASE_INCENTIVE.partnerFunded, providerFunded: BASE_INCENTIVE.providerFunded });
+        const w = waterfall(p, { pct: BASE_INCENTIVE.pct, partnerFunded: BASE_INCENTIVE.partnerFunded, providerFunded: BASE_INCENTIVE.providerFunded, creditCost: BASE_INCENTIVE.creditCost });
         for (const [k, v] of Object.entries(f.waterfall)) if (k in w) close(v as number, (w as unknown as Record<string, number>)[k]);
       }
-      if (f.breakEven !== undefined) close(f.breakEven, breakEvenIncentive(p, { partnerFunded: BASE_INCENTIVE.partnerFunded, providerFunded: BASE_INCENTIVE.providerFunded }));
+      if (f.breakEven !== undefined) close(f.breakEven, breakEvenIncentive(p, { partnerFunded: BASE_INCENTIVE.partnerFunded, providerFunded: BASE_INCENTIVE.providerFunded, creditCost: BASE_INCENTIVE.creditCost }));
       if (f.lifetime) {
         for (const [type, byYears] of Object.entries(f.lifetime as Record<string, Record<string, { npv: number; payback: number | string | null }>>)) {
           for (const [years, v] of Object.entries(byYears)) {
