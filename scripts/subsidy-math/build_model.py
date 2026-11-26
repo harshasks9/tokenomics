@@ -103,6 +103,8 @@ KIND_COLOR = {"input": BLUE, "formula": BLACK, "link": GREEN, "label": BLACK, "m
 
 def put(ws, row, col, value, kind=None, fmt=None, bold=False, italic=False, fill=None, wrap=False,
         size=10, halign=None, color=None, valign=None):
+    if kind == "label" and isinstance(value, str) and value.startswith("="):
+        raise ValueError(f"text cell {ws.title}!{CL(col)}{row} would be stored as a formula: {value!r}")
     c = ws.cell(row=row, column=col, value=value)
     if kind is None:
         if isinstance(value, str) and value.startswith("="):
@@ -561,13 +563,13 @@ class Book:
         "cloudContribution": ("net revenue − distribution + compute margin", "net revenue − revenue share − infra − distribution"),
         "contributionPct": ("contribution ÷ net revenue (n/a if net revenue ≤ 0)", "contribution ÷ net revenue"),
         "modelDev": ("n/a — the provider bears model development", "model dev cost × pre-incentive net revenue (list − discount)"),
-        "cloudEconomic": ("= contribution", "contribution − model development"),
+        "cloudEconomic": ("same as contribution", "contribution − model development"),
         "providerContribution": ("provider revenue − channel fee − serving compute", "revenue share − provider-funded credits"),
         "m0": ("fee×(L−φdL) − (1−φ)dL − kL + σ(L−φdL)·h·i·m", "(1−ρ)(L−dL) − κ(u0/u)L − kL"),
         "slope": ("fee·π_provider + cloud share + σ·π_provider·h·i·m", "(1−ρ) × cloud share"),
         "breakEven": ("M0 ÷ (cost per $1 × 100); 0 if M0 ≤ 0", "M0 ÷ (cost per $1 × 100); 0 if M0 ≤ 0"),
-        "m0Economic": ("= M0", "M0 − model development"),
-        "slopeEconomic": ("= cost per $1", "= cost per $1 (model development is fixed per $ of pre-incentive revenue)"),
+        "m0Economic": ("same as M0", "M0 − model development"),
+        "slopeEconomic": ("same as cost per $1", "same as cost per $1 (model development is fixed per $ of pre-incentive revenue)"),
         "breakEvenEconomic": ("economic M0 ÷ (economic cost per $1 × 100)", "economic M0 ÷ (economic cost per $1 × 100)"),
         "check": ("closed form vs the waterfall above", "closed form vs the waterfall above"),
     }
@@ -599,8 +601,8 @@ class Book:
                 lab = f"{lab} ({M.INFRA_SPLIT[k]:.0%} of infra, INFRA_SPLIT)"
             put(ws, r, 2, lab, bold=spec[3])
             da, dp = self.WF_DESC.get(spec[0], ("", ""))
-            put(ws, r, 8, da, kind="muted")
-            put(ws, r, 9, dp, kind="muted")
+            put(ws, r, 8, da, kind="label", color=GREY)
+            put(ws, r, 9, dp, kind="label", color=GREY)
             r += 1
         R = self.wf_row
         for j, rid in enumerate(self.routes):
