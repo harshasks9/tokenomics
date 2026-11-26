@@ -1,0 +1,115 @@
+{
+  "_meta": {
+    "description": "Every adjustable assumption in the Subsidy Math model. Single source for the microsite engine (src/lib/subsidy-math/model.ts) and the Excel workbook (scripts/subsidy-math/build_model.py). basis: D = disclosed in a filing, R = reported estimate, A = our assumption, C = our calculation on disclosed figures.",
+    "version": "draft-0",
+    "asOf": "2026-11-26"
+  },
+  "routes": {
+    "bedrock-claude": {
+      "label": "AWS Bedrock × Anthropic Claude",
+      "short": "AWS · Claude",
+      "structure": "agent",
+      "params": {
+        "customerDiscount": { "base": 0.10, "low": 0.0, "high": 0.20, "basis": "A", "note": "Negotiated recurring discount off list (private pricing / commit discount)." },
+        "discountFundedByProvider": { "base": 0.5, "low": 0.0, "high": 1.0, "basis": "A", "note": "Share of the negotiated discount Anthropic funds (it sets price as principal)." },
+        "channelFee": { "base": 0.20, "low": 0.10, "high": 0.33, "basis": "C", "note": "Distribution fee AWS keeps. Bounded by Anthropic's S-1/A channel-partner fees vs CSP-marketplace revenue." },
+        "providerServingCost": { "base": 0.145, "low": 0.10, "high": 0.30, "basis": "C", "note": "Anthropic functional cost of revenue / revenue, 9M 2026 ($4,812M / $33,242M)." },
+        "hostedShare": { "base": 0.9, "low": 0.6, "high": 1.0, "basis": "A", "note": "Share of Bedrock-Claude serving compute that runs on AWS capacity." },
+        "incrementalComputeShare": { "base": 0.25, "low": 0.0, "high": 1.0, "basis": "A", "note": "Share of that compute that is incremental to Anthropic's take-or-pay AWS commitment." },
+        "computeMargin": { "base": 0.40, "low": 0.25, "high": 0.55, "basis": "A", "note": "AWS margin on AI compute sold to Anthropic." },
+        "revenueShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a for agent route." },
+        "infraCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a for agent route (provider bears serving cost)." },
+        "utilization": { "base": 0.6, "low": 0.4, "high": 0.8, "basis": "A", "note": "n/a for agent route." },
+        "baseUtilization": { "base": 0.6, "low": 0.6, "high": 0.6, "basis": "A", "note": "Reference utilization." },
+        "modelDevCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a — Anthropic bears model development." },
+        "distributionCost": { "base": 0.03, "low": 0.01, "high": 0.06, "basis": "A", "note": "Bedrock platform, support, account team." }
+      }
+    },
+    "azure-openai": {
+      "label": "Microsoft Azure × OpenAI",
+      "short": "Azure · OpenAI",
+      "structure": "principal",
+      "params": {
+        "customerDiscount": { "base": 0.10, "low": 0.0, "high": 0.20, "basis": "A", "note": "MACC / commit discount applied to Azure OpenAI." },
+        "discountFundedByProvider": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a — Microsoft is principal; OpenAI bears its revenue-share percentage of any discount." },
+        "channelFee": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "providerServingCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "hostedShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "incrementalComputeShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "computeMargin": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "revenueShare": { "base": 0.20, "low": 0.15, "high": 0.25, "basis": "R", "note": "Reported revenue share Microsoft pays OpenAI on Azure OpenAI revenue." },
+        "infraCost": { "base": 0.25, "low": 0.12, "high": 0.45, "basis": "A", "note": "Serving infrastructure (GPU depreciation, power, network/DC) per $ of list." },
+        "utilization": { "base": 0.6, "low": 0.4, "high": 0.8, "basis": "A", "note": "Achieved fleet utilization." },
+        "baseUtilization": { "base": 0.6, "low": 0.6, "high": 0.6, "basis": "A", "note": "Reference utilization embedded in infraCost." },
+        "modelDevCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "OpenAI funds training; Microsoft's share of OpenAI losses is shown separately as strategic." },
+        "distributionCost": { "base": 0.03, "low": 0.01, "high": 0.06, "basis": "A", "note": "Foundry platform, support, account team." }
+      }
+    },
+    "vertex-gemini": {
+      "label": "Google Vertex AI × Gemini",
+      "short": "Vertex · Gemini",
+      "structure": "principal",
+      "params": {
+        "customerDiscount": { "base": 0.10, "low": 0.0, "high": 0.20, "basis": "A", "note": "Commit discount." },
+        "discountFundedByProvider": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "channelFee": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "providerServingCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "hostedShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "incrementalComputeShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "computeMargin": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "revenueShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "First-party model: no royalty." },
+        "infraCost": { "base": 0.20, "low": 0.10, "high": 0.40, "basis": "A", "note": "TPU serving cost per $ of list." },
+        "utilization": { "base": 0.6, "low": 0.4, "high": 0.8, "basis": "A", "note": "Achieved fleet utilization." },
+        "baseUtilization": { "base": 0.6, "low": 0.6, "high": 0.6, "basis": "A", "note": "Reference utilization." },
+        "modelDevCost": { "base": 0.30, "low": 0.15, "high": 0.60, "basis": "A", "note": "Gemini training and research amortized per $ of revenue (economic view)." },
+        "distributionCost": { "base": 0.03, "low": 0.01, "high": 0.06, "basis": "A", "note": "Vertex platform, support, account team." }
+      }
+    },
+    "vertex-claude": {
+      "label": "Google Vertex AI × Anthropic Claude (control)",
+      "short": "Vertex · Claude",
+      "structure": "agent",
+      "params": {
+        "customerDiscount": { "base": 0.10, "low": 0.0, "high": 0.20, "basis": "A", "note": "Negotiated recurring discount off list." },
+        "discountFundedByProvider": { "base": 0.5, "low": 0.0, "high": 1.0, "basis": "A", "note": "Share funded by Anthropic." },
+        "channelFee": { "base": 0.20, "low": 0.10, "high": 0.33, "basis": "C", "note": "Same S-1/A bound as AWS; not split by CSP." },
+        "providerServingCost": { "base": 0.145, "low": 0.10, "high": 0.30, "basis": "C", "note": "Anthropic functional cost of revenue / revenue, 9M 2026." },
+        "hostedShare": { "base": 0.9, "low": 0.6, "high": 1.0, "basis": "A", "note": "Share served on Google TPU capacity." },
+        "incrementalComputeShare": { "base": 0.25, "low": 0.0, "high": 1.0, "basis": "A", "note": "Incremental to Anthropic's Google Cloud take-or-pay commitment." },
+        "computeMargin": { "base": 0.40, "low": 0.25, "high": 0.55, "basis": "A", "note": "Google margin on TPU compute sold to Anthropic." },
+        "revenueShare": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "infraCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "utilization": { "base": 0.6, "low": 0.4, "high": 0.8, "basis": "A", "note": "n/a" },
+        "baseUtilization": { "base": 0.6, "low": 0.6, "high": 0.6, "basis": "A", "note": "n/a" },
+        "modelDevCost": { "base": 0, "low": 0, "high": 0, "basis": "A", "note": "n/a" },
+        "distributionCost": { "base": 0.03, "low": 0.01, "high": 0.06, "basis": "A", "note": "Vertex platform, support, account team." }
+      }
+    }
+  },
+  "incentive": {
+    "pct": { "base": 0.35, "low": 0.0, "high": 0.5, "basis": "R", "note": "Field observation (unverified): ~35% AWS incentive on Anthropic workloads." },
+    "partnerFunded": { "base": 0.0, "low": 0.0, "high": 0.5, "basis": "A", "note": "Share of the incentive funded by an SI/reseller partner." },
+    "providerFunded": { "base": 0.0, "low": 0.0, "high": 0.5, "basis": "A", "note": "Share funded by the model provider." }
+  },
+  "lifetime": {
+    "years": { "base": 5, "low": 1, "high": 5, "basis": "A", "note": "Customer lifetime modelled." },
+    "growth": { "base": 0.30, "low": 0.0, "high": 0.8, "basis": "A", "note": "Annual growth in list-price AI spend." },
+    "retention": { "base": 0.90, "low": 0.7, "high": 0.98, "basis": "A", "note": "Probability the workload stays each year." },
+    "priceDeflation": { "base": 0.30, "low": 0.1, "high": 0.6, "basis": "R", "note": "Annual list-price decline per unit of capability." },
+    "efficiencyGain": { "base": 0.35, "low": 0.1, "high": 0.6, "basis": "R", "note": "Annual decline in serving cost per unit." },
+    "channelFeeDrift": { "base": -0.01, "low": -0.04, "high": 0.0, "basis": "A", "note": "Annual change in channel fee (points)." },
+    "adjacencyAttach": { "base": 0.5, "low": 0.0, "high": 1.5, "basis": "A", "note": "Non-AI cloud revenue per $1 of AI spend." },
+    "adjacencyIncremental": { "base": 0.5, "low": 0.2, "high": 1.0, "basis": "A", "note": "Share of adjacent revenue that is genuinely incremental." },
+    "adjacencyMargin": { "base": 0.60, "low": 0.45, "high": 0.70, "basis": "A", "note": "Gross margin on adjacent cloud services." },
+    "commitAdjacencyUplift": { "base": 0.5, "low": 0.0, "high": 1.5, "basis": "A", "note": "Committed adjacent revenue per $1 of AI spend bought by a commit-conditional credit." },
+    "commitYears": { "base": 3, "low": 1, "high": 5, "basis": "A", "note": "Commit term (retention = 100% inside it)." },
+    "baselineShare": { "base": 0.0, "low": 0.0, "high": 0.8, "basis": "A", "note": "Pre-existing spend excluded from consumption credits (0 = net-new)." },
+    "discountRate": { "base": 0.10, "low": 0.08, "high": 0.12, "basis": "A", "note": "Discount rate for NPV." },
+    "includeAdjacency": { "base": 0, "low": 0, "high": 1, "basis": "A", "note": "1 = include adjacent non-AI gross profit." }
+  },
+  "equity": {
+    "stake": { "base": 0.12, "low": 0.08, "high": 0.15, "basis": "D", "note": "Hyperscaler economic stake in the model provider." },
+    "revenueMultiple": { "base": 15, "low": 8, "high": 25, "basis": "A", "note": "Provider equity value per $1 of annual revenue." },
+    "incrementalToProvider": { "base": 0.25, "low": 0.0, "high": 1.0, "basis": "A", "note": "Share of subsidized consumption that is new revenue for the provider (vs shifted from its direct channel or another cloud)." }
+  }
+}
