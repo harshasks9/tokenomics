@@ -1,0 +1,559 @@
+{
+ "_meta": {
+  "quarters": [
+   "Q3 2024",
+   "Q4 2024",
+   "Q1 2025",
+   "Q2 2025",
+   "Q3 2025",
+   "Q4 2025",
+   "Q1 2026",
+   "Q2 2026",
+   "Q3 2026"
+  ],
+  "asOf": "2026-11-26",
+  "note": "Calendar quarters. Microsoft fiscal quarters mapped to calendar (FY27 Q1 = Q3 2026)."
+ },
+ "series": [
+  {
+   "company": "AWS",
+   "metric": "Segment revenue",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 27452,
+    "Q4 2024": 28786,
+    "Q1 2025": 29267,
+    "Q2 2025": 30873,
+    "Q3 2025": 33006,
+    "Q4 2025": 35579,
+    "Q1 2026": 37587,
+    "Q2 2026": 42232,
+    "Q3 2026": 45984
+   },
+   "source": "Amazon 8-K Ex-99.1 segment tables (recast where restated)",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "AWS",
+   "metric": "Segment operating income",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 10447,
+    "Q4 2024": 10632,
+    "Q1 2025": 11547,
+    "Q2 2025": 10160,
+    "Q3 2025": 11434,
+    "Q4 2025": 12465,
+    "Q1 2026": 14161,
+    "Q2 2026": 16621,
+    "Q3 2026": 17773
+   },
+   "source": "Amazon 8-K Ex-99.1",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": "Q2 2026 includes a $551M energy-derivative gain."
+  },
+  {
+   "company": "AWS",
+   "metric": "Segment operating margin",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 38.1,
+    "Q4 2024": 36.9,
+    "Q1 2025": 39.5,
+    "Q2 2025": 32.9,
+    "Q3 2025": 34.6,
+    "Q4 2025": 35.0,
+    "Q1 2026": 37.7,
+    "Q2 2026": 39.4,
+    "Q3 2026": 38.7
+   },
+   "source": "Calculated from Ex-99.1",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "C",
+   "note": ""
+  },
+  {
+   "company": "AWS",
+   "metric": "Segment depreciation & amortization",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 3541,
+    "Q4 2024": 3862,
+    "Q1 2025": 4390,
+    "Q2 2025": 4844,
+    "Q3 2025": 5648,
+    "Q4 2025": 6568,
+    "Q1 2026": 7277,
+    "Q2 2026": 8076,
+    "Q3 2026": 9230
+   },
+   "source": "Amazon 10-Q Note 8 / 10-K Note 10 (Q4 = FY less 9M)",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "AWS",
+   "metric": "Segment property & equipment additions",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 14341,
+    "Q4 2024": 18244,
+    "Q1 2025": 20464,
+    "Q2 2025": 16043,
+    "Q3 2025": 28301,
+    "Q4 2025": 31688,
+    "Q1 2026": 41516,
+    "Q2 2026": 48604,
+    "Q3 2026": 57116
+   },
+   "source": "Amazon 10-Q Note 8 / 10-K Note 10",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Amazon",
+   "metric": "Net cash capex",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 21278,
+    "Q4 2024": 26052,
+    "Q1 2025": 24255,
+    "Q2 2025": 31368,
+    "Q3 2025": 34228,
+    "Q4 2025": 38469,
+    "Q1 2026": 43234,
+    "Q2 2026": 53076,
+    "Q3 2026": 75878
+   },
+   "source": "Amazon cash-flow statement (purchases of P&E net of proceeds and incentives)",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Amazon",
+   "metric": "Free cash flow, trailing twelve months",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 47747,
+    "Q4 2024": 38219,
+    "Q1 2025": 25925,
+    "Q2 2025": 18184,
+    "Q3 2025": 14788,
+    "Q4 2025": 11194,
+    "Q1 2026": 1232,
+    "Q2 2026": -7604,
+    "Q3 2026": -42357
+   },
+   "source": "Amazon 8-K Ex-99.1 (company definition)",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Amazon",
+   "metric": "Operating income",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 17411,
+    "Q4 2024": 21203,
+    "Q1 2025": 18405,
+    "Q2 2025": 19171,
+    "Q3 2025": 17422,
+    "Q4 2025": 24977,
+    "Q1 2026": 23852,
+    "Q2 2026": 27461,
+    "Q3 2026": 28076
+   },
+   "source": "Amazon 8-K Ex-99.1",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Amazon",
+   "metric": "Anthropic investment gains in other income (pre-tax, est.)",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 0,
+    "Q4 2024": 0,
+    "Q1 2025": 3263,
+    "Q2 2025": 0,
+    "Q3 2025": 9533,
+    "Q4 2025": 400,
+    "Q1 2026": 16807,
+    "Q2 2026": 50486,
+    "Q3 2026": 0
+   },
+   "source": "Amazon 10-Q Other income note and Anthropic investment note",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001018724&type=10-Q",
+   "basis": "C",
+   "note": "Below operating income; AWS segment profit contains none. Q4 2025 residual, not attributed by Amazon."
+  },
+  {
+   "company": "Google Cloud",
+   "metric": "Segment revenue",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 11353,
+    "Q4 2024": 11955,
+    "Q1 2025": 12260,
+    "Q2 2025": 13624,
+    "Q3 2025": 15157,
+    "Q4 2025": 17664,
+    "Q1 2026": 20028,
+    "Q2 2026": 24768,
+    "Q3 2026": 30709
+   },
+   "source": "Alphabet 8-K Ex-99.1 segment tables",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Google Cloud",
+   "metric": "Segment operating income",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 1947,
+    "Q4 2024": 2093,
+    "Q1 2025": 2177,
+    "Q2 2025": 2826,
+    "Q3 2025": 3594,
+    "Q4 2025": 5313,
+    "Q1 2026": 6598,
+    "Q2 2026": 8814,
+    "Q3 2026": 11121
+   },
+   "source": "Alphabet 8-K Ex-99.1",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Google Cloud",
+   "metric": "Segment operating margin",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 17.1,
+    "Q4 2024": 17.5,
+    "Q1 2025": 17.8,
+    "Q2 2025": 20.7,
+    "Q3 2025": 23.7,
+    "Q4 2025": 30.1,
+    "Q1 2026": 32.9,
+    "Q2 2026": 35.6,
+    "Q3 2026": 36.2
+   },
+   "source": "Calculated",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "C",
+   "note": ""
+  },
+  {
+   "company": "Google Cloud",
+   "metric": "Margin if charged its revenue share (24%) of Alphabet-level AI costs",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 10.5,
+    "Q4 2024": 11.9,
+    "Q1 2025": 11.8,
+    "Q2 2025": 14.8,
+    "Q3 2025": 16.6,
+    "Q4 2025": 22.1,
+    "Q1 2026": 26.5,
+    "Q2 2026": 30.0,
+    "Q3 2026": 30.2
+   },
+   "source": "Calculated: (Cloud OI + 24% x Alphabet-level activities) / Cloud revenue",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "C",
+   "note": "Alphabet-level activities are mostly frontier-model development (DeepMind) and are not charged to segments."
+  },
+  {
+   "company": "Alphabet",
+   "metric": "Alphabet-level activities operating loss (mostly AI model development)",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": -3166,
+    "Q4 2024": -2783,
+    "Q1 2025": -3027,
+    "Q2 2025": -3372,
+    "Q3 2025": -4467,
+    "Q4 2025": -5894,
+    "Q1 2026": -5391,
+    "Q2 2026": -5789,
+    "Q3 2026": -7655
+   },
+   "source": "Alphabet 8-K Ex-99.1",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Alphabet",
+   "metric": "Depreciation of property & equipment",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 3985,
+    "Q4 2024": 4205,
+    "Q1 2025": 4487,
+    "Q2 2025": 4998,
+    "Q3 2025": 5611,
+    "Q4 2025": 6040,
+    "Q1 2026": 6482,
+    "Q2 2026": 7104,
+    "Q3 2026": 8369
+   },
+   "source": "Alphabet 10-Q cash-flow statement",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Alphabet",
+   "metric": "Capital expenditures",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 13061,
+    "Q4 2024": 14276,
+    "Q1 2025": 17197,
+    "Q2 2025": 22446,
+    "Q3 2025": 23953,
+    "Q4 2025": 27851,
+    "Q1 2026": 35674,
+    "Q2 2026": 44924,
+    "Q3 2026": 51355
+   },
+   "source": "Alphabet 10-Q cash-flow statement",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Alphabet",
+   "metric": "Free cash flow (quarter)",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 17637,
+    "Q4 2024": 24837,
+    "Q1 2025": 18953,
+    "Q2 2025": 5301,
+    "Q3 2025": 24461,
+    "Q4 2025": 24551,
+    "Q1 2026": 10116,
+    "Q2 2026": -5855,
+    "Q3 2026": -9065
+   },
+   "source": "Alphabet 8-K Ex-99.1 FCF reconciliation",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Alphabet",
+   "metric": "Gain (loss) on equity securities",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 1821,
+    "Q4 2024": 364,
+    "Q1 2025": 9758,
+    "Q2 2025": 1286,
+    "Q3 2025": 10734,
+    "Q4 2025": 2302,
+    "Q1 2026": 36915,
+    "Q2 2026": 99031,
+    "Q3 2026": -8664
+   },
+   "source": "Alphabet 10-Q OI&E note",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-Q",
+   "basis": "D",
+   "note": "Largely the Anthropic (unnamed) and SpaceX marks in 2026."
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Microsoft Cloud gross margin",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 71,
+    "Q4 2024": 70,
+    "Q1 2025": 69,
+    "Q2 2025": 68,
+    "Q3 2025": 68,
+    "Q4 2025": 67,
+    "Q1 2026": 66,
+    "Q2 2026": 65,
+    "Q3 2026": 66
+   },
+   "source": "Microsoft 10-Q/10-K MD&A (FY25 Q1 = Sep 2024 quarter)",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "D",
+   "note": "MD&A attributed the decline to 'scaling our AI infrastructure' through FY26 Q3; from FY26 Q4 to 'sales mix shift to Azure'."
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Azure revenue growth (as reported)",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 33,
+    "Q4 2024": 31,
+    "Q1 2025": 33,
+    "Q2 2025": 39,
+    "Q3 2025": 40,
+    "Q4 2025": 39,
+    "Q1 2026": 40,
+    "Q2 2026": 43,
+    "Q3 2026": 48
+   },
+   "source": "Microsoft earnings releases / calls",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Agents & Infra segment operating margin (recast)",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 51.8,
+    "Q4 2024": 50.6,
+    "Q1 2025": 50.6,
+    "Q2 2025": 49.7,
+    "Q3 2025": 53.1,
+    "Q4 2025": 51.5,
+    "Q1 2026": 50.0,
+    "Q2 2026": 49.3,
+    "Q3 2026": 52.8
+   },
+   "source": "Calculated from Microsoft recast segment tables",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "C",
+   "note": ""
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Agents & Infra segment gross margin (recast)",
+   "unit": "%",
+   "values": {
+    "Q3 2024": 73.0,
+    "Q4 2024": 72.3,
+    "Q1 2025": 71.7,
+    "Q2 2025": 71.2,
+    "Q3 2025": 71.3,
+    "Q4 2025": 70.0,
+    "Q1 2026": 68.9,
+    "Q2 2026": 68.5,
+    "Q3 2026": 68.9
+   },
+   "source": "Calculated from Microsoft recast segment tables",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "C",
+   "note": ""
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Capex including finance leases",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 20000,
+    "Q4 2024": 22600,
+    "Q1 2025": 21400,
+    "Q2 2025": 24200,
+    "Q3 2025": 34900,
+    "Q4 2025": 37500,
+    "Q1 2026": 31900,
+    "Q2 2026": 41000,
+    "Q3 2026": 45200
+   },
+   "source": "Microsoft calls (company figure)",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Depreciation expense",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 4700,
+    "Q4 2024": 5200,
+    "Q1 2025": 5800,
+    "Q2 2025": 6300,
+    "Q3 2025": 7100,
+    "Q4 2025": 7900,
+    "Q1 2026": 9000,
+    "Q2 2026": 10300,
+    "Q3 2026": 11100
+   },
+   "source": "Microsoft 10-Q cash-flow statement",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "D",
+   "note": ""
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Free cash flow (CFO less cash PP&E, quarter)",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 19300,
+    "Q4 2024": 6500,
+    "Q1 2025": 20300,
+    "Q2 2025": 25600,
+    "Q3 2025": 25700,
+    "Q4 2025": 5900,
+    "Q1 2026": 15800,
+    "Q2 2026": 19600,
+    "Q3 2026": 18600
+   },
+   "source": "Calculated from Microsoft cash-flow statements",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "C",
+   "note": ""
+  },
+  {
+   "company": "Microsoft",
+   "metric": "Commercial remaining performance obligation",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": 259000,
+    "Q4 2024": 298000,
+    "Q1 2025": 315000,
+    "Q2 2025": 368000,
+    "Q3 2025": 392000,
+    "Q4 2025": 625000,
+    "Q1 2026": 627000,
+    "Q2 2026": 678000,
+    "Q3 2026": 677000
+   },
+   "source": "Microsoft 10-Q / calls",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "D",
+   "note": "~45% tied to OpenAI at Dec 2025."
+  },
+  {
+   "company": "Microsoft",
+   "metric": "OpenAI impact on pre-tax income",
+   "unit": "$M",
+   "values": {
+    "Q3 2024": -688,
+    "Q4 2024": -1236,
+    "Q1 2025": -768,
+    "Q2 2025": -2071,
+    "Q3 2025": -4061,
+    "Q4 2025": 9978,
+    "Q1 2026": -19,
+    "Q2 2026": 632,
+    "Q3 2026": 272
+   },
+   "source": "Microsoft 10-Q Other income note",
+   "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-Q",
+   "basis": "D",
+   "note": "Equity-method losses through FY26 Q1; gains after the Oct 2025 recapitalization changed the accounting."
+  }
+ ]
+}

@@ -75,7 +75,7 @@ export function useTip() {
   return { tip, setTip, node };
 }
 
-export interface Series { key: string; label: string; color: string; values: (number | null)[]; dash?: boolean }
+export interface Series { key: string; label: string; short?: string; color: string; values: (number | null)[]; dash?: boolean }
 
 /** Line chart with crosshair tooltip. One y-axis. */
 export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLabel, zeroLine }: {
@@ -89,6 +89,16 @@ export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLa
   const ys = (v: number) => padT + (H - padT - padB) * (1 - (v - lo) / (hi - lo || 1));
   const ticks = 4;
   const [hover, setHover] = useState<number | null>(null);
+  // End labels: nudge apart so close series stay readable.
+  const ends = series
+    .map((s) => {
+      const i = s.values.reduce<number>((acc, v, k) => (v !== null ? k : acc), -1);
+      return { key: s.key, i, y: i >= 0 ? ys(s.values[i] as number) : 0 };
+    })
+    .filter((e) => e.i >= 0)
+    .sort((a, b) => a.y - b.y);
+  for (let k = 1; k < ends.length; k += 1) if (ends[k].y - ends[k - 1].y < 14) ends[k].y = ends[k - 1].y + 14;
+  const labelY = Object.fromEntries(ends.map((e) => [e.key, e.y]));
   return (
     <div className="sm-rel">
       <svg viewBox={`0 0 ${W} ${H}`} className="sm-chart" role="img" aria-label={ariaLabel}
@@ -122,7 +132,7 @@ export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLa
               {lastIdx >= 0 && (
                 <>
                   <circle cx={xs(lastIdx)} cy={ys(s.values[lastIdx] as number)} r={4} fill={s.color} stroke="#fff" strokeWidth={2} />
-                  <text x={xs(lastIdx) + 8} y={ys(s.values[lastIdx] as number) + 4} className="lbl">{s.label}</text>
+                  <text x={xs(lastIdx) + 8} y={(labelY[s.key] ?? ys(s.values[lastIdx] as number)) + 4} className="lbl">{s.short ?? s.label}</text>
                 </>
               )}
             </g>

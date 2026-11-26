@@ -63,6 +63,7 @@ export const BASE_LIFETIME: Lifetime = {
   commitAdjacencyUplift: lt.commitAdjacencyUplift.base,
   commitYears: lt.commitYears.base,
   baselineShare: lt.baselineShare.base,
+  consumptionYears: lt.consumptionYears.base,
   discountRate: lt.discountRate.base,
   includeAdjacency: lt.includeAdjacency.base === 1,
 };

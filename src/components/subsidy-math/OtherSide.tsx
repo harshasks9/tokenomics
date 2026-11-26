@@ -7,6 +7,13 @@ import { Explain, fmt$, fmtPct, fmtX, Seg, Slider } from "./ui";
 
 const ROUTES: RouteId[] = ["bedrock-claude", "azure-openai", "vertex-claude"];
 
+/** Stake and value-per-revenue defaults by pair (see params.json equity notes). */
+const EQUITY_DEFAULTS: Record<string, { stake: number; mult: number; note: string }> = {
+  "bedrock-claude": { stake: BASE_EQUITY.stake, mult: BASE_EQUITY.revenueMultiple, note: "Amazon ≈23% of Anthropic (incl. rollover notes); Anthropic ≈14× its $81B run-rate at the $83 IPO price." },
+  "azure-openai": { stake: 0.24, mult: 17, note: "Microsoft ≈24% of OpenAI (reported); OpenAI ≈17× run-rate ($852B post-money vs ~$50B run-rate, press)." },
+  "vertex-claude": { stake: 0.13, mult: BASE_EQUITY.revenueMultiple, note: "Google ≈13% of Anthropic at the IPO (424B4 holdings ÷ shares outstanding)." },
+};
+
 /** Section: the opposing case — adjacent cloud profit and equity upside needed to justify a coupon. */
 export default function OtherSide() {
   const [route, setRoute] = useState<RouteId>("bedrock-claude");
@@ -16,6 +23,7 @@ export default function OtherSide() {
   const [incr, setIncr] = useState(BASE_LIFETIME.adjacencyIncremental);
   const [stake, setStake] = useState(BASE_EQUITY.stake);
   const [mult, setMult] = useState(BASE_EQUITY.revenueMultiple);
+  const pick = (id: RouteId) => { setRoute(id); setStake(EQUITY_DEFAULTS[id].stake); setMult(EQUITY_DEFAULTS[id].mult); };
   const [newRev, setNewRev] = useState(BASE_EQUITY.incrementalToProvider);
   const p = baseRoute(route);
   const inc = { pct, type, partnerFunded: 0, providerFunded: 0 };
@@ -33,7 +41,7 @@ export default function OtherSide() {
     <div className="sm-panel">
       <div className="sm-tabs" role="group" aria-label="Choose a route">
         {ROUTES.map((id) => (
-          <button key={id} type="button" aria-pressed={id === route} onClick={() => setRoute(id)}>
+          <button key={id} type="button" aria-pressed={id === route} onClick={() => pick(id)}>
             <span className="sm-dot" style={{ background: ROUTE_META[id].color }} />{ROUTE_META[id].short}
           </button>
         ))}
@@ -66,6 +74,7 @@ export default function OtherSide() {
           <Slider label="Stake in the model maker" value={stake} min={0} max={0.35} step={0.01} onChange={setStake} format={(v) => fmtPct(v)} />
           <Slider label="Model maker's value per $1 of yearly revenue" value={mult} min={2} max={30} step={1} onChange={setMult} format={(v) => fmtX(v, 0)} />
           <Slider label="Share of the subsidized usage that is new to the model maker" value={newRev} min={0} max={1} step={0.05} onChange={setNewRev} format={(v) => fmtPct(v)} help="If the customer would have used the model anyway — directly or on another cloud — the stake gains nothing." />
+          <p className="sm-caveat" style={{ marginTop: 0 }}>{EQUITY_DEFAULTS[route].note}</p>
           <div className="sm-grid c2">
             <div className="sm-stat"><span>Coupon cost per $100</span><div className="sm-big" style={{ fontSize: 34 }}>{fmt$(couponCost)}</div></div>
             <div className="sm-stat"><span>Stake value created</span><div className="sm-big" style={{ fontSize: 34 }}>{fmt$(eq)}</div></div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { creditCliff, lifetime, type Incentive, type IncentiveType, type Lifetime, type RouteId } from "@/lib/subsidy-math/model";
 import { BASE_LIFETIME, baseRoute, ROUTE_IDS, ROUTE_META } from "@/lib/subsidy-math/params";
 import { Explain, fmt$, fmtMonths, fmtPct, LineChart, Seg, Slider } from "./ui";
@@ -21,7 +21,7 @@ export default function CouponTime() {
   const p = baseRoute(route);
   const L: Lifetime = { ...lt, years: 5, includeAdjacency: withAdj };
 
-  const runs = useMemo(() => {
+  const runs = (() => {
     const mk = (type: IncentiveType, c = pct): Incentive => ({ pct: c, type, partnerFunded: 0, providerFunded: 0 });
     return {
       none: lifetime(p, mk("one-time", 0), L),
@@ -30,7 +30,7 @@ export default function CouponTime() {
       consumption: lifetime(p, mk("consumption"), L),
       commit: lifetime(p, mk("commit"), L),
     };
-  }, [p, pct, L]);
+  })();
 
   const x = ["Start", "Yr 1", "Yr 2", "Yr 3", "Yr 4", "Yr 5"];
   const cum = (r: typeof runs.none) => [0, ...r.rows.map((row) => row.cumulative)];

@@ -44,7 +44,7 @@ export interface RouteParams {
   /** Principal routes: utilization actually achieved vs the base assumption. */
   utilization: number;
   baseUtilization: number;
-  /** Principal routes: model development (training, research) amortized per $ of net revenue — economic view only. */
+  /** Principal routes: model development (training, research) amortized per $ of pre-incentive net revenue — economic view only. */
   modelDevCost: number;
   /** Support, platform, account-team and partner cost to distribute, fraction of list. */
   distributionCost: number;
@@ -83,6 +83,8 @@ export interface Lifetime {
   commitYears: number;
   /** Consumption incentives: pre-existing spend that does not earn credits, as a share of year-1 spend. */
   baselineShare: number;
+  /** Consumption incentives: years in which growth earns credits (MAP-style migration plan term). */
+  consumptionYears: number;
   discountRate: number;
   includeAdjacency: boolean;
 }
@@ -166,7 +168,8 @@ export function waterfall(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerF
     infraPower: infra * INFRA_SPLIT.power,
     infraNetwork: infra * INFRA_SPLIT.network,
     distribution, computeContribution: 0, cloudContribution,
-    cloudEconomic: cloudContribution - p.modelDevCost * cloudNetRevenue,
+    // Model development is a fixed cost: allocate it on pre-incentive net revenue so a coupon does not "save" it.
+    cloudEconomic: cloudContribution - p.modelDevCost * (L - discountCloud),
     providerServing: 0, channelFeePaid: 0,
     providerContribution: revenueSharePaid - creditsProvider,
   };
@@ -177,8 +180,9 @@ const noIncentive = { pct: 0, partnerFunded: 0, providerFunded: 0 };
 /** Contribution is linear in the incentive, so the break-even incentive is M0 / (M0 − contribution at 100%). */
 export function breakEvenIncentive(p: RouteParams, funding: Pick<Incentive, "partnerFunded" | "providerFunded">, economic = false): number {
   const pick = (w: Waterfall) => (economic ? w.cloudEconomic : w.cloudContribution);
+  const f = { partnerFunded: funding.partnerFunded, providerFunded: funding.providerFunded };
   const m0 = pick(waterfall(p, noIncentive));
-  const m1 = pick(waterfall(p, { pct: 1, ...funding }));
+  const m1 = pick(waterfall(p, { ...f, pct: 1 }));
   if (m0 <= 0) return 0;
   return m0 / (m0 - m1);
 }
@@ -245,7 +249,7 @@ export function lifetime(p: RouteParams, inc: Incentive, lt: Lifetime): Lifetime
     let creditBase = 0;
     if (inc.type === "one-time" || inc.type === "commit") creditBase = t === 1 ? inc.pct * spend : 0;
     else if (inc.type === "recurring") creditBase = inc.pct * spend;
-    else creditBase = inc.pct * Math.max(0, spend - prevSpend);
+    else creditBase = t <= lt.consumptionYears ? inc.pct * Math.max(0, spend - prevSpend) : 0;
     const grossContribution = base.cloudContribution * scale;
     const incentiveCost = costPerCreditDollar * creditBase;
     const attach = lt.adjacencyAttach * lt.adjacencyIncremental + (inCommit ? lt.commitAdjacencyUplift : 0);
@@ -305,17 +309,18 @@ export interface GridRow {
 }
 
 export function subsidyGrid(p: RouteParams, funding: Pick<Incentive, "partnerFunded" | "providerFunded">, lt: Lifetime): GridRow[] {
+  const f = { partnerFunded: funding.partnerFunded, providerFunded: funding.providerFunded };
   return INCENTIVE_LEVELS.map((level) => {
-    const w = waterfall(p, { pct: level, ...funding });
-    const oneTime: Incentive = { pct: level, type: "one-time", ...funding };
-    const recurring: Incentive = { pct: level, type: "recurring", ...funding };
+    const w = waterfall(p, { ...f, pct: level });
+    const oneTime: Incentive = { ...f, pct: level, type: "one-time" };
+    const recurring: Incentive = { ...f, pct: level, type: "recurring" };
     return {
       level,
       customerPays: w.customerPays,
       cloudNetRevenue: w.cloudNetRevenue,
       contribution: w.cloudContribution,
       contributionPct: w.cloudNetRevenue > 0 ? w.cloudContribution / w.cloudNetRevenue : null,
-      volumeMultiple: requiredVolumeMultiple(p, { pct: level, ...funding }),
+      volumeMultiple: requiredVolumeMultiple(p, { ...f, pct: level }),
       paybackMonths: lifetime(p, oneTime, { ...lt, years: 5 }).paybackMonths,
       npv1: lifetime(p, oneTime, { ...lt, years: 1 }).npv,
       npv3: lifetime(p, oneTime, { ...lt, years: 3 }).npv,

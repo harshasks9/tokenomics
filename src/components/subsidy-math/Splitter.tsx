@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { breakEvenIncentive, waterfall, type RouteId, type RouteParams } from "@/lib/subsidy-math/model";
 import { baseRoute, ROUTE_IDS, ROUTE_META } from "@/lib/subsidy-math/params";
 import { Explain, fmt$, fmtPct, Slider, StackBar, Tag } from "./ui";
@@ -15,8 +15,8 @@ export default function Splitter() {
   const meta = ROUTE_META[route];
   const agent = p.structure === "agent";
 
-  const w0 = useMemo(() => waterfall(p, { pct: 0, partnerFunded: 0, providerFunded: 0 }), [p]);
-  const wc = useMemo(() => waterfall(p, { pct: coupon, partnerFunded: 0, providerFunded: 0 }), [p, coupon]);
+  const w0 = waterfall(p, { pct: 0, partnerFunded: 0, providerFunded: 0 });
+  const wc = waterfall(p, { pct: coupon, partnerFunded: 0, providerFunded: 0 });
   const be = breakEvenIncentive(p, { partnerFunded: 0, providerFunded: 0 });
 
   const cloudSlice = w0.cloudContribution;
