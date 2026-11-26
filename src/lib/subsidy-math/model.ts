@@ -46,6 +46,8 @@ export interface RouteParams {
   baseUtilization: number;
   /** Principal routes: model development (training, research) amortized per $ of pre-incentive net revenue — economic view only. */
   modelDevCost: number;
+  /** Principal routes: cost of capital on serving assets, fraction of list at base utilization (not in GAAP cost). */
+  capitalCharge: number;
   /** Support, platform, account-team and partner cost to distribute, fraction of list. */
   distributionCost: number;
 }
@@ -56,8 +58,13 @@ export interface Incentive {
   type: IncentiveType;
   /** Share of the incentive funded by a partner (SI, reseller). */
   partnerFunded: number;
-  /** Share of the incentive funded by the model provider. */
+  /** Share of the incentive funded by the model provider (resale routes only; ignored where the cloud owns the model). */
   providerFunded: number;
+  /**
+   * Economic cost to the cloud of $1 of its own credit. 1 = the credit displaces cash spend dollar for dollar;
+   * lower when credits are redeemed on first-party services the customer would not otherwise have bought. Default 1.
+   */
+  creditCost?: number;
 }
 
 export interface Lifetime {
@@ -108,6 +115,10 @@ export interface Waterfall {
   infraDepreciation: number;
   infraPower: number;
   infraNetwork: number;
+  /** Principal routes: cost of capital on serving assets. */
+  capital: number;
+  /** Economic cost of the cloud-funded credits (credits × creditCost). */
+  creditEconomicCost: number;
   distribution: number;
   computeContribution: number;
   /** The cloud's contribution from this $100. */
@@ -124,14 +135,18 @@ export interface Waterfall {
 export const INFRA_SPLIT = { depreciation: 0.62, power: 0.13, network: 0.25 } as const;
 
 /** Year-1 waterfall for $100 of list consumption. `costScale` scales serving-cost ratios (used by the multi-year engine). */
-export function waterfall(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerFunded" | "providerFunded">, opts: { costScale?: number; feeShift?: number } = {}): Waterfall {
+export function waterfall(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerFunded" | "providerFunded" | "creditCost">, opts: { costScale?: number; feeShift?: number } = {}): Waterfall {
   const L = LIST;
   const costScale = opts.costScale ?? 1;
   const c = inc.pct;
-  const cloudShare = 1 - inc.partnerFunded - inc.providerFunded;
+  const creditCost = inc.creditCost ?? 1;
+  // Where the cloud owns (or royalty-free licenses) the model there is no outside model provider to co-fund credits.
+  const providerShare = p.structure === "agent" ? inc.providerFunded : 0;
+  const cloudShare = 1 - inc.partnerFunded - providerShare;
   const creditsCloud = cloudShare * c * L;
-  const creditsProvider = inc.providerFunded * c * L;
+  const creditsProvider = providerShare * c * L;
   const creditsPartner = inc.partnerFunded * c * L;
+  const creditEconomicCost = creditCost * creditsCloud;
   const customerPays = L - p.customerDiscount * L - c * L;
   const distribution = p.distributionCost * L;
 
@@ -141,14 +156,16 @@ export function waterfall(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerF
     const providerRevenue = L - discountProvider - creditsProvider;
     const fee = Math.max(0, p.channelFee + (opts.feeShift ?? 0));
     const channelFeePaid = fee * providerRevenue;
+    // Booked view: credits at face value reduce what the cloud keeps.
     const cloudNetRevenue = channelFeePaid - discountCloud - creditsCloud;
-    const providerServing = p.providerServingCost * costScale * providerRevenue;
+    // Serving compute follows tokens served, so it is measured before any credits.
+    const providerServing = p.providerServingCost * costScale * (L - discountProvider);
     const computeContribution = providerServing * p.hostedShare * p.incrementalComputeShare * p.computeMargin;
-    const cloudContribution = cloudNetRevenue - distribution + computeContribution;
+    const cloudContribution = channelFeePaid - discountCloud - creditEconomicCost - distribution + computeContribution;
     return {
       list: L, discountProvider, discountCloud, creditsCloud, creditsProvider, creditsPartner, customerPays,
       providerRevenue, cloudNetRevenue, revenueSharePaid: 0,
-      infra: 0, infraDepreciation: 0, infraPower: 0, infraNetwork: 0,
+      infra: 0, infraDepreciation: 0, infraPower: 0, infraNetwork: 0, capital: 0, creditEconomicCost,
       distribution, computeContribution, cloudContribution, cloudEconomic: cloudContribution,
       providerServing, channelFeePaid,
       providerContribution: providerRevenue - channelFeePaid - providerServing,
@@ -158,29 +175,34 @@ export function waterfall(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerF
   const discountCloud = p.customerDiscount * L;
   const cloudNetRevenue = L - discountCloud - creditsCloud;
   const revenueSharePaid = p.revenueShare * cloudNetRevenue;
-  const infra = p.infraCost * costScale * (p.baseUtilization / p.utilization) * L;
-  const cloudContribution = cloudNetRevenue - revenueSharePaid - infra - distribution;
+  const utilScale = costScale * (p.baseUtilization / p.utilization);
+  const infra = p.infraCost * utilScale * L;
+  const capital = p.capitalCharge * utilScale * L;
+  // A credit redeemed on this line reduces revenue (and the royalty base); creditCost < 1 recognizes that part of it buys incremental consumption.
+  const creditRelief = (1 - creditCost) * (1 - p.revenueShare) * creditsCloud;
+  const cloudContribution = cloudNetRevenue - revenueSharePaid - infra - capital - distribution + creditRelief;
   return {
     list: L, discountProvider: 0, discountCloud, creditsCloud, creditsProvider, creditsPartner, customerPays,
-    providerRevenue: revenueSharePaid - creditsProvider, cloudNetRevenue, revenueSharePaid,
+    providerRevenue: revenueSharePaid, cloudNetRevenue, revenueSharePaid,
     infra,
     infraDepreciation: infra * INFRA_SPLIT.depreciation,
     infraPower: infra * INFRA_SPLIT.power,
     infraNetwork: infra * INFRA_SPLIT.network,
+    capital, creditEconomicCost: creditsCloud * (1 - p.revenueShare) * creditCost,
     distribution, computeContribution: 0, cloudContribution,
     // Model development is a fixed cost: allocate it on pre-incentive net revenue so a coupon does not "save" it.
     cloudEconomic: cloudContribution - p.modelDevCost * (L - discountCloud),
     providerServing: 0, channelFeePaid: 0,
-    providerContribution: revenueSharePaid - creditsProvider,
+    providerContribution: revenueSharePaid,
   };
 }
 
 const noIncentive = { pct: 0, partnerFunded: 0, providerFunded: 0 };
 
 /** Contribution is linear in the incentive, so the break-even incentive is M0 / (M0 − contribution at 100%). */
-export function breakEvenIncentive(p: RouteParams, funding: Pick<Incentive, "partnerFunded" | "providerFunded">, economic = false): number {
+export function breakEvenIncentive(p: RouteParams, funding: Pick<Incentive, "partnerFunded" | "providerFunded" | "creditCost">, economic = false): number {
   const pick = (w: Waterfall) => (economic ? w.cloudEconomic : w.cloudContribution);
-  const f = { partnerFunded: funding.partnerFunded, providerFunded: funding.providerFunded };
+  const f = { partnerFunded: funding.partnerFunded, providerFunded: funding.providerFunded, creditCost: funding.creditCost };
   const m0 = pick(waterfall(p, noIncentive));
   const m1 = pick(waterfall(p, { ...f, pct: 1 }));
   if (m0 <= 0) return 0;
@@ -188,7 +210,7 @@ export function breakEvenIncentive(p: RouteParams, funding: Pick<Incentive, "par
 }
 
 /** Volume multiple needed to earn the same contribution under a recurring incentive; Infinity if unrecoverable. */
-export function requiredVolumeMultiple(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerFunded" | "providerFunded">): number {
+export function requiredVolumeMultiple(p: RouteParams, inc: Pick<Incentive, "pct" | "partnerFunded" | "providerFunded" | "creditCost">): number {
   const m0 = waterfall(p, noIncentive).cloudContribution;
   const m = waterfall(p, inc).cloudContribution;
   if (m0 <= 0) return Infinity;
@@ -196,11 +218,18 @@ export function requiredVolumeMultiple(p: RouteParams, inc: Pick<Incentive, "pct
   return m0 / m;
 }
 
-/** Year-2 rise in the customer's effective price when a one-time credit rolls off. */
+/** Year-2 rise in the customer's effective price when a one-time credit rolls off, at constant list prices. */
 export function creditCliff(customerDiscount: number, credit: number): number {
   const before = 1 - customerDiscount - credit;
   if (before <= 0) return Infinity;
   return (1 - customerDiscount) / before - 1;
+}
+
+/** The same cliff for a constant volume of tokens when list prices also fall by `priceDeflation` in year 2. */
+export function creditCliffWithDeflation(customerDiscount: number, credit: number, priceDeflation: number): number {
+  const before = 1 - customerDiscount - credit;
+  if (before <= 0) return Infinity;
+  return ((1 - customerDiscount) * (1 - priceDeflation)) / before - 1;
 }
 
 export interface YearRow {
@@ -228,6 +257,8 @@ export interface LifetimeResult {
 /**
  * Multi-year engine. Spend is in the same units as LIST: year-1 list spend = 100.
  * Serving-cost ratios move each year by (1 − efficiency) / (1 − price deflation).
+ * Timing: incentives are paid at the start of each year; contribution and adjacency accrue mid-year.
+ * Commit-conditional deals retain the customer for the commit term; churn applies only after it.
  */
 export function lifetime(p: RouteParams, inc: Incentive, lt: Lifetime): LifetimeResult {
   const rows: YearRow[] = [];
@@ -239,12 +270,13 @@ export function lifetime(p: RouteParams, inc: Incentive, lt: Lifetime): Lifetime
   const costDrift = (1 - lt.efficiencyGain) / (1 - lt.priceDeflation);
   for (let t = 1; t <= lt.years; t += 1) {
     const inCommit = inc.type === "commit" && t <= lt.commitYears;
-    const survive = inCommit ? 1 : Math.pow(lt.retention, t - 1);
+    const churnYears = inc.type === "commit" ? Math.max(0, t - lt.commitYears) : t - 1;
+    const survive = Math.pow(lt.retention, churnYears);
     const spend = LIST * Math.pow(1 + lt.growth, t - 1) * survive;
     const scale = spend / LIST;
     const opts = { costScale: Math.pow(costDrift, t - 1), feeShift: lt.channelFeeDrift * (t - 1) };
     const base = waterfall(p, noIncentive, opts);
-    const full = waterfall(p, { pct: 1, partnerFunded: inc.partnerFunded, providerFunded: inc.providerFunded }, opts);
+    const full = waterfall(p, { pct: 1, partnerFunded: inc.partnerFunded, providerFunded: inc.providerFunded, creditCost: inc.creditCost }, opts);
     const costPerCreditDollar = (base.cloudContribution - full.cloudContribution) / LIST;
     let creditBase = 0;
     if (inc.type === "one-time" || inc.type === "commit") creditBase = t === 1 ? inc.pct * spend : 0;
@@ -256,7 +288,7 @@ export function lifetime(p: RouteParams, inc: Incentive, lt: Lifetime): Lifetime
     const adjacency = lt.includeAdjacency ? spend * attach * lt.adjacencyMargin : 0;
     const contribution = grossContribution - incentiveCost + adjacency;
     cum += contribution;
-    const discounted = contribution / Math.pow(1 + lt.discountRate, t);
+    const discounted = (grossContribution + adjacency) / Math.pow(1 + lt.discountRate, t - 0.5) - incentiveCost / Math.pow(1 + lt.discountRate, t - 1);
     npv += discounted;
     creditsTotal += creditBase;
     spendTotal += spend;
@@ -308,8 +340,8 @@ export interface GridRow {
   npvRecurring5: number;
 }
 
-export function subsidyGrid(p: RouteParams, funding: Pick<Incentive, "partnerFunded" | "providerFunded">, lt: Lifetime): GridRow[] {
-  const f = { partnerFunded: funding.partnerFunded, providerFunded: funding.providerFunded };
+export function subsidyGrid(p: RouteParams, funding: Pick<Incentive, "partnerFunded" | "providerFunded" | "creditCost">, lt: Lifetime): GridRow[] {
+  const f = { partnerFunded: funding.partnerFunded, providerFunded: funding.providerFunded, creditCost: funding.creditCost };
   return INCENTIVE_LEVELS.map((level) => {
     const w = waterfall(p, { ...f, pct: level });
     const oneTime: Incentive = { ...f, pct: level, type: "one-time" };

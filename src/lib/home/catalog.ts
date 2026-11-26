@@ -182,6 +182,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "google-ai", name: "Google AI Intelligence Hub", short: "Google AI Hub", href: "/google-ai", icon: Network, section: "intelligence", audience: "account",
     gradient: "linear-gradient(135deg, #10141a 0%, #1f5fc4 55%, #1baf7a 100%)",
     blurb: "Everything Google is doing in AI — what changed, how it fits together, and why it matters", keywords: ["google", "gemini", "agent platform", "vertex", "tpu", "pricing", "models", "timeline", "competitive intelligence", "deepmind", "workspace", "time machine"] },
+  { id: "subsidy-math", name: "Subsidy Math", short: "Subsidy Math", href: "/subsidy-math", icon: Coins, section: "intelligence", audience: "account",
+    gradient: "linear-gradient(135deg, #0b5f6b 0%, #257de0 60%, #f47230 100%)",
+    blurb: "Is the hyperscaler AI subsidy model sustainable? Follow $100 through Bedrock, Azure and Vertex", keywords: ["subsidy", "incentive", "map", "credits", "aws", "bedrock", "anthropic", "claude", "azure", "openai", "economics", "channel fee", "s-1", "gtm", "japac"] },
 ];
 
 export const ARCHIVE_LINKS = [

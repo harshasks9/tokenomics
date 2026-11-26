@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Every adjustable assumption in the Subsidy Math model. Single source for the microsite engine (src/lib/subsidy-math/model.ts) and the Excel workbook (scripts/subsidy-math/build_model.py). basis: D = disclosed in a filing, R = reported estimate, A = our assumption, C = our calculation on disclosed figures.",
-    "version": "draft-2 (all five research packs)",
+    "version": "v1.0 (after independent review)",
     "asOf": "2026-11-26"
   },
   "routes": {
@@ -46,18 +46,18 @@
           "note": "Share of AWS-billed Claude serving that runs on AWS capacity (Trainium for Bedrock; TPU for Vertex)."
         },
         "incrementalComputeShare": {
-          "base": 0.25,
+          "base": 0.5,
           "low": 0.0,
           "high": 1.0,
           "basis": "A",
-          "note": "Share of that compute that is incremental to Anthropic’s take-or-pay AWS commitment (≥$110.0B). If capacity is already committed, serving this customer adds little new AWS revenue."
+          "note": "Share of serving compute that is incremental to the provider’s take-or-pay commitment. Anthropic bought $5.0B of premium short-term compute in Q3 2026 \"when customer demand or research needs exceed this long-term capacity\" (S-1/A pp. 150–163), so marginal serving is often incremental."
         },
         "computeMargin": {
-          "base": 0.25,
+          "base": 0.3,
           "low": 0.15,
-          "high": 0.35,
+          "high": 0.4,
           "basis": "C",
-          "note": "Cloud margin on AI capacity sold to a lab: internal/external TCO ratio 0.65-0.85 (SemiAnalysis InferenceX; Oracle GPU rental 14-16%, target 30-40%)."
+          "note": "Cloud margin on AI capacity sold to a lab: internal/external TCO ratio 0.60–0.85 (SemiAnalysis InferenceX: Ironwood ~$1.03 internal vs ~$1.60 to Anthropic); prior-generation Trainium short-term capacity sells \"at a premium\" (Amazon, Q3 2026 call)."
         },
         "revenueShare": {
           "base": 0,
@@ -100,6 +100,13 @@
           "high": 0.08,
           "basis": "A",
           "note": "Platform (API, guardrails), support and account-team cost to distribute, % of list. Cloud opex ex-COGS is ~25% of revenue incl. R&D; AI usage mostly draws down existing commits."
+        },
+        "capitalCharge": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a: the model provider owns or rents the serving assets."
         }
       }
     },
@@ -198,6 +205,13 @@
           "high": 0.08,
           "basis": "A",
           "note": "Foundry platform, support and account team, % of list."
+        },
+        "capitalCharge": {
+          "base": 0.025,
+          "low": 0.01,
+          "high": 0.06,
+          "basis": "C",
+          "note": "Cost of capital on serving assets (~8% on average net book value) adds ~18–20% to GAAP serving cost, ~2.5 points of list (infrastructure research, row 2). Not in reported cost of revenue."
         }
       }
     },
@@ -296,6 +310,13 @@
           "high": 0.08,
           "basis": "A",
           "note": "Vertex platform, support and account team, % of list."
+        },
+        "capitalCharge": {
+          "base": 0.025,
+          "low": 0.01,
+          "high": 0.06,
+          "basis": "C",
+          "note": "Cost of capital on serving assets (~8% on average net book value) adds ~18–20% to GAAP serving cost, ~2.5 points of list (infrastructure research, row 2). Not in reported cost of revenue."
         }
       }
     },
@@ -340,18 +361,18 @@
           "note": "Share of Google-billed Claude serving that runs on Google capacity (Trainium for Bedrock; TPU for Vertex)."
         },
         "incrementalComputeShare": {
-          "base": 0.25,
+          "base": 0.5,
           "low": 0.0,
           "high": 1.0,
           "basis": "A",
-          "note": "Share of that compute that is incremental to Anthropic’s take-or-pay Google commitment (≥$121.3B). If capacity is already committed, serving this customer adds little new Google revenue."
+          "note": "Share of serving compute that is incremental to the provider’s take-or-pay commitment. Anthropic bought $5.0B of premium short-term compute in Q3 2026 \"when customer demand or research needs exceed this long-term capacity\" (S-1/A pp. 150–163), so marginal serving is often incremental."
         },
         "computeMargin": {
-          "base": 0.25,
+          "base": 0.3,
           "low": 0.15,
-          "high": 0.35,
+          "high": 0.4,
           "basis": "C",
-          "note": "Cloud margin on AI capacity sold to a lab: internal/external TCO ratio 0.65-0.85 (SemiAnalysis InferenceX; Oracle GPU rental 14-16%, target 30-40%)."
+          "note": "Cloud margin on AI capacity sold to a lab: internal/external TCO ratio 0.60–0.85 (SemiAnalysis InferenceX: Ironwood ~$1.03 internal vs ~$1.60 to Anthropic); prior-generation Trainium short-term capacity sells \"at a premium\" (Amazon, Q3 2026 call)."
         },
         "revenueShare": {
           "base": 0,
@@ -394,6 +415,13 @@
           "high": 0.08,
           "basis": "A",
           "note": "Platform (API, guardrails), support and account-team cost to distribute, % of list. Cloud opex ex-COGS is ~25% of revenue incl. R&D; AI usage mostly draws down existing commits."
+        },
+        "capitalCharge": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a: the model provider owns or rents the serving assets."
         }
       }
     }
@@ -419,6 +447,13 @@
       "high": 0.5,
       "basis": "A",
       "note": "Share funded by the model provider."
+    },
+    "creditCost": {
+      "base": 0.8,
+      "low": 0.35,
+      "high": 1.0,
+      "basis": "A",
+      "note": "Economic cost to the cloud of $1 of its own credit. 1.0 = credits displace cash spend dollar for dollar; ~0.35 = credits fund new first-party consumption at ~65% gross margin. AWS promotional credits generally do not apply to Marketplace charges unless authorized (AWS credit terms, via search extracts), so MAP credits earned on Claude growth may be redeemed on first-party services."
     }
   },
   "lifetime": {
@@ -458,11 +493,11 @@
       "note": "Annual fall in cost to serve per token: hardware cost/FLOP -27%/yr (Epoch) plus software gains; offset in 2026 by memory and server price rises."
     },
     "channelFeeDrift": {
-      "base": -0.02,
-      "low": -0.05,
+      "base": 0.0,
+      "low": -0.04,
       "high": 0.0,
       "basis": "A",
-      "note": "Annual change in channel fee (points). Anthropic renegotiated channel terms in 2026 (S&M fell from 22% to 14% of revenue, partly on changed terms)."
+      "note": "Annual change in the channel fee (points). The S-1/A says changed channel terms helped lower S&M from 22% to 14% of revenue, but the Q3 fee range (28–36%) overlaps 9M (33–36%): direction since Q3 not determinable."
     },
     "adjacencyAttach": {
       "base": 0.4,

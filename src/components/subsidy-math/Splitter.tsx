@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { breakEvenIncentive, waterfall, type RouteId, type RouteParams } from "@/lib/subsidy-math/model";
-import { baseRoute, ROUTE_IDS, ROUTE_META } from "@/lib/subsidy-math/params";
+import { baseRoute, ROUTE_IDS, ROUTE_META, BASE_FUNDING } from "@/lib/subsidy-math/params";
 import { Explain, fmt$, fmtPct, Slider, StackBar, Tag } from "./ui";
 
 /** Section: follow the $100 — who keeps what, and how big the coupon is next to the cloud's slice. */
@@ -10,17 +10,19 @@ export default function Splitter() {
   const [route, setRoute] = useState<RouteId>("bedrock-claude");
   const [overrides, setOverrides] = useState<Partial<Record<RouteId, Partial<RouteParams>>>>({});
   const [coupon, setCoupon] = useState(0.35);
+  const [creditCost, setCreditCost] = useState(BASE_FUNDING.creditCost);
   const p: RouteParams = { ...baseRoute(route), ...(overrides[route] ?? {}) };
   const set = (k: keyof RouteParams, v: number) => setOverrides((o) => ({ ...o, [route]: { ...(o[route] ?? {}), [k]: v } }));
   const meta = ROUTE_META[route];
   const agent = p.structure === "agent";
 
-  const w0 = waterfall(p, { pct: 0, partnerFunded: 0, providerFunded: 0 });
-  const wc = waterfall(p, { pct: coupon, partnerFunded: 0, providerFunded: 0 });
-  const be = breakEvenIncentive(p, { partnerFunded: 0, providerFunded: 0 });
+  const w0 = waterfall(p, { pct: 0, ...BASE_FUNDING });
+  const wc = waterfall(p, { pct: coupon, ...BASE_FUNDING, creditCost });
+  const be = breakEvenIncentive(p, { ...BASE_FUNDING, creditCost });
+  const couponCost = w0.cloudContribution - wc.cloudContribution;
 
   const cloudSlice = w0.cloudContribution;
-  const modelDev = agent ? 0 : p.modelDevCost * w0.cloudNetRevenue;
+  const modelDev = w0.cloudContribution - w0.cloudEconomic;
   const segments = agent
     ? [
         { key: "disc", label: "Customer's negotiated discount", value: p.customerDiscount * 100, color: "#c9ced5", light: true },
@@ -32,14 +34,14 @@ export default function Splitter() {
     : [
         { key: "disc", label: "Customer's negotiated discount", value: p.customerDiscount * 100, color: "#c9ced5", light: true },
         ...(p.revenueShare > 0 ? [{ key: "prov", label: "Revenue share to OpenAI", value: w0.revenueSharePaid, color: "var(--provider)" }] : []),
-        { key: "infra", label: "Chips, power & buildings to run it", value: w0.infra, color: "var(--infra)", light: true },
+        { key: "infra", label: "Chips, power & buildings to run it (incl. cost of capital)", value: w0.infra + w0.capital, color: "var(--infra)", light: true },
         { key: "dist", label: "Cloud's selling & support cost", value: w0.distribution, color: "var(--other)" },
         ...(modelDev > 0 ? [{ key: "dev", label: "Paying back the cost of building Gemini", value: Math.min(modelDev, Math.max(0, cloudSlice)), color: "#9dc8f7", light: true }] : []),
         { key: "keep", label: modelDev > 0 ? `${meta.cloud} keeps (after model cost)` : `${meta.cloud} keeps`, value: Math.max(0, cloudSlice - modelDev), color: "var(--keep)" },
       ];
 
   const underwater = wc.cloudContribution < 0;
-  const couponDollars = coupon * 100;
+  const couponDollars = couponCost;
 
   return (
     <div className="sm-panel">
@@ -64,13 +66,14 @@ export default function Splitter() {
 
           <h3 style={{ marginTop: 22 }}>Now add a coupon</h3>
           <Slider label="Coupon (credits) paid by the cloud, % of list" value={coupon} min={0} max={0.5} step={0.01} onChange={setCoupon} format={(v) => fmtPct(v)} />
+          <Slider label="What each $1 of credit really costs the cloud" value={creditCost} min={0.35} max={1} step={0.05} onChange={setCreditCost} format={(v) => `${Math.round(v * 100)}¢`} help="$1 if the credit replaces cash the customer would have paid anyway; ~35¢ if it pays for new usage the cloud still earns a margin on. Base case 80¢." />
           <div style={{ display: "grid", gridTemplateColumns: `${Math.max(cloudSlice, 0.1)}fr ${Math.max(couponDollars, 0.1)}fr`, gap: 8, alignItems: "end" }}>
             <div>
               <div className="sm-src">The cloud&apos;s slice</div>
               <div style={{ height: 34, background: "var(--keep)", borderRadius: 8, color: "#fff", fontWeight: 700, fontSize: 13, display: "flex", alignItems: "center", paddingLeft: 8 }}>{fmt$(cloudSlice)}</div>
             </div>
             <div>
-              <div className="sm-src">The coupon</div>
+              <div className="sm-src">What the coupon really costs</div>
               <div style={{ height: 34, background: "var(--coupon)", borderRadius: 8, color: "#fff", fontWeight: 700, fontSize: 13, display: "flex", alignItems: "center", paddingLeft: 8 }}>{fmt$(couponDollars)}</div>
             </div>
           </div>

@@ -36,6 +36,7 @@ export function baseRoute(id: RouteId, pick: "base" | "low" | "high" = "base"): 
     utilization: p.utilization.base,
     baseUtilization: p.baseUtilization.base,
     modelDevCost: v("modelDevCost"),
+    capitalCharge: v("capitalCharge"),
     distributionCost: v("distributionCost"),
   };
 }
@@ -48,7 +49,10 @@ export const INCENTIVE_META = inc;
 export const LIFETIME_META = lt;
 export const EQUITY_META = eq;
 
-export const BASE_INCENTIVE: Incentive = { pct: inc.pct.base, type: "one-time", partnerFunded: inc.partnerFunded.base, providerFunded: inc.providerFunded.base };
+export const BASE_INCENTIVE: Incentive = { pct: inc.pct.base, type: "one-time", partnerFunded: inc.partnerFunded.base, providerFunded: inc.providerFunded.base, creditCost: inc.creditCost.base };
+
+/** Base funding and credit-cost assumptions, for calls that take only the funding part of an incentive. */
+export const BASE_FUNDING = { partnerFunded: inc.partnerFunded.base, providerFunded: inc.providerFunded.base, creditCost: inc.creditCost.base };
 
 export const BASE_LIFETIME: Lifetime = {
   years: lt.years.base,

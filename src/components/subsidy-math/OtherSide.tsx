@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { equityUplift, lifetime, requiredAttach, waterfall, type IncentiveType, type RouteId } from "@/lib/subsidy-math/model";
-import { BASE_EQUITY, BASE_LIFETIME, baseRoute, ROUTE_META } from "@/lib/subsidy-math/params";
+import { BASE_EQUITY, BASE_LIFETIME, baseRoute, ROUTE_META, BASE_FUNDING } from "@/lib/subsidy-math/params";
 import { Explain, fmt$, fmtPct, fmtX, Seg, Slider } from "./ui";
 
 const ROUTES: RouteId[] = ["bedrock-claude", "azure-openai", "vertex-claude"];
@@ -26,12 +26,12 @@ export default function OtherSide() {
   const pick = (id: RouteId) => { setRoute(id); setStake(EQUITY_DEFAULTS[id].stake); setMult(EQUITY_DEFAULTS[id].mult); };
   const [newRev, setNewRev] = useState(BASE_EQUITY.incrementalToProvider);
   const p = baseRoute(route);
-  const inc = { pct, type, partnerFunded: 0, providerFunded: 0 };
+  const inc = { pct, type, ...BASE_FUNDING };
   const lt = { ...BASE_LIFETIME, years: 5, adjacencyAttach: attach, adjacencyIncremental: incr, includeAdjacency: true };
   const need = requiredAttach(p, inc, lt);
   const aiOnly = lifetime(p, inc, { ...lt, includeAdjacency: false }).npv;
   const withAdj = lifetime(p, inc, lt).npv;
-  const w = waterfall(p, { pct, partnerFunded: 0, providerFunded: 0 });
+  const w = waterfall(p, { pct, ...BASE_FUNDING });
   // Agent routes: the provider books the sale. Principal (Azure OpenAI): the provider's revenue is the revenue share.
   const eq = equityUplift(stake, mult, newRev, w.providerRevenue);
   const couponCost = pct * 100;

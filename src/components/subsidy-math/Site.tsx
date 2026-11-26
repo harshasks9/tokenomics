@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { breakEvenIncentive, creditCliff, lifetime, waterfall } from "@/lib/subsidy-math/model";
-import { BASE_INCENTIVE, BASE_LIFETIME, baseRoute } from "@/lib/subsidy-math/params";
+import { creditCliff, lifetime, waterfall } from "@/lib/subsidy-math/model";
+import { BASE_INCENTIVE, BASE_LIFETIME, baseRoute, BASE_FUNDING } from "@/lib/subsidy-math/params";
 import { fmtPct, Section, Tag } from "./ui";
 import Players from "./Players";
 import Splitter from "./Splitter";
@@ -31,7 +31,7 @@ const NAV = [
   { id: "downloads", n: "11", label: "Downloads" },
 ];
 
-const none = { pct: 0, partnerFunded: 0, providerFunded: 0 };
+const none = { pct: 0, ...BASE_FUNDING };
 
 export default function Site() {
   const [active, setActive] = useState("players");
@@ -59,7 +59,6 @@ export default function Site() {
   const awsKeep = waterfall(aws, none).cloudContribution;
   const azKeep = waterfall(baseRoute("azure-openai"), none).cloudContribution;
   const gemKeep = waterfall(baseRoute("vertex-gemini"), none).cloudContribution;
-  const awsBe = breakEvenIncentive(aws, none);
   const lt5 = { ...BASE_LIFETIME, years: 5 };
   const one = lifetime(aws, { ...BASE_INCENTIVE, type: "one-time" }, lt5);
   const eff3 = lifetime(aws, { ...BASE_INCENTIVE, type: "one-time" }, { ...BASE_LIFETIME, years: 3 }).effectiveCustomerDiscount;
@@ -85,13 +84,13 @@ export default function Site() {
             <div className="sm-answer">
               <h2>The short answer</h2>
               <p className="big">No — the evidence does not show that AWS&apos;s or Microsoft&apos;s subsidies are unsustainable.</p>
-              <p>A one-time coupon to win a customer is ordinary business: for AWS selling Claude, a 35% one-time credit pays for itself in about {Math.round(one.paybackMonths)} months if the customer stays and grows. What <i>is</i> true is narrower: when a cloud resells someone else&apos;s model it keeps only a seller&apos;s fee — about ${awsKeep.toFixed(0)} of every $100 here — so a coupon bigger than about {fmtPct(awsBe)} <b>every year</b> can never pay back from AI alone. The real prizes for AWS are Anthropic&apos;s compute contracts and Amazon&apos;s stake, not the resale margin.</p>
-              <p>For Microsoft the premise mostly falls away: since April 2026 it sells OpenAI models royalty-free.</p>
+              <p>When a cloud resells Claude it is the cashier, not the shop: it keeps a seller&apos;s fee — about ${awsKeep.toFixed(0)} of every $100 in our base case (roughly $12–30). A 35% coupon used <b>once</b> to win a customer pays for itself in about {Math.round(one.paybackMonths)} months if the customer stays — ordinary customer acquisition. A 35% discount <b>every year</b> loses money on Claude alone, but a little extra cloud business or Amazon&apos;s ~23% stake in Anthropic is enough to cover it.</p>
+              <p>The &ldquo;unsustainable&rdquo; story only holds for permanent, fully AWS-paid discounts to customers AWS would have won anyway. For Microsoft it mostly falls away: since April 2026 it sells OpenAI models royalty-free — its real risk is OpenAI as a customer.</p>
             </div>
             <div className="sm-keys">
               <div className="sm-key"><b>${awsKeep.toFixed(0)} · ${azKeep.toFixed(0)} · ${gemKeep.toFixed(0)}</b><span>What AWS keeps of $100 of Claude, Microsoft of OpenAI, and Google of Gemini (before Gemini&apos;s model-building cost).</span><small>Base case, before coupons <Tag b="C" /></small></div>
-              <div className="sm-key"><b>16%→32%</b><span>The seller&apos;s fee clouds kept on Claude rose from ~16% (2025) to ~32% (Q3 2026) — and Anthropic is renegotiating it down.</span><small>Implied from Anthropic&apos;s filing; not split by cloud <Tag b="C" /></small></div>
-              <div className="sm-key"><b>{(eff3 * 100).toFixed(0)}%</b><span>What a 35% one-time credit is really worth to a growing customer over three years. When it ends, the bill jumps {fmtPct(cliff)}.</span><small>Model, base case <Tag b="A" /></small></div>
+              <div className="sm-key"><b>16%→32%</b><span>Anthropic&apos;s channel fees, as a share of what it sells through clouds: ~16% in 2025, up to ~32% in Q3 2026 — an upper bound on the clouds&apos; cut.</span><small>Our reading of Anthropic&apos;s filing; not split by cloud; may include other partners <Tag b="C" /></small></div>
+              <div className="sm-key"><b>{(eff3 * 100).toFixed(0)}%</b><span>What a 35% one-time credit is really worth to a growing customer over three years. When it ends, the bill for the same usage jumps {fmtPct(cliff)} at today&apos;s prices — falling list prices can hide most of that.</span><small>Model, base case <Tag b="A" /></small></div>
               <div className="sm-key"><b>$289B</b><span>Amazon&apos;s Anthropic stake at the $83 IPO price, for about $18B of cash invested (Amazon 10-Q) — the biggest reason a subsidy can be rational for Amazon even when it thins AWS&apos;s margin.</span><small>Our calculation on the final prospectus <Tag b="C" /></small></div>
             </div>
           </div>

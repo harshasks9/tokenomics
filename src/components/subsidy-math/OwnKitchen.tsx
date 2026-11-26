@@ -1,12 +1,12 @@
 "use client";
 
 import { waterfall } from "@/lib/subsidy-math/model";
-import { baseRoute } from "@/lib/subsidy-math/params";
+import { baseRoute, BASE_FUNDING } from "@/lib/subsidy-math/params";
 import { Explain, fmt$, Tag, useTip } from "./ui";
 
 /** Section: vertical integration — how much of $100 each structure keeps, and what it costs to own the kitchen. */
 export default function OwnKitchen() {
-  const none = { pct: 0, partnerFunded: 0, providerFunded: 0 };
+  const none = { pct: 0, ...BASE_FUNDING };
   const g = baseRoute("vertex-gemini");
   const gw = waterfall(g, none);
   const az = baseRoute("azure-openai");

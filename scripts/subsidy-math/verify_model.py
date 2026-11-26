@@ -53,7 +53,7 @@ def default_scratch() -> Path:
 # ---------------------------------------------------------------------------------------
 WF_FIELDS = ["list", "discountProvider", "discountCloud", "creditsCloud", "creditsProvider", "creditsPartner",
              "customerPays", "providerRevenue", "channelFeePaid", "revenueSharePaid", "cloudNetRevenue", "infra",
-             "infraDepreciation", "infraPower", "infraNetwork", "distribution", "providerServing",
+             "infraDepreciation", "infraPower", "infraNetwork", "capital", "creditEconomicCost", "distribution", "providerServing",
              "computeContribution", "cloudContribution", "cloudEconomic", "providerContribution"]
 LT_ROW_FIELDS = ["spend", "grossContribution", "incentiveCost", "adjacency", "contribution", "cumulative",
                  "discounted", "customerCredit"]
@@ -62,7 +62,7 @@ SUMMARY = {"npv": "npv", "cumulative": "cumulative", "paybackMonths": "paybackMo
 
 
 def _fund(inc):
-    return {"partnerFunded": inc["partnerFunded"], "providerFunded": inc["providerFunded"]}
+    return {"partnerFunded": inc["partnerFunded"], "providerFunded": inc["providerFunded"], "creditCost": inc.get("creditCost")}
 
 
 def expected_values(book: B.Book, I: dict) -> dict:
@@ -80,6 +80,8 @@ def expected_values(book: B.Book, I: dict) -> dict:
         E[f"wf|{rid}|channelFeeRate"] = max(0, p["channelFee"]) if agent else 0
         E[f"wf|{rid}|contributionPct"] = w["cloudContribution"] / w["cloudNetRevenue"] if w["cloudNetRevenue"] > 0 else None
         E[f"wf|{rid}|modelDev"] = w["cloudContribution"] - w["cloudEconomic"]
+        cc = 1 if inc.get("creditCost") is None else inc["creditCost"]
+        E[f"wf|{rid}|creditRelief"] = 0 if agent else (1 - cc) * (1 - p["revenueShare"]) * w["creditsCloud"]
         E[f"wf|{rid}|m0"] = w0["cloudContribution"]
         E[f"wf|{rid}|slope"] = (w0["cloudContribution"] - w1["cloudContribution"]) / L
         E[f"wf|{rid}|breakEven"] = M.breakEvenIncentive(p, inc)
@@ -97,7 +99,8 @@ def expected_values(book: B.Book, I: dict) -> dict:
             E[f"yd|{rid}|{t}|fee"] = max(0, p["channelFee"] + opts["feeShift"]) if agent else 0
             E[f"yd|{rid}|{t}|m0"] = b["cloudContribution"]
             E[f"yd|{rid}|{t}|slope"] = (b["cloudContribution"] - f["cloudContribution"]) / L
-            E[f"yd|{rid}|{t}|df"] = 1 / math.pow(1 + lt["discountRate"], t)
+            E[f"yd|{rid}|{t}|dfMid"] = 1 / math.pow(1 + lt["discountRate"], t - 0.5)
+            E[f"yd|{rid}|{t}|dfStart"] = 1 / math.pow(1 + lt["discountRate"], t - 1)
 
         for typ in M.INCENTIVE_TYPES:
             i2 = {**inc, "type": typ}
@@ -132,6 +135,16 @@ def expected_values(book: B.Book, I: dict) -> dict:
             E[f"otr|{rid}|gap5|{metric}"] = (M.lifetime(p, {**inc, "type": "recurring"}, {**lt, "years": 5})[metric]
                                             - M.lifetime(p, {**inc, "type": "one-time"}, {**lt, "years": 5})[metric])
         E[f"otr|{rid}|cliff"] = M.creditCliff(p["customerDiscount"], inc["pct"])
+        E[f"otr|{rid}|cliffDeflation"] = M.creditCliffWithDeflation(p["customerDiscount"], inc["pct"], lt["priceDeflation"])
+        cf = M.counterfactual(p, inc, lt)
+        E[f"otr|{rid}|npvNone5"] = cf["npvNone5"]
+        E[f"otr|{rid}|npvOneTime5"] = cf["npvOneTime5"]
+        for j, rate in enumerate(book.win_rates):
+            E[f"otr|{rid}|winLift|{j}"] = M.matchThreshold(cf["npvOneTime5"], cf["npvNone5"], rate)
+        for n in (1, 3, 5):
+            E[f"otr|{rid}|recAiOnly|{n}"] = cf["recurringAiOnly"][str(n)]
+            E[f"otr|{rid}|recWithAdj|{n}"] = cf["recurringWithAdjacency"][str(n)]
+        E[f"otr|{rid}|recAdjValue5"] = cf["recurringWithAdjacency"]["5"] - cf["recurringAiOnly"]["5"]
 
         for i, g in enumerate(M.subsidyGrid(p, inc, lt)):
             for k, v in g.items():
@@ -155,6 +168,7 @@ def expected_values(book: B.Book, I: dict) -> dict:
         E[f"readme|{rid}|m0"] = w0["cloudContribution"]
         E[f"readme|{rid}|y1"] = w["cloudContribution"]
         E[f"readme|{rid}|breakEven"] = M.breakEvenIncentive(p, inc)
+        E[f"readme|{rid}|npv5None"] = cf["npvNone5"]
         E[f"readme|{rid}|npv5OneTime"] = M.lifetime(p, {**inc, "type": "one-time"}, lt5)["npv"]
         E[f"readme|{rid}|npv5Recurring"] = M.lifetime(p, {**inc, "type": "recurring"}, lt5)["npv"]
         E[f"readme|{rid}|payback5OneTime"] = M.lifetime(p, {**inc, "type": "one-time"}, lt5)["paybackMonths"]
@@ -163,7 +177,8 @@ def expected_values(book: B.Book, I: dict) -> dict:
             E[f"active|route|{rid}|{key}"] = p[key]
     for key in M.INCENTIVE_KEYS:
         E[f"active|incentive|{key}"] = inc[key]
-    E["active|incentive|cloudFunded"] = 1 - inc["partnerFunded"] - inc["providerFunded"]
+    E["active|incentive|cloudFundedAgent"] = 1 - inc["partnerFunded"] - inc["providerFunded"]
+    E["active|incentive|cloudFundedPrincipal"] = 1 - inc["partnerFunded"]
     for key in M.LIFETIME_KEYS:
         v = lt[key]
         E[f"active|lifetime|{key}"] = (1 if v else 0) if key == "includeAdjacency" else v

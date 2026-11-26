@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import {
-  breakEvenIncentive, creditCliff, lifetime, requiredAttach, requiredVolumeMultiple, subsidyGrid, waterfall,
+  breakEvenIncentive, creditCliff, creditCliffWithDeflation, lifetime, requiredAttach, requiredVolumeMultiple, subsidyGrid, waterfall,
   INCENTIVE_LEVELS, LIST, type Incentive, type IncentiveType, type RouteId,
 } from "./model";
 import { BASE_INCENTIVE, BASE_LIFETIME, baseRoute, ROUTE_IDS } from "./params";
@@ -17,7 +17,7 @@ describe("waterfall identities", () => {
       const slices = p.customerDiscount * LIST + w.providerContribution + (w.providerServing - w.computeContribution) + w.distribution + w.cloudContribution;
       expect(slices).toBeCloseTo(LIST, 9);
     } else {
-      const slices = p.customerDiscount * LIST + w.revenueSharePaid + w.infra + w.distribution + w.cloudContribution;
+      const slices = p.customerDiscount * LIST + w.revenueSharePaid + w.infra + w.capital + w.distribution + w.cloudContribution;
       expect(slices).toBeCloseTo(LIST, 9);
     }
   });
@@ -177,5 +177,42 @@ describe("argument robustness", () => {
     expect(breakEvenIncentive(p, fundingWithPct)).toBeCloseTo(breakEvenIncentive(p, { partnerFunded: 0, providerFunded: 0 }), 12);
     const g = subsidyGrid(p, fundingWithPct, BASE_LIFETIME);
     expect(g[4].contribution).toBeLessThan(g[0].contribution);
+  });
+});
+
+describe("post-review mechanics", () => {
+  it("commit deals keep the customer for the term and only then start to churn", () => {
+    const p = baseRoute("bedrock-claude");
+    const lt = { ...BASE_LIFETIME, years: 5, commitYears: 3, retention: 0.8, growth: 0 };
+    const r = lifetime(p, { ...BASE_INCENTIVE, type: "commit" }, lt);
+    expect(r.rows[2].spend).toBeCloseTo(100, 9);
+    expect(r.rows[3].spend).toBeCloseTo(80, 9);
+    expect(r.rows[4].spend).toBeCloseTo(64, 9);
+  });
+
+  it("a cheaper credit (one that buys new usage) costs the cloud less", () => {
+    const p = baseRoute("bedrock-claude");
+    const full = waterfall(p, { pct: 0.35, partnerFunded: 0, providerFunded: 0, creditCost: 1 }).cloudContribution;
+    const cheap = waterfall(p, { pct: 0.35, partnerFunded: 0, providerFunded: 0, creditCost: 0.35 }).cloudContribution;
+    expect(cheap - full).toBeCloseTo(0.65 * 35, 9);
+  });
+
+  it("serving compute does not shrink when the model maker funds a credit", () => {
+    const p = baseRoute("bedrock-claude");
+    const a = waterfall(p, { pct: 0, partnerFunded: 0, providerFunded: 0 }).computeContribution;
+    const b = waterfall(p, { pct: 0.35, partnerFunded: 0, providerFunded: 0.5 }).computeContribution;
+    expect(b).toBeCloseTo(a, 12);
+  });
+
+  it("first-party routes ignore 'model maker funded' credits", () => {
+    const g = baseRoute("vertex-gemini");
+    const own = waterfall(g, { pct: 0.35, partnerFunded: 0, providerFunded: 0 }).cloudContribution;
+    const claimed = waterfall(g, { pct: 0.35, partnerFunded: 0, providerFunded: 0.5 }).cloudContribution;
+    expect(claimed).toBeCloseTo(own, 12);
+  });
+
+  it("with price deflation the year-2 cliff largely disappears", () => {
+    expect(creditCliffWithDeflation(0, 0.35, 0.35)).toBeCloseTo(0, 12);
+    expect(creditCliffWithDeflation(0.1, 0.35, 0.35)).toBeCloseTo((0.9 * 0.65) / 0.55 - 1, 12);
   });
 });

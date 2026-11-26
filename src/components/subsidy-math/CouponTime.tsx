@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { creditCliff, lifetime, type Incentive, type IncentiveType, type Lifetime, type RouteId } from "@/lib/subsidy-math/model";
-import { BASE_LIFETIME, baseRoute, ROUTE_IDS, ROUTE_META } from "@/lib/subsidy-math/params";
+import { creditCliff, creditCliffWithDeflation, lifetime, type Incentive, type IncentiveType, type Lifetime, type RouteId } from "@/lib/subsidy-math/model";
+import { BASE_LIFETIME, baseRoute, ROUTE_IDS, ROUTE_META, BASE_FUNDING } from "@/lib/subsidy-math/params";
 import { Explain, fmt$, fmtMonths, fmtPct, LineChart, Seg, Slider } from "./ui";
 
 const TYPES: { v: IncentiveType; l: string }[] = [
@@ -22,7 +22,7 @@ export default function CouponTime() {
   const L: Lifetime = { ...lt, years: 5, includeAdjacency: withAdj };
 
   const runs = (() => {
-    const mk = (type: IncentiveType, c = pct): Incentive => ({ pct: c, type, partnerFunded: 0, providerFunded: 0 });
+    const mk = (type: IncentiveType, c = pct): Incentive => ({ pct: c, type, ...BASE_FUNDING });
     return {
       none: lifetime(p, mk("one-time", 0), L),
       oneTime: lifetime(p, mk("one-time"), L),
@@ -35,9 +35,10 @@ export default function CouponTime() {
   const x = ["Start", "Yr 1", "Yr 2", "Yr 3", "Yr 4", "Yr 5"];
   const cum = (r: typeof runs.none) => [0, ...r.rows.map((row) => row.cumulative)];
   const by = (type: IncentiveType) => (type === "one-time" ? runs.oneTime : type === "recurring" ? runs.recurring : type === "consumption" ? runs.consumption : runs.commit);
-  const npvAt = (type: IncentiveType, years: number) => lifetime(p, { pct, type, partnerFunded: 0, providerFunded: 0 }, { ...L, years }).npv;
-  const effDisc = (type: IncentiveType, years: number) => lifetime(p, { pct, type, partnerFunded: 0, providerFunded: 0 }, { ...L, years }).effectiveCustomerDiscount;
+  const npvAt = (type: IncentiveType, years: number) => lifetime(p, { pct, type, ...BASE_FUNDING }, { ...L, years }).npv;
+  const effDisc = (type: IncentiveType, years: number) => lifetime(p, { pct, type, ...BASE_FUNDING }, { ...L, years }).effectiveCustomerDiscount;
   const cliff = creditCliff(p.customerDiscount, pct);
+  const cliffDeflated = creditCliffWithDeflation(p.customerDiscount, pct, lt.priceDeflation);
   const meta = ROUTE_META[route];
 
   return (
@@ -91,7 +92,7 @@ export default function CouponTime() {
           <tbody>
             <tr>
               <td>No coupon</td>
-              {[1, 3, 5].map((y) => <td key={y} className="num">{fmt$(lifetime(p, { pct: 0, type: "one-time", partnerFunded: 0, providerFunded: 0 }, { ...L, years: y }).npv)}</td>)}
+              {[1, 3, 5].map((y) => <td key={y} className="num">{fmt$(lifetime(p, { pct: 0, type: "one-time", ...BASE_FUNDING }, { ...L, years: y }).npv)}</td>)}
               <td className="num">—</td><td className="num">0%</td><td className="num">0%</td>
             </tr>
             {TYPES.map((t) => (
@@ -112,7 +113,7 @@ export default function CouponTime() {
       <p className="sm-caveat">Values are present values (10% discount rate) per $100 of year-one list spend. &ldquo;Customer&apos;s real discount&rdquo; = coupons received ÷ total list spend over the period.</p>
 
       <Explain>
-        A {fmtPct(pct)} <b>one-time</b> coupon is not a {fmtPct(pct)} price cut. Spread over three years of a growing customer it is worth about <b>{fmtPct(effDisc("one-time", 3), 0)}</b> to the customer, and over five years about <b>{fmtPct(effDisc("one-time", 5), 0)}</b>. And when it ends, the customer&apos;s bill for the same usage jumps by <b>{fmtPct(cliff, 0)}</b> — that is the &ldquo;year-two cliff&rdquo; your sellers should plan for.
+        A {fmtPct(pct)} <b>one-time</b> coupon is not a {fmtPct(pct)} price cut. Spread over three years of a growing customer it is worth about <b>{fmtPct(effDisc("one-time", 3), 0)}</b> to the customer, and over five years about <b>{fmtPct(effDisc("one-time", 5), 0)}</b>. When it ends, the bill for the same usage jumps <b>{fmtPct(cliff, 0)}</b> at today&apos;s prices. But if list prices keep falling {fmtPct(lt.priceDeflation)} a year, the jump shrinks to about <b>{fmtPct(cliffDeflated, 0)}</b> — the customer&apos;s real loss is the year of price cuts the credit soaked up. Show customers both numbers.
       </Explain>
     </div>
   );

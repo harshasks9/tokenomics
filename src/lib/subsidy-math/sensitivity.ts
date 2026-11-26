@@ -1,6 +1,6 @@
 import raw from "./params.json";
 import { breakEvenIncentive, lifetime, type Incentive, type Lifetime, type RouteId, type RouteParams } from "./model";
-import { BASE_INCENTIVE, BASE_LIFETIME, baseRoute } from "./params";
+import { BASE_FUNDING, BASE_INCENTIVE, BASE_LIFETIME, baseRoute } from "./params";
 
 export interface TornadoRow { key: string; label: string; low: number; high: number; lowValue: number; highValue: number; swing: number }
 
@@ -23,9 +23,11 @@ const LABELS: Record<string, string> = {
   efficiencyGain: "Serving-cost cuts per year",
   channelFeeDrift: "Seller-fee renegotiation per year",
   discountRate: "Discount rate",
+  creditCost: "What $1 of credit really costs the cloud",
+  capitalCharge: "Cost of capital on serving assets",
 };
 
-const ROUTE_KEYS: (keyof RouteParams)[] = ["channelFee", "customerDiscount", "discountFundedByProvider", "providerServingCost", "hostedShare", "incrementalComputeShare", "computeMargin", "revenueShare", "infraCost", "utilization", "modelDevCost", "distributionCost"];
+const ROUTE_KEYS: (keyof RouteParams)[] = ["channelFee", "customerDiscount", "discountFundedByProvider", "providerServingCost", "hostedShare", "incrementalComputeShare", "computeMargin", "revenueShare", "infraCost", "utilization", "modelDevCost", "capitalCharge", "distributionCost"];
 const LIFE_KEYS: (keyof Lifetime)[] = ["growth", "retention", "priceDeflation", "efficiencyGain", "channelFeeDrift", "discountRate"];
 
 type Meta = { base: number; low: number; high: number };
@@ -55,12 +57,18 @@ export function tornado(id: RouteId, metric: (p: RouteParams, lt: Lifetime, inc:
     const hi = metric(p0, { ...lt, [k]: m.high }, inc);
     rows.push({ key: k, label: LABELS[k] ?? k, low: m.low, high: m.high, lowValue: lo, highValue: hi, swing: Math.abs(hi - lo) });
   }
+  const incMeta = (raw.incentive as unknown as Record<string, Meta>).creditCost;
+  if (incMeta && incMeta.low !== incMeta.high && inc.pct > 0) {
+    const lo = metric(p0, lt, { ...inc, creditCost: incMeta.low });
+    const hi = metric(p0, lt, { ...inc, creditCost: incMeta.high });
+    rows.push({ key: "creditCost", label: LABELS.creditCost, low: incMeta.low, high: incMeta.high, lowValue: lo, highValue: hi, swing: Math.abs(hi - lo) });
+  }
   void base;
   return rows.sort((a, b) => b.swing - a.swing);
 }
 
 export const npv5 = (p: RouteParams, lt: Lifetime, inc: Incentive) => lifetime(p, inc, { ...lt, years: 5 }).npv;
-export const breakEven = (p: RouteParams) => breakEvenIncentive(p, { partnerFunded: 0, providerFunded: 0 });
+export const breakEven = (p: RouteParams) => breakEvenIncentive(p, BASE_FUNDING);
 
 /** Minimum rise in win probability (points) for which matching an incentive beats not matching, given a base win rate. */
 export function matchThreshold(npvWithIncentive: number, npvWithout: number, baseWinRate: number): number {

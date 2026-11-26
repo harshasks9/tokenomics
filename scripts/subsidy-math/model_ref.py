@@ -38,9 +38,9 @@ FIXTURES_JSON = LIB / "fixtures.json"
 ROUTE_PARAM_KEYS = [
     "customerDiscount", "discountFundedByProvider", "channelFee", "providerServingCost",
     "hostedShare", "incrementalComputeShare", "computeMargin", "revenueShare", "infraCost",
-    "utilization", "baseUtilization", "modelDevCost", "distributionCost",
+    "utilization", "baseUtilization", "modelDevCost", "capitalCharge", "distributionCost",
 ]
-INCENTIVE_KEYS = ["pct", "partnerFunded", "providerFunded"]
+INCENTIVE_KEYS = ["pct", "partnerFunded", "providerFunded", "creditCost"]
 LIFETIME_KEYS = [
     "years", "growth", "retention", "priceDeflation", "efficiencyGain", "channelFeeDrift",
     "adjacencyAttach", "adjacencyIncremental", "adjacencyMargin", "commitAdjacencyUplift",
@@ -50,6 +50,8 @@ EQUITY_KEYS = ["stake", "revenueMultiple", "incrementalToProvider"]
 INCENTIVE_TYPES = ["one-time", "recurring", "consumption", "commit"]
 DEFAULT_INCENTIVE_TYPE = "one-time"  # params.ts BASE_INCENTIVE.type
 INF = float("inf")
+# Base win rates for the "is matching worth it?" test (lead analyst, Nov 2026); see matchThreshold.
+WIN_RATES = [0.2, 0.3, 0.5]
 
 
 # ---------------------------------------------------------------------------------------
@@ -78,16 +80,25 @@ LIST, INFRA_SPLIT, INCENTIVE_LEVELS = read_model_constants()
 # ---------------------------------------------------------------------------------------
 # model.ts port
 # ---------------------------------------------------------------------------------------
+def _credit_cost(inc: dict) -> float:
+    cc = inc.get("creditCost")
+    return 1 if cc is None else cc  # TS: inc.creditCost ?? 1
+
+
 def waterfall(p: dict, inc: dict, opts: dict | None = None) -> dict:
     """Year-1 waterfall for $100 of list consumption (model.ts `waterfall`)."""
     opts = opts or {}
     L = LIST
     costScale = opts.get("costScale", 1)
     c = inc["pct"]
-    cloudShare = 1 - inc["partnerFunded"] - inc["providerFunded"]
+    creditCost = _credit_cost(inc)
+    # Where the cloud owns (or royalty-free licenses) the model there is no outside provider to co-fund credits.
+    providerShare = inc["providerFunded"] if p["structure"] == "agent" else 0
+    cloudShare = 1 - inc["partnerFunded"] - providerShare
     creditsCloud = cloudShare * c * L
-    creditsProvider = inc["providerFunded"] * c * L
+    creditsProvider = providerShare * c * L
     creditsPartner = inc["partnerFunded"] * c * L
+    creditEconomicCost = creditCost * creditsCloud
     customerPays = L - p["customerDiscount"] * L - c * L
     distribution = p["distributionCost"] * L
 
@@ -97,15 +108,16 @@ def waterfall(p: dict, inc: dict, opts: dict | None = None) -> dict:
         providerRevenue = L - discountProvider - creditsProvider
         fee = max(0, p["channelFee"] + opts.get("feeShift", 0))
         channelFeePaid = fee * providerRevenue
-        cloudNetRevenue = channelFeePaid - discountCloud - creditsCloud
-        providerServing = p["providerServingCost"] * costScale * providerRevenue
+        cloudNetRevenue = channelFeePaid - discountCloud - creditsCloud  # booked view, credits at face
+        providerServing = p["providerServingCost"] * costScale * (L - discountProvider)  # before credits
         computeContribution = providerServing * p["hostedShare"] * p["incrementalComputeShare"] * p["computeMargin"]
-        cloudContribution = cloudNetRevenue - distribution + computeContribution
+        cloudContribution = channelFeePaid - discountCloud - creditEconomicCost - distribution + computeContribution
         return {
             "list": L, "discountProvider": discountProvider, "discountCloud": discountCloud,
             "creditsCloud": creditsCloud, "creditsProvider": creditsProvider, "creditsPartner": creditsPartner,
             "customerPays": customerPays, "providerRevenue": providerRevenue, "cloudNetRevenue": cloudNetRevenue,
             "revenueSharePaid": 0, "infra": 0, "infraDepreciation": 0, "infraPower": 0, "infraNetwork": 0,
+            "capital": 0, "creditEconomicCost": creditEconomicCost,
             "distribution": distribution, "computeContribution": computeContribution,
             "cloudContribution": cloudContribution, "cloudEconomic": cloudContribution,
             "providerServing": providerServing, "channelFeePaid": channelFeePaid,
@@ -115,22 +127,26 @@ def waterfall(p: dict, inc: dict, opts: dict | None = None) -> dict:
     discountCloud = p["customerDiscount"] * L
     cloudNetRevenue = L - discountCloud - creditsCloud
     revenueSharePaid = p["revenueShare"] * cloudNetRevenue
-    infra = p["infraCost"] * costScale * (p["baseUtilization"] / p["utilization"]) * L
-    cloudContribution = cloudNetRevenue - revenueSharePaid - infra - distribution
+    utilScale = costScale * (p["baseUtilization"] / p["utilization"])
+    infra = p["infraCost"] * utilScale * L
+    capital = p["capitalCharge"] * utilScale * L
+    creditRelief = (1 - creditCost) * (1 - p["revenueShare"]) * creditsCloud
+    cloudContribution = cloudNetRevenue - revenueSharePaid - infra - capital - distribution + creditRelief
     return {
         "list": L, "discountProvider": 0, "discountCloud": discountCloud,
         "creditsCloud": creditsCloud, "creditsProvider": creditsProvider, "creditsPartner": creditsPartner,
-        "customerPays": customerPays, "providerRevenue": revenueSharePaid - creditsProvider,
+        "customerPays": customerPays, "providerRevenue": revenueSharePaid,
         "cloudNetRevenue": cloudNetRevenue, "revenueSharePaid": revenueSharePaid,
         "infra": infra,
         "infraDepreciation": infra * INFRA_SPLIT["depreciation"],
         "infraPower": infra * INFRA_SPLIT["power"],
         "infraNetwork": infra * INFRA_SPLIT["network"],
+        "capital": capital, "creditEconomicCost": creditsCloud * (1 - p["revenueShare"]) * creditCost,
         "distribution": distribution, "computeContribution": 0, "cloudContribution": cloudContribution,
         # Model development is a fixed cost: allocated on pre-incentive net revenue (model.ts).
         "cloudEconomic": cloudContribution - p["modelDevCost"] * (L - discountCloud),
         "providerServing": 0, "channelFeePaid": 0,
-        "providerContribution": revenueSharePaid - creditsProvider,
+        "providerContribution": revenueSharePaid,
     }
 
 
@@ -138,13 +154,13 @@ NO_INCENTIVE = {"pct": 0, "partnerFunded": 0, "providerFunded": 0}
 
 
 def _funding(inc: dict) -> dict:
-    """Funding shares only (model.ts reads nothing else from a funding argument)."""
-    return {"partnerFunded": inc["partnerFunded"], "providerFunded": inc["providerFunded"]}
+    """Funding shares and credit cost only (model.ts reads nothing else from a funding argument)."""
+    return {"partnerFunded": inc["partnerFunded"], "providerFunded": inc["providerFunded"], "creditCost": inc.get("creditCost")}
 
 
 def breakEvenIncentive(p: dict, funding: dict, economic: bool = False) -> float:
     pick = (lambda w: w["cloudEconomic"]) if economic else (lambda w: w["cloudContribution"])
-    f = _funding(funding)  # only the funding shares are read; a stray pct is ignored (model.ts)
+    f = _funding(funding)  # a stray pct is ignored (model.ts)
     m0 = pick(waterfall(p, NO_INCENTIVE))
     m1 = pick(waterfall(p, {**f, "pct": 1}))
     if m0 <= 0:
@@ -172,6 +188,13 @@ def creditCliff(customerDiscount: float, credit: float) -> float:
     return (1 - customerDiscount) / before - 1
 
 
+def creditCliffWithDeflation(customerDiscount: float, credit: float, priceDeflation: float) -> float:
+    before = 1 - customerDiscount - credit
+    if before <= 0:
+        return INF
+    return ((1 - customerDiscount) * (1 - priceDeflation)) / before - 1
+
+
 def lifetime(p: dict, inc: dict, lt: dict) -> dict:
     rows = []
     prevSpend = lt["baselineShare"] * LIST
@@ -183,12 +206,14 @@ def lifetime(p: dict, inc: dict, lt: dict) -> dict:
     t = 1
     while t <= lt["years"]:
         inCommit = inc["type"] == "commit" and t <= lt["commitYears"]
-        survive = 1 if inCommit else math.pow(lt["retention"], t - 1)
+        churnYears = max(0, t - lt["commitYears"]) if inc["type"] == "commit" else t - 1
+        survive = math.pow(lt["retention"], churnYears)
         spend = LIST * math.pow(1 + lt["growth"], t - 1) * survive
         scale = spend / LIST
         opts = {"costScale": math.pow(costDrift, t - 1), "feeShift": lt["channelFeeDrift"] * (t - 1)}
         base = waterfall(p, NO_INCENTIVE, opts)
-        full = waterfall(p, {"pct": 1, "partnerFunded": inc["partnerFunded"], "providerFunded": inc["providerFunded"]}, opts)
+        full = waterfall(p, {"pct": 1, "partnerFunded": inc["partnerFunded"], "providerFunded": inc["providerFunded"],
+                             "creditCost": inc.get("creditCost")}, opts)
         costPerCreditDollar = (base["cloudContribution"] - full["cloudContribution"]) / LIST
         if inc["type"] in ("one-time", "commit"):
             creditBase = inc["pct"] * spend if t == 1 else 0
@@ -202,7 +227,9 @@ def lifetime(p: dict, inc: dict, lt: dict) -> dict:
         adjacency = spend * attach * lt["adjacencyMargin"] if lt["includeAdjacency"] else 0
         contribution = grossContribution - incentiveCost + adjacency
         cum += contribution
-        discounted = contribution / math.pow(1 + lt["discountRate"], t)
+        # Incentives are paid at the start of the year; contribution and adjacency accrue mid-year.
+        discounted = ((grossContribution + adjacency) / math.pow(1 + lt["discountRate"], t - 0.5)
+                      - incentiveCost / math.pow(1 + lt["discountRate"], t - 1))
         npv += discounted
         creditsTotal += creditBase
         spendTotal += spend
@@ -269,6 +296,13 @@ def subsidyGrid(p: dict, funding: dict, lt: dict) -> list:
 
 def equityUplift(stake: float, revenueMultiple: float, incrementalToProvider: float, providerRevenue: float) -> float:
     return stake * revenueMultiple * incrementalToProvider * providerRevenue
+
+
+def matchThreshold(npvWithIncentive: float, npvWithout: float, baseWinRate: float) -> float:
+    """sensitivity.ts: minimum rise in win probability for which matching an incentive beats not matching."""
+    if npvWithIncentive <= 0:
+        return INF
+    return max(0, (baseWinRate * (npvWithout - npvWithIncentive)) / npvWithIncentive)
 
 
 # ---------------------------------------------------------------------------------------
@@ -352,12 +386,29 @@ def route_outputs(I: dict, rid: str, with_rows: bool = True) -> dict:
         "breakEvenEconomic": breakEvenIncentive(p, inc, True),
         "requiredVolumeMultiple": requiredVolumeMultiple(p, inc),
         "creditCliff": creditCliff(p["customerDiscount"], inc["pct"]),
+        "creditCliffWithDeflation": creditCliffWithDeflation(p["customerDiscount"], inc["pct"], lt["priceDeflation"]),
+        "counterfactual": counterfactual(p, inc, lt),
         "grid": subsidyGrid(p, inc, lt),
         "lifetime": lifetimes,
         "requiredAttach": {typ: requiredAttach(p, {**inc, "type": typ}, lt) for typ in INCENTIVE_TYPES},
         "equityUplift": equityUplift(eq["stake"], eq["revenueMultiple"], eq["incrementalToProvider"], w["providerRevenue"]) if p["structure"] == "agent" else None,
     }
     return out
+
+
+def counterfactual(p: dict, inc: dict, lt: dict) -> dict:
+    """Win-probability test (one-time incentive, 5 years) and recurring NPV with / without base adjacency."""
+    lt5 = {**lt, "years": 5}
+    npvNone = lifetime(p, {**inc, "pct": 0, "type": "one-time"}, lt5)["npv"]
+    npvOne = lifetime(p, {**inc, "type": "one-time"}, lt5)["npv"]
+    rec = {**inc, "type": "recurring"}
+    return {
+        "npvNone5": npvNone,
+        "npvOneTime5": npvOne,
+        "requiredWinLift": {str(r): matchThreshold(npvOne, npvNone, r) for r in WIN_RATES},
+        "recurringAiOnly": {str(n): lifetime(p, rec, {**lt, "years": n, "includeAdjacency": False})["npv"] for n in (1, 3, 5)},
+        "recurringWithAdjacency": {str(n): lifetime(p, rec, {**lt, "years": n, "includeAdjacency": True})["npv"] for n in (1, 3, 5)},
+    }
 
 
 # Scenarios that push the engine through branches the base case never touches
@@ -367,13 +418,14 @@ STRESS_SCENARIOS = [
     {
         "name": "stress-commit",
         "overrides": {
-            "incentive": {"type": "commit", "pct": 0.5, "partnerFunded": 0.2, "providerFunded": 0.3},
+            "incentive": {"type": "commit", "pct": 0.5, "partnerFunded": 0.2, "providerFunded": 0.3, "creditCost": 1.0},
             "lifetime": {"years": 3, "includeAdjacency": 1, "baselineShare": 0.4, "channelFeeDrift": -0.05,
                          "retention": 0.7, "growth": 0.0, "commitYears": 2, "consumptionYears": 2,
                          "adjacencyIncremental": 0.0},
             "routes": {
                 "bedrock-claude": {"channelFee": 0.16, "discountFundedByProvider": 0.5},
-                "azure-openai": {"revenueShare": 0.25, "infraCost": 0.35, "utilization": 0.3, "customerDiscount": 0.2},
+                "azure-openai": {"revenueShare": 0.25, "infraCost": 0.35, "utilization": 0.3, "customerDiscount": 0.2,
+                                 "capitalCharge": 0.06},
                 "vertex-gemini": {"modelDevCost": 0.6},
                 "vertex-claude": {"incrementalComputeShare": 1.0, "channelFee": 0.16, "distributionCost": 0.08,
                                   "customerDiscount": 0.2, "discountFundedByProvider": 0.5},
@@ -383,7 +435,7 @@ STRESS_SCENARIOS = [
     {
         "name": "stress-consumption",
         "overrides": {
-            "incentive": {"type": "consumption", "pct": 0.25, "partnerFunded": 0.5, "providerFunded": 0.5},
+            "incentive": {"type": "consumption", "pct": 0.25, "partnerFunded": 0.5, "providerFunded": 0.5, "creditCost": 0.0},
             "lifetime": {"years": 5, "includeAdjacency": 1, "efficiencyGain": 0.6, "priceDeflation": 0.15,
                          "discountRate": 0.12, "growth": 0.8, "baselineShare": 0.8, "consumptionYears": 4},
             "routes": {
@@ -395,11 +447,11 @@ STRESS_SCENARIOS = [
     {
         "name": "stress-recurring",
         "overrides": {
-            "incentive": {"type": "recurring", "pct": 0.1, "partnerFunded": 0.0, "providerFunded": 0.25},
+            "incentive": {"type": "recurring", "pct": 0.1, "partnerFunded": 0.0, "providerFunded": 0.25, "creditCost": 0.35},
             "lifetime": {"years": 1, "includeAdjacency": 0, "retention": 0.97, "adjacencyAttach": 1.2},
             "routes": {
                 "azure-openai": {"infraCost": 0.1, "utilization": 0.7},
-                "vertex-gemini": {"infraCost": 0.25, "utilization": 0.3},
+                "vertex-gemini": {"infraCost": 0.25, "utilization": 0.3, "capitalCharge": 0.01},
             },
         },
     },
@@ -421,7 +473,9 @@ def build_fixtures(raw: dict) -> dict:
                 "holds lifetime(p, {...incentive, type}, {...lifetime, years}) with payback = paybackMonths; rows are given for "
                 "years = 5. "
                 "requiredAttach uses the base lifetime (years as in params). Scenario overrides replace base "
-                "values (includeAdjacency 1 -> true)."
+                "values (includeAdjacency 1 -> true). counterfactual: requiredWinLift[rate] = matchThreshold("
+                "npvOneTime5, npvNone5, rate) from sensitivity.ts; recurringAiOnly / recurringWithAdjacency = "
+                "recurring NPV with includeAdjacency false / true, years 1, 3, 5."
             ),
             "tolerance": 1e-6,
         },
@@ -452,6 +506,7 @@ def headline(raw: dict) -> list:
             "y1ContributionAtPct": waterfall(p, inc)["cloudContribution"],
             "breakEven": breakEvenIncentive(p, inc),
             "breakEvenEconomic": breakEvenIncentive(p, inc, True),
+            "npv5None": lifetime(p, {**inc, "pct": 0}, {**lt, "years": 5})["npv"],
             "npv5OneTime": lifetime(p, ot, {**lt, "years": 5})["npv"],
             "npv5Recurring": lifetime(p, rc, {**lt, "years": 5})["npv"],
             "payback5OneTime": lifetime(p, ot, {**lt, "years": 5})["paybackMonths"],
@@ -469,11 +524,11 @@ def main(argv=None):
     pct = raw["incentive"]["pct"]["base"]
     print(f"params {raw.get('_meta', {}).get('version')} ({raw.get('_meta', {}).get('asOf')}) · incentive {pct:.0%} one-time unless noted")
     fmt = lambda v, f: ("inf" if isinstance(v, float) and math.isinf(v) else format(v, f))
-    print(f"{'route':18}{'Y1 @0%':>9}{'Y1 @inc':>9}{'BE':>8}{'BE econ':>9}{'NPV5 1x':>9}{'NPV5 rec':>10}{'payback':>9}")
+    print(f"{'route':18}{'Y1 @0%':>9}{'Y1 @inc':>9}{'BE':>8}{'BE econ':>9}{'NPV5 none':>10}{'NPV5 1x':>9}{'NPV5 rec':>10}{'payback':>9}")
     for h in headline(raw):
         print(f"{h['route']:18}{fmt(h['y1Contribution0'], '9.2f')}{fmt(h['y1ContributionAtPct'], '9.2f')}"
-              f"{fmt(h['breakEven'], '8.1%')}{fmt(h['breakEvenEconomic'], '9.1%')}{fmt(h['npv5OneTime'], '9.2f')}"
-              f"{fmt(h['npv5Recurring'], '10.2f')}{fmt(h['payback5OneTime'], '9.1f')}")
+              f"{fmt(h['breakEven'], '8.1%')}{fmt(h['breakEvenEconomic'], '9.1%')}{fmt(h['npv5None'], '10.2f')}"
+              f"{fmt(h['npv5OneTime'], '9.2f')}{fmt(h['npv5Recurring'], '10.2f')}{fmt(h['payback5OneTime'], '9.1f')}")
     if a.fixtures:
         fx = build_fixtures(raw)
         Path(a.out).write_text(json.dumps(fx, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")

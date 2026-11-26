@@ -171,11 +171,13 @@ PARAM_META = {
     "utilization": ("Achieved serving utilization", "%", F_PCT_IN, "Utilization"),
     "baseUtilization": ("Utilization embedded in the infra cost", "%", F_PCT_IN, "Base utilization"),
     "modelDevCost": ("Model development amortization (economic view only)", "% of cloud net revenue", F_PCT_IN, "Model development cost"),
+    "capitalCharge": ("Cost of capital on serving assets at base utilization (not in GAAP cost)", "% of list", F_PCT_IN, "Capital charge"),
     "distributionCost": ("Distribution cost: platform, support, account team", "% of list", F_PCT_IN, "Distribution cost"),
     # incentive
     "pct": ("Incentive size (credits)", "% of list spend", F_PCT_IN, "Incentive %"),
     "partnerFunded": ("Share of the incentive funded by a partner (SI / reseller)", "% of incentive", F_PCT_IN, "Partner-funded share"),
-    "providerFunded": ("Share of the incentive funded by the model provider", "% of incentive", F_PCT_IN, "Provider-funded share"),
+    "providerFunded": ("Share of the incentive funded by the model provider (agent routes only; ignored where the cloud owns the model)", "% of incentive", F_PCT_IN, "Provider-funded share"),
+    "creditCost": ("Economic cost to the cloud of $1 of its own credit (1 = displaces cash spend dollar for dollar)", "$ per $1 of credit", F_RATIO, "Credit cost per $1"),
     # lifetime
     "years": ("Customer lifetime modelled (horizon)", "years (1-5)", F_INT, "Lifetime years"),
     "growth": ("Annual growth in list-price AI spend", "% per year", F_PCT_IN, "Spend growth"),
@@ -200,11 +202,12 @@ PARAM_META = {
 AGENT_USED = {"customerDiscount", "discountFundedByProvider", "channelFee", "providerServingCost", "hostedShare",
               "incrementalComputeShare", "computeMargin", "distributionCost"}
 PRINCIPAL_USED = {"customerDiscount", "revenueShare", "infraCost", "utilization", "baseUtilization",
-                  "modelDevCost", "distributionCost"}
+                  "modelDevCost", "capitalCharge", "distributionCost"}
 ROUTE_SYM = {"d": "customerDiscount", "phi": "discountFundedByProvider", "f": "channelFee", "sigma": "providerServingCost",
              "h": "hostedShare", "i": "incrementalComputeShare", "mc": "computeMargin", "rho": "revenueShare",
-             "kappa": "infraCost", "u": "utilization", "u0": "baseUtilization", "dev": "modelDevCost", "k": "distributionCost"}
-INC_SYM = {"c": "pct", "pp": "partnerFunded", "pm": "providerFunded"}
+             "kappa": "infraCost", "u": "utilization", "u0": "baseUtilization", "dev": "modelDevCost", "cap": "capitalCharge",
+             "k": "distributionCost"}
+INC_SYM = {"c": "pct", "pp": "partnerFunded", "pm": "providerFunded", "cc": "creditCost"}
 LT_SYM = {"g": "growth", "ret": "retention", "p": "priceDeflation", "e": "efficiencyGain", "drift": "channelFeeDrift",
           "att": "adjacencyAttach", "inc": "adjacencyIncremental", "am": "adjacencyMargin", "upl": "commitAdjacencyUplift",
           "cy": "commitYears", "base": "baselineShare", "cyc": "consumptionYears", "w": "discountRate", "incadj": "includeAdjacency"}
@@ -246,7 +249,13 @@ def lt_name(key):
     return f"LT_{key}"
 
 
-INC_NAME = {"pct": "Inc_pct", "partnerFunded": "Inc_partnerFunded", "providerFunded": "Inc_providerFunded"}
+INC_NAME = {"pct": "Inc_pct", "partnerFunded": "Inc_partnerFunded", "providerFunded": "Inc_providerFunded",
+            "creditCost": "Inc_creditCost"}
+
+
+def cloud_share_name(st):
+    """Defined name of the cloud-funded share: principal routes ignore provider funding (model.ts)."""
+    return "Inc_cloudFundedAgent" if st == "agent" else "Inc_cloudFundedPrincipal"
 
 
 def name_refs(rid):
@@ -271,35 +280,44 @@ def m0_expr(st, R, ks="1", fee=None):
         r0 = f"({L}-{R['phi']}*{R['d']}*{L})"
         return (f"{fee}*{r0}-(1-{R['phi']})*{R['d']}*{L}-{R['k']}*{L}"
                 f"+{R['sigma']}{kp}*{r0}*{R['h']}*{R['i']}*{R['mc']}")
-    return f"(1-{R['rho']})*({L}-{R['d']}*{L})-{R['kappa']}{kp}*({R['u0']}/{R['u']})*{L}-{R['k']}*{L}"
+    return (f"(1-{R['rho']})*({L}-{R['d']}*{L})-({R['kappa']}+{R['cap']}){kp}*({R['u0']}/{R['u']})*{L}"
+            f"-{R['k']}*{L}")
 
 
-def slope_expr(st, R, ks="1", fee=None):
-    """Cost to the cloud per $1 of incentive credit (contribution is linear in the incentive)."""
-    s = f"(1-{R['pp']}-{R['pm']})"
-    kp = "" if ks == "1" else f"*{ks}"
+def slope_expr(st, R, fee=None):
+    """Cost to the cloud per $1 of incentive credit (contribution is linear in the incentive).
+    Agent: creditCost x cloud share + fee x provider share (provider-funded credits cut the fee base);
+    serving compute is measured before credits, so it does not move. Principal: provider funding is
+    ignored and the royalty shares the credit: creditCost x (1 - revenue share) x (1 - partner share)."""
     if st == "agent":
         fee = fee or f"MAX(0,{R['f']})"
-        return f"{fee}*{R['pm']}+{s}+{R['sigma']}{kp}*{R['pm']}*{R['h']}*{R['i']}*{R['mc']}"
-    return f"(1-{R['rho']})*{s}"
+        return f"{fee}*{R['pm']}+{R['cc']}*(1-{R['pp']}-{R['pm']})"
+    return f"{R['cc']}*(1-{R['rho']})*(1-{R['pp']})"
 
 
-def year_contrib_expr(st, R, t, spend, prev):
-    """Year-t lifetime contribution (gross - incentive cost + adjacency) as one expression."""
+def _year_parts(R, t):
     if t == 1:
-        ks, fee = "1", f"MAX(0,{R['f']})"
-    else:
-        ks = f"((1-{R['e']})/(1-{R['p']}))^{t - 1}"
-        fee = f"MAX(0,{R['f']}+{R['drift']}*{t - 1})"
-    m0 = m0_expr(st, R, ks, fee)
-    sl = slope_expr(st, R, ks, fee)
+        return "1", f"MAX(0,{R['f']})"
+    return f"((1-{R['e']})/(1-{R['p']}))^{t - 1}", f"MAX(0,{R['f']}+{R['drift']}*{t - 1})"
+
+
+def year_inflow_expr(st, R, t, spend):
+    """Year-t gross contribution + adjacency (accrues mid-year)."""
+    ks, fee = _year_parts(R, t)
+    T = R["type"]
+    adj = (f'IF({R["incadj"]}=1,{spend}*({R["att"]}*{R["inc"]}+IF(AND({T}="commit",{t}<={R["cy"]}),{R["upl"]},0))'
+           f'*{R["am"]},0)')
+    return f"({m0_expr(st, R, ks, fee)})*{spend}/{R['L']}+{adj}"
+
+
+def year_cost_expr(st, R, t, spend, prev):
+    """Year-t incentive cost (paid at the start of the year)."""
+    _, fee = _year_parts(R, t)
     T = R["type"]
     first = f"{R['c']}*{spend}" if t == 1 else "0"
     cb = (f'IF(OR({T}="one-time",{T}="commit"),{first},IF({T}="recurring",{R["c"]}*{spend},'
           f'IF({t}<={R["cyc"]},{R["c"]}*MAX(0,{spend}-{prev}),0)))')
-    adj = (f'IF({R["incadj"]}=1,{spend}*({R["att"]}*{R["inc"]}+IF(AND({T}="commit",{t}<={R["cy"]}),{R["upl"]},0))'
-           f'*{R["am"]},0)')
-    return f"({m0})*{spend}/{R['L']}-({sl})*{cb}+{adj}"
+    return f"({slope_expr(st, R, fee)})*{cb}"
 
 
 # ---------------------------------------------------------------------------------------
@@ -318,6 +336,7 @@ class Book:
         self.wb = Workbook()
         self.wb.remove(self.wb.active)
         self.ws = {n: self.wb.create_sheet(n) for n in SHEETS}
+        self.win_rates = list(M.WIN_RATES)
         self.cells = {}    # verification key -> "Sheet!A1"
         self.inputs = {}   # input key -> "Assumptions!G12" (the "Your value" cell)
         self.lowhigh = {}  # input key -> ("Assumptions!$D$12", "Assumptions!$F$12")
@@ -417,7 +436,7 @@ class Book:
         put(ws, r, 10, "A", halign="center")
         put(ws, r, 11, "one-time = credit on year-1 spend only; recurring = credit on every year's spend; consumption = "
                        "credit on growth in spend over the prior year (MAP-style, for the consumption-credit years); "
-                       "commit = year-1 credit tied to a commitment (100% retention and adjacency uplift during the term). "
+                       "commit = year-1 credit tied to a commitment (no churn and adjacency uplift during the term; churn starts after it). "
                        "Default one-time, as in params.ts. Drives the 'selected type' views (Lifetime, Sensitivity NPV).",
             wrap=True)
         put(ws, r, 12, "Inc_type", kind="muted")
@@ -426,22 +445,35 @@ class Book:
         dv_type.add(f"G{r}")
         r += 1
         inc = raw["incentive"]
+        inc_row = {}
         for key in M.INCENTIVE_KEYS:
             self._param_row(ws, r, "Selector", key, inc[key], INC_NAME[key], f"incentive|{key}")
+            inc_row[key] = r
             r += 1
-        # derived cloud share
-        put(ws, r, 1, "Selector")
-        put(ws, r, 2, "cloudFunded")
-        put(ws, r, 3, "Share of the incentive the cloud funds (derived)")
-        pp_r, pm_r = r - 2, r - 1
-        put(ws, r, 8, f"=1-H{pp_r}-H{pm_r}", fmt=F_PCT_IN, bold=True)
-        put(ws, r, 9, "% of incentive")
-        put(ws, r, 10, "C", halign="center")
-        put(ws, r, 11, "1 − partner-funded − provider-funded (model.ts cloudShare).", wrap=True)
-        put(ws, r, 12, "Inc_cloudFunded", kind="muted")
-        self.define("Inc_cloudFunded", ws, f"H{r}")
-        self.reg("active|incentive|cloudFunded", ws, r, 8)
-        r += 1
+        for key in inc:  # future params.json incentive keys model.ts does not know yet
+            if key not in M.INCENTIVE_KEYS:
+                self._param_row(ws, r, "Selector", key, inc[key], f"Inc_{key}", f"incentive|{key}", used=False)
+                r += 1
+        # derived cloud-funded shares (model.ts cloudShare; principal routes ignore provider funding)
+        pp_r, pm_r = inc_row["partnerFunded"], inc_row["providerFunded"]
+        for key, desc, f, note in (
+                ("cloudFundedAgent", "Share of the incentive the cloud funds — agent routes (derived)", f"=1-H{pp_r}-H{pm_r}",
+                 "1 − partner-funded − provider-funded."),
+                ("cloudFundedPrincipal", "Share of the incentive the cloud funds — principal routes (derived)", f"=1-H{pp_r}",
+                 "1 − partner-funded: where the cloud owns or royalty-free licenses the model there is no outside provider "
+                 "to co-fund credits, so provider funding is ignored (model.ts).")):
+            put(ws, r, 1, "Selector")
+            put(ws, r, 2, key)
+            put(ws, r, 3, desc, wrap=True)
+            put(ws, r, 8, f, fmt=F_PCT_IN, bold=True)
+            put(ws, r, 9, "% of incentive")
+            put(ws, r, 10, "C", halign="center")
+            put(ws, r, 11, note, wrap=True)
+            nm = "Inc_" + key
+            put(ws, r, 12, nm, kind="muted")
+            self.define(nm, ws, f"H{r}")
+            self.reg(f"active|incentive|{key}", ws, r, 8)
+            r += 1
         lt = raw["lifetime"]
         self._param_row(ws, r, "Selector", "years", lt["years"], lt_name("years"), "lifetime|years", dv=dv_years)
         r += 1
@@ -532,9 +564,13 @@ class Book:
         ("infraDepreciation", "   of which depreciation", F_USD, False),
         ("infraPower", "   of which power", F_USD, False),
         ("infraNetwork", "   of which network & data centre", F_USD, False),
+        ("capital", "Cost of capital on serving assets (principal routes)", F_USD, False),
         ("distribution", "Distribution cost (platform, support, account team)", F_USD, False),
-        ("providerServing", "Provider serving compute (agent routes; the provider's cost)", F_USD, False),
+        ("providerServing", "Provider serving compute, before credits (agent routes; the provider's cost)", F_USD, False),
         ("computeContribution", "Cloud margin on incremental compute sold to the provider", F_USD, False),
+        ("_sec", "CREDITS — economic view (what the cloud-funded credits really cost)"),
+        ("creditEconomicCost", "Economic cost of the cloud-funded credits", F_USD, False),
+        ("creditRelief", "Credit relief: part of the face value that buys incremental use (principal routes)", F_USD, False),
         ("_sec", "CONTRIBUTION"),
         ("cloudContribution", "Cloud contribution", F_USD, True),
         ("contributionPct", "Cloud contribution, % of cloud net revenue", F_PCT, False),
@@ -554,29 +590,33 @@ class Book:
         "list": ("LIST (model.ts)", "LIST (model.ts)"),
         "discountProvider": ("discount × provider-funded share × list", "0 — the cloud is principal"),
         "discountCloud": ("discount × (1 − provider-funded share) × list", "discount × list"),
-        "creditsCloud": ("incentive % × cloud-funded share × list", "incentive % × cloud-funded share × list"),
-        "creditsProvider": ("incentive % × provider-funded share × list", "incentive % × provider-funded share × list"),
+        "creditsCloud": ("incentive % × (1 − partner − provider share) × list", "incentive % × (1 − partner share) × list"),
+        "creditsProvider": ("incentive % × provider-funded share × list", "0 — no outside provider to co-fund credits"),
         "creditsPartner": ("incentive % × partner-funded share × list", "incentive % × partner-funded share × list"),
         "customerPays": ("list − discount − incentive", "list − discount − incentive"),
-        "providerRevenue": ("list − provider-funded discount − provider-funded credits", "revenue share − provider-funded credits"),
+        "providerRevenue": ("list − provider-funded discount − provider-funded credits", "same as revenue share paid"),
         "channelFeeRate": ("MAX(0, channel fee)", "n/a"),
         "channelFeePaid": ("fee rate × provider revenue", "n/a"),
         "revenueSharePaid": ("n/a", "revenue share × cloud net revenue"),
-        "cloudNetRevenue": ("channel fee − cloud-funded discount − cloud-funded credits", "list − discount − cloud-funded credits"),
+        "cloudNetRevenue": ("booked: channel fee − cloud-funded discount − credits at face", "booked: list − discount − credits at face"),
         "infra": ("n/a — the provider bears serving cost", "infra cost × (base utilization ÷ utilization) × list"),
         "infraDepreciation": ("n/a", "infra × INFRA_SPLIT.depreciation"),
         "infraPower": ("n/a", "infra × INFRA_SPLIT.power"),
         "infraNetwork": ("n/a", "infra × INFRA_SPLIT.network"),
+        "capital": ("n/a", "capital charge × (base utilization ÷ utilization) × list"),
         "distribution": ("distribution cost × list", "distribution cost × list"),
-        "providerServing": ("provider serving cost × provider revenue", "n/a"),
+        "providerServing": ("provider serving cost × (list − provider-funded discount)", "n/a"),
+        "creditEconomicCost": ("credit cost per $1 × cloud-funded credits", "cloud-funded credits × (1 − revenue share) × credit cost"),
+        "creditRelief": ("n/a", "(1 − credit cost) × (1 − revenue share) × cloud-funded credits"),
         "computeContribution": ("serving compute × hosted share × incremental share × compute margin", "n/a"),
-        "cloudContribution": ("net revenue − distribution + compute margin", "net revenue − revenue share − infra − distribution"),
-        "contributionPct": ("contribution ÷ net revenue (n/a if net revenue ≤ 0)", "contribution ÷ net revenue"),
+        "cloudContribution": ("channel fee − cloud discount − credit economic cost − distribution + compute margin",
+                              "net revenue − revenue share − infra − capital − distribution + credit relief"),
+        "contributionPct": ("contribution ÷ booked net revenue (n/a if ≤ 0)", "contribution ÷ booked net revenue"),
         "modelDev": ("n/a — the provider bears model development", "model dev cost × pre-incentive net revenue (list − discount)"),
         "cloudEconomic": ("same as contribution", "contribution − model development"),
-        "providerContribution": ("provider revenue − channel fee − serving compute", "revenue share − provider-funded credits"),
-        "m0": ("fee×(L−φdL) − (1−φ)dL − kL + σ(L−φdL)·h·i·m", "(1−ρ)(L−dL) − κ(u0/u)L − kL"),
-        "slope": ("fee·π_provider + cloud share + σ·π_provider·h·i·m", "(1−ρ) × cloud share"),
+        "providerContribution": ("provider revenue − channel fee − serving compute", "same as revenue share paid"),
+        "m0": ("fee×(L−φdL) − (1−φ)dL − kL + σ(L−φdL)·h·i·m", "(1−ρ)(L−dL) − (κ + capital)(u0/u)L − kL"),
+        "slope": ("fee × provider share + credit cost × cloud share", "credit cost × (1−ρ) × (1 − partner share)"),
         "breakEven": ("M0 ÷ (cost per $1 × 100); 0 if M0 ≤ 0", "M0 ÷ (cost per $1 × 100); 0 if M0 ≤ 0"),
         "m0Economic": ("same as M0", "M0 − model development"),
         "slopeEconomic": ("same as cost per $1", "same as cost per $1 (model development is fixed per $ of pre-incentive revenue)"),
@@ -586,7 +626,7 @@ class Book:
 
     def build_waterfall(self):
         ws = self.ws["Waterfall_Y1"]
-        widths(ws, {"A": 2, "B": 62, "C": 15, "D": 15, "E": 15, "F": 15, "G": 2, "H": 55, "I": 55})
+        widths(ws, {"A": 2, "B": 66, "C": 15, "D": 15, "E": 15, "F": 15, "G": 2, "H": 76, "I": 76})
         title(ws, "Year-1 waterfall — $100 of list-price inference, four routes side by side",
               "$ per $100 of list at the Active incentive on Assumptions (credits are contra-revenue). "
               "Agent routes: the model provider is principal; principal routes: the cloud is.",
@@ -624,12 +664,12 @@ class Book:
             n = lambda key, rid=rid: rn(rid, key)  # noqa: E731
             put(ws, 5, col, st, halign="right", italic=True)
             put(ws, 6, col, "=Inc_pct", kind="link", fmt=F_PCT_IN)
-            put(ws, 7, col, "=Inc_cloudFunded", kind="link", fmt=F_PCT_IN)
+            put(ws, 7, col, f"={cloud_share_name(st)}", kind="link", fmt=F_PCT_IN)
             C = lambda f, c=c: f"{c}{R[f]}"  # noqa: E731
             F = {}
             F["list"] = "=ListPrice"
-            F["creditsCloud"] = f"=Inc_cloudFunded*Inc_pct*{C('list')}"
-            F["creditsProvider"] = f"=Inc_providerFunded*Inc_pct*{C('list')}"
+            F["creditsCloud"] = f"={cloud_share_name(st)}*Inc_pct*{C('list')}"
+            F["creditsProvider"] = f"=Inc_providerFunded*Inc_pct*{C('list')}" if st == "agent" else "=0"
             F["creditsPartner"] = f"=Inc_partnerFunded*Inc_pct*{C('list')}"
             F["customerPays"] = f"={C('list')}-{n('customerDiscount')}*{C('list')}-Inc_pct*{C('list')}"
             F["distribution"] = f"={n('distributionCost')}*{C('list')}"
@@ -642,27 +682,34 @@ class Book:
                 F["revenueSharePaid"] = "=0"
                 F["cloudNetRevenue"] = f"={C('channelFeePaid')}-{C('discountCloud')}-{C('creditsCloud')}"
                 F["infra"] = "=0"
-                F["providerServing"] = f"={n('providerServingCost')}*{C('providerRevenue')}"
+                F["capital"] = "=0"
+                F["providerServing"] = f"={n('providerServingCost')}*({C('list')}-{C('discountProvider')})"
                 F["computeContribution"] = (f"={C('providerServing')}*{n('hostedShare')}*{n('incrementalComputeShare')}"
                                             f"*{n('computeMargin')}")
-                F["cloudContribution"] = f"={C('cloudNetRevenue')}-{C('distribution')}+{C('computeContribution')}"
+                F["creditEconomicCost"] = f"=Inc_creditCost*{C('creditsCloud')}"
+                F["creditRelief"] = "=0"
+                F["cloudContribution"] = (f"={C('channelFeePaid')}-{C('discountCloud')}-{C('creditEconomicCost')}"
+                                          f"-{C('distribution')}+{C('computeContribution')}")
                 F["modelDev"] = "=0"
                 F["providerContribution"] = f"={C('providerRevenue')}-{C('channelFeePaid')}-{C('providerServing')}"
             else:
                 F["discountProvider"] = "=0"
                 F["discountCloud"] = f"={n('customerDiscount')}*{C('list')}"
-                F["providerRevenue"] = f"={C('revenueSharePaid')}-{C('creditsProvider')}"
+                F["providerRevenue"] = f"={C('revenueSharePaid')}"
                 F["channelFeeRate"] = "=0"
                 F["channelFeePaid"] = "=0"
                 F["revenueSharePaid"] = f"={n('revenueShare')}*{C('cloudNetRevenue')}"
                 F["cloudNetRevenue"] = f"={C('list')}-{C('discountCloud')}-{C('creditsCloud')}"
                 F["infra"] = f"={n('infraCost')}*({n('baseUtilization')}/{n('utilization')})*{C('list')}"
+                F["capital"] = f"={n('capitalCharge')}*({n('baseUtilization')}/{n('utilization')})*{C('list')}"
                 F["providerServing"] = "=0"
                 F["computeContribution"] = "=0"
-                F["cloudContribution"] = (f"={C('cloudNetRevenue')}-{C('revenueSharePaid')}-{C('infra')}"
-                                          f"-{C('distribution')}")
+                F["creditEconomicCost"] = f"={C('creditsCloud')}*(1-{n('revenueShare')})*Inc_creditCost"
+                F["creditRelief"] = f"=(1-Inc_creditCost)*(1-{n('revenueShare')})*{C('creditsCloud')}"
+                F["cloudContribution"] = (f"={C('cloudNetRevenue')}-{C('revenueSharePaid')}-{C('infra')}-{C('capital')}"
+                                          f"-{C('distribution')}+{C('creditRelief')}")
                 F["modelDev"] = f"={n('modelDevCost')}*({C('list')}-{C('discountCloud')})"
-                F["providerContribution"] = f"={C('revenueSharePaid')}-{C('creditsProvider')}"
+                F["providerContribution"] = f"={C('revenueSharePaid')}"
             F["infraDepreciation"] = f"={C('infra')}*Infra_depreciation"
             F["infraPower"] = f"={C('infra')}*Infra_power"
             F["infraNetwork"] = f"={C('infra')}*Infra_network"
@@ -670,7 +717,7 @@ class Book:
             F["cloudEconomic"] = f"={C('cloudContribution')}-{C('modelDev')}"
             Rn = name_refs(rid)
             F["m0"] = "=" + m0_expr(st, Rn, "1", C("channelFeeRate"))
-            F["slope"] = "=" + slope_expr(st, Rn, "1", C("channelFeeRate"))
+            F["slope"] = "=" + slope_expr(st, Rn, C("channelFeeRate"))
             be = lambda m, s: f'=IF({m}<=0,0,IF({s}*ListPrice=0,"unbounded",{m}/({s}*ListPrice)))'  # noqa: E731
             F["breakEven"] = be(C("m0"), C("slope"))
             if st == "agent":
@@ -694,17 +741,18 @@ class Book:
 
     # -- Lifetime --------------------------------------------------------------------------
     LT_COLS = ["route", "type", "year", "inH", "inCommit", "survive", "spend", "gross", "prevSpend", "credit", "cost",
-               "adj", "contrib", "cum", "df", "disc", "annual", "cumBefore", "hit", "pb", "neg", "hitH", "negH"]
+               "adj", "contrib", "cum", "dfMid", "dfStart", "disc", "annual", "cumBefore", "hit", "pb", "neg", "hitH", "negH"]
     LT_HEAD = {"route": "Route", "type": "Incentive type", "year": "Year", "inH": "In horizon (1/0)",
                "inCommit": "In commit term (1/0)", "survive": "Survival", "spend": "List spend",
                "gross": "Gross contribution", "prevSpend": "Prior-year spend (consumption base)",
                "credit": "Credit base (customer credit)", "cost": "Incentive cost to cloud", "adj": "Adjacency GP",
-               "contrib": "Contribution", "cum": "Cumulative", "df": "Discount factor", "disc": "Discounted",
+               "contrib": "Contribution", "cum": "Cumulative", "dfMid": "Discount factor, mid-year (inflows)",
+               "dfStart": "Discount factor, start of year (incentive)", "disc": "Discounted",
                "annual": "Annual inflow (gross + adjacency)", "cumBefore": "Cumulative before inflow",
                "hit": "Payback hit (1/0)", "pb": "Payback months if hit", "neg": "Went negative (1/0)",
                "hitH": "Hit within horizon", "negH": "Negative within horizon"}
     LT_FMT = {"inH": F_INT, "inCommit": F_INT, "survive": F_FACTOR, "spend": F_USD, "gross": F_USD, "prevSpend": F_USD,
-              "credit": F_USD, "cost": F_USD, "adj": F_USD, "contrib": F_USD, "cum": F_USD, "df": F_FACTOR,
+              "credit": F_USD, "cost": F_USD, "adj": F_USD, "contrib": F_USD, "cum": F_USD, "dfMid": F_FACTOR, "dfStart": F_FACTOR,
               "disc": F_USD, "annual": F_USD, "cumBefore": F_USD, "hit": F_INT, "pb": F_MO, "neg": F_INT,
               "hitH": F_INT, "negH": F_INT, "year": F_INT}
     LT_FIELD = {"spend": "spend", "gross": "grossContribution", "cost": "incentiveCost", "adj": "adjacency",
@@ -715,13 +763,16 @@ class Book:
         widths(ws, {"A": 2, "B": 18, "C": 14, **{CL(c): 13 for c in range(4, 26)}})
         title(ws, "Lifetime — the customer over 1 to 5 years, every route × incentive type",
               "$ per $100 of year-1 list spend. Year rows always run 1–5; 'In horizon' applies the selected lifetime years. "
-              "Incentives are booked at the start of each year; NPV discounts each year at end of year.")
+              "Timing (model.ts): incentives are paid at the start of each year, contribution and adjacency accrue mid-year; "
+              "commit deals keep the customer for the commit term and churn only after it.")
         ws.freeze_panes = "D4"
         r = 5
         section(ws, r, 2, 8, "DRIVERS (linked from Assumptions)")
         r += 1
         drivers = [("Incentive, % of list", "=Inc_pct", F_PCT_IN), ("Incentive type (selected)", "=Inc_type", None),
-                   ("Lifetime years (selected horizon)", "=LT_years", F_INT), ("Cloud-funded share", "=Inc_cloudFunded", F_PCT_IN),
+                   ("Lifetime years (selected horizon)", "=LT_years", F_INT), ("Cloud-funded share, agent routes", "=Inc_cloudFundedAgent", F_PCT_IN),
+                   ("Cloud-funded share, principal routes", "=Inc_cloudFundedPrincipal", F_PCT_IN),
+                   ("Economic cost per $1 of cloud credit", "=Inc_creditCost", F_RATIO),
                    ("Include adjacency (1/0)", "=LT_includeAdjacency", F_INT), ("Discount rate", "=LT_discountRate", F_PCT_IN),
                    ("Consumption-credit years", "=LT_consumptionYears", F_INT), ("Commit years", "=LT_commitYears", F_INT)]
         for lab, f, fmt in drivers:
@@ -759,9 +810,9 @@ class Book:
         L = self.lt_col
 
         # Year drivers -------------------------------------------------------------------
-        section(ws, yd_start - 2, 2, 8, "YEAR DRIVERS BY ROUTE — contribution at 0% incentive and the cost of $1 of credit, each year")
+        section(ws, yd_start - 2, 2, 9, "YEAR DRIVERS BY ROUTE — contribution at 0% incentive and the cost of $1 of credit, each year")
         header(ws, yd_start - 1, 2, ["Route", "Year", "Cost scale k(t)", "Channel fee f(t)", "Contribution at 0% (M0, per $100)",
-                                     "Cost per $1 of credit", "Discount factor"])
+                                     "Cost per $1 of credit", "Discount factor, mid-year", "Discount factor, start of year"])
         ws.row_dimensions[yd_start - 1].height = 42
         for rid in self.routes:
             st = self.st[rid]
@@ -776,12 +827,13 @@ class Book:
                 else:
                     put(ws, yr, 5, "=0", kind="muted", fmt=F_PCT)
                 put(ws, yr, 6, "=" + m0_expr(st, Rn, f"D{yr}", f"E{yr}"), fmt=F_USD)
-                put(ws, yr, 7, "=" + slope_expr(st, Rn, f"D{yr}", f"E{yr}"), fmt=F_SLOPE)
-                put(ws, yr, 8, f"=1/(1+LT_discountRate)^C{yr}", fmt=F_FACTOR)
+                put(ws, yr, 7, "=" + slope_expr(st, Rn, f"E{yr}"), fmt=F_SLOPE)
+                put(ws, yr, 8, f"=1/(1+LT_discountRate)^(C{yr}-0.5)", fmt=F_FACTOR)
+                put(ws, yr, 9, f"=1/(1+LT_discountRate)^(C{yr}-1)", fmt=F_FACTOR)
                 if t == 5:
-                    for cc in range(2, 9):
+                    for cc in range(2, 10):
                         ws.cell(row=yr, column=cc).border = BOTTOM
-                for key, cc in (("costScale", 4), ("fee", 5), ("m0", 6), ("slope", 7), ("df", 8)):
+                for key, cc in (("costScale", 4), ("fee", 5), ("m0", 6), ("slope", 7), ("dfMid", 8), ("dfStart", 9)):
                     self.reg(f"yd|{rid}|{t}|{key}", ws, yr, cc)
 
         # Engine -------------------------------------------------------------------------
@@ -799,7 +851,9 @@ class Book:
                         "route": self.short[rid], "type": typ, "year": t,
                         "inH": f"=IF({L['year']}{R}<=LT_years,1,0)",
                         "inCommit": f'=IF(AND({L["type"]}{R}="commit",{L["year"]}{R}<=LT_commitYears),1,0)',
-                        "survive": f"=IF({L['inCommit']}{R}=1,1,IF({L['year']}{R}=1,1,LT_retention^({L['year']}{R}-1)))",
+                        "survive": (f'=IF({L["type"]}{R}="commit",IF({L["year"]}{R}<=LT_commitYears,1,'
+                                    f'LT_retention^({L["year"]}{R}-LT_commitYears)),'
+                                    f'IF({L["year"]}{R}=1,1,LT_retention^({L["year"]}{R}-1)))'),
                         "spend": f"=ListPrice*IF({L['year']}{R}=1,1,(1+LT_growth)^({L['year']}{R}-1))*{L['survive']}{R}",
                         "gross": f"=$F${yr}*{L['spend']}{R}/ListPrice",
                         "prevSpend": "=LT_baselineShare*ListPrice" if t == 1 else f"={L['spend']}{R - 1}",
@@ -811,8 +865,10 @@ class Book:
                                 f"+IF({L['inCommit']}{R}=1,LT_commitAdjacencyUplift,0))*LT_adjacencyMargin,0)"),
                         "contrib": f"={L['gross']}{R}-{L['cost']}{R}+{L['adj']}{R}",
                         "cum": f"=SUM({L['contrib']}{a}:{L['contrib']}{R})",
-                        "df": f"=$H${yr}",
-                        "disc": f"={L['contrib']}{R}/(1+LT_discountRate)^{L['year']}{R}",
+                        "dfMid": f"=$H${yr}",
+                        "dfStart": f"=$I${yr}",
+                        "disc": (f"=({L['gross']}{R}+{L['adj']}{R})/(1+LT_discountRate)^({L['year']}{R}-0.5)"
+                                 f"-{L['cost']}{R}/(1+LT_discountRate)^({L['year']}{R}-1)"),
                         "annual": f"={L['gross']}{R}+{L['adj']}{R}",
                         "cumBefore": f"=-{L['cost']}{R}" if t == 1 else f"={L['cum']}{R - 1}-{L['cost']}{R}",
                         "hit": f"=IF(AND({L['cumBefore']}{R}<0,{L['annual']}{R}>0,-{L['cumBefore']}{R}<={L['annual']}{R}),1,0)",
@@ -824,7 +880,7 @@ class Book:
                     for name in self.LT_COLS:
                         v = F[name]
                         kind = "label" if name in ("route", "type", "year") else None
-                        if name == "df":
+                        if name in ("dfMid", "dfStart"):
                             kind = "formula"
                         c = put(ws, R, col[name], v, kind=kind, fmt=self.LT_FMT.get(name), fill=band)
                         if t == 5:
@@ -955,15 +1011,21 @@ class Book:
                 put(ws, R, 2, level, kind="input", fmt=F_PCT_IN)
                 put(ws, R, 3, f"=ListPrice-{n('customerDiscount')}*ListPrice-{B}*ListPrice", fmt=F_USD)
                 if st == "agent":
-                    rm = f"(ListPrice-{n('discountFundedByProvider')}*{n('customerDiscount')}*ListPrice-Inc_providerFunded*{B}*ListPrice)"
-                    put(ws, R, 4, (f"=MAX(0,{n('channelFee')})*{rm}-(1-{n('discountFundedByProvider')})*{n('customerDiscount')}*ListPrice"
-                                   f"-Inc_cloudFunded*{B}*ListPrice"), fmt=F_USD)
-                    put(ws, R, 5, (f"=D{R}-{n('distributionCost')}*ListPrice+{n('providerServingCost')}*{rm}*{n('hostedShare')}"
-                                   f"*{n('incrementalComputeShare')}*{n('computeMargin')}"), fmt=F_USD, bold=True)
+                    # booked net revenue: channel fee on the provider's price, less cloud-funded discount and credits at face
+                    r0 = f"(ListPrice-{n('discountFundedByProvider')}*{n('customerDiscount')}*ListPrice)"
+                    fee_kept = f"MAX(0,{n('channelFee')})*({r0}-Inc_providerFunded*{B}*ListPrice)"
+                    cloud_disc = f"(1-{n('discountFundedByProvider')})*{n('customerDiscount')}*ListPrice"
+                    credits = f"Inc_cloudFundedAgent*{B}*ListPrice"
+                    put(ws, R, 4, f"={fee_kept}-{cloud_disc}-{credits}", fmt=F_USD)
+                    put(ws, R, 5, (f"={fee_kept}-{cloud_disc}-Inc_creditCost*{credits}-{n('distributionCost')}*ListPrice"
+                                   f"+{n('providerServingCost')}*{r0}*{n('hostedShare')}*{n('incrementalComputeShare')}"
+                                   f"*{n('computeMargin')}"), fmt=F_USD, bold=True)
                 else:
-                    put(ws, R, 4, f"=ListPrice-{n('customerDiscount')}*ListPrice-Inc_cloudFunded*{B}*ListPrice", fmt=F_USD)
-                    put(ws, R, 5, (f"=D{R}-{n('revenueShare')}*D{R}-{n('infraCost')}*({n('baseUtilization')}/{n('utilization')})"
-                                   f"*ListPrice-{n('distributionCost')}*ListPrice"), fmt=F_USD, bold=True)
+                    credits = f"Inc_cloudFundedPrincipal*{B}*ListPrice"
+                    put(ws, R, 4, f"=ListPrice-{n('customerDiscount')}*ListPrice-{credits}", fmt=F_USD)
+                    put(ws, R, 5, (f"=D{R}-{n('revenueShare')}*D{R}-({n('infraCost')}+{n('capitalCharge')})"
+                                   f"*({n('baseUtilization')}/{n('utilization')})*ListPrice-{n('distributionCost')}*ListPrice"
+                                   f"+(1-Inc_creditCost)*(1-{n('revenueShare')})*{credits}"), fmt=F_USD, bold=True)
                 put(ws, R, 6, f'=IF(D{R}>0,E{R}/D{R},"n/a")', fmt=F_PCT, halign="right")
                 m0 = f"Waterfall_Y1!${wc}${self.wf_row['m0']}"
                 put(ws, R, 7, f'=IF(OR({m0}<=0,E{R}<=0),"not recoverable",{m0}/E{R})', fmt=F_X, halign="right")
@@ -982,12 +1044,14 @@ class Book:
                 for t in range(5, 0, -1):
                     expr = (f"IF(AND({cb(t)}<0,{ann(t)}>0,-{cb(t)}<={ann(t)}),{(t - 1) * 12}+12*(-{cb(t)})/{ann(t)},{expr})")
                 put(ws, R, 8, "=" + expr, fmt=F_MO, halign="right")
-                df = lambda m: f"Lifetime!${Lc['df']}${a}:${Lc['df']}${a + m - 1}"  # noqa: E731
+                # NPV: inflows (gross + adjacency) discounted mid-year, incentives at the start of the year
+                dfm = lambda m: f"Lifetime!${Lc['dfMid']}${a}:${Lc['dfMid']}${a + m - 1}"  # noqa: E731
+                dfs = lambda m: f"Lifetime!${Lc['dfStart']}${a}:${Lc['dfStart']}${a + m - 1}"  # noqa: E731
                 an = lambda m: f"Lifetime!${Lc['annual']}${a}:${Lc['annual']}${a + m - 1}"  # noqa: E731
                 for cc, m in ((9, 1), (10, 3), (11, 5)):
-                    put(ws, R, cc, f"=SUMPRODUCT({an(m)},{df(m)})-T{R}*Lifetime!${Lc['df']}${a}", fmt=F_USD)
-                put(ws, R, 12, (f"=SUMPRODUCT({an(5)},{df(5)})-{B}*SUMPRODUCT(Lifetime!$G${y1}:$G${y5},"
-                                f"Lifetime!${Lc['spend']}${a}:${Lc['spend']}${a + 4},{df(5)})"), fmt=F_USD)
+                    put(ws, R, cc, f"=SUMPRODUCT({an(m)},{dfm(m)})-T{R}*Lifetime!${Lc['dfStart']}${a}", fmt=F_USD)
+                put(ws, R, 12, (f"=SUMPRODUCT({an(5)},{dfm(5)})-{B}*SUMPRODUCT(Lifetime!$G${y1}:$G${y5},"
+                                f"Lifetime!${Lc['spend']}${a}:${Lc['spend']}${a + 4},{dfs(5)})"), fmt=F_USD)
                 put(ws, R, 13, f"=Waterfall_Y1!${wc}${self.wf_row['breakEven']}", kind="link", fmt=F_PCT, halign="right")
                 for j, (key, _, _) in enumerate(self.GRID_COLS):
                     if key in ("level",):
@@ -998,40 +1062,44 @@ class Book:
     # -- OneTime_vs_Recurring --------------------------------------------------------------
     def build_otr(self):
         ws = self.ws["OneTime_vs_Recurring"]
-        widths(ws, {"A": 2, "B": 24, **{CL(c): 12 for c in range(3, 9)}, "I": 16, "J": 3})
+        widths(ws, {"A": 2, "B": 24, **{CL(c): 12 for c in range(3, 9)}, "I": 16, "J": 16, "K": 3})
         put(ws, 1, 2, "One-time vs recurring — the same incentive, two different businesses", bold=True, size=14)
-        put(ws, 2, 2, ('="Incentive "&TEXT(Inc_pct,"0%")&" of list, "&TEXT(Inc_cloudFunded,"0%")&" funded by the cloud · adjacency "'
+        put(ws, 2, 2, ('="Incentive "&TEXT(Inc_pct,"0%")&" of list · cloud funds "&TEXT(Inc_cloudFundedAgent,"0%")&" (agent) / "'
+                       '&TEXT(Inc_cloudFundedPrincipal,"0%")&" (principal) at "&TEXT(Inc_creditCost,"0.00")&" per $1 of credit · adjacency "'
                        '&IF(LT_includeAdjacency=1,"included","excluded")&" · $ per $100 of year-1 list spend"'), italic=True, color=GREY)
         put(ws, 3, 2, "One-time: the credit is granted on year-1 spend only. Recurring: the same % is granted on every year's spend. "
                       "Edit the drivers on Assumptions; every number here is live.", italic=True, color=GREY)
         ws.freeze_panes = "C4"
-        # key inputs strip
-        keys = [("Incentive %", "=Inc_pct", F_PCT_IN), ("Cloud-funded", "=Inc_cloudFunded", F_PCT_IN),
+        keys = [("Incentive %", "=Inc_pct", F_PCT_IN), ("Credit cost per $1", "=Inc_creditCost", F_RATIO),
                 ("Spend growth", "=LT_growth", F_PCT_IN), ("Retention", "=LT_retention", F_PCT_IN),
-                ("Discount rate", "=LT_discountRate", F_PCT_IN), ("Adjacency (1/0)", "=LT_includeAdjacency", F_INT)]
+                ("Price deflation", "=LT_priceDeflation", F_PCT_IN), ("Discount rate", "=LT_discountRate", F_PCT_IN),
+                ("Adjacency (1/0)", "=LT_includeAdjacency", F_INT)]
         put(ws, 5, 2, "Key inputs", bold=True)
         put(ws, 6, 2, "edit on Assumptions", italic=True, color=GREY)
         for j, (lab, f, fmt) in enumerate(keys):
             put(ws, 5, 3 + j, lab, kind="muted", halign="right", wrap=True)
             put(ws, 6, 3 + j, f, kind="link", fmt=fmt, halign="right")
+        ws.row_dimensions[5].height = 28
         r = 8
         self.otr_rows = {}
+        self.otr_none_row = {}
+        Lc = self.lt_col
 
-        def table(r, heading, metric, fmt, gap=True, extra=None):
-            section(ws, r, 2, 9, heading)
-            r += 1
-            put(ws, r, 3, "One-time incentive", kind="head")
-            for cc in (4, 5):
+        def band_header(r, groups, last_col):
+            for cc in range(2, last_col + 1):
                 ws.cell(row=r, column=cc).fill = FILL_HEAD
-            put(ws, r, 6, "Recurring incentive", kind="head")
-            for cc in (7, 8):
-                ws.cell(row=r, column=cc).fill = FILL_HEAD
-            put(ws, r, 2, "", kind="head")
-            put(ws, r, 9, "", kind="head")
+            for cc, text in groups:
+                put(ws, r, cc, text, kind="head")
+
+        def table(r, heading, metric, fmt, gap=True, extras=()):
+            last = 9 + max(0, len(extras) - 1)
+            section(ws, r, 2, last, heading)
             r += 1
-            header(ws, r, 2, ["Route", "1 yr", "3 yr", "5 yr", "1 yr", "3 yr", "5 yr",
-                              extra[0] if extra else ("Recurring − one-time, 5 yr" if gap else "")])
-            ws.row_dimensions[r].height = 30
+            band_header(r, [(3, "One-time incentive"), (6, "Recurring incentive")], last)
+            r += 1
+            tail = [e[0] for e in extras] if extras else (["Recurring − one-time, 5 yr"] if gap else [""])
+            header(ws, r, 2, ["Route", "1 yr", "3 yr", "5 yr", "1 yr", "3 yr", "5 yr"] + tail)
+            ws.row_dimensions[r].height = 56 if extras else 30
             r += 1
             first = r
             for rid in self.routes:
@@ -1042,10 +1110,10 @@ class Book:
                         put(ws, r, cc, "=" + self.lt_hz[(rid, typ, nyr, metric)], kind="link", fmt=fmt,
                             halign="right", fill=FILL_KEY if nyr == 5 and metric == "npv" else None)
                         self.reg(f"otr|{rid}|{typ}|{nyr}|{metric}", ws, r, cc)
-                if extra:
-                    put(ws, r, 9, extra[1](rid), fmt=extra[2], halign="right")
-                    self.reg(f"otr|{rid}|{extra[3]}", ws, r, 9)
-                elif gap:
+                for e_i, (_, fn, efmt, key) in enumerate(extras):
+                    put(ws, r, 9 + e_i, fn(rid), fmt=efmt, halign="right")
+                    self.reg(f"otr|{rid}|{key}", ws, r, 9 + e_i)
+                if not extras and gap:
                     put(ws, r, 9, f"=H{r}-E{r}", fmt=fmt)
                     self.reg(f"otr|{rid}|gap5|{metric}", ws, r, 9)
                 self.otr_rows[(metric, rid)] = r
@@ -1060,10 +1128,77 @@ class Book:
         def cliff(rid):
             d = rn(rid, "customerDiscount")
             return f'=IF(1-{d}-Inc_pct<=0,"unbounded",(1-{d})/(1-{d}-Inc_pct)-1)'
-        r, _ = table(r, "4. What the customer sees: effective discount from credits over the lifetime (credits ÷ list spend)",
-                     "effectiveCustomerDiscount", F_PCT, extra=("Year-2 price rise when a one-time credit expires", cliff, F_PCT, "cliff"))
 
-        section(ws, r, 2, 9, "5. Reading the numbers")
+        def cliff_defl(rid):
+            d = rn(rid, "customerDiscount")
+            return f'=IF(1-{d}-Inc_pct<=0,"unbounded",((1-{d})*(1-LT_priceDeflation))/(1-{d}-Inc_pct)-1)'
+        r, _ = table(r, "4. What the customer sees: effective discount from credits (credits ÷ list spend) and the year-2 price cliff",
+                     "effectiveCustomerDiscount", F_PCT,
+                     extras=(("Year-2 price jump when the credit expires", cliff, F_PCT, "cliff"),
+                             ("Same, if list prices fall (constant tokens)", cliff_defl, F_PCT, "cliffDeflation")))
+
+        # 5. Win-probability test --------------------------------------------------------------
+        last = 4 + len(M.WIN_RATES)
+        section(ws, r, 2, max(last, 9), "5. Is matching worth it? Rise in win probability needed for a one-time incentive to beat "
+                                         "not matching (5 years)")
+        r += 1
+        put(ws, r, 2, "Base win rate without the incentive →", italic=True, color=GREY)
+        rate_row = r
+        for j, wr in enumerate(M.WIN_RATES):
+            put(ws, r, 5 + j, wr, kind="input", fmt=F_PCT_IN, halign="right", fill=FILL_YELLOW)
+        r += 1
+        header(ws, r, 2, ["Route", "NPV 5 yr, no incentive", "NPV 5 yr, one-time incentive"])
+        for j in range(len(M.WIN_RATES)):
+            put(ws, r, 5 + j, f'="Required rise in win probability at a "&TEXT({CL(5 + j)}{rate_row},"0%")&" base rate"',
+                kind="head", wrap=True, halign="center", valign="center")
+        ws.row_dimensions[r].height = 56
+        r += 1
+        for rid in self.routes:
+            a = self.lt_block[(rid, "one-time")]
+            lr = lambda c, a=a: f"Lifetime!${Lc[c]}${a}:${Lc[c]}${a + 4}"  # noqa: E731
+            put(ws, r, 2, self.short[rid], bold=True)
+            put(ws, r, 3, f"=SUMPRODUCT({lr('annual')},{lr('dfMid')})", fmt=F_USD)
+            put(ws, r, 4, "=" + self.lt_hz[(rid, "one-time", 5, "npv")], kind="link", fmt=F_USD)
+            self.reg(f"otr|{rid}|npvNone5", ws, r, 3)
+            self.otr_none_row[rid] = r
+            self.reg(f"otr|{rid}|npvOneTime5", ws, r, 4)
+            for j, wr in enumerate(M.WIN_RATES):
+                rate = f"{CL(5 + j)}${rate_row}"
+                put(ws, r, 5 + j, f'=IF(D{r}<=0,"never",MAX(0,{rate}*(C{r}-D{r})/D{r}))', fmt=F_PCT, halign="right", bold=True)
+                self.reg(f"otr|{rid}|winLift|{j}", ws, r, 5 + j)
+            r += 1
+        put(ws, r, 2, "Matching pays if the incentive raises the probability of winning the workload by more than this many points "
+                      "(sensitivity.ts matchThreshold: base rate × (NPV without − NPV with) ÷ NPV with; 'never' if the incentive "
+                      "leaves the customer NPV-negative). Base win rates are editable.", italic=True, color=GREY)
+        r += 2
+
+        # 6. AI line only vs with base adjacency, recurring --------------------------------------
+        section(ws, r, 2, 9, "6. Recurring incentive: the AI line on its own vs with base adjacency (NPV, $ per $100 of year-1 list)")
+        r += 1
+        band_header(r, [(3, "AI line only"), (6, "With base adjacency")], 9)
+        r += 1
+        header(ws, r, 2, ["Route", "1 yr", "3 yr", "5 yr", "1 yr", "3 yr", "5 yr", "Adjacency adds, 5 yr"])
+        ws.row_dimensions[r].height = 30
+        r += 1
+        for rid in self.routes:
+            a = self.lt_block[(rid, "recurring")]
+            put(ws, r, 2, self.short[rid], bold=True)
+            for k, nyr in enumerate((1, 3, 5)):
+                lr = lambda c, a=a, nyr=nyr: f"Lifetime!${Lc[c]}${a}:${Lc[c]}${a + nyr - 1}"  # noqa: E731
+                ai = f"SUMPRODUCT({lr('gross')},{lr('dfMid')})-SUMPRODUCT({lr('cost')},{lr('dfStart')})"
+                adj = f"SUMPRODUCT({lr('spend')},{lr('dfMid')})*LT_adjacencyAttach*LT_adjacencyIncremental*LT_adjacencyMargin"
+                put(ws, r, 3 + k, "=" + ai, fmt=F_USD, halign="right")
+                put(ws, r, 6 + k, f"={ai}+{adj}", fmt=F_USD, halign="right", fill=FILL_KEY if nyr == 5 else None)
+                self.reg(f"otr|{rid}|recAiOnly|{nyr}", ws, r, 3 + k)
+                self.reg(f"otr|{rid}|recWithAdj|{nyr}", ws, r, 6 + k)
+            put(ws, r, 9, f"=H{r}-E{r}", fmt=F_USD)
+            self.reg(f"otr|{rid}|recAdjValue5", ws, r, 9)
+            r += 1
+        put(ws, r, 2, "Shown side by side whatever the 'include adjacency' switch says. Base adjacency = active attach × incremental "
+                      "share × gross margin on each year's AI spend (no commit uplift for a recurring incentive).", italic=True, color=GREY)
+        r += 2
+
+        section(ws, r, 2, 9, "7. Reading the numbers")
         r += 1
         for rid in self.routes:
             nr = self.otr_rows[("npv", rid)]
@@ -1072,11 +1207,9 @@ class Book:
             f = (f'=B{nr}&": after a "&TEXT(Inc_pct,"0%")&" one-time credit the customer is worth "&TEXT(E{nr},"$#,##0.0;-$#,##0.0")'
                  f'&" over 5 years (payback "&IF(ISNUMBER(E{pr}),TEXT(E{pr},"0")&" months","never")&"); granted every year it is worth "'
                  f'&TEXT(H{nr},"$#,##0.0;-$#,##0.0")&". The customer\'s price jumps "&IF(ISNUMBER(I{cr}),TEXT(I{cr},"0%"),"without limit")'
-                 f'&" when a one-time credit expires."')
+                 f'&" when a one-time credit expires ("&IF(ISNUMBER(J{cr}),TEXT(J{cr},"0%"),"without limit")&" if list prices keep falling)."')
             put(ws, r, 2, f)
             r += 1
-        r += 1
-        # chart: 5-yr NPV one-time vs recurring
         ch = BarChart()
         ch.type = "col"
         ch.grouping = "clustered"
@@ -1090,7 +1223,7 @@ class Book:
         ch.set_categories(Reference(ws, min_col=2, min_row=npv_first, max_row=npv_first + len(self.routes) - 1))
         _chart_hygiene(ch)
         ch.height, ch.width = 8, 16
-        ws.add_chart(ch, "K8")
+        ws.add_chart(ch, "L8")
 
     # -- Adjacency ---------------------------------------------------------------------
     def build_adjacency(self):
@@ -1125,8 +1258,9 @@ class Book:
                 lr = lambda c: f"Lifetime!${Lc[c]}${a}:${Lc[c]}${b}"  # noqa: E731
                 put(ws, r, 2, self.short[rid], fill=band, bold=True)
                 put(ws, r, 3, typ, fill=band)
-                put(ws, r, 4, f"=SUMPRODUCT({lr('gross')}-{lr('cost')},{lr('df')},{lr('inH')})", fmt=F_USD, fill=band)
-                put(ws, r, 5, f"=SUMPRODUCT({lr('spend')},{lr('df')},{lr('inH')})*LT_adjacencyIncremental*LT_adjacencyMargin",
+                put(ws, r, 4, (f"=SUMPRODUCT({lr('gross')},{lr('dfMid')},{lr('inH')})"
+                               f"-SUMPRODUCT({lr('cost')},{lr('dfStart')},{lr('inH')})"), fmt=F_USD, fill=band)
+                put(ws, r, 5, f"=SUMPRODUCT({lr('spend')},{lr('dfMid')},{lr('inH')})*LT_adjacencyIncremental*LT_adjacencyMargin",
                     fmt=F_USD, fill=band)
                 put(ws, r, 6, f'=IF(D{r}>=0,0,IF(E{r}<=0,"not recoverable",-D{r}/E{r}))', fmt=F_RATIO + "x", fill=band,
                     bold=True, halign="right")
@@ -1197,8 +1331,8 @@ class Book:
         self.sens_route = rid
         used = AGENT_USED if st == "agent" else PRINCIPAL_USED
         route_syms = [s for s, k in ROUTE_SYM.items() if k in used]
-        y1_syms = route_syms + ["c", "pp", "pm"]
-        be_syms = route_syms + ["pp", "pm"]
+        y1_syms = route_syms + ["c", "pp", "pm", "cc"]
+        be_syms = route_syms + ["pp", "pm", "cc"]
         npv_syms = y1_syms + list(LT_SYM.keys())
         self.sens_syms = {"y1": y1_syms, "be": be_syms, "npv5": npv_syms}
         widths(ws, {"A": 2, "B": 38, **{CL(c): 12 for c in range(3, 11)}, "K": 3, "L": 7, "M": 38, "N": 12, "O": 12})
@@ -1227,16 +1361,19 @@ class Book:
         for t in range(1, 6):
             out_cols[f"spend{t}"] = c
             c += 1
-        for t in range(1, 6):
-            out_cols[f"contrib{t}"] = c
-            c += 1
+        for part in ("inflow", "cost"):
+            for t in range(1, 6):
+                out_cols[f"{part}{t}"] = c
+                c += 1
         out_cols["npv5"] = c
-        section(ws, m_start - 3, 2, c, "CALCULATION MATRIX (helper) — one row per case; the swapped value is shaded")
+        section(ws, m_start - 2, 2, c, "CALCULATION MATRIX (helper) — one row per case; the swapped value is shaded. "
+                                       "Inflows (gross + adjacency) are discounted mid-year, incentive costs at the start of the year.")
         heads = ["Case", "Which"] + [tornado_label(SYM_GROUP[s][1]) for s in npv_syms] + [
             "M0 (Y1, 0% incentive)", "Cost per $1 (Y1)", "Y1 contribution", "Break-even incentive"] + \
-            [f"Spend Y{t}" for t in range(1, 6)] + [f"Contribution Y{t}" for t in range(1, 6)] + ["NPV 5 yr"]
-        header(ws, m_start - 2, 2, heads)
-        ws.row_dimensions[m_start - 2].height = 54
+            [f"Spend Y{t}" for t in range(1, 6)] + [f"Inflow Y{t} (gross + adjacency)" for t in range(1, 6)] + \
+            [f"Incentive cost Y{t}" for t in range(1, 6)] + ["NPV 5 yr"]
+        header(ws, m_start - 1, 2, heads)
+        ws.row_dimensions[m_start - 1].height = 54
         for cc in range(4, c + 1):
             ws.column_dimensions[CL(cc)].width = max(ws.column_dimensions[CL(cc)].width or 0, 12)
         cases = [("base", None, None)] + [(s, s, w) for s in npv_syms for w in ("low", "high")]
@@ -1269,13 +1406,16 @@ class Book:
             for t in range(1, 6):
                 if t == 1:
                     f = "=ListPrice"
-                else:
-                    f = (f'=ListPrice*(1+{refs["g"]})^{t - 1}*IF(AND(Inc_type="commit",{t}<={refs["cy"]}),1,{refs["ret"]}^{t - 1})')
+                else:  # commit deals keep the customer for the term and churn only after it
+                    f = (f'=ListPrice*(1+{refs["g"]})^{t - 1}*IF(Inc_type="commit",IF({t}<={refs["cy"]},1,'
+                         f'{refs["ret"]}^({t}-{refs["cy"]})),{refs["ret"]}^{t - 1})')
                 put(ws, R, out_cols[f"spend{t}"], f, fmt=F_USD)
             for t in range(1, 6):
                 prev = f"{refs['base']}*ListPrice" if t == 1 else oc[f"spend{t - 1}"]
-                put(ws, R, out_cols[f"contrib{t}"], "=" + year_contrib_expr(st, refs, t, oc[f"spend{t}"], prev), fmt=F_USD)
-            npv = "+".join(f"{oc[f'contrib{t}']}/(1+{refs['w']})^{t}" for t in range(1, 6))
+                put(ws, R, out_cols[f"inflow{t}"], "=" + year_inflow_expr(st, refs, t, oc[f"spend{t}"]), fmt=F_USD)
+                put(ws, R, out_cols[f"cost{t}"], "=" + year_cost_expr(st, refs, t, oc[f"spend{t}"], prev), fmt=F_USD)
+            npv = "+".join(f"{oc[f'inflow{t}']}/(1+{refs['w']})^({t}-0.5)-{oc[f'cost{t}']}/(1+{refs['w']})^({t}-1)"
+                           for t in range(1, 6))
             put(ws, R, out_cols["npv5"], "=" + npv, fmt=F_USD, bold=True)
             for metric in ("y1", "be", "npv5"):
                 if sym is None or sym in self.sens_syms[metric]:
@@ -1479,7 +1619,7 @@ class Book:
     # -- README ----------------------------------------------------------------------------
     def build_readme(self):
         ws = self.ws["README"]
-        widths(ws, {"A": 2, "B": 28, "C": 15, "D": 15, "E": 15, "F": 15, "G": 15, "H": 15, "I": 15})
+        widths(ws, {"A": 2, "B": 28, "C": 15, "D": 15, "E": 15, "F": 15, "G": 15, "H": 15, "I": 15, "J": 15})
         meta_ = self.raw.get("_meta", {})
         put(ws, 1, 2, "The Economics of AI: Is the Hyperscaler Subsidy Model Sustainable?", bold=True, size=16)
         put(ws, 2, 2, "Subsidy Math — editable model workbook", bold=True, size=12, color=GREY)
@@ -1498,7 +1638,7 @@ class Book:
         put(ws, r, 2, "At a glance (live, at the Active assumptions)", bold=True, size=12)
         r += 1
         header(ws, r, 2, ["Route", "Y1 contribution at 0% incentive", "Y1 contribution at the active incentive", "Break-even incentive",
-                          "5-yr NPV, one-time", "5-yr NPV, recurring", "Payback, one-time (months)"])
+                          "5-yr NPV, no incentive", "5-yr NPV, one-time", "5-yr NPV, recurring", "Payback, one-time (months)"])
         ws.row_dimensions[r].height = 42
         r += 1
         for rid in self.routes:
@@ -1507,9 +1647,10 @@ class Book:
             links = [(3, f"=Waterfall_Y1!{wc}{self.wf_row['m0']}", F_USD, "m0"),
                      (4, f"=Waterfall_Y1!{wc}{self.wf_row['cloudContribution']}", F_USD, "y1"),
                      (5, f"=Waterfall_Y1!{wc}{self.wf_row['breakEven']}", F_PCT, "breakEven"),
-                     (6, "=" + self.lt_hz[(rid, "one-time", 5, "npv")], F_USD, "npv5OneTime"),
-                     (7, "=" + self.lt_hz[(rid, "recurring", 5, "npv")], F_USD, "npv5Recurring"),
-                     (8, "=" + self.lt_hz[(rid, "one-time", 5, "paybackMonths")], F_MO, "payback5OneTime")]
+                     (6, f"=OneTime_vs_Recurring!$C${self.otr_none_row[rid]}", F_USD, "npv5None"),
+                     (7, "=" + self.lt_hz[(rid, "one-time", 5, "npv")], F_USD, "npv5OneTime"),
+                     (8, "=" + self.lt_hz[(rid, "recurring", 5, "npv")], F_USD, "npv5Recurring"),
+                     (9, "=" + self.lt_hz[(rid, "one-time", 5, "paybackMonths")], F_MO, "payback5OneTime")]
             for cc, f, fmt, k in links:
                 put(ws, r, cc, f, kind="link", fmt=fmt, halign="right")
                 self.reg(f"readme|{rid}|{k}", ws, r, cc)
@@ -1559,8 +1700,11 @@ class Book:
             "• Contribution = what the cloud keeps from the transaction less the costs it bears for it. It is not GAAP gross margin and carries no shared overhead.",
             "• Agent routes: Anthropic's S-1/A (p. F-22) says it is principal for Claude sold through cloud marketplaces; the cloud's take is the channel fee plus",
             "   margin on serving compute only to the extent it is incremental to Anthropic's existing take-or-pay commitments.",
-            "• Credits are treated as contra-revenue in year 1 (one-time / commit) or every year (recurring), booked at the start of the year.",
-            "• The lifetime engine runs at most 5 years; NPV discounts each year's contribution at the end of that year; payback assumes contribution accrues evenly.",
+            "• Credits are contra-revenue in the booked view (cloud net revenue). Contribution uses their economic cost: creditCost per $1 (1 = displaces",
+            "   cash spend dollar for dollar; lower when credits buy usage the customer would not otherwise have bought). Principal routes share the cost with any royalty.",
+            "• Provider-funded credits apply only where an outside model provider exists (agent routes); principal routes ignore that share.",
+            "• The lifetime engine runs at most 5 years. Incentives are paid at the start of each year and discounted from then; contribution and",
+            "   adjacency accrue mid-year. Commit deals keep the customer for the commit term and churn only after it. Payback assumes even monthly accrual.",
             "• Adjacent non-AI gross profit is excluded unless includeAdjacency = 1; the Adjacency sheet shows how much would be needed to justify the incentive.",
             "• Equity uplift is strategic value from a stake in the model provider, not operating income, and is shown separately.",
             "• model.ts is canonical. If this workbook and the microsite ever disagree, rebuild the workbook (command below).",

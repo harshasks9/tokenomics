@@ -71,7 +71,7 @@ export default function Playbook() {
       <div className="sm-grid c2" style={{ marginTop: 18 }}>
         <div className="sm-card">
           <h3>Find the customers about to hit the cliff</h3>
-          <p>Every customer who took a {fmtPct(pct)} one-time credit faces a <b>{fmtPct(cliff)}</b> jump in effective price at the same usage when it ends. Flag accounts where:</p>
+          <p>When a {fmtPct(pct)} one-time credit ends, the bill for the same usage rises <b>{fmtPct(cliff)}</b> at constant prices — less if list prices keep falling. Either way the customer re-decides at month 13. Flag accounts where:</p>
           <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15, color: "var(--ink-2)" }}>
             <li>credits were sized on year-one spend and expire within 6 months;</li>
             <li>AI spend is growing fast, so growth-based credits run out of headroom;</li>
