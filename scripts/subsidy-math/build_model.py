@@ -723,18 +723,20 @@ class Book:
             put(ws, r, 2, lab)
             put(ws, r, 4, f, kind="link", fmt=fmt, halign="right")
             r += 1
-        put(ws, r, 2, "Serving-cost drift per year = (1 − efficiency) ÷ (1 − price deflation)")
+        put(ws, r, 2, "Serving-cost drift per year")
+        put(ws, r, 5, "(1 − efficiency gain) ÷ (1 − price deflation)", kind="label", color=GREY)
         put(ws, r, 4, "=(1-LT_efficiencyGain)/(1-LT_priceDeflation)", fmt=F_FACTOR)
         r += 2
 
         # Pre-compute layout so summary tables (above) can reference the engine (below).
         types = M.INCENTIVE_TYPES
         n_routes = len(self.routes)
+        # each table: section row, header row, data rows, one blank row
         sel_start = r + 2
         all_start = sel_start + n_routes + 3
-        hz_start = all_start + n_routes * len(types) + 4
-        yd_start = hz_start + n_routes * len(types) + 4
-        eng_start = yd_start + n_routes * 5 + 4
+        hz_start = all_start + n_routes * len(types) + 3
+        yd_start = hz_start + n_routes * len(types) + 3
+        eng_start = yd_start + n_routes * 5 + 3
         self.yd_row = {}
         self.lt_block = {}
         y = yd_start
@@ -752,10 +754,10 @@ class Book:
         L = self.lt_col
 
         # Year drivers -------------------------------------------------------------------
-        section(ws, yd_start - 3, 2, 8, "YEAR DRIVERS BY ROUTE — contribution at 0% incentive and the cost of $1 of credit, each year")
-        header(ws, yd_start - 2, 2, ["Route", "Year", "Cost scale k(t)", "Channel fee f(t)", "Contribution at 0% (M0, per $100)",
+        section(ws, yd_start - 2, 2, 8, "YEAR DRIVERS BY ROUTE — contribution at 0% incentive and the cost of $1 of credit, each year")
+        header(ws, yd_start - 1, 2, ["Route", "Year", "Cost scale k(t)", "Channel fee f(t)", "Contribution at 0% (M0, per $100)",
                                      "Cost per $1 of credit", "Discount factor"])
-        ws.row_dimensions[yd_start - 2].height = 42
+        ws.row_dimensions[yd_start - 1].height = 42
         for rid in self.routes:
             st = self.st[rid]
             Rn = name_refs(rid)
@@ -778,9 +780,9 @@ class Book:
                     self.reg(f"yd|{rid}|{t}|{key}", ws, yr, cc)
 
         # Engine -------------------------------------------------------------------------
-        section(ws, eng_start - 3, 2, 1 + len(self.LT_COLS), "YEAR-BY-YEAR ENGINE — one block of five years per route × incentive type")
-        header(ws, eng_start - 2, 2, [self.LT_HEAD[c] for c in self.LT_COLS])
-        ws.row_dimensions[eng_start - 2].height = 54
+        section(ws, eng_start - 2, 2, 1 + len(self.LT_COLS), "YEAR-BY-YEAR ENGINE — one block of five years per route × incentive type")
+        header(ws, eng_start - 1, 2, [self.LT_HEAD[c] for c in self.LT_COLS])
+        ws.row_dimensions[eng_start - 1].height = 54
         for bi, rid in enumerate(self.routes):
             for ti, typ in enumerate(types):
                 a = self.lt_block[(rid, typ)]
@@ -834,10 +836,10 @@ class Book:
             return f"{L[c]}{a}:{L[c]}{b}"
 
         # all types, selected horizon
-        section(ws, all_start - 3, 2, 9, "ALL INCENTIVE TYPES — over the selected lifetime years")
-        header(ws, all_start - 2, 2, ["Route", "Incentive type", "NPV", "Cumulative contribution", "Payback (months)",
+        section(ws, all_start - 2, 2, 9, "ALL INCENTIVE TYPES — over the selected lifetime years")
+        header(ws, all_start - 1, 2, ["Route", "Incentive type", "NPV", "Cumulative contribution", "Payback (months)",
                                       "Effective customer discount", "Total credits", "Total list spend"])
-        ws.row_dimensions[all_start - 2].height = 30
+        ws.row_dimensions[all_start - 1].height = 30
         self.lt_all_row = {}
         rr = all_start
         for bi, rid in enumerate(self.routes):
@@ -860,10 +862,10 @@ class Book:
                 rr += 1
 
         # selected type
-        section(ws, sel_start - 3, 2, 9, "SELECTED SCENARIO — the incentive type and lifetime years chosen on Assumptions")
-        header(ws, sel_start - 2, 2, ["Route", "Incentive type", "NPV", "Cumulative contribution", "Payback (months)",
+        section(ws, sel_start - 2, 2, 9, "SELECTED SCENARIO — the incentive type and lifetime years chosen on Assumptions")
+        header(ws, sel_start - 1, 2, ["Route", "Incentive type", "NPV", "Cumulative contribution", "Payback (months)",
                                       "Effective customer discount"])
-        ws.row_dimensions[sel_start - 2].height = 30
+        ws.row_dimensions[sel_start - 1].height = 30
         for i, rid in enumerate(self.routes):
             rr = sel_start + i
             s0 = self.lt_all_row[(rid, types[0])]
@@ -877,12 +879,12 @@ class Book:
                 self.reg(f"ltpick|{rid}|{k}", ws, rr, cc)
 
         # fixed horizons
-        section(ws, hz_start - 3, 2, 15, "FIXED HORIZONS — 1, 3 and 5 years (independent of the selected lifetime years)")
-        header(ws, hz_start - 2, 2, ["Route", "Incentive type", "NPV 1 yr", "NPV 3 yr", "NPV 5 yr", "Cumulative 1 yr",
+        section(ws, hz_start - 2, 2, 15, "FIXED HORIZONS — 1, 3 and 5 years (independent of the selected lifetime years)")
+        header(ws, hz_start - 1, 2, ["Route", "Incentive type", "NPV 1 yr", "NPV 3 yr", "NPV 5 yr", "Cumulative 1 yr",
                                      "Cumulative 3 yr", "Cumulative 5 yr", "Payback 1 yr (months)", "Payback 3 yr (months)",
                                      "Payback 5 yr (months)", "Effective discount 1 yr", "Effective discount 3 yr",
                                      "Effective discount 5 yr"])
-        ws.row_dimensions[hz_start - 2].height = 42
+        ws.row_dimensions[hz_start - 1].height = 42
         self.lt_hz = {}
         rr = hz_start
         for bi, rid in enumerate(self.routes):
@@ -940,7 +942,7 @@ class Book:
             r += 1
             header(ws, r, 2, [c[1] for c in self.GRID_COLS])
             header(ws, r, 15, ["Year 1", "Year 2", "Year 3", "Year 4", "Year 5", "Year-1 incentive cost"])
-            ws.row_dimensions[r].height = 42
+            ws.row_dimensions[r].height = 56
             r += 1
             for i, level in enumerate(M.INCENTIVE_LEVELS):
                 R = r + i
@@ -1194,7 +1196,7 @@ class Book:
         be_syms = route_syms + ["pp", "pm"]
         npv_syms = y1_syms + list(LT_SYM.keys())
         self.sens_syms = {"y1": y1_syms, "be": be_syms, "npv5": npv_syms}
-        widths(ws, {"A": 2, "B": 30, **{CL(c): 12 for c in range(3, 11)}, "K": 3, "L": 7, "M": 30, "N": 12, "O": 12})
+        widths(ws, {"A": 2, "B": 38, **{CL(c): 12 for c in range(3, 11)}, "K": 3, "L": 7, "M": 38, "N": 12, "O": 12})
         title(ws, f"Sensitivity — {self.label[rid]}: one parameter at a time",
               "Each row sets one parameter to its Low, then High value (Assumptions) with every other parameter at Active. "
               "All live formulas; the calculation matrix at the bottom holds one full parameter set per case.",
@@ -1339,6 +1341,7 @@ class Book:
                 ch.series[-1].tx = SeriesLabel(v=lab)
             ch.set_categories(Reference(ws, min_col=13, min_row=first, max_row=last))
             ch.x_axis.scaling.orientation = "maxMin"
+            ch.x_axis.tickLblPos = "low"
             ch.y_axis.numFmt = "$#,##0"
             _chart_hygiene(ch)
             ch.height, ch.width = 9, 15
