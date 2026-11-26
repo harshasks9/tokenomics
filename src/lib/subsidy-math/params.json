@@ -1,0 +1,589 @@
+{
+  "_meta": {
+    "description": "Every adjustable assumption in the Subsidy Math model. Single source for the microsite engine (src/lib/subsidy-math/model.ts) and the Excel workbook (scripts/subsidy-math/build_model.py). basis: D = disclosed in a filing, R = reported estimate, A = our assumption, C = our calculation on disclosed figures.",
+    "version": "v1.0 (after independent review)",
+    "asOf": "2026-11-26"
+  },
+  "routes": {
+    "bedrock-claude": {
+      "label": "AWS Bedrock × Anthropic Claude",
+      "short": "AWS · Claude",
+      "structure": "agent",
+      "params": {
+        "customerDiscount": {
+          "base": 0.1,
+          "low": 0.05,
+          "high": 0.2,
+          "basis": "R",
+          "note": "Negotiated recurring discount off list. Advisory benchmarks put enterprise commit discounts at 5-20% (Redress, CloudForecast)."
+        },
+        "discountFundedByProvider": {
+          "base": 1.0,
+          "low": 0.5,
+          "high": 1.0,
+          "basis": "R",
+          "note": "AWS private-pricing (EDP) eligibility covers Bedrock only for Amazon Nova and Titan, so Claude discounts come as Anthropic Marketplace private offers (AWS service terms via search extract; medium confidence)."
+        },
+        "channelFee": {
+          "base": 0.3,
+          "low": 0.16,
+          "high": 0.36,
+          "basis": "C",
+          "note": "Distribution fee the cloud keeps. Implied CSP take: ~16% in FY2025 (Reuters: fees >$350M on $2.16B of Amazon+Google sales; S-1 bridge 15.7-16.2%) and 33-36% in 9M 2026, ~32% in Q3 2026, if all channel-partner fees are CSP fees (S-1/A pp. 152-153, 162, F-17). Not split by CSP."
+        },
+        "providerServingCost": {
+          "base": 0.143,
+          "low": 0.1,
+          "high": 0.25,
+          "basis": "C",
+          "note": "Anthropic cost of revenue per $ of revenue, Q3 2026 ($14.3 per $100; 9M 2026: 14.5%). Includes the cloud margin on capacity."
+        },
+        "hostedShare": {
+          "base": 0.9,
+          "low": 0.6,
+          "high": 1.0,
+          "basis": "A",
+          "note": "Share of AWS-billed Claude serving that runs on AWS capacity (Trainium for Bedrock; TPU for Vertex)."
+        },
+        "incrementalComputeShare": {
+          "base": 0.5,
+          "low": 0.0,
+          "high": 1.0,
+          "basis": "A",
+          "note": "Share of serving compute that is incremental to the provider’s take-or-pay commitment. Anthropic bought $5.0B of premium short-term compute in Q3 2026 \"when customer demand or research needs exceed this long-term capacity\" (S-1/A pp. 150–163), so marginal serving is often incremental."
+        },
+        "computeMargin": {
+          "base": 0.3,
+          "low": 0.15,
+          "high": 0.4,
+          "basis": "C",
+          "note": "Cloud margin on AI capacity sold to a lab: internal/external TCO ratio 0.60–0.85 (SemiAnalysis InferenceX: Ironwood ~$1.03 internal vs ~$1.60 to Anthropic); prior-generation Trainium short-term capacity sells \"at a premium\" (Amazon, Q3 2026 call)."
+        },
+        "revenueShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a for agent route."
+        },
+        "infraCost": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a for agent route (provider bears serving cost)."
+        },
+        "utilization": {
+          "base": 0.5,
+          "low": 0.3,
+          "high": 0.7,
+          "basis": "A",
+          "note": "n/a for agent route."
+        },
+        "baseUtilization": {
+          "base": 0.5,
+          "low": 0.5,
+          "high": 0.5,
+          "basis": "A",
+          "note": "n/a for agent route."
+        },
+        "modelDevCost": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a — Anthropic bears model development."
+        },
+        "distributionCost": {
+          "base": 0.04,
+          "low": 0.02,
+          "high": 0.08,
+          "basis": "A",
+          "note": "Platform (API, guardrails), support and account-team cost to distribute, % of list. Cloud opex ex-COGS is ~25% of revenue incl. R&D; AI usage mostly draws down existing commits."
+        },
+        "capitalCharge": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a: the model provider owns or rents the serving assets."
+        }
+      }
+    },
+    "azure-openai": {
+      "label": "Microsoft Azure × OpenAI",
+      "short": "Azure · OpenAI",
+      "structure": "principal",
+      "params": {
+        "customerDiscount": {
+          "base": 0.1,
+          "low": 0.05,
+          "high": 0.2,
+          "basis": "R",
+          "note": "MACC / commit discount; advisory benchmarks 5-20%."
+        },
+        "discountFundedByProvider": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a — Microsoft is principal; OpenAI bears its revenue-share percentage of any discount."
+        },
+        "channelFee": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "providerServingCost": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "hostedShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "incrementalComputeShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "computeMargin": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "revenueShare": {
+          "base": 0.0,
+          "low": 0.0,
+          "high": 0.2,
+          "basis": "D",
+          "note": "Since the Apr 27, 2026 amendment Microsoft no longer pays OpenAI a revenue share; CFO: \"royalty free with the elimination of our rev share to them\" (FY26 Q3 call). Pre-amendment ~20% (The Information: Microsoft keeps 80% of Azure OpenAI sales) is the high case."
+        },
+        "infraCost": {
+          "base": 0.2,
+          "low": 0.1,
+          "high": 0.35,
+          "basis": "C",
+          "note": "Serving infrastructure per $ of list on Microsoft capacity: OpenAI compute margin on paid users ~70% (The Information via Fortune, Dec 2025), GPU-heavy fleet, deep 2026 price cuts; x0.75 internal/external."
+        },
+        "utilization": {
+          "base": 0.5,
+          "low": 0.3,
+          "high": 0.7,
+          "basis": "A",
+          "note": "Achieved serving utilization; infra cost scales with 50%/u."
+        },
+        "baseUtilization": {
+          "base": 0.5,
+          "low": 0.5,
+          "high": 0.5,
+          "basis": "A",
+          "note": "Utilization embedded in infraCost."
+        },
+        "modelDevCost": {
+          "base": 0.0,
+          "low": 0.0,
+          "high": 0.1,
+          "basis": "A",
+          "note": "Microsoft holds a non-exclusive, royalty-free licence to OpenAI models and products through 2032; it did not fund training per token. High case charges MAI first-party model spend."
+        },
+        "distributionCost": {
+          "base": 0.04,
+          "low": 0.02,
+          "high": 0.08,
+          "basis": "A",
+          "note": "Foundry platform, support and account team, % of list."
+        },
+        "capitalCharge": {
+          "base": 0.025,
+          "low": 0.01,
+          "high": 0.06,
+          "basis": "C",
+          "note": "Cost of capital on serving assets (~8% on average net book value) adds ~18–20% to GAAP serving cost, ~2.5 points of list (infrastructure research, row 2). Not in reported cost of revenue."
+        }
+      }
+    },
+    "vertex-gemini": {
+      "label": "Google Vertex AI × Gemini",
+      "short": "Vertex · Gemini",
+      "structure": "principal",
+      "params": {
+        "customerDiscount": {
+          "base": 0.1,
+          "low": 0.05,
+          "high": 0.2,
+          "basis": "R",
+          "note": "Commit discount; advisory benchmarks 5-20%."
+        },
+        "discountFundedByProvider": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "channelFee": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "providerServingCost": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "hostedShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "incrementalComputeShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "computeMargin": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "revenueShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "First-party model: no royalty."
+        },
+        "infraCost": {
+          "base": 0.1,
+          "low": 0.06,
+          "high": 0.25,
+          "basis": "C",
+          "note": "TPU serving per $ of list: Ironwood internal TCO ~40% below GB200 (SemiAnalysis, reported), offset by intro pricing. Not disclosed by Google."
+        },
+        "utilization": {
+          "base": 0.5,
+          "low": 0.3,
+          "high": 0.7,
+          "basis": "A",
+          "note": "Achieved serving utilization."
+        },
+        "baseUtilization": {
+          "base": 0.5,
+          "low": 0.5,
+          "high": 0.5,
+          "basis": "A",
+          "note": "Utilization embedded in infraCost."
+        },
+        "modelDevCost": {
+          "base": 0.25,
+          "low": 0.06,
+          "high": 0.58,
+          "basis": "A",
+          "note": "Gemini development amortized per $ of revenue. Anchors: Alphabet-level activities (mostly frontier-model development) $24.7B TTM spread over all Alphabet revenue is ~6%; a stand-alone lab (Anthropic) spends ~58% of revenue on R&D. Base is a judgement between them."
+        },
+        "distributionCost": {
+          "base": 0.04,
+          "low": 0.02,
+          "high": 0.08,
+          "basis": "A",
+          "note": "Vertex platform, support and account team, % of list."
+        },
+        "capitalCharge": {
+          "base": 0.025,
+          "low": 0.01,
+          "high": 0.06,
+          "basis": "C",
+          "note": "Cost of capital on serving assets (~8% on average net book value) adds ~18–20% to GAAP serving cost, ~2.5 points of list (infrastructure research, row 2). Not in reported cost of revenue."
+        }
+      }
+    },
+    "vertex-claude": {
+      "label": "Google Vertex AI × Anthropic Claude (control)",
+      "short": "Vertex · Claude",
+      "structure": "agent",
+      "params": {
+        "customerDiscount": {
+          "base": 0.1,
+          "low": 0.05,
+          "high": 0.2,
+          "basis": "R",
+          "note": "Negotiated recurring discount off list. Advisory benchmarks put enterprise commit discounts at 5-20% (Redress, CloudForecast)."
+        },
+        "discountFundedByProvider": {
+          "base": 1.0,
+          "low": 0.5,
+          "high": 1.0,
+          "basis": "A",
+          "note": "Assumed the same as AWS: Anthropic sets price on Vertex. Not verified for Google commit discounts."
+        },
+        "channelFee": {
+          "base": 0.3,
+          "low": 0.16,
+          "high": 0.36,
+          "basis": "C",
+          "note": "Distribution fee the cloud keeps. Implied CSP take: ~16% in FY2025 (Reuters: fees >$350M on $2.16B of Amazon+Google sales; S-1 bridge 15.7-16.2%) and 33-36% in 9M 2026, ~32% in Q3 2026, if all channel-partner fees are CSP fees (S-1/A pp. 152-153, 162, F-17). Not split by CSP."
+        },
+        "providerServingCost": {
+          "base": 0.143,
+          "low": 0.1,
+          "high": 0.25,
+          "basis": "C",
+          "note": "Anthropic cost of revenue per $ of revenue, Q3 2026 ($14.3 per $100; 9M 2026: 14.5%). Includes the cloud margin on capacity."
+        },
+        "hostedShare": {
+          "base": 0.9,
+          "low": 0.6,
+          "high": 1.0,
+          "basis": "A",
+          "note": "Share of Google-billed Claude serving that runs on Google capacity (Trainium for Bedrock; TPU for Vertex)."
+        },
+        "incrementalComputeShare": {
+          "base": 0.5,
+          "low": 0.0,
+          "high": 1.0,
+          "basis": "A",
+          "note": "Share of serving compute that is incremental to the provider’s take-or-pay commitment. Anthropic bought $5.0B of premium short-term compute in Q3 2026 \"when customer demand or research needs exceed this long-term capacity\" (S-1/A pp. 150–163), so marginal serving is often incremental."
+        },
+        "computeMargin": {
+          "base": 0.3,
+          "low": 0.15,
+          "high": 0.4,
+          "basis": "C",
+          "note": "Cloud margin on AI capacity sold to a lab: internal/external TCO ratio 0.60–0.85 (SemiAnalysis InferenceX: Ironwood ~$1.03 internal vs ~$1.60 to Anthropic); prior-generation Trainium short-term capacity sells \"at a premium\" (Amazon, Q3 2026 call)."
+        },
+        "revenueShare": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "infraCost": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "utilization": {
+          "base": 0.5,
+          "low": 0.3,
+          "high": 0.7,
+          "basis": "A",
+          "note": "n/a for agent route."
+        },
+        "baseUtilization": {
+          "base": 0.5,
+          "low": 0.5,
+          "high": 0.5,
+          "basis": "A",
+          "note": "n/a for agent route."
+        },
+        "modelDevCost": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a"
+        },
+        "distributionCost": {
+          "base": 0.04,
+          "low": 0.02,
+          "high": 0.08,
+          "basis": "A",
+          "note": "Platform (API, guardrails), support and account-team cost to distribute, % of list. Cloud opex ex-COGS is ~25% of revenue incl. R&D; AI usage mostly draws down existing commits."
+        },
+        "capitalCharge": {
+          "base": 0,
+          "low": 0,
+          "high": 0,
+          "basis": "A",
+          "note": "n/a: the model provider owns or rents the serving assets."
+        }
+      }
+    }
+  },
+  "incentive": {
+    "pct": {
+      "base": 0.35,
+      "low": 0.0,
+      "high": 0.5,
+      "basis": "R",
+      "note": "Field observation (unverified): ~35% AWS incentive on Anthropic workloads."
+    },
+    "partnerFunded": {
+      "base": 0.0,
+      "low": 0.0,
+      "high": 0.5,
+      "basis": "A",
+      "note": "Share of the incentive funded by an SI/reseller partner."
+    },
+    "providerFunded": {
+      "base": 0.0,
+      "low": 0.0,
+      "high": 0.5,
+      "basis": "A",
+      "note": "Share funded by the model provider."
+    },
+    "creditCost": {
+      "base": 0.8,
+      "low": 0.35,
+      "high": 1.0,
+      "basis": "A",
+      "note": "Economic cost to the cloud of $1 of its own credit. 1.0 = credits displace cash spend dollar for dollar; ~0.35 = credits fund new first-party consumption at ~65% gross margin. AWS promotional credits generally do not apply to Marketplace charges unless authorized (AWS credit terms, via search extracts), so MAP credits earned on Claude growth may be redeemed on first-party services."
+    }
+  },
+  "lifetime": {
+    "years": {
+      "base": 5,
+      "low": 1,
+      "high": 5,
+      "basis": "A",
+      "note": "Customer lifetime modelled."
+    },
+    "growth": {
+      "base": 0.3,
+      "low": 0.0,
+      "high": 0.8,
+      "basis": "A",
+      "note": "Annual growth in a customer’s list-price AI spend on this workload."
+    },
+    "retention": {
+      "base": 0.85,
+      "low": 0.7,
+      "high": 0.97,
+      "basis": "A",
+      "note": "Probability the AI workload stays on this cloud each year. Cloud account churn ~3%/yr, but ~25% of AI spend switches model each year (Dataiku/Harris; low confidence)."
+    },
+    "priceDeflation": {
+      "base": 0.35,
+      "low": 0.15,
+      "high": 0.65,
+      "basis": "R",
+      "note": "Annual frontier list-price decline, same tier: Opus 5 to 5.5 -20%; GPT Sol -60% in ~10 weeks; Gemini 4 Argon list doubles after intro."
+    },
+    "efficiencyGain": {
+      "base": 0.4,
+      "low": 0.25,
+      "high": 0.6,
+      "basis": "R",
+      "note": "Annual fall in cost to serve per token: hardware cost/FLOP -27%/yr (Epoch) plus software gains; offset in 2026 by memory and server price rises."
+    },
+    "channelFeeDrift": {
+      "base": 0.0,
+      "low": -0.04,
+      "high": 0.0,
+      "basis": "A",
+      "note": "Annual change in the channel fee (points). The S-1/A says changed channel terms helped lower S&M from 22% to 14% of revenue, but the Q3 fee range (28–36%) overlaps 9M (33–36%): direction since Q3 not determinable."
+    },
+    "adjacencyAttach": {
+      "base": 0.4,
+      "low": 0.1,
+      "high": 1.2,
+      "basis": "A",
+      "note": "Non-AI cloud revenue per $1 of AI spend (storage, database, networking, CPU sandboxes). No hyperscaler discloses a multiplier."
+    },
+    "adjacencyIncremental": {
+      "base": 0.5,
+      "low": 0.25,
+      "high": 1.0,
+      "basis": "A",
+      "note": "Share of adjacent revenue that would not exist without the AI win. Base nets to ~$0.20 per $1 (infra research: $0.05-0.60)."
+    },
+    "adjacencyMargin": {
+      "base": 0.7,
+      "low": 0.65,
+      "high": 0.75,
+      "basis": "R",
+      "note": "Gross margin on non-AI cloud services (Microsoft Cloud GM 66% and falling on AI mix; AWS est. ~64% blended)."
+    },
+    "commitAdjacencyUplift": {
+      "base": 0.5,
+      "low": 0.0,
+      "high": 1.5,
+      "basis": "A",
+      "note": "Committed adjacent revenue per $1 of AI spend bought by a commit-conditional credit."
+    },
+    "commitYears": {
+      "base": 3,
+      "low": 1,
+      "high": 5,
+      "basis": "A",
+      "note": "Commit term (retention = 100% inside it)."
+    },
+    "baselineShare": {
+      "base": 0.0,
+      "low": 0.0,
+      "high": 0.8,
+      "basis": "A",
+      "note": "Pre-existing spend excluded from consumption credits (0 = net-new)."
+    },
+    "consumptionYears": {
+      "base": 3,
+      "low": 1,
+      "high": 5,
+      "basis": "R",
+      "note": "Years in which spend growth earns consumption credits. AWS MAP: credit % x growth in trailing-12-month spend over the migration plan term (AWS MAP terms, via search extracts); field reports 2-3 year plans."
+    },
+    "discountRate": {
+      "base": 0.1,
+      "low": 0.08,
+      "high": 0.12,
+      "basis": "A",
+      "note": "Discount rate for NPV."
+    },
+    "includeAdjacency": {
+      "base": 0,
+      "low": 0,
+      "high": 1,
+      "basis": "A",
+      "note": "1 = include adjacent non-AI gross profit."
+    }
+  },
+  "equity": {
+    "stake": {
+      "base": 0.23,
+      "low": 0.13,
+      "high": 0.27,
+      "basis": "C",
+      "note": "Amazon economic stake in Anthropic after the IPO: ~1.94B Class N shares plus ~1.55B issuable on rollover notes (~3.48B) of ~14.9B (424B4 p. 298). Google ~13%. Microsoft in OpenAI ~27% (reported)."
+    },
+    "revenueMultiple": {
+      "base": 14,
+      "low": 6,
+      "high": 25,
+      "basis": "C",
+      "note": "Anthropic equity value per $1 of run-rate revenue at the $83 IPO price: ~$1.11T / ~$81B Oct 31 run-rate (424B4 p. 203)."
+    },
+    "incrementalToProvider": {
+      "base": 0.25,
+      "low": 0.0,
+      "high": 1.0,
+      "basis": "A",
+      "note": "Share of subsidized consumption that is new revenue for the model provider rather than shifted from its direct channel or another cloud."
+    }
+  }
+}

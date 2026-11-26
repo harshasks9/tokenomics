@@ -1,0 +1,5230 @@
+{
+ "_meta": {
+  "generatedBy": "scripts/subsidy-math/model_ref.py --fixtures",
+  "paramsVersion": "v1.0 (after independent review)",
+  "paramsAsOf": "2026-11-26",
+  "constants": {
+   "LIST": 100.0,
+   "INFRA_SPLIT": {
+    "depreciation": 0.62,
+    "power": 0.13,
+    "network": 0.25
+   },
+   "INCENTIVE_LEVELS": [
+    0.0,
+    0.1,
+    0.2,
+    0.25,
+    0.35,
+    0.4,
+    0.5
+   ]
+  },
+  "conventions": "All money values are $ per $100 of year-1 list spend. null means Infinity (payback 'never', volume multiple / required attach 'not recoverable', break-even 'unbounded', cliff 'unbounded') except grid[].contributionPct and equityUplift, where null means n/a. lifetime[type][years] holds lifetime(p, {...incentive, type}, {...lifetime, years}) with payback = paybackMonths; rows are given for years = 5. requiredAttach uses the base lifetime (years as in params). Scenario overrides replace base values (includeAdjacency 1 -> true). counterfactual: requiredWinLift[rate] = matchThreshold(npvOneTime5, npvNone5, rate) from sensitivity.ts; recurringAiOnly / recurringWithAdjacency = recurring NPV with includeAdjacency false / true, years 1, 3, 5.",
+  "tolerance": 1e-06
+ },
+ "base": {
+  "incentive": {
+   "pct": 0.35,
+   "partnerFunded": 0.0,
+   "providerFunded": 0.0,
+   "creditCost": 0.8,
+   "type": "one-time"
+  },
+  "lifetime": {
+   "years": 5,
+   "growth": 0.3,
+   "retention": 0.85,
+   "priceDeflation": 0.35,
+   "efficiencyGain": 0.4,
+   "channelFeeDrift": 0.0,
+   "adjacencyAttach": 0.4,
+   "adjacencyIncremental": 0.5,
+   "adjacencyMargin": 0.7,
+   "commitAdjacencyUplift": 0.5,
+   "commitYears": 3,
+   "baselineShare": 0.0,
+   "consumptionYears": 3,
+   "discountRate": 0.1,
+   "includeAdjacency": false
+  },
+  "equity": {
+   "stake": 0.23,
+   "revenueMultiple": 14,
+   "incrementalToProvider": 0.25
+  }
+ },
+ "routes": {
+  "bedrock-claude": {
+   "structure": "agent",
+   "waterfall": {
+    "list": 100.0,
+    "discountProvider": 10.0,
+    "discountCloud": 0.0,
+    "creditsCloud": 35.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 55.0,
+    "providerRevenue": 90.0,
+    "cloudNetRevenue": -8.0,
+    "revenueSharePaid": 0,
+    "infra": 0,
+    "infraDepreciation": 0,
+    "infraPower": 0,
+    "infraNetwork": 0,
+    "capital": 0,
+    "creditEconomicCost": 28.0,
+    "distribution": 4.0,
+    "computeContribution": 1.73745,
+    "cloudContribution": -3.26255,
+    "cloudEconomic": -3.26255,
+    "providerServing": 12.87,
+    "channelFeePaid": 27.0,
+    "providerContribution": 50.13
+   },
+   "waterfallNoIncentive": {
+    "list": 100.0,
+    "discountProvider": 10.0,
+    "discountCloud": 0.0,
+    "creditsCloud": 0.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 90.0,
+    "providerRevenue": 90.0,
+    "cloudNetRevenue": 27.0,
+    "revenueSharePaid": 0,
+    "infra": 0,
+    "infraDepreciation": 0,
+    "infraPower": 0,
+    "infraNetwork": 0,
+    "capital": 0,
+    "creditEconomicCost": 0.0,
+    "distribution": 4.0,
+    "computeContribution": 1.73745,
+    "cloudContribution": 24.73745,
+    "cloudEconomic": 24.73745,
+    "providerServing": 12.87,
+    "channelFeePaid": 27.0,
+    "providerContribution": 50.13
+   },
+   "breakEven": 0.309218125,
+   "breakEvenEconomic": 0.309218125,
+   "requiredVolumeMultiple": null,
+   "creditCliff": 0.6363636363636362,
+   "creditCliffWithDeflation": 0.06363636363636371,
+   "counterfactual": {
+    "npvNone5": 117.81219492395789,
+    "npvOneTime5": 89.81219492395789,
+    "requiredWinLift": {
+     "0.2": 0.062352334276446576,
+     "0.3": 0.09352850141466985,
+     "0.5": 0.1558808356911164
+    },
+    "recurringAiOnly": {
+     "1": -4.413766871666624,
+     "3": -13.676880128627037,
+     "5": -23.466330632698057
+    },
+    "recurringWithAdjacency": {
+     "1": 8.93470937777166,
+     "3": 26.55084909078036,
+     "5": 43.88556375832631
+    }
+   },
+   "grid": [
+    {
+     "level": 0.0,
+     "customerPays": 90.0,
+     "cloudNetRevenue": 27.0,
+     "contribution": 24.73745,
+     "contributionPct": 0.9162018518518518,
+     "volumeMultiple": 1.0,
+     "paybackMonths": 0,
+     "npv1": 23.586233128333376,
+     "npv3": 70.70551656558783,
+     "npv5": 117.81219492395789,
+     "npvRecurring5": 117.81219492395789
+    },
+    {
+     "level": 0.1,
+     "customerPays": 80.0,
+     "cloudNetRevenue": 17.0,
+     "contribution": 16.73745,
+     "contributionPct": 0.9845558823529411,
+     "volumeMultiple": 1.4779700611502948,
+     "paybackMonths": 3.880755696322782,
+     "npv1": 15.586233128333376,
+     "npv3": 62.70551656558783,
+     "npv5": 109.81219492395789,
+     "npvRecurring5": 77.44690190777048
+    },
+    {
+     "level": 0.2,
+     "customerPays": 70.0,
+     "cloudNetRevenue": 7.0,
+     "contribution": 8.737449999999999,
+     "contributionPct": 1.2482071428571426,
+     "volumeMultiple": 2.8311978895444323,
+     "paybackMonths": 7.761511392645564,
+     "npv1": 7.586233128333376,
+     "npv3": 54.70551656558783,
+     "npv5": 101.81219492395789,
+     "npvRecurring5": 37.08160889158306
+    },
+    {
+     "level": 0.25,
+     "customerPays": 65.0,
+     "cloudNetRevenue": 2.0,
+     "contribution": 4.73745,
+     "contributionPct": 2.368725,
+     "volumeMultiple": 5.221680439899102,
+     "paybackMonths": 9.701889240806954,
+     "npv1": 3.586233128333376,
+     "npv3": 50.70551656558783,
+     "npv5": 97.81219492395789,
+     "npvRecurring5": 16.898962383489355
+    },
+    {
+     "level": 0.35,
+     "customerPays": 55.0,
+     "cloudNetRevenue": -8.0,
+     "contribution": -3.26255,
+     "contributionPct": null,
+     "volumeMultiple": null,
+     "paybackMonths": 13.440038012007049,
+     "npv1": -4.413766871666624,
+     "npv3": 42.70551656558783,
+     "npv5": 89.81219492395789,
+     "npvRecurring5": -23.466330632698057
+    },
+    {
+     "level": 0.4,
+     "customerPays": 50.0,
+     "cloudNetRevenue": -13.0,
+     "contribution": -7.26255,
+     "contributionPct": null,
+     "volumeMultiple": null,
+     "paybackMonths": 15.205574800110892,
+     "npv1": -8.413766871666624,
+     "npv3": 38.70551656558783,
+     "npv5": 85.81219492395789,
+     "npvRecurring5": -43.64897714079177
+    },
+    {
+     "level": 0.5,
+     "customerPays": 40.0,
+     "cloudNetRevenue": -23.0,
+     "contribution": -15.262550000000001,
+     "contributionPct": null,
+     "volumeMultiple": null,
+     "paybackMonths": 18.736648376318577,
+     "npv1": -16.413766871666624,
+     "npv3": 30.705516565587832,
+     "npv5": 77.81219492395789,
+     "npvRecurring5": -84.01427015697918
+    }
+   ],
+   "lifetime": {
+    "one-time": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 42.70551656558783,
+      "payback": 13.440038012007049,
+      "cumulative": 53.815866979999996,
+      "effectiveCustomerDiscount": 0.10523071834998234
+     },
+     "5": {
+      "npv": 89.81219492395789,
+      "payback": 13.440038012007049,
+      "cumulative": 122.863432115367,
+      "effectiveCustomerDiscount": 0.05676142338375694,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 27.187199,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 27.187199,
+        "cumulative": 23.924649,
+        "discounted": 23.565433775341067,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 29.89121798,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 29.89121798,
+        "cumulative": 53.815866979999996,
+        "discounted": 23.55384966191339,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 32.8761462146,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 32.8761462146,
+        "cumulative": 86.6920131946,
+        "discounted": 23.55084560044266,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 36.171418920767,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 36.171418920767,
+        "cumulative": 122.863432115367,
+        "discounted": 23.555832757927398,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "recurring": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": -13.676880128627037,
+      "payback": null,
+      "cumulative": -11.312833020000003,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "5": {
+      "npv": -23.466330632698057,
+      "payback": null,
+      "cumulative": -21.789038802133003,
+      "effectiveCustomerDiscount": 0.35,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 27.187199,
+        "incentiveCost": 30.939999999999998,
+        "adjacency": 0,
+        "contribution": -3.752800999999998,
+        "cumulative": -7.015350999999999,
+        "discounted": -4.561838951931655,
+        "customerCredit": 38.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 29.89121798,
+        "incentiveCost": 34.188700000000004,
+        "adjacency": 0,
+        "contribution": -4.297482020000004,
+        "cumulative": -11.312833020000003,
+        "discounted": -4.7012743050287575,
+        "customerCredit": 42.735875
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 32.8761462146,
+        "incentiveCost": 37.778513499999995,
+        "adjacency": 0,
+        "contribution": -4.902367285399997,
+        "cumulative": -16.2152003054,
+        "discounted": -4.832710748167397,
+        "customerCredit": 47.223141874999996
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 36.171418920767,
+        "incentiveCost": 41.74525741750001,
+        "adjacency": 0,
+        "contribution": -5.5738384967330035,
+        "cumulative": -21.789038802133003,
+        "discounted": -4.956739755903623,
+        "customerCredit": 52.18157177187501
+       }
+      ]
+     }
+    },
+    "consumption": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 37.34791325980271,
+      "payback": 14.737707551263373,
+      "cumulative": 47.62716698,
+      "effectiveCustomerDiscount": 0.12848933787328717
+     },
+     "5": {
+      "npv": 84.45459161817277,
+      "payback": 14.737707551263373,
+      "cumulative": 116.674732115367,
+      "effectiveCustomerDiscount": 0.06930711698715182,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 27.187199,
+        "incentiveCost": 2.94,
+        "adjacency": 0,
+        "contribution": 24.247199,
+        "cumulative": 20.984648999999997,
+        "discounted": 20.892706502613795,
+        "customerCredit": 3.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 29.89121798,
+        "incentiveCost": 3.2487000000000017,
+        "adjacency": 0,
+        "contribution": 26.642517979999997,
+        "cumulative": 47.62716698,
+        "discounted": 20.86897362885554,
+        "customerCredit": 4.060875000000002
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 32.8761462146,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 32.8761462146,
+        "cumulative": 80.5033131946,
+        "discounted": 23.55084560044266,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 36.171418920767,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 36.171418920767,
+        "cumulative": 116.674732115367,
+        "discounted": 23.555832757927398,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "commit": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 55.91075682515455,
+      "payback": 13.224032310205992,
+      "cumulative": 70.09431800000002,
+      "effectiveCustomerDiscount": 0.08771929824561403
+     },
+     "5": {
+      "npv": 121.11031164642799,
+      "payback": 13.224032310205992,
+      "cumulative": 165.66188220120003,
+      "effectiveCustomerDiscount": 0.04418643912502139,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 130.0,
+        "grossContribution": 31.98494,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 31.98494,
+        "cumulative": 28.72239,
+        "discounted": 27.724039735695374,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 169.00000000000003,
+        "grossContribution": 41.37192800000001,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 41.37192800000001,
+        "cumulative": 70.09431800000002,
+        "discounted": 32.6004839611258,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 186.745,
+        "grossContribution": 45.503316559999995,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 45.503316559999995,
+        "cumulative": 115.59763456000002,
+        "discounted": 32.596326090578074,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 206.35322500000004,
+        "grossContribution": 50.064247641200005,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 50.064247641200005,
+        "cumulative": 165.66188220120003,
+        "discounted": 32.60322873069536,
+        "customerCredit": 0
+       }
+      ]
+     }
+    }
+   },
+   "requiredAttach": {
+    "one-time": 0,
+    "recurring": 0.1393655269528709,
+    "consumption": 0,
+    "commit": 0
+   },
+   "equityUplift": 72.45
+  },
+  "azure-openai": {
+   "structure": "principal",
+   "waterfall": {
+    "list": 100.0,
+    "discountProvider": 0,
+    "discountCloud": 10.0,
+    "creditsCloud": 35.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 55.0,
+    "providerRevenue": 0.0,
+    "cloudNetRevenue": 55.0,
+    "revenueSharePaid": 0.0,
+    "infra": 20.0,
+    "infraDepreciation": 12.4,
+    "infraPower": 2.6,
+    "infraNetwork": 5.0,
+    "capital": 2.5,
+    "creditEconomicCost": 28.0,
+    "distribution": 4.0,
+    "computeContribution": 0,
+    "cloudContribution": 35.5,
+    "cloudEconomic": 35.5,
+    "providerServing": 0,
+    "channelFeePaid": 0,
+    "providerContribution": 0.0
+   },
+   "waterfallNoIncentive": {
+    "list": 100.0,
+    "discountProvider": 0,
+    "discountCloud": 10.0,
+    "creditsCloud": 0.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 90.0,
+    "providerRevenue": 0.0,
+    "cloudNetRevenue": 90.0,
+    "revenueSharePaid": 0.0,
+    "infra": 20.0,
+    "infraDepreciation": 12.4,
+    "infraPower": 2.6,
+    "infraNetwork": 5.0,
+    "capital": 2.5,
+    "creditEconomicCost": 0.0,
+    "distribution": 4.0,
+    "computeContribution": 0,
+    "cloudContribution": 63.5,
+    "cloudEconomic": 63.5,
+    "providerServing": 0,
+    "channelFeePaid": 0,
+    "providerContribution": 0.0
+   },
+   "breakEven": 0.79375,
+   "breakEvenEconomic": 0.79375,
+   "requiredVolumeMultiple": 1.7887323943661972,
+   "creditCliff": 0.6363636363636362,
+   "creditCliffWithDeflation": 0.06363636363636371,
+   "counterfactual": {
+    "npvNone5": 320.9766016921892,
+    "npvOneTime5": 292.9766016921892,
+    "requiredWinLift": {
+     "0.2": 0.019114154398867468,
+     "0.3": 0.028671231598301202,
+     "0.5": 0.04778538599716867
+    },
+    "recurringAiOnly": {
+     "1": 32.54487441709511,
+     "3": 102.93923690911494,
+     "5": 179.69807613553323
+    },
+    "recurringWithAdjacency": {
+     "1": 45.893350666533394,
+     "3": 143.16696612852235,
+     "5": 247.04997052655762
+    }
+   },
+   "grid": [
+    {
+     "level": 0.0,
+     "customerPays": 90.0,
+     "cloudNetRevenue": 90.0,
+     "contribution": 63.5,
+     "contributionPct": 0.7055555555555556,
+     "volumeMultiple": 1.0,
+     "paybackMonths": 0,
+     "npv1": 60.54487441709511,
+     "npv3": 187.32163360332981,
+     "npv5": 320.9766016921892,
+     "npvRecurring5": 320.9766016921892
+    },
+    {
+     "level": 0.1,
+     "customerPays": 80.0,
+     "cloudNetRevenue": 80.0,
+     "contribution": 55.5,
+     "contributionPct": 0.69375,
+     "volumeMultiple": 1.1441441441441442,
+     "paybackMonths": 1.5118110236220472,
+     "npv1": 52.54487441709511,
+     "npv3": 179.32163360332981,
+     "npv5": 312.9766016921892,
+     "npvRecurring5": 280.6113086760017
+    },
+    {
+     "level": 0.2,
+     "customerPays": 70.0,
+     "cloudNetRevenue": 70.0,
+     "contribution": 47.5,
+     "contributionPct": 0.6785714285714286,
+     "volumeMultiple": 1.3368421052631578,
+     "paybackMonths": 3.0236220472440944,
+     "npv1": 44.54487441709511,
+     "npv3": 171.32163360332981,
+     "npv5": 304.9766016921892,
+     "npvRecurring5": 240.2460156598143
+    },
+    {
+     "level": 0.25,
+     "customerPays": 65.0,
+     "cloudNetRevenue": 65.0,
+     "contribution": 43.5,
+     "contributionPct": 0.6692307692307692,
+     "volumeMultiple": 1.4597701149425288,
+     "paybackMonths": 3.779527559055118,
+     "npv1": 40.54487441709511,
+     "npv3": 167.32163360332981,
+     "npv5": 300.9766016921892,
+     "npvRecurring5": 220.06336915172062
+    },
+    {
+     "level": 0.35,
+     "customerPays": 55.0,
+     "cloudNetRevenue": 55.0,
+     "contribution": 35.5,
+     "contributionPct": 0.6454545454545455,
+     "volumeMultiple": 1.7887323943661972,
+     "paybackMonths": 5.291338582677166,
+     "npv1": 32.54487441709511,
+     "npv3": 159.32163360332981,
+     "npv5": 292.9766016921892,
+     "npvRecurring5": 179.69807613553323
+    },
+    {
+     "level": 0.4,
+     "customerPays": 50.0,
+     "cloudNetRevenue": 50.0,
+     "contribution": 31.5,
+     "contributionPct": 0.63,
+     "volumeMultiple": 2.015873015873016,
+     "paybackMonths": 6.047244094488189,
+     "npv1": 28.54487441709511,
+     "npv3": 155.32163360332981,
+     "npv5": 288.9766016921892,
+     "npvRecurring5": 159.5154296274395
+    },
+    {
+     "level": 0.5,
+     "customerPays": 40.0,
+     "cloudNetRevenue": 40.0,
+     "contribution": 23.5,
+     "contributionPct": 0.5875,
+     "volumeMultiple": 2.702127659574468,
+     "paybackMonths": 7.559055118110236,
+     "npv1": 20.54487441709511,
+     "npv3": 147.32163360332981,
+     "npv5": 280.9766016921892,
+     "npvRecurring5": 119.1501366112521
+    }
+   ],
+   "lifetime": {
+    "one-time": {
+     "1": {
+      "npv": 32.54487441709511,
+      "payback": 5.291338582677166,
+      "cumulative": 35.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 159.32163360332981,
+      "payback": 5.291338582677166,
+      "cumulative": 189.17915,
+      "effectiveCustomerDiscount": 0.10523071834998234
+     },
+     "5": {
+      "npv": 292.9766016921892,
+      "payback": 5.291338582677166,
+      "cumulative": 385.19882850375,
+      "effectiveCustomerDiscount": 0.05676142338375694,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 63.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 35.5,
+        "cumulative": 35.5,
+        "discounted": 32.54487441709511,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 72.08,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 72.08,
+        "cumulative": 107.58,
+        "discounted": 62.477803120747524,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 81.59915,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 81.59915,
+        "cumulative": 189.17915,
+        "discounted": 64.29895606548716,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 92.15682574999998,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 92.15682574999998,
+        "cumulative": 281.33597575,
+        "discounted": 66.01659331048072,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 103.86285275375003,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 103.86285275375003,
+        "cumulative": 385.19882850375,
+        "discounted": 67.63837477837865,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "recurring": {
+     "1": {
+      "npv": 32.54487441709511,
+      "payback": 5.291338582677166,
+      "cumulative": 35.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 102.93923690911494,
+      "payback": 5.291338582677166,
+      "cumulative": 124.05045000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "5": {
+      "npv": 179.69807613553323,
+      "payback": 5.291338582677166,
+      "cumulative": 240.54635758625002,
+      "effectiveCustomerDiscount": 0.35,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 63.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 35.5,
+        "cumulative": 35.5,
+        "discounted": 32.54487441709511,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 72.08,
+        "incentiveCost": 30.939999999999998,
+        "adjacency": 0,
+        "contribution": 41.14,
+        "cumulative": 76.64,
+        "discounted": 34.3505303934748,
+        "customerCredit": 38.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 81.59915,
+        "incentiveCost": 34.18869999999999,
+        "adjacency": 0,
+        "contribution": 47.410450000000004,
+        "cumulative": 124.05045000000001,
+        "discounted": 36.043832098545025,
+        "customerCredit": 42.735875
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 92.15682574999998,
+        "incentiveCost": 37.778513499999995,
+        "adjacency": 0,
+        "contribution": 54.378312249999986,
+        "cumulative": 178.42876225,
+        "discounted": 37.63303696187066,
+        "customerCredit": 47.223141874999996
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 103.86285275375003,
+        "incentiveCost": 41.745257417500014,
+        "adjacency": 0,
+        "contribution": 62.11759533625002,
+        "cumulative": 240.54635758625002,
+        "discounted": 39.12580226454762,
+        "customerCredit": 52.18157177187501
+       }
+      ]
+     }
+    },
+    "consumption": {
+     "1": {
+      "npv": 32.54487441709511,
+      "payback": 5.291338582677166,
+      "cumulative": 35.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 153.96403029754467,
+      "payback": 5.291338582677166,
+      "cumulative": 182.99045,
+      "effectiveCustomerDiscount": 0.12848933787328717
+     },
+     "5": {
+      "npv": 287.61899838640403,
+      "payback": 5.291338582677166,
+      "cumulative": 379.01012850375,
+      "effectiveCustomerDiscount": 0.06930711698715182,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 63.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 35.5,
+        "cumulative": 35.5,
+        "discounted": 32.54487441709511,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 72.08,
+        "incentiveCost": 2.94,
+        "adjacency": 0,
+        "contribution": 69.14,
+        "cumulative": 104.64,
+        "discounted": 59.80507584802025,
+        "customerCredit": 3.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 81.59915,
+        "incentiveCost": 3.248700000000001,
+        "adjacency": 0,
+        "contribution": 78.35045,
+        "cumulative": 182.99045,
+        "discounted": 61.61408003242931,
+        "customerCredit": 4.060875000000002
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 92.15682574999998,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 92.15682574999998,
+        "cumulative": 275.14727575,
+        "discounted": 66.01659331048072,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 103.86285275375003,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 103.86285275375003,
+        "cumulative": 379.01012850375,
+        "discounted": 67.63837477837865,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "commit": {
+     "1": {
+      "npv": 32.54487441709511,
+      "payback": 5.291338582677166,
+      "cumulative": 35.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 195.0432671065381,
+      "payback": 5.291338582677166,
+      "cumulative": 233.24,
+      "effectiveCustomerDiscount": 0.08771929824561403
+     },
+     "5": {
+      "npv": 380.032842316032,
+      "payback": 5.291338582677166,
+      "cumulative": 504.54751350000004,
+      "effectiveCustomerDiscount": 0.04418643912502139,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 63.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 35.5,
+        "cumulative": 35.5,
+        "discounted": 32.54487441709511,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 130.0,
+        "grossContribution": 84.8,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 84.8,
+        "cumulative": 120.3,
+        "discounted": 73.50329778911474,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 169.00000000000003,
+        "grossContribution": 112.94000000000001,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 112.94000000000001,
+        "cumulative": 233.24,
+        "discounted": 88.99509490032825,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 186.745,
+        "grossContribution": 127.55269999999999,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 127.55269999999999,
+        "cumulative": 360.79269999999997,
+        "discounted": 91.37244748855463,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 206.35322500000004,
+        "grossContribution": 143.75481350000004,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 143.75481350000004,
+        "cumulative": 504.54751350000004,
+        "discounted": 93.6171277209393,
+        "customerCredit": 0
+       }
+      ]
+     }
+    }
+   },
+   "requiredAttach": {
+    "one-time": 0,
+    "recurring": 0,
+    "consumption": 0,
+    "commit": 0
+   },
+   "equityUplift": null
+  },
+  "vertex-gemini": {
+   "structure": "principal",
+   "waterfall": {
+    "list": 100.0,
+    "discountProvider": 0,
+    "discountCloud": 10.0,
+    "creditsCloud": 35.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 55.0,
+    "providerRevenue": 0.0,
+    "cloudNetRevenue": 55.0,
+    "revenueSharePaid": 0.0,
+    "infra": 10.0,
+    "infraDepreciation": 6.2,
+    "infraPower": 1.3,
+    "infraNetwork": 2.5,
+    "capital": 2.5,
+    "creditEconomicCost": 28.0,
+    "distribution": 4.0,
+    "computeContribution": 0,
+    "cloudContribution": 45.5,
+    "cloudEconomic": 23.0,
+    "providerServing": 0,
+    "channelFeePaid": 0,
+    "providerContribution": 0.0
+   },
+   "waterfallNoIncentive": {
+    "list": 100.0,
+    "discountProvider": 0,
+    "discountCloud": 10.0,
+    "creditsCloud": 0.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 90.0,
+    "providerRevenue": 0.0,
+    "cloudNetRevenue": 90.0,
+    "revenueSharePaid": 0.0,
+    "infra": 10.0,
+    "infraDepreciation": 6.2,
+    "infraPower": 1.3,
+    "infraNetwork": 2.5,
+    "capital": 2.5,
+    "creditEconomicCost": 0.0,
+    "distribution": 4.0,
+    "computeContribution": 0,
+    "cloudContribution": 73.5,
+    "cloudEconomic": 51.0,
+    "providerServing": 0,
+    "channelFeePaid": 0,
+    "providerContribution": 0.0
+   },
+   "breakEven": 0.91875,
+   "breakEvenEconomic": 0.6375,
+   "requiredVolumeMultiple": 1.6153846153846154,
+   "creditCliff": 0.6363636363636362,
+   "creditCliffWithDeflation": 0.06363636363636371,
+   "counterfactual": {
+    "npvNone5": 362.20169673782243,
+    "npvOneTime5": 334.20169673782243,
+    "requiredWinLift": {
+     "0.2": 0.016756348201287376,
+     "0.3": 0.025134522301931066,
+     "0.5": 0.04189087050321844
+    },
+    "recurringAiOnly": {
+     "1": 42.07950030955102,
+     "3": 129.5132636526838,
+     "5": 220.92317118116645
+    },
+    "recurringWithAdjacency": {
+     "1": 55.427976558989315,
+     "3": 169.74099287209123,
+     "5": 288.2750655721909
+    }
+   },
+   "grid": [
+    {
+     "level": 0.0,
+     "customerPays": 90.0,
+     "cloudNetRevenue": 90.0,
+     "contribution": 73.5,
+     "contributionPct": 0.8166666666666667,
+     "volumeMultiple": 1.0,
+     "paybackMonths": 0,
+     "npv1": 70.07950030955102,
+     "npv3": 213.89566034689867,
+     "npv5": 362.20169673782243,
+     "npvRecurring5": 362.20169673782243
+    },
+    {
+     "level": 0.1,
+     "customerPays": 80.0,
+     "cloudNetRevenue": 80.0,
+     "contribution": 65.5,
+     "contributionPct": 0.81875,
+     "volumeMultiple": 1.1221374045801527,
+     "paybackMonths": 1.3061224489795917,
+     "npv1": 62.07950030955102,
+     "npv3": 205.89566034689867,
+     "npv5": 354.20169673782243,
+     "npvRecurring5": 321.836403721635
+    },
+    {
+     "level": 0.2,
+     "customerPays": 70.0,
+     "cloudNetRevenue": 70.0,
+     "contribution": 57.5,
+     "contributionPct": 0.8214285714285714,
+     "volumeMultiple": 1.2782608695652173,
+     "paybackMonths": 2.6122448979591835,
+     "npv1": 54.07950030955102,
+     "npv3": 197.8956603468987,
+     "npv5": 346.20169673782243,
+     "npvRecurring5": 281.4711107054476
+    },
+    {
+     "level": 0.25,
+     "customerPays": 65.0,
+     "cloudNetRevenue": 65.0,
+     "contribution": 53.5,
+     "contributionPct": 0.823076923076923,
+     "volumeMultiple": 1.3738317757009346,
+     "paybackMonths": 3.2653061224489797,
+     "npv1": 50.07950030955102,
+     "npv3": 193.8956603468987,
+     "npv5": 342.20169673782243,
+     "npvRecurring5": 261.28846419735385
+    },
+    {
+     "level": 0.35,
+     "customerPays": 55.0,
+     "cloudNetRevenue": 55.0,
+     "contribution": 45.5,
+     "contributionPct": 0.8272727272727273,
+     "volumeMultiple": 1.6153846153846154,
+     "paybackMonths": 4.571428571428571,
+     "npv1": 42.07950030955102,
+     "npv3": 185.8956603468987,
+     "npv5": 334.20169673782243,
+     "npvRecurring5": 220.92317118116645
+    },
+    {
+     "level": 0.4,
+     "customerPays": 50.0,
+     "cloudNetRevenue": 50.0,
+     "contribution": 41.5,
+     "contributionPct": 0.83,
+     "volumeMultiple": 1.7710843373493976,
+     "paybackMonths": 5.224489795918367,
+     "npv1": 38.07950030955102,
+     "npv3": 181.8956603468987,
+     "npv5": 330.20169673782243,
+     "npvRecurring5": 200.74052467307274
+    },
+    {
+     "level": 0.5,
+     "customerPays": 40.0,
+     "cloudNetRevenue": 40.0,
+     "contribution": 33.5,
+     "contributionPct": 0.8375,
+     "volumeMultiple": 2.1940298507462686,
+     "paybackMonths": 6.530612244897959,
+     "npv1": 30.079500309551022,
+     "npv3": 173.8956603468987,
+     "npv5": 322.20169673782243,
+     "npvRecurring5": 160.37523165688535
+    }
+   ],
+   "lifetime": {
+    "one-time": {
+     "1": {
+      "npv": 42.07950030955102,
+      "payback": 4.571428571428571,
+      "cumulative": 45.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 185.8956603468987,
+      "payback": 4.571428571428571,
+      "cumulative": 219.78315,
+      "effectiveCustomerDiscount": 0.10523071834998234
+     },
+     "5": {
+      "npv": 334.20169673782243,
+      "payback": 4.571428571428571,
+      "cumulative": 437.23923010375006,
+      "effectiveCustomerDiscount": 0.05676142338375694,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 73.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 45.5,
+        "cumulative": 45.5,
+        "discounted": 42.07950030955102,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 82.28,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 82.28,
+        "cumulative": 127.78,
+        "discounted": 71.31900167557029,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 92.00315,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 92.00315,
+        "cumulative": 219.78315,
+        "discounted": 72.49715836177737,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 102.76890574999999,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 102.76890574999999,
+        "cumulative": 322.55205575,
+        "discounted": 73.61856271249526,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 114.68717435375001,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 114.68717435375001,
+        "cumulative": 437.23923010375006,
+        "discounted": 74.68747367842847,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "recurring": {
+     "1": {
+      "npv": 42.07950030955102,
+      "payback": 4.571428571428571,
+      "cumulative": 45.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 129.5132636526838,
+      "payback": 4.571428571428571,
+      "cumulative": 154.65445,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "5": {
+      "npv": 220.92317118116645,
+      "payback": 4.571428571428571,
+      "cumulative": 292.58675918625,
+      "effectiveCustomerDiscount": 0.35,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 73.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 45.5,
+        "cumulative": 45.5,
+        "discounted": 42.07950030955102,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 82.28,
+        "incentiveCost": 30.940000000000005,
+        "adjacency": 0,
+        "contribution": 51.339999999999996,
+        "cumulative": 96.84,
+        "discounted": 43.191728948297566,
+        "customerCredit": 38.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 92.00315,
+        "incentiveCost": 34.188700000000004,
+        "adjacency": 0,
+        "contribution": 57.81445,
+        "cumulative": 154.65445,
+        "discounted": 44.242034394835215,
+        "customerCredit": 42.735875
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 102.76890574999999,
+        "incentiveCost": 37.778513499999995,
+        "adjacency": 0,
+        "contribution": 64.99039224999999,
+        "cumulative": 219.64484224999998,
+        "discounted": 45.235006363885205,
+        "customerCredit": 47.223141874999996
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 114.68717435375001,
+        "incentiveCost": 41.74525741750001,
+        "adjacency": 0,
+        "contribution": 72.94191693625001,
+        "cumulative": 292.58675918625,
+        "discounted": 46.17490116459746,
+        "customerCredit": 52.18157177187501
+       }
+      ]
+     }
+    },
+    "consumption": {
+     "1": {
+      "npv": 42.07950030955102,
+      "payback": 4.571428571428571,
+      "cumulative": 45.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 180.53805704111357,
+      "payback": 4.571428571428571,
+      "cumulative": 213.59445,
+      "effectiveCustomerDiscount": 0.12848933787328717
+     },
+     "5": {
+      "npv": 328.8440934320373,
+      "payback": 4.571428571428571,
+      "cumulative": 431.05053010375,
+      "effectiveCustomerDiscount": 0.06930711698715182,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 73.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 45.5,
+        "cumulative": 45.5,
+        "discounted": 42.07950030955102,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 82.28,
+        "incentiveCost": 2.9400000000000004,
+        "adjacency": 0,
+        "contribution": 79.34,
+        "cumulative": 124.84,
+        "discounted": 68.64627440284302,
+        "customerCredit": 3.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 92.00315,
+        "incentiveCost": 3.2487000000000017,
+        "adjacency": 0,
+        "contribution": 88.75445,
+        "cumulative": 213.59445,
+        "discounted": 69.81228232871952,
+        "customerCredit": 4.060875000000002
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 102.76890574999999,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 102.76890574999999,
+        "cumulative": 316.36335575,
+        "discounted": 73.61856271249526,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 114.68717435375001,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 114.68717435375001,
+        "cumulative": 431.05053010375,
+        "discounted": 74.68747367842847,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "commit": {
+     "1": {
+      "npv": 42.07950030955102,
+      "payback": 4.571428571428571,
+      "cumulative": 45.5,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 226.3262958611249,
+      "payback": 4.571428571428571,
+      "cumulative": 269.64000000000004,
+      "effectiveCustomerDiscount": 0.08771929824561403
+     },
+     "5": {
+      "npv": 431.5941662983896,
+      "payback": 4.571428571428571,
+      "cumulative": 570.6172735,
+      "effectiveCustomerDiscount": 0.04418643912502139,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 73.5,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": 45.5,
+        "cumulative": 45.5,
+        "discounted": 42.07950030955102,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 130.0,
+        "grossContribution": 96.80000000000001,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 96.80000000000001,
+        "cumulative": 142.3,
+        "discounted": 83.90470785361212,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 169.00000000000003,
+        "grossContribution": 127.34000000000003,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 127.34000000000003,
+        "cumulative": 269.64000000000004,
+        "discounted": 100.34208769796176,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 186.745,
+        "grossContribution": 142.2407,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 142.2407,
+        "cumulative": 411.88070000000005,
+        "discounted": 101.89420444636023,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 206.35322500000004,
+        "grossContribution": 158.73657350000002,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 158.73657350000002,
+        "cumulative": 570.6172735,
+        "discounted": 103.37366599090447,
+        "customerCredit": 0
+       }
+      ]
+     }
+    }
+   },
+   "requiredAttach": {
+    "one-time": 0,
+    "recurring": 0,
+    "consumption": 0,
+    "commit": 0
+   },
+   "equityUplift": null
+  },
+  "vertex-claude": {
+   "structure": "agent",
+   "waterfall": {
+    "list": 100.0,
+    "discountProvider": 10.0,
+    "discountCloud": 0.0,
+    "creditsCloud": 35.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 55.0,
+    "providerRevenue": 90.0,
+    "cloudNetRevenue": -8.0,
+    "revenueSharePaid": 0,
+    "infra": 0,
+    "infraDepreciation": 0,
+    "infraPower": 0,
+    "infraNetwork": 0,
+    "capital": 0,
+    "creditEconomicCost": 28.0,
+    "distribution": 4.0,
+    "computeContribution": 1.73745,
+    "cloudContribution": -3.26255,
+    "cloudEconomic": -3.26255,
+    "providerServing": 12.87,
+    "channelFeePaid": 27.0,
+    "providerContribution": 50.13
+   },
+   "waterfallNoIncentive": {
+    "list": 100.0,
+    "discountProvider": 10.0,
+    "discountCloud": 0.0,
+    "creditsCloud": 0.0,
+    "creditsProvider": 0.0,
+    "creditsPartner": 0.0,
+    "customerPays": 90.0,
+    "providerRevenue": 90.0,
+    "cloudNetRevenue": 27.0,
+    "revenueSharePaid": 0,
+    "infra": 0,
+    "infraDepreciation": 0,
+    "infraPower": 0,
+    "infraNetwork": 0,
+    "capital": 0,
+    "creditEconomicCost": 0.0,
+    "distribution": 4.0,
+    "computeContribution": 1.73745,
+    "cloudContribution": 24.73745,
+    "cloudEconomic": 24.73745,
+    "providerServing": 12.87,
+    "channelFeePaid": 27.0,
+    "providerContribution": 50.13
+   },
+   "breakEven": 0.309218125,
+   "breakEvenEconomic": 0.309218125,
+   "requiredVolumeMultiple": null,
+   "creditCliff": 0.6363636363636362,
+   "creditCliffWithDeflation": 0.06363636363636371,
+   "counterfactual": {
+    "npvNone5": 117.81219492395789,
+    "npvOneTime5": 89.81219492395789,
+    "requiredWinLift": {
+     "0.2": 0.062352334276446576,
+     "0.3": 0.09352850141466985,
+     "0.5": 0.1558808356911164
+    },
+    "recurringAiOnly": {
+     "1": -4.413766871666624,
+     "3": -13.676880128627037,
+     "5": -23.466330632698057
+    },
+    "recurringWithAdjacency": {
+     "1": 8.93470937777166,
+     "3": 26.55084909078036,
+     "5": 43.88556375832631
+    }
+   },
+   "grid": [
+    {
+     "level": 0.0,
+     "customerPays": 90.0,
+     "cloudNetRevenue": 27.0,
+     "contribution": 24.73745,
+     "contributionPct": 0.9162018518518518,
+     "volumeMultiple": 1.0,
+     "paybackMonths": 0,
+     "npv1": 23.586233128333376,
+     "npv3": 70.70551656558783,
+     "npv5": 117.81219492395789,
+     "npvRecurring5": 117.81219492395789
+    },
+    {
+     "level": 0.1,
+     "customerPays": 80.0,
+     "cloudNetRevenue": 17.0,
+     "contribution": 16.73745,
+     "contributionPct": 0.9845558823529411,
+     "volumeMultiple": 1.4779700611502948,
+     "paybackMonths": 3.880755696322782,
+     "npv1": 15.586233128333376,
+     "npv3": 62.70551656558783,
+     "npv5": 109.81219492395789,
+     "npvRecurring5": 77.44690190777048
+    },
+    {
+     "level": 0.2,
+     "customerPays": 70.0,
+     "cloudNetRevenue": 7.0,
+     "contribution": 8.737449999999999,
+     "contributionPct": 1.2482071428571426,
+     "volumeMultiple": 2.8311978895444323,
+     "paybackMonths": 7.761511392645564,
+     "npv1": 7.586233128333376,
+     "npv3": 54.70551656558783,
+     "npv5": 101.81219492395789,
+     "npvRecurring5": 37.08160889158306
+    },
+    {
+     "level": 0.25,
+     "customerPays": 65.0,
+     "cloudNetRevenue": 2.0,
+     "contribution": 4.73745,
+     "contributionPct": 2.368725,
+     "volumeMultiple": 5.221680439899102,
+     "paybackMonths": 9.701889240806954,
+     "npv1": 3.586233128333376,
+     "npv3": 50.70551656558783,
+     "npv5": 97.81219492395789,
+     "npvRecurring5": 16.898962383489355
+    },
+    {
+     "level": 0.35,
+     "customerPays": 55.0,
+     "cloudNetRevenue": -8.0,
+     "contribution": -3.26255,
+     "contributionPct": null,
+     "volumeMultiple": null,
+     "paybackMonths": 13.440038012007049,
+     "npv1": -4.413766871666624,
+     "npv3": 42.70551656558783,
+     "npv5": 89.81219492395789,
+     "npvRecurring5": -23.466330632698057
+    },
+    {
+     "level": 0.4,
+     "customerPays": 50.0,
+     "cloudNetRevenue": -13.0,
+     "contribution": -7.26255,
+     "contributionPct": null,
+     "volumeMultiple": null,
+     "paybackMonths": 15.205574800110892,
+     "npv1": -8.413766871666624,
+     "npv3": 38.70551656558783,
+     "npv5": 85.81219492395789,
+     "npvRecurring5": -43.64897714079177
+    },
+    {
+     "level": 0.5,
+     "customerPays": 40.0,
+     "cloudNetRevenue": -23.0,
+     "contribution": -15.262550000000001,
+     "contributionPct": null,
+     "volumeMultiple": null,
+     "paybackMonths": 18.736648376318577,
+     "npv1": -16.413766871666624,
+     "npv3": 30.705516565587832,
+     "npv5": 77.81219492395789,
+     "npvRecurring5": -84.01427015697918
+    }
+   ],
+   "lifetime": {
+    "one-time": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 42.70551656558783,
+      "payback": 13.440038012007049,
+      "cumulative": 53.815866979999996,
+      "effectiveCustomerDiscount": 0.10523071834998234
+     },
+     "5": {
+      "npv": 89.81219492395789,
+      "payback": 13.440038012007049,
+      "cumulative": 122.863432115367,
+      "effectiveCustomerDiscount": 0.05676142338375694,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 27.187199,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 27.187199,
+        "cumulative": 23.924649,
+        "discounted": 23.565433775341067,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 29.89121798,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 29.89121798,
+        "cumulative": 53.815866979999996,
+        "discounted": 23.55384966191339,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 32.8761462146,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 32.8761462146,
+        "cumulative": 86.6920131946,
+        "discounted": 23.55084560044266,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 36.171418920767,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 36.171418920767,
+        "cumulative": 122.863432115367,
+        "discounted": 23.555832757927398,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "recurring": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": -13.676880128627037,
+      "payback": null,
+      "cumulative": -11.312833020000003,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "5": {
+      "npv": -23.466330632698057,
+      "payback": null,
+      "cumulative": -21.789038802133003,
+      "effectiveCustomerDiscount": 0.35,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 27.187199,
+        "incentiveCost": 30.939999999999998,
+        "adjacency": 0,
+        "contribution": -3.752800999999998,
+        "cumulative": -7.015350999999999,
+        "discounted": -4.561838951931655,
+        "customerCredit": 38.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 29.89121798,
+        "incentiveCost": 34.188700000000004,
+        "adjacency": 0,
+        "contribution": -4.297482020000004,
+        "cumulative": -11.312833020000003,
+        "discounted": -4.7012743050287575,
+        "customerCredit": 42.735875
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 32.8761462146,
+        "incentiveCost": 37.778513499999995,
+        "adjacency": 0,
+        "contribution": -4.902367285399997,
+        "cumulative": -16.2152003054,
+        "discounted": -4.832710748167397,
+        "customerCredit": 47.223141874999996
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 36.171418920767,
+        "incentiveCost": 41.74525741750001,
+        "adjacency": 0,
+        "contribution": -5.5738384967330035,
+        "cumulative": -21.789038802133003,
+        "discounted": -4.956739755903623,
+        "customerCredit": 52.18157177187501
+       }
+      ]
+     }
+    },
+    "consumption": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 37.34791325980271,
+      "payback": 14.737707551263373,
+      "cumulative": 47.62716698,
+      "effectiveCustomerDiscount": 0.12848933787328717
+     },
+     "5": {
+      "npv": 84.45459161817277,
+      "payback": 14.737707551263373,
+      "cumulative": 116.674732115367,
+      "effectiveCustomerDiscount": 0.06930711698715182,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 110.5,
+        "grossContribution": 27.187199,
+        "incentiveCost": 2.94,
+        "adjacency": 0,
+        "contribution": 24.247199,
+        "cumulative": 20.984648999999997,
+        "discounted": 20.892706502613795,
+        "customerCredit": 3.675
+       },
+       {
+        "year": 3,
+        "spend": 122.1025,
+        "grossContribution": 29.89121798,
+        "incentiveCost": 3.2487000000000017,
+        "adjacency": 0,
+        "contribution": 26.642517979999997,
+        "cumulative": 47.62716698,
+        "discounted": 20.86897362885554,
+        "customerCredit": 4.060875000000002
+       },
+       {
+        "year": 4,
+        "spend": 134.9232625,
+        "grossContribution": 32.8761462146,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 32.8761462146,
+        "cumulative": 80.5033131946,
+        "discounted": 23.55084560044266,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 149.09020506250002,
+        "grossContribution": 36.171418920767,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 36.171418920767,
+        "cumulative": 116.674732115367,
+        "discounted": 23.555832757927398,
+        "customerCredit": 0
+       }
+      ]
+     }
+    },
+    "commit": {
+     "1": {
+      "npv": -4.413766871666624,
+      "payback": null,
+      "cumulative": -3.262550000000001,
+      "effectiveCustomerDiscount": 0.35
+     },
+     "3": {
+      "npv": 55.91075682515455,
+      "payback": 13.224032310205992,
+      "cumulative": 70.09431800000002,
+      "effectiveCustomerDiscount": 0.08771929824561403
+     },
+     "5": {
+      "npv": 121.11031164642799,
+      "payback": 13.224032310205992,
+      "cumulative": 165.66188220120003,
+      "effectiveCustomerDiscount": 0.04418643912502139,
+      "rows": [
+       {
+        "year": 1,
+        "spend": 100.0,
+        "grossContribution": 24.73745,
+        "incentiveCost": 28.0,
+        "adjacency": 0,
+        "contribution": -3.262550000000001,
+        "cumulative": -3.262550000000001,
+        "discounted": -4.413766871666624,
+        "customerCredit": 35.0
+       },
+       {
+        "year": 2,
+        "spend": 130.0,
+        "grossContribution": 31.98494,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 31.98494,
+        "cumulative": 28.72239,
+        "discounted": 27.724039735695374,
+        "customerCredit": 0
+       },
+       {
+        "year": 3,
+        "spend": 169.00000000000003,
+        "grossContribution": 41.37192800000001,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 41.37192800000001,
+        "cumulative": 70.09431800000002,
+        "discounted": 32.6004839611258,
+        "customerCredit": 0
+       },
+       {
+        "year": 4,
+        "spend": 186.745,
+        "grossContribution": 45.503316559999995,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 45.503316559999995,
+        "cumulative": 115.59763456000002,
+        "discounted": 32.596326090578074,
+        "customerCredit": 0
+       },
+       {
+        "year": 5,
+        "spend": 206.35322500000004,
+        "grossContribution": 50.064247641200005,
+        "incentiveCost": 0.0,
+        "adjacency": 0,
+        "contribution": 50.064247641200005,
+        "cumulative": 165.66188220120003,
+        "discounted": 32.60322873069536,
+        "customerCredit": 0
+       }
+      ]
+     }
+    }
+   },
+   "requiredAttach": {
+    "one-time": 0,
+    "recurring": 0.1393655269528709,
+    "consumption": 0,
+    "commit": 0
+   },
+   "equityUplift": 72.45
+  }
+ },
+ "scenarios": [
+  {
+   "name": "stress-commit",
+   "overrides": {
+    "incentive": {
+     "type": "commit",
+     "pct": 0.5,
+     "partnerFunded": 0.2,
+     "providerFunded": 0.3,
+     "creditCost": 1.0
+    },
+    "lifetime": {
+     "years": 3,
+     "includeAdjacency": 1,
+     "baselineShare": 0.4,
+     "channelFeeDrift": -0.05,
+     "retention": 0.7,
+     "growth": 0.0,
+     "commitYears": 2,
+     "consumptionYears": 2,
+     "adjacencyIncremental": 0.0
+    },
+    "routes": {
+     "bedrock-claude": {
+      "channelFee": 0.16,
+      "discountFundedByProvider": 0.5
+     },
+     "azure-openai": {
+      "revenueShare": 0.25,
+      "infraCost": 0.35,
+      "utilization": 0.3,
+      "customerDiscount": 0.2,
+      "capitalCharge": 0.06
+     },
+     "vertex-gemini": {
+      "modelDevCost": 0.6
+     },
+     "vertex-claude": {
+      "incrementalComputeShare": 1.0,
+      "channelFee": 0.16,
+      "distributionCost": 0.08,
+      "customerDiscount": 0.2,
+      "discountFundedByProvider": 0.5
+     }
+    }
+   },
+   "routes": {
+    "bedrock-claude": {
+     "structure": "agent",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 5.0,
+      "discountCloud": 5.0,
+      "creditsCloud": 25.0,
+      "creditsProvider": 15.0,
+      "creditsPartner": 10.0,
+      "customerPays": 40.0,
+      "providerRevenue": 80.0,
+      "cloudNetRevenue": -17.2,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 25.0,
+      "distribution": 4.0,
+      "computeContribution": 1.833975,
+      "cloudContribution": -19.366025,
+      "cloudEconomic": -19.366025,
+      "providerServing": 13.584999999999999,
+      "channelFeePaid": 12.8,
+      "providerContribution": 53.615
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 5.0,
+      "discountCloud": 5.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 95.0,
+      "cloudNetRevenue": 10.200000000000001,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 1.833975,
+      "cloudContribution": 8.033975000000002,
+      "cloudEconomic": 8.033975000000002,
+      "providerServing": 13.584999999999999,
+      "channelFeePaid": 15.200000000000001,
+      "providerContribution": 66.215
+     },
+     "breakEven": 0.14660538321167887,
+     "breakEvenEconomic": 0.14660538321167887,
+     "requiredVolumeMultiple": null,
+     "creditCliff": 1.25,
+     "creditCliffWithDeflation": 0.46250000000000013,
+     "counterfactual": {
+      "npvNone5": 6.073675310960777,
+      "npvOneTime5": -21.326324689039215,
+      "requiredWinLift": {
+       "0.2": null,
+       "0.3": null,
+       "0.5": null
+      },
+      "recurringAiOnly": {
+       "1": -19.739905394565636,
+       "3": -45.95127781093508,
+       "5": -59.35481318026249
+      },
+      "recurringWithAdjacency": {
+       "1": -19.739905394565636,
+       "3": -45.95127781093508,
+       "5": -59.35481318026249
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 10.200000000000001,
+       "contribution": 8.033975000000002,
+       "contributionPct": 0.7876446078431373,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 7.660094605434359,
+       "npv3": 8.896242850221938,
+       "npv5": 6.073675310960777,
+       "npvRecurring5": 6.073675310960777
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 4.720000000000001,
+       "contribution": 2.5539750000000003,
+       "contributionPct": 0.5410963983050847,
+       "volumeMultiple": 3.145674879354732,
+       "paybackMonths": 8.185238316026622,
+       "npv1": 2.180094605434359,
+       "npv3": 3.416242850221938,
+       "npv5": 0.5936753109607764,
+       "npvRecurring5": -7.012022387283876
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": -0.7599999999999998,
+       "contribution": -2.926025,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -3.2999053945656405,
+       "npv3": -2.063757149778061,
+       "npv5": -4.886324689039222,
+       "npvRecurring5": -20.09772008552853
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": -3.5,
+       "contribution": -5.666025,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -6.039905394565639,
+       "npv3": -4.803757149778059,
+       "npv5": -7.626324689039221,
+       "npvRecurring5": -26.640568934650858
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": -8.98,
+       "contribution": -11.146025,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -11.519905394565637,
+       "npv3": -10.283757149778058,
+       "npv5": -13.106324689039221,
+       "npvRecurring5": -39.7262666328955
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": -11.719999999999999,
+       "contribution": -13.886024999999998,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -14.259905394565639,
+       "npv3": -13.02375714977806,
+       "npv5": -15.846324689039223,
+       "npvRecurring5": -46.26911548201784
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": -17.2,
+       "contribution": -19.366025,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -19.739905394565636,
+       "npv3": -18.503757149778053,
+       "npv5": -21.326324689039215,
+       "npvRecurring5": -59.35481318026249
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": -19.739905394565636,
+        "payback": null,
+        "cumulative": -19.366024999999993,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": -18.503757149778053,
+        "payback": null,
+        "cumulative": -18.017283307692303,
+        "effectiveCustomerDiscount": 0.228310502283105
+       },
+       "5": {
+        "npv": -21.326324689039215,
+        "payback": null,
+        "cumulative": -22.124869794028214,
+        "effectiveCustomerDiscount": 0.1803036313151347
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": -19.739905394565636,
+        "payback": null,
+        "cumulative": -19.366024999999993,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": -45.95127781093508,
+        "payback": null,
+        "cumulative": -49.3632833076923,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "5": {
+        "npv": -59.35481318026249,
+        "payback": null,
+        "cumulative": -68.0998197940282,
+        "effectiveCustomerDiscount": 0.5
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": -8.779905394565638,
+        "payback": null,
+        "cumulative": -8.406024999999996,
+        "effectiveCustomerDiscount": 0.3
+       },
+       "3": {
+        "npv": -7.543757149778059,
+        "payback": null,
+        "cumulative": -7.0572833076923045,
+        "effectiveCustomerDiscount": 0.136986301369863
+       },
+       "5": {
+        "npv": -10.36632468903922,
+        "payback": null,
+        "cumulative": -11.164869794028217,
+        "effectiveCustomerDiscount": 0.1081821787890808
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 13.631285229030087,
+        "payback": 7.6404747644157895,
+        "cumulative": 15.633975000000007,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": 45.734657314463,
+        "payback": 7.6404747644157895,
+        "cumulative": 52.56074884615385,
+        "effectiveCustomerDiscount": 0.18518518518518517
+       },
+       "5": {
+        "npv": 41.70241797266134,
+        "payback": 7.6404747644157895,
+        "cumulative": 46.69276815138826,
+        "effectiveCustomerDiscount": 0.1415227851684121
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": null,
+      "recurring": null,
+      "consumption": null,
+      "commit": null
+     },
+     "equityUplift": 64.4
+    },
+    "azure-openai": {
+     "structure": "principal",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 20.0,
+      "creditsCloud": 40.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 10.0,
+      "customerPays": 30.0,
+      "providerRevenue": 10.0,
+      "cloudNetRevenue": 40.0,
+      "revenueSharePaid": 10.0,
+      "infra": 58.333333333333336,
+      "infraDepreciation": 36.16666666666667,
+      "infraPower": 7.583333333333334,
+      "infraNetwork": 14.583333333333334,
+      "capital": 10.0,
+      "creditEconomicCost": 30.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": -42.333333333333336,
+      "cloudEconomic": -42.333333333333336,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 10.0
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 20.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 20.0,
+      "cloudNetRevenue": 80.0,
+      "revenueSharePaid": 20.0,
+      "infra": 58.333333333333336,
+      "infraDepreciation": 36.16666666666667,
+      "infraPower": 7.583333333333334,
+      "infraNetwork": 14.583333333333334,
+      "capital": 10.0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": -12.333333333333336,
+      "cloudEconomic": -12.333333333333336,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 20.0
+     },
+     "breakEven": 0,
+     "breakEvenEconomic": 0,
+     "requiredVolumeMultiple": null,
+     "creditCliff": 1.6666666666666665,
+     "creditCliffWithDeflation": 0.7333333333333332,
+     "counterfactual": {
+      "npvNone5": -15.35963749264187,
+      "npvOneTime5": -45.35963749264188,
+      "requiredWinLift": {
+       "0.2": null,
+       "0.3": null,
+       "0.5": null
+      },
+      "recurringAiOnly": {
+       "1": -41.75937193402898,
+       "3": -78.15200098743333,
+       "5": -89.25008213440131
+      },
+      "recurringWithAdjacency": {
+       "1": -41.75937193402898,
+       "3": -78.15200098743333,
+       "5": -89.25008213440131
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 80.0,
+       "contribution": -12.333333333333336,
+       "contributionPct": -0.1541666666666667,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -11.759371934028973,
+       "npv3": -16.91233156594572,
+       "npv5": -15.35963749264187,
+       "npvRecurring5": -15.35963749264187
+      },
+      {
+       "level": 0.1,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 72.0,
+       "contribution": -18.333333333333336,
+       "contributionPct": -0.25462962962962965,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -17.759371934028973,
+       "npv3": -22.91233156594572,
+       "npv5": -21.35963749264187,
+       "npvRecurring5": -30.137726420993754
+      },
+      {
+       "level": 0.2,
+       "customerPays": 60.0,
+       "cloudNetRevenue": 64.0,
+       "contribution": -24.333333333333336,
+       "contributionPct": -0.38020833333333337,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -23.759371934028977,
+       "npv3": -28.912331565945728,
+       "npv5": -27.359637492641877,
+       "npvRecurring5": -44.91581534934564
+      },
+      {
+       "level": 0.25,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 60.0,
+       "contribution": -27.333333333333336,
+       "contributionPct": -0.4555555555555556,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -26.759371934028977,
+       "npv3": -31.912331565945728,
+       "npv5": -30.359637492641877,
+       "npvRecurring5": -52.30485981352159
+      },
+      {
+       "level": 0.35,
+       "customerPays": 45.0,
+       "cloudNetRevenue": 52.0,
+       "contribution": -33.333333333333336,
+       "contributionPct": -0.6410256410256411,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -32.75937193402898,
+       "npv3": -37.91233156594573,
+       "npv5": -36.35963749264188,
+       "npvRecurring5": -67.08294874187348
+      },
+      {
+       "level": 0.4,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 47.99999999999999,
+       "contribution": -36.33333333333334,
+       "contributionPct": -0.7569444444444448,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -35.75937193402898,
+       "npv3": -40.91233156594573,
+       "npv5": -39.35963749264188,
+       "npvRecurring5": -74.4719932060494
+      },
+      {
+       "level": 0.5,
+       "customerPays": 30.0,
+       "cloudNetRevenue": 40.0,
+       "contribution": -42.333333333333336,
+       "contributionPct": -1.0583333333333333,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -41.75937193402898,
+       "npv3": -46.91233156594573,
+       "npv5": -45.35963749264188,
+       "npvRecurring5": -89.25008213440131
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": -41.75937193402898,
+        "payback": null,
+        "cumulative": -42.33333333333334,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": -46.91233156594573,
+        "payback": null,
+        "cumulative": -48.377357001972385,
+        "effectiveCustomerDiscount": 0.228310502283105
+       },
+       "5": {
+        "npv": -45.35963749264188,
+        "payback": null,
+        "cumulative": -46.0704120910799,
+        "effectiveCustomerDiscount": 0.1803036313151347
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": -41.75937193402898,
+        "payback": null,
+        "cumulative": -42.33333333333334,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": -78.15200098743333,
+        "payback": null,
+        "cumulative": -84.07735700197239,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "5": {
+        "npv": -89.25008213440131,
+        "payback": null,
+        "cumulative": -99.2634120910799,
+        "effectiveCustomerDiscount": 0.5
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": -29.759371934028977,
+        "payback": null,
+        "cumulative": -30.33333333333334,
+        "effectiveCustomerDiscount": 0.3
+       },
+       "3": {
+        "npv": -34.91233156594573,
+        "payback": null,
+        "cumulative": -36.377357001972385,
+        "effectiveCustomerDiscount": 0.136986301369863
+       },
+       "5": {
+        "npv": -33.35963749264188,
+        "payback": null,
+        "cumulative": -34.0704120910799,
+        "effectiveCustomerDiscount": 0.1081821787890808
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": -8.38818131043325,
+        "payback": null,
+        "cumulative": -7.333333333333343,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": 14.587893808279192,
+        "payback": 15.151515151515152,
+        "cumulative": 19.03234714003946,
+        "effectiveCustomerDiscount": 0.18518518518518517
+       },
+       "5": {
+        "npv": 16.806028198713268,
+        "payback": 15.151515151515152,
+        "cumulative": 22.327982727028722,
+        "effectiveCustomerDiscount": 0.1415227851684121
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": null,
+      "recurring": null,
+      "consumption": null,
+      "commit": null
+     },
+     "equityUplift": null
+    },
+    "vertex-gemini": {
+     "structure": "principal",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 40.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 10.0,
+      "customerPays": 40.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 50.0,
+      "revenueSharePaid": 0.0,
+      "infra": 10.0,
+      "infraDepreciation": 6.2,
+      "infraPower": 1.3,
+      "infraNetwork": 2.5,
+      "capital": 2.5,
+      "creditEconomicCost": 40.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 33.5,
+      "cloudEconomic": -20.5,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 90.0,
+      "revenueSharePaid": 0.0,
+      "infra": 10.0,
+      "infraDepreciation": 6.2,
+      "infraPower": 1.3,
+      "infraNetwork": 2.5,
+      "capital": 2.5,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 73.5,
+      "cloudEconomic": 19.5,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "breakEven": 0.91875,
+     "breakEvenEconomic": 0.24375,
+     "requiredVolumeMultiple": 2.1940298507462686,
+     "creditCliff": 1.25,
+     "creditCliffWithDeflation": 0.46250000000000013,
+     "counterfactual": {
+      "npvNone5": 175.09536071947278,
+      "npvOneTime5": 135.0953607194728,
+      "requiredWinLift": {
+       "0.2": 0.05921742950605161,
+       "0.3": 0.08882614425907741,
+       "0.5": 0.14804357376512903
+      },
+      "recurringAiOnly": {
+       "1": 30.079500309551022,
+       "3": 62.699333853359434,
+       "5": 76.57476786379357
+      },
+      "recurringWithAdjacency": {
+       "1": 30.079500309551022,
+       "3": 62.699333853359434,
+       "5": 76.57476786379357
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 90.0,
+       "contribution": 73.5,
+       "contributionPct": 0.8166666666666667,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 70.07950030955102,
+       "npv3": 144.3522264153429,
+       "npv5": 175.09536071947278,
+       "npvRecurring5": 175.09536071947278
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 82.0,
+       "contribution": 65.5,
+       "contributionPct": 0.7987804878048781,
+       "volumeMultiple": 1.1221374045801527,
+       "paybackMonths": 1.3061224489795917,
+       "npv1": 62.07950030955102,
+       "npv3": 136.3522264153429,
+       "npv5": 167.09536071947278,
+       "npvRecurring5": 155.39124214833697
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 74.0,
+       "contribution": 57.5,
+       "contributionPct": 0.777027027027027,
+       "volumeMultiple": 1.2782608695652173,
+       "paybackMonths": 2.6122448979591835,
+       "npv1": 54.07950030955102,
+       "npv3": 128.3522264153429,
+       "npv5": 159.09536071947278,
+       "npvRecurring5": 135.6871235772011
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 70.0,
+       "contribution": 53.5,
+       "contributionPct": 0.7642857142857142,
+       "volumeMultiple": 1.3738317757009346,
+       "paybackMonths": 3.2653061224489797,
+       "npv1": 50.07950030955102,
+       "npv3": 124.3522264153429,
+       "npv5": 155.09536071947278,
+       "npvRecurring5": 125.83506429163317
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 62.0,
+       "contribution": 45.5,
+       "contributionPct": 0.7338709677419355,
+       "volumeMultiple": 1.6153846153846154,
+       "paybackMonths": 4.571428571428571,
+       "npv1": 42.07950030955102,
+       "npv3": 116.3522264153429,
+       "npv5": 147.09536071947278,
+       "npvRecurring5": 106.13094572049734
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": 57.99999999999999,
+       "contribution": 41.49999999999999,
+       "contributionPct": 0.7155172413793103,
+       "volumeMultiple": 1.7710843373493979,
+       "paybackMonths": 5.224489795918367,
+       "npv1": 38.07950030955102,
+       "npv3": 112.3522264153429,
+       "npv5": 143.09536071947278,
+       "npvRecurring5": 96.27888643492939
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 50.0,
+       "contribution": 33.5,
+       "contributionPct": 0.67,
+       "volumeMultiple": 2.1940298507462686,
+       "paybackMonths": 6.530612244897959,
+       "npv1": 30.079500309551022,
+       "npv3": 104.3522264153429,
+       "npv5": 135.0953607194728,
+       "npvRecurring5": 76.57476786379357
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 30.079500309551022,
+        "payback": 6.530612244897959,
+        "cumulative": 33.5,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": 104.3522264153429,
+        "payback": 6.530612244897959,
+        "cumulative": 122.54414201183431,
+        "effectiveCustomerDiscount": 0.228310502283105
+       },
+       "5": {
+        "npv": 135.0953607194728,
+        "payback": 6.530612244897959,
+        "cumulative": 167.13952461748534,
+        "effectiveCustomerDiscount": 0.1803036313151347
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 30.079500309551022,
+        "payback": 6.530612244897959,
+        "cumulative": 33.5,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": 62.699333853359434,
+        "payback": 6.530612244897959,
+        "cumulative": 74.94414201183432,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "5": {
+        "npv": 76.57476786379357,
+        "payback": 6.530612244897959,
+        "cumulative": 96.21552461748537,
+        "effectiveCustomerDiscount": 0.5
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 46.07950030955102,
+        "payback": 3.9183673469387754,
+        "cumulative": 49.5,
+        "effectiveCustomerDiscount": 0.3
+       },
+       "3": {
+        "npv": 120.3522264153429,
+        "payback": 3.9183673469387754,
+        "cumulative": 138.5441420118343,
+        "effectiveCustomerDiscount": 0.136986301369863
+       },
+       "5": {
+        "npv": 151.09536071947278,
+        "payback": 3.9183673469387754,
+        "cumulative": 183.13952461748534,
+        "effectiveCustomerDiscount": 0.1081821787890808
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 63.45069093314676,
+        "payback": 4.423963133640553,
+        "cumulative": 68.5,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": 199.89203139144297,
+        "payback": 4.423963133640553,
+        "cumulative": 230.70591715976332,
+        "effectiveCustomerDiscount": 0.18518518518518517
+       },
+       "5": {
+        "npv": 243.8107946830571,
+        "payback": 4.423963133640553,
+        "cumulative": 294.4136065964077,
+        "effectiveCustomerDiscount": 0.1415227851684121
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": null
+    },
+    "vertex-claude": {
+     "structure": "agent",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 10.0,
+      "creditsCloud": 25.0,
+      "creditsProvider": 15.0,
+      "creditsPartner": 10.0,
+      "customerPays": 30.0,
+      "providerRevenue": 75.0,
+      "cloudNetRevenue": -23.0,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 25.0,
+      "distribution": 8.0,
+      "computeContribution": 3.4749,
+      "cloudContribution": -27.525100000000002,
+      "cloudEconomic": -27.525100000000002,
+      "providerServing": 12.87,
+      "channelFeePaid": 12.0,
+      "providerContribution": 50.13
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 90.0,
+      "cloudNetRevenue": 4.4,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 8.0,
+      "computeContribution": 3.4749,
+      "cloudContribution": -0.12509999999999977,
+      "cloudEconomic": -0.12509999999999977,
+      "providerServing": 12.87,
+      "channelFeePaid": 14.4,
+      "providerContribution": 62.73
+     },
+     "breakEven": 0,
+     "breakEvenEconomic": 0,
+     "requiredVolumeMultiple": null,
+     "creditCliff": 1.6666666666666665,
+     "creditCliffWithDeflation": 0.7333333333333332,
+     "counterfactual": {
+      "npvNone5": -12.759599446013114,
+      "npvOneTime5": -40.15959944601311,
+      "requiredWinLift": {
+       "0.2": null,
+       "0.3": null,
+       "0.5": null
+      },
+      "recurringAiOnly": {
+       "1": -27.519278169914617,
+       "3": -61.65705343009033,
+       "5": -78.18808793723638
+      },
+      "recurringWithAdjacency": {
+       "1": -27.519278169914617,
+       "3": -61.65705343009033,
+       "5": -78.18808793723638
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 4.4,
+       "contribution": -0.12509999999999977,
+       "contributionPct": -0.028431818181818128,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -0.11927816991462337,
+       "npv3": -6.809532768933316,
+       "npv5": -12.759599446013114,
+       "npvRecurring5": -12.759599446013114
+      },
+      {
+       "level": 0.1,
+       "customerPays": 70.0,
+       "cloudNetRevenue": -1.08,
+       "contribution": -5.6051,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -5.599278169914623,
+       "npv3": -12.289532768933316,
+       "npv5": -18.239599446013116,
+       "npvRecurring5": -25.845297144257763
+      },
+      {
+       "level": 0.2,
+       "customerPays": 60.0,
+       "cloudNetRevenue": -6.5600000000000005,
+       "contribution": -11.0851,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -11.079278169914623,
+       "npv3": -17.769532768933317,
+       "npv5": -23.719599446013113,
+       "npvRecurring5": -38.930994842502415
+      },
+      {
+       "level": 0.25,
+       "customerPays": 55.0,
+       "cloudNetRevenue": -9.299999999999999,
+       "contribution": -13.825099999999997,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -13.819278169914622,
+       "npv3": -20.509532768933315,
+       "npv5": -26.45959944601311,
+       "npvRecurring5": -45.47384369162475
+      },
+      {
+       "level": 0.35,
+       "customerPays": 45.0,
+       "cloudNetRevenue": -14.78,
+       "contribution": -19.305100000000003,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -19.29927816991462,
+       "npv3": -25.989532768933312,
+       "npv5": -31.93959944601311,
+       "npvRecurring5": -58.559541389869395
+      },
+      {
+       "level": 0.4,
+       "customerPays": 40.0,
+       "cloudNetRevenue": -17.52,
+       "contribution": -22.045099999999998,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -22.03927816991462,
+       "npv3": -28.729532768933314,
+       "npv5": -34.679599446013114,
+       "npvRecurring5": -65.10239023899172
+      },
+      {
+       "level": 0.5,
+       "customerPays": 30.0,
+       "cloudNetRevenue": -23.0,
+       "contribution": -27.525100000000002,
+       "contributionPct": null,
+       "volumeMultiple": null,
+       "paybackMonths": null,
+       "npv1": -27.519278169914617,
+       "npv3": -34.209532768933315,
+       "npv5": -40.15959944601311,
+       "npvRecurring5": -78.18808793723638
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": -27.519278169914617,
+        "payback": null,
+        "cumulative": -27.525099999999995,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": -34.209532768933315,
+        "payback": null,
+        "cumulative": -35.67295784615384,
+        "effectiveCustomerDiscount": 0.228310502283105
+       },
+       "5": {
+        "npv": -40.15959944601311,
+        "payback": null,
+        "cumulative": -44.316863820264,
+        "effectiveCustomerDiscount": 0.1803036313151347
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": -27.519278169914617,
+        "payback": null,
+        "cumulative": -27.525099999999995,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": -61.65705343009033,
+        "payback": null,
+        "cumulative": -67.01895784615384,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "5": {
+        "npv": -78.18808793723638,
+        "payback": null,
+        "cumulative": -90.29181382026398,
+        "effectiveCustomerDiscount": 0.5
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": -16.55927816991462,
+        "payback": null,
+        "cumulative": -16.565099999999997,
+        "effectiveCustomerDiscount": 0.3
+       },
+       "3": {
+        "npv": -23.24953276893331,
+        "payback": null,
+        "cumulative": -24.71295784615384,
+        "effectiveCustomerDiscount": 0.136986301369863
+       },
+       "5": {
+        "npv": -29.199599446013107,
+        "payback": null,
+        "cumulative": -33.35686382026399,
+        "effectiveCustomerDiscount": 0.1081821787890808
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 5.851912453681106,
+        "payback": 9.427984022893256,
+        "cumulative": 7.474900000000005,
+        "effectiveCustomerDiscount": 0.5
+       },
+       "3": {
+        "npv": 26.63185190510506,
+        "payback": 9.427984022893256,
+        "cumulative": 30.83510307692308,
+        "effectiveCustomerDiscount": 0.18518518518518517
+       },
+       "5": {
+        "npv": 18.13175665213392,
+        "payback": 9.427984022893256,
+        "cumulative": 18.486665971051437,
+        "effectiveCustomerDiscount": 0.1415227851684121
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": null,
+      "recurring": null,
+      "consumption": null,
+      "commit": null
+     },
+     "equityUplift": 60.37500000000001
+    }
+   }
+  },
+  {
+   "name": "stress-consumption",
+   "overrides": {
+    "incentive": {
+     "type": "consumption",
+     "pct": 0.25,
+     "partnerFunded": 0.5,
+     "providerFunded": 0.5,
+     "creditCost": 0.0
+    },
+    "lifetime": {
+     "years": 5,
+     "includeAdjacency": 1,
+     "efficiencyGain": 0.6,
+     "priceDeflation": 0.15,
+     "discountRate": 0.12,
+     "growth": 0.8,
+     "baselineShare": 0.8,
+     "consumptionYears": 4
+    },
+    "routes": {
+     "bedrock-claude": {
+      "customerDiscount": 0.2,
+      "discountFundedByProvider": 0.5
+     },
+     "vertex-claude": {
+      "channelFee": 0.36,
+      "computeMargin": 0.35
+     }
+    }
+   },
+   "routes": {
+    "bedrock-claude": {
+     "structure": "agent",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 12.5,
+      "creditsPartner": 12.5,
+      "customerPays": 55.0,
+      "providerRevenue": 77.5,
+      "cloudNetRevenue": 13.25,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 1.73745,
+      "cloudContribution": 10.987449999999999,
+      "cloudEconomic": 10.987449999999999,
+      "providerServing": 12.87,
+      "channelFeePaid": 23.25,
+      "providerContribution": 41.38
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 90.0,
+      "cloudNetRevenue": 17.0,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 1.73745,
+      "cloudContribution": 14.737449999999999,
+      "cloudEconomic": 14.737449999999999,
+      "providerServing": 12.87,
+      "channelFeePaid": 27.0,
+      "providerContribution": 50.13
+     },
+     "breakEven": 0.9824966666666666,
+     "breakEvenEconomic": 0.9824966666666666,
+     "requiredVolumeMultiple": 1.3412984814492899,
+     "creditCliff": 0.4545454545454546,
+     "creditCliffWithDeflation": 0.23636363636363633,
+     "counterfactual": {
+      "npvNone5": 265.9544872546048,
+      "npvOneTime5": 262.2044872546048,
+      "requiredWinLift": {
+       "0.2": 0.0028603629474568746,
+       "0.3": 0.004290544421185312,
+       "0.5": 0.007150907368642187
+      },
+      "recurringAiOnly": {
+       "1": 10.175581306874587,
+       "3": 39.492743160732445,
+       "5": 91.6838771684343
+      },
+      "recurringWithAdjacency": {
+       "1": 23.40433786219754,
+       "3": 95.47978531359757,
+       "5": 227.46434307391934
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 17.0,
+       "contribution": 14.737449999999999,
+       "contributionPct": 0.8669088235294117,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 27.15433786219754,
+       "npv3": 111.35061997558736,
+       "npv5": 265.9544872546048,
+       "npvRecurring5": 265.9544872546048
+      },
+      {
+       "level": 0.1,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 15.5,
+       "contribution": 13.237449999999999,
+       "contributionPct": 0.8540290322580645,
+       "volumeMultiple": 1.1133148755991524,
+       "paybackMonths": 0.6263603764425862,
+       "npv1": 25.65433786219754,
+       "npv3": 109.85061997558736,
+       "npv5": 264.4544872546048,
+       "npvRecurring5": 250.55842958233063
+      },
+      {
+       "level": 0.2,
+       "customerPays": 60.0,
+       "cloudNetRevenue": 14.0,
+       "contribution": 11.737449999999999,
+       "contributionPct": 0.8383892857142856,
+       "volumeMultiple": 1.2555921430975212,
+       "paybackMonths": 1.2527207528851725,
+       "npv1": 24.15433786219754,
+       "npv3": 108.35061997558736,
+       "npv5": 262.9544872546048,
+       "npvRecurring5": 235.16237191005644
+      },
+      {
+       "level": 0.25,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 13.25,
+       "contribution": 10.987449999999999,
+       "contributionPct": 0.8292415094339622,
+       "volumeMultiple": 1.3412984814492899,
+       "paybackMonths": 1.5659009411064657,
+       "npv1": 23.40433786219754,
+       "npv3": 107.60061997558736,
+       "npv5": 262.2044872546048,
+       "npvRecurring5": 227.46434307391934
+      },
+      {
+       "level": 0.35,
+       "customerPays": 45.0,
+       "cloudNetRevenue": 11.75,
+       "contribution": 9.487449999999999,
+       "contributionPct": 0.8074425531914893,
+       "volumeMultiple": 1.5533626000664036,
+       "paybackMonths": 2.1922613175490517,
+       "npv1": 21.90433786219754,
+       "npv3": 106.10061997558736,
+       "npv5": 260.7044872546048,
+       "npvRecurring5": 212.06828540164514
+      },
+      {
+       "level": 0.4,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 11.0,
+       "contribution": 8.737449999999999,
+       "contributionPct": 0.7943136363636363,
+       "volumeMultiple": 1.6866992085791621,
+       "paybackMonths": 2.505441505770345,
+       "npv1": 21.15433786219754,
+       "npv3": 105.35061997558736,
+       "npv5": 259.9544872546048,
+       "npvRecurring5": 204.37025656550804
+      },
+      {
+       "level": 0.5,
+       "customerPays": 30.0,
+       "cloudNetRevenue": 9.5,
+       "contribution": 7.23745,
+       "contributionPct": 0.7618368421052631,
+       "volumeMultiple": 2.0362765891301495,
+       "paybackMonths": 3.1318018822129314,
+       "npv1": 19.65433786219754,
+       "npv3": 103.85061997558736,
+       "npv5": 258.4544872546048,
+       "npvRecurring5": 188.97419889323382
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 23.40433786219754,
+        "payback": 1.5659009411064657,
+        "cumulative": 24.98745,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 107.60061997558736,
+        "payback": 1.5659009411064657,
+        "cumulative": 131.65340808,
+        "effectiveCustomerDiscount": 0.05132521710566836
+       },
+       "5": {
+        "npv": 262.2044872546048,
+        "payback": 1.5659009411064657,
+        "cumulative": 377.4263524986719,
+        "effectiveCustomerDiscount": 0.017943927624916384
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 23.40433786219754,
+        "payback": 1.5659009411064657,
+        "cumulative": 24.98745,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 95.47978531359757,
+        "payback": 1.5659009411064657,
+        "cumulative": 117.13753308,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "5": {
+        "npv": 227.46434307391934,
+        "payback": 1.5659009411064657,
+        "cumulative": 328.93026571117196,
+        "effectiveCustomerDiscount": 0.25
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 26.40433786219754,
+        "payback": 0.3131801882212931,
+        "cumulative": 27.98745,
+        "effectiveCustomerDiscount": 0.05
+       },
+       "3": {
+        "npv": 106.40189947176083,
+        "payback": 0.3131801882212931,
+        "cumulative": 129.62503307999998,
+        "effectiveCustomerDiscount": 0.07908702703812437
+       },
+       "5": {
+        "npv": 257.6941815663418,
+        "payback": 0.3131801882212931,
+        "cumulative": 370.7454387486719,
+        "effectiveCustomerDiscount": 0.049912416371132036
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 56.476229250504915,
+        "payback": 0.7060213422407078,
+        "cumulative": 59.987449999999995,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 304.12895656527735,
+        "payback": 0.7060213422407078,
+        "cumulative": 375.1858077577855,
+        "effectiveCustomerDiscount": 0.041390728476821195
+       },
+       "5": {
+        "npv": 518.1135479549209,
+        "payback": 0.7060213422407078,
+        "cumulative": 715.3559730431446,
+        "effectiveCustomerDiscount": 0.01345408572599
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": 62.3875
+    },
+    "azure-openai": {
+     "structure": "principal",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 12.5,
+      "creditsProvider": 0.0,
+      "creditsPartner": 12.5,
+      "customerPays": 65.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 77.5,
+      "revenueSharePaid": 0.0,
+      "infra": 20.0,
+      "infraDepreciation": 12.4,
+      "infraPower": 2.6,
+      "infraNetwork": 5.0,
+      "capital": 2.5,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 63.5,
+      "cloudEconomic": 63.5,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 90.0,
+      "revenueSharePaid": 0.0,
+      "infra": 20.0,
+      "infraDepreciation": 12.4,
+      "infraPower": 2.6,
+      "infraNetwork": 5.0,
+      "capital": 2.5,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 63.5,
+      "cloudEconomic": 63.5,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "breakEven": null,
+     "breakEvenEconomic": null,
+     "requiredVolumeMultiple": 1.0,
+     "creditCliff": 0.3846153846153846,
+     "creditCliffWithDeflation": 0.17692307692307696,
+     "counterfactual": {
+      "npvNone5": 916.8669438022941,
+      "npvOneTime5": 916.8669438022941,
+      "requiredWinLift": {
+       "0.2": 0,
+       "0.3": 0,
+       "0.5": 0
+      },
+      "recurringAiOnly": {
+       "1": 60.00186009021482,
+       "3": 300.206207165927,
+       "5": 781.0864778968091
+      },
+      "recurringWithAdjacency": {
+       "1": 73.23061664553776,
+       "3": 356.19324931879214,
+       "5": 916.8669438022941
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 90.0,
+       "contribution": 63.5,
+       "contributionPct": 0.7055555555555556,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 85.0,
+       "contribution": 63.5,
+       "contributionPct": 0.7470588235294118,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 80.0,
+       "contribution": 63.5,
+       "contributionPct": 0.79375,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 77.5,
+       "contribution": 63.5,
+       "contributionPct": 0.8193548387096774,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 72.5,
+       "contribution": 63.5,
+       "contributionPct": 0.8758620689655172,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": 70.0,
+       "contribution": 63.5,
+       "contributionPct": 0.9071428571428571,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 65.0,
+       "contribution": 63.5,
+       "contributionPct": 0.9769230769230769,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.23061664553776,
+       "npv3": 356.19324931879214,
+       "npv5": 916.8669438022941,
+       "npvRecurring5": 916.8669438022941
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 73.23061664553776,
+        "payback": 0,
+        "cumulative": 77.5,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 356.19324931879214,
+        "payback": 0,
+        "cumulative": 436.726,
+        "effectiveCustomerDiscount": 0.05132521710566836
+       },
+       "5": {
+        "npv": 916.8669438022941,
+        "payback": 0,
+        "cumulative": 1328.4202833999998,
+        "effectiveCustomerDiscount": 0.017943927624916384
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 73.23061664553776,
+        "payback": 0,
+        "cumulative": 77.5,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 356.19324931879214,
+        "payback": 0,
+        "cumulative": 436.726,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "5": {
+        "npv": 916.8669438022941,
+        "payback": 0,
+        "cumulative": 1328.4202833999998,
+        "effectiveCustomerDiscount": 0.25
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 73.23061664553776,
+        "payback": 0,
+        "cumulative": 77.5,
+        "effectiveCustomerDiscount": 0.05
+       },
+       "3": {
+        "npv": 356.19324931879214,
+        "payback": 0,
+        "cumulative": 436.726,
+        "effectiveCustomerDiscount": 0.07908702703812437
+       },
+       "5": {
+        "npv": 916.8669438022941,
+        "payback": 0,
+        "cumulative": 1328.4202833999998,
+        "effectiveCustomerDiscount": 0.049912416371132036
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 106.30250803384514,
+        "payback": 0,
+        "cumulative": 112.5,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 612.5577869861104,
+        "payback": 0,
+        "cumulative": 757.6972318339101,
+        "effectiveCustomerDiscount": 0.041390728476821195
+       },
+       "5": {
+        "npv": 1388.5767412885352,
+        "payback": 0,
+        "cumulative": 1991.8761707958479,
+        "effectiveCustomerDiscount": 0.01345408572599
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": null
+    },
+    "vertex-gemini": {
+     "structure": "principal",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 12.5,
+      "creditsProvider": 0.0,
+      "creditsPartner": 12.5,
+      "customerPays": 65.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 77.5,
+      "revenueSharePaid": 0.0,
+      "infra": 10.0,
+      "infraDepreciation": 6.2,
+      "infraPower": 1.3,
+      "infraNetwork": 2.5,
+      "capital": 2.5,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 73.5,
+      "cloudEconomic": 51.0,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 90.0,
+      "revenueSharePaid": 0.0,
+      "infra": 10.0,
+      "infraDepreciation": 6.2,
+      "infraPower": 1.3,
+      "infraNetwork": 2.5,
+      "capital": 2.5,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 73.5,
+      "cloudEconomic": 51.0,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "breakEven": null,
+     "breakEvenEconomic": null,
+     "requiredVolumeMultiple": 1.0,
+     "creditCliff": 0.3846153846153846,
+     "creditCliffWithDeflation": 0.17692307692307696,
+     "counterfactual": {
+      "npvNone5": 940.4196224472587,
+      "npvOneTime5": 940.4196224472587,
+      "requiredWinLift": {
+       "0.2": 0,
+       "0.3": 0,
+       "0.5": 0
+      },
+      "recurringAiOnly": {
+       "1": 69.45097191544549,
+       "3": 319.6347381127023,
+       "5": 804.6391565417737
+      },
+      "recurringWithAdjacency": {
+       "1": 82.67972847076845,
+       "3": 375.6217802655674,
+       "5": 940.4196224472587
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 90.0,
+       "contribution": 73.5,
+       "contributionPct": 0.8166666666666667,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 85.0,
+       "contribution": 73.5,
+       "contributionPct": 0.8647058823529412,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 80.0,
+       "contribution": 73.5,
+       "contributionPct": 0.91875,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 77.5,
+       "contribution": 73.5,
+       "contributionPct": 0.9483870967741935,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 72.5,
+       "contribution": 73.5,
+       "contributionPct": 1.013793103448276,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": 70.0,
+       "contribution": 73.5,
+       "contributionPct": 1.05,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 65.0,
+       "contribution": 73.5,
+       "contributionPct": 1.1307692307692307,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 82.67972847076845,
+       "npv3": 375.6217802655674,
+       "npv5": 940.4196224472587,
+       "npvRecurring5": 940.4196224472587
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 82.67972847076845,
+        "payback": 0,
+        "cumulative": 87.5,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 375.6217802655674,
+        "payback": 0,
+        "cumulative": 459.10999999999996,
+        "effectiveCustomerDiscount": 0.05132521710566836
+       },
+       "5": {
+        "npv": 940.4196224472587,
+        "payback": 0,
+        "cumulative": 1357.2241489999997,
+        "effectiveCustomerDiscount": 0.017943927624916384
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 82.67972847076845,
+        "payback": 0,
+        "cumulative": 87.5,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 375.6217802655674,
+        "payback": 0,
+        "cumulative": 459.10999999999996,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "5": {
+        "npv": 940.4196224472587,
+        "payback": 0,
+        "cumulative": 1357.2241489999997,
+        "effectiveCustomerDiscount": 0.25
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 82.67972847076845,
+        "payback": 0,
+        "cumulative": 87.5,
+        "effectiveCustomerDiscount": 0.05
+       },
+       "3": {
+        "npv": 375.6217802655674,
+        "payback": 0,
+        "cumulative": 459.10999999999996,
+        "effectiveCustomerDiscount": 0.07908702703812437
+       },
+       "5": {
+        "npv": 940.4196224472587,
+        "payback": 0,
+        "cumulative": 1357.2241489999997,
+        "effectiveCustomerDiscount": 0.049912416371132036
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 115.75161985907583,
+        "payback": 0,
+        "cumulative": 122.5,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 634.5581164818861,
+        "payback": 0,
+        "cumulative": 783.3429065743944,
+        "effectiveCustomerDiscount": 0.041390728476821195
+       },
+       "5": {
+        "npv": 1416.2852336883793,
+        "payback": 0,
+        "cumulative": 2026.4074726643598,
+        "effectiveCustomerDiscount": 0.01345408572599
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": null
+    },
+    "vertex-claude": {
+     "structure": "agent",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 0.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 12.5,
+      "creditsPartner": 12.5,
+      "customerPays": 65.0,
+      "providerRevenue": 77.5,
+      "cloudNetRevenue": 27.9,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 2.027025,
+      "cloudContribution": 25.927025,
+      "cloudEconomic": 25.927025,
+      "providerServing": 12.87,
+      "channelFeePaid": 27.9,
+      "providerContribution": 36.730000000000004
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 0.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 90.0,
+      "cloudNetRevenue": 32.4,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 2.027025,
+      "cloudContribution": 30.427025,
+      "cloudEconomic": 30.427025,
+      "providerServing": 12.87,
+      "channelFeePaid": 32.4,
+      "providerContribution": 44.730000000000004
+     },
+     "breakEven": 1.6903902777777777,
+     "breakEvenEconomic": 1.6903902777777777,
+     "requiredVolumeMultiple": 1.1735640706945745,
+     "creditCliff": 0.3846153846153846,
+     "creditCliffWithDeflation": 0.17692307692307696,
+     "counterfactual": {
+      "npvNone5": 415.9950264424999,
+      "npvOneTime5": 411.4950264424999,
+      "requiredWinLift": {
+       "0.2": 0.002187146726366962,
+       "0.3": 0.003280720089550442,
+       "0.5": 0.005467866815917404
+      },
+      "recurringAiOnly": {
+       "1": 24.250836173408953,
+       "3": 98.46692428137735,
+       "5": 234.02638752019226
+      },
+      "recurringWithAdjacency": {
+       "1": 37.4795927287319,
+       "3": 154.4539664342425,
+       "5": 369.80685342567733
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 32.4,
+       "contribution": 30.427025,
+       "contributionPct": 0.9391057098765433,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 41.9795927287319,
+       "npv3": 173.4989680286302,
+       "npv5": 415.9950264424999,
+       "npvRecurring5": 415.9950264424999
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 30.599999999999998,
+       "contribution": 28.627024999999996,
+       "contributionPct": 0.9355236928104574,
+       "volumeMultiple": 1.0628776479567823,
+       "paybackMonths": 0.48619055631116415,
+       "npv1": 40.179592728731905,
+       "npv3": 171.69896802863025,
+       "npv5": 414.19502644249997,
+       "npvRecurring5": 397.51975723577095
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 28.799999999999997,
+       "contribution": 26.827025,
+       "contributionPct": 0.9314939236111112,
+       "volumeMultiple": 1.134193038549746,
+       "paybackMonths": 0.9723811126223283,
+       "npv1": 38.3795927287319,
+       "npv3": 169.89896802863024,
+       "npv5": 412.39502644249995,
+       "npvRecurring5": 379.0444880290419
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 27.9,
+       "contribution": 25.927025,
+       "contributionPct": 0.9292840501792116,
+       "volumeMultiple": 1.1735640706945745,
+       "paybackMonths": 1.2154763907779105,
+       "npv1": 37.4795927287319,
+       "npv3": 168.9989680286302,
+       "npv5": 411.4950264424999,
+       "npvRecurring5": 369.80685342567733
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 26.099999999999998,
+       "contribution": 24.127024999999996,
+       "contributionPct": 0.9244070881226053,
+       "volumeMultiple": 1.2611179786981612,
+       "paybackMonths": 1.7016669470890746,
+       "npv1": 35.679592728731905,
+       "npv3": 167.19896802863025,
+       "npv5": 409.69502644249997,
+       "npvRecurring5": 351.3315842189483
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": 25.2,
+       "contribution": 23.227024999999998,
+       "contributionPct": 0.9217073412698412,
+       "volumeMultiple": 1.3099837366171518,
+       "paybackMonths": 1.9447622252446566,
+       "npv1": 34.7795927287319,
+       "npv3": 166.2989680286302,
+       "npv5": 408.79502644249993,
+       "npvRecurring5": 342.09394961558377
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 23.4,
+       "contribution": 21.427025,
+       "contributionPct": 0.9156848290598292,
+       "volumeMultiple": 1.4200303121875295,
+       "paybackMonths": 2.430952781555821,
+       "npv1": 32.9795927287319,
+       "npv3": 164.4989680286302,
+       "npv5": 406.9950264424999,
+       "npvRecurring5": 323.61868040885474
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 37.4795927287319,
+        "payback": 1.2154763907779105,
+        "cumulative": 39.927025,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 168.9989680286302,
+        "payback": 1.2154763907779105,
+        "cumulative": 206.56345275999996,
+        "effectiveCustomerDiscount": 0.05132521710566836
+       },
+       "5": {
+        "npv": 411.4950264424999,
+        "payback": 1.2154763907779105,
+        "cumulative": 592.0677035107839,
+        "effectiveCustomerDiscount": 0.017943927624916384
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 37.4795927287319,
+        "payback": 1.2154763907779105,
+        "cumulative": 39.927025,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 154.4539664342425,
+        "payback": 1.2154763907779105,
+        "cumulative": 189.14440276,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "5": {
+        "npv": 369.80685342567733,
+        "payback": 1.2154763907779105,
+        "cumulative": 533.8723993657838,
+        "effectiveCustomerDiscount": 0.25
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 41.0795927287319,
+        "payback": 0.24309527815558207,
+        "cumulative": 43.527025,
+        "effectiveCustomerDiscount": 0.05
+       },
+       "3": {
+        "npv": 167.5605034240384,
+        "payback": 0.24309527815558207,
+        "cumulative": 204.12940276,
+        "effectiveCustomerDiscount": 0.07908702703812437
+       },
+       "5": {
+        "npv": 406.0826596165843,
+        "payback": 0.24309527815558207,
+        "cumulative": 584.0506070107839,
+        "effectiveCustomerDiscount": 0.049912416371132036
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 70.55148411703928,
+        "payback": 0.679869351772901,
+        "cumulative": 74.927025,
+        "effectiveCustomerDiscount": 0.25
+       },
+       "3": {
+        "npv": 379.5397447112049,
+        "payback": 0.679869351772901,
+        "cumulative": 468.19444238408306,
+        "effectiveCustomerDiscount": 0.041390728476821195
+       },
+       "5": {
+        "npv": 715.1744276369761,
+        "payback": 0.679869351772901,
+        "cumulative": 1001.7643396170021,
+        "effectiveCustomerDiscount": 0.01345408572599
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": 62.3875
+    }
+   }
+  },
+  {
+   "name": "stress-recurring",
+   "overrides": {
+    "incentive": {
+     "type": "recurring",
+     "pct": 0.1,
+     "partnerFunded": 0.0,
+     "providerFunded": 0.25,
+     "creditCost": 0.35
+    },
+    "lifetime": {
+     "years": 1,
+     "includeAdjacency": 0,
+     "retention": 0.97,
+     "adjacencyAttach": 1.2
+    },
+    "routes": {
+     "azure-openai": {
+      "infraCost": 0.1,
+      "utilization": 0.7
+     },
+     "vertex-gemini": {
+      "infraCost": 0.25,
+      "utilization": 0.3,
+      "capitalCharge": 0.01
+     }
+    }
+   },
+   "routes": {
+    "bedrock-claude": {
+     "structure": "agent",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 0.0,
+      "creditsCloud": 7.500000000000001,
+      "creditsProvider": 2.5,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 87.5,
+      "cloudNetRevenue": 18.75,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 2.625,
+      "distribution": 4.0,
+      "computeContribution": 1.73745,
+      "cloudContribution": 21.36245,
+      "cloudEconomic": 21.36245,
+      "providerServing": 12.87,
+      "channelFeePaid": 26.25,
+      "providerContribution": 48.38
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 0.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 90.0,
+      "cloudNetRevenue": 27.0,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 1.73745,
+      "cloudContribution": 24.73745,
+      "cloudEconomic": 24.73745,
+      "providerServing": 12.87,
+      "channelFeePaid": 27.0,
+      "providerContribution": 50.13
+     },
+     "breakEven": 0.7329614814814814,
+     "breakEvenEconomic": 0.7329614814814814,
+     "requiredVolumeMultiple": 1.1579874967524793,
+     "creditCliff": 0.125,
+     "creditCliffWithDeflation": -0.26874999999999993,
+     "counterfactual": {
+      "npvNone5": 156.10144418229783,
+      "npvOneTime5": 152.72644418229783,
+      "requiredWinLift": {
+       "0.2": 0.004419666833821551,
+       "0.3": 0.0066295002507323255,
+       "0.5": 0.011049167084553876
+      },
+      "recurringAiOnly": {
+       "1": 20.211233128333376,
+       "3": 69.47311490288197,
+       "5": 133.50920883455797
+      },
+      "recurringWithAdjacency": {
+       "1": 60.256661876648245,
+       "3": 208.05085061275614,
+       "5": 401.57313502213594
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 27.0,
+       "contribution": 24.73745,
+       "contributionPct": 0.9162018518518518,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 23.586233128333376,
+       "npv3": 81.15234703098116,
+       "npv5": 156.10144418229783,
+       "npvRecurring5": 156.10144418229783
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 18.75,
+       "contribution": 21.36245,
+       "contributionPct": 1.1393306666666667,
+       "volumeMultiple": 1.1579874967524793,
+       "paybackMonths": 1.6371938093861738,
+       "npv1": 20.211233128333376,
+       "npv3": 77.77734703098116,
+       "npv5": 152.72644418229783,
+       "npvRecurring5": 133.50920883455797
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 10.499999999999998,
+       "contribution": 17.98745,
+       "contributionPct": 1.7130904761904764,
+       "volumeMultiple": 1.375261640755082,
+       "paybackMonths": 3.2743876187723475,
+       "npv1": 16.836233128333376,
+       "npv3": 74.40234703098116,
+       "npv5": 149.35144418229783,
+       "npvRecurring5": 110.91697348681814
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 6.375,
+       "contribution": 16.29995,
+       "contributionPct": 2.5568549019607842,
+       "volumeMultiple": 1.5176396246614254,
+       "paybackMonths": 4.092984523465434,
+       "npv1": 15.148733128333376,
+       "npv3": 72.71484703098116,
+       "npv5": 147.66394418229783,
+       "npvRecurring5": 99.62085581294824
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": -1.8749999999999964,
+       "contribution": 12.924950000000003,
+       "contributionPct": null,
+       "volumeMultiple": 1.9139300345455876,
+       "paybackMonths": 5.730178332851608,
+       "npv1": 11.773733128333376,
+       "npv3": 69.33984703098116,
+       "npv5": 144.28894418229783,
+       "npvRecurring5": 77.02862046520842
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": -6.0000000000000036,
+       "contribution": 11.237449999999999,
+       "contributionPct": null,
+       "volumeMultiple": 2.201340161691487,
+       "paybackMonths": 6.548775237544695,
+       "npv1": 10.086233128333376,
+       "npv3": 67.65234703098116,
+       "npv5": 142.60144418229783,
+       "npvRecurring5": 65.7325027913385
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": -14.25,
+       "contribution": 7.86245,
+       "contributionPct": null,
+       "volumeMultiple": 3.146277559793703,
+       "paybackMonths": 8.185969046930868,
+       "npv1": 6.711233128333376,
+       "npv3": 64.27734703098116,
+       "npv5": 139.22644418229783,
+       "npvRecurring5": 43.14026744359869
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 77.77734703098116,
+        "payback": 1.6371938093861738,
+        "cumulative": 91.3146888552,
+        "effectiveCustomerDiscount": 0.025966465348660813
+       },
+       "5": {
+        "npv": 152.72644418229783,
+        "payback": 1.6371938093861738,
+        "cumulative": 201.5177610273301,
+        "effectiveCustomerDiscount": 0.011926416335941048
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 69.47311490288197,
+        "payback": 1.6371938093861738,
+        "cumulative": 81.6921554802,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "5": {
+        "npv": 133.50920883455797,
+        "payback": 1.6371938093861738,
+        "cumulative": 176.5942352595417,
+        "effectiveCustomerDiscount": 0.1
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 76.05854878717949,
+        "payback": 1.6371938093861738,
+        "cumulative": 89.3230304802,
+        "effectiveCustomerDiscount": 0.04128982184667789
+       },
+       "5": {
+        "npv": 151.00764593849613,
+        "payback": 1.6371938093861738,
+        "cumulative": 199.52610265233008,
+        "effectiveCustomerDiscount": 0.018964445070522917
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 80.53575682515455,
+        "payback": 1.6371938093861738,
+        "cumulative": 94.71931800000002,
+        "effectiveCustomerDiscount": 0.02506265664160401
+       },
+       "5": {
+        "npv": 160.1925717378091,
+        "payback": 1.6371938093861738,
+        "cumulative": 211.84448770148805,
+        "effectiveCustomerDiscount": 0.011352806702007733
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": 70.4375
+    },
+    "azure-openai": {
+     "structure": "principal",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 10.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 80.0,
+      "revenueSharePaid": 0.0,
+      "infra": 7.142857142857144,
+      "infraDepreciation": 4.42857142857143,
+      "infraPower": 0.9285714285714287,
+      "infraNetwork": 1.785714285714286,
+      "capital": 1.785714285714286,
+      "creditEconomicCost": 3.5,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 73.57142857142857,
+      "cloudEconomic": 73.57142857142857,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 90.0,
+      "revenueSharePaid": 0.0,
+      "infra": 7.142857142857144,
+      "infraDepreciation": 4.42857142857143,
+      "infraPower": 0.9285714285714287,
+      "infraNetwork": 1.785714285714286,
+      "capital": 1.785714285714286,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 77.07142857142857,
+      "cloudEconomic": 77.07142857142857,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "breakEven": 2.2020408163265306,
+     "breakEvenEconomic": 2.2020408163265306,
+     "requiredVolumeMultiple": 1.0475728155339805,
+     "creditCliff": 0.125,
+     "creditCliffWithDeflation": -0.26874999999999993,
+     "counterfactual": {
+      "npvNone5": 501.0777961720531,
+      "npvOneTime5": 497.5777961720531,
+      "requiredWinLift": {
+       "0.2": 0.0014068151862587396,
+       "0.3": 0.0021102227793881093,
+       "0.5": 0.0035170379656468487
+      },
+      "recurringAiOnly": {
+       "1": 69.984723842571,
+       "3": 244.58870495382942,
+       "5": 477.64881136698955
+      },
+      "recurringWithAdjacency": {
+       "1": 110.03015259088588,
+       "3": 383.1664406637036,
+       "5": 745.7127375545675
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 90.0,
+       "contribution": 77.07142857142857,
+       "contributionPct": 0.8563492063492063,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 73.484723842571,
+       "npv3": 256.70050123482116,
+       "npv5": 501.0777961720531,
+       "npvRecurring5": 501.0777961720531
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 80.0,
+       "contribution": 73.57142857142857,
+       "contributionPct": 0.9196428571428571,
+       "volumeMultiple": 1.0475728155339805,
+       "paybackMonths": 0.5449490268767377,
+       "npv1": 69.984723842571,
+       "npv3": 253.20050123482116,
+       "npv5": 497.5777961720531,
+       "npvRecurring5": 477.64881136698955
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 70.0,
+       "contribution": 70.07142857142857,
+       "contributionPct": 1.0010204081632652,
+       "volumeMultiple": 1.0998980632008155,
+       "paybackMonths": 1.0898980537534755,
+       "npv1": 66.484723842571,
+       "npv3": 249.70050123482116,
+       "npv5": 494.0777961720531,
+       "npvRecurring5": 454.2198265619261
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 65.0,
+       "contribution": 68.32142857142857,
+       "contributionPct": 1.0510989010989011,
+       "volumeMultiple": 1.12807109252483,
+       "paybackMonths": 1.3623725671918443,
+       "npv1": 64.734723842571,
+       "npv3": 247.95050123482116,
+       "npv5": 492.3277961720531,
+       "npvRecurring5": 442.5053341593943
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 55.0,
+       "contribution": 64.82142857142857,
+       "contributionPct": 1.1785714285714286,
+       "volumeMultiple": 1.1889807162534436,
+       "paybackMonths": 1.9073215940685821,
+       "npv1": 61.234723842571,
+       "npv3": 244.45050123482116,
+       "npv5": 488.8277961720531,
+       "npvRecurring5": 419.07634935433083
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": 50.0,
+       "contribution": 63.07142857142857,
+       "contributionPct": 1.2614285714285713,
+       "volumeMultiple": 1.2219705549263873,
+       "paybackMonths": 2.179796107506951,
+       "npv1": 59.484723842571,
+       "npv3": 242.70050123482116,
+       "npv5": 487.0777961720531,
+       "npvRecurring5": 407.36185695179904
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 40.0,
+       "contribution": 59.57142857142857,
+       "contributionPct": 1.4892857142857143,
+       "volumeMultiple": 1.2937649880095923,
+       "paybackMonths": 2.7247451343836886,
+       "npv1": 55.984723842571,
+       "npv3": 239.20050123482116,
+       "npv5": 483.5777961720531,
+       "npvRecurring5": 383.93287214673546
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 69.984723842571,
+        "payback": 0.5449490268767377,
+        "cumulative": 73.57142857142857,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 253.20050123482116,
+        "payback": 0.5449490268767377,
+        "cumulative": 296.2776917142857,
+        "effectiveCustomerDiscount": 0.025966465348660813
+       },
+       "5": {
+        "npv": 497.5777961720531,
+        "payback": 0.5449490268767377,
+        "cumulative": 655.6978414228403,
+        "effectiveCustomerDiscount": 0.011926416335941048
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 69.984723842571,
+        "payback": 0.5449490268767377,
+        "cumulative": 73.57142857142857,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 244.58870495382942,
+        "payback": 0.5449490268767377,
+        "cumulative": 286.2987682142857,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "5": {
+        "npv": 477.64881136698955,
+        "payback": 0.5449490268767377,
+        "cumulative": 629.8512221080969,
+        "effectiveCustomerDiscount": 0.1
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 69.984723842571,
+        "payback": 0.5449490268767377,
+        "cumulative": 73.57142857142857,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 251.41804379680462,
+        "payback": 0.5449490268767377,
+        "cumulative": 294.2122682142857,
+        "effectiveCustomerDiscount": 0.04128982184667789
+       },
+       "5": {
+        "npv": 495.7953387340366,
+        "payback": 0.5449490268767377,
+        "cumulative": 653.6324179228403,
+        "effectiveCustomerDiscount": 0.018964445070522917
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 69.984723842571,
+        "payback": 0.5449490268767377,
+        "cumulative": 73.57142857142857,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 261.99880613062015,
+        "payback": 0.5449490268767377,
+        "cumulative": 307.14,
+        "effectiveCustomerDiscount": 0.02506265664160401
+       },
+       "5": {
+        "npv": 521.7259768578302,
+        "payback": 0.5449490268767377,
+        "cumulative": 689.1361204257144,
+        "effectiveCustomerDiscount": 0.011352806702007733
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": null
+    },
+    "vertex-gemini": {
+     "structure": "principal",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 10.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 80.0,
+      "revenueSharePaid": 0.0,
+      "infra": 41.66666666666667,
+      "infraDepreciation": 25.833333333333336,
+      "infraPower": 5.416666666666668,
+      "infraNetwork": 10.416666666666668,
+      "capital": 1.6666666666666667,
+      "creditEconomicCost": 3.5,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 39.166666666666664,
+      "cloudEconomic": 16.666666666666664,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 0,
+      "discountCloud": 10.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 0.0,
+      "cloudNetRevenue": 90.0,
+      "revenueSharePaid": 0.0,
+      "infra": 41.66666666666667,
+      "infraDepreciation": 25.833333333333336,
+      "infraPower": 5.416666666666668,
+      "infraNetwork": 10.416666666666668,
+      "capital": 1.6666666666666667,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 0,
+      "cloudContribution": 42.666666666666664,
+      "cloudEconomic": 20.166666666666664,
+      "providerServing": 0,
+      "channelFeePaid": 0,
+      "providerContribution": 0.0
+     },
+     "breakEven": 1.219047619047619,
+     "breakEvenEconomic": 0.5761904761904761,
+     "requiredVolumeMultiple": 1.0893617021276596,
+     "creditCliff": 0.125,
+     "creditCliffWithDeflation": -0.26874999999999993,
+     "counterfactual": {
+      "npvNone5": 316.8306433054871,
+      "npvOneTime5": 313.3306433054871,
+      "requiredWinLift": {
+       "0.2": 0.002234061733047677,
+       "0.3": 0.0033510925995715152,
+       "0.5": 0.005585154332619192
+      },
+      "recurringAiOnly": {
+       "1": 37.1810704744786,
+       "3": 140.34097182844744,
+       "5": 293.4016585004236
+      },
+      "recurringWithAdjacency": {
+       "1": 77.22649922279346,
+       "3": 278.9187075383216,
+       "5": 561.4655846880016
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 90.0,
+       "contribution": 42.666666666666664,
+       "contributionPct": 0.47407407407407404,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 40.6810704744786,
+       "npv3": 152.45276810943918,
+       "npv5": 316.8306433054871,
+       "npvRecurring5": 316.8306433054871
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 80.0,
+       "contribution": 39.166666666666664,
+       "contributionPct": 0.4895833333333333,
+       "volumeMultiple": 1.0893617021276596,
+       "paybackMonths": 0.984375,
+       "npv1": 37.1810704744786,
+       "npv3": 148.95276810943918,
+       "npv5": 313.3306433054871,
+       "npvRecurring5": 293.4016585004236
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 70.0,
+       "contribution": 35.66666666666666,
+       "contributionPct": 0.5095238095238094,
+       "volumeMultiple": 1.196261682242991,
+       "paybackMonths": 1.96875,
+       "npv1": 33.6810704744786,
+       "npv3": 145.45276810943918,
+       "npv5": 309.8306433054871,
+       "npvRecurring5": 269.9726736953601
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 65.0,
+       "contribution": 33.91666666666666,
+       "contributionPct": 0.5217948717948716,
+       "volumeMultiple": 1.2579852579852582,
+       "paybackMonths": 2.4609375,
+       "npv1": 31.931070474478602,
+       "npv3": 143.70276810943918,
+       "npv5": 308.0806433054871,
+       "npvRecurring5": 258.25818129282834
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": 55.0,
+       "contribution": 30.416666666666664,
+       "contributionPct": 0.553030303030303,
+       "volumeMultiple": 1.4027397260273973,
+       "paybackMonths": 3.4453125,
+       "npv1": 28.431070474478602,
+       "npv3": 140.20276810943918,
+       "npv5": 304.5806433054871,
+       "npvRecurring5": 234.82919648776482
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": 50.0,
+       "contribution": 28.66666666666666,
+       "contributionPct": 0.5733333333333333,
+       "volumeMultiple": 1.488372093023256,
+       "paybackMonths": 3.9375,
+       "npv1": 26.681070474478602,
+       "npv3": 138.45276810943918,
+       "npv5": 302.8306433054871,
+       "npvRecurring5": 223.11470408523303
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": 40.0,
+       "contribution": 25.16666666666666,
+       "contributionPct": 0.6291666666666665,
+       "volumeMultiple": 1.6953642384105962,
+       "paybackMonths": 4.921875,
+       "npv1": 23.181070474478602,
+       "npv3": 134.95276810943918,
+       "npv5": 299.3306433054871,
+       "npvRecurring5": 199.6857192801695
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 37.1810704744786,
+        "payback": 0.984375,
+        "cumulative": 39.166666666666664,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 148.95276810943918,
+        "payback": 0.984375,
+        "cumulative": 175.21091266666667,
+        "effectiveCustomerDiscount": 0.025966465348660813
+       },
+       "5": {
+        "npv": 313.3306433054871,
+        "payback": 0.984375,
+        "cumulative": 417.2130419964327,
+        "effectiveCustomerDiscount": 0.011926416335941048
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 37.1810704744786,
+        "payback": 0.984375,
+        "cumulative": 39.166666666666664,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 140.34097182844744,
+        "payback": 0.984375,
+        "cumulative": 165.23198916666666,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "5": {
+        "npv": 293.4016585004236,
+        "payback": 0.984375,
+        "cumulative": 391.3664226816892,
+        "effectiveCustomerDiscount": 0.1
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 37.1810704744786,
+        "payback": 0.984375,
+        "cumulative": 39.166666666666664,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 147.17031067142264,
+        "payback": 0.984375,
+        "cumulative": 173.14548916666666,
+        "effectiveCustomerDiscount": 0.04128982184667789
+       },
+       "5": {
+        "npv": 311.5481858674706,
+        "payback": 0.984375,
+        "cumulative": 415.14761849643276,
+        "effectiveCustomerDiscount": 0.018964445070522917
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 37.1810704744786,
+        "payback": 0.984375,
+        "cumulative": 39.166666666666664,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 154.3702905344823,
+        "payback": 0.984375,
+        "cumulative": 181.9066666666667,
+        "effectiveCustomerDiscount": 0.02506265664160401
+       },
+       "5": {
+        "npv": 329.0731018811163,
+        "payback": 0.984375,
+        "cumulative": 439.10948240666676,
+        "effectiveCustomerDiscount": 0.011352806702007733
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": null
+    },
+    "vertex-claude": {
+     "structure": "agent",
+     "waterfall": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 0.0,
+      "creditsCloud": 7.500000000000001,
+      "creditsProvider": 2.5,
+      "creditsPartner": 0.0,
+      "customerPays": 80.0,
+      "providerRevenue": 87.5,
+      "cloudNetRevenue": 18.75,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 2.625,
+      "distribution": 4.0,
+      "computeContribution": 1.73745,
+      "cloudContribution": 21.36245,
+      "cloudEconomic": 21.36245,
+      "providerServing": 12.87,
+      "channelFeePaid": 26.25,
+      "providerContribution": 48.38
+     },
+     "waterfallNoIncentive": {
+      "list": 100.0,
+      "discountProvider": 10.0,
+      "discountCloud": 0.0,
+      "creditsCloud": 0.0,
+      "creditsProvider": 0.0,
+      "creditsPartner": 0.0,
+      "customerPays": 90.0,
+      "providerRevenue": 90.0,
+      "cloudNetRevenue": 27.0,
+      "revenueSharePaid": 0,
+      "infra": 0,
+      "infraDepreciation": 0,
+      "infraPower": 0,
+      "infraNetwork": 0,
+      "capital": 0,
+      "creditEconomicCost": 0.0,
+      "distribution": 4.0,
+      "computeContribution": 1.73745,
+      "cloudContribution": 24.73745,
+      "cloudEconomic": 24.73745,
+      "providerServing": 12.87,
+      "channelFeePaid": 27.0,
+      "providerContribution": 50.13
+     },
+     "breakEven": 0.7329614814814814,
+     "breakEvenEconomic": 0.7329614814814814,
+     "requiredVolumeMultiple": 1.1579874967524793,
+     "creditCliff": 0.125,
+     "creditCliffWithDeflation": -0.26874999999999993,
+     "counterfactual": {
+      "npvNone5": 156.10144418229783,
+      "npvOneTime5": 152.72644418229783,
+      "requiredWinLift": {
+       "0.2": 0.004419666833821551,
+       "0.3": 0.0066295002507323255,
+       "0.5": 0.011049167084553876
+      },
+      "recurringAiOnly": {
+       "1": 20.211233128333376,
+       "3": 69.47311490288197,
+       "5": 133.50920883455797
+      },
+      "recurringWithAdjacency": {
+       "1": 60.256661876648245,
+       "3": 208.05085061275614,
+       "5": 401.57313502213594
+      }
+     },
+     "grid": [
+      {
+       "level": 0.0,
+       "customerPays": 90.0,
+       "cloudNetRevenue": 27.0,
+       "contribution": 24.73745,
+       "contributionPct": 0.9162018518518518,
+       "volumeMultiple": 1.0,
+       "paybackMonths": 0,
+       "npv1": 23.586233128333376,
+       "npv3": 81.15234703098116,
+       "npv5": 156.10144418229783,
+       "npvRecurring5": 156.10144418229783
+      },
+      {
+       "level": 0.1,
+       "customerPays": 80.0,
+       "cloudNetRevenue": 18.75,
+       "contribution": 21.36245,
+       "contributionPct": 1.1393306666666667,
+       "volumeMultiple": 1.1579874967524793,
+       "paybackMonths": 1.6371938093861738,
+       "npv1": 20.211233128333376,
+       "npv3": 77.77734703098116,
+       "npv5": 152.72644418229783,
+       "npvRecurring5": 133.50920883455797
+      },
+      {
+       "level": 0.2,
+       "customerPays": 70.0,
+       "cloudNetRevenue": 10.499999999999998,
+       "contribution": 17.98745,
+       "contributionPct": 1.7130904761904764,
+       "volumeMultiple": 1.375261640755082,
+       "paybackMonths": 3.2743876187723475,
+       "npv1": 16.836233128333376,
+       "npv3": 74.40234703098116,
+       "npv5": 149.35144418229783,
+       "npvRecurring5": 110.91697348681814
+      },
+      {
+       "level": 0.25,
+       "customerPays": 65.0,
+       "cloudNetRevenue": 6.375,
+       "contribution": 16.29995,
+       "contributionPct": 2.5568549019607842,
+       "volumeMultiple": 1.5176396246614254,
+       "paybackMonths": 4.092984523465434,
+       "npv1": 15.148733128333376,
+       "npv3": 72.71484703098116,
+       "npv5": 147.66394418229783,
+       "npvRecurring5": 99.62085581294824
+      },
+      {
+       "level": 0.35,
+       "customerPays": 55.0,
+       "cloudNetRevenue": -1.8749999999999964,
+       "contribution": 12.924950000000003,
+       "contributionPct": null,
+       "volumeMultiple": 1.9139300345455876,
+       "paybackMonths": 5.730178332851608,
+       "npv1": 11.773733128333376,
+       "npv3": 69.33984703098116,
+       "npv5": 144.28894418229783,
+       "npvRecurring5": 77.02862046520842
+      },
+      {
+       "level": 0.4,
+       "customerPays": 50.0,
+       "cloudNetRevenue": -6.0000000000000036,
+       "contribution": 11.237449999999999,
+       "contributionPct": null,
+       "volumeMultiple": 2.201340161691487,
+       "paybackMonths": 6.548775237544695,
+       "npv1": 10.086233128333376,
+       "npv3": 67.65234703098116,
+       "npv5": 142.60144418229783,
+       "npvRecurring5": 65.7325027913385
+      },
+      {
+       "level": 0.5,
+       "customerPays": 40.0,
+       "cloudNetRevenue": -14.25,
+       "contribution": 7.86245,
+       "contributionPct": null,
+       "volumeMultiple": 3.146277559793703,
+       "paybackMonths": 8.185969046930868,
+       "npv1": 6.711233128333376,
+       "npv3": 64.27734703098116,
+       "npv5": 139.22644418229783,
+       "npvRecurring5": 43.14026744359869
+      }
+     ],
+     "lifetime": {
+      "one-time": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 77.77734703098116,
+        "payback": 1.6371938093861738,
+        "cumulative": 91.3146888552,
+        "effectiveCustomerDiscount": 0.025966465348660813
+       },
+       "5": {
+        "npv": 152.72644418229783,
+        "payback": 1.6371938093861738,
+        "cumulative": 201.5177610273301,
+        "effectiveCustomerDiscount": 0.011926416335941048
+       }
+      },
+      "recurring": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 69.47311490288197,
+        "payback": 1.6371938093861738,
+        "cumulative": 81.6921554802,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "5": {
+        "npv": 133.50920883455797,
+        "payback": 1.6371938093861738,
+        "cumulative": 176.5942352595417,
+        "effectiveCustomerDiscount": 0.1
+       }
+      },
+      "consumption": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 76.05854878717949,
+        "payback": 1.6371938093861738,
+        "cumulative": 89.3230304802,
+        "effectiveCustomerDiscount": 0.04128982184667789
+       },
+       "5": {
+        "npv": 151.00764593849613,
+        "payback": 1.6371938093861738,
+        "cumulative": 199.52610265233008,
+        "effectiveCustomerDiscount": 0.018964445070522917
+       }
+      },
+      "commit": {
+       "1": {
+        "npv": 20.211233128333376,
+        "payback": 1.6371938093861738,
+        "cumulative": 21.36245,
+        "effectiveCustomerDiscount": 0.1
+       },
+       "3": {
+        "npv": 80.53575682515455,
+        "payback": 1.6371938093861738,
+        "cumulative": 94.71931800000002,
+        "effectiveCustomerDiscount": 0.02506265664160401
+       },
+       "5": {
+        "npv": 160.1925717378091,
+        "payback": 1.6371938093861738,
+        "cumulative": 211.84448770148805,
+        "effectiveCustomerDiscount": 0.011352806702007733
+       }
+      }
+     },
+     "requiredAttach": {
+      "one-time": 0,
+      "recurring": 0,
+      "consumption": 0,
+      "commit": 0
+     },
+     "equityUplift": 70.4375
+    }
+   }
+  }
+ ]
+}
