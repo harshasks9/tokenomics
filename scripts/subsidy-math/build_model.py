@@ -502,6 +502,11 @@ class Book:
         r += 1
         put(ws, r, 2, "Basis: D = disclosed in a filing · R = reported estimate · A = our assumption · C = our calculation on disclosed figures.",
             italic=True, color=GREY)
+        for row in ws.iter_rows(min_row=6, max_row=r - 1):  # long notes wrap: keep every row top-aligned
+            for c in row:
+                al = c.alignment
+                c.alignment = Alignment(wrap_text=al.wrap_text, horizontal=al.horizontal, vertical="top",
+                                        indent=1 if c.column == 9 else 0)
         # register Active cells for verification
         for k, nm in self.active.items():
             sheet, coord = self.names[nm].split("!")
@@ -839,7 +844,7 @@ class Book:
         section(ws, all_start - 2, 2, 9, "ALL INCENTIVE TYPES — over the selected lifetime years")
         header(ws, all_start - 1, 2, ["Route", "Incentive type", "NPV", "Cumulative contribution", "Payback (months)",
                                       "Effective customer discount", "Total credits", "Total list spend"])
-        ws.row_dimensions[all_start - 1].height = 30
+        ws.row_dimensions[all_start - 1].height = 42
         self.lt_all_row = {}
         rr = all_start
         for bi, rid in enumerate(self.routes):
@@ -865,7 +870,7 @@ class Book:
         section(ws, sel_start - 2, 2, 9, "SELECTED SCENARIO — the incentive type and lifetime years chosen on Assumptions")
         header(ws, sel_start - 1, 2, ["Route", "Incentive type", "NPV", "Cumulative contribution", "Payback (months)",
                                       "Effective customer discount"])
-        ws.row_dimensions[sel_start - 1].height = 30
+        ws.row_dimensions[sel_start - 1].height = 42
         for i, rid in enumerate(self.routes):
             rr = sel_start + i
             s0 = self.lt_all_row[(rid, types[0])]
@@ -1141,14 +1146,14 @@ class Book:
     # -- Equity ------------------------------------------------------------------------
     def build_equity(self):
         ws = self.ws["Equity"]
-        widths(ws, {"A": 2, "B": 22, **{CL(c): 16 for c in range(3, 10)}})
+        widths(ws, {"A": 2, "B": 30, **{CL(c): 16 for c in range(3, 10)}})
         title(ws, "Equity — strategic uplift from owning part of the model provider vs the subsidy the cloud bears",
               "Strategic, not operating: value of the cloud's stake rises by stake × revenue multiple × incremental provider revenue. "
               "Shown for agent routes (the cloud owns part of the provider it distributes). $ per $100 of year-1 list.")
         ws.freeze_panes = "C5"
         r = 5
         for lab, f, fmt in (("Equity stake", "=EQ_stake", F_PCT_IN), ("Revenue multiple", "=EQ_revenueMultiple", F_MULT_IN),
-                            ("Share of subsidized consumption incremental to the provider", "=EQ_incrementalToProvider", F_PCT_IN),
+                            ("Incremental to the provider", "=EQ_incrementalToProvider", F_PCT_IN),
                             ("Incentive, % of list", "=Inc_pct", F_PCT_IN)):
             put(ws, r, 2, lab)
             put(ws, r, 3, f, kind="link", fmt=fmt)
