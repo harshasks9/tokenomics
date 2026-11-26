@@ -103,7 +103,7 @@ export default function Splitter() {
           <Slider label="Negotiated discount (recurring)" value={p.customerDiscount} min={0} max={0.3} step={0.01} onChange={(v) => set("customerDiscount", v)} format={(v) => fmtPct(v)} />
           {agent ? (
             <>
-              <Slider label="Cloud's seller fee (share of Anthropic's price)" value={p.channelFee} min={0.05} max={0.4} step={0.01} onChange={(v) => set("channelFee", v)} format={(v) => fmtPct(v)} help="Not disclosed per cloud. Anthropic's filing lets us bound the average — see the Evidence section." />
+              <Slider label="Cloud's seller fee (share of Anthropic's price)" value={p.channelFee} min={0.05} max={0.4} step={0.01} onChange={(v) => set("channelFee", v)} format={(v) => fmtPct(v)} help="Not disclosed per cloud. Anthropic's filing lets us bound the average: ~16% in 2025, ~32% in Q3 2026." />
               <Slider label="Share of the discount Anthropic pays for" value={p.discountFundedByProvider} min={0} max={1} step={0.05} onChange={(v) => set("discountFundedByProvider", v)} format={(v) => fmtPct(v)} />
               <Slider label="Compute Anthropic buys that is truly extra (beyond its existing commitment)" value={p.incrementalComputeShare} min={0} max={1} step={0.05} onChange={(v) => set("incrementalComputeShare", v)} format={(v) => fmtPct(v)} help="If Anthropic already pre-paid for the capacity, serving this customer earns the cloud nothing new." />
             </>

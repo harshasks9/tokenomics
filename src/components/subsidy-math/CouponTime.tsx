@@ -52,7 +52,7 @@ export default function CouponTime() {
       <div className="sm-grid c2" style={{ alignItems: "start" }}>
         <div>
           <h3>{meta.cloud}&apos;s running profit from one customer (started at $100 a year)</h3>
-          <LineChart
+          <LineChart width={540}
             ariaLabel="Cumulative cloud contribution over five years by coupon type"
             x={x}
             yFormat={(v) => fmt$(v)}

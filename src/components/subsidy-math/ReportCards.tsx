@@ -36,7 +36,7 @@ export default function ReportCards() {
         <div className="sm-panel">
           <h3>Cloud operating margins</h3>
           <p className="sm-src">Segment operating income ÷ segment revenue. Microsoft: its new Agents &amp; Infra segment (recast).</p>
-          <LineChart ariaLabel="Cloud segment operating margins, nine quarters" x={x} yFormat={(v) => `${v.toFixed(0)}%`} yMin={0} yMax={60}
+          <LineChart width={500} height={290} ariaLabel="Cloud segment operating margins, nine quarters" x={x} yFormat={(v) => `${v.toFixed(0)}%`} yMin={0} yMax={60}
             series={[
               { key: "ms", label: "Microsoft Agents & Infra", short: "Microsoft", color: "var(--msft)", values: msA },
               { key: "aws", label: "AWS", color: "var(--aws)", values: awsMargin },
@@ -48,14 +48,14 @@ export default function ReportCards() {
         <div className="sm-panel">
           <h3>Microsoft Cloud gross margin</h3>
           <p className="sm-src">The only cloud that reports a gross margin — and explains the drop.</p>
-          <LineChart ariaLabel="Microsoft Cloud gross margin" x={x} yFormat={(v) => `${v.toFixed(0)}%`} yMin={60} yMax={74}
+          <LineChart width={500} height={290} ariaLabel="Microsoft Cloud gross margin" x={x} yFormat={(v) => `${v.toFixed(0)}%`} yMin={60} yMax={74}
             series={[{ key: "gm", label: "Microsoft Cloud GM", color: "var(--msft)", values: msGM }]} />
           <p className="sm-caveat">Down 5 points in two years. Microsoft&apos;s filings blamed &ldquo;scaling our AI infrastructure&rdquo; every quarter to March 2026, then switched to &ldquo;sales mix shift to Azure&rdquo; <Tag b="D" />. Operating margin held, because AI revenue arrives with little extra sales cost.</p>
         </div>
         <div className="sm-panel">
           <h3>Building ahead: spending vs depreciation</h3>
           <p className="sm-src">Capital spending ÷ depreciation in the same quarter (×). Above 1× means the cost of today&apos;s building hasn&apos;t hit profits yet.</p>
-          <LineChart ariaLabel="Capex to depreciation ratio" x={x} yFormat={(v) => `${v.toFixed(1)}×`} yMin={0}
+          <LineChart width={500} height={290} ariaLabel="Capex to depreciation ratio" x={x} yFormat={(v) => `${v.toFixed(1)}×`} yMin={0}
             series={[
               { key: "g", label: "Alphabet (capex ÷ depreciation)", short: "Alphabet", color: "var(--google)", values: gCapexDep },
               { key: "a", label: "AWS (P&E additions ÷ D&A)", short: "AWS", color: "var(--aws)", values: awsCapexDep },
@@ -66,7 +66,7 @@ export default function ReportCards() {
         <div className="sm-panel">
           <h3>Free cash flow, last twelve months ($B)</h3>
           <p className="sm-src">Company definitions (Amazon, Alphabet); Microsoft = operating cash flow − cash capex.</p>
-          <LineChart ariaLabel="Trailing twelve month free cash flow" x={x} yFormat={(v) => `$${v.toFixed(0)}B`} zeroLine
+          <LineChart width={500} height={290} ariaLabel="Trailing twelve month free cash flow" x={x} yFormat={(v) => `${v < 0 ? "−" : ""}$${Math.abs(v).toFixed(0)}B`} zeroLine
             series={[
               { key: "m", label: "Microsoft", color: "var(--msft)", values: mFcf },
               { key: "g", label: "Alphabet", color: "var(--google)", values: gFcf },
@@ -86,7 +86,7 @@ export default function ReportCards() {
         </table>
       </div>
       <Explain>
-        <b>What the report cards can and can&apos;t tell us.</b> They show that AWS and Microsoft are <i>not</i> losing money on AI at the segment level: AWS margins are near record highs while it grows 39%. They do <i>not</i> show whether third-party model sales are less profitable than first-party ones — no company splits that out. And they show that a large share of all three companies&apos; 2026 profits comes from paper gains on AI-lab stakes, which sit outside the cloud businesses.
+        <b>What the report cards can and can&apos;t tell us.</b> They show that AWS and Microsoft are <b>not</b> losing money on AI at the segment level: AWS margins are near record highs while it grows 39%. They do <b>not</b> show whether third-party model sales are less profitable than first-party ones — no company splits that out. And they show that a large share of all three companies&apos; 2026 profits comes from paper gains on AI-lab stakes, which sit outside the cloud businesses.
       </Explain>
     </>
   );

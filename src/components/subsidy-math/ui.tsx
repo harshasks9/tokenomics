@@ -78,10 +78,10 @@ export function useTip() {
 export interface Series { key: string; label: string; short?: string; color: string; values: (number | null)[]; dash?: boolean }
 
 /** Line chart with crosshair tooltip. One y-axis. */
-export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLabel, zeroLine }: {
-  x: string[]; series: Series[]; yFormat: (v: number) => string; height?: number; yMin?: number; yMax?: number; ariaLabel: string; zeroLine?: boolean;
+export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLabel, zeroLine, width = 720 }: {
+  x: string[]; series: Series[]; yFormat: (v: number) => string; height?: number; yMin?: number; yMax?: number; ariaLabel: string; zeroLine?: boolean; width?: number;
 }) {
-  const W = 720, H = height, padL = 52, padR = 92, padT = 14, padB = 34;
+  const W = width, H = height, padL = 52, padR = 96, padT = 14, padB = 34;
   const all = series.flatMap((s) => s.values.filter((v): v is number => v !== null));
   const lo = yMin ?? Math.min(0, ...all);
   const hi = yMax ?? Math.max(...all) * 1.08;

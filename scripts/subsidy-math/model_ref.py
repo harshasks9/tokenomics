@@ -369,12 +369,14 @@ STRESS_SCENARIOS = [
         "overrides": {
             "incentive": {"type": "commit", "pct": 0.5, "partnerFunded": 0.2, "providerFunded": 0.3},
             "lifetime": {"years": 3, "includeAdjacency": 1, "baselineShare": 0.4, "channelFeeDrift": -0.05,
-                         "retention": 0.7, "growth": 0.0, "commitYears": 2, "consumptionYears": 2},
+                         "retention": 0.7, "growth": 0.0, "commitYears": 2, "consumptionYears": 2,
+                         "adjacencyIncremental": 0.0},
             "routes": {
                 "bedrock-claude": {"channelFee": 0.16, "discountFundedByProvider": 0.5},
-                "azure-openai": {"revenueShare": 0.25, "infraCost": 0.35, "utilization": 0.3},
+                "azure-openai": {"revenueShare": 0.25, "infraCost": 0.35, "utilization": 0.3, "customerDiscount": 0.2},
                 "vertex-gemini": {"modelDevCost": 0.6},
-                "vertex-claude": {"incrementalComputeShare": 1.0},
+                "vertex-claude": {"incrementalComputeShare": 1.0, "channelFee": 0.16, "distributionCost": 0.08,
+                                  "customerDiscount": 0.2, "discountFundedByProvider": 0.5},
             },
         },
     },
