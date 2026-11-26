@@ -347,6 +347,11 @@ class Book:
         self.build_earnings()
         self.build_sources()
         self.build_readme()
+        for ws in self.wb.worksheets:
+            ws.page_setup.orientation = "landscape"
+            ws.page_setup.fitToWidth = 1
+            ws.page_setup.fitToHeight = 0
+            ws.sheet_properties.pageSetUpPr.fitToPage = True
         self.wb.active = 0
         self.wb.calculation.fullCalcOnLoad = True
         return self
@@ -528,7 +533,7 @@ class Book:
         ("_sec", "CONTRIBUTION"),
         ("cloudContribution", "Cloud contribution", F_USD, True),
         ("contributionPct", "Cloud contribution, % of cloud net revenue", F_PCT, False),
-        ("modelDev", "Model development amortization (economic view, principal; on pre-incentive net revenue)", F_USD, False),
+        ("modelDev", "Model development charge (economic view, principal routes)", F_USD, False),
         ("cloudEconomic", "Cloud economic contribution", F_USD, True),
         ("providerContribution", "Model provider contribution (before R&D)", F_USD, False),
         ("_sec", "BREAK-EVEN INCENTIVE (contribution is linear in the incentive)"),
@@ -579,7 +584,8 @@ class Book:
         widths(ws, {"A": 2, "B": 62, "C": 15, "D": 15, "E": 15, "F": 15, "G": 2, "H": 55, "I": 55})
         title(ws, "Year-1 waterfall — $100 of list-price inference, four routes side by side",
               "$ per $100 of list at the Active incentive on Assumptions (credits are contra-revenue). "
-              "Agent routes: the model provider is principal; principal routes: the cloud is.")
+              "Agent routes: the model provider is principal; principal routes: the cloud is.",
+              "Discounts, credits and costs are shown as positive amounts and deducted in the totals; a dash means not applicable.")
         header(ws, 4, 2, ["Line item ($ per $100 of list)"] + [self.short[r] for r in self.routes] + ["", "How it is computed — agent route", "How it is computed — principal route"])
         ws.cell(row=4, column=7).fill = PatternFill(fill_type=None)
         ws.freeze_panes = "C5"
@@ -678,7 +684,7 @@ class Book:
                 na = f == "=0"
                 fill = FILL_KEY if key in ("cloudContribution", "breakEven") else None
                 put(ws, R[key], col, f, fmt=spec[2], bold=spec[3], kind="muted" if na else ("link" if key == "list" else "formula"),
-                    fill=fill)
+                    fill=fill, halign="right")
                 self.reg(f"wf|{rid}|{key}", ws, R[key], col)
 
     # -- Lifetime --------------------------------------------------------------------------
@@ -996,7 +1002,8 @@ class Book:
         keys = [("Incentive %", "=Inc_pct", F_PCT_IN), ("Cloud-funded", "=Inc_cloudFunded", F_PCT_IN),
                 ("Spend growth", "=LT_growth", F_PCT_IN), ("Retention", "=LT_retention", F_PCT_IN),
                 ("Discount rate", "=LT_discountRate", F_PCT_IN), ("Adjacency (1/0)", "=LT_includeAdjacency", F_INT)]
-        put(ws, 5, 2, "Key inputs (edit on Assumptions)", bold=True)
+        put(ws, 5, 2, "Key inputs", bold=True)
+        put(ws, 6, 2, "edit on Assumptions", italic=True, color=GREY)
         for j, (lab, f, fmt) in enumerate(keys):
             put(ws, 5, 3 + j, lab, kind="muted", halign="right", wrap=True)
             put(ws, 6, 3 + j, f, kind="link", fmt=fmt, halign="right")
