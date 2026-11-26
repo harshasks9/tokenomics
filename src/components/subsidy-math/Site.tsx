@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { creditCliff, lifetime, waterfall } from "@/lib/subsidy-math/model";
 import { BASE_INCENTIVE, BASE_LIFETIME, baseRoute, BASE_FUNDING } from "@/lib/subsidy-math/params";
 import { fmtPct, Section, Tag } from "./ui";
+import { AppLink, HOME_HREF } from "./platform";
 import Players from "./Players";
 import Splitter from "./Splitter";
 import CouponTime from "./CouponTime";
@@ -68,12 +68,12 @@ export default function Site() {
     <>
       <div className="sm-top">
         <div className="sm-wrap sm-top-inner">
-          <Link href="/" prefetch={false}>aitokenomics</Link>
+          <AppLink href={HOME_HREF}>aitokenomics</AppLink>
           <span>Research note · as of Nov 26, 2026 · not investment advice</span>
         </div>
       </div>
 
-      <header className="sm-hero">
+      <header className="sm-hero" id="top">
         <div className="sm-wrap">
           <div className="sm-eyebrow">Subsidy Math · Follow the $100</div>
           <h1 className="sm-title">The Economics of AI: is the hyperscaler <em>subsidy model</em> sustainable?</h1>

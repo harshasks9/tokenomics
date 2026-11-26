@@ -131,7 +131,7 @@ export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLa
               {segs.map((d, k) => <polyline key={k} points={d} fill="none" stroke={s.color} strokeWidth={2} strokeDasharray={s.dash ? "5 4" : undefined} strokeLinejoin="round" strokeLinecap="round" />)}
               {lastIdx >= 0 && (
                 <>
-                  <circle cx={xs(lastIdx)} cy={ys(s.values[lastIdx] as number)} r={4} fill={s.color} stroke="#fff" strokeWidth={2} />
+                  <circle cx={xs(lastIdx)} cy={ys(s.values[lastIdx] as number)} r={4} fill={s.color} stroke="var(--card)" strokeWidth={2} />
                   <text x={xs(lastIdx) + 8} y={(labelY[s.key] ?? ys(s.values[lastIdx] as number)) + 4} className="lbl">{s.short ?? s.label}</text>
                 </>
               )}
@@ -142,7 +142,7 @@ export function LineChart({ x, series, yFormat, height = 260, yMin, yMax, ariaLa
           <g>
             <line x1={xs(hover)} x2={xs(hover)} y1={padT} y2={H - padB} stroke="var(--axis)" strokeDasharray="3 3" />
             {series.map((s) => s.values[hover] !== null && (
-              <circle key={s.key} cx={xs(hover)} cy={ys(s.values[hover] as number)} r={4.5} fill={s.color} stroke="#fff" strokeWidth={2} />
+              <circle key={s.key} cx={xs(hover)} cy={ys(s.values[hover] as number)} r={4.5} fill={s.color} stroke="var(--card)" strokeWidth={2} />
             ))}
           </g>
         )}

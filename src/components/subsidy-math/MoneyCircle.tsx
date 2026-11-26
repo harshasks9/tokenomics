@@ -71,10 +71,10 @@ export default function MoneyCircle() {
         <defs>
           <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)" /></marker>
         </defs>
-        <rect x={10} y={20} width={170} height={H - 40} rx={16} fill="#fff" stroke={d.color} strokeWidth={2} />
+        <rect x={10} y={20} width={170} height={H - 40} rx={16} fill="var(--card)" stroke={d.color} strokeWidth={2} />
         <text x={95} y={H / 2 - 6} textAnchor="middle" className="nodeT">{d.cloud.split(" / ")[0]}</text>
         <text x={95} y={H / 2 + 14} textAnchor="middle" className="elbl">{d.cloud.split(" / ")[1] ?? ""}</text>
-        <rect x={W - 180} y={20} width={170} height={H - 40} rx={16} fill="#fff" stroke="var(--provider)" strokeWidth={2} />
+        <rect x={W - 180} y={20} width={170} height={H - 40} rx={16} fill="var(--card)" stroke="var(--provider)" strokeWidth={2} />
         <text x={W - 95} y={H / 2 + 4} textAnchor="middle" className="nodeT">{d.lab}</text>
         {toLab.map((f, i) => {
           const y = 52 + i * rowH;

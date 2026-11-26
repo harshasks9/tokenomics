@@ -1,0 +1,55 @@
+/*
+ * Stand-alone page additions: viewer theme (light, dark, or system), safe-area
+ * gutters and a sticky nav that respects the top inset. Same look as /subsidy-math.
+ */
+:root { color-scheme: light dark; --page-bg: #ffffff; }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+html:has(.sm-root), body:has(.sm-root) { background: var(--page-bg); color-scheme: inherit; }
+body { background: var(--page-bg); margin: 0; overflow-x: clip; }
+
+.sm-root .sm-wrap {
+  padding-left: max(5vw, 16px, env(safe-area-inset-left, 0px));
+  padding-right: max(5vw, 16px, env(safe-area-inset-right, 0px));
+  max-width: calc(1120px + 10vw);
+}
+.sm-nav { top: env(safe-area-inset-top, 0px); }
+body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: env(safe-area-inset-top, 0px); background: var(--page-bg); z-index: 41; }
+.sm-root button.sm-btn { cursor: pointer; }
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) { --page-bg: #0f1316; }
+  :root:where(:not([data-theme="light"])) .sm-root {
+    --paper: #0f1316; --card: #161b20; --sunk: #12171b; --sunk-2: #1d2329;
+    --ink: #e8eaed; --ink-2: #c3c8cf; --muted: #8d949c; --rule: #2b3239; --rule-soft: #222830;
+    --accent: #4cc3d1; --accent-2: #63d0dc; --accent-wash: #0f2a2e; --accent-fill: #0f7a89;
+    --on-accent: #ffffff; --on-accent-2: rgba(255,255,255,.9);
+    --nav-bg: rgba(15,19,22,.92); --tip-bg: #e8eaed; --tip-ink: #15171a;
+    --google: #338ced; --aws: #e76624; --msft: #00a888; --s4: #d28e05; --s5: #e24d8b; --s6: #0aac23; --s7: #9887ef; --s8: #eb6263;
+    --keep: #338ced; --provider: #9887ef; --infra: #d28e05; --coupon: #eb6263; --other: #7d848c;
+    --good: #5fd36f; --good-wash: #12291a; --warn: #f2c46b; --warn-wash: #33270f; --bad: #ff8a8a; --bad-wash: #3a1717;
+    --grid: #262d34; --axis: #3a434c;
+    --tag-d-bg: #142a45; --tag-d-bd: #1f3d63; --tag-d-ink: #9cc6f7;
+    --tag-r-bg: #241c3d; --tag-r-bd: #352a5c; --tag-r-ink: #c6b6fb;
+    --tag-a-bg: #33270f; --tag-a-bd: #4a3916; --tag-a-ink: #f2c46b;
+    --tag-c-bg: #10291f; --tag-c-bd: #1a3d2e; --tag-c-ink: #8fdcb8;
+    --hl-row: #2a2414;
+  }
+}
+:root[data-theme="dark"] { --page-bg: #0f1316; }
+:root[data-theme="dark"] .sm-root {
+  --paper: #0f1316; --card: #161b20; --sunk: #12171b; --sunk-2: #1d2329;
+  --ink: #e8eaed; --ink-2: #c3c8cf; --muted: #8d949c; --rule: #2b3239; --rule-soft: #222830;
+  --accent: #4cc3d1; --accent-2: #63d0dc; --accent-wash: #0f2a2e; --accent-fill: #0f7a89;
+  --on-accent: #ffffff; --on-accent-2: rgba(255,255,255,.9);
+  --nav-bg: rgba(15,19,22,.92); --tip-bg: #e8eaed; --tip-ink: #15171a;
+  --google: #338ced; --aws: #e76624; --msft: #00a888; --s4: #d28e05; --s5: #e24d8b; --s6: #0aac23; --s7: #9887ef; --s8: #eb6263;
+  --keep: #338ced; --provider: #9887ef; --infra: #d28e05; --coupon: #eb6263; --other: #7d848c;
+  --good: #5fd36f; --good-wash: #12291a; --warn: #f2c46b; --warn-wash: #33270f; --bad: #ff8a8a; --bad-wash: #3a1717;
+  --grid: #262d34; --axis: #3a434c;
+  --tag-d-bg: #142a45; --tag-d-bd: #1f3d63; --tag-d-ink: #9cc6f7;
+  --tag-r-bg: #241c3d; --tag-r-bd: #352a5c; --tag-r-ink: #c6b6fb;
+  --tag-a-bg: #33270f; --tag-a-bd: #4a3916; --tag-a-ink: #f2c46b;
+  --tag-c-bg: #10291f; --tag-c-bd: #1a3d2e; --tag-c-ink: #8fdcb8;
+  --hl-row: #2a2414;
+}

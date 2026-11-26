@@ -12,7 +12,7 @@ export default function Claims() {
   return (
     <>
       <div className="sm-filter" role="group" aria-label="Filter by category">
-        <button type="button" className="sm-tag" aria-pressed={cat === 0} onClick={() => setCat(0)} style={{ cursor: "pointer", fontSize: 13, padding: "5px 12px", ...(cat === 0 ? { background: "var(--ink)", color: "#fff" } : {}) }}>All ({CLAIMS.length})</button>
+        <button type="button" className="sm-tag" aria-pressed={cat === 0} onClick={() => setCat(0)} style={{ cursor: "pointer", fontSize: 13, padding: "5px 12px", ...(cat === 0 ? { background: "var(--ink)", color: "var(--paper)" } : {}) }}>All ({CLAIMS.length})</button>
         {([1, 2, 3, 4] as Category[]).map((k) => (
           <button key={k} type="button" className={`sm-cat k${k}`} aria-pressed={cat === k} onClick={() => setCat(k)} style={{ cursor: "pointer", border: cat === k ? "2px solid currentColor" : "2px solid transparent" }}>
             {k} · {CATEGORY_LABEL[k]} ({CLAIMS.filter((c) => c.category === k).length})

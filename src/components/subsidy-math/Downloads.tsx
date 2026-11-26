@@ -1,12 +1,12 @@
-import Link from "next/link";
+import { AppLink, docHref, ModelDownload } from "./platform";
 import sources from "@/lib/subsidy-math/sources.json";
 import { Tag, type Basis } from "./ui";
 
 const DOCS = [
-  { href: "/subsidy-math/email", title: "A · Executive email", body: "A ~550-word note to JAPAC AI leaders: the most compelling insight, five defensible numbers, and what we do differently.", cta: "Read the email" },
-  { href: "/subsidy-math/memo", title: "B · Financial research memo", body: "The full analysis: evidence, $100 waterfalls, calculations, sensitivity, counterarguments and conclusions, fully sourced.", cta: "Read the memo" },
-  { href: "/subsidy-math/subsidy-math-model.xlsx", title: "C · Financial model (Excel)", body: "Every assumption adjustable, live formulas, scenario grid, break-evens, and one-time vs recurring incentives over 1, 3 and 5 years.", cta: "Download .xlsx", file: true },
-  { href: "/subsidy-math/claims", title: "D · Claims audit", body: "What you can confidently say, what needs a caveat, and what you should not say — with the evidence behind each.", cta: "Read the audit" },
+  { href: docHref("email"), title: "A · Executive email", body: "A ~575-word note to JAPAC AI leaders: the most compelling insight, five defensible numbers, and what we do differently.", cta: "Read the email" },
+  { href: docHref("memo"), title: "B · Financial research memo", body: "The full analysis: evidence, $100 waterfalls, calculations, sensitivity, counterarguments and conclusions, fully sourced.", cta: "Read the memo" },
+  { href: "model.xlsx", title: "C · Financial model (Excel)", body: "Every assumption adjustable, live formulas, scenario grid, break-evens, and one-time vs recurring incentives over 1, 3 and 5 years.", cta: "Download .xlsx", file: true },
+  { href: docHref("claims"), title: "D · Claims audit", body: "What you can confidently say, what needs a caveat, and what you should not say — with the evidence behind each.", cta: "Read the audit" },
 ];
 
 /** Section: the four deliverables plus the source register. */
@@ -17,7 +17,7 @@ export default function Downloads() {
         {DOCS.map((d) => (
           <div key={d.href} className="sm-card" style={{ display: "grid", gap: 10, alignContent: "space-between" }}>
             <div><h3>{d.title}</h3><p>{d.body}</p></div>
-            {d.file ? <a className="sm-btn" href={d.href} download>{d.cta}</a> : <Link className="sm-btn" href={d.href} prefetch={false}>{d.cta}</Link>}
+            {d.file ? <ModelDownload className="sm-btn">{d.cta}</ModelDownload> : <AppLink className="sm-btn" href={d.href}>{d.cta}</AppLink>}
           </div>
         ))}
       </div>
